@@ -1,0 +1,150 @@
+{
+  "schema_version": "access_capture_v12.freeze.1",
+  "frozen_at": "2026-10-03T08:39:19.513217+00:00",
+  "protocol_path": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/access_pilot_v12/protocol.json",
+  "protocol_sha256": "6ed1b699fe423a6c4c4215dac914eabc5c77ef6d30041d04b44f2b9a2162ea1b",
+  "protocol": {
+    "schema_version": "bounded_access_pilot_protocol_v0.12",
+    "frozen_at_utc": "2026-10-03T08:32:06.209290+00:00",
+    "source_route_path": "data/provenance/route_decision_v11.json",
+    "source_route_sha256": "03c3190cdf1810c5464c39b1ac75fc7f54d30620a357b6a629e135ae922e6688",
+    "sources": [
+      {
+        "source_id": "plug_2019_10k",
+        "history_id": "plug_power_2018_restatement",
+        "url": "https://s29.q4cdn.com/600973483/files/doc_financials/2019/ar/4Q19-10K.pdf",
+        "purpose": "Recover actual annual-report representations; preserve directly restated dependent values as competent-baseline controls. Admission is not presumed.",
+        "source_kind": "pdf"
+      },
+      {
+        "source_id": "plug_2020_10k",
+        "history_id": "plug_power_2018_restatement",
+        "url": "https://s29.q4cdn.com/600973483/files/doc_financials/2020/ar/4Q20-10K.pdf",
+        "purpose": "Recover actual annual-report representations; preserve directly restated dependent values as competent-baseline controls. Admission is not presumed.",
+        "source_kind": "pdf"
+      },
+      {
+        "source_id": "opera_abs_v1",
+        "history_id": "opera_1109_4897",
+        "url": "https://arxiv.org/abs/1109.4897v1",
+        "purpose": "Recover explicitly versioned abstracts and complete papers separately; verify same observations and exact revised assertions, retaining any direct conclusion correction.",
+        "source_kind": "html"
+      },
+      {
+        "source_id": "opera_pdf_v1",
+        "history_id": "opera_1109_4897",
+        "url": "https://arxiv.org/pdf/1109.4897v1",
+        "purpose": "Recover explicitly versioned abstracts and complete papers separately; verify same observations and exact revised assertions, retaining any direct conclusion correction.",
+        "source_kind": "pdf"
+      },
+      {
+        "source_id": "opera_abs_v4",
+        "history_id": "opera_1109_4897",
+        "url": "https://arxiv.org/abs/1109.4897v4",
+        "purpose": "Recover explicitly versioned abstracts and complete papers separately; verify same observations and exact revised assertions, retaining any direct conclusion correction.",
+        "source_kind": "html"
+      },
+      {
+        "source_id": "opera_pdf_v4",
+        "history_id": "opera_1109_4897",
+        "url": "https://arxiv.org/pdf/1109.4897v4",
+        "purpose": "Recover explicitly versioned abstracts and complete papers separately; verify same observations and exact revised assertions, retaining any direct conclusion correction.",
+        "source_kind": "pdf"
+      },
+      {
+        "source_id": "jama_article",
+        "history_id": "jama_2019_current_document",
+        "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720914",
+        "purpose": "Recover complete present article and notice as a possible full-document consistency case. These URLs do not provide an observed pre-correction article and cannot fill the historical gate.",
+        "source_kind": "html"
+      },
+      {
+        "source_id": "jama_notice",
+        "history_id": "jama_2019_current_document",
+        "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2728611",
+        "purpose": "Recover complete present article and notice as a possible full-document consistency case. These URLs do not provide an observed pre-correction article and cannot fill the historical gate.",
+        "source_kind": "html"
+      }
+    ],
+    "history_count": 3,
+    "url_count": 8,
+    "max_attempts_per_url": 1,
+    "new_search_queries": 0,
+    "network_timeout_seconds": 30,
+    "connect_timeout_seconds": 10,
+    "maximum_payload_bytes": 8388608,
+    "maximum_redirects": 5,
+    "parallelism": 1,
+    "transport_amendment": {
+      "stage": "Before any v12 source retrieval",
+      "mode": "Host execution of ordinary HTTPS retrieval through the approved execution tool",
+      "reason": "Default-sandbox raw retrieval failed before HTTP in v10/v11. Host network was independently observed working for GitHub operations during the authorized repository sync. This pilot tests the listed source endpoints once under that environment.",
+      "no_prior_v12_attempts": true,
+      "no_challenge_or_login_bypass": true,
+      "no_proxy_reconfiguration": true,
+      "parameters_unchanged_from_proposal": [
+        "eight exact URLs",
+        "one attempt perURL",
+        "30-second network limit",
+        "8MiB payload limit",
+        "no extra search or alternateURLs"
+      ]
+    },
+    "external_input_policy": "Full raw bytes, extracted text, headers and images stay in /workspace/scratch/bdef663e3dfc/tmp/access_pilot_v12 outside Git. Publish hashes, provenance, concise paraphrases and reviewed minimal evidence metadata only.",
+    "admission": "Use separately frozen source-only admission protocol. HTTP success/PDF parse do not establish completeness, historical availability, compatible correction semantics or empirical admission.",
+    "before_predictions": [
+      "independent source identity/completeness and scope review",
+      "frozen admission decision",
+      "matched task/input design",
+      "source-only separate answer references"
+    ],
+    "stopping_rule": "Stop after these eight listed representations or earlier when remaining attempts cannot add a qualifying representation. Log every outcome and all unusable or incomplete material.",
+    "pivot_rule": "If the bounded access pilot cannot provide qualifying histories, or accessible histories leave no residual outside direct correction, stop expanding the current longitudinal method claim. Consider a separately named full-document inconsistency evaluation with accessible complete documents, independently reviewed scope and a new frozen design. Do not promote the single selected passage case into a benchmark or silently convert it into temporal evaluation.",
+    "native_model_calls_authorized_by_this_protocol": 0,
+    "user_goal": "ACL 2027 research evidence; outcomes determine whether a supported next experiment is possible."
+  },
+  "limits": {
+    "sources": 8,
+    "attempts_per_url": 1,
+    "retries": 0,
+    "https_only": true,
+    "max_redirects": 5,
+    "connect_seconds": 10,
+    "transfer_seconds": 30,
+    "outer_curl_seconds": 35,
+    "max_response_bytes": 8388608,
+    "pdf_extraction_seconds": 20,
+    "implicit_curl_config": false,
+    "authentication": false
+  },
+  "tools": {
+    "curl": {
+      "executable": "/usr/bin/curl",
+      "executable_sha256": "74b4ce8f74b377f18ef1b3df7279c26cb3cd14c49e39ab1498575b209dc3f70f",
+      "version_output": "curl 8.5.0 (x86_64-pc-linux-gnu) libcurl/8.5.0 OpenSSL/3.0.13 zlib/1.3 brotli/1.1.0 zstd/1.5.5 libidn2/2.3.7 libpsl/0.21.2 (+libidn2/2.3.7) libssh/0.10.6/openssl/zlib nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.6.7\nRelease-Date: 2023-12-06, security patched: 8.5.0-2ubuntu10.13\nProtocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp\nFeatures: alt-svc AsynchDNS brotli GSS-API HSTS HTTP2 HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM PSL SPNEGO SSL threadsafe TLS-SRP UnixSockets zstd"
+    },
+    "pdftotext": {
+      "executable": "/usr/bin/pdftotext",
+      "executable_sha256": "0fb98ea179e19154a90202608c164f2a319b79f16576fa6534b2d601033565e7",
+      "version_output": "pdftotext version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC"
+    },
+    "python": {
+      "version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3"
+    }
+  },
+  "external_root": "/workspace/scratch/bdef663e3dfc/tmp/access_pilot_v12",
+  "manifest_path": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/access_pilot_v12.json",
+  "code": [
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/capture_access_pilot_v12.py",
+      "sha256": "03045dd5e984c5b8eb7b54320affe836d543035293031ad862508a6a45b36157"
+    },
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/capture_source_stream_v08.py",
+      "sha256": "8de96788e5b4eb2002d8f5d554be114f429f11400623c739d16ff3d76d29d73e"
+    }
+  ],
+  "source_content_distribution": "External only; packaged receipt is allowlisted metadata.",
+  "network_calls_before_freeze": 0
+}

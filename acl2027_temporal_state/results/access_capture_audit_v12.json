@@ -1,0 +1,312 @@
+{
+  "schema_version": "access_capture_audit_v12.1",
+  "audited_at_utc": "2026-10-03T08:44:39.066759+00:00",
+  "auditor_role": "postexecution provenance/transport audit by capture collector author; separate from source-semantic reviewers",
+  "independent_implementation_auditor": false,
+  "new_network_calls": 0,
+  "model_predictions": 0,
+  "inputs": {
+    "results/access_pilot_v12.json": "6bac0c37a4ffed499cc8790d8da11052e60a7225c5334f238ff2711dce103aa2",
+    "data/access_pilot_v12/frozen_inputs.json": "8442045a189bba402fac65efdf2a99cc42abe009b5be1f2240be029e44183c90",
+    "data/access_pilot_v12/protocol.json": "6ed1b699fe423a6c4c4215dac914eabc5c77ef6d30041d04b44f2b9a2162ea1b",
+    "data/access_pilot_v12/admission_protocol.json": "007642ed0a25eb0a8e79200c7f3945390e21f524579d4ad487283e2709cae7ca",
+    "data/access_pilot_v12/execution_authorization.json": "0339ab2aa0cdd0d440d0f8dbdba927afdbda787f5cf189217e32b4e21686893a",
+    "scripts/capture_access_pilot_v12.py": "03045dd5e984c5b8eb7b54320affe836d543035293031ad862508a6a45b36157",
+    "scripts/capture_source_stream_v08.py": "8de96788e5b4eb2002d8f5d554be114f429f11400623c739d16ff3d76d29d73e",
+    "tests/test_access_capture_v12.py": "d5e731b75591eb2424242196e3be9802a11a30f21b96d553070f642825677b6a"
+  },
+  "checks": [
+    {
+      "check": "protocol_and_freeze_result_bindings",
+      "passed": true
+    },
+    {
+      "check": "all_authorization_input_hashes",
+      "passed": true,
+      "details": {
+        "count": 7
+      }
+    },
+    {
+      "check": "all_admission_parent_hashes",
+      "passed": true,
+      "details": {
+        "count": 6
+      }
+    },
+    {
+      "check": "frozen_collector_and_helper_hashes",
+      "passed": true
+    },
+    {
+      "check": "current_executable_hashes",
+      "passed": true
+    },
+    {
+      "check": "external_frozen_protocol_and_manifest",
+      "passed": true
+    },
+    {
+      "check": "preexecution_order",
+      "passed": true
+    },
+    {
+      "check": "exact_eight_ordered_sources",
+      "passed": true
+    },
+    {
+      "check": "sequential_nonoverlap_and_result_bounds",
+      "passed": true
+    },
+    {
+      "check": "frozen_limits_unchanged",
+      "passed": true
+    },
+    {
+      "check": "files_hashes_and_sizes_match",
+      "passed": true
+    },
+    {
+      "check": "public_receipt_matches_external",
+      "passed": true
+    },
+    {
+      "check": "guarded_command_matches_protocol",
+      "passed": true
+    },
+    {
+      "check": "status_projection_correct",
+      "passed": true
+    },
+    {
+      "check": "resolved_url_equals_requested",
+      "passed": true
+    },
+    {
+      "check": "reported_download_bytes_match",
+      "passed": true
+    },
+    {
+      "check": "within_transfer_and_payload_caps",
+      "passed": true
+    },
+    {
+      "check": "source_review_flags_remain_pending",
+      "passed": true
+    },
+    {
+      "check": "zero_redirects",
+      "passed": true
+    },
+    {
+      "check": "failed_jama_retained",
+      "passed": true
+    },
+    {
+      "check": "explicit_public_record_allowlist",
+      "passed": true
+    },
+    {
+      "check": "no_private_transfer_text_header_cookie_fields",
+      "passed": true
+    },
+    {
+      "check": "current_and_prior_external_payload_exact_duplicates_absent",
+      "passed": true,
+      "details": {
+        "external_source_files_above_32_bytes_checked": 52,
+        "repository_visible_files_checked": 918,
+        "matches": [],
+        "scope": "Exact byte duplicates only; does not certify arbitrary transformations or licensed historical caches."
+      }
+    }
+  ],
+  "all_checks_passed": true,
+  "summary": {
+    "transport_success": 8,
+    "http_success": 6,
+    "mechanical_parse_success": 6,
+    "provisional_usability": 6,
+    "attempted_urls": 8,
+    "http_403": 2,
+    "raw_bytes_total": 10456211,
+    "extracted_text_bytes_total": 1803191,
+    "elapsed_wall_seconds": 4.655882,
+    "retries_observed_in_recorded_commands": 0,
+    "source_admissions_certified_by_this_audit": 0
+  },
+  "records": [
+    {
+      "source_id": "plug_2019_10k",
+      "files_hashes_and_sizes_match": true,
+      "public_receipt_matches_external": true,
+      "guarded_command_matches_protocol": true,
+      "http_status": 200,
+      "transport_success": true,
+      "http_success": true,
+      "mechanical_parse_success": true,
+      "status_projection_correct": true,
+      "resolved_url_equals_requested": true,
+      "resolved_url_has_query_or_fragment": false,
+      "redirects": 0,
+      "reported_transfer_seconds": 0.509154,
+      "captured_raw_bytes": 1127199,
+      "reported_download_bytes_match": true,
+      "within_transfer_and_payload_caps": true,
+      "source_review_flags_remain_pending": true
+    },
+    {
+      "source_id": "plug_2020_10k",
+      "files_hashes_and_sizes_match": true,
+      "public_receipt_matches_external": true,
+      "guarded_command_matches_protocol": true,
+      "http_status": 200,
+      "transport_success": true,
+      "http_success": true,
+      "mechanical_parse_success": true,
+      "status_projection_correct": true,
+      "resolved_url_equals_requested": true,
+      "resolved_url_has_query_or_fragment": false,
+      "redirects": 0,
+      "reported_transfer_seconds": 0.891479,
+      "captured_raw_bytes": 2050240,
+      "reported_download_bytes_match": true,
+      "within_transfer_and_payload_caps": true,
+      "source_review_flags_remain_pending": true
+    },
+    {
+      "source_id": "opera_abs_v1",
+      "files_hashes_and_sizes_match": true,
+      "public_receipt_matches_external": true,
+      "guarded_command_matches_protocol": true,
+      "http_status": 200,
+      "transport_success": true,
+      "http_success": true,
+      "mechanical_parse_success": true,
+      "status_projection_correct": true,
+      "resolved_url_equals_requested": true,
+      "resolved_url_has_query_or_fragment": false,
+      "redirects": 0,
+      "reported_transfer_seconds": 0.308314,
+      "captured_raw_bytes": 71226,
+      "reported_download_bytes_match": true,
+      "within_transfer_and_payload_caps": true,
+      "source_review_flags_remain_pending": true
+    },
+    {
+      "source_id": "opera_pdf_v1",
+      "files_hashes_and_sizes_match": true,
+      "public_receipt_matches_external": true,
+      "guarded_command_matches_protocol": true,
+      "http_status": 200,
+      "transport_success": true,
+      "http_success": true,
+      "mechanical_parse_success": true,
+      "status_projection_correct": true,
+      "resolved_url_equals_requested": true,
+      "resolved_url_has_query_or_fragment": false,
+      "redirects": 0,
+      "reported_transfer_seconds": 0.56616,
+      "captured_raw_bytes": 4876961,
+      "reported_download_bytes_match": true,
+      "within_transfer_and_payload_caps": true,
+      "source_review_flags_remain_pending": true
+    },
+    {
+      "source_id": "opera_abs_v4",
+      "files_hashes_and_sizes_match": true,
+      "public_receipt_matches_external": true,
+      "guarded_command_matches_protocol": true,
+      "http_status": 200,
+      "transport_success": true,
+      "http_success": true,
+      "mechanical_parse_success": true,
+      "status_projection_correct": true,
+      "resolved_url_equals_requested": true,
+      "resolved_url_has_query_or_fragment": false,
+      "redirects": 0,
+      "reported_transfer_seconds": 0.349501,
+      "captured_raw_bytes": 76464,
+      "reported_download_bytes_match": true,
+      "within_transfer_and_payload_caps": true,
+      "source_review_flags_remain_pending": true
+    },
+    {
+      "source_id": "opera_pdf_v4",
+      "files_hashes_and_sizes_match": true,
+      "public_receipt_matches_external": true,
+      "guarded_command_matches_protocol": true,
+      "http_status": 200,
+      "transport_success": true,
+      "http_success": true,
+      "mechanical_parse_success": true,
+      "status_projection_correct": true,
+      "resolved_url_equals_requested": true,
+      "resolved_url_has_query_or_fragment": false,
+      "redirects": 0,
+      "reported_transfer_seconds": 0.333171,
+      "captured_raw_bytes": 2241679,
+      "reported_download_bytes_match": true,
+      "within_transfer_and_payload_caps": true,
+      "source_review_flags_remain_pending": true
+    },
+    {
+      "source_id": "jama_article",
+      "files_hashes_and_sizes_match": true,
+      "public_receipt_matches_external": true,
+      "guarded_command_matches_protocol": true,
+      "http_status": 403,
+      "transport_success": true,
+      "http_success": false,
+      "mechanical_parse_success": false,
+      "status_projection_correct": true,
+      "resolved_url_equals_requested": true,
+      "resolved_url_has_query_or_fragment": false,
+      "redirects": 0,
+      "reported_transfer_seconds": 0.174502,
+      "captured_raw_bytes": 6221,
+      "reported_download_bytes_match": true,
+      "within_transfer_and_payload_caps": true,
+      "source_review_flags_remain_pending": true
+    },
+    {
+      "source_id": "jama_notice",
+      "files_hashes_and_sizes_match": true,
+      "public_receipt_matches_external": true,
+      "guarded_command_matches_protocol": true,
+      "http_status": 403,
+      "transport_success": true,
+      "http_success": false,
+      "mechanical_parse_success": false,
+      "status_projection_correct": true,
+      "resolved_url_equals_requested": true,
+      "resolved_url_has_query_or_fragment": false,
+      "redirects": 0,
+      "reported_transfer_seconds": 0.130106,
+      "captured_raw_bytes": 6221,
+      "reported_download_bytes_match": true,
+      "within_transfer_and_payload_caps": true,
+      "source_review_flags_remain_pending": true
+    }
+  ],
+  "offline_tests": {
+    "command": "PYTHONPATH=src python3 -m unittest discover -s tests -p test_access_capture_v12.py -v",
+    "tests_run": 6,
+    "passed": 6,
+    "failed": 0,
+    "network_calls": 0
+  },
+  "offline_freeze_verifier": {
+    "command": "python3 scripts/capture_access_pilot_v12.py verify",
+    "status": "frozen_inputs_verified_no_network"
+  },
+  "caveats": [
+    "Collector author performed this audit; it is not independent implementation review or human gold.",
+    "Recorded commands and receipts establish the eight visible attempts; absence of any unlogged activity is not externally attestable.",
+    "HTTP 403 responses count as completed transport, not successful source access; both JAMA failures are retained.",
+    "Mechanical parsing and heuristic usability do not establish source completeness, historical version identity, semantic eligibility, or admission.",
+    "No expected title was frozen, so lexical identity checks are explicitly inapplicable.",
+    "Extractor versions and hashes are frozen; source meaning, PDF page coverage, figures and table fidelity require separate source reviewers.",
+    "Known external-file duplicate scan is byte-exact and excludes trivial files of 32 bytes or less; it does not certify all possible transformed copies."
+  ]
+}

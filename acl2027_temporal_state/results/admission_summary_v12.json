@@ -1,0 +1,79 @@
+{
+  "schema_version": "source_admission_summary_v0.12",
+  "frozen_at_utc": "2026-10-03T08:52:00.096749+00:00",
+  "reviewer_role": "root_synthesis_of_separate_source_reviews",
+  "model_assisted": true,
+  "human_gold": false,
+  "blind_or_statistically_independent_review": false,
+  "capture_manifest_sha256": "6bac0c37a4ffed499cc8790d8da11052e60a7225c5334f238ff2711dce103aa2",
+  "admission_protocol_sha256": "007642ed0a25eb0a8e79200c7f3945390e21f524579d4ad487283e2709cae7ca",
+  "review_artifacts": [
+    {
+      "path": "results/plug_source_review_v12.json",
+      "sha256": "af9c8d7be4fb590c4fc8e3f8042693e7e27d115997cbef2bf2a3fdfbcf1995c6"
+    },
+    {
+      "path": "results/opera_source_review_v12.json",
+      "sha256": "4bdbf9b1495025da3794a860f49c62cac6d20511f18f2a925980b1396def7145"
+    },
+    {
+      "path": "results/jama_access_review_v12.json",
+      "sha256": "8f22ee73f32e61391ccb51add4bcc92cc6ea52681d63215c36d32d5dc3b10d1e"
+    }
+  ],
+  "histories": [
+    {
+      "history_id": "plug_power_2018_restatement",
+      "complete_representations": 2,
+      "actual_version_pair_observed": true,
+      "core_compatibility": "compatible",
+      "experimental_role": "direct_correction_or_redundant_propagation_control",
+      "controlled_core_admitted": true,
+      "nondirect_propagation_case": false,
+      "historically_clock_certified": false,
+      "benchmark_admitted": false,
+      "scope": "Selected FY2018 loss/basic-EPS correction with freshly reaffirmed shares/service-revenue controls; both corrections co-published and retained."
+    },
+    {
+      "history_id": "opera_1109_4897",
+      "complete_representations": 4,
+      "actual_version_pair_observed": true,
+      "core_compatibility": "incompatible",
+      "experimental_role": "scope_change_exclusion_and_possible_paired_reading_development",
+      "controlled_core_admitted": false,
+      "nondirect_propagation_case": false,
+      "historically_clock_certified": false,
+      "benchmark_admitted": false,
+      "scope": "Actual earlier/later papers plus separate abstract pages; selected events change and downstream results are explicitly revised. V1 text extraction omits two visually reviewed tables."
+    },
+    {
+      "history_id": "jama_2019_current_document",
+      "complete_representations": 0,
+      "actual_version_pair_observed": false,
+      "core_compatibility": "unresolved",
+      "experimental_role": "unresolved_or_excluded",
+      "controlled_core_admitted": false,
+      "nondirect_propagation_case": false,
+      "historically_clock_certified": false,
+      "benchmark_admitted": false,
+      "scope": "Both bounded URLs return HTTP403 challenge pages; no source semantics assessed in this pilot."
+    }
+  ],
+  "counts": {
+    "attempted_urls": 8,
+    "http_success": 6,
+    "http_403": 2,
+    "complete_intended_representations": 6,
+    "complete_pdfs": 4,
+    "complete_abstract_pages": 2,
+    "actual_version_pairs_observed": 2,
+    "controlled_core_development_controls": 1,
+    "nondirect_propagation_cases": 0,
+    "historically_clock_certified_histories": 0,
+    "benchmark_admitted_histories": 0,
+    "matched_natural_qa_comparisons": 0,
+    "native_model_calls": 0
+  },
+  "decision": "Stop expanding incremental-propagation contribution on current cases; separately design paired-version scope-aware reading feasibility study.",
+  "evidence_boundary": "Source-only development review, not prevalence, held-out benchmark, model accuracy or novel algorithm evidence. Capture-time pending flags remain unchanged; these are the later adjudications."
+}

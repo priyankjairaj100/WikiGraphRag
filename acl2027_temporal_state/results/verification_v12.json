@@ -1,0 +1,62 @@
+{
+  "schema_version": "verification_v0.12",
+  "verifier_sha256": "62e7c7abfab8f2f89da484fe17240c59c453a71924108dc97fd7e8d3547edcfb",
+  "reports": [
+    {
+      "command": [
+        "python3",
+        "scripts/verify_access_pilot_v12.py"
+      ],
+      "returncode": 0,
+      "result": {
+        "capture_attempts_verified": 8,
+        "external_files_verified": 0,
+        "mode": "portable",
+        "model_calls": 0,
+        "network_calls": 0,
+        "paper_claims_bound": 9,
+        "permitted_current_state_changes": [
+          "PROJECT_STATE.json",
+          "README.md",
+          "TASKS.json",
+          "paper/README.txt"
+        ],
+        "prior_files_byte_identical": 733,
+        "prior_manifest_entries_checked": 737,
+        "source_reviews_bound": 3,
+        "source_semantics_certified_by_verifier": false,
+        "status": "passed"
+      }
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/verify_access_pilot_v12.py",
+        "--external-root",
+        "/workspace/scratch/bdef663e3dfc/tmp/access_pilot_v12"
+      ],
+      "returncode": 0,
+      "result": {
+        "capture_attempts_verified": 8,
+        "external_files_verified": 24,
+        "mode": "external",
+        "model_calls": 0,
+        "network_calls": 0,
+        "paper_claims_bound": 9,
+        "permitted_current_state_changes": [
+          "PROJECT_STATE.json",
+          "README.md",
+          "TASKS.json",
+          "paper/README.txt"
+        ],
+        "prior_files_byte_identical": 733,
+        "prior_manifest_entries_checked": 737,
+        "source_reviews_bound": 3,
+        "source_semantics_certified_by_verifier": false,
+        "status": "passed"
+      }
+    }
+  ],
+  "network_calls": 0,
+  "model_calls": 0
+}

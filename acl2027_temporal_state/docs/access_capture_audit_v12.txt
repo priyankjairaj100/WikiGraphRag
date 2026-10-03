@@ -1,0 +1,44 @@
+v0.12 source-access provenance audit
+
+The eight frozen URLs were attempted once, in their frozen order, sequentially.
+All eight curl processes completed successfully as transport operations. Six
+responses were HTTP 200 and yielded nonempty parsed text: four PDFs and two
+abstract HTML pages. Both JAMA URLs returned HTTP 403; those failed source-access
+outcomes remain in the public manifest with their response hashes. Their extracted
+files contain only a newline and correctly have mechanical_parse_success=false.
+No model output or source admission is established by this audit.
+
+All 23 recorded audit checks passed. They bind the protocol, execution authorization,
+admission protocol and referenced parents, collector and unchanged v08 helper,
+extractor executable hashes, external frozen snapshots, source order, timestamps,
+recorded commands, and every raw/text/header hash and size. The protocol, admission
+design, collector freeze and authorization all precede retrieval. Both packaged
+and external final manifests agree. All eight private effective URLs equal the
+requested URLs, with zero redirects and no query or fragment to suppress.
+
+Recorded command guards are HTTPS-only redirects, five maximum redirects, ten
+seconds to connect, thirty seconds to transfer, 8 MiB per response, and curl -q to
+disable implicit configuration. No retry, credentials, cookie or config arguments
+appear. The largest payload is 4,876,961 bytes; all reported transfer times are
+below one second. Across eight URLs there are 10,456,211 raw response bytes and
+1,803,191 extracted-text bytes. The complete sequential capture including parsing
+lasted 4.655882 seconds according to the recorded timestamps.
+
+The public record fields match the metadata allowlist. Raw transfer JSON, effective
+URL details, stderr, full headers, cookies and source text remain external. An
+exact-hash scan of known current/prior external response, header and document files
+against visible repository files found no copied source-bearing payload. This
+check excludes trivial files at most 32 bytes and cannot establish the absence of
+arbitrarily transformed copies. Detailed scan counts are in the JSON audit.
+
+The six focused offline collector tests pass again, and the no-network frozen-input
+verifier succeeds. No new network calls or model predictions were made for this
+audit. Frozen inputs and results were not edited.
+
+Audit limitations: this audit was performed by the collector's author, so it is
+not independent implementation review or human gold. Separate source-semantic
+reviewers assess identity, complete page coverage, versions and table fidelity.
+Recorded receipts establish the visible attempts; they cannot externally attest
+to absence of unlogged activity. No expected title was frozen, so lexical identity
+checking is explicitly inapplicable. Transport completion, HTTP success, mechanical
+parsing, heuristic usability and benchmark admission remain distinct statuses.

@@ -1,0 +1,47 @@
+v0.12 bounded source-access collector
+
+This collector implements one sequential attempt for each of the eight URLs in
+data/access_pilot_v12/protocol.json. It does not search, retry, authenticate, handle
+challenges, call a model, or admit benchmark histories. Root must review and freeze
+the independent admission protocol before executing retrieval.
+
+Reviewable commands (from acl2027_temporal_state):
+  python3 scripts/capture_access_pilot_v12.py freeze
+  python3 scripts/capture_access_pilot_v12.py verify
+  python3 scripts/capture_access_pilot_v12.py execute
+
+Only execute retrieves documents. Root runs it in the separately documented,
+auto-reviewed host environment. Freeze records the exact protocol, collector,
+unchanged v08 extraction helper, resource limits, Python version, curl and pdftotext
+versions and executable hashes before network access. Execution verifies these
+bindings first. Existing attempt directories and results cause refusal, including
+partially completed runs; there is no implicit resume or rerun.
+
+The curl invocation starts with -q to disable implicit configuration; it preserves
+the existing host proxy environment. Only HTTPS and HTTPS redirects are allowed,
+with five redirects, ten seconds to connect, thirty seconds for the transfer and
+an 8 MiB response cap. curl >=8.4.0 is required because its --max-filesize also
+aborts unknown-length transfers at the threshold (confirmed in the installed curl
+8.5.0 manual). A separate 35-second subprocess timeout kills and waits for a hung
+curl process. Timeouts preserve partial files and produce a per-URL failure record;
+the remaining frozen URLs are still attempted. PDF text extraction has a separate
+20-second limit. No source text is extracted after a failed transfer. Successful
+HTML/plain extraction reuses unchanged v08 helpers; PDF extraction records the
+pdftotext version and binary hash. No expected title is invented when the protocol
+supplies none; the lexical title heuristic is explicitly inapplicable.
+
+All raw responses, headers, curl output, stderr, exception details and extracted
+text remain under /workspace/scratch/bdef663e3dfc/tmp/access_pilot_v12, outside the
+repository. Packaged results use an explicit allowlist: source identity, requested
+URL, timestamps, status, counts, hashes, extractor metadata and mechanical flags.
+Full response headers, cookies, raw transfer JSON and content are never projected
+into the repository result. Partial raw content is preserved, never repaired.
+
+Transport success means curl completed without a size violation; it can include
+an HTTP error response. HTTP success separately requires 200. Mechanical parsing
+means supported extraction yielded nonempty text; an error/challenge page can
+still parse. Provisional usability is an old heuristic for reviewer triage only.
+Every record starts complete_source_verified=false, historical_version_verified=false,
+benchmark_admitted=false. Independent source review is required to assess identity,
+completeness, page coverage, version status and correction scope. Current capture
+time or an explicit version URL does not establish historical first availability.

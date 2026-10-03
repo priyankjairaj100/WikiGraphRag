@@ -1,0 +1,532 @@
+{
+  "schema_version": "source_review_v0.12",
+  "history_id": "opera_1109_4897",
+  "reviewed_at_utc": "2026-10-03T08:48:02.449390+00:00",
+  "provenance": {
+    "model_assisted": true,
+    "human_gold": false,
+    "blind_review": false,
+    "review_role": "separate_source_only_agent",
+    "reviewer": "review_opera_v12",
+    "prior_discovery_familiarity": true,
+    "shared_model_or_prior_context_possible": true,
+    "new_network_calls": 0,
+    "model_predictions_inspected": false,
+    "evaluation_questions_created": false,
+    "scope": "Independent role from capture execution; not statistically independent human review."
+  },
+  "frozen_input_sha256": {
+    "data/access_pilot_v12/admission_protocol.json": "007642ed0a25eb0a8e79200c7f3945390e21f524579d4ad487283e2709cae7ca",
+    "results/access_pilot_v12.json": "6bac0c37a4ffed499cc8790d8da11052e60a7225c5334f238ff2711dce103aa2"
+  },
+  "sources": [
+    {
+      "source_id": "opera_abs_v1",
+      "requested_url": "https://arxiv.org/abs/1109.4897v1",
+      "started_at": "2026-10-03T08:40:13.588369+00:00",
+      "finished_at": "2026-10-03T08:40:13.913547+00:00",
+      "http_status": 200,
+      "curl_returncode": 0,
+      "raw_bytes": 71226,
+      "raw_response_sha256": "8a2347ffd6a1971f82f46e645bd8b387d6425ef031faaf69e90ab13104619435",
+      "text_sha256": "1f0b3960cf2edef829cfad56add49016e93aaeabc265a557376172a8a01be048",
+      "text_bytes": 6394,
+      "extracted_word_count": 1036,
+      "resolved_url": "https://arxiv.org/abs/1109.4897v1",
+      "access_state": "complete_intended_representation",
+      "document_type": "html_abstract_and_repository_metadata",
+      "complete_source_verified": true,
+      "capture_extent": "Complete received representation; independent semantic and structural inspection. This does not certify bytes served on the historical submission date.",
+      "page_count": null,
+      "visual_checks_actually_performed": [],
+      "full_text_review_extent": "Complete extracted abstract and submission history read; raw HTML checked for matching version-specific PDF links.",
+      "extraction_failures": [
+        "Author-list display abbreviated by source UI; full PDF supplies author list."
+      ]
+    },
+    {
+      "source_id": "opera_pdf_v1",
+      "requested_url": "https://arxiv.org/pdf/1109.4897v1",
+      "started_at": "2026-10-03T08:40:13.914214+00:00",
+      "finished_at": "2026-10-03T08:40:14.537253+00:00",
+      "http_status": 200,
+      "curl_returncode": 0,
+      "raw_bytes": 4876961,
+      "raw_response_sha256": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+      "text_sha256": "4429a291aa6d1fa0f019cee0f51ca2e8f558a75a4ef54d3a39dadbc2c281bb74",
+      "text_bytes": 53503,
+      "extracted_word_count": 8777,
+      "resolved_url": "https://arxiv.org/pdf/1109.4897v1",
+      "access_state": "complete_intended_representation",
+      "document_type": "pdf_paper",
+      "complete_source_verified": true,
+      "capture_extent": "Complete received representation; independent semantic and structural inspection. This does not certify bytes served on the historical submission date.",
+      "page_count": 24,
+      "visual_checks_actually_performed": [
+        {
+          "pdf_page_1based": 3,
+          "render_sha256": "b024ad90f980d2fffe2b00ed308f9add2ab97820358fea65744a47d1ed1375b8"
+        },
+        {
+          "pdf_page_1based": 10,
+          "render_sha256": "36f440b9b7c028a8aec8ba213ed5967f37cb0cfcc061104d0c4cb30ff0b3c53f"
+        },
+        {
+          "pdf_page_1based": 11,
+          "render_sha256": "a96aaf25a493d21664f8dbd37cff03626a0348ea88995e24601ff256769d0536"
+        },
+        {
+          "pdf_page_1based": 15,
+          "render_sha256": "b4f960c6987d103ccd186eff9638292d9f154b3d4a48c5a791a7cb623b56c276"
+        },
+        {
+          "pdf_page_1based": 19,
+          "render_sha256": "e4872a2274b4f3d2c0758c4c661314c45ba19bdeb75cdbc4a8cc1e79e3394fa2"
+        },
+        {
+          "pdf_page_1based": 20,
+          "render_sha256": "67ab3fb38dafcc70b8ae4afc0030b75249b3f34c90b3da3c4aea396d88e3d89d"
+        },
+        {
+          "pdf_page_1based": 22,
+          "render_sha256": "7f08dcc0fc2f572711cf8abcaae705ed04cc48bff4875cb04e71f40069ad1c56"
+        }
+      ],
+      "full_text_review_extent": "All PDF pages examined through page-separated layout extraction; claim-critical pages additionally rendered and visually inspected. Figures outside the listed visual pages were not individually visually validated.",
+      "layout_extraction_sha256": "c418d9e4259e64970f6181a597ceec839307c9affe40a8b22e7f31c0e492cda8",
+      "extraction_failures": [
+        "v1 tables on PDF pages 15 and 20 and a displayed formula on page 14 are missing from text extraction; tables visually inspected; no claim of globally faithful automatic text."
+      ]
+    },
+    {
+      "source_id": "opera_abs_v4",
+      "requested_url": "https://arxiv.org/abs/1109.4897v4",
+      "started_at": "2026-10-03T08:40:14.542683+00:00",
+      "finished_at": "2026-10-03T08:40:14.910310+00:00",
+      "http_status": 200,
+      "curl_returncode": 0,
+      "raw_bytes": 76464,
+      "raw_response_sha256": "dfdd3e2619932db8115e0b1c22e84264bec87c9b3e6ec4303ec453d75d06d6eb",
+      "text_sha256": "b4626fd618289a52a52ad6321d3632b1dc4665d80afcafe17ca039c3e6b58e2e",
+      "text_bytes": 7017,
+      "extracted_word_count": 1144,
+      "resolved_url": "https://arxiv.org/abs/1109.4897v4",
+      "access_state": "complete_intended_representation",
+      "document_type": "html_abstract_and_repository_metadata",
+      "complete_source_verified": true,
+      "capture_extent": "Complete received representation; independent semantic and structural inspection. This does not certify bytes served on the historical submission date.",
+      "page_count": null,
+      "visual_checks_actually_performed": [],
+      "full_text_review_extent": "Complete extracted abstract and submission history read; raw HTML checked for matching version-specific PDF links.",
+      "extraction_failures": [
+        "Author-list display abbreviated by source UI; full PDF supplies author list."
+      ]
+    },
+    {
+      "source_id": "opera_pdf_v4",
+      "requested_url": "https://arxiv.org/pdf/1109.4897v4",
+      "started_at": "2026-10-03T08:40:14.911042+00:00",
+      "finished_at": "2026-10-03T08:40:15.405061+00:00",
+      "http_status": 200,
+      "curl_returncode": 0,
+      "raw_bytes": 2241679,
+      "raw_response_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+      "text_sha256": "e43dd3845b1d0775d26bc88118e6643216dbc356ccdc9076d341dda105b4c0fd",
+      "text_bytes": 84659,
+      "extracted_word_count": 14372,
+      "resolved_url": "https://arxiv.org/pdf/1109.4897v4",
+      "access_state": "complete_intended_representation",
+      "document_type": "pdf_paper",
+      "complete_source_verified": true,
+      "capture_extent": "Complete received representation; independent semantic and structural inspection. This does not certify bytes served on the historical submission date.",
+      "page_count": 37,
+      "visual_checks_actually_performed": [
+        {
+          "pdf_page_1based": 1,
+          "render_sha256": "6b5d467bb83d97b1db3610850385a99390f19c823a2bf34dec5c94604ccaaba6"
+        },
+        {
+          "pdf_page_1based": 3,
+          "render_sha256": "f9260c636acae25293177f8a516999737c784b661fc593731403ceda0879c5fe"
+        },
+        {
+          "pdf_page_1based": 12,
+          "render_sha256": "f896b795544e9db008b8ca5d7b7d2d30ce60a0483d4b457f4bdfa0fc4dc561d3"
+        },
+        {
+          "pdf_page_1based": 13,
+          "render_sha256": "5384240a66a6a910e143325bd5ecd65e6c08efa1a97d393597590bee4748ec70"
+        },
+        {
+          "pdf_page_1based": 16,
+          "render_sha256": "b3261d713a6aad497aefaafec784e5d2afc56bbf30bc4ce6bfb09e141432a424"
+        },
+        {
+          "pdf_page_1based": 28,
+          "render_sha256": "485d717fac143be1926ce1e35d7bf24c1a1a965e1893c11ccae70cb004b404fd"
+        },
+        {
+          "pdf_page_1based": 33,
+          "render_sha256": "09165bbecfc2a207b1ea8803d70dac29ad9404bb73978e67a0a55283ee097f46"
+        }
+      ],
+      "full_text_review_extent": "All PDF pages examined through page-separated layout extraction; claim-critical pages additionally rendered and visually inspected. Figures outside the listed visual pages were not individually visually validated.",
+      "layout_extraction_sha256": "d3cae049b42f73f61a8ebaa152015e499129486a1023cbbe2e88e351f97f923b",
+      "extraction_failures": [
+        "Math layout, subscripts and asymmetric uncertainties flatten in plain text; claim-critical formulas visually checked."
+      ]
+    }
+  ],
+  "document_identifier": "arXiv:1109.4897",
+  "title": "Measurement of the neutrino velocity with the OPERA detector in the CNGS beam",
+  "axes": {
+    "transport": {
+      "status": "supported",
+      "rationale": "All four frozen attempts completed with HTTP 200, no redirect, no recorded transfer failure and bytes below the frozen cap. Resolved URLs match requests.",
+      "evidence": [
+        {
+          "source_id": "opera_abs_v1",
+          "representation_sha256": "8a2347ffd6a1971f82f46e645bd8b387d6425ef031faaf69e90ab13104619435",
+          "locator": "Frozen capture receipt and private transfer URL field",
+          "bounded_paraphrase": "HTTP 200; 71226 bytes; exact SHA-256 checked against capture.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v1",
+          "representation_sha256": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+          "locator": "Frozen capture receipt and private transfer URL field",
+          "bounded_paraphrase": "HTTP 200; 4876961 bytes; exact SHA-256 checked against capture.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_abs_v4",
+          "representation_sha256": "dfdd3e2619932db8115e0b1c22e84264bec87c9b3e6ec4303ec453d75d06d6eb",
+          "locator": "Frozen capture receipt and private transfer URL field",
+          "bounded_paraphrase": "HTTP 200; 76464 bytes; exact SHA-256 checked against capture.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "Frozen capture receipt and private transfer URL field",
+          "bounded_paraphrase": "HTTP 200; 2241679 bytes; exact SHA-256 checked against capture.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": []
+    },
+    "full_representation": {
+      "status": "supported",
+      "rationale": "Both entire PDF representations and both bounded abstract pages were recovered. Paper title, abstract, body, conclusion and terminal references are present. This supports complete source access, not global extraction fidelity or historical byte identity.",
+      "evidence": [
+        {
+          "source_id": "opera_pdf_v1",
+          "representation_sha256": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+          "locator": "PDF pp.1-24; pdfinfo; visual review listed in sources",
+          "bounded_paraphrase": "24-page PDF from author/title pages through references; claim-bearing results and selection inspected. Raster-like table content omitted by automatic text extraction was inspected visually.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF pp.1-37; pdfinfo; visual review listed in sources",
+          "bounded_paraphrase": "37-page PDF from title through printed p.34 references. The abstract metadata calls the manuscript 34 pages; actual complete file has 37 PDF pages including front matter.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": [
+        "External geodesy notes, detector papers and underlying measurements were not captured or independently validated. No missing supplement is needed to establish the document statements adjudicated here."
+      ]
+    },
+    "identity": {
+      "status": "supported",
+      "rationale": "The same title and arXiv identifier, version-specific abstract links, matching abstracts and v4 internal identifier establish this as the OPERA v1/v4 document pair at collective collaboration authority. PDF binary history is separately unknown.",
+      "evidence": [
+        {
+          "source_id": "opera_abs_v1",
+          "representation_sha256": "8a2347ffd6a1971f82f46e645bd8b387d6425ef031faaf69e90ab13104619435",
+          "locator": "Title, Authors, Abstract, version heading and raw HTML PDF links",
+          "bounded_paraphrase": "The repository identifies arXiv:1109.4897v1 by the OPERA Collaboration and links the version-specific v1 PDF; paper abstract matches.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF p.1 sidebar; pp.3 and 33",
+          "bounded_paraphrase": "Internal stamp identifies arXiv:1109.4897v4 dated 12 Jul 2012; title and revised abstract agree with the v4 abstract page.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": []
+    },
+    "historical_version": {
+      "status": "supported",
+      "rationale": "Actual earlier and later document assertions are observed and their declared version order is supported. No reconstructed original is used. Historical first-public availability and exact original-byte equivalence remain uncertified.",
+      "evidence": [
+        {
+          "source_id": "opera_pdf_v1",
+          "representation_sha256": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+          "locator": "PDF pp.19 and 22; Results and Conclusions",
+          "bounded_paraphrase": "The 2009-2011 analysis reports delta t 60.7 +/-6.9 statistical +/-7.4 systematic ns, relative velocity excess (2.48 +/-0.28 statistical +/-0.30 systematic) x10^-5, with 6.0 sigma significance.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF pp.28 and 33 / printed pp.25 and 30; Results and Conclusions",
+          "bounded_paraphrase": "The main reanalysis directly reports delta t 6.5 +/-7.4 statistical +8.3/-8.0 systematic ns, relative velocity difference (2.7 +/-3.1 statistical +3.4/-3.3 systematic) x10^-6; its conclusion explicitly describes compatibility with light speed within errors.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_abs_v4",
+          "representation_sha256": "dfdd3e2619932db8115e0b1c22e84264bec87c9b3e6ec4303ec453d75d06d6eb",
+          "locator": "Version heading; Comments; Submission history",
+          "bounded_paraphrase": "The captured repository record orders v1 at 2011-09-22 17:59:33 UTC and v4 at 2012-07-12 06:25:48 UTC, and says v4 supersedes the earlier versions. These are submission metadata, not independently certified first-public times.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": [
+        "The v4 PDF reports creation/modification in July 2013 despite its July 2012 version stamp. This may reflect rendering or postprocessing but the cause is unverified; no claim of byte identity with a 2012 download. No independent first-public availability observation."
+      ]
+    },
+    "source_authority": {
+      "status": "supported",
+      "rationale": "Both repository author fields identify the OPERA Collaboration, and v4 describes correction of that collaboration's earlier anomaly. This uses the same collective asserting entity; it does not assert identical individual author membership.",
+      "evidence": [
+        {
+          "source_id": "opera_abs_v1",
+          "representation_sha256": "8a2347ffd6a1971f82f46e645bd8b387d6425ef031faaf69e90ab13104619435",
+          "locator": "Authors field",
+          "bounded_paraphrase": "The original is attributed to the OPERA Collaboration.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_abs_v4",
+          "representation_sha256": "dfdd3e2619932db8115e0b1c22e84264bec87c9b3e6ec4303ec453d75d06d6eb",
+          "locator": "Authors field",
+          "bounded_paraphrase": "The revision is attributed to the OPERA Collaboration, with changed individual membership.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF pp.33 and 35; Conclusion and reference [8]",
+          "bounded_paraphrase": "The collaboration describes its scrutiny of its own earlier anomaly and cites the prior arXiv v2 paper.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": [
+        "No exact equality of individual author lists; collective-entity attribution is the supported level. arXiv is repository host, not merged into the asserting authority."
+      ]
+    },
+    "correction_scope": {
+      "status": "contradicted",
+      "rationale": "The unchanged core requires a same-scope whole-assertion correction. Although instrumental errors are explicitly corrected, the main v1-v4 result also changes selected observations and analysis. Reclassifying the pair as unchanged scope would erase material qualifiers.",
+      "evidence": [
+        {
+          "source_id": "opera_pdf_v1",
+          "representation_sha256": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+          "locator": "PDF pp.8 and 11; Sections 3 and 5",
+          "bounded_paraphrase": "The original analysis uses 16111 neutrino events: 7586 internal and 8525 external interactions.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF pp.9 and 13 / printed pp.6 and 10; Sections 3 and 5",
+          "bounded_paraphrase": "The revised analysis uses 15223 events: 7235 internal and 7988 external. It explicitly excludes about 5% of preselected events whose earliest hit is isolated in time and space, because noise may bias early arrivals.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF pp.5,16,18-21 and 33 / printed pp.2,13,15-18 and 30",
+          "bounded_paraphrase": "The paper attributes the earlier anomaly to instrumental effects and applies optical-fibre delay and oscillator corrections. It also adds a revised event selection and analyses, so the main result is not merely a same-observation scalar replacement.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": []
+    },
+    "explicit_dependents": {
+      "status": "supported",
+      "rationale": "Both proposed dependents (relative-velocity number and anomaly significance/conclusion) have direct replacements in the revised full source. All direct edges must remain; this pair cannot substantiate residual propagation gain even if a later scope-aware extension admits it.",
+      "evidence": [
+        {
+          "source_id": "opera_pdf_v1",
+          "representation_sha256": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+          "locator": "PDF pp.19 and 22; Results and Conclusions",
+          "bounded_paraphrase": "The 2009-2011 analysis reports delta t 60.7 +/-6.9 statistical +/-7.4 systematic ns, relative velocity excess (2.48 +/-0.28 statistical +/-0.30 systematic) x10^-5, with 6.0 sigma significance.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF pp.28 and 33 / printed pp.25 and 30; Results and Conclusions",
+          "bounded_paraphrase": "The main reanalysis directly reports delta t 6.5 +/-7.4 statistical +8.3/-8.0 systematic ns, relative velocity difference (2.7 +/-3.1 statistical +3.4/-3.3 systematic) x10^-6; its conclusion explicitly describes compatibility with light speed within errors.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF p.28 / printed p.25; displayed velocity formula and following paragraph",
+          "bounded_paraphrase": "The revised relative-velocity result uses the same displayed functional relationship and 730.085 km effective baseline; it is an explicit source-present dependent replacement.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": []
+    },
+    "essential_dependency": {
+      "status": "supported",
+      "rationale": "Within each version, the displayed equation grounds relative-velocity dependence on measured delta t and effective baseline; significance additionally depends on uncertainty. This is a source-specific dependency, not an executable recomputation license. Cross-version scope matching fails.",
+      "evidence": [
+        {
+          "source_id": "opera_pdf_v1",
+          "representation_sha256": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+          "locator": "PDF p.19; displayed velocity formula and following paragraph",
+          "bounded_paraphrase": "Relative velocity difference is defined from delta t divided by TOF-prime-c minus delta t. The computation uses a 730.085 km effective neutrino baseline, distinct from the 731278.0 m BCT-to-detector geodetic baseline.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF p.28 / printed p.25; displayed velocity formula and following paragraph",
+          "bounded_paraphrase": "The revised relative-velocity result uses the same displayed functional relationship and 730.085 km effective baseline; it is an explicit source-present dependent replacement.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v1",
+          "representation_sha256": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+          "locator": "PDF pp.19 and 22; Results and Conclusions",
+          "bounded_paraphrase": "The 2009-2011 analysis reports delta t 60.7 +/-6.9 statistical +/-7.4 systematic ns, relative velocity excess (2.48 +/-0.28 statistical +/-0.30 systematic) x10^-5, with 6.0 sigma significance.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF pp.28 and 33 / printed pp.25 and 30; Results and Conclusions",
+          "bounded_paraphrase": "The main reanalysis directly reports delta t 6.5 +/-7.4 statistical +8.3/-8.0 systematic ns, relative velocity difference (2.7 +/-3.1 statistical +3.4/-3.3 systematic) x10^-6; its conclusion explicitly describes compatibility with light speed within errors.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": [
+        "A complete atomic support graph for every calibration and statistical uncertainty was not certified. No distinct non-direct dependent eligible under the unchanged core was established."
+      ]
+    },
+    "independent_retention": {
+      "status": "supported",
+      "rationale": "The separately grounded geodetic baseline is retained in both versions. It is an unaffected control, not sufficient alternative support for the old velocity excess. Alternate analyses and late-2011 experiments are acknowledged without treating them as old-result support or new 2012 substitution.",
+      "evidence": [
+        {
+          "source_id": "opera_pdf_v1",
+          "representation_sha256": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+          "locator": "PDF pp.9-10; Section 4",
+          "bounded_paraphrase": "The dedicated geodesy campaign, GPS benchmarks and terrestrial traverse support a 731278.0 +/-0.2 m BCT-to-OPERA baseline, assembled from two separately measured path lengths.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF pp.11-12 / printed pp.8-9; Section 4",
+          "bounded_paraphrase": "The revised paper retains the same 731278.0 +/-0.2 m baseline and geodesy rationale. This measurement is not inferred from the disputed arrival-time result.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "locator": "PDF pp.26,28-33 / printed pp.23,25-30; Sections 7-10",
+          "bounded_paraphrase": "An alternative waveform analysis gives delta t 3.5 +/-5.6 statistical +9.4/-9.1 systematic ns; the dedicated late-2011 short-bunch run gives separate TT and RPC results. These support revised compatibility and are not surviving support for the exact old 60.7 ns or 6-sigma excess assertions.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": [
+        "Raw geodesy data and external cited notes were not checked. No formal exhaustive alternative-support proof or OR semantics is claimed."
+      ]
+    }
+  },
+  "scope_adjudication": {
+    "action_class": "mixed_or_unresolved",
+    "components": [
+      "remeasurement_or_reanalysis",
+      "changed_population_or_observation_scope",
+      "instrumental_correction"
+    ],
+    "core_acceptance": false,
+    "subject": "CNGS muon-neutrino velocity measured by OPERA",
+    "nominal_period": "2009, 2010 and 2011",
+    "old_observations": 16111,
+    "new_observations": 15223,
+    "old_internal_external": [
+      7586,
+      8525
+    ],
+    "new_internal_external": [
+      7235,
+      7988
+    ],
+    "selection_change": "About 5% of preselected events with isolated earliest hits discarded in v4. Same nominal running years do not establish identical selected observation scope.",
+    "new_short_bunch_experiment": "Late October to early November 2011; separate from long-extraction main analysis and not a substitution for it.",
+    "document_replacement_is_sufficient_for_same_scope": false
+  },
+  "dependency_adjudication": {
+    "grounding_type": "source_specified_computation",
+    "and_prerequisites": [
+      "version-specific measured delta t",
+      "effective neutrino baseline / TOF-prime-c",
+      "uncertainties for significance/conclusion"
+    ],
+    "scope_match_status": "contradicted_across_versions",
+    "dependent_statuses": [
+      {
+        "assertion": "relative_velocity_difference",
+        "direct_correction_status": "yes",
+        "old_locator": "v1 PDF p.19 or p.22",
+        "replacement_locator": "v4 PDF p.28 or p.33"
+      },
+      {
+        "assertion": "significant_early_arrival_conclusion",
+        "direct_correction_status": "yes",
+        "old_locator": "v1 PDF pp.19 and 22, 6.0 sigma",
+        "replacement_locator": "v4 PDF p.33, compatible within errors"
+      }
+    ],
+    "all_observed_direct_edges_preserved": true,
+    "numerical_recomputation_performed": false,
+    "non_direct_dependent_admitted": false,
+    "absence_claim": "No exhaustive assertion that no other dependent could exist; selected proposed dependents are explicitly revised."
+  },
+  "time_adjudication": {
+    "time_basis": "controlled_document_version_order",
+    "document_version_order_supported": true,
+    "first_public_availability_status": "unknown",
+    "first_public_availability_times": null,
+    "repository_submission_times_utc": {
+      "v1": "2011-09-22T17:59:33+00:00",
+      "v4": "2012-07-12T06:25:48+00:00"
+    },
+    "exact_historical_binary_identity": "unknown",
+    "v4_pdf_metadata_creation_modification": "2013-07-22T21:44:22+02:00",
+    "version_identity_does_not_equal_binary_provenance": true
+  },
+  "decision": {
+    "access_state": "complete_intended_representation",
+    "source_stratum": "actual_version_pair_observed",
+    "core_compatibility": "incompatible",
+    "experimental_role": "unresolved_or_excluded",
+    "controlled_version_stream_core_admitted": false,
+    "historically_clock_certified_replay_admitted": false,
+    "natural_end_to_end_benchmark_admitted": false,
+    "incremental_propagation_case_admitted": false,
+    "direct_correction_core_control_admitted": false,
+    "complete_intended_representations": 4,
+    "actual_version_pairs_observed": 1,
+    "reason": "Full access succeeds but changed selection/reanalysis violates unchanged correction scope. Directly replaced downstream values independently eliminate the proposed propagation advantage.",
+    "permitted_development_use": "Scope-change exclusion example; a separately frozen scope-aware paired-document reading task may consider these complete versions. This review does not establish an unresolved full-document inconsistency or algorithmic gain."
+  },
+  "review_limits": [
+    "Source reading, not independent experimental replication or physics validity adjudication.",
+    "Four source representations belong to one history and are not four independent cases.",
+    "No source-only absence proof from omitted external papers.",
+    "Full sources and rendered pages remain outside public repository; only hashes, locators, metadata and bounded paraphrases are released.",
+    "System Poppler paths used after the runtime-wrapped pdfinfo failed to load a shared library; this was a local inspection issue, not a source retrieval failure."
+  ]
+}

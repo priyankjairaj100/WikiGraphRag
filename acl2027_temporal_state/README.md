@@ -1,6 +1,14 @@
 # ACL 2027 temporal state research
 
-## Current checkpoint (v0.11)
+## Current checkpoint (v0.12)
+
+The frozen eight-URL access pilot recovered six complete representations: four PDFs across Plug Power and OPERA version pairs, plus two separate OPERA abstract pages. Both JAMA URLs returned HTTP 403. Separate source-only reviews admit one Plug direct-correction development control. OPERA changes the event selection and directly revises its conclusions. Zero certified nondirect propagation cases or new natural QA comparisons result.
+
+The predeclared stopping rule is triggered: stop expanding the present incremental-propagation contribution. The next proposed experiment is paired-version, scope-aware reading with a competent reader and matched retrieval budgets. This is a new feasibility task, not a demonstrated inconsistency, algorithmic advance or benchmark. OPERA's two missing text-extraction tables require recovery before retrieval evaluation.
+
+All **416 unit tests pass**, including six new offline capture tests. Read `docs/research_update_v12.txt`, `docs/route_decision_v12.txt`, and `docs/reproduce_v12.txt`. Source reviews and capture failures are preserved; unknown historical availability remains unknown. The source-only paper addendum is `paper/results_update_v12.tex` with `paper/claim_ledger_v12.json`. Earlier source, code, results and manuscript versions remain unchanged.
+
+## Previous checkpoint (v0.11)
 
 Version 0.11 adds a source-support answering API, 30 annotation-conditioned lookups and a completed two-order local reader diagnostic. The lookups return 22 active and 8 withdrawn statuses; direct and dependency policies agree because both dependent financial results are explicitly corrected. This is conditional integration, not natural QA accuracy.
 

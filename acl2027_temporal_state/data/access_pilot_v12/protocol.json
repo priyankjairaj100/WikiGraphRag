@@ -1,0 +1,100 @@
+{
+  "schema_version": "bounded_access_pilot_protocol_v0.12",
+  "frozen_at_utc": "2026-10-03T08:32:06.209290+00:00",
+  "source_route_path": "data/provenance/route_decision_v11.json",
+  "source_route_sha256": "03c3190cdf1810c5464c39b1ac75fc7f54d30620a357b6a629e135ae922e6688",
+  "sources": [
+    {
+      "source_id": "plug_2019_10k",
+      "history_id": "plug_power_2018_restatement",
+      "url": "https://s29.q4cdn.com/600973483/files/doc_financials/2019/ar/4Q19-10K.pdf",
+      "purpose": "Recover actual annual-report representations; preserve directly restated dependent values as competent-baseline controls. Admission is not presumed.",
+      "source_kind": "pdf"
+    },
+    {
+      "source_id": "plug_2020_10k",
+      "history_id": "plug_power_2018_restatement",
+      "url": "https://s29.q4cdn.com/600973483/files/doc_financials/2020/ar/4Q20-10K.pdf",
+      "purpose": "Recover actual annual-report representations; preserve directly restated dependent values as competent-baseline controls. Admission is not presumed.",
+      "source_kind": "pdf"
+    },
+    {
+      "source_id": "opera_abs_v1",
+      "history_id": "opera_1109_4897",
+      "url": "https://arxiv.org/abs/1109.4897v1",
+      "purpose": "Recover explicitly versioned abstracts and complete papers separately; verify same observations and exact revised assertions, retaining any direct conclusion correction.",
+      "source_kind": "html"
+    },
+    {
+      "source_id": "opera_pdf_v1",
+      "history_id": "opera_1109_4897",
+      "url": "https://arxiv.org/pdf/1109.4897v1",
+      "purpose": "Recover explicitly versioned abstracts and complete papers separately; verify same observations and exact revised assertions, retaining any direct conclusion correction.",
+      "source_kind": "pdf"
+    },
+    {
+      "source_id": "opera_abs_v4",
+      "history_id": "opera_1109_4897",
+      "url": "https://arxiv.org/abs/1109.4897v4",
+      "purpose": "Recover explicitly versioned abstracts and complete papers separately; verify same observations and exact revised assertions, retaining any direct conclusion correction.",
+      "source_kind": "html"
+    },
+    {
+      "source_id": "opera_pdf_v4",
+      "history_id": "opera_1109_4897",
+      "url": "https://arxiv.org/pdf/1109.4897v4",
+      "purpose": "Recover explicitly versioned abstracts and complete papers separately; verify same observations and exact revised assertions, retaining any direct conclusion correction.",
+      "source_kind": "pdf"
+    },
+    {
+      "source_id": "jama_article",
+      "history_id": "jama_2019_current_document",
+      "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720914",
+      "purpose": "Recover complete present article and notice as a possible full-document consistency case. These URLs do not provide an observed pre-correction article and cannot fill the historical gate.",
+      "source_kind": "html"
+    },
+    {
+      "source_id": "jama_notice",
+      "history_id": "jama_2019_current_document",
+      "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2728611",
+      "purpose": "Recover complete present article and notice as a possible full-document consistency case. These URLs do not provide an observed pre-correction article and cannot fill the historical gate.",
+      "source_kind": "html"
+    }
+  ],
+  "history_count": 3,
+  "url_count": 8,
+  "max_attempts_per_url": 1,
+  "new_search_queries": 0,
+  "network_timeout_seconds": 30,
+  "connect_timeout_seconds": 10,
+  "maximum_payload_bytes": 8388608,
+  "maximum_redirects": 5,
+  "parallelism": 1,
+  "transport_amendment": {
+    "stage": "Before any v12 source retrieval",
+    "mode": "Host execution of ordinary HTTPS retrieval through the approved execution tool",
+    "reason": "Default-sandbox raw retrieval failed before HTTP in v10/v11. Host network was independently observed working for GitHub operations during the authorized repository sync. This pilot tests the listed source endpoints once under that environment.",
+    "no_prior_v12_attempts": true,
+    "no_challenge_or_login_bypass": true,
+    "no_proxy_reconfiguration": true,
+    "parameters_unchanged_from_proposal": [
+      "eight exact URLs",
+      "one attempt perURL",
+      "30-second network limit",
+      "8MiB payload limit",
+      "no extra search or alternateURLs"
+    ]
+  },
+  "external_input_policy": "Full raw bytes, extracted text, headers and images stay in /workspace/scratch/bdef663e3dfc/tmp/access_pilot_v12 outside Git. Publish hashes, provenance, concise paraphrases and reviewed minimal evidence metadata only.",
+  "admission": "Use separately frozen source-only admission protocol. HTTP success/PDF parse do not establish completeness, historical availability, compatible correction semantics or empirical admission.",
+  "before_predictions": [
+    "independent source identity/completeness and scope review",
+    "frozen admission decision",
+    "matched task/input design",
+    "source-only separate answer references"
+  ],
+  "stopping_rule": "Stop after these eight listed representations or earlier when remaining attempts cannot add a qualifying representation. Log every outcome and all unusable or incomplete material.",
+  "pivot_rule": "If the bounded access pilot cannot provide qualifying histories, or accessible histories leave no residual outside direct correction, stop expanding the current longitudinal method claim. Consider a separately named full-document inconsistency evaluation with accessible complete documents, independently reviewed scope and a new frozen design. Do not promote the single selected passage case into a benchmark or silently convert it into temporal evaluation.",
+  "native_model_calls_authorized_by_this_protocol": 0,
+  "user_goal": "ACL 2027 research evidence; outcomes determine whether a supported next experiment is possible."
+}

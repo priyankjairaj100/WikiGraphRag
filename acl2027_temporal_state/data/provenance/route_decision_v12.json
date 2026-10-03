@@ -1,0 +1,52 @@
+{
+  "schema_version": "route_decision_v0.12",
+  "recorded_at_utc": "2026-10-03T08:52:00.096749+00:00",
+  "status": "bounded_access_and_source_review_complete_current_propagation_route_stopped",
+  "parent": "data/provenance/route_decision_v11.json",
+  "inputs": {
+    "data/access_pilot_v12/protocol.json": "6ed1b699fe423a6c4c4215dac914eabc5c77ef6d30041d04b44f2b9a2162ea1b",
+    "data/access_pilot_v12/admission_protocol.json": "007642ed0a25eb0a8e79200c7f3945390e21f524579d4ad487283e2709cae7ca",
+    "results/access_capture_audit_v12.json": "f99c45a8cbe5f4b6ba973ffb0632612a971195bd54e528b4627a52f3149f399f",
+    "results/admission_summary_v12.json": "a57881e5e5f3fab79b5807e05e5b0c8cb2dd0bbf5d32009fa88493ec0afacccb",
+    "results/plug_source_review_v12.json": "af9c8d7be4fb590c4fc8e3f8042693e7e27d115997cbef2bf2a3fdfbcf1995c6",
+    "results/opera_source_review_v12.json": "4bdbf9b1495025da3794a860f49c62cac6d20511f18f2a925980b1396def7145",
+    "results/jama_access_review_v12.json": "8f22ee73f32e61391ccb51add4bcc92cc6ea52681d63215c36d32d5dc3b10d1e"
+  },
+  "decision": "Stop incremental-propagation method expansion on present evidence.",
+  "reason": "No certified nondirect residual after full-source review; preserve directly corrected control and changed-scope exclusion.",
+  "not_inferred": [
+    "Nondirect dependencies never occur",
+    "Source population prevalence",
+    "QA performance",
+    "Algorithmic novelty",
+    "ACL readiness"
+  ],
+  "next_experiment": {
+    "status": "proposed_not_executed_or_prediction_frozen",
+    "name": "paired_version_scope_aware_reading",
+    "histories": [
+      "plug_power_2018_restatement",
+      "opera_1109_4897"
+    ],
+    "max_questions": 8,
+    "corpus": "four complete PDFs; document-grounded bounded retrieval, not all-pages-in-context claim",
+    "preconditions": [
+      "Verify page-preserving table extraction including OPERA v1 PDF pages15and20.",
+      "Freeze separately reviewed questions/reference answers/page evidence before predictions.",
+      "Establish competent reader on simple controls and freeze exact backend/configuration.",
+      "Match reader, question, evidence budget and scoring across ordinary/paired-version retrieval."
+    ],
+    "scoring_axes": [
+      "factual_content",
+      "scope_correctness",
+      "citation_support",
+      "output_format"
+    ],
+    "go_no_go": "If ordinary reader solves these development cases, stop method building around them; paired improvements only justify a limited development signal and held-out follow-up."
+  },
+  "core_changed": false,
+  "new_native_model_calls": 0,
+  "new_support_lookup_reruns": 0,
+  "prose_path": "docs/route_decision_v12.txt",
+  "prose_sha256": "0e13207a960cfafcc3d87633b1d23580e4e1f9737d86c3c233a24ff7a430fc40"
+}

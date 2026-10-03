@@ -1,3 +1,7 @@
+V0.12 DEVELOPMENT ADDENDUM
+
+results_update_v12.tex and claim_ledger_v12.json record the eight-URL pilot, six complete representations, one controlled-version direct-correction control, OPERA scope exclusion, two JAMA403 failures and the decision to stop current propagation expansion. Zero nondirect cases or new model predictions. Paired-version reading is proposed only. No newly compiled PDF or layout verification. Previous manuscript sources remain unchanged.
+
 V0.11 DEVELOPMENT ADDENDUM
 
 results_update_v11.tex, results_numeric_v11.tex and claim_ledger_v11.json record the source-support API, 30 annotation-conditioned lookups, zero complete-source admissions, and two native selected-passage responses that both fail the strict schema. No normalized labels, partial answer salvage, natural method advantage, historical replay or compiled PDF. Previous manuscript sources and ledgers remain unchanged.

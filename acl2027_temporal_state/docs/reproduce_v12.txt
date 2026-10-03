@@ -1,0 +1,43 @@
+Reproduction and evidence boundaries, v0.12
+
+From the repository root:
+  python3 scripts/verify_repository.py
+  cd acl2027_temporal_state
+  PYTHONPATH=src python3 -m unittest discover -s tests -q
+  python3 scripts/verify_access_pilot_v12.py
+
+The unit suite has 416 tests, including six new offline collector tests. It
+does not measure reading quality, source truth or research novelty. The portable
+verifier checks packaged hashes, counts, provenance and decision consistency;
+it cannot reconstruct full source text or certify the reviewers' semantics.
+
+Optional while the exact external capture directory remains available:
+  python3 scripts/verify_access_pilot_v12.py --external-root /workspace/scratch/bdef663e3dfc/tmp/access_pilot_v12
+
+That mode additionally checks the eight raw responses, headers and extracted
+texts against saved hashes. Full text, page renderings, headers and transfer
+diagnostics remain outside the repository. Review records preserve page/table
+locators, paraphrases and source hashes. Fresh downloads may differ. Hashes
+neither reconstruct the sources nor certify original-publication authenticity.
+
+The collector's original commands were:
+  python3 scripts/capture_access_pilot_v12.py freeze
+  python3 scripts/capture_access_pilot_v12.py verify
+  python3 scripts/capture_access_pilot_v12.py execute
+
+Only execute uses the network. The published freeze binds the original paths,
+tool binaries, code and protocol, so this is an execution record, not a command
+to overwrite an existing run. Execution refuses existing output. A new capture
+requires its own explicit protocol/freeze/output paths and must retain all prior
+attempts. Do not silently change transport, retry a failed URL, remove a direct
+correction or reinterpret an abstract as a full paper.
+
+Read results/access_pilot_v12.json for mechanical capture outcomes and the
+separate source reviews plus results/admission_summary_v12.json for semantic
+decisions. The capture manifest deliberately retains pending-review flags;
+post-capture adjudication does not rewrite that earlier receipt.
+
+The LaTeX addendum is paper/results_update_v12.tex; its claim ledger binds the
+evidence. No new PDF compilation or layout verification is claimed. Prior
+manuscript versions remain byte-identical. The initial repository and v0.11
+checkpoint manifests are preserved separately before refreshing current ones.

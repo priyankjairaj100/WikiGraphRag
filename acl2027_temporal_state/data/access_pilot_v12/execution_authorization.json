@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "stage": "pre_execution_authorization",
+  "created_at_utc": "2026-10-03T08:39:40.444008+00:00",
+  "source_attempts_before_record": 0,
+  "files": {
+    "data/access_pilot_v12/protocol.json": "6ed1b699fe423a6c4c4215dac914eabc5c77ef6d30041d04b44f2b9a2162ea1b",
+    "data/access_pilot_v12/frozen_inputs.json": "8442045a189bba402fac65efdf2a99cc42abe009b5be1f2240be029e44183c90",
+    "data/access_pilot_v12/admission_protocol.json": "007642ed0a25eb0a8e79200c7f3945390e21f524579d4ad487283e2709cae7ca",
+    "docs/admission_protocol_v12.txt": "fb12e5742230f2f5a5cb95216f5fe9225cde2a47df299fa4c0dd4f69ca08d12e",
+    "scripts/capture_access_pilot_v12.py": "03045dd5e984c5b8eb7b54320affe836d543035293031ad862508a6a45b36157",
+    "docs/access_capture_v12.txt": "5c62068081b53bb3f15391fb3ae8aeb4f588684c3e41267721eeef9e0d9279fa",
+    "tests/test_access_capture_v12.py": "d5e731b75591eb2424242196e3be9802a11a30f21b96d553070f642825677b6a"
+  },
+  "transport": "host_network_predeclared_before_execution",
+  "constraints": {
+    "exact_urls": 8,
+    "source_histories": 3,
+    "attempts_per_url": 1,
+    "retries": 0,
+    "new_searches": 0,
+    "connect_timeout_seconds": 10,
+    "transfer_timeout_seconds": 30,
+    "outer_timeout_seconds": 35,
+    "max_response_bytes": 8388608,
+    "maximum_redirects": 5,
+    "https_only": true,
+    "authentication": false,
+    "challenge_bypass": false,
+    "native_model_calls": 0
+  },
+  "review": "Root reviewed runner and admission design before any source network attempt; metadata only is distributable. Admission requires separate source review."
+}

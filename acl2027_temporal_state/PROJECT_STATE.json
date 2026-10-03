@@ -1,21 +1,17 @@
 {
-  "checkpoint": "v0.11 Support lookup and a frozen selected-passage reader diagnostic",
+  "checkpoint": "v0.12 Complete source recovery and propagation-route decision",
   "updated_date": "2026-10-03",
   "research_target": "ACL 2027 long paper via ARR 2027-01-04 23:59 UTC-12",
-  "selected_route": "Data-first scoped evidence revision and selective support retention; algorithmic contribution conditional on matched full-source answer-level gains",
-  "evidence_level": "Six new histories screened, zero full-source/core admissions; 30 annotation-conditioned support lookups; two native selected-passage reader completions with strict schema failures in both conditions",
+  "selected_route": "Paired-version scope-aware reading feasibility; current incremental-propagation contribution stopped for lack of certified residual benefit",
+  "evidence_level": "Eight source attempts; six complete representations; one direct-correction controlled-version development control; zero nondirect cases or matched natural QA comparisons",
   "verification": {
-    "unit_tests_passed": 410,
-    "new_focused_tests": 33,
-    "unit_receipt": "results/unit_verification_v11.json",
-    "initial_import_failure_retained": true,
-    "discovery_metadata_checks": 100,
-    "reader_input_portable_checks": 35,
-    "reader_input_external_checks": 106,
-    "support_integration_audit": "results/support_lookup_review_v11.json",
-    "native_execution_audit": "results/reader_execution_audit_v11.json",
-    "stored_response_scoring": "results/reader_evaluation_v11.json",
-    "canonical_v09_28_command_gates_preserved_not_rerun": true
+    "unit_tests_passed": 416,
+    "new_focused_tests": 6,
+    "unit_receipt": "results/unit_verification_v12.json",
+    "capture_audit": "results/access_capture_audit_v12.json",
+    "source_adjudication": "results/admission_summary_v12.json",
+    "portable_verifier": "scripts/verify_access_pilot_v12.py",
+    "prior_verification_preserved": true
   },
   "source_register_summary": "Frozen v07 frame remains 19 histories/39 URLs. v08 captured 32 usable sources/15 complete sets. v09 newly recaptured eight fixed URLs for four more annotation histories; all eight usable. Seven controlled-stream histories now have 14 annotated prefixes; 13 reference prefixes are complete. Six histories have both reference prefixes complete. These are current-document development streams, not independently admitted historical benchmark cases.",
   "completed": [
@@ -128,7 +124,11 @@
     "v0.11 source-only current-document references and frozen two-order selected-passage reader",
     "v0.11 pinned Qwen3-4B two-completion execution; both strict schema failures retained without repair",
     "v0.11 explicit zero-inference environment-failure amendment and failed attempt preservation",
-    "v0.11 complete 410-test suite with corrected src import path; initial import failure preserved"
+    "v0.11 complete 410-test suite with corrected src import path; initial import failure preserved",
+    "bounded_eight_url_access_pilot_v12",
+    "six_complete_source_representations_reviewed_v12",
+    "one_full_source_direct_correction_control_v12",
+    "propagation_route_stop_decision_v12"
   ],
   "not_completed": [
     "strictly_admitted_natural_benchmark",
@@ -226,12 +226,11 @@
     "v11_source_support_adapter_implemented": true
   },
   "next_tasks": [
-    "Execute the bounded eight-URL access pilot already specified in data/provenance/route_decision_v11.json; freeze any transport amendment before attempts.",
-    "Recover complete exact versioned evidence and independent scope/authority/dependency/control review; preserve admission shortfalls.",
-    "Freeze a matched complete-evidence reader/direct/dependency answer comparison only after qualifying cases; do not compare oracle support IDs with natural-language reading.",
-    "Use residual history-level answer gains over competent reader/direct baselines to decide method development; preserve every explicit dependent correction.",
-    "If the access pilot cannot recover qualifying histories, stop expanding the longitudinal method claim and separately design a complete-document inconsistency study.",
-    "Preserve the unresolved Disney second-prefix reference and all prior diagnostics."
+    "Verify page-preserving table extraction including OPERA v1 PDF pages15and20.",
+    "Freeze separately reviewed questions/reference answers/page evidence before predictions.",
+    "Establish competent reader on simple controls and freeze exact backend/configuration.",
+    "Match reader, question, evidence budget and scoring across ordinary/paired-version retrieval.",
+    "Run the bounded ordinary-versus-paired-version reader comparison and actual error analysis; do not add solver features before a residual task failure."
   ],
   "important_limitations": [
     "v09 has zero explicit correction records in its four new histories; it cannot establish correction-method value.",
@@ -272,9 +271,12 @@
     "Historical v0.6 limitation: The pinned 8B v0.3 prompt/schema and 12,288-input/4,096-output limits are separate preparation. The v0.6 89,707-byte ordinal request has no verified token count or runtime context cap; require a tokenizer/budget check and explicit chunking/coverage policy.",
     "v0.10 raw captures all failed; zero full-prefix benchmark admissions. Web excerpts support only explicitly selected-state illustrations.",
     "Both v0.10 EPS dependents are themselves directly corrected; no added propagation or QA benefit established.",
-    "No inspectable PDF screenshot pixels were returned; visual financial-table QA remains outstanding."
+    "Historical v0.10 table-visualization limitation: v0.12 now visually reviews the recovered Plug tables, while other prior cases remain unchanged.",
+    "v0.12 supplies one controlled-version direct-correction control, not a historical clock-certified replay or natural benchmark. Zero certified nondirect propagation cases.",
+    "OPERA v1 has two tables omitted from plain text; inspected visually, but retrieval use requires faithful table recovery. Complete PDF access does not establish globally faithful text extraction.",
+    "The next paired-version reader study is proposed, not executed; no competent strong-reader baseline or method advantage is established."
   ],
-  "continuation": "Read PROJECT_STATE.json, TASKS.json, docs/research_update_v10.txt and data/provenance/route_decision_v10.json. If reset, recover exact v0.10 ZIP from this conversation and verify manifest. Working excerpts, quote-bearing annotations and models are omitted; default verification checks packaged metadata. No paid job, scheduled work or submission has been initiated.",
+  "continuation": "Use canonical GitHub repository priyankjairaj100/WikiGraphRag, acl2027_temporal_state/. Read docs/research_update_v12.txt, docs/route_decision_v12.txt and docs/reproduce_v12.txt. Verify current manifests. Source captures/renderings/model binaries remain external; exact replay requires matching bytes. Commit and push each completed increment. No paid compute, scheduled work or submission initiated.",
   "natural_development_summary": {
     "source_representations": 5,
     "histories": 2,
@@ -1100,5 +1102,39 @@
     "claim_ledger": "paper/claim_ledger_v11.json",
     "compiled_pdf": false,
     "submission_ready": false
+  },
+  "verification_prior_v11": {
+    "unit_tests_passed": 410,
+    "new_focused_tests": 33,
+    "unit_receipt": "results/unit_verification_v11.json",
+    "initial_import_failure_retained": true,
+    "discovery_metadata_checks": 100,
+    "reader_input_portable_checks": 35,
+    "reader_input_external_checks": 106,
+    "support_integration_audit": "results/support_lookup_review_v11.json",
+    "native_execution_audit": "results/reader_execution_audit_v11.json",
+    "stored_response_scoring": "results/reader_evaluation_v11.json",
+    "canonical_v09_28_command_gates_preserved_not_rerun": true
+  },
+  "access_pilot_v12_summary": {
+    "attempted_urls": 8,
+    "http_success": 6,
+    "http_403": 2,
+    "complete_intended_representations": 6,
+    "complete_pdfs": 4,
+    "complete_abstract_pages": 2,
+    "actual_version_pairs_observed": 2,
+    "controlled_core_development_controls": 1,
+    "nondirect_propagation_cases": 0,
+    "historically_clock_certified_histories": 0,
+    "benchmark_admitted_histories": 0,
+    "matched_natural_qa_comparisons": 0,
+    "native_model_calls": 0
+  },
+  "writing_v12_summary": {
+    "draft": "paper/results_update_v12.tex",
+    "ledger": "paper/claim_ledger_v12.json",
+    "compiled_pdf": false,
+    "visual_layout_verified": false
   }
 }

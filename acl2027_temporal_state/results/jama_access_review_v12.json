@@ -1,0 +1,161 @@
+{
+  "schema_version": "source_review_v0.12",
+  "history_id": "jama_2019_current_document",
+  "reviewed_at_utc": "2026-10-03T08:43:06.142848+00:00",
+  "reviewer_role": "root_capture_failure_review",
+  "model_assisted": true,
+  "human_review_status": "not_human_gold",
+  "prior_case_familiarity": true,
+  "captured_inputs_and_sha256": [
+    {
+      "source_id": "jama_article",
+      "raw_sha256": "79fa0a87c7e03b897d91cf3a9ef868042ff7a3e303dad7648ef23a56f910454f",
+      "text_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "requested_url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720914"
+    },
+    {
+      "source_id": "jama_notice",
+      "raw_sha256": "473976b877c9e09b99e80b6f2d7eb1c81ba37b13fc947d87075f816b58a3c4dc",
+      "text_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "requested_url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2728611"
+    }
+  ],
+  "excluded_inputs": [
+    "Prior selected-passage reader predictions excluded from admission reasoning."
+  ],
+  "axis_assessments": {
+    "transport": {
+      "status": "supported",
+      "rationale": "Eight-attempt bounded protocol returned and preserved HTTP 403 for both URLs; successful byte transport is not source access.",
+      "evidence": [
+        {
+          "source_id": "jama_article",
+          "representation_sha256": "79fa0a87c7e03b897d91cf3a9ef868042ff7a3e303dad7648ef23a56f910454f",
+          "locator": "HTTP receipt and HTML title element",
+          "bounded_paraphrase": "HTTP 403 challenge representation; no article or notice text extracted.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "jama_notice",
+          "representation_sha256": "473976b877c9e09b99e80b6f2d7eb1c81ba37b13fc947d87075f816b58a3c4dc",
+          "locator": "HTTP receipt and HTML title element",
+          "bounded_paraphrase": "HTTP 403 challenge representation; no article or notice text extracted.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": [
+        "Complete intended current article and notice"
+      ]
+    },
+    "full_representation": {
+      "status": "contradicted",
+      "rationale": "Captured representation is a challenge page, not the intended source.",
+      "evidence": [
+        {
+          "source_id": "jama_article",
+          "representation_sha256": "79fa0a87c7e03b897d91cf3a9ef868042ff7a3e303dad7648ef23a56f910454f",
+          "locator": "HTTP receipt and HTML title element",
+          "bounded_paraphrase": "HTTP 403 challenge representation; no article or notice text extracted.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "jama_notice",
+          "representation_sha256": "473976b877c9e09b99e80b6f2d7eb1c81ba37b13fc947d87075f816b58a3c4dc",
+          "locator": "HTTP receipt and HTML title element",
+          "bounded_paraphrase": "HTTP 403 challenge representation; no article or notice text extracted.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": [
+        "Complete intended current article and notice"
+      ]
+    },
+    "identity": {
+      "status": "contradicted",
+      "rationale": "Captured representation is a challenge page, not the intended source.",
+      "evidence": [
+        {
+          "source_id": "jama_article",
+          "representation_sha256": "79fa0a87c7e03b897d91cf3a9ef868042ff7a3e303dad7648ef23a56f910454f",
+          "locator": "HTTP receipt and HTML title element",
+          "bounded_paraphrase": "HTTP 403 challenge representation; no article or notice text extracted.",
+          "inference_or_observation": "observation"
+        },
+        {
+          "source_id": "jama_notice",
+          "representation_sha256": "473976b877c9e09b99e80b6f2d7eb1c81ba37b13fc947d87075f816b58a3c4dc",
+          "locator": "HTTP receipt and HTML title element",
+          "bounded_paraphrase": "HTTP 403 challenge representation; no article or notice text extracted.",
+          "inference_or_observation": "observation"
+        }
+      ],
+      "missing_evidence": [
+        "Complete intended current article and notice"
+      ]
+    },
+    "historical_version": {
+      "status": "not_assessed",
+      "rationale": "No intended source recovered in this pilot; prior selected excerpts do not supply full-source admission.",
+      "evidence": [],
+      "missing_evidence": [
+        "Complete intended current article and notice"
+      ]
+    },
+    "source_authority": {
+      "status": "not_assessed",
+      "rationale": "No intended source recovered in this pilot; prior selected excerpts do not supply full-source admission.",
+      "evidence": [],
+      "missing_evidence": [
+        "Complete intended current article and notice"
+      ]
+    },
+    "correction_scope": {
+      "status": "not_assessed",
+      "rationale": "No intended source recovered in this pilot; prior selected excerpts do not supply full-source admission.",
+      "evidence": [],
+      "missing_evidence": [
+        "Complete intended current article and notice"
+      ]
+    },
+    "explicit_dependents": {
+      "status": "not_assessed",
+      "rationale": "No intended source recovered in this pilot; prior selected excerpts do not supply full-source admission.",
+      "evidence": [],
+      "missing_evidence": [
+        "Complete intended current article and notice"
+      ]
+    },
+    "essential_dependency": {
+      "status": "not_assessed",
+      "rationale": "No intended source recovered in this pilot; prior selected excerpts do not supply full-source admission.",
+      "evidence": [],
+      "missing_evidence": [
+        "Complete intended current article and notice"
+      ]
+    },
+    "independent_retention": {
+      "status": "not_assessed",
+      "rationale": "No intended source recovered in this pilot; prior selected excerpts do not supply full-source admission.",
+      "evidence": [],
+      "missing_evidence": [
+        "Complete intended current article and notice"
+      ]
+    }
+  },
+  "access_state": "blocked_or_failed",
+  "source_stratum": "discovery_only",
+  "core_compatibility": "unresolved",
+  "experimental_role": "unresolved_or_excluded",
+  "time_basis": "unresolved_version_order",
+  "complete_representations": 0,
+  "controlled_core_admitted": false,
+  "benchmark_admitted": false,
+  "decision_rationale": "No complete current-document case; no challenge bypass, alternate endpoint or retry. Access failure says nothing about whether the underlying document is consistent. The frozen URLs also do not provide an observed historical original.",
+  "unresolved_blockers": [
+    "full_article_unavailable",
+    "full_notice_unavailable",
+    "historical_original_not_targeted_or_observed"
+  ],
+  "network_calls_by_reviewer": 0,
+  "visual_checks_actually_performed": []
+}

@@ -22,9 +22,11 @@ The original package is retained unchanged as a historical submission. Its READM
 
 ## Current research status
 
-The initial GitHub import preserves checkpoint **v0.11**: 737 manifest-listed files plus its checkpoint manifest. It includes a conditional support-answering API and 30 annotation-based integration lookups. The full unit suite passes 410 tests. Two selected-passage Qwen3-4B reader calls completed, but both failed the frozen response schema. These development observations establish no algorithmic advantage or submission-ready result.
+Current checkpoint **v0.12** completes the eight-URL source-access pilot. Six complete representations were recovered across two version histories. Plug Power supplies one direct-correction development control; OPERA changes the analysis scope and directly revises its conclusions. Both JAMA URLs returned HTTP 403. No certified nondirect propagation case or new natural QA comparison emerged, so further expansion of the current propagation contribution is stopped.
 
-Start with the [v0.11 research update](acl2027_temporal_state/docs/research_update_v11.txt), [current project state](acl2027_temporal_state/PROJECT_STATE.json), and [next research gate](acl2027_temporal_state/docs/route_decision_v11.txt).
+The next proposed experiment is paired-version, scope-aware reading with matched retrieval and a competent reader. This is a feasibility study, not a demonstrated algorithmic advance. All **416 unit tests pass**. The initial v0.11 import and original submission remain preserved.
+
+Start with the [v0.12 research update](acl2027_temporal_state/docs/research_update_v12.txt), [current project state](acl2027_temporal_state/PROJECT_STATE.json), and [research decision](acl2027_temporal_state/docs/route_decision_v12.txt).
 
 ## Reproduce and verify
 
@@ -34,12 +36,10 @@ From the repository root:
 python3 scripts/verify_repository.py
 cd acl2027_temporal_state
 PYTHONPATH=src python3 -m unittest discover -s tests -q
-python3 scripts/verify_discovery_v11.py
-python3 scripts/verify_reader_inputs_v11.py
-python3 scripts/evaluate_reader_v11.py --check
+python3 scripts/verify_access_pilot_v12.py
 ```
 
-The checkpoint's [reproduction guide](acl2027_temporal_state/docs/reproduce_v11.txt) distinguishes portable checks from checks requiring exact external working inputs. For the original implementation, use its [original README](original_submission/code-and-data/README.md); dependency installation and original experiment reruns are separate from the rework's unit tests.
+The checkpoint's [reproduction guide](acl2027_temporal_state/docs/reproduce_v12.txt) distinguishes portable checks from checks requiring exact external working inputs. For the original implementation, use its [original README](original_submission/code-and-data/README.md); dependency installation and original experiment reruns are separate from the rework's unit tests.
 
 Model weights, runtime binaries, temporary caches, unbundled third-party full-text captures and private review correspondence are outside this repository. Deliberately packaged replay caches and permitted SEC filing inputs are retained. Some historical provenance records contain the original execution paths; this import does not rewrite frozen evidence to pretend a different execution environment.
 
