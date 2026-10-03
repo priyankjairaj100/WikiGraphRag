@@ -1,0 +1,309 @@
+Pinned dense retrieval feasibility and implementation candidate v0.14
+
+Status and purpose
+
+BAAI/bge-small-en-v1.5 is feasible as an established compact English dense
+retrieval baseline. It is a 2023-era model, not a claim to 2026 state of the art.
+Dense ranking and BM25 reciprocal-rank fusion are standard stronger baselines,
+not this project's algorithmic contribution. No improvement in evidence recall,
+answer quality, or publication prospects is established by this implementation.
+
+This work is separate from the already frozen 32 v14 reader conditions. It does
+not alter their sources, prompts, retrieval, or outcomes. The candidate is not a
+preregistration. Source-only implementation choices precede new embeddings and
+ranking inspection. The developer has prior v13 project familiarity but has not
+read v14 reader predictions or answer references for these decisions. The eight
+reused questions remain development examples, not a fresh test set.
+
+Official source and exact asset identity
+
+Repository: BAAI/bge-small-en-v1.5
+Revision: 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
+License declared by the official repository: MIT
+Approximate parameters: 33.4 million; embedding dimension: 384
+
+Official unquantized ONNX: onnx/model.onnx, 133,093,490 bytes
+SHA256: 828e1496d7fabb79cfa4dcd84fa38625c0d3d21da474a00f08db0f559940cf35
+Tokenizer: tokenizer.json, 711,396 bytes
+SHA256: d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66
+Tokenizer Git blob: 688882a79f44442ddc1f60d70334a7ff5df0fb47
+
+The tokenizer SHA256 was computed from the authorized public download at that
+immutable revision, after checking its Git-blob digest and exact size. The ONNX
+SHA256 and size came from the official LFS metadata. Acquisition checks both
+before use. A removed historical quantized file and third-party conversions are
+not used. Model weights, tokenizer assets, wheels, vectors, full source text and
+reader contexts stay outside the repository.
+
+The official pooling configuration specifies CLS pooling. The implementation
+extracts token position zero from the hidden states and L2-normalizes it. It
+does not mean-pool or use an arbitrary graph-level pooled output. Queries receive
+the exact prefix, including the trailing space:
+
+  Represent this sentence for searching relevant passages: 
+
+Passages receive no prefix. The maximum input is 512 encoder tokens including
+special tokens and, for a query, its prefix. The pinned tokenizer performs its
+own lowercase BERT normalization. No source headings, answer terms, expanded
+queries, document-version hints, or gold page filters are added to encoder text.
+
+Encoder-only right truncation to 512 is declared in advance. Every passage and
+query records its full pre-truncation length, encoded length, discarded count,
+input-text hash and active token-ID hash; all truncated IDs are listed. Padding
+does not count as encoded evidence. CLS and SEP retention are asserted. This is
+a limitation of the encoder representation, not a shortening of reader evidence:
+the original 160-word seed and exact native source span remain available to the
+reader/closure pipeline. Truncated items must remain in analysis denominators.
+Do not change this policy after seeing retrieval or answer outcomes.
+
+Runtime and actual acquisition cost
+
+The inspected host is Linux x86_64/glibc 2.39, CPython 3.12.14. Existing packages
+include NumPy 2.3.5 and SciPy 1.17.0. The implementation needs neither torch,
+transformers, sentence-transformers, Optimum, a vector database, nor a GPU.
+The direct path is Rust tokenizers plus ONNX Runtime CPU and NumPy matrix products.
+
+The candidate pins onnxruntime 1.20.1 (13,333,903-byte cp312 Linux wheel) and
+tokenizers 0.21.4 (3,115,426-byte cp39-abi3 Linux wheel), with exact SHA256s.
+Fifteen missing runtime distributions and their platform-compatible wheels total
+24,820,786 compressed bytes. Six already installed distribution versions are
+explicitly required. configs/dense_retriever_candidate_v14.json lists every
+version, wheel URL/hash/size, existing dependency and source metadata URL.
+No package extra requiring torch is requested. Installing only the two headline
+wheels without their dependency closure would not be the declared environment.
+
+Model + tokenizer + all fifteen wheels total 158,625,672 bytes (151.3 MiB).
+The source matrix is 2,306 x 384 float32 = 3,542,016 data bytes (plus NPY header);
+eight query vectors require 12,288 data bytes. Exact brute-force scoring is small
+enough that approximate nearest-neighbor infrastructure adds no value here.
+Full rankings, provenance ledgers and contexts add modest metadata/text overhead.
+
+At the initial inventory, 1,552,322,560 disk bytes were free. Recheck immediately
+before acquisition. Reserve 500 MiB for downloads, unpacked dependencies and
+working outputs, plus 512 MiB free headroom. The fetcher checks missing download
+bytes plus that headroom. The completed acquisition/install receipts subsequently
+measured 81,574,440 uncompressed wheel-archive bytes and 146,791,956 isolated venv
+file bytes; 1,228,996,608 disk bytes remained free after import verification.
+Inference RSS and CPU latency remain unmeasured. ORT uses
+two intra-op threads, one inter-op thread, sequential execution and batch size 8.
+The reader isolation rule takes priority: no ONNX model loading or embeddings
+until the current native reader main batch finishes and the parent confirms it.
+
+results/dense_assets_v14.json records 17/17 verified assets. The first sandbox
+import aborted because ORT cpuinfo could not parse restricted /proc/cpuinfo;
+results/dense_runtime_v14.json preserves that failed installation/import check.
+The separately authorized host import-only check passed with the same pinned
+ORT 1.20.1/tokenizers 0.21.4 and all 21 declared distribution versions; see
+results/dense_runtime_host_v14.json. No model was opened in either check. Future
+encoder execution needs the authorized host environment, as does the native
+reader. Successful imports do not establish graph or embedding correctness.
+
+Code contracts and remaining technical gates
+
+scripts/fetch_dense_assets_v14.py verifies public asset size/SHA and tokenizer
+Git identity. --download explicitly fetches missing assets; it does not install
+or execute anything. Existing mismatches and partial downloads are preserved as
+errors rather than silently replaced. Fresh receipt paths are required.
+
+scripts/dense_retrieval_v14.py has separate encode and retrieve stages. The
+encoder lazily imports native packages, verifies installed versions and both
+assets, inspects graph inputs and demands exactly one sequence hidden-state
+output of dimension 384. Input IDs, attention mask and token-type IDs must be
+int64 graph inputs. These graph expectations are technical gates, not findings:
+the actual ONNX session has not yet been opened at implementation time. If the
+official export differs, report the incompatibility and make a documented
+interface correction before any retrieval outcome inspection.
+
+The source-only preflight validated all 2,306 seed native substrings against all
+550 current page hashes. A new external attempt directory is created before model
+loading. Its immutable input_freeze.json binds sources, questions, code/helpers,
+config, assets and the reader completion gate before the first ONNX session.
+attempt_started.json and attempt_finished.json retain successful or failed
+attempts; failures are never silently overwritten. The index binds those inputs,
+candidate config, model assets, runtime, encoder script and vector files. Row IDs,
+source-text hashes, matrix shape, finite values and L2 norms are checked on reload.
+Questions are projected to question_id/history_id/question; reference fields are
+not used. Encode writes a new external directory. Retrieve refuses output reuse.
+
+Nine contract tests cover CLS rather than mean pooling, invalid-vector refusal,
+query/passage prefix separation, encoder-only truncation accounting, rank-only
+one-based RRF/ties, asset integrity, source preservation, history scope, and stale
+matrix-row rejection, durable failure recording before model loading, and actual
+reader-receipt completion checks that allow retained output-limit failures.
+Synthetic fixtures are code checks, not retrieval evidence.
+
+  python3 -m unittest discover -s tests -p test_dense_retrieval_v14.py -v
+
+Source-only comparison design to freeze before execution
+
+Use the complete, identical supplied-history corpus for all three rankers:
+BM25 (existing k1=1.2, b=.75), normalized BGE CLS cosine, and equal-weight RRF:
+
+  score(chunk) = 1/(60 + rank_BM25(chunk)) + 1/(60 + rank_BGE(chunk)).
+
+Ranks begin at 1; complete lists avoid an additional candidate-depth parameter.
+Every rank tie uses ascending chunk ID. RRF's constant 60 is the original standard
+setting, fixed here without question- or answer-based tuning. No reranker, ANN,
+query expansion, repeated gap search or oracle page selection is hidden in this
+comparison. Numeric/year confusions can remain despite improved lexical recall.
+
+For each ranker, select three seeds per document under its shared history ranking.
+Compare (a) the original exact native seed spans and (b) the unchanged v14
+source-context closure. This yields six contexts per question, 48 for the current
+eight-question development set. Preserve all six conditions; do not keep only
+the best-performing ranker. The two BM25 conditions are controls for exact
+equivalence with the earlier paired/closure contexts when all bindings match.
+The four new dense/RRF conditions would add 32 reader answers only after a new
+separate protocol and request freeze. Reusing old BM25 responses is permitted
+only after exact prompt, source context, model/runtime and budget identity checks.
+
+Closure still means copying parser-accepted source context. It does not certify
+row/column/unit semantics or repair the ten missing required source relations
+from the structural audit. Both representations retain the same source-order
+renderer, whole-bundle packing and no-backfill policy. All displayed source spans
+are charged under 960 source words and the actual reader's full 3500-input-token
+limit, with 256 output tokens reserved in a 4096-token context. Native token
+receipts include system text, question, citation labels, layout and template.
+
+Before new answers, report the full ranking ledger, truncated-input incidence,
+selected/dropped seeds, both-version coverage, exact context bytes, source-span
+fidelity and matched token budgets. Then audit source sufficiency independently
+of predictions. Supporting-source labels may evaluate the already frozen
+rankings; they must not select the model, fusion constant, depth, truncation,
+thresholds or final contexts. A source-sufficient ceiling, if later constructed,
+is a diagnostic separate from primary retrieval. Report seed recall, closure
+coverage, context sufficiency and answer quality separately. No statistical
+generalization or ACL claim follows from eight known development questions.
+Any claimed novel method still needs a defensible mechanism and frozen unseen
+histories after these standard baselines are established.
+
+Portable execution order (run from acl2027_temporal_state)
+
+Use new external paths for replications; current candidate acquisition path is
+/workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/assets. Fetch first:
+
+  python3 scripts/fetch_dense_assets_v14.py \
+    --config configs/dense_retriever_candidate_v14.json \
+    --assets /workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/assets \
+    --download --receipt results/dense_assets_v14.json
+
+Create an isolated venv with --system-site-packages to reuse the explicitly
+declared existing NumPy/dependency versions. Install only the fifteen exact
+config-listed wheel paths, using pip --no-index --no-deps --no-cache-dir; do not
+resolve moving package versions or install extras. Capture installation return
+code, wheel/config hashes, exact installed versions and disk usage in a new
+receipt. An import/version check is permitted while the reader runs; opening an
+ONNX InferenceSession or encoding is not.
+
+AFTER reader completion confirmation, the parent writes a new gate receipt at
+results/dense_execution_gate_v14.json. Required fields are:
+
+  allow_encoder_execution: true
+  reader_batch_id: main_v14
+  reader_status: completed
+  expected_responses: 32
+  observed_responses: 32
+  observed_attempts: at least 32
+  candidate_config_sha256: exact current candidate config SHA256
+  encoder_script_sha256: exact current encoder script SHA256
+  completed_reader_artifacts:
+    [{path: native main receipt, sha256: ..., role: native_reader_receipt}, ...]
+
+This is a root-issued completion/authorization receipt, not a source of answer
+content. The encoder checks those fields and actual completion-artifact hashes,
+then reads the uniquely designated native receipt to verify completed status,
+batch identity, all four 32-response/process counters and the finish timestamp
+before model loading. Retained output-limit failures are allowed experimental
+outcomes; the gate does not require zero such failures. The parent must verify
+the 32-response/attempt claim from the finished collector before issuing it.
+
+The exact planned encoding command is:
+
+  /workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/venv/bin/python \
+    scripts/dense_retrieval_v14.py encode \
+    --config configs/dense_retriever_candidate_v14.json \
+    --manifest data/structured_reader_v14/corpus_manifest.json \
+    --questions data/paired_reader_v13/questions.json \
+    --assets /workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/assets \
+    --execution-gate results/dense_execution_gate_v14.json \
+    --output /workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/index01
+
+Do not silently edit code/config after this creates index.json: the reload gate
+binds their hashes. The wrapper below uses only saved vectors and one resident
+native tokenizer session for all 48 contexts, without ONNX loaded:
+
+  /workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/venv/bin/python \
+    scripts/run_dense_retrieval_v14.py \
+    --index /workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/index01 \
+    --reader-config configs/structured_reader_main_v14.json \
+    --tokenizer-artifacts /workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/tokenizer01 \
+    --contexts /workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/contexts01.jsonl \
+    --metadata results/dense_retrieval_v14.json \
+    --runtime-receipt results/dense_packing_runtime_v14.json
+
+The wrapper calls retrieve(..., counter=bridge.count_prompt). The lower-level
+retrieve CLI requires an adapter with a module-level count_prompt callable; the
+native reader adapter instead owns a guarded session, so use this wrapper.
+Neither stage requests reader answers. Index metadata separates model-load,
+passage-encoding and query-encoding time. Retrieval separates the three ranking
+times and full-prompt packing time; RRF timing excludes its constituent rankers.
+The wrapper additionally measures total time including native-session startup.
+These single-run engineering measurements are not controlled speed comparisons.
+Floating-point vectors/rankings are not guaranteed bitwise identical across
+different hardware or native runtime builds.
+The parent owns the later protocol, native request freeze, independent audits,
+execution, grading, aggregate claims and GitHub publication.
+
+Source-support packets before any further reader answers
+
+scripts/prepare_dense_support_v14.py preserves all 48 contexts and first asserts
+exact question/scope/context-byte identity of the 16 BM25 paired/closure controls
+against the active source-exact v14 retrieval, with their hashes covered by the
+existing source-support audit. If any differs, preparation stops: the old source
+review cannot silently be reused. It then creates 32 new cases, 16 per domain,
+for dense/RRF paired/closure. Packets include exact context, question and the
+hash-pinned frozen v13 reference; they include no native answer, score, ranker or
+condition field. Sorted hash-derived case IDs mask labels only. The public
+manifest retains condition mapping, all input/packet/reference hashes and the
+16 exact baseline reuse checks. Reviewers must not inspect that mapping.
+
+After retrieval, use a new external packet directory:
+
+  python3 scripts/prepare_dense_support_v14.py \
+    --contexts /workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/contexts01.jsonl \
+    --metadata results/dense_retrieval_v14.json \
+    --baseline-contexts /workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/contexts_layout.jsonl \
+    --output-dir /workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/support01 \
+    --manifest results/dense_source_support_manifest_v14.json
+
+The source reviewers return case/question/context identity, overall complete/
+partial/absent support, per-reference-fact support and rationale, scope/unit
+support, and specific omissions. Native answers are unnecessary for this stage.
+Preparing/analysing these contexts does not authorize another native QA batch;
+that requires a separately explicit parent decision and protocol.
+
+The two packet contract tests check label/answer exclusion, source byte
+preservation, the 32-new/16-reuse population and refusal of a changed BM25 control:
+
+  python3 -m unittest discover -s tests -p 'test_dense*.py' -q
+
+This runs eleven contracts in total and loads no model or research reference.
+The source-coverage-only execution freeze is
+data/dense_retrieval_v14/source_coverage_protocol.json, with scope explained in
+docs/dense_source_coverage_protocol_v14.txt.
+
+Primary sources consulted
+
+Official pinned model card, pooling config, tokenizer metadata and ONNX identity:
+https://huggingface.co/BAAI/bge-small-en-v1.5/tree/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
+https://huggingface.co/BAAI/bge-small-en-v1.5/blob/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/README.md
+https://huggingface.co/BAAI/bge-small-en-v1.5/blob/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/1_Pooling/config.json
+https://huggingface.co/BAAI/bge-small-en-v1.5/blob/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/onnx/model.onnx
+Official package metadata, with all additional exact metadata URLs in the config:
+https://pypi.org/pypi/onnxruntime/1.20.1/json
+https://pypi.org/pypi/tokenizers/0.21.4/json
+ONNX Runtime's direct Python/NumPy interface and CPU installation guidance:
+https://onnxruntime.ai/docs/get-started/with-python.html
+https://onnxruntime.ai/docs/api/python/api_summary.html
+Original RRF paper, Cormack, Clarke and Buettcher, SIGIR 2009:
+https://cormack.uwaterloo.ca/cormack/cormacksigir09-rrf.pdf

@@ -1,0 +1,168 @@
+Source-only structural retrieval baselines, v0.14
+
+Purpose and claim boundary
+
+This implementation compares lexical retrieval, version quotas, generic parent
+expansion and a candidate source-context closure rule. It is a baseline experiment,
+not a claim of algorithmic novelty, solved semantic retrieval or verified table
+understanding. The same two histories and eight questions remain development
+material. The parser never reads questions, references, grades or model outputs.
+The retrieval code reads only question ID, history ID and question text. Root
+freezes the research protocol, reader, question set and execution separately.
+
+The independent source-only structural sample was frozen before the first parser
+run. Parser status "accepted" means the generic rule proposes a source attachment;
+it is not human certification. The structural audit must report correct links,
+false links, missing required source relations and unresolved candidates
+separately. Broad parent context containing two tables is not itself a semantic
+attachment between those tables. No downstream answer score substitutes for this
+source-level audit.
+
+Source representation
+
+The builder reuses all 550 augmented source pages and 2,306 original chunks from
+the four v13 PDFs. It verifies the original corpus/chunk/page hashes and each
+seed's exact word sequence. It does not download or re-extract a PDF, repair
+mathematics, or alter either model-assisted OPERA v1 table transcription. Those
+native-extraction and transcription limitations remain in force.
+
+Document, version and physical page identities are retained. Blank-line-delimited
+blocks preserve paragraphs, candidate headings and native table fragments. Every
+block and attached span has half-open Unicode character offsets, 1-based line
+locators, a source page hash and exact text hash. These are character offsets,
+not UTF-8 byte offsets. Full text remains external; public metadata provides
+locators, classifications, counts, hashes and rule explanations only.
+
+The generic table detector looks for source column gaps or pipe separators with
+a textual row label and numeric cells. It does not infer which number belongs to
+which year or whether two quantities mean the same thing. Adjacent numeric row
+blocks can form a table region only while their numeric-column counts are
+compatible and no new header, prose or section intervenes. Repeated column/year
+headers start another region. This is a deliberately simple structural baseline;
+equation fragments and unusual layouts can be missed or misclassified and must
+be audited. Region membership is not a certificate of semantic table identity.
+
+Attachment rules and abstention
+
+1. An explicit preceding same-page section heading is copied as section context.
+   It is never converted into an inferred fact about a numeric cell's scope.
+2. A short header band inside a table region, before its first aligned data row,
+   can supply exact table-header context. Long narrative in that band makes the
+   attachment unresolved. Later header lines are not borrowed for earlier rows.
+3. A unit expression in that verified pre-row band can supply unit context with
+   every source exception/qualifier. A standalone parenthetical unit declaration
+   immediately preceding the table, or an immediately preceding explicit
+   "following table(s)" introduction containing units, is also a candidate source
+   attachment. Intervening prose prevents that local rule. A nearby standalone
+   header without this binding remains unresolved.
+4. An immediately following labelled footnote requires exactly one matching
+   literal marker in a textual table-row label. A parenthesized negative numeric
+   cell is not a footnote reference. Repeated or unmatched markers abstain.
+5. Cross-page table continuation requires matching explicit table identifiers,
+   an explicit continued marker, identical header structure and no intervening
+   narrative/section. A generic financial-notes "Continued" label is insufficient.
+   Unit inheritance without this evidence remains unresolved even when a source
+   reviewer can establish a useful relation that this conservative rule misses.
+
+Every proposed relation contains content/anchor span, target span when present,
+relation type, accepted/unresolved status, rule ID and source evidence locators.
+No nearest-unit, nearest-year or answer-based fallback is implemented. Missing
+cross-page relations count against coverage; abstaining is not a success claim.
+
+Four matched retrieval conditions
+
+All four use unchanged v13 history-local BM25: k1=1.2, b=0.75, Unicode lowercase
+alphanumeric terms, unique query terms, common statistics across both versions,
+and chunk-ID tie breaking. There is no semantic reranker, query decomposition,
+gap-driven second search or answer-conditioned query expansion in this increment.
+
+  ordinary: fixed top six chunks across the history.
+  paired: fixed top three chunks from each document under the same scores.
+  parent: the identical paired shortlist, each seed expanded to its enclosing
+          paragraph/block or table-region spans.
+  closure: the identical paired shortlist, each seed plus transitive exact
+           source-context spans reachable through parser-accepted attachments.
+
+Parent and closure do not get a different seed retriever or a larger search pool.
+Consequently they cannot recover a relevant fact on a page absent from the seeds
+unless an accepted source attachment actually leads there. Weak seed recall is
+an explicit remaining limitation. Do not explain it as a downstream reasoning
+failure or silently add another retrieval condition after seeing results.
+
+Closure is a source-context union, not the earlier correction/truth-maintenance
+graph. It follows each accepted relation to an exact source span until no new
+span is added. Unresolved links are recorded but never traversed. It supplies no
+generated interpretation, claim truth value, implied year assignment or fabricated
+unit metadata. Parent/closure unions merge overlapping source intervals and never
+fill a gap containing unselected source text. All displayed spans keep their
+internal native whitespace and source-page citation identity.
+
+Ordinary/paired render the same native chunk substrings, headers and chronological
+order as the frozen v13 layout follow-up. With the same questions and all six seeds
+inside the new reader's budget, contexts therefore remain byte-identical; this
+supports a reader-only contrast. The original overlap words are still charged.
+Any budget-driven dropped seed changes that contrast and is explicitly reported.
+Structural conditions order unioned spans by version, document, page and offset.
+
+Budget and tokenizer contract
+
+Every source word, including attached header/unit/footnote text, counts toward the
+same 960-word evidence cap. Every actual native prompt token counts toward 3500
+input tokens, including system text, question, citation labels, whitespace and
+the reader's template/suffix. The output reserve remains 256 in a 4096 context.
+No header or source metadata is free evidence. Actual input usage and both-version
+coverage are reported; equal maximum budgets do not mean equal realized lengths.
+
+The retriever first evaluates all six fixed bundles. If they do not fit, it makes
+one deterministic pass in descending seed score with chunk-ID ties, accepting or
+rejecting whole bundles. There is no partial span truncation, replacement seed,
+second pass or answer-based repair. Every dropped seed and its proposed full
+context word/token cost is recorded. A condition can lose a version or become
+empty; this is an observable packing failure, not hidden exclusion. Empty evidence
+still requires a valid question/system prompt within the native budget.
+
+A frozen Python adapter supplies:
+
+  count_prompt(question: str, context: str, config: dict) -> {
+    input_tokens: integer,
+    rendered_prompt_sha256: exact 64-character hex hash,
+    token_ids_sha256: exact 64-character hex hash,
+    tokenizer_identity: nonempty pinned identity object
+  }
+
+It must render and tokenize the exact full prompt that the selected reader will
+receive. Estimated token counts are not accepted. Adapter/config hashes and every
+cost receipt are released; source text and token arrays remain external. The same
+tokenizer identity must hold throughout a run. Tokenization is not inference;
+the retriever makes no answer calls. Root supplies the model-specific adapter,
+freezes it, and independently verifies the final native request token counts.
+For a resident native tokenizer with explicit process ownership, the retrieve()
+Python API also accepts keyword counter=SESSION.count_prompt. The adapter_path
+and adapter_config arguments remain required and their exact hashes are bound
+in the output. The caller owns opening/closing the pinned tokenizer session;
+the retriever does not monkeypatch a module or open an untracked model process.
+The contract tests use explicitly artificial counters only to exercise failure
+handling; they are not empirical token counts or reader results.
+
+Commands
+
+  python3 scripts/build_structured_corpus_v14.py \
+    --corpus-manifest data/paired_reader_v13/corpus_manifest.json \
+    --external-output EXTERNAL_STRUCTURED_CORPUS.json \
+    --metadata-output NEW_CORPUS_MANIFEST.json
+
+  python3 scripts/retrieve_structured_v14.py \
+    --manifest NEW_CORPUS_MANIFEST.json \
+    --questions QUESTION_FILE.json \
+    --token-counter PINNED_ADAPTER.py \
+    --token-counter-config PINNED_CONFIG.json \
+    --contexts NEW_EXTERNAL_CONTEXTS.jsonl \
+    --metadata NEW_RETRIEVAL_METADATA.json
+
+  python3 -m unittest discover -s tests -p test_structured_retrieval_v14.py -q
+
+Source-bearing outputs must be outside the repository. Both programs refuse to
+overwrite outputs. Exact native budget eligibility, structural attachment quality,
+question-specific evidence sufficiency and answer correctness are separate gates.
+No method should be promoted before stronger matched reading and independent
+held-out histories establish a useful residual failure beyond these baselines.

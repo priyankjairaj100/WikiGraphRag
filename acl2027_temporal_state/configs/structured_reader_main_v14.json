@@ -1,0 +1,23 @@
+{
+  "schema_version": "native_structured_reader_config_v0.14",
+  "batch_id": "main_v14",
+  "expected_requests": 32,
+  "maximum_context_tokens": 4096,
+  "maximum_input_tokens": 3500,
+  "maximum_generated_tokens": 256,
+  "port": 18142,
+  "per_request_timeout_seconds": 900,
+  "system_prompt": "You are a careful document reader. Answer the question using only the supplied source excerpts. Distinguish what each document version says and preserve the relevant entity, reporting period, measure and selected sample. Do not recompute quantities or use outside knowledge. If the excerpts do not establish a requested fact, say so. Give a concise answer of at most 120 words, with supporting citations in the form [document_id p.N]. Use ordinary prose, not JSON.",
+  "model": {
+    "path": "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/assets/Qwen3.5-4B-Q5_K_M.gguf",
+    "repo": "unsloth/Qwen3.5-4B-GGUF",
+    "revision": "e87f176479d0855a907a41277aca2f8ee7a09523",
+    "bytes": 3143656608,
+    "sha256": "8814232b85594dcd46c50e5b8b29324a7efe9e746edbe8a3d1df3d3fce7aad39"
+  },
+  "runtime": {
+    "directory": "/workspace/scratch/bdef663e3dfc/tmp/local_backend_v09/runtime/llama-b11146",
+    "base_config": "configs/model_backend_v09.json",
+    "base_config_sha256": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "dense_encoder_readiness_v14",
+  "created_unix_seconds": 1791030513.4831934,
+  "purpose": "Serialize encoder execution after the verified complete native batch.",
+  "allow_encoder_execution": true,
+  "reader_batch_id": "main_v14",
+  "reader_status": "completed",
+  "expected_responses": 32,
+  "observed_responses": 32,
+  "observed_attempts": 32,
+  "retained_reader_output_budget_failures": 2,
+  "native_verification": {
+    "status": "passed",
+    "validated_responses": 32,
+    "output_budget_failures": 2,
+    "model_calls_during_verification": 0,
+    "receipt_sha256": "d1f4d45249fd3ee539232e7a84d8cc89a4bc153781ef9a252f7c2a3395e60eb4"
+  },
+  "completed_reader_artifacts": [
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/native_structured_main_v14_receipt.json",
+      "role": "native_reader_receipt",
+      "sha256": "d1f4d45249fd3ee539232e7a84d8cc89a4bc153781ef9a252f7c2a3395e60eb4"
+    }
+  ],
+  "candidate_config_sha256": "ce827ed2c25a4a951acc8708390963b2325597d600d901f8633cbf3ba227c7d0",
+  "encoder_script_sha256": "f3400f9c25da2d60020f7eb081a67c3581411ce7cfcfbd78e0e30e9493c82f2a",
+  "source_coverage_protocol_sha256": "74b4462a63bb7212c6c4b87cf0287595b8b0ababab628845bcca4865d363a0ec",
+  "readiness_script_sha256": "6f6dfe4833d76d94320bc6775857f08c29c322a6d008be067998375ef14d9094",
+  "native_collector_sha256": "b6993e1113a88e16e00ddb19cb470986eff5e8dbd4e6ce76899e82910eb263bd",
+  "additional_natural_qa_calls": 0,
+  "claim_limit": "Completion is not semantic correctness or a stronger-reader certificate."
+}

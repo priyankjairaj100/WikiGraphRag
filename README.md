@@ -22,13 +22,13 @@ The original package is retained unchanged as a historical submission. Its READM
 
 ## Current research status
 
-Current checkpoint **v0.13** completes the paired-version reading study and its source-layout follow-up: **34 native completions**, eight development questions, two histories and four retrieval/rendering conditions. Each condition produces **1/8 fully correct, scope-correct and citation-grounded answers**. The result does not establish a retrieval or algorithmic advantage.
+Current checkpoint **v0.14** completes a structural retrieval and reader comparison: **40 native completions**, comprising eight authored controls and 32 answers over eight development questions from two histories. Joint content, scope and citation correctness is **1/8, 0/8, 1/8 and 1/8** for ordinary, paired, parent and closure contexts. Qwen3.5-4B Q5_K_M is a failed reader upgrade candidate in the matched-context comparison; two output-limit failures are retained.
 
-The corpus covers 550 PDF pages and 2,306 chunks. Context and answer reviews distinguish missing evidence from reader errors. Original grades, one explicit rounding adjudication and its sensitivity are preserved. **433 unit tests and 945 study checks pass.**
+The corpus covers 550 PDF pages and 2,306 chunks. A separate **48-context source-coverage diagnostic** finds no complete-evidence improvement from the pinned compact dense encoder or RRF: each covers 1/8 questions, versus 2/8 for paired BM25 and 3/8 with structural closure. No new QA calls are attributed to this diagnostic. **484 unit tests, 1,348 main-study checks and 983 dense-execution checks pass.** Mechanical checks do not establish semantic correctness.
 
-Start with the [working paper PDF](acl2027_temporal_state/paper/paired_reading_study_v13.pdf), [v0.13 research update](acl2027_temporal_state/docs/research_update_v13.txt), [current project state](acl2027_temporal_state/PROJECT_STATE.json), and [ACL 2027 execution plan](acl2027_temporal_state/docs/acl2027_execution_plan_v13.txt). Editable paper source, bibliography and a claim ledger are included. This is a development draft, not a submission-ready paper.
+Start with the [working paper PDF](acl2027_temporal_state/paper/retrieval_reader_upgrade_v14.pdf), [v0.14 research update](acl2027_temporal_state/docs/research_update_v14.txt), and [current project state](acl2027_temporal_state/PROJECT_STATE.json). Editable paper source, bibliography and a claim ledger are included. This is a development draft, not a submission-ready paper.
 
-The next gate is a stronger executable reader and source-faithful structural retrieval before fresh evaluation. The earlier nondirect-propagation route remains stopped; source and reader limitations are not relabelled as an algorithmic contribution.
+The next gate is a typed source-binding reader that verifies the year, unit, entity and version attached to each value, followed by retrieval of witnesses that distinguish answer-changing alternatives. A selector scaffold passes 14 authored tests; automatic proposal, verification and natural benefit remain unestablished. Twelve fresh filing objects and their Inline XBRL links have been acquired and audited for source feasibility, without creating an admitted benchmark. The earlier nondirect-propagation route remains stopped.
 
 ## Reproduce and verify
 
@@ -38,10 +38,10 @@ From the repository root:
 python3 scripts/verify_repository.py
 cd acl2027_temporal_state
 PYTHONPATH=src python3 -m unittest discover -s tests -q
-python3 scripts/verify_paired_study_v13.py
+python3 scripts/verify_structured_study_v14.py
 ```
 
-The checkpoint's [reproduction guide](acl2027_temporal_state/docs/reproduce_paired_study_v13.txt) distinguishes portable checks from checks requiring exact external working inputs. For the original implementation, use its [original README](original_submission/code-and-data/README.md); dependency installation and original experiment reruns are separate from the rework's unit tests.
+The checkpoint's [reproduction guide](acl2027_temporal_state/docs/reproduce_v14.txt) distinguishes portable checks from checks requiring exact external working inputs. For the original implementation, use its [original README](original_submission/code-and-data/README.md); dependency installation and original experiment reruns are separate from the rework's unit tests.
 
 Model weights, runtime binaries, temporary caches, unbundled third-party full-text captures and private review correspondence are outside this repository. Deliberately packaged replay caches and permitted SEC filing inputs are retained. Some historical provenance records contain the original execution paths; this import does not rewrite frozen evidence to pretend a different execution environment.
 

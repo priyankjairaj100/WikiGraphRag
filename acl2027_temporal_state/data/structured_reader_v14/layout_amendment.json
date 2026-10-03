@@ -1,0 +1,28 @@
+{
+  "schema_version": "source_layout_amendment_v14",
+  "created_utc": "2026-10-03T11:21:20.524502+00:00",
+  "main_predictions_started": 0,
+  "controls_completed": 8,
+  "reason": "Source-only context audit found endpoint stripping removes meaningful indentation on the first line of a multi-line table header.",
+  "change": "For every parent/closure source slice preserve all characters, including endpoint whitespace; keep source intervals and question/ranking/shortlists/packing rules unchanged.",
+  "unchanged": [
+    "ordinary/paired rendering",
+    "source parser and corpus",
+    "questions/references",
+    "native reader and generation settings",
+    "budgets",
+    "four comparison conditions"
+  ],
+  "initial_artifacts_preserved": [
+    "scripts/retrieve_structured_v14.py",
+    "results/structured_retrieval_v14.json",
+    "results/structured_retrieval_audit_v14.json",
+    "data/structured_reader_v14/request_manifest.json",
+    "data/structured_reader_v14/context_review_manifest.json"
+  ],
+  "first_code_sha256": "44d25bd5eb1eb895e67b69fad4822be0d383932adf61665a4161d767fb2813af",
+  "revised_code_sha256": "92f30f4bd34b688c9a418e5743f9cad2872306ce941ef359ddbde73efa6721d7",
+  "native_model_outputs_used_for_fix": false,
+  "development_chronology": "A source-only reviewer with question/reference access flagged source-layout loss before any natural main outputs; this is disclosed development repair, not an untouched preregistration.",
+  "rerun_requirement": "Retokenize/repack all32contexts with same pinned model, audit exact source slices, rebuild new request and review packets; bind revised artifacts in main freeze."
+}

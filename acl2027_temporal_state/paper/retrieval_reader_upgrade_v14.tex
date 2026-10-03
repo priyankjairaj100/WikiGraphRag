@@ -1,0 +1,403 @@
+% Generated from retrieval_reader_upgrade_v14.json
+
+% Canonical source SHA256: 2788e00a7cb42d56b7575d25ba656e3ffc8efa99e4324eac141b63069b39e0bb
+
+% Generic working article. Neither ACL formatting nor TeX compilation is claimed.
+
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=25mm]{geometry}
+
+\usepackage{fontspec}
+
+\setmainfont{DejaVu Serif}
+
+\usepackage{array,longtable,booktabs,hyperref}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\setlength{\parindent}{0pt}
+
+\setlength{\parskip}{0.6em}
+
+\title{Source Structure and Reader Competence in Versioned Document QA\\[0.5em]\large Negative development results, source audits and a bounded research decision}
+
+\author{Anonymous working draft}
+
+\date{3 October 2026 | v0.14 addendum}
+
+\begin{document}
+
+\maketitle
+
+Completed development working draft. No held-out method gain, generally strong reader, algorithmic novelty or ACL submission readiness is established.
+
+\begin{abstract}
+
+We evaluate reader and retrieval changes for versioned-document QA on eight reused questions from two histories. A newer quantized 4B reader passes eight short authored controls, yet ordinary, paired-version, parent-expansion and source-context-closure conditions yield respectively 1, 0, 1 and 1 jointly content-correct, scope-correct and citation-grounded answers out of eight. On sixteen byte-identical contexts, the newer configuration yields one joint success versus two previously. A separate source-only dense/RRF follow-up yields one complete context per eight questions in every new condition, versus two or three for BM25 controls. These negative development results establish neither a reader upgrade nor a retrieval advance. A supplied-judgment witness-selection scaffold and a twelve-object structured-source inventory remain separate feasibility work without natural-data method validation.
+
+\end{abstract}
+
+\section*{1  Scope of this extension}
+
+The preceding v0.13 study did not establish a paired-retrieval advantage. Its primary ordinary and paired conditions each produced one jointly content-correct, scope-correct and citation-grounded answer out of eight. The completed extension tests conventional reader and retrieval changes before pursuing a new method. Its results are negative: the selected reader configuration and the tested dense retrieval do not improve their respective development endpoints.
+
+
+Document version and assertion scope remain distinct. A later source can revise a result, retain it or change the population and procedure that the result describes. Receiving two values does not by itself justify attributing their difference to a correction. The present task asks for source-grounded reporting without recomputation or outside knowledge.
+
+
+The corpus and questions remain development material, with earlier outcomes known. Question-to-history membership and within-history version order are supplied. This study therefore evaluates bounded evidence selection and reading within a known history, not document-lineage discovery or open-corpus routing.
+
+
+{\small
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.224949\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.404908\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.155419\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.214724\textwidth-2\tabcolsep\relax}}
+
+\toprule
+
+\textbf{History} & \textbf{Recovered versions} & \textbf{Pages} & \textbf{Questions} \\
+
+\midrule\endhead
+
+Plug Power & FY2019 / FY2020 annual reports & 142 / 347 & 4 \\
+
+OPERA & arXiv versions 1 / 4 & 24 / 37 & 4 \\
+
+\bottomrule
+
+\end{longtable}
+
+}
+
+{\small Table 1. Fixed development corpus. Page counts refer to recovered physical PDF pages.}
+
+The two earlier raster-table transcriptions remain tagged model-assisted source repairs. The retrieved representation does not certify complete OCR, semantic extraction or exact first-public historical bytes. No new natural history or held-out question is introduced by this addendum.
+
+
+\section*{2  Reader selection and the competence gate}
+
+The selected configuration is Qwen3.5-4B in the unsloth Q5\_K\_M distribution, pinned to an immutable repository revision and verified asset hash. Selection preceded v14 answers and reflected reported capability plus CPU and memory feasibility. It remains a quantized four-billion-parameter reader; the newer checkpoint and technical preflight do not establish general reader strength.
+
+
+The local asset was obtained and hash-verified on a recorded second download attempt after a disk-capacity failure. A native tokenization preflight passed without completion calls. These are execution facts, not semantic competence results. The first failed attempt and cache reconciliation remain in provenance.
+
+
+{\small
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.286299\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.713701\textwidth-2\tabcolsep\relax}}
+
+\toprule
+
+\textbf{Field} & \textbf{Pinned setting} \\
+
+\midrule\endhead
+
+Model / quantization & Qwen3.5-4B / Q5\_K\_M (unsloth distribution) \\
+
+Repository revision & e87f176479d0855a907a41277aca2f8ee7a09523 \\
+
+Runtime / execution & Pinned llama.cpp b11146; CPU; fresh process; greedy seed 7 \\
+
+Prompt / limits & Thinking disabled; 3,500 input / 256 output / 4,096 context tokens \\
+
+Control gate & 8/8 complete and grounded; 19/19 facts; 0 critical errors \\
+
+\bottomrule
+
+\end{longtable}
+
+}
+
+{\small Table 2. Pinned reader configuration. Authored controls pass; general reader strength is not certified.}
+
+Eight model-authored controls use synthetic source excerpts, questions and references without the original entities or development questions. A separate model-assisted reviewer checked references before prediction and graded all preserved outputs against the unchanged gate: at least seven reference-complete, grounded responses and no critical sign, unit, year or selected-population errors in any answered claim. The observed result is 8/8 complete and grounded, covering 19/19 required facts, with zero critical errors and zero output-budget failures.
+
+
+No response repair, retries, reference edits or gate changes were used. The grader had reviewed the control references and had prior development familiarity; this is not independent human gold. More importantly, the controls use 197-270 input tokens, compared with 1,284-3,242 for natural contexts. Their pass qualified the bounded run but did not predict competent long-context reading.
+
+
+All sixteen ordinary/paired contexts are byte-identical to their v13 source-layout counterparts. The newer configuration achieves one joint success across these cells, versus two for v13. This fails to establish the intended reader upgrade. Architecture, quantization, tokenizer, native template and no-thinking prompt handling change jointly; the result neither isolates a cause nor ranks the model families generally.
+
+
+\section*{3  Four matched retrieval conditions}
+
+All conditions use the exact frozen question, history-local BM25 and the existing 2,306 seed chunks. No reference answer, answer-aware expansion or gold page location enters retrieval. Native within-span whitespace is retained. Parent and closure use the same paired seed shortlist; they are conventional structural comparators, not implementations of the later witness-selection hypothesis.
+
+
+{\small
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.149284\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.269939\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.580777\textwidth-2\tabcolsep\relax}}
+
+\toprule
+
+\textbf{Condition} & \textbf{Fixed seed shortlist} & \textbf{Evidence unit} \\
+
+\midrule\endhead
+
+Ordinary & Top 6 within history & Original chunk spans, native source whitespace \\
+
+Paired & Top 3 per version & Original chunk spans, native source whitespace \\
+
+Parent & Same paired seeds & Enclosing paragraph or detected table-region parents \\
+
+Closure & Same paired seeds & Seed spans plus transitive parser-accepted source-context links \\
+
+\bottomrule
+
+\end{longtable}
+
+}
+
+{\small Table 3. Implemented retrieval representations. Parent and closure modify the paired shortlist; they do not rerank with answers.}
+
+The parser records exact source offsets, page hashes, relation types, rule identifiers and accepted or unresolved status. These are source-context links, not certified cell-to-column, unit or population bindings. Cross-page continuation requires compatible explicit table identity and headers; ambiguous relationships remain unresolved.
+
+
+Packing first tries the six fixed bundles, then admits whole bundles in deterministic score order if necessary. There is no splitting, backfill or answer-driven repair. Structural overlaps are unioned. Parent drops 19 seeds across eight contexts and loses one version on two questions; closure retains all 48 seeds. These costs are part of the representation comparison.
+
+
+Before natural main predictions, a question/reference-informed context review found that stripping source-slice endpoints removed meaningful indentation from a multiline table header. A separately recorded amendment preserved every source character for parent/closure slices. It changed 12 context renderings but no selections, questions, references, parser rules or budgets. Initial artifacts were retained. This was disclosed development repair, not an untouched preregistration.
+
+
+The repaired audit verifies 247 exact source-span occurrences over 38 original pages, including 107 with endpoint whitespace. Native preflight matches final prompt and token hashes for all 32 requests. The completed external execution audit passes 1,348 provenance checks; identity and execution checks do not certify reference semantics or source sufficiency.
+
+
+The shared limits remain 960 source words and 3,500 full native input tokens, reserving 256 output tokens within 4,096. Added source words and all prompt labels are charged. Equal caps do not mean equal use. Closure also deduplicates overlaps and changes citation headers; its contrast with paired is a representation-package effect, not an isolated attachment effect.
+
+
+\section*{4  Source audits and completed reader outcomes}
+
+The purposive structural audit covers 34 probes on 13 pages and reviews all 72 emitted attachments on those pages. Required relations are complete for 7/17 and missing for 10/17, with no partial cases. No forbidden association is accepted on 15 probes; both locally unresolved probes appropriately remain unresolved.
+
+
+Of 50 accepted links reviewed, 42 are correct as source context, seven attach excess footer context and one contains mixed scope. None is false under the frozen context-only contract, which does not certify governing semantic bindings. This samples 50 of 692 corpus-wide accepted links. Another 22 links remain unresolved: 17 headers and five continuations. One false table-region candidate has its proposed header withheld. These results permit a bounded context-expansion comparison, not reliable semantic closure.
+
+
+{\small
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.161554\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.139059\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.120654\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.118609\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.188139\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.271984\textwidth-2\tabcolsep\relax}}
+
+\toprule
+
+\textbf{Condition} & \textbf{Complete} & \textbf{Partial} & \textbf{Absent} & \textbf{Dropped seeds} & \textbf{Input tokens} \\
+
+\midrule\endhead
+
+Ordinary & 2 & 4 & 2 & 0 & 1451-2640 \\
+
+Paired & 2 & 5 & 1 & 0 & 1328-2665 \\
+
+Parent & 2 & 3 & 3 & 19 & 1659-3242 \\
+
+Closure & 3 & 4 & 1 & 0 & 1284-3013 \\
+
+\bottomrule
+
+\end{longtable}
+
+}
+
+{\small Table 4. Source-only support counts, each out of eight; dropped seeds and prepared full-input token ranges. These are not answer outcomes.}
+
+{\small
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.163599\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.118609\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.106339\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.122699\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.112474\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.139059\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.102249\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.134969\textwidth-2\tabcolsep\relax}}
+
+\toprule
+
+\textbf{Condition} & \textbf{Content} & \textbf{Scope} & \textbf{Citation} & \textbf{Format} & \textbf{Abstention} & \textbf{Joint} & \textbf{Limit failures} \\
+
+\midrule\endhead
+
+Ordinary & 1 & 2 & 2 & 8 & 2 & 1 & 0 \\
+
+Paired & 1 & 3 & 1 & 7 & 1 & 0 & 1 \\
+
+Parent & 2 & 2 & 2 & 8 & 2 & 1 & 0 \\
+
+Closure & 2 & 3 & 2 & 7 & 1 & 1 & 1 \\
+
+\bottomrule
+
+\end{longtable}
+
+}
+
+{\small Table 5. Reader counts, each out of eight. Joint requires content, scope and citation support. Limit failures remain in all denominators.}
+
+Only three of nine condition-response cases with completely reviewed evidence pass jointly. This includes dependence across the same questions and two identical-input pairs, not nine independent trials. The repair improves one financial context from partial to complete support without establishing an answer benefit. Evidence insufficiency and reader failure both remain material.
+
+
+The 32 responses contain 30 unique native token sequences. Two generation-limit failures, one paired and one closure, remain in their assigned denominators; there are no repairs or retries. Condition-masked, model-assisted grading uses frozen references and exact received citations. Format and abstention are separate axes. These selected development counts do not support significance or generalization claims.
+
+
+\section*{5  Dense evidence audit and method boundary}
+
+A separately frozen follow-up evaluates the pinned BAAI/bge-small-en-v1.5 encoder and equal-weight BM25/dense reciprocal-rank fusion (k=60). The compact 2023-era encoder is an established baseline, not a current strongest retriever. Each ranker takes three seeds per version, with paired or the unchanged closure representation and the same packing limits. The 48 condition-context cases comprise 16 exact reused BM25 controls and 32 newly reviewed dense/RRF contexts. No natural answer generation was performed.
+
+
+CLS pooling, L2 normalization, a query-only prefix and 512-token encoder truncation were fixed before retrieval. Four of 2,306 passage encodings truncate; no query or delivered source evidence is truncated. Local timing is descriptive, not a speed comparison. The external dense audit passes 983 checks, including final token revalidation.
+
+
+{\small
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.192229\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.132924\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.112474\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.112474\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.194274\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.255624\textwidth-2\tabcolsep\relax}}
+
+\toprule
+
+\textbf{Condition} & \textbf{Complete} & \textbf{Partial} & \textbf{Absent} & \textbf{Supported facts} & \textbf{Input tokens} \\
+
+\midrule\endhead
+
+BM25 paired & 2 & 5 & 1 & 10/21 & 1328-2665 \\
+
+BM25 closure & 3 & 4 & 1 & 12/21 & 1284-3013 \\
+
+Dense paired & 1 & 2 & 5 & 3/21 & 1465-2872 \\
+
+Dense closure & 1 & 2 & 5 & 3/21 & 1525-2896 \\
+
+RRF paired & 1 & 5 & 2 & 9/21 & 1339-2796 \\
+
+RRF closure & 1 & 5 & 2 & 9/21 & 1378-2956 \\
+
+\bottomrule
+
+\end{longtable}
+
+}
+
+{\small Table 6. Source-only follow-up: complete/partial/absent contexts out of eight, supported required facts out of 21. No dense/RRF answer-accuracy result is implied.}
+
+Each new dense/RRF condition supplies only one complete context out of eight, despite including both versions throughout. No evidence-sufficiency gain is established for this frozen configuration. The source-only result does not measure answer accuracy or show that all dense or hybrid retrieval must fail.
+
+
+The proposed end-to-end witness method remains untested. Its candidate objective minimizes fixed-weight mass of incompatible surviving bindings under an evidence budget, with nonempty survivors, positive support and unknown-alternative gates. A separate executable component passes fourteen authored checks using externally supplied, potentially oracle hypotheses and source judgments. It has no automatic proposer or verifier. Its token claims require a real tokenizer callback; tests use character-cost fixtures. Tiny exhaustive search demonstrates a deliberate greedy failure on joint witnesses. These are implementation checks, not natural-data efficacy or a new optimization guarantee.
+
+
+\section*{6  Novelty boundary and discriminating baselines}
+
+The bounded primary-source audit establishes substantial overlap with prior work. Table/header preservation, version filters, structured gaps, source pointers, sufficiency judgments, multiple interpretations and abstention are not claimed as inventions. The closest inspected additional mechanisms are summarized below; full citation metadata and search provenance accompany the project.
+
+
+HC-RAG (Chen et al., 2026) organizes financial filings as document, section, text, table and metadata nodes; company/year matches and structural paths guide retrieval. Its offline table alignment supports cached online units carrying row and column headers, values and units. A query-intent classifier routes text versus tables, and comparison prompts align entities or fiscal periods. The selected-item budget B does not establish exact native-token accounting. These mechanisms directly precede typed evidence graphs, structured numeric units and comparison-aware routing. Sections 3.2-3.6 do not explicitly specify competing attachment hypotheses or separating-witness acquisition; this bounded observation cannot establish novelty. A future comparator must retain its structural and intent-aware mechanisms under our shared resource limits.
+
+
+{\small
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.306748\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.693252\textwidth-2\tabcolsep\relax}}
+
+\toprule
+
+\textbf{Primary work} & \textbf{Mechanism already present} \\
+
+\midrule\endhead
+
+HiREC (Choe et al., 2025) & Complementary retrieval for missing comparison evidence \\
+
+S2G-RAG (Li et al., 2026) & Structured gaps and source-pointer evidence extraction \\
+
+RINSE (Chen et al., 2026) & Pre-answer sufficiency and shortcut-controlled audits \\
+
+FinLongDocQA/Agent (Wang et al., 2026) & Numerical-component collection and verification \\
+
+ToC (Kim et al., 2023) & Interpretation enumeration, reranking and scope pruning \\
+
+REFUEL (Gao et al., 2021) & Evidence fusion and round-trip interpretation discovery \\
+
+HC-RAG (Chen et al., 2026) & Typed evidence hierarchy and comparison-intent routing \\
+
+\bottomrule
+
+\end{longtable}
+
+}
+
+{\small Table 7. Verified prior mechanisms requiring substantive comparators. The proposed distinction remains unestablished.}
+
+A future comparison must share automatically generated initial hypotheses, candidate source spans, reader, context cap and verifier-call budget. Include source-structural parent closure, a strong reranker, explicit relation-slot coverage, generic gap/sufficiency retrieval and interpretation enumeration with scope pruning. Controlled adaptations must be identified as adaptations, not faithful reproductions.
+
+
+Ablate comparison obligations, hypothesis competition and next-witness selection separately from structure and packing. Hold hypotheses fixed when comparing selectors, measure proposal recall independently, and give generic baselines access to the same source witnesses. Report resource curves including a larger-context structural baseline.
+
+
+Author-generated attachment substitutions can test mechanisms, but must control lexical overlap, length, entities and visible numbers and remain separate from naturally occurring failures. Withholding all answers is not success; unsupported-claim rate must be considered together with supported-answer coverage.
+
+
+If a competent reader with ordinary structure resolves the failures, stop. Also reject gains that vanish against generic sufficiency or ambiguity baselines, matched resources, or removal of gold attachments. HC-RAG is now verified; earlier failed opens remain recorded. This audit does not establish novelty.
+
+
+\section*{7  Limits, source feasibility and research decision}
+
+The main and dense studies reuse two familiar histories and eight questions with model-assisted references and grading. The structural audit is purposive. Synthetic controls are substantially shorter than natural contexts and do not certify reader competence. Unknown pretraining exposure, quantization, no-thinking execution and the no-recomputation task restrict interpretation. No independent human gold or held-out natural evaluation is established.
+
+
+Equal caps do not equal equal evidence or compute. Parent expansion drops 19 seeds; closure also changes deduplication and source labels. Dense/RRF uses one compact encoder and one fusion setting. These results reject the tested upgrade routes on development endpoints, not entire method families. A stronger reader and stronger structural/dense comparators remain necessary before attributing residual failures to a new reasoning problem.
+
+
+A separate source-feasibility cohort contains twelve reconciled HTML objects across six issuer pairs. Berkshire filenames labelled 2022/2023 contain fiscal years 2021/2022; the mismatch is retained. Only five pairs satisfy the intended fiscal-year window. Original SEC identity and historical availability remain unverified. This cohort is now development-exposed; benchmark admission was not assessed, and no new questions or references were created.
+
+
+An Inline XBRL inventory records 23,651 nonfraction fact occurrences with locally resolvable context/unit links and verifies 32,051 fact/context/unit source anchors. These are not validated distinct quantities: no values were normalized, display fidelity and taxonomy semantics were not established, and hidden/repeated/nil cases remain. This motivates a standard source-structured baseline and display-versus-tag check before any new witness-method claim; issuer tags are not independent gold.
+
+
+{\small
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.235174\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.764826\textwidth-2\tabcolsep\relax}}
+
+\toprule
+
+\textbf{Artifact group} & \textbf{Repository location} \\
+
+\midrule\endhead
+
+Main outcomes & results/structured\_study\_summary\_v14.json \\
+
+Dense source audit & results/dense\_source\_support\_summary\_v14.json \\
+
+Source feasibility & results/fresh\_source\_feasibility\_v14.json \\
+
+Inline XBRL & results/inline\_xbrl\_feasibility\_v14.json \\
+
+Selection scaffold & docs/witness\_selection\_v14.txt \\
+
+Claim/evidence ledger & paper/claim\_ledger\_v14.json \\
+
+\bottomrule
+
+\end{longtable}
+
+}
+
+{\small Table 8. Reproducibility entry points; each record binds its underlying artifacts.}
+
+The research decision is to withhold a method-advantage claim. First establish reliable source interpretation and a reader that handles representative complete contexts; then evaluate residual ambiguity on genuinely new, independently reviewed histories. The fourteen-check supplied-judgment scaffold is only an inspectable starting component.
+
+
+Protocols, unfavorable attempts, source and model hashes, token traces, graded joins and audit summaries are retained. Full source-bearing artifacts remain external under the existing redistribution boundary. This generic working PDF is not an ACL template compilation, a submission-ready paper or a promise of publication.
+
+
+\section*{Primary-source links}
+
+choe2025hirec: \url{https://arxiv.org/html/2505.20368v3}
+
+
+li-etal-2026-s2g: \url{https://aclanthology.org/2026.acl-long.1185/}
+
+
+chen2026rinse: \url{https://arxiv.org/html/2609.37469v1}
+
+
+wang2026finlongdocqa: \url{https://arxiv.org/html/2604.03664v1}
+
+
+kim-etal-2023-tree: \url{https://aclanthology.org/2023.emnlp-main.63/}
+
+
+gao-etal-2021-answering: \url{https://aclanthology.org/2021.acl-long.253/}
+
+
+chen2026hcrag: \url{https://arxiv.org/html/2608.12335v1}
+
+
+\end{document}

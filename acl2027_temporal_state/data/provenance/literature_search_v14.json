@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "audit_id": "literature_search_v14",
+  "audit_date_utc": "2026-10-03",
+  "search_window_started_at_utc": "2026-10-03T10:54:14Z",
+  "primary_reading_completed_by_utc": "2026-10-03T11:02:33Z",
+  "scope": "Comparison-specific numerical evidence retrieval, source attachment and sufficiency; novelty-threat audit, separate from experiment corpus.",
+  "prior_local_notes_read": [
+    "docs/related_work_v13.txt",
+    "docs/related_work_scope_followup_v13.txt"
+  ],
+  "local_search_query_count": 6,
+  "local_query_count_excludes": "Queries by coordinating agents. Two additional primary links were supplied by the coordinating agent and opened directly.",
+  "search_queries": [
+    {
+      "sequence": 1,
+      "engine": "system1_search_query",
+      "query": "comparative retrieval numerical table evidence headers footnotes units question answering RAG",
+      "domains": [
+        "aclanthology.org",
+        "arxiv.org"
+      ],
+      "recency_days": 730
+    },
+    {
+      "sequence": 2,
+      "engine": "system1_search_query",
+      "query": "retrieval evidence sufficiency comparison scope numerical question answering table",
+      "domains": [
+        "aclanthology.org",
+        "arxiv.org"
+      ],
+      "recency_days": 365
+    },
+    {
+      "sequence": 3,
+      "engine": "system2_search_query",
+      "query": "site.arxiv.org \"table\" \"footnote\" \"retrieval\""
+    },
+    {
+      "sequence": 4,
+      "engine": "system2_search_query",
+      "query": "site.aclanthology.org \"retrieval\" \"sufficiency\" \"evidence\""
+    },
+    {
+      "sequence": 5,
+      "engine": "system2_search_query",
+      "query": "site.arxiv.org \"comparison\" \"scope\" \"retrieval\" \"numeric\""
+    },
+    {
+      "sequence": 6,
+      "engine": "system1_search_query",
+      "query": "\"retrieval\" \"units\" \"footnotes\" financial",
+      "domains": [
+        "arxiv.org",
+        "aclanthology.org"
+      ],
+      "recency_days": 730
+    }
+  ],
+  "primary_works": [
+    {
+      "bibkey": "choe2025hirec",
+      "short_name": "HiREC",
+      "title": "Hierarchical Retrieval with Evidence Curation for Open-Domain Financial Question Answering on Standardized Documents",
+      "source_type": "author manuscript",
+      "source_date": "2025-11-06",
+      "source_date_precision": "day",
+      "date_meaning": "arXiv version 3 date, not initial publication date",
+      "urls": [
+        "https://arxiv.org/html/2505.20368v3"
+      ],
+      "read_sections": [
+        "Introduction",
+        "4"
+      ],
+      "tool_reference_ids": [
+        "turn250view0",
+        "turn252view0",
+        "turn253view3"
+      ],
+      "supports": "Company/period retrieval, table-adapted reranking, evidence filtering and complementary queries for insufficient comparison evidence.",
+      "does_not_establish": "An implemented objective selecting witnesses to eliminate incompatible numeric source attachments."
+    },
+    {
+      "bibkey": "li-etal-2026-s2g",
+      "short_name": "S2G-RAG",
+      "title": "S2G-RAG: Structured Sufficiency and Gap Judging for Iterative Retrieval-Augmented QA",
+      "source_type": "ACL Anthology primary paper",
+      "source_date": "2026-07",
+      "source_date_precision": "month",
+      "date_meaning": "Proceedings publication month",
+      "urls": [
+        "https://aclanthology.org/2026.acl-long.1185/",
+        "https://aclanthology.org/2026.acl-long.1185.pdf"
+      ],
+      "doi": "10.18653/v1/2026.acl-long.1185",
+      "read_sections": [
+        "3"
+      ],
+      "tool_reference_ids": [
+        "turn250view1",
+        "turn250view2",
+        "turn252view1",
+        "turn252view4",
+        "turn253view0"
+      ],
+      "supports": "Structured sufficiency/gap judgments, target/slot queries, and pointer-only extraction retaining disambiguating context.",
+      "caveat": "The loop can end at its maximum budget; not a universal abstention guarantee."
+    },
+    {
+      "bibkey": "chen2026rinse",
+      "short_name": "RINSE",
+      "title": "Relevance Is Not Sufficient Evidence: Detecting Evidence Gaps Before Generation in RAG",
+      "source_type": "author manuscript",
+      "source_date": "2026-09-27",
+      "source_date_precision": "day",
+      "date_meaning": "arXiv version 1 date",
+      "urls": [
+        "https://arxiv.org/html/2609.37469v1"
+      ],
+      "read_sections": [
+        "3",
+        "4"
+      ],
+      "tool_reference_ids": [
+        "turn249view0",
+        "turn252view2",
+        "turn253view2"
+      ],
+      "supports": "Pre-generation sufficiency signals and paired insufficiency tests auditing lexical, count, question and order shortcuts.",
+      "caveat": "A sufficiency scorer is not itself evidence of a reproduced full active retrieval controller."
+    },
+    {
+      "bibkey": "wang2026finlongdocqa",
+      "short_name": "FinLongDocQA / FinLongDocAgent",
+      "title": "Document-Level Numerical Reasoning across Single and Multiple Tables in Financial Reports",
+      "source_type": "author manuscript",
+      "source_date": "2026-04-04",
+      "source_date_precision": "day",
+      "date_meaning": "arXiv version 1 date",
+      "urls": [
+        "https://arxiv.org/html/2604.03664v1"
+      ],
+      "read_sections": [
+        "Introduction",
+        "3",
+        "4"
+      ],
+      "tool_reference_ids": [
+        "turn249view2",
+        "turn252view3",
+        "turn253view1",
+        "turn254view0"
+      ],
+      "supports": "Page-structured extraction, component expansion, numeric solving and account/missing-component evaluation feedback.",
+      "caveat": "Do not transfer its insufficient-evidence zero-default instruction to this project."
+    },
+    {
+      "bibkey": "kim-etal-2023-tree",
+      "short_name": "Tree of Clarifications",
+      "title": "Tree of Clarifications: Answering Ambiguous Questions with Retrieval-Augmented Large Language Models",
+      "source_type": "ACL Anthology primary paper",
+      "source_date": "2023-12",
+      "source_date_precision": "month",
+      "date_meaning": "Proceedings publication month",
+      "urls": [
+        "https://aclanthology.org/2023.emnlp-main.63/",
+        "https://aclanthology.org/2023.emnlp-main.63.pdf"
+      ],
+      "doi": "10.18653/v1/2023.emnlp-main.63",
+      "discovery": "Primary link supplied by coordinating agent; opened and read locally",
+      "read_sections": [
+        "3",
+        "3.2"
+      ],
+      "tool_reference_ids": [
+        "turn259view0",
+        "turn259view1",
+        "turn260view0"
+      ],
+      "supports": "Recursive question interpretations, per-query evidence reranking and pruning against original-question scope.",
+      "caveat": "This already handles scope in ambiguous questions; any attachment-witness distinction is our provisional interpretation."
+    },
+    {
+      "bibkey": "gao-etal-2021-answering",
+      "short_name": "REFUEL",
+      "title": "Answering Ambiguous Questions through Generative Evidence Fusion and Round-Trip Prediction",
+      "source_type": "ACL Anthology primary paper",
+      "source_date": "2021-08",
+      "source_date_precision": "month",
+      "date_meaning": "Proceedings publication month",
+      "urls": [
+        "https://aclanthology.org/2021.acl-long.253/",
+        "https://aclanthology.org/2021.acl-long.253.pdf"
+      ],
+      "doi": "10.18653/v1/2021.acl-long.253",
+      "discovery": "Primary link supplied by coordinating agent; opened and read locally",
+      "read_sections": [
+        "2",
+        "2.3"
+      ],
+      "tool_reference_ids": [
+        "turn259view2",
+        "turn259view3",
+        "turn260view1",
+        "turn260view2"
+      ],
+      "supports": "Answer/disambiguated-question generation and round-trip expansion/filtering over the same retrieved evidence pool.",
+      "caveat": "Multiple answer interpretations and iterative disambiguation cannot be claimed as new."
+    }
+  ],
+  "unresolved_leads": [
+    {
+      "name": "HC-RAG: Evidence-Centric Retrieval-Augmented Generation over Heterogeneous Financial Filings",
+      "identifier": "arXiv:2608.12335",
+      "search_reference": "turn247academia20",
+      "attempted_urls": [
+        "https://arxiv.org/html/2608.12335v1",
+        "https://arxiv.org/abs/2608.12335",
+        "https://arxiv.org/pdf/2608.12335"
+      ],
+      "open_references": [
+        "turn249view1",
+        "turn250view3",
+        "turn250view4"
+      ],
+      "outcome": "All three opens returned tool-level Internal Error.",
+      "date_conflict": "Search record date was 2026-06-03, inconsistent with the identifier's month; no date accepted.",
+      "accepted_method_claims": [],
+      "bibliography_included": false
+    },
+    {
+      "name": "Controllable Evidence Selection in Retrieval-Augmented QA",
+      "discovery": "Unverified lead reported by coordinating agent; no exact primary URL received in this task.",
+      "outcome": "Not inspected.",
+      "accepted_method_claims": [],
+      "bibliography_included": false
+    }
+  ],
+  "audit_conclusions": {
+    "novelty_established": false,
+    "absence_of_identical_prior_method_established": false,
+    "candidate_mechanism": "Budgeted selection of source witnesses separating incompatible query-relevant quantity bindings.",
+    "distinction_status": "Falsifiable proposal; can reduce to existing robust sufficiency, test-cover or active information selection.",
+    "required_controls": [
+      "Source-structural closure and strong reranking",
+      "Generic gap/sufficiency retrieval at equal calls and tokens",
+      "ToC/REFUEL-inspired interpretation enumeration and scope pruning",
+      "Same automatically generated hypotheses and candidate evidence",
+      "Relation-aware coverage, not unary token coverage only",
+      "Independent candidate proposal recall and extraction-attachment accuracy",
+      "Competent fixed reader; separate reader and retrieval factors",
+      "Natural held-out histories separate from development and authored stress cases"
+    ],
+    "rejection_conditions": [
+      "Conventional structure plus competent reader solves the issue",
+      "Generic sufficiency or interpretation enumeration matches specialized selection",
+      "Improvement vanishes with resource matching",
+      "Gold metadata or labels are needed at inference",
+      "Reliable independent natural comparison labels cannot be collected"
+    ]
+  },
+  "outputs": [
+    "docs/related_work_v14.txt",
+    "data/provenance/literature_search_v14.json",
+    "paper/references_v14.bib"
+  ],
+  "frozen_v13_files_modified": false,
+  "evaluation_corpus_files_modified": false,
+  "experiment_questions_or_outputs_modified": false,
+  "compared_methods_executed": false,
+  "full_primary_texts_redistributed": false,
+  "limitations": [
+    "Bounded non-exhaustive lookup",
+    "Long search queries sometimes returned irrelevant results despite domain preferences",
+    "One potentially direct new lead remains inaccessible",
+    "Method contrasts are interpretations of inspected sections, not reproduction results"
+  ]
+}

@@ -1,0 +1,85 @@
+Dense retrieval source-coverage-only follow-up, v0.14
+
+This is a new development-stage execution freeze before BGE embeddings or new
+retrieval outputs. It does not revise the frozen 32-reader study and is not an
+untouched research preregistration. The four captured PDFs, 550 augmented pages,
+2,306 seed chunks and eight known development questions are reused. Source-only
+structural review and prior v13 development familiarity are disclosed. No v14
+reader answer content was used to implement this retrieval follow-up.
+
+data/dense_retrieval_v14/source_coverage_protocol.json binds the code/config,
+corpus/manifest, questions, references, source review, baseline contexts, reader
+tokenizer and public acquisition/runtime receipts. The model is the pinned
+official BAAI/bge-small-en-v1.5 ONNX export, an established compact baseline, not
+a stronger-model or state-of-the-art claim. CLS pooling, L2 normalization, the
+official query-only prefix, encoder-only right truncation at 512 and every
+truncated-input identity/length are fixed before output inspection. Reader source
+spans are not truncated. No model, fusion or query parameter may be tuned after
+these outputs within this freeze.
+
+The exact six conditions are bm25_paired, bm25_closure, dense_paired,
+dense_closure, rrf_paired and rrf_closure. Rankings use the supplied two-document
+history, complete candidate lists, one-based equal-weight RRF with k=60, and
+chunk-ID ties. Each representation starts from top three seeds per document.
+Paired uses native seed spans; closure uses the unchanged conservative v14 source
+context rules. Existing 960-source-word and full-native-3500-input/256-output/
+4096-context limits apply through unchanged whole-bundle packing. Rejected seeds,
+missing-version contexts and empty evidence remain visible in denominators.
+
+All 48 contexts and their ranking/packing receipts are preserved. Before creating
+new review packets, all 16 BM25 control context bytes, questions and history scopes
+must exactly match the active source-exact v14 paired/closure contexts, and the
+existing support audit must cover those question/hash pairs. A mismatch blocks
+reuse and packet generation; it does not license an unreported repair. The 32 new
+dense/RRF contexts are reviewed in two label-masked packets of 16 cases, one per
+domain. Packets contain exact contexts and unchanged frozen v13 references, with
+no native answer, ranker label or score. A separate public manifest retains the
+condition mapping and packet hashes. Layout may reveal representation, so no
+statistical blindness or independent-human-gold claim is made.
+
+Primary descriptive output is source support for every fixed condition: counts
+of complete/partial/absent contexts and supported/partial/absent required facts,
+with explicit scope/unit sufficiency and omissions. Do not relabel partial facts
+as complete because a reader might infer an answer. The same fixed reference
+facts apply to all conditions. Reviewers may use reference labels only to assess
+already frozen contexts, never to change retrieval, truncation, fusion, source
+selection or packing. No natural answer-generation batch is authorized by this
+protocol. A later QA run needs its own explicit decision, request freeze and
+grading procedure. A source-sufficient ceiling would be a separate diagnostic.
+
+The corpus still has model-assisted whole-table transcriptions for two v1 pages,
+incomplete math/figure recovery, and imperfect context attachments. Semantic
+row/year/unit bindings are not certified. Source sufficiency is conditional on
+those source and reference limits. Eight reused development questions cannot
+establish generalization, significance, source-wide retrieval recall or a novel
+ACL contribution. Dense retrieval and RRF are comparison baselines, not new
+algorithms. Report paired differences and failure cases; do not select a winner
+from these examples and call it a held-out result.
+
+Execution order is serial. The parent first verifies that all 32 native main
+responses/attempts finished, including any retained output-limit failures, and
+issues a hash-bound completion gate. The encoder opens no session before that
+gate validates the actual completed native receipt. Its input freeze precedes
+model loading; all attempts, including failures, remain durable. After indexing
+and query encoding exit, a new process opens exactly one resident native
+tokenizer session for all 48 contexts. It makes no completion calls. Finally the
+masked support packet helper checks baseline identity and writes new packets.
+
+Report model-load, passage-indexing, query-encoding, per-ranker scoring, full
+prompt packing and total native-session costs separately. RRF scoring excludes
+the already computed constituent rankings; end-to-end cost must add them.
+Single-run timings are descriptive and hardware-dependent. No comparative
+latency claim or bitwise portability claim is warranted. Initial sandbox ORT
+import failure and successful authorized host import are both retained; neither
+is proof of model inference correctness.
+
+Graph/interface, asset/hash, runtime, completion-gate, budget or provenance
+failures stop the affected stage with its artifact preserved. Do not silently
+retry a changed model/config, drop an unfavourable condition, substitute an
+oracle page or overwrite the failed realization. Any necessary technical repair
+must be separately recorded and re-frozen before output-based decisions.
+
+Exact commands and asset identities are in
+docs/dense_retrieval_feasibility_v14.txt. The parent owns execution, support-review
+assignment, aggregation and publication of the source-only findings. This freeze
+does not authorize additional natural QA or a broader performance claim.

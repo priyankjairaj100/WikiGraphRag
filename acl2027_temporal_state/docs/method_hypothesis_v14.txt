@@ -1,0 +1,347 @@
+Counterfactual distinguishing-witness retrieval: a falsifiable hypothesis v0.14
+
+Status and investment decision
+
+This is a method hypothesis and challenge specification, not an implementation,
+preregistration, novelty claim, or demonstrated natural-data gain. It is authored
+independently of the eight v0.13 question wordings and reference page sets. Those
+questions, their outputs and the two familiar histories cannot become its test
+set. Prior project familiarity and model-assisted authorship remain disclosed.
+
+There is a potentially useful objective beyond collecting relevant facts: spend
+a limited evidence budget on source material that distinguishes interpretations
+which would produce different scoped answers. A system might have every value,
+entity, year, unit and sample phrase somewhere in its context yet still lack the
+relations that attach those phrases correctly. Retrieving another value-bearing
+passage need not resolve that ambiguity.
+
+This is not inherently new mathematics. With a finite set of hypotheses and
+individually separating witnesses, it is decision-weighted test-cover or active
+information selection. Strong evidence-sufficiency, pointer-grounding or
+structure-aware retrieval can already implement the same behavior. A defensible
+paper would therefore need a specific residual failure, a reliable way to
+construct and test competing attachments without gold metadata, and an advantage
+over matched strong versions of those mechanisms. If a simple source-structural
+closure solves the problem at the same cost, stop developing this as a separate
+algorithmic contribution.
+
+1. Task and representation
+
+Input: a question q; a corpus of source documents with physical/version identity;
+and budgets for retrieval/verifier computation and final reader input. Source
+spans have immutable anchors: document hash, physical page or native object,
+coordinates/offsets, table/section identity where established, and exact text.
+A source citation supplies evidence only when the received span contains the
+needed assertion or relation. A document ID or nearby unit token alone is not a
+scope certificate.
+
+Represent a candidate answer-bearing item by a value anchor plus possible
+bindings to entity, measure, reporting/observation interval, unit/scale,
+population/inclusion rule, analysis definition and document version. These are
+relations with source witnesses, not freely supplied labels. Unknown is a real
+state; a parser's proposed attachment must remain distinguishable from an
+explicit source statement. This task does not certify first-public availability
+from a version date or merge publisher and asserting authority.
+
+A hypothesis h contains a locally consistent assignment of these bindings and,
+for comparison questions, a proposed relation between two results. Candidate
+relations may include a comparable change, explicitly stated correction,
+changed-scope reanalysis, retained quantity, or unresolved comparison. Their
+precise operational definitions would need independent source review before an
+experiment. None should be inferred solely from document recency.
+
+Let a_q(h) be the answer action implied by h, including its value, scope and
+comparison relation. Identical answer strings can still represent incompatible
+actions if they assign the number to different entities, periods or samples.
+Conversely, harmless alternative parses which yield the same scoped answer need
+not be separated. The incompatibility relation I_q(h,g) is thus query-relevant,
+symmetric, and defined before outputs, not a reward for matching a generated
+answer string.
+
+Construct a finite proposal set H from ambiguous source structure and query
+bindings, not from answer keys: for example two plausible table-continuation
+links or two column-year assignments that are unresolved in the initial
+retrieval. Include an explicit unmodeled/unknown alternative in the reporting
+layer. Do not fill H with arbitrary false statements simply to make elimination
+easy. Hypothesis construction, structural proposals and verifier calls are part
+of the method's cost and error surface, not oracle preprocessing.
+
+2. A selection objective
+
+For evidence E, define V(E) as hypotheses not explicitly contradicted by jointly
+available source evidence. Source absence, failed retrieval, lack of repetition
+in a newer document, and a verifier's inability to prove a hypothesis are not
+contradictions. Inference remains three-valued: supported, contradicted or
+unresolved. Comparisons requiring several links use a complete support bundle;
+one page label cannot stand in for the other links.
+
+With fixed nonnegative proposal weights w_h, one development objective is:
+
+  L(E) = sum over unordered {h,g} subset V(E) of
+         w_h * w_g * I_q(h,g)
+
+  choose E to minimize L(E), subject to Cost(E) <= B,
+  nonempty V(E), and the support/unknown constraints below.
+
+Equivalently, maximize the weight of incompatible pairs that evidence rules
+out. Initial weights remain fixed during this selection objective so that
+renormalization does not create a misleading apparent information gain. Uniform
+weights provide an essential baseline; model confidence is not assumed to be
+calibrated. A worst-case version can prioritize the largest surviving
+answer-changing ambiguity rather than common alternatives. These are candidate
+objectives, not simultaneously optimized or retrospectively selected outcomes.
+
+Positive support is an additional requirement. Eliminating every proposal gives
+zero pair loss but no warranted answer, so it is prohibited as a success. Even a
+single surviving hypothesis is insufficient if the requested fact and all
+necessary attachments lack source support, or if material unmodeled ambiguity
+remains. Return an answer only when its claims have complete supported bindings
+and all remaining modeled alternatives yield compatible actions; otherwise
+withhold the unsupported part. Unknown hypothesis mass cannot be magically
+removed by a finite beam. Calibration and source-only coverage audits must test
+this limitation, and the result is never advertised as a proof over all possible
+interpretations.
+
+Cost(E) counts the union of actual source spans and their citation/structure
+labels in final input tokens, including required headers, units, continuation
+links and footnotes. Overlap does not cost twice, and a shared header is not free.
+An indivisible relation bundle that cannot fit is a budget failure, not permission
+to truncate the very witness that grounds it. Separate costs include candidate
+retrieval, page/OCR access, hypothesis generation, verification and indexing.
+A system that reads all candidates with a powerful verifier before packing them
+has used that extra computation and must not claim a cheap retriever advantage.
+
+This objective is distinct from unary slot coverage only when the latter treats
+presence of entity/year/unit/sample tokens as sufficient and ignores competing
+attachments. It is not distinct from a sufficiency objective which already asks
+whether every answer-changing interpretation is excluded. If RINSE-style
+sufficiency or a S2G-RAG-style pointer model implements that stronger criterion,
+our objective can be a reformulation or controlled adaptation, not a new family.
+
+3. Minimal authored counterexample, and exactly what it proves
+
+Consider an invented two-table report, unrelated to the development corpus.
+Both tables concern the same company and reporting year and repeat the row label
+"service revenue". One table reports consolidated amounts in thousands; the
+other reports segment amounts in millions. A continued-page value row contains
+12 and 9, but the continuation identity is not in the initial snippet. Initial
+retrieval includes both entity/year declarations and both unit/sample phrases.
+All unary slots are therefore covered, yet either of these attachments remains
+plausible:
+
+  h_A: the selected row continues the consolidated/thousands table;
+  h_B: the selected row continues the segment/millions table.
+
+The question asks which scoped reported value applies, not for arithmetic. The
+source has a short continuation/caption witness identifying the correct table.
+Another candidate repeats a value-bearing row without resolving continuation.
+Only one additional bundle fits. The binding witness rules out an incompatible
+answer; the duplicate provides no such distinction. A method scoring only slot
+presence can assign zero incremental coverage to both and prefer the duplicate
+through relevance or a fixed tie-break. More fact tokens do not solve attachment.
+
+A narrow impossibility statement is possible: a selector whose complete input
+representation is invariant to table-link permutations cannot always distinguish
+two documents with the same values, metadata tokens, slot-coverage vectors and
+costs but opposite continuation attachments and correct scoped answers. It must
+make the same selection/action for indistinguishable represented inputs, and at
+least one action is wrong or unresolved. This only excludes that deliberately
+restricted representation. It does not prove that BM25 with a reader, a parent-
+table retriever, an ordinary sufficiency judge, HiREC, or S2G-RAG cannot solve the
+example. A source-faithful attachment closure could retrieve the caption and
+solve it immediately. That is a required baseline, not an inconvenience to hide.
+
+The example is a unit challenge for representation/objective behavior, not a
+natural-data result or evidence of prevalence. Do not optimize the method on it
+and advertise success as empirical innovation. A nontrivial natural study needs
+cases where globally attaching every plausible parent would exceed the same
+budget, whereas a small verified witness resolves a relevant ambiguity without
+displacing other necessary answer evidence. Whether such cases occur often
+enough to justify a paper is currently unknown.
+
+4. A candidate mechanism, with the difficult parts exposed
+
+A possible implementation, if later warranted, would have four stages:
+
+  A. Produce the same candidate pool for all methods using lexical/hybrid
+     retrieval and source-structural neighbors. Keep all candidate costs and
+     extraction uncertainties. Pin the parser and retrieval settings before
+     questions from test histories are visible.
+  B. Propose a bounded set of plausible competing bindings at explicitly
+     ambiguous edges. Reuse source-structure indices instead of making a
+     combinatorial Cartesian product of every metadata field. Preserve an
+     unknown flag when pruning may have removed a material alternative.
+  C. Score potential bundles for separating incompatible actions using a
+     source-conditioned verifier. An explicit continuation ID, a row/column
+     relation, a unit exception footnote or an inclusion-rule sentence can
+     be a witness. The verifier must name the exact relation and anchor;
+     fluent self-generated explanations are not evidence.
+  D. Select within the declared cost budget and answer from supported bindings,
+     with explicit partial abstention if the requested relation remains
+     unresolved. The same reader, abstention instruction and output budget
+     must also be available to comparators.
+
+The hypothesis is not that counterfactual prompts alone improve the model.
+Counterfactual alternatives direct which source witness to seek; they do not
+alter the source, manufacture a correction, infer a new numerical value, or
+justify withholding all difficult questions. A generic probe such as "what
+would distinguish these two plausible table bindings?" is an engineering
+ingredient until its selection objective and source verification show a
+controlled benefit.
+
+Joint witnesses matter. A table identity plus an applicability footnote may
+separate a pair although neither alone does. Such complementarities invalidate
+a blanket diminishing-returns assumption. After truly complete bundles are
+fixed and each pair is independently separated by any one selected bundle, the
+objective becomes weighted pair coverage with familiar combinatorial structure.
+Without those conditions, do not claim a greedy approximation guarantee. Bundle
+construction and overlap-aware token packing are substantial parts of the task,
+not cosmetic implementation. Small exhaustive toy optima can diagnose heuristic
+loss; they would not constitute a new solver theorem.
+
+5. Necessary baseline ladder and ablations
+
+The main comparison must hold candidate documents, available structure, reader,
+question wording, final token budget and verifier-compute budget fixed. At
+minimum include:
+
+- A competent reader with structure-preserving parent-table/section closure and
+  ordinary relevance ranking. Verified attachment is available symmetrically.
+- Version/scope filtering and the same partial-abstention policy, without
+  hypothesis competition. No gold scope labels are inference inputs.
+- A coverage packer over explicit relation slots, not merely a strawman bag of
+  entity/year/unit words. Include a diversity or submodular coverage variant.
+- A sufficiency-driven complementary retrieval policy using the same candidate
+  pool and verifier budget, adapted honestly from the closest reproducible
+  HiREC, S2G-RAG and RINSE mechanisms after their exact contracts are verified.
+- An interpretation-enumeration, evidence-reranking and scope-pruning comparator
+  informed by ToC and REFUEL, using the same automatically generated initial
+  hypotheses as the proposed selector. Ambiguity detection, answer partitioning
+  and hypothesis pruning are already prior mechanisms.
+- A random or relevance-matched witness-selection control with the same source
+  bundles, and a strong reranker. If extra verifier compute explains the gain,
+  give the reranker or sufficiency baseline that compute too.
+
+Ablate one component at a time: competing hypotheses versus a single-best
+binding; action-weighted separation versus relation coverage; verified source
+contradiction versus model self-consistency; adaptive witness selection versus
+static structural closure; uniform versus calibrated proposal weights; unknown
+alternative accounting versus forced finite-beam certainty. Keep all available
+facts, headers, page anchors and budget accounting unchanged. Removing the
+competing hypothesis while also removing source structure is not an isolation
+of the objective.
+
+An oracle hypothesis set and an oracle separator map can be diagnostic ceilings
+only. They are excluded from primary retrieval performance. Compare actual H
+with reviewed plausible alternatives to measure missing-hypothesis error, and
+compare automated separator judgments with source-only review to measure false
+elimination. Evaluate extraction/binding errors separately so that an improved
+parser is not mislabeled improved witness selection.
+
+6. Falsifiable study and decision rule
+
+Primary hypothesis: on independently held-out histories with genuine source-
+binding ambiguity, choosing evidence to eliminate incompatible scoped answers
+improves fully grounded, scope-correct answers at a matched input and compute
+budget beyond structure-aware closure and sufficiency/complementary retrieval.
+A distinct calibration hypothesis is that it reduces false supported comparison
+claims at matched answer coverage. Neither can be established by more abstention,
+more context, weaker baselines, gold metadata or selective reporting.
+
+Build the structural ambiguity audit before QA outputs. Sample cases by source
+properties, including cross-page continuations, repeated measures, unit
+exceptions, entity changes, competing intervals and explicit inclusion changes.
+Also include ordinary unambiguous cases, irreducibly unresolved cases, apparent
+changes caused only by revised scope, and same-scope comparisons. Avoid a set
+consisting solely of examples designed around the proposed selector. Review
+complete source evidence and disagreement labels before predictions, disclose
+model assistance, and seek genuinely independent human checking where feasible.
+Split by source history and document family/template, not random question, so
+that a learned template or prior familiarity cannot cross the test boundary.
+
+Measure the following separately: factual answer completeness; scope correctness;
+claim-level citation support; false binding elimination; correct-hypothesis
+retention; coverage of material alternative hypotheses; abstention/answer
+coverage; final evidence tokens; total verifier/model calls and cost; and
+retrieval versus reader failure. Report full-input-budget and compute curves,
+not a cherry-picked operating point. A stable numeric answer without supported
+scope does not pass. Pair comparisons within questions and uncertainty estimates
+clustered at the held-out history level are appropriate; multiple questions
+from one report are not independent histories. Exact data counts, risk targets,
+stopping thresholds and analysis choices still require a prospective protocol.
+
+Explicit falsifiers / stop conditions:
+
+1. Generic attachment closure or a competent sufficient-context reader removes
+   the residual ambiguity at the same budget. The result is a baseline repair.
+2. Relation-aware coverage or equally funded sufficiency/complementary retrieval
+   matches the selector. The proposed objective adds no demonstrated benefit.
+3. Gains vanish with matched context and verifier cost, matched answer coverage,
+   correct structural inputs, or a stronger reader.
+4. False contradiction judgments remove the correct binding, or hypothesis
+   pruning hides the true interpretation often enough to negate answer gains.
+5. The advantage requires oracle hypotheses, curated gold witness links, a
+   convenient source template, or the familiar development histories.
+6. Natural source audit cannot establish enough real, resolvable attachment
+   ambiguities with compact distinguishing witnesses to support a held-out study.
+7. The closest prior method already performs the same hypothesis-separating
+   objective and budgeted selection. Recast the work as reproduction or a
+   carefully justified extension; do not preserve novelty through renaming.
+
+There is no promised positive result. A useful early outcome may be showing
+that structural closure dominates the more expensive hypothesis mechanism.
+That would narrow the project intelligently rather than justify further solver
+complexity.
+
+7. Scaling and uncertainty
+
+With K candidate bindings there can be K(K-1)/2 relevant pairs. With M candidate
+bundles a naive verifier can require O(M*K^2) pair checks before packing, often
+far more expensive than ordinary retrieval. Testing each bundle against each
+hypothesis can reduce repeated comparisons to O(M*K) only when judgments compose
+as assumed. Query-action equivalence classes, source-structure factorization and
+shared witnesses may reduce work, but pruning can miss the decisive alternative.
+Worst-case assignment space across entity, unit, period and sample still grows
+multiplicatively. Latency, preprocessing amortization and hypothesis coverage
+must be reported; none is free because it is called indexing.
+
+False attachments can be highly confident; independence among verifier errors
+is not assumed. Correlated models generating hypotheses, assessing witnesses
+and grading answers can make the whole loop self-confirming. Use held-out
+source-only attachment audits, independent grading and explicit disagreement
+records. This document does not establish that confidence weights, elimination
+judgments or a stopping certificate are calibrated. A finite surviving set
+cannot prove universal uniqueness under an open corpus.
+
+Current recommendation
+
+Do not start a solver yet. First audit the closest prior objectives and whether
+natural, source-verifiable ambiguities survive generic structural closure under
+realistic budgets. If both gates pass, freeze a small falsification study with
+relation-aware coverage and sufficiency baselines. The publishable possibility
+would be evidence for an economical, reliably grounded selection rule over
+competing bindings; the present state is only that hypothesis.
+
+Literature boundary
+
+This reasoning uses the established v0.13 primary-source notes in
+ docs/related_work_v13.txt and docs/related_work_scope_followup_v13.txt,
+and the source-bound baseline requirements in docs/next_retrieval_gate_v13.txt.
+The newly identified HiREC, S2G-RAG and RINSE overlaps were supplied by the
+coordinating research task and are being checked by the related-work reviewer;
+the descriptions above are provisional mechanism comparisons, not a claim to
+have independently verified or executed those methods. No additional web
+queries, experiments, solver implementations or model predictions were made
+for this hypothesis document.
+
+The related-work reviewer additionally inspected ToC (EMNLP 2023, Section 3.2)
+and REFUEL (ACL 2021, Section 2). The former enumerates disambiguated question/
+answer nodes, reranks retrieved evidence, prunes by original-question scope and
+passage content, and covers valid interpretations. The latter expands answer/
+disambiguated-question candidates through round-trip prediction over a shared
+retrieved pool. These mechanisms substantially narrow the potential distinction.
+The reviewer did not identify explicit numeric source-attachment witness
+acquisition in those inspected sections; that bounded observation does not
+establish novelty or absence elsewhere. The operative test is whether witness
+selection adds value when initial hypotheses, source structures, reader and
+compute are matched, not whether interpretation enumeration can be renamed.

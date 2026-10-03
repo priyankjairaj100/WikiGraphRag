@@ -1,0 +1,809 @@
+{
+  "schema_version": "retrieval_reader_upgrade_manuscript_v0.14",
+  "title": "Source Structure and Reader Competence in Versioned Document QA",
+  "subtitle": "Negative development results, source audits and a bounded research decision",
+  "author": "Anonymous working draft",
+  "date": "3 October 2026 | v0.14 addendum",
+  "status": "Completed development working draft. No held-out method gain, generally strong reader, algorithmic novelty or ACL submission readiness is established.",
+  "relationship_to_v13": "Standalone extension of paper/paired_reading_study_v13.json. Frozen v13 source, results and renderer are not replaced.",
+  "results_state": {
+    "status": "observed",
+    "reader_control_outcome": {
+      "gate_passed": true,
+      "controls_passed": 8,
+      "denominator": 8,
+      "critical_error_count": 0,
+      "required_facts_correct": 19,
+      "required_facts_denominator": 19,
+      "native_output_budget_failures": 0
+    },
+    "structural_audit_outcome": {
+      "required_probes": {
+        "denominator": 17,
+        "complete": 7,
+        "partial": 0,
+        "missing": 10
+      },
+      "forbidden_probes": {
+        "denominator": 15,
+        "violated": 0,
+        "not_violated": 15
+      },
+      "locally_unresolved_probes": {
+        "denominator": 2,
+        "appropriate_abstention": 2,
+        "unsupported_resolution": 0
+      },
+      "accepted_attachments": {
+        "denominator": 50,
+        "correct_as_source_context_only": 42,
+        "noncontent_excess_context": 7,
+        "mixed_scope_context_only": 1,
+        "false_under_frozen_context_only_contract": 0,
+        "unresolved_to_review": 0
+      },
+      "accepted_by_relation": {
+        "section_context": 38,
+        "table_header_context": 7,
+        "unit_context": 2,
+        "unit_introduction_context": 2,
+        "footnote_context": 1
+      },
+      "unresolved_attachments": {
+        "denominator": 22,
+        "table_header_context": 17,
+        "table_continuation_context": 5
+      },
+      "additional_detection_errors": {
+        "false_table_region_candidates": 1,
+        "accepted_false_header_or_unit_links_from_that_candidate": 0
+      }
+    },
+    "main_completed_requests": 32,
+    "main_outcomes": [
+      {
+        "condition": "ordinary",
+        "questions": 8,
+        "reference_content_correct": 1,
+        "scope_correct": 2,
+        "citation_grounded": 2,
+        "format_ok": 8,
+        "appropriate_abstention": 2,
+        "native_output_budget_failure": 0,
+        "joint_content_scope_citation": 1,
+        "context_support_counts": {
+          "absent": 2,
+          "complete": 2,
+          "partial": 4
+        },
+        "complete_context_cases": 2,
+        "complete_context_joint_passes": 1,
+        "unsupported_assertions": 14,
+        "input_token_range": [
+          1451,
+          2640
+        ],
+        "evidence_word_range": [
+          744,
+          960
+        ],
+        "dropped_seeds": 0
+      },
+      {
+        "condition": "paired",
+        "questions": 8,
+        "reference_content_correct": 1,
+        "scope_correct": 3,
+        "citation_grounded": 1,
+        "format_ok": 7,
+        "appropriate_abstention": 1,
+        "native_output_budget_failure": 1,
+        "joint_content_scope_citation": 0,
+        "context_support_counts": {
+          "absent": 1,
+          "complete": 2,
+          "partial": 5
+        },
+        "complete_context_cases": 2,
+        "complete_context_joint_passes": 0,
+        "unsupported_assertions": 14,
+        "input_token_range": [
+          1328,
+          2665
+        ],
+        "evidence_word_range": [
+          685,
+          960
+        ],
+        "dropped_seeds": 0
+      },
+      {
+        "condition": "parent",
+        "questions": 8,
+        "reference_content_correct": 2,
+        "scope_correct": 2,
+        "citation_grounded": 2,
+        "format_ok": 8,
+        "appropriate_abstention": 2,
+        "native_output_budget_failure": 0,
+        "joint_content_scope_citation": 1,
+        "context_support_counts": {
+          "absent": 3,
+          "complete": 2,
+          "partial": 3
+        },
+        "complete_context_cases": 2,
+        "complete_context_joint_passes": 1,
+        "unsupported_assertions": 16,
+        "input_token_range": [
+          1659,
+          3242
+        ],
+        "evidence_word_range": [
+          810,
+          937
+        ],
+        "dropped_seeds": 19
+      },
+      {
+        "condition": "closure",
+        "questions": 8,
+        "reference_content_correct": 2,
+        "scope_correct": 3,
+        "citation_grounded": 2,
+        "format_ok": 7,
+        "appropriate_abstention": 1,
+        "native_output_budget_failure": 1,
+        "joint_content_scope_citation": 1,
+        "context_support_counts": {
+          "absent": 1,
+          "complete": 3,
+          "partial": 4
+        },
+        "complete_context_cases": 3,
+        "complete_context_joint_passes": 1,
+        "unsupported_assertions": 17,
+        "input_token_range": [
+          1284,
+          3013
+        ],
+        "evidence_word_range": [
+          655,
+          930
+        ],
+        "dropped_seeds": 0
+      }
+    ],
+    "any_v14_performance_claim_authorized": true,
+    "source_context_support_outcome": {
+      "ordinary": {
+        "absent": 2,
+        "partial": 4,
+        "complete": 2
+      },
+      "paired": {
+        "partial": 5,
+        "complete": 2,
+        "absent": 1
+      },
+      "parent": {
+        "partial": 3,
+        "absent": 3,
+        "complete": 2
+      },
+      "closure": {
+        "partial": 4,
+        "complete": 3,
+        "absent": 1
+      }
+    },
+    "claim_permission_scope": "Exact descriptive outcomes on reused development material only; no generalization, significance, stronger-reader or algorithmic benefit claim.",
+    "v13_identical_contexts": 16,
+    "same_context_joint_comparison": {
+      "denominator": 16,
+      "v13": 2,
+      "v14": 1
+    },
+    "native_output_budget_failures": 2,
+    "unique_native_inputs": 30,
+    "controls_input_token_range": [
+      197,
+      270
+    ],
+    "main_input_token_range": [
+      1284,
+      3242
+    ],
+    "dense_context_outcomes": {
+      "bm25_closure": {
+        "absent": 1,
+        "complete": 3,
+        "denominator": 8,
+        "partial": 4
+      },
+      "bm25_paired": {
+        "absent": 1,
+        "complete": 2,
+        "denominator": 8,
+        "partial": 5
+      },
+      "dense_closure": {
+        "absent": 5,
+        "complete": 1,
+        "denominator": 8,
+        "partial": 2
+      },
+      "dense_paired": {
+        "absent": 5,
+        "complete": 1,
+        "denominator": 8,
+        "partial": 2
+      },
+      "rrf_closure": {
+        "absent": 2,
+        "complete": 1,
+        "denominator": 8,
+        "partial": 5
+      },
+      "rrf_paired": {
+        "absent": 2,
+        "complete": 1,
+        "denominator": 8,
+        "partial": 5
+      }
+    },
+    "dense_natural_qa_executed": false
+  },
+  "abstract": "We evaluate reader and retrieval changes for versioned-document QA on eight reused questions from two histories. A newer quantized 4B reader passes eight short authored controls, yet ordinary, paired-version, parent-expansion and source-context-closure conditions yield respectively 1, 0, 1 and 1 jointly content-correct, scope-correct and citation-grounded answers out of eight. On sixteen byte-identical contexts, the newer configuration yields one joint success versus two previously. A separate source-only dense/RRF follow-up yields one complete context per eight questions in every new condition, versus two or three for BM25 controls. These negative development results establish neither a reader upgrade nor a retrieval advance. A supplied-judgment witness-selection scaffold and a twelve-object structured-source inventory remain separate feasibility work without natural-data method validation.",
+  "sections": [
+    {
+      "id": "motivation",
+      "title": "1  Scope of this extension",
+      "paragraphs": [
+        "The preceding v0.13 study did not establish a paired-retrieval advantage. Its primary ordinary and paired conditions each produced one jointly content-correct, scope-correct and citation-grounded answer out of eight. The completed extension tests conventional reader and retrieval changes before pursuing a new method. Its results are negative: the selected reader configuration and the tested dense retrieval do not improve their respective development endpoints.",
+        "Document version and assertion scope remain distinct. A later source can revise a result, retain it or change the population and procedure that the result describes. Receiving two values does not by itself justify attributing their difference to a correction. The present task asks for source-grounded reporting without recomputation or outside knowledge.",
+        "The corpus and questions remain development material, with earlier outcomes known. Question-to-history membership and within-history version order are supplied. This study therefore evaluates bounded evidence selection and reading within a known history, not document-lineage discovery or open-corpus routing."
+      ],
+      "tables": [
+        "corpus"
+      ],
+      "after_tables": [
+        "The two earlier raster-table transcriptions remain tagged model-assisted source repairs. The retrieved representation does not certify complete OCR, semantic extraction or exact first-public historical bytes. No new natural history or held-out question is introduced by this addendum."
+      ]
+    },
+    {
+      "id": "reader",
+      "title": "2  Reader selection and the competence gate",
+      "page_break_before": true,
+      "paragraphs": [
+        "The selected configuration is Qwen3.5-4B in the unsloth Q5_K_M distribution, pinned to an immutable repository revision and verified asset hash. Selection preceded v14 answers and reflected reported capability plus CPU and memory feasibility. It remains a quantized four-billion-parameter reader; the newer checkpoint and technical preflight do not establish general reader strength.",
+        "The local asset was obtained and hash-verified on a recorded second download attempt after a disk-capacity failure. A native tokenization preflight passed without completion calls. These are execution facts, not semantic competence results. The first failed attempt and cache reconciliation remain in provenance."
+      ],
+      "tables": [
+        "reader"
+      ],
+      "after_tables": [
+        "Eight model-authored controls use synthetic source excerpts, questions and references without the original entities or development questions. A separate model-assisted reviewer checked references before prediction and graded all preserved outputs against the unchanged gate: at least seven reference-complete, grounded responses and no critical sign, unit, year or selected-population errors in any answered claim. The observed result is 8/8 complete and grounded, covering 19/19 required facts, with zero critical errors and zero output-budget failures.",
+        "No response repair, retries, reference edits or gate changes were used. The grader had reviewed the control references and had prior development familiarity; this is not independent human gold. More importantly, the controls use 197-270 input tokens, compared with 1,284-3,242 for natural contexts. Their pass qualified the bounded run but did not predict competent long-context reading.",
+        "All sixteen ordinary/paired contexts are byte-identical to their v13 source-layout counterparts. The newer configuration achieves one joint success across these cells, versus two for v13. This fails to establish the intended reader upgrade. Architecture, quantization, tokenizer, native template and no-thinking prompt handling change jointly; the result neither isolates a cause nor ranks the model families generally."
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "3  Four matched retrieval conditions",
+      "page_break_before": true,
+      "paragraphs": [
+        "All conditions use the exact frozen question, history-local BM25 and the existing 2,306 seed chunks. No reference answer, answer-aware expansion or gold page location enters retrieval. Native within-span whitespace is retained. Parent and closure use the same paired seed shortlist; they are conventional structural comparators, not implementations of the later witness-selection hypothesis."
+      ],
+      "tables": [
+        "conditions"
+      ],
+      "after_tables": [
+        "The parser records exact source offsets, page hashes, relation types, rule identifiers and accepted or unresolved status. These are source-context links, not certified cell-to-column, unit or population bindings. Cross-page continuation requires compatible explicit table identity and headers; ambiguous relationships remain unresolved.",
+        "Packing first tries the six fixed bundles, then admits whole bundles in deterministic score order if necessary. There is no splitting, backfill or answer-driven repair. Structural overlaps are unioned. Parent drops 19 seeds across eight contexts and loses one version on two questions; closure retains all 48 seeds. These costs are part of the representation comparison.",
+        "Before natural main predictions, a question/reference-informed context review found that stripping source-slice endpoints removed meaningful indentation from a multiline table header. A separately recorded amendment preserved every source character for parent/closure slices. It changed 12 context renderings but no selections, questions, references, parser rules or budgets. Initial artifacts were retained. This was disclosed development repair, not an untouched preregistration.",
+        "The repaired audit verifies 247 exact source-span occurrences over 38 original pages, including 107 with endpoint whitespace. Native preflight matches final prompt and token hashes for all 32 requests. The completed external execution audit passes 1,348 provenance checks; identity and execution checks do not certify reference semantics or source sufficiency.",
+        "The shared limits remain 960 source words and 3,500 full native input tokens, reserving 256 output tokens within 4,096. Added source words and all prompt labels are charged. Equal caps do not mean equal use. Closure also deduplicates overlaps and changes citation headers; its contrast with paired is a representation-package effect, not an isolated attachment effect."
+      ]
+    },
+    {
+      "id": "evaluation",
+      "title": "4  Source audits and completed reader outcomes",
+      "page_break_before": true,
+      "paragraphs": [
+        "The purposive structural audit covers 34 probes on 13 pages and reviews all 72 emitted attachments on those pages. Required relations are complete for 7/17 and missing for 10/17, with no partial cases. No forbidden association is accepted on 15 probes; both locally unresolved probes appropriately remain unresolved.",
+        "Of 50 accepted links reviewed, 42 are correct as source context, seven attach excess footer context and one contains mixed scope. None is false under the frozen context-only contract, which does not certify governing semantic bindings. This samples 50 of 692 corpus-wide accepted links. Another 22 links remain unresolved: 17 headers and five continuations. One false table-region candidate has its proposed header withheld. These results permit a bounded context-expansion comparison, not reliable semantic closure."
+      ],
+      "tables": [
+        "context_support",
+        "outcomes"
+      ],
+      "after_tables": [
+        "Only three of nine condition-response cases with completely reviewed evidence pass jointly. This includes dependence across the same questions and two identical-input pairs, not nine independent trials. The repair improves one financial context from partial to complete support without establishing an answer benefit. Evidence insufficiency and reader failure both remain material.",
+        "The 32 responses contain 30 unique native token sequences. Two generation-limit failures, one paired and one closure, remain in their assigned denominators; there are no repairs or retries. Condition-masked, model-assisted grading uses frozen references and exact received citations. Format and abstention are separate axes. These selected development counts do not support significance or generalization claims."
+      ]
+    },
+    {
+      "id": "hypothesis",
+      "title": "5  Dense evidence audit and method boundary",
+      "page_break_before": true,
+      "paragraphs": [
+        "A separately frozen follow-up evaluates the pinned BAAI/bge-small-en-v1.5 encoder and equal-weight BM25/dense reciprocal-rank fusion (k=60). The compact 2023-era encoder is an established baseline, not a current strongest retriever. Each ranker takes three seeds per version, with paired or the unchanged closure representation and the same packing limits. The 48 condition-context cases comprise 16 exact reused BM25 controls and 32 newly reviewed dense/RRF contexts. No natural answer generation was performed.",
+        "CLS pooling, L2 normalization, a query-only prefix and 512-token encoder truncation were fixed before retrieval. Four of 2,306 passage encodings truncate; no query or delivered source evidence is truncated. Local timing is descriptive, not a speed comparison. The external dense audit passes 983 checks, including final token revalidation."
+      ],
+      "tables": [
+        "dense_support"
+      ],
+      "after_tables": [
+        "Each new dense/RRF condition supplies only one complete context out of eight, despite including both versions throughout. No evidence-sufficiency gain is established for this frozen configuration. The source-only result does not measure answer accuracy or show that all dense or hybrid retrieval must fail.",
+        "The proposed end-to-end witness method remains untested. Its candidate objective minimizes fixed-weight mass of incompatible surviving bindings under an evidence budget, with nonempty survivors, positive support and unknown-alternative gates. A separate executable component passes fourteen authored checks using externally supplied, potentially oracle hypotheses and source judgments. It has no automatic proposer or verifier. Its token claims require a real tokenizer callback; tests use character-cost fixtures. Tiny exhaustive search demonstrates a deliberate greedy failure on joint witnesses. These are implementation checks, not natural-data efficacy or a new optimization guarantee."
+      ]
+    },
+    {
+      "id": "prior",
+      "title": "6  Novelty boundary and discriminating baselines",
+      "page_break_before": true,
+      "paragraphs": [
+        "The bounded primary-source audit establishes substantial overlap with prior work. Table/header preservation, version filters, structured gaps, source pointers, sufficiency judgments, multiple interpretations and abstention are not claimed as inventions. The closest inspected additional mechanisms are summarized below; full citation metadata and search provenance accompany the project.",
+        "HC-RAG (Chen et al., 2026) organizes financial filings as document, section, text, table and metadata nodes; company/year matches and structural paths guide retrieval. Its offline table alignment supports cached online units carrying row and column headers, values and units. A query-intent classifier routes text versus tables, and comparison prompts align entities or fiscal periods. The selected-item budget B does not establish exact native-token accounting. These mechanisms directly precede typed evidence graphs, structured numeric units and comparison-aware routing. Sections 3.2-3.6 do not explicitly specify competing attachment hypotheses or separating-witness acquisition; this bounded observation cannot establish novelty. A future comparator must retain its structural and intent-aware mechanisms under our shared resource limits."
+      ],
+      "tables": [
+        "prior"
+      ],
+      "after_tables": [
+        "A future comparison must share automatically generated initial hypotheses, candidate source spans, reader, context cap and verifier-call budget. Include source-structural parent closure, a strong reranker, explicit relation-slot coverage, generic gap/sufficiency retrieval and interpretation enumeration with scope pruning. Controlled adaptations must be identified as adaptations, not faithful reproductions.",
+        "Ablate comparison obligations, hypothesis competition and next-witness selection separately from structure and packing. Hold hypotheses fixed when comparing selectors, measure proposal recall independently, and give generic baselines access to the same source witnesses. Report resource curves including a larger-context structural baseline.",
+        "Author-generated attachment substitutions can test mechanisms, but must control lexical overlap, length, entities and visible numbers and remain separate from naturally occurring failures. Withholding all answers is not success; unsupported-claim rate must be considered together with supported-answer coverage.",
+        "If a competent reader with ordinary structure resolves the failures, stop. Also reject gains that vanish against generic sufficiency or ambiguity baselines, matched resources, or removal of gold attachments. HC-RAG is now verified; earlier failed opens remain recorded. This audit does not establish novelty."
+      ]
+    },
+    {
+      "id": "limitations",
+      "title": "7  Limits, source feasibility and research decision",
+      "page_break_before": true,
+      "paragraphs": [
+        "The main and dense studies reuse two familiar histories and eight questions with model-assisted references and grading. The structural audit is purposive. Synthetic controls are substantially shorter than natural contexts and do not certify reader competence. Unknown pretraining exposure, quantization, no-thinking execution and the no-recomputation task restrict interpretation. No independent human gold or held-out natural evaluation is established.",
+        "Equal caps do not equal equal evidence or compute. Parent expansion drops 19 seeds; closure also changes deduplication and source labels. Dense/RRF uses one compact encoder and one fusion setting. These results reject the tested upgrade routes on development endpoints, not entire method families. A stronger reader and stronger structural/dense comparators remain necessary before attributing residual failures to a new reasoning problem.",
+        "A separate source-feasibility cohort contains twelve reconciled HTML objects across six issuer pairs. Berkshire filenames labelled 2022/2023 contain fiscal years 2021/2022; the mismatch is retained. Only five pairs satisfy the intended fiscal-year window. Original SEC identity and historical availability remain unverified. This cohort is now development-exposed; benchmark admission was not assessed, and no new questions or references were created.",
+        "An Inline XBRL inventory records 23,651 nonfraction fact occurrences with locally resolvable context/unit links and verifies 32,051 fact/context/unit source anchors. These are not validated distinct quantities: no values were normalized, display fidelity and taxonomy semantics were not established, and hidden/repeated/nil cases remain. This motivates a standard source-structured baseline and display-versus-tag check before any new witness-method claim; issuer tags are not independent gold."
+      ],
+      "tables": [
+        "provenance"
+      ],
+      "after_tables": [
+        "The research decision is to withhold a method-advantage claim. First establish reliable source interpretation and a reader that handles representative complete contexts; then evaluate residual ambiguity on genuinely new, independently reviewed histories. The fourteen-check supplied-judgment scaffold is only an inspectable starting component.",
+        "Protocols, unfavorable attempts, source and model hashes, token traces, graded joins and audit summaries are retained. Full source-bearing artifacts remain external under the existing redistribution boundary. This generic working PDF is not an ACL template compilation, a submission-ready paper or a promise of publication."
+      ]
+    }
+  ],
+  "tables": {
+    "corpus": {
+      "caption": "Table 1. Fixed development corpus. Page counts refer to recovered physical PDF pages.",
+      "header": [
+        "History",
+        "Recovered versions",
+        "Pages",
+        "Questions"
+      ],
+      "widths": [
+        110,
+        198,
+        76,
+        105
+      ],
+      "rows": [
+        [
+          "Plug Power",
+          "FY2019 / FY2020 annual reports",
+          "142 / 347",
+          "4"
+        ],
+        [
+          "OPERA",
+          "arXiv versions 1 / 4",
+          "24 / 37",
+          "4"
+        ]
+      ]
+    },
+    "reader": {
+      "caption": "Table 2. Pinned reader configuration. Authored controls pass; general reader strength is not certified.",
+      "header": [
+        "Field",
+        "Pinned setting"
+      ],
+      "widths": [
+        140,
+        349
+      ],
+      "rows": [
+        [
+          "Model / quantization",
+          "Qwen3.5-4B / Q5_K_M (unsloth distribution)"
+        ],
+        [
+          "Repository revision",
+          "e87f176479d0855a907a41277aca2f8ee7a09523"
+        ],
+        [
+          "Runtime / execution",
+          "Pinned llama.cpp b11146; CPU; fresh process; greedy seed 7"
+        ],
+        [
+          "Prompt / limits",
+          "Thinking disabled; 3,500 input / 256 output / 4,096 context tokens"
+        ],
+        [
+          "Control gate",
+          "8/8 complete and grounded; 19/19 facts; 0 critical errors"
+        ]
+      ]
+    },
+    "conditions": {
+      "caption": "Table 3. Implemented retrieval representations. Parent and closure modify the paired shortlist; they do not rerank with answers.",
+      "header": [
+        "Condition",
+        "Fixed seed shortlist",
+        "Evidence unit"
+      ],
+      "widths": [
+        73,
+        132,
+        284
+      ],
+      "rows": [
+        [
+          "Ordinary",
+          "Top 6 within history",
+          "Original chunk spans, native source whitespace"
+        ],
+        [
+          "Paired",
+          "Top 3 per version",
+          "Original chunk spans, native source whitespace"
+        ],
+        [
+          "Parent",
+          "Same paired seeds",
+          "Enclosing paragraph or detected table-region parents"
+        ],
+        [
+          "Closure",
+          "Same paired seeds",
+          "Seed spans plus transitive parser-accepted source-context links"
+        ]
+      ]
+    },
+    "prior": {
+      "caption": "Table 7. Verified prior mechanisms requiring substantive comparators. The proposed distinction remains unestablished.",
+      "header": [
+        "Primary work",
+        "Mechanism already present"
+      ],
+      "widths": [
+        150,
+        339
+      ],
+      "rows": [
+        [
+          "HiREC (Choe et al., 2025)",
+          "Complementary retrieval for missing comparison evidence"
+        ],
+        [
+          "S2G-RAG (Li et al., 2026)",
+          "Structured gaps and source-pointer evidence extraction"
+        ],
+        [
+          "RINSE (Chen et al., 2026)",
+          "Pre-answer sufficiency and shortcut-controlled audits"
+        ],
+        [
+          "FinLongDocQA/Agent (Wang et al., 2026)",
+          "Numerical-component collection and verification"
+        ],
+        [
+          "ToC (Kim et al., 2023)",
+          "Interpretation enumeration, reranking and scope pruning"
+        ],
+        [
+          "REFUEL (Gao et al., 2021)",
+          "Evidence fusion and round-trip interpretation discovery"
+        ],
+        [
+          "HC-RAG (Chen et al., 2026)",
+          "Typed evidence hierarchy and comparison-intent routing"
+        ]
+      ]
+    },
+    "provenance": {
+      "caption": "Table 8. Reproducibility entry points; each record binds its underlying artifacts.",
+      "header": [
+        "Artifact group",
+        "Repository location"
+      ],
+      "widths": [
+        115,
+        374
+      ],
+      "rows": [
+        [
+          "Main outcomes",
+          "results/structured_study_summary_v14.json"
+        ],
+        [
+          "Dense source audit",
+          "results/dense_source_support_summary_v14.json"
+        ],
+        [
+          "Source feasibility",
+          "results/fresh_source_feasibility_v14.json"
+        ],
+        [
+          "Inline XBRL",
+          "results/inline_xbrl_feasibility_v14.json"
+        ],
+        [
+          "Selection scaffold",
+          "docs/witness_selection_v14.txt"
+        ],
+        [
+          "Claim/evidence ledger",
+          "paper/claim_ledger_v14.json"
+        ]
+      ]
+    },
+    "context_support": {
+      "caption": "Table 4. Source-only support counts, each out of eight; dropped seeds and prepared full-input token ranges. These are not answer outcomes.",
+      "header": [
+        "Condition",
+        "Complete",
+        "Partial",
+        "Absent",
+        "Dropped seeds",
+        "Input tokens"
+      ],
+      "widths": [
+        79,
+        68,
+        59,
+        58,
+        92,
+        133
+      ],
+      "rows": [
+        [
+          "Ordinary",
+          "2",
+          "4",
+          "2",
+          "0",
+          "1451-2640"
+        ],
+        [
+          "Paired",
+          "2",
+          "5",
+          "1",
+          "0",
+          "1328-2665"
+        ],
+        [
+          "Parent",
+          "2",
+          "3",
+          "3",
+          "19",
+          "1659-3242"
+        ],
+        [
+          "Closure",
+          "3",
+          "4",
+          "1",
+          "0",
+          "1284-3013"
+        ]
+      ]
+    },
+    "outcomes": {
+      "caption": "Table 5. Reader counts, each out of eight. Joint requires content, scope and citation support. Limit failures remain in all denominators.",
+      "header": [
+        "Condition",
+        "Content",
+        "Scope",
+        "Citation",
+        "Format",
+        "Abstention",
+        "Joint",
+        "Limit failures"
+      ],
+      "widths": [
+        80,
+        58,
+        52,
+        60,
+        55,
+        68,
+        50,
+        66
+      ],
+      "rows": [
+        [
+          "Ordinary",
+          "1",
+          "2",
+          "2",
+          "8",
+          "2",
+          "1",
+          "0"
+        ],
+        [
+          "Paired",
+          "1",
+          "3",
+          "1",
+          "7",
+          "1",
+          "0",
+          "1"
+        ],
+        [
+          "Parent",
+          "2",
+          "2",
+          "2",
+          "8",
+          "2",
+          "1",
+          "0"
+        ],
+        [
+          "Closure",
+          "2",
+          "3",
+          "2",
+          "7",
+          "1",
+          "1",
+          "1"
+        ]
+      ]
+    },
+    "dense_support": {
+      "caption": "Table 6. Source-only follow-up: complete/partial/absent contexts out of eight, supported required facts out of 21. No dense/RRF answer-accuracy result is implied.",
+      "header": [
+        "Condition",
+        "Complete",
+        "Partial",
+        "Absent",
+        "Supported facts",
+        "Input tokens"
+      ],
+      "widths": [
+        94,
+        65,
+        55,
+        55,
+        95,
+        125
+      ],
+      "rows": [
+        [
+          "BM25 paired",
+          "2",
+          "5",
+          "1",
+          "10/21",
+          "1328-2665"
+        ],
+        [
+          "BM25 closure",
+          "3",
+          "4",
+          "1",
+          "12/21",
+          "1284-3013"
+        ],
+        [
+          "Dense paired",
+          "1",
+          "2",
+          "5",
+          "3/21",
+          "1465-2872"
+        ],
+        [
+          "Dense closure",
+          "1",
+          "2",
+          "5",
+          "3/21",
+          "1525-2896"
+        ],
+        [
+          "RRF paired",
+          "1",
+          "5",
+          "2",
+          "9/21",
+          "1339-2796"
+        ],
+        [
+          "RRF closure",
+          "1",
+          "5",
+          "2",
+          "9/21",
+          "1378-2956"
+        ]
+      ]
+    }
+  },
+  "reference_sources": [
+    {
+      "key": "choe2025hirec",
+      "url": "https://arxiv.org/html/2505.20368v3"
+    },
+    {
+      "key": "li-etal-2026-s2g",
+      "url": "https://aclanthology.org/2026.acl-long.1185/"
+    },
+    {
+      "key": "chen2026rinse",
+      "url": "https://arxiv.org/html/2609.37469v1"
+    },
+    {
+      "key": "wang2026finlongdocqa",
+      "url": "https://arxiv.org/html/2604.03664v1"
+    },
+    {
+      "key": "kim-etal-2023-tree",
+      "url": "https://aclanthology.org/2023.emnlp-main.63/"
+    },
+    {
+      "key": "gao-etal-2021-answering",
+      "url": "https://aclanthology.org/2021.acl-long.253/"
+    },
+    {
+      "key": "chen2026hcrag",
+      "url": "https://arxiv.org/html/2608.12335v1"
+    }
+  ],
+  "editorial_handoff": {
+    "expected_page_count_range": [
+      5,
+      7
+    ],
+    "new_reader_strength_claim": "Short authored controls pass; same-context natural joint outcome1/16 versus prior2/16 fails to establish reader upgrade.",
+    "four_condition_claim": "Completed descriptive comparison with shared maximum budgets and unequal actual evidence/tokens; joint1/0/1/1 of8.",
+    "proposed_method_claim": "End-to-end method unimplemented and untested; supplied-judgment selection component passes 14 authored checks without automatic proposer/verifier.",
+    "results_finalization": "Completed exact summary integration; subsequent studies require separate recorded analyses.",
+    "planned_result_additions": [],
+    "no_v13_files_modified": true
+  },
+  "observed_method_sources": {
+    "results/reader_controls_v14.json": "4d10a9c5f2354f14d961ec3d2bd947063d95127e6f1b216834a0ed248f49c321",
+    "results/structural_audit_v14.json": "b946ad8fda939a20f217c8abe13b00bae98373a05f37d8781e9f4d1b8542ae12",
+    "results/structural_gate_resolution_v14.json": "5e8a3a42bd4d5b2eecde995e40d92dd8e4b0c0f379f3bab695a687933e6352e4",
+    "results/structured_retrieval_layout_audit_v14.json": "f019e2a14c973d918d5f8002f34163e018392efbfd8059b8b62c305340a809de",
+    "results/structured_context_support_v14.json": "7af57046b043ecdad79dbef1aa248db6b0e678bd55191f88f540eb0ebeedc7ca",
+    "data/structured_reader_v14/context_review_layout_manifest.json": "bb9759e4ff7af6c5f34a73bf234f2d2044bc6dbc242e53863a958be94be57416",
+    "data/structured_reader_v14/layout_amendment.json": "007047dd23f937f4e4504f84044535cb14361d7e694703b5b8d387bb1342f255",
+    "results/prepared_request_token_binding_v14.json": "110efdfa6462e89ecae1e01a14d71ab7439cf1b86f19054f0361dec9a23ee594",
+    "data/structured_reader_v14/main_execution_protocol.json": "d890c084785ea678812488be3c3f4a08dcd9b72361c38f076144126d3e9de920",
+    "src/temporal_state/witness_selection_v14.py": "e60743671329b261422e34c5433d94c636498098b4c6c465df924f2a07947bc2",
+    "tests/test_witness_selection_v14.py": "23f840ff46c1ef0d161e7905124d5fa284ffcded6527eae91f2e10efe847b804",
+    "docs/witness_selection_v14.txt": "519a54d7e1023180910a1b4ec82489b89a54d54e9915df45188f71e4145a4bb3"
+  },
+  "result_bindings": {
+    "results/structured_study_summary_v14.json": "545ad6ad66b0cda132b4a80890e84835cc5f95e143b62f09bdfb753016cdea78",
+    "results/dense_source_support_summary_v14.json": "9f399efa87dab3d37592b35f48e671d5e9f486301d2ac6b063803edba5b3f316",
+    "results/fresh_source_feasibility_v14.json": "8bb1123d14eee281ae60cdf3eccfc1eaf56676e002f8d9e96a2b21f745456a9c",
+    "results/inline_xbrl_feasibility_v14.json": "ad69ebdf4bef4c24d786e4a17d66b57fa65e90db5766debf509cc80b570ce805",
+    "results/structured_execution_audit_v14.json": "eba3686830b3a80c090fc28bcd3d434ef06eb427adcfd6f4166284524fe2ea5b",
+    "results/dense_execution_audit_v14.json": "37ac86d968afbf95cd09aaf504e1dd494e5fd8fe8fe00f8c05eec3265ce0b1c8",
+    "results/reader_controls_v14.json": "4d10a9c5f2354f14d961ec3d2bd947063d95127e6f1b216834a0ed248f49c321",
+    "data/native_structured_reader_v14/controls_attempt01/rendered_prompts.json": "b6ace4f6f3e9660519e5c956319d1b808f5d4ab07610fb18d0f65d46dc78986f"
+  }
+}

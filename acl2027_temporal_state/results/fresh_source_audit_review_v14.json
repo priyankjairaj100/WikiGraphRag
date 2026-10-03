@@ -1,0 +1,467 @@
+{
+  "schema_version": "fresh_source_audit_review_v14",
+  "status": "passed_with_explicit_limits",
+  "reviewer": "Separate model-assisted source/provenance audit; not acquisition/inventory author, not independent human gold. Same project session and prior project familiarity.",
+  "created_at_utc": "2026-10-03T12:30:22.644632+00:00",
+  "audit_scope": {
+    "network_calls": 0,
+    "model_calls": 0,
+    "QA_dataset_files_opened": 0,
+    "main_answer_texts_opened": 0,
+    "source_files_read": 12,
+    "maximum_simultaneous_XML_trees": 1,
+    "peak_review_process_RSS_bytes": 162451456,
+    "method": "Independent digest, selection, chronology, strict XML namespace counts, full metadata/DOM/byte-span and reference-cardinality joins. No imported collector/inventory methods and no quantity normalization."
+  },
+  "input_sha256": {
+    "data/fresh_source_audit_v14/source_listing.json": "d09ce256676a038c8ebee3c03eb3d3c3de34c8f4461ae18036bda7786e6727e1",
+    "data/fresh_source_audit_v14/exclusion_ledger.json": "10811840d345d0d1e11563275d970404af48c305e524bebc688be54dcfe98a8b",
+    "data/fresh_source_audit_v14/acquisition_protocol.json": "db7a4d1421af65ef8f05edb678a6615a3925972910b21f279e27d673fce1548d",
+    "data/fresh_source_audit_v14/capture_receipt.json": "092eb421f5ac0d980b06f820559082448f211dde1b34b802d26e250821838743",
+    "data/fresh_source_audit_v14/source_identity_structure.json": "59064443d7e0520da4afa838ef0ee3de2c00db0cb093d271a2fd296c4fd052ed",
+    "results/fresh_source_integrity_reconciliation_v14.json": "59af34cb768e267830824b7634a7f94c90db83095c5fe386aba8a376444535d3",
+    "results/fresh_source_identity_review_part1_v14.json": "75cd094b0339abcf53eb63cca544f1d4ca104f5aea2172fe62f1094ec67c4422",
+    "results/fresh_source_identity_review_part2_v14.json": "9a6bf6fb15febb8656b1c756cf797b468831ac6e491a098f59c9663361fb039e",
+    "docs/fresh_source_acquisition_v14.txt": "8407535587f2cd4716581ed0adb9dfa7bb85dfa6a7602a9d99d3a84987210b4a",
+    "scripts/freeze_fresh_source_cohort_v14.py": "42437deb82e0ea48033b3d3ca7aee6ed21d460d1a596e60a5212f6464704ffbc",
+    "scripts/capture_fresh_sources_v14.py": "f293c95e1e15fed9c6e2203d9120423bdcf9a8438980f34b8a5dd0f10486c94f",
+    "scripts/audit_fresh_source_objects_v14.py": "e0d6d746721145fef8a9e499c0847957cf7036e422313f88b37dc077abcf3e86",
+    "docs/fresh_history_evaluation_plan_v14.txt": "264ec51418c5e7d90d8e0a9707af064d10dd1fa558a3dfaf0fdc2cc7a1323fb1",
+    "data/structured_reader_v14/fresh_history_protocol_proposal.json": "fdeecfad5e5fee87814f8a94b899c2ede075da8a8574b564bbb6056707c6d304",
+    "results/inline_xbrl_link_inventory_v14.json": "6bf321ec14c7b8ee699e003e52a8b5e2b67c9d8678f598201bc669ee8665c868",
+    "results/inline_xbrl_link_inventory_validation_v14.json": "ed29c496a847d4d38cf754b0850bc2b4b5360418ba98557889724b4a77823fcc",
+    "scripts/inventory_inline_xbrl_v14.py": "c4937045aae5cea1d25f69db5ffcff32695b727e74412a49b2ea4b8ec6b04b33",
+    "docs/inline_xbrl_feasibility_v14.txt": "4ffff9c740510b0ccef7cb6377f9c34a75dd07094995bd126de80d234e5febe9",
+    "docs/inline_xbrl_semantics_review_v14.txt": "c4613ba74d8f6cfd040f3a288a1d8e58fb9b0093cba7c6e6f7e08b1173d29768",
+    "data/provenance/inline_xbrl_semantics_v14.json": "392a6de522bde0058bda4c945ad833f11ab8c0ffa9f9477fab39e40418ca2273",
+    "results/fresh_source_feasibility_v14.json": "8bb1123d14eee281ae60cdf3eccfc1eaf56676e002f8d9e96a2b21f745456a9c",
+    "results/inline_xbrl_feasibility_v14.json": "ad69ebdf4bef4c24d786e4a17d66b57fa65e90db5766debf509cc80b570ce805"
+  },
+  "external_metadata_sha256": {
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/PFE_2023.bindings.json": "184c3f56c94ea161cb1738397907bc1817e83468429415007c37e1523499a12d",
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/PFE_2024.bindings.json": "cf2ed9187763571ba003f5963085499610111900f64703f675ce9140a841706c",
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/NFLX_2022.bindings.json": "00befa341bb4cf66fae7d6948ac58538210241003a12860881d9fb74f6d51be3",
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/NFLX_2023.bindings.json": "c906631a9fbd4752893a60515b154a8c3529b51218b2ded4af24e6ad393e0fcc",
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/NVDA_2022.bindings.json": "3510bb19598a71a879d54f8c86d3c80a99184ad441931f7619b0dbca5dd9d43e",
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/NVDA_2023.bindings.json": "5d77d0adda752b6c200b7e0a512c7c644ba459781ba925d0a66ffb93a6575909",
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/LLY_2023.bindings.json": "fb3e55155abb0a1296e95bd2007b85c3cc98b443b2d34b0504e1dda745f7f241",
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/LLY_2024.bindings.json": "99d9a81316e8df77e78c47b6e9172d3ab4c8809188280bda126562b4a391f23c",
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/BRK-B_2022.bindings.json": "87507079f1b218687f238d796e875ee5e13672ac820705f24f552eb104ba0658",
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/BRK-B_2023.bindings.json": "f5ba95a2ffa9ada69d04507fce350306f09d598b0ec919dd5aa0659728a1eee2",
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/SLB_2022.bindings.json": "c60994d0e1928c1cf97eda991040094a0e72391fe678c4f920ceba01b6580add",
+    "/workspace/scratch/bdef663e3dfc/tmp/fresh_source_audit_v14/inline_bindings/SLB_2023.bindings.json": "22e725557aa05a4062bc2069bd6f7de9636a130e207698936e74fd8a07d7d02a"
+  },
+  "checks": {
+    "public_input_hash": 23,
+    "prior_exposure_input_hash": 15,
+    "protocol_hashes": 6,
+    "inline_bindings": 4,
+    "listing_structure": 180,
+    "selection_replay": 197,
+    "capture_order": 1,
+    "chronology": 13,
+    "single_attempt": 12,
+    "source_join": 12,
+    "redirect_sanitization": 12,
+    "source_integrity": 24,
+    "released_object_digest": 12,
+    "initial_failure_preserved": 12,
+    "external_link_metadata": 12,
+    "namespace_counts": 12,
+    "global_ids": 12,
+    "exact_anchor": 32051,
+    "anchor_element_target": 32051,
+    "context_unit_ids": 8400,
+    "fact_attributes": 23651,
+    "unique_local_referent": 47302,
+    "no_value_normalization": 23651,
+    "source_count_ledger": 12,
+    "prior_validation_join": 12,
+    "internal_identity": 12,
+    "identity_anchor": 72,
+    "filename_year": 12,
+    "total_bytes": 1,
+    "aggregate_counts": 2,
+    "fiscal_window": 1,
+    "pair_identity_join": 6,
+    "public_metadata_only": 1,
+    "raw_source_unbundled": 12
+  },
+  "check_count": 167808,
+  "failures": [],
+  "cohort": {
+    "listing_files": 179,
+    "ticker_prefixes": 89,
+    "triples": 45,
+    "singletons": 44,
+    "recorded_card_companies": 87,
+    "eligible_groups": 19,
+    "excluded_groups": 70,
+    "fixed_issuer_order": [
+      "PFE",
+      "NFLX",
+      "NVDA",
+      "LLY",
+      "BRK-B",
+      "SLB"
+    ],
+    "files": 12,
+    "logical_attempts": 12,
+    "replacements": 0,
+    "HTTP_200": 12,
+    "bytes": 62730877,
+    "ordinary_Git_objects": 10,
+    "LFS_content_objects": 2
+  },
+  "chronology": {
+    "frozen_at_utc": "2026-10-03T12:04:13.333313+00:00",
+    "capture_started_at_utc": "2026-10-03T12:06:11.472970+00:00",
+    "capture_completed_at_utc": "2026-10-03T12:06:19.323001+00:00",
+    "freeze_preceded_capture_by_seconds": 118.139657,
+    "all_attempts_sequential_and_within_capture": true,
+    "timestamp_limit": "Recorded wall-clock chronology, not an independent trusted timestamp or proof about unrecorded activity."
+  },
+  "source_records": [
+    {
+      "source_path": "original_doc/PFE_2023.html",
+      "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+      "bytes": 5349189,
+      "download_order": 1,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 0.495845,
+      "digest_namespace": "Git blob SHA1",
+      "original_capture_status": "retrieved_exact_released_object",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2023"
+      ],
+      "CIK": [
+        "0000078003"
+      ],
+      "inline_numeric_elements": 3041,
+      "contexts": 1087,
+      "units": 17,
+      "unique_context_and_unit_references": 3041,
+      "anchors_verified": 4145
+    },
+    {
+      "source_path": "original_doc/PFE_2024.html",
+      "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+      "bytes": 5338969,
+      "download_order": 2,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 0.556293,
+      "digest_namespace": "Git blob SHA1",
+      "original_capture_status": "retrieved_exact_released_object",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2024"
+      ],
+      "CIK": [
+        "0000078003"
+      ],
+      "inline_numeric_elements": 2977,
+      "contexts": 1034,
+      "units": 20,
+      "unique_context_and_unit_references": 2977,
+      "anchors_verified": 4031
+    },
+    {
+      "source_path": "original_doc/NFLX_2022.html",
+      "source_sha256": "5bb5f38b1cd1d20d9ef7b3d54eb2ff8884bc77e2deea98672163c9417b6e122f",
+      "bytes": 1965562,
+      "download_order": 3,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 0.503803,
+      "digest_namespace": "Git blob SHA1",
+      "original_capture_status": "retrieved_exact_released_object",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2022"
+      ],
+      "CIK": [
+        "0001065280"
+      ],
+      "inline_numeric_elements": 857,
+      "contexts": 190,
+      "units": 10,
+      "unique_context_and_unit_references": 857,
+      "anchors_verified": 1057
+    },
+    {
+      "source_path": "original_doc/NFLX_2023.html",
+      "source_sha256": "b558cb9ef8f54bf18afb85b580dfe67d23b8776bb6f5c3f08db6704a39d3cf4e",
+      "bytes": 1793612,
+      "download_order": 4,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 0.508543,
+      "digest_namespace": "Git blob SHA1",
+      "original_capture_status": "retrieved_exact_released_object",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2023"
+      ],
+      "CIK": [
+        "0001065280"
+      ],
+      "inline_numeric_elements": 955,
+      "contexts": 230,
+      "units": 10,
+      "unique_context_and_unit_references": 955,
+      "anchors_verified": 1195
+    },
+    {
+      "source_path": "original_doc/NVDA_2022.html",
+      "source_sha256": "7e3c19c27675079dc36571d692b74732c7afb85497249ccc1518c2238d54d47e",
+      "bytes": 2548432,
+      "download_order": 5,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 0.52931,
+      "digest_namespace": "Git blob SHA1",
+      "original_capture_status": "retrieved_exact_released_object",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2022"
+      ],
+      "CIK": [
+        "0001045810"
+      ],
+      "inline_numeric_elements": 1153,
+      "contexts": 293,
+      "units": 6,
+      "unique_context_and_unit_references": 1153,
+      "anchors_verified": 1452
+    },
+    {
+      "source_path": "original_doc/NVDA_2023.html",
+      "source_sha256": "5195c592ab1649c7afdb5ea707d99b895a60eade66396e2f8fc47471221ac56e",
+      "bytes": 2669243,
+      "download_order": 6,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 0.552513,
+      "digest_namespace": "Git blob SHA1",
+      "original_capture_status": "retrieved_exact_released_object",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2023"
+      ],
+      "CIK": [
+        "0001045810"
+      ],
+      "inline_numeric_elements": 1235,
+      "contexts": 294,
+      "units": 6,
+      "unique_context_and_unit_references": 1235,
+      "anchors_verified": 1535
+    },
+    {
+      "source_path": "original_doc/LLY_2023.html",
+      "source_sha256": "c21e3b4925260cafc944f3ff580860b741ad92e46f6b959d99f6dab193b5fc4a",
+      "bytes": 3213508,
+      "download_order": 7,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 0.595785,
+      "digest_namespace": "Git blob SHA1",
+      "original_capture_status": "retrieved_exact_released_object",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2023"
+      ],
+      "CIK": [
+        "0000059478"
+      ],
+      "inline_numeric_elements": 2063,
+      "contexts": 932,
+      "units": 12,
+      "unique_context_and_unit_references": 2063,
+      "anchors_verified": 3007
+    },
+    {
+      "source_path": "original_doc/LLY_2024.html",
+      "source_sha256": "1b0b903bffac393577aa68004a2cbd947e0a3a5c3264caa87e3c6f06463fe351",
+      "bytes": 3200081,
+      "download_order": 8,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 0.50686,
+      "digest_namespace": "Git blob SHA1",
+      "original_capture_status": "retrieved_exact_released_object",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2024"
+      ],
+      "CIK": [
+        "0000059478"
+      ],
+      "inline_numeric_elements": 2092,
+      "contexts": 941,
+      "units": 12,
+      "unique_context_and_unit_references": 2092,
+      "anchors_verified": 3045
+    },
+    {
+      "source_path": "original_doc/BRK-B_2022.html",
+      "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+      "bytes": 12267724,
+      "download_order": 9,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 1.192238,
+      "digest_namespace": "LFS content SHA256",
+      "original_capture_status": "retrieved_integrity_mismatch",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2021"
+      ],
+      "CIK": [
+        "0001067983"
+      ],
+      "inline_numeric_elements": 2905,
+      "contexts": 1039,
+      "units": 12,
+      "unique_context_and_unit_references": 2905,
+      "anchors_verified": 3956
+    },
+    {
+      "source_path": "original_doc/BRK-B_2023.html",
+      "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+      "bytes": 12658122,
+      "download_order": 10,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 1.121424,
+      "digest_namespace": "LFS content SHA256",
+      "original_capture_status": "retrieved_integrity_mismatch",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2022"
+      ],
+      "CIK": [
+        "0001067983"
+      ],
+      "inline_numeric_elements": 2900,
+      "contexts": 1023,
+      "units": 12,
+      "unique_context_and_unit_references": 2900,
+      "anchors_verified": 3935
+    },
+    {
+      "source_path": "original_doc/SLB_2022.html",
+      "source_sha256": "5ab77e70634d3b871d1d9260f806b4c7384791dd50562a74bc40690027be2f1e",
+      "bytes": 6713947,
+      "download_order": 11,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 0.771073,
+      "digest_namespace": "Git blob SHA1",
+      "original_capture_status": "retrieved_exact_released_object",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2022"
+      ],
+      "CIK": [
+        "0000087347"
+      ],
+      "inline_numeric_elements": 1768,
+      "contexts": 620,
+      "units": 8,
+      "unique_context_and_unit_references": 1768,
+      "anchors_verified": 2396
+    },
+    {
+      "source_path": "original_doc/SLB_2023.html",
+      "source_sha256": "c94028b2c0f25b6946700d5dfc39174bc331b097b79f83715cb06ab06f36612a",
+      "bytes": 5012488,
+      "download_order": 12,
+      "logical_attempts": 1,
+      "http_status": 200,
+      "elapsed_seconds": 0.508243,
+      "digest_namespace": "Git blob SHA1",
+      "original_capture_status": "retrieved_exact_released_object",
+      "exact_released_object_verified": true,
+      "fiscal_years": [
+        "2023"
+      ],
+      "CIK": [
+        "0000087347"
+      ],
+      "inline_numeric_elements": 1705,
+      "contexts": 586,
+      "units": 6,
+      "unique_context_and_unit_references": 1705,
+      "anchors_verified": 2297
+    }
+  ],
+  "filename_internal_FY_discrepancies": [
+    {
+      "source_path": "original_doc/BRK-B_2022.html",
+      "filename_year": 2022,
+      "source_internal_fiscal_year": [
+        "2021"
+      ]
+    },
+    {
+      "source_path": "original_doc/BRK-B_2023.html",
+      "filename_year": 2023,
+      "source_internal_fiscal_year": [
+        "2022"
+      ]
+    }
+  ],
+  "inline_counts": {
+    "nonfraction_facts": 23651,
+    "context_unique_local": 23651,
+    "unit_unique_local": 23651,
+    "local_links_and_basic_shapes_resolvable": 23651,
+    "hidden_markup": 95,
+    "no_hidden_marker_rendering_unverified": 23556,
+    "ix_hidden": 95,
+    "xsi_nil": 16,
+    "format_attribute_present": 13666,
+    "scale_attribute_present": 23332,
+    "sign_attribute_present": 2176,
+    "nested_nonfraction_children": 256,
+    "nested_nonfraction_ancestor": 256,
+    "context_with_explicit_dimensions": 15418,
+    "context_with_typed_dimensions": 10,
+    "unit_divide": 493
+  },
+  "inline_other_totals": {
+    "contexts": 8269,
+    "units": 131,
+    "anchors": 32051,
+    "syntactic_repeated_aspect_key_groups": 1255
+  },
+  "preserved_known_issues": [
+    {
+      "issue": "Initial checker used Git blob SHA1 for two Git LFS payloads.",
+      "assessment": "Separate reconciliation correctly uses the content SHA256 already frozen in each LFS listing entry; initial statuses/script/receipt remain unchanged; no retry/replacement."
+    },
+    {
+      "issue": "Berkshire filenames 2022/2023 carry internal FY2021/2022.",
+      "assessment": "Explicitly retained; six successive internal-FY pairs, but only five within actual FY2022-2024. No benchmark admission follows."
+    },
+    {
+      "issue": "Listing has89 filename-prefix groups versus card87 companies.",
+      "assessment": "Explicit metadata discrepancy, not silently equated with legal issuer count."
+    }
+  ],
+  "limitations": [
+    "Thirty seconds is the acquisition socket/network-operation timeout, not an overall per-file deadline; completed recorded attempts all finished below30 seconds.",
+    "Recorded exclusion classifications and hash-order selection are replayed; exhaustive prior exposure, unidentified previews and model pretraining contamination are not certified.",
+    "Released mirror object matches do not authenticate original SEC accession/bytes, first-public time, source completeness, publisher authority or redistribution rights.",
+    "Local unique context/unit references and basic recognizer success do not prove XBRL conformance, valid quantities, transformation support or financial semantics.",
+    "Period child cardinality, nil lexical forms, decimals/precision, nested-property consistency, dimension constraints/defaults, DTS/schema validity, unit semantics, semantic duplicate consistency and calculations remain unvalidated.",
+    "95 numeric elements have hidden markup; absence of hidden markup for23556 elements is not browser-visibility verification. External assets/CSS and display-versus-tag correspondence are untested.",
+    "Metadata can expose issuer-provided structured evidence; future baselines need equivalent access and charged representation tokens. These existing standard tags are not an algorithmic novelty or independent gold.",
+    "No question sufficiency, comparative metric equivalence, benchmark admission, held-out performance or ACL publishability is established. All six source groups are exposed development material."
+  ],
+  "conclusion": "Completed source-feasibility bookkeeping supports12 exact released-object captures and23651 uniquely local context/unit-linked inline numeric elements. It does not admit a benchmark or validate quantities."
+}

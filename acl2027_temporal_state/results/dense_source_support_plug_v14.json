@@ -1,0 +1,739 @@
+{
+  "input_packet": {
+    "path": "/workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/support01/context_support_plug.json",
+    "sha256": "4a4c85c1f52874257849069153a1b608c2b07731e9dbdbe634aa9adb6961751f"
+  },
+  "provenance": {
+    "model_assisted": true,
+    "independent_human_gold": false,
+    "condition_mapping_read": false,
+    "native_answers_read": false,
+    "prior_familiarity": "fresh role without inherited case history; underlying model familiarity uncontrolled"
+  },
+  "records": [
+    {
+      "case_id": "case_034ecb90cb5d7c35",
+      "question_id": "plug_v13_q1",
+      "context_sha256": "f9fde6b9ae6fb8c91eaf0d30e2e25e2bab19af459ca9da45bb403c13c8340154",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "old_loss",
+          "support": "absent",
+          "rationale": "The explicit FY2018 amount is company-attributable net loss of 78,115 thousand, a different measure from common-stockholder net loss of 78,167 thousand. The requested total is absent and is not reconstructed from dividend or equity rows.",
+          "evidence_locators": [
+            "[plug_2019_10k p.64 | span=plug_2019_10k:p064:0-1015 | version=1]",
+            "[plug_2019_10k p.66 | span=plug_2019_10k:p066:0-2354 | version=1]"
+          ]
+        },
+        {
+          "fact_id": "restated_loss",
+          "support": "absent",
+          "rationale": "The explicit restated FY2018 rows give company-attributable net loss of 85,608 thousand and common-stockholder comprehensive loss of 86,270 thousand. Neither is the required common-stockholder net loss of 85,660 thousand; no permitted cross-span alignment supplies that reported total.",
+          "evidence_locators": [
+            "[plug_2020_10k p.141 | span=plug_2020_10k:p141:0-1534 | version=2]",
+            "[plug_2020_10k p.142 | span=plug_2020_10k:p142:0-2504 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "old_basic_eps",
+          "support": "absent",
+          "rationale": "The only displayed basic-and-diluted EPS row belongs to the FY2019 correction discussion and does not establish either requested FY2018 EPS. No cross-span alignment to a FY2018 EPS row is available.",
+          "evidence_locators": [
+            "[plug_2020_10k p.149 | span=plug_2020_10k:p149:1198-1427 | version=2]",
+            "[plug_2020_10k p.149 | span=plug_2020_10k:p149:1428-2001 | version=2]",
+            "[plug_2020_10k p.149 | span=plug_2020_10k:p149:6406-8296 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "restated_basic_eps",
+          "support": "absent",
+          "rationale": "The only displayed basic-and-diluted EPS row belongs to the FY2019 correction discussion and does not establish either requested FY2018 EPS. No cross-span alignment to a FY2018 EPS row is available.",
+          "evidence_locators": [
+            "[plug_2020_10k p.149 | span=plug_2020_10k:p149:1198-1427 | version=2]",
+            "[plug_2020_10k p.149 | span=plug_2020_10k:p149:1428-2001 | version=2]",
+            "[plug_2020_10k p.149 | span=plug_2020_10k:p149:6406-8296 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The source explicitly identifies Plug Power and subsidiaries, FY2018 and restated FY2018 columns, but the supplied rows cover company net loss or comprehensive loss. The requested common-stockholder net-loss and FY2018 EPS bindings are missing; visible headings are not transferred to different measures."
+      },
+      "unit_support": {
+        "support": "partial",
+        "rationale": "Dollar symbols and thousands headings explicitly govern the supplied financial statements. They do not supply the missing requested loss totals or FY2018 per-share rows; units are not inferred from numeric magnitude."
+      },
+      "specific_omissions": [
+        "Previously reported FY2018 common-stockholder net loss of USD 78.167 million.",
+        "Restated FY2018 common-stockholder net loss of USD 85.660 million.",
+        "Reported FY2018 basic loss per share before and after restatement, USD 0.36 and USD 0.39."
+      ]
+    },
+    {
+      "case_id": "case_184f82999e6cab30",
+      "question_id": "plug_v13_q3",
+      "context_sha256": "0db62ad407818df2f354be7d63a0164ea4c2c848594377c5a5381a6fed4a2d43",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "omitted_costs",
+          "support": "absent",
+          "rationale": "The source describes maintenance quality risks, cost-estimation practices and later loss accruals, but does not say that the prior FY2018 estimate omitted relevant costs. No cross-span causal statement supplies the omission.",
+          "evidence_locators": [
+            "[plug_2019_10k p.17 | chunk=plug_2019_10k:p017:c06 | version=1]",
+            "[plug_2020_10k p.67 | chunk=plug_2020_10k:p067:c06 | version=2]",
+            "[plug_2020_10k p.71 | chunk=plug_2020_10k:p071:c03 | version=2]",
+            "[plug_2020_10k p.183 | chunk=plug_2020_10k:p183:c04 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "accrual_consequence",
+          "support": "absent",
+          "rationale": "The source gives the general rule for recording contract losses and 2019/2020 accrual figures, but never connects correcting omitted FY2018 costs to an additional required accrual. Future anticipated losses cannot be substituted for the missing correction consequence.",
+          "evidence_locators": [
+            "[plug_2019_10k p.17 | chunk=plug_2019_10k:p017:c06 | version=1]",
+            "[plug_2020_10k p.67 | chunk=plug_2020_10k:p067:c06 | version=2]",
+            "[plug_2020_10k p.71 | chunk=plug_2020_10k:p071:c03 | version=2]",
+            "[plug_2020_10k p.183 | chunk=plug_2020_10k:p183:c04 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "Extended maintenance contracts and loss accruals are explicitly discussed, but the causal explanation for the FY2018 correction is absent. References to prior years, later accrual balances and future losses cannot establish that specific period and revision."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The two required facts are qualitative, so no monetary unit is required. The displayed dollar amounts concern ancillary or different-period matters and are not used as support."
+      },
+      "specific_omissions": [
+        "Explicit statement that relevant costs were omitted from the prior extended-maintenance-contract estimate.",
+        "Explicit link between including those costs and the additional FY2018 loss accrual."
+      ]
+    },
+    {
+      "case_id": "case_2fb9e7ee18c55108",
+      "question_id": "plug_v13_q3",
+      "context_sha256": "bfb5803946a98a43443c8bc6116818612ae60402aa9e2ce0dac1353c8428cdcb",
+      "support_status": "complete",
+      "required_fact_support": [
+        {
+          "fact_id": "omitted_costs",
+          "support": "supported",
+          "rationale": "The source explicitly states that historical costs, hydrogen-infrastructure service costs and warrant provisions were not all considered in estimating the need for an extended-maintenance-contract loss accrual. This is direct prose support within the supplied passage, not inferred from other spans.",
+          "evidence_locators": [
+            "[plug_2020_10k p.147 | chunk=plug_2020_10k:p147:c01 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "accrual_consequence",
+          "support": "supported",
+          "rationale": "The same supplied passage explicitly says proper inclusion of these costs required additional accruals and identifies the FY2018 loss-accrual provision. The causal and period bindings are local to that passage; no calculation or cross-span reconstruction is needed.",
+          "evidence_locators": [
+            "[plug_2020_10k p.147 | chunk=plug_2020_10k:p147:c01 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "supported",
+        "rationale": "The source explicitly names extended maintenance contracts, the omitted-cost correction and the year ended December 31, 2018. It distinguishes the separate 2019 benefit in the same passage; no filename is used to assign the fiscal year."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "No numerical amount is required. The optional FY2018 provision is explicitly presented in dollar millions in the same passage; the judgment relies on the qualitative explanation."
+      },
+      "specific_omissions": []
+    },
+    {
+      "case_id": "case_36ed19366c36b691",
+      "question_id": "plug_v13_q2",
+      "context_sha256": "074dd44859e9ad87c9bec400eb127f5d048d2c49c5b3bdbd84e80eb654e0bce5",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "unchanged",
+          "support": "absent",
+          "rationale": "The source has an explicit original FY2018 service-revenue row, but the received prior/restated comparison tables cover 2019 interim periods and first-quarter 2020. No supplied restated FY2018 service row or explicit FY2018 zero adjustment permits the required retention comparison.",
+          "evidence_locators": [
+            "[plug_2019_10k p.63 | span=plug_2019_10k:p063:0-2747 | version=1]",
+            "[plug_2020_10k p.164 | span=plug_2020_10k:p164:3357-6245 | version=2]",
+            "[plug_2020_10k p.165 | span=plug_2020_10k:p165:0-3606 | version=2]",
+            "[plug_2020_10k p.166 | span=plug_2020_10k:p166:0-2666 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "amount",
+          "support": "supported",
+          "rationale": "The original consolidated operations statement directly places service revenue of 22,002 under FY2018 and gives a thousands unit heading with dollar-denominated columns. That is the required USD 22.002 million amount in the original report; no cross-span inference or magnitude-based unit assumption is needed.",
+          "evidence_locators": [
+            "[plug_2019_10k p.63 | span=plug_2019_10k:p063:0-2747 | version=1]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The source explicitly supplies Plug Power and subsidiaries, FY2018, and the service-revenue row under net revenue. The matching restated FY2018 row is missing. Other-period unchanged rows cannot establish FY2018 retention."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The original FY2018 service-revenue amount inherits dollars and the thousands multiplier from its own visible table. No unit is borrowed from an unrelated table."
+      },
+      "specific_omissions": [
+        "Restated FY2018 service revenue or a FY2018 prior-versus-restated row explicitly establishing no change."
+      ]
+    },
+    {
+      "case_id": "case_51c6566ca78610bf",
+      "question_id": "plug_v13_q2",
+      "context_sha256": "07e114857f52bf9b3e5b39309f93ef29522035cbc80f22ae901f3aba80823f63",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "unchanged",
+          "support": "absent",
+          "rationale": "The source has an explicit original FY2018 service-revenue row, but the received prior/restated comparison tables cover 2019 interim periods and first-quarter 2020. No supplied restated FY2018 service row or explicit FY2018 zero adjustment permits the required retention comparison.",
+          "evidence_locators": [
+            "[plug_2019_10k p.63 | chunk=plug_2019_10k:p063:c01 | version=1]",
+            "[plug_2020_10k p.164 | chunk=plug_2020_10k:p164:c05 | version=2]",
+            "[plug_2020_10k p.165 | chunk=plug_2020_10k:p165:c01 | version=2]",
+            "[plug_2020_10k p.166 | chunk=plug_2020_10k:p166:c01 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "amount",
+          "support": "supported",
+          "rationale": "The original consolidated operations statement directly places service revenue of 22,002 under FY2018 and gives a thousands unit heading with dollar-denominated columns. That is the required USD 22.002 million amount in the original report; no cross-span inference or magnitude-based unit assumption is needed.",
+          "evidence_locators": [
+            "[plug_2019_10k p.63 | chunk=plug_2019_10k:p063:c01 | version=1]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The source explicitly supplies Plug Power and subsidiaries, FY2018, and the service-revenue row under net revenue. The matching restated FY2018 row is missing. Other-period unchanged rows cannot establish FY2018 retention."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The original FY2018 service-revenue amount inherits dollars and the thousands multiplier from its own visible table. No unit is borrowed from an unrelated table."
+      },
+      "specific_omissions": [
+        "Restated FY2018 service revenue or a FY2018 prior-versus-restated row explicitly establishing no change."
+      ]
+    },
+    {
+      "case_id": "case_5c1ca582fca0e209",
+      "question_id": "plug_v13_q2",
+      "context_sha256": "970500692bec2f40fbc974c2a5647416d6d5ec742ed4b48d5f9d7247e34ff82c",
+      "support_status": "complete",
+      "required_fact_support": [
+        {
+          "fact_id": "unchanged",
+          "support": "supported",
+          "rationale": "The original FY2018 operations table and the explicitly restated FY2018 operations table both report service revenue of 22,002. This uses the frozen reference's permitted cross-report page-pair alignment: matching entity, fiscal year and named revenue row, each with its own visible units. It is not an assumption that an old value survived restatement.",
+          "evidence_locators": [
+            "[plug_2019_10k p.63 | span=plug_2019_10k:p063:0-2747 | version=1]",
+            "[plug_2020_10k p.139 | span=plug_2020_10k:p139:0-2788 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "amount",
+          "support": "supported",
+          "rationale": "Both supplied operations statements explicitly show 22,002 in the FY2018 service-revenue row, with dollar-denominated columns and thousands headings. Each independently supplies USD 22.002 million; the cross-span comparison confirms identical values and does not recompute a missing amount.",
+          "evidence_locators": [
+            "[plug_2019_10k p.63 | span=plug_2019_10k:p063:0-2747 | version=1]",
+            "[plug_2020_10k p.139 | span=plug_2020_10k:p139:0-2788 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "supported",
+        "rationale": "Both operations statements explicitly name Plug Power and subsidiaries and align the service row under net revenue with FY2018; the later statement labels that column as restated. The frozen sufficient page sets allow this matched cross-report comparison."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "Each of the two matching operations tables explicitly supplies dollars and a thousands multiplier. The separate MD&A fragment is not needed as a unit witness."
+      },
+      "specific_omissions": []
+    },
+    {
+      "case_id": "case_633bc274debef708",
+      "question_id": "plug_v13_q4",
+      "context_sha256": "7fcef1c86ebc8a0aa0bc3bf820b31d618fdcf20588a5441225f4d5114cce9e61",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "entity",
+          "support": "absent",
+          "rationale": "The received source uses an unnamed company and consolidated-financial-statement terminology, but no Plug Power name or company-and-subsidiaries heading appears. Cross-span alignment cannot supply the missing entity identification; source IDs remain locators.",
+          "evidence_locators": [
+            "[plug_2019_10k p.81 | chunk=plug_2019_10k:p081:c01 | version=1]",
+            "[plug_2019_10k p.81 | chunk=plug_2019_10k:p081:c02 | version=1]",
+            "[plug_2020_10k p.150 | chunk=plug_2020_10k:p150:c02 | version=2]",
+            "[plug_2020_10k p.195 | chunk=plug_2020_10k:p195:c03 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "result_period",
+          "support": "supported",
+          "rationale": "The received table body explicitly contains dollar-marked 0.39 basic-and-diluted loss per share in the same rightmost column as common-stockholder loss 85,660 and weighted-average shares 218,882,337. The separate supplied EPS-components table explicitly assigns that same numerator-and-denominator pair to restated FY2018 under its year-ended heading; the first fragment also ends with a FY2018 correction-note heading. Support uses this two-quantity cross-span alignment of an existing reported EPS, not calculation of EPS or reconstruction of an absent header. The EPS fragment alone lacks its own year and prior/restated column labels.",
+          "evidence_locators": [
+            "[plug_2020_10k p.150 | chunk=plug_2020_10k:p150:c02 | version=2]",
+            "[plug_2020_10k p.195 | chunk=plug_2020_10k:p195:c03 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "report_period",
+          "support": "absent",
+          "rationale": "The only explicit annual-report fiscal-year reference in the received prose identifies a separate FY2018 report. Other spans show 2020 financial or option data without stating this document's annual-report fiscal year. No source filename or latest table year is treated as report-year evidence.",
+          "evidence_locators": [
+            "[plug_2019_10k p.29 | chunk=plug_2019_10k:p029:c02 | version=1]",
+            "[plug_2020_10k p.195 | chunk=plug_2020_10k:p195:c03 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The FY2018 restated result is supported by aligning the existing EPS column with both matching financial quantities in the explicitly dated EPS-components table, with the FY2018 correction-note heading providing corroboration. This is cross-span evidence rather than a complete header in the EPS fragment. The named consolidated entity and FY2020 annual-report identity remain absent and are not inferred from source IDs."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The target row explicitly labels basic-and-diluted net loss per share and displays dollar-marked 0.39 in parentheses. A thousands multiplier is unnecessary for this per-share value; no aggregate amount or EPS is recomputed."
+      },
+      "specific_omissions": [
+        "Explicit Plug Power name or company-and-subsidiaries identification in the received source text.",
+        "An explicit FY2020 annual-report or Form 10-K fiscal-year statement."
+      ]
+    },
+    {
+      "case_id": "case_68beb38350c67e2b",
+      "question_id": "plug_v13_q1",
+      "context_sha256": "d6d3110cf86a81fd4ff4d8fd26998b88e318b8bad61942fe19c92a822520c5f4",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "old_loss",
+          "support": "absent",
+          "rationale": "The explicit FY2018 amount is company-attributable net loss of 78,115 thousand, a different measure from common-stockholder net loss of 78,167 thousand. The requested total is absent and is not reconstructed from dividend or equity rows.",
+          "evidence_locators": [
+            "[plug_2019_10k p.64 | chunk=plug_2019_10k:p064:c01 | version=1]",
+            "[plug_2019_10k p.66 | chunk=plug_2019_10k:p066:c01 | version=1]"
+          ]
+        },
+        {
+          "fact_id": "restated_loss",
+          "support": "absent",
+          "rationale": "The explicit restated FY2018 rows give company-attributable net loss of 85,608 thousand and common-stockholder comprehensive loss of 86,270 thousand. Neither is the required common-stockholder net loss of 85,660 thousand; no permitted cross-span alignment supplies that reported total.",
+          "evidence_locators": [
+            "[plug_2020_10k p.141 | chunk=plug_2020_10k:p141:c01 | version=2]",
+            "[plug_2020_10k p.142 | chunk=plug_2020_10k:p142:c01 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "old_basic_eps",
+          "support": "absent",
+          "rationale": "The only displayed basic-and-diluted EPS row belongs to the FY2019 correction discussion and does not establish either requested FY2018 EPS. No cross-span alignment to a FY2018 EPS row is available.",
+          "evidence_locators": [
+            "[plug_2020_10k p.149 | chunk=plug_2020_10k:p149:c04 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "restated_basic_eps",
+          "support": "absent",
+          "rationale": "The only displayed basic-and-diluted EPS row belongs to the FY2019 correction discussion and does not establish either requested FY2018 EPS. No cross-span alignment to a FY2018 EPS row is available.",
+          "evidence_locators": [
+            "[plug_2020_10k p.149 | chunk=plug_2020_10k:p149:c04 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The source explicitly identifies Plug Power and subsidiaries, FY2018 and restated FY2018 columns, but the supplied rows cover company net loss or comprehensive loss. The requested common-stockholder net-loss and FY2018 EPS bindings are missing; visible headings are not transferred to different measures."
+      },
+      "unit_support": {
+        "support": "partial",
+        "rationale": "Dollar symbols and thousands headings explicitly govern the supplied financial statements. They do not supply the missing requested loss totals or FY2018 per-share rows; units are not inferred from numeric magnitude."
+      },
+      "specific_omissions": [
+        "Previously reported FY2018 common-stockholder net loss of USD 78.167 million.",
+        "Restated FY2018 common-stockholder net loss of USD 85.660 million.",
+        "Reported FY2018 basic loss per share before and after restatement, USD 0.36 and USD 0.39."
+      ]
+    },
+    {
+      "case_id": "case_7604c206cc7f27cf",
+      "question_id": "plug_v13_q4",
+      "context_sha256": "b092f9a9b8c4e4362b3b03531aaf0323690eacfc9ea2523f2c326bd70f04de88",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "entity",
+          "support": "absent",
+          "rationale": "The source text refers to an unnamed company and to consolidated operations, but contains no Plug Power name or subsidiaries heading binding the requested EPS to that entity. Source identifiers are locators rather than a substitute entity statement; no cross-span entity identification is available.",
+          "evidence_locators": [
+            "[plug_2019_10k p.78 | span=plug_2019_10k:p078:1023-2136 | version=1]",
+            "[plug_2020_10k p.54 | span=plug_2020_10k:p054:0-1073 | version=2]",
+            "[plug_2020_10k p.214 | span=plug_2020_10k:p214:3432-3462 | version=2]",
+            "[plug_2020_10k p.214 | span=plug_2020_10k:p214:3613-4624 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "result_period",
+          "support": "absent",
+          "rationale": "The source explicitly discusses FY2018 tax benefits and company net loss, but contains no USD 0.39 EPS row. Those different measures cannot establish the fiscal year of the requested EPS through cross-span alignment or calculation.",
+          "evidence_locators": [
+            "[plug_2019_10k p.78 | span=plug_2019_10k:p078:1023-2136 | version=1]",
+            "[plug_2020_10k p.54 | span=plug_2020_10k:p054:0-1073 | version=2]",
+            "[plug_2020_10k p.214 | span=plug_2020_10k:p214:3432-3462 | version=2]",
+            "[plug_2020_10k p.214 | span=plug_2020_10k:p214:3613-4624 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "report_period",
+          "support": "absent",
+          "rationale": "No supplied source passage identifies the document as the annual report for FY2020. The presence of 2020 data in financial tables does not establish the report fiscal year, and the source filename is not used as report-period evidence.",
+          "evidence_locators": [
+            "[plug_2019_10k p.78 | span=plug_2019_10k:p078:1023-2136 | version=1]",
+            "[plug_2020_10k p.54 | span=plug_2020_10k:p054:0-1073 | version=2]",
+            "[plug_2020_10k p.214 | span=plug_2020_10k:p214:3432-3462 | version=2]",
+            "[plug_2020_10k p.214 | span=plug_2020_10k:p214:3613-4624 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "absent",
+        "rationale": "None of the three requested bindings is established for the USD 0.39 restated EPS: named consolidated entity, EPS result year, and annual-report year. Dates attached to taxes, financing and equity are different facts and are not transferred."
+      },
+      "unit_support": {
+        "support": "absent",
+        "rationale": "Dollar and thousands units occur for tax and net-loss amounts, but no per-share row containing USD 0.39 is supplied. Those aggregate-money units cannot be borrowed to fill the missing EPS context."
+      },
+      "specific_omissions": [
+        "Explicit Plug Power entity identification connected to the consolidated EPS.",
+        "The reported USD 0.39 basic loss per share and its FY2018 binding.",
+        "An explicit FY2020 annual-report or Form 10-K fiscal-year statement."
+      ]
+    },
+    {
+      "case_id": "case_817ff47e32ad3c61",
+      "question_id": "plug_v13_q3",
+      "context_sha256": "0c8095911524e133f3cba90079862bb142ef8db00a15d6c704bbf445939d9ad7",
+      "support_status": "complete",
+      "required_fact_support": [
+        {
+          "fact_id": "omitted_costs",
+          "support": "supported",
+          "rationale": "The source explicitly states that historical costs, hydrogen-infrastructure service costs and warrant provisions were not all considered in estimating the need for an extended-maintenance-contract loss accrual. This is direct prose support within the supplied passage, not inferred from other spans.",
+          "evidence_locators": [
+            "[plug_2020_10k p.147 | span=plug_2020_10k:p147:0-1151 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "accrual_consequence",
+          "support": "supported",
+          "rationale": "The same supplied passage explicitly says proper inclusion of these costs required additional accruals and identifies the FY2018 loss-accrual provision. The causal and period bindings are local to that passage; no calculation or cross-span reconstruction is needed.",
+          "evidence_locators": [
+            "[plug_2020_10k p.147 | span=plug_2020_10k:p147:0-1151 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "supported",
+        "rationale": "The source explicitly names extended maintenance contracts, the omitted-cost correction and the year ended December 31, 2018. It distinguishes the separate 2019 benefit in the same passage; no filename is used to assign the fiscal year."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "No numerical amount is required. The optional FY2018 provision is explicitly presented in dollar millions in the same passage; the judgment relies on the qualitative explanation."
+      },
+      "specific_omissions": []
+    },
+    {
+      "case_id": "case_af903799398bca59",
+      "question_id": "plug_v13_q4",
+      "context_sha256": "9a6292766c557857964ed5f2cb81ef2a70b856bb2cdddb680764b567979f69b9",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "entity",
+          "support": "absent",
+          "rationale": "The received source uses an unnamed company and consolidated-financial-statement terminology, but no Plug Power name or company-and-subsidiaries heading appears. Cross-span alignment cannot supply the missing entity identification; source IDs remain locators.",
+          "evidence_locators": [
+            "[plug_2019_10k p.81 | span=plug_2019_10k:p081:0-1125 | version=1]",
+            "[plug_2020_10k p.150 | span=plug_2020_10k:p150:134-721 | version=2]",
+            "[plug_2020_10k p.150 | span=plug_2020_10k:p150:2782-5992 | version=2]",
+            "[plug_2020_10k p.195 | span=plug_2020_10k:p195:948-983 | version=2]",
+            "[plug_2020_10k p.195 | span=plug_2020_10k:p195:1833-3918 | version=2]",
+            "[plug_2020_10k p.195 | span=plug_2020_10k:p195:4043-4194 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "result_period",
+          "support": "supported",
+          "rationale": "The supplied FY2018 table-header span explicitly labels the year ended December 31, 2018 and the as-restated column; the other received span from the same table contains the USD 0.39 basic-and-diluted loss-per-share row. Aligning this actually supplied header with its body establishes FY2018 without computing EPS or borrowing an absent header.",
+          "evidence_locators": [
+            "[plug_2020_10k p.150 | span=plug_2020_10k:p150:134-721 | version=2]",
+            "[plug_2020_10k p.150 | span=plug_2020_10k:p150:2782-5992 | version=2]",
+            "[plug_2020_10k p.195 | span=plug_2020_10k:p195:948-983 | version=2]",
+            "[plug_2020_10k p.195 | span=plug_2020_10k:p195:1833-3918 | version=2]",
+            "[plug_2020_10k p.195 | span=plug_2020_10k:p195:4043-4194 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "report_period",
+          "support": "absent",
+          "rationale": "The only explicit annual-report fiscal-year reference in the received prose identifies a separate FY2018 report. Other spans show 2020 financial or option data without stating this document's annual-report fiscal year. No source filename or latest table year is treated as report-year evidence.",
+          "evidence_locators": [
+            "[plug_2019_10k p.29 | span=plug_2019_10k:p029:912-1930 | version=1]",
+            "[plug_2020_10k p.195 | span=plug_2020_10k:p195:948-983 | version=2]",
+            "[plug_2020_10k p.195 | span=plug_2020_10k:p195:1833-3918 | version=2]",
+            "[plug_2020_10k p.195 | span=plug_2020_10k:p195:4043-4194 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The supplied EPS row is relevant to the requested result and has an actually received FY2018/as-restated header. The named consolidated entity and FY2020 annual-report identity are not explicitly supplied; neither is inferred from source IDs."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The target row explicitly labels basic-and-diluted net loss per share and displays dollar-marked 0.39 in parentheses. A thousands multiplier is unnecessary for this per-share value; no aggregate amount or EPS is recomputed."
+      },
+      "specific_omissions": [
+        "Explicit Plug Power name or company-and-subsidiaries identification in the received source text.",
+        "An explicit FY2020 annual-report or Form 10-K fiscal-year statement."
+      ]
+    },
+    {
+      "case_id": "case_b2488db50d786d6a",
+      "question_id": "plug_v13_q3",
+      "context_sha256": "7d45bee226439d7a7082916e360ec7b8cf7d43e78571245e32114db3c3684f3e",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "omitted_costs",
+          "support": "absent",
+          "rationale": "The source describes maintenance quality risks, cost-estimation practices and later loss accruals, but does not say that the prior FY2018 estimate omitted relevant costs. No cross-span causal statement supplies the omission.",
+          "evidence_locators": [
+            "[plug_2019_10k p.17 | span=plug_2019_10k:p017:4485-5149 | version=1]",
+            "[plug_2020_10k p.67 | span=plug_2020_10k:p067:4642-5164 | version=2]",
+            "[plug_2020_10k p.71 | span=plug_2020_10k:p071:1730-2845 | version=2]",
+            "[plug_2020_10k p.183 | span=plug_2020_10k:p183:2850-3969 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "accrual_consequence",
+          "support": "absent",
+          "rationale": "The source gives the general rule for recording contract losses and 2019/2020 accrual figures, but never connects correcting omitted FY2018 costs to an additional required accrual. Future anticipated losses cannot be substituted for the missing correction consequence.",
+          "evidence_locators": [
+            "[plug_2019_10k p.17 | span=plug_2019_10k:p017:4485-5149 | version=1]",
+            "[plug_2020_10k p.67 | span=plug_2020_10k:p067:4642-5164 | version=2]",
+            "[plug_2020_10k p.71 | span=plug_2020_10k:p071:1730-2845 | version=2]",
+            "[plug_2020_10k p.183 | span=plug_2020_10k:p183:2850-3969 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "Extended maintenance contracts and loss accruals are explicitly discussed, but the causal explanation for the FY2018 correction is absent. References to prior years, later accrual balances and future losses cannot establish that specific period and revision."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The two required facts are qualitative, so no monetary unit is required. The displayed dollar amounts concern ancillary or different-period matters and are not used as support."
+      },
+      "specific_omissions": [
+        "Explicit statement that relevant costs were omitted from the prior extended-maintenance-contract estimate.",
+        "Explicit link between including those costs and the additional FY2018 loss accrual."
+      ]
+    },
+    {
+      "case_id": "case_b57bf784bae93b54",
+      "question_id": "plug_v13_q1",
+      "context_sha256": "de481336ef7c3c49021beb220617aba1181ea79897b881793c344a8e90e35f9c",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "old_loss",
+          "support": "absent",
+          "rationale": "The explicit FY2018 amount is company-attributable net loss of 78,115 thousand, a different measure from common-stockholder net loss of 78,167 thousand. The requested total is absent and is not reconstructed from dividend or equity rows.",
+          "evidence_locators": [
+            "[plug_2019_10k p.64 | span=plug_2019_10k:p064:0-1015 | version=1]",
+            "[plug_2019_10k p.66 | span=plug_2019_10k:p066:0-2354 | version=1]"
+          ]
+        },
+        {
+          "fact_id": "restated_loss",
+          "support": "absent",
+          "rationale": "The explicit restated FY2018 rows give company-attributable net loss of 85,608 thousand and common-stockholder comprehensive loss of 86,270 thousand. Neither is the required common-stockholder net loss of 85,660 thousand; no permitted cross-span alignment supplies that reported total.",
+          "evidence_locators": [
+            "[plug_2020_10k p.141 | span=plug_2020_10k:p141:0-1534 | version=2]",
+            "[plug_2020_10k p.142 | span=plug_2020_10k:p142:0-2504 | version=2]",
+            "[plug_2020_10k p.143 | span=plug_2020_10k:p143:0-3133 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "old_basic_eps",
+          "support": "absent",
+          "rationale": "No basic-loss-per-share row or FY2018 EPS amount occurs in the received source. The cash-flow, equity and comprehensive-loss statements cannot supply an absent reported EPS by cross-span alignment or recomputation.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "restated_basic_eps",
+          "support": "absent",
+          "rationale": "No basic-loss-per-share row or FY2018 EPS amount occurs in the received source. The cash-flow, equity and comprehensive-loss statements cannot supply an absent reported EPS by cross-span alignment or recomputation.",
+          "evidence_locators": []
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The source explicitly identifies Plug Power and subsidiaries, FY2018 and restated FY2018 columns, but the supplied rows cover company net loss or comprehensive loss. The requested common-stockholder net-loss and FY2018 EPS bindings are missing; visible headings are not transferred to different measures."
+      },
+      "unit_support": {
+        "support": "partial",
+        "rationale": "Dollar symbols and thousands headings explicitly govern the supplied financial statements. They do not supply the missing requested loss totals or FY2018 per-share rows; units are not inferred from numeric magnitude."
+      },
+      "specific_omissions": [
+        "Previously reported FY2018 common-stockholder net loss of USD 78.167 million.",
+        "Restated FY2018 common-stockholder net loss of USD 85.660 million.",
+        "Reported FY2018 basic loss per share before and after restatement, USD 0.36 and USD 0.39."
+      ]
+    },
+    {
+      "case_id": "case_c933060fc0b9a4eb",
+      "question_id": "plug_v13_q2",
+      "context_sha256": "f438df98f7a111f823f844dd1882024f158cd9ef223fb08224f6172f5f27fd70",
+      "support_status": "complete",
+      "required_fact_support": [
+        {
+          "fact_id": "unchanged",
+          "support": "supported",
+          "rationale": "The original FY2018 operations table and the explicitly restated FY2018 operations table both report service revenue of 22,002. This uses the frozen reference's permitted cross-report page-pair alignment: matching entity, fiscal year and named revenue row, each with its own visible units. It is not an assumption that an old value survived restatement.",
+          "evidence_locators": [
+            "[plug_2019_10k p.63 | chunk=plug_2019_10k:p063:c01 | version=1]",
+            "[plug_2020_10k p.139 | chunk=plug_2020_10k:p139:c01 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "amount",
+          "support": "supported",
+          "rationale": "Both supplied operations statements explicitly show 22,002 in the FY2018 service-revenue row, with dollar-denominated columns and thousands headings. Each independently supplies USD 22.002 million; the cross-span comparison confirms identical values and does not recompute a missing amount.",
+          "evidence_locators": [
+            "[plug_2019_10k p.63 | chunk=plug_2019_10k:p063:c01 | version=1]",
+            "[plug_2020_10k p.139 | chunk=plug_2020_10k:p139:c01 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "supported",
+        "rationale": "Both operations statements explicitly name Plug Power and subsidiaries and align the service row under net revenue with FY2018; the later statement labels that column as restated. The frozen sufficient page sets allow this matched cross-report comparison."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "Each of the two matching operations tables explicitly supplies dollars and a thousands multiplier. The separate MD&A fragment is not needed as a unit witness."
+      },
+      "specific_omissions": []
+    },
+    {
+      "case_id": "case_fc0b119bddf93682",
+      "question_id": "plug_v13_q4",
+      "context_sha256": "68503aabdcad50b210358d4b1f2ce4d014f8031f31af8f3559a65b25fd2d81bc",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "entity",
+          "support": "absent",
+          "rationale": "The source text refers to an unnamed company and to consolidated operations, but contains no Plug Power name or subsidiaries heading binding the requested EPS to that entity. Source identifiers are locators rather than a substitute entity statement; no cross-span entity identification is available.",
+          "evidence_locators": [
+            "[plug_2019_10k p.78 | chunk=plug_2019_10k:p078:c02 | version=1]",
+            "[plug_2020_10k p.54 | chunk=plug_2020_10k:p054:c01 | version=2]",
+            "[plug_2020_10k p.214 | chunk=plug_2020_10k:p214:c04 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "result_period",
+          "support": "absent",
+          "rationale": "The source explicitly discusses FY2018 tax benefits and company net loss, but contains no USD 0.39 EPS row. Those different measures cannot establish the fiscal year of the requested EPS through cross-span alignment or calculation.",
+          "evidence_locators": [
+            "[plug_2019_10k p.78 | chunk=plug_2019_10k:p078:c02 | version=1]",
+            "[plug_2020_10k p.54 | chunk=plug_2020_10k:p054:c01 | version=2]",
+            "[plug_2020_10k p.214 | chunk=plug_2020_10k:p214:c04 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "report_period",
+          "support": "absent",
+          "rationale": "No supplied source passage identifies the document as the annual report for FY2020. The presence of 2020 data in financial tables does not establish the report fiscal year, and the source filename is not used as report-period evidence.",
+          "evidence_locators": [
+            "[plug_2019_10k p.78 | chunk=plug_2019_10k:p078:c02 | version=1]",
+            "[plug_2020_10k p.54 | chunk=plug_2020_10k:p054:c01 | version=2]",
+            "[plug_2020_10k p.214 | chunk=plug_2020_10k:p214:c04 | version=2]"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "absent",
+        "rationale": "None of the three requested bindings is established for the USD 0.39 restated EPS: named consolidated entity, EPS result year, and annual-report year. Dates attached to taxes, financing and equity are different facts and are not transferred."
+      },
+      "unit_support": {
+        "support": "absent",
+        "rationale": "Dollar and thousands units occur for tax and net-loss amounts, but no per-share row containing USD 0.39 is supplied. Those aggregate-money units cannot be borrowed to fill the missing EPS context."
+      },
+      "specific_omissions": [
+        "Explicit Plug Power entity identification connected to the consolidated EPS.",
+        "The reported USD 0.39 basic loss per share and its FY2018 binding.",
+        "An explicit FY2020 annual-report or Form 10-K fiscal-year statement."
+      ]
+    },
+    {
+      "case_id": "case_ff209ce4074ec4dc",
+      "question_id": "plug_v13_q1",
+      "context_sha256": "64da427b2ec71831ed5eec3ad4f7e3bb5c323a0e726be076dfe520a797b3850a",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "old_loss",
+          "support": "absent",
+          "rationale": "The explicit FY2018 amount is company-attributable net loss of 78,115 thousand, a different measure from common-stockholder net loss of 78,167 thousand. The requested total is absent and is not reconstructed from dividend or equity rows.",
+          "evidence_locators": [
+            "[plug_2019_10k p.64 | chunk=plug_2019_10k:p064:c01 | version=1]",
+            "[plug_2019_10k p.66 | chunk=plug_2019_10k:p066:c01 | version=1]"
+          ]
+        },
+        {
+          "fact_id": "restated_loss",
+          "support": "absent",
+          "rationale": "The explicit restated FY2018 rows give company-attributable net loss of 85,608 thousand and common-stockholder comprehensive loss of 86,270 thousand. Neither is the required common-stockholder net loss of 85,660 thousand; no permitted cross-span alignment supplies that reported total.",
+          "evidence_locators": [
+            "[plug_2020_10k p.141 | chunk=plug_2020_10k:p141:c01 | version=2]",
+            "[plug_2020_10k p.142 | chunk=plug_2020_10k:p142:c01 | version=2]",
+            "[plug_2020_10k p.143 | chunk=plug_2020_10k:p143:c01 | version=2]"
+          ]
+        },
+        {
+          "fact_id": "old_basic_eps",
+          "support": "absent",
+          "rationale": "No basic-loss-per-share row or FY2018 EPS amount occurs in the received source. The cash-flow, equity and comprehensive-loss statements cannot supply an absent reported EPS by cross-span alignment or recomputation.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "restated_basic_eps",
+          "support": "absent",
+          "rationale": "No basic-loss-per-share row or FY2018 EPS amount occurs in the received source. The cash-flow, equity and comprehensive-loss statements cannot supply an absent reported EPS by cross-span alignment or recomputation.",
+          "evidence_locators": []
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The source explicitly identifies Plug Power and subsidiaries, FY2018 and restated FY2018 columns, but the supplied rows cover company net loss or comprehensive loss. The requested common-stockholder net-loss and FY2018 EPS bindings are missing; visible headings are not transferred to different measures."
+      },
+      "unit_support": {
+        "support": "partial",
+        "rationale": "Dollar symbols and thousands headings explicitly govern the supplied financial statements. They do not supply the missing requested loss totals or FY2018 per-share rows; units are not inferred from numeric magnitude."
+      },
+      "specific_omissions": [
+        "Previously reported FY2018 common-stockholder net loss of USD 78.167 million.",
+        "Restated FY2018 common-stockholder net loss of USD 85.660 million.",
+        "Reported FY2018 basic loss per share before and after restatement, USD 0.36 and USD 0.39."
+      ]
+    }
+  ]
+}

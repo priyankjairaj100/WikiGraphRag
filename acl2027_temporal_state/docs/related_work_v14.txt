@@ -1,0 +1,220 @@
+Evidence retrieval and comparison: primary-source audit v0.14
+Checked 3 October 2026; six local search queries plus two supplied primary links
+
+Research decision
+
+Treat improved structural retrieval and a competent reader as the next
+baseline, not as a newly established contribution. The nearest additional
+work already retrieves missing sides of financial comparisons, predicts
+structured evidence gaps, selects verbatim evidence and judges sufficiency
+before answering. A graph, missing-slot controller or header-preserving
+chunker by itself would not distinguish this project.
+
+The candidate worth testing is more specific: retrieving evidence that
+distinguishes competing interpretations of the quantities being compared,
+while keeping every selected quantity attached to its actual source scope.
+The operative contrast is not merely whether both numbers were retrieved,
+but whether the available evidence warrants the requested comparison. This
+is a falsifiable proposal; novelty and empirical benefit remain unestablished.
+
+The two v0.13 literature notes were read first. Their version-aware,
+scope-governance, table-structure and TIDE findings still apply. They are
+not rewritten here. This pass adds six inspected primary manuscripts;
+one closer-looking lead remains inaccessible. No evaluation corpus, question,
+reference answer or native output was added or modified by this lookup.
+
+Nearest additional threats
+
+1. Choe, Kim and Jung, HiREC, arXiv v3 dated 6 November 2025.
+   https://arxiv.org/html/2505.20368v3
+   Section 4 retrieves documents using distinguishing company/period
+   information, then reranks passages with a table-adapted model. It filters
+   evidence, checks answerability and generates complementary queries for
+   missing information. Cross-company and cross-period numeric comparisons
+   are explicit motivation. This directly covers the idea of retrieving
+   a missing side of a comparison. Required comparator: a hierarchy plus
+   generic answerability/complementary-query loop under our reader and
+   resource limits. An adaptation must be labeled as such, not as a faithful
+   reproduction unless its actual released procedure is reproduced.
+
+2. Li et al., S2G-RAG, ACL, July 2026.
+   https://aclanthology.org/2026.acl-long.1185.pdf
+   Section 3 predicts sufficiency and structured gaps with target, slot,
+   category and description fields. Gaps drive later queries. A pointer-only
+   extractor retains original sentences, including disambiguating context.
+   The judge is trained from execution traces and separated from generation.
+   Thus structured missing slots, iterative stopping and source pointers
+   are already mechanisms, not an open novelty claim. Required comparator:
+   generic gap-directed retrieval with the same evidence representation,
+   reader and call/token limits as the proposed specialized controller.
+
+3. Chen, Hua and Xiao, RINSE, arXiv v1 dated 27 September 2026.
+   https://arxiv.org/html/2609.37469v1
+   Sections 3-4 judge question/evidence sufficiency without generating an
+   answer and combine local question coverage, answer-span and cross-passage
+   signals. Their paired tests audit shortcuts from passage count, lexical
+   overlap, question wording and evidence order. This covers pre-generation
+   sufficiency and cautions against easy missing-header negatives. Required
+   comparator: a general sufficiency scorer or adequately pinned context-only
+   judge. Any new attachment test must control obvious surface cues and
+   separately report naturally retrieved failures and authored stress cases.
+
+4. Wang, Wang and Chen, FinLongDocQA/FinLongDocAgent, arXiv v1,
+   4 April 2026. https://arxiv.org/html/2604.03664v1
+   Sections 3-4 preserve report pages and use expansion, solving and evaluation
+   roles to collect cross-table numerical components. Evaluation checks
+   missing components and account matches, then feeds them into retrieval.
+   The introduction identifies value extraction, formulas and mixed units
+   as distinct difficulties. This blocks a novelty claim for financial
+   component completion or retrieval-plus-verification alone. Our narrower
+   target must concern warranted cross-version attribution, beyond merely
+   finding operands and computing an answer.
+
+5. Kim et al., Tree of Clarifications (ToC), EMNLP, December 2023.
+   https://aclanthology.org/2023.emnlp-main.63.pdf
+   Section 3 recursively generates disambiguated question/answer nodes,
+   reranks passages per query and prunes nodes against the original
+   question's scope. It then answers across valid interpretations. Scope
+   checking, multiple interpretations and retrieval-guided clarification
+   therefore are prior work. Its inspected objective covers valid question
+   interpretations; our proposed acquisition target separates incompatible
+   source attachments for a specified comparison. This distinction needs
+   testing against budget-matched enumeration, reranking and pruning, with
+   identical initial candidate hypotheses. Renaming ambiguity is insufficient.
+
+6. Gao et al., REFUEL, ACL-IJCNLP, August 2021.
+   https://aclanthology.org/2021.acl-long.253.pdf
+   Section 2 fuses retrieved evidence to predict answers and disambiguated
+   questions. Round-trip prediction discovers missed interpretations using
+   the same retrieved passage pool; conditional answer probabilities filter
+   candidates. Answer partitions and iterative disambiguation are thus
+   established. A possible distinction is selecting new source witnesses to
+   reject wrong attachments, rather than expanding valid interpretations
+   over an existing pool. Test this by holding the candidate pool and
+   hypothesis generation fixed and ablating witness acquisition separately.
+
+Unresolved lead and search limitations
+
+HC-RAG, arXiv:2608.12335, surfaced as a potentially direct financial evidence
+graph/comparison-routing lead. Its HTML-v1, abstract and PDF opens all failed
+with tool-level Internal Error. The search record also supplied a date that
+does not align with the identifier month; no publication date, method details
+or result are accepted from that record. Resolve the primary source before
+any future novelty claim. It is excluded from the verified bibliography.
+
+The six-query pass returned irrelevant results for some long queries despite
+domain preferences. Only inspected primary sources inform the comparisons
+above. The audit does not establish that an identical proposed mechanism is
+absent from other literature. Several related leads were not pursued; query
+recency filters are not a guarantee of exhaustive coverage. The two classic
+ambiguity papers were primary links supplied by the coordinating agent and
+opened directly after the six local queries; the count is not a claim about
+all searches performed by the project. A supplied lead called Controllable
+Evidence Selection in Retrieval-Augmented QA was not verified and contributes
+no accepted claims or bibliography entry.
+
+Proposed mechanism to test, not an implemented or validated method
+
+1. Build the conventional structural baseline first. A source unit retains
+   its table/section identity, row and column labels, unit/scale, period,
+   footnotes and explicit continuation links. Every attachment points to
+   actual source spans. Ambiguous attachments remain unresolved. This
+   structure is an input requirement and baseline feature, not our novelty.
+
+2. Parse the requested comparison into explicit obligations. Depending on
+   the question, these can include two reported quantities, their reporting
+   versions, metric definitions, target periods, population/inclusion rules
+   or an explicit correction statement. Do not demand every conceivable
+   field for every question. The parser is fallible and must be evaluated;
+   reference obligations and gold scope labels cannot enter inference.
+
+3. Maintain candidate interpretations, not a single guessed binding. For
+   example, a value can refer to either a prior-year column or a restatement
+   column; a percentage can use a changed denominator. Label each required
+   binding as supported, contradicted or unresolved, with source pointers.
+   A descriptive report of two differently scoped results can be legitimate;
+   it must not become an unsupported assertion that they estimate the same
+   thing or that their difference measures the effect of a correction.
+
+4. Retrieve a distinguishing witness for the highest-priority unresolved
+   binding: the actual column heading, unit exception, population statement,
+   continuation caption or revision explanation. Select actions by expected
+   reduction of unresolved comparison obligations per charged token/call,
+   using a predeclared policy. A cheap first implementation can use fixed
+   typed priorities; do not call this optimal information gain. Generic
+   missing-slot retrieval must have the same opportunity to fetch these spans.
+
+5. Pack whole required evidence bundles under the shared input cap. A number
+   whose interpretation depends on a header cannot retain the number while
+   dropping that header merely to fit. Charge every copied source word,
+   label and instruction. When a bundle does not fit, record the exclusion
+   or return a scoped partial answer/abstention; no invisible free metadata.
+   These records are auditable support judgments, not formal correctness
+   proofs. An extraction mistake can still invalidate the whole comparison.
+
+The specific hypothesis is that choosing evidence to resolve competing
+bindings, rather than choosing evidence only for topical relevance or generic
+answerability, lowers unsupported comparison claims at matched resource
+limits without losing supported answers. All components resemble existing
+work; only a demonstrated residual benefit and a precise analysis could
+justify a distinct contribution. A null result remains a useful decision.
+
+Minimum discriminating comparisons and ablations
+
+A. Structural baseline: hybrid retrieval and reranking with source-faithful
+   table/section context and ordinary version/metadata filters. This tests
+   whether conventional retrieval already resolves the observed failure.
+B. Generic active baseline: the same representation with a HiREC- or
+   S2G-style gap loop and a general sufficiency judge. Hold reader, query
+   access, maximum turns and source-selection permissions fixed.
+C. Remove comparison-specific obligations while retaining closure and active
+   retrieval. This isolates specialization from better structure or more work.
+D. Keep the obligation state but choose next evidence by relevance or generic
+   gaps instead of a distinguishing-binding policy. This tests the proposed
+   action selection itself.
+E. Keep retrieval fixed and compare complete support bundles with ordinary
+   packing under the same token cap. Report displaced facts and attachment
+   mistakes; do not add gold headers only to the proposed condition.
+F. Separate version membership, unit/period attachment and population/metric
+   compatibility. Ordinary version filtering may solve one without solving
+   the others. Evaluate their interactions rather than renaming all failures.
+G. Cross reader and representation factors on the development diagnostic:
+   old/new retrieval under the same stronger reader, and old/new reader on
+   the same contexts. This prevents simultaneous upgrades from disguising
+   which change helped. The old eight questions remain development-only.
+H. Add an interpretation-enumeration comparator inspired by ToC/REFUEL, with
+   the same initial hypotheses, source candidates and verifier budget. Keep
+   its scope pruning and evidence reranking; vary only whether the selector
+   prioritizes separation of incompatible source bindings. Check candidate
+   proposal recall independently so better hypotheses cannot masquerade as
+   better evidence selection. These are controlled adaptations, not faithful
+   reproductions unless all original procedures are actually implemented.
+
+Evaluation and stopping rule
+
+Use a pinned reader with independently checked competence on complete tables
+and scope distinctions. All methods share the maximum final-input budget;
+report actual token use, cumulative retrieval/controller/generator costs and
+latency separately. Iterative calls are not free. Include a larger-context
+structural baseline on a clearly labeled cost/performance curve so a tight
+budget does not manufacture a win.
+
+Review new held-out histories and comparison references before predictions,
+with independent annotation where feasible and an explicit unknown outcome.
+Score numerical sign/scale, source-attachment correctness, relation to the
+queried scope, citation support and abstention separately. The main target
+should combine supported-answer coverage with the rate of false comparison
+claims; withholding all answers is not success. If using constructed
+attachment substitutions, preserve or balance length, entity names, numbers
+and lexical overlap, and report those tests separately from natural cases.
+
+Stop the method claim if conventional structural retrieval plus a competent
+reader works, if a general gap controller matches the specialized one, if
+gains disappear when tokens/calls are charged, or if only reference-supplied
+scope/attachments make the method work. Also stop if real histories cannot
+support reliable comparison labels. Never select the proposed mechanism
+because it happens to fix the two already-known histories.
+
+This audit recommends an experiment, not ACL 2027 acceptance, publishability,
+novelty certification, or positive results. No compared method was executed.
+The machine-readable search trail and bibliography are adjacent v14 artifacts.

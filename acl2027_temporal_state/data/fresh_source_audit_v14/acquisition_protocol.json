@@ -1,0 +1,261 @@
+{
+  "schema_version": "fresh_source_acquisition_protocol_v14",
+  "frozen_at_utc": "2026-10-03T12:04:13.333313+00:00",
+  "status": "frozen before any of these twelve source bodies are downloaded or inspected",
+  "purpose": "Six-group source-only development feasibility; no QA/reference/program access, model evaluation or benchmark admission.",
+  "proposal_relation": "Bounded authorized action supersedes only the eight-group/two-attempt immediate acquisition idea in fresh_history_protocol_proposal.json; the broader evaluation design and numerical gates remain unexecuted proposals.",
+  "dataset_repo": "Anonymous-Team-HC-RAG/Multi-doc-2025",
+  "revision": "06387eff2b66def7a391f0bec8820b461339dd46",
+  "observed_source_directory_upload_commit": "759a5adea79c9c82a7a52424bab290682c3cb521",
+  "listing_url": "https://huggingface.co/api/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/tree/06387eff2b66def7a391f0bec8820b461339dd46/original_doc?recursive=false&expand=false&limit=1000",
+  "listing_count": 179,
+  "distinct_filename_ticker_count": 89,
+  "dataset_card_reported_companies": 87,
+  "company_count_discrepancy": "179 source files have 89 distinct ticker prefixes (45 triples and 44 singletons), whereas the dataset card reports 87 companies. No silent reconciliation or source-identity inference.",
+  "listing_pagination_link": null,
+  "source_listing_sha256": "d09ce256676a038c8ebee3c03eb3d3c3de34c8f4461ae18036bda7786e6727e1",
+  "exclusion_ledger_sha256": "10811840d345d0d1e11563275d970404af48c305e524bebc688be54dcfe98a8b",
+  "selection_seed": "WikiGraphRag-source-audit-v14-20261003",
+  "selection_rule": "Restrict ticker_year HTML to consecutive years in 2022-2024, remove every identifiable prior/preview/supported-alias entity, sort issuer IDs by SHA256(UTF8(seed+'|'+issuer_id)), choose first six. Within issuer sort consecutive pairs by SHA256(UTF8(seed+'|pair|'+issuer_id+'|'+earlier_path+'|'+later_path)), choose first. Download issuer order then earlier/later year. Hash strings use literal vertical bars and case-sensitive released ticker spelling. No answer/scope/difficulty/size selection.",
+  "canonicalization_limit": "Released ticker is the source-listing issuer ID; obvious prior corporate aliases are mapped in the ledger. SEC CIK and actual issuer identities remain unverified until source-only identity checks. No contents-based reselection.",
+  "selected": [
+    {
+      "selection_rank": 1,
+      "issuer_id": "PFE",
+      "issuer_order_sha256": "491c5d85035ed0ab3a4868e069a648b7fa9580b939f568a9f78347541d085ceb",
+      "years": [
+        2023,
+        2024
+      ],
+      "paths": [
+        "original_doc/PFE_2023.html",
+        "original_doc/PFE_2024.html"
+      ],
+      "pair_order_sha256": "7d9c47052ff59e34a704928473771e7bfc371070d5a19c1dd0b26852fe262599",
+      "files": [
+        {
+          "type": "file",
+          "oid": "2c61c3f7d49de18fa19dcc28874d5733617314b1",
+          "size": 5349189,
+          "path": "original_doc/PFE_2023.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/PFE_2023.html",
+          "download_order": 1
+        },
+        {
+          "type": "file",
+          "oid": "3f030f2bb82b8f08617e6a25c525bbca4e64f977",
+          "size": 5338969,
+          "path": "original_doc/PFE_2024.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/PFE_2024.html",
+          "download_order": 2
+        }
+      ]
+    },
+    {
+      "selection_rank": 2,
+      "issuer_id": "NFLX",
+      "issuer_order_sha256": "548b4900307c0c2e9ca1f92dd268f2fd8e47010e5a6420e3049bceb9b360e266",
+      "years": [
+        2022,
+        2023
+      ],
+      "paths": [
+        "original_doc/NFLX_2022.html",
+        "original_doc/NFLX_2023.html"
+      ],
+      "pair_order_sha256": "4f2e930d1022d240e8616ac76f43c29b468019fa6cddb20d9c61210cb5f0e108",
+      "files": [
+        {
+          "type": "file",
+          "oid": "c91abe85fad58ab6f5d797bcf4b58fdb859d004d",
+          "size": 1965562,
+          "path": "original_doc/NFLX_2022.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/NFLX_2022.html",
+          "download_order": 3
+        },
+        {
+          "type": "file",
+          "oid": "97b6f92eb47a66c1d7d36f2c9bd407cf905920bf",
+          "size": 1793612,
+          "path": "original_doc/NFLX_2023.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/NFLX_2023.html",
+          "download_order": 4
+        }
+      ]
+    },
+    {
+      "selection_rank": 3,
+      "issuer_id": "NVDA",
+      "issuer_order_sha256": "567e8d054bd6bbb470130df2d2a32e61aa960ebc59d56c94c67585f6952dd271",
+      "years": [
+        2022,
+        2023
+      ],
+      "paths": [
+        "original_doc/NVDA_2022.html",
+        "original_doc/NVDA_2023.html"
+      ],
+      "pair_order_sha256": "413d8dbec75c741ae19203abc8fc4b9066ded9fb390b44657f7603dc240f8e65",
+      "files": [
+        {
+          "type": "file",
+          "oid": "7021b356440787f8216e5a13ea22150fd1dfa6d5",
+          "size": 2548432,
+          "path": "original_doc/NVDA_2022.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/NVDA_2022.html",
+          "download_order": 5
+        },
+        {
+          "type": "file",
+          "oid": "3da22108b2e3373a8151124013166a3774f3184b",
+          "size": 2669243,
+          "path": "original_doc/NVDA_2023.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/NVDA_2023.html",
+          "download_order": 6
+        }
+      ]
+    },
+    {
+      "selection_rank": 4,
+      "issuer_id": "LLY",
+      "issuer_order_sha256": "5a778719c47ee59a6ffa690b61c4ddf40f4a3ca2f6135953565fb7324f7d1b6a",
+      "years": [
+        2023,
+        2024
+      ],
+      "paths": [
+        "original_doc/LLY_2023.html",
+        "original_doc/LLY_2024.html"
+      ],
+      "pair_order_sha256": "5dbae7fd30f2874be38025080380770985b15e6ffbaec3492d73a43000c3aa52",
+      "files": [
+        {
+          "type": "file",
+          "oid": "dde7696490c86098c4ad7cbaeeacf4684eb8f53f",
+          "size": 3213508,
+          "path": "original_doc/LLY_2023.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/LLY_2023.html",
+          "download_order": 7
+        },
+        {
+          "type": "file",
+          "oid": "6813a64811adb5a5eec9e8f83ae77614a9e06aa0",
+          "size": 3200081,
+          "path": "original_doc/LLY_2024.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/LLY_2024.html",
+          "download_order": 8
+        }
+      ]
+    },
+    {
+      "selection_rank": 5,
+      "issuer_id": "BRK-B",
+      "issuer_order_sha256": "6381532b3631c0be02cae3d0b33ccace44afdf1dc7237b3727708fe684cef99c",
+      "years": [
+        2022,
+        2023
+      ],
+      "paths": [
+        "original_doc/BRK-B_2022.html",
+        "original_doc/BRK-B_2023.html"
+      ],
+      "pair_order_sha256": "24463c0af23d34966af8e56f90a2aa62f4a19488173e86a1401e225b70c71181",
+      "files": [
+        {
+          "type": "file",
+          "oid": "77ab2ff4e0b8d1d06d82647bbd48e0c86d5fdd3a",
+          "size": 12267724,
+          "lfs": {
+            "oid": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+            "size": 12267724,
+            "pointerSize": 133
+          },
+          "xetHash": "24b9af2332d57d04137296c01a282a30372386e31ed3304e2c19426dd50d9f69",
+          "path": "original_doc/BRK-B_2022.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/BRK-B_2022.html",
+          "download_order": 9
+        },
+        {
+          "type": "file",
+          "oid": "6c5af552c54d38f62871357cd94ef7f135d839a8",
+          "size": 12658122,
+          "lfs": {
+            "oid": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+            "size": 12658122,
+            "pointerSize": 133
+          },
+          "xetHash": "8c81d425d647c9797cfecab59a0d5b480eb22a3f77570f20b88bd167c1801759",
+          "path": "original_doc/BRK-B_2023.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/BRK-B_2023.html",
+          "download_order": 10
+        }
+      ]
+    },
+    {
+      "selection_rank": 6,
+      "issuer_id": "SLB",
+      "issuer_order_sha256": "63fc280cfcddc68c4fb77fc7e514b15019a555f1d1d50204c953f94413436689",
+      "years": [
+        2022,
+        2023
+      ],
+      "paths": [
+        "original_doc/SLB_2022.html",
+        "original_doc/SLB_2023.html"
+      ],
+      "pair_order_sha256": "0340e05da4485323a35917cee26a67f961b2ab78017b017ac7a9250c968c3b83",
+      "files": [
+        {
+          "type": "file",
+          "oid": "75c928d6cd73ea8720a3d4a4924db3efa5e9a301",
+          "size": 6713947,
+          "path": "original_doc/SLB_2022.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/SLB_2022.html",
+          "download_order": 11
+        },
+        {
+          "type": "file",
+          "oid": "afc3dfb8b34f4027daa785431c9b867a96e2f482",
+          "size": 5012488,
+          "path": "original_doc/SLB_2023.html",
+          "source_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/SLB_2023.html",
+          "download_order": 12
+        }
+      ]
+    }
+  ],
+  "download_policy": {
+    "logical_attempts_per_file": 1,
+    "redirects_allowed": true,
+    "timeout_seconds_per_network_operation": 30,
+    "max_bytes_per_file": 20971520,
+    "max_total_downloaded_body_bytes": 104857600,
+    "replacement_on_failure": false,
+    "oversize_policy": "Use advertised Content-Length when available; otherwise stop at cap and retain partial receipt. Failures/oversize/total-budget skips remain in the 12-file denominator. No retries or replacement issuers.",
+    "integrity": "Record HTTP status, type, observed bytes, SHA256 and expected listing size/git blob OID match. A byte match certifies this released object only, not publisher identity, document completeness or faithful extraction."
+  },
+  "source_storage": "External tmp/fresh_source_audit_v14/source_files only; no full source bytes in repository.",
+  "public_release": "Pinned URLs, source filenames, inventory/selection/exclusion metadata, retrieval receipts/hashes and scripts only. Dataset CC BY 4.0 label does not resolve underlying filing redistribution rights.",
+  "allowed_followup": "Structure-only inventory and issuer/form/report-period/source provenance inspection; no new question/reference creation or QA/program access in this increment.",
+  "admission_guardrails": [
+    "Transport success is not benchmark admission.",
+    "Successive annual filings are not automatically revisions of the same assertion.",
+    "Source host is a dataset mirror; original SEC/publisher correspondence is a separate check.",
+    "Historical first-public availability is unresolved.",
+    "All acquired groups become exposed development data; never call this cohort held out.",
+    "True pair characterization, extraction fidelity and comparison-answer sufficiency remain separate later decisions.",
+    "Source-only model-assisted review is not independent human annotation."
+  ],
+  "pre_freeze_status": {
+    "source_bodies_inspected": 0,
+    "source_bodies_downloaded": 0,
+    "native_v14_outputs_inspected": 0,
+    "new_QA_created": 0
+  },
+  "metadata_access_record": [
+    "Metadata-only default-sandbox HTTP denied by network policy; no bytes returned.",
+    "Approved public pinned-tree API retrieval succeeded; 179 items and no Link pagination header.",
+    "Initial offline assertion expected card company count 87 and stopped before writing artifacts; actual filename-prefix count 89 was explicitly recorded before freezing.",
+    "Earlier helper partial tree view and failed API attempts preserved in discussion; full pinned listing now replaces partial coverage for selection, without changing seed."
+  ]
+}

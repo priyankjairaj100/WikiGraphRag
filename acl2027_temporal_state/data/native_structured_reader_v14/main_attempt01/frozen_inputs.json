@@ -1,0 +1,244 @@
+{
+  "schema_version": "native_structured_reader_freeze_v0.14",
+  "created_unix_seconds": 1791026867.4535468,
+  "completion_calls_at_freeze": 0,
+  "config": {
+    "schema_version": "native_structured_reader_config_v0.14",
+    "batch_id": "main_v14",
+    "expected_requests": 32,
+    "maximum_context_tokens": 4096,
+    "maximum_input_tokens": 3500,
+    "maximum_generated_tokens": 256,
+    "port": 18142,
+    "per_request_timeout_seconds": 900,
+    "system_prompt": "You are a careful document reader. Answer the question using only the supplied source excerpts. Distinguish what each document version says and preserve the relevant entity, reporting period, measure and selected sample. Do not recompute quantities or use outside knowledge. If the excerpts do not establish a requested fact, say so. Give a concise answer of at most 120 words, with supporting citations in the form [document_id p.N]. Use ordinary prose, not JSON.",
+    "model": {
+      "path": "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/assets/Qwen3.5-4B-Q5_K_M.gguf",
+      "repo": "unsloth/Qwen3.5-4B-GGUF",
+      "revision": "e87f176479d0855a907a41277aca2f8ee7a09523",
+      "bytes": 3143656608,
+      "sha256": "8814232b85594dcd46c50e5b8b29324a7efe9e746edbe8a3d1df3d3fce7aad39"
+    },
+    "runtime": {
+      "directory": "/workspace/scratch/bdef663e3dfc/tmp/local_backend_v09/runtime/llama-b11146",
+      "base_config": "configs/model_backend_v09.json",
+      "base_config_sha256": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802"
+    }
+  },
+  "parameters": {
+    "n_predict": 256,
+    "temperature": -1.0,
+    "seed": 7,
+    "n_probs": 0,
+    "post_sampling_probs": false,
+    "cache_prompt": false,
+    "return_tokens": true,
+    "stream": false,
+    "repeat_penalty": 1.0,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "logit_bias": [],
+    "samplers": [
+      "temperature"
+    ],
+    "grammar": "",
+    "stop": [],
+    "ignore_eos": false
+  },
+  "request_sha256": "39dc2f64ca6eaa739166a414ccee377580a62e3d8d34569288f9b073550d6bc1",
+  "request_bytes": 272645,
+  "protocol_sha256": "d890c084785ea678812488be3c3f4a08dcd9b72361c38f076144126d3e9de920",
+  "reference_review_sha256": "1b259b9b467947bd68864674b5136d9226d713eb3f2c85e285e396b0b6d869dc",
+  "reference_review_supplied_to_model": false,
+  "source_hashes": {
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/native_structured_reader_v14.py": "b6993e1113a88e16e00ddb19cb470986eff5e8dbd4e6ce76899e82910eb263bd",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/larger_scorer_v09.py": "67b389f5fe8a87493e245f858607252cb72030f128215a3871db4882303e0dea",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/local_backend_v07.py": "c63acf150c86c09aca24a53ca9892170385de84e84d7d69308212d71a23260b7",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/fetch_local_backend_v07.py": "b2105c02be04cde9d14e5ea126762d8fdb929b0ad525e453edb1bd60a4cf2f29",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/native_paired_reader_v13.py": "ed238022c4fc8586f41c7ec7ee94b7c65e8b4eb9cd274c6954576a825afbf9eb",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/configs/model_backend_v09.json": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/configs/structured_reader_main_v14.json": "16c2d6f9868c3d4adafd8e2a33bfd396a5caec9db05f79a9eca3717fb8076a58",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/structured_reader_v14/main_execution_protocol.json": "d890c084785ea678812488be3c3f4a08dcd9b72361c38f076144126d3e9de920",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/paired_reference_review_v13.json": "1b259b9b467947bd68864674b5136d9226d713eb3f2c85e285e396b0b6d869dc"
+  },
+  "asset_binding": {
+    "config_sha256": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "selected_model": {
+      "path": "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/assets/Qwen3.5-4B-Q5_K_M.gguf",
+      "repo": "unsloth/Qwen3.5-4B-GGUF",
+      "revision": "e87f176479d0855a907a41277aca2f8ee7a09523",
+      "bytes": 3143656608,
+      "sha256": "8814232b85594dcd46c50e5b8b29324a7efe9e746edbe8a3d1df3d3fce7aad39"
+    },
+    "runtime_files_sha256": "677ee4aa7ac9a70d0d664474f589ba2f35ee2716ea0244d076ab103c3e5304c7",
+    "reader_config_sha256_canonical": "f41c9f5c0ea99f9ce56005a95746f4f746d938239a20b3cfc8fa3376b880dadc"
+  },
+  "assets_path": "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/assets",
+  "external_path": "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/main_attempt01",
+  "data_dir": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/native_structured_reader_v14/main_attempt01",
+  "receipt_path": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/native_structured_main_v14_receipt.json",
+  "execution_order": [
+    "plug_v13_q1__ordinary",
+    "plug_v13_q1__paired",
+    "plug_v13_q1__parent",
+    "plug_v13_q1__closure",
+    "plug_v13_q2__paired",
+    "plug_v13_q2__parent",
+    "plug_v13_q2__closure",
+    "plug_v13_q2__ordinary",
+    "plug_v13_q3__parent",
+    "plug_v13_q3__closure",
+    "plug_v13_q3__ordinary",
+    "plug_v13_q3__paired",
+    "plug_v13_q4__closure",
+    "plug_v13_q4__ordinary",
+    "plug_v13_q4__paired",
+    "plug_v13_q4__parent",
+    "opera_revised_result__ordinary",
+    "opera_revised_result__paired",
+    "opera_revised_result__parent",
+    "opera_revised_result__closure",
+    "opera_retained_baseline__paired",
+    "opera_retained_baseline__parent",
+    "opera_retained_baseline__closure",
+    "opera_retained_baseline__ordinary",
+    "opera_revision_reason__parent",
+    "opera_revision_reason__closure",
+    "opera_revision_reason__ordinary",
+    "opera_revision_reason__paired",
+    "opera_selection_scope__closure",
+    "opera_selection_scope__ordinary",
+    "opera_selection_scope__paired",
+    "opera_selection_scope__parent"
+  ],
+  "request_projection": [
+    {
+      "request_id": "plug_v13_q1__ordinary",
+      "messages_sha256": "12c13a783b3e7aea96b8d53443be9cfa0d3361bc7985fb38273d2f804dabc9d4"
+    },
+    {
+      "request_id": "plug_v13_q1__paired",
+      "messages_sha256": "8fd045e9c53d85455d60137a1eccb50c23ce6240c8998241a1a8c5c4edf3508a"
+    },
+    {
+      "request_id": "plug_v13_q1__parent",
+      "messages_sha256": "94caee39a0ca890d379cb8e30be076f5366c018706cc0b66ec1941e2518cccfc"
+    },
+    {
+      "request_id": "plug_v13_q1__closure",
+      "messages_sha256": "c5fbbca28496ced65697dc5c32e2f1c686c3d434645c770badbbf5897767fdf9"
+    },
+    {
+      "request_id": "plug_v13_q2__paired",
+      "messages_sha256": "9edf8bf1cdb0fc826ddcb4d952d1763c85e03f6e7aaf2a3fd106b432ea6054bb"
+    },
+    {
+      "request_id": "plug_v13_q2__parent",
+      "messages_sha256": "1336f884a85e63992b45d853943db1a24d4920ce112b72184b7e2416c8ff71cf"
+    },
+    {
+      "request_id": "plug_v13_q2__closure",
+      "messages_sha256": "bacdf590f984e7b1d2cf49448823a45b175d87721bc32dc39076f04eef6c7086"
+    },
+    {
+      "request_id": "plug_v13_q2__ordinary",
+      "messages_sha256": "d6bc251c9c29ca7582680bdc2deef66ca906a85336f11a03713eff31a568c261"
+    },
+    {
+      "request_id": "plug_v13_q3__parent",
+      "messages_sha256": "e3b8f5872508f64e12d8edaa4d66296ffce48c2c33d184938a8b41d79c5f8f98"
+    },
+    {
+      "request_id": "plug_v13_q3__closure",
+      "messages_sha256": "d8ab0b5fb7ac1c8eb2c8ed04ff07639613646b47edf4b5b4a9e98e0167fa2285"
+    },
+    {
+      "request_id": "plug_v13_q3__ordinary",
+      "messages_sha256": "668da9708136f3aaab2d49b64fe76071a40c4671ac87a7f531d38dce4efda158"
+    },
+    {
+      "request_id": "plug_v13_q3__paired",
+      "messages_sha256": "14f95e1cb35e6960b53a1bc9ac486e0bb7efcb0fcc63c02fa3be575a7a81bceb"
+    },
+    {
+      "request_id": "plug_v13_q4__closure",
+      "messages_sha256": "9cab87ae7d9316e774f9b7acc58677acaa23995734a60d9c57a2fd385f0388b9"
+    },
+    {
+      "request_id": "plug_v13_q4__ordinary",
+      "messages_sha256": "442685b53dc89fc067a629f67ad62abf9eca8b50770c267a4c6fd0c132a3acdb"
+    },
+    {
+      "request_id": "plug_v13_q4__paired",
+      "messages_sha256": "eddb864aa704b10380df2b2f68ba59637c25ceb981a32de1af9f8ed3ffbc53c8"
+    },
+    {
+      "request_id": "plug_v13_q4__parent",
+      "messages_sha256": "c418bdab5d04f2890b54af17918d897ed72943016c38f7b75d02606b301b54cd"
+    },
+    {
+      "request_id": "opera_revised_result__ordinary",
+      "messages_sha256": "864d47c8373bcd67f99d0b6938540dc836a37b937c513eba8aa1c56b34adb167"
+    },
+    {
+      "request_id": "opera_revised_result__paired",
+      "messages_sha256": "864d47c8373bcd67f99d0b6938540dc836a37b937c513eba8aa1c56b34adb167"
+    },
+    {
+      "request_id": "opera_revised_result__parent",
+      "messages_sha256": "e5cbd79fc7a8551dfa976730f51d2c0e41f32c80ec9446f770b985f7e0886d21"
+    },
+    {
+      "request_id": "opera_revised_result__closure",
+      "messages_sha256": "d90ce6c941833caf6734e4430052390b0ae76b552a3f27e9db249d50a9f403db"
+    },
+    {
+      "request_id": "opera_retained_baseline__paired",
+      "messages_sha256": "2a475222db894d48a0f297bb49b3fbb43f04f5dc664533caa61962666a5f8034"
+    },
+    {
+      "request_id": "opera_retained_baseline__parent",
+      "messages_sha256": "cefffba581cfabc30e1cfaa4b5209fee125423df2b8a09a2343c8e9510b59499"
+    },
+    {
+      "request_id": "opera_retained_baseline__closure",
+      "messages_sha256": "839806cc6980e7f5f2c2e136ee835269f677e11936b855323d4deaaf3f3a0a8e"
+    },
+    {
+      "request_id": "opera_retained_baseline__ordinary",
+      "messages_sha256": "899c3550f3e6d705c1f5c8eec88029cd8e9539aefb695410c23bccb9892e3e08"
+    },
+    {
+      "request_id": "opera_revision_reason__parent",
+      "messages_sha256": "9ab7479f2a1705d1701bd5bd81ca0f66ed0326d668ca87d335ad323e50d50387"
+    },
+    {
+      "request_id": "opera_revision_reason__closure",
+      "messages_sha256": "a7fe2976e3f264eee2c2584badf301be1ce61451f3456026445a5fb6848cf024"
+    },
+    {
+      "request_id": "opera_revision_reason__ordinary",
+      "messages_sha256": "979d62c91a3078a36456ce1310cbc26bce0d4355654997cfb93e48e2a98d5fad"
+    },
+    {
+      "request_id": "opera_revision_reason__paired",
+      "messages_sha256": "979d62c91a3078a36456ce1310cbc26bce0d4355654997cfb93e48e2a98d5fad"
+    },
+    {
+      "request_id": "opera_selection_scope__closure",
+      "messages_sha256": "445dff24b7415ec5d18080fd721c4640c1fe2424ae79d5772265ba675e4ad8fa"
+    },
+    {
+      "request_id": "opera_selection_scope__ordinary",
+      "messages_sha256": "8dc618a7132fee2080931be91ca2f4b33a8f5b1e4b2d86377dd1ad6be4a97d19"
+    },
+    {
+      "request_id": "opera_selection_scope__paired",
+      "messages_sha256": "f85cbe15a985f19191e0460a8a16ca03a6408737e213af01fc55912e51a4beea"
+    },
+    {
+      "request_id": "opera_selection_scope__parent",
+      "messages_sha256": "076510889b72b050524e3d245e11cad0d56652ee88a67369a364a83bbf8d4466"
+    }
+  ]
+}

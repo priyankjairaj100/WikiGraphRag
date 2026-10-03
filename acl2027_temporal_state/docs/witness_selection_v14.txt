@@ -1,0 +1,116 @@
+Supplied-judgment witness-selection scaffold v0.14
+
+Status and boundary
+
+This executable scaffold implements a small part of the candidate objective in
+method_hypothesis_v14.txt. It is not an end-to-end retrieval algorithm, a trained
+model, a verifier, an automatic hypothesis generator, a new theorem, or evidence
+of improvement on natural data. It does not read the development corpus, questions,
+references or predictions. Its tests use entirely authored source fragments.
+The hypothesis note and frozen study artifacts are unchanged.
+
+Files
+
+src/temporal_state/witness_selection_v14.py
+tests/test_witness_selection_v14.py
+docs/witness_selection_v14.txt
+
+Run from the active research directory:
+
+  PYTHONPATH=src python -m unittest discover -s tests -p 'test_witness_selection_v14.py' -v
+
+Input contract and missing components
+
+The caller supplies immutable source objects, candidate hypotheses and required
+claims, fixed nonnegative rational weights, an explicit symmetric incompatibility
+relation represented by canonical pairs, whole source-span bundles, and anchored
+three-valued source judgments. Each judgment specifies all source spans necessary
+for its assertion, a hypothesis/claim, a verdict and provenance. Contradictory
+judgments are the externally supplied separator map; no automatic semantic test
+constructs that map. Authored or oracle inputs must be disclosed as such.
+
+The source-object text hash is checked. Source offsets and physical/source locators
+are retained. These checks establish byte/text identity and coverage, not semantic
+correctness or historical authenticity. Judgments can still be wrong, including
+confidently rejecting the true interpretation. Automatic proposal recall, missing
+alternatives, verifier accuracy and real attachment extraction remain unsolved.
+
+Unknown alternatives remain unresolved by default. Clearing that flag requires
+caller-supplied assessment provenance and is never an effect of selection or beam
+pruning. The scaffold cannot validate this external coverage assessment. An authored
+finite world does not provide natural-data coverage certification.
+
+Evidence and inference
+
+Selection occurs only through indivisible Bundle objects. Overlapping or adjacent
+source spans are unioned within the same immutable source; unselected gaps and
+different sources remain separate. A judgment activates only when every required
+span is actually received, regardless of bundle names. Joint witnesses can be
+encoded as one indivisible multi-span bundle. Judgments may also require spans
+spread across selected bundles, exposing complementarities rather than assuming
+them away.
+
+Missing evidence and explicit unresolved judgments remain unresolved. Any explicit,
+uncontested contradiction of a required claim excludes that hypothesis. If support
+and contradiction conflict for one claim, its status becomes unresolved, a conflict
+is recorded, and the selection cannot authorize an answer. No silent tie breaking
+decides which supplied semantic judgment was true.
+
+Pair loss sums fixed products of weights for incompatible surviving pairs. Weights
+are never renormalized over survivors. Zero-weight alternatives still block an
+answer when incompatible; zero loss is not equivalent to logical agreement.
+
+Admissible selections fit the budget, retain at least one hypothesis and contain
+no source-judgment conflict. Answer authorization further requires no incompatible
+survivors, complete positive support for at least one surviving hypothesis, and
+no material unknown alternatives. Compatible harmless parses need not all be
+positively proved. The supplied incompatibility relation is therefore critical;
+omitted answer-changing pairs can make this gate falsely permissive.
+
+Cost contract
+
+The caller supplies a Cost counter with a named unit and provenance. The counter
+receives canonical union text including the caller's prompt prefix and all source
+labels, offsets and hashes. No built-in word/character-to-token conversion exists.
+To claim a native full-input token budget, the counter must apply the real reader
+chat template and tokenize the complete actual prompt. This scaffold does not
+provide or verify that integration. Tests deliberately use labeled character-cost
+fixtures and cannot be reported as token-budget experiments.
+
+Union spans are counted once in the rendered input, but labels are never free.
+Merging intervals can remove label overhead; marginal cost need not be positive.
+The budget covers this supplied representation only. Hypothesis generation,
+source/OCR access, map construction, verification, indexing and repeated selection
+evaluation have external costs that must be separately recorded in a real study.
+
+Selection and exact debugging
+
+greedy_select uses marginal pair-loss reduction divided by max(1, marginal cost),
+then answerability, supported-claim progress, lower total cost and lexical IDs for
+deterministic ties. It can add positive support after loss reaches zero. It cannot
+discover every jointly useful combination when each constituent has zero immediate
+gain. It may also miss better budget allocations. No approximation guarantee or
+optimality claim is made, including when overlap changes label costs.
+
+exhaustive_tiny_optimum enumerates every subset of at most 16 bundles. It minimizes
+pair loss among admissible selections, breaking ties by answerability, cost, bundle
+count and IDs. require_answerable=True explicitly restricts the feasible set; it
+returns None if no selection meets all gates. Without that option, a returned
+selection may abstain. This is exact only for supplied finite maps and costs, not
+the natural source truth or an unenumerated hypothesis space. It is a tiny debugging
+comparator, not a scalable solver or new optimization result.
+
+Meaningful authored checks
+
+The focused tests cover fixed-weight loss, missing/unresolved evidence, joint
+witness activation, indivisibility under a tight budget, span union and charged
+labels, source identity, bundle-name invariance, conflicting judgments, eliminating
+all hypotheses, missing positive support, unknown alternatives, zero-weight logical
+conflicts, deterministic ties and invalid provenance/anchors/cost units. A deliberate
+complementarity challenge makes greedy fail while exhaustive search finds a feasible
+supported answer. That failure documents a limitation rather than being hidden.
+
+The next substantive step is independent construction and validation of candidate
+bindings and source judgments, with comparison to structure, relation-aware coverage
+and equally funded sufficiency/intent/ambiguity baselines. Passing these unit tests
+does not establish that this method is needed, novel, publishable or effective.

@@ -1,0 +1,114 @@
+{
+  "schema_version": "dense_retrieval_code_review_v14",
+  "reviewed_at_utc": "2026-10-03T12:12:18.107337+00:00",
+  "status": "reviewed_with_provenance_fixes_applied_runtime_model_validation_pending",
+  "scope": "Retrieval/code/provenance review, not a model or natural retrieval evaluation.",
+  "provenance": {
+    "reviewer": "Separate role from dense implementation author; authored the native reader collector and v14 metadata auditor.",
+    "prior_development_familiarity": true,
+    "independent_human_review": false,
+    "main_v14_raw_answers_read": false,
+    "onnx_sessions_opened_by_reviewer": 0,
+    "encoder_forward_calls_by_reviewer": 0,
+    "llama_calls_by_reviewer": 0,
+    "public_primary_metadata_browsing_used": true
+  },
+  "initial_dense_script_sha256": "7904908c981ef1bee8d9c0f1669b9068ba143803edce71297ed8513700cf9b0c",
+  "reviewed_dense_script_sha256": "a2a5bb6822425d1fffc76ce40f008658ec827c2177ed0fa8c84729735f611506",
+  "input_sha256": {
+    "scripts/dense_retrieval_v14.py": "a2a5bb6822425d1fffc76ce40f008658ec827c2177ed0fa8c84729735f611506",
+    "scripts/fetch_dense_assets_v14.py": "06075912a189bdc434666319f66a2a7a07956652ec092eb6e77c65dc0ac2933f",
+    "configs/dense_retriever_candidate_v14.json": "ce827ed2c25a4a951acc8708390963b2325597d600d901f8633cbf3ba227c7d0",
+    "tests/test_dense_retrieval_v14.py": "2320ab0a3c8b07ce2a8b552ebf270e1c276c48f29b9eed214fea5fe91ff0b270",
+    "scripts/retrieve_paired_v13.py": "e99b161ac9b5a9b16b07af22f1dcae977633dcdeb22ab33e36e5f48509428986",
+    "scripts/retrieve_structured_layout_v14.py": "92f30f4bd34b688c9a418e5743f9cad2872306ce941ef359ddbde73efa6721d7",
+    "scripts/native_structured_reader_v14.py": "b6993e1113a88e16e00ddb19cb470986eff5e8dbd4e6ce76899e82910eb263bd",
+    "results/dense_assets_v14.json": "25a76afba80324e4de0acd638e2760a1f6f1248837571582d0c6b1e90e3404d3",
+    "results/dense_runtime_v14.json": "102a6f173be235ce58521de3abff95afe67f9e0c6a05b6bd11fe1af11bae5a4b",
+    "results/dense_runtime_host_v14.json": "be43d3199c19d2135b4d3d2ad6975dd9ede21c01e1d22b8a2ab662e765bfa5af"
+  },
+  "findings": [
+    {
+      "id": "DR1",
+      "issue": "Encoding attempted model loading and inference before creating a durable attempt or immutable input freeze, and collected important hashes afterward.",
+      "status": "resolved",
+      "resolution": "A new external attempt directory, start receipt and input freeze now precede Encoder construction. Config, code, helpers, source corpus, question file, assets and completion authorization are bound; unchanged inputs are rechecked after encoding; failed attempts retain status and cannot be overwritten."
+    },
+    {
+      "id": "DR2",
+      "issue": "Waiting for main 32 completion was a configuration declaration rather than an enforced model-load gate.",
+      "status": "resolved",
+      "resolution": "Encoder checks a hash-bound root gate and opens its uniquely designated native main receipt. The actual receipt must have the expected schema, completed main_v14 batch, all four 32-response counters and a plausible completed timestamp. Output-budget failures remain allowed and retained."
+    },
+    {
+      "id": "DR3",
+      "issue": "Some configured retrieval values could differ from the actual fixed lexical helper.",
+      "status": "resolved",
+      "resolution": "BM25 k1/b must equal the imported frozen helper constants; RRF settings, shared structural helper hash and native reader budgets are enforced."
+    },
+    {
+      "id": "DR4",
+      "issue": "Index reload did not sufficiently validate the recorded embedding model/runtime/row/truncation identity.",
+      "status": "resolved",
+      "resolution": "Reload checks pinned config/model-tokenizer asset metadata, pre-execution freeze, helper hashes, runtime versions/provider, normalized float32 vector hashes/shapes, row IDs/text/history, prefixed query text and complete encoder-length/truncated-ID ledgers."
+    },
+    {
+      "id": "DR5",
+      "issue": "An index written just before a crash could be consumed without its completed-attempt marker.",
+      "status": "resolved",
+      "resolution": "Reload requires attempt_finished status complete, matching index SHA256 and start<=freeze<=finish timestamps."
+    }
+  ],
+  "algorithm_review": {
+    "pooling": "Select last hidden states at token index 0 and L2 normalize; mean pooling or BERT pooled/tanh output is not used. Unique 3D hidden output and 384 dimensions are required.",
+    "official_metadata_agreement": "Pinned official BAAI pooling config specifies CLS true, mean/max false; official model card describes first-token pooling, normalization, 384 dimensions and 512-token sequence length.",
+    "query_passage_processing": "Only queries receive the declared retrieval instruction. Passage input is the original normalized seed text field, with no invented headings, version hints or answer labels.",
+    "encoder_truncation": "Right truncation to 512 including special tokens; pre-truncation length, encoded length, discarded token count, text hash, active token-ID hash and truncated IDs are retained. CLS/SEP are checked. This is not a claim that the encoder saw the discarded tail.",
+    "reader_evidence": "The original native source slice remains intact. Paired rendering preserves the same source layout; closure reuses the pinned accepted-link and exact-span implementation, including whitespace preservation and overlap merging.",
+    "alignment": "Corpus seeds have unique sorted chunk IDs; native text must match the source slice; loaded vector rows and query rows match these fixed IDs before ranking.",
+    "dense_scoring": "Float32 dot product of finite L2-normalized CLS vectors; deterministic ascending chunk-ID ties.",
+    "rrf": "One-based reciprocal ranks with k=60 and equal weights over both complete history rankings; no top-k fusion shortcut or raw-score mixing.",
+    "scope_and_selection": "Each query ranks all chunks in its supplied history, then chooses the top 3 per document under the history score. The same six-seed shortlist feeds paired and closure for that ranker.",
+    "native_budgets": "Shared packing receives the full prompt native-token callback, checks 960 source words and 3500 input plus 256 reserved output within 4096, keeps whole bundles, charges every supplied span and records rejected bundles. Actual production native counts require the later real tokenizer run/preflight; fixture tests do not establish them.",
+    "condition_count": "Three rankers times two representations gives six conditions per question; no conditions are selected from reader outputs.",
+    "novelty": "BM25, BGE dense retrieval, RRF and source closure are baselines; this review makes no novel-algorithm claim."
+  },
+  "fetch_review": {
+    "pinned_asset_verification": "Exact byte length and SHA256 required; tokenizer Git blob SHA1 also checked. Official revision URLs are explicit.",
+    "execution_separation": "Fetcher never installs packages or constructs a model. Download is an explicit flag; inference uses previously verified local assets.",
+    "failure_retention": "Named partial files remain after download errors and are not overwritten by implicit retries.",
+    "configuration_timing": "Candidate config and fetcher stayed unchanged through the observed acquisition; the asset receipt hashes match their reviewed bytes.",
+    "payload_storage": "Model/tokenizer/wheels/vectors/raw contexts remain external to the Git repository."
+  },
+  "runtime_observations": {
+    "asset_receipt": "results/dense_assets_v14.json",
+    "sandbox_failure_preserved": "results/dense_runtime_v14.json records native ORT import abort while parsing sandbox /proc/cpuinfo, before a model session.",
+    "host_probe": "results/dense_runtime_host_v14.json records root-authorized host import-only success with the same pinned 21 distribution versions.",
+    "not_demonstrated": "Host import success does not establish ONNX graph loading, forward-pass compatibility, retrieval quality, model memory/time or an experimental result."
+  },
+  "validation": {
+    "command": "python3 -m unittest discover -s tests -p test_dense_retrieval_v14.py -q",
+    "passed": 9,
+    "failed": 0,
+    "last_elapsed_seconds": 0.021,
+    "type": "Offline contract fixtures only; no ONNX or llama execution, no synthetic accuracy claim."
+  },
+  "primary_sources": [
+    {
+      "url": "https://huggingface.co/BAAI/bge-small-en-v1.5/blob/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/README.md",
+      "used_for": "Official first-token pooling/normalization, query-versus-passage instructions and dimensions/sequence length."
+    },
+    {
+      "url": "https://huggingface.co/BAAI/bge-small-en-v1.5/blob/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/1_Pooling/config.json",
+      "used_for": "Explicit CLS-enabled/mean-disabled pooling configuration."
+    }
+  ],
+  "remaining_execution_requirements": [
+    "Complete the unchanged 32-cell native reader batch and bind its final actual receipt in the root authorization gate.",
+    "Create a fresh frozen encoding attempt; preserve technical failures rather than overwrite or silently retry.",
+    "Validate the real pinned ONNX graph/session and production tokenizer before claiming encoder feasibility; this review did not execute them.",
+    "For real dense contexts, use the pinned native reader counter and audit exact selected source slices, complete ranking/length ledgers, and final input-token/hash bindings before any future reader inference.",
+    "Any future six-condition reader batch requires its own frozen execution protocol/adapter; the current v14 native collector only accepts 8 or 32 requests.",
+    "Keep development selection and familiar-source limitations explicit; no held-out/generalization or publishability claim follows from this review."
+  ]
+}

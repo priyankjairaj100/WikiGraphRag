@@ -1,0 +1,71 @@
+{
+  "schema_version": "structured_summary_implementation_review_v14",
+  "reviewed_at_utc": "2026-10-03T11:41:52.165467+00:00",
+  "status": "reviewed_provenance_join_fixes_applied",
+  "review_scope": "Source-code/schema review of aggregation and token-binding reproducer; no native answer content inspected, no model calls, no aggregation executed before all grades.",
+  "provenance": {
+    "reviewer": "native collector author reviewing separately authored root aggregation",
+    "independent_human_review": false,
+    "independent_of_aggregation_author": true,
+    "independent_of_entire_pipeline": false,
+    "phase": "Main fixed32-cell inference underway; output-limit failure metadata known, raw answers not read."
+  },
+  "initial_aggregation_sha256": "b45e4154222ef0b54ab269d9664dc1268c9521f808083785162af31ca0edc484",
+  "reviewed_aggregation_sha256": "6006bf9791aaf20a8fdbe3921e6856ce0cb2cddb6d501c2ca06e2e5bc4b0df48",
+  "input_sha256": {
+    "scripts/summarize_structured_study_v14.py": "6006bf9791aaf20a8fdbe3921e6856ce0cb2cddb6d501c2ca06e2e5bc4b0df48",
+    "scripts/check_prepared_token_binding_v14.py": "852d26e73ea4e46615e35cbb3d7005835c44b5c3ece542b066024821d1ff727f",
+    "data/paired_reader_v13/scoring_contract.json": "bfe298807cdfe3b4ceb3cee2e9c75a9de60facece0c429c2e0f513d23e8d70b2",
+    "data/paired_reader_v13/references_plug.json": "682a7af7fcef05bcc1a0ad16bca1874e2e7b5078db982b9e4a51b46dcbd91dbc",
+    "data/paired_reader_v13/references_opera.json": "2cbe0e728609073bf33c28c0a3f8876063635db6d75bd0bba89e49997e4edc66",
+    "results/paired_study_summary_v13.json": "2e13ca16f518d5b50f2f80896fb1b5241682957797e0c6564bebc297ed2528d7",
+    "data/structured_reader_v14/request_manifest_layout.json": "abff52e4ef197c88806e645f9c89b606be602918f67c143d3e71e078b30cf75a",
+    "data/structured_reader_v14/context_review_layout_manifest.json": "bb9759e4ff7af6c5f34a73bf234f2d2044bc6dbc242e53863a958be94be57416",
+    "results/structured_retrieval_layout_v14.json": "d2f0d43886dc4019ca461b600ebba3aa17b78bcb91a5945185aa39c6287dc383",
+    "results/structured_context_support_v14.json": "7af57046b043ecdad79dbef1aa248db6b0e678bd55191f88f540eb0ebeedc7ca"
+  },
+  "findings": [
+    {
+      "finding": "Mapping request identity lacked an explicit question/condition join.",
+      "status": "resolved",
+      "resolution": "Root added request_id == question_id + double-underscore + condition before native response lookup."
+    },
+    {
+      "finding": "Selected/executed input comparison did not explicitly compare rendered prompt hash.",
+      "status": "resolved",
+      "resolution": "Root added rendered_prompt_sha256 equality in addition to token count and token-ID hash."
+    },
+    {
+      "finding": "Aggregation lacked direct grading-packet/reference/contract and full-response/projection provenance checks.",
+      "status": "resolved",
+      "resolution": "Root added packet SHA, immutable reference and scoring-contract SHA, raw response file SHA against native receipt and projection SHA against actual public projection."
+    }
+  ],
+  "confirmed_behavior": {
+    "retains_all32_cells": true,
+    "condition_denominator": 8,
+    "output_limit_rows_filtered_out": false,
+    "output_budget_failure_axis_preserved": true,
+    "joint_definition": "content AND scope AND citation; output-budget failure remains separate exactly as frozen v13 scoring contract specifies. No silent grade override.",
+    "required_fact_ids": "Uses fact_id from unchanged question references; enforces exact set and count per graded case.",
+    "raw_answer_crosslinks": "Case content hash, mapped content hash and actual native projection content hash must match.",
+    "context_crosslinks": "Case, mapping, retrieval and source-support hashes must match; token count/token-ID/rendered hash must match native prompt.",
+    "prior_reader_contrasts": "Exactly ordinary/paired against v13 layout records; source context hashes must match. Reader checkpoint/quantization/template/nonthinking changes remain joint factors.",
+    "duplicate_groups": "Groups all32 native inputs by exact token-ID hash; reports whether content hashes agree without dropping duplicate cases.",
+    "semantic_disagreements": "Joint-pass cases whose separate received-context review is incomplete are explicitly listed rather than silently reconciled.",
+    "deterministic_replay": "--check requires exact serialized summary replay from frozen artifacts; final execution pending."
+  },
+  "reproducer_review": {
+    "path": "scripts/check_prepared_token_binding_v14.py",
+    "status": "Corresponds to earlier inline full-request32-token comparison using same native render/tokenize/validate functions, but is not retroactively represented as the source that executed the earlier receipt.",
+    "new_native_runs_by_reviewer": 0,
+    "new_completion_calls_by_reviewer": 0,
+    "new_tokenizer_sessions_by_reviewer": 0
+  },
+  "remaining_validation": [
+    "Run root aggregation only after all32 native responses and both16-case grading files exist.",
+    "Replay --check on final summary.",
+    "Final portable/external audit must verify exact32-case joins, aggregate counts, same-context contrasts, duplicate groups and exposed support/grade disagreements.",
+    "Any semantic support/grade disagreement needs explicit review; this code review does not adjudicate answers."
+  ]
+}

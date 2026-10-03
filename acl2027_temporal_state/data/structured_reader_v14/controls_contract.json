@@ -1,0 +1,20 @@
+{
+  "schema_version": "authored_reader_controls_contract_v14",
+  "authorship": "Model-assisted synthetic sources, questions and references authored for competence checks; not natural or human-gold evaluation. Independent model-assisted source/reference review required before predictions.",
+  "development_question_overlap": "No original development documents, entities or questions used.",
+  "request_count": 8,
+  "gate": {
+    "minimum_reference_complete_grounded": 7,
+    "denominator": 8,
+    "maximum_critical_sign_unit_year_sample_errors_among_answered_claims": 0,
+    "any_native_output_budget_failure_counts_as_incorrect": true
+  },
+  "grading": "Read ordinary prose semantically. A fully appropriate abstention where the question is answerable fails completeness but is not an invented critical claim. Incorrect sign, stated unit, year or selected population on any answered claim is critical, including extra claims. Missing or mismatched source-page citations fail grounding. No output repairs or retry.",
+  "failure_policy": "Retain all outputs. If gate fails, do not run the primary 32-answer adequate-reader comparison; any changed reader or prompt requires an explicit new frozen amendment.",
+  "reference_file_supplied_to_model": false,
+  "input_files": {
+    "controls_inputs.json": "81ca9a1e90ea91df446c0a7761dceae85431cbcec9fd3c9196e06225b63ab008",
+    "controls_references.json": "627d9ac3ec59d691023636d301502433732d366fdc5a44278f369d5eecbe7d61",
+    "controls_requests.json": "3cfe766f93eda23a0bfaede0aa7af3fdc373e2ffd50c68994374de2955d91aae"
+  }
+}

@@ -1,0 +1,1437 @@
+{
+  "schema_version": "fresh_source_identity_review_part1_v14",
+  "review_type": "model_assisted_source_identity_characterization_only",
+  "scope": "Six assigned source objects only; issuer/form/report-period/CIK/source pointers and structural counts. No financial question, reference, answer or program files; no native model outputs; no new QA; no network. This is not a benchmark/admission certificate or independent human annotation.",
+  "dataset_revision": "06387eff2b66def7a391f0bec8820b461339dd46",
+  "acquisition_protocol_sha256": "db7a4d1421af65ef8f05edb678a6615a3925972910b21f279e27d673fce1548d",
+  "capture_receipt_sha256": "092eb421f5ac0d980b06f820559082448f211dde1b34b802d26e250821838743",
+  "parser": {
+    "library": "lxml.html",
+    "lxml_version": "6.1.1.0",
+    "encoding": "utf-8",
+    "html_parser_huge_tree": true,
+    "method": "Verify exact source length/SHA256/git blob SHA1 against capture receipt before parsing. Extract only ten whitelisted DEI identity concepts, title, schema/CIK/link metadata; count structural tags without reading financial values. Inline visibility checks inspect ix:header/ix:hidden, ancestor inline display:none/visibility:hidden and hidden attributes.",
+    "whitelisted_dei_concepts": [
+      "amendmentflag",
+      "currentfiscalyearenddate",
+      "documentfiscalperiodfocus",
+      "documentfiscalyearfocus",
+      "documentperiodenddate",
+      "documenttype",
+      "entitycentralindexkey",
+      "entityfilenumber",
+      "entityregistrantname",
+      "tradingsymbol"
+    ],
+    "counts_definition": "Raw parsed DOM tag counts include hidden elements and presentation/layout tables; zero th tags does not establish missing visual headers. DOM XPath is a parser locator, not a byte/page/bbox locator."
+  },
+  "records": [
+    {
+      "source_path": "original_doc/PFE_2023.html",
+      "released_filename": "PFE_2023.html",
+      "released_filename_issuer": "PFE",
+      "released_filename_year": 2023,
+      "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+      "source_bytes": 5349189,
+      "source_git_blob_sha1": "2c61c3f7d49de18fa19dcc28874d5733617314b1",
+      "receipt_integrity_reverified": true,
+      "pinned_mirror_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/PFE_2023.html",
+      "document_title": "pfe-20231231",
+      "issuer_names": [
+        "PFIZER INC"
+      ],
+      "ciks": [
+        "0000078003"
+      ],
+      "context_cik_identifiers": [
+        {
+          "scheme": "http://www.sec.gov/CIK",
+          "value": "0000078003"
+        }
+      ],
+      "document_types": [
+        "10-K"
+      ],
+      "fiscal_year_focus": [
+        "2023"
+      ],
+      "fiscal_period_focus": [
+        "FY"
+      ],
+      "report_period_end_date": "2023-12-31",
+      "report_period_end_date_source_text": [
+        "December 31, 2023"
+      ],
+      "filename_vs_fiscal_year": "matches",
+      "filename_vs_period_end_calendar_year": "matches",
+      "amendment_flags": [
+        "false"
+      ],
+      "identity_facts": [
+        {
+          "concept": "dei:EntityCentralIndexKey",
+          "source_text": "0000078003",
+          "normalized_text": "0000078003",
+          "context_ref": "c-1",
+          "id": "f-35",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[1]"
+        },
+        {
+          "concept": "dei:DocumentFiscalYearFocus",
+          "source_text": "2023",
+          "normalized_text": "2023",
+          "context_ref": "c-1",
+          "id": "f-36",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[2]"
+        },
+        {
+          "concept": "dei:DocumentFiscalPeriodFocus",
+          "source_text": "FY",
+          "normalized_text": "FY",
+          "context_ref": "c-1",
+          "id": "f-37",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[3]"
+        },
+        {
+          "concept": "dei:AmendmentFlag",
+          "source_text": "false",
+          "normalized_text": "false",
+          "context_ref": "c-1",
+          "id": "f-38",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[4]"
+        },
+        {
+          "concept": "dei:DocumentType",
+          "source_text": "10-K",
+          "normalized_text": "10-K",
+          "context_ref": "c-1",
+          "id": "f-1",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[6]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:DocumentPeriodEndDate",
+          "source_text": "December 31, 2023",
+          "normalized_text": "December 31, 2023",
+          "context_ref": "c-1",
+          "id": "f-3",
+          "format": "ixt:date-monthname-day-year-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[9]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:CurrentFiscalYearEndDate",
+          "source_text": "December 31",
+          "normalized_text": "December 31",
+          "context_ref": "c-1",
+          "id": "f-4",
+          "format": "ixt:date-monthname-day-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[9]/span/ix:nonnumeric/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityFileNumber",
+          "source_text": "1-3619",
+          "normalized_text": "1-3619",
+          "context_ref": "c-1",
+          "id": "f-6",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[12]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityRegistrantName",
+          "source_text": "PFIZER INC",
+          "normalized_text": "PFIZER INC",
+          "context_ref": "c-1",
+          "id": "f-7",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[14]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:TradingSymbol",
+          "source_text": "PFE",
+          "normalized_text": "PFE",
+          "context_ref": "c-2",
+          "id": "f-17",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[21]/table/tr[4]/td[2]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:TradingSymbol",
+          "source_text": "PFE27",
+          "normalized_text": "PFE27",
+          "context_ref": "c-3",
+          "id": "f-20",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[21]/table/tr[5]/td[2]/span/ix:nonnumeric"
+        }
+      ],
+      "visibility_assessment": "Issuer name, document type, report-period end date, file number and trading symbol are outside ix:header/ix:hidden and have no checked hidden ancestor; CIK, fiscal-year/period focus and amendment flag are inside ix:hidden under a display:none ix:header. This is markup inspection, not browser rendering.",
+      "structure_counts": {
+        "table": 316,
+        "tr": 2393,
+        "td": 22679,
+        "th": 0,
+        "img": 15,
+        "a": 577,
+        "ix:header": 1,
+        "ix:hidden": 1,
+        "ix:nonnumeric": 243,
+        "ix:nonfraction": 3041,
+        "xbrli:context": 1087,
+        "xbrli:unit": 17,
+        "link:schemaref": 1
+      },
+      "table_presence": true,
+      "inline_xbrl_presence": true,
+      "original_source_metadata": {
+        "schema_references": [
+          {
+            "attributes": {
+              "xlink:type": "simple",
+              "xlink:href": "pfe-20231231.xsd"
+            },
+            "dom_xpath": "/html/body/div[1]/ix:header/ix:references/link:schemaref"
+          }
+        ],
+        "html_meta_and_base_elements": [
+          {
+            "http-equiv": "Content-Type",
+            "content": "text/html"
+          }
+        ],
+        "canonical_or_alternate_links": [],
+        "distinct_sec_link_attribute_count": 76,
+        "sec_link_examples": [
+          "http://www.sec.gov/Archives/edgar/data/5187/000000518704000048/indent5.txt",
+          "http://www.sec.gov/Archives/edgar/data/5187/000000518705000060/y14795.htm",
+          "http://www.sec.gov/Archives/edgar/data/5187/000091412109001203/pf17591951-ex4_1.htm"
+        ],
+        "distinct_linked_accession_count": 53,
+        "linked_accession_examples": [
+          "000000518704000048",
+          "000000518705000060",
+          "000007800307000213",
+          "000007800309000024",
+          "000007800309000122"
+        ],
+        "self_document_sec_url_candidates_matching_title_stem": [],
+        "original_filing_url_verified": false,
+        "original_filing_accession_verified": false,
+        "assessment": "SEC archive URLs/accessions occur as outgoing link targets to referenced filings/exhibits. No canonical/base pointer or SEC URL matching this document title stem was found. These outgoing references are not assigned as this document's original accession; source identity against EDGAR has not been independently checked."
+      }
+    },
+    {
+      "source_path": "original_doc/PFE_2024.html",
+      "released_filename": "PFE_2024.html",
+      "released_filename_issuer": "PFE",
+      "released_filename_year": 2024,
+      "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+      "source_bytes": 5338969,
+      "source_git_blob_sha1": "3f030f2bb82b8f08617e6a25c525bbca4e64f977",
+      "receipt_integrity_reverified": true,
+      "pinned_mirror_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/PFE_2024.html",
+      "document_title": "pfe-20241231",
+      "issuer_names": [
+        "PFIZER INC"
+      ],
+      "ciks": [
+        "0000078003"
+      ],
+      "context_cik_identifiers": [
+        {
+          "scheme": "http://www.sec.gov/CIK",
+          "value": "0000078003"
+        }
+      ],
+      "document_types": [
+        "10-K"
+      ],
+      "fiscal_year_focus": [
+        "2024"
+      ],
+      "fiscal_period_focus": [
+        "FY"
+      ],
+      "report_period_end_date": "2024-12-31",
+      "report_period_end_date_source_text": [
+        "December 31, 2024"
+      ],
+      "filename_vs_fiscal_year": "matches",
+      "filename_vs_period_end_calendar_year": "matches",
+      "amendment_flags": [
+        "false"
+      ],
+      "identity_facts": [
+        {
+          "concept": "dei:EntityCentralIndexKey",
+          "source_text": "0000078003",
+          "normalized_text": "0000078003",
+          "context_ref": "c-1",
+          "id": "f-35",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[1]"
+        },
+        {
+          "concept": "dei:DocumentFiscalYearFocus",
+          "source_text": "2024",
+          "normalized_text": "2024",
+          "context_ref": "c-1",
+          "id": "f-36",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[2]"
+        },
+        {
+          "concept": "dei:DocumentFiscalPeriodFocus",
+          "source_text": "FY",
+          "normalized_text": "FY",
+          "context_ref": "c-1",
+          "id": "f-37",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[3]"
+        },
+        {
+          "concept": "dei:AmendmentFlag",
+          "source_text": "false",
+          "normalized_text": "false",
+          "context_ref": "c-1",
+          "id": "f-38",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[4]"
+        },
+        {
+          "concept": "dei:DocumentType",
+          "source_text": "10-K",
+          "normalized_text": "10-K",
+          "context_ref": "c-1",
+          "id": "f-1",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[6]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:DocumentPeriodEndDate",
+          "source_text": "December 31, 2024",
+          "normalized_text": "December 31, 2024",
+          "context_ref": "c-1",
+          "id": "f-3",
+          "format": "ixt:date-monthname-day-year-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[9]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:CurrentFiscalYearEndDate",
+          "source_text": "December 31",
+          "normalized_text": "December 31",
+          "context_ref": "c-1",
+          "id": "f-4",
+          "format": "ixt:date-monthname-day-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[9]/span/ix:nonnumeric/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityFileNumber",
+          "source_text": "1-3619",
+          "normalized_text": "1-3619",
+          "context_ref": "c-1",
+          "id": "f-6",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[12]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityRegistrantName",
+          "source_text": "PFIZER INC",
+          "normalized_text": "PFIZER INC",
+          "context_ref": "c-1",
+          "id": "f-7",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[14]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:TradingSymbol",
+          "source_text": "PFE",
+          "normalized_text": "PFE",
+          "context_ref": "c-2",
+          "id": "f-17",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[21]/table/tr[4]/td[2]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:TradingSymbol",
+          "source_text": "PFE27",
+          "normalized_text": "PFE27",
+          "context_ref": "c-3",
+          "id": "f-20",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[21]/table/tr[5]/td[2]/span/ix:nonnumeric"
+        }
+      ],
+      "visibility_assessment": "Issuer name, document type, report-period end date, file number and trading symbol are outside ix:header/ix:hidden and have no checked hidden ancestor; CIK, fiscal-year/period focus and amendment flag are inside ix:hidden under a display:none ix:header. This is markup inspection, not browser rendering.",
+      "structure_counts": {
+        "table": 322,
+        "tr": 2469,
+        "td": 23762,
+        "th": 0,
+        "img": 14,
+        "a": 586,
+        "ix:header": 1,
+        "ix:hidden": 1,
+        "ix:nonnumeric": 259,
+        "ix:nonfraction": 2977,
+        "xbrli:context": 1034,
+        "xbrli:unit": 20,
+        "link:schemaref": 1
+      },
+      "table_presence": true,
+      "inline_xbrl_presence": true,
+      "original_source_metadata": {
+        "schema_references": [
+          {
+            "attributes": {
+              "xlink:type": "simple",
+              "xlink:href": "pfe-20241231.xsd"
+            },
+            "dom_xpath": "/html/body/div[1]/ix:header/ix:references/link:schemaref"
+          }
+        ],
+        "html_meta_and_base_elements": [
+          {
+            "http-equiv": "Content-Type",
+            "content": "text/html"
+          }
+        ],
+        "canonical_or_alternate_links": [],
+        "distinct_sec_link_attribute_count": 75,
+        "sec_link_examples": [
+          "https://www.sec.gov/Archives/edgar/data/5187/000000518704000048/indent5.txt",
+          "https://www.sec.gov/Archives/edgar/data/5187/000000518705000060/y14795.htm",
+          "https://www.sec.gov/Archives/edgar/data/5187/000091412109001203/pf17591951-ex4_1.htm"
+        ],
+        "distinct_linked_accession_count": 53,
+        "linked_accession_examples": [
+          "000000518704000048",
+          "000000518705000060",
+          "000007800309000024",
+          "000007800309000122",
+          "000007800313000006"
+        ],
+        "self_document_sec_url_candidates_matching_title_stem": [],
+        "original_filing_url_verified": false,
+        "original_filing_accession_verified": false,
+        "assessment": "SEC archive URLs/accessions occur as outgoing link targets to referenced filings/exhibits. No canonical/base pointer or SEC URL matching this document title stem was found. These outgoing references are not assigned as this document's original accession; source identity against EDGAR has not been independently checked."
+      }
+    },
+    {
+      "source_path": "original_doc/NFLX_2022.html",
+      "released_filename": "NFLX_2022.html",
+      "released_filename_issuer": "NFLX",
+      "released_filename_year": 2022,
+      "source_sha256": "5bb5f38b1cd1d20d9ef7b3d54eb2ff8884bc77e2deea98672163c9417b6e122f",
+      "source_bytes": 1965562,
+      "source_git_blob_sha1": "c91abe85fad58ab6f5d797bcf4b58fdb859d004d",
+      "receipt_integrity_reverified": true,
+      "pinned_mirror_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/NFLX_2022.html",
+      "document_title": "nflx-20221231",
+      "issuer_names": [
+        "Netflix, Inc."
+      ],
+      "ciks": [
+        "0001065280"
+      ],
+      "context_cik_identifiers": [
+        {
+          "scheme": "http://www.sec.gov/CIK",
+          "value": "0001065280"
+        }
+      ],
+      "document_types": [
+        "10-K"
+      ],
+      "fiscal_year_focus": [
+        "2022"
+      ],
+      "fiscal_period_focus": [
+        "FY"
+      ],
+      "report_period_end_date": "2022-12-31",
+      "report_period_end_date_source_text": [
+        "December 31, 2022"
+      ],
+      "filename_vs_fiscal_year": "matches",
+      "filename_vs_period_end_calendar_year": "matches",
+      "amendment_flags": [
+        "false"
+      ],
+      "identity_facts": [
+        {
+          "concept": "dei:EntityCentralIndexKey",
+          "source_text": "0001065280",
+          "normalized_text": "0001065280",
+          "context_ref": "if7797946dcde4dfb8ee6ddd6901dcff9_D20220101-20221231",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOmQyYTRmMGU2YjZkZDQzYzQ5YTY5MDQ0ZjkyNjBkMDY1L3NlYzpkMmE0ZjBlNmI2ZGQ0M2M0OWE2OTA0NGY5MjYwZDA2NV80L2ZyYWc6NTdjMGE2M2IyOTVhNDcwZDgzMGI0ZTBhMmEyYjQ0NWMvdGFibGU6MzEzMGI3YjJmODJhNDVkYzk4Y2FiZDcyZjY4NGRjZDQvdGFibGVyYW5nZTozMTMwYjdiMmY4MmE0NWRjOThjYWJkNzJmNjg0ZGNkNF8zLTEtMS0xLTg5Mzgw_75575e47-b0e1-4dff-aa1b-6e390f7aa019",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[1]"
+        },
+        {
+          "concept": "dei:DocumentFiscalYearFocus",
+          "source_text": "2022",
+          "normalized_text": "2022",
+          "context_ref": "if7797946dcde4dfb8ee6ddd6901dcff9_D20220101-20221231",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOmQyYTRmMGU2YjZkZDQzYzQ5YTY5MDQ0ZjkyNjBkMDY1L3NlYzpkMmE0ZjBlNmI2ZGQ0M2M0OWE2OTA0NGY5MjYwZDA2NV80L2ZyYWc6NTdjMGE2M2IyOTVhNDcwZDgzMGI0ZTBhMmEyYjQ0NWMvdGFibGU6MzEzMGI3YjJmODJhNDVkYzk4Y2FiZDcyZjY4NGRjZDQvdGFibGVyYW5nZTozMTMwYjdiMmY4MmE0NWRjOThjYWJkNzJmNjg0ZGNkNF80LTEtMS0xLTg5Mzgw_ffa7164b-178d-4ee8-9f06-d84ff6149cdb",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[2]"
+        },
+        {
+          "concept": "dei:DocumentFiscalPeriodFocus",
+          "source_text": "FY",
+          "normalized_text": "FY",
+          "context_ref": "if7797946dcde4dfb8ee6ddd6901dcff9_D20220101-20221231",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOmQyYTRmMGU2YjZkZDQzYzQ5YTY5MDQ0ZjkyNjBkMDY1L3NlYzpkMmE0ZjBlNmI2ZGQ0M2M0OWE2OTA0NGY5MjYwZDA2NV80L2ZyYWc6NTdjMGE2M2IyOTVhNDcwZDgzMGI0ZTBhMmEyYjQ0NWMvdGFibGU6MzEzMGI3YjJmODJhNDVkYzk4Y2FiZDcyZjY4NGRjZDQvdGFibGVyYW5nZTozMTMwYjdiMmY4MmE0NWRjOThjYWJkNzJmNjg0ZGNkNF81LTEtMS0xLTg5Mzgw_39ba627f-2b09-406d-a3fd-d31c041c8c0f",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[3]"
+        },
+        {
+          "concept": "dei:AmendmentFlag",
+          "source_text": "false",
+          "normalized_text": "false",
+          "context_ref": "if7797946dcde4dfb8ee6ddd6901dcff9_D20220101-20221231",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOmQyYTRmMGU2YjZkZDQzYzQ5YTY5MDQ0ZjkyNjBkMDY1L3NlYzpkMmE0ZjBlNmI2ZGQ0M2M0OWE2OTA0NGY5MjYwZDA2NV80L2ZyYWc6NTdjMGE2M2IyOTVhNDcwZDgzMGI0ZTBhMmEyYjQ0NWMvdGFibGU6MzEzMGI3YjJmODJhNDVkYzk4Y2FiZDcyZjY4NGRjZDQvdGFibGVyYW5nZTozMTMwYjdiMmY4MmE0NWRjOThjYWJkNzJmNjg0ZGNkNF82LTEtMS0xLTg5Mzgw_2b3e1f46-330c-4b36-bd3e-679962d01116",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[4]"
+        },
+        {
+          "concept": "dei:DocumentType",
+          "source_text": "10-K",
+          "normalized_text": "10-K",
+          "context_ref": "if7797946dcde4dfb8ee6ddd6901dcff9_D20220101-20221231",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOmQyYTRmMGU2YjZkZDQzYzQ5YTY5MDQ0ZjkyNjBkMDY1L3NlYzpkMmE0ZjBlNmI2ZGQ0M2M0OWE2OTA0NGY5MjYwZDA2NV8xL2ZyYWc6ZGFhZDE1MjI1ZmU3NGJmMGE1MDU5ZmUzMTgyZTJlNTgvdGV4dHJlZ2lvbjpkYWFkMTUyMjVmZTc0YmYwYTUwNTlmZTMxODJlMmU1OF8zOTY2_2a487410-b703-4f1c-9f8e-68fd2a580bba",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[7]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:DocumentPeriodEndDate",
+          "source_text": "December 31, 2022",
+          "normalized_text": "December 31, 2022",
+          "context_ref": "if7797946dcde4dfb8ee6ddd6901dcff9_D20220101-20221231",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOmQyYTRmMGU2YjZkZDQzYzQ5YTY5MDQ0ZjkyNjBkMDY1L3NlYzpkMmE0ZjBlNmI2ZGQ0M2M0OWE2OTA0NGY5MjYwZDA2NV8xL2ZyYWc6ZGFhZDE1MjI1ZmU3NGJmMGE1MDU5ZmUzMTgyZTJlNTgvdGV4dHJlZ2lvbjpkYWFkMTUyMjVmZTc0YmYwYTUwNTlmZTMxODJlMmU1OF8yNzA_a4e1364a-4f6f-414c-b3f0-ff29c2ac550f",
+          "format": "ixt:date-monthname-day-year-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[11]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:CurrentFiscalYearEndDate",
+          "source_text": "December 31",
+          "normalized_text": "December 31",
+          "context_ref": "if7797946dcde4dfb8ee6ddd6901dcff9_D20220101-20221231",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOmQyYTRmMGU2YjZkZDQzYzQ5YTY5MDQ0ZjkyNjBkMDY1L3NlYzpkMmE0ZjBlNmI2ZGQ0M2M0OWE2OTA0NGY5MjYwZDA2NV8xL2ZyYWc6ZGFhZDE1MjI1ZmU3NGJmMGE1MDU5ZmUzMTgyZTJlNTgvdGV4dHJlZ2lvbjpkYWFkMTUyMjVmZTc0YmYwYTUwNTlmZTMxODJlMmU1OF8yNzA_8408e1c0-087a-4346-b638-0dfce0c40894",
+          "format": "ixt:date-monthname-day-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[11]/span/ix:nonnumeric/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityFileNumber",
+          "source_text": "001-35727",
+          "normalized_text": "001-35727",
+          "context_ref": "if7797946dcde4dfb8ee6ddd6901dcff9_D20220101-20221231",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOmQyYTRmMGU2YjZkZDQzYzQ5YTY5MDQ0ZjkyNjBkMDY1L3NlYzpkMmE0ZjBlNmI2ZGQ0M2M0OWE2OTA0NGY5MjYwZDA2NV8xL2ZyYWc6ZGFhZDE1MjI1ZmU3NGJmMGE1MDU5ZmUzMTgyZTJlNTgvdGV4dHJlZ2lvbjpkYWFkMTUyMjVmZTc0YmYwYTUwNTlmZTMxODJlMmU1OF8zOTY3_eecbb272-720b-4eff-9baa-2ec144bc8cd6",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[16]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityRegistrantName",
+          "source_text": "Netflix, Inc.",
+          "normalized_text": "Netflix, Inc.",
+          "context_ref": "if7797946dcde4dfb8ee6ddd6901dcff9_D20220101-20221231",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOmQyYTRmMGU2YjZkZDQzYzQ5YTY5MDQ0ZjkyNjBkMDY1L3NlYzpkMmE0ZjBlNmI2ZGQ0M2M0OWE2OTA0NGY5MjYwZDA2NV8xL2ZyYWc6ZGFhZDE1MjI1ZmU3NGJmMGE1MDU5ZmUzMTgyZTJlNTgvdGV4dHJlZ2lvbjpkYWFkMTUyMjVmZTc0YmYwYTUwNTlmZTMxODJlMmU1OF8zOTY4_a116a072-ae85-4f7f-9733-9afc97760cd0",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[18]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:TradingSymbol",
+          "source_text": "NFLX",
+          "normalized_text": "NFLX",
+          "context_ref": "if7797946dcde4dfb8ee6ddd6901dcff9_D20220101-20221231",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOmQyYTRmMGU2YjZkZDQzYzQ5YTY5MDQ0ZjkyNjBkMDY1L3NlYzpkMmE0ZjBlNmI2ZGQ0M2M0OWE2OTA0NGY5MjYwZDA2NV8xL2ZyYWc6ZGFhZDE1MjI1ZmU3NGJmMGE1MDU5ZmUzMTgyZTJlNTgvdGFibGU6YWU1YmQwNDhhNTQ4NDNiMTk4N2VkNTM3ODgxYzUyYWYvdGFibGVyYW5nZTphZTViZDA0OGE1NDg0M2IxOTg3ZWQ1Mzc4ODFjNTJhZl8xLTEtMS0xLTg5Mzgw_a8cfa08c-f972-40b0-80a6-2c8a2d8d46e8",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[28]/table/tr[3]/td[2]/span/ix:nonnumeric"
+        }
+      ],
+      "visibility_assessment": "Issuer name, document type, report-period end date, file number and trading symbol are outside ix:header/ix:hidden and have no checked hidden ancestor; CIK, fiscal-year/period focus and amendment flag are inside ix:hidden under a display:none ix:header. This is markup inspection, not browser rendering.",
+      "structure_counts": {
+        "table": 66,
+        "tr": 746,
+        "td": 6970,
+        "th": 0,
+        "img": 1,
+        "a": 211,
+        "ix:header": 1,
+        "ix:hidden": 1,
+        "ix:nonnumeric": 107,
+        "ix:nonfraction": 857,
+        "xbrli:context": 190,
+        "xbrli:unit": 10,
+        "link:schemaref": 1
+      },
+      "table_presence": true,
+      "inline_xbrl_presence": true,
+      "original_source_metadata": {
+        "schema_references": [
+          {
+            "attributes": {
+              "xlink:type": "simple",
+              "xlink:href": "nflx-20221231.xsd"
+            },
+            "dom_xpath": "/html/body/div[1]/ix:header/ix:references/link:schemaref"
+          }
+        ],
+        "html_meta_and_base_elements": [
+          {
+            "http-equiv": "Content-Type",
+            "content": "text/html"
+          }
+        ],
+        "canonical_or_alternate_links": [],
+        "distinct_sec_link_attribute_count": 30,
+        "sec_link_examples": [
+          "http://www.sec.gov/Archives/edgar/data/1065280/000101287002001324/dex101.txt",
+          "http://www.sec.gov/Archives/edgar/data/1065280/000101287002001807/dex41.txt",
+          "http://www.sec.gov/Archives/edgar/data/1065280/000106528017000180/a1015revolvingcreditagreem.htm"
+        ],
+        "distinct_linked_accession_count": 24,
+        "linked_accession_examples": [
+          "000101287002001324",
+          "000101287002001807",
+          "000106528017000180",
+          "000106528018000056",
+          "000106528021000319"
+        ],
+        "self_document_sec_url_candidates_matching_title_stem": [],
+        "original_filing_url_verified": false,
+        "original_filing_accession_verified": false,
+        "assessment": "SEC archive URLs/accessions occur as outgoing link targets to referenced filings/exhibits. No canonical/base pointer or SEC URL matching this document title stem was found. These outgoing references are not assigned as this document's original accession; source identity against EDGAR has not been independently checked."
+      }
+    },
+    {
+      "source_path": "original_doc/NFLX_2023.html",
+      "released_filename": "NFLX_2023.html",
+      "released_filename_issuer": "NFLX",
+      "released_filename_year": 2023,
+      "source_sha256": "b558cb9ef8f54bf18afb85b580dfe67d23b8776bb6f5c3f08db6704a39d3cf4e",
+      "source_bytes": 1793612,
+      "source_git_blob_sha1": "97b6f92eb47a66c1d7d36f2c9bd407cf905920bf",
+      "receipt_integrity_reverified": true,
+      "pinned_mirror_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/NFLX_2023.html",
+      "document_title": "nflx-20231231",
+      "issuer_names": [
+        "Netflix, Inc."
+      ],
+      "ciks": [
+        "0001065280"
+      ],
+      "context_cik_identifiers": [
+        {
+          "scheme": "http://www.sec.gov/CIK",
+          "value": "0001065280"
+        }
+      ],
+      "document_types": [
+        "10-K"
+      ],
+      "fiscal_year_focus": [
+        "2023"
+      ],
+      "fiscal_period_focus": [
+        "FY"
+      ],
+      "report_period_end_date": "2023-12-31",
+      "report_period_end_date_source_text": [
+        "December 31, 2023"
+      ],
+      "filename_vs_fiscal_year": "matches",
+      "filename_vs_period_end_calendar_year": "matches",
+      "amendment_flags": [
+        "false"
+      ],
+      "identity_facts": [
+        {
+          "concept": "dei:EntityCentralIndexKey",
+          "source_text": "0001065280",
+          "normalized_text": "0001065280",
+          "context_ref": "c-1",
+          "id": "f-32",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[1]"
+        },
+        {
+          "concept": "dei:DocumentFiscalYearFocus",
+          "source_text": "2023",
+          "normalized_text": "2023",
+          "context_ref": "c-1",
+          "id": "f-33",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[2]"
+        },
+        {
+          "concept": "dei:DocumentFiscalPeriodFocus",
+          "source_text": "FY",
+          "normalized_text": "FY",
+          "context_ref": "c-1",
+          "id": "f-34",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[3]"
+        },
+        {
+          "concept": "dei:AmendmentFlag",
+          "source_text": "false",
+          "normalized_text": "false",
+          "context_ref": "c-1",
+          "id": "f-35",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[4]"
+        },
+        {
+          "concept": "dei:DocumentType",
+          "source_text": "10-K",
+          "normalized_text": "10-K",
+          "context_ref": "c-1",
+          "id": "f-1",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[7]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:DocumentPeriodEndDate",
+          "source_text": "December 31, 2023",
+          "normalized_text": "December 31, 2023",
+          "context_ref": "c-1",
+          "id": "f-3",
+          "format": "ixt:date-monthname-day-year-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[11]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:CurrentFiscalYearEndDate",
+          "source_text": "December 31",
+          "normalized_text": "December 31",
+          "context_ref": "c-1",
+          "id": "f-4",
+          "format": "ixt:date-monthname-day-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[11]/span/ix:nonnumeric/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityFileNumber",
+          "source_text": "001-35727",
+          "normalized_text": "001-35727",
+          "context_ref": "c-1",
+          "id": "f-6",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[16]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityRegistrantName",
+          "source_text": "Netflix, Inc.",
+          "normalized_text": "Netflix, Inc.",
+          "context_ref": "c-1",
+          "id": "f-7",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[18]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:TradingSymbol",
+          "source_text": "NFLX",
+          "normalized_text": "NFLX",
+          "context_ref": "c-1",
+          "id": "f-17",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[28]/table/tr[3]/td[2]/span/ix:nonnumeric"
+        }
+      ],
+      "visibility_assessment": "Issuer name, document type, report-period end date, file number and trading symbol are outside ix:header/ix:hidden and have no checked hidden ancestor; CIK, fiscal-year/period focus and amendment flag are inside ix:hidden under a display:none ix:header. This is markup inspection, not browser rendering.",
+      "structure_counts": {
+        "table": 78,
+        "tr": 843,
+        "td": 8092,
+        "th": 0,
+        "img": 1,
+        "a": 217,
+        "ix:header": 1,
+        "ix:hidden": 1,
+        "ix:nonnumeric": 131,
+        "ix:nonfraction": 955,
+        "xbrli:context": 230,
+        "xbrli:unit": 10,
+        "link:schemaref": 1
+      },
+      "table_presence": true,
+      "inline_xbrl_presence": true,
+      "original_source_metadata": {
+        "schema_references": [
+          {
+            "attributes": {
+              "xlink:type": "simple",
+              "xlink:href": "nflx-20231231.xsd"
+            },
+            "dom_xpath": "/html/body/div[1]/ix:header/ix:references/link:schemaref"
+          }
+        ],
+        "html_meta_and_base_elements": [
+          {
+            "http-equiv": "Content-Type",
+            "content": "text/html"
+          }
+        ],
+        "canonical_or_alternate_links": [],
+        "distinct_sec_link_attribute_count": 36,
+        "sec_link_examples": [
+          "http://www.sec.gov/Archives/edgar/data/1065280/000101287002001324/dex101.txt",
+          "http://www.sec.gov/Archives/edgar/data/1065280/000101287002001807/dex41.txt",
+          "http://www.sec.gov/Archives/edgar/data/1065280/000106528017000180/a1015revolvingcreditagreem.htm"
+        ],
+        "distinct_linked_accession_count": 27,
+        "linked_accession_examples": [
+          "000101287002001324",
+          "000101287002001807",
+          "000106528017000180",
+          "000106528018000056",
+          "000106528021000319"
+        ],
+        "self_document_sec_url_candidates_matching_title_stem": [],
+        "original_filing_url_verified": false,
+        "original_filing_accession_verified": false,
+        "assessment": "SEC archive URLs/accessions occur as outgoing link targets to referenced filings/exhibits. No canonical/base pointer or SEC URL matching this document title stem was found. These outgoing references are not assigned as this document's original accession; source identity against EDGAR has not been independently checked."
+      }
+    },
+    {
+      "source_path": "original_doc/NVDA_2022.html",
+      "released_filename": "NVDA_2022.html",
+      "released_filename_issuer": "NVDA",
+      "released_filename_year": 2022,
+      "source_sha256": "7e3c19c27675079dc36571d692b74732c7afb85497249ccc1518c2238d54d47e",
+      "source_bytes": 2548432,
+      "source_git_blob_sha1": "7021b356440787f8216e5a13ea22150fd1dfa6d5",
+      "receipt_integrity_reverified": true,
+      "pinned_mirror_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/NVDA_2022.html",
+      "document_title": "nvda-20220130",
+      "issuer_names": [
+        "NVIDIA CORP"
+      ],
+      "ciks": [
+        "0001045810"
+      ],
+      "context_cik_identifiers": [
+        {
+          "scheme": "http://www.sec.gov/CIK",
+          "value": "0001045810"
+        }
+      ],
+      "document_types": [
+        "10-K"
+      ],
+      "fiscal_year_focus": [
+        "2022"
+      ],
+      "fiscal_period_focus": [
+        "FY"
+      ],
+      "report_period_end_date": "2022-01-30",
+      "report_period_end_date_source_text": [
+        "January 30, 2022"
+      ],
+      "filename_vs_fiscal_year": "matches",
+      "filename_vs_period_end_calendar_year": "matches",
+      "amendment_flags": [
+        "false"
+      ],
+      "identity_facts": [
+        {
+          "concept": "dei:EntityCentralIndexKey",
+          "source_text": "0001045810",
+          "normalized_text": "0001045810",
+          "context_ref": "i2c5e111a942340e08ad1e8d2e3b0fb71_D20210201-20220130",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjIxZDBmYWE5NmE2YzQ4YmZhYjY0NDUzZWYzY2UzZDQ5L3NlYzoyMWQwZmFhOTZhNmM0OGJmYWI2NDQ1M2VmM2NlM2Q0OV80L2ZyYWc6MjM3ZmExM2I3ZjY5NGIzZTkxNGYyYzFkODZiMmU4NTUvdGFibGU6NTg0N2JkN2E0ZWJkNGM3NjhhNmRkY2VkZmU0MDRlZTUvdGFibGVyYW5nZTo1ODQ3YmQ3YTRlYmQ0Yzc2OGE2ZGRjZWRmZTQwNGVlNV8zLTEtMS0xLTE3MDQ2_7a92b1bc-e2c0-401d-9cef-f73a166fe936",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[1]"
+        },
+        {
+          "concept": "dei:DocumentFiscalYearFocus",
+          "source_text": "2022",
+          "normalized_text": "2022",
+          "context_ref": "i2c5e111a942340e08ad1e8d2e3b0fb71_D20210201-20220130",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjIxZDBmYWE5NmE2YzQ4YmZhYjY0NDUzZWYzY2UzZDQ5L3NlYzoyMWQwZmFhOTZhNmM0OGJmYWI2NDQ1M2VmM2NlM2Q0OV80L2ZyYWc6MjM3ZmExM2I3ZjY5NGIzZTkxNGYyYzFkODZiMmU4NTUvdGFibGU6NTg0N2JkN2E0ZWJkNGM3NjhhNmRkY2VkZmU0MDRlZTUvdGFibGVyYW5nZTo1ODQ3YmQ3YTRlYmQ0Yzc2OGE2ZGRjZWRmZTQwNGVlNV80LTEtMS0xLTE3MDQ2_ba3b009c-e8b4-483d-aaa2-0464a1788b8d",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[2]"
+        },
+        {
+          "concept": "dei:DocumentFiscalPeriodFocus",
+          "source_text": "FY",
+          "normalized_text": "FY",
+          "context_ref": "i2c5e111a942340e08ad1e8d2e3b0fb71_D20210201-20220130",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjIxZDBmYWE5NmE2YzQ4YmZhYjY0NDUzZWYzY2UzZDQ5L3NlYzoyMWQwZmFhOTZhNmM0OGJmYWI2NDQ1M2VmM2NlM2Q0OV80L2ZyYWc6MjM3ZmExM2I3ZjY5NGIzZTkxNGYyYzFkODZiMmU4NTUvdGFibGU6NTg0N2JkN2E0ZWJkNGM3NjhhNmRkY2VkZmU0MDRlZTUvdGFibGVyYW5nZTo1ODQ3YmQ3YTRlYmQ0Yzc2OGE2ZGRjZWRmZTQwNGVlNV81LTEtMS0xLTE3MDQ2_d58e8327-dba2-434b-9282-11db02d021ff",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[3]"
+        },
+        {
+          "concept": "dei:AmendmentFlag",
+          "source_text": "false",
+          "normalized_text": "false",
+          "context_ref": "i2c5e111a942340e08ad1e8d2e3b0fb71_D20210201-20220130",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjIxZDBmYWE5NmE2YzQ4YmZhYjY0NDUzZWYzY2UzZDQ5L3NlYzoyMWQwZmFhOTZhNmM0OGJmYWI2NDQ1M2VmM2NlM2Q0OV80L2ZyYWc6MjM3ZmExM2I3ZjY5NGIzZTkxNGYyYzFkODZiMmU4NTUvdGFibGU6NTg0N2JkN2E0ZWJkNGM3NjhhNmRkY2VkZmU0MDRlZTUvdGFibGVyYW5nZTo1ODQ3YmQ3YTRlYmQ0Yzc2OGE2ZGRjZWRmZTQwNGVlNV82LTEtMS0xLTE3MDQ2_2529e6e5-82b0-4c1a-8f2e-f9612141c7ee",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[4]"
+        },
+        {
+          "concept": "dei:DocumentType",
+          "source_text": "10-K",
+          "normalized_text": "10-K",
+          "context_ref": "i2c5e111a942340e08ad1e8d2e3b0fb71_D20210201-20220130",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjIxZDBmYWE5NmE2YzQ4YmZhYjY0NDUzZWYzY2UzZDQ5L3NlYzoyMWQwZmFhOTZhNmM0OGJmYWI2NDQ1M2VmM2NlM2Q0OV8xL2ZyYWc6NTEzN2UzNzc1ZGFiNGEwMmEzMTFkZTE5MTcwYjZhZmEvdGV4dHJlZ2lvbjo1MTM3ZTM3NzVkYWI0YTAyYTMxMWRlMTkxNzBiNmFmYV8zNzcw_ef9babb0-a0f7-473f-95a8-8dbf1d1cef79",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[8]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:DocumentPeriodEndDate",
+          "source_text": "January 30, 2022",
+          "normalized_text": "January 30, 2022",
+          "context_ref": "i2c5e111a942340e08ad1e8d2e3b0fb71_D20210201-20220130",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjIxZDBmYWE5NmE2YzQ4YmZhYjY0NDUzZWYzY2UzZDQ5L3NlYzoyMWQwZmFhOTZhNmM0OGJmYWI2NDQ1M2VmM2NlM2Q0OV8xL2ZyYWc6NTEzN2UzNzc1ZGFiNGEwMmEzMTFkZTE5MTcwYjZhZmEvdGV4dHJlZ2lvbjo1MTM3ZTM3NzVkYWI0YTAyYTMxMWRlMTkxNzBiNmFmYV8yMTA_d9cb3481-c006-4019-baa8-20f0a548d2c6",
+          "format": "ixt:date-monthname-day-year-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[10]/span[2]/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:CurrentFiscalYearEndDate",
+          "source_text": "January 30",
+          "normalized_text": "January 30",
+          "context_ref": "i2c5e111a942340e08ad1e8d2e3b0fb71_D20210201-20220130",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjIxZDBmYWE5NmE2YzQ4YmZhYjY0NDUzZWYzY2UzZDQ5L3NlYzoyMWQwZmFhOTZhNmM0OGJmYWI2NDQ1M2VmM2NlM2Q0OV8xL2ZyYWc6NTEzN2UzNzc1ZGFiNGEwMmEzMTFkZTE5MTcwYjZhZmEvdGV4dHJlZ2lvbjo1MTM3ZTM3NzVkYWI0YTAyYTMxMWRlMTkxNzBiNmFmYV8yMTA_f903ab9e-9a37-4dd2-bb47-8aef7aeb2203",
+          "format": "ixt:date-monthname-day-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[10]/span[2]/ix:nonnumeric/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityFileNumber",
+          "source_text": "0-23985",
+          "normalized_text": "0-23985",
+          "context_ref": "i2c5e111a942340e08ad1e8d2e3b0fb71_D20210201-20220130",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjIxZDBmYWE5NmE2YzQ4YmZhYjY0NDUzZWYzY2UzZDQ5L3NlYzoyMWQwZmFhOTZhNmM0OGJmYWI2NDQ1M2VmM2NlM2Q0OV8xL2ZyYWc6NTEzN2UzNzc1ZGFiNGEwMmEzMTFkZTE5MTcwYjZhZmEvdGV4dHJlZ2lvbjo1MTM3ZTM3NzVkYWI0YTAyYTMxMWRlMTkxNzBiNmFmYV8zNzcx_2cafc8ba-ad3e-46e0-83be-143a785cd781",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[13]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityRegistrantName",
+          "source_text": "NVIDIA CORP",
+          "normalized_text": "NVIDIA CORP",
+          "context_ref": "i2c5e111a942340e08ad1e8d2e3b0fb71_D20210201-20220130",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjIxZDBmYWE5NmE2YzQ4YmZhYjY0NDUzZWYzY2UzZDQ5L3NlYzoyMWQwZmFhOTZhNmM0OGJmYWI2NDQ1M2VmM2NlM2Q0OV8xL2ZyYWc6NTEzN2UzNzc1ZGFiNGEwMmEzMTFkZTE5MTcwYjZhZmEvdGV4dHJlZ2lvbjo1MTM3ZTM3NzVkYWI0YTAyYTMxMWRlMTkxNzBiNmFmYV8zNzYw_260b4d11-2186-4947-b721-4d369bcd09f6",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[15]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:TradingSymbol",
+          "source_text": "NVDA",
+          "normalized_text": "NVDA",
+          "context_ref": "i2c5e111a942340e08ad1e8d2e3b0fb71_D20210201-20220130",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjIxZDBmYWE5NmE2YzQ4YmZhYjY0NDUzZWYzY2UzZDQ5L3NlYzoyMWQwZmFhOTZhNmM0OGJmYWI2NDQ1M2VmM2NlM2Q0OV8xL2ZyYWc6NTEzN2UzNzc1ZGFiNGEwMmEzMTFkZTE5MTcwYjZhZmEvdGFibGU6MzUwNTM3ODE3MTZhNDM0ZmI3NjA4N2Q1NGRhOGU2Y2EvdGFibGVyYW5nZTozNTA1Mzc4MTcxNmE0MzRmYjc2MDg3ZDU0ZGE4ZTZjYV8xLTEtMS0xLTE3MDQ2_00a7b1b8-a9c1-4ab8-bdd1-afa2fcc2ac46",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[21]/table/tr[3]/td[2]/span/ix:nonnumeric"
+        }
+      ],
+      "visibility_assessment": "Issuer name, document type, report-period end date, file number and trading symbol are outside ix:header/ix:hidden and have no checked hidden ancestor; CIK, fiscal-year/period focus and amendment flag are inside ix:hidden under a display:none ix:header. This is markup inspection, not browser rendering.",
+      "structure_counts": {
+        "table": 61,
+        "tr": 957,
+        "td": 8251,
+        "th": 0,
+        "img": 2,
+        "a": 249,
+        "ix:header": 1,
+        "ix:hidden": 1,
+        "ix:nonnumeric": 154,
+        "ix:nonfraction": 1153,
+        "xbrli:context": 293,
+        "xbrli:unit": 6,
+        "link:schemaref": 1
+      },
+      "table_presence": true,
+      "inline_xbrl_presence": true,
+      "original_source_metadata": {
+        "schema_references": [
+          {
+            "attributes": {
+              "xlink:type": "simple",
+              "xlink:href": "nvda-20220130.xsd"
+            },
+            "dom_xpath": "/html/body/div[1]/ix:header/ix:references/link:schemaref"
+          }
+        ],
+        "html_meta_and_base_elements": [
+          {
+            "http-equiv": "Content-Type",
+            "content": "text/html"
+          }
+        ],
+        "canonical_or_alternate_links": [],
+        "distinct_sec_link_attribute_count": 32,
+        "sec_link_examples": [
+          "http://www.sec.gov/Archives/edgar/data/0001045810/000104581021000034/exhibit101fy2022variableco.htm",
+          "http://www.sec.gov/Archives/edgar/data/0001045810/000104581022000023/exhibit101fy2023variableco.htm",
+          "http://www.sec.gov/Archives/edgar/data/0001045810/000104581022000023/exhibit31amendedandrestate.htm"
+        ],
+        "distinct_linked_accession_count": 27,
+        "linked_accession_examples": [
+          "0001012870-98-001089",
+          "000104581006000010",
+          "000104581011000031",
+          "000104581011000060",
+          "000104581012000027"
+        ],
+        "self_document_sec_url_candidates_matching_title_stem": [],
+        "original_filing_url_verified": false,
+        "original_filing_accession_verified": false,
+        "assessment": "SEC archive URLs/accessions occur as outgoing link targets to referenced filings/exhibits. No canonical/base pointer or SEC URL matching this document title stem was found. These outgoing references are not assigned as this document's original accession; source identity against EDGAR has not been independently checked."
+      }
+    },
+    {
+      "source_path": "original_doc/NVDA_2023.html",
+      "released_filename": "NVDA_2023.html",
+      "released_filename_issuer": "NVDA",
+      "released_filename_year": 2023,
+      "source_sha256": "5195c592ab1649c7afdb5ea707d99b895a60eade66396e2f8fc47471221ac56e",
+      "source_bytes": 2669243,
+      "source_git_blob_sha1": "3da22108b2e3373a8151124013166a3774f3184b",
+      "receipt_integrity_reverified": true,
+      "pinned_mirror_url": "https://huggingface.co/datasets/Anonymous-Team-HC-RAG/Multi-doc-2025/resolve/06387eff2b66def7a391f0bec8820b461339dd46/original_doc/NVDA_2023.html",
+      "document_title": "nvda-20230129",
+      "issuer_names": [
+        "NVIDIA CORP"
+      ],
+      "ciks": [
+        "0001045810"
+      ],
+      "context_cik_identifiers": [
+        {
+          "scheme": "http://www.sec.gov/CIK",
+          "value": "0001045810"
+        }
+      ],
+      "document_types": [
+        "10-K"
+      ],
+      "fiscal_year_focus": [
+        "2023"
+      ],
+      "fiscal_period_focus": [
+        "FY"
+      ],
+      "report_period_end_date": "2023-01-29",
+      "report_period_end_date_source_text": [
+        "January 29, 2023"
+      ],
+      "filename_vs_fiscal_year": "matches",
+      "filename_vs_period_end_calendar_year": "matches",
+      "amendment_flags": [
+        "false"
+      ],
+      "identity_facts": [
+        {
+          "concept": "dei:EntityCentralIndexKey",
+          "source_text": "0001045810",
+          "normalized_text": "0001045810",
+          "context_ref": "i793edb174e3c4f8499d46ce84a602d1b_D20220131-20230129",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjhjZTVjMjViOTM4NDQ1YjFiZWM4MzU3NzdkNmNlY2U5L3NlYzo4Y2U1YzI1YjkzODQ0NWIxYmVjODM1Nzc3ZDZjZWNlOV80L2ZyYWc6ZDExMDFjM2Q0ZWMxNGI3Y2IxZDcyMzVkZjExYTNiZTAvdGFibGU6OGIxMzlmOThlN2YzNGU3ZDllYTc3ZjI4NjU4NmNhOGUvdGFibGVyYW5nZTo4YjEzOWY5OGU3ZjM0ZTdkOWVhNzdmMjg2NTg2Y2E4ZV8zLTEtMS0xLTY2MjAw_5ab92443-73c7-4c3b-8991-307ddff8b9d1",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[1]"
+        },
+        {
+          "concept": "dei:DocumentFiscalYearFocus",
+          "source_text": "2023",
+          "normalized_text": "2023",
+          "context_ref": "i793edb174e3c4f8499d46ce84a602d1b_D20220131-20230129",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjhjZTVjMjViOTM4NDQ1YjFiZWM4MzU3NzdkNmNlY2U5L3NlYzo4Y2U1YzI1YjkzODQ0NWIxYmVjODM1Nzc3ZDZjZWNlOV80L2ZyYWc6ZDExMDFjM2Q0ZWMxNGI3Y2IxZDcyMzVkZjExYTNiZTAvdGFibGU6OGIxMzlmOThlN2YzNGU3ZDllYTc3ZjI4NjU4NmNhOGUvdGFibGVyYW5nZTo4YjEzOWY5OGU3ZjM0ZTdkOWVhNzdmMjg2NTg2Y2E4ZV80LTEtMS0xLTY2MjAw_e0b1ea2f-7553-4399-ae4a-e4be9c1dc96d",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[2]"
+        },
+        {
+          "concept": "dei:DocumentFiscalPeriodFocus",
+          "source_text": "FY",
+          "normalized_text": "FY",
+          "context_ref": "i793edb174e3c4f8499d46ce84a602d1b_D20220131-20230129",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjhjZTVjMjViOTM4NDQ1YjFiZWM4MzU3NzdkNmNlY2U5L3NlYzo4Y2U1YzI1YjkzODQ0NWIxYmVjODM1Nzc3ZDZjZWNlOV80L2ZyYWc6ZDExMDFjM2Q0ZWMxNGI3Y2IxZDcyMzVkZjExYTNiZTAvdGFibGU6OGIxMzlmOThlN2YzNGU3ZDllYTc3ZjI4NjU4NmNhOGUvdGFibGVyYW5nZTo4YjEzOWY5OGU3ZjM0ZTdkOWVhNzdmMjg2NTg2Y2E4ZV81LTEtMS0xLTY2MjAw_25a8f0d7-ab24-48b5-9b17-e0a372a142c4",
+          "format": null,
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[3]"
+        },
+        {
+          "concept": "dei:AmendmentFlag",
+          "source_text": "false",
+          "normalized_text": "false",
+          "context_ref": "i793edb174e3c4f8499d46ce84a602d1b_D20220131-20230129",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjhjZTVjMjViOTM4NDQ1YjFiZWM4MzU3NzdkNmNlY2U5L3NlYzo4Y2U1YzI1YjkzODQ0NWIxYmVjODM1Nzc3ZDZjZWNlOV80L2ZyYWc6ZDExMDFjM2Q0ZWMxNGI3Y2IxZDcyMzVkZjExYTNiZTAvdGFibGU6OGIxMzlmOThlN2YzNGU3ZDllYTc3ZjI4NjU4NmNhOGUvdGFibGVyYW5nZTo4YjEzOWY5OGU3ZjM0ZTdkOWVhNzdmMjg2NTg2Y2E4ZV82LTEtMS0xLTY2MjAw_b398ef3f-5ea9-4221-acc8-2fa321f5370b",
+          "format": "ixt:fixed-false",
+          "visibility_class": "hidden_in_markup",
+          "hidden_reasons": [
+            "inline_css_display_none",
+            "ix:header",
+            "ix:hidden"
+          ],
+          "dom_xpath": "/html/body/div[1]/ix:header/ix:hidden/ix:nonnumeric[4]"
+        },
+        {
+          "concept": "dei:DocumentType",
+          "source_text": "10-K",
+          "normalized_text": "10-K",
+          "context_ref": "i793edb174e3c4f8499d46ce84a602d1b_D20220131-20230129",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjhjZTVjMjViOTM4NDQ1YjFiZWM4MzU3NzdkNmNlY2U5L3NlYzo4Y2U1YzI1YjkzODQ0NWIxYmVjODM1Nzc3ZDZjZWNlOV8xL2ZyYWc6NWZiNmQ4ODdjYjYxNGU5Zjg1MzI5MmU5YmUyMTBkMjUvdGV4dHJlZ2lvbjo1ZmI2ZDg4N2NiNjE0ZTlmODUzMjkyZTliZTIxMGQyNV8zNzU5_ad6c42c6-98d4-44c2-957e-288c43ff6ef9",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[8]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:DocumentPeriodEndDate",
+          "source_text": "January 29, 2023",
+          "normalized_text": "January 29, 2023",
+          "context_ref": "i793edb174e3c4f8499d46ce84a602d1b_D20220131-20230129",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjhjZTVjMjViOTM4NDQ1YjFiZWM4MzU3NzdkNmNlY2U5L3NlYzo4Y2U1YzI1YjkzODQ0NWIxYmVjODM1Nzc3ZDZjZWNlOV8xL2ZyYWc6NWZiNmQ4ODdjYjYxNGU5Zjg1MzI5MmU5YmUyMTBkMjUvdGV4dHJlZ2lvbjo1ZmI2ZDg4N2NiNjE0ZTlmODUzMjkyZTliZTIxMGQyNV8xMDk5NTExNjM3MDEx_58d7c1a6-10af-4b65-b2a6-6d1d78b4256f",
+          "format": "ixt:date-monthname-day-year-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[10]/span[2]/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:CurrentFiscalYearEndDate",
+          "source_text": "January 29",
+          "normalized_text": "January 29",
+          "context_ref": "i793edb174e3c4f8499d46ce84a602d1b_D20220131-20230129",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjhjZTVjMjViOTM4NDQ1YjFiZWM4MzU3NzdkNmNlY2U5L3NlYzo4Y2U1YzI1YjkzODQ0NWIxYmVjODM1Nzc3ZDZjZWNlOV8xL2ZyYWc6NWZiNmQ4ODdjYjYxNGU5Zjg1MzI5MmU5YmUyMTBkMjUvdGV4dHJlZ2lvbjo1ZmI2ZDg4N2NiNjE0ZTlmODUzMjkyZTliZTIxMGQyNV8xMDk5NTExNjM3MDEx_bce1df50-e8e2-4fd1-8e38-d2f02b69ecc9",
+          "format": "ixt:date-monthname-day-en",
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[10]/span[2]/ix:nonnumeric/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityFileNumber",
+          "source_text": "0-23985",
+          "normalized_text": "0-23985",
+          "context_ref": "i793edb174e3c4f8499d46ce84a602d1b_D20220131-20230129",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjhjZTVjMjViOTM4NDQ1YjFiZWM4MzU3NzdkNmNlY2U5L3NlYzo4Y2U1YzI1YjkzODQ0NWIxYmVjODM1Nzc3ZDZjZWNlOV8xL2ZyYWc6NWZiNmQ4ODdjYjYxNGU5Zjg1MzI5MmU5YmUyMTBkMjUvdGV4dHJlZ2lvbjo1ZmI2ZDg4N2NiNjE0ZTlmODUzMjkyZTliZTIxMGQyNV8zNzYw_a6bbc848-91e3-4265-ad81-204074599134",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[13]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:EntityRegistrantName",
+          "source_text": "NVIDIA CORP",
+          "normalized_text": "NVIDIA CORP",
+          "context_ref": "i793edb174e3c4f8499d46ce84a602d1b_D20220131-20230129",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjhjZTVjMjViOTM4NDQ1YjFiZWM4MzU3NzdkNmNlY2U5L3NlYzo4Y2U1YzI1YjkzODQ0NWIxYmVjODM1Nzc3ZDZjZWNlOV8xL2ZyYWc6NWZiNmQ4ODdjYjYxNGU5Zjg1MzI5MmU5YmUyMTBkMjUvdGV4dHJlZ2lvbjo1ZmI2ZDg4N2NiNjE0ZTlmODUzMjkyZTliZTIxMGQyNV8zNzcy_b50fb54a-3589-44fa-9ed4-47ba498a9fbd",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[15]/span/ix:nonnumeric"
+        },
+        {
+          "concept": "dei:TradingSymbol",
+          "source_text": "NVDA",
+          "normalized_text": "NVDA",
+          "context_ref": "i793edb174e3c4f8499d46ce84a602d1b_D20220131-20230129",
+          "id": "id3VybDovL2RvY3MudjEvZG9jOjhjZTVjMjViOTM4NDQ1YjFiZWM4MzU3NzdkNmNlY2U5L3NlYzo4Y2U1YzI1YjkzODQ0NWIxYmVjODM1Nzc3ZDZjZWNlOV8xL2ZyYWc6NWZiNmQ4ODdjYjYxNGU5Zjg1MzI5MmU5YmUyMTBkMjUvdGFibGU6MzZkNTJjN2Q5ZDY2NGIxZDk0YjJjMGIxZDYwNjBiYTMvdGFibGVyYW5nZTozNmQ1MmM3ZDlkNjY0YjFkOTRiMmMwYjFkNjA2MGJhM18xLTEtMS0xLTY2MjAw_9f09f4e1-0795-4ec1-9042-6d5de1512c8c",
+          "format": null,
+          "visibility_class": "not_hidden_by_checked_markup",
+          "hidden_reasons": [],
+          "dom_xpath": "/html/body/div[21]/table/tr[3]/td[2]/span/ix:nonnumeric"
+        }
+      ],
+      "visibility_assessment": "Issuer name, document type, report-period end date, file number and trading symbol are outside ix:header/ix:hidden and have no checked hidden ancestor; CIK, fiscal-year/period focus and amendment flag are inside ix:hidden under a display:none ix:header. This is markup inspection, not browser rendering.",
+      "structure_counts": {
+        "table": 66,
+        "tr": 1015,
+        "td": 9001,
+        "th": 0,
+        "img": 2,
+        "a": 247,
+        "ix:header": 1,
+        "ix:hidden": 1,
+        "ix:nonnumeric": 162,
+        "ix:nonfraction": 1235,
+        "xbrli:context": 294,
+        "xbrli:unit": 6,
+        "link:schemaref": 1
+      },
+      "table_presence": true,
+      "inline_xbrl_presence": true,
+      "original_source_metadata": {
+        "schema_references": [
+          {
+            "attributes": {
+              "xlink:type": "simple",
+              "xlink:href": "nvda-20230129.xsd"
+            },
+            "dom_xpath": "/html/body/div[1]/ix:header/ix:references/link:schemaref"
+          }
+        ],
+        "html_meta_and_base_elements": [
+          {
+            "http-equiv": "Content-Type",
+            "content": "text/html"
+          }
+        ],
+        "canonical_or_alternate_links": [],
+        "distinct_sec_link_attribute_count": 29,
+        "sec_link_examples": [
+          "http://www.sec.gov/Archives/edgar/data/0001045810/000104581021000034/exhibit101fy2022variableco.htm",
+          "http://www.sec.gov/Archives/edgar/data/0001045810/000104581022000023/exhibit101fy2023variableco.htm",
+          "http://www.sec.gov/Archives/edgar/data/0001045810/000104581022000023/exhibit31amendedandrestate.htm"
+        ],
+        "distinct_linked_accession_count": 24,
+        "linked_accession_examples": [
+          "0001012870-98-001089",
+          "000104581006000010",
+          "000104581012000027",
+          "000104581012000036",
+          "000104581013000080"
+        ],
+        "self_document_sec_url_candidates_matching_title_stem": [],
+        "original_filing_url_verified": false,
+        "original_filing_accession_verified": false,
+        "assessment": "SEC archive URLs/accessions occur as outgoing link targets to referenced filings/exhibits. No canonical/base pointer or SEC URL matching this document title stem was found. These outgoing references are not assigned as this document's original accession; source identity against EDGAR has not been independently checked."
+      }
+    }
+  ],
+  "summary": {
+    "sources_reviewed": 6,
+    "exact_byte_receipts_reverified": 6,
+    "filename_fiscal_year_mismatches": 0,
+    "same_issuer_cik_pairs": [
+      {
+        "issuer": "PFE",
+        "cik": "0000078003",
+        "periods": [
+          "2023-12-31",
+          "2024-12-31"
+        ]
+      },
+      {
+        "issuer": "NFLX",
+        "cik": "0001065280",
+        "periods": [
+          "2022-12-31",
+          "2023-12-31"
+        ]
+      },
+      {
+        "issuer": "NVDA",
+        "cik": "0001045810",
+        "periods": [
+          "2022-01-30",
+          "2023-01-29"
+        ]
+      }
+    ],
+    "pair_interpretation": "Internal identity metadata supports same-issuer successive fiscal-year reports. Each is labelled 10-K with hidden AmendmentFlag=false. This does not establish revisions of the same assertion, restatement history, or evidence requirements for any question.",
+    "original_sec_filing_urls_verified": 0,
+    "original_sec_accessions_verified": 0
+  },
+  "limitations": [
+    "Identity metadata is internal to mirrored released HTML; authentic original SEC correspondence and first-public availability were not verified.",
+    "No rendered visual review, external CSS evaluation, HTML-to-PDF fidelity test, semantic table extraction or completeness check was performed.",
+    "Structural counts cannot establish usable evidence tables, preserved row/column bindings, page/bbox alignment or comparison sufficiency.",
+    "AmendmentFlag=false describes these captured instances; it does not establish the absence of later amendments or restatements.",
+    "All inspected source groups are exposed development material."
+  ]
+}

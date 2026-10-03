@@ -1,0 +1,36 @@
+{
+  "schema_version": "checkpoint_replay_v0.14",
+  "recorded_date": "2026-10-03",
+  "commands": [
+    {
+      "command": "python3 scripts/verify_structured_study_v14.py",
+      "exit_code": 0,
+      "checks": 1348,
+      "pending": 0,
+      "failed": 0
+    },
+    {
+      "command": "python3 scripts/summarize_structured_study_v14.py --output results/structured_study_summary_v14.json --check",
+      "exit_code": 0,
+      "byte_exact_summary_replay": true
+    },
+    {
+      "command": "python3 scripts/summarize_dense_source_support_v14.py --check",
+      "exit_code": 0,
+      "byte_exact_summary_replay": true,
+      "contexts": 48,
+      "duplicate_inconsistencies": 0,
+      "requires_retained_external_inputs": true
+    }
+  ],
+  "input_sha256": {
+    "results/structured_study_summary_v14.json": "545ad6ad66b0cda132b4a80890e84835cc5f95e143b62f09bdfb753016cdea78",
+    "results/dense_source_support_summary_v14.json": "9f399efa87dab3d37592b35f48e671d5e9f486301d2ac6b063803edba5b3f316",
+    "results/structured_execution_audit_v14.json": "eba3686830b3a80c090fc28bcd3d434ef06eb427adcfd6f4166284524fe2ea5b",
+    "results/dense_execution_audit_v14.json": "37ac86d968afbf95cd09aaf504e1dd494e5fd8fe8fe00f8c05eec3265ce0b1c8",
+    "results/unit_verification_final_v14.json": "1bbd3ddc9be6447c848428814b4ec19080aac43ab5226ddcb47c705e6243d9be"
+  },
+  "model_calls": 0,
+  "network_calls": 0,
+  "scope": "Final root main-study portable crosslink and exact descriptive-summary replay. Dense summary replay additionally reads retained external contexts/packets; it is not portable metadata-only. Separate native-token, raw-source and answer-semantic audits retain their own provenance and limitations."
+}

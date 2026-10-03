@@ -1,0 +1,152 @@
+Reproducing the v0.14 structured retrieval increment
+
+Scope
+
+This increment builds source context and costs prompts; it does not grade answers
+or establish a strong-reader or algorithmic novelty result. The same four PDFs,
+550 augmented pages, 2,306 chunks and eight development questions are reused.
+Preserve all v13/v14 frozen artifacts. Use new output names and attempt directories
+for a replication. Full third-party text, prompts, tokens and model/runtime assets
+remain outside the repository.
+
+1. Reconstruct or supply the unchanged v13 source corpus
+
+Follow docs/reproduce_paired_study_v13.txt through corpus construction, including
+the pinned PDF hashes, physical pages, 160-word chunks with 30-word overlap, and
+two separately tagged whole-table visual transcriptions. Exact source hashes are
+required; a new download or transcription with different bytes is a new corpus
+realization. No claim of complete equation/figure OCR is made.
+
+2. Build source-only structural metadata
+
+Run from acl2027_temporal_state/, using fresh destinations:
+
+  python3 scripts/build_structured_corpus_v14.py \
+    --corpus-manifest data/paired_reader_v13/corpus_manifest.json \
+    --external-output NEW_EXTERNAL/structured_corpus.json \
+    --metadata-output NEW_METADATA/corpus_manifest.json
+
+The script reads no questions, answer references, grades or predictions. It
+creates page/paragraph/table spans with half-open Unicode character offsets,
+line locators and exact hashes. Its generic context-attachment rules and
+abstentions are specified in docs/structured_retrieval_v14.txt. The preserved
+first build has 5,018 primitive blocks, 292 table regions, 692 parser-accepted
+context links and 368 unresolved candidates. Accepted means a rule proposed
+source context, not that a numeric row/year/unit relationship is certified.
+
+The separately frozen structural audit sample precedes that first parser run.
+results/structural_audit_v14.json reports 7/17 required source relations completely
+recovered and ten missing. Its review of 72 links found no false accepted
+dependency under the explicitly limited context-only semantics. Mixed-scope
+headers, footer excesses and an equation/prose table misclassification remain
+reported. Do not convert that result into a claim of solved semantic binding.
+
+3. Supply the pinned reader assets and native tokenizer configuration
+
+configs/structured_reader_main_v14.json binds the actual model and runtime paths,
+revision and hashes, complete system prompt and 3500-input/256-output/4096-context
+limits. The current model is Qwen3.5-4B-Q5_K_M.gguf from the pinned unsloth GGUF
+revision. Model size, recency or the presence of a native tokenizer does not by
+itself establish strong-reader competence. Assets are not bundled. A relocated
+configuration needs a new execution binding; do not silently edit an old freeze.
+
+4. Use the source-exact amended retrieval through the resident tokenizer bridge
+
+  python3 scripts/run_structured_retrieval_layout_v14.py \
+    --reader-config configs/structured_reader_main_v14.json \
+    --tokenizer-artifacts NEW_EXTERNAL/retrieval_tokenizer01 \
+    --manifest NEW_METADATA/corpus_manifest.json \
+    --contexts NEW_EXTERNAL/contexts.jsonl \
+    --metadata NEW_METADATA/structured_retrieval_layout.json
+
+This is the amended renderer, not the preserved initial implementation. The
+initial parent/closure renderer stripped endpoint whitespace from copied spans.
+That left words intact but could delete meaningful first-line indentation in a
+multiline year header. The initial retrieval and artifact audit remain preserved;
+the latter checked the declared stripped representation, not full character-
+interval equality. A source-only context reviewer with question/reference access
+identified the problem before any v14 natural main prediction. This is disclosed
+development repair, not an untouched preregistration.
+
+data/structured_reader_v14/layout_amendment.json records the generic correction:
+retain every character of every parent/closure source slice, including endpoint
+whitespace. The parser, corpus, questions, scores, shortlist, packing rules,
+reader and budgets remain unchanged. The separate implementation is
+scripts/retrieve_structured_layout_v14.py. It retokenized/repacked all 32 contexts
+into results/structured_retrieval_layout_v14.json; do not overwrite or silently
+replace results/structured_retrieval_v14.json with that newer artifact.
+
+This wrapper owns one guarded native tokenizer session and performs no completion
+calls. It uses the fixed v13 question file. The underlying retrieve() API accepts
+the resident session's exact count_prompt callback and still hashes the native
+adapter and configuration. The wrapper's console output is only a concise
+receipt; source-bearing contexts remain in the external JSONL output.
+
+Ordinary retrieval uses six history-wide BM25 seeds. Paired uses three per
+document. Parent and closure use that identical paired shortlist: parent expands
+to enclosing source blocks; closure copies seeds plus parser-accepted context
+attachments. All conditions have a 960-source-word limit, and every added span,
+citation label, instruction, question and whitespace is charged in the actual
+full native prompt. Whole bundles are accepted or dropped in a deterministic
+score-ordered pass when the entire shortlist does not fit. No partial truncation,
+reference-page substitution, second retrieval pass or answer-driven backfill is
+performed. Fixed seeds limit recall; structural context cannot generally recover
+a missing relevant page.
+
+5. Check the preserved artifact audit before inference
+
+results/structured_retrieval_layout_audit_v14.json is the audit of the source-exact
+amendment. Its 1,031 passing checks read no native answers or answer references
+and launch no tokenizer. It verifies the actual model/runtime files,
+configuration and template bindings; reconstructs all 32 contexts from 247 exact,
+unstripped source-span occurrences on 38 original pages; and replays all 32 packing
+decisions against 88 recorded native-cost receipts. Endpoint whitespace is
+preserved in 107 span occurrences. Twelve structural contexts differ from the
+initial rendering, but no selected seed changes. All sixteen ordinary/paired
+contexts remain byte-identical to both the initial v14 output and frozen v13
+layout counterparts, so their later reader comparison need not be confounded by
+an evidence change. The preserved initial audit is not presented as certification
+that its renderer retained endpoint indentation.
+
+Observed evidence packing in this source-only increment:
+
+  ordinary: 48/48 seeds retained; both versions in 8/8 contexts;
+            744-960 evidence words, 1451-2640 full native input tokens.
+  paired:   48/48 seeds retained; both versions in 8/8 contexts;
+            685-960 evidence words, 1328-2665 full native input tokens.
+  parent:   29/48 seeds retained; both versions in 6/8 contexts;
+            810-937 evidence words, 1659-3242 full native input tokens.
+  closure:  48/48 seeds retained; both versions in 8/8 contexts;
+            655-930 evidence words, 1284-3013 full native input tokens.
+
+All eight parent contexts drop at least one seed. Its two lost-version contexts
+remain in the denominator. Closure's smaller text can partly reflect overlap
+deduplication; keeping more seeds is not evidence of greater answer correctness.
+Two selected section-context links have footer-only anchors under a simple page-
+marker check, illustrating potential redundant context and wasted budget.
+
+The native bridge retained each packing evaluation's count, rendered-prompt hash
+and token-ID hash, but not its full rendered prompt/token arrays. This artifact
+audit checks identity, recorded hash bindings and budget arithmetic; it does not
+independently regenerate native token sequences. Before reader completions, the
+separately frozen native preflight must render/tokenize each final request and
+compare its count and hashes with the retrieval ledger. The source-only audit is
+not a replacement for that gate or for independent semantic attachment review.
+
+Software contract checks require no native model:
+
+  python3 -m unittest discover -s tests -p test_structured_retrieval_v14.py -q
+
+  python3 -m unittest discover -s tests -p test_structured_layout_v14.py -q
+
+The existing nine tests cover source boundaries, explicit unit/footnote binding,
+cross-page abstention, baseline layout identity, whole-bundle budget rejection,
+interval union and accepted-only context traversal. Their artificial tokenizer
+fixture tests code behavior and is never used for empirical token counts.
+The separate layout regression protects first-line indentation and trailing
+newline preservation in the amended exact-span renderer.
+
+Keep source completeness, structural attachment, seed recall, context sufficiency,
+native execution and answer quality separate. The later control gate, inference,
+masked grading and final claims require their own frozen artifacts; this
+reconstruction guide makes no prediction about their outcomes.

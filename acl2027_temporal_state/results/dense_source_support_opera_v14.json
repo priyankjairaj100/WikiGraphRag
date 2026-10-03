@@ -1,0 +1,637 @@
+{
+  "input_packet": {
+    "path": "/workspace/scratch/bdef663e3dfc/tmp/dense_retrieval_v14/support01/context_support_opera.json",
+    "sha256": "867d2e34fede6a655c37eb06339eec549a1c4e435b14994fcea3df60dbc376f1"
+  },
+  "provenance": {
+    "model_assisted": true,
+    "independent_human_gold": false,
+    "condition_mapping_read": false,
+    "native_answers_read": false,
+    "prior_familiarity": "fresh role without inherited case history; underlying model familiarity uncontrolled"
+  },
+  "records": [
+    {
+      "case_id": "case_041885be27f96b0d",
+      "question_id": "opera_retained_baseline",
+      "context_sha256": "dcf52eb7334fb52ef028f298f3e0d874b31b1e3838e949fa87529e728acc1844",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "baseline_value",
+          "support": "supported",
+          "rationale": "The revised-version span explicitly reports the complete BCT-to-OPERA baseline and binds it to the target-to-detector and BCT-to-target path components. This is direct source support, not a sum calculated by the reviewer.",
+          "evidence_locators": [
+            "opera_pdf_v4:p012:1580-2510"
+          ]
+        },
+        {
+          "fact_id": "retention",
+          "support": "partial",
+          "rationale": "The revised total is explicit. The original span supplies the target-to-detector component and starts the BCT component, but ends before the reported complete baseline. Cross-span alignment identifies the same component and measurement subject; it cannot supply the missing original total or establish retention of the complete value.",
+          "evidence_locators": [
+            "opera_pdf_v1:p010:0-967",
+            "opera_pdf_v4:p012:0-950",
+            "opera_pdf_v4:p012:1580-2510"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The revised complete baseline has the requested BCT-to-detector scope, and the component distance is separately identified. The original complete-value statement needed for the version comparison is not received; the effective neutrino baseline elsewhere is not substituted."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The explicit revised complete baseline is in metres. Component distances also carry metres; optional uncertainty is explicitly available for the revised total."
+      },
+      "specific_omissions": [
+        "The original-version statement of the complete BCT-to-OPERA baseline is missing.",
+        "Cross-version equality of the complete reported baseline cannot be established without calculating an unreported total from components."
+      ]
+    },
+    {
+      "case_id": "case_23319696a6d719b0",
+      "question_id": "opera_selection_scope",
+      "context_sha256": "a31ae0d6d888fdab110279d208339f9412411f3846dea4c052dc2a2354313ca5",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "scope_changed",
+          "support": "partial",
+          "rationale": "Cross-version alignment supplies an original approximate sample description and the revised exact selected total plus rejection rule. The original description is only approximate and supplies no selection rule. It suggests a reduction but does not establish a distinct selected set without treating the approximate count as an exact discriminator or assuming the rejection was absent originally.",
+          "evidence_locators": [
+            "opera_pdf_v1:p021:807-1550",
+            "opera_pdf_v4:p013:1201-2199"
+          ]
+        },
+        {
+          "fact_id": "selection_reason",
+          "support": "supported",
+          "rationale": "The revised span directly states that events with an earliest hit isolated in time and position were discarded and explains possible noise and early-arrival bias.",
+          "evidence_locators": [
+            "opera_pdf_v4:p013:1201-2199"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "Both versions are associated with the 2009-2011 analysis, and the revised selected sample and preselected-event rejection have clear scope. The source does not definitively establish the original selected-event rule or a count comparison immune to the original approximation. The supplied main-sample discussion is not replaced with short-bunch or 2012 data."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The revised total is explicitly neutrino interactions, the original approximate quantity is neutrino interaction events, and the optional rejection fraction is bound to preselected events. No fraction is inferred from the published totals."
+      },
+      "specific_omissions": [
+        "A received original selection rule or another unambiguous source statement is needed to establish the cross-version selected-sample change; the approximate original sample description alone does not settle it."
+      ]
+    },
+    {
+      "case_id": "case_47676eb8a2529fb0",
+      "question_id": "opera_selection_scope",
+      "context_sha256": "1721f3ce8c46814cfbe5c4e39f2413b780b412b775aa989661cf6134efcfdf96",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "scope_changed",
+          "support": "partial",
+          "rationale": "The revised selected total and exclusion rule are present, but the original spans concern the likelihood method, simulations and energy dependence. They provide neither an original selected total nor its selection rule. Cross-span alignment cannot turn the revised exclusion into an established change from the original selection.",
+          "evidence_locators": [
+            "opera_pdf_v4:p013:c02"
+          ]
+        },
+        {
+          "fact_id": "selection_reason",
+          "support": "supported",
+          "rationale": "The revised span directly states that earliest hits isolated in time and position were discarded because noise could bias arrival times early.",
+          "evidence_locators": [
+            "opera_pdf_v4:p013:c02"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The revised selected sample and preselected-event rejection have clear scope, and revised figure captions identify 2009-2011 data. The original selected-sample premise needed for a version comparison is absent. Simulation ensembles and energy subsamples are not the original total selected sample."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The revised total is explicitly neutrino interactions and the optional fraction is explicitly of preselected events. No arithmetic count difference or component sum is used."
+      },
+      "specific_omissions": [
+        "The original selected-event total or original selection rule is not received.",
+        "The cross-version claim that the selected sample changed lacks an original-sample premise."
+      ]
+    },
+    {
+      "case_id": "case_5e99b54d341cb2ad",
+      "question_id": "opera_revised_result",
+      "context_sha256": "bc4e4b6b592ae88ce8c532a8a23969a3191f7201f274ed2608a2549822dab6e1",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "central_value",
+          "support": "supported",
+          "rationale": "The revised abstract explicitly supplies the main arrival-time central value. Permitted alignment with the revised method span supplies the sign convention for the same arrival-time deviation.",
+          "evidence_locators": [
+            "opera_pdf_v4:p003:c02",
+            "opera_pdf_v4:p009:c01"
+          ]
+        },
+        {
+          "fact_id": "statistical_uncertainty",
+          "support": "supported",
+          "rationale": "The revised abstract explicitly labels the symmetric statistical uncertainty attached to the main arrival-time estimate.",
+          "evidence_locators": [
+            "opera_pdf_v4:p003:c02"
+          ]
+        },
+        {
+          "fact_id": "systematic_uncertainty",
+          "support": "supported",
+          "rationale": "The revised abstract explicitly labels the upper and lower systematic uncertainties and preserves their asymmetry.",
+          "evidence_locators": [
+            "opera_pdf_v4:p003:c02"
+          ]
+        },
+        {
+          "fact_id": "compatibility",
+          "support": "partial",
+          "rationale": "The received numerical estimate and uncertainties can support an elementary check that zero is within the displayed errors. However, the abstract ends before its concluding interpretation, and no received span explicitly states compatibility with light speed. This is numeric interpretability, not a received source conclusion or cross-span recovery of a missing conclusion.",
+          "evidence_locators": [
+            "opera_pdf_v4:p003:c02",
+            "opera_pdf_v4:p009:c01"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "supported",
+        "rationale": "The revised abstract binds the values to the 2009-2011 arrival-time measurement, and the revised method defines the light-speed-minus-neutrino flight-time sign convention. The older original result is separately versioned and is not substituted; statistical and systematic errors remain distinct."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "Nanoseconds are explicitly attached to the revised arrival-time estimate and both uncertainty components. The statistical label and asymmetric systematic signs remain visible."
+      },
+      "specific_omissions": [
+        "The explicit source statement that the revised main measurement is compatible with light speed is not received."
+      ]
+    },
+    {
+      "case_id": "case_66c6a322bc72cd32",
+      "question_id": "opera_revised_result",
+      "context_sha256": "57543fb3e042caecd2b41ddf6ba2490be2afdd7d2878bccf1bbc8e5dcc1b52f0",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "central_value",
+          "support": "absent",
+          "rationale": "No received revised span supplies the main arrival-time central value. The original-version estimate and revised timing-calibration measurements have different scope.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "statistical_uncertainty",
+          "support": "absent",
+          "rationale": "The revised main statistical uncertainty is not received. A numerically matching uncertainty in the original result is labelled systematic and cannot supply this fact.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "systematic_uncertainty",
+          "support": "absent",
+          "rationale": "No received span supplies the revised main upper and lower systematic uncertainties. Fibre-delay dispersion and timing-drift errors concern different quantities.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "compatibility",
+          "support": "absent",
+          "rationale": "No received span states compatibility of the revised main neutrino result with light speed. Compatibility of timing-calibration measurements is a different relation.",
+          "evidence_locators": []
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The revised context reaches an introduction to the arrival-time result but ends before the result itself. The other revised spans concern muon timing, fibre recalibration and DAQ drift; they do not supply the revised main neutrino estimate or its interpretation."
+      },
+      "unit_support": {
+        "support": "absent",
+        "rationale": "Although other quantities carry nanosecond and nanosecond-per-second units, no received revised main estimate or main uncertainty has the required numerical/unit binding."
+      },
+      "specific_omissions": [
+        "The revised main arrival-time central value is missing.",
+        "The revised main statistical uncertainty is missing.",
+        "The revised main asymmetric systematic uncertainty is missing.",
+        "The revised main result compatibility with light speed is missing."
+      ]
+    },
+    {
+      "case_id": "case_729a89b34a646ac9",
+      "question_id": "opera_selection_scope",
+      "context_sha256": "f3d8d87e1d0146c2acbaf113620628ea7262cadd13b4aa002948ee6db58ad749",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "scope_changed",
+          "support": "partial",
+          "rationale": "The revised selected total and exclusion rule are present, but the original spans concern the likelihood method, simulations and energy dependence. They provide neither an original selected total nor its selection rule. Cross-span alignment cannot turn the revised exclusion into an established change from the original selection.",
+          "evidence_locators": [
+            "opera_pdf_v4:p013:1201-2199"
+          ]
+        },
+        {
+          "fact_id": "selection_reason",
+          "support": "supported",
+          "rationale": "The revised span directly states that earliest hits isolated in time and position were discarded because noise could bias arrival times early.",
+          "evidence_locators": [
+            "opera_pdf_v4:p013:1201-2199"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The revised selected sample and preselected-event rejection have clear scope, and revised figure captions identify 2009-2011 data. The original selected-sample premise needed for a version comparison is absent. Simulation ensembles and energy subsamples are not the original total selected sample."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The revised total is explicitly neutrino interactions and the optional fraction is explicitly of preselected events. No arithmetic count difference or component sum is used."
+      },
+      "specific_omissions": [
+        "The original selected-event total or original selection rule is not received.",
+        "The cross-version claim that the selected sample changed lacks an original-sample premise."
+      ]
+    },
+    {
+      "case_id": "case_830c7b51785613be",
+      "question_id": "opera_selection_scope",
+      "context_sha256": "720a1ec5628f5f5710b2e09b239e26aa23c3d3c93669bdf2bf549851eb6d1f53",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "scope_changed",
+          "support": "partial",
+          "rationale": "Cross-version alignment supplies an original approximate sample description and the revised exact selected total plus rejection rule. The original description is only approximate and supplies no selection rule. It suggests a reduction but does not establish a distinct selected set without treating the approximate count as an exact discriminator or assuming the rejection was absent originally.",
+          "evidence_locators": [
+            "opera_pdf_v1:p021:c02",
+            "opera_pdf_v4:p013:c02"
+          ]
+        },
+        {
+          "fact_id": "selection_reason",
+          "support": "supported",
+          "rationale": "The revised span directly states that events with an earliest hit isolated in time and position were discarded and explains possible noise and early-arrival bias.",
+          "evidence_locators": [
+            "opera_pdf_v4:p013:c02"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "Both versions are associated with the 2009-2011 analysis, and the revised selected sample and preselected-event rejection have clear scope. The source does not definitively establish the original selected-event rule or a count comparison immune to the original approximation. The supplied main-sample discussion is not replaced with short-bunch or 2012 data."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The revised total is explicitly neutrino interactions, the original approximate quantity is neutrino interaction events, and the optional rejection fraction is bound to preselected events. No fraction is inferred from the published totals."
+      },
+      "specific_omissions": [
+        "A received original selection rule or another unambiguous source statement is needed to establish the cross-version selected-sample change; the approximate original sample description alone does not settle it."
+      ]
+    },
+    {
+      "case_id": "case_8f00b8e33968758d",
+      "question_id": "opera_revision_reason",
+      "context_sha256": "98169a86e34ce657566b2351f8bfa088b46d6702080b589b46471dd05c831122",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "fibre_connection",
+          "support": "absent",
+          "rationale": "No received span identifies an improperly connected optical fibre or links that connection to a changed timing delay. Generic discussion of instrumental effects or metrology does not supply the identified problem.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "oscillator_frequency",
+          "support": "absent",
+          "rationale": "No received span identifies an out-of-specification Master Clock oscillator frequency or its effect on event timestamps. A reference to an unreceived section cannot supply this fact.",
+          "evidence_locators": []
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The revised source explicitly associates corrections and instrumental sources with the earlier anomaly, but does not name the two problems; the cross-reference to Section 6.1 is not the section text."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "No numeric quantity or unit is required for the two qualitative instrument identifications; the missing mechanisms remain absent."
+      },
+      "specific_omissions": [
+        "Identification of the faulty optical-fibre connection and its timing-delay effect is missing.",
+        "Identification of the Master Clock oscillator frequency offset and its timestamp effect is missing."
+      ]
+    },
+    {
+      "case_id": "case_99a228a774b8393b",
+      "question_id": "opera_retained_baseline",
+      "context_sha256": "d90aac12d5d6cb4779cb894d8a5db8729e42647a9f342d4219a4eee22eb1350e",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "baseline_value",
+          "support": "partial",
+          "rationale": "The original span identifies the baseline as a sum and supplies component distances, while the revised span supplies the target-to-detector geodetic component. Neither received version states the requested complete baseline value. Relevant construction/component support does not authorize calculating the missing total.",
+          "evidence_locators": [
+            "opera_pdf_v1:p010:c01",
+            "opera_pdf_v4:p012:c01"
+          ]
+        },
+        {
+          "fact_id": "retention",
+          "support": "partial",
+          "rationale": "The received versions repeat the target-focal-point-to-detector component, supporting alignment of that component only. Neither complete total is received, so repetition of the component is not evidence that the complete reported BCT-to-OPERA baseline is unchanged.",
+          "evidence_locators": [
+            "opera_pdf_v1:p010:c01",
+            "opera_pdf_v4:p012:c01"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The received text identifies geodetic measurements and separates the target-to-detector component from the BCT extension. It does not provide both complete BCT-to-OPERA values required for the comparison. Optical-fibre lengths and timing delays in other spans have different scope."
+      },
+      "unit_support": {
+        "support": "partial",
+        "rationale": "Metres are explicit for the relevant geodetic components, but no received complete baseline value has a unit binding. Timing values and fibre lengths are not used as baseline substitutes."
+      },
+      "specific_omissions": [
+        "No received span states the complete BCT-to-OPERA baseline value.",
+        "No received pair of complete reported baseline values establishes cross-version retention."
+      ]
+    },
+    {
+      "case_id": "case_ac88826ff866ced5",
+      "question_id": "opera_revision_reason",
+      "context_sha256": "9add8440431d9c4e8301edace20fdd0c44a43ff6fca98fdf905e25cbb97792b3",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "fibre_connection",
+          "support": "absent",
+          "rationale": "No received span identifies an improperly connected optical fibre or links that connection to a changed timing delay. Generic discussion of instrumental effects or metrology does not supply the identified problem.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "oscillator_frequency",
+          "support": "absent",
+          "rationale": "No received span identifies an out-of-specification Master Clock oscillator frequency or its effect on event timestamps. A reference to an unreceived section cannot supply this fact.",
+          "evidence_locators": []
+        }
+      ],
+      "scope_support": {
+        "support": "absent",
+        "rationale": "The supplied original and revised context describes the experiment, measurements and sample sizes. It does not identify the two timing problems or bind an instrumental cause to either required mechanism."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "No numeric quantity or unit is required for the two qualitative instrument identifications; the missing mechanisms remain absent."
+      },
+      "specific_omissions": [
+        "Identification of the faulty optical-fibre connection and its timing-delay effect is missing.",
+        "Identification of the Master Clock oscillator frequency offset and its timestamp effect is missing."
+      ]
+    },
+    {
+      "case_id": "case_b663a7de86a8855a",
+      "question_id": "opera_retained_baseline",
+      "context_sha256": "9d620bc5f8de4d7e5ffc1044625187f7966edb3d45d0876d9d6b6e8a631f437a",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "baseline_value",
+          "support": "partial",
+          "rationale": "The original span identifies the baseline as a sum and supplies component distances, while the revised span supplies the target-to-detector geodetic component. Neither received version states the requested complete baseline value. Relevant construction/component support does not authorize calculating the missing total.",
+          "evidence_locators": [
+            "opera_pdf_v1:p010:0-967",
+            "opera_pdf_v4:p012:0-1777"
+          ]
+        },
+        {
+          "fact_id": "retention",
+          "support": "partial",
+          "rationale": "The received versions repeat the target-focal-point-to-detector component, supporting alignment of that component only. Neither complete total is received, so repetition of the component is not evidence that the complete reported BCT-to-OPERA baseline is unchanged.",
+          "evidence_locators": [
+            "opera_pdf_v1:p010:0-967",
+            "opera_pdf_v4:p012:0-1777"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The received text identifies geodetic measurements and separates the target-to-detector component from the BCT extension. It does not provide both complete BCT-to-OPERA values required for the comparison. Optical-fibre lengths and timing delays in other spans have different scope."
+      },
+      "unit_support": {
+        "support": "partial",
+        "rationale": "Metres are explicit for the relevant geodetic components, but no received complete baseline value has a unit binding. Timing values and fibre lengths are not used as baseline substitutes."
+      },
+      "specific_omissions": [
+        "No received span states the complete BCT-to-OPERA baseline value.",
+        "No received pair of complete reported baseline values establishes cross-version retention."
+      ]
+    },
+    {
+      "case_id": "case_bd80dd1419afd91c",
+      "question_id": "opera_revision_reason",
+      "context_sha256": "6eb801b869cbc06e5138a033a58003a3ee738124eda9eef796cfde0e360ec9d5",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "fibre_connection",
+          "support": "absent",
+          "rationale": "No received span identifies an improperly connected optical fibre or links that connection to a changed timing delay. Generic discussion of instrumental effects or metrology does not supply the identified problem.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "oscillator_frequency",
+          "support": "absent",
+          "rationale": "No received span identifies an out-of-specification Master Clock oscillator frequency or its effect on event timestamps. A reference to an unreceived section cannot supply this fact.",
+          "evidence_locators": []
+        }
+      ],
+      "scope_support": {
+        "support": "absent",
+        "rationale": "The supplied original and revised context describes the experiment, measurements and sample sizes. It does not identify the two timing problems or bind an instrumental cause to either required mechanism."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "No numeric quantity or unit is required for the two qualitative instrument identifications; the missing mechanisms remain absent."
+      },
+      "specific_omissions": [
+        "Identification of the faulty optical-fibre connection and its timing-delay effect is missing.",
+        "Identification of the Master Clock oscillator frequency offset and its timestamp effect is missing."
+      ]
+    },
+    {
+      "case_id": "case_c25412cff955a76a",
+      "question_id": "opera_revision_reason",
+      "context_sha256": "009160c5123eae7ca75d68f078f212648dd23938a4444dd4669ea2561fba281d",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "fibre_connection",
+          "support": "absent",
+          "rationale": "No received span identifies an improperly connected optical fibre or links that connection to a changed timing delay. Generic discussion of instrumental effects or metrology does not supply the identified problem.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "oscillator_frequency",
+          "support": "absent",
+          "rationale": "No received span identifies an out-of-specification Master Clock oscillator frequency or its effect on event timestamps. A reference to an unreceived section cannot supply this fact.",
+          "evidence_locators": []
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The revised source explicitly associates corrections and instrumental sources with the earlier anomaly, but does not name the two problems; the cross-reference to Section 6.1 is not the section text."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "No numeric quantity or unit is required for the two qualitative instrument identifications; the missing mechanisms remain absent."
+      },
+      "specific_omissions": [
+        "Identification of the faulty optical-fibre connection and its timing-delay effect is missing.",
+        "Identification of the Master Clock oscillator frequency offset and its timestamp effect is missing."
+      ]
+    },
+    {
+      "case_id": "case_d06e16b30126b939",
+      "question_id": "opera_retained_baseline",
+      "context_sha256": "580ecd8740136584cb8b053c67bc4306d287d6eb471c4d106c019aaae8eb14da",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "baseline_value",
+          "support": "supported",
+          "rationale": "The revised-version span explicitly reports the complete BCT-to-OPERA baseline and binds it to the target-to-detector and BCT-to-target path components. This is direct source support, not a sum calculated by the reviewer.",
+          "evidence_locators": [
+            "opera_pdf_v4:p012:c03"
+          ]
+        },
+        {
+          "fact_id": "retention",
+          "support": "partial",
+          "rationale": "The revised total is explicit. The original span supplies the target-to-detector component and starts the BCT component, but ends before the reported complete baseline. Cross-span alignment identifies the same component and measurement subject; it cannot supply the missing original total or establish retention of the complete value.",
+          "evidence_locators": [
+            "opera_pdf_v1:p010:c01",
+            "opera_pdf_v4:p012:c01",
+            "opera_pdf_v4:p012:c03"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The revised complete baseline has the requested BCT-to-detector scope, and the component distance is separately identified. The original complete-value statement needed for the version comparison is not received; the effective neutrino baseline elsewhere is not substituted."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "The explicit revised complete baseline is in metres. Component distances also carry metres; optional uncertainty is explicitly available for the revised total."
+      },
+      "specific_omissions": [
+        "The original-version statement of the complete BCT-to-OPERA baseline is missing.",
+        "Cross-version equality of the complete reported baseline cannot be established without calculating an unreported total from components."
+      ]
+    },
+    {
+      "case_id": "case_d07db9b706f4ec3d",
+      "question_id": "opera_revised_result",
+      "context_sha256": "2858cad16436b06a8d26ca29b3b98c253e2cd6d0e65101ced9831127de915630",
+      "support_status": "partial",
+      "required_fact_support": [
+        {
+          "fact_id": "central_value",
+          "support": "supported",
+          "rationale": "The revised abstract explicitly supplies the main arrival-time central value. Permitted alignment with the revised method span supplies the sign convention for the same arrival-time deviation.",
+          "evidence_locators": [
+            "opera_pdf_v4:p003:938-1999",
+            "opera_pdf_v4:p009:20-929"
+          ]
+        },
+        {
+          "fact_id": "statistical_uncertainty",
+          "support": "supported",
+          "rationale": "The revised abstract explicitly labels the symmetric statistical uncertainty attached to the main arrival-time estimate.",
+          "evidence_locators": [
+            "opera_pdf_v4:p003:938-1999"
+          ]
+        },
+        {
+          "fact_id": "systematic_uncertainty",
+          "support": "supported",
+          "rationale": "The revised abstract explicitly labels the upper and lower systematic uncertainties and preserves their asymmetry.",
+          "evidence_locators": [
+            "opera_pdf_v4:p003:938-1999"
+          ]
+        },
+        {
+          "fact_id": "compatibility",
+          "support": "partial",
+          "rationale": "The received numerical estimate and uncertainties can support an elementary check that zero is within the displayed errors. However, the abstract ends before its concluding interpretation, and no received span explicitly states compatibility with light speed. This is numeric interpretability, not a received source conclusion or cross-span recovery of a missing conclusion.",
+          "evidence_locators": [
+            "opera_pdf_v4:p003:938-1999",
+            "opera_pdf_v4:p009:20-929"
+          ]
+        }
+      ],
+      "scope_support": {
+        "support": "supported",
+        "rationale": "The revised abstract binds the values to the 2009-2011 arrival-time measurement, and the revised method defines the light-speed-minus-neutrino flight-time sign convention. The older original result is separately versioned and is not substituted; statistical and systematic errors remain distinct."
+      },
+      "unit_support": {
+        "support": "supported",
+        "rationale": "Nanoseconds are explicitly attached to the revised arrival-time estimate and both uncertainty components. The statistical label and asymmetric systematic signs remain visible."
+      },
+      "specific_omissions": [
+        "The explicit source statement that the revised main measurement is compatible with light speed is not received."
+      ]
+    },
+    {
+      "case_id": "case_dcc01b9f1190ec14",
+      "question_id": "opera_revised_result",
+      "context_sha256": "577b15cd11d93d525f989af39458439a3ec707d8daf3079c0482c8df9741ee09",
+      "support_status": "absent",
+      "required_fact_support": [
+        {
+          "fact_id": "central_value",
+          "support": "absent",
+          "rationale": "No received revised span supplies the main arrival-time central value. The original-version estimate and revised timing-calibration measurements have different scope.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "statistical_uncertainty",
+          "support": "absent",
+          "rationale": "The revised main statistical uncertainty is not received. A numerically matching uncertainty in the original result is labelled systematic and cannot supply this fact.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "systematic_uncertainty",
+          "support": "absent",
+          "rationale": "No received span supplies the revised main upper and lower systematic uncertainties. Fibre-delay dispersion and timing-drift errors concern different quantities.",
+          "evidence_locators": []
+        },
+        {
+          "fact_id": "compatibility",
+          "support": "absent",
+          "rationale": "No received span states compatibility of the revised main neutrino result with light speed. Compatibility of timing-calibration measurements is a different relation.",
+          "evidence_locators": []
+        }
+      ],
+      "scope_support": {
+        "support": "partial",
+        "rationale": "The revised context reaches an introduction to the arrival-time result but ends before the result itself. The other revised spans concern muon timing, fibre recalibration and DAQ drift; they do not supply the revised main neutrino estimate or its interpretation."
+      },
+      "unit_support": {
+        "support": "absent",
+        "rationale": "Although other quantities carry nanosecond and nanosecond-per-second units, no received revised main estimate or main uncertainty has the required numerical/unit binding."
+      },
+      "specific_omissions": [
+        "The revised main arrival-time central value is missing.",
+        "The revised main statistical uncertainty is missing.",
+        "The revised main asymmetric systematic uncertainty is missing.",
+        "The revised main result compatibility with light speed is missing."
+      ]
+    }
+  ]
+}

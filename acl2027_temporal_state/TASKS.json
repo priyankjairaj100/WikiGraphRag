@@ -1,5 +1,5 @@
 {
-  "version": "0.13",
+  "version": "0.14",
   "created": "2026-10-01",
   "date_basis": "planning targets; not scheduled background jobs",
   "tasks": [
@@ -494,7 +494,7 @@
       "target_date": "2026-10-10",
       "status": "completed",
       "acceptance": "Checklocalresource feasibility oravailablecloudpath, pinassets/runtime, token/contextbudgets andbounded cost before execution. Tiny0.6B technicalcontrol is notstrongbaseline. ExistingcloudJobs/credit limitationremainsunresolved.",
-      "progress": "Official pinned Qwen3-4B Q8_0 ran locally under 5.5 GiB AS with full 2520\u20132546-token prompts. Sixteen matched scores plus one discarded response and one authored smoke are accounted for; exact external/tokenizer and independent native-artifact audits pass. This execution path does not establish a strong contextual baseline."
+      "progress": "Official pinned Qwen3-4B Q8_0 ran locally under 5.5 GiB AS with full 2520–2546-token prompts. Sixteen matched scores plus one discarded response and one authored smoke are accounted for; exact external/tokenizer and independent native-artifact audits pass. This execution path does not establish a strong contextual baseline."
     },
     {
       "id": "G02",
@@ -588,12 +588,12 @@
       "depends_on": [
         "E05"
       ],
-      "status": "pending",
+      "status": "in_progress",
       "priority": "highest_research_priority",
       "target_date": "2026-10-17",
       "acceptance": "Executable stronger reader with reviewed domain controls and frozen cost/resource bounds; matched structural and metadata baselines with all source attachments charged to budget. No promotion of conversational annotation to pinned model output.",
-      "blocker": "Fresh read-only Hugging Face Jobs operation remains unavailable; no paid job launched.",
-      "plan": "docs/acl2027_execution_plan_v13.txt"
+      "plan": "docs/acl2027_execution_plan_v13.txt",
+      "progress": "v14 completed structural baseline,8controls and32answers with Qwen3.5-4BQ5_K_M; reader failed upgrade gate (matched1/16 vs2/16). Dense/RRF48sourcecontexts also failed complete-coverage improvement. Adequate natural reader remains unmet."
     },
     {
       "id": "D11",
@@ -606,9 +606,59 @@
       "priority": "high",
       "target_date": "2026-11-15",
       "acceptance": "New history/entity-disjoint split, source-grounded scope distinctions and independently reviewed references frozen before predictions. Existing8questions stay development-only. No outcome-based case selection.",
-      "plan": "docs/next_retrieval_gate_v13.txt"
+      "plan": "docs/next_retrieval_gate_v13.txt",
+      "progress": "v14 freezes/acquires six issuer pairs/12objects and inventories Inline XBRL; no questions, references or independent test split yet. Berkshire filename/internal-year mismatch retained. Source feasibility is not benchmark admission."
+    },
+    {
+      "id": "E07",
+      "phase": "Evaluation",
+      "task": "Complete structural reader and fixed dense/RRF development diagnostics",
+      "depends_on": [
+        "E05"
+      ],
+      "status": "completed",
+      "acceptance": "Frozen32nativeanswers and48source-onlycontexts, all failures and source/answer axes retained.",
+      "results": [
+        "results/structured_study_summary_v14.json",
+        "results/dense_source_support_summary_v14.json"
+      ],
+      "progress": "No demonstrated upgrade; negative outcome retained."
+    },
+    {
+      "id": "M12",
+      "phase": "Method",
+      "task": "Validate a standard typed source-binding reader",
+      "depends_on": [
+        "E07"
+      ],
+      "status": "pending",
+      "priority": "highest_research_priority",
+      "acceptance": "Source-exact year/unit/entity/version bindings; correct numeric normalization and unresolved cases; realistically long complete-context controls and fresh reviewed development references. XBRL pointer presence alone is insufficient."
+    },
+    {
+      "id": "M13",
+      "phase": "Method",
+      "task": "Measure automatic candidate recall and witness verification before method comparison",
+      "depends_on": [
+        "M12"
+      ],
+      "status": "pending",
+      "priority": "high",
+      "acceptance": "Source-only proposals, answer-changing alternatives, explicit unknowns, gold-independent inference; report candidate recall and false elimination. Existing14 authored selector tests are only scaffold contracts."
+    },
+    {
+      "id": "E08",
+      "phase": "Evaluation",
+      "task": "Compare discriminative witnesses against strong structured, sufficiency and ambiguity baselines",
+      "depends_on": [
+        "M13",
+        "D11"
+      ],
+      "status": "pending",
+      "priority": "high",
+      "acceptance": "Same candidates/reader/source access and charged retrieval, proposal, verification and token budgets; preregister primary measures and failures; independent history/issuer evaluation with meaningful uncertainty."
     }
   ],
   "updated": "2026-10-03",
-  "current_focus": "Feasibility study complete: source-bound structural retrieval and an adequate reader are the next gate; no algorithmic advantage established."
+  "current_focus": "Failed reader and compact dense/RRF upgrade candidates are fully recorded. Establish a typed structured-source reader before testing budgeted discriminative source witnesses."
 }

@@ -1,0 +1,32 @@
+{
+  "schema_version": "manuscript_claim_review_v0.14",
+  "status": "passed_with_stated_limits",
+  "reviewer": "Root integration review; model-assisted, not independent human adjudication",
+  "claims_reviewed": 15,
+  "evidence_hash_joins": 34,
+  "input_sha256": {
+    "paper/retrieval_reader_upgrade_v14.json": "2788e00a7cb42d56b7575d25ba656e3ffc8efa99e4324eac141b63069b39e0bb",
+    "paper/retrieval_reader_upgrade_v14.pdf": "e4ea6574825421b5f71d8e2b9adc175c90fbe473129944b29312a7b06626a557",
+    "paper/retrieval_reader_upgrade_v14.tex": "3693e8fde0c7d740f1fd49a1be94ed5a066593c2b44a3dc34c0e053fa20d6734",
+    "paper/claim_ledger_v14.json": "838eb6200492b3062cd054bd13c763fc0b47a53c3204eefe1720fd8b718fe201",
+    "results/paper_visual_qa_v14.json": "cb8d04289f4d9f60e78e7197b936341c4ca9bcdd0bc73d56941eab93556650a4",
+    "docs/research_update_v14.txt": "bcffcfdbe2cf111d0154d95faeceb8f9cbf2baba6d275f81cce06fbc9ac2a0e4",
+    "docs/reproduce_v14.txt": "1b6f6064575e51b6804fc486a7572691d2aeee642417cdfd28c318fbd3e82cb0"
+  },
+  "checks": [
+    "Abstract, all numeric result tables and final interpretation agree with observed main and source-only summaries.",
+    "Same-context reader comparison is1/16 new versus2/16 old; checkpoint, quantization, template and suffix confounds are explicit.",
+    "Dense source support is not labeled answer accuracy; no held-out or method advantage claimed.",
+    "Fresh-source/XBRL counts are occurrences and links, not validated normalized quantities or admitted benchmark examples.",
+    "Witness selector is supplied-judgment scaffold, not an automatic natural method or novelty result.",
+    "All15 claim evidence paths/hashes resolve.",
+    "TeX export matches the stable canonical JSON exactly; no TeX compilation or ACL format claim.",
+    "Seven-page PDF visual QA is delegated and recorded; root additionally checked extracted page counts and absence of pending placeholders."
+  ],
+  "editorial_clarifications": [
+    "C04 now specifies unchanged selected seed IDs, while preserving12 changed context renderings.",
+    "C05 distinguishes equal budget caps from unequal actual token use."
+  ],
+  "semantic_labels_changed": false,
+  "frozen_inputs_changed": false
+}

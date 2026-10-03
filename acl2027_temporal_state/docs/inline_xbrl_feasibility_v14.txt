@@ -1,0 +1,101 @@
+Inline XBRL source-binding feasibility v0.14
+3 October 2026
+
+The twelve captured HTML objects contain usable local pointers for a standard
+structured-reader baseline: all 23,651 ix:nonFraction occurrences resolve to one
+local context and one local unit under the implemented inventory checks. This
+does not establish 23,651 valid, distinct quantities, correct source annotations,
+faithful rendered evidence or comparative QA accuracy.
+
+The exact source selection and source hashes are unchanged. Sources were parsed
+one at a time as strict namespace-aware XML with external entities, DTD loading
+and network disabled. Expat byte offsets bind fact/context/unit spans to original
+source bytes; DOM locators and hashes are retained. Detailed metadata remains
+outside the repository. The public inventory contains aggregate counts and a
+bounded set of anchors, without source text or numeric fact values.
+
+Executed inventory
+
+- 23,651 numeric fact occurrences; 8,269 context elements; 131 unit elements.
+- All fact contextRef/unitRef targets are unique within their captured document.
+  No missing/ambiguous local target or duplicate global XML ID was found.
+- 15,418 occurrences refer to explicit dimensions; 10 refer to typed dimensions.
+  Dimension QNames resolve locally, but taxonomy meaning and defaults are untested.
+- 493 occurrences use divided units. Unit structure is inventoried without
+  quantity conversion or semantic unit validation.
+- 13,666 have format attributes, 23,332 scale attributes, and 2,176 sign attributes.
+- 95 are in hidden markup; 23,556 have no detected hidden marker. That latter
+  count is not a browser-visibility certificate.
+- 16 declare nil. They are not counted as successfully normalized quantities.
+- 256 occurrences have a nested nonFraction child; 256 have a nonFraction ancestor.
+- 1,255 concept/contextRef/unitRef/target keys have multiple occurrences. This is
+  a syntactic repetition count, not semantic duplicate detection or reconciliation.
+- All observed facts use the default target. No multi-document target-set support
+  is claimed from this single-document inventory.
+
+These categories overlap. An occurrence with resolved links can still be nil,
+transform-dependent, repeated, hidden or semantically invalid. No quantity value
+was normalized, compared, deduplicated, used for a question or published.
+
+Observed transformation dependencies
+
+The source attributes use XBRL transformation namespaces dated 2015-02-26,
+2020-02-12 and 2022-02-16, plus the SEC extension namespace dated 2015-08-31.
+Counts are 4,936 numdotdecimal, 7,372 num-dot-decimal, 1,242 fixed-zero and
+116 numwordsen occurrences; 9,985 have no format attribute. Expanded QName
+resolution alone does not verify a registry entry, processor implementation,
+lexical validity or transformed result. Values without format still need their
+applicable scale/sign and datatype checks. This inventory intentionally applies
+none of those transformations.
+
+Standards boundary
+
+The official Inline XBRL 1.1 recommendation with July 2026 errata was inspected
+before interpretation. Its mapping separates displayed fact content from the
+target value and links facts to contexts and units; format, scale and sign can
+affect that mapping. Hidden facts and nested numeric facts are explicit features.
+XBRL context/entity/period and dimension semantics require their corresponding
+specifications. A local pointer inventory is not a conformant or validating
+processor. The separate semantics review records primary references and pitfalls.
+The period-shape recognizer is deliberately coarse: its dictionary does not
+validate duplicate child cardinality. The zero-issue count also does not test
+nil lexical validity, decimals/precision constraints, nesting consistency or
+repeated dimensions. It must not be described as zero invalid contexts or facts.
+
+https://www.xbrl.org/Specification/inlineXBRL-part1/REC-2013-11-18%2Berrata-2026-07-14/inlineXBRL-part1-REC-2013-11-18%2Bcorrected-errata-2026-07-14.html
+Sections 3, 8–10 and 16.
+https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html
+https://www.xbrl.org/specification/dimensions/rec-2012-01-25/dimensions-rec-2006-09-18%2Bcorrected-errata-2012-01-25-clean.html
+
+What this supports next
+
+It supports evaluating a standard source-structured reader and checking displayed
+bindings against issuer-supplied structured tags. Both originate in the same
+report, so agreement is not independent external truth or human gold. Taxonomy
+meaning, period-type compatibility, dimensional defaults, typed-domain validity,
+duplicate consistency and source tagging errors remain unresolved.
+Fact observation periods must come from their linked contexts; the report's
+fiscal-year label or filename is not a substitute for those periods.
+
+The next bounded implementation decision is a conformant, pinned transformation
+and validation path plus a source-rendering cross-check on deterministic samples.
+Any normalization permission must be explicitly declared in a later representation
+contract; the current no-recomputation QA instructions have not changed. Do not
+treat successful structural links as an automatic algorithmic result.
+
+A future text-only versus structure-aware comparison must disclose access to
+hidden metadata. Every serious structural comparator should receive equivalent
+source metadata, with all serialized context/unit/dimension text charged. The
+baseline cannot receive uncharged oracle binding labels. Source tagging and
+standard decoding are existing machinery, not the project's novelty claim.
+
+Validation and reproducibility
+
+scripts/inventory_inline_xbrl_v14.py accepts the frozen identity manifest, external
+source directory, fresh external metadata directory and new public result path.
+It refuses to overwrite outputs. lxml 6.1.1 and Python Expat were used. A separate
+offline pass reparsed each original: every fact's attributes/order, context/unit
+cardinality and DOM path matched; all 32,051 fact/context/unit byte-span hashes
+verified. This tests bookkeeping, not the omitted transformations or semantics.
+Results and source-only primary-document review provenance are hash-bound in
+results/inline_xbrl_feasibility_v14.json.

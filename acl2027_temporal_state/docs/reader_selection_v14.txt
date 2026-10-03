@@ -1,0 +1,110 @@
+v14 local reader selection and execution recipe
+
+Selection: Qwen3.5-4B, distributed as Unsloth Q5_K_M, selected before any
+v14 predictions. This is a third-party quantization of an official Apache-2.0
+Qwen checkpoint, not an official Qwen GGUF release. Exact repository revisions,
+LFS SHA256 digests, licenses, byte sizes and primary source URLs are recorded in
+configs/reader_candidates_v14.json. Metadata was inspected on 2026-10-03 via
+Hugging Face model/repository metadata and official Qwen model cards/configs.
+No model-card benchmark is treated as an observed score for this local recipe.
+The inspected upstream revisions identify official metadata; advertised base-model
+lineage does not prove that quantization used those exact upstream revisions.
+The executable GGUF bytes are pinned, but quantization was not reproduced.
+
+The chosen file is 3,143,656,608 bytes (2.928 GiB), leaving 2,761,923,424 bytes
+under the unchanged 5.5 GiB address-space guard before runtime, cache and
+workspaces. The existing llama.cpp b11146 runtime has dense Qwen3.5 loader/graph
+symbols. After selection, the parent process downloaded and verified the asset
+and performed a native tokenizer-only preflight: load, native template and
+151-token tokenization passed, with zero completion calls. The preflight receipt
+is results/reader_technical_preflight_v14.json. This short preflight does not
+establish competence or peak memory at the full prompt/output budget.
+
+Qwen3-4B-Instruct-2507 is a plausible older nonthinking instruction-only
+alternative. Its pinned Q8_0 is 4,280,405,600 bytes and shares the older qwen3
+architecture. It is reserved only for documented technical incompatibility,
+not for switching after a disappointing competence result. Qwen3-8B Q4_K_M
+leaves about 0.818 GiB before runtime/cache/workspaces; Qwen3.5-9B Q4_K_M
+leaves only 225,057,568 bytes. Those larger candidates were not attempted under
+the unchanged guard. Parameter count alone does not establish superior reading.
+Official Qwen3.5 capability tables use other generation settings, including
+thinking; they cannot be imported as claims about greedy nonthinking 256-token
+quantized execution.
+
+The CPU environment has an 8 GiB cgroup. Every native process retains:
+5.5 GiB hard address-space cap; 7 GiB active-metric cgroup watchdog;
+3600 CPU seconds;1050 wall seconds; 90-second startup deadline; 4 CPU threads;
+4096 context tokens; 3500 full-input tokens; 256 generated tokens; no context shift;
+Q8_0 K/V cache settings;one slot;fresh process for each completion. Active
+memory is anon+file_mapped+kernel from the pinned guard, not memory.current
+alone. CPU generation throughput is unknown until measured. The initial model
+download failed for disk capacity and was retained; the root recorded the old
+reproducible weight eviction/cache reconciliation and successful attempt02.
+All old runtime and inference traces remain preserved. No paid/cloud job was
+launched for this selection.
+
+scripts/native_structured_reader_v14.py is a new versioned adapter. It reuses
+unchanged v07 render/tokenization and runtime hashing, v09 cgroup measurement,
+and v13 metadata projection functions. It uses the exact v13 system prose with
+only the unsupported /no_think suffix removed; the user question/evidence/suffix
+format matches v13. Native template kwargs set enable_thinking=false. It does
+not force the old model's rendered <think> suffix. The model, quantization,
+template and nonthinking control change jointly, so a v13/v14 contrast is a
+reader-recipe comparison, not a checkpoint-only causal comparison.
+
+Native batch CLI, run from acl2027_temporal_state after root review:
+  python3 scripts/native_structured_reader_v14.py freeze \
+    --config configs/structured_reader_controls_v14.json \
+    --request data/structured_reader_v14/controls_requests.json \
+    --protocol data/structured_reader_v14/protocol.json \
+    --reference-review RESULTS_OF_INDEPENDENT_REVIEW.json \
+    --external NEW_EXTERNAL_ATTEMPT_DIRECTORY \
+    --data-dir NEW_PROJECT_METADATA_DIRECTORY --receipt NEW_RESULT_JSON
+  python3 scripts/native_structured_reader_v14.py execute --external SAME_EXTERNAL
+  python3 scripts/native_structured_reader_v14.py verify --external SAME_EXTERNAL
+
+The freeze verifies asset bytes, immutable revisions, code/runtime hashes and
+pre-output source/reference review. It creates unique attempt directories and
+refuses overwrite, retry or resume. Preflight renders and tokenizes every full
+input before any completion. Each completion starts a fresh process and must
+match the frozen prompt/token IDs, cold-cache token accounting and echoed
+decoding settings. Output-limit responses are retained as failures and the
+fixed batch continues; technical/provenance failures stop the batch. Private
+source-bearing prompts, raw answers, logs and token arrays stay outside the
+whole Git repository. Public batch receipts contain hashes/counts/timing only.
+The authored synthetic controls may be published directly.
+
+Tokenizer bridge for evidence-budget selection:
+  with tokenizer_session(CONFIG_PATH, NEW_EXTERNAL_LOG_DIRECTORY) as counter:
+      cost = counter.count_prompt(question, context, optional_same_config)
+The session loads one guarded native server and makes no completion calls.
+count_prompt uses the same build_prompt/system/native template as final
+inference. It returns full-input count, rendered-prompt SHA256, token-ID SHA256,
+model/runtime/template identity and budget-fit flags. Empty context is allowed
+for measuring fixed prompt overhead. Oversized candidates return failed fit
+flags; the execution validator rejects overflow and never truncates text.
+The retrieval caller must retain each cost receipt and freeze selected prompts.
+
+The eight authored controls are fully separate from the natural 8-question
+development set. They cover negative-number conventions, reversed table-year
+columns, cross-version correction, units and confidence intervals, sample
+selection, approximate-versus-exact totals, population/year scope and
+missing-versus-zero cells. All 19 required propositions have explicit synthetic
+source/page support. Independent model-assisted reference review precedes
+predictions; these are not human-gold or natural evaluation results.
+
+Frozen competence gate: at least 7 of 8 reference-complete grounded responses,
+and no critical sign/unit/year/sample error in any answered claim. Unsupported
+extra claims are assessed too. An omission can fail completeness without being
+an invented critical claim. Wrong or missing source-page citations fail grounding.
+An output-limit response counts as incorrect. A failed gate blocks the planned
+32-answer adequate-reader comparison; outputs remain in the record, with no
+prompt repair or outcome-based model switch. Passing permits only this bounded
+development comparison and does not certify a strong general-purpose reader.
+
+Offline validation: eight focused tests in tests/test_native_structured_reader_v14.py
+passed. They check immutable configurations/assets, absence of dependence on the
+evicted old weight, exact shared prompt formatting, full native token accounting,
+no input truncation/cache reuse, identity checks, retention of output-limit
+failures, metadata-only projections and separation of references from requests.
+No native model execution was used by these tests.

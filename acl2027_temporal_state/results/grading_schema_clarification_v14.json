@@ -1,0 +1,17 @@
+{
+  "schema_version": "grading_schema_clarification_v14",
+  "recorded_at_utc": "2026-10-03T12:05:26.486057+00:00",
+  "trigger": "The masked Plug grader asked whether the legacy supported_correct fact-status label conflates reference correctness and actual context support.",
+  "resolution": "Fact assessments track frozen-reference semantic correctness. A reference-correct fact absent from received evidence can use supported_correct, with the absence stated explicitly in its rationale and assessed separately under citation_grounded and unsupported_assertions. The joint score still requires reference content, requested scope and actual citation support.",
+  "basis": "The frozen scoring contract explicitly separates reference_content_correct from citation_grounded. This clarification preserves those axes and adds no reference facts or success criteria.",
+  "scoring_contract_sha256": "bfe298807cdfe3b4ceb3cee2e9c75a9de60facece0c429c2e0f513d23e8d70b2",
+  "reference_edits": false,
+  "raw_output_edits": false,
+  "main_native_settings_changed": false,
+  "root_main_answers_inspected_before_clarification": false,
+  "applies_to": [
+    "plug",
+    "opera"
+  ],
+  "required_disclosure": "Grade artifacts must explain that the legacy fact-status label alone does not certify support in received context."
+}

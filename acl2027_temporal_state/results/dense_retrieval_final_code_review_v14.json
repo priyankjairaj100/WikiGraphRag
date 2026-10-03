@@ -1,0 +1,98 @@
+{
+  "schema_version": "dense_retrieval_final_code_review_v14",
+  "created_at_utc": "2026-10-03T12:33:16.128955+00:00",
+  "status": "passed_with_explicit_limits",
+  "scope": "Separate final-code amendment review after the earlier review and source-coverage freeze; not represented as part of the earlier pre-execution review. No model execution or experimental result certified.",
+  "input_sha256": {
+    "results/dense_retrieval_code_review_v14.json": "94ec6bda84d384236c610eeb7a5e9fdbb3c66ccfab6be5c85877326c192d8c3e",
+    "scripts/dense_retrieval_v14.py": "f3400f9c25da2d60020f7eb081a67c3581411ce7cfcfbd78e0e30e9493c82f2a",
+    "scripts/run_dense_retrieval_v14.py": "469513efb43fe243014eed7be9564e07a45924ba0ef200d97b6319c187e8234b",
+    "scripts/prepare_dense_support_v14.py": "dbe4be67fec3fc2f06ea2d7e1d59ca4d376d2857c4af76707214fcad5fe66fb6",
+    "scripts/check_dense_readiness_v14.py": "6f6dfe4833d76d94320bc6775857f08c29c322a6d008be067998375ef14d9094",
+    "scripts/fetch_dense_assets_v14.py": "06075912a189bdc434666319f66a2a7a07956652ec092eb6e77c65dc0ac2933f",
+    "scripts/retrieve_paired_v13.py": "e99b161ac9b5a9b16b07af22f1dcae977633dcdeb22ab33e36e5f48509428986",
+    "scripts/retrieve_structured_layout_v14.py": "92f30f4bd34b688c9a418e5743f9cad2872306ce941ef359ddbde73efa6721d7",
+    "scripts/native_structured_reader_v14.py": "b6993e1113a88e16e00ddb19cb470986eff5e8dbd4e6ce76899e82910eb263bd",
+    "configs/dense_retriever_candidate_v14.json": "ce827ed2c25a4a951acc8708390963b2325597d600d901f8633cbf3ba227c7d0",
+    "configs/structured_reader_main_v14.json": "16c2d6f9868c3d4adafd8e2a33bfd396a5caec9db05f79a9eca3717fb8076a58",
+    "data/dense_retrieval_v14/source_coverage_protocol.json": "74b4462a63bb7212c6c4b87cf0287595b8b0ababab628845bcca4865d363a0ec",
+    "tests/test_dense_retrieval_v14.py": "2320ab0a3c8b07ce2a8b552ebf270e1c276c48f29b9eed214fea5fe91ff0b270",
+    "tests/test_dense_support_packet_v14.py": "210b68ef5199fcc1116500b88271dab6dd49ab2efb0899f70ddd18273bfbaa99"
+  },
+  "provenance": {
+    "reviewer_role": "Model-assisted role separate from dense implementation author; native reader collector author with shared project familiarity.",
+    "independent_human_review": false,
+    "onnx_sessions_opened": 0,
+    "native_model_or_tokenizer_calls": 0,
+    "network_calls": 0,
+    "main_answer_texts_read": 0,
+    "frozen_inputs_edited": 0,
+    "prior_review_edited": false
+  },
+  "exact_amendment_check": {
+    "current_encoder_sha256": "f3400f9c25da2d60020f7eb081a67c3581411ce7cfcfbd78e0e30e9493c82f2a",
+    "prior_reviewed_encoder_sha256": "a2a5bb6822425d1fffc76ce40f008658ec827c2177ed0fa8c84729735f611506",
+    "timing_statements_and_metadata_removed_sha256": "a2a5bb6822425d1fffc76ce40f008658ec827c2177ed0fa8c84729735f611506",
+    "byte_exact_prior_reconstructed": true,
+    "assessment": "Only monotonic-clock reads, timing accumulators and timing metadata were added. Removing those exact additions reproduces the complete prior reviewed file SHA256. Pooling, ranking, RRF, selection, packing, gates, hashes and failure behavior are unchanged."
+  },
+  "timing_scope": {
+    "encoder_model_load_seconds": "Brackets Encoder construction, including gate and asset/runtime checks, tokenizer setup and ONNX session setup; not an isolated graph-load kernel measurement.",
+    "passage_and_query_encoding_seconds": "Separate calls include their own batch tokenization and inference; no controlled comparative latency or throughput claim.",
+    "ranking_seconds": "BM25, dense scoring and RRF are timed separately per query; RRF excludes constituent rankers.",
+    "packing_seconds": "Brackets shared pack calls and native token counts. Candidate bundle construction occurs before this timer.",
+    "elapsed_retrieval_seconds_before_metadata_write": "Includes source/index loading, rankings, construction/packing and external context write/hash; excludes the outer native tokenizer session startup and public metadata write.",
+    "wrapper_elapsed_seconds_including_native_session": "Brackets tokenizer context startup, all retrieval/packing and session exit; final receipt serialization occurs afterward.",
+    "nonclaim": "One-run descriptive engineering timings, not a fair speed benchmark."
+  },
+  "resident_wrapper": {
+    "sha256": "469513efb43fe243014eed7be9564e07a45924ba0ef200d97b6319c187e8234b",
+    "one_tokenizer_context_manager": true,
+    "counter": "Passes bridge.count_prompt to every shared packing call; uses the pinned native render/apply-template/tokenize path.",
+    "encoder_session_created": false,
+    "native_completions_requested": 0,
+    "failure_retention": "Normal Python exceptions are recorded in a new runtime receipt in finally; native tokenizer artifacts are handled by the existing frozen session implementation. Existing receipt is refused.",
+    "success_bindings": [
+      "wrapper source",
+      "encoder source",
+      "native adapter",
+      "reader config",
+      "retrieval metadata hash",
+      "external contexts hash",
+      "inner timing record"
+    ],
+    "caveat": "native_tokenizer_sessions=1 is assigned before context entry, so on a failed startup it is a planned attempt count, not proof of a successfully initialized resident session. Abrupt process/host death may also prevent the finally receipt; do not infer success from that counter alone."
+  },
+  "support_packet_helper": {
+    "sha256": "dbe4be67fec3fc2f06ea2d7e1d59ca4d376d2857c4af76707214fcad5fe66fb6",
+    "full_grid": {
+      "questions": 8,
+      "rankers": 3,
+      "representations": 2,
+      "contexts": 48
+    },
+    "source_context_integrity": "Checks context-file and per-context hashes against the retrieval metadata; binds exact question-file hashes and complete question/condition population.",
+    "baseline_reuse": "Requires all 16 BM25 paired/closure context strings, question strings and histories to equal active v14 baselines exactly; confirms old support records cover each question/context hash. No source review reused solely from ranker names.",
+    "new_review_cases": 32,
+    "new_cases_per_domain": 16,
+    "reference_integrity": "Both domains require exact frozen v13 reference hashes and four unique question IDs each, jointly matching all eight questions.",
+    "masking": "External packets contain case ID, question ID/text, frozen reference, exact received context and context hash. Ranker/condition labels remain in the separate public mapping. Deterministic masks and shared familiarity are not statistical or human blinding.",
+    "answers_read": false,
+    "write_behavior": "Source-bearing packets are forced outside repository; existing packet or manifest destinations refused. All identity gates precede packet writes."
+  },
+  "readiness_helper": "Checks all frozen protocol inputs and external bindings, requires all four actual completed-main counters to equal32, and invokes native.verify without model execution. It emits a source-coverage/native-receipt hash-bound encoder gate; output-limit failures remain in the32 denominator.",
+  "validation": {
+    "command": "python -m unittest discover -s tests -p 'test_dense*v14.py' -q",
+    "tests_passed": 11,
+    "tests_failed": 0,
+    "elapsed_seconds": 0.024,
+    "kind": "Offline meaningful pooling/ranking/index/gate and packet/reuse contract fixtures; no ONNX graph or native tokenizer execution."
+  },
+  "blocking_findings": [],
+  "remaining_requirements": [
+    "Actual encoder/index/retrieval/tokenizer outputs require their own runtime and provenance audit; this review did not execute or certify them.",
+    "Audit the48 real context token/hash records and16 exact-byte reuse pairs before interpreting source-support comparisons.",
+    "Preserve failed attempts and the original review; this final amendment is not a retrospective pre-execution timestamp.",
+    "No additional natural QA, held-out evaluation, algorithmic novelty, stronger-reader or ACL publishability claim follows from source-coverage code."
+  ]
+}

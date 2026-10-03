@@ -1,0 +1,124 @@
+{
+  "schema_version": "native_structured_reader_freeze_v0.14",
+  "created_unix_seconds": 1791025957.0882106,
+  "completion_calls_at_freeze": 0,
+  "config": {
+    "schema_version": "native_structured_reader_config_v0.14",
+    "batch_id": "controls_v14",
+    "expected_requests": 8,
+    "maximum_context_tokens": 4096,
+    "maximum_input_tokens": 3500,
+    "maximum_generated_tokens": 256,
+    "port": 18141,
+    "per_request_timeout_seconds": 900,
+    "system_prompt": "You are a careful document reader. Answer the question using only the supplied source excerpts. Distinguish what each document version says and preserve the relevant entity, reporting period, measure and selected sample. Do not recompute quantities or use outside knowledge. If the excerpts do not establish a requested fact, say so. Give a concise answer of at most 120 words, with supporting citations in the form [document_id p.N]. Use ordinary prose, not JSON.",
+    "model": {
+      "path": "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/assets/Qwen3.5-4B-Q5_K_M.gguf",
+      "repo": "unsloth/Qwen3.5-4B-GGUF",
+      "revision": "e87f176479d0855a907a41277aca2f8ee7a09523",
+      "bytes": 3143656608,
+      "sha256": "8814232b85594dcd46c50e5b8b29324a7efe9e746edbe8a3d1df3d3fce7aad39"
+    },
+    "runtime": {
+      "directory": "/workspace/scratch/bdef663e3dfc/tmp/local_backend_v09/runtime/llama-b11146",
+      "base_config": "configs/model_backend_v09.json",
+      "base_config_sha256": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802"
+    }
+  },
+  "parameters": {
+    "n_predict": 256,
+    "temperature": -1.0,
+    "seed": 7,
+    "n_probs": 0,
+    "post_sampling_probs": false,
+    "cache_prompt": false,
+    "return_tokens": true,
+    "stream": false,
+    "repeat_penalty": 1.0,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "logit_bias": [],
+    "samplers": [
+      "temperature"
+    ],
+    "grammar": "",
+    "stop": [],
+    "ignore_eos": false
+  },
+  "request_sha256": "3cfe766f93eda23a0bfaede0aa7af3fdc373e2ffd50c68994374de2955d91aae",
+  "request_bytes": 4559,
+  "protocol_sha256": "b6756ad165c296e88dd8325c0e11dd2c00225635276f1faccf66df3fce3f9fcf",
+  "reference_review_sha256": "beb368a2e9e1b0125c3bcd7712758b5dae01404ff22de4c96b7c74ef463a41ba",
+  "reference_review_supplied_to_model": false,
+  "source_hashes": {
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/native_structured_reader_v14.py": "b6993e1113a88e16e00ddb19cb470986eff5e8dbd4e6ce76899e82910eb263bd",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/larger_scorer_v09.py": "67b389f5fe8a87493e245f858607252cb72030f128215a3871db4882303e0dea",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/local_backend_v07.py": "c63acf150c86c09aca24a53ca9892170385de84e84d7d69308212d71a23260b7",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/fetch_local_backend_v07.py": "b2105c02be04cde9d14e5ea126762d8fdb929b0ad525e453edb1bd60a4cf2f29",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/native_paired_reader_v13.py": "ed238022c4fc8586f41c7ec7ee94b7c65e8b4eb9cd274c6954576a825afbf9eb",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/configs/model_backend_v09.json": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/configs/structured_reader_controls_v14.json": "8315d58960b5eaa2405439708a7ae05d305d5c41c6fdcc259cebe242d132522f",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/structured_reader_v14/protocol.json": "b6756ad165c296e88dd8325c0e11dd2c00225635276f1faccf66df3fce3f9fcf",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/reader_control_reference_review_v14.json": "beb368a2e9e1b0125c3bcd7712758b5dae01404ff22de4c96b7c74ef463a41ba"
+  },
+  "asset_binding": {
+    "config_sha256": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "selected_model": {
+      "path": "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/assets/Qwen3.5-4B-Q5_K_M.gguf",
+      "repo": "unsloth/Qwen3.5-4B-GGUF",
+      "revision": "e87f176479d0855a907a41277aca2f8ee7a09523",
+      "bytes": 3143656608,
+      "sha256": "8814232b85594dcd46c50e5b8b29324a7efe9e746edbe8a3d1df3d3fce7aad39"
+    },
+    "runtime_files_sha256": "677ee4aa7ac9a70d0d664474f589ba2f35ee2716ea0244d076ab103c3e5304c7",
+    "reader_config_sha256_canonical": "2af431e9fef62d7f50e7c8c068c61aa382026a890b7e91e703c7bf3a1b3c0e64"
+  },
+  "assets_path": "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/assets",
+  "external_path": "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/controls_attempt01",
+  "data_dir": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/native_structured_reader_v14/controls_attempt01",
+  "receipt_path": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/native_structured_controls_v14_receipt.json",
+  "execution_order": [
+    "control_01_sign",
+    "control_02_columns",
+    "control_03_versions",
+    "control_04_unit",
+    "control_05_sample",
+    "control_06_approximation",
+    "control_07_scope",
+    "control_08_missing"
+  ],
+  "request_projection": [
+    {
+      "request_id": "control_01_sign",
+      "messages_sha256": "ae922ee36d198f3cd02fa61d5a67f4f94f49c3b64a84df98b6066b4c0aff05cb"
+    },
+    {
+      "request_id": "control_02_columns",
+      "messages_sha256": "8982a49c689d0727354f464f61ebe55763ec6a14e05f76af20c44900feb21870"
+    },
+    {
+      "request_id": "control_03_versions",
+      "messages_sha256": "16fbe7acaee166fb8fe6e8f93bc8d2a6b1369db812f5ec4a6768e7a45d845de7"
+    },
+    {
+      "request_id": "control_04_unit",
+      "messages_sha256": "8d236a964b4e234863a644472fc7e83c4f8d562ed2007d4fb292cf47c4d1f094"
+    },
+    {
+      "request_id": "control_05_sample",
+      "messages_sha256": "9bd500c6057a972d3134bcfac65284335cebcb5c302572c23a954fcb10786540"
+    },
+    {
+      "request_id": "control_06_approximation",
+      "messages_sha256": "1c64148127080316fcc16709241ee6be9553aa4c2afb71cf4e518b92f87b897f"
+    },
+    {
+      "request_id": "control_07_scope",
+      "messages_sha256": "4a45d67a8e322aa32e204e00f5472b8040d25237b22f46c0e9c3c5209146d2ff"
+    },
+    {
+      "request_id": "control_08_missing",
+      "messages_sha256": "18d9fcac3f0e10d0dba8562ce98e3eef6346ae49b2fc0b583442f7119de2dafe"
+    }
+  ]
+}

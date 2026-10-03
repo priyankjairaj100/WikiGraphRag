@@ -1,0 +1,147 @@
+Research update v0.14: completed development evidence and next decision
+
+The attempted reader upgrade did not improve the matched development comparison.
+The dense and hybrid retrieval follow-up also did not improve complete source
+support on these eight questions. These are useful negative development findings,
+not evidence of a novel algorithm, a strong reader, or ACL-ready generalization.
+The defensible next investment is source-faithful typed binding and a standard
+structured/Inline XBRL baseline before a specialized witness-selection method.
+
+Completed reader study
+
+The corpus remains four PDF versions from two familiar histories, 550 augmented
+pages and 2,306 page-bounded chunks. Chunks contain at most 160 whitespace words
+with 30-word overlap. Ordinary BM25 selects six history-wide seeds; paired BM25
+selects three per document. Parent expansion and source-context closure share
+that paired shortlist. No gold page selector or answer-driven retrieval repair
+was used. Every displayed span and full native prompt is charged under the
+960-source-word, 3500-input-token, 256-output-token and 4096-context limits.
+
+The pinned Qwen3.5-4B Unsloth Q5_K_M recipe passed 8/8 authored short controls, then
+completed all 32 natural development responses. Final counts are:
+
+| Condition | Content | Scope | Citation-grounded | Joint | Output-limit failures |
+|-----------|---------|-------|-------------------|-------|-----------------------|
+| ordinary  | 1/8     | 2/8   | 2/8               | 1/8   | 0/8                   |
+| paired    | 1/8     | 3/8   | 1/8               | 0/8   | 1/8                   |
+| parent    | 2/8     | 2/8   | 2/8               | 1/8   | 0/8                   |
+| closure   | 2/8     | 3/8   | 2/8               | 1/8   | 1/8                   |
+
+Joint means the conjunction of reference-content correctness, scope correctness
+and citation grounding. Format, appropriate abstention and native output-limit
+failure remain separate axes; joint is not shorthand for passing every gate.
+Both output-limit responses remain in the denominator. The 32 cells contain 30
+unique native input sequences, and they are not 32 independent questions.
+
+For the 16 ordinary/paired cells with exactly the same context bytes as the prior
+v13 layout study, joint correctness is 1/16 for the new recipe versus 2/16 for the
+old one. This failed reader-upgrade attempt does not establish a checkpoint-only
+causal effect: model, quantization, chat template and nonthinking control changed
+together. Eight short synthetic controls did not predict adequate natural-context
+performance. Shared model-assisted grading is not independent human gold.
+
+Source support is distinct from answer correctness. Complete received-context
+support is 2/8 ordinary, 2/8 paired, 2/8 parent and 3/8 closure. Parent packing drops
+19 of 48 seeds and loses one version in two cases. Closure drops none, but also
+deduplicates overlapping spans; this experiment does not isolate attachment gain
+from that deduplication. Equal limits do not imply equal evidence or actual tokens.
+
+One source-exact whitespace repair was explicitly frozen before main predictions:
+the initial parent/closure renderer removed endpoint whitespace, which could
+destroy first-line indentation in multiline headers. The amended renderer keeps
+every character of the original source slice. Initial code/results/audits remain
+preserved; this is disclosed development repair. The parser, seed scores and
+selection did not change. Its audit recovered only 7/17 required structural links;
+ten remained missing. The no-false-link finding applies only to its limited
+context-attachment semantics, not certified row/year/unit binding. Two v1 tables
+still use separately tagged model-assisted whole-table transcription, and math/
+figure extraction is incomplete.
+
+Completed dense source-support follow-up
+
+After the native main batch ended, the separately frozen source-only follow-up
+used official pinned BGE-small-en-v1.5 ONNX CLS/L2 embeddings and equal-weight
+BM25/dense RRF with k=60. This is an established compact baseline, not 2026 SOTA.
+There was no question/reference-driven tuning, query expansion, or additional
+natural QA generation. All 48 contexts were retained. Sixteen BM25 controls were
+byte-identical to active paired/closure contexts; 32 new contexts received masked
+source-support review against the unchanged required facts.
+
+| Condition     | Complete contexts | Fully supported required facts |
+|---------------|-------------------|--------------------------------|
+| BM25 paired   | 2/8               | 10/21                          |
+| BM25 closure  | 3/8               | 12/21                          |
+| dense paired  | 1/8               | 3/21                           |
+| dense closure | 1/8               | 3/21                           |
+| RRF paired    | 1/8               | 9/21                           |
+| RRF closure   | 1/8               | 9/21                           |
+
+Partial and absent support remain in the summaries. Both dense/RRF closure drop
+one seed; all six conditions retain both versions in all eight contexts. Four of
+2,306 passage embeddings were right-truncated at 512 encoder tokens, with no
+query truncation; reader source spans were unchanged. Passage encoding took about
+192.16 seconds, query encoding 0.117 seconds and the resident native packing
+wrapper 7.72 seconds on this host. These are descriptive single-run costs.
+Source support does not predict unmeasured QA accuracy, and this small negative
+result does not establish that dense retrieval generally fails.
+
+Integrity and reproducibility
+
+results/structured_study_summary_v14.json and
+results/dense_source_support_summary_v14.json are the final hash-bound summaries.
+The main execution audit passed 1,348 checks, including a separate relocated
+metadata-only replay; its external pass made no model calls. The dense execution
+audit passed 983 checks, replaying saved-vector rankings and source spans and
+independently retokenizing all 48 final prompts in one session with zero
+completions. It did not rerun encoder hidden states or certify semantic labels.
+The full repository unit suite passed 484 tests. Tests and mechanical checks do
+not turn source-support review into truth or establish method effectiveness.
+
+Public artifacts contain code, protocols, projections, hashes, counts, locators,
+reviews and manuscript sources. Raw captures, full contexts/prompts/answers,
+token arrays, detailed source inventories and model/runtime assets remain
+external. The old Qwen3-4B-Q8_0 weight was verified before cache eviction to make
+space; old traces/runtime remain. Reexecuting that old reader requires downloading
+its exact pinned weight again. Failed download/import attempts are preserved.
+Portable checking, retained-artifact replay and new inference are different
+operations; docs/reproduce_v14.txt gives their boundaries and commands.
+
+Source-only expansion and the next research direction
+
+Six issuer groups yielded twelve captured annual-report HTML objects: PFE, NFLX,
+NVDA, LLY, BRK-B and SLB. Selection used a frozen 179-file/89-prefix release listing
+and exposure exclusions, before source-body retrieval. All twelve immutable
+released objects verify; two LFS content identities required an explicit offline
+digest-namespace reconciliation. Berkshire's filename years 2022/2023 correspond
+to actual fiscal years 2021/2022, so only five pairs meet the actual FY2022–2024
+window. No replacement or new QA/reference creation followed. These are
+development sources, not held-out or historically replayable histories. Unknown
+preview/pretraining exposure, original SEC accession identity, completeness,
+rendering fidelity, first-public availability and redistribution rights remain
+unresolved.
+
+All 23,651 ix:nonFraction occurrences in the captured HTML resolve to one local
+context and unit under the implemented checks. This is a source-link inventory,
+not 23,651 valid, distinct or normalized quantities. Hidden/nil/nested/repeated
+facts, registry transformations, sign/scale, dimensions/defaults, taxonomy types,
+duplicate consistency and displayed-table grounding still need validation.
+Agreement between visible text and tags from the same filing is not independent
+truth. Begin with a pinned conformant processor, original-filing identity and
+deterministic rendered checks, then a fairly funded structured-reader baseline.
+
+The candidate research question is whether selecting source witnesses that
+distinguish competing entity/measure/period/unit/population/version bindings can
+outperform equally funded structure-aware, relation-coverage and generic
+sufficiency/ambiguity baselines. Missing evidence must remain unresolved, and an
+answer needs positive support, not merely elimination of alternatives. The
+supplied-judgment witness-selection scaffold has 14 authored contract tests,
+including a deliberate greedy complementarity failure. It supplies neither
+automatic candidate generation nor a validated source verifier. It is not a
+validated method, approximation result or novelty claim.
+
+Proceed only if natural source ambiguity remains after standard structured/XBRL
+baselines, candidate-binding recall and verifier validity are adequate, and a
+separately frozen entity-disjoint evaluation is feasible. Stop the specialized
+algorithm route if conventional structure explains the benefit. The current work
+supports a carefully bounded failure analysis and the next feasibility decision;
+it does not yet justify an ACL 2027 submission claim.

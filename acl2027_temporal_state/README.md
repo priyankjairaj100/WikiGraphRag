@@ -1,6 +1,16 @@
 # ACL 2027 temporal state research
 
-## Current checkpoint (v0.13)
+## Current checkpoint (v0.14)
+
+The completed structural retrieval and reader experiment adds **eight authored controls and 32 natural-document answers**. Qwen3.5-4B Q5_K_M passes the short controls but fails as an upgrade on matched contexts: **1/16 joint content, scope and citation passes versus 2/16 previously**. Across ordinary, paired, parent and closure contexts the new reader achieves **1/8, 0/8, 1/8 and 1/8**; two output-limit failures are preserved. This is a development result, not a general model ranking.
+
+The separate **48-context dense/RRF comparison** makes zero natural QA calls. Complete evidence covers **2/8 with paired BM25, 3/8 with BM25 closure and 1/8 in every dense/RRF condition**. The fixed compact encoder is an established baseline, not a claim about the best available dense retriever. Source and answer reviews keep missing evidence, content, scope and grounding distinct.
+
+The research hypothesis is to select source witnesses that discriminate answer-changing year/unit/entity/population/version bindings under the evidence budget. A selector scaffold passes 14 authored tests, but automatic source-only proposal and verification remain unimplemented. First establish a strong conventional typed reader and structured-source baseline. Six fresh filing pairs and their Inline XBRL links support this next step; they are source feasibility, not admitted QA evaluation. The Berkshire filename/fiscal-year mismatch and all earlier failed attempts remain explicit.
+
+**484 unit tests, 1,348 main-study checks and 983 dense-execution checks pass.** Read the [working paper](paper/retrieval_reader_upgrade_v14.pdf), [research update](docs/research_update_v14.txt), [reproduction guide](docs/reproduce_v14.txt), and [project state](PROJECT_STATE.json). The generic PDF and editable TeX are working artifacts, not a verified ACL-template compilation. No natural method advantage, adequate reader or independent test has yet been established.
+
+## Previous checkpoint (v0.13)
 
 The complete paired-version reader study and layout follow-up have run: **34 native completions**, comprising two authored controls and 32 study answers over eight questions from two histories. Both ordinary and paired retrieval achieve **1/8 joint content, scope and citation correctness**, under both normalized and source-layout rendering. This selected development pilot establishes no method advantage.
 

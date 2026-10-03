@@ -1,0 +1,153 @@
+{
+  "schema_version": "reader_controls_v14.grades.1",
+  "graded_at_utc": "2026-10-03T11:17:39Z",
+  "native_completion_finished_unix_seconds": 1791026156.6758595,
+  "phase": "after_all_eight_control_completions_before_natural_comparison_grading",
+  "gate_passed": true,
+  "controls_passed": 8,
+  "denominator": 8,
+  "critical_errors": [],
+  "critical_error_count": 0,
+  "required_facts_correct": 19,
+  "required_facts_denominator": 19,
+  "native_output_budget_failures": 0,
+  "gate": {
+    "minimum_reference_complete_grounded": 7,
+    "maximum_critical_sign_unit_year_sample_errors_among_answered_claims": 0,
+    "critical_rule_applies_to_extra_claims": true,
+    "changed_after_outputs": false
+  },
+  "model": {
+    "name": "Qwen3.5-4B",
+    "distribution": "unsloth/Qwen3.5-4B-GGUF",
+    "revision": "e87f176479d0855a907a41277aca2f8ee7a09523",
+    "quantization": "Q5_K_M",
+    "asset_sha256": "8814232b85594dcd46c50e5b8b29324a7efe9e746edbe8a3d1df3d3fce7aad39"
+  },
+  "provenance": {
+    "model_assisted_grading": true,
+    "human_gold": false,
+    "grader_separate_from_control_author_and_inference_runner": true,
+    "grader_previously_reviewed_control_references": true,
+    "prior_natural_development_familiarity": true,
+    "natural_v14_main_requests_or_outputs_read": false,
+    "responses_rewritten_or_retried": false,
+    "references_or_gate_changed": false,
+    "raw_response_files_preserved": true,
+    "response_file_hashes_checked_against_native_receipt": true,
+    "content_hash_source": "Frozen public response projections mapped through the native frozen execution order."
+  },
+  "input_sha256": {
+    "data/structured_reader_v14/protocol.json": "b6756ad165c296e88dd8325c0e11dd2c00225635276f1faccf66df3fce3f9fcf",
+    "data/structured_reader_v14/controls_inputs.json": "81ca9a1e90ea91df446c0a7761dceae85431cbcec9fd3c9196e06225b63ab008",
+    "data/structured_reader_v14/controls_references.json": "627d9ac3ec59d691023636d301502433732d366fdc5a44278f369d5eecbe7d61",
+    "data/structured_reader_v14/controls_contract.json": "d65c83b3b0ed178de90fd3a6f1fff27cac0b79e01b583aefac6ab993650142cc",
+    "results/reader_control_reference_review_v14.json": "beb368a2e9e1b0125c3bcd7712758b5dae01404ff22de4c96b7c74ef463a41ba",
+    "results/native_structured_controls_v14_receipt.json": "83fe29953fe48f154366144c1c29c44dfb583467bb61b0d72cdf4dddc3f073c3",
+    "data/native_structured_reader_v14/controls_attempt01/frozen_inputs.json": "856b12f70b9e9f844fbde5373fa32b3596886bb676f23f8498c6d406054fd41d"
+  },
+  "controls": [
+    {
+      "request_id": "control_01_sign",
+      "native_process": "process_00",
+      "content_sha256": "5713700121f7e333a8a62e77969c6db0e4f0670a76b3eb7d8070ced2619e8dd2",
+      "response_file_sha256": "855e93623ebd05f8d64ab7fe11557015ce243c67c1bdbc472ccb6326552a5366",
+      "reference_complete_grounded": true,
+      "critical_errors": [],
+      "required_facts_correct": ["control_01_sign_operating", "control_01_sign_result"],
+      "citation_grounded": true,
+      "native_output_budget_failure": false,
+      "rationale": "Correctly gives negative operating cash flow of 18,000 dollars and positive net result of 7,000 dollars for FY2024, with the supporting page citation. The following sentence describes the source's thousands convention; it does not multiply the already converted dollar amounts again."
+    },
+    {
+      "request_id": "control_02_columns",
+      "native_process": "process_01",
+      "content_sha256": "40381a928147c60d2ed76751d3a6cf076d9bfb386c094e3950448e9dab41fc49",
+      "response_file_sha256": "1fca7140195ca21a9da1c68adaf61190ea9e2b23f84b25edbf3a269954846f73",
+      "reference_complete_grounded": true,
+      "critical_errors": [],
+      "required_facts_correct": ["control_02_columns_revenue", "control_02_columns_operating"],
+      "citation_grounded": true,
+      "native_output_budget_failure": false,
+      "rationale": "Selects FY2022 revenue of 35 million euros and a positive operating result of 4 million euros. The same source page supports both figures, the units and the year-column distinction. Extra commentary does not reassign the FY2022 results to FY2023."
+    },
+    {
+      "request_id": "control_03_versions",
+      "native_process": "process_02",
+      "content_sha256": "f661baf792114d7989ec9a963c653799ed6fdb60bdde148c91c214442b9908b5",
+      "response_file_sha256": "d9128168b6337a998fd0bc92597aae1c0bc1fa8b35861c403de0e81e4e285c88",
+      "reference_complete_grounded": true,
+      "critical_errors": [],
+      "required_facts_correct": ["control_03_versions_original", "control_03_versions_revised", "control_03_versions_reason"],
+      "citation_grounded": true,
+      "native_output_budget_failure": false,
+      "rationale": "Preserves original versus revised amounts, their common FY2023 scope and sterling-thousand unit, and the stated duplicate-entry correction reason. Parenthesized document/page references are unambiguous citations and are accepted semantically."
+    },
+    {
+      "request_id": "control_04_unit",
+      "native_process": "process_03",
+      "content_sha256": "d73d4da4b8587035b02ae5e7c6eb8c4e4c0d5ebcbd7c224aedde25f0b42a20a9",
+      "response_file_sha256": "e038b519455499b94c4da944b37be831035152cf61dea30afbae06680aad1a86",
+      "reference_complete_grounded": true,
+      "critical_errors": [],
+      "required_facts_correct": ["control_04_unit_contrast", "control_04_unit_interval", "control_04_unit_uncertainty"],
+      "citation_grounded": true,
+      "native_output_budget_failure": false,
+      "rationale": "Preserves the negative active-minus-control contrast, both signed 95% interval endpoints, score-point units and the source-stated lack of statistical significance. The additional description of the 0-100 symptom scale does not change the explicitly stated contrast unit."
+    },
+    {
+      "request_id": "control_05_sample",
+      "native_process": "process_04",
+      "content_sha256": "89c3deddf54d0821603cca22d304897f7c581ed3daf8752ef195807ac4cd4e08",
+      "response_file_sha256": "7df39fda266e8bf95170de5ddfacb393a721ef82217bdfaa01b5fef97a2f257a",
+      "reference_complete_grounded": true,
+      "critical_errors": [],
+      "required_facts_correct": ["control_05_sample_selected", "control_05_sample_missing"],
+      "citation_grounded": true,
+      "native_output_budget_failure": false,
+      "rationale": "Correctly binds the percentage to the 175 complete cases and states that the percentage for all 240 enrolled participants is unreported. Both clauses cite the supporting page; no population-wide extrapolation is made."
+    },
+    {
+      "request_id": "control_06_approximation",
+      "native_process": "process_05",
+      "content_sha256": "6c7e5d01fb428b60a90ce0629ca181c30b4569b28e3919f0377e1d5d17457d78",
+      "response_file_sha256": "790df69bf11eee6b0c708d3522fe4c6e4aca7e5f896635285ad322f87be62145",
+      "reference_complete_grounded": true,
+      "critical_errors": [],
+      "required_facts_correct": ["control_06_approximation_rounded", "control_06_approximation_exact"],
+      "citation_grounded": true,
+      "native_output_budget_failure": false,
+      "rationale": "Reports approximately 3.2 million shipments in 2021, explicitly preserves rounding and states that an exact count is unavailable. The cited source directly supports each point."
+    },
+    {
+      "request_id": "control_07_scope",
+      "native_process": "process_06",
+      "content_sha256": "b1d38ea946af6f43b119092feddcde52ef2212590d684a52243079e616f3cca8",
+      "response_file_sha256": "72b75a7c165bcfa852104e89a39b28e88b5c4b57b1bf72149194a3534218f93c",
+      "reference_complete_grounded": true,
+      "critical_errors": [],
+      "required_facts_correct": ["control_07_scope_adult", "control_07_scope_adolescent"],
+      "citation_grounded": true,
+      "native_output_budget_failure": false,
+      "rationale": "Keeps each estimate with its correct age-defined population, calendar year and weekly visits-per-participant unit, citing the corresponding version. It also preserves the explicit non-revision relationship."
+    },
+    {
+      "request_id": "control_08_missing",
+      "native_process": "process_07",
+      "content_sha256": "b24dda2c0249c21674e946550c6b80cf7d9ece0a0f2f48338742775757d8d8b6",
+      "response_file_sha256": "237046f8cab5a04f8ec63819bfca6e39c5081d1fc1445a6d48e0e8a14c8dc87e",
+      "reference_complete_grounded": true,
+      "critical_errors": [],
+      "required_facts_correct": ["control_08_missing_2023", "control_08_missing_2022", "control_08_missing_2021"],
+      "citation_grounded": true,
+      "native_output_budget_failure": false,
+      "rationale": "Correctly reports zero defects for 2023 and nine for 2021, while explicitly rejecting a zero inference for the unreported 2022 cell. The single cited exhibit supports all three year-specific statements."
+    }
+  ],
+  "decision": "The frozen bounded reader-competence gate passes. This permits the planned 32-answer development comparison subject to its other pre-inference gates.",
+  "limitations": [
+    "These are eight short authored synthetic controls with supplied complete contexts, not a natural-document benchmark.",
+    "Passing does not establish general reader strength, natural retrieval quality, algorithmic novelty or publication readiness.",
+    "The decision is based on the unchanged predeclared gate and all eight returned answers; no retries, reference edits or output repair were used."
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "schema_version": "reader_control_reference_review_v14",
+  "reviewed_at_utc": "2026-10-03T11:10:45Z",
+  "phase": "after_control_authorship_before_control_predictions",
+  "decision": "approved_for_frozen_control_execution",
+  "controls_reviewed": 8,
+  "controls_approved": 8,
+  "required_facts_reviewed": 19,
+  "author_fixes_required": [],
+  "provenance": {
+    "model_assisted": true,
+    "human_gold": false,
+    "reviewer_separate_from_control_author": true,
+    "prior_natural_development_question_authorship_and_grading": true,
+    "control_model_outputs_inspected": false,
+    "control_predictions_executed_by_reviewer": false,
+    "experiment_or_validation_code_executed_by_reviewer": false,
+    "review_operations": "Read the authored protocol, sources, questions, references, contract and request payloads; verify file hashes with a read-only checksum utility; write this review.",
+    "new_network_calls": 0,
+    "synthetic_sources": true,
+    "natural_benchmark_or_statistical_blindness_claimed": false
+  },
+  "input_sha256": {
+    "data/structured_reader_v14/protocol.json": "b6756ad165c296e88dd8325c0e11dd2c00225635276f1faccf66df3fce3f9fcf",
+    "data/structured_reader_v14/controls_inputs.json": "81ca9a1e90ea91df446c0a7761dceae85431cbcec9fd3c9196e06225b63ab008",
+    "data/structured_reader_v14/controls_references.json": "627d9ac3ec59d691023636d301502433732d366fdc5a44278f369d5eecbe7d61",
+    "data/structured_reader_v14/controls_requests.json": "3cfe766f93eda23a0bfaede0aa7af3fdc373e2ffd50c68994374de2955d91aae",
+    "data/structured_reader_v14/controls_contract.json": "d65c83b3b0ed178de90fd3a6f1fff27cac0b79e01b583aefac6ab993650142cc"
+  },
+  "review_checks": {
+    "all_questions_answerable_from_supplied_context_including_explicit_missingness": true,
+    "all_required_facts_match_authored_source": true,
+    "source_page_support_targets_unambiguous": true,
+    "request_payloads_match_visible_question_context_pairs": true,
+    "answer_references_excluded_from_request_payloads": true,
+    "no_natural_development_source_text_needed_for_answers": true,
+    "no_numerical_recomputation_needed": true,
+    "sign_unit_year_sample_scopes_preserved": true,
+    "gate_matches_root_protocol": true
+  },
+  "control_reviews": [
+    {
+      "request_id": "control_01_sign",
+      "status": "approved",
+      "required_fact_count": 2,
+      "source_locators": ["northmere_2024 p.4"],
+      "rationale": "The source explicitly declares its thousands-of-dollars scale and negative-parentheses convention. Both cash-flow and net-result signs and amounts are supplied for FY2024."
+    },
+    {
+      "request_id": "control_02_columns",
+      "status": "approved",
+      "required_fact_count": 2,
+      "source_locators": ["harborlight_2023 p.9"],
+      "rationale": "The year headings and two aligned measure rows unambiguously associate the requested FY2022 figures with the second column. The euro-million scale and sign convention are explicit."
+    },
+    {
+      "request_id": "control_03_versions",
+      "status": "approved",
+      "required_fact_count": 3,
+      "source_locators": ["cedarbank_original p.2", "cedarbank_revised p.3"],
+      "rationale": "Both actual authored versions report the same FY2023 inventory scope, with separate amounts and document dates. The corrective reason is explicitly stated in the later version. Publication year must not replace the inventory fiscal year."
+    },
+    {
+      "request_id": "control_04_unit",
+      "status": "approved",
+      "required_fact_count": 3,
+      "source_locators": ["elmstream_trial p.6"],
+      "rationale": "The active-minus-control direction, signed contrast, confidence level and signed interval endpoints are explicit. The unit is score points, and lack of statistical significance is stated rather than requiring a statistical calculation."
+    },
+    {
+      "request_id": "control_05_sample",
+      "status": "approved",
+      "required_fact_count": 2,
+      "source_locators": ["ilex_survey p.5"],
+      "rationale": "The percentage belongs to the explicitly selected complete cases. The source separately gives the enrollment count and explicitly withholds an all-enrolled improvement percentage; no extrapolation is justified."
+    },
+    {
+      "request_id": "control_06_approximation",
+      "status": "approved",
+      "required_fact_count": 2,
+      "source_locators": ["mossbay_shipping p.11"],
+      "rationale": "The source supplies a rounded 2021 shipment total and explicitly states that the exact count is unavailable. Meaning-preserving approximate wording or unit-equivalent reporting is sufficient."
+    },
+    {
+      "request_id": "control_07_scope",
+      "status": "approved",
+      "required_fact_count": 2,
+      "source_locators": ["larkspur_early p.7", "larkspur_late p.8"],
+      "rationale": "The two estimates have distinct age-defined populations and calendar periods, with a common weekly visits-per-participant unit. The later source explicitly says it is not revising the adult estimate."
+    },
+    {
+      "request_id": "control_08_missing",
+      "status": "approved",
+      "required_fact_count": 3,
+      "source_locators": ["riverton_quality p.12"],
+      "rationale": "Each defect-count cell has an explicit year heading. The dash is expressly defined as unreported rather than zero, so the requested missingness distinction requires no inferred value."
+    }
+  ],
+  "unchanged_gate": {
+    "minimum_reference_complete_grounded": 7,
+    "denominator": 8,
+    "maximum_critical_sign_unit_year_sample_errors_among_answered_claims": 0,
+    "critical_rule_applies_to_extra_claims": true,
+    "native_output_budget_failure_makes_control_incorrect": true,
+    "failed_gate_action": "Preserve all control outputs and do not run the primary 32-answer comparison as an adequate-reader study. Any changed reader, prompt or controls requires a separately frozen amendment and separate results."
+  },
+  "grading_clarifications_without_reference_change": [
+    "Interpret answers semantically. Equivalent units and ordinary synonyms are acceptable; exact reference strings or answer labels are not required.",
+    "An omission or abstention can fail required-fact completeness without constituting an invented critical assertion. Explicitly wrong answered sign, unit, year or population claims invoke the separate critical gate, including in volunteered extra material.",
+    "Do not silently broaden the hard gate beyond its frozen sign/unit/year/sample axes. Other mistakes, including precision or missingness errors, still affect required-fact completeness and grounding.",
+    "Correct source-page attribution must support the asserted fact in the supplied synthetic context. Reference correctness and citation correctness remain distinguishable.",
+    "The controls establish only bounded competence for the subsequent development comparison if passed. Short complete synthetic contexts do not certify a strong general reader or natural-document performance."
+  ],
+  "execution_status": "not_executed_or_graded_by_this_review"
+}

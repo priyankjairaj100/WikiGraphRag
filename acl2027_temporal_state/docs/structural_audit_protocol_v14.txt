@@ -1,0 +1,86 @@
+V14 source-structure audit protocol
+
+Status: frozen before the first proposed-parser corpus run and before any v14 QA
+prediction. The paired source histories and eight existing QA items are development
+material. This audit does not turn them into a held-out benchmark.
+
+The sample contains 34 structural probes on 13 physical PDF pages across the two
+histories and all four recovered document versions: 17 required source relations,
+15 forbidden attachments/interpretations and two locally unresolved cases. It covers
+ordinary financial tables, blank-line-separated subtotals, multiple tables per page,
+intervening prose, multiline year/restatement headers, explicit units and exceptions,
+cross-page continuation, reused footnote markers, numbered section changes,
+scientific tables, tagged image-table supplements and displayed equations.
+
+Each probe binds exact frozen page bytes and half-open Unicode character spans,
+with one-based inclusive line ranges. The sample binds the v13 corpus manifest.
+Source descriptions avoid QA labels and requested answer quantities. Selection is
+purposive and structure-focused, not representative or random. The reviewer is a
+model-assisted independent role in the shared session, with prior v13 source and
+masked-answer familiarity. No v14 sample selection or labeling used reopened QA
+questions, references, grading packets or predictions. It is not independent human
+gold, and the extracted-text judgments do not certify faithful PDF extraction.
+
+Freeze and comparison
+
+The parser owner must record the baseline and proposed rule definitions, exact code
+hashes, corpus input hashes and audit sample hash before QA predictions. The audit
+sample is now fixed. Any later rule change requires a separately identified run and
+cannot replace an unfavorable frozen output. Source-structure debugging is allowed
+as development, but its chronology and reused sample must be disclosed.
+
+Compare ordinary parent expansion with the proposed explicit attachment/closure
+mechanism under the same existing reader budget and actual charged context tokens.
+Parent expansion alone does not assert a semantic relation: containing two different
+tables is not automatically a false attachment. Its coverage and contamination can
+be described, but it has no accepted-link precision unless it emits asserted links.
+The proposed parser must emit exact anchor and target spans, relation type, accepted
+or unresolved status, rule identifier and evidence locators. Retain unresolved
+candidates. No QA quantities, references or model responses may enter parsing.
+
+Source attachment decisions
+
+Required relations need the relevant header or unit information for the specified
+anchor span. Count complete, partial and missing coverage separately. No link and
+unresolved links both miss required coverage, without being false attachments.
+Multiple anchor blocks are inspected when a probe spans several blocks. Equivalent
+actual source evidence can count only after its full span and scope are inspected.
+Same-page presence does not establish support. All pertinent multiline header rows,
+restatement qualifiers and unit exceptions must survive; do not flatten year order
+or apply thousands to share/per-share quantities.
+
+Forbidden links become false attachments only when the parser accepts the specified
+wrong association or interpretation. New table introductions, distinct year/header
+bands, prose transitions, section changes and reused footnote markers are scope
+boundaries. The document-wide notes '(Continued)' label alone does not prove a table
+continues. A parser may conservatively miss a useful source relation, including the
+operations-table unit introduction that governs the next period table on the next
+page. Report that omission explicitly instead of changing the required relation to
+make a conservative parser look complete.
+
+For locally unresolved probes, abstention or no link is acceptable. A broader source
+span can resolve uncertainty only if separately inspected and recorded. Numeric
+prose must not be promoted to an aligned table because it contains amounts or
+percentages. Split equations must remain source spans; a nearby time unit cannot
+be assigned to a dimensionless expression. Preserve provenance of tagged visual
+transcriptions. Do not recompute quantities, infer units from magnitudes, invent
+unseen headers, or use remembered QA answers to repair structure.
+
+Audit output and interpretation
+
+Inspect every accepted and unresolved parser attachment whose anchor intersects a
+sampled page, as well as all fixed probes. Record each fixed probe's observed links,
+exact evidence spans, judgment, omission or false association. Record additional
+errors found during the page-wide link review separately. Bind sample, parser code,
+rules, structured corpus and attachment-output hashes in the results artifact.
+Report accepted links correct/false/unresolved-to-review, required probes complete/
+partial/missing, forbidden-probe violations, and locally unresolved decisions with
+separate denominators. Do not combine these into a single accuracy or call no-link
+precision perfect. Any link left uncertain after inspection stays uncertain.
+
+This is a bounded engineering validity check, not evidence of algorithmic novelty,
+QA improvement, source correction propagation, reliable whole-document extraction,
+or generalization beyond the sampled structures. A false accepted unit/header link
+blocks claiming reliable evidence closure. Missing required links limit coverage
+and can motivate a separately frozen development revision. If coverage is too low
+for a useful test, report that result before spending further QA inference.

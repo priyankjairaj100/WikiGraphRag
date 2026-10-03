@@ -1,0 +1,4760 @@
+{
+  "schema_version": "structured_source_exact_retrieval_audit_v0.14",
+  "audited_at_utc": "2026-10-03T11:25:01.912912+00:00",
+  "status": "passed_exact_source_and_recorded_cost_checks",
+  "reviewer_role": "implementation-author source/provenance audit, independent of native answers; not independent semantic grading",
+  "native_answers_or_qa_references_read": false,
+  "model_calls": 0,
+  "new_tokenizer_sessions": 0,
+  "new_network_calls": 0,
+  "input_sha256": {
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/structured_retrieval_layout_v14.json": "d2f0d43886dc4019ca461b600ebba3aa17b78bcb91a5945185aa39c6287dc383",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/structured_reader_v14/corpus_manifest.json": "a4158562a79ec1050b146feed5eb7349fe53bf3b80537b5b15e093067b7a3002",
+    "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/structured_corpus.json": "c4b2f5253431e51b9581ab27c9d66170e41d20f43b6a97524d3ea2bbe44bd37e",
+    "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/contexts_layout.jsonl": "cb8aea576aff94d0d7d89fe78aff84823a7d584289a46f4a81a6b0075076317d",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/structured_retrieval_v14.json": "9c74e93269fdf47e714eb4aa5c4a70be4a11a9ff9353b10350ca90234f87e9d2",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/structured_retrieval_audit_v14.json": "4811bb050fe5ddde171623dd588cd34dbd8aebef7fa948bf3d51e5cff50e55cf",
+    "/workspace/scratch/bdef663e3dfc/tmp/paired_reader_v13/layout_contexts.jsonl": "71dd519c76556c8ae031651374f55705e7dae84ff9e0fbca699e3b199c939591",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/configs/structured_reader_main_v14.json": "16c2d6f9868c3d4adafd8e2a33bfd396a5caec9db05f79a9eca3717fb8076a58",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/paired_reader_v13/questions.json": "fb375929e23431628d42aab6af127900cd246bfc50cc29146454edb27b95d45c",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/structured_reader_v14/layout_amendment.json": "007047dd23f937f4e4504f84044535cb14361d7e694703b5b8d387bb1342f255",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/retrieve_structured_layout_v14.py": "92f30f4bd34b688c9a418e5743f9cad2872306ce941ef359ddbde73efa6721d7",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/run_structured_retrieval_layout_v14.py": "f637422f0d020497662efdf92f7350d01299b63b6f89068318dda6ccc2b9c7ca",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/native_structured_reader_v14.py": "b6993e1113a88e16e00ddb19cb470986eff5e8dbd4e6ce76899e82910eb263bd",
+    "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/retrieval_tokenizer_layout02/frozen_tokenizer.json": "5ab8b937ab402a152eed1d05460eb941203df441f1b4af6ece17992077bda5ba",
+    "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/retrieval_tokenizer_layout02/execution.json": "e161ff63a122030cb5caf5c4df4e17e5f69813e4a5c468223d5848fd36365566",
+    "/workspace/scratch/bdef663e3dfc/tmp/structured_reader_v14/retrieval_tokenizer_layout02/props.json": "1eb40d6e9018669295f538623c9bc7b0a9a0371bfdea591f34bd1e0ad27ac93c"
+  },
+  "checks": [
+    {
+      "check": "preserved_initial_audit",
+      "passed": true
+    },
+    {
+      "check": "preserved_initial_retrieval",
+      "passed": true
+    },
+    {
+      "check": "preserved_initial_implementation",
+      "passed": true
+    },
+    {
+      "check": "amended_implementation_bound",
+      "passed": true
+    },
+    {
+      "check": "source_corpus_unchanged",
+      "passed": true
+    },
+    {
+      "check": "external_contexts_sha",
+      "passed": true
+    },
+    {
+      "check": "lexical_helper_sha256",
+      "passed": true
+    },
+    {
+      "check": "questions_sha256",
+      "passed": true
+    },
+    {
+      "check": "token_counter_sha256",
+      "passed": true
+    },
+    {
+      "check": "token_counter_config_sha256",
+      "passed": true
+    },
+    {
+      "check": "tokenizer_config_and_adapter",
+      "passed": true
+    },
+    {
+      "check": "tokenizer_process_clean_exit",
+      "passed": true
+    },
+    {
+      "check": "actual_model_bytes_sha",
+      "passed": true
+    },
+    {
+      "check": "backend_config_sha",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:LICENSE",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:ggml-rpc-server",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-base.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-base.so.0",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-base.so.0.25.1",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-alderlake.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-cannonlake.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-cascadelake.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-cooperlake.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-haswell.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-icelake.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-ivybridge.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-piledriver.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-sandybridge.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-sapphirerapids.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-skylakex.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-sse42.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-x64.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-cpu-zen4.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml-rpc.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml.so.0",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libggml.so.0.25.1",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama-batched-bench-impl.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama-bench-impl.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama-cli-impl.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama-common.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama-common.so.0",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama-common.so.0.5.0",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama-completion-impl.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama-fit-params-impl.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama-perplexity-impl.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama-quantize-impl.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama-server-impl.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama.so.0",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libllama.so.0.5.0",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libmtmd.so",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libmtmd.so.0",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:libmtmd.so.0.5.0",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-batched-bench",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-bench",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-cli",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-completion",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-fit-params",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-gemma3-cli",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-gguf-split",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-imatrix",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-llava-cli",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-minicpmv-cli",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-mtmd-cli",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-mtmd-debug",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-perplexity",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-quantize",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-qwen2vl-cli",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-results",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-server",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-tokenize",
+      "passed": true
+    },
+    {
+      "check": "runtime_file:llama-tts",
+      "passed": true
+    },
+    {
+      "check": "execution_identity",
+      "passed": true
+    },
+    {
+      "check": "budgets_unchanged",
+      "passed": true
+    },
+    {
+      "check": "32unique_expected_cells",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q1', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q1', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2019_10k', 63)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'ordinary'):0",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2019_10k', 81)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'ordinary'):1",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 139)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'ordinary'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'ordinary'):3",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 154)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'ordinary'):4",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 195)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'ordinary'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q1', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q1', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q1', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q1', 'ordinary'):0",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:0:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:0:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:0:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q1', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q1', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q1', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q1', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('plug_v13_q1', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q1', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q1', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'paired'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'paired'):1",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2019_10k', 104)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'paired'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'paired'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'paired'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'paired'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q1', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q1', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q1', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q1', 'paired'):1",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:1:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:1:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:1:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q1', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q1', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q1', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q1', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('plug_v13_q1', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):6",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):7",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):8",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):9",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):10",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):11",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'parent'):12",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q1', 'parent'):2",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:2:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:2:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:2:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q1', 'parent'):3",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:3:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:3:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:3:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q1', 'parent'):4",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:4:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:4:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:4:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q1', 'parent'):5",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:5:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:5:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:5:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q1', 'parent'):6",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:6:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:6:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:6:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q1', 'parent'):7",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:7:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:7:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:7:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q1', 'parent'):8",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:8:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:8:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:8:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q1', 'parent'):9",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:9:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:9:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:9:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q1', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q1', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q1', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):6",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):7",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):8",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):9",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):10",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q1', 'closure'):11",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q1', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q1', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q1', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q1', 'closure'):10",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:10:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:10:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:10:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q1', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q1', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q1', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q1', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q2', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q2', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2019_10k', 29)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'ordinary'):0",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2019_10k', 30)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'ordinary'):1",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 147)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'ordinary'):2",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 149)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'ordinary'):3",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 164)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'ordinary'):4",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 169)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'ordinary'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q2', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q2', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q2', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q2', 'ordinary'):11",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:11:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:11:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:11:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q2', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q2', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q2', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q2', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('plug_v13_q2', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q2', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q2', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'paired'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'paired'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'paired'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'paired'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'paired'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'paired'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q2', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q2', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q2', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q2', 'paired'):12",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:12:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:12:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:12:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q2', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q2', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q2', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q2', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('plug_v13_q2', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q2', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q2', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'parent'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'parent'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'parent'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'parent'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'parent'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'parent'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'parent'):6",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'parent'):7",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'parent'):8",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q2', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q2', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q2', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q2', 'parent'):13",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:13:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:13:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:13:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q2', 'parent'):14",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:14:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:14:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:14:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q2', 'parent'):15",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:15:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:15:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:15:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q2', 'parent'):16",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:16:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:16:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:16:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q2', 'parent'):17",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:17:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:17:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:17:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q2', 'parent'):18",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:18:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:18:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:18:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q2', 'parent'):19",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:19:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:19:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:19:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q2', 'parent'):20",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:20:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:20:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:20:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('plug_v13_q2', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q2', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q2', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q2', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q2', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q2', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q2', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'closure'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'closure'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'closure'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'closure'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q2', 'closure'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q2', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q2', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q2', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q2', 'closure'):21",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:21:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:21:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:21:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q2', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q2', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q2', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q2', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q3', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q3', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2019_10k', 45)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'ordinary'):0",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 67)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'ordinary'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'ordinary'):2",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 146)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'ordinary'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'ordinary'):4",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 183)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'ordinary'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q3', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q3', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q3', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q3', 'ordinary'):22",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:22:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:22:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:22:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q3', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q3', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q3', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q3', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('plug_v13_q3', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q3', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q3', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2019_10k', 17)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'paired'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'paired'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'paired'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'paired'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'paired'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'paired'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q3', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q3', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q3', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q3', 'paired'):23",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:23:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:23:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:23:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q3', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q3', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q3', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q3', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('plug_v13_q3', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'parent'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'parent'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'parent'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'parent'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'parent'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'parent'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'parent'):6",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'parent'):7",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'parent'):8",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'parent'):9",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'parent'):10",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q3', 'parent'):24",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:24:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:24:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:24:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q3', 'parent'):25",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:25:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:25:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:25:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q3', 'parent'):26",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:26:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:26:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:26:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q3', 'parent'):27",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:27:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:27:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:27:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q3', 'parent'):28",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:28:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:28:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:28:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q3', 'parent'):29",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:29:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:29:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:29:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q3', 'parent'):30",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:30:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:30:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:30:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q3', 'parent'):31",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:31:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:31:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:31:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q3', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q3', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q3', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'closure'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'closure'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'closure'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'closure'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q3', 'closure'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q3', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q3', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q3', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q3', 'closure'):32",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:32:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:32:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:32:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q3', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q3', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q3', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q3', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q4', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q4', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'ordinary'):0",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 3)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'ordinary'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'ordinary'):2",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 150)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'ordinary'):3",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2020_10k', 162)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'ordinary'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'ordinary'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q4', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q4', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q4', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q4', 'ordinary'):33",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:33:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:33:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:33:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q4', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q4', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q4', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q4', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('plug_v13_q4', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q4', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q4', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "original_page:('plug_2019_10k', 1)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'paired'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'paired'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'paired'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'paired'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'paired'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'paired'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q4', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q4', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q4', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q4', 'paired'):34",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:34:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:34:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:34:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q4', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q4', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q4', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q4', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('plug_v13_q4', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q4', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q4', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'parent'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'parent'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'parent'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'parent'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'parent'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'parent'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'parent'):6",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'parent'):7",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'parent'):8",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'parent'):9",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'parent'):10",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q4', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q4', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q4', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q4', 'parent'):35",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:35:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:35:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:35:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q4', 'parent'):36",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:36:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:36:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:36:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q4', 'parent'):37",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:37:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:37:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:37:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q4', 'parent'):38",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:38:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:38:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:38:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q4', 'parent'):39",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:39:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:39:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:39:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q4', 'parent'):40",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:40:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:40:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:40:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q4', 'parent'):41",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:41:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:41:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:41:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q4', 'parent'):42",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:42:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:42:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:42:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('plug_v13_q4', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q4', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q4', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q4', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q4', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('plug_v13_q4', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('plug_v13_q4', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):6",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):7",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):8",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):9",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):10",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('plug_v13_q4', 'closure'):11",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('plug_v13_q4', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('plug_v13_q4', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('plug_v13_q4', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('plug_v13_q4', 'closure'):43",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:43:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:43:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:43:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('plug_v13_q4', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('plug_v13_q4', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('plug_v13_q4', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('plug_v13_q4', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_revised_result', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_revised_result', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v1', 3)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'ordinary'):0",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v1', 16)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'ordinary'):1",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v1', 19)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'ordinary'):2",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v4', 24)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'ordinary'):3",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v4', 29)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'ordinary'):4",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v4', 33)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'ordinary'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_revised_result', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_revised_result', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_revised_result', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revised_result', 'ordinary'):44",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:44:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:44:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:44:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_revised_result', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_revised_result', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_revised_result', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_revised_result', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('opera_revised_result', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_revised_result', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_revised_result', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'paired'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'paired'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'paired'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'paired'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'paired'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'paired'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_revised_result', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_revised_result', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_revised_result', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revised_result', 'paired'):45",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:45:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:45:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:45:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_revised_result', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_revised_result', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_revised_result', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_revised_result', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('opera_revised_result', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_revised_result', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_revised_result', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):6",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):7",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):8",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):9",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):10",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):11",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'parent'):12",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_revised_result', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_revised_result', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_revised_result', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revised_result', 'parent'):46",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:46:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:46:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:46:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revised_result', 'parent'):47",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:47:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:47:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:47:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revised_result', 'parent'):48",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:48:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:48:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:48:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revised_result', 'parent'):49",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:49:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:49:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:49:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revised_result', 'parent'):50",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:50:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:50:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:50:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revised_result', 'parent'):51",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:51:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:51:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:51:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revised_result', 'parent'):52",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:52:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:52:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:52:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revised_result', 'parent'):53",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:53:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:53:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:53:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('opera_revised_result', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_revised_result', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_revised_result', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_revised_result', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_revised_result', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_revised_result', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_revised_result', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'closure'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'closure'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'closure'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'closure'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'closure'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revised_result', 'closure'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_revised_result', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_revised_result', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_revised_result', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revised_result', 'closure'):54",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:54:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:54:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:54:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_revised_result', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_revised_result', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_revised_result', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_revised_result', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_retained_baseline', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_retained_baseline', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v1', 15)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'ordinary'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'ordinary'):1",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v4', 18)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'ordinary'):2",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v4', 20)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'ordinary'):3",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v4', 22)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'ordinary'):4",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v4', 28)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'ordinary'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_retained_baseline', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_retained_baseline', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_retained_baseline', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_retained_baseline', 'ordinary'):55",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:55:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:55:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:55:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_retained_baseline', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_retained_baseline', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_retained_baseline', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_retained_baseline', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('opera_retained_baseline', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_retained_baseline', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_retained_baseline', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v1', 10)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'paired'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'paired'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'paired'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'paired'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'paired'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'paired'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_retained_baseline', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_retained_baseline', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_retained_baseline', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_retained_baseline', 'paired'):56",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:56:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:56:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:56:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_retained_baseline', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_retained_baseline', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_retained_baseline', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_retained_baseline', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('opera_retained_baseline', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_retained_baseline', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_retained_baseline', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'parent'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'parent'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'parent'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_retained_baseline', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_retained_baseline', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_retained_baseline', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_retained_baseline', 'parent'):57",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:57:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:57:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:57:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_retained_baseline', 'parent'):58",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:58:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:58:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:58:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_retained_baseline', 'parent'):59",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:59:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:59:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:59:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_retained_baseline', 'parent'):60",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:60:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:60:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:60:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_retained_baseline', 'parent'):61",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:61:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:61:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:61:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_retained_baseline', 'parent'):62",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:62:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:62:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:62:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_retained_baseline', 'parent'):63",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:63:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:63:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:63:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_retained_baseline', 'parent'):64",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:64:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:64:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:64:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('opera_retained_baseline', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_retained_baseline', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_retained_baseline', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_retained_baseline', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_retained_baseline', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_retained_baseline', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_retained_baseline', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'closure'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'closure'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'closure'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'closure'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'closure'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_retained_baseline', 'closure'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_retained_baseline', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_retained_baseline', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_retained_baseline', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_retained_baseline', 'closure'):65",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:65:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:65:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:65:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_retained_baseline', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_retained_baseline', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_retained_baseline', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_retained_baseline', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_revision_reason', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_revision_reason', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'ordinary'):0",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v1', 9)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'ordinary'):1",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v1', 20)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'ordinary'):2",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v4', 5)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'ordinary'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'ordinary'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'ordinary'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_revision_reason', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_revision_reason', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_revision_reason', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revision_reason', 'ordinary'):66",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:66:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:66:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:66:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_revision_reason', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_revision_reason', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_revision_reason', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_revision_reason', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('opera_revision_reason', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_revision_reason', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_revision_reason', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'paired'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'paired'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'paired'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'paired'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'paired'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'paired'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_revision_reason', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_revision_reason', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_revision_reason', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revision_reason', 'paired'):67",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:67:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:67:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:67:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_revision_reason', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_revision_reason', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_revision_reason', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_revision_reason', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('opera_revision_reason', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_revision_reason', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_revision_reason', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'parent'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'parent'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'parent'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'parent'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'parent'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'parent'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'parent'):6",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'parent'):7",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_revision_reason', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_revision_reason', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_revision_reason', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revision_reason', 'parent'):68",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:68:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:68:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:68:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revision_reason', 'parent'):69",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:69:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:69:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:69:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revision_reason', 'parent'):70",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:70:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:70:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:70:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revision_reason', 'parent'):71",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:71:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:71:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:71:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('opera_revision_reason', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revision_reason', 'parent'):72",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:72:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:72:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:72:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revision_reason', 'parent'):73",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:73:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:73:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:73:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revision_reason', 'parent'):74",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:74:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:74:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:74:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revision_reason', 'parent'):75",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:75:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:75:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:75:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('opera_revision_reason', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_revision_reason', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_revision_reason', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_revision_reason', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_revision_reason', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_revision_reason', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_revision_reason', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'closure'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'closure'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'closure'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'closure'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'closure'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_revision_reason', 'closure'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_revision_reason', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_revision_reason', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_revision_reason', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_revision_reason', 'closure'):76",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:76:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:76:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:76:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_revision_reason', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_revision_reason', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_revision_reason', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_revision_reason', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_selection_scope', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_selection_scope', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v1', 11)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'ordinary'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'ordinary'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'ordinary'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'ordinary'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'ordinary'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'ordinary'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_selection_scope', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_selection_scope', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_selection_scope', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_selection_scope', 'ordinary'):77",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:77:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:77:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:77:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_selection_scope', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_selection_scope', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_selection_scope', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_selection_scope', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('opera_selection_scope', 'ordinary')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_selection_scope', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_selection_scope', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'paired'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'paired'):1",
+      "passed": true
+    },
+    {
+      "check": "original_page:('opera_pdf_v1', 21)",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'paired'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'paired'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'paired'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'paired'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_selection_scope', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_selection_scope', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_selection_scope', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_selection_scope', 'paired'):78",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:78:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:78:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:78:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_selection_scope', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_selection_scope', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_selection_scope', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_selection_scope', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "v13_layout_and_initial_baseline_identity:('opera_selection_scope', 'paired')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_selection_scope', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_selection_scope', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):6",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):7",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):8",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):9",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):10",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):11",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):12",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):13",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):14",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):15",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):16",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):17",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):18",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):19",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):20",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):21",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):22",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'parent'):23",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_selection_scope', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_selection_scope', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_selection_scope', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_selection_scope', 'parent'):79",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:79:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:79:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:79:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_selection_scope', 'parent'):80",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:80:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:80:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:80:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_selection_scope', 'parent'):81",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:81:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:81:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:81:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_selection_scope', 'parent'):82",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:82:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:82:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:82:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_selection_scope', 'parent'):83",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:83:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:83:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:83:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_selection_scope', 'parent'):84",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:84:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:84:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:84:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_selection_scope', 'parent'):85",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:85:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:85:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:85:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_selection_scope', 'parent'):86",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:86:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:86:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:86:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "repeat_cost_consistency:('opera_selection_scope', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_selection_scope', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_selection_scope', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_selection_scope', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_selection_scope', 'parent')",
+      "passed": true
+    },
+    {
+      "check": "metadata_projection:('opera_selection_scope', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "question_context_hash:('opera_selection_scope', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'closure'):0",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'closure'):1",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'closure'):2",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'closure'):3",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'closure'):4",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'closure'):5",
+      "passed": true
+    },
+    {
+      "check": "exact_unstripped_source_slice:('opera_selection_scope', 'closure'):6",
+      "passed": true
+    },
+    {
+      "check": "exact_context_reconstruction:('opera_selection_scope', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "word_and_full_input_budgets:('opera_selection_scope', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "native_identity:('opera_selection_scope', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "cost_identity_arithmetic:('opera_selection_scope', 'closure'):87",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:87:rendered_prompt_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:87:token_ids_sha256",
+      "passed": true
+    },
+    {
+      "check": "cost_hash_shape:87:context_sha256",
+      "passed": true
+    },
+    {
+      "check": "final_native_cost_bound:('opera_selection_scope', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "shortlist_scores_unchanged:('opera_selection_scope', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "exact_recorded_cost_packing_replay:('opera_selection_scope', 'closure')",
+      "passed": true
+    },
+    {
+      "check": "selected_seeds_and_links:('opera_selection_scope', 'closure')",
+      "passed": true
+    }
+  ],
+  "checks_passed": 1031,
+  "contexts": 32,
+  "source_span_occurrences_verified_exactly_without_stripping": 247,
+  "unique_original_pages_verified": 38,
+  "spans_with_endpoint_whitespace_preserved": 107,
+  "structural_spans_with_endpoint_whitespace_preserved": 107,
+  "ordinary_paired_contexts_byte_identical_to_v13_layout": 16,
+  "initial_artifacts_preserved": true,
+  "changed_selections_from_initial": [],
+  "changed_contexts_from_initial": [
+    {
+      "question_id": "plug_v13_q1",
+      "condition": "parent"
+    },
+    {
+      "question_id": "plug_v13_q1",
+      "condition": "closure"
+    },
+    {
+      "question_id": "plug_v13_q2",
+      "condition": "parent"
+    },
+    {
+      "question_id": "plug_v13_q3",
+      "condition": "parent"
+    },
+    {
+      "question_id": "plug_v13_q4",
+      "condition": "parent"
+    },
+    {
+      "question_id": "plug_v13_q4",
+      "condition": "closure"
+    },
+    {
+      "question_id": "opera_revised_result",
+      "condition": "parent"
+    },
+    {
+      "question_id": "opera_retained_baseline",
+      "condition": "parent"
+    },
+    {
+      "question_id": "opera_revision_reason",
+      "condition": "parent"
+    },
+    {
+      "question_id": "opera_revision_reason",
+      "condition": "closure"
+    },
+    {
+      "question_id": "opera_selection_scope",
+      "condition": "parent"
+    },
+    {
+      "question_id": "opera_selection_scope",
+      "condition": "closure"
+    }
+  ],
+  "recorded_native_cost_evaluations": 88,
+  "native_asset_and_template_identity_verified": true,
+  "native_tokens_independently_regenerated": false,
+  "raw_packing_token_arrays_retained": false,
+  "condition_summary": [
+    {
+      "condition": "ordinary",
+      "contexts": 8,
+      "selected_seeds_total": 48,
+      "dropped_seeds_total": 0,
+      "contexts_with_dropped_seed": 0,
+      "both_versions_contexts": 8,
+      "empty_contexts": 0,
+      "evidence_words_range": [
+        744,
+        960
+      ],
+      "full_input_tokens_range": [
+        1451,
+        2640
+      ],
+      "native_token_delta_range": [
+        0,
+        0
+      ]
+    },
+    {
+      "condition": "paired",
+      "contexts": 8,
+      "selected_seeds_total": 48,
+      "dropped_seeds_total": 0,
+      "contexts_with_dropped_seed": 0,
+      "both_versions_contexts": 8,
+      "empty_contexts": 0,
+      "evidence_words_range": [
+        685,
+        960
+      ],
+      "full_input_tokens_range": [
+        1328,
+        2665
+      ],
+      "native_token_delta_range": [
+        0,
+        0
+      ]
+    },
+    {
+      "condition": "parent",
+      "contexts": 8,
+      "selected_seeds_total": 29,
+      "dropped_seeds_total": 19,
+      "contexts_with_dropped_seed": 8,
+      "both_versions_contexts": 6,
+      "empty_contexts": 0,
+      "evidence_words_range": [
+        810,
+        937
+      ],
+      "full_input_tokens_range": [
+        1659,
+        3242
+      ],
+      "native_token_delta_range": [
+        1,
+        29
+      ]
+    },
+    {
+      "condition": "closure",
+      "contexts": 8,
+      "selected_seeds_total": 48,
+      "dropped_seeds_total": 0,
+      "contexts_with_dropped_seed": 0,
+      "both_versions_contexts": 8,
+      "empty_contexts": 0,
+      "evidence_words_range": [
+        655,
+        930
+      ],
+      "full_input_tokens_range": [
+        1284,
+        3013
+      ],
+      "native_token_delta_range": [
+        0,
+        12
+      ]
+    }
+  ],
+  "records": [
+    {
+      "question_id": "plug_v13_q1",
+      "condition": "ordinary",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 744,
+      "full_input_tokens": 2447,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "plug_v13_q1",
+      "condition": "paired",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 825,
+      "full_input_tokens": 2665,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "plug_v13_q1",
+      "condition": "parent",
+      "exact_unstripped_source_spans": 13,
+      "selected_seed_count": 5,
+      "dropped_seed_count": 1,
+      "both_versions_represented": true,
+      "evidence_words": 937,
+      "full_input_tokens": 3242,
+      "native_token_delta_from_initial": 14,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "plug_v13_q1",
+      "condition": "closure",
+      "exact_unstripped_source_spans": 12,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 839,
+      "full_input_tokens": 3003,
+      "native_token_delta_from_initial": 12,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "plug_v13_q2",
+      "condition": "ordinary",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 960,
+      "full_input_tokens": 2254,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "plug_v13_q2",
+      "condition": "paired",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 960,
+      "full_input_tokens": 2133,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "plug_v13_q2",
+      "condition": "parent",
+      "exact_unstripped_source_spans": 9,
+      "selected_seed_count": 3,
+      "dropped_seed_count": 3,
+      "both_versions_represented": true,
+      "evidence_words": 923,
+      "full_input_tokens": 2325,
+      "native_token_delta_from_initial": 8,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "plug_v13_q2",
+      "condition": "closure",
+      "exact_unstripped_source_spans": 5,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 930,
+      "full_input_tokens": 2079,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "plug_v13_q3",
+      "condition": "ordinary",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 751,
+      "full_input_tokens": 1451,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "plug_v13_q3",
+      "condition": "paired",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 685,
+      "full_input_tokens": 1328,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "plug_v13_q3",
+      "condition": "parent",
+      "exact_unstripped_source_spans": 11,
+      "selected_seed_count": 5,
+      "dropped_seed_count": 1,
+      "both_versions_represented": true,
+      "evidence_words": 896,
+      "full_input_tokens": 1897,
+      "native_token_delta_from_initial": 12,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "plug_v13_q3",
+      "condition": "closure",
+      "exact_unstripped_source_spans": 5,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 655,
+      "full_input_tokens": 1284,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "plug_v13_q4",
+      "condition": "ordinary",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 849,
+      "full_input_tokens": 2640,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "plug_v13_q4",
+      "condition": "paired",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 849,
+      "full_input_tokens": 2544,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "plug_v13_q4",
+      "condition": "parent",
+      "exact_unstripped_source_spans": 11,
+      "selected_seed_count": 3,
+      "dropped_seed_count": 3,
+      "both_versions_represented": true,
+      "evidence_words": 810,
+      "full_input_tokens": 2750,
+      "native_token_delta_from_initial": 14,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "plug_v13_q4",
+      "condition": "closure",
+      "exact_unstripped_source_spans": 12,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 901,
+      "full_input_tokens": 3013,
+      "native_token_delta_from_initial": 6,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "opera_revised_result",
+      "condition": "ordinary",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 839,
+      "full_input_tokens": 1628,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "opera_revised_result",
+      "condition": "paired",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 839,
+      "full_input_tokens": 1628,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "opera_revised_result",
+      "condition": "parent",
+      "exact_unstripped_source_spans": 13,
+      "selected_seed_count": 4,
+      "dropped_seed_count": 2,
+      "both_versions_represented": true,
+      "evidence_words": 881,
+      "full_input_tokens": 1950,
+      "native_token_delta_from_initial": 12,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "opera_revised_result",
+      "condition": "closure",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 839,
+      "full_input_tokens": 1659,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "opera_retained_baseline",
+      "condition": "ordinary",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 847,
+      "full_input_tokens": 1777,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "opera_retained_baseline",
+      "condition": "paired",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 847,
+      "full_input_tokens": 1762,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "opera_retained_baseline",
+      "condition": "parent",
+      "exact_unstripped_source_spans": 3,
+      "selected_seed_count": 2,
+      "dropped_seed_count": 4,
+      "both_versions_represented": false,
+      "evidence_words": 895,
+      "full_input_tokens": 1659,
+      "native_token_delta_from_initial": 1,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "opera_retained_baseline",
+      "condition": "closure",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 847,
+      "full_input_tokens": 1793,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "opera_revision_reason",
+      "condition": "ordinary",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 835,
+      "full_input_tokens": 1563,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "opera_revision_reason",
+      "condition": "paired",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 835,
+      "full_input_tokens": 1563,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "opera_revision_reason",
+      "condition": "parent",
+      "exact_unstripped_source_spans": 8,
+      "selected_seed_count": 3,
+      "dropped_seed_count": 3,
+      "both_versions_represented": false,
+      "evidence_words": 876,
+      "full_input_tokens": 1743,
+      "native_token_delta_from_initial": 3,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "opera_revision_reason",
+      "condition": "closure",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 807,
+      "full_input_tokens": 1557,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "opera_selection_scope",
+      "condition": "ordinary",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 856,
+      "full_input_tokens": 1737,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "opera_selection_scope",
+      "condition": "paired",
+      "exact_unstripped_source_spans": 6,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 793,
+      "full_input_tokens": 1648,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": false,
+      "baseline_equals_v13_layout": true
+    },
+    {
+      "question_id": "opera_selection_scope",
+      "condition": "parent",
+      "exact_unstripped_source_spans": 24,
+      "selected_seed_count": 4,
+      "dropped_seed_count": 2,
+      "both_versions_represented": true,
+      "evidence_words": 855,
+      "full_input_tokens": 2399,
+      "native_token_delta_from_initial": 29,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    },
+    {
+      "question_id": "opera_selection_scope",
+      "condition": "closure",
+      "exact_unstripped_source_spans": 7,
+      "selected_seed_count": 6,
+      "dropped_seed_count": 0,
+      "both_versions_represented": true,
+      "evidence_words": 796,
+      "full_input_tokens": 1718,
+      "native_token_delta_from_initial": 0,
+      "selection_changed_from_initial": false,
+      "context_changed_from_initial": true,
+      "baseline_equals_v13_layout": null
+    }
+  ],
+  "limits": [
+    "This audit verifies exact source characters, including endpoint whitespace. The preserved initial audit instead verified its declared stripped rendering and did not certify that endpoint indentation was retained.",
+    "Source-exact rendering repairs representation loss but does not certify a header governs every row, that cross-page units are bound, or that retrieval is source sufficient. Consult the separately frozen structural/context audits.",
+    "The native bridge records counts and hashes without per-packing-evaluation raw token arrays. Identity, arithmetic and recorded-cost replay pass, but this audit does not independently retokenize; final native preflight must compare every final count/render/hash to this ledger.",
+    "Parent/closure use the same paired seed shortlist. Parent drops and loss of a version remain visible; closure cannot generally repair missing seed recall.",
+    "Two development histories and eight familiar questions do not establish strong-reader competence, algorithmic novelty or generalization."
+  ]
+}

@@ -1,0 +1,260 @@
+Reproducing v0.14: portable metadata, retained artifacts and new execution
+
+Run commands from acl2027_temporal_state/. Python, NumPy and the declared package
+versions are needed for relevant stages; PDF rendering additionally uses ReportLab
+and the source HTML inventory uses lxml. Use fresh output paths. Never overwrite
+frozen v13/v14 attempts or infer that new bytes/timestamps are the original run.
+The results and limitations are summarized in docs/research_update_v14.txt.
+
+1. Portable checks: no inference, raw sources or model weights
+
+The default main-study verifier reads repository metadata only. It checks recorded
+hash/count/schema/crosslink consistency; it does not recertify raw text, native
+tokenization or answer semantics. It supports a relocated checkout. The retained
+portable audit passed 1,348 checks in both the canonical and copied metadata tree.
+
+  python3 scripts/verify_structured_study_v14.py --root .
+
+  python3 scripts/summarize_structured_study_v14.py \
+    --output results/structured_study_summary_v14.json --check
+
+  PYTHONPATH=src python3 -m unittest discover -s tests -q
+
+The completed full unit run passed 484 tests. The 14 authored witness scaffold
+checks can also be run alone without source data or model inference:
+
+  PYTHONPATH=src python3 -m unittest discover -s tests \
+    -p test_witness_selection_v14.py -v
+
+The main summary replays frozen public grades/projections, including all failures;
+it does not regrade answers. --check compares exact deterministic output. It is
+different from recomputing model predictions. The witness tests validate supplied
+finite examples and bookkeeping, not a learned/automatic method or natural gain.
+
+2. Checks requiring the retained external files
+
+The following main audit still makes zero model calls, but additionally opens the
+retained source/context/native artifacts and verifies their hashes and recorded
+crosslinks. External mode requires the canonical checkout and recorded paths:
+
+  python3 scripts/verify_structured_study_v14.py --external
+
+Dense replay requires the external corpus, vector arrays, exact contexts, packets,
+asset files and index receipts. Public index metadata alone is insufficient.
+Neither of these commands generates answers or reruns ONNX embeddings:
+
+  python3 scripts/verify_dense_execution_v14.py --output NEW_DENSE_AUDIT_JSON
+
+  python3 scripts/summarize_dense_source_support_v14.py --check
+
+The first command mechanically replays rankings from saved vectors and retained
+packing costs. Its default status leaves a fresh native recount pending. The
+second requires both 16-case reviews, checks 16 actual-byte BM25 reuse joins, all
+48 source-support records and fixed fact denominators, and exactly replays the
+final summary. It rejects changed inputs and exposes conflicting duplicate grades
+without silently adjudicating them. It evaluates source support, not QA accuracy.
+
+To repeat the final 48-prompt tokenizer recount, choose a new external directory
+and a new audit output. This opens one pinned native tokenizer session, makes zero
+completions and requires the reader weight/runtime plus authorized host resource
+access. It is not a portable metadata check:
+
+  python3 scripts/verify_dense_execution_v14.py \
+    --tokenize --tokenizer-dir NEW_EXTERNAL/dense_recount \
+    --output NEW_AUDIT_JSON
+
+The retained recount audit passed 983 checks. It checked source spans, saved-vector
+rankings, packing, chronology and exact final prompt counts/hashes; it did not
+regenerate CLS hidden states or independently certify the support judgments.
+
+3. Reconstructing sources and the reader experiment
+
+Start with docs/reproduce_paired_study_v13.txt. Supply the exact four PDF captures
+and reconstruction dependencies; no originals are bundled. Preserve the two
+separately tagged whole-table transcriptions and native/OCR provenance. Different
+PDF bytes, OCR output or transcription make a new corpus realization, not an exact
+rerun. Math/figure extraction remains incomplete. Then follow
+docs/reproduce_structured_retrieval_v14.txt, including these source-only commands:
+
+  python3 scripts/build_structured_corpus_v14.py \
+    --corpus-manifest data/paired_reader_v13/corpus_manifest.json \
+    --external-output NEW_EXTERNAL/structured_corpus.json \
+    --metadata-output NEW_METADATA/corpus_manifest.json
+
+  python3 scripts/run_structured_retrieval_layout_v14.py \
+    --reader-config configs/structured_reader_main_v14.json \
+    --tokenizer-artifacts NEW_EXTERNAL/structured_tokenizer \
+    --manifest NEW_METADATA/corpus_manifest.json \
+    --contexts NEW_EXTERNAL/structured_contexts.jsonl \
+    --metadata NEW_METADATA/structured_retrieval.json
+
+The second command loads the reader tokenizer and makes no completions. Use the
+source-exact layout implementation, not the preserved initial .strip() renderer.
+Its amendment preserves original endpoint whitespace without changing the source
+parser or seed shortlist. Ordinary/paired are six/top-three-per-version BM25;
+parent/closure expand the same paired seeds. All source words, headers and native
+prompt text count. Whole bundles are dropped rather than partially truncated.
+
+Frozen contracts are data/structured_reader_v14/protocol.json,
+main_execution_protocol.json, layout_amendment.json and the source-audit sample/
+protocol. Active source/answer judgments and exact native input bindings must be
+reviewed before predictions. The separately authored eight-control gate passed
+8/8 in the completed run, but this did not establish natural-reader competence.
+
+The v14 reader uses pinned Qwen3.5-4B Unsloth Q5_K_M and llama.cpp b11146 under the
+recorded CPU/memory/time guards. See configs/reader_candidates_v14.json and
+docs/reader_selection_v14.txt for acquisition and the control freeze. The prior
+Qwen3-4B-Q8_0 file was verified and evicted for disk capacity. Reexecuting that
+older reader requires re-downloading exactly:
+
+  Qwen/Qwen3-4B-GGUF revision bc640142c66e1fdd12af0bd68f40445458f3869b
+  Qwen3-4B-Q8_0.gguf; 4,280,404,704 bytes
+  SHA256 8c2f07f26af9747e41988551106f149b03eb9b5cb6df636027b6bf6278473300
+
+Old outputs and runtime remain preserved; the failed v14 download, cache
+reconciliation and successful second acquisition are separate receipts. Models,
+runtime assets and full source-bearing prompts/raw answers are external. Moving
+their paths requires a newly bound execution configuration, not editing an old
+freeze. Numerical inference need not be bitwise identical on another platform.
+
+After source/reference review and competence gating, prepare requests without
+references, then explicitly freeze a new batch. NEW_PROJECT_DATA and
+NEW_PROJECT_RECEIPT must be new paths inside this research project; NEW_EXTERNAL
+must be outside the entire repository:
+
+  python3 scripts/prepare_structured_study_v14.py requests \
+    --contexts NEW_EXTERNAL/structured_contexts.jsonl \
+    --output NEW_EXTERNAL/main_requests.json --manifest NEW_PROJECT_MANIFEST
+
+  python3 scripts/native_structured_reader_v14.py freeze \
+    --config configs/structured_reader_main_v14.json \
+    --request NEW_EXTERNAL/main_requests.json \
+    --protocol data/structured_reader_v14/main_execution_protocol.json \
+    --reference-review results/paired_reference_review_v13.json \
+    --external NEW_EXTERNAL/main_attempt \
+    --data-dir NEW_PROJECT_DATA --receipt NEW_PROJECT_RECEIPT
+
+  python3 scripts/native_structured_reader_v14.py execute \
+    --external NEW_EXTERNAL/main_attempt
+
+  python3 scripts/native_structured_reader_v14.py verify \
+    --external NEW_EXTERNAL/main_attempt
+
+Only execute performs new answer inference. It must retain all 32 attempts and
+output-limit failures; technical failures stop rather than silently resume.
+The grader-packet command uses mode grading with --native, --domain plug|opera,
+--contexts, --output and --manifest; it intentionally reads raw answers, so it
+belongs only to the separately authorized grading stage. The final public
+summarizer expects canonical recorded inputs: a fresh reproduction must use a new
+explicit aggregation binding rather than overwrite the completed run.
+
+4. Reconstructing the dense source-only follow-up
+
+data/dense_retrieval_v14/source_coverage_protocol.json freezes the exact six
+conditions and forbids further natural QA in this stage. The completed run has
+48 contexts: 16 exact BM25 controls and 32 newly reviewed dense/RRF contexts.
+No result-based tuning or answer generation was performed. Detailed executable
+commands, exact model/tokenizer/wheel hashes and dependency requirements are in
+docs/dense_retrieval_feasibility_v14.txt.
+
+Acquire/check public assets separately:
+
+  python3 scripts/fetch_dense_assets_v14.py \
+    --config configs/dense_retriever_candidate_v14.json \
+    --assets NEW_EXTERNAL/dense_assets --download \
+    --receipt NEW_DENSE_ASSET_RECEIPT
+
+Install only the hash-verified pinned wheels in an isolated environment with the
+declared existing versions. The sandbox ORT import failed on restricted CPU
+telemetry; the same build imported and executed successfully on the authorized
+host. Preserve both receipts. The root completion gate must bind the actual
+completed 32-response main receipt, encoder/config hashes and retained failures.
+Use fresh index/output paths for a new run. Set DENSE_PYTHON to the isolated
+environment's Python executable; the commands are:
+
+  "$DENSE_PYTHON" scripts/dense_retrieval_v14.py encode \
+    --config configs/dense_retriever_candidate_v14.json \
+    --manifest data/structured_reader_v14/corpus_manifest.json \
+    --questions data/paired_reader_v13/questions.json \
+    --assets NEW_EXTERNAL/dense_assets --execution-gate NEW_GATE_JSON \
+    --output NEW_EXTERNAL/dense_index
+
+  "$DENSE_PYTHON" scripts/run_dense_retrieval_v14.py \
+    --index NEW_EXTERNAL/dense_index \
+    --reader-config configs/structured_reader_main_v14.json \
+    --tokenizer-artifacts NEW_EXTERNAL/dense_tokenizer \
+    --contexts NEW_EXTERNAL/dense_contexts.jsonl \
+    --metadata NEW_DENSE_RETRIEVAL_JSON --runtime-receipt NEW_PACKING_RECEIPT
+
+Encoding and native packing run serially. The wrapper holds exactly one native tokenizer
+session for all 48 contexts; it calls counter=bridge.count_prompt and makes zero
+completions. Indexing, query encoding, ranking, packing and session overhead are
+timed separately. Encoder-only right truncation is recorded; original reader
+source spans are preserved. Source review is prepared with:
+
+  python3 scripts/prepare_dense_support_v14.py \
+    --contexts NEW_EXTERNAL/dense_contexts.jsonl \
+    --metadata NEW_DENSE_RETRIEVAL_JSON \
+    --baseline-contexts EXISTING_ACTIVE_V14_CONTEXTS_JSONL \
+    --output-dir NEW_EXTERNAL/support_packets --manifest NEW_SUPPORT_MANIFEST
+
+It stops if the 16 BM25 contexts/questions/scopes fail exact identity or are not
+covered by the existing review. Reviewers receive unchanged frozen facts and
+source contexts, never native answers or condition mappings. The summarizer CLI
+accepts --retrieval, --support-manifest, --plug-review, --opera-review,
+--baseline-support, --protocol, --packing-runtime and --output, plus --check.
+All input hashes are bound; changed reproduction bindings require a new protocol,
+not a claim that the old summary was regenerated unchanged.
+
+5. Source-cohort and Inline XBRL feasibility, not a new QA benchmark
+
+The actual six-group/one-attempt acquisition supersedes the earlier proposed
+eight-group/two-attempt immediate plan. Reproduce source-only selection from the
+recorded full listing without reading QA bodies:
+
+  python3 scripts/freeze_fresh_source_cohort_v14.py \
+    --listing data/fresh_source_audit_v14/source_listing.json \
+    --out NEW_SELECTION_DIRECTORY
+
+The network capture is separate from offline reproduction:
+
+  python3 scripts/capture_fresh_sources_v14.py \
+    --protocol data/fresh_source_audit_v14/acquisition_protocol.json \
+    --external-dir NEW_EXTERNAL/html_sources --receipt NEW_CAPTURE_RECEIPT
+
+  python3 scripts/audit_fresh_source_objects_v14.py \
+    --protocol data/fresh_source_audit_v14/acquisition_protocol.json \
+    --receipt NEW_CAPTURE_RECEIPT --external-dir NEW_EXTERNAL/html_sources \
+    --integrity-out NEW_INTEGRITY_JSON --identity-out NEW_IDENTITY_JSON
+
+  python3 scripts/inventory_inline_xbrl_v14.py \
+    --identity NEW_IDENTITY_JSON --sources NEW_EXTERNAL/html_sources \
+    --external-output NEW_EXTERNAL/inline_metadata --public-output NEW_INVENTORY_JSON
+
+Preserve the original capture checker and its two LFS flags alongside the correct
+Git/LFS reconciliation. Twelve object identities verify, but original accession,
+first-public availability, completeness and rendering remain unresolved. Berkshire
+is outside the actual-FY window and was not replaced. The 23,651 locally linked
+fact occurrences are not normalized/validated quantities or independent labels.
+No new questions, references or predictions were created for this cohort.
+
+6. Manuscript artifacts
+
+The canonical working addendum is paper/retrieval_reader_upgrade_v14.json. Render
+and export to fresh paths; these commands do not read raw answers or run models:
+
+  python3 scripts/render_retrieval_upgrade_v14.py \
+    --source paper/retrieval_reader_upgrade_v14.json --output NEW_PDF \
+    --manifest NEW_RENDER_MANIFEST
+
+  python3 scripts/export_retrieval_paper_tex_v14.py \
+    --source paper/retrieval_reader_upgrade_v14.json --output NEW_TEX
+
+  python3 scripts/export_retrieval_paper_tex_v14.py \
+    --source paper/retrieval_reader_upgrade_v14.json --output NEW_TEX --check
+
+The PDF is a readable ReportLab working document. The editable LaTeX uses a
+generic article class; export does not compile it or establish ACL-template
+compliance. Visually inspect the rendered artifact. None of these reproduction
+steps establishes independent human gold, held-out generalization, algorithmic
+novelty or readiness for ACL 2027 submission.

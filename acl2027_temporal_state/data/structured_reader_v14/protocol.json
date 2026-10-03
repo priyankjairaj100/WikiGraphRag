@@ -1,0 +1,88 @@
+{
+  "schema_version": "structured_reader_development_protocol_v14",
+  "created_utc": "2026-10-03T11:01:02.724657+00:00",
+  "status": "frozen_design_before_v14_predictions",
+  "aim": "Separate reader capability from source-structure retrieval; test generic baselines before claiming a new comparison method.",
+  "development_only": true,
+  "question_count": 8,
+  "histories": 2,
+  "prior_outcomes_known": true,
+  "reference_changes_allowed": false,
+  "question_and_reference_files": {
+    "data/paired_reader_v13/questions.json": "fb375929e23431628d42aab6af127900cd246bfc50cc29146454edb27b95d45c",
+    "data/paired_reader_v13/references_plug.json": "682a7af7fcef05bcc1a0ad16bca1874e2e7b5078db982b9e4a51b46dcbd91dbc",
+    "data/paired_reader_v13/references_opera.json": "2cbe0e728609073bf33c28c0a3f8876063635db6d75bd0bba89e49997e4edc66",
+    "data/paired_reader_v13/scoring_contract.json": "bfe298807cdfe3b4ceb3cee2e9c75a9de60facece0c429c2e0f513d23e8d70b2",
+    "data/paired_reader_v13/corpus_manifest.json": "9654ab05490a82899b337284f85e6891cb06f8f460f3a0630c2bfc02bb9865c4",
+    "results/paired_reference_review_v13.json": "1b259b9b467947bd68864674b5136d9226d713eb3f2c85e285e396b0b6d869dc",
+    "results/paired_study_summary_v13.json": "2e13ca16f518d5b50f2f80896fb1b5241682957797e0c6564bebc297ed2528d7"
+  },
+  "reader_selection": {
+    "model": "Qwen3.5-4B",
+    "distribution": "unsloth/Qwen3.5-4B-GGUF",
+    "revision": "e87f176479d0855a907a41277aca2f8ee7a09523",
+    "quantization": "Q5_K_M",
+    "asset_sha256": "8814232b85594dcd46c50e5b8b29324a7efe9e746edbe8a3d1df3d3fce7aad39",
+    "selection_basis": "Current official capability reports and executable CPU/memory feasibility, before v14 answers; not established stronger by card.",
+    "native_template": "enable_thinking=false; exact rendered prompt/token IDs archived",
+    "decoding": "greedy seed7; no repair or retry; fresh process per completion",
+    "resource_limits": {
+      "address_space_bytes": 5905580032,
+      "cgroup_active_metric_stop_bytes": 7516192768,
+      "context_tokens": 4096,
+      "full_input_token_cap": 3500,
+      "output_token_cap": 256,
+      "threads": 4
+    }
+  },
+  "competence_controls": {
+    "number": 8,
+    "authored": true,
+    "separate_from_natural_questions": true,
+    "gate": "At least7/8 reference-complete grounded responses, no critical sign/unit/year/sample error in any answered control claim.",
+    "limitations": "Pass permits a bounded development comparison; not a strong general reader certification.",
+    "failed_gate_policy": "Preserve all outputs and do not run primary32-answer comparison as an adequate-reader study. Any changed prompt/model/control needs new frozen amendment and separate results."
+  },
+  "retrieval_conditions": [
+    "ordinary",
+    "paired",
+    "parent",
+    "closure"
+  ],
+  "shared_retrieval": {
+    "corpus": "Existing full550-page four-PDF corpus including previously verified two OPERA raster transcriptions",
+    "supplied_scope": "Question-to-history membership and within-history version ordering supplied",
+    "query": "Exact frozen question text, no answer labels",
+    "ranking": "Existing BM25 defaults over frozen2306chunk corpus",
+    "seed_limits": {
+      "ordinary": "top6 across supplied history",
+      "paired": "top3 per document",
+      "parent": "same paired seed shortlist",
+      "closure": "same paired seed shortlist"
+    },
+    "parent": "Enclosing source blocks; generic baseline",
+    "closure": "Seed text plus explicitly source-bound structural dependencies; generic evidence-closure baseline, not novel claim",
+    "packing": "Whole bundles only, deterministic score order, skip overbudget bundle; no answer-aware backfill",
+    "evidence_word_cap": 960,
+    "full_prompt_token_cap": 3500,
+    "actual_usage": "Report native tokens and source words per condition; caps matched, actual usages can differ",
+    "all_spans_charged": true,
+    "rendering": "Source version/page order and native within-span layout; exact spans/hashes archived",
+    "structural_audit": "Must precede inference; false accepted attachment triggers fix/versioned repeat before predictions, unresolved and missing remain explicit. No invented units or continuation."
+  },
+  "comparison_plan": {
+    "calls": 32,
+    "within_question_order": "Rotate four-condition order by question index, deterministic before output",
+    "reader_only_check": "Record whether ordinary/paired contexts equal v13 layout; report any packing differences. Model/template/quantization change jointly, not size-only causal claim.",
+    "source_audit": "Condition-masked exact-context review separate from answer grading",
+    "grading": "Reuse frozenv13 references/contract plus explicitv13 rounding adjudication; content/scope/citation/format/abstention separately",
+    "summary": "Descriptive8-question counts and perquestion outcomes. No statistical/generalization claim from two histories.",
+    "stop": "Do not enlarge or select conditions after seeing output."
+  },
+  "research_hypothesis": {
+    "proposed_not_tested": "Retrieval of source witnesses that distinguish answer-changing scope/attachment alternatives",
+    "prior_art_boundary": "Version filtering, structural closure, missing-slot retrieval, sufficiency and abstention already exist; these implemented baselines are not claimed inventions.",
+    "go_no_go": "Only develop candidate mechanism further if adequate reader and generic structure leave a recurring source-grounded ambiguity on fresh histories.",
+    "required_future": "History/entity-disjoint natural evaluation, pointer/slot/sufficiency/parent baselines, matched evidence and call budgets, candidate recall and failure analysis."
+  }
+}

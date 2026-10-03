@@ -1,0 +1,1084 @@
+{
+  "schema_version": "1.0",
+  "audit_id": "source_structure_v14",
+  "freeze_stage": "before first v14 parser output and before v14 QA predictions",
+  "purpose": "Source-only purposive structural development audit; no QA question, reference or prediction input used to select or label these probes.",
+  "source_corpus_manifest": {
+    "path": "data/paired_reader_v13/corpus_manifest.json",
+    "sha256": "9654ab05490a82899b337284f85e6891cb06f8f460f3a0630c2bfc02bb9865c4"
+  },
+  "coordinate_convention": {
+    "characters": "half-open Unicode code-point offsets over exact UTF-8 decoded pNNN.txt, including original newlines",
+    "lines": "one-based inclusive; span includes the complete final line including its newline if present",
+    "pages": "physical PDF page indices, one-based"
+  },
+  "provenance": {
+    "reviewer": "model-assisted independent-role reviewer within shared research session",
+    "independent_human_gold": false,
+    "prior_familiarity": "Reviewer authored v13 reference/context reviews and inspected four masked Plug answers during adjudication. v14 sample was built from source pages without reopening QA references, questions, grading files or outputs; selection is therefore development and not blind or held out.",
+    "source_fidelity_limit": "Judgments concern frozen extracted page spans, including tagged model-assisted image-table transcriptions. They are not independent certification of PDF extraction fidelity.",
+    "selection": "Purposive coverage across both histories and all four document versions, with known difficult page structures; no random or representative sampling claim."
+  },
+  "evaluation_rules": {
+    "required": "An accepted correctly scoped link to the explicit source target, or equivalent actual text with complete relevant header/unit qualifiers, is coverage. Unresolved or no link is missing required coverage; it is not a false attachment.",
+    "forbidden": "An accepted link that asserts the specified cross-boundary or inappropriate interpretation is a false attachment. A broad parent context containing both spans without asserting this relation is not itself a false attachment.",
+    "unresolved": "Correct behavior preserves uncertainty/abstains on the specified relation given inspected local evidence. No-link is acceptable abstention. A justified broader source target may resolve the case but must be recorded and inspected, not assumed.",
+    "granularity": "Where parser anchors split a probe span, inspect all affected anchor blocks and report complete/partial/missing coverage. Matching by same page alone is insufficient.",
+    "qualifiers": "Copy full relevant multiline headers and unit exceptions. Presence of a generic header is not enough if the year mapping, restatement status or unit scope is wrong.",
+    "no_recomputation": "No numeric values, conversions, totals or missing relations may be derived from arithmetic or QA knowledge.",
+    "full_link_review": "Inspect every accepted/unresolved parser attachment whose anchor intersects any sampled page, recording additional false or unresolved links separately from fixed probes."
+  },
+  "counts": {
+    "pages": 13,
+    "probes": 34,
+    "required": 17,
+    "forbidden": 15,
+    "unresolved": 2
+  },
+  "pages": [
+    {
+      "document_id": "plug_2019_10k",
+      "pdf_page": 63,
+      "source_relative_path": "plug_2019_10k/p063.txt",
+      "sha256": "84db9e72f1294c18db550f706737cf3855799c76156323c67b88b02671089bdd",
+      "character_count": 4336,
+      "line_count": 56,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "plug_2019_10k",
+      "pdf_page": 100,
+      "source_relative_path": "plug_2019_10k/p100.txt",
+      "sha256": "2ed6337116b41aea8e0e361e97784a66e934044a0ca2e4ca6d22b1988c0f1c0d",
+      "character_count": 5104,
+      "line_count": 64,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "plug_2020_10k",
+      "pdf_page": 139,
+      "source_relative_path": "plug_2020_10k/p139.txt",
+      "sha256": "43c3cf1ceb8ce8eeb8c3dea2a510ce2fe35744128b50536277d4417febf02467",
+      "character_count": 5168,
+      "line_count": 67,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "plug_2020_10k",
+      "pdf_page": 147,
+      "source_relative_path": "plug_2020_10k/p147.txt",
+      "sha256": "0a6aed1a96e17f18ecb9f036aa40121f09782e3af2f3a3c6bac67edfd54b4bac",
+      "character_count": 4326,
+      "line_count": 56,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "plug_2020_10k",
+      "pdf_page": 149,
+      "source_relative_path": "plug_2020_10k/p149.txt",
+      "sha256": "b56ea56abdc4eae0ee766b2a836693a23bb214b874c2fdd0ae44a2716dcc52e5",
+      "character_count": 10519,
+      "line_count": 90,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "plug_2020_10k",
+      "pdf_page": 150,
+      "source_relative_path": "plug_2020_10k/p150.txt",
+      "sha256": "aa5137c1c605d32a0da8bb411a19e2c98bc6d21839caf1eb546c8245aee8466e",
+      "character_count": 9908,
+      "line_count": 88,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "plug_2020_10k",
+      "pdf_page": 195,
+      "source_relative_path": "plug_2020_10k/p195.txt",
+      "sha256": "1be5709af1b73b6f9985acc37c813795e4268756d6d4fe2035f1979fbd0b93e2",
+      "character_count": 4428,
+      "line_count": 63,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "opera_pdf_v1",
+      "pdf_page": 15,
+      "source_relative_path": "opera_pdf_v1/p015.txt",
+      "sha256": "74155c6e03f3dd0f28cf09276cfe51225b1b53d7257e9b2d9c668af16f12b157",
+      "character_count": 2797,
+      "line_count": 53,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "opera_pdf_v1",
+      "pdf_page": 20,
+      "source_relative_path": "opera_pdf_v1/p020.txt",
+      "sha256": "3f6b101cf9f37438ea83213230851c84d905734bdede9ebfc6002dd527823e7e",
+      "character_count": 2425,
+      "line_count": 47,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "opera_pdf_v4",
+      "pdf_page": 12,
+      "source_relative_path": "opera_pdf_v4/p012.txt",
+      "sha256": "60643c331260e5549035f466e1e13952807e0d082c3e21a1ef00441ee2c6d0d8",
+      "character_count": 3363,
+      "line_count": 48,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "opera_pdf_v4",
+      "pdf_page": 22,
+      "source_relative_path": "opera_pdf_v4/p022.txt",
+      "sha256": "fec479078e5612c85bfab3d25782a6fc676f149838a82b081fd5f411224264f7",
+      "character_count": 3005,
+      "line_count": 49,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "opera_pdf_v4",
+      "pdf_page": 28,
+      "source_relative_path": "opera_pdf_v4/p028.txt",
+      "sha256": "7430e14733d2fa52bcfec0dbbfb0ab7534021bb5867220ab835fc1f2210cfa4c",
+      "character_count": 3242,
+      "line_count": 54,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    },
+    {
+      "document_id": "opera_pdf_v4",
+      "pdf_page": 33,
+      "source_relative_path": "opera_pdf_v4/p033.txt",
+      "sha256": "8e72dd677bbf2a4096ee2120780aa1dcb08e618db6fe5b123ca67d3d127aafed",
+      "character_count": 3103,
+      "line_count": 52,
+      "text_provenance": "frozen augmented native-layout extraction; model-assisted visual-table supplements are explicitly tagged when present"
+    }
+  ],
+  "probes": [
+    {
+      "probe_id": "S01",
+      "coverage_category": "ordinary_table",
+      "expected_action": "required",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 63,
+        "char_start": 515,
+        "char_end": 789,
+        "line_start": 15,
+        "line_end": 16,
+        "span_sha256": "6533a20773ebf5ea0577f4959a7c286bfbf0012472c795d39569243a70718822"
+      },
+      "target_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 63,
+        "char_start": 369,
+        "char_end": 502,
+        "line_start": 13,
+        "line_end": 13,
+        "span_sha256": "89c21f199baa5b3496dede68544edc8dd21c21accb0d187cec518d3a7a0272db"
+      },
+      "source_rationale": "Aligned year header governs the first monetary rows."
+    },
+    {
+      "probe_id": "S02",
+      "coverage_category": "explicit_unit",
+      "expected_action": "required",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 63,
+        "char_start": 515,
+        "char_end": 789,
+        "line_start": 15,
+        "line_end": 16,
+        "span_sha256": "6533a20773ebf5ea0577f4959a7c286bfbf0012472c795d39569243a70718822"
+      },
+      "target_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 63,
+        "char_start": 275,
+        "char_end": 368,
+        "line_start": 11,
+        "line_end": 11,
+        "span_sha256": "28926548243bdf2ce35f97eb78e9609ba3a3d6d80067f9c239bbc5247164b4fd"
+      },
+      "source_rationale": "Statement unit introduction explicitly governs monetary rows."
+    },
+    {
+      "probe_id": "S03",
+      "coverage_category": "unit_exception",
+      "expected_action": "required",
+      "relation_type": "unit_exception",
+      "anchor_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 63,
+        "char_start": 3886,
+        "char_end": 4166,
+        "line_start": 50,
+        "line_end": 51,
+        "span_sha256": "3a3faa2f7fd5c078bf64b6c157d9b4c120d96e1558d7fb336b3e52ce113b1907"
+      },
+      "target_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 63,
+        "char_start": 275,
+        "char_end": 368,
+        "line_start": 11,
+        "line_end": 11,
+        "span_sha256": "28926548243bdf2ce35f97eb78e9609ba3a3d6d80067f9c239bbc5247164b4fd"
+      },
+      "source_rationale": "Copied unit context must preserve both share and per-share exceptions; blanket thousands scaling is prohibited."
+    },
+    {
+      "probe_id": "S04",
+      "coverage_category": "blank_line_table_continuity",
+      "expected_action": "required",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 63,
+        "char_start": 3448,
+        "char_end": 3587,
+        "line_start": 45,
+        "line_end": 45,
+        "span_sha256": "f59b7cc65b414bd84d301439828bcb8b22c115779a0d36f8e77513f810593f96"
+      },
+      "target_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 63,
+        "char_start": 369,
+        "char_end": 502,
+        "line_start": 13,
+        "line_end": 13,
+        "span_sha256": "89c21f199baa5b3496dede68544edc8dd21c21accb0d187cec518d3a7a0272db"
+      },
+      "source_rationale": "Blank lines separate subtotals in one statement, not new independent tables."
+    },
+    {
+      "probe_id": "S05",
+      "coverage_category": "numeric_prose",
+      "expected_action": "forbidden",
+      "relation_type": "table_classification",
+      "anchor_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 100,
+        "char_start": 3827,
+        "char_end": 4625,
+        "line_start": 47,
+        "line_end": 53,
+        "span_sha256": "f8b4b041beca0d8fab4344de5d39ac9f664120044355c033822961d40beb4c1c"
+      },
+      "target_span": null,
+      "source_rationale": "Percentages, years and amounts in running prose are not an aligned table."
+    },
+    {
+      "probe_id": "S06",
+      "coverage_category": "section_break",
+      "expected_action": "forbidden",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 100,
+        "char_start": 4692,
+        "char_end": 5034,
+        "line_start": 59,
+        "line_end": 61,
+        "span_sha256": "e8aebc735f61a99acc3c75638c25ca9b0a228bd696d21460a57da62922a6241e"
+      },
+      "target_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 100,
+        "char_start": 3827,
+        "char_end": 4625,
+        "line_start": 47,
+        "line_end": 53,
+        "span_sha256": "f8b4b041beca0d8fab4344de5d39ac9f664120044355c033822961d40beb4c1c"
+      },
+      "source_rationale": "New numbered commitments section and lessor heading separate this prose from the tax discussion.",
+      "guard_span": {
+        "document_id": "plug_2019_10k",
+        "pdf_page": 100,
+        "char_start": 4626,
+        "char_end": 4691,
+        "line_start": 55,
+        "line_end": 57,
+        "span_sha256": "728eaa75ab7e5b14b86e962e2c6a815b54b392afe40269d7ec4d0f548113372c"
+      }
+    },
+    {
+      "probe_id": "S07",
+      "coverage_category": "multiline_year_header",
+      "expected_action": "required",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 139,
+        "char_start": 664,
+        "char_end": 948,
+        "line_start": 17,
+        "line_end": 18,
+        "span_sha256": "3c5b47a164e6177061b1f4e76df433693e1882630bd7574b4228151830bb2c6d"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 139,
+        "char_start": 370,
+        "char_end": 651,
+        "line_start": 14,
+        "line_end": 15,
+        "span_sha256": "8da64dbb06cce22b238e2ec14cf42f93bef3e26317b1d4f40a5ebb43823c0cf2"
+      },
+      "source_rationale": "Year labels and restated qualifiers occupy two lines; the full aligned header is needed."
+    },
+    {
+      "probe_id": "S08",
+      "coverage_category": "unit_exception",
+      "expected_action": "required",
+      "relation_type": "unit_exception",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 139,
+        "char_start": 4855,
+        "char_end": 4996,
+        "line_start": 60,
+        "line_end": 60,
+        "span_sha256": "68f28dba5ca344670003b208009fb504de1f0aa2d844c36a6347707934660915"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 139,
+        "char_start": 276,
+        "char_end": 369,
+        "line_start": 12,
+        "line_end": 12,
+        "span_sha256": "28926548243bdf2ce35f97eb78e9609ba3a3d6d80067f9c239bbc5247164b4fd"
+      },
+      "source_rationale": "Share-count exception must remain visible; thousands is not a blanket scale."
+    },
+    {
+      "probe_id": "S09",
+      "coverage_category": "table_between_prose",
+      "expected_action": "required",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 147,
+        "char_start": 2003,
+        "char_end": 2663,
+        "line_start": 26,
+        "line_end": 30,
+        "span_sha256": "1d15f403661333a39d1f83df732f7e5ddb93d61e13122b97ee6e87f6ba8c9ec6"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 147,
+        "char_start": 1465,
+        "char_end": 1974,
+        "line_start": 21,
+        "line_end": 24,
+        "span_sha256": "02bdeeea8ef36e8cacc3cb551f55d2c6cd75ecca2327636ae65840098ef73621"
+      },
+      "source_rationale": "Two period columns and restatement-adjustment labels govern this bounded table."
+    },
+    {
+      "probe_id": "S10",
+      "coverage_category": "intervening_prose",
+      "expected_action": "forbidden",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 147,
+        "char_start": 2799,
+        "char_end": 3321,
+        "line_start": 35,
+        "line_end": 39,
+        "span_sha256": "5faa57e607d442218fd0ec9163b9c1dd6a52296b751448bfdb4e27a12a5e3ffc"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 147,
+        "char_start": 1465,
+        "char_end": 1974,
+        "line_start": 21,
+        "line_end": 24,
+        "span_sha256": "02bdeeea8ef36e8cacc3cb551f55d2c6cd75ecca2327636ae65840098ef73621"
+      },
+      "source_rationale": "The subsequent preferred-stock paragraph is not a row under the preceding table header."
+    },
+    {
+      "probe_id": "S11",
+      "coverage_category": "missing_local_unit",
+      "expected_action": "unresolved",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 147,
+        "char_start": 2003,
+        "char_end": 2663,
+        "line_start": 26,
+        "line_end": 30,
+        "span_sha256": "1d15f403661333a39d1f83df732f7e5ddb93d61e13122b97ee6e87f6ba8c9ec6"
+      },
+      "target_span": null,
+      "source_rationale": "No explicit table unit appears in the inspected page header band. Amounts expressed in millions in nearby prose do not by themselves resolve displayed-table units."
+    },
+    {
+      "probe_id": "S12",
+      "coverage_category": "explicit_table_introduction",
+      "expected_action": "required",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 149,
+        "char_start": 2001,
+        "char_end": 2206,
+        "line_start": 25,
+        "line_end": 25,
+        "span_sha256": "dea24cedc9e892bc3958d877c7255f4d4406e7aba7595e70dd0f09b8b5f31945"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 149,
+        "char_start": 1198,
+        "char_end": 1427,
+        "line_start": 18,
+        "line_end": 19,
+        "span_sha256": "9a0dc3cb624c02953e7f290cda60565d14abca68ed08cf49e47bab5dfdef1ec7"
+      },
+      "source_rationale": "The introduction explicitly states operations-table units and exceptions."
+    },
+    {
+      "probe_id": "S13",
+      "coverage_category": "cross_page_continuation",
+      "expected_action": "required",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 721,
+        "char_end": 1120,
+        "line_start": 11,
+        "line_end": 12,
+        "span_sha256": "01e89c392fdcaf911819ee85d6d158d690d8c17c04f97ed09a29a4f425550a65"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 149,
+        "char_start": 1198,
+        "char_end": 1427,
+        "line_start": 18,
+        "line_end": 19,
+        "span_sha256": "9a0dc3cb624c02953e7f290cda60565d14abca68ed08cf49e47bab5dfdef1ec7"
+      },
+      "source_rationale": "The plural operations-table introduction precedes the consecutive period tables; the second page begins the next period table before a new comprehensive-loss introduction. This is a useful source relation even if a conservative parser leaves it unresolved."
+    },
+    {
+      "probe_id": "S14",
+      "coverage_category": "period_change",
+      "expected_action": "forbidden",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 721,
+        "char_end": 1120,
+        "line_start": 11,
+        "line_end": 12,
+        "span_sha256": "01e89c392fdcaf911819ee85d6d158d690d8c17c04f97ed09a29a4f425550a65"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 149,
+        "char_start": 1428,
+        "char_end": 1988,
+        "line_start": 21,
+        "line_end": 23,
+        "span_sha256": "c6304a8d79675da8c34dbd11b62d42178b99d1660fe1380391b38d714558fa00"
+      },
+      "source_rationale": "The new page supplies a different fiscal-period header; previous-period header must not be copied as its governing period.",
+      "guard_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 134,
+        "char_end": 708,
+        "line_start": 7,
+        "line_end": 9,
+        "span_sha256": "1d1c4c1a069f2901f84b406bbe192531d0875eedf51e39d1695d581a658a7985"
+      }
+    },
+    {
+      "probe_id": "S15",
+      "coverage_category": "multiple_tables_per_page",
+      "expected_action": "required",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 8381,
+        "char_end": 9018,
+        "line_start": 71,
+        "line_end": 74,
+        "span_sha256": "cba23fbb2d0a8c6beca36ebc4a1d083d9a4567c183df9e14be72b480a5521a1d"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 7810,
+        "char_end": 8380,
+        "line_start": 67,
+        "line_end": 69,
+        "span_sha256": "7eb3f8b657db7bd1b0899d5175fe857750a412c16bafc75f45247edea09187b8"
+      },
+      "source_rationale": "The comprehensive-loss table has its own two-period, six-column header."
+    },
+    {
+      "probe_id": "S16",
+      "coverage_category": "multiple_tables_per_page",
+      "expected_action": "required",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 8381,
+        "char_end": 9018,
+        "line_start": 71,
+        "line_end": 74,
+        "span_sha256": "cba23fbb2d0a8c6beca36ebc4a1d083d9a4567c183df9e14be72b480a5521a1d"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 7608,
+        "char_end": 7809,
+        "line_start": 64,
+        "line_end": 65,
+        "span_sha256": "ee87e28458290fa333e941d4e5c677413564c1f9e396d503a2e424f2d958396d"
+      },
+      "source_rationale": "Comprehensive-loss table has a new explicit unit introduction."
+    },
+    {
+      "probe_id": "S17",
+      "coverage_category": "cross_table_header",
+      "expected_action": "forbidden",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 8381,
+        "char_end": 9018,
+        "line_start": 71,
+        "line_end": 74,
+        "span_sha256": "cba23fbb2d0a8c6beca36ebc4a1d083d9a4567c183df9e14be72b480a5521a1d"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 134,
+        "char_end": 708,
+        "line_start": 7,
+        "line_end": 9,
+        "span_sha256": "1d1c4c1a069f2901f84b406bbe192531d0875eedf51e39d1695d581a658a7985"
+      },
+      "source_rationale": "Operations-table fiscal-period/header band does not govern the later independent comprehensive-loss table.",
+      "guard_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 7608,
+        "char_end": 8380,
+        "line_start": 64,
+        "line_end": 69,
+        "span_sha256": "5b4f16b9c0115c4736f863a0d07c712ca3411a7d58e94713dd269a930ffb42af"
+      }
+    },
+    {
+      "probe_id": "S18",
+      "coverage_category": "footnote_unique_local_marker",
+      "expected_action": "required",
+      "relation_type": "footnote",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 9019,
+        "char_end": 9279,
+        "line_start": 76,
+        "line_end": 77,
+        "span_sha256": "97fb3534126c8ccd88d3e77ce7d7ad36f14f7feca97437c5be9ded3a9bf1010b"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 9470,
+        "char_end": 9797,
+        "line_start": 81,
+        "line_end": 83,
+        "span_sha256": "9ffacef5494936e2f05772632edc8e2404f403e6ea471badb33feb847e21d03d"
+      },
+      "source_rationale": "The lower table row marker a resolves to the lower table footnote with its own period label."
+    },
+    {
+      "probe_id": "S19",
+      "coverage_category": "footnote_marker_reuse",
+      "expected_action": "forbidden",
+      "relation_type": "footnote",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 9019,
+        "char_end": 9279,
+        "line_start": 76,
+        "line_end": 77,
+        "span_sha256": "97fb3534126c8ccd88d3e77ce7d7ad36f14f7feca97437c5be9ded3a9bf1010b"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 5870,
+        "char_end": 6427,
+        "line_start": 52,
+        "line_end": 54,
+        "span_sha256": "1575fb4f9f5b3d68ac4ead85e0e5de919b4209354a15839c3ee1d0496c7b6ee2"
+      },
+      "source_rationale": "Earlier operations-table footnote a has a different scope; identical marker alone is insufficient.",
+      "guard_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 150,
+        "char_start": 7608,
+        "char_end": 8380,
+        "line_start": 64,
+        "line_end": 69,
+        "span_sha256": "5b4f16b9c0115c4736f863a0d07c712ca3411a7d58e94713dd269a930ffb42af"
+      }
+    },
+    {
+      "probe_id": "S20",
+      "coverage_category": "multiline_year_header",
+      "expected_action": "required",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 195,
+        "char_start": 2731,
+        "char_end": 3010,
+        "line_start": 40,
+        "line_end": 42,
+        "span_sha256": "5665d5f928e4c3e1e2041277332cca603a083b0f0b9ed9d43268676907bf6933"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 195,
+        "char_start": 2341,
+        "char_end": 2720,
+        "line_start": 36,
+        "line_end": 38,
+        "span_sha256": "e80f8ba9b8f79370d75b4d8d7d90de38e1f6326ed43b32bbecb10f3d74f03d35"
+      },
+      "source_rationale": "First earnings-per-share table requires all year-header lines including restated qualifiers."
+    },
+    {
+      "probe_id": "S21",
+      "coverage_category": "multiple_tables_prose_separator",
+      "expected_action": "required",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 195,
+        "char_start": 3309,
+        "char_end": 4041,
+        "line_start": 48,
+        "line_end": 53,
+        "span_sha256": "61e320fcdc275755a4bebac9d0ee8631d8c775d94037af397b62fffa9a973f55"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 195,
+        "char_start": 3084,
+        "char_end": 3309,
+        "line_start": 46,
+        "line_end": 47,
+        "span_sha256": "4da1e9dd83e50f1392f432accddea07c140225d4daf4aca2ff4fd6b7ba37edf0"
+      },
+      "source_rationale": "The securities table has its own point-in-time year header following a new prose introduction."
+    },
+    {
+      "probe_id": "S22",
+      "coverage_category": "multiple_tables_prose_separator",
+      "expected_action": "forbidden",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 195,
+        "char_start": 3309,
+        "char_end": 4041,
+        "line_start": 48,
+        "line_end": 53,
+        "span_sha256": "61e320fcdc275755a4bebac9d0ee8631d8c775d94037af397b62fffa9a973f55"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 195,
+        "char_start": 2341,
+        "char_end": 2720,
+        "line_start": 36,
+        "line_end": 38,
+        "span_sha256": "e80f8ba9b8f79370d75b4d8d7d90de38e1f6326ed43b32bbecb10f3d74f03d35"
+      },
+      "source_rationale": "The first period-ended header does not govern the later point-in-time securities table.",
+      "guard_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 195,
+        "char_start": 3011,
+        "char_end": 3309,
+        "line_start": 44,
+        "line_end": 47,
+        "span_sha256": "451cb7e1f09dde606aadfc02b809981c9d5078d221aa7aaf92f1c8e0e6267a17"
+      }
+    },
+    {
+      "probe_id": "S23",
+      "coverage_category": "share_units",
+      "expected_action": "forbidden",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 195,
+        "char_start": 3309,
+        "char_end": 4041,
+        "line_start": 48,
+        "line_end": 53,
+        "span_sha256": "61e320fcdc275755a4bebac9d0ee8631d8c775d94037af397b62fffa9a973f55"
+      },
+      "target_span": {
+        "document_id": "plug_2020_10k",
+        "pdf_page": 195,
+        "char_start": 2189,
+        "char_end": 2340,
+        "line_start": 33,
+        "line_end": 34,
+        "span_sha256": "8ba21656e365a6b8f2b23c13c278628ce8d08172a3322110adda0e963a0a96c9"
+      },
+      "source_rationale": "Do not assert thousands scaling for securities share counts from the preceding table introduction, which itself excludes share amounts."
+    },
+    {
+      "probe_id": "S24",
+      "coverage_category": "image_table_supplement",
+      "expected_action": "required",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "opera_pdf_v1",
+        "pdf_page": 15,
+        "char_start": 669,
+        "char_end": 766,
+        "line_start": 11,
+        "line_end": 12,
+        "span_sha256": "9e080626610bd7bad406e85466ba860809fbdce657efb6418d5ae0056974f93e"
+      },
+      "target_span": {
+        "document_id": "opera_pdf_v1",
+        "pdf_page": 15,
+        "char_start": 607,
+        "char_end": 669,
+        "line_start": 10,
+        "line_end": 10,
+        "span_sha256": "7e6280f7a07ac1be6b387ae07036496099cc56ba40823601a6f07d5320167400"
+      },
+      "source_rationale": "Explicit tagged transcription contains a multi-column header. Preserve the supplement provenance."
+    },
+    {
+      "probe_id": "S25",
+      "coverage_category": "image_table_boundary",
+      "expected_action": "forbidden",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "opera_pdf_v1",
+        "pdf_page": 15,
+        "char_start": 1385,
+        "char_end": 1797,
+        "line_start": 34,
+        "line_end": 38,
+        "span_sha256": "275b2736874c8c126731fba45439f4bde02e813320e45761459fcbad676d198f"
+      },
+      "target_span": {
+        "document_id": "opera_pdf_v1",
+        "pdf_page": 15,
+        "char_start": 607,
+        "char_end": 669,
+        "line_start": 10,
+        "line_end": 10,
+        "span_sha256": "7e6280f7a07ac1be6b387ae07036496099cc56ba40823601a6f07d5320167400"
+      },
+      "source_rationale": "End-of-transcription marker and following prose terminate the table scope.",
+      "guard_span": {
+        "document_id": "opera_pdf_v1",
+        "pdf_page": 15,
+        "char_start": 1348,
+        "char_end": 1381,
+        "line_start": 29,
+        "line_end": 29,
+        "span_sha256": "ed22142eb197ea9e269c327f44a2819b6e97008c623417ecd3a9bcca4c2465f0"
+      }
+    },
+    {
+      "probe_id": "S26",
+      "coverage_category": "unit_with_mixed_row_label",
+      "expected_action": "required",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "opera_pdf_v1",
+        "pdf_page": 20,
+        "char_start": 207,
+        "char_end": 231,
+        "line_start": 5,
+        "line_end": 5,
+        "span_sha256": "05af628f21b5112cb36e6ac60bfac8cf5be9c72c68e65936d75a9f0b37f8eab2"
+      },
+      "target_span": {
+        "document_id": "opera_pdf_v1",
+        "pdf_page": 20,
+        "char_start": 177,
+        "char_end": 207,
+        "line_start": 4,
+        "line_end": 4,
+        "span_sha256": "b15129315d5f9feeaf9e5b3931ada0d051b2cd4cec0484ce47d822097081f73f"
+      },
+      "source_rationale": "Column unit applies to the uncertainty value, while a parenthetical length in the row label remains distinct."
+    },
+    {
+      "probe_id": "S27",
+      "coverage_category": "table_to_math_prose",
+      "expected_action": "forbidden",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "opera_pdf_v1",
+        "pdf_page": 20,
+        "char_start": 579,
+        "char_end": 1197,
+        "line_start": 23,
+        "line_end": 29,
+        "span_sha256": "ae0eabfbd91596a1706186c01115d2aa0b538d0109563c413cf5c7d455e3eb7c"
+      },
+      "target_span": {
+        "document_id": "opera_pdf_v1",
+        "pdf_page": 20,
+        "char_start": 177,
+        "char_end": 207,
+        "line_start": 4,
+        "line_end": 4,
+        "span_sha256": "b15129315d5f9feeaf9e5b3931ada0d051b2cd4cec0484ce47d822097081f73f"
+      },
+      "source_rationale": "Table uncertainty unit must not be inherited into energy-dependence prose after the transcription ends.",
+      "guard_span": {
+        "document_id": "opera_pdf_v1",
+        "pdf_page": 20,
+        "char_start": 542,
+        "char_end": 575,
+        "line_start": 18,
+        "line_end": 18,
+        "span_sha256": "ed22142eb197ea9e269c327f44a2819b6e97008c623417ecd3a9bcca4c2465f0"
+      }
+    },
+    {
+      "probe_id": "S28",
+      "coverage_category": "scientific_section_break",
+      "expected_action": "forbidden",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 12,
+        "char_start": 2166,
+        "char_end": 2786,
+        "line_start": 31,
+        "line_end": 37,
+        "span_sha256": "10385541ee4b1b2e496c8693cbd29f7f1dc581ee62ee92227aa4b5bbd7c70d2d"
+      },
+      "target_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 12,
+        "char_start": 1849,
+        "char_end": 2145,
+        "line_start": 24,
+        "line_end": 27,
+        "span_sha256": "6f9791434dab72024d7b174f564927b0abe027844ca6e56376ed9d2abaf32f73"
+      },
+      "source_rationale": "A baseline distance expressed in metres does not set the unit of data-selection timing prose.",
+      "guard_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 12,
+        "char_start": 2146,
+        "char_end": 2165,
+        "line_start": 29,
+        "line_end": 29,
+        "span_sha256": "b220879b18f860a6ccbc84834f1d6364de4f65a0ff77f2723d1a6d2880ead553"
+      }
+    },
+    {
+      "probe_id": "S29",
+      "coverage_category": "scientific_table_blank_subgroups",
+      "expected_action": "required",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 22,
+        "char_start": 668,
+        "char_end": 1016,
+        "line_start": 12,
+        "line_end": 15,
+        "span_sha256": "14eddbe1710c073eb6abf713062721fb1564b1b7c694007abd3b8f89a35e8b4e"
+      },
+      "target_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 22,
+        "char_start": 0,
+        "char_end": 165,
+        "line_start": 1,
+        "line_end": 2,
+        "span_sha256": "4c8b9cb5996ae6a9684212736a7634c994c61c8d3997c229c7c371ef0771f88a"
+      },
+      "source_rationale": "Caption and time-delay column header govern later subgroups despite blank lines and subgroup labels."
+    },
+    {
+      "probe_id": "S30",
+      "coverage_category": "scientific_table_to_equation",
+      "expected_action": "forbidden",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 22,
+        "char_start": 2240,
+        "char_end": 2412,
+        "line_start": 35,
+        "line_end": 37,
+        "span_sha256": "41a44a45a40536b4fa277d44f3f7dac3c5161ce0db5bec330fe43a9aaa9842e7"
+      },
+      "target_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 22,
+        "char_start": 0,
+        "char_end": 165,
+        "line_start": 1,
+        "line_end": 2,
+        "span_sha256": "4c8b9cb5996ae6a9684212736a7634c994c61c8d3997c229c7c371ef0771f88a"
+      },
+      "source_rationale": "Time-delay table unit must not govern the likelihood equation following several prose paragraphs.",
+      "guard_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 22,
+        "char_start": 1132,
+        "char_end": 2240,
+        "line_start": 22,
+        "line_end": 34,
+        "span_sha256": "e2d3f3a7359b34babe9c3d8ca9bc3f5144ac15af9fd3c54a1428d817de7f992b"
+      }
+    },
+    {
+      "probe_id": "S31",
+      "coverage_category": "multiline_equation",
+      "expected_action": "unresolved",
+      "relation_type": "table_classification",
+      "anchor_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 28,
+        "char_start": 601,
+        "char_end": 1073,
+        "line_start": 10,
+        "line_end": 18,
+        "span_sha256": "20d133b2067e8adafbb11a1d8c117fe46879f2d8612e984a77bfcdc214e32dda"
+      },
+      "target_span": null,
+      "source_rationale": "Two displayed equations have split superscript/subscript text. Preserve equation spans; do not confidently interpret them as a numeric table."
+    },
+    {
+      "probe_id": "S32",
+      "coverage_category": "equation_unit_scope",
+      "expected_action": "forbidden",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 28,
+        "char_start": 841,
+        "char_end": 1073,
+        "line_start": 16,
+        "line_end": 18,
+        "span_sha256": "65aba6e9d83eeae8e4bc87fd241f855b6031bba7b2c7abdcafe37e1b18333772"
+      },
+      "target_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 28,
+        "char_start": 601,
+        "char_end": 740,
+        "line_start": 10,
+        "line_end": 11,
+        "span_sha256": "436aae92b9eae53aaf8d133bba3664cdf1df5950f1ace7315fe3f425b93c696f"
+      },
+      "source_rationale": "The relative-velocity expression is dimensionless; preceding time-difference unit ns must not be copied onto it."
+    },
+    {
+      "probe_id": "S33",
+      "coverage_category": "scientific_section_break",
+      "expected_action": "forbidden",
+      "relation_type": "unit",
+      "anchor_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 28,
+        "char_start": 2091,
+        "char_end": 3187,
+        "line_start": 37,
+        "line_end": 49,
+        "span_sha256": "515d2ea80a49e6bae406ab5ba2b6dc1f98d2207397db73105634fef39c731875"
+      },
+      "target_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 28,
+        "char_start": 601,
+        "char_end": 740,
+        "line_start": 10,
+        "line_end": 11,
+        "span_sha256": "436aae92b9eae53aaf8d133bba3664cdf1df5950f1ace7315fe3f425b93c696f"
+      },
+      "source_rationale": "The following beam-test section has several independently stated quantities; the prior equation does not provide a blanket unit.",
+      "guard_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 28,
+        "char_start": 2042,
+        "char_end": 2090,
+        "line_start": 35,
+        "line_end": 35,
+        "span_sha256": "d296dc72b9274257d4ba25d2add291d5f1fa139a59c3aff17533b54595f22da5"
+      }
+    },
+    {
+      "probe_id": "S34",
+      "coverage_category": "equation_to_acknowledgements",
+      "expected_action": "forbidden",
+      "relation_type": "header",
+      "anchor_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 33,
+        "char_start": 2702,
+        "char_end": 3048,
+        "line_start": 44,
+        "line_end": 47,
+        "span_sha256": "5e0068968c2f727c74f93f0b5a4bbf7ebc2c4eecea468fed774a59daa227b482"
+      },
+      "target_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 33,
+        "char_start": 539,
+        "char_end": 966,
+        "line_start": 9,
+        "line_end": 17,
+        "span_sha256": "1099c4add00c91be9b0435153419a294accc5451e14f4ac0850cf0fff70370be"
+      },
+      "source_rationale": "Acknowledgements are a separate numbered section, not continuation of result equations.",
+      "guard_span": {
+        "document_id": "opera_pdf_v4",
+        "pdf_page": 33,
+        "char_start": 2679,
+        "char_end": 2701,
+        "line_start": 42,
+        "line_end": 42,
+        "span_sha256": "daf1733729a35349a2727e106b6239a3f7ed03c09578b611cfc60cc0cbf09bf8"
+      }
+    }
+  ]
+}
