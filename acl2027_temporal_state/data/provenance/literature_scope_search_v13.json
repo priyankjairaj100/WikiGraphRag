@@ -1,0 +1,175 @@
+{
+  "artifact": "literature_scope_search_v13",
+  "audit_date_utc": "2026-10-03",
+  "time_observations": {
+    "queries_completed_no_later_than_utc": "2026-10-03T09:43:16Z",
+    "primary_reads_completed_no_later_than_utc": "2026-10-03T09:44:22Z",
+    "exact_per_request_timestamps_retained": false
+  },
+  "scope": "Additional primary-source literature audit only; separate from fixed paired-reader and native-layout experiments.",
+  "search_query_budget": 4,
+  "search_queries_issued": 4,
+  "source_corpus_additions": 0,
+  "questions_modified": 0,
+  "predictions_inspected": 0,
+  "experimental_outputs_modified": 0,
+  "local_context_read": [
+    "docs/layout_followup_v13.txt",
+    "docs/grades_main_plug_v13.txt"
+  ],
+  "local_context_note": "Read existing layout protocol description and already-produced grading summary to target the literature audit; no raw native response was opened.",
+  "queries": [
+    {
+      "order": 1,
+      "batch": 1,
+      "engine": "system2_search_query",
+      "q": "site.aclanthology.org retrieval augmented generation table header structure preservation document QA benchmark",
+      "domains": null,
+      "recency_days": null
+    },
+    {
+      "order": 2,
+      "batch": 1,
+      "engine": "system2_search_query",
+      "q": "site.arxiv.org scope comparability versioned document question answering revision population measurements",
+      "domains": null,
+      "recency_days": null
+    },
+    {
+      "order": 3,
+      "batch": 2,
+      "engine": "system1_search_query",
+      "q": "\"Version- and Scope-Aware Question Answering\" normative",
+      "domains": [
+        "arxiv.org"
+      ],
+      "recency_days": 90
+    },
+    {
+      "order": 4,
+      "batch": 2,
+      "engine": "system1_search_query",
+      "q": "\"Time Present and Time Past\" \"2608.08512\"",
+      "domains": [
+        "arxiv.org"
+      ],
+      "recency_days": 120
+    }
+  ],
+  "sources": [
+    {
+      "id": "wang2026versionscope",
+      "verification": "Primary manuscript HTML",
+      "publication_date": "2026-09-16",
+      "date_precision": "day",
+      "version": "arXiv v1",
+      "url": "https://arxiv.org/html/2609.18769v1",
+      "read_sections": [
+        "AI Approach and Design Rationale",
+        "Evaluation Methodology"
+      ],
+      "supported_claim": "Prior work combines typed scope/version constraints and evidence-based abstention.",
+      "unsupported_claim": "The end-to-end comparison causally isolates scope governance.",
+      "web_references": [
+        "turn240view0"
+      ],
+      "reproduced": false
+    },
+    {
+      "id": "yu-etal-2025-tablerag",
+      "verification": "Primary manuscript PDF plus ACL metadata",
+      "publication_date": "2025-11",
+      "date_precision": "month",
+      "url": "https://aclanthology.org/2025.emnlp-main.710.pdf",
+      "metadata_url": "https://aclanthology.org/2025.emnlp-main.710/",
+      "read_sections": [
+        "3.1",
+        "3.2"
+      ],
+      "supported_claim": "Structured tables and SQL are integrated with textual retrieval.",
+      "unsupported_claim": "A particular financial-header treatment has been validated for our cases.",
+      "web_references": [
+        "turn239view0",
+        "turn241view0",
+        "turn242view0"
+      ],
+      "reproduced": false
+    },
+    {
+      "id": "strich-etal-2026-t2",
+      "verification": "Primary manuscript PDF plus ACL metadata",
+      "publication_date": "2026-03",
+      "date_precision": "month",
+      "url": "https://aclanthology.org/2026.eacl-long.8.pdf",
+      "metadata_url": "https://aclanthology.org/2026.eacl-long.8/",
+      "read_sections": [
+        "3 numerical metric",
+        "4 benchmark",
+        "5.2 comparators",
+        "5.6 error analysis",
+        "Appendix B/C metadata"
+      ],
+      "supported_claim": "Financial text-table QA has retrieval/oracle controls and parsing-versus-calculation error analysis; its numeric metric tolerates scale shifts.",
+      "unsupported_claim": "Its metric can be imported unchanged to detect our sign and unit mistakes.",
+      "web_references": [
+        "turn241view3",
+        "turn242view1",
+        "turn242view3",
+        "turn242view4"
+      ],
+      "reproduced": false
+    },
+    {
+      "id": "tide-project-readme",
+      "verification": "Author-project README only",
+      "publication_date": null,
+      "date_precision": "unknown",
+      "version": "Mutable repository view; commit not captured",
+      "url": "https://github.com/icsetepa44/TIDE",
+      "read_sections": [
+        "Task overview",
+        "Dataset provenance overview",
+        "Evaluation Protocol"
+      ],
+      "supported_claim": "Project documentation covers governing-version and context-misalignment tasks under retrieved and gold context.",
+      "unsupported_claim": "Full manuscript methodology or published scores were independently reproduced.",
+      "web_references": [
+        "turn241view6"
+      ],
+      "full_manuscript_verified": false,
+      "reproduced": false
+    }
+  ],
+  "access_outcomes": [
+    {
+      "url": "https://arxiv.org/abs/2608.08512",
+      "outcome": "tool-level Internal Error",
+      "web_reference": "turn240view3",
+      "followup_to_prior_failed_opens": true
+    },
+    {
+      "url": "https://github.com/icsetepa44/TIDE",
+      "outcome": "Primary project README available",
+      "web_reference": "turn240view4"
+    }
+  ],
+  "interpretation": {
+    "established_novelty": false,
+    "whitespace_or_header_repair_claim": "Engineering diagnostic; no algorithmic novelty claim.",
+    "candidate_hypothesis": "Residual pairwise quantity-comparability errors after adequate structured evidence and a competent matched reader.",
+    "gap_proven_absent_from_prior_work": false,
+    "rejection_criteria": [
+      "Adequate rendering or reader removes failures",
+      "Gains depend on extra context or oracle scope labels",
+      "Ordinary metadata/structure controls match proposed component",
+      "Independently reviewed held-out histories do not reproduce residual error"
+    ],
+    "exhaustive": false
+  },
+  "earlier_literature_files_modified": false,
+  "artifacts": [
+    "docs/related_work_scope_followup_v13.txt",
+    "paper/references_scope_v13.bib"
+  ],
+  "distribution": "No third-party manuscript, source corpus, question data or raw provider search body copied into the repository."
+}

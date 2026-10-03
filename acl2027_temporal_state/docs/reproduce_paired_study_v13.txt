@@ -1,0 +1,439 @@
+Reconstructing the paired-version development study, v0.13
+
+Purpose and limits
+
+This guide records the reconstruction order and the commands actually exposed by
+the checked-in scripts. It is not a guarantee of bitwise regeneration on another
+machine. The study contains eight development questions from two already familiar
+document histories. Questions, references, source review and grading are model-
+assisted, not independent human gold or a held-out benchmark. Qwen3-4B is a small
+feasibility reader; passing two short controls does not establish a strong reader.
+
+The completed execution comprises 34 native responses: two controls, sixteen
+primary responses and sixteen layout-follow-up responses. No native input- or
+output-budget failure occurred. That execution fact does not imply semantic
+correctness, complete retrieved support or a strong-baseline result.
+
+The guide does not trigger downloads or inference. Completed published attempts
+must not be overwritten. Keep the original checkout and manifests; use a new
+attempt ID, new output paths and new dated execution manifests for a rerun.
+
+1. Inputs, rights and environment
+
+The repository releases code, question/reference paraphrases, protocols, source
+locators, hashes, context/retrieval metadata and execution/scoring provenance. It
+does not bundle third-party PDFs, their full extracted text, source-bearing
+prompts, raw source-bearing generated answers, full token arrays, model weights
+or downloaded runtime binaries. Obtain each input lawfully and observe its terms.
+The relevant URLs and capture hashes are in results/access_pilot_v12.json and
+data/access_pilot_v12/protocol.json. The four required source IDs are:
+
+  plug_2019_10k    142 physical PDF pages
+  plug_2020_10k    347 physical PDF pages
+  opera_pdf_v1     24 physical PDF pages
+  opera_pdf_v4     37 physical PDF pages
+
+Place each PDF at CAPTURE_ROOT/SOURCE_ID/response.bin. The corpus builder requires
+the exact pinned bytes. A currently downloadable PDF with a different hash is
+not the archived experiment input even when its URL and version label match.
+Do not overwrite its expected hash to call it an exact rerun: retain the changed
+representation as a separately identified corpus and new experiment. Neither
+version labels nor present captures certify historical first-public timestamps.
+
+Use Python 3 with the standard library. The corpus builder calls explicit
+/usr/bin/pdftotext, /usr/bin/pdftoppm and /usr/bin/tesseract paths and records
+executable hashes and versions; install compatible tools or record a separately
+reviewed portability patch. It uses pdftotext -layout -enc UTF-8. Different
+Poppler versions can change whitespace, page text and therefore chunks/ranking.
+The original corpus manifest is the comparison record, not a license to ignore
+those changes. The experiment ran on a Linux host with cgroup resource telemetry.
+
+The native collector verifies configs/model_backend_v09.json, including the
+Qwen/Qwen3-4B-GGUF repository revision
+bc640142c66e1fdd12af0bd68f40445458f3869b, Qwen3-4B-Q8_0.gguf SHA-256
+8c2f07f26af9747e41988551106f149b03eb9b5cb6df636027b6bf6278473300,
+and llama.cpp release b11146 / commit
+7fe450e19305b828c199d602c23a8337aaa1f03b. The model, runtime archive and extracted
+runtime file hashes are pinned there. The native v13 collector performs no asset
+download. Supply assets under a separate ASSET_ROOT and satisfy its verifier.
+Hardware, CPU kernels, operating-system libraries and timing can affect native
+outputs even with the same seed; hashes and an execution receipt are required.
+
+2. Recover the two image-only source tables before building
+
+OPERA v1 pages 15 and 20 have table bodies missing from native PDF text. The
+study rendered each complete page with /usr/bin/pdftoppm -scale-to 2200
+-singlefile -png and ran /usr/bin/tesseract INPUT OUTPUT --psm 6. Raw full-page
+OCR was retained. A model-assisted visual pass then transcribed each whole table,
+including headings, numeric signs, all rows and deliberately blank cells. It
+corrected an OCR label error in a separate transcription rather than altering
+the raw OCR. This was not a human annotation exercise.
+
+The required external table_transcriptions.json is deliberately not bundled with
+the source text. Its schema and validation are implemented by
+scripts/build_paired_corpus_v13.py: source PDF hash, exactly the two page/table
+records, full table text/hash, insertion-caption locator, whole-table and visual-
+review flags, method/reviewer provenance, relative render/OCR paths and hashes,
+correction notes, tool commands and limitations. The public corpus manifest
+records the transcription asset hashes and non-text metadata. Merely setting a
+review flag is not sufficient: actually inspect every table cell against renders.
+
+Exact byte reconstruction requires the original reviewed transcription assets.
+If they are unavailable, a new complete reviewed transcription can reproduce the
+method, but its wording and hashes may differ; record a new corpus realization.
+The builder refuses to omit either known missing table. Other raster figure
+contents and mathematical typography are not certified as globally faithful OCR.
+
+3. Build a new page-bounded corpus
+
+Run commands below from acl2027_temporal_state/. Replace capitalized path
+placeholders with real paths. REPRO_EXTERNAL must be outside the repository;
+REPRO_METADATA must be a new directory inside this research project. Each
+write-once output path must not already exist. Paths in the historic manifests
+are local provenance and must not be silently rewritten.
+
+  python3 scripts/build_paired_corpus_v13.py \
+    --capture-root CAPTURE_ROOT \
+    --output REPRO_EXTERNAL/corpus \
+    --transcriptions REPRO_EXTERNAL/corpus/table_transcriptions.json \
+    --manifest REPRO_METADATA/corpus_manifest.json
+
+The builder preserves physical page boundaries, including empty pages, and
+checks the expected page count. It inserts visibly tagged whole-table
+transcriptions immediately after their native captions. Native headers, footers,
+captions, references and repeated content remain. The original corpus has 550
+pages and 2,306 chunks. Its external chunks.jsonl SHA-256 is
+c06dfc58eaaa3054762a47d180bfed9b30b1af361ca3bb0fbbaa20110a41ced3.
+
+Each chunk has at most 160 whitespace words, with a 30-word overlap, and never
+crosses a physical page. IDs are document_id:pNNN:cNN. The initial representation
+joins selected words with spaces. Page and chunk hashes, word offsets, counts
+and extraction provenance permit audit. Complete native-document access is not
+equivalent to supplying complete documents or complete table interpretation to
+the reader.
+
+4. Freeze questions, references and reviews separately
+
+For reconstruction, retain the released questions.json, questions_plug.json,
+questions_opera.json, references_plug.json and references_opera.json under
+data/paired_reader_v13/. The combined question file has only question_id,
+history_id and question. References are not retrieval or model inputs. Preserve
+results/paired_reference_review_v13.json and the associated scoring contract.
+New questions or reference corrections require a distinct dated version before
+predictions; never repair these artifacts from model outputs.
+
+The original reviews independently checked roles and source evidence but shared
+project/source familiarity and model assistance. They do not establish statistical
+independence. No claim of human reference validation should be made.
+
+5. Deterministic ordinary and paired retrieval
+
+  python3 scripts/retrieve_paired_v13.py \
+    --questions data/paired_reader_v13/questions.json \
+    --manifest REPRO_METADATA/corpus_manifest.json \
+    --chunks REPRO_EXTERNAL/corpus/chunks.jsonl \
+    --contexts REPRO_EXTERNAL/contexts.jsonl \
+    --metadata REPRO_METADATA/paired_retrieval.json
+
+Both arms score the same two-document history pool with BM25 k1=1.2, b=0.75.
+Tokenization is Unicode lowercase alphanumeric sequences; underscores delimit
+tokens. Unique query terms receive positive Robertson IDF
+log(1 + (N - df + 0.5)/(df + 0.5)). Ties break by chunk ID. No expansion, oracle
+pages, reference words, answer terms, reranking or performance-tuned filters are
+used. Ordinary retrieval selects the best six chunks history-wide. Paired
+retrieval selects three per document under the same scores and statistics.
+
+Both arms present chunks chronologically by version order, then document, page
+and chunk. They have the same maximum six chunks / 960 evidence words; actual
+word counts can differ. Citation/version headers add separately counted tokens.
+No retrieved context is truncated after selection. The metadata records exact
+selection, scores, ranks, source hashes and context hashes; text stays external.
+
+6. Prepare requests and run the basic controls
+
+  python3 scripts/prepare_paired_requests_v13.py \
+    --questions data/paired_reader_v13/questions.json \
+    --contexts REPRO_EXTERNAL/contexts.jsonl \
+    --output REPRO_EXTERNAL/main_requests.json \
+    --manifest REPRO_METADATA/request_manifest.json
+
+The request builder requires eight questions and sixteen contexts. It alternates
+which retrieval condition executes first by question index; no output-dependent
+schedule is used. Every request has exactly request_id and prompt. The collector
+adds the system prompt from the selected config. References are never read by
+this builder or supplied to the model.
+
+The two authored controls are stored in data/paired_reader_v13/controls.json.
+Their request file is the serialization of that object's requests list using
+json.dumps(requests, indent=2) plus a trailing newline; this matches the pinned
+request_sha256. Extract only requests, not references, into the external file.
+Use the separate results/control_reference_review_v13.json for the freeze.
+
+The collector command pattern, shown with controls first, is:
+
+  python3 scripts/native_paired_reader_v13.py freeze \
+    --config configs/paired_reader_controls_v13.json \
+    --request REPRO_EXTERNAL/controls_requests.json \
+    --protocol data/paired_reader_v13/protocol.json \
+    --reference-review results/control_reference_review_v13.json \
+    --external REPRO_EXTERNAL/controls_attempt01 \
+    --data-dir REPRO_METADATA/controls_attempt01 \
+    --receipt REPRO_METADATA/controls_receipt.json \
+    --assets ASSET_ROOT
+
+  python3 scripts/native_paired_reader_v13.py execute \
+    --external REPRO_EXTERNAL/controls_attempt01
+
+  python3 scripts/native_paired_reader_v13.py verify \
+    --external REPRO_EXTERNAL/controls_attempt01
+
+Freeze only hashes and copies inputs. Execute launches native processes. Verify
+is an offline artifact/accounting check. Review the controls against their
+predeclared gate before main execution; store that review as a new result.
+A failed control is not permission to tune prompts or retry silently.
+
+7. Freeze and execute the sixteen main requests
+
+Construct a new execution protocol binding the actual recreated corpus,
+questions/references, review, request file, config, source code, environment and
+passed control gate. data/paired_reader_v13/main_execution_protocol.json records
+the original binding and timing; it cannot truthfully attest to a new run's
+different paths, bytes or dates. Use the same collector command pattern with:
+
+  --config configs/paired_reader_main_v13.json
+  --request REPRO_EXTERNAL/main_requests.json
+  --protocol REPRO_METADATA/main_execution_protocol.json
+  --reference-review results/paired_reference_review_v13.json
+  --external REPRO_EXTERNAL/main_attempt01
+  --data-dir REPRO_METADATA/main_attempt01
+  --receipt REPRO_METADATA/main_receipt.json
+  --assets ASSET_ROOT
+
+Then use execute and verify with that new external attempt directory. Do not
+execute original frozen attempts again. The collector refuses overwrite/resume.
+
+The frozen native settings are the same for both retrieval conditions: 4096
+context tokens, at most 3500 complete input tokens and a 256-token output reserve;
+greedy temperature -1 (native echo 0), seed 7, thinking disabled, no grammar,
+no custom stop strings and cache_prompt=false. The requested answer is concise
+prose with page citations; there is no strict JSON output requirement.
+
+Before any completion, a native process renders and tokenizes every complete
+system-plus-user prompt. Exact token arrays/hashes are frozen. A changed or
+over-budget prompt fails; there is no trimming. Every answer uses a fresh server
+process, verified zero prompt cache and unchanged model/runtime identity. Native
+raw output is saved before validation. A normal output-token limit is retained
+as a bounded-output failure and later fixed requests continue. Runtime, identity,
+accounting or resource failures stop the batch and retain the observed prefix.
+
+The host guards include 5.5 GiB hard address space, a 7 GiB resident cgroup
+watchdog, 3600 CPU seconds and 1050 wall seconds per process; request timeout is
+900 seconds. Telemetry failure is not a reason to weaken the guards. The original
+sandbox hid required cgroup telemetry, so execution used the predeclared host
+environment. Reproduction must supply equivalent verifiable controls or declare
+a new environment with its differences. No paid/cloud service is required by
+this pipeline, and no service credentials belong in the repository.
+
+8. Reconstruct the separately declared layout diagnostic
+
+The follow-up changes only internal whitespace in the same selected word spans.
+scripts/render_layout_contexts_v13.py slices each existing augmented page from
+the first selected word to the last, preserving intervening native spaces and
+newlines. Per-chunk and whole-context word sequences, query, headers, scores,
+IDs, selected order and evidence counts must remain identical. This does not
+recover off-chunk facts, missing table headers/units or reading order already
+lost during PDF extraction.
+
+Create a new layout protocol binding the recreated corpus, retrieval and
+external contexts. Retain the original layout_protocol.json and
+layout_execution_protocol.json as timing evidence; do not backdate a new design.
+
+  python3 scripts/render_layout_contexts_v13.py \
+    --protocol REPRO_METADATA/layout_protocol.json \
+    --contexts REPRO_EXTERNAL/layout_contexts.jsonl \
+    --metadata REPRO_METADATA/layout_contexts.json
+
+  python3 scripts/prepare_paired_requests_v13.py \
+    --questions data/paired_reader_v13/questions.json \
+    --contexts REPRO_EXTERNAL/layout_contexts.jsonl \
+    --output REPRO_EXTERNAL/layout_requests.json \
+    --manifest REPRO_METADATA/layout_request_manifest.json
+
+The original rendering produced sixteen contexts from 51 unique chunks on 38
+pages with all invariants passing. It was declared while the primary batch ran,
+before root and layout implementer inspected primary answer contents. It is a
+source/context-motivated development diagnostic, not independent confirmation.
+
+The original optional vocabulary-only audit is:
+
+  python3 scripts/audit_layout_tokens_v13.py
+
+That audit has fixed historical external/asset paths and a write-once result
+destination. It is not portable by flags: in a relocated replication either use
+a separately versioned path-only adaptation, or rely on the mandatory native
+preflight below. An adapted audit must preserve the exact tokenizer checks and
+record its changed source hash. It loads vocabulary/tokenizes and makes no
+forward-pass answer calls. It does not replace the native preflight.
+
+Freeze the layout batch with configs/paired_reader_layout_v13.json, the new
+layout request file and execution protocol, the same reference review, a fresh
+external layout_attempt01, matching new metadata directory/receipt and assets.
+Execute only after the primary batch finishes. All sixteen full inputs must fit
+3500 native tokens; if any exceeds the cap, declare the entire proposed layout
+batch an input-budget failure before any completion. Do not truncate or run an
+eligible subset. The same output, resource and verification rules apply.
+
+9. Mask conditions, grade unchanged outputs, then aggregate
+
+The available packet-builder CLI is:
+
+  python3 scripts/prepare_paired_grading_v13.py --batch main --domain plug
+  python3 scripts/prepare_paired_grading_v13.py --batch main --domain opera
+  python3 scripts/prepare_paired_grading_v13.py --batch layout --domain plug
+  python3 scripts/prepare_paired_grading_v13.py --batch layout --domain opera
+
+This script also has fixed historical external paths and exact public reference
+locations. A relocated rerun needs a separately recorded path-only adaptation
+or the original directory layout, with new destinations to avoid overwrites.
+Do not quietly claim the existing CLI takes a nonexistent output/path flag.
+The builder verifies response content hashes against native projections and
+creates eight-case domain packets containing exact raw answers, received
+contexts, frozen references and the scoring contract. Retrieval-condition
+labels are masked; the mapping is stored separately for later aggregation.
+
+Grading is model-assisted review, not an automatic exact-match oracle. Reviewers
+must use the frozen scoring contract and reference versions, preserve raw
+answers, and report required-fact assessments, content, scope, citation grounding,
+format, appropriate abstention, unsupported assertions and native output limits
+separately. A correct page identifier alone does not establish supporting chunk
+content. Reference-correct information absent from the received context remains
+unsupported. Any allowed alternative evidence set requires an explicit
+adjudication, not a post-output reference rewrite. Shared source familiarity and
+imperfect masking remain disclosed.
+
+Aggregate only after all required domain grades and any adjudications exist.
+Join grading cases to immutable request/condition mappings; require unique IDs,
+matching response/context/reference hashes and the full fixed cell denominator.
+Count each axis separately, then the explicitly labeled joint content+scope+
+citation outcome. Keep abstentions, unsupported assertions, format failures and
+output-budget failures visible. Compare ordinary/paired outcomes by question;
+compare layout to normalized text within the same question and condition.
+Join the context-only support audit when attributing extraction, retrieval and
+reading failures. With two histories, these are descriptive development counts,
+not independent population accuracy, prevalence or significance estimates.
+
+The implemented descriptive aggregator is scripts/summarize_paired_study_v13.py.
+It does not perform semantic grading or call a model. It binds source/reference,
+grade, mapping, native projection and context-audit hashes, checks required-fact
+coverage, and fails on missing, duplicate or mismatched cells rather than
+discarding them. The original-project commands are:
+
+  python3 scripts/summarize_paired_study_v13.py --batches main \
+    --output results/paired_main_summary_v13.json
+
+  python3 scripts/summarize_paired_study_v13.py --batches both \
+    --output results/paired_study_initial_v13.json
+
+  python3 scripts/summarize_paired_study_v13.py --batches both \
+    --output results/paired_study_initial_v13.json --check
+
+Use --check with an existing summary; without it the destination must be new.
+The --batches both form requires completed main and layout grades plus
+results/retrieval_support_audit_v13.json and results/layout_support_audit_v13.json.
+The aggregator's input artifact names are fixed relative to this research
+project. A relocated/new-named rerun needs a separately recorded adaptation of
+those input paths; merely changing --output does not select new input results.
+Exact replay of the public descriptive join is distinct from reconstructing
+private raw responses or independently agreeing with model-assisted grades.
+
+The base summarizer and original grader files remain unchanged. Their initial
+both-batch summary is retained as the raw-grader sensitivity result. A separate
+explicit adjudication is recorded in results/reader_adjudication_overlay_v13.json.
+It changes exactly one required-fact assessment from supported_correct to
+ambiguous, and that case's reference_content_correct axis from true to false.
+The issue is an unqualified rounded revenue amount: the frozen reference allows
+that rounded expression when explicitly approximate, but the answer did not
+supply the required qualification. This is not a new numeric tolerance or a
+reference edit. Scope and citation judgments remain unchanged, and the joint
+content+scope+citation outcome does not change. Original grades and raw answers
+are retained; no other adjustment is hidden in the final table.
+
+The final adjudicated summary is a separate deterministic transformation:
+
+  python3 scripts/summarize_paired_study_adjudicated_v13.py \
+    --initial results/paired_study_initial_v13.json \
+    --overlay results/reader_adjudication_overlay_v13.json \
+    --output results/paired_study_summary_v13.json
+
+  python3 scripts/summarize_paired_study_adjudicated_v13.py \
+    --initial results/paired_study_initial_v13.json \
+    --overlay results/reader_adjudication_overlay_v13.json \
+    --output results/paired_study_summary_v13.json --check
+
+This script verifies the overlay's input bindings and old field values before
+applying its single supported change. It preserves the initial totals and
+explicit adjudication provenance. As with the base summary, a new destination
+is required when writing and --check verifies an existing result exactly.
+Do not apply this old case-specific overlay to newly generated answers: a new
+run must have its own grades and explicitly justified adjudication records.
+
+10. Render the working paper from the final summary
+
+The renderer reads paper/paired_reading_study_v13.json, the final adjudicated
+results/paired_study_summary_v13.json and paper/layout_interpretation_v13.txt.
+It obtains result tables from that final summary rather than hand-entered counts.
+Run this command in a reproducibility checkout, preserving the released files:
+
+  python3 scripts/render_paired_paper_v13.py
+
+The command has no arguments and writes fixed destinations under paper/:
+paired_reading_study_v13.resolved.json, paired_reading_study_v13.tex,
+paired_reading_study_v13.pdf and render_manifest_v13.json. It can overwrite those
+render outputs, so do not use it casually on the archived release. The PDF uses
+ReportLab with an invariant canvas setting. It is not a compiled version of the
+TeX file, nor an ACL-template or submission-format validation. The editable TeX
+and readable PDF share the resolved semantic document. ReportLab/library versions
+can still affect rendering; compare the recorded output hashes and inspect pages.
+
+For local visual checking, create an external paper_qa directory and render:
+
+  /usr/bin/pdftoppm -png -scale-to 1600 \
+    paper/paired_reading_study_v13.pdf REPRO_EXTERNAL/paper_qa/page
+
+Inspect every resulting page for clipped text, broken tables, glyphs, references
+and pagination, then record actual review separately. A successful script exit
+or hash comparison alone is not visual review. The released review is recorded
+in results/paper_visual_qa_v13.json.
+
+11. Verification and preservation
+
+The study verifier checks the released execution, grading, initial aggregation,
+explicit adjudication overlay and final aggregation without calling a model:
+
+  python3 scripts/verify_paired_study_v13.py
+
+Where the original complete external artifacts are available, also run:
+
+  python3 scripts/verify_paired_study_v13.py \
+    --external-root /workspace/scratch/bdef663e3dfc/tmp/paired_reader_v13
+
+Use --project-root for a different checkout. Its --output option writes a new
+audit report only after all required checks pass; it refuses to overwrite that
+destination. Metadata-only verification cannot inspect undistributed raw source
+text, token arrays or answers and does not independently establish semantic
+correctness. External verification performs the frozen collector's offline
+checks for controls, primary and layout batches. Preserve their exact frozen
+path/byte bindings or document a separate relocated reconstruction.
+
+  PYTHONPATH=src python3 -m unittest discover -s tests -q
+
+The repository-level verifier is run from the repository root:
+
+  python3 scripts/verify_repository.py
+
+Unit tests verify software contracts, not scientific performance. Native verify
+requires the original external source-bearing artifacts; public hashes alone
+cannot validate missing raw answers or reconstruct tokens. Keep original
+attempts and manifests immutable, record any new attempt under new names,
+update the claim ledger only from verified outcomes, and retain source rights
+and distribution boundaries when preparing a release.

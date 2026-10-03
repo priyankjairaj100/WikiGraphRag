@@ -1,6 +1,16 @@
 # ACL 2027 temporal state research
 
-## Current checkpoint (v0.12)
+## Current checkpoint (v0.13)
+
+The complete paired-version reader study and layout follow-up have run: **34 native completions**, comprising two authored controls and 32 study answers over eight questions from two histories. Both ordinary and paired retrieval achieve **1/8 joint content, scope and citation correctness**, under both normalized and source-layout rendering. This selected development pilot establishes no method advantage.
+
+The corpus has 550 PDF pages and 2,306 chunks. Questions and references precede predictions; source-layout rendering preserves every selected evidence word. Context audits separate missing source evidence from reader failures. Original grades are preserved alongside one explicit rounding adjudication and its sensitivity. Shared budget ceilings are not equal actual token use; history membership is supplied.
+
+**433 unit tests and 945 study checks pass.** Read the [working paper](paper/paired_reading_study_v13.pdf), [research update](docs/research_update_v13.txt), [reproduction guide](docs/reproduce_paired_study_v13.txt), and [ACL 2027 execution plan](docs/acl2027_execution_plan_v13.txt). Editable TeX, canonical paper content, claim ledger and all public reproducibility materials are included. The PDF is a readable working draft, not a verified ACL-template compilation.
+
+The next gate is source-bound structural retrieval and a stronger executable reader before fresh held-out evaluation. Existing propagation-method expansion stays stopped. Cloud Jobs remains unavailable; no paid compute or submission occurred.
+
+## Previous checkpoint (v0.12)
 
 The frozen eight-URL access pilot recovered six complete representations: four PDFs across Plug Power and OPERA version pairs, plus two separate OPERA abstract pages. Both JAMA URLs returned HTTP 403. Separate source-only reviews admit one Plug direct-correction development control. OPERA changes the event selection and directly revises its conclusions. Zero certified nondirect propagation cases or new natural QA comparisons result.
 

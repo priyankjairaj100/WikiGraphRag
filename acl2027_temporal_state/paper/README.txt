@@ -1,3 +1,16 @@
+V0.13 FULL WORKING STUDY
+
+Canonical manuscript: paired_reading_study_v13.json.
+Editable TeX: paired_reading_study_v13.tex.
+Readable six-page PDF: paired_reading_study_v13.pdf.
+Result tables derive from results/paired_study_summary_v13.json, preserving the
+initial grader aggregate and one explicit adjudication sensitivity. Claim
+bindings: claim_ledger_v13.json. Rendering provenance: render_manifest_v13.json.
+The ReportLab PDF is not compiled from TeX or a verified ACL template. The prior
+TeX installation still lacks article.cls/pdflatex.fmt. Earlier manuscripts stay
+unchanged. Rebuild with python3 scripts/render_paired_paper_v13.py, then perform
+actual PDF page review. See docs/reproduce_paired_study_v13.txt.
+
 V0.12 DEVELOPMENT ADDENDUM
 
 results_update_v12.tex and claim_ledger_v12.json record the eight-URL pilot, six complete representations, one controlled-version direct-correction control, OPERA scope exclusion, two JAMA403 failures and the decision to stop current propagation expansion. Zero nondirect cases or new model predictions. Paired-version reading is proposed only. No newly compiled PDF or layout verification. Previous manuscript sources remain unchanged.

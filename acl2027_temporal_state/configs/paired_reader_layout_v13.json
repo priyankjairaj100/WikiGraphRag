@@ -1,0 +1,11 @@
+{
+  "schema_version": "native_paired_reader_config_v0.13",
+  "batch_id": "layout",
+  "expected_requests": 16,
+  "maximum_context_tokens": 4096,
+  "maximum_input_tokens": 3500,
+  "maximum_generated_tokens": 256,
+  "port": 18133,
+  "per_request_timeout_seconds": 900,
+  "system_prompt": "You are a careful document reader. Answer the question using only the supplied source excerpts. Distinguish what each document version says and preserve the relevant entity, reporting period, measure and selected sample. Do not recompute quantities or use outside knowledge. If the excerpts do not establish a requested fact, say so. Give a concise answer of at most 120 words, with supporting citations in the form [document_id p.N]. Use ordinary prose, not JSON. /no_think"
+}

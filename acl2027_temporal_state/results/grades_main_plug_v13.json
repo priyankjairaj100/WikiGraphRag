@@ -1,0 +1,397 @@
+{
+  "schema_version": "masked_free_text_grades_v0.13.plug.1",
+  "graded_at_utc": "2026-10-03T09:36:50.701542+00:00",
+  "history_id": "plug_power_2018_restatement",
+  "grading_packet_sha256": "5b5138f28b3bba082888628e0534165b6601920b2efca8849e0525fe759ebb34",
+  "scoring_contract_sha256_canonical_json": "d4f87a963a985b254da3f7f7ca2a0af491a8512b6b43aa1c821bc2b71700228c",
+  "provenance": {
+    "model_assisted": true,
+    "human_gold": false,
+    "prior_source_and_reference_authorship": true,
+    "common_development_familiarity": true,
+    "retrieval_method_labels_masked": true,
+    "statistical_blindness_claimed": false,
+    "only_masked_packet_and_its_frozen_references_inspected": true,
+    "native_directories_or_case_mapping_inspected": false,
+    "responses_rewritten_or_retried": false
+  },
+  "fact_status_interpretation": "supported_correct means the answer fact is correct under the frozen source reference. Actual received-context support is separately described per fact; missing citation/body support does not turn a reference-correct fact into an incorrect fact. This preserves the contract's distinction between reference content and grounding.",
+  "aggregation_scope": "Eight condition-masked development answers for four questions in one selected history. No method labels, paired effect, significance, IID accuracy or generalization claim is inferred here. Root joins conditions later.",
+  "cases": [
+    {
+      "case_id": "case_2262e2b9c875",
+      "question_id": "plug_v13_q4",
+      "raw_answer_sha256": "f3c2cc19606bdce60d374c7dcf2f6de39b98114d0ea01e64057216cc6ea27fbb",
+      "received_context_sha256": "4b3acb0700995391ebbbb39ae1f8012dec0e201b488bde81ce8d3daa190b5298",
+      "required_fact_assessments": [
+        {
+          "fact_id": "entity",
+          "status": "supported_correct",
+          "rationale": "Names Plug Power Inc.; the reference permits this wording.",
+          "received_context_support": "Entity is present in received explanatory-note text, but absent from the cited p139 fragment."
+        },
+        {
+          "fact_id": "result_period",
+          "status": "incorrect",
+          "rationale": "Assigns the restated per-share loss to FY2020 rather than FY2018.",
+          "received_context_support": "The cited fragment has values but no year header; it does not support this assignment."
+        },
+        {
+          "fact_id": "report_period",
+          "status": "incorrect",
+          "rationale": "First names the FY2020 report, then also attributes the restated figure to the FY2019 annual report; the contradictory latter attribution is wrong.",
+          "received_context_support": "No cited received text establishes the conflicting report-year claims."
+        }
+      ],
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "unsupported_assertions": [
+        {
+          "claim": "The 0.39 loss per share is a FY2020 result.",
+          "problem": "Incorrect period and unsupported by cited headerless text."
+        },
+        {
+          "claim": "The FY2019 annual report presents the restated 0.39 figure.",
+          "problem": "Incorrect additional report attribution."
+        }
+      ],
+      "native_output_budget_failure": false,
+      "answer_paraphrase": "Identifies the company, assigns the per-share loss to FY2020, and gives conflicting FY2020/FY2019 annual-report attributions.",
+      "grading_rationale": "The entity is correct, but the answer confuses the result year and adds a contradictory report attribution. Its p139 citation lacks the relevant heading in the actual received chunk.",
+      "adjudication_notes": [
+        "The first FY2020 report attribution alone matches the reference; it is not scored as a clean fact because the same answer adds a contradictory FY2019 attribution."
+      ],
+      "output_rewritten": false
+    },
+    {
+      "case_id": "case_301fd6ed3484",
+      "question_id": "plug_v13_q1",
+      "raw_answer_sha256": "2c0f79c63863ef8f213050b8329e2fae9ecfa079695e0ee822d363c66b577210",
+      "received_context_sha256": "2e125f75105ca7e50a32bdd1110abe34a99bebd05cf0a38defbf7f20962fc123",
+      "required_fact_assessments": [
+        {
+          "fact_id": "old_loss",
+          "status": "incorrect",
+          "rationale": "Writes 78,167 without the required thousands multiplier; the wording is not an acceptable unit-equivalent expression of 78.167 million.",
+          "received_context_support": "The older received EPS-components text explicitly states amounts in thousands, so the response fails to carry that scale."
+        },
+        {
+          "fact_id": "restated_loss",
+          "status": "incorrect",
+          "rationale": "Uses 85,555 rather than FY2018's 85,660 in thousands; also gives an incorrect monetary scale.",
+          "received_context_support": "The retrieved restated statement has several years of values but lacks its year/unit heading; the selected second value is not established as FY2018."
+        },
+        {
+          "fact_id": "old_basic_eps",
+          "status": "supported_correct",
+          "rationale": "The original basic loss per share of 0.36 is correct.",
+          "received_context_support": "The old statement fragment contains the reported EPS values; the cited EPS-method paragraph does not itself state the numeric value."
+        },
+        {
+          "fact_id": "restated_basic_eps",
+          "status": "incorrect",
+          "rationale": "Claims the revised basic loss per share remained 0.36 instead of 0.39.",
+          "received_context_support": "The received later fragment contains 0.39, although its column header is missing; it does not support the asserted unchanged FY2018 conclusion."
+        }
+      ],
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "unsupported_assertions": [
+        {
+          "claim": "The stated monetary scales express the FY2018 loss values.",
+          "problem": "Incorrect; the older received text supplies thousands and the answer does not preserve it."
+        },
+        {
+          "claim": "The restated FY2018 loss is 85,555 and EPS remains 0.36.",
+          "problem": "Wrong period-specific values; no supplied heading supports that column assignment."
+        },
+        {
+          "claim": "Antidilution explains unchanged EPS across the restatement.",
+          "problem": "The source explanation concerns equality of basic versus diluted EPS, not old versus restated values."
+        }
+      ],
+      "native_output_budget_failure": false,
+      "answer_paraphrase": "Misstates the loss scale, selects 85,555 million as the revised loss, and says EPS remained 0.36; attributes unchanged EPS to antidilution.",
+      "grading_rationale": "The old EPS is correct, but both monetary expressions and the revised FY2018 values fail. Equal basic and diluted EPS within a period does not justify equality across restatement versions. Actual retrieved table headers are incomplete, but the model still asserts unsupported period assignments and a false causal explanation.",
+      "adjudication_notes": [
+        "For the old loss, interpreting a trailing million unit as shared over both amounts in the first variant would also be incorrect. No charitable numeric rewriting is performed."
+      ],
+      "output_rewritten": false
+    },
+    {
+      "case_id": "case_7738c66c55cf",
+      "question_id": "plug_v13_q4",
+      "raw_answer_sha256": "a95975b30fca7db3ceb64c484da995e9d12a344619f4ef60af121757d8fe92b2",
+      "received_context_sha256": "c965e2dff394ba6998768b8b5f26b08ec044fea9c0879650f3143b2557fa5122",
+      "required_fact_assessments": [
+        {
+          "fact_id": "entity",
+          "status": "supported_correct",
+          "rationale": "Plug Power Inc. matches the accepted entity wording.",
+          "received_context_support": "Supported by received p3 explanatory text, but not by the actual cited p139 fragment."
+        },
+        {
+          "fact_id": "result_period",
+          "status": "supported_correct",
+          "rationale": "Correctly identifies the year ended December 31, 2018.",
+          "received_context_support": "The received p150 fragment contains the 0.39 value and a trailing FY2018 note label; the cited p139 fragment itself has no year header."
+        },
+        {
+          "fact_id": "report_period",
+          "status": "supported_correct",
+          "rationale": "Correctly identifies the FY2020 annual report.",
+          "received_context_support": "This is suggested by the document ID, but the retrieved/cited body lacks the report cover or an explicit annual-report fiscal-year heading."
+        }
+      ],
+      "reference_content_correct": true,
+      "scope_correct": true,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "unsupported_assertions": [
+        {
+          "claim": "The annual-report fiscal year is 2020.",
+          "problem": "Reference-correct but not explicitly established in the received body; relying on an informative document ID is insufficient for the specified text-grounding criterion."
+        }
+      ],
+      "native_output_budget_failure": false,
+      "answer_paraphrase": "Correctly identifies Plug Power, FY2018 as the EPS period, and FY2020 as the annual-report year.",
+      "grading_rationale": "All requested facts match the frozen reference. Citation grounding is nevertheless incomplete: the only cited p139 chunk lacks entity, year and annual-report headings. Other received snippets add some support but do not make that citation complete.",
+      "adjudication_notes": [
+        "Correct reference content is preserved as correct. It is not relabelled a factual error because the citation fails.",
+        "The broader context contains an FY2018 note adjacent to the p150 EPS row. Whether that provides enough period context does not rescue the sole p139 citation or the absent report-year body heading."
+      ],
+      "output_rewritten": false
+    },
+    {
+      "case_id": "case_b3e01b29ff88",
+      "question_id": "plug_v13_q1",
+      "raw_answer_sha256": "da95e4ceafb816fe0beffe7b9f514659581e7d3bd976e8ae72ea06dc0aa20c04",
+      "received_context_sha256": "faca147b45870e99dcd1530833ada03e6112e8ff607e290082ac1eebc7681347",
+      "required_fact_assessments": [
+        {
+          "fact_id": "old_loss",
+          "status": "incorrect",
+          "rationale": "Writes 78,167 without the required thousands multiplier; the wording is not an acceptable unit-equivalent expression of 78.167 million.",
+          "received_context_support": "The older received EPS-components text explicitly states amounts in thousands, so the response fails to carry that scale."
+        },
+        {
+          "fact_id": "restated_loss",
+          "status": "incorrect",
+          "rationale": "Uses 85,555 rather than FY2018's 85,660 in thousands; also gives an incorrect monetary scale.",
+          "received_context_support": "The retrieved restated statement has several years of values but lacks its year/unit heading; the selected second value is not established as FY2018."
+        },
+        {
+          "fact_id": "old_basic_eps",
+          "status": "supported_correct",
+          "rationale": "The original basic loss per share of 0.36 is correct.",
+          "received_context_support": "The old statement fragment contains the reported EPS values; the cited EPS-method paragraph does not itself state the numeric value."
+        },
+        {
+          "fact_id": "restated_basic_eps",
+          "status": "incorrect",
+          "rationale": "Claims the revised basic loss per share remained 0.36 instead of 0.39.",
+          "received_context_support": "The received later fragment contains 0.39, although its column header is missing; it does not support the asserted unchanged FY2018 conclusion."
+        }
+      ],
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "unsupported_assertions": [
+        {
+          "claim": "The stated monetary scales express the FY2018 loss values.",
+          "problem": "Incorrect; the older received text supplies thousands and the answer does not preserve it."
+        },
+        {
+          "claim": "The restated FY2018 loss is 85,555 and EPS remains 0.36.",
+          "problem": "Wrong period-specific values; no supplied heading supports that column assignment."
+        },
+        {
+          "claim": "Antidilution explains unchanged EPS across the restatement.",
+          "problem": "The source explanation concerns equality of basic versus diluted EPS, not old versus restated values."
+        }
+      ],
+      "native_output_budget_failure": false,
+      "answer_paraphrase": "Reports the old loss without its thousands scale, selects 85,555 as the revised loss, and says EPS remained 0.36; attributes unchanged EPS to antidilution.",
+      "grading_rationale": "The old EPS is correct, but both monetary expressions and the revised FY2018 values fail. Equal basic and diluted EPS within a period does not justify equality across restatement versions. Actual retrieved table headers are incomplete, but the model still asserts unsupported period assignments and a false causal explanation.",
+      "adjudication_notes": [
+        "For the old loss, interpreting a trailing million unit as shared over both amounts in the first variant would also be incorrect. No charitable numeric rewriting is performed."
+      ],
+      "output_rewritten": false
+    },
+    {
+      "case_id": "case_b99ce65fdb44",
+      "question_id": "plug_v13_q2",
+      "raw_answer_sha256": "59f6448c04a394c971b57e20dcffc061dcd52c4ddc8c0bd4e4d3b090907289ff",
+      "received_context_sha256": "39f10f0b8f7987df92d3636bb4e507ef404699b02362e25835ca7a35d3f7dcc8",
+      "required_fact_assessments": [
+        {
+          "fact_id": "unchanged",
+          "status": "incorrect",
+          "rationale": "Says service revenue decreased rather than remained unchanged.",
+          "received_context_support": "The received cost-reclassification table is a different measure and compares yearly adjustments, not prior/restated FY2018 revenue."
+        },
+        {
+          "fact_id": "amount",
+          "status": "incorrect",
+          "rationale": "Uses 7,954 and 6,986 rather than 22.002 million.",
+          "received_context_support": "Those figures occur under cost-of-revenue adjustments for two years; the cited p149 text instead concerns FY2019 revenue."
+        }
+      ],
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "unsupported_assertions": [
+        {
+          "claim": "FY2018 service revenue was revised from 7,954 to 6,986.",
+          "problem": "Wrong measure and column interpretation."
+        },
+        {
+          "claim": "FY2018 service revenue declined by 970 thousand.",
+          "problem": "Unsupported recomputation from unrelated cost-adjustment values."
+        }
+      ],
+      "native_output_budget_failure": false,
+      "answer_paraphrase": "Claims FY2018 service revenue fell from 7,954 to 6,986 and computes a 970-thousand decline.",
+      "grading_rationale": "The answer confuses revenue with cost reclassification, two fiscal years with before/after restatement columns, and cites a FY2019 table. It additionally calculates a change that the source does not state for FY2018 service revenue.",
+      "adjudication_notes": [
+        "The true FY2018 retained-revenue row is absent from the received context; absence does not justify the fabricated decline."
+      ],
+      "output_rewritten": false
+    },
+    {
+      "case_id": "case_c58b6536e138",
+      "question_id": "plug_v13_q2",
+      "raw_answer_sha256": "f9a58c2758832a085168d1f488739312efc2c385095a0e39f3bc3d482cdcba66",
+      "received_context_sha256": "e77ce3be8f1cba2fde50340bffb624fa8f0383e5162e98922c9f0cb06bc8d8d2",
+      "required_fact_assessments": [
+        {
+          "fact_id": "unchanged",
+          "status": "missing",
+          "rationale": "Says no servicing-revenue change is specified in the excerpts, which does not establish the required unchanged FY2018 result.",
+          "received_context_support": "The decisive FY2018 retained-revenue row is absent; withholding a definitive conclusion is appropriate."
+        },
+        {
+          "fact_id": "amount",
+          "status": "supported_correct",
+          "rationale": "Mentions 22.0 million for FY2018 and explicitly says the exact amount is unavailable; this preserves an acceptable rounded value under the reference tolerance.",
+          "received_context_support": "The received servicing fragment ends at 22.0 before its unit/comparator-period continuation, so complete FY2018 amount support is not actually present."
+        }
+      ],
+      "reference_content_correct": false,
+      "scope_correct": true,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": true,
+      "unsupported_assertions": [
+        {
+          "claim": "The retrieved service passage explicitly assigns 22.0 million to FY2018.",
+          "problem": "Reference-correct approximate fact, but the received service fragment cuts off before the comparator-year/unit continuation; the cited c01 chunk concerns equipment sales."
+        }
+      ],
+      "native_output_budget_failure": false,
+      "answer_paraphrase": "Gives a rounded earlier service-revenue amount, distinguishes the cost adjustment from revenue, and says the excerpt does not establish a revenue change or the exact amount.",
+      "grading_rationale": "The response keeps the requested revenue-versus-cost distinction and appropriately refrains from certifying a retained exact amount. It is not reference-complete because it never establishes unchanged revenue. The rounded old amount is reference-correct, but its cited chunk is about sales and the received service continuation is truncated before the unit and comparator year.",
+      "adjudication_notes": [
+        "appropriate_abstention=true is partial: the final uncertainty is appropriate, while the volunteered old-period numerical statement remains insufficiently grounded. It does not mean the whole answer is grounded.",
+        "The exact-versus-rounded qualification in the answer is accepted as approximate reporting; absence of the literal word approximately is not an exact-string failure."
+      ],
+      "output_rewritten": false
+    },
+    {
+      "case_id": "case_cb1f719873df",
+      "question_id": "plug_v13_q3",
+      "raw_answer_sha256": "45d73aa0386d9c46a2efd68af43d4813a6782d15561e8cc1ccb2d1728411db28",
+      "received_context_sha256": "9dc9f364a5e9d7ffd78c82913c84687a40033fd81ef07960f20bb40bd074410f",
+      "required_fact_assessments": [
+        {
+          "fact_id": "omitted_costs",
+          "status": "supported_correct",
+          "rationale": "Explains that relevant historical/service costs, including infrastructure and warrant-related costs, were omitted.",
+          "received_context_support": "The cited p147:c01 text states these omissions."
+        },
+        {
+          "fact_id": "accrual_consequence",
+          "status": "supported_correct",
+          "rationale": "Explains that including those costs required additional loss accruals.",
+          "received_context_support": "The same cited text explicitly connects proper cost consideration to additional accruals."
+        }
+      ],
+      "reference_content_correct": true,
+      "scope_correct": true,
+      "citation_grounded": true,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "unsupported_assertions": [],
+      "native_output_budget_failure": false,
+      "answer_paraphrase": "Explains that omitted relevant maintenance costs required extra accruals, and reports the source-stated FY2018 provision of about 5.3 million.",
+      "grading_rationale": "Both required causal facts and the optional FY2018 amount are supported by the actual cited p147:c01 chunk. Wording differences and the extended citation syntax are interpretable and accepted.",
+      "adjudication_notes": [
+        "The question does not require every optional omission example or the amount; neither is promoted to a new requirement."
+      ],
+      "output_rewritten": false
+    },
+    {
+      "case_id": "case_f668a0cc773c",
+      "question_id": "plug_v13_q3",
+      "raw_answer_sha256": "c06b7117a842b157562e08db560f904982b1c8f1ae4b6b69027ba1ccaf87f983",
+      "received_context_sha256": "2c2fe2d1ab97e4a66118540f6e857b7ff16a2dd4a01e23e5a5e0a49ee4413b36",
+      "required_fact_assessments": [
+        {
+          "fact_id": "omitted_costs",
+          "status": "supported_correct",
+          "rationale": "Explains that relevant historical/service costs, including infrastructure and warrant-related costs, were omitted.",
+          "received_context_support": "The cited p147:c01 text states these omissions."
+        },
+        {
+          "fact_id": "accrual_consequence",
+          "status": "supported_correct",
+          "rationale": "Explains that including those costs required additional loss accruals.",
+          "received_context_support": "The same cited text explicitly connects proper cost consideration to additional accruals."
+        }
+      ],
+      "reference_content_correct": true,
+      "scope_correct": true,
+      "citation_grounded": true,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "unsupported_assertions": [],
+      "native_output_budget_failure": false,
+      "answer_paraphrase": "Explains that omitted relevant maintenance costs required extra accruals, and reports the source-stated FY2018 provision of about 5.3 million.",
+      "grading_rationale": "Both required causal facts and the optional FY2018 amount are supported by the actual cited p147:c01 chunk. Wording differences and the extended citation syntax are interpretable and accepted.",
+      "adjudication_notes": [
+        "The question does not require every optional omission example or the amount; neither is promoted to a new requirement."
+      ],
+      "output_rewritten": false
+    }
+  ],
+  "summary": {
+    "denominator": 8,
+    "reference_content_correct": 3,
+    "scope_correct": 4,
+    "citation_grounded": 2,
+    "format_ok": 8,
+    "appropriate_abstention": 1,
+    "native_output_budget_failure": 0,
+    "joint_content_scope_citation": 2,
+    "required_fact_status_counts": {
+      "supported_correct": 11,
+      "incorrect": 10,
+      "missing": 1
+    }
+  },
+  "root_adjudication_candidates": [
+    "case_7738c66c55cf: informative document ID and partial FY2018 note context do not complete the sole headerless p139 citation; reference facts remain correct.",
+    "case_c58b6536e138: accept rounded 22.0m as reference-correct, with partial appropriate abstention, while recording truncated numerical context and incomplete unchanged-result answer."
+  ]
+}

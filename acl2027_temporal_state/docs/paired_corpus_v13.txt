@@ -1,0 +1,104 @@
+Paired-version development corpus and retrieval, v0.13
+
+Implemented scope
+
+The corpus uses only the four PDF representations recovered in v0.12: Plug
+Power FY2019 and FY2020 Form 10-K documents, and OPERA arXiv v1 and v4. Their
+SHA-256 hashes are checked before extraction. There are two development histories,
+four documents, 550 PDF pages and 2,306 chunks. The first-public availability and
+historical byte-identity limitations from the source reviews still apply.
+
+Native extraction uses /usr/bin/pdftotext -layout -enc UTF-8. Form feeds preserve
+every physical PDF page, including blank pages. Page counts must match 142, 347,
+24 and 37; a mismatch stops the build. Empty pages produce no chunks and remain
+in the manifest. The blank-page inventory matches the prior visual review.
+
+Chunks contain at most 160 whitespace-delimited words and overlap by 30 words.
+They never cross a page boundary. No body text is omitted based on questions or
+references. Native headers, footers, bibliography, captions and repeated content
+remain. Chunk IDs are document_id:pNNN:cNN. Whole documents are searchable;
+neither comparator sends whole documents to the reader.
+
+Image-table recovery and extraction limits
+
+The v0.12 source review identified two missing native-text tables on OPERA v1
+physical PDF pages 15 and 20. Both complete tables were recovered before task
+retrieval. The pages were rendered locally using /usr/bin/pdftoppm, one page at
+a time with -scale-to 2200 -singlefile -png. Tesseract 5.3.4 with --psm 6 produced
+raw full-page OCR, retained unchanged outside the repository. The corpus agent
+actually inspected both rendered pages and transcribed every table row, header,
+value, sign and intentionally blank cell. A machine OCR error in the table 1
+WFD label was corrected in the separate visual transcription, not in raw OCR.
+The source spelling and the differently spelled table 2 FWD label were retained.
+
+The transcriptions are model-assisted visual review, not human gold. They are
+separate from native text, visibly tagged as such, and inserted immediately after
+the relevant native caption on the same page. They contain whole tables, not
+answer-selected cells. Render, OCR, transcription, source, native-page, augmented-
+page and chunk hashes are preserved. The provenance list on each chunk describes
+the extraction sources available on its originating page; on supplemented pages,
+some individual chunks contain only native body text. Literal transcription tags
+mark supplemented text in the corpus itself.
+
+This is complete native-text access plus two disclosed table supplements. It is
+not a claim that every equation, raster chart or table in every PDF has a perfect
+textual representation. Mathematical typography can flatten. Other raster figures
+are not guaranteed searchable. Chunk boundaries can split a table and a later
+chunk need not repeat all column headers. Scoring must distinguish retrieval and
+extraction problems from reader failures. A citation page alone is not evidence
+that the selected chunk contains the required fact or its units and scope.
+
+Retrieval comparator
+
+BM25 uses k1=1.2 and b=0.75. Tokens are Unicode lowercase alphanumeric sequences;
+underscores and punctuation delimit tokens. Unique sorted query terms are scored
+with no expansion, reference text, answer labels or gold pages. The inverse-
+document frequency is log(1 + (N - df + 0.5)/(df + 0.5)). N, df and average token
+length are calculated over the same two-document history corpus for both arms.
+Score ties break by ascending chunk ID.
+
+The ordinary arm takes the six highest-scoring chunks in the history. The paired
+arm takes the three highest-scoring chunks from each of its two documents using
+the identical history scores. Zero-score chunks are retained if selected by the
+fixed rule; they are not replaced using reference evidence. There is no diversity
+filter, de-duplication, reranking or post-retrieval truncation. Both arms render
+chunks in version-order, document-ID, PDF-page and chunk-index order, using:
+
+  [document_id p.N | chunk=document_id:pNNN:cNN | version=1]
+  literal normalized chunk text
+
+Six chunks contain at most 960 evidence words. Headers add separately counted
+words and tokens. Exact native token counts and input-budget eligibility must be
+checked by the frozen reader runner; this retrieval code does not estimate them.
+Chronological order is document order, not proof of historical availability.
+
+The question reader accepts a JSON list or an object with a questions list and
+uses only question_id, history_id and question. It ignores all extra fields. This
+implementation does not read answer/reference files or evaluate predictions.
+Both source pairs are already familiar development material, not held-out data.
+
+Artifacts and commands
+
+Public corpus_manifest.json records source identities, hashes, physical page
+locators, counts and extraction provenance. Public paired_retrieval_v13.json
+records exact context hashes, selected chunks, scores, ranks and counts, with no
+third-party passages. Full corpus, page text, contexts, OCR, table transcriptions
+and renders stay outside the repository. The local paths are recorded so this
+session can reproduce the run. Independent reconstruction requires the pinned
+PDF bytes and separately supplied/recreated reviewed table-transcription assets;
+the public metadata alone cannot reproduce those copyrighted passages bytewise.
+
+From the research directory:
+
+  python3 scripts/build_paired_corpus_v13.py
+  python3 scripts/retrieve_paired_v13.py --questions QUESTION_FILE
+  python3 -m unittest discover -s tests -p test_paired_retrieval_v13.py -q
+
+Both scripts refuse to overwrite completed outputs. The builder requires an
+external table_transcriptions.json whose complete-table flags and supporting
+render/OCR hashes verify, and otherwise fails rather than silently dropping the
+known missing tables. Neither script performs network access or reader inference.
+The six contract tests cover actual extraction/retrieval risks: page boundaries,
+overlap tails, unreviewed table supplements, matched scores with distinct selection,
+Unicode/tie behavior and exclusion of reference fields. They are authored software
+checks, not experimental performance evidence.

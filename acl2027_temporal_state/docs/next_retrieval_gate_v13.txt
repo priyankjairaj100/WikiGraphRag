@@ -1,0 +1,106 @@
+Proposal only: source-bound structural context before method development
+
+Status
+
+This is a proposal for a later gate. It is not a frozen preregistration, an
+implemented feature, a demonstrated algorithmic advance or an inference result.
+The existing eight questions and two document histories remain development-only.
+No feature should be tuned to their answer keys, selected pages or reader outputs
+and then reported as held-out improvement.
+
+Question the gate would answer
+
+Can a generic, source-faithful structural baseline supply the headers, units,
+periods and scope needed to interpret retrieved evidence within the same reader
+token budget? Only after that baseline and a competent stronger reader are tested
+should residual failures motivate a new reasoning or graph-method claim.
+
+Minimum source representation
+
+Preserve physical page identity, source byte hash, native layout coordinates or
+line offsets, section boundaries, table caption/identifier, row and column
+headings, unit expressions, footnotes and explicit continuation links. Every
+added context span must be copied from an identified source location, with its
+own hash. Derived labels such as "this table uses thousands" are not source
+evidence unless the underlying unit declaration and attachment are recorded.
+
+Use one predeclared extraction procedure across every document in a corpus,
+before evaluation questions are exposed to that procedure. Do not create a
+handwritten rule for a known financial page, named quantity, year or answer.
+Structural review can inspect the source documents, but must be separate from
+answer-conditioned evidence selection and must disclose model assistance.
+
+Unit/year binding is a relation to validate, not a text-prefix heuristic. A
+table's header, units and footnotes can precede its first data row, occur on the
+same page after unrelated prose, or continue across a page. A later unit phrase
+may introduce a different table. Copying the nearest phrase or a fixed page
+prefix cannot silently establish attachment. Continuation should require
+explicit table/section identity plus compatible repeated column structure or
+other recorded source evidence. If these conditions are ambiguous, record the
+link as unresolved and retain the necessary surrounding source spans; do not
+invent inherited units. Distinguish a quoted source span from the extractor's
+uncertain proposed relation.
+
+Evaluate structural extraction first
+
+Before reader predictions, freeze a source-only audit set containing ordinary
+tables, multiple tables per page, intervening prose, multi-line years, units
+with exceptions, table continuations and changes of section. Sample it using
+document/layout criteria independent of QA answers. Review attachment of each
+row/column/year/unit/footnote to the correct table and scope, including negative
+cases where no link is established. Report missing links, false links and
+unresolved cases separately. Explicitly report native/OCR/transcription sources.
+Independent human review would strengthen this gate; do not label model reviews
+as human gold. The thresholds, sample construction and disagreement procedure
+still require declaration before implementation evaluation.
+
+Smallest comparison to test after that gate
+
+Retain a simple lexical retrieval baseline and the paired-version comparator.
+Add a generic parent-table/section retrieval baseline: retrieve without answer
+references, then attach only verified source header/unit/footnote spans to each
+candidate. Pack evidence using a deterministic, question-independent policy
+after relevance ranking, with explicit costs for all added spans. No header is
+free metadata. Record any fact spans displaced by structural context. If an
+indivisible support bundle does not fit, report that exclusion or budget failure;
+never silently cut away the very units/scope the baseline is meant to preserve.
+
+Use the same full-input native-token budget for all compared conditions, including
+instructions, question, citation labels and added structural spans. Preserve the
+output-token limit, response instructions and source version ordering. Actual
+input usage can differ and must be reported. The present 3500-input-token and
+960-evidence-word limits can be retained for a direct development comparison,
+but both caps would include newly attached source words. A different budget must
+be declared as a separate sensitivity condition before predictions. Avoid
+comparing a larger-context structural system to an artificially starved baseline.
+
+Test all conditions with a stronger reader whose ability to read complete,
+plainly supported tables and distinguish periods/samples is demonstrated on
+separate controls. Choose and pin the checkpoint/API snapshot and decoding before
+evaluation; specify resource and cost authorization separately. The current
+four-billion-parameter control pass does not establish this competence. If a
+stronger accessible reader is unavailable, record that limitation and withhold
+claims about a general reasoning failure. Do not manufacture a strong baseline
+by renaming the existing model or using an unpinned conversational response.
+
+Keep a source-sufficient ceiling diagnostic separate
+
+A reviewer may supply the complete evidence needed for a question to diagnose
+reader competence after ordinary retrieval fails. Such a packet can be selected
+using references, so it is explicitly oracle/source-sufficient evidence. It must
+be labeled diagnostic, excluded from primary retrieval results, and scored with
+its own input budget and selection provenance. If it needs more than the matched
+budget, report that fact rather than presenting its performance as a fair gain.
+This diagnostic helps separate absent support from inability to use available
+support; it is not a deployable retriever or evidence of algorithmic novelty.
+
+Decision boundary before expanding research claims
+
+First establish correct structural attachment and question-independent context
+selection. Then test the stronger matched reader and baselines. If these resolve
+the observed failures, report a baseline/representation lesson and stop building
+a new reasoning contribution around the same examples. If failures persist with
+verified sufficient context, characterize them on new histories before designing
+an algorithm. Any future contribution needs independently held-out histories,
+fresh questions/references, suitable ablations, uncertainty and a current related-
+work audit. The current eight development questions must not become that test set.

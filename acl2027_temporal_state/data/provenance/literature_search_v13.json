@@ -1,0 +1,203 @@
+{
+  "artifact": "literature_search_v13",
+  "status": "completed_bounded_primary_source_check",
+  "audit_date_utc": "2026-10-03",
+  "recorded_at_utc": "2026-10-03T09:18:40Z",
+  "timestamp_precision_note": "The first search batch had completed by the separately observed 2026-10-03T09:16:46Z shell timestamp; all primary-source reads reported here had completed by the 09:18:40Z timestamp. Exact per-request wall-clock times were not retained.",
+  "scope": "Literature lookup only; separate from frozen four-PDF paired-version reader experiment.",
+  "corpus_additions": 0,
+  "native_model_calls": 0,
+  "search_query_budget": 4,
+  "search_queries_issued": 4,
+  "further_searches_after_budget": false,
+  "queries": [
+    {
+      "order": 1,
+      "batch": 1,
+      "engine": "system2_search_query",
+      "q": "site.aclanthology.org temporal retrieval augmented generation changing facts document versions benchmark",
+      "domains": null,
+      "recency_days": null
+    },
+    {
+      "order": 2,
+      "batch": 1,
+      "engine": "system2_search_query",
+      "q": "site.arxiv.org \"version\" \"retrieval\" \"revision\" RAG documents",
+      "domains": null,
+      "recency_days": null
+    },
+    {
+      "order": 3,
+      "batch": 2,
+      "engine": "system1_search_query",
+      "q": "\"VersionRAG\" evolving documents",
+      "domains": [
+        "arxiv.org"
+      ],
+      "recency_days": 730
+    },
+    {
+      "order": 4,
+      "batch": 2,
+      "engine": "system1_search_query",
+      "q": "\"Time Present and Time Past\" \"Temporally Evolving\"",
+      "domains": [
+        "arxiv.org"
+      ],
+      "recency_days": 120
+    }
+  ],
+  "verified_works": [
+    {
+      "id": "huwiler2025versionrag",
+      "title": "VersionRAG: Version-Aware Retrieval-Augmented Generation for Evolving Documents",
+      "publication_date": "2025-10-09",
+      "date_precision": "day",
+      "publication_status": "arXiv v1 preprint; no venue claim",
+      "metadata_url": "https://arxiv.org/abs/2510.08109",
+      "primary_read_url": "https://arxiv.org/html/2510.08109v1",
+      "read_scope": "Main-method, dataset, experimental-configuration, error-analysis, ablation and limitation sections; not a reproduction.",
+      "evidence_locations": [
+        "Sections 3.1-3.2: three query types and five-level version graph",
+        "Sections 4.1-4.3: indexing, query routing, filtering and generation",
+        "Sections 5.1-5.2: VersionQA and baseline/reader configuration",
+        "Section 6.5: indexing/retrieval-model ablation",
+        "Limitations: discrete versions and calendar-time reasoning"
+      ],
+      "web_reference_ids": [
+        "turn233view0",
+        "turn236view4",
+        "turn234view7"
+      ],
+      "comparison_role": "Direct novelty threat and candidate version-filtered/change-index comparator.",
+      "reproduced": false
+    },
+    {
+      "id": "ouyang-etal-2025-hoh",
+      "title": "HoH: A Dynamic Benchmark for Evaluating the Impact of Outdated Information on Retrieval-Augmented Generation",
+      "publication_date": "2025-07",
+      "date_precision": "month",
+      "publication_status": "ACL 2025",
+      "metadata_url": "https://aclanthology.org/2025.acl-long.301/",
+      "primary_read_url": "https://aclanthology.org/2025.acl-long.301.pdf",
+      "read_scope": "Dataset-construction and selected retrieval/generation, ordering and appendix-comparison passages; not a reproduction.",
+      "evidence_locations": [
+        "Section 3: snapshot differences, factual-change filtering and question/evidence construction",
+        "Sections 4-5: retrieval/generation measurements and ordering comparisons",
+        "Appendix E.2: temporal retrieval baselines and additional proprietary-reader results"
+      ],
+      "web_reference_ids": [
+        "turn232view0",
+        "turn235view0",
+        "turn234view5"
+      ],
+      "comparison_role": "Outdated-evidence diagnostic precedent and evidence-order/retrieval-coverage control.",
+      "reproduced": false
+    },
+    {
+      "id": "cao-etal-2026-re3",
+      "title": "Re3: Relevance & Recency Retrieval for Mitigating Temporal Hallucination",
+      "publication_date": "2026-07",
+      "date_precision": "month",
+      "publication_status": "ACL 2026",
+      "metadata_url": "https://aclanthology.org/2026.acl-long.1180/",
+      "primary_read_url": "https://aclanthology.org/2026.acl-long.1180.pdf",
+      "read_scope": "Introduction and method/assumption sections, selected evaluation/robustness passages; not a reproduction.",
+      "evidence_locations": [
+        "Section 3.1: document/content time, available publication time and latest-authoritative-record assumption",
+        "Section 3 and Figure 1: temporal relevance encoder and conflict-aware recency filtering",
+        "Section 4: retrieval/end-to-end metrics; cross-encoder baseline",
+        "Section 4.5: backbone/generator robustness"
+      ],
+      "web_reference_ids": [
+        "turn235view1",
+        "turn234view6",
+        "turn236view2"
+      ],
+      "comparison_role": "Temporal relevance/recency comparator whose assumptions must not be silently imposed on unknown availability or changed scope.",
+      "reproduced": false
+    },
+    {
+      "id": "shankarampeta-etal-2025-transienttables",
+      "title": "TRANSIENTTABLES: Evaluating LLMs' Reasoning on Temporally Evolving Semi-structured Tables",
+      "publication_date": "2025-04",
+      "date_precision": "month",
+      "publication_status": "NAACL 2025",
+      "metadata_url": "https://aclanthology.org/2025.naacl-long.332/",
+      "primary_read_url": "https://aclanthology.org/2025.naacl-long.332.pdf",
+      "read_scope": "Abstract/introduction, dataset statistics/question taxonomy and modelling decomposition; not a reproduction.",
+      "evidence_locations": [
+        "Section 2: 3,971 questions, 14,133 tables and 1,238 entities",
+        "Section 2 and Table 1: explicit/implicit questions and reasoning operations",
+        "Section 3: temporal grounding, attribute selection and analytical reasoning"
+      ],
+      "web_reference_ids": [
+        "turn236view0",
+        "turn236view1",
+        "turn236view3"
+      ],
+      "comparison_role": "Temporal table reasoning and stage-decomposition precedent.",
+      "reproduced": false
+    }
+  ],
+  "unresolved_leads": [
+    {
+      "title": "Time Present and Time Past: Benchmarking Large Language Models on Temporally Evolving Document Understanding",
+      "identifier": "arXiv:2608.08512",
+      "primary_url": "https://arxiv.org/abs/2608.08512",
+      "search_record_date": "2026-08-09",
+      "date_verification": "Search record only; direct abstract/fulltext opens failed.",
+      "search_record_reference": "turn232academia21",
+      "failed_opens": [
+        {
+          "url": "https://arxiv.org/html/2608.08512v1",
+          "outcome": "tool-level Internal Error",
+          "ref": "turn233view1"
+        },
+        {
+          "url": "https://arxiv.org/abs/2608.08512",
+          "outcome": "tool-level Internal Error",
+          "ref": "turn233view4"
+        },
+        {
+          "url": "https://arxiv.org/pdf/2608.08512",
+          "outcome": "tool-level Internal Error",
+          "ref": "turn234view0"
+        }
+      ],
+      "claim_use": "Material lead only; no verified method comparison, bibliography entry or gap claim.",
+      "failure_does_not_invalidate_work": true
+    }
+  ],
+  "synthesis": {
+    "novelty_established": false,
+    "ordinary_versus_paired_bm25_role": "Development diagnostic and engineering comparator.",
+    "candidate_gap_status": "Unproven project hypothesis, not a claimed absence in the reviewed literature.",
+    "candidate_question": "Can source-grounded scope compatibility and abstention improve result comparison after a competent reader has both relevant versions?",
+    "required_before_method_investment": [
+      "Residual error with adequate extracted evidence",
+      "Competent matched reader",
+      "Comparison against version filtering, strong retrieval/reranking and change indexing",
+      "Separate design and independently held-out histories",
+      "Reviewed scope/abstention references and matched-budget ablations"
+    ],
+    "unsupported_claims": [
+      "First version-aware RAG",
+      "Novelty from version nodes or paired retrieval alone",
+      "Broad model inadequacy from a small reader",
+      "General gains from two familiar histories",
+      "ACL 2027 submission readiness"
+    ],
+    "exhaustive": false
+  },
+  "distribution": {
+    "full_third_party_text_in_repository": false,
+    "search_result_bodies_in_repository": false,
+    "contents": "Bibliographic metadata, URLs, evidence locations and paraphrased project analysis only."
+  },
+  "outputs": [
+    "docs/related_work_v13.txt",
+    "paper/references_v13.bib"
+  ]
+}

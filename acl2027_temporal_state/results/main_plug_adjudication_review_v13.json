@@ -1,0 +1,70 @@
+{
+  "schema_version": "main_plug_adjudication_review_v0.13",
+  "recorded_at_utc": "2026-10-03T09:45:45.965425+00:00",
+  "status": "recommendations_previously_sent_to_root_recorded_without_grade_edits",
+  "provenance": {
+    "model_assisted": true,
+    "human_gold": false,
+    "method_labels_masked_in_packet": true,
+    "condition_mapping_opened": false,
+    "statistical_blindness_claimed": false,
+    "prior_context_audit_familiarity": true,
+    "raw_main_cases_inspected": [
+      "case_7738c66c55cf",
+      "case_c58b6536e138"
+    ],
+    "main_grade_file_inspected": true,
+    "layout_responses_inspected": false,
+    "native_response_directories_accessed": false,
+    "existing_grades_edited": false
+  },
+  "input_sha256": {
+    "data/paired_reader_v13/scoring_contract.json": "bfe298807cdfe3b4ceb3cee2e9c75a9de60facece0c429c2e0f513d23e8d70b2",
+    "data/paired_reader_v13/references_plug.json": "682a7af7fcef05bcc1a0ad16bca1874e2e7b5078db982b9e4a51b46dcbd91dbc",
+    "results/grades_main_plug_v13.json": "b44d950327e28c219b01ff4c07fe6b13171fec8972756f4a536cb8774da38f58"
+  },
+  "masked_packet": {
+    "external_path": "/workspace/scratch/bdef663e3dfc/tmp/paired_reader_v13/grading/main_plug.json",
+    "sha256": "5b5138f28b3bba082888628e0534165b6601920b2efca8849e0525fe759ebb34",
+    "only_raw_cases_inspected": [
+      "case_7738c66c55cf",
+      "case_c58b6536e138"
+    ]
+  },
+  "case_recommendations": [
+    {
+      "case_id": "case_7738c66c55cf",
+      "question_id": "plug_v13_q4",
+      "raw_answer_sha256": "a95975b30fca7db3ceb64c484da995e9d12a344619f4ef60af121757d8fe92b2",
+      "received_context_sha256": "c965e2dff394ba6998768b8b5f26b08ec044fea9c0879650f3143b2557fa5122",
+      "recommendation": "retain_existing_grades_without_change",
+      "grade_fields_reviewed": {
+        "reference_content_correct": true,
+        "scope_correct": true,
+        "citation_grounded": false,
+        "format_ok": true,
+        "appropriate_abstention": false
+      },
+      "rationale": "All three requested reference facts match. The sole cited p139 fragment lacks entity and year/report headings; content correctness does not cure citation insufficiency.",
+      "qualification": "Informative document identifiers are orientation hints, not complete cited source-body evidence."
+    },
+    {
+      "case_id": "case_c58b6536e138",
+      "question_id": "plug_v13_q2",
+      "raw_answer_sha256": "f9a58c2758832a085168d1f488739312efc2c385095a0e39f3bc3d482cdcba66",
+      "received_context_sha256": "e77ce3be8f1cba2fde50340bffb624fa8f0383e5162e98922c9f0cb06bc8d8d2",
+      "recommendation": "retain_existing_grades_without_change",
+      "grade_fields_reviewed": {
+        "reference_content_correct": false,
+        "scope_correct": true,
+        "citation_grounded": false,
+        "format_ok": true,
+        "appropriate_abstention": true
+      },
+      "rationale": "The distinction between a rounded amount and unavailable exact amount is sufficient to accept22.0million as approximate reference content. Retention remains unanswered. Partial abstention is appropriate for unsupported change/exact amount, while the volunteered old-period amount remains incompletely grounded.",
+      "qualification": "appropriate_abstention=true is partial and does not certify the whole answer as supported or reference-complete."
+    }
+  ],
+  "no_output_rewriting": true,
+  "no_full_answers_distributed": true
+}

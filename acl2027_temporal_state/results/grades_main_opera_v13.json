@@ -1,0 +1,441 @@
+{
+  "schema_version": "masked_free_text_grades_v0.13.opera.1",
+  "graded_at_utc": "2026-10-03T09:45:55.440529+00:00",
+  "history_id": "opera_1109_4897",
+  "grading_packet_sha256": "48353ad5b424a47e33170daf11a5af0d813d84a561e26aa9c5eb04507770dd5c",
+  "scoring_contract_sha256_canonical_json": "d4f87a963a985b254da3f7f7ca2a0af491a8512b6b43aa1c821bc2b71700228c",
+  "scoring_contract_sha256_file": "bfe298807cdfe3b4ceb3cee2e9c75a9de60facece0c429c2e0f513d23e8d70b2",
+  "provenance": {
+    "model_assisted": true,
+    "human_gold": false,
+    "prior_source_and_reference_authorship": true,
+    "common_development_familiarity": true,
+    "retrieval_method_labels_masked": true,
+    "statistical_blindness_claimed": false,
+    "only_masked_packet_and_its_frozen_references_inspected": true,
+    "native_directories_or_case_mapping_inspected": false,
+    "responses_rewritten_or_retried": false,
+    "other_history_grade_schema_inspected": true
+  },
+  "fact_status_interpretation": "supported_correct means the fact matches the frozen reference; received-context and cited-text support are separate. Narrow categorical retention/change partial credit does not rescue wrong quantity/sample explanations. Ambiguous error notation is flagged without fixing the raw answer.",
+  "aggregation_scope": "Eight masked development answers for four questions in one selected history; no condition labels, method effect, significance or generalization inferred.",
+  "hash_validation": {
+    "raw_answers_verified": 8,
+    "contexts_verified": 8,
+    "packet_contract_matches_file": true
+  },
+  "cases": [
+    {
+      "case_id": "case_1c62cd33b6b1",
+      "question_id": "opera_selection_scope",
+      "raw_answer_sha256": "d4a928a0b77455d5423c10d446ec068c5d9fdcde71a6d5ea9554a79dd69bf4ae",
+      "received_context_sha256": "e5a1fe2b896e95e9237863e2ab73d67550d53c630a1b07ef7f580d44ec704132",
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "native_output_budget_failure": false,
+      "answer_word_count_whitespace": 70,
+      "output_rewritten": false,
+      "required_fact_assessments": [
+        {
+          "fact_id": "scope_changed",
+          "status": "supported_correct",
+          "rationale": "Correctly states that the selected sample was not unchanged, but supplies the wrong account of the change.",
+          "received_context_support": "The received snippets do not show the revised selection exclusion; only the earlier sample composition is explicit."
+        },
+        {
+          "fact_id": "selection_reason",
+          "status": "missing",
+          "rationale": "Does not mention exclusion of isolated earliest hits because of potential noise or early-arrival bias.",
+          "received_context_support": "The required v4 selection passage is absent from the received context."
+        }
+      ],
+      "unsupported_assertions": [
+        {
+          "claim": "The revised main neutrino analysis switched its selected sample to cosmic muon observations from 2007-2012.",
+          "problem": "The received p20:c03 describes a separate calibration cross-check, not replacement of the selected neutrino sample."
+        },
+        {
+          "claim": "The main selection change was a focus on cosmic-muon timing and a revised likelihood procedure.",
+          "problem": "Neither cited passage supports this as the sample-selection change."
+        }
+      ],
+      "answer_paraphrase": "Says the sample changed, but substitutes the OPERA-LVD cosmic-muon calibration study for the revised main neutrino sample.",
+      "grading_rationale": "The yes/no change statement earns limited fact credit. The material answer to what changed is missing and replaced by incorrect scope assignments. The required selection explanation is absent from context; the answer nevertheless asserts unsupported alternatives.",
+      "adjudication_notes": [
+        "Exact event counts are optional in the frozen rubric. Their omission is not penalized; wrong volunteered version/sample assignments still count as material errors."
+      ]
+    },
+    {
+      "case_id": "case_1d9396eb5cbb",
+      "question_id": "opera_revised_result",
+      "raw_answer_sha256": "c43b9d55c1e92c029031859ad127f70ed335cae2b0b9e3a0c38ff2143e9de709",
+      "received_context_sha256": "6f12c51685114e2c7b3b7765f2bdf5fb9e970e9cebf0204750dc0e84fd5b37b2",
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "native_output_budget_failure": false,
+      "answer_word_count_whitespace": 81,
+      "output_rewritten": false,
+      "required_fact_assessments": [
+        {
+          "fact_id": "central_value",
+          "status": "supported_correct",
+          "rationale": "The revised central arrival-time difference is correctly given as 6.5 ns.",
+          "received_context_support": "Explicitly in received v4 p33:c01 and repeated in v4 p29:c03; neither is cited in the answer."
+        },
+        {
+          "fact_id": "statistical_uncertainty",
+          "status": "supported_correct",
+          "rationale": "The 7.4 ns statistical uncertainty is correct.",
+          "received_context_support": "Explicitly in received v4 p33:c01; the v1 citations do not support the revised estimate."
+        },
+        {
+          "fact_id": "systematic_uncertainty",
+          "status": "ambiguous",
+          "rationale": "The correct two magnitudes 8.3 and 8.0 are present with a lower minus sign, but a plus/minus sign precedes 8.3. This is not an unambiguous +8.3/-8.0 expression. Flagged for semantic rather than exact-string adjudication.",
+          "received_context_support": "The received v4 p33:c01 contains the correct asymmetric errors; ambiguity is in the response notation."
+        },
+        {
+          "fact_id": "compatibility",
+          "status": "supported_correct",
+          "rationale": "The concluding statement says the uncertainties do not establish a significant discrepancy, matching the requested revised-result conclusion. However, another sentence attaches compatibility to the obsolete relative-velocity value; that contradictory addition prevents a correct whole answer.",
+          "received_context_support": "Received v4 p33:c01 states compatibility. The cited v1 p3/p19 text describes the old anomalous result, not revised compatibility."
+        }
+      ],
+      "unsupported_assertions": [
+        {
+          "claim": "The old 2.48 x10^-5 relative-velocity result is the counterpart of the revised main arrival-time result.",
+          "problem": "This combines different versions; received v4 p33:c01 supplies the revised relative velocity of 2.7 x10^-6."
+        },
+        {
+          "claim": "The cited old relative-velocity result is compatible with light speed in the sense of the revised conclusion.",
+          "problem": "The old result is substituted for the revised one; the cited old chunks do not support this compatibility assertion."
+        }
+      ],
+      "answer_paraphrase": "Gives the revised arrival-time value and statistical error, writes ambiguous asymmetric-error notation, then pairs them with the obsolete relative-velocity excess and cites only the original version.",
+      "grading_rationale": "The received context contains the complete revised answer, yet the response conflates versions and cites the original anomaly. Partial correct arrival-time facts are retained; whole-answer content, scope and grounding fail independently of the notation ambiguity.",
+      "adjudication_notes": [
+        "Separate adjudication requested for systematic-error notation. A tolerant semantic reading may credit the intended asymmetric magnitudes, but no whole-answer axis would change.",
+        "Categorical compatibility receives fact-level credit for the final caution; the incorrect old-result association remains a material content/scope error."
+      ]
+    },
+    {
+      "case_id": "case_22c33dac3dc5",
+      "question_id": "opera_retained_baseline",
+      "raw_answer_sha256": "82da15e1dc4403133199822d4c5b848ca8b4b1504677d45e1e48cfbef07d1424",
+      "received_context_sha256": "c165f9b9c7c844e31cec94fa4f1b2c57107e0fc86c9b7ee3cd176f0134e44677",
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "native_output_budget_failure": false,
+      "answer_word_count_whitespace": 100,
+      "output_rewritten": false,
+      "required_fact_assessments": [
+        {
+          "fact_id": "baseline_value",
+          "status": "incorrect",
+          "rationale": "Gives the target-to-detector component 730534.61 m as the full BCT-to-OPERA baseline.",
+          "received_context_support": "No received chunk explicitly supplies the final 731278.0 m value. The old p10 fragment has incomplete component text and cannot establish the final value through forbidden recomputation."
+        },
+        {
+          "fact_id": "retention",
+          "status": "supported_correct",
+          "rationale": "The categorical statement that the baseline did not change matches the reference. It is only partial credit: the numerical quantity being equated is wrong, so scope and whole-answer correctness fail.",
+          "received_context_support": "The component and effective-baseline snippets do not establish equality of the requested full geodetic lengths. Both received time-delay tables report a common baseline in ns, but conversion/recomputation is prohibited."
+        }
+      ],
+      "unsupported_assertions": [
+        {
+          "claim": "730534.61 m is the full BCT-to-OPERA geodetic distance.",
+          "problem": "It is a component; the received fragment does not supply the full final value."
+        },
+        {
+          "claim": "The revised baseline is 730.085 km and is consistent with the original 730534.61 m as the same quantity.",
+          "problem": "The answer cites v1 p19 for a supposedly revised value and merges distinct baselines."
+        },
+        {
+          "claim": "The 743.391 m component runs from BCT to OPERA.",
+          "problem": "The snippet ends after BCT; this asserted endpoint is wrong for the component."
+        }
+      ],
+      "answer_paraphrase": "Calls a target-to-detector component the full baseline, then equates it with the effective neutrino baseline and assigns the short component a wrong endpoint.",
+      "grading_rationale": "The answer fails the required quantitative fact and confuses geometrically different baselines. Actual chunk content does not provide the requested final geodetic value; component addition or time-to-distance conversion cannot repair that evidence gap under the frozen no-recomputation rule.",
+      "adjudication_notes": [
+        "Categorical unchanged status is retained as fact-level partial credit even though attached to a misidentified value; separate adjudication may choose a stricter fact granularity. Whole-answer content, scope and citation remain false either way.",
+        "The optional 0.2 m uncertainty is not required and its absence is not penalized."
+      ]
+    },
+    {
+      "case_id": "case_320d2ed74e80",
+      "question_id": "opera_revision_reason",
+      "raw_answer_sha256": "625ab3e75af8710a801f224a12db4b9c24ee20618bee54e275f1fe818be604f2",
+      "received_context_sha256": "e69cf30fa5ee1eea9883d54691f77c3a0c5979a910c6c508f622f48f549e7b35",
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "native_output_budget_failure": false,
+      "answer_word_count_whitespace": 73,
+      "output_rewritten": false,
+      "required_fact_assessments": [
+        {
+          "fact_id": "fibre_connection",
+          "status": "missing",
+          "rationale": "Does not identify the improperly connected optical fibre. A generic timing-system problem is not this specific fact.",
+          "received_context_support": "The received chunks state that instrumental effects were corrected but omit the connection diagnosis."
+        },
+        {
+          "fact_id": "oscillator_frequency",
+          "status": "missing",
+          "rationale": "Does not identify the Master Clock oscillator frequency offset.",
+          "received_context_support": "The received chunks omit the oscillator diagnosis."
+        }
+      ],
+      "unsupported_assertions": [
+        {
+          "claim": "A CNGS-beam timing-system error was the identified specific first instrumental problem.",
+          "problem": "The cited v1 abstract reports the old anomaly and timing upgrades; it does not diagnose the stated problem."
+        },
+        {
+          "claim": "TT and RPC measurements disagreed and this discrepancy was an instrumental problem.",
+          "problem": "Received v4 p33:c03 expressly describes the measurements as agreeing with the main analysis; the asserted discrepancy is unsupported and contrary to that text."
+        }
+      ],
+      "answer_paraphrase": "Offers an unspecified beam-timing error and an invented disagreement between TT and RPC as the two instrumental problems.",
+      "grading_rationale": "Both required diagnoses are missing from the answer and from this received context. Instead of withholding the unavailable details, the response invents a detector disagreement contradicted by its cited excerpt.",
+      "adjudication_notes": [
+        "Required facts classified missing rather than incorrect because neither actual diagnosis is named; the substituted wrong diagnoses are separately recorded as material unsupported assertions."
+      ]
+    },
+    {
+      "case_id": "case_58bdb3a85e6e",
+      "question_id": "opera_revised_result",
+      "raw_answer_sha256": "c43b9d55c1e92c029031859ad127f70ed335cae2b0b9e3a0c38ff2143e9de709",
+      "received_context_sha256": "6f12c51685114e2c7b3b7765f2bdf5fb9e970e9cebf0204750dc0e84fd5b37b2",
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "native_output_budget_failure": false,
+      "answer_word_count_whitespace": 81,
+      "output_rewritten": false,
+      "required_fact_assessments": [
+        {
+          "fact_id": "central_value",
+          "status": "supported_correct",
+          "rationale": "The revised central arrival-time difference is correctly given as 6.5 ns.",
+          "received_context_support": "Explicitly in received v4 p33:c01 and repeated in v4 p29:c03; neither is cited in the answer."
+        },
+        {
+          "fact_id": "statistical_uncertainty",
+          "status": "supported_correct",
+          "rationale": "The 7.4 ns statistical uncertainty is correct.",
+          "received_context_support": "Explicitly in received v4 p33:c01; the v1 citations do not support the revised estimate."
+        },
+        {
+          "fact_id": "systematic_uncertainty",
+          "status": "ambiguous",
+          "rationale": "The correct two magnitudes 8.3 and 8.0 are present with a lower minus sign, but a plus/minus sign precedes 8.3. This is not an unambiguous +8.3/-8.0 expression. Flagged for semantic rather than exact-string adjudication.",
+          "received_context_support": "The received v4 p33:c01 contains the correct asymmetric errors; ambiguity is in the response notation."
+        },
+        {
+          "fact_id": "compatibility",
+          "status": "supported_correct",
+          "rationale": "The concluding statement says the uncertainties do not establish a significant discrepancy, matching the requested revised-result conclusion. However, another sentence attaches compatibility to the obsolete relative-velocity value; that contradictory addition prevents a correct whole answer.",
+          "received_context_support": "Received v4 p33:c01 states compatibility. The cited v1 p3/p19 text describes the old anomalous result, not revised compatibility."
+        }
+      ],
+      "unsupported_assertions": [
+        {
+          "claim": "The old 2.48 x10^-5 relative-velocity result is the counterpart of the revised main arrival-time result.",
+          "problem": "This combines different versions; received v4 p33:c01 supplies the revised relative velocity of 2.7 x10^-6."
+        },
+        {
+          "claim": "The cited old relative-velocity result is compatible with light speed in the sense of the revised conclusion.",
+          "problem": "The old result is substituted for the revised one; the cited old chunks do not support this compatibility assertion."
+        }
+      ],
+      "answer_paraphrase": "Gives the revised arrival-time value and statistical error, writes ambiguous asymmetric-error notation, then pairs them with the obsolete relative-velocity excess and cites only the original version.",
+      "grading_rationale": "The received context contains the complete revised answer, yet the response conflates versions and cites the original anomaly. Partial correct arrival-time facts are retained; whole-answer content, scope and grounding fail independently of the notation ambiguity.",
+      "adjudication_notes": [
+        "Separate adjudication requested for systematic-error notation. A tolerant semantic reading may credit the intended asymmetric magnitudes, but no whole-answer axis would change.",
+        "Categorical compatibility receives fact-level credit for the final caution; the incorrect old-result association remains a material content/scope error."
+      ]
+    },
+    {
+      "case_id": "case_655b6808782c",
+      "question_id": "opera_retained_baseline",
+      "raw_answer_sha256": "d082cd07964fa8775a4d9a4f46ddef8dd42f0ac460994535af4beffde043f86e",
+      "received_context_sha256": "8ccc6821782a96d0742dcc6ddbf696e85688196fed4b036b0201cb95577e73e1",
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "native_output_budget_failure": false,
+      "answer_word_count_whitespace": 43,
+      "output_rewritten": false,
+      "required_fact_assessments": [
+        {
+          "fact_id": "baseline_value",
+          "status": "incorrect",
+          "rationale": "Gives the effective neutrino baseline 730.085 km as the full BCT-to-OPERA geodetic baseline.",
+          "received_context_support": "The cited v1 p19:c02 and v4 p28:c02 explicitly identify 730.085 km as an effective neutrino baseline; no received chunk provides the requested full geodetic value."
+        },
+        {
+          "fact_id": "retention",
+          "status": "supported_correct",
+          "rationale": "The categorical statement that the baseline did not change matches the reference. It is only partial credit: the numerical quantity being equated is wrong, so scope and whole-answer correctness fail.",
+          "received_context_support": "The two citations support equality of the effective neutrino baseline, a different quantity. They do not ground equality of the requested geodetic value."
+        }
+      ],
+      "unsupported_assertions": [
+        {
+          "claim": "The BCT-to-OPERA geodetic baseline is 730.085 km.",
+          "problem": "Both actual cited texts assign this value to the effective neutrino baseline from a simulated average decay point, not to BCT-to-OPERA geometry."
+        },
+        {
+          "claim": "The pair of effective-baseline citations establishes the requested geodetic baseline comparison.",
+          "problem": "It supports a different baseline comparison; shared page IDs do not correct the quantity mismatch."
+        }
+      ],
+      "answer_paraphrase": "Identifies the effective neutrino baseline as the geodetic baseline and correctly observes that this other quantity appears unchanged.",
+      "grading_rationale": "The answer fails the required quantitative fact and confuses geometrically different baselines. Actual chunk content does not provide the requested final geodetic value; component addition or time-to-distance conversion cannot repair that evidence gap under the frozen no-recomputation rule.",
+      "adjudication_notes": [
+        "Categorical unchanged status is retained as fact-level partial credit even though attached to a misidentified value; separate adjudication may choose a stricter fact granularity. Whole-answer content, scope and citation remain false either way.",
+        "The optional 0.2 m uncertainty is not required and its absence is not penalized."
+      ]
+    },
+    {
+      "case_id": "case_8359c551984d",
+      "question_id": "opera_selection_scope",
+      "raw_answer_sha256": "a8a6bc8aba0d759a8288bfa417ba603c94271516a4136b220ecad00cd3bcf0ee",
+      "received_context_sha256": "b5f5370a630f25aee6827596a3e7a78d6e564bf52cf44c5f153adcdb92b4f416",
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "native_output_budget_failure": false,
+      "answer_word_count_whitespace": 74,
+      "output_rewritten": false,
+      "required_fact_assessments": [
+        {
+          "fact_id": "scope_changed",
+          "status": "supported_correct",
+          "rationale": "Correctly states that the selected sample was not unchanged, but supplies the wrong account of the change.",
+          "received_context_support": "The received snippets do not show the revised selection exclusion; only the earlier sample composition is explicit."
+        },
+        {
+          "fact_id": "selection_reason",
+          "status": "missing",
+          "rationale": "Does not mention exclusion of isolated earliest hits because of potential noise or early-arrival bias.",
+          "received_context_support": "The required v4 selection passage is absent from the received context."
+        }
+      ],
+      "unsupported_assertions": [
+        {
+          "claim": "A roughly 16000-event description from v1 p21 is the revised selected sample.",
+          "problem": "This assigns an original-version statement to the revision and does not identify the changed selection."
+        },
+        {
+          "claim": "Monte Carlo validation of the maximum-likelihood method was absent from the original account.",
+          "problem": "The received original p15:c03 explicitly describes that validation."
+        },
+        {
+          "claim": "The cited revised p20 establishes the stated Monte Carlo change.",
+          "problem": "The supplied p20:c01 chunk discusses clock diagnostics, not the asserted selection or simulation change."
+        }
+      ],
+      "answer_paraphrase": "Says the sample changed, misattributes the original approximate event count to the revision, and falsely says Monte Carlo validation was not in the original account.",
+      "grading_rationale": "The yes/no change statement earns limited fact credit. The material answer to what changed is missing and replaced by incorrect scope assignments. The required selection explanation is absent from context; the answer nevertheless asserts unsupported alternatives.",
+      "adjudication_notes": [
+        "Exact event counts are optional in the frozen rubric. Their omission is not penalized; wrong volunteered version/sample assignments still count as material errors."
+      ]
+    },
+    {
+      "case_id": "case_ba83eb7a6178",
+      "question_id": "opera_revision_reason",
+      "raw_answer_sha256": "625ab3e75af8710a801f224a12db4b9c24ee20618bee54e275f1fe818be604f2",
+      "received_context_sha256": "e69cf30fa5ee1eea9883d54691f77c3a0c5979a910c6c508f622f48f549e7b35",
+      "reference_content_correct": false,
+      "scope_correct": false,
+      "citation_grounded": false,
+      "format_ok": true,
+      "appropriate_abstention": false,
+      "native_output_budget_failure": false,
+      "answer_word_count_whitespace": 73,
+      "output_rewritten": false,
+      "required_fact_assessments": [
+        {
+          "fact_id": "fibre_connection",
+          "status": "missing",
+          "rationale": "Does not identify the improperly connected optical fibre. A generic timing-system problem is not this specific fact.",
+          "received_context_support": "The received chunks state that instrumental effects were corrected but omit the connection diagnosis."
+        },
+        {
+          "fact_id": "oscillator_frequency",
+          "status": "missing",
+          "rationale": "Does not identify the Master Clock oscillator frequency offset.",
+          "received_context_support": "The received chunks omit the oscillator diagnosis."
+        }
+      ],
+      "unsupported_assertions": [
+        {
+          "claim": "A CNGS-beam timing-system error was the identified specific first instrumental problem.",
+          "problem": "The cited v1 abstract reports the old anomaly and timing upgrades; it does not diagnose the stated problem."
+        },
+        {
+          "claim": "TT and RPC measurements disagreed and this discrepancy was an instrumental problem.",
+          "problem": "Received v4 p33:c03 expressly describes the measurements as agreeing with the main analysis; the asserted discrepancy is unsupported and contrary to that text."
+        }
+      ],
+      "answer_paraphrase": "Offers an unspecified beam-timing error and an invented disagreement between TT and RPC as the two instrumental problems.",
+      "grading_rationale": "Both required diagnoses are missing from the answer and from this received context. Instead of withholding the unavailable details, the response invents a detector disagreement contradicted by its cited excerpt.",
+      "adjudication_notes": [
+        "Required facts classified missing rather than incorrect because neither actual diagnosis is named; the substituted wrong diagnoses are separately recorded as material unsupported assertions."
+      ]
+    }
+  ],
+  "summary": {
+    "denominator_cases": 8,
+    "reference_content_correct": 0,
+    "scope_correct": 0,
+    "citation_grounded": 0,
+    "format_ok": 8,
+    "joint_content_scope_citation": 0,
+    "appropriate_abstention": 0,
+    "native_output_budget_failure": 0,
+    "required_fact_status_counts": {
+      "supported_correct": 10,
+      "missing": 6,
+      "ambiguous": 2,
+      "incorrect": 2
+    }
+  },
+  "pending_separate_adjudication": [
+    {
+      "case_ids": [
+        "case_1d9396eb5cbb",
+        "case_58bdb3a85e6e"
+      ],
+      "issue": "Whether malformed plus/minus-upper followed by minus-lower notation semantically conveys the intended asymmetric systematic error. Whole-answer axes are unchanged because of independent version mixing."
+    },
+    {
+      "case_ids": [
+        "case_22c33dac3dc5",
+        "case_655b6808782c"
+      ],
+      "issue": "Categorical retention fact receives partial credit despite the wrong baseline; alternate stricter fact-level granularity does not change any whole-answer axis."
+    }
+  ]
+}

@@ -1,0 +1,839 @@
+{
+  "schema_version": "retrieval_support_audit_v0.13",
+  "frozen_at_utc": "2026-10-03T09:22:12.535891+00:00",
+  "status": "context_only_completed_before_reviewer_output_inspection",
+  "review_provenance": {
+    "role": "independent_of_model_execution_context_only_support_reviewer",
+    "same_reviewer_as_reference_review": true,
+    "model_assisted": true,
+    "human_gold": false,
+    "blind_to_retrieval_condition": false,
+    "prior_source_familiarity": true,
+    "native_outputs_inspected": false,
+    "native_response_directories_accessed": false,
+    "new_network_calls": 0,
+    "inputs_modified": false
+  },
+  "input_sha256": {
+    "data/paired_reader_v13/protocol.json": "44ea89a529e2bacb143770d1bfa4f8f481903b390c236a6fd07d605cf5e93f2b",
+    "data/paired_reader_v13/questions.json": "fb375929e23431628d42aab6af127900cd246bfc50cc29146454edb27b95d45c",
+    "data/paired_reader_v13/questions_plug.json": "cc4e92d556f90637a35afb41a1b0907fe99678eaee1f5445a5c1ef6d685020f2",
+    "data/paired_reader_v13/questions_opera.json": "a6c57ef1cd5503d7cfc5728c45b39e1111eeaf3451a8ceba8da77c1d3cf731b8",
+    "data/paired_reader_v13/references_plug.json": "682a7af7fcef05bcc1a0ad16bca1874e2e7b5078db982b9e4a51b46dcbd91dbc",
+    "data/paired_reader_v13/references_opera.json": "2cbe0e728609073bf33c28c0a3f8876063635db6d75bd0bba89e49997e4edc66",
+    "data/paired_reader_v13/corpus_manifest.json": "9654ab05490a82899b337284f85e6891cb06f8f460f3a0630c2bfc02bb9865c4",
+    "results/paired_retrieval_v13.json": "3e9bbaba2d670331da24065e779e2fd5b15ad6d347d952a39d6b1162151d7986",
+    "results/paired_reference_review_v13.json": "1b259b9b467947bd68864674b5136d9226d713eb3f2c85e285e396b0b6d869dc"
+  },
+  "external_input_bindings": {
+    "contexts_path": "/workspace/scratch/bdef663e3dfc/tmp/paired_reader_v13/contexts.jsonl",
+    "contexts_sha256": "7fbac52d2469490ac3912b4ae9c3325360f0dc3c9949fd9b4f49981e1e1ccace",
+    "corpus_chunks_path": "/workspace/scratch/bdef663e3dfc/tmp/paired_reader_v13/corpus/chunks.jsonl",
+    "corpus_chunks_sha256": "c06dfc58eaaa3054762a47d180bfed9b30b1af361ca3bb0fbbaa20110a41ced3"
+  },
+  "verification": {
+    "context_count": 16,
+    "all_context_hashes_match": true,
+    "selected_chunk_ids_match_public_records": true,
+    "selected_chunk_texts_match_contexts_and_hashes": true,
+    "corpus_and_question_hashes_match_public_records": true
+  },
+  "support_status_definitions": {
+    "complete": "All mandatory factual claims, their relevant scope and required units are supported by the actual selected text, including documented source-specified derivations.",
+    "partial": "Some required fact, relevant portion or necessary side of the comparison is present, but at least one mandatory fact, scope binding or unit is not established.",
+    "absent": "No requested substantive fact has relevant target-scope support; generic topical mentions and wrong-period/different-measure facts do not count."
+  },
+  "counts_by_condition": {
+    "ordinary": {
+      "partial": 4,
+      "absent": 2,
+      "complete": 2
+    },
+    "paired": {
+      "partial": 5,
+      "complete": 2,
+      "absent": 1
+    }
+  },
+  "records": [
+    {
+      "question_id": "plug_v13_q1",
+      "condition": "ordinary",
+      "support_status": "partial",
+      "context_sha256": "faca147b45870e99dcd1530833ada03e6112e8ff607e290082ac1eebc7681347",
+      "selected_chunk_ids": [
+        "plug_2019_10k:p063:c02",
+        "plug_2019_10k:p081:c02",
+        "plug_2020_10k:p139:c02",
+        "plug_2020_10k:p139:c03",
+        "plug_2020_10k:p154:c03",
+        "plug_2020_10k:p195:c02"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "old_loss",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "plug_2019_10k:p081:c02"
+          ],
+          "rationale": "The old EPS-numerator table includes a year sequence and thousands unit, anchoring FY2018 common-stockholder loss at 78,167 thousand."
+        },
+        {
+          "fact_id": "old_basic_eps",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "plug_2019_10k:p063:c02",
+            "plug_2019_10k:p081:c02"
+          ],
+          "rationale": "The EPS row follows an identical three-value common-stockholder-loss row; cross-chunk alignment to the explicitly dated old numerator row anchors the middle FY2018 loss-per-share value."
+        },
+        {
+          "fact_id": "restated_loss",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p139:c02",
+            "plug_2020_10k:p139:c03"
+          ],
+          "rationale": "The correct restated number appears, but its table year labels and thousands unit are not retrieved."
+        },
+        {
+          "fact_id": "restated_basic_eps",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p139:c03"
+          ],
+          "rationale": "The 0.39 per-share figure is visible in an undated three-column row; the retrieved new-table header does not identify its FY2018 column."
+        }
+      ],
+      "scope_support": "partial: old FY2018 scope is explicit; later row-year binding is missing.",
+      "unit_support": "partial: old loss thousands unit and per-share label are present; no later-table multiplier witness. Do not transfer a prior-document unit convention automatically.",
+      "specific_omissions": [
+        "Later annual-statement year header and dollar multiplier are outside the selected chunks.",
+        "Later p195 chunk gives the EPS computation and restated heading but stops before its year/unit table.",
+        "The extra quarterly fragment is not a substitute for the missing annual FY2018 header."
+      ],
+      "alternative_evidence_assessments": [
+        {
+          "kind": "cross_chunk_alignment",
+          "accepted_for": "old_basic_eps",
+          "basis": "An identical labelled old loss row allows alignment with the separately retrieved old year header.",
+          "does_not_supply": "The later report has different rows/columns and still lacks its own year/unit context."
+        }
+      ],
+      "complete_facts_count": 2,
+      "required_facts_count": 4
+    },
+    {
+      "question_id": "plug_v13_q1",
+      "condition": "paired",
+      "support_status": "partial",
+      "context_sha256": "2e125f75105ca7e50a32bdd1110abe34a99bebd05cf0a38defbf7f20962fc123",
+      "selected_chunk_ids": [
+        "plug_2019_10k:p063:c02",
+        "plug_2019_10k:p081:c02",
+        "plug_2019_10k:p104:c01",
+        "plug_2020_10k:p139:c02",
+        "plug_2020_10k:p139:c03",
+        "plug_2020_10k:p195:c02"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "old_loss",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "plug_2019_10k:p081:c02"
+          ],
+          "rationale": "The old EPS-numerator table includes a year sequence and thousands unit, anchoring FY2018 common-stockholder loss at 78,167 thousand."
+        },
+        {
+          "fact_id": "old_basic_eps",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "plug_2019_10k:p063:c02",
+            "plug_2019_10k:p081:c02"
+          ],
+          "rationale": "The EPS row follows an identical three-value common-stockholder-loss row; cross-chunk alignment to the explicitly dated old numerator row anchors the middle FY2018 loss-per-share value."
+        },
+        {
+          "fact_id": "restated_loss",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p139:c02",
+            "plug_2020_10k:p139:c03"
+          ],
+          "rationale": "The correct restated number appears, but its table year labels and thousands unit are not retrieved."
+        },
+        {
+          "fact_id": "restated_basic_eps",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p139:c03"
+          ],
+          "rationale": "The 0.39 per-share figure is visible in an undated three-column row; the retrieved new-table header does not identify its FY2018 column."
+        }
+      ],
+      "scope_support": "partial: old FY2018 scope is explicit; later row-year binding is missing.",
+      "unit_support": "partial: old loss thousands unit and per-share label are present; no later-table multiplier witness. Do not transfer a prior-document unit convention automatically.",
+      "specific_omissions": [
+        "Later annual-statement year header and dollar multiplier are outside the selected chunks.",
+        "Later p195 chunk gives the EPS computation and restated heading but stops before its year/unit table.",
+        "The extra quarterly fragment is not a substitute for the missing annual FY2018 header."
+      ],
+      "alternative_evidence_assessments": [
+        {
+          "kind": "cross_chunk_alignment",
+          "accepted_for": "old_basic_eps",
+          "basis": "An identical labelled old loss row allows alignment with the separately retrieved old year header.",
+          "does_not_supply": "The later report has different rows/columns and still lacks its own year/unit context."
+        }
+      ],
+      "complete_facts_count": 2,
+      "required_facts_count": 4
+    },
+    {
+      "question_id": "plug_v13_q2",
+      "condition": "ordinary",
+      "support_status": "absent",
+      "context_sha256": "39f10f0b8f7987df92d3636bb4e507ef404699b02362e25835ca7a35d3f7dcc8",
+      "selected_chunk_ids": [
+        "plug_2019_10k:p029:c01",
+        "plug_2019_10k:p030:c01",
+        "plug_2020_10k:p147:c02",
+        "plug_2020_10k:p149:c02",
+        "plug_2020_10k:p164:c05",
+        "plug_2020_10k:p169:c01"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "unchanged",
+          "support": "absent",
+          "evidence_chunk_ids": [],
+          "rationale": "Unchanged service rows are retrieved for FY2019 and quarters, but none for FY2018."
+        },
+        {
+          "fact_id": "amount",
+          "support": "absent",
+          "evidence_chunk_ids": [],
+          "rationale": "The FY2018 22.002-million service revenue is absent; service-cost adjustments and other-period revenue are different quantities."
+        }
+      ],
+      "scope_support": "absent for the requested FY2018 service-revenue comparison.",
+      "unit_support": "A thousands-unit witness exists for a FY2019 table, not the missing FY2018 row.",
+      "specific_omissions": [
+        "The FY2018 service-revenue amount and its prior/restated equality are missing.",
+        "p147 is a cost-reclassification table; p149 concerns FY2019; p164 and p169 concern individual quarters."
+      ],
+      "alternative_evidence_assessments": [],
+      "complete_facts_count": 0,
+      "required_facts_count": 2
+    },
+    {
+      "question_id": "plug_v13_q2",
+      "condition": "paired",
+      "support_status": "partial",
+      "context_sha256": "e77ce3be8f1cba2fde50340bffb624fa8f0383e5162e98922c9f0cb06bc8d8d2",
+      "selected_chunk_ids": [
+        "plug_2019_10k:p029:c01",
+        "plug_2019_10k:p030:c01",
+        "plug_2019_10k:p030:c02",
+        "plug_2020_10k:p147:c02",
+        "plug_2020_10k:p164:c05",
+        "plug_2020_10k:p169:c01"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "unchanged",
+          "support": "absent",
+          "evidence_chunk_ids": [],
+          "rationale": "No retrieved later FY2018 service-revenue row establishes retention."
+        },
+        {
+          "fact_id": "amount",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "plug_2019_10k:p030:c02"
+          ],
+          "rationale": "The old narrative begins a comparison ending at the fragment from $22.0, but the trailing unit/date and later restated value are outside context."
+        }
+      ],
+      "scope_support": "partial old service-revenue narrative; FY2018 comparison and restatement retention are not fully established.",
+      "unit_support": "partial: nearby million-dollar phrasing suggests scale, but the target fragment ends before its own trailing scope and unit. Do not infer invisible continuation.",
+      "specific_omissions": [
+        "The 22.0 fragment is incomplete and lacks the trailing FY2018 attribution.",
+        "No later FY2018 service-revenue amount or no-adjustment row is retrieved."
+      ],
+      "alternative_evidence_assessments": [],
+      "complete_facts_count": 0,
+      "required_facts_count": 2
+    },
+    {
+      "question_id": "plug_v13_q3",
+      "condition": "ordinary",
+      "support_status": "complete",
+      "context_sha256": "2c2fe2d1ab97e4a66118540f6e857b7ff16a2dd4a01e23e5a5e0a49ee4413b36",
+      "selected_chunk_ids": [
+        "plug_2019_10k:p045:c06",
+        "plug_2020_10k:p067:c05",
+        "plug_2020_10k:p067:c06",
+        "plug_2020_10k:p146:c06",
+        "plug_2020_10k:p147:c01",
+        "plug_2020_10k:p183:c04"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "omitted_costs",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p147:c01"
+          ],
+          "rationale": "The retrieved continuation explicitly identifies omitted relevant historical/service costs, hydrogen-infrastructure costs and warrant provision."
+        },
+        {
+          "fact_id": "accrual_consequence",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p147:c01"
+          ],
+          "rationale": "The same passage states that considering those costs required additional contract loss accruals and links the provision to FY2018."
+        }
+      ],
+      "scope_support": "supported: extended maintenance contracts and year ended December31,2018 are explicit.",
+      "unit_support": "No number required; optional FY2018 5.3-million provision has an explicit million-dollar unit.",
+      "specific_omissions": [],
+      "alternative_evidence_assessments": [],
+      "complete_facts_count": 2,
+      "required_facts_count": 2
+    },
+    {
+      "question_id": "plug_v13_q3",
+      "condition": "paired",
+      "support_status": "complete",
+      "context_sha256": "9dc9f364a5e9d7ffd78c82913c84687a40033fd81ef07960f20bb40bd074410f",
+      "selected_chunk_ids": [
+        "plug_2019_10k:p017:c06",
+        "plug_2019_10k:p045:c05",
+        "plug_2019_10k:p045:c06",
+        "plug_2020_10k:p067:c06",
+        "plug_2020_10k:p147:c01",
+        "plug_2020_10k:p183:c04"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "omitted_costs",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p147:c01"
+          ],
+          "rationale": "The retrieved continuation explicitly identifies omitted relevant historical/service costs, hydrogen-infrastructure costs and warrant provision."
+        },
+        {
+          "fact_id": "accrual_consequence",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p147:c01"
+          ],
+          "rationale": "The same passage states that considering those costs required additional contract loss accruals and links the provision to FY2018."
+        }
+      ],
+      "scope_support": "supported: extended maintenance contracts and year ended December31,2018 are explicit.",
+      "unit_support": "No number required; optional FY2018 5.3-million provision has an explicit million-dollar unit.",
+      "specific_omissions": [],
+      "alternative_evidence_assessments": [],
+      "complete_facts_count": 2,
+      "required_facts_count": 2
+    },
+    {
+      "question_id": "plug_v13_q4",
+      "condition": "ordinary",
+      "support_status": "partial",
+      "context_sha256": "c965e2dff394ba6998768b8b5f26b08ec044fea9c0879650f3143b2557fa5122",
+      "selected_chunk_ids": [
+        "plug_2019_10k:p081:c02",
+        "plug_2020_10k:p003:c01",
+        "plug_2020_10k:p139:c03",
+        "plug_2020_10k:p150:c02",
+        "plug_2020_10k:p162:c05",
+        "plug_2020_10k:p195:c03"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "entity",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p003:c01"
+          ],
+          "rationale": "The explanatory note identifies Plug Power Inc. and subsidiaries."
+        },
+        {
+          "fact_id": "result_period",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p150:c02"
+          ],
+          "rationale": "The retrieved old/restated EPS row is followed by the FY2018 restatement-footnote heading, giving a local period anchor."
+        },
+        {
+          "fact_id": "report_period",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p003:c01"
+          ],
+          "rationale": "The source ID labels a 2020 10-K and the note discusses 2020 quarters, but no retrieved statement explicitly identifies this annual report fiscal year. The old-report cover in paired identifies FY2019 only."
+        }
+      ],
+      "scope_support": "partial: entity supported; report fiscal year is a filename/ID hint, not an explicit annual-cover witness in the retrieved body.",
+      "unit_support": "Per-share dollars are explicit; a thousands multiplier is not required for this question.",
+      "specific_omissions": [
+        "No new-report cover or equivalent explicit annual-report-year declaration is retrieved."
+      ],
+      "alternative_evidence_assessments": [
+        {
+          "kind": "metadata_hint",
+          "accepted_as_full_fact_support": false,
+          "basis": "document_id contains 2020; this is useful orientation but not a source-body certificate of the annual-report year."
+        }
+      ],
+      "complete_facts_count": 2,
+      "required_facts_count": 3
+    },
+    {
+      "question_id": "plug_v13_q4",
+      "condition": "paired",
+      "support_status": "partial",
+      "context_sha256": "4b3acb0700995391ebbbb39ae1f8012dec0e201b488bde81ce8d3daa190b5298",
+      "selected_chunk_ids": [
+        "plug_2019_10k:p001:c01",
+        "plug_2019_10k:p081:c02",
+        "plug_2019_10k:p104:c01",
+        "plug_2020_10k:p003:c01",
+        "plug_2020_10k:p139:c03",
+        "plug_2020_10k:p195:c03"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "entity",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p003:c01"
+          ],
+          "rationale": "The explanatory note identifies Plug Power Inc. and subsidiaries."
+        },
+        {
+          "fact_id": "result_period",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p139:c03",
+            "plug_2020_10k:p195:c03"
+          ],
+          "rationale": "The EPS row is undated and the separate numerator-table year header is flattened into 2019,2018,2020 order; assigning 0.39 to FY2018 requires recovering an unseen layout."
+        },
+        {
+          "fact_id": "report_period",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "plug_2020_10k:p003:c01"
+          ],
+          "rationale": "The source ID labels a 2020 10-K and the note discusses 2020 quarters, but no retrieved statement explicitly identifies this annual report fiscal year. The old-report cover in paired identifies FY2019 only."
+        }
+      ],
+      "scope_support": "partial: entity supported; result-year column binding is damaged and new-report fiscal-year cover absent.",
+      "unit_support": "Per-share dollars are explicit; a thousands multiplier is not required for this question.",
+      "specific_omissions": [
+        "No new-report cover or equivalent explicit annual-report-year declaration is retrieved.",
+        "The later numerator-table year ordering is malformed by text flattening; do not silently repair it from the source PDF."
+      ],
+      "alternative_evidence_assessments": [
+        {
+          "kind": "metadata_hint",
+          "accepted_as_full_fact_support": false,
+          "basis": "document_id contains 2020; this is useful orientation but not a source-body certificate of the annual-report year."
+        }
+      ],
+      "complete_facts_count": 1,
+      "required_facts_count": 3
+    },
+    {
+      "question_id": "opera_revised_result",
+      "condition": "ordinary",
+      "support_status": "complete",
+      "context_sha256": "6f12c51685114e2c7b3b7765f2bdf5fb9e970e9cebf0204750dc0e84fd5b37b2",
+      "selected_chunk_ids": [
+        "opera_pdf_v1:p003:c02",
+        "opera_pdf_v1:p016:c01",
+        "opera_pdf_v1:p019:c01",
+        "opera_pdf_v4:p024:c02",
+        "opera_pdf_v4:p029:c03",
+        "opera_pdf_v4:p033:c01"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "central_value",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "opera_pdf_v4:p033:c01"
+          ],
+          "rationale": "The revised main result is 6.5 ns."
+        },
+        {
+          "fact_id": "statistical_uncertainty",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "opera_pdf_v4:p033:c01"
+          ],
+          "rationale": "Statistical uncertainty is explicitly labelled 7.4 ns."
+        },
+        {
+          "fact_id": "systematic_uncertainty",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "opera_pdf_v4:p033:c01"
+          ],
+          "rationale": "The asymmetric +8.3/-8.0 systematic uncertainty is preserved despite flattened typography."
+        },
+        {
+          "fact_id": "compatibility",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "opera_pdf_v4:p033:c01"
+          ],
+          "rationale": "The same passage explicitly states compatibility with light speed within errors."
+        }
+      ],
+      "scope_support": "supported: version4 main result is distinct from the old anomaly and subsequent alternative-analysis sentence.",
+      "unit_support": "supported: ns and statistical/systematic labels are visible.",
+      "specific_omissions": [],
+      "alternative_evidence_assessments": [],
+      "complete_facts_count": 4,
+      "required_facts_count": 4
+    },
+    {
+      "question_id": "opera_revised_result",
+      "condition": "paired",
+      "support_status": "complete",
+      "context_sha256": "6f12c51685114e2c7b3b7765f2bdf5fb9e970e9cebf0204750dc0e84fd5b37b2",
+      "selected_chunk_ids": [
+        "opera_pdf_v1:p003:c02",
+        "opera_pdf_v1:p016:c01",
+        "opera_pdf_v1:p019:c01",
+        "opera_pdf_v4:p024:c02",
+        "opera_pdf_v4:p029:c03",
+        "opera_pdf_v4:p033:c01"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "central_value",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "opera_pdf_v4:p033:c01"
+          ],
+          "rationale": "The revised main result is 6.5 ns."
+        },
+        {
+          "fact_id": "statistical_uncertainty",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "opera_pdf_v4:p033:c01"
+          ],
+          "rationale": "Statistical uncertainty is explicitly labelled 7.4 ns."
+        },
+        {
+          "fact_id": "systematic_uncertainty",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "opera_pdf_v4:p033:c01"
+          ],
+          "rationale": "The asymmetric +8.3/-8.0 systematic uncertainty is preserved despite flattened typography."
+        },
+        {
+          "fact_id": "compatibility",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "opera_pdf_v4:p033:c01"
+          ],
+          "rationale": "The same passage explicitly states compatibility with light speed within errors."
+        }
+      ],
+      "scope_support": "supported: version4 main result is distinct from the old anomaly and subsequent alternative-analysis sentence.",
+      "unit_support": "supported: ns and statistical/systematic labels are visible.",
+      "specific_omissions": [],
+      "alternative_evidence_assessments": [],
+      "complete_facts_count": 4,
+      "required_facts_count": 4
+    },
+    {
+      "question_id": "opera_retained_baseline",
+      "condition": "ordinary",
+      "support_status": "partial",
+      "context_sha256": "8ccc6821782a96d0742dcc6ddbf696e85688196fed4b036b0201cb95577e73e1",
+      "selected_chunk_ids": [
+        "opera_pdf_v1:p015:c01",
+        "opera_pdf_v1:p019:c02",
+        "opera_pdf_v4:p018:c04",
+        "opera_pdf_v4:p020:c03",
+        "opera_pdf_v4:p022:c01",
+        "opera_pdf_v4:p028:c02"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "baseline_value",
+          "support": "absent",
+          "evidence_chunk_ids": [],
+          "rationale": "The requested 731278-m geodetic baseline is absent. Retrieved 730.085-km values are the different effective baseline; time-table baseline entries are in ns."
+        },
+        {
+          "fact_id": "retention",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "opera_pdf_v1:p015:c01",
+            "opera_pdf_v4:p022:c01"
+          ],
+          "rationale": "Both tables retain the same final baseline time entry, but no retrieved version4 passage directly binds it to the asked BCT-to-OPERA geodetic distance. A complete retention answer needs a scope link rather than conflating time and distance or effective baseline."
+        }
+      ],
+      "scope_support": "partial: direct BCT-geodetic retention is not established in the later context; effective-baseline distractors and time-domain tables are distinct.",
+      "unit_support": "Retrieved effective baseline is in km and tabulated baseline is in ns; neither directly supplies the requested geodetic distance.",
+      "specific_omissions": [
+        "The revised geodetic-baseline paragraph is not retrieved.",
+        "Matching table time entries are indirect retention evidence whose link to the queried geodetic measurement is not fully shown."
+      ],
+      "alternative_evidence_assessments": [
+        {
+          "kind": "matching_time_baseline_entries",
+          "accepted_as_complete_retention_support": false,
+          "basis": "Identical final time-baseline numbers in both versions are relevant but do not explicitly identify the geodetic-distance scope in these chunks."
+        }
+      ],
+      "complete_facts_count": 0,
+      "required_facts_count": 2
+    },
+    {
+      "question_id": "opera_retained_baseline",
+      "condition": "paired",
+      "support_status": "partial",
+      "context_sha256": "c165f9b9c7c844e31cec94fa4f1b2c57107e0fc86c9b7ee3cd176f0134e44677",
+      "selected_chunk_ids": [
+        "opera_pdf_v1:p010:c01",
+        "opera_pdf_v1:p015:c01",
+        "opera_pdf_v1:p019:c02",
+        "opera_pdf_v4:p018:c04",
+        "opera_pdf_v4:p020:c03",
+        "opera_pdf_v4:p022:c01"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "baseline_value",
+          "support": "supported",
+          "evidence_chunk_ids": [
+            "opera_pdf_v1:p010:c01"
+          ],
+          "rationale": "Although the explicit final sum is outside the chunk, the source specifies summing 730534.61 m and 743.391 m. Their sum supports approximately731278.0 m; this is an explicit source-specified derivation, not direct retrieval of the final displayed value."
+        },
+        {
+          "fact_id": "retention",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "opera_pdf_v1:p015:c01",
+            "opera_pdf_v4:p022:c01"
+          ],
+          "rationale": "Both tables retain the same final baseline time entry, but no retrieved version4 passage directly binds it to the asked BCT-to-OPERA geodetic distance. A complete retention answer needs a scope link rather than conflating time and distance or effective baseline."
+        }
+      ],
+      "scope_support": "partial: direct BCT-geodetic retention is not established in the later context; effective-baseline distractors and time-domain tables are distinct.",
+      "unit_support": "Original component distances are in metres; retained table entries are in ns.",
+      "specific_omissions": [
+        "The revised geodetic-baseline paragraph is not retrieved.",
+        "Matching table time entries are indirect retention evidence whose link to the queried geodetic measurement is not fully shown."
+      ],
+      "alternative_evidence_assessments": [
+        {
+          "kind": "matching_time_baseline_entries",
+          "accepted_as_complete_retention_support": false,
+          "basis": "Identical final time-baseline numbers in both versions are relevant but do not explicitly identify the geodetic-distance scope in these chunks."
+        },
+        {
+          "kind": "source_specified_component_sum",
+          "accepted_for": "baseline_value",
+          "calculation": "730534.61m + 743.391m = 731278.001m, equivalent at the requested reporting precision.",
+          "scope": "Applies only to the retrieved old geodetic paragraph; does not supply the missing new distance witness."
+        }
+      ],
+      "complete_facts_count": 1,
+      "required_facts_count": 2
+    },
+    {
+      "question_id": "opera_revision_reason",
+      "condition": "ordinary",
+      "support_status": "absent",
+      "context_sha256": "e69cf30fa5ee1eea9883d54691f77c3a0c5979a910c6c508f622f48f549e7b35",
+      "selected_chunk_ids": [
+        "opera_pdf_v1:p003:c01",
+        "opera_pdf_v1:p009:c03",
+        "opera_pdf_v1:p020:c03",
+        "opera_pdf_v4:p005:c04",
+        "opera_pdf_v4:p033:c03",
+        "opera_pdf_v4:p033:c04"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "fibre_connection",
+          "support": "absent",
+          "evidence_chunk_ids": [],
+          "rationale": "The contexts say instrumental effects were identified but do not identify the faulty optical-fibre connection."
+        },
+        {
+          "fact_id": "oscillator_frequency",
+          "support": "absent",
+          "evidence_chunk_ids": [],
+          "rationale": "No retrieved passage identifies the Master Clock frequency offset."
+        }
+      ],
+      "scope_support": "Only generic anomaly-investigation context is present; both requested specific problems are absent.",
+      "unit_support": "No numerical answer required.",
+      "specific_omissions": [
+        "The selected introductory/concluding mentions point to instrumental sources without naming either required cause.",
+        "The cited Section6.1 is not itself retrieved for this question."
+      ],
+      "alternative_evidence_assessments": [],
+      "complete_facts_count": 0,
+      "required_facts_count": 2
+    },
+    {
+      "question_id": "opera_revision_reason",
+      "condition": "paired",
+      "support_status": "absent",
+      "context_sha256": "e69cf30fa5ee1eea9883d54691f77c3a0c5979a910c6c508f622f48f549e7b35",
+      "selected_chunk_ids": [
+        "opera_pdf_v1:p003:c01",
+        "opera_pdf_v1:p009:c03",
+        "opera_pdf_v1:p020:c03",
+        "opera_pdf_v4:p005:c04",
+        "opera_pdf_v4:p033:c03",
+        "opera_pdf_v4:p033:c04"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "fibre_connection",
+          "support": "absent",
+          "evidence_chunk_ids": [],
+          "rationale": "The contexts say instrumental effects were identified but do not identify the faulty optical-fibre connection."
+        },
+        {
+          "fact_id": "oscillator_frequency",
+          "support": "absent",
+          "evidence_chunk_ids": [],
+          "rationale": "No retrieved passage identifies the Master Clock frequency offset."
+        }
+      ],
+      "scope_support": "Only generic anomaly-investigation context is present; both requested specific problems are absent.",
+      "unit_support": "No numerical answer required.",
+      "specific_omissions": [
+        "The selected introductory/concluding mentions point to instrumental sources without naming either required cause.",
+        "The cited Section6.1 is not itself retrieved for this question."
+      ],
+      "alternative_evidence_assessments": [],
+      "complete_facts_count": 0,
+      "required_facts_count": 2
+    },
+    {
+      "question_id": "opera_selection_scope",
+      "condition": "ordinary",
+      "support_status": "partial",
+      "context_sha256": "e5a1fe2b896e95e9237863e2ab73d67550d53c630a1b07ef7f580d44ec704132",
+      "selected_chunk_ids": [
+        "opera_pdf_v1:p011:c02",
+        "opera_pdf_v1:p015:c03",
+        "opera_pdf_v4:p018:c04",
+        "opera_pdf_v4:p020:c01",
+        "opera_pdf_v4:p020:c03",
+        "opera_pdf_v4:p024:c01"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "scope_changed",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "opera_pdf_v1:p011:c02"
+          ],
+          "rationale": "The original sample/selection is visible but the revised selected sample is missing. The same running years in later waveform figures cannot establish same or changed selected observations."
+        },
+        {
+          "fact_id": "selection_reason",
+          "support": "absent",
+          "evidence_chunk_ids": [],
+          "rationale": "No retrieved passage contains rejection of isolated earliest hits or its noise/early-bias rationale."
+        }
+      ],
+      "scope_support": "partial old-sample support only; revised instrumental corrections are not selected-event-scope evidence.",
+      "unit_support": "Optional old sample count can be summed from internal/external counts; no revised count is retrieved.",
+      "specific_omissions": [
+        "The revised data-selection section and isolated-hit exclusion rule are missing.",
+        "Retrieved fibre/clock correction passages answer another question and do not establish a sample-selection change."
+      ],
+      "alternative_evidence_assessments": [
+        {
+          "kind": "original_component_counts",
+          "accepted_for": "optional_original_count_only",
+          "basis": "7586 internal plus8525 external gives16111 old events; no new event total is present.",
+          "does_not_supply": "The required cross-version selection comparison or reason."
+        }
+      ],
+      "complete_facts_count": 0,
+      "required_facts_count": 2
+    },
+    {
+      "question_id": "opera_selection_scope",
+      "condition": "paired",
+      "support_status": "partial",
+      "context_sha256": "b5f5370a630f25aee6827596a3e7a78d6e564bf52cf44c5f153adcdb92b4f416",
+      "selected_chunk_ids": [
+        "opera_pdf_v1:p011:c02",
+        "opera_pdf_v1:p015:c03",
+        "opera_pdf_v1:p021:c02",
+        "opera_pdf_v4:p018:c04",
+        "opera_pdf_v4:p020:c01",
+        "opera_pdf_v4:p024:c01"
+      ],
+      "required_fact_support": [
+        {
+          "fact_id": "scope_changed",
+          "support": "partial",
+          "evidence_chunk_ids": [
+            "opera_pdf_v1:p011:c02"
+          ],
+          "rationale": "The original sample/selection is visible but the revised selected sample is missing. The same running years in later waveform figures cannot establish same or changed selected observations."
+        },
+        {
+          "fact_id": "selection_reason",
+          "support": "absent",
+          "evidence_chunk_ids": [],
+          "rationale": "No retrieved passage contains rejection of isolated earliest hits or its noise/early-bias rationale."
+        }
+      ],
+      "scope_support": "partial old-sample support only; revised instrumental corrections are not selected-event-scope evidence.",
+      "unit_support": "Optional old sample count can be summed from internal/external counts; no revised count is retrieved.",
+      "specific_omissions": [
+        "The revised data-selection section and isolated-hit exclusion rule are missing.",
+        "Retrieved fibre/clock correction passages answer another question and do not establish a sample-selection change."
+      ],
+      "alternative_evidence_assessments": [
+        {
+          "kind": "original_component_counts",
+          "accepted_for": "optional_original_count_only",
+          "basis": "7586 internal plus8525 external gives16111 old events; no new event total is present.",
+          "does_not_supply": "The required cross-version selection comparison or reason."
+        }
+      ],
+      "complete_facts_count": 0,
+      "required_facts_count": 2
+    }
+  ],
+  "limits": [
+    "Context audit only; no native answers, model score or condition performance inferred.",
+    "Same-page overlap alone never establishes support.",
+    "Known full-source facts cannot fill omitted context.",
+    "Alternative derivations and metadata hints are explicitly distinguished from directly stated evidence.",
+    "Two familiar histories cannot establish prevalence, generalization or method novelty."
+  ],
+  "prose_path": "docs/retrieval_support_audit_v13.txt",
+  "prose_sha256": "171fa891515dd3c35c397b2e2564cd285faba7a2c76da9918bbefb1c6f26214b"
+}

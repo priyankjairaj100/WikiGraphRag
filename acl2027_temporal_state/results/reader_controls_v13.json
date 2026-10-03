@@ -1,0 +1,45 @@
+{
+  "schema_version": "reader_controls_v0.13",
+  "evaluated_at_utc": "2026-10-03T09:14:54.799096+00:00",
+  "grader_role": "root_source_conditioned_semantic_review",
+  "model_assisted": true,
+  "human_gold": false,
+  "reference_review_sha256": "0139c428a1840a6496cd00a63807b516461a55fa39fed5c2ba4786d50d0c055c",
+  "references_sha256": "58ec20a97499bf30b10e74426e299319295c47ef0220d1b84967261bd473753e",
+  "native_receipt_sha256": "55c266864a8162310c84b166be1205646a5ad9826c80ced46be26950b3930f5d",
+  "controls": [
+    {
+      "request_id": "control_same_period",
+      "response_file_sha256": "753546f3c8e30633e409bfd0e3503313b09b50cf65cb49b994270216442d4e1b",
+      "content_sha256": "db542e58276242b4448b6a724977b81e29fa51a95c2b2605531461e3e49cc60a",
+      "content": "The corrected application count is 34 [control_new p.1]. The fiscal year covered by that count did not change; it remains fiscal year 2021 [control_new p.1].",
+      "factual_content_pass": true,
+      "scope_pass": true,
+      "citation_support_pass": true,
+      "format_pass": true,
+      "rationale": "Correct explicit count and same reporting year, with sufficient new-source citation.",
+      "stop_type": "eos",
+      "tokens_evaluated": 222,
+      "tokens_predicted": 43
+    },
+    {
+      "request_id": "control_changed_scope",
+      "response_file_sha256": "66bbf5888ca648370215398d660374901391bdab159c505b75aff7336dba3365",
+      "content_sha256": "caa28ce943084abfb67761d5f1badcc82bb5e765b6b7ed825b93c635b2d95ef3",
+      "content": "No, the set of participants is not unchanged between versions. The first version used 80 participants, while the second version uses 72 after excluding 8 with missing baseline measurements [sample_old p.1, sample_new p.1]. The calibration distance remains 12 metres in both versions [sample_old p.1, sample_new p.1].",
+      "factual_content_pass": true,
+      "scope_pass": true,
+      "citation_support_pass": true,
+      "format_pass": true,
+      "rationale": "Correct changed participant set and unchanged calibration, with sufficient citations. Grouped citations accepted as readable document/page references.",
+      "stop_type": "eos",
+      "tokens_evaluated": 199,
+      "tokens_predicted": 75
+    }
+  ],
+  "controls_passed": 2,
+  "gate_passed": true,
+  "main_batch_permitted": true,
+  "interpretation": "Two authored short controls establish only competence for a bounded pilot; no strong-baseline or general reading-performance certificate.",
+  "output_export": "Both prompts/sources are newly authored synthetic text, so native answers can be preserved in full without third-party source text."
+}

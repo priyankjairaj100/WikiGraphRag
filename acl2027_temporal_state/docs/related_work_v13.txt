@@ -1,0 +1,132 @@
+Bounded literature and novelty check v0.13
+Checked 3 October 2026; four search queries; primary-source comparison
+
+Decision
+
+No novel contribution is established by ordinary versus paired-version BM25.
+The ongoing two-history experiment is a development diagnostic. Existing work
+already studies version filtering, explicit and implicit document changes,
+outdated evidence, temporal table selection, and decomposition of retrieval
+and reasoning. Adding version nodes, retrieving both versions, or separating
+retrieval from generation errors cannot by itself support an ACL novelty claim.
+
+This audit is separate from the frozen four-PDF experiment corpus. It adds no
+source histories, questions, reference answers, predictions or experiments.
+It is a bounded selection of nearby work, not an exhaustive review or a
+certification of the literature available at an eventual ACL 2027 deadline.
+Publication dates below are from the primary records, not search crawl dates.
+
+Verified nearby work
+
+1. Huwiler, Stockinger and Fuerst: VersionRAG (arXiv v1, 9 October 2025).
+   https://arxiv.org/html/2510.08109v1
+   Sections 3-5 explicitly organize documents, versions, content and changes
+   in a graph. Query classification selects content, version or change
+   retrieval, with version filtering and indexed differences between states.
+   VersionQA contains 100 manually curated questions over 34 technical files.
+   The paper compares a top-five dense retriever and graph retrieval under
+   several readers; its evaluation is therefore more than a simple latest-
+   document selector. Section 6.5 separately varies indexing and retrieval
+   models. The paper's scope is discrete versions; its limitations acknowledge
+   gaps in calendar-time reasoning and reliance on extracted version metadata.
+   Project implication (our inference): any later method must be compared
+   against version-filtered retrieval and an indexed-change comparator.
+   A new implementation of these ingredients is not a new research problem.
+
+2. Ouyang et al.: HoH (ACL, July 2025).
+   https://aclanthology.org/2025.acl-long.301.pdf
+   Sections 3-5 construct questions and old/current evidence from Wikipedia
+   snapshots, then analyze retrieval and generation separately. The pipeline
+   filters textual differences and uses a trained factual-change classifier
+   before question generation. Its experiments include current, outdated and
+   distractor evidence, passage ordering, and temporal retrieval comparators.
+   Appendix E extends checks to a stronger proprietary reader on a subset.
+   Project implication (our inference): showing that old text confuses a small
+   model, or that both-version evidence improves some answers, repeats an
+   established concern. A later study needs matched evidence budgets, passage-
+   order controls and retrieval coverage measures, not just answer accuracy.
+
+3. Cao et al.: Re3 (ACL, July 2026).
+   https://aclanthology.org/2026.acl-long.1180.pdf
+   Section 3 combines temporal relevance encoding with fact-grouped recency
+   filtering. Its assumptions distinguish content time from publication time:
+   publication time is available, and the latest authoritative record for a
+   fact is taken as current truth. False latest records and source-reliability
+   disputes are outside that setting. Section 4 compares retrieval and answer
+   performance, including a cross-encoder reranker and several generators.
+   Project implication (our inference): relevance plus recency is already a
+   substantive comparator. Our unknown first-public times must not be filled
+   in to fit its assumptions. A correction of a historical estimate and a
+   new estimate over a changed population need not have the same semantics,
+   even when document version order is known.
+
+4. Shankarampeta et al.: TRANSIENTTABLES (NAACL, April 2025).
+   https://aclanthology.org/2025.naacl-long.332.pdf
+   The dataset has 3,971 questions over 14,133 tables spanning 1,238 entities.
+   Section 2 distinguishes explicit and implicit temporal questions and
+   includes table selection, ratios, percentages and comparisons. Section 3
+   decomposes answering into temporal grounding, attribute selection and
+   analytical reasoning, with different context granularities. Its examples
+   concern changing semi-structured values rather than establishing a
+   correction certificate for every document revision.
+   Project implication (our inference): separating table extraction, units,
+   temporal selection and numerical reasoning is necessary diagnostic hygiene,
+   but that decomposition alone is not novel. Any finance-table extension
+   should preserve headers, row labels, units and the relevant reporting scope.
+
+Unresolved current lead
+
+The searches also surfaced Sobhani et al., Time Present and Time Past:
+Benchmarking Large Language Models on Temporally Evolving Document
+Understanding, arXiv:2608.08512, with a search-record date of 9 August 2026.
+https://arxiv.org/abs/2608.08512
+The abstract-page, HTML-v1 and PDF opens all returned tool-level internal
+errors. The search record describes version resolution over amended official
+texts, so this is a material novelty lead. Its full methods and claims were
+not verified; it is omitted from the verified bibliography and is not used
+to assert a gap. No further search queries were issued after the four-query
+cap. Access failure does not invalidate the paper or establish its absence.
+
+Potential research question, still unproven
+
+The defensible candidate is narrower than version-aware RAG: can a reader
+decide whether two reported results are comparable before stating that one
+corrects, replaces or contradicts the other? A possible representation would
+attach evidence for population, inclusion criteria, measurement definition,
+units, reporting interval and authority to each result. It would distinguish
+an explicitly corrected same-scope result, a revised analysis with changed
+scope, a retained result, and insufficient evidence. Unknown fields remain
+unknown; newer document order alone does not determine these relations.
+
+This is our proposed hypothesis, not a capability proven absent from the
+four papers, an implemented algorithm, or a claimed first. In particular,
+VersionRAG could retrieve the needed change evidence, and a competent reader
+could make the distinction without any extra machinery. The fixed experiment
+must first establish whether such a residual failure exists.
+
+Conditions for further investment
+
+- Separate missing evidence, damaged table extraction, wrong units, incorrect
+  reading and unsupported scope attribution. Do not call all of them temporal
+  reasoning errors. Inspect citations and actual retrieved content.
+- Keep the existing simple BM25 comparison as a diagnostic. A later study
+  would need matched version filtering, dense/hybrid retrieval with reranking,
+  a change-index comparator, and a competent reader. Do not call an adapted
+  approximation an executed reproduction of VersionRAG or Re3.
+- If the error persists with adequate evidence and a competent reader, design
+  a separate blinded evaluation across independently held-out document
+  histories. Review scope labels and abstentions before predictions; measure
+  both correct comparisons and false claims of comparability. Include a
+  scope-metadata ablation with matched context budget.
+- If ordinary reading works, or errors disappear after extraction and basic
+  competence are repaired, this diagnostic supplies no new method claim.
+  Neither a positive nor a negative result on two familiar histories can
+  establish prevalence, broad gains, or readiness for ACL 2027 submission.
+
+Audit files
+
+data/provenance/literature_search_v13.json records exact queries, primary URLs,
+publication-date precision, retrieval failures and evidence locations.
+paper/references_v13.bib contains the four verified bibliographic records.
+Only bibliographic metadata and paraphrased analysis are distributed; the
+third-party manuscripts and search-result bodies are not copied into the repo.

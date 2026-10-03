@@ -1,5 +1,5 @@
 {
-  "version": "0.12",
+  "version": "0.13",
   "created": "2026-10-01",
   "date_basis": "planning targets; not scheduled background jobs",
   "tasks": [
@@ -573,14 +573,42 @@
       "depends_on": [
         "D10"
       ],
-      "status": "pending",
+      "status": "completed",
       "target_date": null,
       "priority": "highest_research_priority",
       "acceptance": "At most eight reviewed questions over the two complete PDF pairs, faithful page/table corpus, reader competence controls, matched ordinary/paired retrieval, raw outputs, separate factual/scope/citation/format scoring and go/no-go. No held-out or novelty claim.",
       "protocol": "data/provenance/route_decision_v12.json",
-      "progress": "Concrete design recommendation recorded; no questions/references/prediction protocol frozen and no model run yet."
+      "progress": "v0.13:550pages/2306chunks; eight frozen questions;2control+16main+16layout native answers; no budget failures. Main and layout ordinary/paired joint counts all1/8. Context audits identify incomplete evidence and remaining complete-context reader failures.433tests and945provenance checks pass. Pilot completed without a method-gain claim.",
+      "results": "results/paired_study_summary_v13.json"
+    },
+    {
+      "id": "E06",
+      "phase": "Evaluation",
+      "task": "Establish adequate pinned reader and source-faithful structural baselines",
+      "depends_on": [
+        "E05"
+      ],
+      "status": "pending",
+      "priority": "highest_research_priority",
+      "target_date": "2026-10-17",
+      "acceptance": "Executable stronger reader with reviewed domain controls and frozen cost/resource bounds; matched structural and metadata baselines with all source attachments charged to budget. No promotion of conversational annotation to pinned model output.",
+      "blocker": "Fresh read-only Hugging Face Jobs operation remains unavailable; no paid job launched.",
+      "plan": "docs/acl2027_execution_plan_v13.txt"
+    },
+    {
+      "id": "D11",
+      "phase": "Data",
+      "task": "Freeze fresh comparison histories and independent evaluation split",
+      "depends_on": [
+        "E06"
+      ],
+      "status": "pending",
+      "priority": "high",
+      "target_date": "2026-11-15",
+      "acceptance": "New history/entity-disjoint split, source-grounded scope distinctions and independently reviewed references frozen before predictions. Existing8questions stay development-only. No outcome-based case selection.",
+      "plan": "docs/next_retrieval_gate_v13.txt"
     }
   ],
   "updated": "2026-10-03",
-  "current_focus": "Run a bounded paired-version scope-aware reading study on recovered PDFs; stop current propagation-method expansion."
+  "current_focus": "Feasibility study complete: source-bound structural retrieval and an adequate reader are the next gate; no algorithmic advantage established."
 }

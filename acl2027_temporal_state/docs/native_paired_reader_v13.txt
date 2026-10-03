@@ -1,0 +1,72 @@
+v0.13 paired native reader collection
+
+The new collector runs separately frozen two-request control and sixteen-request
+main batches. Root must evaluate the control gate before executing the main batch.
+This is a bounded Qwen3-4B basic-competence diagnostic, not a strong-baseline claim.
+Responses are natural text with source-page citations; there is no JSON/enumeration
+output constraint or grammar. Source text, answer text and all token arrays remain
+external. Root performs later reference-based scoring and any source-copy review.
+
+Input request JSON is a list of exactly two or sixteen objects containing only
+request_id and prompt. The config uses exactly these fields:
+  schema_version: native_paired_reader_config_v0.13
+  batch_id: controls (or a distinct main batch identifier)
+  expected_requests: 2 (or 16)
+  maximum_context_tokens: 4096
+  maximum_input_tokens: 3500
+  maximum_generated_tokens: 256
+  port: 18093
+  per_request_timeout_seconds: 900
+  system_prompt: the root-frozen plain-text answering instructions
+
+CLI from acl2027_temporal_state:
+  python3 scripts/native_paired_reader_v13.py freeze --config CONFIG.json \
+    --request EXTERNAL_REQUESTS.json --protocol PROTOCOL.json \
+    --reference-review REVIEW.json --external NEW_EXTERNAL_DIRECTORY \
+    --data-dir NEW_PROJECT_DATA_DIRECTORY --receipt NEW_PROJECT_RECEIPT.json \
+    --assets /workspace/scratch/bdef663e3dfc/tmp/local_backend_v09
+  python3 scripts/native_paired_reader_v13.py execute --external EXTERNAL_DIRECTORY
+  python3 scripts/native_paired_reader_v13.py verify --external EXTERNAL_DIRECTORY
+
+Freeze performs file hashing and pinned asset verification only: no model or network
+launch. It binds requests, config, protocol, reference-review bytes, collector,
+unchanged backend helpers, backend configuration, model bytes and the runtime-file
+manifest. Reference-review content is never given to the model. This is a hash
+binding, not an automated certification of reference quality or independence.
+The separate data and receipt paths identify each batch. Existing attempts are
+never overwritten or resumed. All source-bearing files must be outside the Git
+repository, including outside sibling project directories.
+
+Execute requires the predeclared host environment because default-sandbox cgroup
+telemetry is unavailable. It imports unchanged larger_scorer_v09.server: 5.5 GiB
+hard address-space limit, 7 GiB cgroup resident watchdog, 3600 CPU seconds and 1050
+wall seconds per process. Cgroup telemetry loss, failed process exit or watchdog
+stops are failures, never reasons to weaken the guards. No assets are downloaded.
+All API traffic is loopback. Model and runtime assets are rechecked before calls.
+
+An initial process renders and tokenizes every full system-plus-user input without
+completion. Each complete rendered prompt must satisfy the frozen input cap and
+4096-token context including the entire 256-token output reserve. No trimming,
+substitution or context shifting occurs. Its token arrays and hashes are frozen
+before the first completion. Every completion gets a fresh process, the same
+native template and tokenization, cache_prompt=false and verified cache_n=0.
+Parameters are greedy temperature -1 (native echo 0), seed 7, 256 generated tokens,
+no grammar, no custom stop strings, and neutral repetition/presence penalties.
+
+Native raw responses are saved before validation. Execution, identity, parameter,
+accounting or process failures stop the batch and retain its observed prefix;
+there is no retry, repair, fallback or prompt change. A normal stop_type=limit is
+retained as an output-budget failure and the fixed remaining requests continue.
+It is not silently converted into a successful answer. This distinction was
+agreed before freezing either batch. Semantic errors and citation mistakes are
+also retained for later scoring rather than repaired by this collector.
+
+Public files contain hashes, counts, token/time metadata, resource traces and
+execution status. They exclude source-bearing prompts, native generated text,
+full token arrays and full HTTP errors. Native returned token counts can exclude
+terminal stop tokens, so returned-array length and tokens_predicted remain separate.
+The offline verifier checks frozen inputs, artifact inventories, exact preflight
+and request bindings, native response accounting, model/resource identity, fresh
+process IDs and output-limit counts. It launches no model. Six focused unit tests
+check budgets, request labels/duplicates, full-input enforcement, cold-response
+identity, output-limit retention and exclusion of source/answer text.

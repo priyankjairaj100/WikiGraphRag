@@ -1,0 +1,68 @@
+Exact-span native-layout follow-up, v0.13
+
+Purpose and declaration
+
+The source-only context audit identified a rendering limitation: joining all
+whitespace inside a chunk can obscure native column alignment and line order.
+This follow-up tests only that representation change. It does not repair source
+extraction, retrieve different evidence or supply a table's absent headers/units.
+
+The separate layout_protocol.json was declared before layout contexts were
+rendered. The primary native batch was already running. At declaration, the
+corpus agent had not inspected primary responses or reference answers, and the
+root agent reported it had not inspected primary answer contents. This is a
+development follow-up motivated by visible source/context structure; it is not
+an independent held-out experiment or a retrospective preregistration of the
+primary run. The primary corpus, retrieval, requests and results are unchanged.
+
+Exact transformation
+
+Each original chunk stores its physical source page and half-open whitespace
+word offsets. The renderer verifies the original corpus, retrieval and context
+hashes, verifies each needed augmented page hash, and finds Unicode non-whitespace
+words with the regex \S+. It copies the substring from the first selected word's
+start through the last selected word's end. Native internal spaces and line
+breaks remain. No unselected source word is copied. Leading whitespace before the
+first selected word and trailing whitespace after the last word are not added.
+
+The original normalized context must first reconstruct exactly from the frozen
+chunk text and headers. The transformed text must have the identical per-chunk
+and whole-context whitespace-token sequences. Chunk IDs, scores, ranks, selection,
+order, query text/hash, citation headers and evidence-word counts must agree with
+the frozen ordinary and paired retrieval outputs. Any mismatch fails the render.
+All 16 original question/condition cells must be present exactly once.
+
+All copied third-party text remains outside the repository. The public metadata
+contains original and transformed context hashes, byte counts, unchanged evidence
+metadata, and each restored span's page hash, word offsets and text hashes. These
+receipts are software invariance evidence, not task performance.
+
+What remains unresolved
+
+An original chunk beginning below a unit or period heading still begins below it.
+The follow-up does not add nearby page prefixes, infer unit inheritance, associate
+headers across pages or alter the semantic selection of passages. Mathematical
+reading order already flattened by native PDF extraction can remain flattened.
+Retaining source-native whitespace is not certification that model text rendering
+is visually identical to the PDF.
+
+The same 960-evidence-word limit applies, but spaces and line breaks may change
+native token counts. Every full native prompt must therefore be recounted before
+any follow-up batch. If any input exceeds 3500 native tokens, the whole proposed
+layout batch is recorded as an input-budget failure: no truncation and no subset
+launch. A later amended study would need its own declaration. The renderer never
+launches inference and does not assert execution eligibility. A separate request
+and execution freeze must bind the same model, prompts, decoding and resource
+rules before any native layout batch.
+
+Commands and checks
+
+  python3 scripts/render_layout_contexts_v13.py
+  python3 -m unittest discover -s tests -p test_layout_contexts_v13.py -q
+
+Both context and metadata destinations are write-once. Five focused tests cover
+column spaces/line order, absent-header exclusion, Unicode whitespace and signs,
+source mismatch rejection and unchanged headers/chunk order. The tests use
+authored structural fixtures and make no empirical research claim. Source-word
+roundtrip checks on the selected real financial pages occur in the actual render
+through the same generic span validation applied to every selected chunk.

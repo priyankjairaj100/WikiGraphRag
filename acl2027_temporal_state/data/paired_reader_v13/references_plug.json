@@ -1,0 +1,527 @@
+{
+  "schema_version": "paired_reader_v13.free_text_references.plug.1",
+  "author_frozen_at_utc": "2026-10-03T09:07:15.881989+00:00",
+  "status": "author_amended_for_independent_source_review_before_predictions",
+  "history_id": "plug_power_2018_restatement",
+  "provenance": {
+    "model_assisted": true,
+    "human_gold": false,
+    "blind": false,
+    "development_familiarity": true,
+    "prior_v12_source_reviewer_authored": true,
+    "question_selection": "Four development questions span revised values, retained values, an explicit accounting explanation and reporting-period scope. They are not randomly sampled or held out.",
+    "new_network_calls": 0,
+    "model_predictions_seen": false,
+    "independent_reference_review": "pending separate reviewer; do not describe this file alone as independent gold"
+  },
+  "input_sha256": {
+    "results/plug_source_review_v12.json": "af9c8d7be4fb590c4fc8e3f8042693e7e27d115997cbef2bf2a3fdfbcf1995c6",
+    "data/paired_reader_v13/questions_plug.json": "cc4e92d556f90637a35afb41a1b0907fe99678eaee1f5445a5c1ef6d685020f2"
+  },
+  "sources": [
+    {
+      "document_id": "plug_2019_10k",
+      "requested_url": "https://s29.q4cdn.com/600973483/files/doc_financials/2019/ar/4Q19-10K.pdf",
+      "representation_sha256": "340fa876da758ee17acf58d1a75f93bcdea1307f4b5a07c6daeb6ec88923cd47",
+      "full_extraction_sha256": "d557a6ac102ca5298cc51d157b887746d1346982140e7b42ed6e3898767649a1",
+      "pdf_page_count": 142
+    },
+    {
+      "document_id": "plug_2020_10k",
+      "requested_url": "https://s29.q4cdn.com/600973483/files/doc_financials/2020/ar/4Q20-10K.pdf",
+      "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+      "full_extraction_sha256": "4b11552118f4c4719df0cd0c8bc12a453a002dfc4a2bee8ad2ff4cdf02574764",
+      "pdf_page_count": 347
+    }
+  ],
+  "shared_scoring_guidance": {
+    "response": "Free-text answer with document/page citations; no fixed answer-label vocabulary is required.",
+    "separate_dimensions": [
+      "response formatting",
+      "semantic factual correctness",
+      "citation support"
+    ],
+    "semantic_variants": "Judge meaning, not an exact reference string. Accurate synonyms, standard fiscal-year notation and equivalent unit conversions are acceptable.",
+    "citation_variants": "Use one-based PDF pages. A correct printed-page citation with an unambiguous document identifier is mappable through the locators below; citation-format issues must not erase correct semantic content.",
+    "sufficient_page_sets": "Listed sets are sufficient examples, not an exhaustive whitelist. Other captured-source passages genuinely supporting all required facts are acceptable after source verification.",
+    "later_report_sufficiency": "Every question can be answered from the FY2020 report alone. The later report includes prior/restated columns. Do not require both reports, reward a condition merely for using both, or assume paired context must improve answers.",
+    "no_extra_credit": "No propagation, assertion-ID or graph terminology is required. No natural-language reference depends on the v12 annotation.",
+    "scope": "Document/report years identify source scope; first-public-availability times are not being tested.",
+    "partial_answers": "Preserve fact-level judgments and specific omissions. A synonym or formatting defect cannot convert all facts or all questions to semantic failure."
+  },
+  "references": [
+    {
+      "question_id": "plug_v13_q1",
+      "category": "revised_fy2018_results",
+      "reference_answer": "The FY2018 loss attributable to common stockholders increased from $78.167 million to $85.660 million. Basic loss per share increased from $0.36 to $0.39.",
+      "required_facts": [
+        {
+          "fact_id": "old_loss",
+          "meaning": "FY2018 common-stockholder net loss before restatement was USD 78.167 million."
+        },
+        {
+          "fact_id": "restated_loss",
+          "meaning": "The same FY2018 common-stockholder loss after restatement was USD 85.660 million."
+        },
+        {
+          "fact_id": "old_basic_eps",
+          "meaning": "FY2018 basic loss per share before restatement was USD 0.36."
+        },
+        {
+          "fact_id": "restated_basic_eps",
+          "meaning": "FY2018 basic loss per share after restatement was USD 0.39."
+        }
+      ],
+      "acceptable_variants": [
+        "Net loss rose/increased/worsened; earnings or signed net result became more negative.",
+        "USD 78,167 thousand to USD 85,660 thousand; USD 78,167,000 to USD 85,660,000.",
+        "Negative EPS of -$0.36 to -$0.39; loss-per-share magnitudes $0.36 to $0.39.",
+        "A correctly identified combined basic-and-diluted figure is acceptable because both measures are the same here."
+      ],
+      "numeric_sign_unit_tolerance": {
+        "loss_values": "Accept exact source units/conversions or correctly rounded amounts identified as approximate, down to one decimal place in millions (about $78.2m to $85.7m). Unqualified source-precision amounts should match the reported values.",
+        "eps_values": "Retain cent-level distinction: $0.36 versus $0.39. Equivalent trailing-zero formatting is acceptable.",
+        "sign": "Positive amounts with an explicit loss label, parentheses, or negative signed results are equivalent. Describing these figures as profits is incorrect.",
+        "direction": "Loss magnitudes increase; signed earnings decrease. Either clearly stated convention is valid."
+      },
+      "scope_constraints": [
+        "FY2018, not FY2019 or FY2020.",
+        "Net loss attributable to common stockholders, not net loss attributable to the company; the latter uses different figures.",
+        "Do not infer a new EPS by recomputation. The reported values themselves answer the question."
+      ],
+      "sufficient_page_sets": [
+        [
+          {
+            "document_id": "plug_2020_10k",
+            "pdf_pages_1_based": [
+              149,
+              150
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "plug_2019_10k",
+            "pdf_pages_1_based": [
+              63
+            ]
+          },
+          {
+            "document_id": "plug_2020_10k",
+            "pdf_pages_1_based": [
+              139
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "plug_2019_10k",
+            "pdf_pages_1_based": [
+              27
+            ]
+          },
+          {
+            "document_id": "plug_2020_10k",
+            "pdf_pages_1_based": [
+              41
+            ]
+          }
+        ]
+      ],
+      "evidence": [
+        {
+          "document_id": "plug_2019_10k",
+          "representation_sha256": "340fa876da758ee17acf58d1a75f93bcdea1307f4b5a07c6daeb6ec88923cd47",
+          "pdf_page_1_based": 63,
+          "printed_page": "F-5",
+          "location": "FY2018 common-stockholder-loss and basic/diluted EPS rows",
+          "bounded_paraphrase": "The earlier report states the loss as 78,167 in thousands and EPS loss as 0.36."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 150,
+          "printed_page": "F-18",
+          "location": "FY2018 prior versus restated common-stockholder-loss and EPS rows",
+          "bounded_paraphrase": "The restatement gives both old and new amounts: loss 78,167 to 85,660 in thousands and EPS loss 0.36 to 0.39."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 139,
+          "printed_page": "F-8",
+          "location": "Consolidated statements, FY2018 restated column",
+          "bounded_paraphrase": "The corrected common-stockholder loss and EPS are repeated with the units and period labels."
+        },
+        {
+          "document_id": "plug_2019_10k",
+          "representation_sha256": "340fa876da758ee17acf58d1a75f93bcdea1307f4b5a07c6daeb6ec88923cd47",
+          "pdf_page_1_based": 27,
+          "printed_page": "26",
+          "location": "Selected financial data, FY2018 column",
+          "bounded_paraphrase": "The earlier summary repeats the same original FY2018 loss and EPS."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 41,
+          "printed_page": "35",
+          "location": "Selected financial data, restated FY2018 column",
+          "bounded_paraphrase": "The later summary repeats the revised FY2018 loss and EPS."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 149,
+          "printed_page": "F-17",
+          "location": "Introductory sentence above the consolidated-operations restatement tables, continuing on the next page",
+          "bounded_paraphrase": "Amounts in the following operations tables are in thousands, except shares and per-share figures; this supplies the multiplier for the FY2018 table on the next page."
+        }
+      ],
+      "citation_context_note": "PDF page 150 supports the prior/restated row comparisons but inherits its monetary units from page 149. Cite pages 149-150 together, or provide another verified unit witness such as page 139. A citation to page 150 alone has incomplete multiplier context; semantic correctness remains a separate judgment."
+    },
+    {
+      "question_id": "plug_v13_q2",
+      "category": "retained_fy2018_result",
+      "reference_answer": "It was unchanged at $22.002 million in both the previously reported and restated FY2018 figures.",
+      "required_facts": [
+        {
+          "fact_id": "unchanged",
+          "meaning": "The FY2018 service-revenue amount was not changed by the restatement."
+        },
+        {
+          "fact_id": "amount",
+          "meaning": "Its amount was USD 22.002 million."
+        }
+      ],
+      "acceptable_variants": [
+        "Unchanged, retained, the same, or no adjustment.",
+        "USD 22,002 thousand or USD 22,002,000.",
+        "Approximately USD 22.0 million is acceptable when explicitly rounded."
+      ],
+      "numeric_sign_unit_tolerance": {
+        "revenue": "Positive USD 22.002 million, with equivalent units. Correctly identified approximate rounding to $22.0m is acceptable.",
+        "change": "The source has no adjustment for this revenue row. A zero change is acceptable.",
+        "sign": "Do not describe the positive revenue as a loss or confuse it with service costs."
+      },
+      "scope_constraints": [
+        "FY2018 service revenue from fuel-cell systems and related infrastructure.",
+        "The service-cost row was revised; answering with its amounts is a different measure.",
+        "Retention is supported by an explicit unchanged row in the restatement, not an assumption that all old-report figures remain reliable."
+      ],
+      "sufficient_page_sets": [
+        [
+          {
+            "document_id": "plug_2020_10k",
+            "pdf_pages_1_based": [
+              149,
+              150
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "plug_2019_10k",
+            "pdf_pages_1_based": [
+              63
+            ]
+          },
+          {
+            "document_id": "plug_2020_10k",
+            "pdf_pages_1_based": [
+              139
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "plug_2019_10k",
+            "pdf_pages_1_based": [
+              27
+            ]
+          },
+          {
+            "document_id": "plug_2020_10k",
+            "pdf_pages_1_based": [
+              41
+            ]
+          }
+        ]
+      ],
+      "evidence": [
+        {
+          "document_id": "plug_2019_10k",
+          "representation_sha256": "340fa876da758ee17acf58d1a75f93bcdea1307f4b5a07c6daeb6ec88923cd47",
+          "pdf_page_1_based": 63,
+          "printed_page": "F-5",
+          "location": "FY2018 service-revenue row under net revenue",
+          "bounded_paraphrase": "The service-revenue amount is 22,002 in thousands."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 150,
+          "printed_page": "F-18",
+          "location": "FY2018 service-revenue row under net revenue",
+          "bounded_paraphrase": "Prior and restated service revenue are both 22,002, with no adjustment; service cost is a distinct changed row."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 139,
+          "printed_page": "F-8",
+          "location": "Restated FY2018 service-revenue row",
+          "bounded_paraphrase": "The corrected statement repeats 22,002 in thousands."
+        },
+        {
+          "document_id": "plug_2019_10k",
+          "representation_sha256": "340fa876da758ee17acf58d1a75f93bcdea1307f4b5a07c6daeb6ec88923cd47",
+          "pdf_page_1_based": 27,
+          "printed_page": "26",
+          "location": "Selected financial data, FY2018 service revenue",
+          "bounded_paraphrase": "The earlier summary states the same revenue amount."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 41,
+          "printed_page": "35",
+          "location": "Selected financial data, restated FY2018 service revenue",
+          "bounded_paraphrase": "The later summary states the same revenue amount."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 149,
+          "printed_page": "F-17",
+          "location": "Introductory sentence above the consolidated-operations restatement tables, continuing on the next page",
+          "bounded_paraphrase": "Amounts in the following operations tables are in thousands, except shares and per-share figures; this supplies the multiplier for the FY2018 table on the next page."
+        }
+      ],
+      "citation_context_note": "PDF page 150 supports the prior/restated row comparisons but inherits its monetary units from page 149. Cite pages 149-150 together, or provide another verified unit witness such as page 139. A citation to page 150 alone has incomplete multiplier context; semantic correctness remains a separate judgment."
+    },
+    {
+      "question_id": "plug_v13_q3",
+      "category": "explicit_revision_reason",
+      "reference_answer": "The company had not included all relevant costs when estimating service costs for extended maintenance contracts, so the required loss accrual was underestimated. The report identifies omitted historical costs associated with the cost-classification error, hydrogen-infrastructure service costs, and warrant provisions.",
+      "required_facts": [
+        {
+          "fact_id": "omitted_costs",
+          "meaning": "The prior estimate failed to consider all relevant service/maintenance costs when determining the need for a contract loss accrual."
+        },
+        {
+          "fact_id": "accrual_consequence",
+          "meaning": "Including those costs required an additional loss accrual; the earlier accrual estimate was insufficient."
+        }
+      ],
+      "supporting_details_optional": [
+        "Historical costs were incompletely considered because costs had been misclassified as research and development.",
+        "Hydrogen-infrastructure service costs were omitted.",
+        "Warrant provisions were omitted.",
+        "The source reports a FY2018 provision of about USD 5.3 million, but the question does not require the amount."
+      ],
+      "acceptable_variants": [
+        "Omitted relevant costs led to an understated maintenance-contract loss provision.",
+        "The company underestimated the required contract-loss reserve because its service-cost estimate left out relevant costs.",
+        "Specific source-listed omissions that clearly convey the incomplete-cost estimate and additional-accrual consequence are sufficient; all three examples need not be enumerated."
+      ],
+      "numeric_sign_unit_tolerance": {
+        "required_numeric_answer": false,
+        "optional_amount": "If an amount is voluntarily supplied, approximately $5.3 million or $5.345 million from the FY2018 statement is consistent. The FY2019 $1.6 million benefit is a different period and does not answer this question."
+      },
+      "scope_constraints": [
+        "FY2018 extended-maintenance-contract loss accrual, not the separate lease-liability accounting correction.",
+        "The answer must state the omitted-cost reason; a generic claim that accounting errors existed is insufficient.",
+        "Do not attribute the change to newly incurred FY2020 operating losses or invent a customer-default explanation."
+      ],
+      "sufficient_page_sets": [
+        [
+          {
+            "document_id": "plug_2020_10k",
+            "pdf_pages_1_based": [
+              147
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "plug_2020_10k",
+            "pdf_pages_1_based": [
+              146,
+              147
+            ]
+          }
+        ]
+      ],
+      "evidence": [
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 146,
+          "printed_page": "F-14",
+          "location": "Note 2, loss-accrual-provision paragraph continuing to the next page",
+          "bounded_paraphrase": "The company connects the estimation problem to costs misclassified as research and development."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 147,
+          "printed_page": "F-15",
+          "location": "Opening continuation of the loss-accrual explanation",
+          "bounded_paraphrase": "The estimate omitted relevant historical costs, infrastructure service costs and warrant provisions; including them required additional accruals, including a FY2018 provision."
+        }
+      ]
+    },
+    {
+      "question_id": "plug_v13_q4",
+      "category": "same_period_scope_versus_report_year",
+      "reference_answer": "It concerns Plug Power Inc. and its subsidiaries for the year ended December 31, 2018. The restated figure is presented in the company's FY2020 Form 10-K, not as its FY2020 EPS.",
+      "required_facts": [
+        {
+          "fact_id": "entity",
+          "meaning": "Plug Power Inc., on a consolidated basis including subsidiaries."
+        },
+        {
+          "fact_id": "result_period",
+          "meaning": "The $0.39 basic loss per share applies to FY2018 / year ended December 31, 2018."
+        },
+        {
+          "fact_id": "report_period",
+          "meaning": "It is presented as a restated comparative in the annual report for FY2020 / year ended December 31, 2020."
+        }
+      ],
+      "acceptable_variants": [
+        "Plug Power consolidated group, Plug Power and subsidiaries, or Plug Power Inc. when nothing suggests a parent-only or different-company interpretation.",
+        "FY2018, 2018 financial year, or year ended December 31, 2018.",
+        "FY2020 10-K, 2020 annual report, or annual report for the year ended December 31, 2020."
+      ],
+      "numeric_sign_unit_tolerance": {
+        "eps": "The question provides the loss amount; repeating it is optional. If repeated, USD 0.39 loss or -USD 0.39 earnings per share is consistent.",
+        "year": "The result year is 2018 and the annual-report fiscal year is 2020. Signing/publication in 2021 does not change the report fiscal year."
+      },
+      "scope_constraints": [
+        "Do not assign the $0.39 restated EPS to FY2020 operating performance.",
+        "Do not call it the first publication of the FY2018 result.",
+        "The question asks for the report fiscal year, not its first-public-availability timestamp."
+      ],
+      "sufficient_page_sets": [
+        [
+          {
+            "document_id": "plug_2020_10k",
+            "pdf_pages_1_based": [
+              1,
+              139
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "plug_2020_10k",
+            "pdf_pages_1_based": [
+              1,
+              150
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "plug_2020_10k",
+            "pdf_pages_1_based": [
+              1,
+              41
+            ]
+          }
+        ]
+      ],
+      "evidence": [
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 1,
+          "printed_page": "cover",
+          "location": "Company name and fiscal year heading",
+          "bounded_paraphrase": "The document is Plug Power Inc.'s annual Form 10-K for the year ended December 31, 2020."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 139,
+          "printed_page": "F-8",
+          "location": "Consolidated statements heading and restated FY2018 EPS column",
+          "bounded_paraphrase": "The consolidated company-and-subsidiaries statement places the 0.39 loss per share in its restated FY2018 column."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 150,
+          "printed_page": "F-18",
+          "location": "FY2018 restatement table heading and EPS row",
+          "bounded_paraphrase": "The corrected 0.39 loss per share pertains to the year ended December 31, 2018."
+        },
+        {
+          "document_id": "plug_2020_10k",
+          "representation_sha256": "9d70c8184bbb6d4b66b7a2b2b989e44c2c105686e41b04f11d4bd8f9506b2ef6",
+          "pdf_page_1_based": 41,
+          "printed_page": "35",
+          "location": "Selected financial data, restated FY2018 column",
+          "bounded_paraphrase": "The summary identifies the 0.39 loss per share as FY2018."
+        }
+      ]
+    }
+  ],
+  "preprediction_amendments": [
+    {
+      "amended_at_utc": "2026-10-03T09:10:52.143162+00:00",
+      "previous_reference_sha256": "d0d7a462a18600d0571ca5757dcb3a38b56e9cd6faeac1b518a187fba0f961a3",
+      "reason": "Independent source reviewer identified missing thousands-unit context for the page-150-only sufficient sets.",
+      "requested_by_role": "separate main reference reviewer /root/admission_protocol_v12",
+      "question_file_unchanged": true,
+      "questions_sha256": "cc4e92d556f90637a35afb41a1b0907fe99678eaee1f5445a5c1ef6d685020f2",
+      "predictions_seen": false,
+      "changes": [
+        {
+          "question_id": "plug_v13_q1",
+          "old_first_sufficient_page_set": [
+            {
+              "document_id": "plug_2020_10k",
+              "pdf_pages_1_based": [
+                150
+              ]
+            }
+          ],
+          "new_first_sufficient_page_set": [
+            {
+              "document_id": "plug_2020_10k",
+              "pdf_pages_1_based": [
+                149,
+                150
+              ]
+            }
+          ],
+          "answer_facts_changed": false
+        },
+        {
+          "question_id": "plug_v13_q2",
+          "old_first_sufficient_page_set": [
+            {
+              "document_id": "plug_2020_10k",
+              "pdf_pages_1_based": [
+                150
+              ]
+            }
+          ],
+          "new_first_sufficient_page_set": [
+            {
+              "document_id": "plug_2020_10k",
+              "pdf_pages_1_based": [
+                149,
+                150
+              ]
+            }
+          ],
+          "answer_facts_changed": false
+        }
+      ]
+    }
+  ]
+}

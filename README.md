@@ -22,11 +22,13 @@ The original package is retained unchanged as a historical submission. Its READM
 
 ## Current research status
 
-Current checkpoint **v0.12** completes the eight-URL source-access pilot. Six complete representations were recovered across two version histories. Plug Power supplies one direct-correction development control; OPERA changes the analysis scope and directly revises its conclusions. Both JAMA URLs returned HTTP 403. No certified nondirect propagation case or new natural QA comparison emerged, so further expansion of the current propagation contribution is stopped.
+Current checkpoint **v0.13** completes the paired-version reading study and its source-layout follow-up: **34 native completions**, eight development questions, two histories and four retrieval/rendering conditions. Each condition produces **1/8 fully correct, scope-correct and citation-grounded answers**. The result does not establish a retrieval or algorithmic advantage.
 
-The next proposed experiment is paired-version, scope-aware reading with matched retrieval and a competent reader. This is a feasibility study, not a demonstrated algorithmic advance. All **416 unit tests pass**. The initial v0.11 import and original submission remain preserved.
+The corpus covers 550 PDF pages and 2,306 chunks. Context and answer reviews distinguish missing evidence from reader errors. Original grades, one explicit rounding adjudication and its sensitivity are preserved. **433 unit tests and 945 study checks pass.**
 
-Start with the [v0.12 research update](acl2027_temporal_state/docs/research_update_v12.txt), [current project state](acl2027_temporal_state/PROJECT_STATE.json), and [research decision](acl2027_temporal_state/docs/route_decision_v12.txt).
+Start with the [working paper PDF](acl2027_temporal_state/paper/paired_reading_study_v13.pdf), [v0.13 research update](acl2027_temporal_state/docs/research_update_v13.txt), [current project state](acl2027_temporal_state/PROJECT_STATE.json), and [ACL 2027 execution plan](acl2027_temporal_state/docs/acl2027_execution_plan_v13.txt). Editable paper source, bibliography and a claim ledger are included. This is a development draft, not a submission-ready paper.
+
+The next gate is a stronger executable reader and source-faithful structural retrieval before fresh evaluation. The earlier nondirect-propagation route remains stopped; source and reader limitations are not relabelled as an algorithmic contribution.
 
 ## Reproduce and verify
 
@@ -36,10 +38,10 @@ From the repository root:
 python3 scripts/verify_repository.py
 cd acl2027_temporal_state
 PYTHONPATH=src python3 -m unittest discover -s tests -q
-python3 scripts/verify_access_pilot_v12.py
+python3 scripts/verify_paired_study_v13.py
 ```
 
-The checkpoint's [reproduction guide](acl2027_temporal_state/docs/reproduce_v12.txt) distinguishes portable checks from checks requiring exact external working inputs. For the original implementation, use its [original README](original_submission/code-and-data/README.md); dependency installation and original experiment reruns are separate from the rework's unit tests.
+The checkpoint's [reproduction guide](acl2027_temporal_state/docs/reproduce_paired_study_v13.txt) distinguishes portable checks from checks requiring exact external working inputs. For the original implementation, use its [original README](original_submission/code-and-data/README.md); dependency installation and original experiment reruns are separate from the rework's unit tests.
 
 Model weights, runtime binaries, temporary caches, unbundled third-party full-text captures and private review correspondence are outside this repository. Deliberately packaged replay caches and permitted SEC filing inputs are retained. Some historical provenance records contain the original execution paths; this import does not rewrite frozen evidence to pretend a different execution environment.
 

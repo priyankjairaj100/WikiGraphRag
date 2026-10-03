@@ -1,0 +1,21 @@
+{
+  "schema_version": "paired_reader_scoring_contract_v0.13",
+  "recorded_at_utc": "2026-10-03T09:25:09.672055+00:00",
+  "timing": "Operationalizes the frozen protocol axes after primary inference started, before root or graders inspect any main response content. No new primary significance outcome is selected.",
+  "reference_rule": "Use frozen question-specific required facts, numeric tolerances and scope rules; optional detail never becomes mandatory. Do not revise references from model answers.",
+  "case_fields": {
+    "required_fact_assessments": "One supported_correct/missing/incorrect/ambiguous classification per required fact with bounded rationale.",
+    "reference_content_correct": "All required facts answered correctly without contradictory material, regardless of whether the retrieved context contained them.",
+    "scope_correct": "The requested entity/period/quantity/sample distinction is correctly answered. Missing requested scope is incomplete, while an explicit wrong scope is also recorded as an error.",
+    "citation_grounded": "All essential asserted facts are supported by actual cited retrieved text; a page ID match without the needed chunk content is insufficient. Unlisted but valid source-supported alternatives may be recorded as explicit adjudication, not a reference edit.",
+    "format_ok": "Readable concise prose with interpretable document/page citations. Grouped citations accepted. No JSON/enumeration test. Longer-than-requested answers reported separately from content correctness.",
+    "appropriate_abstention": "Explicitly withholds unsupported requested content when context does not establish it; distinct from reference answer completeness.",
+    "unsupported_assertions": "List material claims absent from received context, including reference-correct facts inferred from prior knowledge. Do not conflate absence of citation with falsehood.",
+    "native_output_budget_failure": "Preserve native stop_type=limit as a separate bounded-output failure; do not rewrite or retry the response."
+  },
+  "descriptive_aggregation": "Report content, scope, citation and format separately, plus explicitly labelled joint content+scope+citation counts. Perquestion paired outcomes, denominators fixed; no IID accuracy, significance, prevalence or generalization claim from two histories.",
+  "error_attribution": "Join independent context-only audit. Complete context with wrong/incomplete output is a reader issue; missing required context is a retrieval/representation limitation. Hallucinating under insufficient context is additionally a grounding failure.",
+  "no_recomputation": "System instruction prohibits recomputing quantities; component sums without an explicitly supplied final value do not establish complete reference-value evidence. Unit-equivalent reporting of an explicitly supplied value is acceptable.",
+  "grading": "Separate model-assisted domain reviewers inspect condition-masked cases with exact raw answers/context/reference. Method labels masked, not guaranteed statistical blindness; common project familiarity/source authorship disclosed. Root checks disagreements and ties.",
+  "raw_outputs": "Retain untouched native responses externally with hashes; distribute scoring rationales/paraphrases and any source-copy-reviewed short output excerpts without replacing originals."
+}

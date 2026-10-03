@@ -1,0 +1,53 @@
+{
+  "schema_version": "retrieval_support_clarification_v0.13",
+  "frozen_at_utc": "2026-10-03T09:41:39.141379+00:00",
+  "status": "clarification_of_frozen_context_only_audit_before_reviewer_output_inspection",
+  "original_audit_preserved": true,
+  "original_audit_path": "results/retrieval_support_audit_v13.json",
+  "original_audit_sha256": "df4d02b5a23f52fd2d8d7ad4521307a1c869bdc26d10f50a166e9fa8324b87bc",
+  "review_provenance": {
+    "model_assisted": true,
+    "human_gold": false,
+    "blind_to_conditions": false,
+    "native_outputs_inspected_at_clarification": false,
+    "native_response_directories_accessed": false,
+    "new_network_calls": 0
+  },
+  "input_sha256": {
+    "configs/paired_reader_main_v13.json": "5c692c880ca80943582d1356d3fab1c432a9b655cacb8652b0236401ddae4f37",
+    "data/paired_reader_v13/scoring_contract.json": "bfe298807cdfe3b4ceb3cee2e9c75a9de60facece0c429c2e0f513d23e8d70b2",
+    "data/paired_reader_v13/references_opera.json": "2cbe0e728609073bf33c28c0a3f8876063635db6d75bd0bba89e49997e4edc66",
+    "results/paired_reference_review_v13.json": "1b259b9b467947bd68864674b5136d9226d713eb3f2c85e285e396b0b6d869dc"
+  },
+  "governing_system_instruction": "You are a careful document reader. Answer the question using only the supplied source excerpts. Distinguish what each document version says and preserve the relevant entity, reporting period, measure and selected sample. Do not recompute quantities or use outside knowledge. If the excerpts do not establish a requested fact, say so. Give a concise answer of at most 120 words, with supporting citations in the form [document_id p.N]. Use ordinary prose, not JSON. /no_think",
+  "clarification": {
+    "question_id": "opera_retained_baseline",
+    "condition": "paired",
+    "fact_id": "baseline_value",
+    "old_fact_support": "supported",
+    "corrected_fact_support": "partial",
+    "evidence_chunk_ids": [
+      "opera_pdf_v1:p010:c01"
+    ],
+    "reason": "The selected chunk gives the two geodetic component distances but truncates before the explicit final731278.0m statement. Adding the component distances is recomputation, prohibited by the actual reader system instruction. The prior context audit mistakenly counted that arithmetic route as sufficient factual evidence. Components are relevant partial evidence only; the reported final distance requires an unseen continuation or prohibited arithmetic.",
+    "changed_reference": false,
+    "changed_context": false,
+    "changed_prediction": false
+  },
+  "additional_application_of_same_rule": "The audit also mentions optional old event totals derivable by adding internal/external counts. Under the no-recomputation instruction those component counts are partial evidence, not permission to report a recomputed final total. This does not alter any mandatory selection-scope fact status or overall support category.",
+  "unchanged_overall_case_support": "partial",
+  "unchanged_counts_by_condition": {
+    "ordinary": {
+      "partial": 4,
+      "absent": 2,
+      "complete": 2
+    },
+    "paired": {
+      "partial": 5,
+      "complete": 2,
+      "absent": 1
+    }
+  },
+  "effect_on_audit_totals": "None: the baseline case was already partial because a later geodetic retention witness was missing. Both conditions still have two complete-support contexts.",
+  "sequence_note": "This separate clarification was written before this reviewer opened the subsequently requested condition-masked Plug grading cases. Its no-output-inspection claim applies at this timestamp."
+}

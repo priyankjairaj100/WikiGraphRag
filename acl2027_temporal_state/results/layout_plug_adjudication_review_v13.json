@@ -1,0 +1,114 @@
+{
+  "schema_version": "layout_plug_adjudication_review_v0.13",
+  "recorded_at_utc": "2026-10-03T10:06:37.208696+00:00",
+  "status": "recommendations_for_root_adjudication_existing_grades_unchanged",
+  "provenance": {
+    "model_assisted": true,
+    "human_gold": false,
+    "shared_project_familiarity": true,
+    "prior_reference_and_context_audit_authorship": true,
+    "prior_main_raw_cases_inspected": [
+      "case_7738c66c55cf",
+      "case_c58b6536e138"
+    ],
+    "layout_raw_cases_inspected": [
+      "case_87126f917505",
+      "case_a8e3052745fd"
+    ],
+    "other_layout_raw_cases_inspected": false,
+    "method_labels_masked_in_packet": true,
+    "condition_mapping_opened": false,
+    "statistical_blindness_claimed": false,
+    "native_response_directories_accessed": false,
+    "existing_grades_or_references_edited": false,
+    "new_network_calls": 0
+  },
+  "input_sha256": {
+    "data/paired_reader_v13/scoring_contract.json": "bfe298807cdfe3b4ceb3cee2e9c75a9de60facece0c429c2e0f513d23e8d70b2",
+    "data/paired_reader_v13/references_plug.json": "682a7af7fcef05bcc1a0ad16bca1874e2e7b5078db982b9e4a51b46dcbd91dbc",
+    "results/grades_layout_plug_v13.json": "150b9bba3c714e779398154ec2b0c2b67db6d5db870ed9cc3b1bafbd011bd94b",
+    "results/main_plug_adjudication_review_v13.json": "0c3170fdd8f0266cca2e84762b0f85c686ca5ebb79270a8b3dff0830332f993b"
+  },
+  "masked_packet": {
+    "external_path": "/workspace/scratch/bdef663e3dfc/tmp/paired_reader_v13/grading/layout_plug.json",
+    "sha256": "14261501fc355f60cf16d17199d2369f62b66529ad9f38366ca352cf219864f5",
+    "only_raw_cases_inspected": [
+      "case_87126f917505",
+      "case_a8e3052745fd"
+    ]
+  },
+  "case_recommendations": [
+    {
+      "case_id": "case_87126f917505",
+      "question_id": "plug_v13_q2",
+      "raw_answer_sha256": "d574770ea9cef7179ba1ee93b3c5bb037bedf79128059f844b287072f6d8faa0",
+      "received_context_sha256": "77511b2f875655a4d438d28fe77d1959b9efa898e9215dcac32561be1e30617e",
+      "existing_grade_fields": {
+        "reference_content_correct": true,
+        "scope_correct": true,
+        "citation_grounded": false,
+        "format_ok": true,
+        "appropriate_abstention": false
+      },
+      "recommendation": "change_primary_amount_completeness_under_explicit_frozen_rounding_condition",
+      "recommended_fact_assessments": {
+        "unchanged": "supported_correct",
+        "amount": "ambiguous"
+      },
+      "recommended_grade_fields": {
+        "reference_content_correct": false,
+        "scope_correct": true,
+        "citation_grounded": false,
+        "format_ok": true,
+        "appropriate_abstention": false
+      },
+      "frozen_reference_basis": "The frozen reference accepts approximately22.0million when explicitly rounded and repeats that approximate rounding should be identified. The inspected answer gives22.0million without qualification.",
+      "rationale": "A normal reader may reasonably interpret one-decimal monetary reporting as rounded, so the amount is not labelled demonstrably false. But counting it as fully correct under an explicitly qualified frozen tolerance would relax that condition after observing the response. The primary completeness score should remain conservative; no particular hedge word is required.",
+      "contrast_with_prior_main_adjudication": "The prior main case expressly distinguished its rounded amount from an unavailable exact amount; this layout response does not supply that qualification.",
+      "sensitivity_recommendation": {
+        "label": "lenient_implicit_rounding_interpretation",
+        "amount_fact": "supported_correct",
+        "reference_content_correct": true,
+        "citation_grounded": false,
+        "joint_content_scope_citation": false,
+        "status": "Record as an explicit adjudication sensitivity, not a rewritten reference."
+      },
+      "unchanged_findings": [
+        "The unchanged-revenue assertion matches the reference but is not established by received comparison evidence.",
+        "The cost-versus-revenue explanation is read within the specific service-revenue scope; do not manufacture a global all-revenues claim.",
+        "Citation grounding fails under either rounding interpretation."
+      ]
+    },
+    {
+      "case_id": "case_a8e3052745fd",
+      "question_id": "plug_v13_q2",
+      "raw_answer_sha256": "c76a53097368da6d38605683bcbb056ebcc734ec2a6c5d26bdd10ab07902bf47",
+      "received_context_sha256": "d041cbcd9b142b0a228cff01391ed02a83d157172bce4cc55c07be6797a69fa2",
+      "existing_grade_fields": {
+        "reference_content_correct": false,
+        "scope_correct": false,
+        "citation_grounded": false,
+        "format_ok": true,
+        "appropriate_abstention": true
+      },
+      "recommendation": "retain_existing_grades_without_change",
+      "recommended_fact_assessments": {
+        "unchanged": "missing",
+        "amount": "missing"
+      },
+      "recommended_grade_fields": {
+        "reference_content_correct": false,
+        "scope_correct": false,
+        "citation_grounded": false,
+        "format_ok": true,
+        "appropriate_abstention": true
+      },
+      "rationale": "Withholding the missing revenue answer is appropriate, but the volunteered cost comparison misreads separate2018/2019 adjustment columns as before/after FY2018 amounts and recomputes an unstated change. The restored column headings directly expose this error.",
+      "qualification": "appropriate_abstention=true applies only to withholding the requested revenue content. It does not certify full-answer grounding, factual correctness or scope preservation.",
+      "joint_content_scope_citation": false
+    }
+  ],
+  "no_full_answers_distributed": true,
+  "no_response_rewriting": true,
+  "root_decision_pending": true
+}

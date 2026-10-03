@@ -1,0 +1,60 @@
+{
+  "schema_version": "paired_reader_controls_v0.13",
+  "authorship": "Root-authored synthetic competence checks, not natural data or held-out evaluation",
+  "frozen_at_utc": "2026-10-03T09:06:11.434835+00:00",
+  "request_sha256": "c82d043a26e93c7b9e8fb9285df8f0fc4495103692f94c2fdf147ce1e2c16a78",
+  "requests": [
+    {
+      "request_id": "control_same_period",
+      "prompt": "Source [control_old p.1]: An administrative report states that District A handled 40 applications in fiscal year 2021. Its reserve fund was 7 units.\nSource [control_new p.1]: A correction replaces the fiscal-year-2021 application count of 40 with 34 for the same district and year. The reserve fund remains 7 units.\nQuestion: What is the corrected application count, and did the fiscal year covered by that count change? Cite the supplied source page."
+    },
+    {
+      "request_id": "control_changed_scope",
+      "prompt": "Source [sample_old p.1]: An analysis used 80 participants. The instrument calibration distance was 12 metres.\nSource [sample_new p.1]: A revised analysis uses 72 participants after excluding eight with missing baseline measurements. The instrument calibration distance remains 12 metres.\nQuestion: Is the set of participants unchanged between versions, and what calibration distance is retained? Cite the supplied source page."
+    }
+  ],
+  "references": [
+    {
+      "request_id": "control_same_period",
+      "required_facts": [
+        "Corrected count is 34 applications.",
+        "The count still covers fiscal year 2021; no period change."
+      ],
+      "required_scope": "Do not change the district or reporting period. Repeating District A is not required when context is unambiguous.",
+      "sufficient_citations": [
+        [
+          "control_new p.1"
+        ]
+      ],
+      "failures": [
+        "Reports 40 as the corrected count",
+        "Says the fiscal year changed",
+        "Claims no evidence when an explicit correction was supplied"
+      ]
+    },
+    {
+      "request_id": "control_changed_scope",
+      "required_facts": [
+        "Participant set changed.",
+        "Calibration distance remains 12 metres."
+      ],
+      "required_scope": "Distinguish changed participant set from independently unchanged calibration.",
+      "sufficient_citations": [
+        [
+          "sample_new p.1"
+        ]
+      ],
+      "failures": [
+        "Says participant set unchanged",
+        "Wrong distance",
+        "Unsupported inference about analysis results"
+      ],
+      "acceptable_supporting_detail_not_required": [
+        "72 rather than 80 participants after exclusions."
+      ]
+    }
+  ],
+  "gate": "Both controls must satisfy all required facts and scope without contradictory assertions; at least one sufficient citation each. Free prose/synonyms accepted. Format assessed independently; no exact-label or JSON requirement. Root source-conditioned scoring before main predictions; disclose model assistance.",
+  "format_instruction": "Concise prose and [document_id p.N] citations; no JSON or task enums.",
+  "main_comparison_allowed_if_pass": "Pilot reader competence only; not a strong-reader certificate."
+}

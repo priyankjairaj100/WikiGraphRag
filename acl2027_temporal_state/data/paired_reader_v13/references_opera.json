@@ -1,0 +1,482 @@
+{
+  "schema_version": "paired_reader_free_text_references_v0.13",
+  "created_at_utc": "2026-10-03T09:06:13.068443+00:00",
+  "provenance": {
+    "model_assisted": true,
+    "human_gold": false,
+    "blind": false,
+    "prior_discovery_and_v12_review_familiarity": true,
+    "author_role": "opera_source_reviewer",
+    "new_network_calls": 0,
+    "model_predictions_inspected": false,
+    "question_selection": "Four development questions cover the predefined roles: revised result, retention, instrumental explanation, selected-observation scope. No prediction-driven filtering or adversarial optimization of retrieval conditions.",
+    "independent_review_status": "source_reviewer_requested_preprediction_rubric_amendment_applied_pending_final_review",
+    "benchmark_status": "development_only_not_held_out"
+  },
+  "source_sha256": {
+    "opera_pdf_v1": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+    "opera_pdf_v4": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137"
+  },
+  "source_review_sha256": "4bdbf9b1495025da3794a860f49c62cac6d20511f18f2a925980b1396def7145",
+  "page_numbering": "One-based physical PDF pages; printed page labels may differ.",
+  "references": [
+    {
+      "question_id": "opera_revised_result",
+      "history_id": "opera_1109_4897",
+      "reference_answer": "The revised main analysis reports delta t = TOF_c - TOF_nu = 6.5 ns, with statistical uncertainty +/-7.4 ns and systematic uncertainty +8.3/-8.0 ns. The result is compatible with propagation at the speed of light within the reported errors.",
+      "required_facts": [
+        {
+          "fact_id": "central_value",
+          "required_fact": "The revised main-analysis arrival-time difference is 6.5 ns.",
+          "acceptable_expressions": [
+            "delta t of 6.5 ns",
+            "TOF_c minus TOF_nu is 6.5 ns",
+            "a central early-arrival estimate of 6.5 ns"
+          ]
+        },
+        {
+          "fact_id": "statistical_uncertainty",
+          "required_fact": "Statistical uncertainty is +/-7.4 ns.",
+          "acceptable_expressions": [
+            "7.4 ns statistical error",
+            "6.5 +/-7.4 (stat.) ns"
+          ]
+        },
+        {
+          "fact_id": "systematic_uncertainty",
+          "required_fact": "Systematic uncertainty is asymmetric: +8.3/-8.0 ns.",
+          "acceptable_expressions": [
+            "-8.0 to +8.3 ns systematic error",
+            "upper systematic error 8.3 ns and lower 8.0 ns"
+          ]
+        },
+        {
+          "fact_id": "compatibility",
+          "required_fact": "The measurement is compatible with light speed within errors.",
+          "acceptable_expressions": [
+            "consistent with c",
+            "no significant departure from light speed",
+            "compatible with zero arrival-time difference within uncertainties"
+          ]
+        }
+      ],
+      "numeric_acceptance": {
+        "unit_conversion_allowed": true,
+        "units": [
+          "ns",
+          "s with correct conversion"
+        ],
+        "tolerances": {
+          "central_value_ns": {
+            "target": 6.5,
+            "absolute": 0.05
+          },
+          "statistical_uncertainty_ns": {
+            "target": 7.4,
+            "absolute": 0.05
+          },
+          "systematic_upper_ns": {
+            "target": 8.3,
+            "absolute": 0.05
+          },
+          "systematic_lower_magnitude_ns": {
+            "target": 8.0,
+            "absolute": 0.05
+          }
+        },
+        "asymmetry_required": true
+      },
+      "scope_constraints": [
+        "Use the revised main long-extraction analysis, not the original 60.7 ns result.",
+        "Do not substitute the revised alternative waveform estimate of 3.5 ns or the short-bunch TT/RPC estimates.",
+        "The positive central value is not evidence of a statistically established faster-than-light effect.",
+        "Statistical and systematic errors must be distinguished; they may not be silently combined into one error."
+      ],
+      "sufficient_pdf_page_sets": [
+        [
+          {
+            "document_id": "opera_pdf_v4",
+            "pages": [
+              33
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "opera_pdf_v4",
+            "pages": [
+              28,
+              33
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "opera_pdf_v4",
+            "pages": [
+              3,
+              33
+            ]
+          }
+        ]
+      ],
+      "citation_scoring_notes": "The later paper alone is sufficient. PDF page 33 explicitly states the result and compatibility. Pages 3 or 28 supply the quantitative result but do not alone state the compatibility conclusion as explicitly; evaluate individual cited claims rather than require every listed page.",
+      "evidence": [
+        {
+          "document_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "pdf_pages_1based": [
+            33
+          ],
+          "locator": "Conclusions; printed p.30",
+          "bounded_paraphrase": "The main estimate, both uncertainty components and compatibility with light speed are stated together."
+        },
+        {
+          "document_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "pdf_pages_1based": [
+            3,
+            28
+          ],
+          "locator": "Abstract and Results; printed abstract p.1 and Results p.25",
+          "bounded_paraphrase": "The revised main arrival-time estimate and asymmetric systematic uncertainty are repeated."
+        }
+      ],
+      "scoring_dimensions": {
+        "content": "Judge each required fact semantically, allowing the stated equivalent expressions and unit conversions. Give fact-level credit without requiring the exact reference wording.",
+        "scope": "Assess the listed scope constraints separately from factual completeness.",
+        "citation": "Assess whether supplied document/page citations support the claims made; alternative valid pages in the frozen PDFs may receive credit after source inspection. The listed sufficient sets are examples, not exhaustive exact-match targets.",
+        "format": "Assess the runner-defined response format separately. No scientific fact requires an exact answer enum."
+      }
+    },
+    {
+      "question_id": "opera_retained_baseline",
+      "history_id": "opera_1109_4897",
+      "reference_answer": "Both versions give a BCT-to-OPERA geodetic baseline of 731278.0 +/-0.2 m, or 731.2780 +/-0.0002 km. That reported baseline is unchanged between the versions.",
+      "required_facts": [
+        {
+          "fact_id": "baseline_value",
+          "required_fact": "The BCT-to-OPERA geodetic baseline is 731278.0 m.",
+          "acceptable_expressions": [
+            "731,278.0 metres",
+            "731.278 km"
+          ]
+        },
+        {
+          "fact_id": "retention",
+          "required_fact": "Both versions report the same baseline value.",
+          "acceptable_expressions": [
+            "unchanged",
+            "retained in the revision",
+            "the same in v1 and v4"
+          ]
+        }
+      ],
+      "numeric_acceptance": {
+        "unit_conversion_allowed": true,
+        "tolerances": {
+          "baseline_m": {
+            "target": 731278.0,
+            "absolute": 0.05
+          },
+          "uncertainty_m": {
+            "target": 0.2,
+            "absolute": 0.005
+          }
+        },
+        "display_trailing_zeros_required": false,
+        "uncertainty_required": false
+      },
+      "scope_constraints": [
+        "This is the BCT-to-OPERA geodetic baseline, not the 730.085 km effective neutrino baseline used in the relative-velocity calculation.",
+        "Do not confuse it with the target-focal-point to detector component of 730534.61 m.",
+        "Unchanged source statements do not prove independent replication of the geodetic measurements."
+      ],
+      "sufficient_pdf_page_sets": [
+        [
+          {
+            "document_id": "opera_pdf_v1",
+            "pages": [
+              10
+            ]
+          },
+          {
+            "document_id": "opera_pdf_v4",
+            "pages": [
+              12
+            ]
+          }
+        ]
+      ],
+      "citation_scoring_notes": "One page in each version directly supports the comparison. Do not demand methodology pages 9/11 when the answer only states the value and retention. A single-version citation supports that version's value but does not by itself document cross-version equality.",
+      "evidence": [
+        {
+          "document_id": "opera_pdf_v1",
+          "representation_sha256": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+          "pdf_pages_1based": [
+            10
+          ],
+          "locator": "Section 4; final baseline paragraph",
+          "bounded_paraphrase": "The original paper reports the complete BCT-to-detector baseline and its 0.2 m uncertainty."
+        },
+        {
+          "document_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "pdf_pages_1based": [
+            12
+          ],
+          "locator": "Section 4; final paragraph before Section 5; printed p.9",
+          "bounded_paraphrase": "The revised paper repeats the same baseline and uncertainty."
+        }
+      ],
+      "scoring_dimensions": {
+        "content": "Judge each required fact semantically, allowing the stated equivalent expressions and unit conversions. Give fact-level credit without requiring the exact reference wording. The question does not explicitly request the baseline uncertainty; omission of that optional detail does not reduce completeness.",
+        "scope": "Assess the listed scope constraints separately from factual completeness.",
+        "citation": "Assess whether supplied document/page citations support the claims made; alternative valid pages in the frozen PDFs may receive credit after source inspection. The listed sufficient sets are examples, not exhaustive exact-match targets.",
+        "format": "Assess the runner-defined response format separately. No scientific fact requires an exact answer enum."
+      },
+      "optional_supported_details": [
+        {
+          "fact_id": "baseline_uncertainty",
+          "acceptable_expressions": [
+            "20 cm precision",
+            "+/-0.0002 km"
+          ],
+          "optional_supported_detail": "The baseline uncertainty is +/-0.2 m."
+        }
+      ]
+    },
+    {
+      "question_id": "opera_revision_reason",
+      "history_id": "opera_1109_4897",
+      "reference_answer": "OPERA found an improperly connected optical-fibre cable in the timing path, which introduced an extra delay, and a frequency offset in the OPERA Master Clock oscillator, which distorted event timestamps during the acquisition cycle.",
+      "required_facts": [
+        {
+          "fact_id": "fibre_connection",
+          "required_fact": "An improperly connected optical fibre affected the timing delay.",
+          "acceptable_expressions": [
+            "loose or bad fibre connection",
+            "incorrectly connected optical cable introducing extra delay",
+            "optical-fibre connection reduced received light and changed timing"
+          ]
+        },
+        {
+          "fact_id": "oscillator_frequency",
+          "required_fact": "The Master Clock oscillator frequency was offset from its specification and affected event timestamps.",
+          "acceptable_expressions": [
+            "clock oscillator ran slightly fast",
+            "frequency offset in the Master Clock",
+            "oscillator calibration or frequency error that caused timing drift"
+          ]
+        }
+      ],
+      "numeric_acceptance": {
+        "numbers_required": false,
+        "if_reported": {
+          "extra_fibre_delay_ns": {
+            "target": 73.2,
+            "acceptable_approximation": "approximately 73 or 74 ns"
+          },
+          "oscillator_offset_ppm": {
+            "target": 0.124,
+            "absolute": 0.001
+          }
+        }
+      },
+      "scope_constraints": [
+        "Identify two instrumental problems; a generic statement about measurement error is insufficient.",
+        "Do not present the geodetic baseline or neutrino physics as the identified cause of the earlier anomaly.",
+        "The question asks about the identified timing problems, not for a numerical decomposition of the entire change in the final estimate.",
+        "Do not assert that these two issues were the only methodological changes; event selection and analysis also changed."
+      ],
+      "sufficient_pdf_page_sets": [
+        [
+          {
+            "document_id": "opera_pdf_v4",
+            "pages": [
+              18,
+              20
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "opera_pdf_v4",
+            "pages": [
+              18,
+              16
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "opera_pdf_v4",
+            "pages": [
+              18,
+              19,
+              20
+            ]
+          }
+        ]
+      ],
+      "citation_scoring_notes": "The revised paper alone is sufficient. PDF page 18 explains the bad optical connection; page 20 explains the oscillator frequency offset and timestamp effect. Page 16 independently states the frequency offset. Page 19 may supplement the fibre explanation but is not mandatory.",
+      "evidence": [
+        {
+          "document_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "pdf_pages_1based": [
+            18,
+            19
+          ],
+          "locator": "Section 6.1; printed pp.15-16",
+          "bounded_paraphrase": "An optical cable connection reduced received light and introduced an extra timing delay; restoring the connection restored the earlier delay measurement."
+        },
+        {
+          "document_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "pdf_pages_1based": [
+            16,
+            20
+          ],
+          "locator": "Section 6 and Section 6.1; printed pp.13 and 17",
+          "bounded_paraphrase": "The Master Clock oscillator had a frequency offset of 0.124 ppm, producing a timestamp error that depended on position in the acquisition cycle."
+        }
+      ],
+      "scoring_dimensions": {
+        "content": "Judge each required fact semantically, allowing the stated equivalent expressions and unit conversions. Give fact-level credit without requiring the exact reference wording.",
+        "scope": "Assess the listed scope constraints separately from factual completeness.",
+        "citation": "Assess whether supplied document/page citations support the claims made; alternative valid pages in the frozen PDFs may receive credit after source inspection. The listed sufficient sets are examples, not exhaustive exact-match targets.",
+        "format": "Assess the runner-defined response format separately. No scientific fact requires an exact answer enum."
+      }
+    },
+    {
+      "question_id": "opera_selection_scope",
+      "history_id": "opera_1109_4897",
+      "reference_answer": "No. The original analysis used 16111 selected events, while the revision used 15223. The revised selection discarded about 5% of preselected events whose earliest detector hit was isolated in time and position, because such hits could be noise and bias arrival times early. The nominal running years remained 2009-2011, but the selected sample changed.",
+      "required_facts": [
+        {
+          "fact_id": "scope_changed",
+          "required_fact": "The selected event sample changed; it was not an unchanged-sample correction.",
+          "acceptable_expressions": [
+            "different selection",
+            "fewer events retained",
+            "not the same selected observations"
+          ]
+        },
+        {
+          "fact_id": "selection_reason",
+          "required_fact": "The revision excluded events with isolated earliest hits that could be noise and bias early arrival timing.",
+          "acceptable_expressions": [
+            "earliest hits separated in time and space from the event bulk were discarded",
+            "isolated early detector hits were rejected because of potential noise or early-time bias"
+          ]
+        }
+      ],
+      "numeric_acceptance": {
+        "event_counts": {
+          "original": 16111,
+          "revised": 15223,
+          "absolute_tolerance": 0
+        },
+        "optional_fraction": "about 5% of preselected events; do not require an exact fraction or derive one from the two published totals",
+        "exact_event_counts_required": false
+      },
+      "scope_constraints": [
+        "Same nominal 2009-2011 running years do not imply the same selected event sample.",
+        "Do not treat the added late-2011 short-bunch test as the revised main sample.",
+        "Do not claim a newer 2012 data collection replaced the original main sample.",
+        "Do not infer that all differences between the two counts are exclusively and exactly accounted for by a percentage computed from these totals."
+      ],
+      "sufficient_pdf_page_sets": [
+        [
+          {
+            "document_id": "opera_pdf_v1",
+            "pages": [
+              8
+            ]
+          },
+          {
+            "document_id": "opera_pdf_v4",
+            "pages": [
+              13
+            ]
+          }
+        ],
+        [
+          {
+            "document_id": "opera_pdf_v1",
+            "pages": [
+              11
+            ]
+          },
+          {
+            "document_id": "opera_pdf_v4",
+            "pages": [
+              13
+            ]
+          }
+        ]
+      ],
+      "citation_scoring_notes": "The v1 selection discussion on PDF page 11 and v4 exclusion rule on page 13 together support a concise qualitative comparison. For count-rich answers, the original total is explicit on v1 page 8 and revised total on v4 page 13; v1 page 11 supplies original components. These paired sets are sufficient examples, not requirements to recite counts. A v4-only citation does not by itself establish the original selection rule.",
+      "evidence": [
+        {
+          "document_id": "opera_pdf_v1",
+          "representation_sha256": "c548507189d5d8e880c48cd57471a88857f9a8ec2961cd4cae79ca12ee59bec0",
+          "pdf_pages_1based": [
+            8,
+            11
+          ],
+          "locator": "Section 3 and Section 5",
+          "bounded_paraphrase": "The original main analysis has 16111 events, with 7586 internal and 8525 external interactions."
+        },
+        {
+          "document_id": "opera_pdf_v4",
+          "representation_sha256": "69a5560d00e22b617838908ff85084a69a37baab69d22d8b11733d9c2ea24137",
+          "pdf_pages_1based": [
+            9,
+            13
+          ],
+          "locator": "Section 3 and Section 5; printed pp.6 and 10",
+          "bounded_paraphrase": "The revised main sample has 15223 events. About 5% of preselected events with isolated earliest hits were excluded because of possible timing bias."
+        }
+      ],
+      "scoring_dimensions": {
+        "content": "Judge each required fact semantically, allowing the stated equivalent expressions and unit conversions. Give fact-level credit without requiring the exact reference wording. Changed selection and exclusion of isolated earliest hits are mandatory; exact event counts are optional supported detail and their omission does not reduce completeness.",
+        "scope": "Assess the listed scope constraints separately from factual completeness.",
+        "citation": "Assess whether supplied document/page citations support the claims made; alternative valid pages in the frozen PDFs may receive credit after source inspection. The listed sufficient sets are examples, not exhaustive exact-match targets.",
+        "format": "Assess the runner-defined response format separately. No scientific fact requires an exact answer enum."
+      },
+      "optional_supported_details": [
+        {
+          "fact_id": "original_count",
+          "acceptable_expressions": [
+            "16,111 events"
+          ],
+          "optional_supported_detail": "The original analysis used 16111 events."
+        },
+        {
+          "fact_id": "revised_count",
+          "acceptable_expressions": [
+            "15,223 events"
+          ],
+          "optional_supported_detail": "The revised analysis used 15223 events."
+        }
+      ]
+    }
+  ],
+  "preprediction_amendments": [
+    {
+      "recorded_at_utc": "2026-10-03T09:09:41.448217+00:00",
+      "reviewer_role": "admission_protocol_v12",
+      "previous_reference_sha256": "bb65083d50fd466b8f4d4e4e3dc43f294b8481ffffaf7e59ced6bf824f759bd2",
+      "model_predictions_inspected": false,
+      "question_texts_changed": false,
+      "reason": "Independent reference review found optional details being required by otherwise natural questions. Make baseline uncertainty and exact event counts optional, preserving semantic answer requirements and paired provenance.",
+      "changes": [
+        "opera_retained_baseline: uncertainty remains supported but optional.",
+        "opera_selection_scope: exact original/revised counts remain supported but optional.",
+        "opera_selection_scope: minimal qualitative comparison uses v1 PDF p11 and v4 PDF p13; do not claim that v4 alone establishes the prior rule."
+      ]
+    }
+  ]
+}

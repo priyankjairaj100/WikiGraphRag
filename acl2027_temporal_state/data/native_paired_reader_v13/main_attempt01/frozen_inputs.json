@@ -1,0 +1,157 @@
+{
+  "schema_version": "native_paired_reader_freeze_v0.13",
+  "created_unix_seconds": 1791018897.7156494,
+  "completion_calls_at_freeze": 0,
+  "config": {
+    "schema_version": "native_paired_reader_config_v0.13",
+    "batch_id": "main",
+    "expected_requests": 16,
+    "maximum_context_tokens": 4096,
+    "maximum_input_tokens": 3500,
+    "maximum_generated_tokens": 256,
+    "port": 18132,
+    "per_request_timeout_seconds": 900,
+    "system_prompt": "You are a careful document reader. Answer the question using only the supplied source excerpts. Distinguish what each document version says and preserve the relevant entity, reporting period, measure and selected sample. Do not recompute quantities or use outside knowledge. If the excerpts do not establish a requested fact, say so. Give a concise answer of at most 120 words, with supporting citations in the form [document_id p.N]. Use ordinary prose, not JSON. /no_think"
+  },
+  "parameters": {
+    "n_predict": 256,
+    "temperature": -1.0,
+    "seed": 7,
+    "n_probs": 0,
+    "post_sampling_probs": false,
+    "cache_prompt": false,
+    "return_tokens": true,
+    "stream": false,
+    "repeat_penalty": 1.0,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "logit_bias": [],
+    "samplers": [
+      "temperature"
+    ],
+    "grammar": "",
+    "stop": [],
+    "ignore_eos": false
+  },
+  "request_sha256": "5ce86ad00ad9b805cc49c8d67661d4c0e33c8607390d69b15277fa573c333e93",
+  "request_bytes": 96214,
+  "protocol_sha256": "07e500f04539e6978cf8f4fb4edb2844ff671a80487f0333fd0af47e69aa46d5",
+  "reference_review_sha256": "1b259b9b467947bd68864674b5136d9226d713eb3f2c85e285e396b0b6d869dc",
+  "reference_review_supplied_to_model": false,
+  "source_hashes": {
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/native_paired_reader_v13.py": "ed238022c4fc8586f41c7ec7ee94b7c65e8b4eb9cd274c6954576a825afbf9eb",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/larger_scorer_v09.py": "67b389f5fe8a87493e245f858607252cb72030f128215a3871db4882303e0dea",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/local_backend_v07.py": "c63acf150c86c09aca24a53ca9892170385de84e84d7d69308212d71a23260b7",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/fetch_local_backend_v07.py": "b2105c02be04cde9d14e5ea126762d8fdb929b0ad525e453edb1bd60a4cf2f29",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/configs/model_backend_v09.json": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/configs/paired_reader_main_v13.json": "5c692c880ca80943582d1356d3fab1c432a9b655cacb8652b0236401ddae4f37",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/paired_reader_v13/main_execution_protocol.json": "07e500f04539e6978cf8f4fb4edb2844ff671a80487f0333fd0af47e69aa46d5",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/paired_reference_review_v13.json": "1b259b9b467947bd68864674b5136d9226d713eb3f2c85e285e396b0b6d869dc"
+  },
+  "asset_binding": {
+    "config_sha256": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "assets": [
+      {
+        "relative_path": "Qwen3-4B-Q8_0.gguf",
+        "bytes": 4280404704,
+        "sha256": "8c2f07f26af9747e41988551106f149b03eb9b5cb6df636027b6bf6278473300",
+        "url": "https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/bc640142c66e1fdd12af0bd68f40445458f3869b/Qwen3-4B-Q8_0.gguf"
+      },
+      {
+        "relative_path": "llama-b11146-bin-ubuntu-x64.tar.gz",
+        "bytes": 16998357,
+        "sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11146/llama-b11146-bin-ubuntu-x64.tar.gz"
+      }
+    ],
+    "runtime_files_sha256": "677ee4aa7ac9a70d0d664474f589ba2f35ee2716ea0244d076ab103c3e5304c7"
+  },
+  "assets_path": "/workspace/scratch/bdef663e3dfc/tmp/local_backend_v09",
+  "external_path": "/workspace/scratch/bdef663e3dfc/tmp/paired_reader_v13/main_attempt01",
+  "data_dir": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/native_paired_reader_v13/main_attempt01",
+  "receipt_path": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/native_paired_reader_v13_receipt.json",
+  "execution_order": [
+    "plug_v13_q1__ordinary",
+    "plug_v13_q1__paired",
+    "plug_v13_q2__paired",
+    "plug_v13_q2__ordinary",
+    "plug_v13_q3__ordinary",
+    "plug_v13_q3__paired",
+    "plug_v13_q4__paired",
+    "plug_v13_q4__ordinary",
+    "opera_revised_result__ordinary",
+    "opera_revised_result__paired",
+    "opera_retained_baseline__paired",
+    "opera_retained_baseline__ordinary",
+    "opera_revision_reason__ordinary",
+    "opera_revision_reason__paired",
+    "opera_selection_scope__paired",
+    "opera_selection_scope__ordinary"
+  ],
+  "request_projection": [
+    {
+      "request_id": "plug_v13_q1__ordinary",
+      "messages_sha256": "0211249685849bcecc752f36bf3843434372122e72bddd376ebd79bd614e1079"
+    },
+    {
+      "request_id": "plug_v13_q1__paired",
+      "messages_sha256": "a29c781b9f89e8ab2214a42df2e421ca456d0aa4b7083d11f269a21e75d5d7d7"
+    },
+    {
+      "request_id": "plug_v13_q2__paired",
+      "messages_sha256": "b16fd0798df6e80f2402e3c007e2a215516341022578367b172c958cbe83475c"
+    },
+    {
+      "request_id": "plug_v13_q2__ordinary",
+      "messages_sha256": "005cddf0ad2680ed3985868ccf478ab7a33454e3d31d7637e8ca843c88fd4448"
+    },
+    {
+      "request_id": "plug_v13_q3__ordinary",
+      "messages_sha256": "a82f264a716fb324978cc501e0035ea97be0d88747117aadf420272dc9077cf7"
+    },
+    {
+      "request_id": "plug_v13_q3__paired",
+      "messages_sha256": "33ec4e5a534809efa81dc6113f790295b149764b36bdf996ab7aac63e6b4a20e"
+    },
+    {
+      "request_id": "plug_v13_q4__paired",
+      "messages_sha256": "f3b0bbf2c8594e6a384bb23f6300940f3438f3c883b0842535e02dd78c077050"
+    },
+    {
+      "request_id": "plug_v13_q4__ordinary",
+      "messages_sha256": "afa3e3691c6cea81e7f870408ed7b7375c093bd8d71a153fcbf3dd55ec3ba358"
+    },
+    {
+      "request_id": "opera_revised_result__ordinary",
+      "messages_sha256": "dd99fc2963e9edaf73cac4545e4186f0fede2eddc2dfa41d41d9df9f271b23f1"
+    },
+    {
+      "request_id": "opera_revised_result__paired",
+      "messages_sha256": "dd99fc2963e9edaf73cac4545e4186f0fede2eddc2dfa41d41d9df9f271b23f1"
+    },
+    {
+      "request_id": "opera_retained_baseline__paired",
+      "messages_sha256": "1a2df3e4abc9608f80fdcffa7795ddddb628999f954673e8dbe7eabfd00e7641"
+    },
+    {
+      "request_id": "opera_retained_baseline__ordinary",
+      "messages_sha256": "0cf953b06d7807457e15fb64cdd65ddc4032685119a2a63168df029f8c67d37b"
+    },
+    {
+      "request_id": "opera_revision_reason__ordinary",
+      "messages_sha256": "4645620a96d806bf0d96aea05c207b209dd1ce8c4ece71f41ad240d9739cf878"
+    },
+    {
+      "request_id": "opera_revision_reason__paired",
+      "messages_sha256": "4645620a96d806bf0d96aea05c207b209dd1ce8c4ece71f41ad240d9739cf878"
+    },
+    {
+      "request_id": "opera_selection_scope__paired",
+      "messages_sha256": "ef83bfa6f549d992e22e9c4ebc73e18901bc9adb07fd9396d68d0b5cc157600d"
+    },
+    {
+      "request_id": "opera_selection_scope__ordinary",
+      "messages_sha256": "6cea97ca2c7a176872c089e9378e9c2e41282113d182a83147493cf3dab8eac4"
+    }
+  ]
+}

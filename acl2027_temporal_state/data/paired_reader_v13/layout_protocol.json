@@ -1,0 +1,54 @@
+{
+  "schema_version": "layout_followup_protocol_v0.13",
+  "declared_at_utc": "2026-10-03T09:23:00.262399+00:00",
+  "declaration_stage": "Before layout context rendering or layout reader predictions; primary native batch already running. This corpus agent has not inspected primary reader outputs or reference answers. Root reports it has not inspected primary answer contents at this declaration.",
+  "design": "Restore source-native internal whitespace within exactly the already selected chunk word spans. No retrieval rerun, source-word addition, source-word removal, header injection or unit inference.",
+  "inputs": {
+    "corpus_manifest": {
+      "path": "data/paired_reader_v13/corpus_manifest.json",
+      "sha256": "9654ab05490a82899b337284f85e6891cb06f8f460f3a0630c2bfc02bb9865c4"
+    },
+    "retrieval_metadata": {
+      "path": "results/paired_retrieval_v13.json",
+      "sha256": "3e9bbaba2d670331da24065e779e2fd5b15ad6d347d952a39d6b1162151d7986"
+    },
+    "external_original_contexts": {
+      "path": "/workspace/scratch/bdef663e3dfc/tmp/paired_reader_v13/contexts.jsonl",
+      "sha256": "7fbac52d2469490ac3912b4ae9c3325360f0dc3c9949fd9b4f49981e1e1ccace"
+    },
+    "external_corpus_chunks": {
+      "path": "/workspace/scratch/bdef663e3dfc/tmp/paired_reader_v13/corpus/chunks.jsonl",
+      "sha256": "c06dfc58eaaa3054762a47d180bfed9b30b1af361ca3bb0fbbaa20110a41ced3"
+    }
+  },
+  "algorithm": {
+    "word_boundaries": "Python Unicode regex \\S+ on each existing augmented source page",
+    "slice": "From first selected word start to last selected word end; all internal source-native spaces and newlines retained",
+    "invariants": [
+      "Identical question, history, condition, selected chunk IDs, BM25 scores, query hashes, chunk order, headers and citation labels",
+      "Identical per-chunk whitespace token sequence and word count",
+      "Identical total evidence word count and <=960 evidence words",
+      "Original context exactly reconstructs from frozen normalized chunks",
+      "Every source page hash matches the original corpus manifest"
+    ],
+    "output_contexts": 16,
+    "reference_answers_read": false,
+    "primary_predictions_read": false,
+    "new_source_requests": 0,
+    "native_inference_by_renderer": 0
+  },
+  "reader_followup_boundary": {
+    "native_input_limit": 3500,
+    "native_tokens_include": "System, question, headers and restored whitespace",
+    "tokens_must_be_recounted": true,
+    "overflow_policy": "If any input exceeds limit, declare the whole proposed layout batch input-budget failure; no truncation, no subset launch, no repaired rerun under this protocol",
+    "primary_comparison": "Same checkpoint, decoding, prompts and resource rules require separately frozen request and execution manifests before any layout native batch",
+    "launch_authorized_by_renderer": false
+  },
+  "limitations": [
+    "This is a post-source-inspection development follow-up, not an independent held-out test.",
+    "Restoring whitespace does not recover missing headers, units, off-chunk facts or semantic retrieval failures.",
+    "PDF native text may itself have flattened or unusual equations and reading order; source-native whitespace is not certified visual equivalence.",
+    "No scientific gain is established by successful context rendering."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": "control_reference_review_v0.13",
+  "frozen_at_utc": "2026-10-03T09:08:12.978169+00:00",
+  "status": "accepted_before_control_predictions",
+  "reviewer_role": "separate_reference_reviewer",
+  "model_assisted": true,
+  "human_gold": false,
+  "blind": false,
+  "shared_project_context": true,
+  "prior_discovery_familiarity": true,
+  "native_predictions_inspected": false,
+  "new_network_calls": 0,
+  "input_sha256": {
+    "data/paired_reader_v13/protocol.json": "44ea89a529e2bacb143770d1bfa4f8f481903b390c236a6fd07d605cf5e93f2b",
+    "data/paired_reader_v13/controls.json": "58ec20a97499bf30b10e74426e299319295c47ef0220d1b84967261bd473753e"
+  },
+  "request_sha256": "c82d043a26e93c7b9e8fb9285df8f0fc4495103692f94c2fdf147ce1e2c16a78",
+  "controls_reviewed": 2,
+  "assessments": [
+    {
+      "request_id": "control_same_period",
+      "source_supported": true,
+      "required_answer": "34 applications for the same fiscal year 2021.",
+      "sufficient_citations": [
+        [
+          "control_new p.1"
+        ]
+      ],
+      "scope_rule": "Reject changing district or year; unambiguous omission of District A wording is not itself failure."
+    },
+    {
+      "request_id": "control_changed_scope",
+      "source_supported": true,
+      "required_answer": "Participant set changed; calibration distance remains 12 metres.",
+      "sufficient_citations": [
+        [
+          "sample_new p.1"
+        ]
+      ],
+      "scope_rule": "Counts and exclusion explanation are optional supporting detail, not needed to answer whether the sample changed."
+    }
+  ],
+  "corrections_requested_and_resolved": [
+    {
+      "issue": "The second question asks whether the set changed, so mandatory old/new counts and mechanism would overconstrain semantic correctness.",
+      "resolution": "Root removed counts and mechanism from mandatory fact and retained them as optional detail before predictions."
+    },
+    {
+      "issue": "Same district is a scope constraint, not a requirement to repeat its literal name.",
+      "resolution": "Unambiguous contextual reference accepted; contradictory district remains wrong."
+    }
+  ],
+  "scoring_boundary": "Free prose and supported synonyms accepted. Content, scope, citation and format are separate; missing requested style alone does not imply wrong semantics. References and synthetic source prompts are not natural benchmark evidence.",
+  "gate_interpretation": "Passing these two root-authored short checks licenses only this bounded small-reader feasibility experiment, not a strong-baseline, held-out, general competence or method-quality certificate."
+}

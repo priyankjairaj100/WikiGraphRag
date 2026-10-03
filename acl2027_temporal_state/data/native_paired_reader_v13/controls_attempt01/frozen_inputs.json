@@ -1,0 +1,87 @@
+{
+  "schema_version": "native_paired_reader_freeze_v0.13",
+  "created_unix_seconds": 1791018717.7638264,
+  "completion_calls_at_freeze": 0,
+  "config": {
+    "schema_version": "native_paired_reader_config_v0.13",
+    "batch_id": "controls",
+    "expected_requests": 2,
+    "maximum_context_tokens": 4096,
+    "maximum_input_tokens": 3500,
+    "maximum_generated_tokens": 256,
+    "port": 18131,
+    "per_request_timeout_seconds": 900,
+    "system_prompt": "You are a careful document reader. Answer the question using only the supplied source excerpts. Distinguish what each document version says and preserve the relevant entity, reporting period, measure and selected sample. Do not recompute quantities or use outside knowledge. If the excerpts do not establish a requested fact, say so. Give a concise answer of at most 120 words, with supporting citations in the form [document_id p.N]. Use ordinary prose, not JSON. /no_think"
+  },
+  "parameters": {
+    "n_predict": 256,
+    "temperature": -1.0,
+    "seed": 7,
+    "n_probs": 0,
+    "post_sampling_probs": false,
+    "cache_prompt": false,
+    "return_tokens": true,
+    "stream": false,
+    "repeat_penalty": 1.0,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "logit_bias": [],
+    "samplers": [
+      "temperature"
+    ],
+    "grammar": "",
+    "stop": [],
+    "ignore_eos": false
+  },
+  "request_sha256": "c82d043a26e93c7b9e8fb9285df8f0fc4495103692f94c2fdf147ce1e2c16a78",
+  "request_bytes": 1020,
+  "protocol_sha256": "44ea89a529e2bacb143770d1bfa4f8f481903b390c236a6fd07d605cf5e93f2b",
+  "reference_review_sha256": "0139c428a1840a6496cd00a63807b516461a55fa39fed5c2ba4786d50d0c055c",
+  "reference_review_supplied_to_model": false,
+  "source_hashes": {
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/native_paired_reader_v13.py": "ed238022c4fc8586f41c7ec7ee94b7c65e8b4eb9cd274c6954576a825afbf9eb",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/larger_scorer_v09.py": "67b389f5fe8a87493e245f858607252cb72030f128215a3871db4882303e0dea",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/local_backend_v07.py": "c63acf150c86c09aca24a53ca9892170385de84e84d7d69308212d71a23260b7",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/scripts/fetch_local_backend_v07.py": "b2105c02be04cde9d14e5ea126762d8fdb929b0ad525e453edb1bd60a4cf2f29",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/configs/model_backend_v09.json": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/configs/paired_reader_controls_v13.json": "9d78bab529886af97c7ac3857aa61ed6f9bee36557f8346a91f79dfb359c351f",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/paired_reader_v13/protocol.json": "44ea89a529e2bacb143770d1bfa4f8f481903b390c236a6fd07d605cf5e93f2b",
+    "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/control_reference_review_v13.json": "0139c428a1840a6496cd00a63807b516461a55fa39fed5c2ba4786d50d0c055c"
+  },
+  "asset_binding": {
+    "config_sha256": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "assets": [
+      {
+        "relative_path": "Qwen3-4B-Q8_0.gguf",
+        "bytes": 4280404704,
+        "sha256": "8c2f07f26af9747e41988551106f149b03eb9b5cb6df636027b6bf6278473300",
+        "url": "https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/bc640142c66e1fdd12af0bd68f40445458f3869b/Qwen3-4B-Q8_0.gguf"
+      },
+      {
+        "relative_path": "llama-b11146-bin-ubuntu-x64.tar.gz",
+        "bytes": 16998357,
+        "sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11146/llama-b11146-bin-ubuntu-x64.tar.gz"
+      }
+    ],
+    "runtime_files_sha256": "677ee4aa7ac9a70d0d664474f589ba2f35ee2716ea0244d076ab103c3e5304c7"
+  },
+  "assets_path": "/workspace/scratch/bdef663e3dfc/tmp/local_backend_v09",
+  "external_path": "/workspace/scratch/bdef663e3dfc/tmp/paired_reader_v13/controls_attempt01",
+  "data_dir": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/data/native_paired_reader_v13/controls_attempt01",
+  "receipt_path": "/workspace/scratch/bdef663e3dfc/WikiGraphRag/acl2027_temporal_state/results/native_controls_v13_receipt.json",
+  "execution_order": [
+    "control_same_period",
+    "control_changed_scope"
+  ],
+  "request_projection": [
+    {
+      "request_id": "control_same_period",
+      "messages_sha256": "1b31e19a94c4d8bf768adadca368436e5fb9ea435e2797f1f86aeda7b6726ad7"
+    },
+    {
+      "request_id": "control_changed_scope",
+      "messages_sha256": "051fc35a0d845c75c018088278476436955928b1ad217f105690b392d25618c5"
+    }
+  ]
+}

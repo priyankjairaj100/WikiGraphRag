@@ -1,0 +1,71 @@
+{
+  "schema_version": "paired_reader_protocol_v0.13",
+  "declared_at_utc": "2026-10-03T09:06:11.435063+00:00",
+  "stage": "Before v13 retrieval outputs and native predictions; sources/priorreviews already development-visible",
+  "task": "Scope-aware paired-version reading feasibility",
+  "histories": 2,
+  "main_questions_max": 8,
+  "source_ids": [
+    "plug_2019_10k",
+    "plug_2020_10k",
+    "opera_pdf_v1",
+    "opera_pdf_v4"
+  ],
+  "new_source_network_requests": 0,
+  "reference_policy": "At most four source-supported questions per history, separate review before native predictions, disclosed model assistance and prior source familiarity; not blind/human gold. References excluded from retrieval and reader input.",
+  "retrieval": {
+    "corpus": "All four existing complete PDFs with page-preserving native extraction and tagged recovered full tables where needed; all text remains external.",
+    "chunk_words_max": 160,
+    "chunk_overlap_words": 30,
+    "page_crossing": false,
+    "tokenization": "Unicode lowercase alphanumeric tokens",
+    "scoring": "BM25",
+    "k1": 1.2,
+    "b": 0.75,
+    "query": "Exact question text only; no gold evidence, query expansion or answer terms",
+    "conditions": {
+      "ordinary": "Top6 within question history across both versions",
+      "paired": "Top3 per version, using same scores fit over whole history"
+    },
+    "tie_break": "Chunk ID ascending",
+    "display_order": "Version order, PDF page, chunk index for both conditions",
+    "evidence_words_max": 960,
+    "context_budget": "Same maximum3500 native input tokens plus256 output reserved in4096 context; actual counts reported; no silent truncation"
+  },
+  "model": {
+    "model_id": "Qwen/Qwen3-4B-GGUF/Qwen3-4B-Q8_0.gguf",
+    "revision": "bc640142c66e1fdd12af0bd68f40445458f3869b",
+    "sha256": "8c2f07f26af9747e41988551106f149b03eb9b5cb6df636027b6bf6278473300",
+    "runtime": "llama.cpp b11146 pinned existing assets",
+    "competence_claim": "A small local feasibility reader; never described as established strong baseline",
+    "temperature": -1.0,
+    "seed": 7,
+    "fresh_process_each_request": true,
+    "cache_prompt": false,
+    "thinking": false,
+    "grammar": null,
+    "maximum_generated_tokens": 256,
+    "maximum_input_tokens": 3500,
+    "context_tokens": 4096
+  },
+  "calls": {
+    "synthetic_controls": 2,
+    "main_if_controls_pass": 16,
+    "repair_or_retries_after_completion": 0,
+    "paid_jobs": 0
+  },
+  "failure_policy": "Retain every response. Output-limit is a recorded bounded-output failure and does not censor later cells. Stop on runtime/provenance/accounting failure; no hidden rerun. If controls fail, diagnose upstream and separately freeze any amended experiment before new predictions.",
+  "scoring": {
+    "content": "All question-specific required factual claims, acceptable source-supported paraphrases and units; unsupported contradictory material invalidates content.",
+    "scope": "Retain specified entity, period, quantity and analysis-selection distinctions.",
+    "citation": "At least one sufficient reference page set cited, with actual cited passage containing support; valid document/page alone is insufficient. Question-specific alternatives accepted if independently justified and recorded separately from frozen sufficient sets.",
+    "format": "Response readable with requested citation syntax; separate from factual content.",
+    "no_salvage": "No output rewriting or repaired prediction. Semantic evaluation of readable prose is part of the declared primary scoring, not strict JSON repair.",
+    "denominators": "Perquestion paired outcomes; no population accuracy or significance inference from2histories.",
+    "error_attribution": "Examine retrieved context for reference support before attributing errors to reading; page match alone does not prove chunk support."
+  },
+  "hypothesis": "Paired retrieval may expose relevant cross-version evidence; ordinary retrieval may already suffice. No advantage presumed.",
+  "go_no_go": "Stop method building if ordinary reading suffices; paired improvements are development signals requiring competent stronger baselines and held-out replication. Resolve extraction or competence failures before reasoning claims.",
+  "input_freeze": "Bind actual corpus/retrieval/question/reference-review/config hashes in separate batch execution manifests before native generation.",
+  "distribution": "Metadata, source locators, bounded paraphrases, source-copy-reviewed outputs, source/runtime code and reproducibility public; raw third-party corpus/prompts/tokens external."
+}

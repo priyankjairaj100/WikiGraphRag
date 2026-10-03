@@ -1,0 +1,4170 @@
+{
+  "schema_version": "paired_execution_audit_v0.13",
+  "audited_at_utc": "2026-10-03T10:14:36.539577+00:00",
+  "status": "passed",
+  "mode": "metadata_and_external",
+  "reviewer_role": "collector-author postexecution provenance audit; separate from semantic graders",
+  "independent_implementation_review": false,
+  "model_calls": 0,
+  "new_network_calls": 0,
+  "verifier_sha256": "7c69bd5a61d752b4035612d74cd27d76c869dc4b499b72ebe7eed5688bc53904",
+  "inputs_sha256": {
+    "data/native_paired_reader_v13/controls_attempt01/frozen_inputs.json": "6012ae3e16e5b84a7b3255ba9c45c7723f6c0c4df6a4b147a599207fd8b3189d",
+    "scripts/native_paired_reader_v13.py": "ed238022c4fc8586f41c7ec7ee94b7c65e8b4eb9cd274c6954576a825afbf9eb",
+    "scripts/larger_scorer_v09.py": "67b389f5fe8a87493e245f858607252cb72030f128215a3871db4882303e0dea",
+    "scripts/local_backend_v07.py": "c63acf150c86c09aca24a53ca9892170385de84e84d7d69308212d71a23260b7",
+    "scripts/fetch_local_backend_v07.py": "b2105c02be04cde9d14e5ea126762d8fdb929b0ad525e453edb1bd60a4cf2f29",
+    "configs/model_backend_v09.json": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "configs/paired_reader_controls_v13.json": "9d78bab529886af97c7ac3857aa61ed6f9bee36557f8346a91f79dfb359c351f",
+    "data/paired_reader_v13/protocol.json": "44ea89a529e2bacb143770d1bfa4f8f481903b390c236a6fd07d605cf5e93f2b",
+    "results/control_reference_review_v13.json": "0139c428a1840a6496cd00a63807b516461a55fa39fed5c2ba4786d50d0c055c",
+    "results/native_controls_v13_receipt.json": "55c266864a8162310c84b166be1205646a5ad9826c80ced46be26950b3930f5d",
+    "data/native_paired_reader_v13/controls_attempt01/preflight.execution.json": "ea86c6e4cccc52b68fac51419e13f1a564b2aa39980dd0d772fbe5ec6b5031b9",
+    "data/native_paired_reader_v13/controls_attempt01/preflight_freeze.json": "5e1aaba2a7b1ed12a091ba1f8207f5f5d326b0e4bf549814c9c6e87e858ecf8a",
+    "data/native_paired_reader_v13/controls_attempt01/process_00.execution.json": "364ef51e50f0f024cc9b789490e21b303fb266dbf80ad6e0c8b1876be0d806bc",
+    "data/native_paired_reader_v13/controls_attempt01/process_00.request.json": "b21bc7e2e8281820ea1168483ba9510158f7ee54fc55118c4311bcd3ea27b1ad",
+    "data/native_paired_reader_v13/controls_attempt01/process_00.response_projection.json": "342bd3c8b752581b15ccece9b116771255ee30a80043181657fc5ea11986cf64",
+    "data/native_paired_reader_v13/controls_attempt01/process_01.execution.json": "d951d9ba27c75562d83b6222f0cb542dddfe21533cca04802999098f92368953",
+    "data/native_paired_reader_v13/controls_attempt01/process_01.request.json": "e127d7c59fbf8aea261673bcef0ebdfd0facbb623503aea745bafdfc5abf893c",
+    "data/native_paired_reader_v13/controls_attempt01/process_01.response_projection.json": "4518fbf1e89cc1109d3b330069e375409c13c90fb22a22fd1427b55344e7ea70",
+    "data/native_paired_reader_v13/controls_attempt01/rendered_prompts.json": "ec76bec5df63c438363396734d4a07b306617e99287057bbb9f879a3dd42672f",
+    "data/native_paired_reader_v13/main_attempt01/frozen_inputs.json": "ec4a1ed15cee55f3771babb2aa13fe156134a9f73f5d3936ce71987502cb7f4e",
+    "configs/paired_reader_main_v13.json": "5c692c880ca80943582d1356d3fab1c432a9b655cacb8652b0236401ddae4f37",
+    "data/paired_reader_v13/main_execution_protocol.json": "07e500f04539e6978cf8f4fb4edb2844ff671a80487f0333fd0af47e69aa46d5",
+    "results/paired_reference_review_v13.json": "1b259b9b467947bd68864674b5136d9226d713eb3f2c85e285e396b0b6d869dc",
+    "results/native_paired_reader_v13_receipt.json": "48a76932a2428f9473626fde98ea3bc7b02b873252c287902b27e4370c36dc47",
+    "data/native_paired_reader_v13/main_attempt01/preflight.execution.json": "73fe882d5bb2e1958ddfffebb8a2d7a01fe417cbc0dc3eb44a8883d14a5f256e",
+    "data/native_paired_reader_v13/main_attempt01/preflight_freeze.json": "af575df200ea7696d423c0a2e29c561e67a015d3d8ad59c65a44afb5a9653452",
+    "data/native_paired_reader_v13/main_attempt01/process_00.execution.json": "734b34da938c9ad8b41d42594de29768bc41b3d6225097576ddcb66d4adf4289",
+    "data/native_paired_reader_v13/main_attempt01/process_00.request.json": "41503e183ee3587348408e48d733e6baf63036a50157e2e36aff95a08b5d053e",
+    "data/native_paired_reader_v13/main_attempt01/process_00.response_projection.json": "96c1c3282f3daeb232b37e93ffb1b3fd750590c5c7811340d9075fafc7f254a4",
+    "data/native_paired_reader_v13/main_attempt01/process_01.execution.json": "7bab9098c82bf7a56242bfa4ef34839206b42296a0c89426e64ccae91ba27d29",
+    "data/native_paired_reader_v13/main_attempt01/process_01.request.json": "ce24fef0fdf38ea561e4528cc28a4d14f235e8413e2a13082dd1475020e0d3f7",
+    "data/native_paired_reader_v13/main_attempt01/process_01.response_projection.json": "6fdf8b16fe36f886c7c118ef174744b562676636ebb1804c60967cfbd42e435a",
+    "data/native_paired_reader_v13/main_attempt01/process_02.execution.json": "818955837b84bb30ba3073c4d6c5990a5fb21828cf9777c5191782a09abb0b87",
+    "data/native_paired_reader_v13/main_attempt01/process_02.request.json": "058b05c756bbc7324ccfb6ead36f35dc00ce3f21b4756961e30f66ddbb0d5a7b",
+    "data/native_paired_reader_v13/main_attempt01/process_02.response_projection.json": "fd522e4aee8a497af801cafca846a856b782d3259756b4f37a677f991b4c46e6",
+    "data/native_paired_reader_v13/main_attempt01/process_03.execution.json": "259092e8b907dfa3800a0d95f80d04a9f8018ca1c8a886ed4e97e4c082e68adb",
+    "data/native_paired_reader_v13/main_attempt01/process_03.request.json": "68d5c83d4e4278b3a2523815456fd30d219c965e4cdd3f9098f4595d10a59dea",
+    "data/native_paired_reader_v13/main_attempt01/process_03.response_projection.json": "fe7137e060fb8c28dc15a0c9c25df04c9d878f2cb7fed9f0509d298053a92268",
+    "data/native_paired_reader_v13/main_attempt01/process_04.execution.json": "1c3b6be0e70dd55bd7ef53921315bf58e7e998e97a5943e607b074f158609dc7",
+    "data/native_paired_reader_v13/main_attempt01/process_04.request.json": "38caf934bac9f2c061e5f8a06a734093fc0dcf1c8bd9be4a937e529291e7edce",
+    "data/native_paired_reader_v13/main_attempt01/process_04.response_projection.json": "88e8d89b01ee8bc7e2dfd3dee90438a8aaba67c7ddfe7dd4c3a1b6b294f7c610",
+    "data/native_paired_reader_v13/main_attempt01/process_05.execution.json": "09053b5da0dbfa25c2e44b4e54a82c82afa1f8e9661c2d3a0d0830c455e1c1d8",
+    "data/native_paired_reader_v13/main_attempt01/process_05.request.json": "2657e9ce3e0604dda7753690269112202c9717e6112c813e0c851dc1d3b75ce0",
+    "data/native_paired_reader_v13/main_attempt01/process_05.response_projection.json": "7c576589e44e8af0a75d4ae25ee68231deb647a0f28effc443491ed78601b6e1",
+    "data/native_paired_reader_v13/main_attempt01/process_06.execution.json": "92a1c5c1b400c72252d89982fb27d1d130d1091cffe7d2d7468561ec82cb8749",
+    "data/native_paired_reader_v13/main_attempt01/process_06.request.json": "119612b078f2a6df5b5562674a87a422baa48328be0b19a8904b116c94d29cdf",
+    "data/native_paired_reader_v13/main_attempt01/process_06.response_projection.json": "bf331095ca611f8f44de71cd51b9c18df69184d7a6c4dc21a819de2e7310a767",
+    "data/native_paired_reader_v13/main_attempt01/process_07.execution.json": "19c81d99b75b4f8ba4038f20eb3e299cbaf788398aa3d9a4226250ab3bc21c83",
+    "data/native_paired_reader_v13/main_attempt01/process_07.request.json": "766216e5993153d390947d5342c52799f7efde5d659db7561256b538d374dc37",
+    "data/native_paired_reader_v13/main_attempt01/process_07.response_projection.json": "e8347783b501b9f024c65ab423c868b257d2310cf59a9e339bc562f44976582c",
+    "data/native_paired_reader_v13/main_attempt01/process_08.execution.json": "b09ce3b48b7e092e38c8fb283eb76cb7c8dd9bed09c6b0e5781456c3b5bdfb7b",
+    "data/native_paired_reader_v13/main_attempt01/process_08.request.json": "64e35baa23294b19adbe015c72b06b491c73347994f797dbe5786f3ac503f9c5",
+    "data/native_paired_reader_v13/main_attempt01/process_08.response_projection.json": "c15f02c9f15fa96c92456d3cc0ac3bbfc31cbaf71d1222413a6b78b21a230fb2",
+    "data/native_paired_reader_v13/main_attempt01/process_09.execution.json": "b9854fe1f2035071e60bd896efd97ec862de81a169373381a3d10c1c94fb30a1",
+    "data/native_paired_reader_v13/main_attempt01/process_09.request.json": "64e35baa23294b19adbe015c72b06b491c73347994f797dbe5786f3ac503f9c5",
+    "data/native_paired_reader_v13/main_attempt01/process_09.response_projection.json": "5ce1dedb57cdcdd3d48489fc4ccadbcc60bbcc8cb1a0aabb95bcb9bb479a6d81",
+    "data/native_paired_reader_v13/main_attempt01/process_10.execution.json": "9881fdf2ae76a60fb2b2c0bb731da8af8351a8e28fe10939ab6a2e7fc46745c9",
+    "data/native_paired_reader_v13/main_attempt01/process_10.request.json": "509fe5ee4bdc246d9a6e326fd1fe362d0c44ea1bd7d5d01dc4273753e1586d7d",
+    "data/native_paired_reader_v13/main_attempt01/process_10.response_projection.json": "d02a1f883f955f799a80b35b9a036a83b62fdf831ceb24bd6cfe27276175f315",
+    "data/native_paired_reader_v13/main_attempt01/process_11.execution.json": "696969faceb1711946171c7724b372baf10f012c96f5a938aeb0217980a30cae",
+    "data/native_paired_reader_v13/main_attempt01/process_11.request.json": "2e041d658e013ba1375dda6e5c5065f689130482ba6587472520e318980ebf2a",
+    "data/native_paired_reader_v13/main_attempt01/process_11.response_projection.json": "fe08c18313e5c8545cb7e4c2cef602da2ba2a1bca7007be0cd4d70430c277f97",
+    "data/native_paired_reader_v13/main_attempt01/process_12.execution.json": "72bc8bc54da7796cacebafef12c2ecd3c1c585f45c1f6afdaa6d9f5589430d0b",
+    "data/native_paired_reader_v13/main_attempt01/process_12.request.json": "5322af2d61311603bba24dca78eb444ad17bb681769f02ba4430ab7f3db2f094",
+    "data/native_paired_reader_v13/main_attempt01/process_12.response_projection.json": "f6c0f28cb39a471213809ffa75fc9c617a3f68e8ae4e35f192a569358125888c",
+    "data/native_paired_reader_v13/main_attempt01/process_13.execution.json": "b03db84371069408180d03baed66305036597549741f0a90dca267d061206ef0",
+    "data/native_paired_reader_v13/main_attempt01/process_13.request.json": "5322af2d61311603bba24dca78eb444ad17bb681769f02ba4430ab7f3db2f094",
+    "data/native_paired_reader_v13/main_attempt01/process_13.response_projection.json": "6f915fc3a24557429d1275bc9ecaf041c7102086a7712d8a247d3fce40dd0d79",
+    "data/native_paired_reader_v13/main_attempt01/process_14.execution.json": "b5ac6f016c2b1e65d4879adeb7b40ee344ea695ec586e05bc4e43f7e5b0a991d",
+    "data/native_paired_reader_v13/main_attempt01/process_14.request.json": "11e98132533154323f45905208af1480608fae03ce6f9a65f1761d5888a468d1",
+    "data/native_paired_reader_v13/main_attempt01/process_14.response_projection.json": "47984260bfbfca95ac57cb36528ec9f195be475a85a8b7419c0dd49f0cddc868",
+    "data/native_paired_reader_v13/main_attempt01/process_15.execution.json": "2c2196733b427176ff5db441882b70089bc62150d3fd28d2f5d0425e6e9d7242",
+    "data/native_paired_reader_v13/main_attempt01/process_15.request.json": "8f51789dfe03c69246eb3277d7de9b8ad994fa6a4922a30fd99fcbcf6e8e54e8",
+    "data/native_paired_reader_v13/main_attempt01/process_15.response_projection.json": "7f6007f35e14fad3669826ff37f539da4f982ecd1dd33f545c00905bc819a3e7",
+    "data/native_paired_reader_v13/main_attempt01/rendered_prompts.json": "ba692b332a55edf18ab097c7e77627c8675df0c3a228db0237b2a6c7b4e653bf",
+    "data/native_paired_reader_v13/layout_attempt01/frozen_inputs.json": "75d52457622c74d6fb051371bac3cae5d6372f7d3b481200604a3288847cb1d3",
+    "configs/paired_reader_layout_v13.json": "24f2178b71e33b9a474bce6d6364191def4b256866e9ad2501fd0d6ae35d9570",
+    "data/paired_reader_v13/layout_execution_protocol.json": "dc2f55b98d5084d9538b324811670d1655290791dde5bf62b141151d4ad17a9b",
+    "results/native_layout_reader_v13_receipt.json": "09622e7e88c0a5a7270f435fe29063e92ef5fe2d25a2c10cd496094cfeefe519",
+    "data/native_paired_reader_v13/layout_attempt01/preflight.execution.json": "c2ff904ac0500c332548acb9357afbf549a4d8cf5b36352b1d4abdbc098cc6df",
+    "data/native_paired_reader_v13/layout_attempt01/preflight_freeze.json": "6e271cfc0eecb3a3cf9337ca9869aa3b4f13a9a15bd41b7675e38ac0df5c8de6",
+    "data/native_paired_reader_v13/layout_attempt01/process_00.execution.json": "8a3e816cf15950950994829698804a34bb2d3c747973e116c4f2989eaa62e0f6",
+    "data/native_paired_reader_v13/layout_attempt01/process_00.request.json": "6eb60ae249124982258504dc0d6475eb95e026b82d392067730b7138958c64df",
+    "data/native_paired_reader_v13/layout_attempt01/process_00.response_projection.json": "a7c56522d54c2bdbc15b0b6ff258cb13fe3bc08eb5f98dab290efa4f0a409ba9",
+    "data/native_paired_reader_v13/layout_attempt01/process_01.execution.json": "02dafe1b954333619c5c50e7a289a91b7b8c3f917af2bbb9eb30718a566f52db",
+    "data/native_paired_reader_v13/layout_attempt01/process_01.request.json": "ccd9866151da407a6caae178ebb36b0937a741547ce281a2406fb89caedc9a50",
+    "data/native_paired_reader_v13/layout_attempt01/process_01.response_projection.json": "81a154bfd2d9b736309fac88478119ce17d21afb08fb244f44d962e851c18b2f",
+    "data/native_paired_reader_v13/layout_attempt01/process_02.execution.json": "c374fa15271c1f483141f38638ea0266e18ad074cede4796b569cd6afd142dd3",
+    "data/native_paired_reader_v13/layout_attempt01/process_02.request.json": "8d98712591fe43003793f6abe3b7fc8184704ef364e33be7454aa93f363f5150",
+    "data/native_paired_reader_v13/layout_attempt01/process_02.response_projection.json": "a14a63b6a9b2b9ed5bf39c0bc3cd19385d368058e59c447c578b39c69957bc63",
+    "data/native_paired_reader_v13/layout_attempt01/process_03.execution.json": "8965924a4af5b909656bc41146bdebbc540a4870dd09bb3172ad35543149c5d6",
+    "data/native_paired_reader_v13/layout_attempt01/process_03.request.json": "0dfe48a674902a7b27e3ae4bde22aa201b89edc1e85136eb3e15b7d1bad60075",
+    "data/native_paired_reader_v13/layout_attempt01/process_03.response_projection.json": "32032e4cda04e99b7f11d67fb86cf59017250765c4727a0cc701bd03b8ec2447",
+    "data/native_paired_reader_v13/layout_attempt01/process_04.execution.json": "f0449e4e67c81e89013882382dfcc1bdb4016e5f545c333c01f612ac47e4f18c",
+    "data/native_paired_reader_v13/layout_attempt01/process_04.request.json": "037be6edd79421752ba2ec11c0e6fb00ca4643ca1925c601120329271294a7ce",
+    "data/native_paired_reader_v13/layout_attempt01/process_04.response_projection.json": "7a32afb88383bcc173d6dc87dd293faac0f52a0a0feb9251406d36d1ec23484b",
+    "data/native_paired_reader_v13/layout_attempt01/process_05.execution.json": "4cfbd75c7d7bc4d826c42005f1570f9225d7e31768ca1f3288b197ed1d7f5caf",
+    "data/native_paired_reader_v13/layout_attempt01/process_05.request.json": "ed917263cec6e9d44f4783ac4c2c93b50c0e8e0b1ce6c00af6501b1d0effeaa2",
+    "data/native_paired_reader_v13/layout_attempt01/process_05.response_projection.json": "bb266021caf7d216d165d2875659307d67508e77c5a60e241d30eb56248cb5a3",
+    "data/native_paired_reader_v13/layout_attempt01/process_06.execution.json": "66a226a8f8fd34a0c4db66a2cec5409b35f789cf484dcec0a8050efde0343061",
+    "data/native_paired_reader_v13/layout_attempt01/process_06.request.json": "d16f6392e77893ef18426edd6bde10ae7bab716926f8168dbcee8b34d809ac4f",
+    "data/native_paired_reader_v13/layout_attempt01/process_06.response_projection.json": "2f7f7adceed76e2f08b1f35cb140aa0eb4c3358c1006e05a42b4d3b94d20b3a3",
+    "data/native_paired_reader_v13/layout_attempt01/process_07.execution.json": "1401613eae0862feaea32a0191bfac77247c7b984a16b6ffcbe8f9f2d464f58d",
+    "data/native_paired_reader_v13/layout_attempt01/process_07.request.json": "54d70e5a64f231246fd1f4ef01c4e366af078f0da87e0edee0f585d509e629ad",
+    "data/native_paired_reader_v13/layout_attempt01/process_07.response_projection.json": "b2a3c1be9e36a7a024d6a2daa0333cdcca8e0d7025fa1817209df5a06b717fd3",
+    "data/native_paired_reader_v13/layout_attempt01/process_08.execution.json": "a4b730defd4540db9d2c30ab0dee729b39c5e7e7b2445b0577deeab0725e0278",
+    "data/native_paired_reader_v13/layout_attempt01/process_08.request.json": "7cf0d446c77aa98e711cadb0ef4e68f2dff44289268d78a31ea8114d2476e00d",
+    "data/native_paired_reader_v13/layout_attempt01/process_08.response_projection.json": "05403fdf6d702cbbb9f9c62b221fe781038b5269c51c39b7dd4490278c855142",
+    "data/native_paired_reader_v13/layout_attempt01/process_09.execution.json": "af88fd0a161e4770d114ddb076844639e26b9453ae7caea6cb8c1a07af4bff74",
+    "data/native_paired_reader_v13/layout_attempt01/process_09.request.json": "7cf0d446c77aa98e711cadb0ef4e68f2dff44289268d78a31ea8114d2476e00d",
+    "data/native_paired_reader_v13/layout_attempt01/process_09.response_projection.json": "4a71a8d5cd4e3253b6398ff8abee24e8aeafe8d3f9826373f8b968230f8f56a5",
+    "data/native_paired_reader_v13/layout_attempt01/process_10.execution.json": "ac0b7b3b06e0be3b9d20abba7bac2d5f5072fc71c0341b4bb1a3e1ba97bb9328",
+    "data/native_paired_reader_v13/layout_attempt01/process_10.request.json": "bc193e4ec3067641ecc2ffd2192969ac7c16d654f6d65d95b62a47f4e1144d1f",
+    "data/native_paired_reader_v13/layout_attempt01/process_10.response_projection.json": "4928cb3ac397d9301de9ca628c0165da5caead6f5e5ea4f6f3a8ade53230e3b4",
+    "data/native_paired_reader_v13/layout_attempt01/process_11.execution.json": "0a3ba3e94e0f8e198df492b37feb1c77917e7f7fafad8c7ac5b7e6a8c6c59652",
+    "data/native_paired_reader_v13/layout_attempt01/process_11.request.json": "24a42686c9ddbd14ccf1233e3998c61cecd1a0ee57cdf9d42ea84503ba322013",
+    "data/native_paired_reader_v13/layout_attempt01/process_11.response_projection.json": "80208a71379ba71d488ab9dffef11cf6f94fd8c0c383a609bce6bf4e658c28db",
+    "data/native_paired_reader_v13/layout_attempt01/process_12.execution.json": "68428025560c2d54ed1548d9824b593fd667c31cee7b9a3ffa61f20c6978717a",
+    "data/native_paired_reader_v13/layout_attempt01/process_12.request.json": "86c0266071c37d090bfbeaa8824dc7f15aa3631949bae604465dd9963c9fe0d7",
+    "data/native_paired_reader_v13/layout_attempt01/process_12.response_projection.json": "821903a288514e08ffab823d17d9aea33e6f9c5d40db9feaa06d553038bc500c",
+    "data/native_paired_reader_v13/layout_attempt01/process_13.execution.json": "fc8a6d2c35630868ffca2bb0c583087d6533fcdf628e08b3c319e3fd548b903f",
+    "data/native_paired_reader_v13/layout_attempt01/process_13.request.json": "86c0266071c37d090bfbeaa8824dc7f15aa3631949bae604465dd9963c9fe0d7",
+    "data/native_paired_reader_v13/layout_attempt01/process_13.response_projection.json": "028eb60a6dc85a56c01790faddd893a13bd60b78fd7a80d53723c66bb25bc6dc",
+    "data/native_paired_reader_v13/layout_attempt01/process_14.execution.json": "67067387648509cd5d83ff07709edb6a625a44c6f6fc8b224d9c3e032d0f36c4",
+    "data/native_paired_reader_v13/layout_attempt01/process_14.request.json": "983084318793bc91610ff18ffb6fdc4001f6b9f2613c6f37f55ceb23e62c2b7a",
+    "data/native_paired_reader_v13/layout_attempt01/process_14.response_projection.json": "f5b5f97374968752433fe0a22abac2aa5b45af4291338d5101435d41b3aea809",
+    "data/native_paired_reader_v13/layout_attempt01/process_15.execution.json": "450304a0d4b3fb77c9dfb79ade5b1d8738ccdcaae2074a5d56711fbb26502506",
+    "data/native_paired_reader_v13/layout_attempt01/process_15.request.json": "b7b370e34d626e4f979abbb50c75cb4971abc803a4fc0f41686ff06459fab717",
+    "data/native_paired_reader_v13/layout_attempt01/process_15.response_projection.json": "0c6aa9c8b8cf6f70b78aeae786324aafa5b919a952ea6efe21c2269a03a1f7ae",
+    "data/native_paired_reader_v13/layout_attempt01/rendered_prompts.json": "c636fbbbdc78c0a78d7a2968104fc899ed779a19aac75796735b21de6275fe11",
+    "data/paired_reader_v13/questions.json": "fb375929e23431628d42aab6af127900cd246bfc50cc29146454edb27b95d45c",
+    "data/paired_reader_v13/questions_plug.json": "cc4e92d556f90637a35afb41a1b0907fe99678eaee1f5445a5c1ef6d685020f2",
+    "data/paired_reader_v13/questions_opera.json": "a6c57ef1cd5503d7cfc5728c45b39e1111eeaf3451a8ceba8da77c1d3cf731b8",
+    "data/paired_reader_v13/references_plug.json": "682a7af7fcef05bcc1a0ad16bca1874e2e7b5078db982b9e4a51b46dcbd91dbc",
+    "data/paired_reader_v13/references_opera.json": "2cbe0e728609073bf33c28c0a3f8876063635db6d75bd0bba89e49997e4edc66",
+    "data/paired_reader_v13/corpus_manifest.json": "9654ab05490a82899b337284f85e6891cb06f8f460f3a0630c2bfc02bb9865c4",
+    "data/paired_reader_v13/request_manifest.json": "9a3f498ef08fbccc9f70736782a0a6fcbf665fe494d561eb7e0e1422cc18f801",
+    "results/paired_retrieval_v13.json": "3e9bbaba2d670331da24065e779e2fd5b15ad6d347d952a39d6b1162151d7986",
+    "results/reader_controls_v13.json": "8678344e8301eb21fc0a451e26ab74ddc04077b405e4c501658098a247c3d6e3",
+    "scripts/build_paired_corpus_v13.py": "7bfe91c892adf60414960340e641ff69c65678ce08a4676ec8598fcaa8806425",
+    "scripts/retrieve_paired_v13.py": "e99b161ac9b5a9b16b07af22f1dcae977633dcdeb22ab33e36e5f48509428986",
+    "scripts/prepare_paired_requests_v13.py": "0c4e7301830f5425fbd7f345b5ffa3db16e46ce19caf4aaab9df611db8b49570",
+    "data/paired_reader_v13/execution_environment.json": "cc7e5ff4899986628bb380c9181589c681e42a8a6b872a5b4b64e8554d65c90a",
+    "data/paired_reader_v13/layout_protocol.json": "6afc3aa013bb7cb087e7f0ff6783eaee608ec1e71f9e7b351a5e3fa1c807c6d6",
+    "data/paired_reader_v13/layout_request_manifest.json": "c140c9cfa251d035c3f2aff7e1796ce748b0ee05cb0aa0cb52524749495a2fd7",
+    "results/layout_contexts_v13.json": "548e49c4946843a18afa8fe6ac7970a0ca1616944bba3803a844beb9fa92d830",
+    "data/paired_reader_v13/scoring_contract.json": "bfe298807cdfe3b4ceb3cee2e9c75a9de60facece0c429c2e0f513d23e8d70b2",
+    "scripts/render_layout_contexts_v13.py": "2ddfb521c07a946eb23786ef73a7d7a178e327ee14d1254210b73a3da73392fd",
+    "results/plug_source_review_v12.json": "af9c8d7be4fb590c4fc8e3f8042693e7e27d115997cbef2bf2a3fdfbcf1995c6",
+    "results/opera_source_review_v12.json": "4bdbf9b1495025da3794a860f49c62cac6d20511f18f2a925980b1396def7145",
+    "data/paired_reader_v13/grading_layout_opera_manifest.json": "704f2f5ca76e2ad4d45273dc9fea6b2bc50418f86fe556a91e0c0cea4ecf475a",
+    "results/grades_layout_opera_v13.json": "d3c17acbeb09313071acb71d5e5fcd6c11e03808fa0f50ba3d48523a6b3be5b9",
+    "data/paired_reader_v13/grading_layout_plug_manifest.json": "398fb93b55596bd07a40dc82e387db4901bcda83bbf4e9feb65a7e732aa14297",
+    "results/grades_layout_plug_v13.json": "150b9bba3c714e779398154ec2b0c2b67db6d5db870ed9cc3b1bafbd011bd94b",
+    "data/paired_reader_v13/grading_main_opera_manifest.json": "b50e07cae89d2751e3301e92751b96a34d5c618f98806295ce221433d25893ce",
+    "results/grades_main_opera_v13.json": "b995253e9fb57e61e5056c87ff0813604b4d1984f37d0e93ec7294072dc5a5b3",
+    "data/paired_reader_v13/grading_main_plug_manifest.json": "091477cc69a94d6aa2a9221fc04d5aaf5f2175bb417b31ae5280ee3314eb6547",
+    "results/grades_main_plug_v13.json": "b44d950327e28c219b01ff4c07fe6b13171fec8972756f4a536cb8774da38f58",
+    "results/paired_main_summary_v13.json": "ad8a97d4640bdf13481dc6d4bb90b2b9e6a3bf92bc42f72773e5b9826c4dfe9f",
+    "results/retrieval_support_audit_v13.json": "df4d02b5a23f52fd2d8d7ad4521307a1c869bdc26d10f50a166e9fa8324b87bc",
+    "scripts/summarize_paired_study_v13.py": "c65ccf4f6d155d0a902d87dde8eaedfbfc916885790e953d047b3a8856e5ac25",
+    "results/paired_study_initial_v13.json": "e30dbd28e82d6e6997486f3fa83cf234b545146ede786bd3cbe7fb0634496056",
+    "results/layout_support_audit_v13.json": "06e876301548e184a11ce8bfcd471c2aecc7debeb6bf5149036874607e92b12c",
+    "results/paired_study_summary_v13.json": "2e13ca16f518d5b50f2f80896fb1b5241682957797e0c6564bebc297ed2528d7",
+    "results/layout_plug_adjudication_review_v13.json": "0ecde93629bbbbcfe3d34f48df8b199853bd3d3fd022b78b9d3e71b01a03ab14",
+    "results/reader_adjudication_overlay_v13.json": "2aa4bbd855116ada16c0ebcd04b0915fc9b534f5e14ba6a3b23c4bfaab678142",
+    "scripts/summarize_paired_study_adjudicated_v13.py": "97d5b8ae7f14763de453cbd0ba29233720dc5ae1573acf8154c3f585f0b3b274"
+  },
+  "checks": [
+    {
+      "check": "controls:frozen_source:scripts/native_paired_reader_v13.py",
+      "passed": true
+    },
+    {
+      "check": "controls:frozen_source:scripts/larger_scorer_v09.py",
+      "passed": true
+    },
+    {
+      "check": "controls:frozen_source:scripts/local_backend_v07.py",
+      "passed": true
+    },
+    {
+      "check": "controls:frozen_source:scripts/fetch_local_backend_v07.py",
+      "passed": true
+    },
+    {
+      "check": "controls:frozen_source:configs/model_backend_v09.json",
+      "passed": true
+    },
+    {
+      "check": "controls:frozen_source:configs/paired_reader_controls_v13.json",
+      "passed": true
+    },
+    {
+      "check": "controls:frozen_source:data/paired_reader_v13/protocol.json",
+      "passed": true
+    },
+    {
+      "check": "controls:frozen_source:results/control_reference_review_v13.json",
+      "passed": true
+    },
+    {
+      "check": "controls:frozen_call_and_parameter_budget",
+      "passed": true
+    },
+    {
+      "check": "controls:frozen_order_and_no_reference_input",
+      "passed": true
+    },
+    {
+      "check": "controls:receipt_freeze_binding",
+      "passed": true
+    },
+    {
+      "check": "controls:project_artifact:data/native_paired_reader_v13/controls_attempt01/frozen_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "controls:project_artifact:data/native_paired_reader_v13/controls_attempt01/preflight.execution.json",
+      "passed": true
+    },
+    {
+      "check": "controls:project_artifact:data/native_paired_reader_v13/controls_attempt01/preflight_freeze.json",
+      "passed": true
+    },
+    {
+      "check": "controls:project_artifact:data/native_paired_reader_v13/controls_attempt01/process_00.execution.json",
+      "passed": true
+    },
+    {
+      "check": "controls:project_artifact:data/native_paired_reader_v13/controls_attempt01/process_00.request.json",
+      "passed": true
+    },
+    {
+      "check": "controls:project_artifact:data/native_paired_reader_v13/controls_attempt01/process_00.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "controls:project_artifact:data/native_paired_reader_v13/controls_attempt01/process_01.execution.json",
+      "passed": true
+    },
+    {
+      "check": "controls:project_artifact:data/native_paired_reader_v13/controls_attempt01/process_01.request.json",
+      "passed": true
+    },
+    {
+      "check": "controls:project_artifact:data/native_paired_reader_v13/controls_attempt01/process_01.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "controls:project_artifact:data/native_paired_reader_v13/controls_attempt01/rendered_prompts.json",
+      "passed": true
+    },
+    {
+      "check": "controls:exact_metadata_inventory",
+      "passed": true
+    },
+    {
+      "check": "controls:completed_counts",
+      "passed": true
+    },
+    {
+      "check": "controls:preflight_projection_hash",
+      "passed": true
+    },
+    {
+      "check": "controls:preflight_prior_to_completions",
+      "passed": true
+    },
+    {
+      "check": "controls:preflight_order",
+      "passed": true
+    },
+    {
+      "check": "controls:external_preflight_hash_crosslinks",
+      "passed": true
+    },
+    {
+      "check": "controls:asset_metadata_binding",
+      "passed": true
+    },
+    {
+      "check": "controls:preflight:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "controls:preflight:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "controls:preflight:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "controls:process_00:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "controls:process_00:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "controls:process_00:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "controls:process_00:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "controls:process_00:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "controls:process_00:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "controls:process_00:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "controls:process_01:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "controls:process_01:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "controls:process_01:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "controls:process_01:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "controls:process_01:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "controls:process_01:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "controls:process_01:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "controls:budget_failure_count",
+      "passed": true
+    },
+    {
+      "check": "main:frozen_source:scripts/native_paired_reader_v13.py",
+      "passed": true
+    },
+    {
+      "check": "main:frozen_source:scripts/larger_scorer_v09.py",
+      "passed": true
+    },
+    {
+      "check": "main:frozen_source:scripts/local_backend_v07.py",
+      "passed": true
+    },
+    {
+      "check": "main:frozen_source:scripts/fetch_local_backend_v07.py",
+      "passed": true
+    },
+    {
+      "check": "main:frozen_source:configs/model_backend_v09.json",
+      "passed": true
+    },
+    {
+      "check": "main:frozen_source:configs/paired_reader_main_v13.json",
+      "passed": true
+    },
+    {
+      "check": "main:frozen_source:data/paired_reader_v13/main_execution_protocol.json",
+      "passed": true
+    },
+    {
+      "check": "main:frozen_source:results/paired_reference_review_v13.json",
+      "passed": true
+    },
+    {
+      "check": "main:frozen_call_and_parameter_budget",
+      "passed": true
+    },
+    {
+      "check": "main:frozen_order_and_no_reference_input",
+      "passed": true
+    },
+    {
+      "check": "main:receipt_freeze_binding",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/frozen_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/preflight.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/preflight_freeze.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_00.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_00.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_00.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_01.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_01.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_01.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_02.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_02.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_02.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_03.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_03.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_03.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_04.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_04.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_04.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_05.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_05.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_05.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_06.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_06.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_06.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_07.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_07.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_07.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_08.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_08.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_08.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_09.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_09.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_09.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_10.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_10.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_10.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_11.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_11.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_11.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_12.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_12.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_12.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_13.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_13.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_13.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_14.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_14.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_14.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_15.execution.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_15.request.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/process_15.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "main:project_artifact:data/native_paired_reader_v13/main_attempt01/rendered_prompts.json",
+      "passed": true
+    },
+    {
+      "check": "main:exact_metadata_inventory",
+      "passed": true
+    },
+    {
+      "check": "main:completed_counts",
+      "passed": true
+    },
+    {
+      "check": "main:preflight_projection_hash",
+      "passed": true
+    },
+    {
+      "check": "main:preflight_prior_to_completions",
+      "passed": true
+    },
+    {
+      "check": "main:preflight_order",
+      "passed": true
+    },
+    {
+      "check": "main:external_preflight_hash_crosslinks",
+      "passed": true
+    },
+    {
+      "check": "main:asset_metadata_binding",
+      "passed": true
+    },
+    {
+      "check": "main:preflight:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:preflight:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:preflight:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_00:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_00:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_00:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_00:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_00:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_00:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_00:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_01:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_01:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_01:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_01:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_01:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_01:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_01:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_02:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_02:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_02:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_02:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_02:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_02:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_02:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_03:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_03:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_03:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_03:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_03:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_03:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_03:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_04:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_04:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_04:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_04:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_04:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_04:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_04:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_05:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_05:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_05:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_05:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_05:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_05:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_05:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_06:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_06:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_06:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_06:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_06:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_06:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_06:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_07:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_07:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_07:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_07:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_07:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_07:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_07:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_08:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_08:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_08:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_08:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_08:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_08:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_08:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_09:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_09:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_09:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_09:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_09:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_09:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_09:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_10:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_10:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_10:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_10:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_10:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_10:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_10:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_11:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_11:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_11:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_11:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_11:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_11:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_11:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_12:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_12:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_12:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_12:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_12:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_12:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_12:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_13:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_13:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_13:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_13:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_13:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_13:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_13:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_14:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_14:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_14:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_14:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_14:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_14:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_14:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:process_15:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "main:process_15:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "main:process_15:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "main:process_15:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "main:process_15:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "main:process_15:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "main:process_15:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "main:budget_failure_count",
+      "passed": true
+    },
+    {
+      "check": "layout:frozen_source:scripts/native_paired_reader_v13.py",
+      "passed": true
+    },
+    {
+      "check": "layout:frozen_source:scripts/larger_scorer_v09.py",
+      "passed": true
+    },
+    {
+      "check": "layout:frozen_source:scripts/local_backend_v07.py",
+      "passed": true
+    },
+    {
+      "check": "layout:frozen_source:scripts/fetch_local_backend_v07.py",
+      "passed": true
+    },
+    {
+      "check": "layout:frozen_source:configs/model_backend_v09.json",
+      "passed": true
+    },
+    {
+      "check": "layout:frozen_source:configs/paired_reader_layout_v13.json",
+      "passed": true
+    },
+    {
+      "check": "layout:frozen_source:data/paired_reader_v13/layout_execution_protocol.json",
+      "passed": true
+    },
+    {
+      "check": "layout:frozen_source:results/paired_reference_review_v13.json",
+      "passed": true
+    },
+    {
+      "check": "layout:frozen_call_and_parameter_budget",
+      "passed": true
+    },
+    {
+      "check": "layout:frozen_order_and_no_reference_input",
+      "passed": true
+    },
+    {
+      "check": "layout:receipt_freeze_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/frozen_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/preflight.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/preflight_freeze.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_00.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_00.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_00.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_01.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_01.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_01.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_02.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_02.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_02.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_03.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_03.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_03.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_04.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_04.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_04.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_05.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_05.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_05.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_06.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_06.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_06.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_07.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_07.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_07.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_08.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_08.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_08.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_09.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_09.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_09.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_10.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_10.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_10.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_11.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_11.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_11.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_12.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_12.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_12.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_13.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_13.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_13.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_14.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_14.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_14.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_15.execution.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_15.request.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/process_15.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "layout:project_artifact:data/native_paired_reader_v13/layout_attempt01/rendered_prompts.json",
+      "passed": true
+    },
+    {
+      "check": "layout:exact_metadata_inventory",
+      "passed": true
+    },
+    {
+      "check": "layout:completed_counts",
+      "passed": true
+    },
+    {
+      "check": "layout:preflight_projection_hash",
+      "passed": true
+    },
+    {
+      "check": "layout:preflight_prior_to_completions",
+      "passed": true
+    },
+    {
+      "check": "layout:preflight_order",
+      "passed": true
+    },
+    {
+      "check": "layout:external_preflight_hash_crosslinks",
+      "passed": true
+    },
+    {
+      "check": "layout:asset_metadata_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:preflight:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:preflight:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:preflight:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_00:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_00:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_00:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_00:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_00:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_00:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_00:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_01:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_01:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_01:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_01:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_01:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_01:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_01:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_02:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_02:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_02:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_02:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_02:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_02:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_02:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_03:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_03:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_03:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_03:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_03:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_03:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_03:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_04:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_04:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_04:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_04:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_04:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_04:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_04:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_05:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_05:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_05:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_05:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_05:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_05:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_05:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_06:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_06:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_06:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_06:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_06:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_06:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_06:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_07:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_07:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_07:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_07:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_07:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_07:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_07:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_08:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_08:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_08:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_08:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_08:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_08:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_08:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_09:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_09:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_09:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_09:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_09:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_09:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_09:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_10:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_10:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_10:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_10:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_10:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_10:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_10:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_11:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_11:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_11:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_11:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_11:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_11:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_11:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_12:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_12:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_12:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_12:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_12:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_12:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_12:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_13:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_13:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_13:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_13:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_13:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_13:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_13:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_14:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_14:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_14:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_14:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_14:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_14:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_14:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:process_15:fresh_guarded_process",
+      "passed": true
+    },
+    {
+      "check": "layout:process_15:pinned_model_runtime",
+      "passed": true
+    },
+    {
+      "check": "layout:process_15:external_trace_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:process_15:exact_request_parameters",
+      "passed": true
+    },
+    {
+      "check": "layout:process_15:complete_cold_input",
+      "passed": true
+    },
+    {
+      "check": "layout:process_15:bounded_output",
+      "passed": true
+    },
+    {
+      "check": "layout:process_15:text_and_tokens_withheld",
+      "passed": true
+    },
+    {
+      "check": "layout:budget_failure_count",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:data/paired_reader_v13/protocol.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:data/paired_reader_v13/questions.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:data/paired_reader_v13/questions_plug.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:data/paired_reader_v13/questions_opera.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:data/paired_reader_v13/references_plug.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:data/paired_reader_v13/references_opera.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:data/paired_reader_v13/corpus_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:data/paired_reader_v13/request_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:results/paired_reference_review_v13.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:results/paired_retrieval_v13.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:results/reader_controls_v13.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:configs/paired_reader_main_v13.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:scripts/build_paired_corpus_v13.py",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:scripts/retrieve_paired_v13.py",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:scripts/prepare_paired_requests_v13.py",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/main_execution_protocol.json:input:data/paired_reader_v13/execution_environment.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/layout_execution_protocol.json:input:data/paired_reader_v13/layout_protocol.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/layout_execution_protocol.json:input:data/paired_reader_v13/main_execution_protocol.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/layout_execution_protocol.json:input:data/paired_reader_v13/layout_request_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/layout_execution_protocol.json:input:results/layout_contexts_v13.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/layout_execution_protocol.json:input:results/paired_reference_review_v13.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/layout_execution_protocol.json:input:results/reader_controls_v13.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/layout_execution_protocol.json:input:data/paired_reader_v13/scoring_contract.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/layout_execution_protocol.json:input:configs/paired_reader_layout_v13.json",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/layout_execution_protocol.json:input:scripts/render_layout_contexts_v13.py",
+      "passed": true
+    },
+    {
+      "check": "data/paired_reader_v13/layout_execution_protocol.json:input:scripts/prepare_paired_requests_v13.py",
+      "passed": true
+    },
+    {
+      "check": "results/paired_reference_review_v13.json:input:data/paired_reader_v13/protocol.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_reference_review_v13.json:input:data/paired_reader_v13/questions_plug.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_reference_review_v13.json:input:data/paired_reader_v13/references_plug.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_reference_review_v13.json:input:data/paired_reader_v13/questions_opera.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_reference_review_v13.json:input:data/paired_reader_v13/references_opera.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_reference_review_v13.json:input:results/plug_source_review_v12.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_reference_review_v13.json:input:results/opera_source_review_v12.json",
+      "passed": true
+    },
+    {
+      "check": "eight_unique_questions_two_histories",
+      "passed": true
+    },
+    {
+      "check": "eight_reference_reviews",
+      "passed": true
+    },
+    {
+      "check": "controls:scoring_receipt_binding",
+      "passed": true
+    },
+    {
+      "check": "controls_gate_passed_before_main",
+      "passed": true
+    },
+    {
+      "check": "controls:content_binding:control_same_period",
+      "passed": true
+    },
+    {
+      "check": "controls:content_binding:control_changed_scope",
+      "passed": true
+    },
+    {
+      "check": "corpus_manifest_counts",
+      "passed": true
+    },
+    {
+      "check": "retrieval:corpus_binding",
+      "passed": true
+    },
+    {
+      "check": "retrieval:questions_binding",
+      "passed": true
+    },
+    {
+      "check": "retrieval_sixteen_contexts",
+      "passed": true
+    },
+    {
+      "check": "layout_sixteen_contexts",
+      "passed": true
+    },
+    {
+      "check": "main:request_context_freeze_binding",
+      "passed": true
+    },
+    {
+      "check": "main:condition_coverage",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "main:context_binding:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "main:selected_chunk_membership:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:request_context_freeze_binding",
+      "passed": true
+    },
+    {
+      "check": "layout:condition_coverage",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:context_binding:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:selected_chunk_membership:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "layout:unchanged_selection:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:layout:opera:reference_binding",
+      "passed": true
+    },
+    {
+      "check": "grading:layout:opera:scoring_binding",
+      "passed": true
+    },
+    {
+      "check": "grading:layout:opera:eight_unique_cells",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:opera:eight_case_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:opera:packet_binding",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:opera:scoring_canonical_binding",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_162596bbc8cf:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_162596bbc8cf:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_162596bbc8cf:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_4a06a434bd4a:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_4a06a434bd4a:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_4a06a434bd4a:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_71bd78114f38:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_71bd78114f38:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_71bd78114f38:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_72254304df61:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_72254304df61:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_72254304df61:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_a197c0631714:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_a197c0631714:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_a197c0631714:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_b4a4a8404816:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_b4a4a8404816:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_b4a4a8404816:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_bc4c60dc5497:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_bc4c60dc5497:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_bc4c60dc5497:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_f6f5a3454313:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_f6f5a3454313:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_f6f5a3454313:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grading:layout:plug:reference_binding",
+      "passed": true
+    },
+    {
+      "check": "grading:layout:plug:scoring_binding",
+      "passed": true
+    },
+    {
+      "check": "grading:layout:plug:eight_unique_cells",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:layout:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:plug:eight_case_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:plug:packet_binding",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:plug:scoring_canonical_binding",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_18135997115b:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_18135997115b:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_18135997115b:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_268116d7fe41:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_268116d7fe41:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_268116d7fe41:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_26c1545c2650:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_26c1545c2650:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_26c1545c2650:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_87126f917505:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_87126f917505:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_87126f917505:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_8b0b65f4fdd8:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_8b0b65f4fdd8:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_8b0b65f4fdd8:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_a8e3052745fd:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_a8e3052745fd:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_a8e3052745fd:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_bb0b5b9d1975:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_bb0b5b9d1975:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_bb0b5b9d1975:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_cafabf46afcc:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_cafabf46afcc:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:layout:case_cafabf46afcc:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grading:main:opera:reference_binding",
+      "passed": true
+    },
+    {
+      "check": "grading:main:opera:scoring_binding",
+      "passed": true
+    },
+    {
+      "check": "grading:main:opera:eight_unique_cells",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grades:main:opera:eight_case_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:opera:packet_binding",
+      "passed": true
+    },
+    {
+      "check": "grades:main:opera:scoring_canonical_binding",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_1c62cd33b6b1:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_1c62cd33b6b1:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_1c62cd33b6b1:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_1d9396eb5cbb:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_1d9396eb5cbb:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_1d9396eb5cbb:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_22c33dac3dc5:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_22c33dac3dc5:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_22c33dac3dc5:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_320d2ed74e80:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_320d2ed74e80:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_320d2ed74e80:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_58bdb3a85e6e:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_58bdb3a85e6e:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_58bdb3a85e6e:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_655b6808782c:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_655b6808782c:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_655b6808782c:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_8359c551984d:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_8359c551984d:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_8359c551984d:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_ba83eb7a6178:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_ba83eb7a6178:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_ba83eb7a6178:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grading:main:plug:reference_binding",
+      "passed": true
+    },
+    {
+      "check": "grading:main:plug:scoring_binding",
+      "passed": true
+    },
+    {
+      "check": "grading:main:plug:eight_unique_cells",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "grading:unchanged_native_answer:main:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "grades:main:plug:eight_case_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:plug:packet_binding",
+      "passed": true
+    },
+    {
+      "check": "grades:main:plug:scoring_canonical_binding",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_2262e2b9c875:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_2262e2b9c875:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_2262e2b9c875:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_301fd6ed3484:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_301fd6ed3484:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_301fd6ed3484:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_7738c66c55cf:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_7738c66c55cf:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_7738c66c55cf:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_b3e01b29ff88:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_b3e01b29ff88:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_b3e01b29ff88:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_b99ce65fdb44:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_b99ce65fdb44:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_b99ce65fdb44:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_c58b6536e138:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_c58b6536e138:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_c58b6536e138:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_cb1f719873df:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_cb1f719873df:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_cb1f719873df:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_f668a0cc773c:unchanged_answer_context",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_f668a0cc773c:required_fact_coverage",
+      "passed": true
+    },
+    {
+      "check": "grades:main:case_f668a0cc773c:separate_boolean_axes",
+      "passed": true
+    },
+    {
+      "check": "grading:only_expected_unique_packets",
+      "passed": true
+    },
+    {
+      "check": "fresh_process_ids_across_complete_batches",
+      "passed": true
+    },
+    {
+      "check": "review_and_controls_scored_before_main",
+      "passed": true
+    },
+    {
+      "check": "main_and_layout_process_batches_sequential",
+      "passed": true
+    },
+    {
+      "check": "identical_answer_grading_consistency:main:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "identical_answer_grading_consistency:main:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "identical_answer_grading_consistency:layout:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "identical_answer_grading_consistency:layout:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/frozen_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_00.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_01.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_02.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_03.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_04.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_05.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_06.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_07.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_08.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_09.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_10.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_11.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_12.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_13.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_14.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_15.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/paired_reader_v13/grading_main_opera_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/paired_reader_v13/grading_main_plug_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/paired_reader_v13/questions.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/paired_reader_v13/references_opera.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:data/paired_reader_v13/references_plug.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:results/grades_main_opera_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:results/grades_main_plug_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:results/native_paired_reader_v13_receipt.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:results/retrieval_support_audit_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:input:scripts/summarize_paired_study_v13.py",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:fixed_denominators",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:grade_join:main:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:aggregate:main:ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_main_summary_v13.json:aggregate:main:paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/frozen_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_00.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_01.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_02.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_03.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_04.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_05.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_06.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_07.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_08.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_09.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_10.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_11.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_12.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_13.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_14.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_15.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/frozen_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_00.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_01.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_02.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_03.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_04.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_05.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_06.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_07.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_08.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_09.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_10.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_11.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_12.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_13.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_14.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_15.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/paired_reader_v13/grading_layout_opera_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/paired_reader_v13/grading_layout_plug_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/paired_reader_v13/grading_main_opera_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/paired_reader_v13/grading_main_plug_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/paired_reader_v13/questions.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/paired_reader_v13/references_opera.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:data/paired_reader_v13/references_plug.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:results/grades_layout_opera_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:results/grades_layout_plug_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:results/grades_main_opera_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:results/grades_main_plug_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:results/layout_support_audit_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:results/native_layout_reader_v13_receipt.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:results/native_paired_reader_v13_receipt.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:results/retrieval_support_audit_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:input:scripts/summarize_paired_study_v13.py",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:fixed_denominators",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:main:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:grade_join:layout:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:aggregate:main:ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:aggregate:main:paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:aggregate:layout:ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_initial_v13.json:aggregate:layout:paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/frozen_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_00.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_01.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_02.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_03.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_04.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_05.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_06.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_07.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_08.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_09.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_10.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_11.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_12.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_13.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_14.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/layout_attempt01/process_15.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/frozen_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_00.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_01.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_02.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_03.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_04.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_05.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_06.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_07.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_08.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_09.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_10.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_11.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_12.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_13.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_14.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/native_paired_reader_v13/main_attempt01/process_15.response_projection.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/paired_reader_v13/grading_layout_opera_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/paired_reader_v13/grading_layout_plug_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/paired_reader_v13/grading_main_opera_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/paired_reader_v13/grading_main_plug_manifest.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/paired_reader_v13/questions.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/paired_reader_v13/references_opera.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/paired_reader_v13/references_plug.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:data/paired_reader_v13/scoring_contract.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:results/grades_layout_opera_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:results/grades_layout_plug_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:results/grades_main_opera_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:results/grades_main_plug_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:results/layout_plug_adjudication_review_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:results/layout_support_audit_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:results/native_layout_reader_v13_receipt.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:results/native_paired_reader_v13_receipt.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:results/paired_study_initial_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:results/reader_adjudication_overlay_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:results/retrieval_support_audit_v13.json",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:scripts/summarize_paired_study_adjudicated_v13.py",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:input:scripts/summarize_paired_study_v13.py",
+      "passed": true
+    },
+    {
+      "check": "adjudication:bound_input:results/grades_layout_plug_v13.json",
+      "passed": true
+    },
+    {
+      "check": "adjudication:bound_input:results/layout_plug_adjudication_review_v13.json",
+      "passed": true
+    },
+    {
+      "check": "adjudication:bound_input:data/paired_reader_v13/references_plug.json",
+      "passed": true
+    },
+    {
+      "check": "adjudication:bound_input:data/paired_reader_v13/scoring_contract.json",
+      "passed": true
+    },
+    {
+      "check": "adjudication:single_explicit_case_only",
+      "passed": true
+    },
+    {
+      "check": "adjudication:summary_overlay_binding",
+      "passed": true
+    },
+    {
+      "check": "adjudication:initial_sensitivity_preserved",
+      "passed": true
+    },
+    {
+      "check": "adjudication:other_31_rows_unchanged",
+      "passed": true
+    },
+    {
+      "check": "adjudication:explicit_count_sensitivity:main:ordinary",
+      "passed": true
+    },
+    {
+      "check": "adjudication:explicit_count_sensitivity:main:paired",
+      "passed": true
+    },
+    {
+      "check": "adjudication:explicit_count_sensitivity:layout:ordinary",
+      "passed": true
+    },
+    {
+      "check": "adjudication:explicit_count_sensitivity:layout:paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:fixed_denominators",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:main:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:plug_v13_q3__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:plug_v13_q4__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:plug_v13_q1__ordinary",
+      "passed": true
+    },
+    {
+      "check": "adjudication:original_axis:reference_content_correct",
+      "passed": true
+    },
+    {
+      "check": "adjudication:original_fact:amount",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:plug_v13_q2__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:plug_v13_q1__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:plug_v13_q2__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:plug_v13_q4__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:plug_v13_q3__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:opera_revised_result__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:opera_revision_reason__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:opera_selection_scope__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:opera_retained_baseline__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:opera_selection_scope__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:opera_revision_reason__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:opera_retained_baseline__ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:grade_join:layout:opera_revised_result__paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:aggregate:main:ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:aggregate:main:paired",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:aggregate:layout:ordinary",
+      "passed": true
+    },
+    {
+      "check": "results/paired_study_summary_v13.json:aggregate:layout:paired",
+      "passed": true
+    }
+  ],
+  "checks_passed": 945,
+  "checks_failed": 0,
+  "pending": [],
+  "batches": [
+    {
+      "batch": "controls",
+      "status": "completed",
+      "validated_responses": 2,
+      "output_budget_failures": 0,
+      "input_token_range": [
+        199,
+        222
+      ],
+      "output_token_range": [
+        43,
+        75
+      ],
+      "fresh_processes": 3,
+      "unique_input_token_sequences": 2,
+      "duplicate_input_groups": [],
+      "peak_cgroup_resident_bytes": 5310914560,
+      "receipt_sha256": "55c266864a8162310c84b166be1205646a5ad9826c80ced46be26950b3930f5d",
+      "started_unix_seconds": 1791018765.9958832,
+      "finished_unix_seconds": 1791018799.4784367
+    },
+    {
+      "batch": "main",
+      "status": "completed",
+      "validated_responses": 16,
+      "output_budget_failures": 0,
+      "input_token_range": [
+        1260,
+        2325
+      ],
+      "output_token_range": [
+        77,
+        215
+      ],
+      "fresh_processes": 17,
+      "unique_input_token_sequences": 14,
+      "duplicate_input_groups": [
+        {
+          "request_ids": [
+            "opera_revised_result__ordinary",
+            "opera_revised_result__paired"
+          ],
+          "identical_content": true
+        },
+        {
+          "request_ids": [
+            "opera_revision_reason__ordinary",
+            "opera_revision_reason__paired"
+          ],
+          "identical_content": true
+        }
+      ],
+      "peak_cgroup_resident_bytes": 5615448064,
+      "receipt_sha256": "48a76932a2428f9473626fde98ea3bc7b02b873252c287902b27e4370c36dc47",
+      "started_unix_seconds": 1791018945.8094647,
+      "finished_unix_seconds": 1791020412.1186676
+    },
+    {
+      "batch": "layout",
+      "status": "completed",
+      "validated_responses": 16,
+      "output_budget_failures": 0,
+      "input_token_range": [
+        1313,
+        2616
+      ],
+      "output_token_range": [
+        76,
+        176
+      ],
+      "fresh_processes": 17,
+      "unique_input_token_sequences": 14,
+      "duplicate_input_groups": [
+        {
+          "request_ids": [
+            "opera_revised_result__ordinary",
+            "opera_revised_result__paired"
+          ],
+          "identical_content": true
+        },
+        {
+          "request_ids": [
+            "opera_revision_reason__ordinary",
+            "opera_revision_reason__paired"
+          ],
+          "identical_content": true
+        }
+      ],
+      "peak_cgroup_resident_bytes": 5681553408,
+      "receipt_sha256": "09622e7e88c0a5a7270f435fe29063e92ef5fe2d25a2c10cd496094cfeefe519",
+      "started_unix_seconds": 1791020465.8468783,
+      "finished_unix_seconds": 1791022084.103447
+    }
+  ],
+  "study": {
+    "question_count": 8,
+    "history_count": 2,
+    "source_pdfs": 4,
+    "source_pdf_pages": 550,
+    "corpus_chunks": 2306,
+    "contexts_per_variant": 16,
+    "grading_packets": [
+      {
+        "batch": "layout",
+        "domain": "opera",
+        "records": 8,
+        "manifest_sha256": "704f2f5ca76e2ad4d45273dc9fea6b2bc50418f86fe556a91e0c0cea4ecf475a"
+      },
+      {
+        "batch": "layout",
+        "domain": "plug",
+        "records": 8,
+        "manifest_sha256": "398fb93b55596bd07a40dc82e387db4901bcda83bbf4e9feb65a7e732aa14297"
+      },
+      {
+        "batch": "main",
+        "domain": "opera",
+        "records": 8,
+        "manifest_sha256": "b50e07cae89d2751e3301e92751b96a34d5c618f98806295ce221433d25893ce"
+      },
+      {
+        "batch": "main",
+        "domain": "plug",
+        "records": 8,
+        "manifest_sha256": "091477cc69a94d6aa2a9221fc04d5aaf5f2175bb417b31ae5280ee3314eb6547"
+      }
+    ],
+    "grade_results": [
+      {
+        "batch": "layout",
+        "domain": "opera",
+        "case_count": 8,
+        "result_sha256": "d3c17acbeb09313071acb71d5e5fcd6c11e03808fa0f50ba3d48523a6b3be5b9"
+      },
+      {
+        "batch": "layout",
+        "domain": "plug",
+        "case_count": 8,
+        "result_sha256": "150b9bba3c714e779398154ec2b0c2b67db6d5db870ed9cc3b1bafbd011bd94b"
+      },
+      {
+        "batch": "main",
+        "domain": "opera",
+        "case_count": 8,
+        "result_sha256": "b995253e9fb57e61e5056c87ff0813604b4d1984f37d0e93ec7294072dc5a5b3"
+      },
+      {
+        "batch": "main",
+        "domain": "plug",
+        "case_count": 8,
+        "result_sha256": "b44d950327e28c219b01ff4c07fe6b13171fec8972756f4a536cb8774da38f58"
+      }
+    ],
+    "summaries": [
+      {
+        "path": "results/paired_main_summary_v13.json",
+        "sha256": "ad8a97d4640bdf13481dc6d4bb90b2b9e6a3bf92bc42f72773e5b9826c4dfe9f",
+        "native_response_count": 16
+      },
+      {
+        "path": "results/paired_study_initial_v13.json",
+        "sha256": "e30dbd28e82d6e6997486f3fa83cf234b545146ede786bd3cbe7fb0634496056",
+        "native_response_count": 32
+      },
+      {
+        "path": "results/paired_study_summary_v13.json",
+        "sha256": "2e13ca16f518d5b50f2f80896fb1b5241682957797e0c6564bebc297ed2528d7",
+        "native_response_count": 32
+      }
+    ]
+  },
+  "external_native_verification": [
+    {
+      "batch": "controls",
+      "status": "passed",
+      "validated_responses": 2,
+      "output_budget_failures": 0,
+      "model_calls_during_verification": 0,
+      "receipt_sha256": "55c266864a8162310c84b166be1205646a5ad9826c80ced46be26950b3930f5d"
+    },
+    {
+      "batch": "main",
+      "status": "passed",
+      "validated_responses": 16,
+      "output_budget_failures": 0,
+      "model_calls_during_verification": 0,
+      "receipt_sha256": "48a76932a2428f9473626fde98ea3bc7b02b873252c287902b27e4370c36dc47"
+    },
+    {
+      "batch": "layout",
+      "status": "passed",
+      "validated_responses": 16,
+      "output_budget_failures": 0,
+      "model_calls_during_verification": 0,
+      "receipt_sha256": "09622e7e88c0a5a7270f435fe29063e92ef5fe2d25a2c10cd496094cfeefe519"
+    }
+  ],
+  "limits": [
+    "Portable mode checks released hashes, counts and recorded provenance; it cannot independently inspect undistributed source text, full native token arrays or raw model responses.",
+    "Optional external verification reuses the frozen collector offline; neither mode certifies semantic correctness or human gold.",
+    "Scoring operationalization and layout follow-up were recorded during primary inference; their declared before-answer-inspection status is not independently attestable from file metadata.",
+    "Model-assisted graders and reference reviewers share project context; condition masking is not statistical blindness.",
+    "Cgroup resident peak is the memory watchdog measure; memory.current includes cache and child peak RSS is cumulative telemetry, not an independent per-call allocation measurement."
+  ]
+}

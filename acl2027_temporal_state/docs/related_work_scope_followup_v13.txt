@@ -1,0 +1,100 @@
+Scope and table-evidence literature follow-up v0.13
+Checked 3 October 2026; four additional queries, separate from the first audit
+
+Decision
+
+The novelty boundary is tighter than the first bounded check established.
+Version/scope filtering, typed lineage, evidence-sufficiency gating and
+abstention already appear together in a September 2026 primary manuscript.
+Table structure preservation and parsing-versus-reasoning diagnosis also have
+substantial prior art. A successful whitespace restoration or header addition
+would be an upstream repair, not evidence for a new reasoning method.
+
+The following four source notes are intentionally brief. The first three use
+primary manuscripts; TIDE uses verified author-project documentation because
+its arXiv page remains inaccessible. Earlier literature files are unchanged.
+
+1. Wang et al., arXiv v1, 16 September 2026.
+   https://arxiv.org/html/2609.18769v1
+   The AI Approach section describes reviewed scope metadata, article-based
+   chunks, typed lineage, applicability predicates and external evidence
+   checks; insufficient evidence can trigger abstention. The Evaluation
+   Methodology explicitly says the compared systems differ in model, index
+   and pipeline. Supported citation claim: these mechanisms predate our
+   proposed scope-aware route. Unsupported claim: its result isolates the
+   causal benefit of scope filtering. Our inference: generic scope constraints
+   plus abstention cannot be our novelty; a matched component study would be
+   needed even if this design were adapted.
+
+2. Yu et al., TableRAG, EMNLP, November 2025.
+   https://aclanthology.org/2025.emnlp-main.710.pdf
+   Sections 3.1-3.2 preserve tabular data through a parallel table-schema
+   database and textual corpus, combining retrieval with SQL execution and
+   query decomposition. Supported citation claim: structural table handling
+   already goes beyond flattening everything into passages. Unsupported
+   claim: this paper proves any particular treatment of our financial unit
+   headings is sufficient. Our inference: compare structure-preserving input
+   and competent table reasoning before attributing our errors to revision
+   reasoning. Restoring native spaces alone is not a new TableRAG method.
+
+3. Strich et al., T2-RAGBench, EACL, March 2026.
+   https://aclanthology.org/2026.eacl-long.8.pdf
+   Sections 4-5 study context-independent financial questions, ordinary
+   retrieval and oracle context; section 5.6 distinguishes parsing,
+   calculation and other errors. Appendix B/C adds entity/report metadata
+   during question preparation. Supported citation claim: corpus retrieval
+   and error decomposition for financial text-plus-tables are established.
+   Its number metric uses absolute values and tolerates scale shifts.
+   Our inference: importing that metric unchanged would obscure sign/unit
+   errors central to our diagnostic. Citation presence also cannot substitute
+   for checking that received evidence contains the relevant headers.
+
+4. TIDE author-project README, inspected 3 October 2026.
+   https://github.com/icsetepa44/TIDE
+   The task and evaluation sections document governing-version resolution,
+   context-misalignment questions, and parametric, retrieved and gold-context
+   access. Date correctness gates scoring. Supported citation claim: this
+   project already explicitly tests rejection of an inapplicable version.
+   Verification is limited to the repository documentation, not an execution
+   or a full manuscript review. The arXiv abstract URL again returned an
+   internal tool error. Our inference: do not claim that rejecting an
+   inapplicable version is a new task without resolving this comparison.
+
+What remains a possible research hypothesis
+
+After supplying complete, correctly associated headers, units and scope
+evidence, does a competent matched reader still assert unsupported
+comparability between two reported quantities? A comparison may involve an
+actual correction to the same estimand, a changed population or definition,
+or insufficient evidence to choose between them. The empirical target would
+be false comparison claims while retaining correct supported comparisons.
+
+This is a candidate evaluation question, not a verified literature gap or a
+new algorithm. Scope predicates alone are already covered by the first work.
+A useful study would have to isolate pairwise comparability from ordinary
+document applicability and numerical extraction. It would need complete
+evidence with reviewed unknown-scope cases, a strong reader, structure-aware
+retrieval, version filtering and matched evidence budgets. Any learned or
+rule-based compatibility module must then improve this residual task beyond
+those controls without receiving reference scope labels at inference.
+
+Reject or redirect the hypothesis if:
+
+- Layout/header repair or an adequate reader removes the failures. Report
+  the engineering repair and diagnostic, without a new reasoning claim.
+- The apparent gain comes from more words, added oracle metadata, easier
+  questions, selective abstention or favorable formatting rather than the
+  proposed comparison operation.
+- Ordinary metadata filtering and structure-preserving retrieval match it,
+  or the remaining errors concern values/units rather than comparability.
+- Independently reviewed histories cannot support the required distinction,
+  or independent held-out evaluation does not reproduce the residual error.
+
+This lookup changed no experimental corpus, questions, references, prompts
+or outputs. It does not reopen the stopped dependency-propagation claim.
+No reviewed method or benchmark was executed. Four queries cannot certify
+exhaustiveness or establish absence of closely related work.
+
+Audit: data/provenance/literature_scope_search_v13.json.
+Bibliography: paper/references_scope_v13.bib (three manuscripts plus a
+separately identified project-documentation entry).

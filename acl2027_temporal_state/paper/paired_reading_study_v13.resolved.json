@@ -1,0 +1,236 @@
+{
+  "title": "Evidence Sufficiency and Scope in Versioned Document Question Answering",
+  "subtitle": "A development study and research decision for the WikiGraphRAG rework",
+  "author": "Anonymous working draft",
+  "date": "3 October 2026 | v0.13",
+  "status": "Research working draft. Not a submission-ready paper or a claim of a new algorithm.",
+  "abstract": "Documents can revise a result, retain a quantity, or change the population and procedure to which a result applies. Answering across versions therefore requires both adequate evidence and correct scope attribution. We study these requirements in a bounded development pilot using two document histories, eight reviewed questions and a pinned Qwen3-4B reader. Ordinary BM25 retrieval and a quota that selects three chunks from each version share six-chunk and input-token caps within the supplied history. Each condition yields 1 fully correct, scope-correct and citation-grounded answer out of eight. A follow-up restores source whitespace while preserving every selected evidence word; its ordinary and paired joint counts are 1 and 1 of eight. These observations do not establish a retrieval benefit or an algorithmic contribution. Context audits and answer grading distinguish missing evidence, table-scope ambiguity, unsupported assertions and reader errors. The study defines what a subsequent stronger-reader and structure-preserving evaluation must resolve before a method claim is justified.",
+  "sections": [
+    {
+      "title": "1  Motivation and research question",
+      "paragraphs": [
+        "A newer document is not automatically a replacement for every assertion in an older document. A financial restatement may revise a prior fiscal year while retaining another line item. A scientific revision may alter both the measurement and the selection of observations. Treating either situation as a generic conflict between old and new text can merge distinct quantities, periods or samples.",
+        "The relevant distinction is between document version and assertion scope. For a comparison, the reader must identify the entity, measure, unit, reference period, population, analysis procedure and asserting authority, and determine which of those fields are actually supported. Missing fields should remain unresolved. This is a task description, not an implemented automatic scope extractor or a novel formalism.",
+        "Our earlier correction-propagation route required an explicitly corrected premise with an essential downstream consequence that was not itself explicitly corrected. Complete-source review of the present cases did not establish such a residual case. The Plug Power dependent loss-per-share result is explicitly revised, and OPERA also changes the selected analysis sample. We preserve that negative admission outcome and stop expanding the propagation claim on these cases.",
+        "The present question is narrower: with matched bounded evidence, does ensuring access to both versions improve reading, and are observed errors attributable to retrieval, representation or the reader? The two histories are development material selected during prior investigation. They are not a representative sample, an independently admitted benchmark or held-out evaluation."
+      ]
+    },
+    {
+      "title": "2  Relation to existing work",
+      "paragraphs": [
+        "Version-aware retrieval is established prior work: VersionRAG uses explicit version information and change relations (Huwiler et al., 2025). HoH studies outdated evidence in retrieval-augmented generation (Ouyang et al., 2025). Re3 combines relevance and recency under an explicit temporal setting (Cao et al., 2026). TRANSIENTTABLES examines reasoning over temporally evolving tables (Shankarampeta et al., 2025). Consequently, paired-version retrieval is a baseline, not our novelty claim.",
+        "Wang et al. (2026) already combine version and scope constraints with evidence checks and abstention over normative documents. TableRAG (Yu et al., 2025) and T2-RAGBench (Strich et al., 2026) provide relevant structured-document retrieval and evaluation precedents. TIDE author documentation addresses governing-version resolution; its full manuscript was unavailable in this audit. These findings rule out novelty claims for header preservation, metadata filtering or abstention alone.",
+        "A narrower hypothesis concerns residual errors in comparing source-grounded quantities after adequate structure and a competent reader. This remains unproven. A future contribution must outperform matched structural and metadata baselines, without extra context or answer-aware scope labels. The present study does not establish that gap."
+      ]
+    },
+    {
+      "title": "3  Sources, questions and reference provenance",
+      "paragraphs": [
+        "We index four complete PDF representations recovered in the preceding bounded access pilot: Plug Power fiscal-year 2019 and 2020 annual reports, and versions 1 and 4 of the OPERA measurement paper. Together they contain 550 physical PDF pages. Document-version order is a controlled comparison relation; current bytes are not certified as exact first-public historical versions. Separate abstract pages are not substituted for the papers. Failed JAMA captures remain excluded, without retries or silent replacement. The source inventory is Plug FY2019 (142 pages), Plug FY2020 (347), OPERA v1 (24) and OPERA v4 (37); direct source locators are listed in the references and exact byte hashes in the corpus manifest.",
+        "Plug questions concern the revised FY2018 loss and basic loss per share, retained servicing revenue, the maintenance-contract accrual explanation, and the distinction between the result year and annual-report year. OPERA questions concern the revised timing and relative-velocity result, retained geodetic information, instrumental revision reasons and changed event selection. Questions and source-grounded references were frozen before native predictions.",
+        "The references specify required facts, acceptable numerical forms, scope and source locators. Source review occurred before prediction and made two explicit amendments: the financial references require an actual unit witness for the relevant table, and optional OPERA detail is not promoted to a required answer. Correct facts may be supported entirely by a later document; the rubric does not require citing both versions when one supplies sufficient evidence.",
+        "References and source review are model-assisted development artifacts, with shared project familiarity and no independent human-gold claim. Review included selected rendered source pages and explicit attention to financial units, table columns, scientific uncertainty notation and sample changes. Byte hashes establish which artifacts were used; they do not prove semantic annotation correctness."
+      ]
+    },
+    {
+      "title": "4  Matched retrieval and native reading",
+      "paragraphs": [
+        "Page-preserving pdftotext output is segmented into at most 160-word chunks with 30-word overlap and no cross-page chunks, producing 2,306 chunks. Two raster tables in OPERA v1 are recovered with tagged, model-assisted transcriptions verified against the rendered tables. This local repair is recorded separately from native extraction. It does not certify complete OCR of every equation, figure or table in the corpus.",
+        "BM25 uses k1=1.2 and b=0.75, unique lowercase alphanumeric query terms, positive Robertson inverse document frequency and chunk-ID tie breaking. The exact question is the query. Statistics are computed over both versions within each history. Ordinary retrieval selects the six highest-scoring chunks; paired retrieval selects the top three from each version. Both display evidence in the same version/page/chunk order. Neither uses reference answers, gold locations or question-specific query expansion. Question-to-history assignments and version membership are supplied by the study setup: the reader does not discover the correct history or document lineage in a larger collection.",
+        "The shared maximum is 960 evidence words, excluding source headers. Complete source access means the entire recovered corpus is indexed; it does not mean that every page is given to the reader. Headers identify document, physical page, chunk and version. Primary rendering normalizes internal whitespace. Model prompts request concise prose, source citations, preservation of scope and abstention where evidence is missing; recomputation and outside knowledge are explicitly prohibited. Shared caps do not mean equal actual usage: ordinary contexts contain 744-960 evidence words and paired contexts 685-960. Primary inputs use 1,260-2,325 tokens; source-layout inputs use 1,313-2,616. The layout comparison changes tokenization as well as visual spacing, so it does not isolate a tokenizer-independent effect.",
+        "The pinned Qwen3-4B Q8_0 model runs through the pinned llama.cpp runtime on CPU. Greedy decoding uses seed 7, a 4,096-token context, at most 3,500 input tokens and at most 256 generated tokens, with thinking disabled. All prompts pass native preflight before a batch begins. Each answer uses a fresh guarded process; no cache reuse, response repair, grammar constraint or answer-driven retry is permitted. Two short authored competence controls pass, permitting the bounded pilot. They do not certify a strong domain reader.",
+        "The primary batch contains sixteen requests: two retrieval conditions for each of eight questions, with alternating condition order across questions. The follow-up preserves the exact selected chunk IDs, query, scores, headers, order and whitespace-delimited word sequence. It restores only the original internal source spaces and line breaks. It therefore cannot add a missing table header or evidence from another page. Its protocol was recorded before its implementer or the lead inspected main-answer content, although primary inference had already begun. Native input lengths change with whitespace and are rechecked against the same token cap."
+      ]
+    },
+    {
+      "title": "5  Evaluation and descriptive results",
+      "paragraphs": [
+        "Context-only audits assess whether the received evidence completely, partially or not at all supports the required facts. An explicit clarification prevents arithmetic over baseline components from being treated as an explicitly supplied final value under the no-recomputation instruction. The layout audit inspects the actual restored contexts instead of assuming that identical words imply identical table interpretability.",
+        "Separate model-assisted reviewers assigned to each history grade condition-masked packets containing the untouched answer, received context and frozen reference. Method labels are masked, but prior annotation authorship, shared development familiarity and potentially informative contexts prevent a statistical-blindness claim. Reference content, scope, actual cited-context support and readable format are assessed separately. A correct fact can remain ungrounded. A page label alone is insufficient when the cited received chunk lacks the needed evidence. Appropriate abstention is reported separately from answer completeness.",
+        "The scoring contract operationalizes the previously frozen axes after primary inference starts and before graders inspect primary answers. Joint content-plus-scope-plus-citation counts are descriptive, not a retroactively preregistered significance endpoint. Every response stays in its assigned denominator. No IID accuracy estimate, confidence interval or significance test is supported by two selected histories."
+      ],
+      "tables": [
+        "outcomes",
+        "support",
+        "execution"
+      ],
+      "after_tables": [
+        "The primary conditions each achieve one joint success: the Plug accrual explanation. For both, the OPERA revised-result context is complete, yet the answer combines the revised timing estimate with the old relative-velocity result and cites an older version. This is a reader failure under available evidence. Other contexts omit required facts or the headers that bind a financial value to its period and scale; incorrect confident answers in these cases are also grounding failures. Two OPERA questions have identical ordinary and paired prompts, and their native answers are byte-identical. Those cells are retained for complete accounting and are not independent evidence of a retrieval contrast.",
+        "For the main Plug answers, ordinary retrieval yields one additional reference-correct scope answer with an inadequate citation. Paired retrieval produces a partially appropriate abstention on retained revenue but does not establish the unchanged result; it also supplies an insufficiently grounded rounded amount. These differences do not change joint counts. Across OPERA questions, answers confuse geodetic and effective baselines and substitute unsupported instrument or sample explanations. Partial facts and ambiguous uncertainty notation remain explicitly recorded.",
+        "Restoring source whitespace leaves joint success at one of eight for each retrieval condition. Several Plug answers recover more reference content, but missing evidence and inadequate citations prevent a grounded-success gain. The layout audit finds one improved financial year binding, without increasing case-level complete support. OPERA answers still fail; the revised-result answers now collapse asymmetric errors into a symmetric expression and give an incorrect compatibility conclusion despite sufficient context. One unqualified rounded revenue amount receives an explicit adjudication: the primary result applies the frozen requirement to identify approximate rounding, while the original lenient grade is retained as a sensitivity. That choice affects one content count and no joint outcome. These are descriptive findings for this small reader and selected material, not proof that version quotas or source layout cannot help elsewhere."
+      ]
+    },
+    {
+      "title": "6  Research decision and the next discriminating study",
+      "paragraphs": [
+        "The evidence does not support adding a joint solver to explain this pilot. Missing source context and weak domain reading already account for material failures. Nor does it support a publishable paired-retrieval claim: ensuring both versions are present does not ensure the necessary facts or compatible scopes are present.",
+        "The next gate should compare ordinary retrieval, version quotas, a conventional structure-preserving retriever and a scope-compatible evidence proposal under the same reader and actual token budget. Source-faithful evidence units must carry their row, column, unit, period and continuation bindings, including cross-page tables, without inferring missing values. Every dependency on another source span must be charged to the evidence budget. Generic header preservation and metadata filtering are mandatory baselines.",
+        "First establish an adequate pinned reader and representation on development material. A separate reference-assisted source-sufficient context can diagnose a ceiling, but must not be mixed into primary retrieval or represented as a deployable method. New questions and histories must then be frozen before prediction, with independent reference review and splits by connected history/entity. Correction, retention and changed-scope cases must remain separately scored.",
+        "Proceed to an algorithmic contribution only if a replicated residual comparison error survives these controls. Reject the proposed contribution if better rendering or the adequate reader removes it, if an ordinary structural baseline matches it, or if a claimed gain depends on extra context, answer-aware scope labels or known reference pages. The current selected histories remain development cases regardless of subsequent system improvements."
+      ]
+    },
+    {
+      "title": "7  Limitations and reproducibility",
+      "paragraphs": [
+        "This is a small, selected feasibility study with model-assisted references and grading. The four documents span only two histories and reuse development questions. The quantized 4B reader with a bounded no-thinking prompt is not a strong contextual baseline. Source recovery is not historical replay certification. Partial OCR recovery, physical-page conventions, citation granularity and interpretations of missing metadata are material limitations. Pretraining exposure to these public sources is unknown; source-only instructions do not prove knowledge isolation. Model size, quantization and the no-thinking prompt are not independently ablated. The no-recomputation rule deliberately limits this task to source-grounded reading; failures to derive an unstated value are not evidence of a general arithmetic incapability.",
+        "The repository preserves protocols, source/version hashes, reference-review amendments, retrieval metadata, prompt and token fingerprints, per-process projections, grading provenance, descriptive joins, tests and prior unfavorable results. Source captures, full source-bearing contexts and native outputs remain external analysis artifacts; public rationales are paraphrases. Exact external verification requires the matching bytes. Fresh downloads can differ, and metadata-only verification cannot recover omitted text or rejudge semantic correctness.",
+        "A deterministic aggregation script checks complete case coverage and hash joins before counting outcomes. A portable audit verifies recorded provenance; an external mode additionally checks raw response and token artifacts. The paper and its result tables derive from the versioned summary. The readable PDF is rendered from the same canonical manuscript content as the editable TeX export; it is not a verified ACL template compilation. No submission, generalization or algorithmic novelty is claimed."
+      ]
+    }
+  ],
+  "references": [
+    "Daniel Huwiler, Kurt Stockinger, and Jonathan Furst. 2025. VersionRAG: Version-Aware Retrieval-Augmented Generation for Evolving Documents. arXiv:2510.08109v1. https://arxiv.org/abs/2510.08109v1",
+    "Jie Ouyang et al. 2025. HoH: A Dynamic Benchmark for Evaluating the Impact of Outdated Information on Retrieval-Augmented Generation. ACL, pages 6036-6063. https://aclanthology.org/2025.acl-long.301/",
+    "Jiawei Cao et al. 2026. Re3: Relevance and Recency Retrieval for Mitigating Temporal Hallucination. ACL, pages 25735-25760. https://aclanthology.org/2026.acl-long.1180/",
+    "Abhilash Shankarampeta et al. 2025. TRANSIENTTABLES: Evaluating LLMs' Reasoning on Temporally Evolving Semi-structured Tables. NAACL, pages 6526-6544. https://aclanthology.org/2025.naacl-long.332/",
+    "Liuyin Wang, Shuaipeng Jin, Jiwei Shi, and Jensen Hsu. 2026. Version- and Scope-Aware Question Answering over Normative Documents: A Deployed System and an End-to-End Evaluation at Production Scale. arXiv:2609.18769v1. https://arxiv.org/html/2609.18769v1",
+    "Xiaohan Yu, Pu Jian, and Chong Chen. 2025. TableRAG: A Retrieval Augmented Generation Framework for Heterogeneous Document Reasoning. EMNLP, pages 14063-14082. https://aclanthology.org/2025.emnlp-main.710/",
+    "Jan Strich et al. 2026. T2-RAGBench: Text-and-Table Benchmark for Evaluating Retrieval-Augmented Generation. EACL, pages 165-191. https://aclanthology.org/2026.eacl-long.8/",
+    "TIDE authors. Project README. Accessed 3 October 2026. Project documentation only; full manuscript unavailable during this check. https://github.com/icsetepa44/TIDE",
+    "Plug Power Inc. Annual report for fiscal year 2019. Evaluated PDF representation, 142 physical pages. https://s29.q4cdn.com/600973483/files/doc_financials/2019/ar/4Q19-10K.pdf",
+    "Plug Power Inc. Annual report for fiscal year 2020. Evaluated PDF representation, 347 physical pages. https://s29.q4cdn.com/600973483/files/doc_financials/2020/ar/4Q20-10K.pdf",
+    "OPERA Collaboration. arXiv:1109.4897, version 1. Evaluated PDF representation, 24 physical pages. https://arxiv.org/pdf/1109.4897v1",
+    "OPERA Collaboration. arXiv:1109.4897, version 4. Evaluated PDF representation, 37 physical pages. https://arxiv.org/pdf/1109.4897v4"
+  ],
+  "result_tables": {
+    "outcomes": {
+      "caption": "Table 1. Descriptive answer counts, each out of 8. Joint requires content, scope and citation support. Format is reported separately.",
+      "header": [
+        "Rendering",
+        "Retrieval",
+        "Content",
+        "Scope",
+        "Citation",
+        "Format",
+        "Joint"
+      ],
+      "rows": [
+        [
+          "Normalized",
+          "Ordinary",
+          "2",
+          "2",
+          "1",
+          "8",
+          "1"
+        ],
+        [
+          "Normalized",
+          "Paired",
+          "1",
+          "2",
+          "1",
+          "8",
+          "1"
+        ],
+        [
+          "Source layout",
+          "Ordinary",
+          "2",
+          "2",
+          "1",
+          "8",
+          "1"
+        ],
+        [
+          "Source layout",
+          "Paired",
+          "2",
+          "3",
+          "1",
+          "8",
+          "1"
+        ]
+      ],
+      "widths": [
+        85,
+        83,
+        65,
+        60,
+        66,
+        65,
+        65
+      ]
+    },
+    "support": {
+      "caption": "Table 2. Context-only evidence sufficiency, each out of 8. Layout improves one financial period binding but does not change case-level completeness.",
+      "header": [
+        "Rendering",
+        "Retrieval",
+        "Complete",
+        "Partial",
+        "Absent"
+      ],
+      "rows": [
+        [
+          "Normalized",
+          "Ordinary",
+          "2",
+          "4",
+          "2"
+        ],
+        [
+          "Normalized",
+          "Paired",
+          "2",
+          "5",
+          "1"
+        ],
+        [
+          "Source layout",
+          "Ordinary",
+          "2",
+          "4",
+          "2"
+        ],
+        [
+          "Source layout",
+          "Paired",
+          "2",
+          "5",
+          "1"
+        ]
+      ],
+      "widths": [
+        108,
+        108,
+        91,
+        91,
+        91
+      ]
+    },
+    "execution": {
+      "caption": "Table 3. Native execution. Wall time includes setup and verification and is descriptive, not an efficiency comparison. Two short competence-control calls are additional.",
+      "header": [
+        "Batch",
+        "Calls",
+        "Input tokens",
+        "Output tokens",
+        "Wall minutes"
+      ],
+      "rows": [
+        [
+          "Main",
+          "16",
+          "1260-2325",
+          "77-215",
+          "24.44"
+        ],
+        [
+          "Layout",
+          "16",
+          "1313-2616",
+          "76-176",
+          "26.97"
+        ]
+      ],
+      "widths": [
+        86,
+        57,
+        123,
+        111,
+        112
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "reader_adjudication_v0.13",
+  "recorded_at_utc": "2026-10-03T09:55:01.536798+00:00",
+  "reviewer": "root_model_assisted",
+  "scope": "Four flagged main OPERA answers, reviewed in masked packet after main grading; broader condition aggregates already known to root. Not blind/human adjudication.",
+  "input_sha256": {
+    "results/grades_main_opera_v13.json": "b995253e9fb57e61e5056c87ff0813604b4d1984f37d0e93ec7294072dc5a5b3",
+    "data/paired_reader_v13/scoring_contract.json": "bfe298807cdfe3b4ceb3cee2e9c75a9de60facece0c429c2e0f513d23e8d70b2",
+    "data/paired_reader_v13/references_opera.json": "2cbe0e728609073bf33c28c0a3f8876063635db6d75bd0bba89e49997e4edc66"
+  },
+  "packet_sha256": "48353ad5b424a47e33170daf11a5af0d813d84a561e26aa9c5eb04507770dd5c",
+  "decisions": [
+    {
+      "case_ids": [
+        "case_1d9396eb5cbb",
+        "case_58bdb3a85e6e"
+      ],
+      "fact": "systematic_uncertainty",
+      "disposition": "retain_ambiguous",
+      "rationale": "Correct error magnitudes and a lower minus sign are present, but the extra plus/minus sign makes the upper/lower expression ambiguous. Preserve this as ambiguous, not an exact-string failure. Independently wrong version association and citations keep all whole-answer correctness axes false. Giving generous fact credit would not change any table result."
+    },
+    {
+      "case_ids": [
+        "case_22c33dac3dc5",
+        "case_655b6808782c"
+      ],
+      "fact": "retention",
+      "disposition": "retain_narrow_categorical_partial_credit",
+      "rationale": "Both answers explicitly assert unchanged status. Preserve this isolated categorical credit while the wrong baseline quantity and unsupported cross-version scope keep complete content/scope/citation false. No overall success is granted for matching a yes/no word."
+    }
+  ],
+  "existing_grades_modified": false,
+  "whole_answer_axes_changed": 0,
+  "reference_changes": 0
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "reader_adjudication_overlay_v0.13",
+  "recorded_at_utc": "2026-10-03T10:07:25.427057+00:00",
+  "reviewer": "root_model_assisted",
+  "timing": "After raw grader judgments and separate masked two-case review; before complete layout aggregation. Root knows main condition counts. No statistical blindness claimed.",
+  "input_sha256": {
+    "results/grades_layout_plug_v13.json": "150b9bba3c714e779398154ec2b0c2b67db6d5db870ed9cc3b1bafbd011bd94b",
+    "results/layout_plug_adjudication_review_v13.json": "0ecde93629bbbbcfe3d34f48df8b199853bd3d3fd022b78b9d3e71b01a03ab14",
+    "data/paired_reader_v13/references_plug.json": "682a7af7fcef05bcc1a0ad16bca1874e2e7b5078db982b9e4a51b46dcbd91dbc",
+    "data/paired_reader_v13/scoring_contract.json": "bfe298807cdfe3b4ceb3cee2e9c75a9de60facece0c429c2e0f513d23e8d70b2"
+  },
+  "changes": [
+    {
+      "batch": "layout",
+      "domain": "plug",
+      "case_id": "case_87126f917505",
+      "question_id": "plug_v13_q2",
+      "field_changes": {
+        "reference_content_correct": {
+          "old": true,
+          "new": false
+        }
+      },
+      "fact_changes": [
+        {
+          "fact_id": "amount",
+          "old": "supported_correct",
+          "new": "ambiguous"
+        }
+      ],
+      "rationale": "The frozen reference accepts22.0million when explicitly rounded/approximate. The answer supplies that amount without any qualification. Do not invent a rounding qualification from output precision. Preserve ambiguous rather than numerically false. This differs from the main partial answer that explicitly says the exact amount is unavailable. Scope remains correct; citation grounding already fails; joint outcome is unchanged."
+    }
+  ],
+  "preservation": "Original grades and reference artifacts remain unchanged. Initial lenient raw-grader totals are retained as a sensitivity; no other grade changes are permitted by this overlay.",
+  "reference_edits": 0,
+  "native_response_edits": 0
+}

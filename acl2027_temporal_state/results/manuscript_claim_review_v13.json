@@ -1,0 +1,200 @@
+{
+  "schema_version": "manuscript_claim_review_v0.13",
+  "reviewer_role": "related_work_v13 model-assisted review",
+  "manuscript_path": "paper/paired_reading_study_v13.json",
+  "manuscript_sha256_reviewed": "29a8073dfc7b6a7c67b4a4824a329cd3c750c75bd229f1a7bafbcddea951d7c5",
+  "review_scope": "Claim scope, literature fidelity, baseline fairness and missing limitations before final layout-result binding/render.",
+  "independence": "The reviewer authored both bounded literature audits and shares development context. This is not independent human peer review or blind validation.",
+  "paper_modified": false,
+  "overall_assessment": "Core claim discipline is sound and the primary counts agree. Clarify known-history routing, cap-versus-usage matching, and direct evaluated-source provenance before final rendering. Layout placeholders are intentional and not treated as errors.",
+  "findings": [
+    {
+      "id": "M13-C01",
+      "severity": "medium",
+      "location": {
+        "section": "4 Matched retrieval and native reading",
+        "line": 39,
+        "also": [
+          7,
+          15,
+          29,
+          40
+        ]
+      },
+      "issue": "Known-history routing is implicit rather than stated as supplied information.",
+      "evidence": "The protocol and retrieval result specify top-six within the question history and top-three per document within that history. All four documents are indexed, but each question searches only its supplied pair.",
+      "supporting_files": [
+        "data/paired_reader_v13/protocol.json#/retrieval/conditions",
+        "results/paired_retrieval_v13.json#/algorithm"
+      ],
+      "recommended_fix": "State that history identity, membership and version order are supplied development metadata; no history/document discovery or search across unrelated histories is evaluated. Describe this as known-history retrieval in the abstract or source paragraph.",
+      "claim_risk": "Readers could interpret complete-corpus access as a four-document or open-domain retrieval test.",
+      "needs_new_experiment": false
+    },
+    {
+      "id": "M13-C02",
+      "severity": "medium",
+      "location": {
+        "section": "Abstract and 4 Matched retrieval and native reading",
+        "line": 7,
+        "also": [
+          15,
+          40,
+          42
+        ]
+      },
+      "issue": "The shared cap is correctly specified, but 'matched evidence' can still be read as equal actual words or model tokens.",
+      "evidence": {
+        "ordinary_evidence_words_range": [
+          744,
+          960
+        ],
+        "paired_evidence_words_range": [
+          685,
+          960
+        ],
+        "main_native_input_tokens_range": [
+          1260,
+          2325
+        ],
+        "layout_preflight_native_input_tokens_range": [
+          1313,
+          2616
+        ],
+        "shared_evidence_word_cap": 960,
+        "shared_native_input_token_cap": 3500
+      },
+      "supporting_files": [
+        "results/paired_retrieval_v13.json#/records",
+        "results/layout_token_audit_v13.json#/records",
+        "results/paired_main_summary_v13.json#/execution"
+      ],
+      "recommended_fix": "Use 'shared six-chunk/960-word ceiling and 3500-token input cap, with unequal actual usage' and include usage ranges or a clear table note. The layout contrast preserves selected words, not token count. Do not describe either contrast as token-equal.",
+      "claim_risk": "A future layout difference could be misattributed to structure alone while tokenization and actual prompt length also change.",
+      "needs_new_experiment": false
+    },
+    {
+      "id": "M13-C03",
+      "severity": "medium",
+      "location": {
+        "section": "3 Sources and reference list",
+        "line": 29,
+        "also": [
+          81,
+          89
+        ]
+      },
+      "issue": "The standalone manuscript identifies source families and versions but the reference list contains only related work, not the four evaluated PDFs.",
+      "evidence": "The source paragraph names two annual-report years and OPERA v1/v4; direct URLs and exact source identities reside in repository provenance rather than the manuscript.",
+      "supporting_files": [
+        "data/paired_reader_v13/corpus_manifest.json",
+        "data/access_pilot_v12/protocol.json"
+      ],
+      "recommended_fix": "Add a compact source inventory or source references with report title/year, arXiv version identifier and exact public URL, plus capture/source-hash linkage. Preserve the existing unknown-first-public-byte caveat; do not invent availability times.",
+      "claim_risk": "A reader cannot identify and inspect the exact evaluated source pair from the paper alone.",
+      "needs_new_experiment": false
+    },
+    {
+      "id": "M13-C04",
+      "severity": "low",
+      "location": {
+        "section": "7 Limitations and reproducibility",
+        "line": 75,
+        "also": [
+          40,
+          58
+        ]
+      },
+      "issue": "Unknown pretraining exposure is not explicitly stated.",
+      "evidence": "Both histories are public and historically prominent. No model-training audit or parametric-only control is reported; the prompt's prohibition on outside knowledge cannot establish memory isolation.",
+      "recommended_fix": "Add a short limitation that pretraining exposure is unknown and source-only instructions do not prove knowledge isolation. Keep the revised-result failure as an observed reader error; do not attribute its cause specifically to parametric memory without a separate control.",
+      "claim_risk": "Source-grounded task instructions could be mistaken for a guaranteed evidence-only causal mechanism.",
+      "needs_new_experiment": false
+    },
+    {
+      "id": "M13-C05",
+      "severity": "low",
+      "location": {
+        "section": "5 Evaluation and descriptive results",
+        "line": 49
+      },
+      "issue": "'Separate domain reviewers' and 'source authorship' are avoidably ambiguous.",
+      "evidence": "The manuscript elsewhere correctly identifies model-assisted review and shared project familiarity; the reviewers authored prior annotations, not the third-party source papers.",
+      "recommended_fix": "Use 'separate model-assisted domain review roles' and 'prior annotation authorship' or equally explicit wording. Do not imply independent human subject-matter experts.",
+      "claim_risk": "Local wording could undermine the otherwise clear non-human-gold disclosure.",
+      "needs_new_experiment": false
+    },
+    {
+      "id": "M13-C06",
+      "severity": "low",
+      "location": {
+        "section": "7 Limitations and reproducibility",
+        "line": 75,
+        "also": [
+          40,
+          48
+        ]
+      },
+      "issue": "The no-recomputation instruction defines a narrower task than unrestricted financial/scientific QA.",
+      "evidence": "The protocol requires reported facts and the context audit explicitly declines to count arithmetic reconstruction as a supplied final value.",
+      "recommended_fix": "Optionally state in limitations that the experiment tests attribution of reported quantities under a no-recomputation policy, not general quantitative QA. Retain the same policy across conditions.",
+      "claim_risk": "The numerical error analysis could otherwise be generalized to tasks that permit calculations from components.",
+      "needs_new_experiment": false
+    }
+  ],
+  "passed_checks": [
+    {
+      "check": "primary joint counts",
+      "result": "1/8 ordinary and 1/8 paired, agreeing with paired_main_summary_v13.json; all sixteen responses retained"
+    },
+    {
+      "check": "primary diagnostic counts",
+      "result": "Ordinary content 2/8, paired 1/8; scope 2/8 each; citation grounding 1/8 each; format 8/8 each"
+    },
+    {
+      "check": "primary evidence support",
+      "result": "Both conditions have two complete-context cases and one joint success among them; two same-prompt OPERA contrasts are disclosed"
+    },
+    {
+      "check": "sample/generalization boundary",
+      "result": "Two development histories, shared familiarity, no human gold, no held-out claim or IID significance claim are explicit"
+    },
+    {
+      "check": "reader strength",
+      "result": "Quantized 4B/no-thinking configuration and limited authored controls are not presented as a strong baseline"
+    },
+    {
+      "check": "novelty and publishability",
+      "result": "No new algorithm, publishable paired-retrieval result or ACL-readiness promise is asserted"
+    },
+    {
+      "check": "literature fidelity",
+      "result": "Mechanism-level summaries match the prior primary-source audits. TIDE is accurately labeled project documentation. No reviewed work's numerical gains are imported as causal evidence"
+    },
+    {
+      "check": "future study gate",
+      "result": "Source-bound structural baseline, stronger reader, charged context costs, oracle-diagnostic separation and held-out histories are proposed rather than claimed completed"
+    },
+    {
+      "check": "reproducibility limits",
+      "result": "External raw source-bearing artifacts and the semantic limits of metadata verification are disclosed"
+    }
+  ],
+  "final_render_gates": [
+    "Bind layout counts and interpretation only after the complete layout summary and grading join exist.",
+    "Confirm no template placeholders survive in PDF/TeX and that all result tables use the same bound summary.",
+    "If the paper changes after this review, preserve this review snapshot hash and record which recommendations were adopted instead of silently treating this as a review of the new bytes."
+  ],
+  "evidence_read": [
+    "paper/paired_reading_study_v13.json",
+    "results/paired_main_summary_v13.json",
+    "docs/next_retrieval_gate_v13.txt",
+    "data/paired_reader_v13/protocol.json",
+    "data/paired_reader_v13/corpus_manifest.json",
+    "results/paired_retrieval_v13.json",
+    "results/layout_token_audit_v13.json",
+    "Earlier primary-source literature reads documented in literature_search_v13.json and literature_scope_search_v13.json"
+  ],
+  "new_web_searches": 0,
+  "raw_model_outputs_opened_for_this_review": 0
+}
