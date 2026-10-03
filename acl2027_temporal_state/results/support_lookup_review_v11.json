@@ -1,0 +1,81 @@
+{
+  "schema_version": "support_lookup_integration_review_v0.11",
+  "reviewer_role": "independent annotation-conditioned integration audit",
+  "verdict": "pass",
+  "blocking_findings": [],
+  "input_sha256": {
+    "data/correction_gate_v10/annotation_index.json": "567260c1a7db9461eadd0277708d1f7f38e5b1389dc48a652c565ea3dc473c7c",
+    "results/correction_replay_molson_v10.json": "24a85a1560ad97df1cabd60c71cae57fdc670e0ab48e3acd3bc9178f4f1ac6a4",
+    "results/correction_replay_plug_v10.json": "1f6a43013b70a004b8f4063490ade19d546a101b1f5d964adb582dd442c04274",
+    "results/support_lookup_v11.json": "ac06f9cd2bad5e8d18142d31e9c7c4c01448323f44a3d70fb90bd5824451f051",
+    "scripts/replay_correction_gate_v10.py": "eaf8759a7e9b469a1182002490c2b7d3abb1ea088c8db901a8b07828959b67a9",
+    "scripts/run_support_lookup_v11.py": "5fb94b2ab9bdeccb6bfdff3c653e64a783a75d3029580c2e716c0a65c98b362a",
+    "src/temporal_state/__init__.py": "63b1f226a16dd461bad7e8ecdd3d262d8e7b6867d366b6f4ed609254e62f02f4",
+    "src/temporal_state/bounded.py": "9897a479f5300252da605c60f16daac990ac235534edfd1e01c25364837e1653",
+    "src/temporal_state/corrections.py": "218c20ce25030249760db3bda023cab7e351a7518e635751684c8b562c92c85f",
+    "src/temporal_state/coupled.py": "87067798f33b76810e0b39a46840dc33faef45df66d0e9eb2b237d4e6dcf632c",
+    "src/temporal_state/decoder.py": "5be5067d11b455aa9991ea07aa34afb3c95331bd0ca349ce46fbecf2eb077794",
+    "src/temporal_state/models.py": "f40919bf8b3239f0bea8cf9262d26a4eb7bbbd81dc9bd101b8d65a859b503a4e",
+    "src/temporal_state/support_answers.py": "95bdcfafa4ff9ac0fdf5a9b29f876d2e5fbc78dce994d62dc5d75e483f84b4db"
+  },
+  "external_input_sha256": {
+    "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/annotations/molson_2017_eps_restatement.json": "924a16d0ba09de40ad5796ef7ac71a50e5e5f966857e6341a354d2731c14538a",
+    "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/annotations/plug_2018_eps_restatement.json": "176757cc2bec7d122f5d82a107743462552c937f87df615831c0512a13881935",
+    "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/web_excerpts/molson_2017_10k_web_v10/document.txt": "d5fcead913a17f27370b1756e42b96fe02880799749f84bcd33b54d2ec8ba9fa",
+    "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/web_excerpts/molson_2018_10k_web_v10/document.txt": "e1362092d147d15aadfb7a1c4ac504789526426b63258e1f48e897c54247c2e8",
+    "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/web_excerpts/plug_2019_10k_web_v10/document.txt": "6ae0995c60a64dc56453b8548cfe568fc9ee1259ba2136a3775cab04e28c7171",
+    "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/web_excerpts/plug_2020_10k_web_v10/document.txt": "d7140dc6ff86cc086cbcafb0a97f320531b762e1ae46488b86889146b7dd92c5"
+  },
+  "checks": {
+    "lookups_reconstructed": 30,
+    "statuses_match_v10_replay": true,
+    "full_ledger_hashes_match_v10": true,
+    "source_bindings_match_v10": true,
+    "exact_evidence_span_occurrences_checked": 190,
+    "evidence_records_reconstructed": 124,
+    "evidence_identity_hashes_match": true,
+    "unknown_event_bounds_preserved": 30,
+    "direct_dependency_status_agreements": 10,
+    "redundant_direct_and_dependency_reasons_preserved": 2,
+    "forbidden_quote_or_full_text_fields_found": [],
+    "compact_projection_matches": true
+  },
+  "counts": {
+    "histories": 2,
+    "lookups": 30,
+    "active_support": 22,
+    "withdrawn_support": 8,
+    "unresolved": 0
+  },
+  "per_history": [
+    {
+      "history_id": "plug_2018_eps_restatement",
+      "lookups": 15,
+      "active_support": 11,
+      "withdrawn_support": 4,
+      "unresolved": 0,
+      "direct_dependency_status_agreement": 5,
+      "retained_controls_across_policies": 3,
+      "direct_and_dependency_reason_records": 1
+    },
+    {
+      "history_id": "molson_2017_eps_restatement",
+      "lookups": 15,
+      "active_support": 11,
+      "withdrawn_support": 4,
+      "unresolved": 0,
+      "direct_dependency_status_agreement": 5,
+      "retained_controls_across_policies": 3,
+      "direct_and_dependency_reason_records": 1
+    }
+  ],
+  "method": "Load the preserved v10 annotations and verify exact external source hashes; rebuild typed inputs with the unchanged v10 loader; independently reconstruct compact adapter outputs and all evidence hashes; separately compare statuses and full-ledger hashes with saved v10 policy replays. No integration runner main function was invoked and no prior output was rewritten.",
+  "model_calls": 0,
+  "natural_language_qa_predictions": 0,
+  "scope_limits": [
+    "Inputs are the same noncontiguous web-tool excerpts and model-assisted working annotations from v10, not full documents or benchmark gold.",
+    "Assertion IDs and selections were supplied, so zero unresolved lookups is not a measured extraction or coverage result.",
+    "Status agreement establishes integration consistency only. It does not establish answer accuracy, factual truth, numerical recomputation or incremental dependency value."
+  ],
+  "read_inspection_note": "An initial read-only shape-inspection command assumed the v10 policies container was a dictionary and raised AttributeError; it made no edits. The audit correctly handled the actual list schema."
+}

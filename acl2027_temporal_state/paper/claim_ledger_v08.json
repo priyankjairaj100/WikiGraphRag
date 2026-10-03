@@ -1,0 +1,260 @@
+{
+  "schema_version": "manuscript_claim_ledger_v0.8",
+  "draft": "paper/results_update_v08.tex",
+  "draft_sha256": "4b17c619a6fffebf725a6733bc968649e837777acd596dbefb3d23369fc99349",
+  "created_date": "2026-10-02",
+  "status": "Exploratory completed-development addendum; source only, not submission-ready paper",
+  "results_boundary": "Completed v0.8 capture metadata, source-only development annotation/adjudication, and pinned scorer execution with separate independent arithmetic/native-process audit. v0.7 aggregate instability is identified explicitly as preceding evidence. No decoder accuracy result on v0.8 source histories.",
+  "source_quotation_policy": "No verbatim source excerpts in this addendum; source interpretation claims are bounded paraphrases of recorded review findings.",
+  "publication_status": {
+    "compiled_pdf_produced": false,
+    "visual_layout_verified": false,
+    "latex_toolchain_limit": "Prior check found no pdflatex format/classes; no installation attempted.",
+    "v07_draft_modified": false,
+    "v07_bibliography_modified": false
+  },
+  "claims": [
+    {
+      "claim_id": "V08-C01",
+      "draft_anchor": "sec:capture",
+      "evidence_status": "completed_capture_and_frozen_selection",
+      "claim": "All 39 URLs were attempted; 32 provisionally usable sources cover 15 complete source sets. Preselection of four histories/eight prefixes yielded three ready histories/six prefixes after IBM capture failures, without replacement.",
+      "artifacts": [
+        {
+          "path": "data/source_stream_v08/capture_manifest.json",
+          "sha256": "c221d1cbcc171be5bee8fffe3ae9d961961afe9aed3b6d488c4782900eb01993"
+        },
+        {
+          "path": "data/source_stream_v08/annotation_batch_plan.json",
+          "sha256": "01254e46edaebb2e6c49f56dbe24f3efec154b130d7ab9b9b4368ba2a3b2d21a"
+        },
+        {
+          "path": "data/source_stream_v08/delivery_manifest.json",
+          "sha256": "bf215f6a6568988b687ca3ee36662ba4df69d116eb6bdc2a6bfb7b5469a29e70"
+        },
+        {
+          "path": "results/source_frame_audit_v08.json",
+          "sha256": "d403c4b8f9127251f92c949a9adadb399cf7456cd14c80d2048a51629b60d7e5"
+        }
+      ],
+      "scope_and_caveat": "Capture feasibility is not benchmark admission or certification of independent histories. Failed and blocked records remain disclosed."
+    },
+    {
+      "claim_id": "V08-C02",
+      "draft_anchor": "sec:capture",
+      "evidence_status": "observed_source_version_limit",
+      "claim": "Docker prefix 1 already contains a later reversal update; HS2 lacks an independently captured original erroneous version. Author-defined current-document prefixes do not certify historical knowledge.",
+      "artifacts": [
+        {
+          "path": "data/source_stream_v08/annotation_batch_plan.json",
+          "sha256": "01254e46edaebb2e6c49f56dbe24f3efec154b130d7ab9b9b4368ba2a3b2d21a"
+        },
+        {
+          "path": "data/source_stream_v08/delivery_manifest.json",
+          "sha256": "bf215f6a6568988b687ca3ee36662ba4df69d116eb6bdc2a6bfb7b5469a29e70"
+        },
+        {
+          "path": "results/source_semantic_review_v08.json",
+          "sha256": "dae5c77a50adfeee3dbe4f94160c056e4ab73d07a46ce641a6cb5d768457db6d"
+        }
+      ],
+      "scope_and_caveat": "No source text is retroactively removed to simulate an unavailable original; version hashes authenticate captured bytes, not historical availability."
+    },
+    {
+      "claim_id": "V08-C03",
+      "draft_anchor": "sec:annotation",
+      "evidence_status": "completed_model_assisted_development_annotation",
+      "claim": "Six initial annotation generations and six separate reference generations cover three histories and six prefixes, 57 claim instances, and 12 judgments from six unique question texts.",
+      "artifacts": [
+        {
+          "path": "data/source_stream_v08/generation_manifest.json",
+          "sha256": "828405b98df780d15dc106bbd2d0b31b56999b57c6b2a98ee536723915a3f34b"
+        },
+        {
+          "path": "data/source_stream_v08/reference_question_plan.json",
+          "sha256": "82ca138c7ecb6d54444bdefe8938e8f796c66bd69676ce89303ecfe36bcbe550"
+        },
+        {
+          "path": "results/source_semantic_review_v08.json",
+          "sha256": "dae5c77a50adfeee3dbe4f94160c056e4ab73d07a46ce641a6cb5d768457db6d"
+        }
+      ],
+      "scope_and_caveat": "Unknown model revisions remain null. Fresh-context roles are procedural separation, not independent training or human gold. Repeated prefixes and question texts are not independent samples."
+    },
+    {
+      "claim_id": "V08-C04",
+      "draft_anchor": "sec:annotation",
+      "evidence_status": "completed_source_only_development_adjudication",
+      "claim": "Four annotation artifacts changed; all six reference artifacts were retained. Unsupported Docker corrections, imprecise reversal timing, Chrome banner stance, and unsupported Chrome ordering were addressed. Selected annotations retain 57 claim instances; all 12 selected artifacts validate structurally.",
+      "artifacts": [
+        {
+          "path": "results/source_semantic_review_v08.json",
+          "sha256": "dae5c77a50adfeee3dbe4f94160c056e4ab73d07a46ce641a6cb5d768457db6d"
+        },
+        {
+          "path": "data/source_stream_v08/review_protocol.json",
+          "sha256": "e5ebba7ad27afa8b5f376b11f52f18cff5c8098a4137c4d017a0f6742f8fd30c"
+        },
+        {
+          "path": "scripts/validate_source_annotation_v08.py",
+          "sha256": "4c600708ed4ed5e392a9a1e1de0feab72e86a2d6d63cf6096c559fabf07d6a5d"
+        },
+        {
+          "path": "scripts/validate_source_reference_v08.py",
+          "sha256": "57418bc8d5fa96db76808287f5990fac195777bc8e86a7ed613883cc6c9677e2"
+        }
+      ],
+      "scope_and_caveat": "The one initial date-precision failure and all raw outputs remain disclosed. Review judgments are model-assisted and do not establish completeness, human accuracy, or world truth."
+    },
+    {
+      "claim_id": "V08-C05",
+      "draft_anchor": "sec:annotation",
+      "evidence_status": "source_limited_interpretation",
+      "claim": "HS2 supports a reported 81-to-41 percent correction with changed compensation scope and a later Manchester plan change; a complete latest-source Leeds disposition remains unestablished. These do not demonstrate natural-data joint-inference benefit.",
+      "artifacts": [
+        {
+          "path": "results/source_semantic_review_v08.json",
+          "sha256": "dae5c77a50adfeee3dbe4f94160c056e4ab73d07a46ce641a6cb5d768457db6d"
+        },
+        {
+          "path": "results/source_frame_audit_v08.json",
+          "sha256": "d403c4b8f9127251f92c949a9adadb399cf7456cd14c80d2048a51629b60d7e5"
+        },
+        {
+          "path": "configs/source_annotation_v08_schema.json",
+          "sha256": "dbcd7a04fefa41ec2e4cf3ef01e6cc11d197a27c256ec6d4d69f358513f2d871"
+        }
+      ],
+      "scope_and_caveat": "The old percentage is quoted as erroneous, not active current-world support. Source annotations are not scored candidate graphs; no pre-correction original or cross-document propagation experiment is claimed."
+    },
+    {
+      "claim_id": "V08-C06",
+      "draft_anchor": "sec:control",
+      "evidence_status": "posthoc_diagnostic_design",
+      "claim": "The v0.7 aggregate result had 26/32 sign changes. The v0.8 follow-up fixes the first item per kind, four dependent items from one already inspected history.",
+      "artifacts": [
+        {
+          "path": "results/likelihood_summary_v07.json",
+          "sha256": "2f9af4ed233c7874dbe5f0ad1f219fe704f5db8d9b342d07238be4faf0fd7d6a"
+        },
+        {
+          "path": "configs/scorer_controls_v08.json",
+          "sha256": "e8da5dab0917db55e6affbda1189eb47aaa3db2098ccb823b7fe6efd2c0aefa5"
+        },
+        {
+          "path": "data/scorer_controls_v08/frozen_inputs.json",
+          "sha256": "375ebb8ff830e1c45f028b3e27aa04a42aecf96cb69870be2fb29c06ab7d8578"
+        }
+      ],
+      "scope_and_caveat": "Selection did not inspect item-level outcomes, but experiment design followed observed aggregate instability. No held-out or independent four-example benchmark claim."
+    },
+    {
+      "claim_id": "V08-C07",
+      "draft_anchor": "sec:control",
+      "evidence_status": "completed_pinned_runtime_execution",
+      "claim": "Eight fresh processes collected 16 cold/warm distributions with original prompts, fixed label meanings, pinned Qwen3-0.6B Q8_0/runtime files, complete token accounting, and full-vocabulary next-token Yes/No probabilities.",
+      "artifacts": [
+        {
+          "path": "configs/scorer_controls_v08.json",
+          "sha256": "e8da5dab0917db55e6affbda1189eb47aaa3db2098ccb823b7fe6efd2c0aefa5"
+        },
+        {
+          "path": "data/scorer_controls_v08/frozen_inputs.json",
+          "sha256": "375ebb8ff830e1c45f028b3e27aa04a42aecf96cb69870be2fb29c06ab7d8578"
+        },
+        {
+          "path": "scripts/scorer_controls_v08.py",
+          "sha256": "37d552eeb0223c0712d63fd9cc6029f0d0b28f9d1a7329242a2077f41298e84a"
+        },
+        {
+          "path": "results/scorer_controls_v08_receipt.json",
+          "sha256": "ab4ed3b20eb5ddb5872933b91a3b6b8e33b55870894b093357a4d76f45fd4427"
+        },
+        {
+          "path": "results/scorer_controls_v08.json",
+          "sha256": "ce4e5ca96b592f31d04040b9c5c2654254b9bcf76f248eccfda15f0347091e31"
+        },
+        {
+          "path": "results/scorer_control_review_v08.json",
+          "sha256": "11103fcebc0f891127af0d1d4ab508c47141646457649e3a4dbc09897381cc39"
+        }
+      ],
+      "scope_and_caveat": "The runtime is file-pinned, not hermetic; literal-label log odds are uncalibrated additive scores. Fresh process state does not reset the operating-system file cache."
+    },
+    {
+      "claim_id": "V08-C08",
+      "draft_anchor": "sec:control",
+      "evidence_status": "independently_recomputed_technical_observation",
+      "claim": "All four cold label-order comparisons flip score sign; absolute order differences range from 3.211095940321684 to 8.131506235862616 natural-log units. All eight immediate warm repeats match both archived label log probabilities exactly. Independent replay passed native-binding and arithmetic checks.",
+      "artifacts": [
+        {
+          "path": "results/scorer_controls_v08.json",
+          "sha256": "ce4e5ca96b592f31d04040b9c5c2654254b9bcf76f248eccfda15f0347091e31"
+        },
+        {
+          "path": "results/scorer_control_review_v08.json",
+          "sha256": "11103fcebc0f891127af0d1d4ab508c47141646457649e3a4dbc09897381cc39"
+        },
+        {
+          "path": "scripts/review_scorer_controls_v08.py",
+          "sha256": "856e25d2d4eb62e99a031b9675a73e6ddbc646db4cb0bc938c9eb4d31443368b"
+        }
+      ],
+      "scope_and_caveat": "Equality is at stored output precision in this runtime. Cache carryover is not sufficient for these four effects; nothing establishes general invariance, the cause of all 32 earlier effects, accuracy, statistical significance, or model-independent behavior."
+    },
+    {
+      "claim_id": "V08-C09",
+      "draft_anchor": "sec:next",
+      "evidence_status": "prospective_evaluation_requirement",
+      "claim": "Further source-grouped evaluation needs stronger reference adjudication, candidate coverage measurement, a stronger pinned contextual baseline, and shared candidates/scores across decoders; optimization and question accuracy must be separated.",
+      "artifacts": [
+        {
+          "path": "docs/next_empirical_gate_v07.txt",
+          "sha256": "0173974e2651072a549964df11870685c727b4c46a5c61c5dbe8ae71291e6946"
+        },
+        {
+          "path": "results/source_frame_audit_v08.json",
+          "sha256": "d403c4b8f9127251f92c949a9adadb399cf7456cd14c80d2048a51629b60d7e5"
+        },
+        {
+          "path": "results/source_semantic_review_v08.json",
+          "sha256": "dae5c77a50adfeee3dbe4f94160c056e4ab73d07a46ce641a6cb5d768457db6d"
+        },
+        {
+          "path": "docs/scorer_controls_v08.txt",
+          "sha256": "f00435492db4a79e24b1b4a81f2ac2606377049a714a7d5940c31b8a68ed2984"
+        }
+      ],
+      "scope_and_caveat": "Prospective gate only. No human gold, held-out accuracy, natural joint-decoding gain, strong baseline result, or new method claim is supplied."
+    },
+    {
+      "claim_id": "V08-C10",
+      "draft_anchor": "sec:next",
+      "evidence_status": "artifact_and_manuscript_scope",
+      "claim": "The addendum is source-only and supplements unchanged v0.7 manuscript/BibTeX. Full captured text and verbatim working artifacts are subject to separate redistribution constraints; hashes cannot reconstruct unavailable inputs.",
+      "artifacts": [
+        {
+          "path": "data/source_stream_v08/capture_manifest.json",
+          "sha256": "c221d1cbcc171be5bee8fffe3ae9d961961afe9aed3b6d488c4782900eb01993"
+        },
+        {
+          "path": "data/source_stream_v08/generation_manifest.json",
+          "sha256": "828405b98df780d15dc106bbd2d0b31b56999b57c6b2a98ee536723915a3f34b"
+        },
+        {
+          "path": "results/source_frame_audit_v08.json",
+          "sha256": "d403c4b8f9127251f92c949a9adadb399cf7456cd14c80d2048a51629b60d7e5"
+        },
+        {
+          "path": "paper/methods_draft_v07.tex",
+          "sha256": "17863aa927ae02f691fd2a806c5797d1e7dbfbcdc7269ff90502845b561ed948"
+        },
+        {
+          "path": "paper/references_v07.bib",
+          "sha256": "679d89f9b58e2d7db9b2a54f0d206bb20b6b2f30deac7e82d7d9bde6d24d7a50"
+        }
+      ],
+      "scope_and_caveat": "No compiled or visually checked PDF is claimed. Hash-bound metadata is not a raw-text reproduction of external annotation requests."
+    }
+  ]
+}

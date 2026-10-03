@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordinal_sensitivity_plan_v0.6",
+  "purpose": "Check dependence on spacing of ordinal judgments; not choose a best mapping",
+  "declaration_timing": "Chosen after scorer completion was reported but before root inspected its score values or any natural decoder output",
+  "baseline": "identity",
+  "transformations": {
+    "identity": {"-3": -3, "-2": -2, "-1": -1, "0": 0, "1": 1, "2": 2, "3": 3},
+    "signed_square": {"-3": -9, "-2": -4, "-1": -1, "0": 0, "1": 1, "2": 4, "3": 9},
+    "compressed_extremes": {"-3": -4, "-2": -3, "-1": -2, "0": 0, "1": 2, "2": 3, "3": 4}
+  },
+  "apply_to": "Every unary, unresolved, pair and null score identically; beta=1, no penalties",
+  "objective": "historical",
+  "methods": ["independent", "iterative", "iterative_restarts", "joint_exact"],
+  "observables": ["selected readings", "selected links", "active claim IDs", "within-map objective gaps"],
+  "prohibited_claims": ["calibration", "accuracy", "best transform", "held-out result", "new model executions"],
+  "limit": "Three fixed monotone codings are a sensitivity probe, not exhaustive robustness to arbitrary ordinal recodings"
+}

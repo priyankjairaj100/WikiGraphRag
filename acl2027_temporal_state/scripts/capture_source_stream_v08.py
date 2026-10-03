@@ -1,0 +1,326 @@
+#!/usr/bin/env python3
+"""Bounded current-public-response capture. No historical availability inference.
+
+Full response bytes, HTTP headers and deterministic text stay outside the project.
+The distributable manifest contains hashes, receipts and limited page metadata only.
+"""
+from __future__ import annotations
+import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime, timezone
+from hashlib import sha256
+from html.parser import HTMLParser
+import json
+from pathlib import Path
+import re
+import subprocess
+import sys
+import unicodedata
+
+ROOT = Path(__file__).resolve().parents[1]
+MAX_BYTES = 8 * 1024 * 1024
+TIMEOUT_SECONDS = 30
+USER_AGENT = 'TemporalStateResearch/0.8 (public document research; no authentication)'
+
+
+def now():
+    return datetime.now(timezone.utc).isoformat(timespec='microseconds')
+
+
+def digest(path):
+    return sha256(path.read_bytes()).hexdigest()
+
+
+def normalized(s):
+    return re.sub(r'\s+', ' ', unicodedata.normalize('NFC', s)).strip()
+
+
+class DocumentText(HTMLParser):
+    """Keep body text; omit non-content scripts/styles/navigation/footer.
+
+    This is deliberately a document extraction, not a semantic article detector.
+    All retained text and exact source bytes remain reviewable outside the package.
+    """
+    SKIP = {'script', 'style', 'noscript', 'svg', 'nav', 'footer', 'template'}
+    BLOCK = {'p', 'div', 'section', 'article', 'main', 'header', 'h1', 'h2', 'h3',
+             'h4', 'li', 'ul', 'ol', 'tr', 'td', 'dt', 'dd', 'br', 'hr', 'blockquote'}
+    VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta',
+            'param', 'source', 'track', 'wbr'}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.stack = []
+        self.parts = []
+        self.titles = []
+        self.metadata = []
+        self.links = []
+        self.body_seen = False
+
+    def handle_starttag(self, tag, attrs):
+        tag = tag.lower()
+        a = dict(attrs)
+        if tag == 'body':
+            self.body_seen = True
+        if tag == 'meta':
+            k = (a.get('property') or a.get('name') or '').lower()
+            if k and any(x in k for x in ('date', 'time', 'title', 'copyright', 'license')):
+                self.metadata.append({'key': k, 'value': (a.get('content') or '')[:600]})
+        if tag == 'link' and 'license' in (a.get('rel') or '').lower():
+            self.links.append(a.get('href', ''))
+        if tag in self.BLOCK:
+            self.parts.append('\n')
+        if tag not in self.VOID:
+            self.stack.append(tag)
+
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+        if tag.lower() not in self.VOID:
+            self.handle_endtag(tag)
+
+    def handle_endtag(self, tag):
+        if tag in self.stack:
+            index = len(self.stack) - 1 - self.stack[::-1].index(tag)
+            del self.stack[index:]
+        if tag in self.BLOCK:
+            self.parts.append('\n')
+
+    def handle_data(self, data):
+        if 'title' in self.stack:
+            self.titles.append(data)
+        if any(tag in self.SKIP for tag in self.stack) or 'head' in self.stack:
+            return
+        if self.body_seen and 'body' not in self.stack:
+            return
+        self.parts.append(data)
+
+    def text(self):
+        lines = [normalized(x) for x in ''.join(self.parts).splitlines()]
+        return '\n'.join(x for x in lines if x) + '\n'
+
+
+def decode_html(raw, content_type):
+    match = re.search(r'charset\s*=\s*["\']?([a-zA-Z0-9_-]+)', content_type)
+    if not match:
+        match = re.search(br'charset\s*=\s*["\']?([a-zA-Z0-9_-]+)', raw[:8192])
+    name = match.group(1) if match else 'utf-8'
+    if isinstance(name, bytes):
+        name = name.decode('ascii')
+    try:
+        return raw.decode(name, errors='replace'), name
+    except LookupError:
+        return raw.decode('utf-8', errors='replace'), 'utf-8_fallback_unknown_charset'
+
+
+def usability(status, content_type, title, text, expected_title):
+    reasons = []
+    warnings = []
+    if status != 200:
+        reasons.append('non_200_http_status')
+    if not text.strip():
+        reasons.append('empty_extracted_text')
+    words = re.findall(r"\b[\w'-]+\b", text)
+    if len(words) < 80:
+        reasons.append('fewer_than_80_extracted_words')
+    title_lower = title.casefold()
+    front = text[:2500].casefold()
+    title_blocks = ('access denied', 'just a moment', '403 forbidden', '404 not found',
+                    'page not found', 'pardon our interruption', 'attention required',
+                    'robot or human', 'security check', 'request rejected', 'site unavailable')
+    body_blocks = ('enable javascript and cookies to continue',
+                   'verify you are human', 'checking your browser before accessing',
+                   'you have been blocked', 'access denied you don',
+                   'this request was blocked by our security service')
+    if any(x in title_lower for x in title_blocks):
+        reasons.append('blocking_or_error_page_title')
+    if any(x in front for x in body_blocks):
+        reasons.append('blocking_or_challenge_body_signal')
+    stop = {'the', 'a', 'an', 'and', 'of', 'to', 'in', 'for', 'on', 'as', 'with', 'our'}
+    expected = set(re.findall(r'\w+', expected_title.casefold())) - stop
+    actual = set(re.findall(r'\w+', (title + ' ' + text[:12000]).casefold()))
+    overlap = len(expected & actual) / max(1, len(expected))
+    if overlap < 0.6:
+        reasons.append('expected_title_lexical_coverage_below_0_6')
+    if len(words) < 150:
+        warnings.append('short_document_requires_manual_review')
+    if '\ufffd' in text:
+        warnings.append('replacement_characters_in_extracted_text')
+    if not title and 'pdf' not in content_type:
+        warnings.append('no_html_title')
+    return {'provisional_content_usable': not reasons, 'rejection_reasons': reasons,
+            'review_warnings': warnings, 'word_count': len(words),
+            'expected_title_lexical_coverage': round(overlap, 6),
+            'semantic_content_review': 'pending', 'benchmark_admitted': False}
+
+
+def capture(job, fulltext_root):
+    h, s, index = job
+    sid = s['source_id']
+    folder = fulltext_root / sid
+    folder.mkdir(parents=True, exist_ok=False)
+    raw = folder / 'response.bin'
+    headers = folder / 'http_headers.txt'
+    extracted = folder / 'document.txt'
+    started = now()
+    command = ['curl', '--silent', '--show-error', '--location', '--max-redirs', '5',
+               '--proto', '=https', '--proto-redir', '=https', '--connect-timeout', '10',
+               '--max-time', str(TIMEOUT_SECONDS), '--max-filesize', str(MAX_BYTES),
+               '--user-agent', USER_AGENT, '--dump-header', str(headers),
+               '--output', str(raw), '--write-out', '%{json}', s['url']]
+    run = subprocess.run(command, capture_output=True, text=True, timeout=35)
+    ended = now()
+    try:
+        transfer = json.loads(run.stdout)
+    except json.JSONDecodeError:
+        transfer = {'invalid_curl_writeout': run.stdout[:2000]}
+    status = transfer.get('http_code', 0)
+    content_type = transfer.get('content_type') or ''
+    title, text, metadata, license_links, extraction_error = '', '', [], [], None
+    extraction = {'recipe': 'not_extracted', 'version': 1}
+    if raw.exists() and raw.stat().st_size > MAX_BYTES:
+        # curl max-filesize is a preventive transfer guard, this is defense in depth.
+        extraction_error = 'response_exceeded_declared_byte_cap'
+    elif raw.exists() and run.returncode == 0:
+        payload = raw.read_bytes()
+        try:
+            if payload.startswith(b'%PDF-') or 'application/pdf' in content_type.lower():
+                converted = subprocess.run(['pdftotext', '-enc', 'UTF-8', '-eol', 'unix',
+                                            str(raw), '-'], capture_output=True,
+                                           timeout=20, check=True)
+                value = converted.stdout.decode('utf-8', errors='replace')
+                text = '\n'.join(x for x in (normalized(z) for z in value.splitlines()) if x) + '\n'
+                extraction = {'recipe': 'pdftotext_reading_order_NFC_nonempty_lines',
+                              'version': 1, 'command': 'pdftotext -enc UTF-8 -eol unix INPUT -'}
+            elif 'html' in content_type.lower() or payload.lstrip().startswith((b'<!', b'<html')):
+                decoded, charset = decode_html(payload, content_type)
+                parser = DocumentText()
+                parser.feed(decoded)
+                parser.close()
+                text, title = parser.text(), normalized(''.join(parser.titles))
+                metadata, license_links = parser.metadata, parser.links
+                extraction = {'recipe': 'stdlib_HTMLParser_body_text_NFC_nonempty_lines',
+                              'version': 2, 'charset': charset,
+                              'excluded_tags': sorted(DocumentText.SKIP)}
+            elif content_type.startswith('text/plain'):
+                decoded = payload.decode('utf-8', errors='replace')
+                text = '\n'.join(x for x in (normalized(z) for z in decoded.splitlines()) if x) + '\n'
+                extraction = {'recipe': 'UTF8_NFC_nonempty_lines', 'version': 1}
+            else:
+                extraction_error = 'unsupported_content_type'
+        except Exception as exc:
+            extraction_error = type(exc).__name__ + ': ' + str(exc)[:300]
+    if text:
+        extracted.write_text(text, encoding='utf-8', newline='\n')
+    usable = usability(status, content_type, title, text, s['title'])
+    if run.returncode:
+        usable['rejection_reasons'].append('curl_transfer_failed')
+        usable['provisional_content_usable'] = False
+    if extraction_error:
+        usable['rejection_reasons'].append('extraction_error')
+        usable['provisional_content_usable'] = False
+    # Only explicit bounded license metadata; no guessed redistribution permission.
+    license_status = 'not_established_current_capture'
+    if 'www.gov.uk/' in s['url'] and raw.exists():
+        raw_lower = raw.read_bytes().lower()
+        if b'open government licence' in raw_lower:
+            license_status = 'visible_open_government_licence_notice_scope_requires_review'
+    if license_links:
+        license_status = 'visible_rel_license_link_scope_requires_review'
+    hashes = {name: digest(p) if p.exists() else None
+              for name, p in [('raw_response_sha256', raw), ('http_headers_sha256', headers),
+                              ('extracted_text_sha256', extracted)]}
+    result = {'source_id': sid, 'history_id': h['history_id'], 'frame_source_index': index,
+              'requested_url': s['url'], 'final_url': transfer.get('url_effective'),
+              'expected_title': s['title'], 'captured_title': title,
+              'capture_started_at': started, 'retrieved_at': ended,
+              'reported_publication_date': s.get('reported_publication_date'),
+              'publication_date_basis': s.get('publication_date_basis'),
+              'reported_updated_date': s.get('reported_updated_date'),
+              'historical_first_public_availability': None,
+              'event_times_in_text': {'status': 'not_annotated', 'values': []},
+              'delivery_batch_index': None, 'delivery_status': 'proposal_not_frozen',
+              'version_notes_from_frame': s.get('version_notes'),
+              'http_status': status, 'content_type': content_type,
+              'curl_returncode': run.returncode, 'curl_stderr': run.stderr[:4000],
+              'transfer_receipt': transfer,
+              'raw_bytes': raw.stat().st_size if raw.exists() else 0,
+              'extracted_text_bytes': extracted.stat().st_size if extracted.exists() else 0,
+              **hashes, 'exact_version_sha256': hashes['raw_response_sha256'],
+              'local_fulltext_directory': str(folder),
+              'local_raw_path': str(raw) if raw.exists() else None,
+              'local_text_path': str(extracted) if extracted.exists() else None,
+              'local_headers_path': str(headers) if headers.exists() else None,
+              'extraction': extraction, 'extraction_error': extraction_error,
+              'metadata_date_title_license_signals': metadata,
+              'license_status': license_status, 'license_links': license_links,
+              'distribution_policy': 'Full external response, headers and extracted text excluded from checkpoint; hashes and capture metadata only.',
+              'content_usability': usable, 'attempt_number': 1,
+              'source_id_binding': 'frame source ID plus exact raw SHA256 identifies this captured version'}
+    (folder / 'capture_receipt.json').write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n')
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--frame', type=Path, default=ROOT / 'data/source_stream_v07/development_frame.json')
+    parser.add_argument('--fulltext-root', type=Path, required=True)
+    parser.add_argument('--manifest', type=Path, default=ROOT / 'data/source_stream_v08/capture_manifest.json')
+    args = parser.parse_args()
+    if args.manifest.exists():
+        raise SystemExit('Refusing to overwrite an existing capture manifest; preserve attempts.')
+    if ROOT == args.fulltext_root.resolve() or ROOT in args.fulltext_root.resolve().parents:
+        raise SystemExit('Full external text must be captured outside the distributable project.')
+    frame = json.loads(args.frame.read_text())
+    priority = ['plan_hs2_phase2_2017_2023', 'leadership_ibm_2020',
+                'service_docker_free_team_2023', 'browser_chrome_cookie_plan_2023_2025']
+    jobs = [(h, s, n) for h in frame['histories'] for n, s in enumerate(h['sources'])]
+    jobs.sort(key=lambda item: priority.index(item[0]['history_id'])
+              if item[0]['history_id'] in priority else len(priority))
+    pdftotext = subprocess.run(['pdftotext', '-v'], capture_output=True, text=True)
+    curl = subprocess.run(['curl', '--version'], capture_output=True, text=True)
+    manifest = {'schema_version': 'source_capture_v0.8', 'status': 'capture_running',
+                'started_at': now(), 'ended_at': None, 'frame_path': str(args.frame),
+                'frame_sha256': digest(args.frame),
+                'capture_script_sha256': digest(Path(__file__)),
+                'expected_source_count': len(jobs), 'expected_history_count': len(frame['histories']),
+                'http_request_policy': {'max_parallel': 4, 'timeout_seconds': TIMEOUT_SECONDS,
+                                        'max_response_bytes': MAX_BYTES, 'max_redirects': 5,
+                                        'connect_timeout_seconds': 10, 'protocols': ['https'],
+                                        'authentication': 'none', 'automatic_retries': 0,
+                                        'user_agent': USER_AGENT},
+                'runtime': {'python': sys.version, 'curl_version': curl.stdout.splitlines()[0],
+                            'pdftotext_version': pdftotext.stderr.splitlines()[0]},
+                'scope': 'Exact current public responses; no historical original or availability certification; no benchmark admission.',
+                'sources': [], 'attempted_sources': 0, 'provisionally_usable_sources': 0,
+                'candidate_annotations': 0, 'reference_questions': 0,
+                'delivery_order_status': 'not_frozen_pending_mutable_page_review'}
+    args.manifest.parent.mkdir(parents=True, exist_ok=True)
+
+    def save():
+        manifest['sources'].sort(key=lambda x: (x['history_id'], x['frame_source_index']))
+        manifest['attempted_sources'] = len(manifest['sources'])
+        manifest['provisionally_usable_sources'] = sum(x['content_usability']['provisional_content_usable'] for x in manifest['sources'])
+        tmp = args.manifest.with_suffix('.tmp')
+        tmp.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n')
+        tmp.replace(args.manifest)
+    save()
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        futures = {executor.submit(capture, job, args.fulltext_root): job for job in jobs}
+        for future in as_completed(futures):
+            # Exceptions indicate a code/environment fault and are not silently skipped.
+            result = future.result()
+            manifest['sources'].append(result)
+            save()
+            print(json.dumps({'source_id': result['source_id'], 'http_status': result['http_status'],
+                              'bytes': result['raw_bytes'],
+                              'usable': result['content_usability']['provisional_content_usable'],
+                              'reasons': result['content_usability']['rejection_reasons']}), flush=True)
+    manifest['status'] = 'all_frame_sources_attempted'
+    manifest['ended_at'] = now()
+    save()
+    print(json.dumps({'attempted': manifest['attempted_sources'],
+                      'usable': manifest['provisionally_usable_sources'],
+                      'manifest': str(args.manifest)}))
+
+
+if __name__ == '__main__':
+    main()

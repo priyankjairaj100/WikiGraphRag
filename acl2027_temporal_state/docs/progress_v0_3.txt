@@ -1,0 +1,131 @@
+ACL 2027 REWORK: CHECKPOINT v0.3
+Work date: 2026-10-02
+Focus: source-supported bounded temporal representation and controlled repair.
+
+Outcome
+The revised bounded materializer handles all nine known development questions
+under their announced-schedule interpretation. A and B repeat seven early-prefix
+questions independently; L covers two later-prefix questions. These are repairs
+of inspected examples, not a held-out test or proof of joint-inference benefit.
+
+Implementation
+- Separate positive/negative polarity from actual/planned/conditional/uncertain
+  modality. An announced departure no longer becomes positive occupancy.
+- Distinguish report dates from actual state observations. An observation
+  constrains a continuous interval to contain that date without inventing the
+  appointment day. Exact, bounded, year-only and unknown endpoints are retained.
+- Compute possible/necessary interval membership analytically. Endpoints use
+  inclusive possible-date bounds; the occupancy interval itself is half-open.
+- Keep factual queries separate from announced-schedule queries. Actual mode
+  excludes plans and projections beyond the report horizon. Invalid future-report
+  metadata cannot bypass source eligibility. No indefinite forward persistence.
+- Route through source-supported aliases from the eligible prefix. Colliding
+  aliases stay ambiguous instead of silently merging organizations.
+- Preserve raw extractions, old memory/evaluation code and unchanged questions
+  and expectations. An archive comparison verifies 24 prior input/legacy files.
+
+Source-only semantic migration
+Fresh model contexts separately received the early A, early B and late L source
+prefixes and their own raw extraction. No questions, labels, predictions or other
+passes were supplied. Migration created 39 claims from all 37 raw assertions;
+A split two occupancy/departure readings. There are 20 source-supported alias
+records and 89 claim evidence spans. Exact input/prompt/output hashes, change
+logs and unedited outputs are retained. This is additional semantic model work,
+not merely renaming fields, and not human adjudication.
+
+Controlled development replay
+Each row below uses the same migrated source evidence. A/B are repetitions of
+the same seven questions and must not be pooled as independent test examples.
+
+Variant                                      A / 7       B / 7       L / 2
+Legacy exact-date projection, canonical names    1           2           0
+Legacy exact-date projection, aliases            2           2           0
+Bounded materializer, canonical names            4           7           2
+Bounded materializer, aliases                    7           7           2
+Bounded + aliases, observations removed          5           5           1
+Bounded + aliases, endpoint bounds removed       1           1           0
+
+The observations ablation shows why a reported current role cannot simply be
+represented as an unknown appointment. The endpoint ablation loses announced
+transition timing. Alias effects differ across A/B because their subject labels
+differ. These are diagnostic observations on known cases, not generalization.
+
+The exact-date baseline also assumes open-end persistence, while the bounded
+method assumes a connected selected interval without forward persistence. Its
+projection necessarily loses non-exact endpoints, observations and negative
+claims. This contrast measures the implemented representation/materialization
+bundle. It does not isolate a new decoder or provide a fair comparison to every
+possible strong temporal baseline. The within-v0.3 controls share semantic
+migration; v0.2-v0.3 differences also include that added model interpretation.
+
+Unscored actual-mode checks
+The fourteen early-prefix A/B schedule questions all abstain when instead asked
+for demonstrated future actual occupancy. The later prefix remains indeterminate
+about September 9 actual occupancy but answers the November 20 certification
+observation. These outputs are not scored against the announced-schedule labels.
+
+Verification and review
+140 unit tests pass, including 43 bounded-materializer and 12 migration/routing
+tests, plus the existing 48 decoder diagnostic checks. A separate code reviewer
+checked 4,896 finite interval configurations without finding a membership-rule
+mismatch. Review found and fixed lost context citations, future-report metadata
+leakage, understated episode-continuity assumptions and conflation of unresolved
+update links with uncertain factual occupancy. See semantic_review_v03.txt.
+
+Remaining methodological limits
+- No joint propagation across all claims' temporal constraints. The per-claim
+  conservative engine may abstain where a global consistency model could resolve
+  a later competing unknown-start observation.
+- Unresolved polarity and per-endpoint modality remain unsupported. Whole-claim
+  modality plus factual projection guards are a partial implementation.
+- Multiple observations in one claim assume a continuous episode. Do not merge
+  separated observations across a possible reversion without evidence.
+- Corrections are explicitly rejected by the new materializer. The existing
+  small decoder's correction links still need compatible downstream semantics.
+- No learned shared candidate scores, full candidate-recall study, scalable
+  joint solver or natural joint-versus-iterative comparison exists yet.
+- Five current source representations from two selected histories remain
+  development-only; strict historical version/availability admission is pending.
+- Perfect repairs of examples used to design the method cannot establish novelty,
+  statistical significance, robustness or ACL acceptance prospects.
+
+Pinned-extractor preparation and concrete blocker
+Verified public Qwen/Qwen3-8B model/tokenizer revision:
+  b968826d9c46dd6066d109eabc6255188de91218
+Primary model metadata: https://huggingface.co/api/models/Qwen/Qwen3-8B
+Primary job pricing: https://huggingface.co/docs/hub/en/jobs-pricing
+
+The intended pilot has three isolated history-prefix requests, greedy generation,
+12,288 input-token and 4,096 output-token caps, batch size one, no automatic
+repair/retry, and a proposed 30-minute L4 timeout. Model pinning is verified;
+full runtime reproducibility, measured memory/runtime and output transport are
+not. Current documented L4 hardware cost is about $0.40 for that maximum runtime.
+
+A CPU-only three-minute transport probe was concretely prepared and submitted
+through the prescribed Jobs interface. The tool returned UNAVAILABLE: the Jobs
+operation was not returned by the provider's tools/list. No job identifier was
+returned or model execution confirmed. Plugin discovery confirms Hugging Face
+is installed/enabled; this does not make the Jobs operation available. No broad
+permission settings were changed and no alternative submission path was used.
+This is not an approval-review rejection, proved credit shortage, or evidence
+that Pro membership is required. The current official service documents say
+positive credits suffice. No GPU job or inference result is claimed.
+
+Next priority
+Run the prepared source-only pinned extractor once a supported execution path is
+available, retaining all malformed/unsupported outputs and measuring candidate
+recall. Expand sources beyond these development histories, including product
+lifecycle and genuine correction examples. Develop scored identity/update
+alternatives with a shared evidence budget, then compare strong contextual,
+iterative/restarted and joint inference. Paper contribution selection remains
+conditional on those natural comparisons.
+
+The frozen v0.3 extraction prompt, strict JSON schema and standalone job builder
+are included. Local preparation checks validate three isolated requests, exact
+evidence alignment and complete transport decoding without model libraries.
+The configuration remains disabled; no generated candidates have been admitted.
+
+Reproduce local results
+  python scripts/verify_project.py
+This replays stored conversational outputs and all local checks without model
+weights or credentials. It does not rerun the conversational extraction itself.

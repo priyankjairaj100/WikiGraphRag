@@ -1,0 +1,62 @@
+{
+  "schema_version": "jama_web_capture_selection_v0.11",
+  "selected_at_utc": "2026-10-03T06:34:54.276Z",
+  "selection_timing": "After discovery and before any JAMA passage diagnostic questions, reference labels or model outputs.",
+  "purpose": "Current-document passage diagnostic only; not admission to paired correction replay or a full-document evaluation.",
+  "mechanism": "Approved web open calls; exact web-tool response objects preserved by scripts/preserve_web_excerpt_v10.py. No local source transfer, retries or text normalization.",
+  "source_call_limit": 4,
+  "sources": [
+    {
+      "source_id": "jama_article",
+      "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720914",
+      "title": "Association of Pharmaceutical Industry Marketing of Opioid Products With Mortality From Opioid-Related Overdoses",
+      "reported_publication_date": "2019-01-18",
+      "reported_correction_date": "2019-03-22",
+      "planned_open_linenos": [
+        0,
+        260,
+        365
+      ],
+      "passages": [
+        {
+          "passage_id": "P2",
+          "line_start": 264,
+          "line_end": 277,
+          "role": "methods"
+        },
+        {
+          "passage_id": "P3",
+          "line_start": 335,
+          "line_end": 351,
+          "role": "mortality prose and table"
+        },
+        {
+          "passage_id": "P4",
+          "line_start": 364,
+          "line_end": 380,
+          "role": "prescribing prose and table"
+        }
+      ]
+    },
+    {
+      "source_id": "jama_notice",
+      "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2728611",
+      "title": "Errors in Results, Table 3, and eTables 2 and 3",
+      "reported_publication_date": "2019-03-22",
+      "planned_open_linenos": [
+        0
+      ],
+      "passages": [
+        {
+          "passage_id": "P1",
+          "line_start": 80,
+          "line_end": 82,
+          "role": "correction notice body"
+        }
+      ]
+    }
+  ],
+  "stop_rule": "Stop and report if a selected line range is not contiguous in one exact returned text block, if required table rows are missing, or if source/line mapping changes. Never repair snippets or infer omitted lines.",
+  "external_root": "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v11/jama_web",
+  "copyright_and_distribution": "Source-bearing web JSON, text blocks and selected passages remain outside distributable project. Compact manifests contain hashes, offsets and metadata only."
+}

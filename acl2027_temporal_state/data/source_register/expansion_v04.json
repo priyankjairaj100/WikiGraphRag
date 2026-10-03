@@ -1,0 +1,520 @@
+{
+  "schema_version": "0.4-discovery",
+  "created_date": "2026-10-02",
+  "status": "discovery_only_not_benchmark",
+  "annotation_provenance": "Model-assisted primary-source discovery; no human adjudication, raw-byte acquisition, QA generation, model evaluation or benchmark admission.",
+  "parent_register": "data/source_register/seed_sources.json",
+  "new_histories_count": 5,
+  "source_count": 11,
+  "raw_bytes_captured": false,
+  "test_admission": false,
+  "gold_questions_created": 0,
+  "gold_answers_created": 0,
+  "selection_log": [
+    "Checked all five existing seed histories to avoid duplication.",
+    "Targeted primary-source discovery for plan revision, scope and explicit correction.",
+    "Selected Docker, Chrome, NASA, Sony and Lyft to widen publisher and relation coverage.",
+    "Recall and Stadia considered but not pursued into this register: additional mutable product pages would add less domain coverage within this bounded pass."
+  ],
+  "classification_policy": {
+    "correction": "Requires an explicit source statement that an earlier claim was wrong, or a documented replacement identifying erroneous earlier content.",
+    "plan_revision": "A changed intent, target or policy is CHANGES, even if the publisher calls its decision wrong.",
+    "discovery_only": "An inspected page is evidence for feasibility, not exact historical source availability or test admission.",
+    "bitemporality": "Retain knowledge/availability time separately from event/target time and from correction effective scope."
+  },
+  "grouping_and_leakage_rules": [
+    "Split by complete history/program group, never by source, prefix, question or adjacent revision.",
+    "Co-locate reprints, translations, cached/live/archived versions, SEC exhibits and issuer pages.",
+    "Keep related Artemis missions together and all PlayStation device/region variants together to prevent neighboring facts leaking across splits.",
+    "Allocate future held-out groups before annotation/model selection; this discovery list is already visible to development agents and is not a blind test.",
+    "Strip contemporary navigation, recommendations and update banners from historical content only after independent version evidence identifies the correct body. Never silently backdate edited live text.",
+    "Freeze raw bytes, extraction recipe, SHA256 and availability evidence; refuse unresolved cutoff admission.",
+    "Record every eligible and rejected history during a fixed-time-window source enumeration, rather than retaining only sources where a method succeeds."
+  ],
+  "sampling_next_step": {
+    "design": "Predeclare publisher/time windows and enumerate all releases matching fixed lifecycle/change/correction terms; log inclusions and exclusions before running any model.",
+    "negative_controls": [
+      "Unchanged plans/restatements",
+      "Concurrent scoped states without replacement",
+      "Contradictions with no authorized correction",
+      "New actual outcomes that differ from prior plans",
+      "Ambiguous identity/boundary cases requiring abstention"
+    ],
+    "allocation": "No train/dev/test assignment made in this discovery pass.",
+    "coverage_limit": "Five convenience-selected English-language histories establish feasibility, not a representative sample or benchmark diversity claim."
+  },
+  "histories": [
+    {
+      "history_id": "service_docker_free_team_2023",
+      "title": "Docker Free Team sunset plan and reversal",
+      "domain": "developer_service_lifecycle",
+      "status": "discovery_only_not_admitted",
+      "selection_basis": "Phenomenon coverage and primary-source feasibility; no system outputs or QA labels consulted.",
+      "phenomena": [
+        "plan_reversal",
+        "subscription_scope",
+        "private_public_scope",
+        "deadline_discrepancy",
+        "archived_prior_version"
+      ],
+      "change_classification": "plan_reversal_not_factual_correction",
+      "classification_rationale": "The issuer explicitly reverses its policy. Its earlier clarification of image deletion is not evidence of a retracted factual assertion. April 13 suspension and April 14 migration wording concern potentially different actions.",
+      "relation_time_schema": {
+        "entity": "Docker Free Team subscription",
+        "relations": [
+          "planned_sunset_status",
+          "private_repository_access",
+          "public_image_distribution",
+          "migration_deadline"
+        ],
+        "scope_fields": [
+          "subscription_tier",
+          "existing_account",
+          "repository_visibility",
+          "open_source_program_membership"
+        ],
+        "time_fields": [
+          "record_publication",
+          "archive_capture",
+          "planned_action_date",
+          "decision_announcement"
+        ],
+        "modality": "announced_future for suspension; reported_actual for the decision to reverse, without assuming resulting operational state",
+        "precision_policy": "Keep April 13, 2023 suspension and April 14, 2023 migration as separate scoped statements until adjudicated."
+      },
+      "sources": [
+        {
+          "source_id": "docker_pre_reversal_archive",
+          "title": "We apologize. We did a terrible job announcing the end of Docker Free Teams.",
+          "publisher": "Docker; archived by Internet Archive",
+          "url": "https://web.archive.org/web/20230322142318/https://www.docker.com/blog/we-apologize-we-did-a-terrible-job-announcing-the-end-of-docker-free-teams/",
+          "reported_publication_date": "2023-03-16",
+          "publication_date_basis": "Visible Posted date in archived page; capture timestamp is March 22, distinct from publication.",
+          "observed_retrieval_date": "2026-10-02",
+          "evidence_snippet": "will be suspended as of April 13, 2023.",
+          "evidence_word_count": 8,
+          "retrieval_reference": "turn87view0",
+          "evidence_paraphrase": "Pre-reversal FAQ distinguishes private-repository suspension, continued public image distribution, and unaffected paid/Personal plans.",
+          "accessibility": "Public full-text representation opened through web retrieval; no sign-in wall observed.",
+          "version_classification": "archive_anchor_inspected",
+          "archive_anchor": {
+            "kind": "wayback_capture",
+            "timestamp_as_encoded": "20230322142318",
+            "publisher_linking_page": "https://www.docker.com/blog/we-apologize-we-did-a-terrible-job-announcing-the-end-of-docker-free-teams/",
+            "publisher_link_retrieval_reference": "turn86view3",
+            "capture_is_first_publication": false
+          },
+          "historical_availability_date": null,
+          "raw_bytes_captured": false,
+          "content_sha256": null,
+          "version_gap": "Publisher currently links to this archived version. Capture inspected as rendered text only; WARC response, replay correctness, source bytes and first availability not established.",
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "docker_reversal",
+          "title": "We’re No Longer Sunsetting the Free Team Plan",
+          "publisher": "Docker",
+          "url": "https://www.docker.com/blog/no-longer-sunsetting-the-free-team-plan/",
+          "reported_publication_date": "2023-03-24",
+          "publication_date_basis": "Visible Posted date.",
+          "observed_retrieval_date": "2026-10-02",
+          "evidence_snippet": "no longer have to migrate to another plan by April 14.",
+          "evidence_word_count": 11,
+          "retrieval_reference": "turn84view5",
+          "evidence_paraphrase": "Reverses sunset; existing subscribers need not migrate, while some previous paid upgrades receive refunds.",
+          "accessibility": "Public full-text representation opened through web retrieval; no sign-in wall observed.",
+          "version_classification": "publication_only",
+          "archive_anchor": null,
+          "historical_availability_date": null,
+          "raw_bytes_captured": false,
+          "content_sha256": null,
+          "version_gap": "Only currently served text was inspected. Exact historical response bytes, revision history and first public availability remain unverified.",
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "admission_gaps": [
+        "Capture and hash both original response bodies, including archived response metadata.",
+        "Pin reversal text to a historical capture; do not use March 24 update banner inside a March 16 prefix.",
+        "The March 14 email is acknowledged retrospectively but not acquired."
+      ],
+      "split_group": "docker_free_team_all_versions_and_reprints"
+    },
+    {
+      "history_id": "browser_chrome_cookie_plan_2023_2025",
+      "title": "Chrome third-party cookie deprecation, user-choice proposal, and cancellation of a standalone prompt",
+      "domain": "browser_privacy_policy",
+      "status": "discovery_only_not_admitted",
+      "selection_basis": "Phenomenon coverage and primary-source feasibility; no system outputs or QA labels consulted.",
+      "phenomena": [
+        "conditional_rollout",
+        "population_scope",
+        "plan_revision",
+        "proposal_cancellation",
+        "mutable_old_page"
+      ],
+      "change_classification": "plan_changes_not_factual_corrections",
+      "classification_rationale": "Plans evolve from broad restriction to a user-choice proposal and later no new prompt. No source says a prior historical fact was erroneous.",
+      "relation_time_schema": {
+        "entity": "Google Chrome",
+        "relations": [
+          "planned_third_party_cookie_restriction",
+          "planned_user_choice_experience",
+          "planned_standalone_prompt",
+          "incognito_default_cookie_policy"
+        ],
+        "scope_fields": [
+          "browsing_mode",
+          "user_population_fraction",
+          "channel",
+          "regulatory_condition"
+        ],
+        "time_fields": [
+          "record_publication",
+          "planned_rollout_window",
+          "decision_announcement"
+        ],
+        "modality": "Distinguish conditional announced rollout, proposed experience, canceled rollout, and observed Incognito default.",
+        "precision_policy": "Q3 2024 denotes a quarter; keep day unspecified. Do not equate 1% testing with all users."
+      },
+      "sources": [
+        {
+          "source_id": "chrome_cookie_countdown",
+          "title": "Preparing for the end of third-party cookies",
+          "publisher": "Google Privacy Sandbox",
+          "url": "https://privacysandbox.google.com/blog/cookie-countdown-2023oct",
+          "reported_publication_date": "2023-10-11",
+          "publication_date_basis": "Page says published October 2023 and footer Last updated 2023-10-11 UTC; body visibly includes later material.",
+          "observed_retrieval_date": "2026-10-02",
+          "evidence_snippet": "100% of users from Q3 2024",
+          "evidence_word_count": 6,
+          "retrieval_reference": "turn84view3",
+          "evidence_paraphrase": "Describes planned broad restrictions subject to competition concerns, alongside 1% testing.",
+          "accessibility": "Public full-text representation opened through web retrieval; no sign-in wall observed.",
+          "version_classification": "publication_only",
+          "archive_anchor": null,
+          "historical_availability_date": null,
+          "raw_bytes_captured": false,
+          "content_sha256": null,
+          "version_gap": "Current text includes a July 2024-path banner and retrospective January 2024 testing language despite a 2023 footer. This representation must never enter an October 2023 prefix. Historical text required.",
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "chrome_user_choice_proposal",
+          "title": "A new path for Privacy Sandbox on the web",
+          "publisher": "Google Privacy Sandbox",
+          "url": "https://privacysandbox.google.com/blog/privacy-sandbox-update",
+          "reported_publication_date": "2024-07-22",
+          "publication_date_basis": "Visible Jul 22, 2024 dateline and footer.",
+          "observed_retrieval_date": "2026-10-02",
+          "evidence_snippet": "Instead of deprecating third-party cookies",
+          "evidence_word_count": 5,
+          "retrieval_reference": "turn85view3",
+          "evidence_paraphrase": "Proposes a user-choice experience in place of cookie deprecation, with regulator consultation continuing.",
+          "accessibility": "Public full-text representation opened through web retrieval; no sign-in wall observed.",
+          "version_classification": "publication_only",
+          "archive_anchor": null,
+          "historical_availability_date": null,
+          "raw_bytes_captured": false,
+          "content_sha256": null,
+          "version_gap": "Only currently served text was inspected. Exact historical response bytes, revision history and first public availability remain unverified.",
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "chrome_prompt_cancellation",
+          "title": "Next steps for Privacy Sandbox and tracking protections in Chrome",
+          "publisher": "Google Privacy Sandbox",
+          "url": "https://privacysandbox.google.com/blog/privacy-sandbox-next-steps",
+          "reported_publication_date": "2025-04-22",
+          "publication_date_basis": "Visible April 22, 2025 dateline and footer.",
+          "observed_retrieval_date": "2026-10-02",
+          "evidence_snippet": "will not be rolling out a new standalone prompt",
+          "evidence_word_count": 9,
+          "retrieval_reference": "turn85view4",
+          "evidence_paraphrase": "Retains current user choice through settings; distinguishes Incognito default blocking and a separately planned protection feature.",
+          "accessibility": "Public full-text representation opened through web retrieval; no sign-in wall observed.",
+          "version_classification": "publication_only",
+          "archive_anchor": null,
+          "historical_availability_date": null,
+          "raw_bytes_captured": false,
+          "content_sha256": null,
+          "version_gap": "Only currently served text was inspected. Exact historical response bytes, revision history and first public availability remain unverified.",
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "admission_gaps": [
+        "Acquire historical revisions of all three pages; countdown page has demonstrable hindsight contamination.",
+        "Capture regulatory conditions and mode/population scopes before assigning temporal edges.",
+        "This selected sequence is not an exhaustive history of Privacy Sandbox or evidence about post-April-2025 policy."
+      ],
+      "split_group": "chrome_privacy_sandbox_cookie_program_all_pages"
+    },
+    {
+      "history_id": "mission_artemis_ii_iii_schedule_2024",
+      "title": "Artemis II and III target-window revisions",
+      "domain": "space_mission_planning",
+      "status": "discovery_only_not_admitted",
+      "selection_basis": "Phenomenon coverage and primary-source feasibility; no system outputs or QA labels consulted.",
+      "phenomena": [
+        "delay",
+        "month_precision",
+        "vague_midyear",
+        "mission_identity",
+        "dependency",
+        "unchanged_neighbor"
+      ],
+      "change_classification": "schedule_revisions_not_factual_corrections",
+      "classification_rationale": "NASA announces adjusted schedules and later updated mission targets; those targets are plans, not earlier false reports of launches.",
+      "relation_time_schema": {
+        "entity": "NASA Artemis mission",
+        "relations": [
+          "target_launch_window",
+          "target_landing_window"
+        ],
+        "scope_fields": [
+          "mission_number",
+          "crewed_status",
+          "mission_objective"
+        ],
+        "time_fields": [
+          "announcement_date",
+          "target_window",
+          "observation_date_if_separately_sourced"
+        ],
+        "modality": "announced_future; no actual launch or landing inferred.",
+        "precision_policy": "September 2025 and April 2026 are month bounds. Preserve mid-2027 as unresolved coarse language rather than invent a date."
+      },
+      "sources": [
+        {
+          "source_id": "artemis_jan_2024",
+          "title": "NASA Shares Progress Toward Early Artemis Moon Missions with Crew",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/news-release/nasa-shares-progress-toward-early-artemis-moon-missions-with-crew/",
+          "reported_publication_date": "2024-01-09",
+          "publication_date_basis": "Visible date and release identifier 24-006.",
+          "observed_retrieval_date": "2026-10-02",
+          "evidence_snippet": "target September 2025 for Artemis II",
+          "evidence_word_count": 6,
+          "retrieval_reference": "turn84view6",
+          "evidence_paraphrase": "Announces September 2025 for Artemis II and September 2026 for Artemis III; separately restates the Artemis IV 2028 target.",
+          "accessibility": "Public full-text representation opened through web retrieval; no sign-in wall observed.",
+          "version_classification": "publication_only",
+          "archive_anchor": null,
+          "historical_availability_date": null,
+          "raw_bytes_captured": false,
+          "content_sha256": null,
+          "version_gap": "Only currently served text was inspected. Exact historical response bytes, revision history and first public availability remain unverified.",
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "artemis_dec_2024",
+          "title": "NASA Shares Orion Heat Shield Findings, Updates Artemis Moon Missions",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/news-release/nasa-shares-orion-heat-shield-findings-updates-artemis-moon-missions/",
+          "reported_publication_date": "2024-12-05",
+          "publication_date_basis": "Visible date and release identifier 24-145.",
+          "observed_retrieval_date": "2026-10-02",
+          "evidence_snippet": "targeting April 2026 for Artemis II and mid-2027 for Artemis III.",
+          "evidence_word_count": 11,
+          "retrieval_reference": "turn84view7",
+          "evidence_paraphrase": "Revises mission windows while discussing heat-shield and life-support work.",
+          "accessibility": "Public full-text representation opened through web retrieval; no sign-in wall observed.",
+          "version_classification": "publication_only",
+          "archive_anchor": null,
+          "historical_availability_date": null,
+          "raw_bytes_captured": false,
+          "content_sha256": null,
+          "version_gap": "Only currently served text was inspected. Exact historical response bytes, revision history and first public availability remain unverified.",
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "admission_gaps": [
+        "Acquire historical captures or official immutable release copies.",
+        "Keep Artemis II/III/IV and Gateway in a shared program group; similar names create identity risk.",
+        "Original target windows before January 2024 and actual outcomes were not exhaustively sampled."
+      ],
+      "split_group": "nasa_artemis_campaign_related_missions"
+    },
+    {
+      "history_id": "commerce_playstation_legacy_stores_2021_2026",
+      "title": "Legacy PlayStation stores: reversal and later geographically scoped retirement proposal",
+      "domain": "consumer_service_lifecycle",
+      "status": "discovery_only_not_admitted",
+      "selection_basis": "Phenomenon coverage and primary-source feasibility; no system outputs or QA labels consulted.",
+      "phenomena": [
+        "plan_reversal",
+        "later_new_retirement",
+        "device_scope",
+        "regional_scope",
+        "purchase_download_distinction",
+        "retrospective_prior_plan"
+      ],
+      "change_classification": "plan_reversal_then_new_plan_not_factual_correction",
+      "classification_rationale": "The 2021 issuer post explicitly reverses a decision for PS3/Vita while keeping PSP retirement. A separate 2026 post announces new regional plans; it does not establish uninterrupted actual operation between reports.",
+      "relation_time_schema": {
+        "entity": "PlayStation Store",
+        "relations": [
+          "planned_purchase_availability",
+          "planned_store_closure",
+          "planned_redownload_availability"
+        ],
+        "scope_fields": [
+          "device_generation",
+          "country_or_region",
+          "new_purchase_vs_existing_content"
+        ],
+        "time_fields": [
+          "decision_announcement",
+          "closure_window",
+          "observed_state_if_separately_sourced"
+        ],
+        "modality": "announced_future and reported policy decision; no inferred actual closure.",
+        "precision_policy": "July 2027 and August 2026 are month windows; late 2026 remains coarse. Do not turn foreseeable future into an infinite guarantee."
+      },
+      "sources": [
+        {
+          "source_id": "playstation_reversal_2021",
+          "title": "PlayStation Store on PS3 and PS Vita Will Continue Operations",
+          "publisher": "Sony Interactive Entertainment",
+          "url": "https://blog.playstation.com/2021/04/19/playstation-store-on-ps3-and-ps-vita-will-continue-operations/",
+          "reported_publication_date": "2021-04-19",
+          "publication_date_basis": "Visible article date.",
+          "observed_retrieval_date": "2026-10-02",
+          "evidence_snippet": "PSP commerce functionality will retire on July 2, 2021 as planned.",
+          "evidence_word_count": 11,
+          "retrieval_reference": "turn82view0",
+          "evidence_paraphrase": "Reverses the planned PS3/Vita closure while retaining a different device’s planned retirement.",
+          "accessibility": "Public full-text representation opened through web retrieval; no sign-in wall observed.",
+          "version_classification": "publication_only",
+          "archive_anchor": null,
+          "historical_availability_date": null,
+          "raw_bytes_captured": false,
+          "content_sha256": null,
+          "version_gap": "Only currently served text was inspected. Exact historical response bytes, revision history and first public availability remain unverified. The earlier closure notification is described retrospectively; its original text was not acquired.",
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "playstation_scoped_retirement_2026",
+          "title": "An update on PlayStation Store for PS3 and PS Vita",
+          "publisher": "Sony Interactive Entertainment",
+          "url": "https://blog.playstation.com/2026/07/01/an-update-on-playstation-store-for-ps3-and-ps-vita/",
+          "reported_publication_date": "2026-07-01",
+          "publication_date_basis": "Visible article date; opened directly on October 2, 2026.",
+          "observed_retrieval_date": "2026-10-02",
+          "evidence_snippet": "In all other countries",
+          "evidence_word_count": 4,
+          "retrieval_reference": "turn86view2",
+          "evidence_paraphrase": "Specifies PS3 closure starting August 2026 in three countries, later 2026 in additional regions, and PS3/Vita July 2027 elsewhere; continued redownload is separately described.",
+          "accessibility": "Public full-text representation opened through web retrieval; no sign-in wall observed.",
+          "version_classification": "publication_only",
+          "archive_anchor": null,
+          "historical_availability_date": null,
+          "raw_bytes_captured": false,
+          "content_sha256": null,
+          "version_gap": "Only currently served text was inspected. Exact historical response bytes, revision history and first public availability remain unverified.",
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "admission_gaps": [
+        "Acquire original pre-April-2021 notification and versions; a retrospective acknowledgment cannot reconstruct an early prefix.",
+        "Pin the 2026 page; verify country definitions without treating a mutable support hub as an immutable source.",
+        "No observations were acquired proving whether announced regional closures occurred."
+      ],
+      "split_group": "sony_playstation_legacy_commerce_all_devices_regions"
+    },
+    {
+      "history_id": "forecast_lyft_fy2024_margin_correction",
+      "title": "Lyft FY2024 forecast magnitude explicitly corrected from 500 to 50 basis points",
+      "domain": "corporate_forecast_correction",
+      "status": "discovery_only_not_admitted",
+      "selection_basis": "Phenomenon coverage and primary-source feasibility; no system outputs or QA labels consulted.",
+      "phenomena": [
+        "explicit_correction",
+        "numeric_unit",
+        "same_day_revision",
+        "forecast_vs_result",
+        "archive_original"
+      ],
+      "change_classification": "explicit_factual_correction_of_reported_forecast",
+      "classification_rationale": "The issuer replacement identifies the precise earlier bullet as incorrect and explicitly gives its replacement. The SEC exhibit independently preserves the earlier wording. This corrects reporting of a forecast; it is not evidence of an actual realized margin or a newly changed outlook.",
+      "relation_time_schema": {
+        "entity": "Lyft FY2024 directional commentary",
+        "relations": [
+          "reported_forecast_adjusted_ebitda_margin_expansion_yoy"
+        ],
+        "scope_fields": [
+          "fiscal_year",
+          "adjusted_metric",
+          "gross_bookings_denominator",
+          "year_over_year",
+          "basis_points_unit"
+        ],
+        "time_fields": [
+          "record_publication_time",
+          "correction_publication_time",
+          "forecast_target_period"
+        ],
+        "modality": "forward-looking forecast in both documents; correction relation targets the earlier claim.",
+        "precision_policy": "Preserve 500 and 50 in basis points, not percentages; FY2024 is the target period. Day-level dates cannot order same-day sources."
+      },
+      "sources": [
+        {
+          "source_id": "lyft_original_sec_exhibit",
+          "title": "Lyft Announces Fourth Quarter and Full-Year 2023 Results",
+          "publisher": "Lyft, filed with SEC",
+          "url": "https://www.sec.gov/Archives/edgar/data/1759509/000175950924000011/lyft-2023x12x31pressreleas.htm",
+          "reported_publication_date": "2024-02-13",
+          "publication_date_basis": "Exhibit dateline and inspected filing index.",
+          "observed_retrieval_date": "2026-10-02",
+          "evidence_snippet": "approximately 500 basis points year-over-year.",
+          "evidence_word_count": 5,
+          "retrieval_reference": "turn85view2",
+          "evidence_paraphrase": "FY2024 commentary in the archived exhibit contains the original tenfold-overstated forecast figure.",
+          "accessibility": "Public full-text representation opened through web retrieval; no sign-in wall observed.",
+          "version_classification": "archive_anchor_inspected",
+          "archive_anchor": {
+            "kind": "sec_accession",
+            "accession": "0001759509-24-000011",
+            "metadata_url": "https://www.sec.gov/Archives/edgar/data/1759509/000175950924000011/0001759509-24-000011-index.htm",
+            "metadata_retrieval_reference": "turn86view0",
+            "accepted_time_as_displayed": "2024-02-13 16:06:27",
+            "timezone": "Not specified on the inspected index; do not infer an intraday cutoff.",
+            "filing_date": "2024-02-13"
+          },
+          "historical_availability_date": null,
+          "raw_bytes_captured": false,
+          "content_sha256": null,
+          "version_gap": "Accession and acceptance inspected, but raw response bytes and precise public availability have not been established. Acceptance is an archive event, not a guaranteed public-availability timestamp.",
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "lyft_explicit_correction",
+          "title": "CORRECTING and REPLACING Lyft Announces Fourth Quarter and Full-Year 2023 Results",
+          "publisher": "Lyft",
+          "url": "https://investor.lyft.com/news-events-presentations/press-releases/detail/119/correcting-and-replacing-lyft-announces-fourth-quarter-and-full-year-2023-results",
+          "reported_publication_date": "2024-02-13",
+          "publication_date_basis": "Footer says Released February 13, 2024; exact release time not established.",
+          "observed_retrieval_date": "2026-10-02",
+          "evidence_snippet": "approximately 50 basis points year-over-year.",
+          "evidence_word_count": 5,
+          "retrieval_reference": "turn83view6",
+          "evidence_paraphrase": "Explicit correction preamble locates the earlier bullet, identifies 500 as the replaced text and supplies 50.",
+          "accessibility": "Public full-text representation opened through web retrieval; no sign-in wall observed.",
+          "version_classification": "publication_only",
+          "archive_anchor": null,
+          "historical_availability_date": null,
+          "raw_bytes_captured": false,
+          "content_sha256": null,
+          "version_gap": "Current issuer page identifies an explicit correction, but an immutable correction version and exact original/correction public timestamps remain unverified. Do not import secondary-source minute estimates as fact.",
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "admission_gaps": [
+        "Acquire and hash original exhibit and a pinned correction release.",
+        "Resolve intraday public availability with primary metadata; date-only replay cannot create a valid between-release cutoff.",
+        "Build correction links at claim granularity, retaining unmodified adjacent metrics.",
+        "Current v0.3 materializer rejects CORRECTS; this is a schema/method extension candidate, not an executable test."
+      ],
+      "split_group": "lyft_fy2023_results_fy2024_outlook_all_reprints"
+    }
+  ]
+}

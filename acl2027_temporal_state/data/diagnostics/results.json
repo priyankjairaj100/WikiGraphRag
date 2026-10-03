@@ -1,0 +1,1988 @@
+{
+  "report_type": "synthetic_contract_checks",
+  "notice": "Hand-authored diagnostics only. These counts are NOT research benchmark accuracy.",
+  "created_at_utc": "2026-10-03T04:14:57.772057+00:00",
+  "python_version": "3.12.14",
+  "config": {
+    "runner_version": "0.1",
+    "policies": [
+      "episodes",
+      "newest_available"
+    ],
+    "input_schema_version": "0.1",
+    "prediction_inputs": "raw_question_plus_sources_and_hand_authored_predicted_assertions",
+    "scoring": "whole_value_sets_and_complete_annotated_source_support",
+    "cutoff_rule": "source.available_at <= question.information_cutoff",
+    "gold_routing": false,
+    "natural_data_experiments": "pending"
+  },
+  "config_sha256": "d44a8102e48698b33026f6796db8e97952e7c52d19985fa1abcdf9293c23615c",
+  "input_sha256": "4bac7ec6b607f82470fef57824c4a72b761360fa3786978c3d465189e97bb0d8",
+  "input_file": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/diagnostics/fixtures.json",
+  "code_sha256": "1c012d6e4f777e8e86343817ef21676f660f63a164477e860672a7c88e9d1457",
+  "code_file_sha256": {
+    "src/temporal_state/__init__.py": "63b1f226a16dd461bad7e8ecdd3d262d8e7b6867d366b6f4ed609254e62f02f4",
+    "src/temporal_state/bounded.py": "9897a479f5300252da605c60f16daac990ac235534edfd1e01c25364837e1653",
+    "src/temporal_state/correction_io.py": "17802b4234aac15a40a0a2b2a64feea47cb6342d8c92291307956d665c421620",
+    "src/temporal_state/correction_pipeline.py": "cf45a6b48c8f72180e42f6acfa400f09ef35b54399a3c9967a0b3d86776813f4",
+    "src/temporal_state/corrections.py": "218c20ce25030249760db3bda023cab7e351a7518e635751684c8b562c92c85f",
+    "src/temporal_state/coupled.py": "87067798f33b76810e0b39a46840dc33faef45df66d0e9eb2b237d4e6dcf632c",
+    "src/temporal_state/decoder.py": "5be5067d11b455aa9991ea07aa34afb3c95331bd0ca349ce46fbecf2eb077794",
+    "src/temporal_state/evaluation.py": "431371686bbb00a2491296ec39840fd77c3b4421d88f0df0aada6b334ef72619",
+    "src/temporal_state/memory.py": "6283fc28c0dde7887d39b2a1412ab2982a9bb04d675d8da4e4c632be927aa923",
+    "src/temporal_state/models.py": "f40919bf8b3239f0bea8cf9262d26a4eb7bbbd81dc9bd101b8d65a859b503a4e",
+    "src/temporal_state/objective_pipeline.py": "4c520bd6c5439623f6852224b29a72807f2a9097e4e47425e01d428b8fe430fc",
+    "src/temporal_state/objectives.py": "dd0f8211b54a2850f0c9b674a2534c28c9a7c4ee3261512929a326787a40e8d4",
+    "src/temporal_state/pilot_io.py": "f9bb68c80780c938ddce42f3f6a2c6211360ad52d2269134449fa556d5762025",
+    "src/temporal_state/pipeline.py": "66772f8d4e43db85395084c5d40a07354c6ea5921e6ee67c0ffff3a9d505a6ff",
+    "src/temporal_state/representation_io.py": "2f88257df33b9208025e4e490b71fbe6c1f0602eb4b9ef79cc5a447a398341aa",
+    "src/temporal_state/scored_io.py": "d51ae7b5d2d47960b84bf06b4b0e6da40d1348032b474ab71ae4f5f6c6951e2c",
+    "scripts/run_diagnostics.py": "a114ff49b4595bd469b83a9446039016fc8dbf94a25b0c2e77f7d995738fd7e2"
+  },
+  "source_cutoffs": [
+    "2021-06-01",
+    "2021-07-01",
+    "2022-01-01",
+    "2022-02-01",
+    "2022-06-01",
+    "2023-02-01"
+  ],
+  "all_primary_contracts_passed": true,
+  "limitations": [
+    "Hand-authored source text and predicted assertions; no extraction model is evaluated.",
+    "Gold labels are separate and supplied only to the scorer after inference.",
+    "Fixtures are implementation checks, not a sampled benchmark or research performance estimate.",
+    "Availability dates are stipulated synthetic inputs, not verified web publication dates.",
+    "Gap abstention and construction rejection are contract checks outside answer-accuracy aggregation.",
+    "Grounding is scored against annotated source sets; the scorer does not independently prove entailment.",
+    "Fixture design favors exercising temporal semantics; baseline differences are not empirical research gains.",
+    "No statistical significance, model calibration, training, or natural-data generalization is claimed."
+  ],
+  "synthetic_contract_checks": {
+    "episodes": {
+      "grounded_checks_passed": 11,
+      "grounded_checks_total": 11,
+      "status_checks_passed": 1,
+      "status_checks_total": 1
+    },
+    "newest_available": {
+      "grounded_checks_passed": 7,
+      "grounded_checks_total": 11,
+      "status_checks_passed": 0,
+      "status_checks_total": 1
+    }
+  },
+  "construction_checks": [
+    {
+      "case_id": "missing_source",
+      "passed": true,
+      "expected_error": "ValueError",
+      "observed_error": "ValueError",
+      "message": "Assertion m1 has dangling source reference: not_in_corpus",
+      "source_cutoff": "2022-01-01"
+    }
+  ],
+  "records": [
+    {
+      "case_id": "restatement_a_b_b",
+      "question": {
+        "question_id": "r_q",
+        "text": "Who is the CEO of Acme as of 2021-06-01?",
+        "event_time": "2021-06-01",
+        "information_cutoff": "2022-02-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "r_q",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "r_b",
+          "r_b2"
+        ],
+        "evidence_assertion_ids": [
+          "r2",
+          "r3"
+        ],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "unique_supported_episode"
+        }
+      },
+      "source_cutoff": "2022-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "r_q",
+        "history_id": "restatement_a_b_b",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "r_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "r_q",
+        "history_id": "restatement_a_b_b",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "restatement_a_b_b",
+      "question": {
+        "question_id": "r_q",
+        "text": "Who is the CEO of Acme as of 2021-06-01?",
+        "event_time": "2021-06-01",
+        "information_cutoff": "2022-02-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "r_q",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "r_b2"
+        ],
+        "evidence_assertion_ids": [
+          "r3"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2022-01-01",
+          "ignores_effective_time": true
+        }
+      },
+      "source_cutoff": "2022-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "r_q",
+        "history_id": "restatement_a_b_b",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "r_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "r_q",
+        "history_id": "restatement_a_b_b",
+        "correct": false,
+        "answer_correct": true,
+        "evidence_sufficient": false,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": [
+          "no_complete_annotated_support_set"
+        ]
+      }
+    },
+    {
+      "case_id": "reversion_a_b_a",
+      "question": {
+        "question_id": "v_q",
+        "text": "Who is the CEO of Acme as of 2021-06-01?",
+        "event_time": "2021-06-01",
+        "information_cutoff": "2022-02-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "v_q",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "v_b"
+        ],
+        "evidence_assertion_ids": [
+          "v2"
+        ],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "unique_supported_episode"
+        }
+      },
+      "source_cutoff": "2022-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 3,
+      "gold": {
+        "question_id": "v_q",
+        "history_id": "reversion_a_b_a",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "v_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "v_q",
+        "history_id": "reversion_a_b_a",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "reversion_a_b_a",
+      "question": {
+        "question_id": "v_q",
+        "text": "Who is the CEO of Acme as of 2021-06-01?",
+        "event_time": "2021-06-01",
+        "information_cutoff": "2022-02-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "v_q",
+        "status": "answered",
+        "values": [
+          "Ada"
+        ],
+        "evidence_source_ids": [
+          "v_a2"
+        ],
+        "evidence_assertion_ids": [
+          "v3"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2022-01-01",
+          "ignores_effective_time": true
+        }
+      },
+      "source_cutoff": "2022-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 3,
+      "gold": {
+        "question_id": "v_q",
+        "history_id": "reversion_a_b_a",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "v_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "v_q",
+        "history_id": "reversion_a_b_a",
+        "correct": false,
+        "answer_correct": false,
+        "evidence_sufficient": false,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": [
+          "incorrect_status_or_complete_value_set",
+          "no_complete_annotated_support_set"
+        ]
+      }
+    },
+    {
+      "case_id": "future_effective",
+      "question": {
+        "question_id": "f_before",
+        "text": "Who is the CEO of Acme as of 2021-07-01?",
+        "event_time": "2021-07-01",
+        "information_cutoff": "2021-07-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "f_before",
+        "status": "answered",
+        "values": [
+          "Ada"
+        ],
+        "evidence_source_ids": [
+          "f_a"
+        ],
+        "evidence_assertion_ids": [
+          "f1"
+        ],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "unique_supported_episode"
+        }
+      },
+      "source_cutoff": "2021-07-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "f_before",
+        "history_id": "future_effective",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ada"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "f_a"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "f_before",
+        "history_id": "future_effective",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "future_effective",
+      "question": {
+        "question_id": "f_before",
+        "text": "Who is the CEO of Acme as of 2021-07-01?",
+        "event_time": "2021-07-01",
+        "information_cutoff": "2021-07-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "f_before",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "f_b"
+        ],
+        "evidence_assertion_ids": [
+          "f2"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2021-06-01",
+          "ignores_effective_time": true
+        }
+      },
+      "source_cutoff": "2021-07-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "f_before",
+        "history_id": "future_effective",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ada"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "f_a"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "f_before",
+        "history_id": "future_effective",
+        "correct": false,
+        "answer_correct": false,
+        "evidence_sufficient": false,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": [
+          "incorrect_status_or_complete_value_set",
+          "no_complete_annotated_support_set"
+        ]
+      }
+    },
+    {
+      "case_id": "future_effective",
+      "question": {
+        "question_id": "f_after",
+        "text": "Who is the CEO of Acme as of 2022-02-01?",
+        "event_time": "2022-02-01",
+        "information_cutoff": "2022-02-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "f_after",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "f_b"
+        ],
+        "evidence_assertion_ids": [
+          "f2"
+        ],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "unique_supported_episode"
+        }
+      },
+      "source_cutoff": "2022-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "f_after",
+        "history_id": "future_effective",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "f_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "f_after",
+        "history_id": "future_effective",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "future_effective",
+      "question": {
+        "question_id": "f_after",
+        "text": "Who is the CEO of Acme as of 2022-02-01?",
+        "event_time": "2022-02-01",
+        "information_cutoff": "2022-02-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "f_after",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "f_b"
+        ],
+        "evidence_assertion_ids": [
+          "f2"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2021-06-01",
+          "ignores_effective_time": true
+        }
+      },
+      "source_cutoff": "2022-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "f_after",
+        "history_id": "future_effective",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "f_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "f_after",
+        "history_id": "future_effective",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "late_report",
+      "question": {
+        "question_id": "l_early",
+        "text": "Who is the CEO of Acme as of 2022-01-01?",
+        "event_time": "2022-01-01",
+        "information_cutoff": "2022-01-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "l_early",
+        "status": "answered",
+        "values": [
+          "Ada"
+        ],
+        "evidence_source_ids": [
+          "l_a"
+        ],
+        "evidence_assertion_ids": [
+          "l1"
+        ],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "unique_supported_episode"
+        }
+      },
+      "source_cutoff": "2022-01-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [
+          "l_b"
+        ],
+        "omitted_future_assertion_ids": [
+          "l2"
+        ],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 1,
+      "gold": {
+        "question_id": "l_early",
+        "history_id": "late_report",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ada"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "l_a"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "l_early",
+        "history_id": "late_report",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "late_report",
+      "question": {
+        "question_id": "l_early",
+        "text": "Who is the CEO of Acme as of 2022-01-01?",
+        "event_time": "2022-01-01",
+        "information_cutoff": "2022-01-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "l_early",
+        "status": "answered",
+        "values": [
+          "Ada"
+        ],
+        "evidence_source_ids": [
+          "l_a"
+        ],
+        "evidence_assertion_ids": [
+          "l1"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2020-01-01",
+          "ignores_effective_time": true
+        }
+      },
+      "source_cutoff": "2022-01-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [
+          "l_b"
+        ],
+        "omitted_future_assertion_ids": [
+          "l2"
+        ],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 1,
+      "gold": {
+        "question_id": "l_early",
+        "history_id": "late_report",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ada"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "l_a"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "l_early",
+        "history_id": "late_report",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "late_report",
+      "question": {
+        "question_id": "l_late",
+        "text": "Who is the CEO of Acme as of 2022-01-01?",
+        "event_time": "2022-01-01",
+        "information_cutoff": "2023-02-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "l_late",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "l_b"
+        ],
+        "evidence_assertion_ids": [
+          "l2"
+        ],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "unique_supported_episode"
+        }
+      },
+      "source_cutoff": "2023-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "l_late",
+        "history_id": "late_report",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "l_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "l_late",
+        "history_id": "late_report",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "late_report",
+      "question": {
+        "question_id": "l_late",
+        "text": "Who is the CEO of Acme as of 2022-01-01?",
+        "event_time": "2022-01-01",
+        "information_cutoff": "2023-02-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "l_late",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "l_b"
+        ],
+        "evidence_assertion_ids": [
+          "l2"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2023-01-01",
+          "ignores_effective_time": true
+        }
+      },
+      "source_cutoff": "2023-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "l_late",
+        "history_id": "late_report",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "l_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "l_late",
+        "history_id": "late_report",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "correction_cutoff",
+      "question": {
+        "question_id": "c_early",
+        "text": "Who is the CEO of Acme as of 2022-01-01?",
+        "event_time": "2022-01-01",
+        "information_cutoff": "2022-01-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "c_early",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "c_b"
+        ],
+        "evidence_assertion_ids": [
+          "c2"
+        ],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "unique_supported_episode"
+        }
+      },
+      "source_cutoff": "2022-01-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [
+          "c_c"
+        ],
+        "omitted_future_assertion_ids": [
+          "c3"
+        ],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "c_early",
+        "history_id": "correction_cutoff",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "c_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "c_early",
+        "history_id": "correction_cutoff",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "correction_cutoff",
+      "question": {
+        "question_id": "c_early",
+        "text": "Who is the CEO of Acme as of 2022-01-01?",
+        "event_time": "2022-01-01",
+        "information_cutoff": "2022-01-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "c_early",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "c_b"
+        ],
+        "evidence_assertion_ids": [
+          "c2"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2021-01-01",
+          "ignores_effective_time": true
+        }
+      },
+      "source_cutoff": "2022-01-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [
+          "c_c"
+        ],
+        "omitted_future_assertion_ids": [
+          "c3"
+        ],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "c_early",
+        "history_id": "correction_cutoff",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "c_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "c_early",
+        "history_id": "correction_cutoff",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "correction_cutoff",
+      "question": {
+        "question_id": "c_late",
+        "text": "Who is the CEO of Acme as of 2022-01-01?",
+        "event_time": "2022-01-01",
+        "information_cutoff": "2023-02-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "c_late",
+        "status": "answered",
+        "values": [
+          "Cora"
+        ],
+        "evidence_source_ids": [
+          "c_c"
+        ],
+        "evidence_assertion_ids": [
+          "c3"
+        ],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "unique_supported_episode"
+        }
+      },
+      "source_cutoff": "2023-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [
+          "c2"
+        ],
+        "correction_lineage": {
+          "c3": "c2"
+        },
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "c_late",
+        "history_id": "correction_cutoff",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Cora"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "c_c"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "c_late",
+        "history_id": "correction_cutoff",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "correction_cutoff",
+      "question": {
+        "question_id": "c_late",
+        "text": "Who is the CEO of Acme as of 2022-01-01?",
+        "event_time": "2022-01-01",
+        "information_cutoff": "2023-02-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "c_late",
+        "status": "answered",
+        "values": [
+          "Cora"
+        ],
+        "evidence_source_ids": [
+          "c_c"
+        ],
+        "evidence_assertion_ids": [
+          "c3"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2023-01-01",
+          "ignores_effective_time": true
+        }
+      },
+      "source_cutoff": "2023-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [
+          "c2"
+        ],
+        "correction_lineage": {
+          "c3": "c2"
+        },
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "c_late",
+        "history_id": "correction_cutoff",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Cora"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "c_c"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "c_late",
+        "history_id": "correction_cutoff",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "simultaneous_conflict",
+      "question": {
+        "question_id": "s_q",
+        "text": "Who is the CEO of Acme as of 2021-06-01?",
+        "event_time": "2021-06-01",
+        "information_cutoff": "2021-06-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "s_q",
+        "status": "indeterminate",
+        "values": [],
+        "evidence_source_ids": [
+          "s_a",
+          "s_b"
+        ],
+        "evidence_assertion_ids": [
+          "s1",
+          "s2"
+        ],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "unresolved_temporal_state",
+          "competing_values": [
+            "Ada",
+            "Ben"
+          ]
+        }
+      },
+      "source_cutoff": "2021-06-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "s_q",
+        "history_id": "simultaneous_conflict",
+        "status": "indeterminate",
+        "accepted_value_sets": [],
+        "sufficient_evidence_sets": [
+          [
+            "s_a",
+            "s_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "s_q",
+        "history_id": "simultaneous_conflict",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "simultaneous_conflict",
+      "question": {
+        "question_id": "s_q",
+        "text": "Who is the CEO of Acme as of 2021-06-01?",
+        "event_time": "2021-06-01",
+        "information_cutoff": "2021-06-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "s_q",
+        "status": "indeterminate",
+        "values": [],
+        "evidence_source_ids": [
+          "s_a",
+          "s_b"
+        ],
+        "evidence_assertion_ids": [
+          "s1",
+          "s2"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2021-01-01",
+          "ignores_effective_time": true,
+          "competing_values": [
+            "Ada",
+            "Ben"
+          ]
+        }
+      },
+      "source_cutoff": "2021-06-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "gold": {
+        "question_id": "s_q",
+        "history_id": "simultaneous_conflict",
+        "status": "indeterminate",
+        "accepted_value_sets": [],
+        "sufficient_evidence_sets": [
+          [
+            "s_a",
+            "s_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "s_q",
+        "history_id": "simultaneous_conflict",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "raw_question_distractors",
+      "question": {
+        "question_id": "d_q",
+        "text": "Who is the CEO of Acme?",
+        "event_time": "2022-06-01",
+        "information_cutoff": "2022-06-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "d_q",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "d_b"
+        ],
+        "evidence_assertion_ids": [
+          "d2"
+        ],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "unique_supported_episode"
+        }
+      },
+      "source_cutoff": "2022-06-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 4,
+      "gold": {
+        "question_id": "d_q",
+        "history_id": "raw_question_distractors",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "d_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "d_q",
+        "history_id": "raw_question_distractors",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "raw_question_distractors",
+      "question": {
+        "question_id": "d_q",
+        "text": "Who is the CEO of Acme?",
+        "event_time": "2022-06-01",
+        "information_cutoff": "2022-06-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "d_q",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "d_b"
+        ],
+        "evidence_assertion_ids": [
+          "d2"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2021-01-01",
+          "ignores_effective_time": true
+        }
+      },
+      "source_cutoff": "2022-06-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 4,
+      "gold": {
+        "question_id": "d_q",
+        "history_id": "raw_question_distractors",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Ben"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "d_b"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "d_q",
+        "history_id": "raw_question_distractors",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "unknown_validity",
+      "question": {
+        "question_id": "u_q",
+        "text": "Who is the CEO of Acme as of 2021-06-01?",
+        "event_time": "2021-06-01",
+        "information_cutoff": "2021-06-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "u_q",
+        "status": "indeterminate",
+        "values": [],
+        "evidence_source_ids": [
+          "u_a"
+        ],
+        "evidence_assertion_ids": [
+          "u1"
+        ],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "unresolved_temporal_state",
+          "competing_values": [
+            "Ada"
+          ]
+        }
+      },
+      "source_cutoff": "2021-06-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [
+          "u1"
+        ],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 0,
+      "gold": {
+        "question_id": "u_q",
+        "history_id": "unknown_validity",
+        "status": "indeterminate",
+        "accepted_value_sets": [],
+        "sufficient_evidence_sets": [
+          [
+            "u_a"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "u_q",
+        "history_id": "unknown_validity",
+        "correct": true,
+        "answer_correct": true,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": []
+      }
+    },
+    {
+      "case_id": "unknown_validity",
+      "question": {
+        "question_id": "u_q",
+        "text": "Who is the CEO of Acme as of 2021-06-01?",
+        "event_time": "2021-06-01",
+        "information_cutoff": "2021-06-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "u_q",
+        "status": "answered",
+        "values": [
+          "Ada"
+        ],
+        "evidence_source_ids": [
+          "u_a"
+        ],
+        "evidence_assertion_ids": [
+          "u1"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2021-01-01",
+          "ignores_effective_time": true
+        }
+      },
+      "source_cutoff": "2021-06-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [
+          "u1"
+        ],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 0,
+      "gold": {
+        "question_id": "u_q",
+        "history_id": "unknown_validity",
+        "status": "indeterminate",
+        "accepted_value_sets": [],
+        "sufficient_evidence_sets": [
+          [
+            "u_a"
+          ]
+        ]
+      },
+      "score": {
+        "question_id": "u_q",
+        "history_id": "unknown_validity",
+        "correct": false,
+        "answer_correct": false,
+        "evidence_sufficient": true,
+        "evidence_valid": true,
+        "source_cutoff_valid": true,
+        "abstained": false,
+        "unknown_source_ids": [],
+        "future_source_ids": [],
+        "reasons": [
+          "incorrect_status_or_complete_value_set"
+        ]
+      }
+    },
+    {
+      "case_id": "explicit_gap",
+      "question": {
+        "question_id": "g_q",
+        "text": "Who is the CEO of Acme as of 2021-06-01?",
+        "event_time": "2021-06-01",
+        "information_cutoff": "2022-02-01"
+      },
+      "policy": "episodes",
+      "prediction": {
+        "question_id": "g_q",
+        "status": "abstain",
+        "values": [],
+        "evidence_source_ids": [],
+        "evidence_assertion_ids": [],
+        "diagnostics": {
+          "policy": "episodes",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "no_supported_episode_at_event_time"
+        }
+      },
+      "source_cutoff": "2022-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "status_check": {
+        "expected": "abstain",
+        "passed": true
+      }
+    },
+    {
+      "case_id": "explicit_gap",
+      "question": {
+        "question_id": "g_q",
+        "text": "Who is the CEO of Acme as of 2021-06-01?",
+        "event_time": "2021-06-01",
+        "information_cutoff": "2022-02-01"
+      },
+      "policy": "newest_available",
+      "prediction": {
+        "question_id": "g_q",
+        "status": "answered",
+        "values": [
+          "Ben"
+        ],
+        "evidence_source_ids": [
+          "g_b"
+        ],
+        "evidence_assertion_ids": [
+          "g2"
+        ],
+        "diagnostics": {
+          "policy": "newest_available",
+          "routing": "lexical_predicted_key_labels",
+          "routed_key": [
+            "acme",
+            "ceo",
+            ""
+          ],
+          "reason": "latest_available_source",
+          "selected_source_date": "2022-01-01",
+          "ignores_effective_time": true
+        }
+      },
+      "source_cutoff": "2022-02-01",
+      "memory_diagnostics": {
+        "omitted_future_source_ids": [],
+        "omitted_future_assertion_ids": [],
+        "omitted_future_context_assertion_ids": [],
+        "omitted_unavailable_target_assertion_ids": [],
+        "replaced_assertion_ids": [],
+        "correction_lineage": {},
+        "unresolved_correction_assertion_ids": [],
+        "uncertain_assertion_ids": [],
+        "blank_support_quote_assertion_ids": [],
+        "same_day_correction_assertion_ids": [],
+        "inherited_explicit_end_by_assertion": {},
+        "extraction_regime": "provided_predictions_not_document_extraction",
+        "input_validation": "complete_input_before_cutoff_filtering",
+        "open_end_assumption": "persists_until_next_different_start_or_overlapping_explicit_same_value_end"
+      },
+      "n_episodes": 2,
+      "status_check": {
+        "expected": "abstain",
+        "passed": false
+      }
+    }
+  ]
+}

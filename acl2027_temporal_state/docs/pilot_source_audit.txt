@@ -1,0 +1,126 @@
+PILOT SOURCE ACQUISITION AND ADMISSION AUDIT
+Audit date: 2026-10-02
+Scope: SEC archive metadata for two candidate leadership histories. This is a
+model-assisted source audit, not an annotation of answers or human adjudication.
+
+DECISION
+The five SEC documents across three accessions are useful developmental sources.
+Their archive identities and acceptance metadata are inspectable. Admission as
+strictly verified historical source prefixes is not established by that alone.
+Use a visibly labelled acceptance-based day convention for development, preserve
+the remaining uncertainty, and do not count them as a completed benchmark gate.
+
+VERIFIED METADATA
+1. Starbucks August 8-K and its Exhibit 99.1
+   Accession: 0001193125-24-200724
+   SEC filing date: 2024-08-14
+   Accepted time as displayed: 2024-08-14 17:10:59
+   Report period: 2024-08-11
+   Filing index lists d848513d8k.htm and d848513dex991.htm in the same accession.
+   Index URL:
+   https://www.sec.gov/Archives/edgar/data/829224/000119312524200724/0001193125-24-200724-index.html
+   Web reference from audit: turn58view0
+   The index-headers and hdr.sgml requests returned tool errors. No header
+   DATE AS OF CHANGE value was verified for this accession in this audit.
+
+2. Starbucks November 10-K Exhibit 32
+   Accession: 0000829224-24-000057
+   SEC filing date: 2024-11-20
+   Accepted time as displayed: 2024-11-20 16:08:06
+   Report period: 2024-09-29
+   DATE AS OF CHANGE in current SEC header: 20241120
+   Filing index identifies sbux-9292024xexhibit32.htm as Exhibit 32.
+   Index URL:
+   https://www.sec.gov/Archives/edgar/data/829224/000082922424000057/0000829224-24-000057-index.html
+   Header URL:
+   https://www.sec.gov/Archives/edgar/data/829224/000082922424000057/0000829224-24-000057-index-headers.html
+   Web references from audit: turn58view1, turn61view2, turn63view3
+
+3. Nike September 8-K and its Exhibit 99.1
+   Accession: 0000320187-24-000053
+   SEC filing date: 2024-09-19
+   Accepted time as displayed: 2024-09-19 16:16:42
+   Report period: 2024-09-19
+   DATE AS OF CHANGE in current SEC header: 20240919
+   Filing index lists nke-20240919.htm and exhibit991-pressreleasesep.htm.
+   Index URL:
+   https://www.sec.gov/Archives/edgar/data/320187/000032018724000053/0000320187-24-000053-index.htm
+   Header URL:
+   https://www.sec.gov/Archives/edgar/data/320187/000032018724000053/0000320187-24-000053-index-headers.html
+   Web references from audit: turn58view2, turn61view3, turn63view4
+
+OFFICIAL GUIDANCE AND ITS CONSEQUENCES
+The SEC Webmaster FAQ identifies Acceptance Time as EST. It separately warns
+that SEC.gov availability has no recorded first-publication timestamp and that
+the often short dissemination delay has no guaranteed duration. The same FAQ
+distinguishes the reporting period, official filing date and post-acceptance
+change date. It also states that public EDGAR filing content can be accessed and
+reused. These statements support retaining archive metadata and source text;
+they do not certify a precise public-availability instant.
+https://www.sec.gov/about/webmaster-frequently-asked-questions
+Audit reference: turn61view0; relevant page lines 77-83, 332-337, 355-372.
+
+The SEC data-access guidance says certain filings after 17:30 ET are disseminated
+the following business day. It also documents post-acceptance corrections and
+deletions. An accession is an archival identifier, not a cryptographic promise
+that currently retrieved bytes exactly match the bytes served at acceptance.
+The Nike and November Starbucks headers show no later change date, which reduces
+one concern without proving complete byte history. The three inspected acceptance
+times are before 17:30 in the displayed local clock.
+https://www.sec.gov/search-filings/edgar-search-assistance/accessing-edgar-data
+Audit reference: turn59view0; relevant page lines 46-51, 85-110.
+
+The SEC website dissemination policy permits copying/distribution with source
+citation and treats logos and artwork separately. Store textual evidence and
+attribution; no SEC seal or artwork is needed for this research.
+https://www.sec.gov/about/privacy-information
+Audit reference: turn69view1; relevant page lines 147-150.
+
+UTC DAY RESOLUTION
+Do not interpret a bare acceptance date as availability at 00:00 UTC that date.
+For these specific records, the next UTC midnight is later than acceptance under
+both plausible readings of the FAQ's EST label:
+
+Accession                 DST-aware US/Eastern UTC    Literal EST UTC       Next UTC midnight
+0001193125-24-200724       Aug 14 21:10:59            Aug 14 22:10:59       Aug 15 00:00
+0000320187-24-000053       Sep 19 20:16:42            Sep 19 21:16:42       Sep 20 00:00
+0000829224-24-000057       Nov 20 21:08:06            Nov 20 21:08:06       Nov 21 00:00
+All dates in the table are in 2024. These UTC conversions are calculations, not
+timestamps retrieved from a contemporaneous dissemination log.
+
+Next-day midnight therefore resolves the acceptance-clock day ambiguity for
+these three times. It does not prove dissemination occurred before midnight:
+the minimum margin is only 1:49:01 for the August record under literal EST, and
+SEC gives no strict upper bound on delay. Also, a general next-UTC-day rule would
+fail for filings accepted sufficiently late in Eastern time or held overnight.
+Use source-specific evidence, not a blanket date increment.
+
+RECOMMENDED DEVELOPMENT METADATA
+Keep reported_publication_date, sec_filing_date, sec_accepted_local,
+sec_time_basis, retrieved_at, source_uri, accession, representation and hash
+separate. Assign a field such as development_available_on to Aug 15, Sep 20 or
+Nov 21, with availability_basis = sec_acceptance_next_utc_day_proxy. Preserve
+historical_availability_verified = false unless stronger evidence is acquired.
+Do not relabel the proxy as measured availability or silently overwrite the
+original public dateline. A copied exhibit and its parent filing share origin;
+their agreement is not independent corroboration.
+
+For strict admission, acquire archived dissemination/capture evidence bounding
+availability before the selected cutoff, record any post-acceptance changes,
+and acquire/hash the exact representation consumed by the annotator. A current
+local hash fixes our observed representation; it cannot retrospectively prove
+that the representation existed in 2024. If tools return normalized page text,
+label it as a retrieved-text representation rather than original HTML bytes.
+Quote offsets must point into that stored representation.
+
+Preserve ambiguity in event-date interpretation separately from uncertainty in
+source availability. An event date, report-period end, press dateline, acceptance
+time and our retrieval time serve different purposes. More precise wording in
+one source does not by itself establish that another source was corrected.
+
+AUDIT LIMITS
+This audit opened primary SEC index, header and guidance pages. It did not
+download filing bytes, hash source snapshots, inspect a contemporaneous archive
+capture, or establish a dissemination timestamp. Search results from third-party
+sites were not used as authority. The research team must separately preserve
+the source material actually given to the blind annotation passes.

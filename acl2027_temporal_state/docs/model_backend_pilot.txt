@@ -1,0 +1,148 @@
+REPRODUCIBLE EXTRACTOR BACKEND PILOT — PREPARATION ONLY
+Preparation update, 2026-10-02: the source-only v0.3 prompt, JSON schema and
+standalone script builder now exist. Run scripts/prepare_model_pilot.py --dry-run
+for hash validation without model libraries or network. The four preparation
+files passed local transport completeness and strict JSON/evidence checks;
+token counts still require the pinned tokenizer. Root's CPU transport attempt
+returned Jobs tool UNAVAILABLE: MCP tool hf_jobs was not returned by tools/list.
+There was no job ID or confirmed job launch. This is the immediate execution
+blocker; it is not evidence of insufficient credits or an approval rejection.
+No alternate submission path was attempted. The older preparation details
+below describe the proposed runtime and remaining gates, not an executed job.
+
+Verified 2026-10-02. No model inference, paid job, repository creation, upload,
+training, or endpoint deployment was performed. Configuration is in
+configs/model_backend_pilot.json. It is deliberately disabled until the
+remaining readiness checks are satisfied.
+
+Decision
+Use Qwen/Qwen3-8B as the first frozen extraction backend. The official Hub API
+returned revision b968826d9c46dd6066d109eabc6255188de91218 and gated=false.
+The same revision resolves the config and Apache-2.0 license. This is a real
+observed repository commit, not a guessed revision. We have not downloaded or
+hashed the weight shards; asset verification remains an execution requirement.
+
+The model is post-trained and supports instruction following. Its documented
+native context is 32,768 tokens; the card describes a longer YaRN mode, which
+this pilot will not use. The raw config contains max_position_embeddings=40960;
+that implementation setting must not be substituted for the card's native
+context claim. Use the hard enable_thinking=False chat-template option and
+load the tokenizer and weights at the same immutable revision.
+
+This is a practical baseline choice: a moderate model size, public access,
+an inspectable tokenizer/template, and ordinary Transformers support make
+the experiment easier to audit. It is not a claim that this model is the
+strongest current extractor. A larger model may improve candidate recall;
+that question should follow a measured error audit. We should first separate
+extraction defects from decoder defects, using identical cached candidates
+for all decoder variants.
+
+Input and output contract
+The existing five SEC text representations form three history-prefix inputs:
+Starbucks at 2024-08-15, Nike at 2024-09-20, and Starbucks at 2024-11-21. Build
+one inference request per history and cutoff, filtered from the saved source
+packs. A request must not inherit conversation history, source text, aliases,
+or candidates from another prefix. Existing development expectations, gold
+labels, question IDs, and A/B/L annotations must never enter these requests.
+
+The v0.3 prompt and polarity/modality/bounded-time output schema are finalized
+for this first pilot. Their paths and SHA-256 hashes are recorded in the config.
+The existing annotation_prompt.txt is a prior-schema artifact and is not an
+implicit fallback. Freeze the new prompt, schema, source ordering, source
+hashes, request JSON, rendered chat template and token IDs before inference.
+
+Cap each rendered input at 12,288 tokens and each generated output at 4,096
+tokens, batch size one, with no YaRN or quantization. If an input exceeds the
+limit, fail before generation; do not silently truncate. Any later chunking
+policy requires its own version, source-offset map, and coverage audit. Output
+must contain source-supported mentions, readings, aliases, evidence spans and
+unresolved alternatives; it is not a gold annotation or an independent judge.
+
+Use greedy decoding with thinking disabled for the first controlled run.
+This is our reproducibility choice, not the model card's recommended sampling
+recipe. A seed and greedy mode do not guarantee bitwise identity across GPU
+kernels or library versions. Cache raw outputs and generated token IDs, retain
+parse failures and length-limit endings, and report observed repeatability.
+There is no hidden repair request or automatic retry in this pilot.
+
+Runtime and resource proposal
+The versioned Transformers documentation supports Qwen3 and a commit-valued
+revision parameter. Candidate direct dependency pins are Transformers 4.51.3,
+PyTorch 2.6.0 and Accelerate 1.6.0, with Python 3.12. These release versions
+were checked against primary versioned documentation/package pages. They have
+not been installed together here. A transitive lock with wheel hashes, an
+immutable container digest and an actual load/generate smoke check remain
+required before calling the complete environment reproducible. Use native
+Qwen3 loading with trust_remote_code=False, safetensors, bfloat16 and SDPA.
+
+The local probe reports Python 3.12.14 and os.cpu_count()=9. It found no torch,
+transformers, huggingface_hub, hf command or nvidia-smi command in the probed
+interpreter/PATH. This is not proof of all host hardware; no usable local GPU
+backend was established, and no local memory budget was verified. Do not try
+to load an 8B model into an unmeasured local runtime.
+
+The official Jobs hardware API currently lists l4x1: one 24 GB L4, 8 vCPU,
+30 GB host RAM and 400 GB ephemeral storage. Its price is $0.013333/minute
+(approximately $0.80/hour). A single 30-minute timeout gives an approximately
+$0.40 hardware ceiling at that rate, with no exposed ports and no automatic
+retry or hardware upgrade. This is a cap proposal, not a measured runtime
+estimate or proof of current queue availability. Recheck prices before launch.
+
+An analytic capacity estimate suggests that batch-one BF16 inference may fit
+this GPU: 8,190,735,360 parameters occupy about 15.26 GiB at two bytes each,
+and the config's 36 layers, 8 KV heads and head dimension 128 imply about
+2.25 GiB of BF16 KV storage at 16,384 total tokens. This excludes allocator,
+activations, logits and framework overhead, so actual peak memory must be
+measured; no fit or throughput result is claimed. Fail on OOM and review the
+budget instead of silently selecting larger hardware.
+
+Authentication and persistence
+The read-only connector identity check succeeded for account priyankjairaj.
+It exposes jobs and read-repos scopes, but not write-repos. Its OAuth credential
+was reported to expire at 2026-10-02T18:10:11Z, so recheck at execution time.
+No credential value was obtained, saved or printed. The account is not Pro.
+Current official Jobs documentation permits any account with a positive credit
+balance; this supersedes the older skill's paid-plan prerequisite. The credit
+balance was not exposed by the available read-only tools and remains unknown.
+
+No verified durable cloud output path exists. The Jobs quickstart documents
+that completed job logs retain printed answers, whereas result files must be
+saved outside the ephemeral filesystem. For this tiny pilot, bounded JSON
+results could potentially be returned through logs and immediately checkpointed
+here without repository write access. However, complete retrieval and tool
+output limits have not been tested; do not treat this as a verified persistence
+path. Alternatively establish an authorized writable bucket/repository before
+execution. Never launch a job whose only copy of the result is ephemeral.
+
+Actual next supported execution path
+1. Local prompt/schema hashing and three isolated requests are complete. Restore
+   a supported Jobs operation, then verify token caps with the pinned tokenizer.
+2. Resolve the candidate dependencies into a frozen lock and container digest;
+   prepare a script that validates inputs, returns raw outputs plus metadata,
+   and terminates on parse/truncation/transport failure without relaunching.
+3. Verify a bounded return path and positive compute credits, then recheck auth
+   and the l4x1 price. No user confirmation is needed for these read-only and
+   local preparation steps. No model execution has occurred.
+4. Once the supported Jobs operation is available and requirements are met,
+   submit the prepared script with flavor=l4x1 and timeout=30m.
+   Do not assume that connector OAuth read permissions enable repository writes.
+5. Measure candidate coverage, unsupported spans, schema failures, runtime and
+   peak memory before comparing decoders. This pilot cannot establish paper
+   accuracy, superiority, human agreement, or out-of-domain generalization.
+
+Primary references checked on 2026-10-02
+[1] https://huggingface.co/api/models/Qwen/Qwen3-8B
+[2] https://huggingface.co/Qwen/Qwen3-8B/blob/b968826d9c46dd6066d109eabc6255188de91218/README.md
+[3] https://huggingface.co/Qwen/Qwen3-8B/blob/b968826d9c46dd6066d109eabc6255188de91218/config.json
+[4] https://huggingface.co/Qwen/Qwen3-8B/blob/b968826d9c46dd6066d109eabc6255188de91218/LICENSE
+[5] https://huggingface.co/docs/transformers/v4.51.3/en/model_doc/qwen3
+[6] https://huggingface.co/docs/transformers/v4.51.3/en/main_classes/model
+[7] https://pypi.org/project/torch/2.6.0/
+[8] https://pypi.org/project/accelerate/1.6.0/
+[9] https://huggingface.co/api/jobs/hardware
+[10] https://huggingface.co/docs/hub/en/jobs-pricing
+[11] https://huggingface.co/docs/hub/en/jobs-quickstart
+
+Retrieval note: the HF hf_doc_fetch connector returned UNAVAILABLE. Official
+documentation was read successfully through public web retrieval instead;
+model metadata and the auth check used the available Hugging Face connector.

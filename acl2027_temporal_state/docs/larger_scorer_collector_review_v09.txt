@@ -1,0 +1,124 @@
+Independent collector review — v0.9
+
+Status: approved for the bounded diagnostic at the exact final hash below;
+no unresolved research-launch blocker. No research results or authored expected
+labels were read by this reviewer. This is a code/protocol review, not an
+assessment of model accuracy or an empirical result.
+
+Final reviewed collector SHA256:
+7be1cd97de7a796341d3659ba3fe0cd0297c0c56e23221b33ef1511f6b793082
+Earlier core review hash, before the source/token projection refinement:
+6c7ae7bc8c2750a3d0b1cd2bb1c931b15a37329dcdfe471efed7fcb2b053089e
+Reviewed configuration SHA256:
+475003ec342c16667360fac9ffd95894812967cace75a3a724a9b340273b4374
+Selection protocol SHA256:
+15589f27a178451e0068ce9de8c219a5eb0c193a18913ad3b93156ac1e788a53
+
+Scope and observed contracts
+
+The authorized diagnostic is four source statements across two fixed
+histories, two label orders and two pinned model assets: sixteen research
+distributions. Two additional processes perform tokenizer/template preflight
+without model completions. The separate feasibility smoke is excluded from
+research counts. This is an explicit extension of the earlier feasibility
+proposal for eight larger-model distributions.
+
+The collector constructs both condition messages from the same source_text
+and statement, changing only the order of fixed Yes/No definitions. Both
+models receive the same messages and full source content. Native templates
+and tokenization are applied separately for each model; identical tokenizer
+behavior across models is not assumed. Histories must match the frozen
+selection protocol. The request schema rejects expected labels/rationales
+and any other item fields. The code never reads an authored reference file.
+This is procedural separation, not an operating-system access barrier or
+evidence of independence from model pretraining.
+
+All eight inputs on both models must pass template/tokenizer preflight
+before any research score. Input counts must meet both the frozen cap and
+input_tokens + 1 <= 4096. There is no truncation, source replacement or
+post-score prompt repair. Each literal label must be one token, and appending
+it to the rendered prompt must preserve the entire original token prefix.
+The native empty thinking suffix is checked. Every scored process rechecks
+the rendered prompt and template against preflight, and server model_path
+and slot count must match the intended process.
+
+Each research distribution uses a fresh server process, cache_prompt=false,
+one predicted token and no context shifting. The response must report zero
+cached tokens, the full input count, one prediction and no truncation. The
+two labels must both occur in the returned next-token list; absent labels
+fail rather than receive fabricated probabilities. Log probabilities must
+be finite and nonpositive, token IDs distinct, and returned mass no greater
+than one within 1e-6.
+
+The request has temperature=-1, post_sampling_probs=false, n_probs=256,
+only the temperature sampler, neutral repetition/presence/frequency
+penalties and no logit bias or grammar. The pinned runtime source evidence
+already retained in local_backend_v07_softmax_evidence.txt and
+local_backend_v07_vocab_fallback_evidence.txt establishes normalization over
+the entire vocabulary before top-256 output slicing. The score is the
+natural-log probability difference Yes minus No; neither renormalization
+over the two labels nor hidden calibration is introduced.
+
+Resources and retention
+
+The immutable Q8_0 model identities and sixty runtime-file hashes are checked.
+The child has a 5.5 GiB address-space limit and 3,600 CPU-second limit, four
+threads, one slot and CPU-only execution. The parent watchdog records total
+cgroup usage and stops on the frozen 7 GiB anon+file_mapped+kernel proxy or
+1,050-second process deadline. Missing/disappearing required memory telemetry
+fails closed. The proxy is not process RSS and is not a measurement of all
+unreclaimable memory. The config explicitly records why it replaced total
+cgroup usage after a pre-research file-cache-heavy smoke failure.
+
+The watcher terminates its owned child; context cleanup escalates to kill
+after a bounded wait. Watchdog stops are rejected by final validation even
+if a response races with termination. children_peak_rss_kib is the cumulative
+maximum reported by RUSAGE_CHILDREN for the collector's prior children; it
+must not be described as an independently measured peak for every process.
+
+The collector refuses to overwrite research directories/receipts. It saves
+original raw responses before validation, separately counts raw completed
+distributions and validated distributions, and retains per-process traces
+and logs on failure. Config, collector, helper code, prompt/protocol files
+and probability-source evidence are frozen by hash. Exact external request
+bytes are hashed and checked again after collection. The runtime is pinned;
+the full host environment and dynamically linked system libraries are not
+hermetically frozen by this collector.
+
+Resolved findings before research
+
+The author addressed these review findings: explicit generation-slot fit;
+server model/slot identity; fail-closed memory telemetry; watchdog failure
+classification; frozen selected histories and condition-source matching;
+dependency hashes; and separate raw-versus-validated completion counts.
+No collector code was edited by this reviewer.
+
+One valid synthetic contract was accepted and nine targeted invalid cases
+were rejected: cache-policy mutation, logit-bias mutation, cache reuse,
+truncation, partial input evaluation, multiple generated tokens, nonfinite
+log probability, missing label and no remaining generation slot. These are
+review controls with invented numeric fixtures, not research measurements
+or additional model calls, and are not counted in the project's unit suite.
+
+Packaging caveat and final check
+
+Complete token arrays encode the full source text and therefore do not
+solve a source-redistribution restriction. Root requested that original
+messages, rendered strings, complete token arrays and source-echoing raw
+responses remain external. The final reviewed revision implements this.
+Packaged replay explicitly states that it verifies hashes, counts,
+request policy and projected distributions, not the complete source text,
+tokenizer reconstruction or re-execution of model inference. A synthetic
+projection check confirmed identical derived metrics, omission of original
+strings/token arrays and rejection of a changed token-array hash. No model
+call was made by that check. This final projection check resolves the last
+pre-launch caveat; launch approval applies to the final hash recorded above.
+
+Remaining scope limits
+
+Preflight checks full supplied inputs but the collector itself does not
+adjudicate whether an upstream supplied source_text equals the intended
+captured document. Upstream source construction and semantic reference
+review remain necessary. Sixteen outputs from four authored statements do
+not establish naturally sampled candidate accuracy, general calibration,
+heldout performance, causal effects of model size or algorithmic novelty.

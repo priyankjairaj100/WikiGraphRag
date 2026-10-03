@@ -1,0 +1,836 @@
+{
+  "schema_version": "0.1",
+  "purpose": "synthetic_contract_checks",
+  "limitations": [
+    "Hand-authored source text and predicted assertions; no extraction model is evaluated.",
+    "Gold labels are separate and supplied only to the scorer after inference.",
+    "Fixtures are implementation checks, not a sampled benchmark or research performance estimate.",
+    "Availability dates are stipulated synthetic inputs, not verified web publication dates.",
+    "Gap abstention and construction rejection are contract checks outside answer-accuracy aggregation."
+  ],
+  "cases": [
+    {
+      "case_id": "restatement_a_b_b",
+      "description": "Repeated B must not detach the earlier B episode.",
+      "sources": [
+        {
+          "source_id": "r_a",
+          "text": "Acme appointed Ada as CEO effective 2020-01-01.",
+          "available_at": "2020-01-01",
+          "uri": "diagnostic://r_a",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "r_b",
+          "text": "Acme appointed Ben as CEO effective 2021-01-01.",
+          "available_at": "2021-01-01",
+          "uri": "diagnostic://r_b",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "r_b2",
+          "text": "Ben remains the CEO of Acme.",
+          "available_at": "2022-01-01",
+          "uri": "diagnostic://r_b2",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        }
+      ],
+      "predicted_assertions": [
+        {
+          "assertion_id": "r1",
+          "source_id": "r_a",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ada",
+          "valid_from": "2020-01-01",
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Acme appointed Ada as CEO effective 2020-01-01."
+        },
+        {
+          "assertion_id": "r2",
+          "source_id": "r_b",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ben",
+          "valid_from": "2021-01-01",
+          "valid_to": null,
+          "operation": "CHANGES",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Acme appointed Ben as CEO effective 2021-01-01."
+        },
+        {
+          "assertion_id": "r3",
+          "source_id": "r_b2",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ben",
+          "valid_from": "2022-01-01",
+          "valid_to": null,
+          "operation": "RESTATES",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ben remains the CEO of Acme."
+        }
+      ],
+      "questions": [
+        {
+          "question_id": "r_q",
+          "text": "Who is the CEO of Acme as of 2021-06-01?",
+          "event_time": "2021-06-01",
+          "information_cutoff": "2022-02-01"
+        }
+      ],
+      "gold_answers": [
+        {
+          "question_id": "r_q",
+          "history_id": "restatement_a_b_b",
+          "status": "answered",
+          "accepted_value_sets": [
+            [
+              "Ben"
+            ]
+          ],
+          "sufficient_evidence_sets": [
+            [
+              "r_b"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "reversion_a_b_a",
+      "description": "Later A cannot erase the intermediate historical B episode.",
+      "sources": [
+        {
+          "source_id": "v_a",
+          "text": "Ada became CEO of Acme in 2020.",
+          "available_at": "2020-01-01",
+          "uri": "diagnostic://v_a",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "v_b",
+          "text": "Ben became CEO of Acme in 2021.",
+          "available_at": "2021-01-01",
+          "uri": "diagnostic://v_b",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "v_a2",
+          "text": "Ada returned as CEO of Acme in 2022.",
+          "available_at": "2022-01-01",
+          "uri": "diagnostic://v_a2",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        }
+      ],
+      "predicted_assertions": [
+        {
+          "assertion_id": "v1",
+          "source_id": "v_a",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ada",
+          "valid_from": "2020-01-01",
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ada became CEO of Acme in 2020."
+        },
+        {
+          "assertion_id": "v2",
+          "source_id": "v_b",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ben",
+          "valid_from": "2021-01-01",
+          "valid_to": null,
+          "operation": "CHANGES",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ben became CEO of Acme in 2021."
+        },
+        {
+          "assertion_id": "v3",
+          "source_id": "v_a2",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ada",
+          "valid_from": "2022-01-01",
+          "valid_to": null,
+          "operation": "CHANGES",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ada returned as CEO of Acme in 2022."
+        }
+      ],
+      "questions": [
+        {
+          "question_id": "v_q",
+          "text": "Who is the CEO of Acme as of 2021-06-01?",
+          "event_time": "2021-06-01",
+          "information_cutoff": "2022-02-01"
+        }
+      ],
+      "gold_answers": [
+        {
+          "question_id": "v_q",
+          "history_id": "reversion_a_b_a",
+          "status": "answered",
+          "accepted_value_sets": [
+            [
+              "Ben"
+            ]
+          ],
+          "sufficient_evidence_sets": [
+            [
+              "v_b"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "future_effective",
+      "description": "An already available appointment announcement becomes effective later.",
+      "sources": [
+        {
+          "source_id": "f_a",
+          "text": "Ada is CEO of Acme effective 2020-01-01.",
+          "available_at": "2020-01-01",
+          "uri": "diagnostic://f_a",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "f_b",
+          "text": "Ben will become CEO of Acme on 2022-01-01.",
+          "available_at": "2021-06-01",
+          "uri": "diagnostic://f_b",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        }
+      ],
+      "predicted_assertions": [
+        {
+          "assertion_id": "f1",
+          "source_id": "f_a",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ada",
+          "valid_from": "2020-01-01",
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ada is CEO of Acme effective 2020-01-01."
+        },
+        {
+          "assertion_id": "f2",
+          "source_id": "f_b",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ben",
+          "valid_from": "2022-01-01",
+          "valid_to": null,
+          "operation": "CHANGES",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ben will become CEO of Acme on 2022-01-01."
+        }
+      ],
+      "questions": [
+        {
+          "question_id": "f_before",
+          "text": "Who is the CEO of Acme as of 2021-07-01?",
+          "event_time": "2021-07-01",
+          "information_cutoff": "2021-07-01"
+        },
+        {
+          "question_id": "f_after",
+          "text": "Who is the CEO of Acme as of 2022-02-01?",
+          "event_time": "2022-02-01",
+          "information_cutoff": "2022-02-01"
+        }
+      ],
+      "gold_answers": [
+        {
+          "question_id": "f_before",
+          "history_id": "future_effective",
+          "status": "answered",
+          "accepted_value_sets": [
+            [
+              "Ada"
+            ]
+          ],
+          "sufficient_evidence_sets": [
+            [
+              "f_a"
+            ]
+          ]
+        },
+        {
+          "question_id": "f_after",
+          "history_id": "future_effective",
+          "status": "answered",
+          "accepted_value_sets": [
+            [
+              "Ben"
+            ]
+          ],
+          "sufficient_evidence_sets": [
+            [
+              "f_b"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "late_report",
+      "description": "The same event-time query changes when a delayed report becomes available.",
+      "sources": [
+        {
+          "source_id": "l_a",
+          "text": "Ada became CEO of Acme in 2020.",
+          "available_at": "2020-01-01",
+          "uri": "diagnostic://l_a",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "l_b",
+          "text": "A report confirms Ben became CEO of Acme on 2021-01-01.",
+          "available_at": "2023-01-01",
+          "uri": "diagnostic://l_b",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        }
+      ],
+      "predicted_assertions": [
+        {
+          "assertion_id": "l1",
+          "source_id": "l_a",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ada",
+          "valid_from": "2020-01-01",
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ada became CEO of Acme in 2020."
+        },
+        {
+          "assertion_id": "l2",
+          "source_id": "l_b",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ben",
+          "valid_from": "2021-01-01",
+          "valid_to": null,
+          "operation": "CHANGES",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "A report confirms Ben became CEO of Acme on 2021-01-01."
+        }
+      ],
+      "questions": [
+        {
+          "question_id": "l_early",
+          "text": "Who is the CEO of Acme as of 2022-01-01?",
+          "event_time": "2022-01-01",
+          "information_cutoff": "2022-01-01"
+        },
+        {
+          "question_id": "l_late",
+          "text": "Who is the CEO of Acme as of 2022-01-01?",
+          "event_time": "2022-01-01",
+          "information_cutoff": "2023-02-01"
+        }
+      ],
+      "gold_answers": [
+        {
+          "question_id": "l_early",
+          "history_id": "late_report",
+          "status": "answered",
+          "accepted_value_sets": [
+            [
+              "Ada"
+            ]
+          ],
+          "sufficient_evidence_sets": [
+            [
+              "l_a"
+            ]
+          ]
+        },
+        {
+          "question_id": "l_late",
+          "history_id": "late_report",
+          "status": "answered",
+          "accepted_value_sets": [
+            [
+              "Ben"
+            ]
+          ],
+          "sufficient_evidence_sets": [
+            [
+              "l_b"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "correction_cutoff",
+      "description": "A later explicit correction replaces a named erroneous assertion only after receipt.",
+      "sources": [
+        {
+          "source_id": "c_a",
+          "text": "Ada became CEO of Acme in 2020.",
+          "available_at": "2020-01-01",
+          "uri": "diagnostic://c_a",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "c_b",
+          "text": "Ben became CEO of Acme on 2021-01-01.",
+          "available_at": "2021-01-01",
+          "uri": "diagnostic://c_b",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "c_c",
+          "text": "Correction to the Ben report: Cora became CEO on 2021-01-01.",
+          "available_at": "2023-01-01",
+          "uri": "diagnostic://c_c",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        }
+      ],
+      "predicted_assertions": [
+        {
+          "assertion_id": "c1",
+          "source_id": "c_a",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ada",
+          "valid_from": "2020-01-01",
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ada became CEO of Acme in 2020."
+        },
+        {
+          "assertion_id": "c2",
+          "source_id": "c_b",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ben",
+          "valid_from": "2021-01-01",
+          "valid_to": null,
+          "operation": "CHANGES",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ben became CEO of Acme on 2021-01-01."
+        },
+        {
+          "assertion_id": "c3",
+          "source_id": "c_c",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Cora",
+          "valid_from": "2021-01-01",
+          "valid_to": null,
+          "operation": "CORRECTS",
+          "target_id": "c2",
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Correction to the Ben report: Cora became CEO on 2021-01-01."
+        }
+      ],
+      "questions": [
+        {
+          "question_id": "c_early",
+          "text": "Who is the CEO of Acme as of 2022-01-01?",
+          "event_time": "2022-01-01",
+          "information_cutoff": "2022-01-01"
+        },
+        {
+          "question_id": "c_late",
+          "text": "Who is the CEO of Acme as of 2022-01-01?",
+          "event_time": "2022-01-01",
+          "information_cutoff": "2023-02-01"
+        }
+      ],
+      "gold_answers": [
+        {
+          "question_id": "c_early",
+          "history_id": "correction_cutoff",
+          "status": "answered",
+          "accepted_value_sets": [
+            [
+              "Ben"
+            ]
+          ],
+          "sufficient_evidence_sets": [
+            [
+              "c_b"
+            ]
+          ]
+        },
+        {
+          "question_id": "c_late",
+          "history_id": "correction_cutoff",
+          "status": "answered",
+          "accepted_value_sets": [
+            [
+              "Cora"
+            ]
+          ],
+          "sufficient_evidence_sets": [
+            [
+              "c_c"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "simultaneous_conflict",
+      "description": "Different same-key values at the same valid start remain unresolved.",
+      "sources": [
+        {
+          "source_id": "s_a",
+          "text": "Source one says Ada became CEO of Acme on 2021-01-01.",
+          "available_at": "2021-01-01",
+          "uri": "diagnostic://s_a",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "s_b",
+          "text": "Source two says Ben became CEO of Acme on 2021-01-01.",
+          "available_at": "2021-01-01",
+          "uri": "diagnostic://s_b",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        }
+      ],
+      "predicted_assertions": [
+        {
+          "assertion_id": "s1",
+          "source_id": "s_a",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ada",
+          "valid_from": "2021-01-01",
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Source one says Ada became CEO of Acme on 2021-01-01."
+        },
+        {
+          "assertion_id": "s2",
+          "source_id": "s_b",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ben",
+          "valid_from": "2021-01-01",
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Source two says Ben became CEO of Acme on 2021-01-01."
+        }
+      ],
+      "questions": [
+        {
+          "question_id": "s_q",
+          "text": "Who is the CEO of Acme as of 2021-06-01?",
+          "event_time": "2021-06-01",
+          "information_cutoff": "2021-06-01"
+        }
+      ],
+      "gold_answers": [
+        {
+          "question_id": "s_q",
+          "history_id": "simultaneous_conflict",
+          "status": "indeterminate",
+          "accepted_value_sets": [],
+          "sufficient_evidence_sets": [
+            [
+              "s_a",
+              "s_b"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "missing_source",
+      "description": "A dangling assertion source must be rejected, never silently accepted.",
+      "sources": [],
+      "predicted_assertions": [
+        {
+          "assertion_id": "m1",
+          "source_id": "not_in_corpus",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ada",
+          "valid_from": "2020-01-01",
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic"
+        }
+      ],
+      "questions": [],
+      "gold_answers": [],
+      "expected_build_error": "ValueError",
+      "build_cutoff": "2022-01-01"
+    },
+    {
+      "case_id": "raw_question_distractors",
+      "description": "Route raw question text using predicted labels amid subject and relation distractors.",
+      "sources": [
+        {
+          "source_id": "d_a",
+          "text": "Ada became CEO of Acme in 2020.",
+          "available_at": "2020-01-01",
+          "uri": "diagnostic://d_a",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "d_b",
+          "text": "Ben became CEO of Acme in 2021.",
+          "available_at": "2021-01-01",
+          "uri": "diagnostic://d_b",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "d_o",
+          "text": "Omar became CEO of Orion in 2022.",
+          "available_at": "2022-01-01",
+          "uri": "diagnostic://d_o",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "d_cfo",
+          "text": "Cora became CFO of Acme in 2022.",
+          "available_at": "2022-01-01",
+          "uri": "diagnostic://d_cfo",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        }
+      ],
+      "predicted_assertions": [
+        {
+          "assertion_id": "d1",
+          "source_id": "d_a",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ada",
+          "valid_from": "2020-01-01",
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ada became CEO of Acme in 2020."
+        },
+        {
+          "assertion_id": "d2",
+          "source_id": "d_b",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ben",
+          "valid_from": "2021-01-01",
+          "valid_to": null,
+          "operation": "CHANGES",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ben became CEO of Acme in 2021."
+        },
+        {
+          "assertion_id": "d3",
+          "source_id": "d_o",
+          "subject": "Orion",
+          "relation": "CEO",
+          "value": "Omar",
+          "valid_from": "2022-01-01",
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Omar became CEO of Orion in 2022."
+        },
+        {
+          "assertion_id": "d4",
+          "source_id": "d_cfo",
+          "subject": "Acme",
+          "relation": "CFO",
+          "value": "Cora",
+          "valid_from": "2022-01-01",
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Cora became CFO of Acme in 2022."
+        }
+      ],
+      "questions": [
+        {
+          "question_id": "d_q",
+          "text": "Who is the CEO of Acme?",
+          "event_time": "2022-06-01",
+          "information_cutoff": "2022-06-01"
+        }
+      ],
+      "gold_answers": [
+        {
+          "question_id": "d_q",
+          "history_id": "raw_question_distractors",
+          "status": "answered",
+          "accepted_value_sets": [
+            [
+              "Ben"
+            ]
+          ],
+          "sufficient_evidence_sets": [
+            [
+              "d_b"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "unknown_validity",
+      "description": "A current-looking assertion without a valid-from date is not assigned a fabricated date.",
+      "sources": [
+        {
+          "source_id": "u_a",
+          "text": "Ada is CEO of Acme; the source gives no effective date.",
+          "available_at": "2021-01-01",
+          "uri": "diagnostic://u_a",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        }
+      ],
+      "predicted_assertions": [
+        {
+          "assertion_id": "u1",
+          "source_id": "u_a",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ada",
+          "valid_from": null,
+          "valid_to": null,
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ada is CEO of Acme; the source gives no effective date."
+        }
+      ],
+      "questions": [
+        {
+          "question_id": "u_q",
+          "text": "Who is the CEO of Acme as of 2021-06-01?",
+          "event_time": "2021-06-01",
+          "information_cutoff": "2021-06-01"
+        }
+      ],
+      "gold_answers": [
+        {
+          "question_id": "u_q",
+          "history_id": "unknown_validity",
+          "status": "indeterminate",
+          "accepted_value_sets": [],
+          "sufficient_evidence_sets": [
+            [
+              "u_a"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "explicit_gap",
+      "description": "An explicit expiry followed by a later start leaves an unsupported gap.",
+      "sources": [
+        {
+          "source_id": "g_a",
+          "text": "Ada was CEO of Acme from 2020-01-01 until 2021-01-01.",
+          "available_at": "2020-01-01",
+          "uri": "diagnostic://g_a",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        },
+        {
+          "source_id": "g_b",
+          "text": "Ben became CEO of Acme on 2022-01-01.",
+          "available_at": "2022-01-01",
+          "uri": "diagnostic://g_b",
+          "availability_basis": "synthetic_fixture",
+          "provenance": "hand_authored_diagnostic"
+        }
+      ],
+      "predicted_assertions": [
+        {
+          "assertion_id": "g1",
+          "source_id": "g_a",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ada",
+          "valid_from": "2020-01-01",
+          "valid_to": "2021-01-01",
+          "operation": "ASSERT",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ada was CEO of Acme from 2020-01-01 until 2021-01-01."
+        },
+        {
+          "assertion_id": "g2",
+          "source_id": "g_b",
+          "subject": "Acme",
+          "relation": "CEO",
+          "value": "Ben",
+          "valid_from": "2022-01-01",
+          "valid_to": null,
+          "operation": "CHANGES",
+          "target_id": null,
+          "predicted_by": "hand_authored_diagnostic",
+          "support_quote": "Ben became CEO of Acme on 2022-01-01."
+        }
+      ],
+      "questions": [
+        {
+          "question_id": "g_q",
+          "text": "Who is the CEO of Acme as of 2021-06-01?",
+          "event_time": "2021-06-01",
+          "information_cutoff": "2022-02-01"
+        }
+      ],
+      "gold_answers": [],
+      "expected_status": "abstain"
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+INDEPENDENT ADVERSARIAL REVIEW: v0.5 CORRECTION-AWARE INFERENCE
+
+Review date: 2026-10-02.
+Status: completed implementation review and independent finite-ledger audit.
+
+Scope
+
+The reviewer inspected decoder.py, coupled.py, pipeline.py, corrections.py,
+correction_io.py, correction_pipeline.py, their authored diagnostic tests,
+and the previous implementation-review report. A final sanity pass also read
+run_correction_source_demo.py and its source-only annotation/evidence capsules.
+No natural development gold, evaluation labels, or benchmark answers were read. The review
+concerns implementation semantics, not learned extraction accuracy, calibration,
+source entailment, algorithmic novelty, or a natural joint-inference advantage.
+
+Pre-implementation findings and required counterexamples
+
+1. A correcting assertion can replace a wrong effective start while retaining
+   the same factual value. If an old RESTATES equality rejects inconsistent exact
+   starts before correction projection, a later materializer hook cannot repair
+   feasibility. All global temporal checks must operate on the active projection.
+
+2. For C correcting B, which corrected A, neither A nor B should reappear after
+   B is withdrawn. The supported operation is full assertion replacement with
+   persistent correction notices. Retraction of a correction notice and implicit
+   resurrection are different operations and need separate semantics.
+
+3. A later report is not a correction merely because it disagrees or was
+   published later. A correction candidate needs an exact declared target,
+   a correction cue, and the supported authority relation. Presence of spans
+   and metadata is not an independent proof that the source entails them.
+   Same-day source availability cannot establish ordering on its own.
+
+4. Replacement scope must be exactly the addressed atomic assertion. A partial
+   correction must not silently erase all facts for a key, source, episode, or
+   history. Unsupported partial replacement should fail closed.
+
+5. RESTATES expresses same-episode identity, not copied evidence. A corrected
+   assertion must not automatically withdraw every corroborating assertion in
+   its equality component. Cascading withdrawal requires a separately declared
+   essential support dependency. Absence of such a declaration does not prove
+   that the sources are independent in the world.
+
+6. Essential support dependencies must cascade transitively, with explicit cycle
+   handling. A dependent selected reading cannot silently survive when its
+   required target reading was unselected, unresolved, or withdrawn. Conjunctive
+   essential dependencies and disjunctive alternative support must not be
+   conflated; only the former is proposed for this checkpoint.
+
+7. Withdrawal must remove the target's bounds, observations, incident temporal
+   links, and assertion-level answer support. Its identity may remain in a
+   separate correction-lineage audit. Knowledge-date availability must never be
+   inserted as an event-time transition or an appointment date.
+
+8. Competing sibling corrections must remain competing claims. Selecting a
+   correction edge does not permit recency to choose between equally supported
+   replacements, and score-optimal selection does not establish factual truth.
+
+9. The shared decoder hook must replace, rather than merely add to, the old
+   global feasibility checks. Its returned active components must contain only
+   selected resolved mentions, without duplicates or mutable containers. The
+   same semantics must apply to independent, iterative, restarted, exact, and
+   assignment-evaluation paths. A malformed hook result must raise instead of
+   silently rejecting a candidate state.
+
+Executed findings
+
+1. The shared state_semantics decoder extension now runs after local candidate
+   identity checks and before every legacy global temporal check. The old
+   Boolean extension and new replacement extension cannot be combined. Returned
+   components must be immutable, canonically ordered, and contain distinct,
+   selected resolved mentions. Malformed returns raise instead of silently
+   becoming infeasible. The same extension is passed by all four pipeline
+   methods and by evaluate_assignment.
+
+2. scripts/audit_correction_finite.py independently enumerated every subset of
+   four assertions. The expected active ledger is the unique greatest subset
+   that excludes every selected correction target and satisfies every essential
+   support implication. This is a finite enumeration oracle, rather than a
+   copy of production's iterative withdrawal computation.
+
+   There were 576 chronological correction/support DAG pairs and 384 essential
+   support DAG cases with varying selected/unresolved prerequisites. The audit
+   compared active claim IDs, envelope IDs, and assertion-level answer support
+   over eight event days. It encountered 171 empty active ledgers among the
+   correction/support DAG pairs. All expected ledgers matched.
+
+   Twelve additional targeted checks exercised the old pre-hook RESTATES rejection
+   versus correction-aware acceptance, removal of incident equality constraints,
+   retained independent support, explicitly dependent support withdrawal,
+   conflicting sibling corrections, unrelated asserting authorities, and
+   unsupported partial coverage, and the context needed to suppress a rival when
+   its essential prerequisite was left unresolved. Eight weighted objective
+   decomposition checks were also executed. Total: 10,772 checks, zero mismatches.
+   The reproducible report is results/correction_finite_audit_v05.json.
+
+3. All 52 correction-policy and correction-cache unit tests present at the final
+   of review passed. These included same-day references, correction cycles,
+   nested replacement without resurrection, independent corroboration versus
+   essential derivation, a newly asserted reinstated value, planned correction
+   modality, malformed evidence, prefix constraints, immutable policies, stale
+   hashes, strict schema boundaries, and preservation of nested v0.4 lineage.
+
+4. correction_pipeline.py and correction_io.py were inspected. The outer cache
+   identity hashes the base candidate cache, correction policy, and annotation
+   provenance. An additional executed pipeline check used the authored cache-test
+   fixture with all four methods: independent, iterative, restarted, and exact.
+   Each selected objective 5.0 and returned Bea with only assertion c2 as support.
+   Changing only the policy while keeping the same base cache caused each
+   previously decoded state to be rejected by answer_corrected. This checks
+   shared semantics and policy identity; it is not a comparative accuracy result.
+
+5. The objective decomposition was checked using a separately authored fixed
+   assignment with beta=2, nonzero violation penalties, a resolved active claim,
+   withdrawn claim, unresolved reading, active temporal link, inactive temporal
+   link, correction link, and nonzero null scores. The seven net contributions
+   were respectively 9.7, 0.9, 6.9, 11.8, 9.7, 7.6, and 0.7, summing to 47.3.
+   Explicit expected arithmetic matched every reported bucket and the decoder's
+   assignment evaluator. Inactive contributions are accurately disclosed rather
+   than silently presented as active-answer utility. This probe is preserved in
+   the independent audit script and its JSON result.
+
+6. A provenance counterexample was discovered and executed during final review.
+   A rival claim depended on a prerequisite whose unresolved alternative used a
+   separate context source. Removing that rival made another answer certain,
+   but the first implementation omitted the prerequisite's source and the context
+   behind the unresolved choice. The corrected implementation includes the
+   prerequisite source, mention context, selected alternative reading context,
+   and selected alternative claim context when present. These controls propagate
+   through essential dependency chains. The independent counterexample now
+   passes, and two additional unit regressions cover unresolved and resolved
+   alternative readings. No withdrawn assertion is restored as factual support.
+
+7. The real-source demonstration was sanity-checked as a record-ledger
+   illustration. It preserves the approximate FY2024 forecast modality, unknown
+   calendar bounds and absence of daily observations. Both certificate variants
+   declare the same complete input bundle, candidate records, and authored
+   scores. The source dateline remains distinct from current capture availability.
+   The runner makes no QA call, historical-availability claim, learned-score
+   claim, or method-superiority claim. Compact exact excerpts preserve offset
+   maps, but target and authority semantics remain conditional on the retained
+   full-input annotation; compact spans alone do not independently certify them.
+
+Semantic boundaries and remaining research limitations
+
+The implemented correction is an atomic full-assertion replacement notice. Its
+withdrawal effect persists even if the replacement assertion is subsequently
+withdrawn or unsupported. This prevents ancestor resurrection; it does not
+implement retracting a notice, partial endpoint edits, field-level repairs, or
+disjunctive alternative derivations. Essential dependencies are conjunctive and
+candidate-specific. A missing selected prerequisite makes its dependent inactive,
+maintaining a feasible null-link state without inventing supporting evidence.
+
+Withdrawing an assertion removes its temporal constraints and assertion-level
+answer support. Source-level control or extraction context can remain cited for
+another reason. The target source can still establish the notice's identified
+target and asserting authority. A later-withdrawn replacement may itself have
+issued a still-operative correction notice. The implementation retains these
+sources as control provenance. Same-key correction-control dependencies are
+conservative and can overcite notices from unrelated episodes. Retention as
+context/control evidence must not be described as continuing factual support
+from the withdrawn assertion.
+
+Exact quotes establish that an annotated span occurs in a source. They do not
+prove that a span identifies the correct target or asserting authority. Authority
+is a declared same-origin relation, not an independently verified trust score.
+The source-level authority model also cannot express multiple asserting origins
+inside one document without additional representation work. Sources with no
+declared derivative dependency are retained; this does not prove their real-world
+independence. These assumptions remain conditional input annotations.
+
+The shared objective continues scoring the selected historical interpretations,
+including readings and temporal links whose active constraints were withdrawn.
+This is internally consistent across all methods, but can reward inactive links
+or favor choosing corrections that relax a difficult temporal interpretation.
+A score increase therefore does not establish a better supported active answer.
+The implementation now exposes active/inactive objective contributions. Empirical
+work should additionally compare an active-support scoring ablation before
+attributing gains to correction-aware inference. The review does not validate
+the quality or calibration of the scores.
+
+Review disposition: no high-priority implementation blocker was found in the
+reviewed scope after the global-check ordering and absence-provenance fixes. Finite generated coverage is
+not a proof for arbitrary graphs. No model extraction, natural gold, benchmark
+result, learned-score benefit, or publishable joint-inference advantage was
+established by this review.

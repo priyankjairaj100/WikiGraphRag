@@ -1,0 +1,49 @@
+v0.11 strict offline source-passage evaluation
+
+This evaluator was prepared from the frozen protocol, question contract, and
+independent source-only model-assisted reference file. It does not read native
+raw outputs, perform inference, or access the source passage text. Unit-test
+fixtures are explicitly authored software checks, not model observations.
+
+Run after the unchanged native texts have passed the separate source-copy
+export review:
+  python3 scripts/evaluate_reader_v11.py
+
+For repeatable validation without writing files:
+  python3 scripts/evaluate_reader_v11.py --check
+This recomputes all bindings and scoring and requires exact equality with the
+existing result. Any mismatch raises an error and leaves all artifacts intact.
+
+The default input is results/native_reader_v11_outputs.json and the default
+output is results/reader_evaluation_v11.json. Existing result files are never
+overwritten. Missing inputs and malformed exports are written as retained
+validation failures. Native response strings are never repaired, stripped of
+code fences, rearranged, or retried.
+
+The evaluator binds the exported predictions to the attempt02 frozen collector
+and export review, and binds references and questions by the original protocol
+hashes. Duplicate JSON keys are rejected at every nesting level. Native answer
+JSON must have exactly one answers list containing Q1,Q2,Q3 in that order, with
+the exact frozen fields and enums. Evidence must be a nonempty unique subset
+of P1,P2,P3,P4. Numeric strings, booleans, null for a named exposure, NaN, and
+infinities are rejected. An uncertain exposure requires null. All numbers are
+parsed as Decimal and compared with zero tolerance. Thus 13.59 and 13.590 have
+the same numeric value, while 13.5900000000000001 differs.
+
+Any response-level schema violation invalidates all three answers in that
+condition; partial answers are not silently salvaged. Input truncation,
+output-limit stops, incomplete stops, and unreviewed generated text are retained
+as failures. The unchanged exported response remains the audit source.
+
+For a schema-valid answer, correctness requires both the reference answer
+content and at least one reference-adjudicated sufficient evidence subset.
+Additional valid passage IDs do not reduce correctness and are listed
+separately. In this fixed reference, P4 alone is sufficient for Q2; P1 supplies
+correction provenance but is not compulsory for the local consistency check.
+Q1 requires P4, and Q3 requires P3. This rule uses the reference adjudications
+rather than exact matching the longer evidence list in the reference answer.
+
+Results are reported for each question in each condition. There is no aggregate
+population accuracy estimate, significance test, causal claim, or comparison
+with a correction algorithm. The two conditions reuse the same three related
+questions in one evidence-selected development case.

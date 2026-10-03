@@ -1,0 +1,75 @@
+SOURCE-ONLY ANNOTATION PROTOCOL — v0.8
+
+The first controlled-stream development batch selects IBM (first leadership
+history), Docker and Chrome (first two public-plan histories), and HS2 (the
+explicit correction lead) using the frozen v0.7 frame. Root freezes delivery
+batches before extraction. Each annotation role receives one complete prefix in
+isolation, with its current captured source text. Neither later prefixes nor
+reference questions, decoder outcomes or score values belong in that request.
+This is an author-defined current-record stream, not historical public knowledge.
+In particular, mutable older-labelled pages may already contain later updates.
+Their contents are retained as captured rather than rewritten to simulate originals.
+
+Artifacts
+- configs/source_annotation_v08_schema.json: finite output JSON schema.
+- configs/source_annotation_v08_prompt.txt: source-only model annotation contract.
+- scripts/validate_source_annotation_v08.py: strict, offline structural validation.
+
+Request contract
+The per-prefix JSON has schema_version source_annotation_request_v0.8, history_id,
+prefix_id, delivery_batch_index, capture_manifest_sha256, delivery_manifest_sha256,
+and sources. Each source has source_id, exact_version_sha256, text_sha256, and text.
+The exact_version_sha256 binds captured response bytes; text_sha256 binds the exact
+UTF-8 text exposed to annotation. Sources appear in frozen cumulative delivery
+order. Requests contain no reference judgments, score values or other-prefix data.
+
+Output contract
+The response binds exact request file bytes, history/prefix IDs and ordered source
+IDs. Atomic natural-language values and namespaced relations preserve public plans,
+percentages and scope qualifiers beyond the role-holder examples in the old core.
+Modality and assertion status distinguish future plans, observed role labels,
+announcement acts, retrospective reports, and quoted errors. Date bounds are
+inclusive constraints on event dates; they are not validity intervals. Explicit
+correction records may name an unavailable original; a quoted erroneous target
+must never silently become a current-world assertion. Optional evidenced links
+are semantic annotations only. Unknowns and representation exclusions are explicit.
+
+Validation limits
+The validator checks closed schema, exact request hash, eligible source IDs and
+order, text hashes, unique IDs, references, exact Unicode spans, temporal bound
+syntax/order, and explicit-correction link consistency. Optional capture and
+delivery manifests, when provided together, bind the request to frozen originals
+and prefix membership. The validator does not prove factual entailment, authority,
+annotation completeness, historical availability, or independence of model roles.
+The annotated texts are inputs to a later candidate design and reference process;
+they are not automatically compatible with scored_io or the decoder. No scores,
+competing-reading quota or implicit zero potentials are introduced here.
+
+Generation provenance must separately record prompt/schema/request hashes, model
+identifier with unknown revision left null, exact output hash, fresh-role scope,
+and repair attempts. Isolation is a procedural disclosure rather than a security
+boundary or statistical independence guarantee. Unversioned model assistance must
+never be labelled human gold. Separate reference work begins after these source
+annotations are frozen, and must not inspect these outputs when being generated.
+
+Pre-generation clarification and verification
+The prompt was amended on 2026-10-02 at 16:53:21 UTC before any generation to
+separate dated article content from undated sitewide banners, navigation and
+related-post cards. This followed source-capture inspection, not annotation,
+reference or method-output inspection. Current-page content remains unchanged;
+only its attribution and temporal uncertainty must be represented carefully.
+The exact prompt/schema hashes and timing are recorded in
+results/source_annotation_protocol_v08.json.
+
+Thirteen adversarial tests cover a valid Unicode-character example, accidental
+reference context, future-source injection, ineligible evidence, changed text,
+rehashed text against the capture manifest, byte/character offset confusion,
+mutated capture and delivery manifests, blocked prefixes, unsupported correction
+links, boolean offsets and duplicate JSON keys. These tests establish rejection
+of concrete artifact/eligibility mistakes, not semantic annotation accuracy.
+
+Full captured texts, self-contained requests and verbatim raw annotations are
+working artifacts outside the distributed project. Validation reports contain
+hashes and counts only. Any distributed annotation projection must retain span
+positions and hashes while following the source-specific redistribution policy.
+No report should claim a raw-text reproduction test from a hash-only projection.

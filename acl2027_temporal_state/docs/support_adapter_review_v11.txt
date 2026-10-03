@@ -1,0 +1,16 @@
+Independent support-adapter review, v0.11
+3 October 2026
+
+Verdict: pass within the documented assertion-support lookup contract. No blocking issue was found. The implementation and tests were not edited by the reviewer.
+
+The adapter distinguishes selected active records, selected withdrawn records, known unselected candidates, and unknown IDs. It does not translate survival into factual truth or withdrawal into falsity. Original claim bounds, polarity, modality, observations and dates remain intact; the source cutoff is a separately named field. There is no event-time question, latest-value fallback, or call to the temporal answer_key method.
+
+Every lookup first re-materializes the explicitly supplied selection through the correction core. Recursive type-sensitive comparison then checks the entire supplied memory, including sources and diagnostics. Thus an unknown-ID query does not bypass ledger or identity checks. Existing focused tests confirm rejection of changed source bytes/metadata, missing or forged ledgers, and integer-for-boolean substitutions.
+
+Evidence records preserve explicit roles, ordered endpoint IDs and exact spans. Hashes bind every supplied Source field, including text and metadata. The evidence closure follows selected prerequisites and connected correction chains while excluding unrelated descendants. A missing prerequisite supplies dependency evidence without a selected assertion record; its unselected dependency edges do not become active. Conservative context IDs remain distinguishable from span evidence. Direct and dependent withdrawal reasons are both retained when applicable.
+
+No OR support, numerical recalculation, conflict resolution, causal inference, extraction, or natural-language routing was introduced. Core whole-assertion replacement, authority, scope, acyclicity and AND-only dependency restrictions remain the semantic boundary.
+
+The 16 existing support-adapter tests passed. No additional adversarial probe was justified by a concrete uncovered risk, and no model was run. File hashes and verification details are in results/support_adapter_review_v11.json.
+
+This checks implementation consistency only. Internally consistent invented evidence can still pass. Source authenticity, historical availability, annotation entailment and essentiality require external provenance and independent adjudication. Historical withdrawn records may appear in evidence and must not be read as active support. Neither natural-data performance nor algorithmic novelty is established. Re-materialization on each lookup has no demonstrated throughput guarantee.

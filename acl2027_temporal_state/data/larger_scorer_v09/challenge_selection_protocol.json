@@ -1,0 +1,40 @@
+{
+  "schema_version": "source_challenge_selection_v0.9",
+  "frozen_at_utc": "2026-10-03T03:29:15.070534+00:00",
+  "research_distributions_completed": 0,
+  "selection": "First two ready histories in frozen v09 delivery order, first prefix only. No substitution after scores or tokenizer outcomes.",
+  "history_ids": [
+    "leadership_disney_2020_2022",
+    "leadership_intel_2021_2024"
+  ],
+  "items_per_history": 2,
+  "item_design": {
+    "positive": "One atomic statement directly supported by supplied source.",
+    "negative": "One plausible authored semantic near-miss derived from the positive, changing one role, scope, modality or temporal claim that the source does not support. Prefer an explicit contradiction to merely unstated detail.",
+    "labels": "Expected Yes/No are unversioned model-assisted source judgments, separately reviewed before scoring; not human gold.",
+    "exposure": "Designer sees only this protocol and two first-prefix source requests; reviewer sees the same plus designed items, never model scores. Scorer input excludes labels and rationales.",
+    "retention": "Preserve original design, review and all exclusions/changes; no score-based changes."
+  },
+  "models": [
+    "Qwen3-0.6B-Q8_0",
+    "Qwen3-4B-Q8_0"
+  ],
+  "conditions": [
+    "Yes_then_No",
+    "No_then_Yes"
+  ],
+  "research_distribution_count": 16,
+  "analysis": {
+    "decision": "log P(Yes)-log P(No) > 0 means Yes, < 0 means No, exactly 0 abstains.",
+    "report": [
+      "Every per-item score in each model/order",
+      "Raw probability mass on Yes and No",
+      "Within-model label-order sign flips and log-odds change",
+      "Agreement with the four authored expected labels for each condition, counts only",
+      "Across-model same-condition changes"
+    ],
+    "no_selection": "Do not choose a better condition, average orders, calibrate thresholds, retune prompts, or drop failed/misclassified items.",
+    "scope": "Controlled challenge diagnostic with two histories and balanced authored contrasts. Not naturally sampled candidate accuracy, calibration, causal size scaling, end-to-end QA, heldout performance, or evidence of algorithmic novelty."
+  },
+  "delivery_manifest_sha256": "e83d5235a1461af377e93800c77f392c285fafa02df0b91588273197e1e02b1a"
+}

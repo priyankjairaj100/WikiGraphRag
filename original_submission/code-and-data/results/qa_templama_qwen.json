@@ -1,0 +1,70 @@
+{
+  "dataset": "templama",
+  "reader": "qwen",
+  "k": 5,
+  "n_questions": 300,
+  "current_answer_em": {
+    "flat": 0.5667,
+    "date_prompt": 0.6233,
+    "date_rerank": 0.13,
+    "tempralm": 0.26,
+    "ragtime_default": 0.1633,
+    "ragtime_tuned": 0.4733,
+    "lifecycle": 0.9367,
+    "gold": 0.97
+  },
+  "current_answer_em_strict": {
+    "flat": 0.5633,
+    "date_prompt": 0.62,
+    "date_rerank": 0.13,
+    "tempralm": 0.26,
+    "ragtime_default": 0.1633,
+    "ragtime_tuned": 0.4667,
+    "lifecycle": 0.9367,
+    "gold": 0.97
+  },
+  "paired_tests": {
+    "lifecycle_vs_flat": {
+      "mean_diff": 0.37,
+      "ci95_low": 0.3067,
+      "ci95_high": 0.43,
+      "p_value": 0.0,
+      "n": 300
+    },
+    "lifecycle_vs_date_prompt": {
+      "mean_diff": 0.3133,
+      "ci95_low": 0.2533,
+      "ci95_high": 0.3733,
+      "p_value": 0.0,
+      "n": 300
+    },
+    "lifecycle_vs_date_rerank": {
+      "mean_diff": 0.8067,
+      "ci95_low": 0.7633,
+      "ci95_high": 0.85,
+      "p_value": 0.0,
+      "n": 300
+    },
+    "lifecycle_vs_tempralm": {
+      "mean_diff": 0.6767,
+      "ci95_low": 0.6233,
+      "ci95_high": 0.7333,
+      "p_value": 0.0,
+      "n": 300
+    },
+    "lifecycle_vs_ragtime_default": {
+      "mean_diff": 0.7733,
+      "ci95_low": 0.7267,
+      "ci95_high": 0.82,
+      "p_value": 0.0,
+      "n": 300
+    },
+    "lifecycle_vs_ragtime_tuned": {
+      "mean_diff": 0.4633,
+      "ci95_low": 0.4067,
+      "ci95_high": 0.52,
+      "p_value": 0.0,
+      "n": 300
+    }
+  }
+}

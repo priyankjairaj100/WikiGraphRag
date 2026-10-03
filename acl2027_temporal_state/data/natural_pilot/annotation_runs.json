@@ -1,0 +1,74 @@
+{
+  "execution_date": "2026-10-02",
+  "prompt_protocol": "conversational source-only extraction; exact shared prompt preserved plus routing overrides",
+  "decoding_backend_note": "No API model revision or decoding settings were exposed/pinned; model weights may contain later knowledge even though inputs are prefix-limited.",
+  "metrics_note": "Runtime/token/cost measurement not instrumented; nulls are unknown, not zero.",
+  "runs": [
+    {
+      "pass_id": "A",
+      "input_path": "early_prefix_input.json",
+      "input_sha256": "931dfd99c99c7fb0abb049f820221a3ed372fcb435c9e7326f973c60d07404b6",
+      "output_path": "annotations/pass_a.json",
+      "output_sha256": "c12e59218cf24c11b561e29d9836f5493086ec02fb7d61bbf65dfec01da9b0b1",
+      "shared_prompt_path": "annotation_prompt.txt",
+      "prompt_sha256": "178b49108fd82a879f01abb6ec85df0cff90cf09e83fe35e853b1f78953f1728",
+      "prompt_override": "L uses late_prefix_input.json and only Starbucks; A/B use early_prefix_input.json. Assigned separate output paths/pass identifiers.",
+      "context_isolation": "fresh agent fork_turns=none; only assigned input and prompt reads allowed; self-reported compliance",
+      "backend": {
+        "model_revision": null,
+        "decoding_settings": null,
+        "pinned": false,
+        "kind": "conversational_model_agent"
+      },
+      "assertions": 13,
+      "assertion_evidence_spans": 25,
+      "elapsed_time_seconds": null,
+      "tokens": null,
+      "cost": null
+    },
+    {
+      "pass_id": "B",
+      "input_path": "early_prefix_input.json",
+      "input_sha256": "931dfd99c99c7fb0abb049f820221a3ed372fcb435c9e7326f973c60d07404b6",
+      "output_path": "annotations/pass_b.json",
+      "output_sha256": "7aa17bb72dca12b08b48ab9c9c23bddc51835448f5c47c22d29a1a8b36f54fdc",
+      "shared_prompt_path": "annotation_prompt.txt",
+      "prompt_sha256": "178b49108fd82a879f01abb6ec85df0cff90cf09e83fe35e853b1f78953f1728",
+      "prompt_override": "L uses late_prefix_input.json and only Starbucks; A/B use early_prefix_input.json. Assigned separate output paths/pass identifiers.",
+      "context_isolation": "fresh agent fork_turns=none; only assigned input and prompt reads allowed; self-reported compliance",
+      "backend": {
+        "model_revision": null,
+        "decoding_settings": null,
+        "pinned": false,
+        "kind": "conversational_model_agent"
+      },
+      "assertions": 14,
+      "assertion_evidence_spans": 25,
+      "elapsed_time_seconds": null,
+      "tokens": null,
+      "cost": null
+    },
+    {
+      "pass_id": "L",
+      "input_path": "late_prefix_input.json",
+      "input_sha256": "47064e99e1c4cb0b54151dbb6430157746c8b7b82fbc5e1b45c6231a741d13e9",
+      "output_path": "annotations/pass_l.json",
+      "output_sha256": "62451df04d0671e2a061b9ab124bee826dde14099fcf86a866470f3c45eb7c47",
+      "shared_prompt_path": "annotation_prompt.txt",
+      "prompt_sha256": "178b49108fd82a879f01abb6ec85df0cff90cf09e83fe35e853b1f78953f1728",
+      "prompt_override": "L uses late_prefix_input.json and only Starbucks; A/B use early_prefix_input.json. Assigned separate output paths/pass identifiers.",
+      "context_isolation": "fresh agent fork_turns=none; only assigned input and prompt reads allowed; self-reported compliance",
+      "backend": {
+        "model_revision": null,
+        "decoding_settings": null,
+        "pinned": false,
+        "kind": "conversational_model_agent"
+      },
+      "assertions": 10,
+      "assertion_evidence_spans": 18,
+      "elapsed_time_seconds": null,
+      "tokens": null,
+      "cost": null
+    }
+  ]
+}

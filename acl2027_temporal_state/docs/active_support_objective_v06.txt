@@ -1,0 +1,193 @@
+Active-support scoring ablation — v0.6
+=====================================
+
+Status and intended use
+-----------------------
+This is a controlled objective ablation for the small reference decoder. It is
+not a new scalable optimization algorithm, a calibrated probability, an answer
+utility, or a claim of research novelty. Whether it helps natural inference is
+unestablished. Changing an objective can improve its own optimized score while
+making the inferred record worse. Raw scores from different objectives must not
+be treated as comparable quality measurements.
+
+The v0.5 historical objective remains the default in the existing correction
+pipeline. New experimental callers must explicitly name the active_support
+objective. Candidate caches, annotated certificates, evidence, base scores,
+penalties, feasibility rules, candidate budgets, and search limits are shared
+across the objective comparison. These objective functions read no question,
+answer label, expected record, or natural evaluation file.
+
+API and placement
+------------------
+src/temporal_state/objectives.py provides:
+
+  objective_spec(mode='active_support') -> JSON-safe convention dictionary
+  make_objective_function(problem, mode='active_support') -> callable
+  objective_breakdown(problem, selected, chosen, components,
+                      mode='active_support') -> JSON-safe audit dictionary
+
+The callable signature is (selected, chosen, components) -> finite float.
+selected maps mention IDs to the exact frozen Reading objects. chosen contains
+one selected Link or None per lexicographically sorted mention. components is
+the canonical tuple of active mention components returned by the common feasible
+semantic projection. The callback is called only AFTER feasibility. It neither
+establishes source truth nor replaces the temporal/correction validator.
+
+Executable modes are historical and active_support. Naive zeroing is described
+below as an algebraic failure control; it is not a third inference mode. All
+selected CORRECTS links that reach this scorer are already certified feasible
+under the shared policy. Their notice effects remain operative even when their
+replacement claim is itself later withdrawn. This preserves v0.5 chain semantics.
+
+Notation and formula
+---------------------
+Each mention m selects one reading r_m and one outgoing link l_m or null.
+
+  u_m = unary(r_m) - sum(configured reading violation penalties)
+  b_m = max over unresolved readings r at m of
+        [unary(r) - sum(configured reading violation penalties)]
+  n_m = the mention's null_score
+  w_l = beta * score(l) - sum(configured link violation penalties)
+
+An unresolved reference tie is broken by lexicographic reading ID. This affects
+the audit reference ID but not its score. Penalties are subtracted after beta
+scales link scores. Null scores receive no beta multiplier.
+
+Let A be the active resolved mention IDs from the shared projection, and U the
+mentions whose selected reading is unresolved. Let T be selected RESTATES or
+CHANGES links whose endpoints both belong to A. Let I be the other selected
+RESTATES/CHANGES links. Let C be all selected operative CORRECTS links, and N the
+mentions selecting null.
+
+  J_historical = sum_m u_m + sum_{selected l} w_l + sum_{m in N} n_m
+
+  J_active = sum_{m in A union U} u_m
+           + sum_{resolved m not in A} b_m
+           + sum_{l in T union C} w_l
+           + sum_{l in I} n_{source(l)}
+           + sum_{m in N} n_m
+
+Thus withdrawn historical evidence is neutral relative to the existing
+unresolved/null alternatives, rather than being given the arbitrary value zero.
+Equivalently, with all mentions included in a common baseline:
+
+  J_active = sum_m (b_m + n_m)
+           + sum_{m in A union U} (u_m - b_m)
+           + sum_{l in T union C} (w_l - n_{source(l)})
+
+The historical-minus-active difference for a FIXED feasible assignment is:
+
+  D = sum_{resolved m not in A} (u_m - b_m)
+    + sum_{l in I} (w_l - n_{source(l)})
+
+D is signed. Negative D means anchoring raises the score because negative
+evidence has been removed. It must not be called a nonnegative penalty or an
+amount of factual error removed. The breakdown exposes all raw selected scores,
+references, scored contributions, inactive advantages, and active mention IDs.
+
+What the anchoring does and does not guarantee
+----------------------------------------------
+1. Unary offset invariance. Add any constant c_m to EVERY reading score at one
+   mention (including all unresolved alternatives), holding penalties fixed.
+   Both u_m and b_m increase by c_m. Every feasible assignment's active objective
+   increases by c_m, so its ranking is unchanged, up to floating-point effects.
+
+2. Outgoing score offset invariance. Add d_m to the NET score of every outgoing
+   link at m AND to n_m. Every assignment's active objective increases by d_m.
+   If beta is positive, this can be realized by adding d_m / beta to each raw
+   link score. At beta = 0, arbitrary link-net shifts cannot be realized by raw
+   link-score shifts alone. The claim is about the net-score convention.
+
+3. Equality without inactive support. If every selected resolved reading and
+   selected temporal link remains active, historical and active objectives are
+   equal for that assignment. Corrected states generally do not satisfy this.
+
+4. Conditional insensitivity to retired raw scores. With a fixed feasible state,
+   reference baselines, active projection, and candidate set, changing only an
+   inactive resolved reading's net score or inactive temporal link's net score
+   has no effect on J_active. It still changes J_historical and may change the
+   local independent initialization. It can also change rankings of other states
+   where that evidence remains active; no global invariance is claimed.
+
+5. No duplication invariance. A duplicate active assertion adds another unary
+   margin; a duplicate operative correction notice can add another control
+   margin. Adding or deleting candidates can alter references and the feasible
+   state space. No source independence, document deduplication, citation trust,
+   or probabilistic calibration is supplied by this objective. RESTATES remains
+   episode equality, not an essential-support dependency.
+
+6. No global score-scale invariance. Changing only unary or only link scale can
+   change decisions. Changing beta is a substantive ablation, not a harmless
+   reparameterization. All comparisons must use the same declared convention.
+
+Why numeric zeroing is not the default
+--------------------------------------
+If an inactive reading contributes exactly zero, adding c_m to all reading
+scores increases states where the reading is active by c_m but leaves states
+where it is inactive unchanged. The optimum can change under a harmless unary
+logit offset. The same failure occurs if inactive links contribute zero while
+null has a nonzero offset. Reference anchoring avoids these particular failures.
+The test control uses direct arithmetic rather than creating a selectable third
+decoder mode.
+
+Failure modes that are part of the experiment
+----------------------------------------------
+Correction suppression. Compare two feasible assignments with identical
+resolved readings: one selects null at correcting mention c; one selects the
+isolated correction c -> t. Suppose this only withdraws target t, all other
+terms staying the same. Then:
+
+  J_active(correction) - J_active(null) = (w_ct - n_c) - (u_t - b_t)
+
+The valid correction wins only when its net gain exceeds the target's positive
+resolved-over-unresolved margin. With dependencies or incident active temporal
+links, their lost margins must also be subtracted. A source-supported correction
+can therefore lose even when the certificate is feasible. The policy currently
+permits choosing null; it does not make every eligible certificate mandatory.
+This is a substantive limitation, not a reason to retune authored scores after
+observing a desired output.
+
+Negative evidence suppression. If u_t < b_t, withdrawing t increases the active
+objective by b_t - u_t even before a correction reward. A joint decoder may
+select a poor historical reading solely to satisfy an endpoint requirement for
+a rewarded correction and then neutralize that reading. Missing essential
+prerequisites can likewise deactivate selected dependent readings. Neutralizing
+support therefore does not by itself prevent an inference from gaming the
+selection/withdrawal mechanism.
+
+Redundant controls. Correction chains preserve all selected operative notices.
+Scoring each notice can reward historical control structure after the associated
+replacement assertions become inactive. Fully deduplicating or collapsing these
+controls would require a separate stated semantics and score model; v0.6 does
+not silently do so.
+
+Active uncertainty. Selecting a best state does not integrate over alternative
+states or certify a natural fact. All materialized answers remain conditional
+on selected readings, temporal links, correction annotations, and their support
+dependencies. Known extraction errors or wrong authority annotations remain
+possible regardless of exact optimization.
+
+Algorithm comparison and interpretation
+----------------------------------------
+Every search path calls the identical chosen objective after identical semantic
+feasibility. Exact decoding enumerates all permitted reading/link assignments
+within the existing small limits. Iterative decoding reoptimizes links exactly
+for each reading-coordinate trial and accepts strict score increases. Restarted
+iterative decoding samples the same candidate set under the same fixed seed.
+
+The independent baseline freezes the same per-mention maximum NET unary reading
+used in v0.5, then optimizes links under the named shared objective. This stage
+does not solve a globally separable active-support objective: activity depends
+on other selected readings and links. Its unchanged policy must be stated in
+comparisons, and it cannot claim active-support global optimality. Iterative
+initialization uses that same local policy unless explicitly overridden by an
+authored diagnostic. Under one objective and one feasible state space, exact
+objective >= each heuristic objective by construction. This inequality is an
+optimization check, not evidence of natural accuracy or research advantage.
+
+No natural labels, new model scores, changed source facts, or selectively tuned
+correction coefficients are introduced by this module. A frozen natural record
+replay may be used as a worked failure example under its existing configured
+scores, but it is not a held-out benchmark. A publication claim would require
+independent natural data, reliable candidate/score provenance, strong baselines,
+and uncertainty-aware evaluation beyond this implementation exercise.

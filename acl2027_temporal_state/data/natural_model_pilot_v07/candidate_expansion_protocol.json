@@ -1,0 +1,148 @@
+{
+  "schema_version": "candidate_expansion_protocol_v0.7",
+  "created_at_utc": "2026-10-02T15:20:38.574257+00:00",
+  "stage": "frozen_before_ambiguity_audit_output_and_v07_scoring",
+  "purpose": "Audit missing mutually exclusive source-grounded readings without manufacturing decoder contrast.",
+  "evidence_status": "development_case_source_only_unversioned_conversational_audit_not_gold",
+  "inputs": {
+    "source_request": {
+      "path": "data/natural_model_pilot_v06/candidate_request.json",
+      "sha256": "8874b90fda88c503f0b571fcb03c17a7a1786df595f3721108f29df293e11224"
+    },
+    "base_graph": {
+      "path": "data/natural_model_pilot_v06/candidate_output_repaired.json",
+      "sha256": "5551ca4e5c5c4106a49d7f9cc9652cdf75e3211642bc061ddcd5dbc53bfb76ef"
+    },
+    "graph_schema": {
+      "path": "configs/candidate_schema_v06_repair.json",
+      "sha256": "2d6f3be0b55a14e26be74e7ee4b903272f38ec9a2486b251ac55711128b3df56"
+    },
+    "audit_prompt": {
+      "path": "configs/candidate_ambiguity_prompt_v07.txt",
+      "sha256": "f929852469f3e905304561ae37a1fde6be6762444fb041595e91b2ba5a215cff"
+    }
+  },
+  "visible_to_auditor": [
+    "source_request",
+    "base_graph",
+    "graph_schema",
+    "audit_prompt",
+    "this_protocol"
+  ],
+  "prohibited_inputs": [
+    "questions",
+    "gold_answers",
+    "previous_scores",
+    "decoder_results",
+    "later_outcomes",
+    "external_sources",
+    "other_histories"
+  ],
+  "invocation": {
+    "fresh_context": true,
+    "candidate_audit_calls": 1,
+    "can_return_zero_proposals": true,
+    "numeric_scoring_forbidden": true,
+    "format_only_repair_calls": 0,
+    "human_annotation": false,
+    "model_revision": null
+  },
+  "limits": {
+    "max_mentions": 8,
+    "existing_mentions": 7,
+    "new_mentions_allowed": 0,
+    "max_resolved_per_mention": 4,
+    "unresolved_added_by_adapter": 1,
+    "max_total_resolved": 28,
+    "overflow": "fail_and_record_no_score_or_label_based_pruning",
+    "reason": "Inherited bounded exact-search interface; this augmentation holds the seven source anchors fixed to isolate added readings. Maxima are compute/representation limits, never a coverage target."
+  },
+  "admissible_category": "mutually_exclusive_reading",
+  "record_but_do_not_add": [
+    "semantic_equivalence",
+    "weaker_or_stronger_information",
+    "separate_assertion",
+    "cross_source_disagreement",
+    "unsupported_alternative",
+    "representation_defect"
+  ],
+  "source_priority": "No reliability or document-priority hierarchy is assumed; each reading concerns what its own source asserts.",
+  "proposal_gate_order": [
+    "strict audit shape and complete unique mention coverage",
+    "source hashes and exact unique quote alignment",
+    "primary-source anchor overlap for every proposed reading",
+    "unchanged v06 schema and temporal modality gates",
+    "source-only adjudication of both support and mutual exclusion",
+    "deterministic semantic deduplication",
+    "bounded deterministic union",
+    "full candidate graph and correction-policy validation"
+  ],
+  "adjudication": {
+    "trigger": "any proposal or representation defect; no separate adjudication is needed when audit proposes nothing and flags no defects",
+    "reviewer": "a fresh source-only review context, with the same declared source context, base graph, audit output and this protocol; no scores or answers",
+    "decision_per_proposal": [
+      "accept",
+      "reject",
+      "unresolved"
+    ],
+    "decision_evidence": "exact source quotes plus concise support and mutual-exclusion rationale; schema validation is not entailment adjudication",
+    "uncertain_disposition": "unresolved proposals are recorded but not admitted",
+    "disagreement": "record both findings; no repeated model votes or outcome-based tie breaking",
+    "defect_policy": "unresolved base-graph representation defects block augmentation; a corrected graph would require its own explicit repair protocol and must not silently replace this base",
+    "attempts": 1,
+    "status": "conditional_not_yet_run",
+    "not_claimed": "human validation, independent model family, immutable model revision, gold standard"
+  },
+  "semantic_deduplication": {
+    "within_mention_only": true,
+    "key_fields": [
+      "subject",
+      "relation",
+      "value",
+      "scope",
+      "role_qualifier",
+      "polarity",
+      "modality",
+      "reported_at",
+      "start.lower",
+      "start.upper",
+      "end.lower",
+      "end.upper",
+      "sorted_unique_state_observed_at"
+    ],
+    "excluded_from_key": [
+      "candidate_id",
+      "evidence",
+      "derivation_note",
+      "start.precision",
+      "end.precision",
+      "observation_kind"
+    ],
+    "reason_for_exclusion": "IDs, provenance/description, precision labels and observation_kind do not create a new represented core claim when endpoint bounds and observations are identical.",
+    "normalization": "Exact field strings retained; no stemming, alias collapse, lowercasing or date shifts. JSON canonicalization uses sort_keys=True,separators=(comma,colon),ensure_ascii=False; unknown bounds remain null.",
+    "representative": "An existing base candidate wins any duplicate. Otherwise lexicographically smallest SHA256 of full canonical proposed reading without candidate_id wins; hash collision fails.",
+    "evidence": "Do not rewrite the retained base record. Store additional duplicate provenance in the lineage ledger. For new equivalent proposals, keep representative bytes and record all duplicates separately.",
+    "subsumption": "Overlapping or nested readings are not exact duplicates. They require semantic adjudication; never admit them as mutually exclusive solely because JSON differs."
+  },
+  "union": {
+    "base": "Preserve existing mentions, reading order, links, aliases, authorities, dependencies and unsupported records unchanged.",
+    "new_readings": "Accepted nonduplicate proposals appended in each existing mention by semantic-key SHA256; canonical IDs a07_ plus full semantic-key SHA256 (including mention_id). ID collisions fail.",
+    "links": "No automatic clone from existing readings. Only separately accepted source-supported proposed links are added; substitute canonical candidate IDs. Deduplicate on relation,endpoints and correction certificate, retaining existing link if identical. New link IDs al07_ plus full canonical semantic-link SHA256; hash/order deterministically.",
+    "lineage": "Record temporary-to-canonical IDs, accepted/rejected/unresolved decisions, semantic duplicates, exact context hashes and before/after graph hashes.",
+    "zero_additions": "Keep base graph identity; report ambiguity audit found no admitted extra readings. Do not advertise a competing-reading evaluation.",
+    "hard_failure": "Any overflow, malformed candidate, unresolved base defect or final validation failure blocks scoring this augmented graph. Preserve raw failures; no score-driven repair."
+  },
+  "scoring_boundary": {
+    "scores_only_after_frozen_validated_graph": true,
+    "same_graph_for_all_methods": true,
+    "nonzero_proposals_do_not_imply_novelty_or_accuracy": true,
+    "zero_proposals_is_publishable_process_result_only_not_main_paper_claim": true
+  },
+  "known_design_limitations": [
+    "Manual development case and earlier extraction output visible to auditor.",
+    "Auditor is encouraged to scrutinize alternatives, so it is not a blind fresh extraction.",
+    "Context isolation does not eliminate pretraining knowledge or shared model biases.",
+    "One audit cannot establish completeness or an absence of source ambiguity.",
+    "This protocol does not by itself supply evidence of joint-decoding value."
+  ]
+}

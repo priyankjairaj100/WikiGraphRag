@@ -1,0 +1,20 @@
+{
+  "schema_version": "likelihood_scoring_protocol_v0.7",
+  "primary_condition": "yes_no",
+  "conditions": [
+    {"condition_id": "yes_no", "label_order": ["Yes", "No"], "role": "primary"},
+    {"condition_id": "no_yes", "label_order": ["No", "Yes"], "role": "label_order_diagnostic"}
+  ],
+  "labels": {"positive": "Yes", "negative": "No"},
+  "label_token_policy": "Each continuation must be exactly one token. Verify that appending either exact label to the rendered prompt preserves the complete prompt token prefix and adds exactly that label token. Otherwise fail; no replacement labels.",
+  "score_definition": "log P(Yes | identical rendered prompt) - log P(No | identical rendered prompt), using natural logs from the unmodified full vocabulary next-token distribution. No EOS or explanation likelihood is included.",
+  "probability_policy": "No generation confidence, constrained grammar, candidate-only renormalization, logits bias, sampling temperature, top-k or top-p filtering. Full-vocabulary logits may be converted with stable log-softmax. Logit difference alone is equivalent to log-odds but both full-vocabulary log probabilities must be retained.",
+  "source_policy": "Both complete supplied source texts and their supplied metadata appear in every item prompt. No source truncation or source retrieval. Candidate generator IDs, derivation notes, unresolved reasons, QA, gold, prior scores and decoder states are absent from model content.",
+  "item_policy": "The exact deterministic v0.6 neutral item set and item mapping are retained, including every resolved, unresolved, link and no_link option. Alternative multiplicity is not normalized or pruned.",
+  "context_policy": "Fresh logical prompt context per item and condition. Deterministic prefix KV caching is permitted only when equivalent to evaluating the same full prompt; no prior item response or suffix survives in context.",
+  "max_context_tokens": 12288,
+  "context_overflow_policy": "Fail without truncation or skipping any item.",
+  "decoder": {"beta": 1.0, "penalties": [], "primary_objective": "historical", "ablation_objective": "active_support", "calibration": "none", "clipping": "none", "normalization": "none"},
+  "diagnostic_policy": "Run both fixed label orders and report their score and state differences. The primary condition remains yes_no regardless of results. Do not choose or average a better-performing order. Both conditions require exact item coverage.",
+  "claim_limits": "Conditional label likelihood is not calibrated factual truth probability or a normalized distribution over readings or graph states. Tiny quantized CPU scoring is a distinct pilot backend, not the planned 8B baseline. Scores do not provide accuracy or a joint inference benefit without independent evaluation."
+}

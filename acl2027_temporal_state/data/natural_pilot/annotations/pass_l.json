@@ -1,0 +1,530 @@
+{
+  "pass_id": "L",
+  "backend": {
+    "model_revision": null,
+    "decoding_settings": null,
+    "pinned": false,
+    "kind": "conversational_model_agent"
+  },
+  "input_sha256": "47064e99e1c4cb0b54151dbb6430157746c8b7b82fbc5e1b45c6231a741d13e9",
+  "assertions": [
+    {
+      "assertion_id": "L001",
+      "source_id": "sbux_8k_20240814",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Brian Niccol",
+      "valid_from": "2024-09-09",
+      "valid_to": null,
+      "observed_on": "2024-08-14",
+      "status": "planned",
+      "qualifier": "Board-approved appointment with a future effective date.",
+      "operation": "ASSERT",
+      "target_id": null,
+      "rationale": "The August filing expressly schedules the chief executive appointment for September 9; the announcement and offer-letter dates are not occupancy starts.",
+      "evidence": [
+        {
+          "start": 2292,
+          "end": 2593,
+          "quote": "On August 13, 2024, Starbucks Corporation (the “Company” or “Starbucks”) announced that the board of directors of the Company (the “Board”) approved the appointment of Brian Niccol as chief executive officer of the Company and chairman of the Board, effective September 9, 2024 (the “Effective Date”)."
+        }
+      ],
+      "context_source_ids": []
+    },
+    {
+      "assertion_id": "L002",
+      "source_id": "sbux_8k_20240814",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Laxman Narasimhan",
+      "valid_from": "2024-08-12",
+      "valid_to": null,
+      "observed_on": "2024-08-14",
+      "status": "negative",
+      "qualifier": "No longer serves, effective August 12; negative-role interval, not positive occupancy.",
+      "operation": "ASSERT",
+      "target_id": null,
+      "rationale": "The filing explicitly dates cessation to August 12. This assertion records non-occupancy from that date and does not invent an earlier appointment date or an end to the negative assertion.",
+      "evidence": [
+        {
+          "start": 7309,
+          "end": 7498,
+          "quote": "On August 13, 2024, the Company announced that effective as of August 12, 2024, Laxman Narasimhan would no longer serve as the Company’s chief executive officer or as a member of the Board."
+        }
+      ],
+      "context_source_ids": []
+    },
+    {
+      "assertion_id": "L003",
+      "source_id": "sbux_8k_20240814",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Rachel Ruggeri",
+      "valid_from": null,
+      "valid_to": "2024-09-09",
+      "observed_on": "2024-08-14",
+      "status": "reported",
+      "qualifier": "Interim; start date unstated; September 9 endpoint is the stated prospective transition boundary.",
+      "operation": "ASSERT",
+      "target_id": null,
+      "rationale": "The Board is reported to have appointed Ruggeri, but the sentence gives no exact effective start. The defined Effective Date resolves the scheduled exclusive endpoint; it does not verify that the transition subsequently occurred on schedule.",
+      "evidence": [
+        {
+          "start": 7889,
+          "end": 8100,
+          "quote": "In connection with the chief executive officer transition described above, the Board appointed Rachel Ruggeri, chief financial officer of the Company, as interim chief executive officer until the Effective Date."
+        },
+        {
+          "start": 2292,
+          "end": 2593,
+          "quote": "On August 13, 2024, Starbucks Corporation (the “Company” or “Starbucks”) announced that the board of directors of the Company (the “Board”) approved the appointment of Brian Niccol as chief executive officer of the Company and chairman of the Board, effective September 9, 2024 (the “Effective Date”)."
+        }
+      ],
+      "context_source_ids": []
+    },
+    {
+      "assertion_id": "L004",
+      "source_id": "sbux_8k_20240814",
+      "subject": "Starbucks Corporation",
+      "relation": "chief financial officer",
+      "scope": "corporation",
+      "value": "Rachel Ruggeri",
+      "valid_from": null,
+      "valid_to": null,
+      "observed_on": "2024-08-14",
+      "status": "reported",
+      "qualifier": "Current CFO; named in 2021 at year-only precision; intended to retain CFO position during interim CEO service.",
+      "operation": "ASSERT",
+      "target_id": null,
+      "rationale": "The filing identifies Ruggeri as current CFO and says she will retain that position during interim CEO service. The biography supplies only the year 2021, insufficient for a day-level valid_from.",
+      "evidence": [
+        {
+          "start": 7889,
+          "end": 8100,
+          "quote": "In connection with the chief executive officer transition described above, the Board appointed Rachel Ruggeri, chief financial officer of the Company, as interim chief executive officer until the Effective Date."
+        },
+        {
+          "start": 8101,
+          "end": 8224,
+          "quote": "Ms. Ruggeri will also remain in her current position with the Company while serving as the interim chief executive officer."
+        },
+        {
+          "start": 8225,
+          "end": 8381,
+          "quote": "Ms. Ruggeri, age 54, joined Starbucks in 2001 as a member of the accounting team and was named executive vice president and chief financial officer in 2021."
+        }
+      ],
+      "context_source_ids": []
+    },
+    {
+      "assertion_id": "L005",
+      "source_id": "sbux_archived_press_exhibit",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Brian Niccol",
+      "valid_from": "2024-09-09",
+      "valid_to": null,
+      "observed_on": "2024-08-13",
+      "status": "planned",
+      "qualifier": "Appointed with service in the new role scheduled to start September 9.",
+      "operation": "ASSERT",
+      "target_id": null,
+      "rationale": "Despite the words has been appointed, the same sentence sequence explicitly puts the start of the new role in the future.",
+      "evidence": [
+        {
+          "start": 404,
+          "end": 603,
+          "quote": "SEATTLE (August 13, 2024) – Starbucks (NASDAQ: SBUX) today announced that Brian Niccol has been appointed chairman and chief executive officer. Niccol will start in his new role on September 9, 2024."
+        }
+      ],
+      "context_source_ids": []
+    },
+    {
+      "assertion_id": "L006",
+      "source_id": "sbux_archived_press_exhibit",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Laxman Narasimhan",
+      "valid_from": "2024-08-13",
+      "valid_to": null,
+      "observed_on": "2024-08-13",
+      "status": "negative",
+      "qualifier": "Immediate-effect departure, anchored to the dated August 13 announcement; conflicts with the filing boundary.",
+      "operation": "ASSERT",
+      "target_id": null,
+      "rationale": "Immediate effect is interpreted relative to the source’s explicit August 13 announcement date. The date is therefore an explicit relative boundary, not a default publication-date validity assumption. The cross-source conflict remains unresolved.",
+      "evidence": [
+        {
+          "start": 2325,
+          "end": 2442,
+          "quote": "Laxman Narasimhan is stepping down from his role as ceo and as a member of the Starbucks board with immediate effect."
+        },
+        {
+          "start": 404,
+          "end": 429,
+          "quote": "SEATTLE (August 13, 2024)"
+        }
+      ],
+      "context_source_ids": []
+    },
+    {
+      "assertion_id": "L007",
+      "source_id": "sbux_archived_press_exhibit",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Rachel Ruggeri",
+      "valid_from": null,
+      "valid_to": "2024-09-09",
+      "observed_on": "2024-08-13",
+      "status": "planned",
+      "qualifier": "Interim; will serve; no explicit start date; scheduled endpoint September 9.",
+      "operation": "ASSERT",
+      "target_id": null,
+      "rationale": "The press release describes prospective interim service until Niccol starts. The words until that time refer to September 9. No explicit wording assigns Ruggeri’s own start to August 12 or August 13.",
+      "evidence": [
+        {
+          "start": 604,
+          "end": 697,
+          "quote": "Starbucks chief financial officer, Rachel Ruggeri, will serve as interim ceo until that time."
+        },
+        {
+          "start": 548,
+          "end": 603,
+          "quote": "Niccol will start in his new role on September 9, 2024."
+        }
+      ],
+      "context_source_ids": []
+    },
+    {
+      "assertion_id": "L008",
+      "source_id": "sbux_archived_press_exhibit",
+      "subject": "Starbucks Corporation",
+      "relation": "chief financial officer",
+      "scope": "corporation",
+      "value": "Rachel Ruggeri",
+      "valid_from": null,
+      "valid_to": null,
+      "observed_on": "2024-08-13",
+      "status": "reported",
+      "qualifier": "Current CFO; since 2021, with no month or day supplied.",
+      "operation": "ASSERT",
+      "target_id": null,
+      "rationale": "Both the present CFO description and the since-2021 statement support CFO service, but neither supplies an exact appointment date.",
+      "evidence": [
+        {
+          "start": 604,
+          "end": 697,
+          "quote": "Starbucks chief financial officer, Rachel Ruggeri, will serve as interim ceo until that time."
+        },
+        {
+          "start": 4300,
+          "end": 4368,
+          "quote": "Ruggeri is a 23-year Starbucks partner. She has been cfo since 2021."
+        }
+      ],
+      "context_source_ids": []
+    },
+    {
+      "assertion_id": "L009",
+      "source_id": "sbux_2024_10k_certification",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Brian Niccol",
+      "valid_from": null,
+      "valid_to": null,
+      "observed_on": "2024-11-20",
+      "status": "reported",
+      "qualifier": "Current observation on November 20; source spells the name Brian R. Niccol.",
+      "operation": "ASSERT",
+      "target_id": null,
+      "rationale": "The dated certification directly identifies Niccol as current CEO. It provides no appointment date; neither the fiscal year-end nor the certification date is a service-start boundary.",
+      "evidence": [
+        {
+          "start": 184,
+          "end": 605,
+          "quote": "In connection with the Annual Report of Starbucks Corporation (“Starbucks”) on Form 10-K for the fiscal year ended September 29, 2024, as filed with the Securities and Exchange Commission on November 20, 2024 (the “Report”), Brian R. Niccol, chairman and chief executive officer of Starbucks, and Rachel Ruggeri, executive vice president, chief financial officer of Starbucks, each hereby certifies, pursuant to 18 U.S.C."
+        },
+        {
+          "start": 991,
+          "end": 1125,
+          "quote": "November 20, 2024\n\n\n |  |  |  |  |  |  |  |\n |  | /s/ Brian R. Niccol\n |  | Brian R. Niccol\n |  | chairman and chief executive officer"
+        }
+      ],
+      "context_source_ids": []
+    },
+    {
+      "assertion_id": "L010",
+      "source_id": "sbux_2024_10k_certification",
+      "subject": "Starbucks Corporation",
+      "relation": "chief financial officer",
+      "scope": "corporation",
+      "value": "Rachel Ruggeri",
+      "valid_from": null,
+      "valid_to": null,
+      "observed_on": "2024-11-20",
+      "status": "reported",
+      "qualifier": "Current observation on November 20; repeated same-person CFO assertion.",
+      "operation": "RESTATES",
+      "target_id": "L004",
+      "rationale": "The dated certification restates the earlier reported CFO identity. RESTATES marks repeated role identity only; this later observation supplies no new appointment and does not establish uninterrupted service between observations.",
+      "evidence": [
+        {
+          "start": 184,
+          "end": 605,
+          "quote": "In connection with the Annual Report of Starbucks Corporation (“Starbucks”) on Form 10-K for the fiscal year ended September 29, 2024, as filed with the Securities and Exchange Commission on November 20, 2024 (the “Report”), Brian R. Niccol, chairman and chief executive officer of Starbucks, and Rachel Ruggeri, executive vice president, chief financial officer of Starbucks, each hereby certifies, pursuant to 18 U.S.C."
+        },
+        {
+          "start": 1127,
+          "end": 1271,
+          "quote": "November 20, 2024\n\n |  |  |  |  |  |  |  |\n |  | /s/ Rachel Ruggeri\n |  | Rachel Ruggeri\n |  | executive vice president, chief financial officer"
+        }
+      ],
+      "context_source_ids": [
+        "sbux_8k_20240814"
+      ]
+    }
+  ],
+  "disagreements_or_ambiguities": [
+    {
+      "ambiguity_id": "L-A01",
+      "assertion_ids": [
+        "L002",
+        "L006"
+      ],
+      "description": "The filing explicitly dates Narasimhan’s cessation August 12, while the August 13 release says immediate effect. The relative reading gives August 13. Preserve both source-specific negative assertions; neither text identifies itself as a correction of the other.",
+      "resolution": "Unresolved one-day departure-boundary conflict; no CORRECTS operation.",
+      "evidence": [
+        {
+          "source_id": "sbux_8k_20240814",
+          "start": 7309,
+          "end": 7498,
+          "quote": "On August 13, 2024, the Company announced that effective as of August 12, 2024, Laxman Narasimhan would no longer serve as the Company’s chief executive officer or as a member of the Board."
+        },
+        {
+          "source_id": "sbux_archived_press_exhibit",
+          "start": 2325,
+          "end": 2442,
+          "quote": "Laxman Narasimhan is stepping down from his role as ceo and as a member of the Starbucks board with immediate effect."
+        },
+        {
+          "source_id": "sbux_archived_press_exhibit",
+          "start": 404,
+          "end": 429,
+          "quote": "SEATTLE (August 13, 2024)"
+        }
+      ]
+    },
+    {
+      "ambiguity_id": "L-A02",
+      "assertion_ids": [
+        "L003",
+        "L007"
+      ],
+      "description": "Ruggeri’s interim appointment has no exact start in either source. The filing reports appointed while the release says will serve. The conflicting outgoing-CEO dates cannot determine her incoming date.",
+      "resolution": "Both starts remain null; preserve reported versus planned source wording and the explicit prospective September 9 endpoint.",
+      "evidence": [
+        {
+          "source_id": "sbux_8k_20240814",
+          "start": 7889,
+          "end": 8100,
+          "quote": "In connection with the chief executive officer transition described above, the Board appointed Rachel Ruggeri, chief financial officer of the Company, as interim chief executive officer until the Effective Date."
+        },
+        {
+          "source_id": "sbux_8k_20240814",
+          "start": 2292,
+          "end": 2593,
+          "quote": "On August 13, 2024, Starbucks Corporation (the “Company” or “Starbucks”) announced that the board of directors of the Company (the “Board”) approved the appointment of Brian Niccol as chief executive officer of the Company and chairman of the Board, effective September 9, 2024 (the “Effective Date”)."
+        },
+        {
+          "source_id": "sbux_archived_press_exhibit",
+          "start": 604,
+          "end": 697,
+          "quote": "Starbucks chief financial officer, Rachel Ruggeri, will serve as interim ceo until that time."
+        },
+        {
+          "source_id": "sbux_archived_press_exhibit",
+          "start": 548,
+          "end": 603,
+          "quote": "Niccol will start in his new role on September 9, 2024."
+        }
+      ]
+    },
+    {
+      "ambiguity_id": "L-A03",
+      "assertion_ids": [
+        "L004",
+        "L008",
+        "L010"
+      ],
+      "description": "The earlier sources locate Ruggeri’s CFO onset only within 2021. The November certification supplies a later current-role observation, not a more precise original appointment date or proof of uninterrupted tenure.",
+      "resolution": "No conversion of 2021 into January 1 and no new appointment on November 20; valid_from remains null.",
+      "evidence": [
+        {
+          "source_id": "sbux_8k_20240814",
+          "start": 8225,
+          "end": 8381,
+          "quote": "Ms. Ruggeri, age 54, joined Starbucks in 2001 as a member of the accounting team and was named executive vice president and chief financial officer in 2021."
+        },
+        {
+          "source_id": "sbux_archived_press_exhibit",
+          "start": 4300,
+          "end": 4368,
+          "quote": "Ruggeri is a 23-year Starbucks partner. She has been cfo since 2021."
+        },
+        {
+          "source_id": "sbux_2024_10k_certification",
+          "start": 1127,
+          "end": 1271,
+          "quote": "November 20, 2024\n\n |  |  |  |  |  |  |  |\n |  | /s/ Rachel Ruggeri\n |  | Rachel Ruggeri\n |  | executive vice president, chief financial officer"
+        }
+      ]
+    },
+    {
+      "ambiguity_id": "L-A04",
+      "assertion_ids": [
+        "L001",
+        "L003",
+        "L005",
+        "L007",
+        "L009"
+      ],
+      "description": "The early sources schedule Niccol’s start and the interim endpoint for September 9. The later certification confirms Niccol as CEO on November 20, but does not explicitly confirm the exact realized appointment date or Ruggeri’s realized interim cessation date. September 29 denotes fiscal year-end, not a CEO boundary.",
+      "resolution": "Retain planned September 9 boundaries only in their source-specific assertions. Keep the later observed CEO start null; do not infer continuity, a November appointment, or a correction.",
+      "evidence": [
+        {
+          "source_id": "sbux_8k_20240814",
+          "start": 2292,
+          "end": 2593,
+          "quote": "On August 13, 2024, Starbucks Corporation (the “Company” or “Starbucks”) announced that the board of directors of the Company (the “Board”) approved the appointment of Brian Niccol as chief executive officer of the Company and chairman of the Board, effective September 9, 2024 (the “Effective Date”)."
+        },
+        {
+          "source_id": "sbux_8k_20240814",
+          "start": 7889,
+          "end": 8100,
+          "quote": "In connection with the chief executive officer transition described above, the Board appointed Rachel Ruggeri, chief financial officer of the Company, as interim chief executive officer until the Effective Date."
+        },
+        {
+          "source_id": "sbux_archived_press_exhibit",
+          "start": 404,
+          "end": 603,
+          "quote": "SEATTLE (August 13, 2024) – Starbucks (NASDAQ: SBUX) today announced that Brian Niccol has been appointed chairman and chief executive officer. Niccol will start in his new role on September 9, 2024."
+        },
+        {
+          "source_id": "sbux_2024_10k_certification",
+          "start": 184,
+          "end": 605,
+          "quote": "In connection with the Annual Report of Starbucks Corporation (“Starbucks”) on Form 10-K for the fiscal year ended September 29, 2024, as filed with the Securities and Exchange Commission on November 20, 2024 (the “Report”), Brian R. Niccol, chairman and chief executive officer of Starbucks, and Rachel Ruggeri, executive vice president, chief financial officer of Starbucks, each hereby certifies, pursuant to 18 U.S.C."
+        },
+        {
+          "source_id": "sbux_2024_10k_certification",
+          "start": 991,
+          "end": 1125,
+          "quote": "November 20, 2024\n\n\n |  |  |  |  |  |  |  |\n |  | /s/ Brian R. Niccol\n |  | Brian R. Niccol\n |  | chairman and chief executive officer"
+        }
+      ]
+    }
+  ],
+  "exclusions": [
+    {
+      "exclusion_id": "L-X01",
+      "source_id": "sbux_8k_20240814",
+      "reason": "Niccol’s CEO positions at Chipotle and Taco Bell are other organizations, not Starbucks CEO assertions.",
+      "evidence": [
+        {
+          "start": 2889,
+          "end": 3130,
+          "quote": "Mr. Niccol, age 50, currently serves as chief executive officer and a director of Chipotle Mexican Grill, Inc. (“Chipotle”). He began serving in this role in September 2018 and as chairman of the board of directors of Chipotle in March 2020."
+        },
+        {
+          "start": 3131,
+          "end": 3287,
+          "quote": "From January 2015 to February 2018, Mr. Niccol served as chief executive officer of Taco Bell, a division of Yum! Brands, Inc., a global restaurant company."
+        }
+      ]
+    },
+    {
+      "exclusion_id": "L-X02",
+      "source_id": "sbux_archived_press_exhibit",
+      "reason": "The press release’s Chipotle and Taco Bell CEO history is outside the focal organization. Differences in the out-of-scope Chipotle onset are not reconciled into the Starbucks history.",
+      "evidence": [
+        {
+          "start": 2973,
+          "end": 3168,
+          "quote": "Niccol joined Chipotle as Chief Executive Officer and a director in March 2018, and became Chairman of the Board in March 2020. Before joining Chipotle, he served as Chief Executive of Taco Bell."
+        }
+      ]
+    },
+    {
+      "exclusion_id": "L-X03",
+      "source_id": "sbux_8k_20240814",
+      "reason": "Ruggeri’s Continental Mills CFO position belongs to another corporation; her vice-president finance positions are not synonymous with corporate CFO.",
+      "evidence": [
+        {
+          "start": 8806,
+          "end": 9119,
+          "quote": "From 2016 to 2020, she held various leadership roles in finance both internal and external to Starbucks, including chief financial officer of Continental Mills from 2018 to 2020 and prior to that she was senior vice president of finance at Starbucks in support of the Americas and Global Retail from 2016 to 2018."
+        }
+      ]
+    },
+    {
+      "exclusion_id": "L-X04",
+      "source_id": "sbux_8k_20240814",
+      "reason": "Hobson’s chair and lead independent director roles are board roles, not CEO or CFO. Niccol’s chair appointment is likewise not a separate CEO or CFO fact.",
+      "evidence": [
+        {
+          "start": 2594,
+          "end": 2888,
+          "quote": "In connection with Mr. Niccol’s appointment as chairman of the Board, the Board created a lead independent director position for the Board and, on August 11, 2024, appointed Mellody Hobson, who is the current chairman of the Board, as lead independent director, effective on the Effective Date."
+        }
+      ]
+    },
+    {
+      "exclusion_id": "L-X05",
+      "source_id": "sbux_archived_press_exhibit",
+      "reason": "Hobson’s board chair and lead independent director titles and Schultz’s founder/chairman emeritus titles are outside CEO/CFO scope.",
+      "evidence": [
+        {
+          "start": 698,
+          "end": 775,
+          "quote": "Mellody Hobson, Starbucks board chair, will become lead independent director."
+        },
+        {
+          "start": 4092,
+          "end": 4153,
+          "quote": "said Howard Schultz, Starbucks founder and chairman emeritus."
+        }
+      ]
+    },
+    {
+      "exclusion_id": "L-X06",
+      "source_id": "sbux_2024_10k_certification",
+      "reason": "The certification’s chairman and executive vice president qualifiers do not create additional CEO/CFO relations.",
+      "evidence": [
+        {
+          "start": 409,
+          "end": 559,
+          "quote": "Brian R. Niccol, chairman and chief executive officer of Starbucks, and Rachel Ruggeri, executive vice president, chief financial officer of Starbucks"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Source-only machine extraction from the three supplied Starbucks texts, within the supplied November 21, 2024 operational prefix; no other files, external knowledge, earlier pass outputs, or live sources used.",
+    "No Nike history is present in this assigned input, so no Nike assertions were extracted.",
+    "Observed_on uses the reported source publication/signature date: August 14 for the filing, August 13 for the press exhibit, and November 20 for the certification. It is not a default validity boundary. Operational availability metadata is not independently verified publication evidence.",
+    "Day-only schema cannot express year-only CFO onset; 2021 is retained in qualifiers/evidence and valid_from remains null.",
+    "For negative assertions, valid_from describes the onset of stated non-occupancy; these rows must not be materialized as positive officeholding. Their null ends do not establish permanent non-occupancy.",
+    "The interim September 9 exclusive endpoints express a prospective transition plan in the early sources. The supplied later current-role certification does not establish the actual day of transition or uninterrupted tenure.",
+    "Brian R. Niccol is normalized to Brian Niccol for the same given-name/surname and corporate role; the exact later spelling is retained in the qualifier and evidence.",
+    "No supplied statement explicitly identifies a correction target; conflicting boundaries remain unresolved, and no full correction is inferred.",
+    "The two August source documents may describe the same announcement and are not independent corroborating events. Source-specific assertions are retained before cross-source reconciliation.",
+    "Model revision and decoding settings were not exposed or pinned; this is a conversational model extraction, not human annotation."
+  ]
+}

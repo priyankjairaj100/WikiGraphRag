@@ -1,0 +1,115 @@
+Independent technical review of the v0.8 scorer control
+======================================================
+
+Scope
+-----
+This review examines the frozen follow-up experiment separately from its
+collector's verification code. It uses the archived exact prompts, requests,
+raw model responses, process receipts, native /props outputs and process logs.
+The independent implementation is scripts/review_scorer_controls_v08.py; its
+portable default command is:
+
+    python scripts/review_scorer_controls_v08.py
+
+It makes no network request or model call and does not require model assets.
+It writes results/scorer_control_review_v08.json. The reviewer additionally
+hashed the two actual external assets (GGUF and runtime archive) and all 60
+extracted runtime files in this session; all 62 agreed with the frozen pins.
+Those binaries remain outside the distributable project.
+
+Checks and interpretation
+-------------------------
+The review requires all eight native process bindings, not merely a hash of
+metadata. Each complete command must select the same Qwen3-0.6B Q8_0 model,
+llama.cpp b11146 executable, four inference and batch threads, 8192-token
+context, 256-token batch, 128-token microbatch, CPU-only inference, one slot,
+Q8 key/value cache, flash attention, no context shifting and disabled thinking.
+Each /props response must independently match the model, quantization,
+context, slot count, build identifier and exact native-template hash. Each
+native log must corroborate the model, thread/context settings, exactly two
+completion tasks beginning at task zero, untruncated releases and cleanup.
+All process IDs must differ, and all exit codes must be zero.
+
+Archived per-process resource limits must be 2 GiB of address space and 2250
+CPU seconds. Inspection of the frozen backend confirms both hard and soft
+RLIMIT_AS/RLIMIT_CPU limits are installed in the child before exec. There are
+no separately archived /proc limit snapshots. The children_peak_rss_kib field
+is a collector-lifetime child high-water statistic; it must not be presented
+as an independently measured peak for each process.
+
+For each raw completion the audit checks the complete original token array,
+request settings and native response settings. Cold execution must have zero
+cached tokens and evaluate the entire prompt. Warm execution must reuse a
+positive prefix. Both must account for every input token, predict exactly
+one token and report no truncation. Raw native output must contain unique
+top-256 token records including exact Yes/No token IDs, bytes and finite log
+probabilities. Scores are independently recomputed as ln P(Yes)-ln P(No), and
+literal-label mass is retained. The native response reports temperature zero
+for the request's negative greedy setting. The preserved pinned-runtime source
+evidence, post_sampling_probs=false and backend_sampling=false establish
+pre-sampling full-vocabulary normalization; returned top-256 ranks are not a
+label-only probability normalization.
+
+For all four items, the two rendered prompts must differ only by exchanging
+the complete Yes and No definition lines under LABELS. All meanings and all
+other prompt content remain identical. Fresh apply-template and tokenize
+response bodies were checked live against v0.7 by the frozen collector but
+were not separately archived; the exact original rendered bytes, token arrays,
+appended single-token label boundaries and actual submitted arrays are bound
+and retained. A byte check cannot retrospectively recreate an unrecorded live
+response, and this review does not claim to have done so.
+
+The complete distribution and process-artifact count, original first-item-per-
+kind selection, alternating condition schedule, freeze chronology, failed-run
+absence in the canonical receipt and all hashes are checked. Independent
+recomputation is compared exactly with the collector's 16 measurements and
+four contrasts. The collector's own replay validates process-artifact hashes;
+this separate review adds semantic examination of all eight native bindings.
+
+Limits of the result
+--------------------
+The control was designed after v0.7's aggregate instability was known. It uses
+four dependent items from one already inspected development history, one tiny
+quantized model and one CPU/runtime configuration. It is a diagnostic, not a
+held-out experiment. Fixed counterbalancing is not random assignment.
+
+A persistent cold/cold label-order difference rules out prompt-cache carryover
+as a sufficient explanation for that observed difference. It does not prove
+that prompt caching contributed nothing to the other 28 v0.7 items, or establish
+population prevalence, calibrated probability, gold accuracy or a novel method.
+Cold/warm differences also depend on this Q8 KV and batch schedule. Fresh
+processes do not clear OS file caches, eliminate numerical implementation
+effects, or make the runtime hermetic. There is no test of model-independent
+behavior and no significance test. Neither prompts, tolerance, selected items,
+model inputs nor collector were tuned or changed by this review.
+
+Observed result
+---------------
+The independent audit passed for all 16 measurements and all 8 distinct
+processes. Every process exited cleanly with status zero. All frozen input
+hashes and all 24 process artifacts matched. The independent computations
+match the collector's reported values exactly.
+Scores are natural-log odds. The cold score under each label display order
+is shown below; the corresponding warm score is exactly the same in every
+cell, at the precision preserved in the native JSON outputs.
+Item    Kind        Cold yes_no       Cold no_yes       no_yes - yes_no
+s0001   link            5.601484555      -0.516765594         -6.118250149
+s0003   unresolved      4.386419198      -2.174888574         -6.561307771
+s0004   reading         7.010147275      -1.121358961         -8.131506236
+s0006   no_link         3.095415186      -0.115680754         -3.211095940
+
+All 4/4 cold comparisons reverse sign. Their absolute log-odds differences
+range from 3.211095940 to 8.131506236. All 8/8 cold/warm pairs have exactly
+equal archived Yes and No log probabilities, so they pass the fixed 1e-6
+per-label tolerance without relaxing it. Every warm-minus-cold score and
+every reported interaction is exactly zero in the retained outputs. This
+is observed equality at the stored precision, not a universal determinism
+guarantee.
+
+The cold/cold result supports a narrower diagnosis than v0.7 alone: prompt
+KV-cache carryover is not a sufficient explanation of the four selected
+items' answer-order sensitivity under this pinned backend. The scorer is
+therefore unsuitable as evidence of stable factual-support scoring without
+further validation. The control does not choose either prompt as correct,
+change v0.7's primary scores, average conditions or improve a decoder result.
+Source-grounded accuracy remains unmeasured.

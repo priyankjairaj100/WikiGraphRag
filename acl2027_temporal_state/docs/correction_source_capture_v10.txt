@@ -1,0 +1,20 @@
+Correction source capture v0.10
+
+Selection was frozen before capture. Eleven public HTTPS sources were attempted once each: four financial annual-report PDFs, four OPERA version/representation URLs, two Rust advisories, and one OpenSSL explanation.
+
+Outcome: 0/11 usable exact captures. Every attempt failed before an HTTP response because curl could not connect to browser-proxy on port 8889 (return code 7; HTTP status 0). No source response bytes or extracted document text were obtained. This is a shared transport failure, not evidence that any source is unavailable to ordinary readers or that a candidate fails the substantive admission criteria. The extractor's mechanical empty-text/title rejection fields are preserved and must not be interpreted as content review.
+
+All 11 attempts have individual external receipts and entries in data/correction_gate_v10/capture_manifest_v10.json. The public source selection is data/correction_gate_v10/capture_selection_v10.json. The wrapper is scripts/capture_correction_sources_v10.py, which imports the existing repaired v0.8 extractor without editing it. It records outer exceptions (including subprocess timeouts) as failed receipts, in addition to ordinary curl failures. No exception path was needed in this batch.
+
+Limits: HTTPS only, at most five HTTPS redirects, 10-second connect timeout, 30-second transfer limit, 8 MiB maximum response, at most four concurrent captures, no retry, no credentials, and no challenge handling or network-policy escalation. Source data paths are outside the distributable project. Full response, headers, and extracted text are excluded from the project; only hashes and metadata are retained there.
+
+Versioned arXiv URLs and original-report URLs identify requested representations. Capturing such a URL today would not independently establish first public availability or prove that those bytes were served historically. In this batch, there are no captured document bytes to ground an exact replay at all.
+
+Verification: all 11 external receipts equal their manifest records, all existing captured-file hashes match (only empty header files were produced), source IDs are unique, selection hash matches the manifest, the freeze time precedes capture, and the imported extractor hash matches its file. No questions, labels, scores, predictions, model calls, or benchmark admissions were generated.
+
+Selection SHA256: 1c9a175691ace1967efe0ddee00553a53b912b70158a0cad7b138fe2d81cb62f
+Manifest SHA256: 377bbd7f231114062f212a0b69186a04352549b75b152727071d3811169691d7
+Capture started: 2026-10-03T05:52:08.783625+00:00
+Capture finished: 2026-10-03T05:52:08.849429+00:00
+
+Consequence: source-only reviewers may continue inspecting authorized public sources through available browsing results, but those results cannot substitute for this missing exact full-response capture. A local exact-input natural comparison remains blocked until an authorized working acquisition route supplies and freezes the actual source representations. This batch must be preserved if a later separately identified capture is attempted.

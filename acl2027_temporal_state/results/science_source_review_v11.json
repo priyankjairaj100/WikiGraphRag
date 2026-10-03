@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "review_id": "science_source_review_v11",
+  "review_type": "independent_source_only",
+  "review_date_utc": "2026-10-03",
+  "inputs_excluded": ["discovery artifacts", "model outputs", "reference answers"],
+  "sources": [
+    {
+      "id": "article",
+      "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720914",
+      "title": "Association of Pharmaceutical Industry Marketing of Opioid Products With Mortality From Opioid-Related Overdoses",
+      "publication_date": "2019-01-18",
+      "reported_correction_date": "2019-03-22",
+      "doi": "10.1001/jamanetworkopen.2018.6007",
+      "web_reference": "turn218view1",
+      "metadata_lines": [52, 56, 94, 433, 435],
+      "version_status": "present_corrected_article_only"
+    },
+    {
+      "id": "notice",
+      "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2728611",
+      "title": "Errors in Results, Table 3, and eTables 2 and 3",
+      "publication_date": "2019-03-22",
+      "doi": "10.1001/jamanetworkopen.2019.1625",
+      "web_reference": "turn218view0",
+      "metadata_lines": [50, 56, 73],
+      "byline": "no_named_author_observed"
+    }
+  ],
+  "evidence": {
+    "correction": {
+      "source_id": "notice",
+      "lines": [80, 81, 82],
+      "summary": "Notice reports exchanged payment-count and physician-count estimates and intervals in Results and Table 3, further swapped covariates and supplement columns, and a corrected outcome title. It states broad conclusions survive."
+    },
+    "residual": {
+      "source_id": "article",
+      "lines": [364, 365, 366, 379, 380],
+      "summary": "Prescribing-rate prose still ranks payment-count highest, beside corrected point estimates: payments 11.08, physicians 13.59, dollars 1.82.",
+      "dependence": "candidate_source_present_point_estimate_comparison",
+      "direct_correction_of_rank_observed": false,
+      "historical_rank_bytes_observed": false
+    },
+    "scope": {
+      "source_id": "article",
+      "lines": [264, 265, 270, 271, 272, 273, 277, 364, 366, 367],
+      "outcome": "county_prescribing_rate_per_100_population",
+      "exposures": "annual_marketing_measures_per_1000_population",
+      "reported_comparison_scale": "one_standard_deviation_increase",
+      "adjustment": "county_sociodemographic_covariates",
+      "lag_years": 1,
+      "model_scope_caveat": "Methods describe Tobit linear estimates; Results and table use aRR labels. Preserve that discrepancy. Mortality uses another model and outcome."
+    },
+    "unaffected_control": {
+      "source_id": "article",
+      "lines": [335, 336, 349],
+      "summary": "Mortality-model marketing-dollar estimate is 1.09 (95% CI 1.05–1.12).",
+      "basis": "separate_outcome_and_table_outside_declared_swap",
+      "historical_unchanged_bytes_verified": false
+    }
+  },
+  "adjudication": {
+    "stratum": "current_document_only",
+    "decision": "residual_consistency_candidate_not_core_replay_ready",
+    "essential_dependency": "The narrow reported-point-estimate ranking requires the relevant scoped estimates. Its apparent mismatch is an analytical inference, not an explicit publisher correction of the ranking. An exact historical prerequisite edge is not certified.",
+    "scope_limits": [
+      "No significance-of-difference conclusion follows from sorting point estimates or overlapping intervals.",
+      "No causal ranking is established.",
+      "Do not compare estimates across outcome families or silently repair aRR/Tobit terminology.",
+      "Do not infer withdrawal of broad conclusions from a local ranking discrepancy."
+    ],
+    "authority": {
+      "documentary_association": "Official notice identifies the authored article; present article cross-links the notice and reports correction date.",
+      "same_asserting_authority_certified": false,
+      "reason": "Unsigned publisher notice and named article authors are distinct observed attribution levels. Cross-linking alone does not prove the existing core's same-authority premise."
+    },
+    "core_replay_ready": false,
+    "blockers": [
+      "No captured historical article with exact erroneous assertion spans.",
+      "Same asserting authority certificate absent.",
+      "No source-certified exact historical essential-AND edge."
+    ],
+    "permitted_use": "A present-document inconsistency example or separately specified reading diagnostic, with the scope caveats retained. This is not a natural longitudinal correction replay or evidence of algorithmic gain.",
+    "historical_reconstruction": "A transposition could be inferred from the notice, but no reconstructed prior text or values are emitted as historical observations.",
+    "questions_created": 0,
+    "scores_created": 0,
+    "gold_labels_created": 0
+  },
+  "quote_accounting": {
+    "body_verbatim_quotes": 0,
+    "source_titles_only": true,
+    "table_image": "Official table-image link opened, but image pixels were not exposed to this reviewer; judgment relies on concordant HTML prose, table, and notice."
+  }
+}

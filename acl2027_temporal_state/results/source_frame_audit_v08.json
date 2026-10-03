@@ -1,0 +1,271 @@
+{
+  "schema_version": "source_frame_audit_v0.8",
+  "audit_date_utc": "2026-10-02T16:55:31.423753+00:00",
+  "status": "frame_and_capture_audit_complete_annotations_not_reviewed",
+  "scope": "Independent model-assisted methodological audit; not human gold, independent sample certification, historical availability proof, or benchmark admission.",
+  "input_sha256": {
+    "data/source_stream_v07/development_frame.json": "92a41392f1557fe5113cc867a45c580152f154c67769936f90bde8d80a6b2d2e",
+    "configs/source_stream_protocol_v07.json": "a60e9cbdc1fb28b5e238541f6c32bef693421da2591ca64bb423f3a79c1b091b",
+    "data/source_stream_v08/annotation_batch_plan.json": "01254e46edaebb2e6c49f56dbe24f3efec154b130d7ab9b9b4368ba2a3b2d21a",
+    "data/source_register/seed_sources.json": "96d4eb3838f19bb44fa08ec44bfe68928d3fb1143aba802b9a8f5c78dfb14ae2",
+    "data/source_register/expansion_v04.json": "d45f553236506f53c8294153c750c44bfb64f68531bbc2662c1ce95ffcbef135",
+    "data/source_stream_v08/capture_manifest.json": "c221d1cbcc171be5bee8fffe3ae9d961961afe9aed3b6d488c4782900eb01993",
+    "data/source_stream_v08/delivery_manifest.json": "bf215f6a6568988b687ca3ee36662ba4df69d116eb6bdc2a6bfb7b5469a29e70"
+  },
+  "counts": {
+    "metadata_histories": 19,
+    "target_histories": 20,
+    "shortfall": 1,
+    "direct_prior_visible_histories": 5,
+    "new_metadata_discoveries": 14,
+    "raw_capture_attempts": 39,
+    "provisionally_usable_sources": 32,
+    "complete_source_sets": 15,
+    "initial_selected_histories": 4,
+    "initial_ready_histories": 3,
+    "initial_ready_prefixes": 6,
+    "initial_blocked_prefixes": 2,
+    "certified_independent_histories": null
+  },
+  "checks": {
+    "raw_text_headers_verified": 117,
+    "file_hash_errors": [],
+    "delivery_bindings_match_capture": true,
+    "prefixes_cumulative_complete_batches": true,
+    "historical_availability_claim": false
+  },
+  "grouping_policy": {
+    "A": "Same event, source, archive/live/reprint or revision must co-locate.",
+    "B": "Explicit body entity relationships conservatively co-locate at organization level; do not call this measured label leakage.",
+    "C": "Common industry, social-share controls, site navigation or recommendations do not by themselves establish target-history overlap.",
+    "completeness": "Bounded metadata and targeted captured-text review, not exhaustive entity resolution. Four frame entity arrays are empty. Remaining groups are provisional.",
+    "independence": "No independence count inferred from 19 group keys, 15 complete source sets, proposed components or number of questions/prefixes."
+  },
+  "group_edges": [
+    {
+      "left": "plan_adobe_flash_2017_2021",
+      "right": "browser_chrome_cookie_plan_2023_2025",
+      "tier": "B_explicit_body_entity_relation_conservative_colocation",
+      "reason": "Adobe identifies Google as a Flash-retirement partner; Chrome is the other selected Google program. Different target facts, shared organization.",
+      "evidence": [
+        {
+          "source_id": "adobe_flash_plan_20170725",
+          "url": "https://blog.adobe.com/en/publish/2017/07/25/adobe-flash-update",
+          "extracted_text_sha256": "af90a0d23bbcf56f3108a2e6876fbe10e2437c60662aa805d5e586afd40d5b21"
+        },
+        {
+          "source_id": "chrome_user_choice_proposal_frame_v07",
+          "url": "https://privacysandbox.google.com/blog/privacy-sandbox-update",
+          "extracted_text_sha256": "7f0c0374d3036b810c47d31915490367b5ad807b6545430acad3e617e90f1302"
+        }
+      ]
+    },
+    {
+      "left": "plan_adobe_flash_2017_2021",
+      "right": "plan_mozilla_firefox_esr115_2023_2025",
+      "tier": "B_explicit_body_entity_relation_conservative_colocation",
+      "reason": "Adobe identifies Mozilla as a Flash-retirement partner; selected Mozilla pages concern OS-specific Firefox support.",
+      "evidence": [
+        {
+          "source_id": "adobe_flash_plan_20170725",
+          "url": "https://blog.adobe.com/en/publish/2017/07/25/adobe-flash-update",
+          "extracted_text_sha256": "af90a0d23bbcf56f3108a2e6876fbe10e2437c60662aa805d5e586afd40d5b21"
+        },
+        {
+          "source_id": "mozilla_esr115_20230706",
+          "url": "https://blog.mozilla.org/futurereleases/2023/07/06/firefox-support-for-windows-7-8-and-8-1/",
+          "extracted_text_sha256": "1922ae4f1e72daef37d100d6ae2c68a51b4ea717df355ba3fe18f8d6eaed68df"
+        }
+      ]
+    },
+    {
+      "left": "plan_adobe_flash_2017_2021",
+      "right": "prior:product_ie11_scoped_retirement",
+      "tier": "B_explicit_body_entity_relation_conservative_colocation",
+      "reason": "Adobe explicitly names Microsoft; prior seed register contains Microsoft IE11 retirement. Organization overlap does not imply same event.",
+      "evidence": [
+        {
+          "source_id": "adobe_flash_plan_20170725",
+          "url": "https://blog.adobe.com/en/publish/2017/07/25/adobe-flash-update",
+          "extracted_text_sha256": "af90a0d23bbcf56f3108a2e6876fbe10e2437c60662aa805d5e586afd40d5b21"
+        }
+      ]
+    },
+    {
+      "left": "plan_adobe_flash_2017_2021",
+      "right": "prior:product_apple_intelligence_eu",
+      "tier": "B_explicit_body_entity_relation_conservative_colocation",
+      "reason": "Adobe explicitly names Apple; prior seed register contains Apple Intelligence rollout. Organization overlap does not imply same event.",
+      "evidence": [
+        {
+          "source_id": "adobe_flash_plan_20170725",
+          "url": "https://blog.adobe.com/en/publish/2017/07/25/adobe-flash-update",
+          "extracted_text_sha256": "af90a0d23bbcf56f3108a2e6876fbe10e2437c60662aa805d5e586afd40d5b21"
+        }
+      ]
+    },
+    {
+      "left": "leadership_disney_2020_2022",
+      "right": "prior:product_apple_intelligence_eu",
+      "tier": "B_explicit_body_entity_relation_conservative_colocation",
+      "reason": "Disney 2022 body describes Bob Iger prior Apple board membership (2011-2019). Actual person-organization relation, not a common industry label.",
+      "evidence": [
+        {
+          "source_id": "disney_iger_20221120",
+          "url": "https://thewaltdisneycompany.com/press-releases/the-walt-disney-company-board-of-directors-appoints-robert-a-iger-as-chief-executive-officer/",
+          "extracted_text_sha256": "c9d3345b366f3384239c2cc814daf5f5218eabda1ba5e2ccd92e57bd45901b9c"
+        }
+      ]
+    },
+    {
+      "left": "leadership_amazon_2021",
+      "right": "prior:product_ie11_scoped_retirement",
+      "tier": "B_explicit_body_entity_relation_conservative_colocation",
+      "reason": "Amazon July 2021 financial-release body names Microsoft among Climate Pledge signatories. Actual organization co-participation, not shared CEO/retirement facts.",
+      "evidence": [
+        {
+          "source_id": "amazon_results_20210729",
+          "url": "https://press.aboutamazon.com/2021/7/amazon-com-announces-second-quarter-results",
+          "extracted_text_sha256": "acb6a3975cfb9855625365efe182e3b5dddc5bc3fee3e96dfa2a5b45c91621f3"
+        }
+      ]
+    },
+    {
+      "left": "mission_artemis_ii_iii_schedule_2024",
+      "right": "plan_esa_exomars_2020_2022",
+      "tier": "B_explicit_body_entity_relation_conservative_colocation",
+      "reason": "ESA 2020 body explicitly reports NASA JPL parachute tests and NASA mission data relays. Co-locate conservatively by shared NASA entity; missions remain distinct.",
+      "evidence": [
+        {
+          "source_id": "esa_exomars_20200312",
+          "url": "https://www.esa.int/Newsroom/Press_Releases/ExoMars_to_take_off_for_the_Red_Planet_in_2022",
+          "extracted_text_sha256": "0b35f15682688b8cd9f7cc43b3aa55f4ac23e6394b6fae24a644ae79b706a2ed"
+        },
+        {
+          "source_id": "artemis_jan_2024_frame_v07",
+          "url": "https://www.nasa.gov/news-release/nasa-shares-progress-toward-early-artemis-moon-missions-with-crew/",
+          "extracted_text_sha256": "2784941006b97367c5e3a101f5abb225e9af28b2a501f51a0114db378cd74f28"
+        }
+      ]
+    },
+    {
+      "left": "service_docker_free_team_2023",
+      "right": "prior:service_docker_free_team_2023",
+      "tier": "A_same_history_or_source_mandatory_colocation",
+      "reason": "Same named history in expansion_v04; one or more exact primary URL overlaps. Current/archive versions remain one history.",
+      "evidence_register": "data/source_register/expansion_v04.json"
+    },
+    {
+      "left": "browser_chrome_cookie_plan_2023_2025",
+      "right": "prior:browser_chrome_cookie_plan_2023_2025",
+      "tier": "A_same_history_or_source_mandatory_colocation",
+      "reason": "Same named history in expansion_v04; one or more exact primary URL overlaps. Current/archive versions remain one history.",
+      "evidence_register": "data/source_register/expansion_v04.json"
+    },
+    {
+      "left": "mission_artemis_ii_iii_schedule_2024",
+      "right": "prior:mission_artemis_ii_iii_schedule_2024",
+      "tier": "A_same_history_or_source_mandatory_colocation",
+      "reason": "Same named history in expansion_v04; one or more exact primary URL overlaps. Current/archive versions remain one history.",
+      "evidence_register": "data/source_register/expansion_v04.json"
+    },
+    {
+      "left": "commerce_playstation_legacy_stores_2021_2026",
+      "right": "prior:commerce_playstation_legacy_stores_2021_2026",
+      "tier": "A_same_history_or_source_mandatory_colocation",
+      "reason": "Same named history in expansion_v04; one or more exact primary URL overlaps. Current/archive versions remain one history.",
+      "evidence_register": "data/source_register/expansion_v04.json"
+    },
+    {
+      "left": "leadership_starbucks_2023_2024",
+      "right": "prior:leadership_starbucks_2024",
+      "tier": "A_same_history_or_source_mandatory_colocation",
+      "reason": "Same 2024 Niccol/Narasimhan/Ruggeri transition, including issuer and SEC representations; different URL does not make a new independent event.",
+      "evidence_register": "data/source_register/seed_sources.json"
+    }
+  ],
+  "recommended_nontrivial_colocation_components": [
+    {
+      "current_histories": [
+        "browser_chrome_cookie_plan_2023_2025",
+        "plan_adobe_flash_2017_2021",
+        "plan_mozilla_firefox_esr115_2023_2025",
+        "leadership_amazon_2021",
+        "leadership_disney_2020_2022"
+      ],
+      "prior_histories": [
+        "product_ie11_scoped_retirement",
+        "product_apple_intelligence_eu",
+        "browser_chrome_cookie_plan_2023_2025"
+      ],
+      "basis": "Conservative transitive entity-level component from explicit body edges; different target facts remain separately scored."
+    },
+    {
+      "current_histories": [
+        "mission_artemis_ii_iii_schedule_2024",
+        "plan_esa_exomars_2020_2022"
+      ],
+      "prior_histories": [
+        "mission_artemis_ii_iii_schedule_2024"
+      ],
+      "basis": "Explicit NASA participation in ESA body, not simply shared aerospace."
+    }
+  ],
+  "rejected_edge_rationales": [
+    {
+      "pair": [
+        "leadership_boeing_2024",
+        "mission_artemis_ii_iii_schedule_2024"
+      ],
+      "decision": "No hard merge from inspected material alone. Boeing appears in current NASA recommendation/navigation material; no shared target-person/event fact identified in inspected bodies. Further full entity audit can change this."
+    },
+    {
+      "pair": [
+        "leadership_adidas_2022_2023",
+        "prior:leadership_nike_2024"
+      ],
+      "decision": "Shared footwear industry alone does not establish source/event/person overlap."
+    },
+    {
+      "pattern": "Facebook and other share links",
+      "decision": "Social-share controls are page furniture, not substantive entity relations."
+    }
+  ],
+  "initial_batch_risks": [
+    {
+      "id": "R1",
+      "history_id": "leadership_ibm_2020",
+      "status": "capture_blocked",
+      "finding": "Both current captures are HTTP200 Site Unavailable bodies and correctly rejected. Metadata/web discovery does not substitute for frozen delivered source bytes. Later November letter is an incumbency attribution, not independent exact-day actual-start evidence.",
+      "required_handling": "Keep both prefixes blocked; do not replace under no-fallback selection rule."
+    },
+    {
+      "id": "R2",
+      "history_id": "service_docker_free_team_2023",
+      "status": "ready_with_semantic_constraints",
+      "finding": "Prefix1 already contains March24 reversal in a March16-dated page. Prefix2 adds details/restatement, not the first observed reversal. Current related-post cards are retained in generic document extraction.",
+      "required_handling": "Retain edits; tag editorial/banner versus body membership and dated report scope; no synthetic pre-reversal prefix. Classify policy change, not correction of a factual error."
+    },
+    {
+      "id": "R3",
+      "history_id": "browser_chrome_cookie_plan_2023_2025",
+      "status": "ready_with_semantic_constraints",
+      "finding": "Both exact captures contain an undated current technology-phaseout banner omitted by the earlier web-rendered discovery. Dated body offers a July2024 user-choice proposal and April2025 cancellation of a standalone prompt; proposal wording is not an implemented rollout.",
+      "required_handling": "Keep banner; annotate unknown update/event time and limited unspecified technology scope. Do not infer cancellation of every API, backdate banner, equate regular and Incognito cookies, or infer rollout from a proposal."
+    },
+    {
+      "id": "R4",
+      "history_id": "plan_hs2_phase2_2017_2023",
+      "status": "ready_with_semantic_constraints",
+      "finding": "Prefix1 contains a correction notice quoting old erroneous wording and replacement text. Percentage and compensation scope both change. Prefix2 changes the rail plan, not the truth of the 2017 correction. No independent uncorrected document was captured.",
+      "required_handling": "Use reported-error/quotation semantics; no invented earlier erroneous source or pre-correction delivery. Do not say all HS2 canceled: later source retains Phase1 and changes Phase2 scope. Do not infer actual construction or compensation outcomes."
+    }
+  ],
+  "scientific_implication": "The three ready histories currently offer plan-change, scope and embedded-correction parsing; they do not yet establish ambiguous identity, cross-document correction-triggered support withdrawal, or a need for joint decoding. Treat absent coupling as a measured negative, never fabricate hypotheses to force it.",
+  "annotation_review": {
+    "status": "pending",
+    "created_by_this_auditor": false,
+    "model_outputs_inspected": false
+  },
+  "distribution_limit": "Full responses and extracted texts remain outside checkpoint under capture distribution policy. Hashes alone cannot reproduce annotation inputs after scratch loss; published artifact needs allowed frozen texts, compliant evidence capsules, or explicitly external input reconstruction with version checks."
+}

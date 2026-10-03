@@ -1,0 +1,75 @@
+BACKEND READINESS v0.6 — READ-ONLY CHECK, 2026-10-02
+
+The model execution gate remains closed. A fresh Hugging Face identity check
+succeeded, but hf_jobs(operation="ps", args={"all": true}) returned:
+  McpServerError: MCP tool hf_jobs was not returned by tools/list
+Its structured error code is UNAVAILABLE. No job was submitted, no job ID was
+returned, and this was not an automatic approval rejection. The error does not
+establish a credit shortage. Authentication reports the jobs scope; the observed
+account is not Pro, but that fact is not diagnosed as the cause of the tool error.
+Credential values were neither obtained nor recorded. Only authentication
+metadata and scope names are retained in results/backend_readiness_v06.json.
+
+Local runtime observations
+Python 3.12.14 runs on x86_64 Linux. Both os.cpu_count() and CPU affinity expose
+9 CPUs. sysconf reported 10,451,464,192 physical bytes (about 9.73 GiB), with
+3,599,327,232 bytes (about 3.35 GiB) available at the time of the probe. The
+workspace disk snapshot had 18,234,572,800 free bytes (about 16.98 GiB).
+
+These are host-level observations, not verified resource guarantees. The
+standard cgroup quota files and /proc/meminfo were unavailable, so the actual
+workspace memory/CPU quota is unknown. Process address-space/data/RSS/CPU
+rlimits returned -1; that does not prove that the enclosing runtime is unlimited.
+
+The primary interpreter has NumPy 2.3.5 but no discoverable torch, transformers,
+huggingface_hub, accelerate, safetensors, tokenizers, llama_cpp, onnxruntime,
+vLLM, or psutil modules. uv is available. hf, llama-cli, and nvidia-smi commands
+were absent, and no NVIDIA/KFD device path was observed. There is no verified
+local GPU or model inference runtime. No package installation or weight
+download was attempted.
+
+Bounded local alternative
+A CPU quantized model substantially smaller than the frozen 8B model is a
+plausible engineering experiment. The official Qwen/Qwen3-0.6B-GGUF repository
+was verified through the Hub metadata connector; it reports Qwen ownership,
+GGUF, and Apache-2.0 licensing. The response did not return a commit, asset
+filenames/hashes, or README text. Consequently no weight or runtime pin is
+claimed and no memory fit or throughput result is available.
+
+A concrete follow-up would resolve the immutable model commit and quantized
+asset hash, resolve and hash a CPU llama.cpp-compatible runtime, and install
+only in a project-specific workspace environment. Start with one short request:
+batch 1, at most 4 threads, 2048 context tokens, 128 new tokens, 60-second
+timeout, a selected weight file no larger than 1 GiB, and a measured peak RSS
+target below 1.5 GiB. These are proposed conservative caps, not a validated
+fit. Reject overlong inputs rather than truncating; stop on any resource or
+parsing failure without hidden retries.
+
+The existing full-history 8B protocol needs up to 12,288 input plus 4096 output
+tokens; a 2048-token short-unit protocol is a distinct experiment. Preserve the
+old config and do not describe a small CPU run as equivalent execution.
+Before scoring candidates, verify support for token log probabilities and
+freeze the scoring protocol. Cache exact source-only inputs, template/token
+IDs, raw outputs, stop reasons, asset/runtime hashes, elapsed time, and peak
+memory. Keep development expectations and QA answers outside model inputs.
+All decoder variants must consume the same cached candidates and scores.
+
+A successful CPU smoke run would validate a runtime and transport path only.
+Candidate coverage, score quality, correction understanding, and any advantage
+from joint inference would still require separate measurements.
+
+No pre-existing backend configuration or report was modified in this pass.
+The detailed machine-readable observations and proposed bounds are in
+results/backend_readiness_v06.json.
+
+Separate exploratory option
+A fresh source-only conversational agent can produce exploratory candidates and
+elicited scores while the pinned runtime is blocked. Such a pass must be
+labelled unversioned conversational judgment. It does not establish token log
+probabilities, reproducible model scoring, or execution of the frozen 8B
+protocol. Supply only eligible source text, a frozen extraction/scoring task
+and schema; exclude prior annotations, questions, development expectations,
+and gold. Preserve exact prompts, source hashes, raw outputs and validation
+failures. All decoder variants must use the identical resulting cache. No such
+pass was performed as part of this backend-readiness inspection; root may
+conduct it as a separate exploratory task.

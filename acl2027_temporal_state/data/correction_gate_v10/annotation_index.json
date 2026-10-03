@@ -1,0 +1,523 @@
+{
+  "schema_version": "correction_gate_annotation_index_v0.10",
+  "created_at_utc": "2026-10-03T06:05:53.266666+00:00",
+  "annotation_role": "source_derived_model_assisted_unversioned_working_annotations",
+  "inputs": {
+    "data/correction_gate_v10/web_excerpt_manifest_v10.json": "927bf90ab11753094b1d64ba17ba1a25744137c928b0e01ff9f20eaa459d9c41",
+    "results/correction_eligibility_corporate_v10.json": "ddae4caed6ddece154de4c8160244527644832df001136e1b0bc79864ffbd824",
+    "docs/correction_gate_replay_schema_v10.txt": "7c92553a1d0534904f684ece1ebde294ea052e051b02d871ab5fd940c1855737"
+  },
+  "source_representation": "Returned web-tool excerpts only. Text blocks are concatenated exactly with synthetic boundary markers. They are line-numbered, noncontiguous, overlapping excerpts and include tool metadata. They are not source PDFs, full source text, or full-prefix inputs.",
+  "raw_quote_bearing_annotations_external_to_checkpoint": true,
+  "quote_text_exported": false,
+  "claims_per_case": 5,
+  "source_capture_day_only": "2026-10-03",
+  "historical_first_public_availability_established": false,
+  "event_endpoints": "unknown; the schema exposes no endpoints",
+  "source_semantics_review_precedes_annotation": true,
+  "model_predictions_read_or_generated": 0,
+  "runner_results_read_or_generated": 0,
+  "reference_questions_authored": 0,
+  "corrected_eps_dependency_added": false,
+  "corrected_eps_dependency_note": "Only the old EPS derivation is annotated; both source-present direct replacements are included. No edge is inferred merely from subject similarity.",
+  "numerical_recomputation_performed": false,
+  "cases": [
+    {
+      "history_id": "plug_2018_eps_restatement",
+      "annotation_path": "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/annotations/plug_2018_eps_restatement.json",
+      "annotation_sha256": "176757cc2bec7d122f5d82a107743462552c937f87df615831c0512a13881935",
+      "annotation_bytes": 13597,
+      "sources": [
+        {
+          "source_id": "plug_2019_10k_web_v10",
+          "local_path": "plug_2019_10k_web_v10/document.txt",
+          "sha256": "6ae0995c60a64dc56453b8548cfe568fc9ee1259ba2136a3775cab04e28c7171",
+          "capture_date": "2026-10-03",
+          "uri": "https://s29.q4cdn.com/600973483/files/doc_financials/2019/ar/4Q19-10K.pdf"
+        },
+        {
+          "source_id": "plug_2020_10k_web_v10",
+          "local_path": "plug_2020_10k_web_v10/document.txt",
+          "sha256": "d7140dc6ff86cc086cbcafb0a97f320531b762e1ae46488b86889146b7dd92c5",
+          "capture_date": "2026-10-03",
+          "uri": "https://s29.q4cdn.com/600973483/files/doc_financials/2020/ar/4Q20-10K.pdf"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "plug_2018_O",
+          "source_id": "plug_2019_10k_web_v10",
+          "entity": "Plug Power Inc.",
+          "relation": "net_loss_attributable_to_common_stockholders",
+          "value": "-78167 thousand USD",
+          "scope": "fiscal year ended 2018-12-31; consolidated",
+          "modality": "reported_actual",
+          "reported_at": null,
+          "role": "O",
+          "units": "thousand USD",
+          "evidence_spans": [
+            {
+              "start": 43118,
+              "end": 43279,
+              "sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8"
+            },
+            {
+              "start": 44863,
+              "end": 44952,
+              "sha256": "17c098a26ce268e9ec020ddf2c987343e9e36a12cc848ea58f8fd7607687af8c"
+            }
+          ]
+        },
+        {
+          "claim_id": "plug_2018_R",
+          "source_id": "plug_2020_10k_web_v10",
+          "entity": "Plug Power Inc.",
+          "relation": "net_loss_attributable_to_common_stockholders",
+          "value": "-85660 thousand USD",
+          "scope": "fiscal year ended 2018-12-31; consolidated",
+          "modality": "reported_actual",
+          "reported_at": null,
+          "role": "R",
+          "units": "thousand USD",
+          "evidence_spans": [
+            {
+              "start": 61851,
+              "end": 62103,
+              "sha256": "16f499f8a13d990be47992945cfdea318677879a171b71b6f6c12c723d12ee92"
+            },
+            {
+              "start": 75923,
+              "end": 76245,
+              "sha256": "85daa7f2c4c32fc7c9b1daacbba1c514b835c09e7223abbc43cea79ba60d28c9"
+            },
+            {
+              "start": 77413,
+              "end": 77592,
+              "sha256": "b0f62b7bb2a9bfc28d5e53ff0986aa585a3c338a76e1b11882d53f97bbed3833"
+            }
+          ]
+        },
+        {
+          "claim_id": "plug_2018_D",
+          "source_id": "plug_2019_10k_web_v10",
+          "entity": "Plug Power Inc.",
+          "relation": "basic_and_diluted_net_loss_per_share",
+          "value": "-0.36 USD per share",
+          "scope": "fiscal year ended 2018-12-31; consolidated",
+          "modality": "reported_actual",
+          "reported_at": null,
+          "role": "D",
+          "units": "USD per share",
+          "evidence_spans": [
+            {
+              "start": 43118,
+              "end": 43279,
+              "sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8"
+            },
+            {
+              "start": 44953,
+              "end": 45039,
+              "sha256": "55204487cb295dd82243ebd90586d1daee52201b0f27a2085580f5c26f84b5d6"
+            }
+          ]
+        },
+        {
+          "claim_id": "plug_2018_E",
+          "source_id": "plug_2020_10k_web_v10",
+          "entity": "Plug Power Inc.",
+          "relation": "basic_and_diluted_net_loss_per_share",
+          "value": "-0.39 USD per share",
+          "scope": "fiscal year ended 2018-12-31; consolidated",
+          "modality": "reported_actual",
+          "reported_at": null,
+          "role": "E",
+          "units": "USD per share",
+          "evidence_spans": [
+            {
+              "start": 61851,
+              "end": 62103,
+              "sha256": "16f499f8a13d990be47992945cfdea318677879a171b71b6f6c12c723d12ee92"
+            },
+            {
+              "start": 75923,
+              "end": 76245,
+              "sha256": "85daa7f2c4c32fc7c9b1daacbba1c514b835c09e7223abbc43cea79ba60d28c9"
+            },
+            {
+              "start": 77593,
+              "end": 77660,
+              "sha256": "b49ca899bc6334e1aa30d4a9972e41df1a0e22b132d989bc24fef3f34bc3db69"
+            }
+          ]
+        },
+        {
+          "claim_id": "plug_2018_U",
+          "source_id": "plug_2019_10k_web_v10",
+          "entity": "Plug Power Inc.",
+          "relation": "services_performed_on_fuel_cell_systems_and_related_infrastructure_revenue",
+          "value": "22002 thousand USD",
+          "scope": "fiscal year ended 2018-12-31; consolidated",
+          "modality": "reported_actual",
+          "reported_at": null,
+          "role": "U",
+          "units": "thousand USD",
+          "evidence_spans": [
+            {
+              "start": 43118,
+              "end": 43279,
+              "sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8"
+            },
+            {
+              "start": 43398,
+              "end": 43496,
+              "sha256": "dbcbb08315bf686c4e0164a10e2b4273be09da5b74e2710ba40e549dbe22bde8"
+            }
+          ]
+        }
+      ],
+      "authorities": [
+        {
+          "source_id": "plug_2019_10k_web_v10",
+          "authority_id": "Plug Power Inc.",
+          "evidence_spans": [
+            {
+              "start": 899,
+              "end": 985,
+              "sha256": "88b30e0d8d9ab416907dda18620c71d2746644caa75179bf948b0208f1163663"
+            }
+          ]
+        },
+        {
+          "source_id": "plug_2020_10k_web_v10",
+          "authority_id": "Plug Power Inc.",
+          "evidence_spans": [
+            {
+              "start": 795,
+              "end": 994,
+              "sha256": "5399f29f14ff48f00ffe5c89cad2f11f4eff7c6d41c65e47bee1ef78e9c2ac99"
+            }
+          ]
+        }
+      ],
+      "corrections": [
+        {
+          "replacement_claim_id": "plug_2018_R",
+          "target_claim_id": "plug_2018_O",
+          "reference_source_id": "plug_2020_10k_web_v10",
+          "reference_span": {
+            "start": 75923,
+            "end": 77748,
+            "sha256": "bce3d530c82072e61444be3d2c77ad5f18647f369fab6e10f049526ce0c5aa0a"
+          }
+        },
+        {
+          "replacement_claim_id": "plug_2018_E",
+          "target_claim_id": "plug_2018_D",
+          "reference_source_id": "plug_2020_10k_web_v10",
+          "reference_span": {
+            "start": 75923,
+            "end": 77748,
+            "sha256": "bce3d530c82072e61444be3d2c77ad5f18647f369fab6e10f049526ce0c5aa0a"
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "dependent_claim_id": "plug_2018_D",
+          "prerequisite_claim_id": "plug_2018_O",
+          "evidence_source_id": "plug_2019_10k_web_v10",
+          "evidence_spans": [
+            {
+              "start": 52042,
+              "end": 53921,
+              "sha256": "ac4034efedc4fbea3d93427f43c1678decb769a02c0a30f076a2c2dabffdd239"
+            }
+          ]
+        }
+      ],
+      "unaffected_claim_ids": [
+        "plug_2018_U"
+      ],
+      "retention_confirmation": {
+        "source_id": "plug_2020_10k_web_v10",
+        "evidence_spans": [
+          {
+            "start": 61851,
+            "end": 62103,
+            "sha256": "16f499f8a13d990be47992945cfdea318677879a171b71b6f6c12c723d12ee92"
+          },
+          {
+            "start": 75923,
+            "end": 76245,
+            "sha256": "85daa7f2c4c32fc7c9b1daacbba1c514b835c09e7223abbc43cea79ba60d28c9"
+          }
+        ]
+      },
+      "direct_correction_of_dependent": true,
+      "allowable_use": "excerpt_conditioned_annotation_selected_support_materialization_illustration",
+      "protocol_stratum": "discovery_only",
+      "paired_prefix_ready": false,
+      "full_source_reader_QA_ready": false,
+      "benchmark_gold": false,
+      "nuances": [
+        "Signed parentheses are represented as negative loss values; table units are thousands except share and per-share amounts.",
+        "O is the common-stockholder numerator, including preferred dividends, not the company-only net loss.",
+        "The source defines the EPS computation and states basic and diluted EPS coincide in the loss position.",
+        "The old filing is a pre-2020-restatement document version, not certified first-ever publication.",
+        "D has a selected source-specified derivation from O. Its directly stated correction E is also preserved; no incremental propagation effect is asserted."
+      ],
+      "raw_annotation_path": "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/annotations/plug_2018_eps_restatement_raw.json",
+      "raw_annotation_sha256": "3a18e9713b2200aae0d23b2b4cd848a7094dd79ad38ed2bc1c68eecd4111a2a1"
+    },
+    {
+      "history_id": "molson_2017_eps_restatement",
+      "annotation_path": "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/annotations/molson_2017_eps_restatement.json",
+      "annotation_sha256": "924a16d0ba09de40ad5796ef7ac71a50e5e5f966857e6341a354d2731c14538a",
+      "annotation_bytes": 12213,
+      "sources": [
+        {
+          "source_id": "molson_2017_10k_web_v10",
+          "local_path": "molson_2017_10k_web_v10/document.txt",
+          "sha256": "d5fcead913a17f27370b1756e42b96fe02880799749f84bcd33b54d2ec8ba9fa",
+          "capture_date": "2026-10-03",
+          "uri": "https://s27.q4cdn.com/826627388/files/doc_financials/2017/ar/MC201710-K.pdf"
+        },
+        {
+          "source_id": "molson_2018_10k_web_v10",
+          "local_path": "molson_2018_10k_web_v10/document.txt",
+          "sha256": "e1362092d147d15aadfb7a1c4ac504789526426b63258e1f48e897c54247c2e8",
+          "capture_date": "2026-10-03",
+          "uri": "https://s27.q4cdn.com/826627388/files/doc_financials/2018/ar/molson-coors-10K.pdf"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "molson_2017_O",
+          "source_id": "molson_2017_10k_web_v10",
+          "entity": "Molson Coors Brewing Company",
+          "relation": "net_income_attributable_to_molson_coors_brewing_company",
+          "value": "1414.2 million USD",
+          "scope": "fiscal year ended 2017-12-31; consolidated",
+          "modality": "reported_actual",
+          "reported_at": null,
+          "role": "O",
+          "units": "million USD",
+          "evidence_spans": [
+            {
+              "start": 71174,
+              "end": 71389,
+              "sha256": "79224de7d801d5e9c4001c68f2363cb2edfbcf49c43d1ac0caee74ef9f3129bc"
+            },
+            {
+              "start": 71556,
+              "end": 71658,
+              "sha256": "4a8f080e5bc0b39b9e91c7fc289edd4416974acaeffbecddf5ed132052a41bd0"
+            }
+          ]
+        },
+        {
+          "claim_id": "molson_2017_R",
+          "source_id": "molson_2018_10k_web_v10",
+          "entity": "Molson Coors Brewing Company",
+          "relation": "net_income_attributable_to_molson_coors_brewing_company",
+          "value": "1565.6 million USD",
+          "scope": "fiscal year ended 2017-12-31; consolidated",
+          "modality": "reported_actual",
+          "reported_at": null,
+          "role": "R",
+          "units": "million USD",
+          "evidence_spans": [
+            {
+              "start": 80740,
+              "end": 81043,
+              "sha256": "4960b8c9438aaa554a938cd9c0063d16b2cd8ee19bbd01228d51004767be905a"
+            },
+            {
+              "start": 81192,
+              "end": 81305,
+              "sha256": "2967e6115c188877b2e37a712e60cb451e5f08389b350764023d6a23a4024a07"
+            }
+          ]
+        },
+        {
+          "claim_id": "molson_2017_D",
+          "source_id": "molson_2017_10k_web_v10",
+          "entity": "Molson Coors Brewing Company",
+          "relation": "basic_net_income_attributable_to_molson_coors_brewing_company_per_share",
+          "value": "6.57 USD per share",
+          "scope": "fiscal year ended 2017-12-31; consolidated",
+          "modality": "reported_actual",
+          "reported_at": null,
+          "role": "D",
+          "units": "USD per share",
+          "evidence_spans": [
+            {
+              "start": 71174,
+              "end": 71389,
+              "sha256": "79224de7d801d5e9c4001c68f2363cb2edfbcf49c43d1ac0caee74ef9f3129bc"
+            },
+            {
+              "start": 71934,
+              "end": 72255,
+              "sha256": "c4291bf7892df76c9763ccceae5256b1b27477e23cc8a1146ccbb46f6f4308ca"
+            }
+          ]
+        },
+        {
+          "claim_id": "molson_2017_E",
+          "source_id": "molson_2018_10k_web_v10",
+          "entity": "Molson Coors Brewing Company",
+          "relation": "basic_net_income_attributable_to_molson_coors_brewing_company_per_share",
+          "value": "7.27 USD per share",
+          "scope": "fiscal year ended 2017-12-31; consolidated",
+          "modality": "reported_actual",
+          "reported_at": null,
+          "role": "E",
+          "units": "USD per share",
+          "evidence_spans": [
+            {
+              "start": 80740,
+              "end": 81043,
+              "sha256": "4960b8c9438aaa554a938cd9c0063d16b2cd8ee19bbd01228d51004767be905a"
+            },
+            {
+              "start": 81306,
+              "end": 81423,
+              "sha256": "7806c06682a46920f392209b6542cfb0ae9599e174a4c5d42e949883a2761064"
+            }
+          ]
+        },
+        {
+          "claim_id": "molson_2017_U",
+          "source_id": "molson_2017_10k_web_v10",
+          "entity": "Molson Coors Brewing Company",
+          "relation": "net_cash_provided_by_operating_activities",
+          "value": "1866.3 million USD",
+          "scope": "fiscal year ended 2017-12-31; consolidated",
+          "modality": "reported_actual",
+          "reported_at": null,
+          "role": "U",
+          "units": "million USD",
+          "evidence_spans": [
+            {
+              "start": 62697,
+              "end": 62973,
+              "sha256": "ba52082ba362ee92871fdbeed0de5086824d9a44b66f680951e5e6619c5a6104"
+            },
+            {
+              "start": 64659,
+              "end": 64733,
+              "sha256": "ff4ecadc7598dc6f7f099403da4deb277e75b394e721b689123b1e4968057bf4"
+            }
+          ]
+        }
+      ],
+      "authorities": [
+        {
+          "source_id": "molson_2017_10k_web_v10",
+          "authority_id": "Molson Coors Brewing Company",
+          "evidence_spans": [
+            {
+              "start": 982,
+              "end": 1081,
+              "sha256": "c267901acdf79b3b02088f2e60ee5f1a1cf0a4334c601fe3d5aec168fdb5a932"
+            }
+          ]
+        },
+        {
+          "source_id": "molson_2018_10k_web_v10",
+          "authority_id": "Molson Coors Brewing Company",
+          "evidence_spans": [
+            {
+              "start": 994,
+              "end": 1093,
+              "sha256": "c267901acdf79b3b02088f2e60ee5f1a1cf0a4334c601fe3d5aec168fdb5a932"
+            }
+          ]
+        }
+      ],
+      "corrections": [
+        {
+          "replacement_claim_id": "molson_2017_R",
+          "target_claim_id": "molson_2017_O",
+          "reference_source_id": "molson_2018_10k_web_v10",
+          "reference_span": {
+            "start": 80740,
+            "end": 81543,
+            "sha256": "c2e18acb8cc69713fa5423feb3ebe50d0d5643a307141b6d3ef4ef994825ca4f"
+          }
+        },
+        {
+          "replacement_claim_id": "molson_2017_E",
+          "target_claim_id": "molson_2017_D",
+          "reference_source_id": "molson_2018_10k_web_v10",
+          "reference_span": {
+            "start": 80740,
+            "end": 81543,
+            "sha256": "c2e18acb8cc69713fa5423feb3ebe50d0d5643a307141b6d3ef4ef994825ca4f"
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "dependent_claim_id": "molson_2017_D",
+          "prerequisite_claim_id": "molson_2017_O",
+          "evidence_source_id": "molson_2017_10k_web_v10",
+          "evidence_spans": [
+            {
+              "start": 70400,
+              "end": 73399,
+              "sha256": "bf443cca1fbfd5deb2ffb68782ec3486f81b573b0de44aa6432410574c8e94f4"
+            }
+          ]
+        }
+      ],
+      "unaffected_claim_ids": [
+        "molson_2017_U"
+      ],
+      "retention_confirmation": {
+        "source_id": "molson_2018_10k_web_v10",
+        "evidence_spans": [
+          {
+            "start": 80341,
+            "end": 80685,
+            "sha256": "a9ed8e9ddba9b3dcac308ef58edb143b83898f90d5a8e832dbad8e427c14dbba"
+          },
+          {
+            "start": 64807,
+            "end": 65129,
+            "sha256": "cca9613d939658407b9de35ee60046a0efb1ee1a69616d019aa512d53e0a03fe"
+          },
+          {
+            "start": 66741,
+            "end": 66817,
+            "sha256": "812529845d03edb0621a079639b4b4114e6189bed79146e005f042e4348aa945"
+          }
+        ]
+      },
+      "direct_correction_of_dependent": true,
+      "allowable_use": "excerpt_conditioned_annotation_selected_support_materialization_illustration",
+      "protocol_stratum": "discovery_only",
+      "paired_prefix_ready": false,
+      "full_source_reader_QA_ready": false,
+      "benchmark_gold": false,
+      "nuances": [
+        "O uses total net income attributable to the issuer, including discontinued operations and excluding noncontrolling interests.",
+        "D and E are basic EPS only; diluted EPS is a separate reported quantity and is not silently combined.",
+        "All listed share classes share earnings equitably; the old note states no unvested awards have non-forfeitable dividend rights.",
+        "Rounded weighted shares do not license exact numeric reconstruction; no recomputation is performed.",
+        "The pre-2018-restatement filing incorporates earlier accounting-policy revisions and is not certified a first-ever original.",
+        "The correction leaves operating cash-flow subtotals unchanged, and both source tables independently report the retained value.",
+        "D has a selected source-specified derivation from O. Its directly stated correction E is also preserved; no incremental propagation effect is asserted."
+      ],
+      "raw_annotation_path": "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/annotations/molson_2017_eps_restatement_raw.json",
+      "raw_annotation_sha256": "096d66e306e5001f18e6cc359c5c2b8722f61c21fcd3d67e96edf1f1cad7cf81"
+    }
+  ],
+  "provenance_field_revision": {
+    "at_utc": "2026-10-03T06:07:17.088739+00:00",
+    "reason": "Root adds explicit web excerpt representation field supported by final runner schema; no claim, evidence, correction, dependency or date changes. Original annotations and index preserved.",
+    "stage": "before any natural illustration replay",
+    "raw_index_sha256": "25383a6056624374dc46fc67d91683d50fa15037daa0eb4c7b210b9915f903c7"
+  }
+}

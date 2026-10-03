@@ -1,0 +1,42 @@
+Source semantic review v0.8
+
+Reviewed 6 annotations (57 existing claims) and 6 separate reference artifacts (12 questions).
+Four annotation artifacts receive one adjudicated version each. All reference artifacts and both HS2 annotations retain their raw versions.
+Raw outputs remain unchanged. The exact request/raw/selected hashes, paths, per-item findings and source-span hashes are recorded in results/source_semantic_review_v08.json.
+
+Changes grounded in source evidence:
+- Remove unsupported public-image correction records and dependent correction wording from both Docker prefixes; retain the conditional policy and unavailable-original limits.
+- Represent Docker p2 reversal timing as an open-lower-bound range, preserving its as-of upper bound.
+- Classify Chrome p1 banner content as asserted while keeping chronology and technology scope unknown.
+- Remove unsupported ordering between Chrome p2 feedback gathering and roadmap publication.
+
+The Docker p2 raw annotation also failed structural validation because day precision was paired with an unknown lower bound. The reviewed version preserves the source-supported upper bound and uses range precision. All 12 selected artifacts pass the existing validators; that pass does not certify semantics.
+
+Retained distinctions:
+- Docker p1 already includes a dated reversal update. It cannot be treated as a pre-reversal knowledge state.
+- Chrome body proposals and later plan changes remain separate from undated banners; no banner is dated to the article or extended to every technology.
+- HS2 explicitly marks the old percentage as erroneous, supplies a scoped replacement, and retains only the supported Manchester-directed plan change.
+- The HS2 p2 joint-route question remains not_established because the answer can establish the Manchester change but not a complete Leeds disposition from that latest source.
+
+Remaining ambiguity:
+- Exact initial Docker email dispatch is unestablished; the later source dates a related announcement without explicitly equating the acts.
+- Current-page banners do not establish historical article-time policy, affected API identities or a universal retirement date.
+- The latest HS2 source explicitly changes Manchester-directed new-line delivery, while the Leeds-specific disposition is not established.
+- Promised implementation, actual delivery dates, original erroneous document versions and continuous availability remain limited to what each prefix establishes.
+
+Review limits:
+This is disclosed development adjudication by unversioned model review roles, with shared training and no human gold or independent-training claim. No scorer, decoder or prediction outputs were read. Each annotation and reference judgment was justified against its eligible source prefix, without changing candidates to fit QA. The review covers the existing items and their material limitations, not candidate completeness, held-out evaluation or world truth. Current captures do not certify historical originals. Reports exclude full source quotations.
+
+Selected artifacts:
+- annotation service_docker_free_team_2023_p1: reviewed; request_sha256=1ac7d39c54481fd4606eece12ae2c90ce7640b326bb1c8f2ccd6b8c41ae2af62; raw_sha256=4dbba0ac14742d0a7f6cd2544b21042c5f77bfcc144ab5e7eacfdc02d6e095fd; selected_sha256=2055be9e298c4506ec95641fce04dd9d9f4cb5da4a1777ece5ced8a80f84b422
+- reference service_docker_free_team_2023_p1: raw; request_sha256=1ac7d39c54481fd4606eece12ae2c90ce7640b326bb1c8f2ccd6b8c41ae2af62; raw_sha256=04caca4c3a0a3bde9ae27c861c9fb0fefa5bc226262abb287b49a26571571529; selected_sha256=04caca4c3a0a3bde9ae27c861c9fb0fefa5bc226262abb287b49a26571571529
+- annotation service_docker_free_team_2023_p2: reviewed; request_sha256=0a47f9fb8290e57bb1c6faf12a3d2927f37d4dcf75ea6b96a948f62bbe328093; raw_sha256=7b96ecf0f8f398bcc20f8300a1ac3cc6e9e7a8025526c729eb981f78ceb4c41c; selected_sha256=7ef9a6fbcdbd25f21be78578d3ca6446aabc2ddb0197cd5d6de525269c018f38
+- reference service_docker_free_team_2023_p2: raw; request_sha256=0a47f9fb8290e57bb1c6faf12a3d2927f37d4dcf75ea6b96a948f62bbe328093; raw_sha256=9b6fb11d6a9a87c91328bbb72d49b011ef0bbf325b2cb716097aa1819227f175; selected_sha256=9b6fb11d6a9a87c91328bbb72d49b011ef0bbf325b2cb716097aa1819227f175
+- annotation browser_chrome_cookie_plan_2023_2025_p1: reviewed; request_sha256=3e02aa31842a99fded77ead9f4c4ed457fa176778b0a60dc2499fbb2eff5c631; raw_sha256=9b0757bb73448514424eb661a91aa7a3cdd081b2e1c640b76c7146c876cf7d50; selected_sha256=5a795c6a624150edf29fc81ba8b231b5cfd042b46de5e79730a5f6105382723e
+- reference browser_chrome_cookie_plan_2023_2025_p1: raw; request_sha256=3e02aa31842a99fded77ead9f4c4ed457fa176778b0a60dc2499fbb2eff5c631; raw_sha256=d975caf496f259f0bbcaa555b83fccccba89e134d103a2102525ac57708a9434; selected_sha256=d975caf496f259f0bbcaa555b83fccccba89e134d103a2102525ac57708a9434
+- annotation browser_chrome_cookie_plan_2023_2025_p2: reviewed; request_sha256=ff673159baf844b5f4760047f98b55469b11f5653676b2ad4d7317c3d4e409d8; raw_sha256=b85ad0744329011eccb0fc5c5fc49c20da800df1c72e414c8c5d03ba5e6062de; selected_sha256=9fc4f1161ed4c1ba76ecfc8ee277a99a16973060f2e91f23738b8efd7b8b9c49
+- reference browser_chrome_cookie_plan_2023_2025_p2: raw; request_sha256=ff673159baf844b5f4760047f98b55469b11f5653676b2ad4d7317c3d4e409d8; raw_sha256=03bdbec40ff32c9a5567ce0800b31e7dd33eb454ae49bded1d5b1f5ae5b7bedc; selected_sha256=03bdbec40ff32c9a5567ce0800b31e7dd33eb454ae49bded1d5b1f5ae5b7bedc
+- annotation plan_hs2_phase2_2017_2023_p1: raw; request_sha256=5d9de9b5621f84f2cf011f1f5907deb4f1fb14a6dad0bf2836f6c0a26958c360; raw_sha256=cfa4f6d290ad2721811614a0195d29e7ab26cecf1cad3c78b9ddc323258b42d4; selected_sha256=cfa4f6d290ad2721811614a0195d29e7ab26cecf1cad3c78b9ddc323258b42d4
+- reference plan_hs2_phase2_2017_2023_p1: raw; request_sha256=5d9de9b5621f84f2cf011f1f5907deb4f1fb14a6dad0bf2836f6c0a26958c360; raw_sha256=77ce55523be31b1e99892c36b2dbd0914ad6db2d2bf963eed2646317b26c04f4; selected_sha256=77ce55523be31b1e99892c36b2dbd0914ad6db2d2bf963eed2646317b26c04f4
+- annotation plan_hs2_phase2_2017_2023_p2: raw; request_sha256=802b7ba521856ca4dc58120d59fa61151f7ebf4f0b9344a72c731e513c7e9dc6; raw_sha256=c700ebed4811e2f0ba2fd0712f94b49830ab7636a4abc44ac9ab6b430433cf48; selected_sha256=c700ebed4811e2f0ba2fd0712f94b49830ab7636a4abc44ac9ab6b430433cf48
+- reference plan_hs2_phase2_2017_2023_p2: raw; request_sha256=802b7ba521856ca4dc58120d59fa61151f7ebf4f0b9344a72c731e513c7e9dc6; raw_sha256=4089f77117a4922e0c16ee14f168d210b7a36393a7ee92fe79b19fa859ab720d; selected_sha256=4089f77117a4922e0c16ee14f168d210b7a36393a7ee92fe79b19fa859ab720d

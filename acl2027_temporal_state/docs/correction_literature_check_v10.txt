@@ -1,0 +1,33 @@
+Correction literature check v0.10
+Checked 2026-10-03; bounded review, not a novelty certificate.
+
+Recommendation
+Keep natural correction-dependent reconstruction as a falsifiable research question, not an established algorithmic contribution. Updating memory, evaluating indirect consequences, retaining historical information, and invalidating obsolete graph relations already have close precedents. The current implementation and zero natural QA results do not establish a publishable gain.
+
+Scope and retrieval limitations
+Four exact search queries and four papers were inspected. The search engine returned many irrelevant generic pages alongside a few relevant primary hits. This weak retrieval cannot establish absence of 2026 work. Two papers came from those hits and two from direct navigation to known arXiv records. Full-text HTML and abstract version histories were inspected; no experiments were reproduced. A failed guessed LongMemEval v3 URL was replaced by the v2 link advertised by its abstract page. Sources below are original papers; dates are arXiv submission/version dates, not inferred conference dates.
+
+Closest verified precedents
+1. MQuAKE / MeLLo — first submitted 2023-05-24; inspected v3, 2024-09-09. The benchmark tests answers that change as consequences of edited facts, with counterfactual and temporal subsets. MeLLo stores edits externally and iteratively checks intermediate answers against them. Its temporal subset uses selected Wikidata changes, principally position changes. This already occupies the broad “propagate updates through multi-hop answers” claim. A natural document correction is a different evidence regime, not automatically a new algorithm.
+https://arxiv.org/html/2305.14795
+
+2. Knowledge Update Playground / Memory Conditioned Training — v1, 2025-04-16. KUP constructs synthetic updates and evidence articles, evaluates direct and indirect probes, and compares retrieved with oracle RAG contexts. It explicitly distinguishes retaining historical knowledge from surfacing current information. This motivates separating retrieval, interpretation, and reasoning errors. Its simulated evidence differs from independently captured publisher corrections; that difference needs evaluation rather than a claim that existing work ignores realistic updates.
+https://arxiv.org/html/2504.12523v1
+
+3. LongMemEval — first submitted 2024-10-14; inspected v2, 2025-03-04. It tests knowledge updates, temporal reasoning, abstention, and multi-session reasoning, and separates indexing, retrieval, and reading. Evidence histories are constructed with model assistance and human question revision. This supports full-history and retrieval/reading baselines. It studies personal conversation histories rather than publisher correction authority; that is a domain distinction, not evidence of superior expressive power.
+https://arxiv.org/html/2410.10813v2
+
+4. Mem0 — v1, 2025-04-28. Its memory controller chooses addition, update, deletion, or no change. The graph variant marks obsolete relationships invalid while retaining them for temporal reasoning. The reported evaluation uses conversational LoCoMo data. These are direct precedents for maintained memory and graph invalidation. The inspected specification does not by itself establish essential-support propagation or alternative-proof semantics; absence from this description is not proof that the broader system cannot support them.
+https://arxiv.org/html/2504.19413v1
+
+Classical boundary
+The project's v0.7 review already cites Doyle's 1979 truth-maintenance work and acknowledges dependency-directed support revision. That citation was not independently reread within this four-paper budget. Do not present dependency withdrawal, AND/OR support, or exact enumeration as newly invented. The current AND-only replacement projection is much narrower than general belief revision.
+
+Testable residual contribution (our inference, unproven)
+The potentially useful question is whether jointly interpreting a publisher's correction, its exact target, and explicitly evidenced essential dependencies improves source-grounded answers while preserving unaffected or independently supported assertions. Natural histories must isolate uncertainty that matters to answers. A dependent conclusion explicitly corrected by the publisher should also receive its direct correction in every capable baseline. Suppressing that edge would manufacture a propagation advantage.
+
+Compare a full-source reader, a competent direct-target updater, an iterative memory updater, and the existing joint method on identical available source prefixes and model evidence. Separate direct corrections, genuine downstream-only withdrawals, ordinary succession, and independently supported conclusions. Report updated-answer correctness, stale-answer errors, unsupported withdrawal, unaffected-fact retention, abstention, and computation. Group evidence by history; repeated questions are not independent cases.
+
+The decisive algorithmic gate is residual answer benefit after strong direct and restarted iterative baselines, not a better internal objective. Score-free materialization can validate semantics but is not natural QA. If suitable dependencies remain absent or direct corrections solve the examples, close this route's current gain claim and retain the evidence as a feasibility finding. Do not enlarge the solver before demonstrating that its additional semantics are needed.
+
+A possible later extension is support-set reasoning with multiple independent justifications, or explicit recomputation for numeric dependencies. Both require naturally supported cases, new contracts, and classical baselines; neither is a novelty claim now. A fresh, broader 2026–2027 literature pass remains necessary before submission.

@@ -1,0 +1,58 @@
+Scored cache v0.6: explicit unversioned model executions
+
+Purpose
+The new unversioned_model_scores evidence type records actual candidate and
+scorer model executions whose model revisions are unavailable. It does not
+upgrade them to pinned runs, model probabilities, or reproducible generation.
+Cache replay is deterministic conditional on the stored candidates and scores;
+regeneration of those model outputs is a separate, unestablished property.
+
+Unchanged API
+make_cache(problem, claims, aliases, provenance)
+dump_cache(cache, path)
+load_cache(path)
+cache_digest(cache)
+
+Provenance requirements for unversioned_model_scores
+- candidate_model_id and scorer_model_id: explicit, nonblank identifiers for
+  the executed backend or role; use an honest backend identifier when a model
+  product name is unavailable, rather than inventing an underlying model name.
+- candidate_model_revision and scorer_model_revision: exactly null. A string
+  such as unknown, unversioned, main, or an apparent revision is rejected.
+- prompt_sha256 and config_sha256: nonnull lowercase 64-character SHA-256
+  digests. If several prompts are used, hash a documented canonical manifest
+  binding all exact prompt payloads; the cache itself does not recover them.
+- score_definition: explicit, nonblank text matching Problem.score_provenance
+  exactly. It should state the actual scale, directions, and score operation.
+  Conversational ordinal judgments must not be described as log probabilities.
+
+Schema and compatibility
+Only unversioned_model_scores uses scored-cache schema_version 0.6. The three
+established kinds, authored_diagnostic, migration_singleton_smoke, and
+pinned_model_scores, retain schema_version 0.4 and their original canonical
+serialization. Cross-pairing an evidence kind with the other version is rejected
+on load even if its digest is recomputed. No fields have been added to the
+existing payload or FrozenScoredInput object. Pinned provenance still requires
+both explicit nonfloating revisions; diagnostic/smoke scores still cannot claim
+model scorer provenance.
+
+The correction cache wrapper can embed the new scored cache without altering
+correction_io.py or its v0.5 policy schema. The nested schema identifies the
+scored-cache contract; the outer schema identifies the correction-policy
+contract. All nested, lineage, policy, and outer hashes remain enforced.
+
+Validation
+13 new unit tests cover round-trip provenance, missing/blank model IDs, null-only
+revisions, required prompt/config hashes, score-definition agreement, forbidden
+schema/evidence pairings, stale metadata and score edits, model metadata digest
+sensitivity, new-cache correction embedding, stale nested-cache hashes, pinned
+validation, and pre-change payload/dump digests for all three established kinds.
+All 58 scored_io, scored_io_v06, and correction_io unit tests passed.
+
+Limits
+The cache verifies internal consistency and exact source spans. It cannot verify
+that a claimed model execution occurred, inspect a hidden model revision, assess
+source entailment, or establish calibration, independence from gold, or research
+novelty. Execution traces, prompts, request boundaries, input hashes, and held-out
+evaluation remain separate evidence obligations. No natural labels or new model
+outputs were accessed while implementing this cache extension.

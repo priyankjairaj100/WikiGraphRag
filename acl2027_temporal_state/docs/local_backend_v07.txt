@@ -1,0 +1,127 @@
+LOCAL PINNED CPU BACKEND v0.7
+
+Purpose and scope
+This backend executes a small-model development scoring pilot locally. It does
+not execute or replace the previously prepared Qwen3-8B protocol. Candidate
+readings remain the recorded unversioned v0.6 extraction. Only the scoring
+backend is immutable and locally reproducible from its pinned artifacts.
+
+Model and runtime identity
+Official Qwen/Qwen3-0.6B-GGUF commit:
+  23749fefcc72300e3a2ad315e1317431b06b590a
+Asset Qwen3-0.6B-Q8_0.gguf: 639,446,688 bytes.
+SHA256: 9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031
+The GGUF includes the model, tokenizer and native chat template. The complete
+file hash binds these together; no separate unpinned tokenizer is downloaded.
+The official model repository declares Apache-2.0 licensing.
+
+Official ggml-org/llama.cpp stable v0.5.0 points to nightly b11146, commit:
+  7fe450e19305b828c199d602c23a8337aaa1f03b
+CPU archive llama-b11146-bin-ubuntu-x64.tar.gz: 16,998,357 bytes.
+SHA256: c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410
+The running binary reports 0.5.0-dev, build 11146, GNU11.4.0 Linux x86_64.
+All 60 extracted runtime files (including shared libraries and symlink targets)
+are checked against configs/local_backend_v07.json before model execution.
+Exact public URLs, file sizes and hashes are retained in that config.
+The pinned binary targets Linux x86_64. A read-only system-library manifest
+records the linked host libraries; this is not a fully hermetic container pin.
+
+Execution settings
+The final scoring backend uses CPU only, Q8_0 model weights, Q8_0 key/value KV
+cache, flash attention on, 8192 context tokens, four threads, batch 256 and
+microbatch 128. One server slot handles the paired condition order recorded in execution_plan.json. The process
+has a 2 GiB address-space limit and 18000 CPU-second limit; each completion has a
+600-second HTTP deadline. No paid compute, credentials, jobs or GPU is used.
+The HTTP server binds only 127.0.0.1 and is terminated by the owning script.
+
+Every source-only prompt is rendered through the native GGUF chat template
+with thinking disabled. The actual rendered suffix is an empty closed think
+block. Each full rendered prompt and evaluated token-ID array is retained.
+Before scoring, all 64 inputs measured 5034–7856tokens and fit the 8192 cap.
+Tokenizing prompt+Yes and prompt+No must give exactly the same prefix tokens
+plus one token. Actual label IDs are Yes=9454 and No=2753. No input truncation,
+dropped source, inferred missing label score or automatic retry is permitted.
+
+A completion requests one token, temperature=-1, seed7, n_probs=256,
+post_sampling_probs=false, no logit bias, no repetition/presence/frequency
+penalties, and no grammar or label constraint. Both labels' reported natural
+log probabilities come from the same next-token distribution, regardless of
+which token greedy generation selects. The raw top 256 response is retained.
+If either label is absent, collection fails rather than renormalizing or
+assigning an artificial floor. These are float32-derived model likelihoods,
+not calibrated probabilities of factual correctness.
+
+Normalization and caching
+Pinned source evidence in results/local_backend_v07_softmax_evidence.txt
+shows the server disables backend sampling when pre-sampling probabilities
+are requested, computes softmax across the complete raw-logit vector, then
+returns the requested top ranks. Returned top 256 probabilities are not
+renormalized over those 256. Supplementary source verification, if present,
+is recorded separately so the evidence hash bound before scoring is preserved.
+
+cache_prompt=true reuses only an identical prefix; KV chunk shifting is
+unconfigured and defaults to n_cache_reuse=0. The relevant environment override
+is absent. Every raw response retains full input count and cached/new token
+counts. Prefix reuse changes numerical batch grouping; the result is not
+claimed bitwise equivalent to cold prompt evaluation. The fixed execution
+order pairs yes_no and no_yes for each item in the original primary-item order
+and is part of the run. The original request and prompt texts are unchanged. A prospectively declared first-primary-prompt repeat
+after all 64 uses absolute tolerance 1e-6 and never replaces original scores.
+Its actual outcome appears in the final scoring receipt.
+
+Recorded attempts
+1. The initial 2048-token, F16-KV, two-thread smoke could not bind a localhost
+socket inside the default sandbox. Its failure log is preserved. Approved
+loopback execution then succeeded:46 input tokens, generated Yes, raw Yes/No
+probabilities returned, peak child RSS 923456 KiB. This is a runtime smoke only.
+2. Initial 8192-context F16-KV allocation exceeded the conservative 2 GiB address-
+space guard, before prompts or scores. Config, error receipt and log survive.
+3. Q8-KV fit and all 64prompt/token boundary preflight checks passed. With cache
+disabled, full source prefill was slow. The attempt was explicitly interrupted
+before the first response:zero score rows. Its config, binding, prompts, empty
+raw file and log are preserved in data/likelihood_scoring_v07/attempt_cache_false.
+4. Before observing any score, final settings selected prefix caching and four
+threads under the same memory guard. These resource-driven changes were not
+based on score quality. In that partial run, the first full prompt took 173.109 seconds; the next two
+cached requests took 34.858 and 16.229 seconds. Long link suffixes still required
+substantial prefill.
+5. Measured CPU use showed the initial 7200 CPU-second guard would not finish
+all 64. An attempted in-place increase was rejected by the kernel; the command
+itself passed automatic approval. The run was stopped cleanly after 15 complete
+rows, all preserved under attempt_cpu7200 and excluded from the final scores.
+A fresh complete run has an 18000 CPU-second guard and pairs the two conditions
+for each item to reuse the same item prefix. This execution-order change was
+based on runtime measurements, after partial scores existed; it is not an
+ex ante benchmark preregistration. All prompt bytes and numerical settings
+remain unchanged. The execution plan, source snapshot, native receipts and
+all prior attempts are retained. See the final receipt for complete execution
+time, peak memory, completion status and replay outcome.
+
+Evidence and reproduction
+Main entry point: scripts/local_backend_v07.py. Frozen model/runtime settings:
+configs/local_backend_v07.json. Source-only inputs and raw outputs:
+data/likelihood_scoring_v07/. Final execution receipt:
+results/local_backend_v07_scoring_receipt.json. Backend properties/template,
+rendered prompts, exact token arrays and raw responses remain available for
+independent offline validation. The large model and runtime live outside the
+project ZIP; the pinned bootstrap helper and reproduction instructions provide
+public asset recovery. The checkpoint verifier replays stored evidence without
+network or model inference.
+
+A successful run establishes real, pinned local scorer execution and transport.
+It does not establish candidate recall, a strong-model baseline, calibration,
+held-out accuracy, algorithmic novelty, or an advantage for joint inference.
+
+Final completed-run observations
+All 64 unique item/condition measurements completed, followed by the one fixed
+first-primary-prompt numerical replay. The server exited normally with code 0.
+Elapsed server lifetime: 1509.883747451 seconds (25.165 minutes).
+Peak child resident memory: 1,197,840 KiB (about 1.142 GiB).
+The replay returned exactly equal Yes and No log probabilities: absolute
+errors 0.0 for both, against the predeclared 1e-6 tolerance. Its full 5759-token
+input was untruncated. This checks one same-server replay only; it is not a
+claim that all 64 prompts regenerate identically on another machine or cache
+history. All 64 main responses passed full-input token accounting and no
+truncation checks. The delivered collector source matches its prelaunch
+snapshot and the backend config still matches the hash bound before scoring.
+Machine-readable execution summary: results/local_backend_v07_summary.json.

@@ -1,0 +1,44 @@
+Technical/product/security discovery screen, 2026-10-03
+
+Protocol: data/correction_gate_v10/admission_search_protocol.json. Six initial queries; four histories; at most four primary documents attempted per history. No questions, model outputs, scores, or final admission. Search snippets not followed are not promoted into histories. Primary evidence only. Exact structured rationale is in data/correction_gate_v10/discovery_technical.json.
+
+Executed queries (first three system2; last three system1):
+1. site.redhat.com "CVE" "correction" "not vulnerable"
+2. site.openssl.org "correction" "advisory" "affected"
+3. site.curl.se "security" "wrong" "advisory" "not affected"
+4. security advisory "incorrectly stated" "not affected"
+5. security advisory "previously stated" "correction"
+6. site.cisa.gov "removed" "KEV" "analysis"
+The first batch mostly found ordinary advisories; the second mostly irrelevant phrase matches. Known concrete primary-source leads supplied OpenSSL, Rust, and Red Hat xz; no further queries were executed.
+
+1. Libreswan CVE-2019-12312 — provisional discovery_only.
+Inspected URLs:
+https://libreswan.org/security/CVE-2019-12312/CVE-2019-12312.txt
+https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2019-12312
+https://bugzilla.redhat.com/show_bug.cgi?id=1716921
+https://bugzilla.redhat.com/show_bug.cgi?id=1716920
+All accessible. Main bug preserves an original pre-3.28 vulnerability claim and dated maintainer correction limiting vulnerability to 3.27. Downstream EPEL-6 remediation tracker explicitly references that CVE; a separate strongSwan tracker was also erroneous. However, EPEL-6 closure has independent maintenance-location support, so essential dependence is not established. StrongSwan correction concerns code ancestry, a separate product attribution. Actual 3.27 denial-of-service mechanics provide a potential unaffected control. Original CVE requester was unknown; upstream correction is not automatically same-authority correction. Current dated comments preserve wording, not an independently captured earlier document. Range and product edits should not be coerced into whole-assertion replacements.
+
+2. OpenSSL CVE-2022-3602 — provisional discovery_only.
+Inspected URLs:
+https://www.openssl.org/blog/blog/2022/11/01/email-address-overflows/ [inaccessible]
+https://openssl-library.org/post/2022-11-01-email-address-overflows/
+https://www.openssl.org/news/secadv/20221101.txt [redirected to https://openssl-library.org/news/secadv/20221101.txt]
+https://www.openssl-library.org/policies/general/security-policy [redirected to https://www.openssl-library.org/policies/general/security-policy/index.html]
+The project explicitly replaces critical severity with high after platform testing and reconsideration of existing protections. The source connects severity to likelihood of common remote-code execution. Independent control: separately triggerable CVE-2022-3786 remained high because attacker control of overwrite content differs. But the explicit OLD assertion recovered is severity itself; inventing an earlier exploitability premise would turn the same correction into its own dependency. Prompt upgrading remains independently justified. No critical preannouncement was captured; current policy is not a certified 2022 snapshot. Existing mitigations were reanalyzed, not newly deployed.
+
+3. Rust Windows Command API, April/September 2024 — provisional current_document_only.
+Inspected URLs:
+https://blog.rust-lang.org/2024/04/09/cve-2024-24576/
+https://blog.rust-lang.org/2024/09/04/cve-2024-43402/
+https://doc.rust-lang.org/1.77.1/std/process/struct.Command.html [web inaccessible; urllib retry blocked: Operation not permitted]
+https://doc.rust-lang.org/1.77.2/std/process/struct.Command.html [web inaccessible]
+Strongest potential mechanism illustration: April advisory attributes an unmodified/non-shell-evaluated argument guarantee to earlier API documentation and explicitly derives safety of untrusted input from it, then describes cmd.exe parsing and inadequate escaping that violate the guarantee. Other platforms and non-batch uses are exempted; ordinary C-runtime parsing supplies a possible independent mechanism control. September acknowledges the April fix missed trailing whitespace/periods because Windows strips them. This related correction is not counted as another history. Separate factual correction of preexisting behavior from releases that actually change code. Scope qualification, control granularity, and whole-assertion fit need adjudication. No earlier documentation version was captured; only the correction's account of old wording is available. Do not strip updates to invent a prefix.
+
+4. Red Hat xz/Fedora 40 alert — provisional discovery_only.
+Inspected URLs:
+https://www.redhat.com/en/blog/urgent-security-alert-fedora-41-and-rawhide-users [redirected to https://www.redhat.com/en/blog/urgent-security-alert-fedora-40-and-rawhide-users]
+https://www.cisa.gov/news-events/alerts/2024/03/29/reported-supply-chain-compromise-affecting-xz-utils-data-compression-library-cve-2024-3094 [403]
+Current alert distinguishes affected package presence from actual malware activation. It retains precautionary Fedora 40 downgrade advice, so a withdrawal of that conclusion would be fabricated. The update says affected-version wording was clarified; exact erroneous original is unavailable. RHEL exemption is source-present, but its independent package basis was not inspected. Current document only; redirect proves no earlier wording. Clarification, investigation updates, and operational downgrades do not establish the required replacement/dependency chain.
+
+No paired-prefix-ready history established. One possible current-document illustration, three unresolved discovery-only histories. Six-query budget exhausted; target is not a quota. This screen is not eligibility adjudication or an empirical result.

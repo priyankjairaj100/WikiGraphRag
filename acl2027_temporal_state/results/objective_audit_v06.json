@@ -1,0 +1,117 @@
+{
+  "audit_type": "independent synthetic finite and arithmetic oracle",
+  "checks": 23497,
+  "counterexamples": {
+    "negative_target_selection": {
+      "active_correction": 5,
+      "correction_gain": 3,
+      "historical_correction": 1,
+      "old_margin": -4,
+      "old_unresolved": 2,
+      "replacement_margin": 2
+    },
+    "production_counterexample_replays": [
+      {
+        "decoding": {
+          "active_support": {
+            "link_ids": {
+              "m0": null,
+              "m1": null,
+              "m2": null
+            },
+            "objective": 12.0,
+            "reading_ids": {
+              "m0": "r",
+              "m1": "r",
+              "m2": "u0"
+            }
+          },
+          "historical": {
+            "link_ids": {
+              "m0": null,
+              "m1": "correction",
+              "m2": null
+            },
+            "objective": 15.0,
+            "reading_ids": {
+              "m0": "r",
+              "m1": "r",
+              "m2": "u0"
+            }
+          }
+        },
+        "old_score": 10
+      },
+      {
+        "decoding": {
+          "active_support": {
+            "link_ids": {
+              "m0": null,
+              "m1": "correction",
+              "m2": null
+            },
+            "objective": 5.0,
+            "reading_ids": {
+              "m0": "r",
+              "m1": "r",
+              "m2": "u0"
+            }
+          },
+          "historical": {
+            "link_ids": {
+              "m0": null,
+              "m1": null,
+              "m2": null
+            },
+            "objective": 2.0,
+            "reading_ids": {
+              "m0": "u0",
+              "m1": "r",
+              "m2": "u0"
+            }
+          }
+        },
+        "old_score": -4
+      }
+    ],
+    "raw_zeroing_offset_failure": {
+      "after_old_unary_offset_10": {
+        "correction": 5,
+        "no_correction": 13
+      },
+      "anchored_after": {
+        "correction": 15,
+        "no_correction": 13
+      },
+      "before": {
+        "correction": 5,
+        "no_correction": 3
+      }
+    },
+    "valid_correction_suppression": {
+      "active_correction": 5,
+      "active_no_correction": 12,
+      "correction_gain": 3,
+      "historical_correction": 15,
+      "historical_no_correction": 12,
+      "old_margin": 10,
+      "replacement_margin": 2
+    }
+  },
+  "decoder_runs": 664,
+  "feasible_assignments": 1836,
+  "gauge_invariance_state_comparisons": 7344,
+  "mismatches": 0,
+  "natural_inputs_or_labels_read": false,
+  "oracle": "enumerated support-closed subsets plus independently specified baseline/margin arithmetic",
+  "pipeline_audit": {
+    "checks": 45,
+    "decoder_runs": 12,
+    "distinct_objective_identities": 2,
+    "historical_pipeline_preserved": true,
+    "mismatched_objective_state_rejected": true
+  },
+  "scope": "finite implementation verification; no extraction, calibration, natural accuracy, or algorithmic novelty claim",
+  "score_grids": 54,
+  "version": "0.6"
+}

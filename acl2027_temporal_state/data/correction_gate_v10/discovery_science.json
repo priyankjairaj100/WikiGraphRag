@@ -1,0 +1,392 @@
+{
+  "schema_version": "correction_gate_discovery_v0.10",
+  "domain": "scientific_and_government_measurement_corrections",
+  "protocol": "data/correction_gate_v10/admission_search_protocol.json",
+  "status": "Discovery only; provisional strata are not admission adjudications or model labels.",
+  "search_date_utc": "2026-10-03",
+  "budget": {
+    "initial_queries_used": 6,
+    "initial_queries_limit": 6,
+    "candidate_histories_inspected": 5,
+    "candidate_histories_limit": 6,
+    "followup_primary_documents_limit_per_candidate": 4,
+    "counting_rule": "Count authored/versioned documents, including failed attempted documents; alternative HTML/PDF/mirror URLs for one version are source representations, listed separately below. The arXiv version manifest is conservatively counted separately. No query after the six listed initial queries. Representation counts are distinct requested URLs, not retry counts; repeated open/find operations on the same representation do not consume document slots.",
+    "documents_by_candidate": {
+      "opera": 4,
+      "resplandy": 4,
+      "misinformation_meta_analysis": 2,
+      "crab_polarimetry": 1,
+      "gerda": 1
+    },
+    "queries_without_relevant_primary_lead": [
+      "q4",
+      "q5",
+      "q6 except GERDA search result"
+    ],
+    "distinct_requested_url_representations_by_candidate": {
+      "opera": 8,
+      "resplandy": 9,
+      "misinformation_meta_analysis": 4,
+      "crab_polarimetry": 1,
+      "gerda": 2
+    }
+  },
+  "queries": [
+    {
+      "id": "q1",
+      "engine": "system2",
+      "query": "OPERA 1109.4897 corrected timing measurement neutrino velocity erratum 2012",
+      "result_ref": "turn141academia36"
+    },
+    {
+      "id": "q2",
+      "engine": "system2",
+      "query": "Resplandy 2018 ocean warming correction 2019 retraction uncertainty Nature",
+      "result_ref": "turn141search0"
+    },
+    {
+      "id": "q3",
+      "engine": "system2",
+      "query": "author correction statistical error reverses conclusion measurement Nature correction",
+      "result_refs": [
+        "turn141search12",
+        "turn141search31"
+      ]
+    },
+    {
+      "id": "q4",
+      "engine": "system1",
+      "query": "site.giss.nasa.gov 2007 \"correction\" \"1934\"",
+      "result_note": "No relevant primary result returned; no NASA history inspected."
+    },
+    {
+      "id": "q5",
+      "engine": "system1",
+      "query": "\"Author Correction\" \"no longer statistically significant\" \"unaffected\"",
+      "result_note": "Returned largely unrelated results; no additional history inspected."
+    },
+    {
+      "id": "q6",
+      "engine": "system1",
+      "query": "site.cdc.gov mmwr \"Erratum\" \"incorrect\" \"conclusions\" \"significant\"",
+      "result_ref": "turn143search23",
+      "result_note": "No CDC result; combined search output contained GERDA primary erratum, inspected below."
+    }
+  ],
+  "candidates": [
+    {
+      "id": "opera",
+      "title": "OPERA neutrino velocity, arXiv:1109.4897 v1 to v4",
+      "asserting_authority": "OPERA Collaboration",
+      "provisional_stratum": "paired_prefix_ready",
+      "stratum_qualification": "Actual original v1 PDF and current v4 full text were retrieved in browsing. Root must freeze exact source bytes and separately adjudicate selection/scope changes. Availability dates are repository submission metadata, not an independently audited first-public-availability certificate.",
+      "source_documents": [
+        {
+          "id": "opera_v1",
+          "role": "actual earlier version",
+          "urls": [
+            {
+              "url": "https://arxiv.org/abs/1109.4897v1",
+              "status": "DisabledError"
+            },
+            {
+              "url": "https://arxiv.org/pdf/1109.4897v1",
+              "status": "success via web; direct local urllib attempt failed Operation not permitted"
+            }
+          ],
+          "ref": "turn150view0",
+          "extent": "24 PDF pages",
+          "locators": "PDF pp3,10,19,22; parsed lines87-96,244-262,470-487,526-546",
+          "bounded_excerpt": "with an overall significance of 6.0 σ.",
+          "excerpt_words": 9
+        },
+        {
+          "id": "opera_v4",
+          "role": "replacement version",
+          "urls": [
+            {
+              "url": "https://arxiv.org/abs/1109.4897v4",
+              "status": "DisabledError"
+            },
+            {
+              "url": "https://arxiv.org/pdf/1109.4897v4",
+              "status": "Internal Error"
+            },
+            {
+              "url": "https://arxiv.org/pdf/1109.4897",
+              "status": "first DisabledError; then succeeded through manifest PDF link"
+            },
+            {
+              "url": "https://arxiv.org/html/1109.4897v4",
+              "status": "success through manifest HTML link"
+            }
+          ],
+          "refs": [
+            "turn158view0",
+            "turn158view1"
+          ],
+          "extent": "37 PDF pages; 465 HTML lines",
+          "locators": "PDF pp5,12-13,18-22,28,33; parsed lines171-173,346-365,407-420,630-724,989-1031,1195-1234",
+          "bounded_excerpt": "The results presented in this paper were obtained by taking into account the corrections for instrumental effects",
+          "excerpt_words": 20
+        },
+        {
+          "id": "opera_manifest",
+          "role": "repository version evidence",
+          "urls": [
+            {
+              "url": "https://arxiv.org/abs/1109.4897",
+              "status": "success"
+            }
+          ],
+          "ref": "turn156view0",
+          "locators": "lines8,23-38",
+          "bounded_excerpt": "This version replaces all previous ones",
+          "excerpt_words": 7
+        },
+        {
+          "id": "opera_cern_mirror",
+          "role": "attempted final-paper mirror counted conservatively as fourth document",
+          "urls": [
+            {
+              "url": "https://cds.cern.ch/record/1384741/files/arXiv%3A1109.4897.pdf",
+              "resolved_url": "https://cds.cern.ch/record/1384741/files/arXiv:1109.4897.pdf",
+              "status": "bot challenge; no full paper obtained here"
+            }
+          ],
+          "ref": "turn153view0"
+        }
+      ],
+      "original_assertion_paraphrase": "v1 reports the 2009–2011 CNGS analysis arrival-time difference as 60.7 ±6.9 statistical ±7.4 systematic ns.",
+      "replacement_assertion_paraphrase": "v4 reports 6.5 ±7.4 statistical, +8.3/−8.0 systematic ns after corrections for instrumental effects; the collaboration identifies the prior anomaly's instrumental sources.",
+      "downstream_assertion_paraphrase": "v1 reports (v−c)/c=(2.48 ±0.28 statistical ±0.30 systematic)×10^-5 and 6.0σ significance. v4 instead reports (2.7 ±3.1 statistical +3.4/−3.3 systematic)×10^-6 and describes arrival as compatible with light speed within errors.",
+      "essential_dependency": "Both versions explicitly give (v−c)/c=δt/(TOF′c−δt), using an effective 730.085 km neutrino baseline. This is source-specified computation, not an invented threshold or topical link.",
+      "retention_control": "Both versions retain the independently geodetically measured BCT-to-OPERA baseline 731278.0 ±0.2 m. The source explains GPS benchmarks and terrestrial traverse; this measurement does not derive from corrected timing δt.",
+      "alternative_support": "v4 also reports a different likelihood construction and the late-2011 short-bunch test. Those corroborate the corrected conclusion but do not independently support the earlier 6σ velocity assertion. Do not withdraw all OPERA claims.",
+      "representation_limits": [
+        "Replacement can target the whole reported δt estimate with uncertainties, rather than edit an isolated numeric field.",
+        "Both analyses use 2009–2011 data, but selected samples differ: v1 has16111 events; v4 has15223, discarding roughly5% with isolated early hits. Thus not literally identical selected observations.",
+        "The new 2012 dedicated-beam experiment was not inspected or substituted for a correction.",
+        "Generic numerical claims do not themselves supply a temporal-QA task; no dates/intervals/questions were invented.",
+        "The final source directly corrects both the measured delta and the downstream velocity/conclusion. Their formula establishes dependency, but does not by itself establish added propagation value beyond reading the explicit correction; any later demonstration must distinguish these."
+      ]
+    },
+    {
+      "id": "resplandy",
+      "title": "Atmospheric oxygen ocean-heat estimate correction and republication",
+      "asserting_authority": "Resplandy, Keeling and coauthors; author-signed RealClimate commentary and corrected Scientific Reports paper",
+      "provisional_stratum": "current_document_only",
+      "source_documents": [
+        {
+          "id": "ocean_original",
+          "role": "original publication attempted",
+          "urls": [
+            {
+              "url": "https://www.nature.com/articles/s41586-018-0651-8",
+              "status": "search abstract visible; full open Internal Error"
+            },
+            {
+              "url": "https://www.nature.com/articles/s41586-018-0651-8.pdf",
+              "status": "Internal Error"
+            }
+          ],
+          "ref": "turn141search1"
+        },
+        {
+          "id": "ocean_retraction",
+          "role": "retraction notice attempted",
+          "urls": [
+            {
+              "url": "https://www.nature.com/articles/s41586-019-1585-5",
+              "status": "search excerpt visible; open Internal Error"
+            },
+            {
+              "url": "https://www.nature.com/articles/s41586-019-1585-5.pdf",
+              "status": "Internal Error"
+            },
+            {
+              "url": "https://www.nature.com/articles/s41586-019-1585-5?error=cookies_not_supported",
+              "status": "Internal Error"
+            }
+          ],
+          "ref": "turn141search0"
+        },
+        {
+          "id": "ocean_author_correction",
+          "role": "explicit original and replacement numbers; causal interpretation",
+          "urls": [
+            {
+              "url": "https://www.realclimate.org/index.php/archives/2018/11/resplandy-et-al-correction-and-response/",
+              "status": "success"
+            }
+          ],
+          "ref": "turn153view3",
+          "locators": "authored commentary lines17-45; reader comments not used",
+          "bounded_excerpt": "The revised uncertainties preclude drawing any strong conclusions with respect to climate sensitivity or carbon budgets",
+          "excerpt_words": 20
+        },
+        {
+          "id": "ocean_replacement",
+          "role": "corrected peer-reviewed paper",
+          "urls": [
+            {
+              "url": "https://www.nature.com/articles/s41598-019-56490-z",
+              "status": "initial success609 lines; subsequent fetches Internal Error"
+            },
+            {
+              "url": "https://www.nature.com/articles/s41598-019-56490-z?error=cookies_not_supported&code=4dca00f1-7575-4ec4-9c5e-6b4ba21c211c",
+              "status": "DisabledError"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6934503/",
+              "status": "success; authorized public full-text mirror of same publication"
+            }
+          ],
+          "ref": "turn169view0",
+          "locators": "abstract144-147; results186-203; discussion204-212; methods214-240",
+          "bounded_excerpt": "These issues have been corrected in the current paper.",
+          "excerpt_words": 10
+        }
+      ],
+      "original_assertion_paraphrase": "Author correction reports the prior ocean heat trend as 1.33 ±0.20×10^22 J/year; no pre-correction source was obtained.",
+      "replacement_assertion_paraphrase": "November2018 author correction gives1.21 ±0.72; December2019 republication gives1.29 ±0.79×10^22 J/year for1991–2016. These are distinct stages, not interchangeable corrected numbers.",
+      "downstream_assertion_paraphrase": "Author correction explicitly says increased uncertainties prevent strong APO-only conclusions about climate sensitivity or carbon budgets; the original Nature abstract had drawn implications from a high-end warming estimate.",
+      "essential_dependency": "The author attributes uncertainty understatement to treating systematic O2 errors as random and omitting oxidative-ratio uncertainty, and explicitly connects revised uncertainty to the weakened downstream conclusion.",
+      "retention_control": "Author says methodology/biogeochemical insight remains valid. Replacement independently supports the OPO-temperature coupling using GLODAP hydrographic observations (Figure4) and four Earth-system models, rather than the corrected atmospheric trend alone.",
+      "alternative_support": "Author correction still supports recent upward hydrographic/Argo revisions; those independent observations are not invalidated. Replacement's broad warming conclusion is not withdrawn.",
+      "representation_limits": [
+        "Not a pure retraction: explicit scalar replacements and republication exist, but paper-level retraction must remain represented separately.",
+        "No original-version pairing from quotations; current commentary contains later2019/2020 updates and must remain intact.",
+        "Whole estimated warming assertion includes its uncertainty and interval; avoid coercing only an uncertainty field into a distinct proposition.",
+        "Original downstream wording available only as publisher search abstract; exact historic original capture remains missing."
+      ]
+    },
+    {
+      "id": "misinformation_meta_analysis",
+      "title": "Chan and Albarracin 2025 author correction",
+      "asserting_authority": "Original authors in Nature Human Behaviour",
+      "provisional_stratum": "discovery_only",
+      "source_documents": [
+        {
+          "id": "meta_correction",
+          "urls": [
+            {
+              "url": "https://www.nature.com/articles/s41562-025-02294-3",
+              "status": "search excerpt rich; direct open inaccessible redirect"
+            },
+            {
+              "url": "https://www.nature.com/articles/s41562-025-02294-3.pdf",
+              "status": "redirected HTML preview; later fetch failed"
+            },
+            {
+              "url": "https://www.nature.com/articles/s41562-025-02294-3?error=cookies_not_supported&code=59cec31d-05ef-428e-ab03-7a83fc28d765",
+              "status": "success subscription preview only"
+            }
+          ],
+          "refs": [
+            "turn141search12",
+            "turn156view2"
+          ],
+          "bounded_excerpt": "the effect of detailed corrections is no longer statistically significant",
+          "excerpt_words": 11
+        },
+        {
+          "id": "meta_original",
+          "urls": [
+            {
+              "url": "https://www.nature.com/articles/s41562-023-01623-8",
+              "status": "Internal Error"
+            }
+          ],
+          "ref": "turn156view3"
+        }
+      ],
+      "original_assertion_paraphrase": "Indexed publisher correction says detailed-correction effect was significant atP=.020.",
+      "replacement_assertion_paraphrase": "Same indexed correction reports correctedP=.316, changed study/effect-size counts, effect-size estimation and coding errors, and use of standard error instead of standard deviation for one source.",
+      "downstream_assertion_paraphrase": "Indexed correction explicitly says detailed-correction effect is no longer significant and fictitious-issue effect lacks evidence.",
+      "essential_dependency": "Correction attributes changed effects to reanalysis of corrected dataset, but full text needed to isolate an essential premise; do not infer the single SD/SE error alone caused this result.",
+      "retention_control": "Indexed statement says other findings largely unaffected; independently grounded specific control not recovered.",
+      "alternative_support": "Not assessed because full correction inaccessible.",
+      "representation_limits": [
+        "Full correction and original missing; indexed excerpts do not replace exact complete source capture.",
+        "Several changes, so a single corrected p-value plus significance may be paraphrase-level rather than an admissible essential-dependency chain."
+      ]
+    },
+    {
+      "id": "crab_polarimetry",
+      "title": "AstroSat Crab pulsar polarimetry author correction",
+      "asserting_authority": "Vadawale and coauthors in Nature Astronomy",
+      "provisional_stratum": "discovery_only",
+      "source_documents": [
+        {
+          "id": "crab_correction",
+          "urls": [
+            {
+              "url": "https://www.nature.com/articles/s41550-018-0425-0",
+              "status": "subscription preview; full body not accessible",
+              "resolved_url": "https://www.nature.com/articles/s41550-018-0425-0?error=cookies_not_supported&code=461f4327-c652-425b-9e71-babd187aae04"
+            }
+          ],
+          "refs": [
+            "turn141search31",
+            "turn147view3"
+          ]
+        }
+      ],
+      "original_assertion_paraphrase": "Not recovered.",
+      "replacement_assertion_paraphrase": "Search excerpt indicates corrected Bayesian credibility interval error bars.",
+      "downstream_assertion_paraphrase": "Not recovered.",
+      "essential_dependency": "Not established.",
+      "retention_control": "Not established.",
+      "representation_limits": [
+        "Figure/error-bar correction without accessible full body; scalar field change alone cannot establish the required chain."
+      ]
+    },
+    {
+      "id": "gerda",
+      "title": "GERDA super-WIMP coupling-limit erratum",
+      "asserting_authority": "GERDA Collaboration in Physical Review Letters",
+      "provisional_stratum": "discovery_only",
+      "source_documents": [
+        {
+          "id": "gerda_erratum",
+          "urls": [
+            {
+              "url": "https://link.aps.org/doi/10.1103/PhysRevLett.129.089901",
+              "resolved_url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.129.089901",
+              "status": "HTML body absent; PDF link present"
+            },
+            {
+              "url": "https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.129.089901",
+              "status": "success2 pages"
+            }
+          ],
+          "refs": [
+            "turn147view4",
+            "turn153view2"
+          ],
+          "locators": "PDFp1 lines19-32",
+          "bounded_excerpt": "this erratum does not affect the conclusions obtained in our original publication",
+          "excerpt_words": 13
+        }
+      ],
+      "original_assertion_paraphrase": "Erratum quotes150keV/c² upper limits gae<3×10^-12 and alpha-prime/alpha<6.5×10^-24 at90% credible interval.",
+      "replacement_assertion_paraphrase": "Corrected limits are5.1×10^-12 and1.7×10^-23; equation evaluation was incorrect.",
+      "downstream_assertion_paraphrase": "The comparative claim that these are the most stringent direct limits remains valid according to the authors.",
+      "essential_dependency": "Equation evaluation feeds numerical limits, but no independently meaningful changed downstream assertion was recovered; do not invent threshold implications.",
+      "retention_control": "Authors explicitly retain original conclusions and most-stringent characterization, but exact independent comparative support was not inspected.",
+      "alternative_support": "Comparison remains valid even with weakened limits; a possible over-invalidation-control lead, not a replacement positive by itself.",
+      "representation_limits": [
+        "Original numbers only quoted in erratum; no pre-correction original captured.",
+        "Treating quoted corrected limits and restated summary limits as two different claims would duplicate a proposition."
+      ]
+    }
+  ],
+  "unopened_search_leads": [
+    "Pearson correlation measurement-error correction",
+    "NIST nanotech measurement error",
+    "2012 OPERA dedicated data",
+    "early-twentieth-century SST correction"
+  ],
+  "stopping_reason": "Six initial queries exhausted. Five candidate histories screened; no quota-driven additional search. Primary-document followup cap respected by authored-document identity; all alternative source representations and failures listed. No questions, model outputs, labels, scoring, or protocol edits."
+}

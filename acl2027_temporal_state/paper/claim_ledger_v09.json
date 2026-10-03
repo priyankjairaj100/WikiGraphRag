@@ -1,0 +1,258 @@
+{
+  "schema_version": "manuscript_claim_ledger_v0.9",
+  "draft": "paper/results_update_v09.tex",
+  "draft_sha256": "39be943fd514af1bcc9d0efb66a1ac51581f59160c4f85c066b69cce763cb9cc",
+  "created_date": "2026-10-03",
+  "status": "Exploratory completed-development addendum; source only, not submission-ready paper",
+  "results_boundary": "Completed v09 capture/source review and matched authored-statement scorer diagnostic, with independent native-artifact audit and separate frozen-reference join.",
+  "publication_status": {
+    "compiled_pdf_produced": false,
+    "visual_layout_verified": false,
+    "latex_toolchain": "No compile attempted this turn; prior environment had missing formats/classes.",
+    "v07_v08_drafts_and_ledgers_modified": false
+  },
+  "claims": [
+    {
+      "claim_id": "V09-C01",
+      "draft_anchor": "sec:sources",
+      "evidence_status": "completed_development_observation",
+      "claim": "Eight new captures support four current-version histories/eight prefixes; six text hashes match v08 and two NASA hashes differ.",
+      "artifacts": [
+        {
+          "path": "data/source_stream_v09/capture_selection_plan.json",
+          "sha256": "2d7548a7910fe8b0aa0f21d10c21a725f7a5cbaf9896139d99c826410999fb41"
+        },
+        {
+          "path": "data/source_stream_v09/capture_manifest.json",
+          "sha256": "a8249f780e40c422253c6e13f020672501595ecd3afaa135319af78f0f7b65a1"
+        },
+        {
+          "path": "data/source_stream_v09/delivery_manifest.json",
+          "sha256": "e83d5235a1461af377e93800c77f392c285fafa02df0b91588273197e1e02b1a"
+        },
+        {
+          "path": "data/source_stream_v09/content_review.json",
+          "sha256": "27cb3ffa72ff5e838cd7afd24f4211d88a6ad5bdbec843d139469faee055a7f7"
+        }
+      ],
+      "scope_and_caveat": "No historical public-availability or original-version certification."
+    },
+    {
+      "claim_id": "V09-C02",
+      "draft_anchor": "sec:sources",
+      "evidence_status": "completed_development_observation",
+      "claim": "Eight annotations and seven saved reference artifacts yield123 claim instances and14 judgments; one blocked reference remains unresolved; one annotation revised; all15 selected outputs passed validators.",
+      "artifacts": [
+        {
+          "path": "data/source_stream_v09/generation_manifest.json",
+          "sha256": "630c6e5ff0ed977995556de3862109066f92e67d41d6f99f637d7b63ff125e77"
+        },
+        {
+          "path": "data/source_stream_v09/generation_failure.json",
+          "sha256": "31ebe879f58ea4d19e9b90c7648741e121588f9b1e8d3920fb09d014c44a5349"
+        },
+        {
+          "path": "results/source_initial_validation_v09.json",
+          "sha256": "53fc1183541ba8c0c63ebca5dbb7cbf665b783290dd2ac3b65744e1d4d38c202"
+        },
+        {
+          "path": "results/source_semantic_review_v09.json",
+          "sha256": "4c66e5ddd2a39cc0705a5c383a297dcc6769197c2c0e059e774d6ab515042ff4"
+        }
+      ],
+      "scope_and_caveat": "Model-assisted source review, not human gold."
+    },
+    {
+      "claim_id": "V09-C03",
+      "draft_anchor": "sec:sources",
+      "evidence_status": "completed_development_observation",
+      "claim": "New annotations contain no explicit corrections and four change links. Cumulative v08-v09 counts:7 histories,14 annotated prefixes,180 claim instances,13 reference prefixes and26 judgments.",
+      "artifacts": [
+        {
+          "path": "results/source_stream_replay_v08.json",
+          "sha256": "cb9788582d0214dea3e39b0c64f294a8c9603246ac7dd3e28a76f44d3128b2ed"
+        },
+        {
+          "path": "results/source_stream_replay_v09.json",
+          "sha256": "cde3e98a8d489ef9de975a72fa6eaca32470836d7a9c44695247ea2ba6ff9039"
+        },
+        {
+          "path": "results/source_semantic_review_v09.json",
+          "sha256": "4c66e5ddd2a39cc0705a5c383a297dcc6769197c2c0e059e774d6ab515042ff4"
+        }
+      ],
+      "scope_and_caveat": "Six histories have both reference prefixes complete. Repeated-prefix counts are not independent samples; no executable candidate/QA results for new histories."
+    },
+    {
+      "claim_id": "V09-C04",
+      "draft_anchor": "sec:design",
+      "evidence_status": "completed_development_observation",
+      "claim": "Four first-prefix reading statements and model-assisted expected labels were frozen/reviewed before scoring; first two ready histories fixed without outcome substitution.",
+      "artifacts": [
+        {
+          "path": "data/larger_scorer_v09/challenge_selection_protocol.json",
+          "sha256": "15589f27a178451e0068ce9de8c219a5eb0c193a18913ad3b93156ac1e788a53"
+        },
+        {
+          "path": "data/larger_scorer_v09/challenge_design_projection.json",
+          "sha256": "d06f60b4b803087210d1e733d9d39d8466458a4d559419ff2b319f6f7f888def"
+        },
+        {
+          "path": "data/larger_scorer_v09/challenge_reference_review.json",
+          "sha256": "5cec9e08b11d89454b198bf044c5b6fbf77c69a269c88392e0a2ffeac584d018"
+        },
+        {
+          "path": "data/larger_scorer_v09/research/frozen_inputs.json",
+          "sha256": "8a1e195e2ef357c4ae9aa520d0499e8b04f63059a6d44895ea471228d2c8af84"
+        }
+      ],
+      "scope_and_caveat": "Balanced authored semantic contrasts; no naturally sampled error estimate; 4B link/unresolved/no-link scoring untested."
+    },
+    {
+      "claim_id": "V09-C05",
+      "draft_anchor": "sec:design",
+      "evidence_status": "completed_development_observation",
+      "claim": "Pinned0.6B/4B Q8 assets, runtime, full-source native templates and16 fresh processes satisfy matched input and resource checks.",
+      "artifacts": [
+        {
+          "path": "configs/model_backend_v09.json",
+          "sha256": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802"
+        },
+        {
+          "path": "results/larger_scorer_v09.json",
+          "sha256": "f0a43d3f2ae7bff93efc9d5e2c4aa96434e7f2c72c88f1bb1b32a0e79b9c5e30"
+        },
+        {
+          "path": "results/larger_scorer_v09_external_audit.json",
+          "sha256": "12f9a9b1aa0b08341917a0038c354a7e2a67b13cbd41e3a668a05120e0c74754"
+        },
+        {
+          "path": "results/larger_scorer_execution_review_v09.json",
+          "sha256": "44b2adf61ea54469e2fc071e8b05d01dc716e0d131603d71e7f464e35ddb4165"
+        }
+      ],
+      "scope_and_caveat": "No size-only causal inference; no final strong-contextual baseline claim."
+    },
+    {
+      "claim_id": "V09-C06",
+      "draft_anchor": "sec:results",
+      "evidence_status": "completed_development_observation",
+      "claim": "Small model flips4/4 with2/4 authored-reference agreements in each order; large flips0/4 with3/4 agreements, accepting wrong non-executive chairman statement in both.",
+      "artifacts": [
+        {
+          "path": "results/challenge_analysis_v09.json",
+          "sha256": "2bce3d2c512ece9a6ee513622f02f983bccd3d2b527ad5f9cff53d67ba02d927"
+        },
+        {
+          "path": "results/larger_scorer_v09.json",
+          "sha256": "f0a43d3f2ae7bff93efc9d5e2c4aa96434e7f2c72c88f1bb1b32a0e79b9c5e30"
+        },
+        {
+          "path": "paper/results_numeric_v09.tex",
+          "sha256": "9daf827e62022a09881f6ae051683d057d3540290f6c4139734d42dd8324421f"
+        }
+      ],
+      "scope_and_caveat": "No condition selection, retuning, calibration or natural accuracy estimate."
+    },
+    {
+      "claim_id": "V09-C07",
+      "draft_anchor": "sec:results",
+      "evidence_status": "completed_development_observation",
+      "claim": "Final run1240.80seconds; median prefill30.42s/114.71s; all cold;16 retained+1 discarded+1 smoke distributions; numerical/resource amendments disclosed;48 vocabulary-only checks add no scores.",
+      "artifacts": [
+        {
+          "path": "results/larger_scorer_v09_execution_summary.json",
+          "sha256": "5debcb2160df635f9f3005b79ff53e9cb97c9210218a54a54e24725bef547462"
+        },
+        {
+          "path": "results/larger_scorer_v09_receipt.json",
+          "sha256": "f489183f15fe52d3600a8cc835c97a0660ff156b2e891a1bd79352b838c1aa1e"
+        },
+        {
+          "path": "results/larger_scorer_v09_external_audit.json",
+          "sha256": "12f9a9b1aa0b08341917a0038c354a7e2a67b13cbd41e3a668a05120e0c74754"
+        },
+        {
+          "path": "results/larger_scorer_execution_review_v09.json",
+          "sha256": "44b2adf61ea54469e2fc071e8b05d01dc716e0d131603d71e7f464e35ddb4165"
+        },
+        {
+          "path": "docs/larger_scorer_mass_amendment_review_v09.txt",
+          "sha256": "0ca2435f0098b2a04a577de554716594c1604654dceb67d69178a8b059b85862"
+        }
+      ],
+      "scope_and_caveat": "Rounded label masses can slightly exceed one;1e-4 accounting tolerance is an engineering threshold, not a proved error bound or preregistered zero-exposure choice."
+    },
+    {
+      "claim_id": "V09-C08",
+      "draft_anchor": "sec:implication",
+      "evidence_status": "prospective_or_scope_limit",
+      "claim": "Prioritize eight correction histories with essential downstream support and unaffected controls before routine expansion or new solver work.",
+      "artifacts": [
+        {
+          "path": "docs/next_method_gate_v09.txt",
+          "sha256": "65fa97be1ef02badb9e6cab0086ede279fd08f8b3a9f0ae3f89255dd1e555b72"
+        },
+        {
+          "path": "docs/research_route_review_v09.txt",
+          "sha256": "37581ca38afbedbc74ec6e264ca5c8ced27a34682a219a431abad49f97aed50b"
+        },
+        {
+          "path": "data/provenance/route_decision_v09.json",
+          "sha256": "dca3315fcbcf4ed4d2804c24d9ea77c3788d7acc57be03f9ba93e859b3097084"
+        },
+        {
+          "path": "paper/claim_ledger_v07.json",
+          "sha256": "2929c2c9a5100f4d38000e9a67583e3d30b8214376f0dbcca2b10ecb34788ae8"
+        }
+      ],
+      "scope_and_caveat": "Prospective route gate, not executed experiment or novelty result."
+    },
+    {
+      "claim_id": "V09-C09",
+      "draft_anchor": "sec:limits",
+      "evidence_status": "completed_development_observation",
+      "claim": "Recovered exactv08 archive verifies433 entries; v09 projections enable metadata/score replay while full source strings and recoverable tokens remain external.",
+      "artifacts": [
+        {
+          "path": "results/checkpoint_recovery_v09.json",
+          "sha256": "08178d86960120bb6af420add7da9ce8e519110f515e658eb14c8124c8b113f7"
+        },
+        {
+          "path": "data/source_stream_v09/distribution_manifest.json",
+          "sha256": "76f6b73ee646b96632c9afea73a08def2a8908e14e82c952cbc56fc8e9a5e7f8"
+        },
+        {
+          "path": "results/larger_scorer_v09_external_audit.json",
+          "sha256": "12f9a9b1aa0b08341917a0038c354a7e2a67b13cbd41e3a668a05120e0c74754"
+        },
+        {
+          "path": "results/larger_scorer_execution_review_v09.json",
+          "sha256": "44b2adf61ea54469e2fc071e8b05d01dc716e0d131603d71e7f464e35ddb4165"
+        }
+      ],
+      "scope_and_caveat": "Fresh public sources may differ; archive alone cannot repeat exact full-text validation or model inference."
+    },
+    {
+      "claim_id": "V09-C10",
+      "draft_anchor": "sec:limits",
+      "evidence_status": "prospective_or_scope_limit",
+      "claim": "No new natural QA, candidate recall, calibration, human-gold benchmark, heldout results, scalable search advantage or verified novelty is established.",
+      "artifacts": [
+        {
+          "path": "results/challenge_analysis_v09.json",
+          "sha256": "2bce3d2c512ece9a6ee513622f02f983bccd3d2b527ad5f9cff53d67ba02d927"
+        },
+        {
+          "path": "results/source_stream_replay_v09.json",
+          "sha256": "cde3e98a8d489ef9de975a72fa6eaca32470836d7a9c44695247ea2ba6ff9039"
+        },
+        {
+          "path": "data/provenance/route_decision_v09.json",
+          "sha256": "dca3315fcbcf4ed4d2804c24d9ea77c3788d7acc57be03f9ba93e859b3097084"
+        }
+      ],
+      "scope_and_caveat": "Source-only draft with no compiled or visually checked PDF."
+    }
+  ]
+}

@@ -1,0 +1,1384 @@
+{
+  "schema_version": "development_sampling_frame_v0.7",
+  "status": "metadata_frozen_discovery_only_not_admitted",
+  "declared_date": "2026-10-02",
+  "frame_protocol": {
+    "declaration_timing": "Written before the discovery searches for this frame. Existing v0.4 register and source_stream_protocol_v07.json were read first.",
+    "target": {
+      "leadership_histories": 10,
+      "public_plan_or_explicit_correction_histories": 10
+    },
+    "selection": "Purposeful English-language convenience development sample. Search fixed named organizations below in listed order for at least two official primary-source URLs that describe a leadership succession or a public plan followed by a later related notice. Do not use decoder outputs, model scores, reference questions or answerability to select records.",
+    "candidate_organizations_leadership": [
+      "IBM",
+      "Amazon",
+      "Walt Disney",
+      "Starbucks",
+      "Intel",
+      "Costco",
+      "CVS Health",
+      "Boeing",
+      "HSBC",
+      "adidas"
+    ],
+    "candidate_organizations_plans": [
+      "Docker",
+      "Google Chrome Privacy Sandbox",
+      "NASA Artemis",
+      "Sony PlayStation",
+      "Microsoft Windows",
+      "Unity",
+      "Adobe Flash",
+      "European Space Agency ExoMars",
+      "UK Government HS2",
+      "Mozilla Firefox"
+    ],
+    "fallback_rule": "If a candidate has no verified pair in this bounded pass, log its exclusion and report a shortfall; no replacement chosen for model difficulty.",
+    "search_terms": "Organization name plus leadership CEO announcement transition, or named plan plus original announcement update delay reversal cancellation extension. Use official publisher domains; follow their official links when needed.",
+    "verification": "Open each selected primary URL through web retrieval. Record title, visible reported publication date only when verified, source order evidence and unresolved availability/version gaps. Search-result-only records are not verified pairs.",
+    "explicit_corrections": "No quota. Label a separate challenge slice only if an explicit notice identifies erroneous prior content. A changed plan or retrospective restatement is not a factual correction.",
+    "freeze": "Freeze final metadata before any future source capture, candidate extraction, reference questions or decoder run for this frame.",
+    "claim_limit": "Convenience development metadata only; no prevalence, random representativeness, untouched evaluation, historical first-availability, or completed-history claim."
+  },
+  "exclusions": [
+    {
+      "history_group": "Nike",
+      "reason": "Already inspected development history; excluded by task."
+    },
+    {
+      "history_group": "OpenAI",
+      "reason": "Already inspected development history; excluded by task."
+    },
+    {
+      "history_group": "Lyft",
+      "reason": "Already inspected development correction example; excluded by task."
+    },
+    {
+      "history_group": "Microsoft Windows",
+      "reason": "Conservatively excluded after initial frame declaration because Microsoft is connected to the already inspected OpenAI history. No replacement under the declared no-replacement fallback rule. Final seed-register cross-check also found a prior IE11 history.",
+      "stage": "Before searching that candidate organization."
+    }
+  ],
+  "histories": [
+    {
+      "history_id": "leadership_ibm_2020",
+      "title": "IBM CEO succession and later incumbency notice",
+      "domain": "leadership_transitions",
+      "relation_family": [
+        "organization_role_holder",
+        "planned_role_start",
+        "observed_role_holder"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "ibm_leadership_all_reprints",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "Ginni Rometty",
+        "Arvind Krishna",
+        "IBM",
+        "Red Hat"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "ibm_ceo_announcement_20200130",
+          "url": "https://au.newsroom.ibm.com/2020-01-30-Arvind-Krishna-Elected-IBM-Chief-Executive-Officer",
+          "title": "Arvind Krishna Elected IBM Chief Executive Officer",
+          "title_abbreviated": false,
+          "reported_publication_date": "2020-01-30",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn116view1",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "ibm_ceo_letter_20201109",
+          "url": "https://www.ibm.com/policy/blog/ibm-ceo-letter-to-president-elect-biden",
+          "title": "IBM CEO Letter to President-elect Biden",
+          "title_abbreviated": false,
+          "reported_publication_date": "2020-11-09",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn124view0",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "January announcement precedes November dated CEO letter by reported dates.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "The later letter confirms a role label, not the exact actual start day; no continuous incumbency inferred."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "leadership_amazon_2021",
+      "title": "Amazon announced CEO succession and subsequent CEO attribution",
+      "domain": "leadership_transitions",
+      "relation_family": [
+        "organization_role_holder",
+        "planned_role_start",
+        "observed_role_holder"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "amazon_aws_leadership_all_reprints",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "Amazon",
+        "AWS",
+        "Jeff Bezos",
+        "Andy Jassy"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "amazon_transition_20210202",
+          "url": "https://ir.aboutamazon.com/news-release/news-release-details/2021/Amazon.com-Announces-Fourth-Quarter-Results/",
+          "title": "Amazon.com Announces Financial Results and CEO Transition",
+          "title_abbreviated": false,
+          "reported_publication_date": "2021-02-02",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn124view1",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "amazon_results_20210729",
+          "url": "https://press.aboutamazon.com/2021/7/amazon-com-announces-second-quarter-results",
+          "title": "Amazon.com Announces Second Quarter Results",
+          "title_abbreviated": false,
+          "reported_publication_date": "2021-07-29",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn116view3",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "February plan precedes July report by visible datelines; later report identifies Jassy as CEO.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "These two sources alone need not resolve the precise first day in office."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "leadership_disney_2020_2022",
+      "title": "Disney CEO succession and return",
+      "domain": "leadership_transitions",
+      "relation_family": [
+        "organization_role_holder",
+        "immediate_succession",
+        "chair_vs_ceo_scope"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "disney_ceo_successions_all_reprints",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "Bob Iger",
+        "Bob Chapek",
+        "Walt Disney Company"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "disney_chapek_20200225",
+          "url": "https://thewaltdisneycompany.com/press-releases/bob-chapek-named-chief-executive-officer-of-the-walt-disney-company/",
+          "title": "Bob Chapek Named Chief Executive Officer of The Walt Disney Company",
+          "title_abbreviated": false,
+          "reported_publication_date": "2020-02-25",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn116view4",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "disney_iger_20221120",
+          "url": "https://thewaltdisneycompany.com/press-releases/the-walt-disney-company-board-of-directors-appoints-robert-a-iger-as-chief-executive-officer/",
+          "title": "The Walt Disney Company Board Of Directors Appoints Robert A. Iger As Chief Executive Officer",
+          "title_abbreviated": false,
+          "reported_publication_date": "2022-11-20",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn116view5",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "Two dated issuer notices explicitly describe the succession and return.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "This bounded pair is not an exhaustive executive-employment chronology."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "leadership_starbucks_2023_2024",
+      "title": "Starbucks succession with an intervening interim appointment",
+      "domain": "leadership_transitions",
+      "relation_family": [
+        "organization_role_holder",
+        "interim_role_holder",
+        "planned_role_start"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "starbucks_chipotle_niccol_leadership",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "Starbucks",
+        "Chipotle",
+        "Brian Niccol",
+        "Laxman Narasimhan",
+        "Rachel Ruggeri",
+        "Howard Schultz"
+      ],
+      "prior_development_exposure": "Previously captured Starbucks 2024 development history in data/source_register/seed_sources.json; this frame adds a 2023 predecessor notice but does not create a new independent history.",
+      "sources": [
+        {
+          "source_id": "starbucks_narasimhan_20230320",
+          "url": "https://investor.starbucks.com/news/financial-releases/news-details/2023/Laxman-Narasimhan-Assumes-Role-of-Starbucks-Chief-Executive-Officer/default.aspx",
+          "title": "Laxman Narasimhan Assumes Role of Starbucks Chief Executive Officer",
+          "title_abbreviated": false,
+          "reported_publication_date": "2023-03-20",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn116view6",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "starbucks_niccol_20240813",
+          "url": "https://about.starbucks.com/press/2024/starbucks-names-brian-niccol-as-chairman-and-chief-executive-officer/",
+          "title": "Starbucks names Brian Niccol as Chairman and Chief Executive Officer",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-08-13",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn116view7",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "Reported dates order the notices; second notice separates immediate departure/interim service from a future successor start.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Chipotle/Niccol versions belong in this connected group if later collected; do not make Chipotle a separate held-out succession."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes.",
+      "prior_history_ids": [
+        "leadership_starbucks_2024"
+      ]
+    },
+    {
+      "history_id": "leadership_intel_2021_2024",
+      "title": "Intel CEO appointment and retirement with interim co-CEOs",
+      "domain": "leadership_transitions",
+      "relation_family": [
+        "organization_role_holder",
+        "planned_role_start",
+        "interim_co_ceo_scope"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "intel_ceo_successions_all_reprints",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "Intel",
+        "Pat Gelsinger",
+        "Bob Swan",
+        "David Zinsner",
+        "Michelle Johnston Holthaus"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "intel_gelsinger_20210113",
+          "url": "https://download.intel.com/newsroom/archive/2025/en-us-2021-01-13-intel-appoints-tech-industry-leader-pat-gelsinger-as-new-ceo.pdf",
+          "title": "Intel Appoints Tech Industry Leader Pat Gelsinger as New CEO",
+          "title_abbreviated": false,
+          "reported_publication_date": "2021-01-13",
+          "publication_date_basis": "Internal article date on page 1 of issuer archive PDF.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn124view3",
+          "version_notes": "Official archive PDF is in a 2025 path but displays a January 2021 article date. PDF creation/republication time and original HTML bytes are unverified.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "intel_retirement_20241202",
+          "url": "https://www.intc.com/news-events/press-releases/detail/1719/intel-announces-retirement-of-ceo-pat-gelsinger",
+          "title": "Intel Announces Retirement of CEO Pat Gelsinger",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-12-02",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn125view0",
+          "version_notes": "Footer displays 08:30 AM EST release time; this is issuer-reported time, not independently authenticated first availability.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "Internal 2021 article date and 2024 release dateline order the content; archive path date is not event time.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Legacy Intel links redirected or failed; current official archival repackaging requires explicit version provenance."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "leadership_costco_2023_2024",
+      "title": "Costco announced CEO change and subsequent CEO attribution",
+      "domain": "leadership_transitions",
+      "relation_family": [
+        "organization_role_holder",
+        "planned_role_start",
+        "ceo_vs_cfo_scope"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "costco_leadership_all_reprints",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "Costco",
+        "Craig Jelinek",
+        "Ron Vachris",
+        "Richard Galanti",
+        "Gary Millerchip"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "costco_ceo_20231018",
+          "url": "https://investor.costco.com/news/news-details/2023/Costco-Wholesale-Corporation-Announces-Craig-Jelinek-Will-Step-Down-as-CEO-Ron-Vachris-Elected-as-New-CEO-And-Quarterly-Cash-Dividend-Declared/",
+          "title": "Costco Wholesale Corporation Announces Craig Jelinek Will Step Down as CEO, Ron Vachris Elected as New CEO…",
+          "title_abbreviated": true,
+          "reported_publication_date": "2023-10-18",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn118view2",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "costco_cfo_20240206",
+          "url": "https://investor.costco.com/news/news-details/2024/Costco-Wholesale-Corporation-Announces-Richard-Galanti-Will-Step-Down-as-CFO-Names-Gary-Millerchip-New-CFO/default.aspx",
+          "title": "Costco Wholesale Corporation Announces Richard Galanti Will Step Down as CFO, Names Gary Millerchip New CFO",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-02-06",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn119view6",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "October CEO plan precedes February CFO notice, which attributes a statement to the then-CEO.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Second source is a CFO succession announcement; its CEO attribution is relevant but is not an exact-day CEO assumption notice."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "leadership_cvs_2020_2024",
+      "title": "CVS Health CEO succession notices",
+      "domain": "leadership_transitions",
+      "relation_family": [
+        "organization_role_holder",
+        "planned_role_start",
+        "retirement_vs_role_departure"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "cvs_aetna_caremark_leadership",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "CVS Health",
+        "Aetna",
+        "CVS Caremark",
+        "Larry Merlo",
+        "Karen Lynch",
+        "David Joyner"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "cvs_lynch_20201106",
+          "url": "https://investors.cvshealth.com/news/news-details/2020/CVS-Health-Announces-CEO-Transition-Effective-February-2021/default.aspx",
+          "title": "CVS Health Announces CEO Transition Effective February 2021",
+          "title_abbreviated": false,
+          "reported_publication_date": "2020-11-06",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn118view4",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "cvs_joyner_20241018",
+          "url": "https://www.cvshealth.com/news/company-news/cvs-health-appoints-david-joyner-president-and-chief-executive-officer.html",
+          "title": "CVS Health Appoints David Joyner President and Chief Executive Officer",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-10-18",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn119view7",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "Visible 2020 and 2024 datelines order sources; second notice reports an effective date before publication.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Do not conflate corporate CEO, Aetna leadership, advisory employment or board service."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "leadership_boeing_2024",
+      "title": "Boeing retirement plan and successor appointment",
+      "domain": "leadership_transitions",
+      "relation_family": [
+        "organization_role_holder",
+        "planned_role_end",
+        "planned_role_start",
+        "subsidiary_scope"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "boeing_leadership_all_reprints",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "Boeing",
+        "Boeing Commercial Airplanes",
+        "Dave Calhoun",
+        "Kelly Ortberg",
+        "Stan Deal",
+        "Stephanie Pope"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "boeing_transition_20240325",
+          "url": "https://investors.boeing.com/investors/news/press-release-details/2024/Boeing-Announces-Board-and-Management-Changes/default.aspx",
+          "title": "Boeing Announces Board and Management Changes",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-03-25",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn118view6",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "boeing_ortberg_20240731",
+          "url": "https://investors.boeing.com/investors/news/press-release-details/2024/Boeing-Board-Names-Kelly-Ortberg-President-and-CEO/default.aspx",
+          "title": "Boeing Board Names Kelly Ortberg President and CEO",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-07-31",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn118view7",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "Dated March retirement-plan notice precedes July successor announcement.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Boeing parent CEO and Boeing Commercial Airplanes CEO are distinct roles. Actual assumption requires its own source if claimed."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "leadership_hsbc_2024",
+      "title": "HSBC retirement, successor appointment and assumption notices",
+      "domain": "leadership_transitions",
+      "relation_family": [
+        "group_role_holder",
+        "planned_role_end",
+        "planned_role_start",
+        "notice_period_vs_service"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "hsbc_leadership_all_reprints",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "HSBC",
+        "Noel Quinn",
+        "Georges Elhedery"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "hsbc_quinn_20240430",
+          "url": "https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2024/1q/pdfs/hsbc-holdings-plc/sea-240430-retirement-of-group-chief-executive.pdf",
+          "title": "HSBC Holdings plc — Retirement of Group Chief Executive",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-04-30",
+          "publication_date_basis": "Internal date on first page of official issuer PDF.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn123view5",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "hsbc_elhedery_20240717",
+          "url": "https://www.hsbc.com/news-and-views/news/media-releases/2024/georges-elhedery-appointed-as-group-chief-executive",
+          "title": "Georges Elhedery appointed as Group Chief Executive",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-07-17",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn123view7",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "hsbc_assumption_20240902",
+          "url": "https://www.hsbc.com/news-and-views/news/hsbc-news-archive/georges-elhedery-becomes-our-new-group-chief-executive",
+          "title": "Georges Elhedery becomes our new Group Chief Executive",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-09-02",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn119view1",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "April retirement intent, July appointment, September assumption are visibly dated and explicitly connected.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Role departure, gardening leave and notice-period completion must remain separate."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "leadership_adidas_2022_2023",
+      "title": "adidas CEO transition plan and successor/interim announcement",
+      "domain": "leadership_transitions",
+      "relation_family": [
+        "organization_role_holder",
+        "planned_role_start",
+        "interim_role_holder"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "adidas_puma_gulden_leadership",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "adidas",
+        "Puma",
+        "Bjørn Gulden",
+        "Kasper Rorsted",
+        "Harm Ohlmeyer"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "adidas_transition_20220822",
+          "url": "https://www.adidas-group.com/en/media/press-releases/adidas-ag-initiates-ceo-transition",
+          "title": "adidas AG initiates CEO transition",
+          "title_abbreviated": false,
+          "reported_publication_date": "2022-08-22",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn123view8",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "adidas_gulden_20221108",
+          "url": "https://www.adidas-group.com/en/media/press-releases/bjorn-gulden-to-become-ceo-of-adidas-ag",
+          "title": "Bjørn Gulden to become CEO of adidas AG",
+          "title_abbreviated": false,
+          "reported_publication_date": "2022-11-08",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn123view9",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "August plan precedes November named successor notice, which references the August transition.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Puma/Gulden and any translated or statutory duplicates must remain in this connected group."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "service_docker_free_team_2023",
+      "title": "Docker Free Team sunset plan and reversal",
+      "domain": "versioned_public_plans",
+      "relation_family": [
+        "planned_sunset_status",
+        "private_repository_access",
+        "public_image_distribution",
+        "migration_deadline"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "docker_free_team_all_versions_and_reprints",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [],
+      "prior_development_exposure": "Already inspected in data/source_register/expansion_v04.json; re-opened here as development discovery only.",
+      "sources": [
+        {
+          "source_id": "docker_pre_reversal_archive_frame_v07",
+          "url": "https://www.docker.com/blog/we-apologize-we-did-a-terrible-job-announcing-the-end-of-docker-free-teams/",
+          "title": "We apologize. We did a terrible job announcing the end of Docker Free Teams.",
+          "title_abbreviated": false,
+          "reported_publication_date": "2023-03-16",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn120view0",
+          "version_notes": "Original email is not acquired. The current first article already discloses the later reversal; it cannot stand in for the original pre-reversal version.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "docker_reversal_frame_v07",
+          "url": "https://www.docker.com/blog/no-longer-sunsetting-the-free-team-plan/",
+          "title": "We’re No Longer Sunsetting the Free Team Plan",
+          "title_abbreviated": false,
+          "reported_publication_date": "2023-03-24",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn120view1",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "March 16 article and March 24 reversal have displayed dates; current March 16 page contains March 24 updates.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Original email is not acquired. The current first article already discloses the later reversal; it cannot stand in for the original pre-reversal version."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "browser_chrome_cookie_plan_2023_2025",
+      "title": "Chrome third-party cookie deprecation, user-choice proposal, and cancellation of a standalone prompt",
+      "domain": "versioned_public_plans",
+      "relation_family": [
+        "planned_third_party_cookie_restriction",
+        "planned_user_choice_experience",
+        "planned_standalone_prompt",
+        "incognito_default_cookie_policy"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "chrome_privacy_sandbox_cookie_program_all_pages",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [],
+      "prior_development_exposure": "Already inspected in data/source_register/expansion_v04.json; re-opened here as development discovery only.",
+      "sources": [
+        {
+          "source_id": "chrome_user_choice_proposal_frame_v07",
+          "url": "https://privacysandbox.google.com/blog/privacy-sandbox-update",
+          "title": "A new path for Privacy Sandbox on the web",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-07-22",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn120view2",
+          "version_notes": "This frame selects the two later official notices only; the v0.4 October 2023 countdown page is excluded from this pair because of documented hindsight edits.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "chrome_prompt_cancellation_frame_v07",
+          "url": "https://privacysandbox.google.com/blog/privacy-sandbox-next-steps",
+          "title": "Next steps for Privacy Sandbox and tracking protections in Chrome",
+          "title_abbreviated": false,
+          "reported_publication_date": "2025-04-22",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn120view3",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "July 2024 proposal and April 2025 notice have displayed dates and an explicit backward reference.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "This frame selects the two later official notices only; the v0.4 October 2023 countdown page is excluded from this pair because of documented hindsight edits."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "mission_artemis_ii_iii_schedule_2024",
+      "title": "Artemis II and III target-window revisions",
+      "domain": "versioned_public_plans",
+      "relation_family": [
+        "target_launch_window",
+        "target_landing_window"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "nasa_artemis_campaign_related_missions",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [],
+      "prior_development_exposure": "Already inspected in data/source_register/expansion_v04.json; re-opened here as development discovery only.",
+      "sources": [
+        {
+          "source_id": "artemis_jan_2024_frame_v07",
+          "url": "https://www.nasa.gov/news-release/nasa-shares-progress-toward-early-artemis-moon-missions-with-crew/",
+          "title": "NASA Shares Progress Toward Early Artemis Moon Missions with Crew",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-01-09",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": "2024-03-20",
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn120view4",
+          "version_notes": "January page also displays a March 20, 2024 last-updated date. Current navigation contains later missions; raw historical versions have not been established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "artemis_dec_2024_frame_v07",
+          "url": "https://www.nasa.gov/news-release/nasa-shares-orion-heat-shield-findings-updates-artemis-moon-missions/",
+          "title": "NASA Shares Orion Heat Shield Findings, Updates Artemis Moon Missions",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-12-05",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn120view5",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "January and December 2024 release dates order schedule notices.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "January page also displays a March 20, 2024 last-updated date. Current navigation contains later missions; raw historical versions have not been established."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "commerce_playstation_legacy_stores_2021_2026",
+      "title": "Legacy PlayStation stores: reversal and later geographically scoped retirement proposal",
+      "domain": "versioned_public_plans",
+      "relation_family": [
+        "planned_purchase_availability",
+        "planned_store_closure",
+        "planned_redownload_availability"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "sony_playstation_legacy_commerce_all_devices_regions",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [],
+      "prior_development_exposure": "Already inspected in data/source_register/expansion_v04.json; re-opened here as development discovery only.",
+      "sources": [
+        {
+          "source_id": "playstation_reversal_2021_frame_v07",
+          "url": "https://blog.playstation.com/2021/04/19/playstation-store-on-ps3-and-ps-vita-will-continue-operations/",
+          "title": "PlayStation Store on PS3 and PS Vita Will Continue Operations",
+          "title_abbreviated": false,
+          "reported_publication_date": "2021-04-19",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn120view6",
+          "version_notes": "The original early-2021 closure notice is only described retrospectively. Five-year gap does not prove uninterrupted service; proposed and actual closures remain separate.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "playstation_scoped_retirement_2026_frame_v07",
+          "url": "https://blog.playstation.com/2026/07/01/an-update-on-playstation-store-for-ps3-and-ps-vita/",
+          "title": "An update on PlayStation Store for PS3 and PS Vita",
+          "title_abbreviated": false,
+          "reported_publication_date": "2026-07-01",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn120view7",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "April 2021 reversal and July 2026 new regional retirement proposal have displayed dates.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "The original early-2021 closure notice is only described retrospectively. Five-year gap does not prove uninterrupted service; proposed and actual closures remain separate."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "plan_unity_runtime_fee_2023_2024",
+      "title": "Unity Runtime Fee revised plan and cancellation",
+      "domain": "versioned_public_plans",
+      "relation_family": [
+        "planned_fee_applicability",
+        "software_version_scope",
+        "plan_cancellation"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "unity_runtime_fee_all_versions",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "Unity",
+        "Unity Runtime Fee",
+        "Unity Personal",
+        "Unity Pro",
+        "Unity Enterprise"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "unity_open_letter_20230922",
+          "url": "https://unity.com/blog/an-open-letter-to-our-community",
+          "title": "An open letter to our community",
+          "title_abbreviated": false,
+          "reported_publication_date": "2023-09-22",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn123view12",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "unity_cancellation_20240912",
+          "url": "https://unity.com/blog/unity-is-canceling-the-runtime-fee",
+          "title": "A message to our community: Unity is canceling the Runtime Fee",
+          "title_abbreviated": false,
+          "reported_publication_date": "2024-09-12",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn122view1",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "September 2023 revised plan precedes September 2024 cancellation by article datelines.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Initial September 12, 2023 proposal and all subsequent legal terms are not captured. This pair is policy revision/cancellation, not a factual correction."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "plan_adobe_flash_2017_2021",
+      "title": "Adobe Flash end-of-life plan and later support status",
+      "domain": "versioned_public_plans",
+      "relation_family": [
+        "planned_support_end",
+        "reported_support_end",
+        "content_blocking_date"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "adobe_flash_and_browser_partner_retirement",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "Adobe",
+        "Flash Player",
+        "Google",
+        "Mozilla",
+        "Microsoft",
+        "Apple",
+        "Facebook"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "adobe_flash_plan_20170725",
+          "url": "https://blog.adobe.com/en/publish/2017/07/25/adobe-flash-update",
+          "title": "Flash & the Future of Interactive Content",
+          "title_abbreviated": false,
+          "reported_publication_date": "2017-07-25",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn123view13",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "adobe_flash_eol_current",
+          "url": "https://www.adobe.com/products/flashplayer/end-of-life-alternative.html",
+          "title": "Adobe Flash Player End of Life",
+          "title_abbreviated": false,
+          "reported_publication_date": null,
+          "publication_date_basis": "First publication date unverified; visible content section carries an update date.",
+          "reported_updated_date": "2021-01-13",
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn125view1",
+          "version_notes": "Current support page displays UPDATED January 13, 2021 alongside contemporary product marketing. This is an update label, not verified original publication.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "Later FAQ expressly refers to the 2017 announcement; update label and retrospective tense support dependency, not historical availability.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "This unchanged-plan/realization lead provides a possible non-revision control. No historical version has been frozen. Partner-browser releases must co-locate if collected."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "plan_esa_exomars_2020_2022",
+      "title": "ESA ExoMars delayed launch plan and cooperation suspension",
+      "domain": "versioned_public_plans",
+      "relation_family": [
+        "target_launch_window",
+        "cooperation_status",
+        "launch_plan_suspension"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "esa_roscosmos_exomars_program",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "ESA",
+        "Roscosmos",
+        "ExoMars",
+        "Rosalind Franklin rover"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "esa_exomars_20200312",
+          "url": "https://www.esa.int/Newsroom/Press_Releases/ExoMars_to_take_off_for_the_Red_Planet_in_2022",
+          "title": "ExoMars to take off for the Red Planet in 2022",
+          "title_abbreviated": false,
+          "reported_publication_date": "2020-03-12",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn122view4",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "esa_exomars_20220317",
+          "url": "https://www.esa.int/Newsroom/Press_Releases/ExoMars_suspended",
+          "title": "ExoMars suspended",
+          "title_abbreviated": false,
+          "reported_publication_date": "2022-03-17",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn123view14",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "March 2020 and March 2022 issuer release dates order the notices; suspension refers to the planned 2022 mission.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Later 2028 relaunch plans were discovered in search but are outside this fixed pair. Do not interpret suspension as an assertion that a launch happened."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "plan_hs2_phase2_2017_2023",
+      "title": "HS2 route plan and later cancellation; embedded correction lead",
+      "domain": "versioned_public_plans",
+      "relation_family": [
+        "planned_route_scope",
+        "plan_cancellation",
+        "reported_compensation_impact"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "uk_hs2_all_phases_route_compensation",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "UK Department for Transport",
+        "HS2 Ltd",
+        "HS2 Phase 2a",
+        "HS2 Phase 2b",
+        "Network North"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "hs2_phase2_route_current",
+          "url": "https://www.gov.uk/government/publications/hs2-phase-2b-route-decision",
+          "title": "HS2 Phase 2b route decision",
+          "title_abbreviated": false,
+          "reported_publication_date": "2017-07-17",
+          "publication_date_basis": "Visible publication date and explicit update history.",
+          "reported_updated_date": "2017-12-15",
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn122view6",
+          "version_notes": "Current landing page contains an explicit December 2017 correction and links to revised documents; it is not an uncorrected July version.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "hs2_network_north_20231004",
+          "url": "https://www.gov.uk/government/news/pm-redirects-hs2-funding-to-revolutionise-transport-across-the-north-and-midlands",
+          "title": "PM redirects HS2 funding to revolutionise transport across the North and Midlands",
+          "title_abbreviated": false,
+          "reported_publication_date": "2023-10-04",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn122view7",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "Publication/update history distinguishes July plan, December correction metadata and October 2023 new policy. Exact original/corrected document versions remain missing.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Current first source combines earlier text and correction. It cannot be supplied as an uncorrected 2017 prefix. The 2023 policy is a plan change, distinct from the numeric correction."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    },
+    {
+      "history_id": "plan_mozilla_firefox_esr115_2023_2025",
+      "title": "Mozilla Firefox ESR 115 support window extension",
+      "domain": "versioned_public_plans",
+      "relation_family": [
+        "planned_support_end",
+        "operating_system_scope",
+        "release_channel_scope"
+      ],
+      "slice": "ordinary_convenience_development",
+      "status": "discovery_only_not_admitted",
+      "connected_entity_group_id": "mozilla_firefox_esr115_legacy_os",
+      "connected_group_status": "provisional_development_group_not_certified_independent",
+      "related_entities_or_groups": [
+        "Mozilla",
+        "Firefox ESR 115",
+        "Windows 7",
+        "Windows 8",
+        "Windows 8.1",
+        "macOS 10.12-10.14"
+      ],
+      "prior_development_exposure": "New metadata discovery in this frame; still development-visible and never held out.",
+      "sources": [
+        {
+          "source_id": "mozilla_esr115_20230706",
+          "url": "https://blog.mozilla.org/futurereleases/2023/07/06/firefox-support-for-windows-7-8-and-8-1/",
+          "title": "Firefox support for Windows 7, 8 and 8.1",
+          "title_abbreviated": false,
+          "reported_publication_date": "2023-07-06",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn123view3",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        },
+        {
+          "source_id": "mozilla_esr115_20250904",
+          "url": "https://blog.mozilla.org/futurereleases/2025/09/04/firefox-esr-115-support-for-windows-7-8-and-8-1-and-old-mac-os-versions-extended-until-march-2026/",
+          "title": "Extended Firefox ESR 115 Support for Windows 7, 8, and 8.1 and macOS 10.12-10.14",
+          "title_abbreviated": false,
+          "reported_publication_date": "2025-09-04",
+          "publication_date_basis": "Visible page dateline verified in opened primary source.",
+          "reported_updated_date": null,
+          "retrieved_date": "2026-10-02",
+          "verification": "primary_url_opened_rendered_content",
+          "retrieval_reference": "turn123view4",
+          "version_notes": "Currently served version; historical original and later edits not independently established.",
+          "historical_first_public_availability": null,
+          "exact_version_sha256": null,
+          "raw_bytes_captured": false,
+          "status": "discovery_only_not_admitted"
+        }
+      ],
+      "source_order_basis": "2023 plan and 2025 extension have visible datelines; later notice explicitly recalls the earlier support window.",
+      "known_source_order_or_availability_gaps": [
+        "Exact current response bytes, retrieval receipts, extraction recipe, hashes, source redistribution policy and historical version/public-availability evidence have not been acquired. Stream delivery batches remain unfrozen.",
+        "Intermediate 2024/2025 extensions not acquired. Mutable support hub now advertises a later window and is excluded from this selected pair."
+      ],
+      "selection_basis": "Included under predeclared named-organization convenience discovery; not selected using model, decoder or reference-answer outcomes."
+    }
+  ],
+  "frame_protocol_sha256": "8339563167bc1d2c4b139479ec9d81694888c26bb01a3beda68e0aefb13424ab",
+  "frozen_date": "2026-10-02",
+  "annotation_provenance": "Model-assisted official-source discovery. No candidate extraction, reference questions, gold answers, model scoring, exact raw-byte capture or benchmark admission for this frame.",
+  "protocol_parent": "configs/source_stream_protocol_v07.json",
+  "raw_source_capture_performed": false,
+  "candidate_annotations_created": 0,
+  "reference_questions_created": 0,
+  "completed_stream_histories": 0,
+  "benchmark_admitted_histories": 0,
+  "availability_policy": {
+    "retrieval_date": "2026-10-02",
+    "retrieval_representation": "Web retrieval rendered text/PDF text, not archived HTTP response bytes.",
+    "historical_first_public_availability_verified": false,
+    "current_source_versions": "Every source below is the version retrieved now. Displayed old dates do not certify historical bytes or publication availability.",
+    "delivery_batches": "Not yet assigned. Freeze exact versions, source IDs and complete delivery batches before extraction; preserve body updates rather than silently backdating them.",
+    "publication_dates": "Reported page datelines or internal document dates, not observation/first-publication proofs. Null means unverified. An update date is stored separately."
+  },
+  "selection_log": [
+    "Initial named candidate order and no-replacement fallback written before discovery search.",
+    "Followed official issuer search results and their archive links; non-primary news results were not selected.",
+    "IBM first chairman-release guess failed; used a dated issuer CEO letter as the second leadership source.",
+    "Intel legacy newsroom page redirected to an archive index; selected its linked January 2021 issuer PDF. February 2021 transition PDF exceeded retrieval size; selected the verified December 2024 issuer retirement release instead.",
+    "Amazon employee email was opened but lacked a visible date; selected the dated issuer financial-release notice instead.",
+    "Docker, Chrome, NASA and Sony are carried forward from already visible v0.4 discovery metadata and re-opened here. They remain development-visible.",
+    "The HS2 route page unexpectedly displayed an explicit 2017 correction; logged separately as a challenge lead inside that same history, without adding a twentieth history.",
+    "Microsoft excluded because of prior connected OpenAI material; no replacement was searched.",
+    "All selected pairs were opened through primary-source web retrieval before freezing this metadata. No method outputs were consulted.",
+    "Final cross-check of data/source_register/seed_sources.json found prior Starbucks development capture and Microsoft IE11 discovery. Starbucks is explicitly marked prior-visible; the four v0.4 records are not the only prior-visible histories. Adobe/Mozilla browser/OS overlaps with prior Apple/Microsoft material are flagged for grouping review, not silently called independent."
+  ],
+  "challenge_leads": [
+    {
+      "lead_id": "hs2_compensation_correction_dec2017",
+      "history_id": "plan_hs2_phase2_2017_2023",
+      "connected_entity_group_id": "uk_hs2_all_phases_route_compensation",
+      "slice": "explicit_correction_challenge_discovery_lead",
+      "status": "not_admitted_original_version_missing",
+      "source_id": "hs2_phase2_route_current",
+      "retrieval_reference": "turn122view6",
+      "discovery_basis": "Within the predeclared HS2 plan search, the official landing page explicitly identifies a drafting error, supplies earlier and replacement wording, and logs December 15, 2017 corrections.",
+      "description": "Percentage and affected compensation-category wording are explicitly corrected. This is distinct from the 2023 plan cancellation.",
+      "admission_gap": "Acquire and hash the actual original and corrected document versions plus issuer correction notice; do not reconstruct an early source by deleting the correction from the current page.",
+      "additional_history_count": 0
+    }
+  ],
+  "connected_group_policy": {
+    "group_id_meaning": "Provisional whole-history development co-location key, including named successor organizations and duplicated versions; not a statistical independence certificate.",
+    "nominal_group_key_count": 19,
+    "independent_group_count": null,
+    "cross_history_review_pending": true,
+    "review_flags": [
+      {
+        "histories": [
+          "plan_adobe_flash_2017_2021",
+          "browser_chrome_cookie_plan_2023_2025",
+          "plan_mozilla_firefox_esr115_2023_2025"
+        ],
+        "reason": "Adobe names Google/Mozilla as coordinated Flash-retirement partners. Current selected Chrome cookie and Firefox OS-support histories concern different programs, but any shared retirement documents or facts must be grouped before partitioning."
+      },
+      {
+        "histories": [
+          "leadership_boeing_2024",
+          "mission_artemis_ii_iii_schedule_2024",
+          "plan_esa_exomars_2020_2022"
+        ],
+        "reason": "Aerospace organizations/programs can share suppliers and mission partners. No disjoint-entity or independent-sample claim is made; full entity/context overlap audit is pending."
+      },
+      {
+        "histories": [
+          "plan_adobe_flash_2017_2021",
+          "plan_mozilla_firefox_esr115_2023_2025"
+        ],
+        "prior_seed_histories": [
+          "product_ie11_scoped_retirement",
+          "product_apple_intelligence_eu"
+        ],
+        "reason": "Flash partnership and legacy operating-system contexts mention Microsoft/Apple, organizations with prior seed histories. These are distinct selected programs but require cross-record overlap review; not untouched or independently grouped evaluation."
+      }
+    ],
+    "prior_connection_exclusion": "Microsoft Windows excluded conservatively due to previously inspected OpenAI-connected material. Incidental mention of a browser/OS partner in other selected source text is logged, not treated as authorization to collect that excluded company history."
+  },
+  "counts": {
+    "target_histories": 20,
+    "metadata_histories": 19,
+    "leadership_histories": 10,
+    "public_plan_histories": 9,
+    "primary_source_urls": 39,
+    "ordinary_convenience_development_histories": 19,
+    "explicit_correction_challenge_leads": 1,
+    "additional_challenge_histories": 0,
+    "already_v04_development_visible_histories": 4,
+    "shortfall_against_target": 1,
+    "completed_stream_histories": 0,
+    "benchmark_admitted_histories": 0,
+    "already_seed_development_visible_histories": 1,
+    "total_prior_development_visible_histories": 5,
+    "new_history_metadata_discoveries": 14
+  },
+  "next_admission_requirements": [
+    "Resolve grouping flags before any future partition; no held-out allocation is made here.",
+    "Acquire legal-to-use exact source versions and record raw-byte SHA256, retrieval receipts and extraction recipes.",
+    "Select and freeze complete source-ID delivery batches independent of candidate/model/reference outcomes.",
+    "Record unavailable originals, updates, ties, exclusions and representation limits. Never backdate current edited text.",
+    "Run source-only local-window and full-prefix candidate proposals after the stream is frozen; keep method outputs out of reference creation.",
+    "Log all listed histories, including those that fail admission or show no ambiguity/gain; do not retain only successes.",
+    "Report the twenty-history collection target as still open; this frame is nineteen metadata histories and zero completed streams."
+  ]
+}

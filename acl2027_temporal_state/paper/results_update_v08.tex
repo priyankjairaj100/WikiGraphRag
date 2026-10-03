@@ -1,0 +1,143 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,booktabs}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\claim}[1]{\textsuperscript{\scriptsize[#1]}}
+\title{Development Evidence Update: Source Semantics and Scorer Stability}
+\author{Exploratory addendum to the v0.7 methods draft}
+\date{2 October 2026 \quad | \quad v0.8}
+\begin{document}
+\maketitle
+
+\noindent\textbf{Status.} This addendum reports bounded development work toward
+an ACL 2027 research paper. It supplements, without rewriting, the v0.7 methods
+skeleton. Claim markers map to \texttt{claim\_ledger\_v08.json}. Neither source
+annotation nor the scorer control establishes held-out accuracy, an algorithmic
+advantage, or novelty.
+
+\section{From discovery records to supplied-document prefixes}
+\label{sec:capture}
+We attempted all 39 URLs in the frozen 19-history discovery frame. Thirty-two
+responses were provisionally usable, covering 15 complete source sets. These
+counts describe capture feasibility, not 15 independent evaluation examples;
+overlapping organizations and events still require grouping. Four histories
+were selected before annotation: IBM, Docker, Chrome, and HS2. Failed IBM
+capture blocked both planned prefixes without replacement. The remaining three
+histories supplied six cumulative prefixes under a frozen delivery manifest.
+Delivery order is author-defined, and retrieval, reported publication, and
+event times remain distinct. Current pages do not certify historical original
+versions or public availability.\claim{V08-C01}
+
+This distinction materially changes interpretation. Docker's earlier-dated
+page already contains a later reversal update, so its first supplied prefix
+cannot represent pre-reversal knowledge. The HS2 landing page contains a
+correction notice but not a separately captured original erroneous version.
+Neither stream permits inventing an earlier information state by deleting
+later edits. Captured bytes and extraction hashes support provenance; they do
+not resolve these historical limits.\claim{V08-C02}
+
+\section{Source-grounded development annotation}
+\label{sec:annotation}
+Separate fresh-context model roles produced six source-only annotations and
+six reference artifacts. The annotations contain 57 claim instances across
+prefixes; repeated cumulative evidence means these are not 57 independent
+facts. Two fixed questions per history were reused across its two prefixes,
+yielding 12 reference judgments from six unique question texts. Annotation
+roles did not receive reference questions, and reference roles did not receive
+annotation outputs. All model revisions remain unknown. Procedural separation
+does not establish independent training, human gold, or exhaustive candidate
+coverage.\claim{V08-C03}
+
+Subsequent source-only development adjudication changed four of the six
+annotation artifacts while retaining all reference judgments. Unsupported
+Docker public-image correction records were removed; a policy qualification
+or clarification does not automatically entail an earlier assertion that must
+be withdrawn. Docker reversal timing also required an open lower bound.
+Chrome revisions separated an asserted but undated banner from dated article
+content and removed an unsupported temporal ordering. The six selected
+annotations still contain 57 claim instances. All 12 selected annotation and
+reference artifacts pass structural validators; one raw annotation had failed
+a date-precision rule. Structural validity remains separate from semantic
+entailment.\claim{V08-C04}
+
+HS2 supports an explicitly reported correction from 81\% to 41\%, with a
+narrowed compensation-scheme scope. The quoted erroneous value is not a
+current-world assertion. Its later route record supports the Manchester plan
+change but does not establish the complete Leeds disposition required by one
+question. These cases motivate careful treatment of correction targets,
+modality, scope, and abstention. They do not yet demonstrate uncertain identity,
+cross-document correction propagation, or a need for joint decoding. The
+current annotations are source-semantic records, not automatically scored
+candidate graphs for the existing decoder.\claim{V08-C05}
+
+\section{Controlling the scorer's execution history}
+\label{sec:control}
+The preceding v0.7 pilot observed 26 support-score sign changes among 32 items
+when answer-definition order changed. Its paired execution reused prompt
+prefixes, confounding wording with numerical execution history. The follow-up
+selects the first original-order item of each kind: link, unresolved reading,
+resolved reading, and null link. This fixed subset was chosen after aggregate
+v0.7 instability was known. All four items share one development history; this
+is a technical diagnosis, not an independent four-example benchmark.\claim{V08-C06}
+
+For each item and answer order, a fresh process first evaluates the complete
+original prompt without cached tokens, then repeats the identical token array
+with prefix reuse. Eight processes yield 16 distributions using the same
+pinned Qwen3-0.6B Q8\_0 weights and llama.cpp runtime as v0.7. The score remains
+$\ell=\log P(\mathrm{Yes})-\log P(\mathrm{No})$ at the same unconstrained
+next-token position, using full-vocabulary probabilities. No label-only
+normalization, prompt averaging, or score-based item removal is introduced.
+Both literal-label probabilities are retained.\claim{V08-C07}
+
+All four cold comparisons change score sign (Table~\ref{tab:control}).
+Absolute cold order differences range from 3.211 to 8.132 natural-log units.
+All eight immediate warm repeats have exactly matching archived Yes/No log
+probabilities, satisfying the fixed $10^{-6}$ tolerance. A separate replay
+independently recomputed every measurement and checked the native process
+bindings. Prompt-cache carryover is therefore not a sufficient explanation
+for these four observed order effects. This does not explain the remaining
+28 v0.7 items, prove general numerical invariance, or distinguish broader
+prompt sensitivity from poor task calibration.\claim{V08-C08}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Item / kind & Cold YN & Cold NY & Warm--cold YN & Warm--cold NY \\
+\midrule
+s0001 / Link & +5.601 & -0.517 & 0.000 & 0.000 \\
+s0003 / Unresolved & +4.386 & -2.175 & 0.000 & 0.000 \\
+s0004 / Reading & +7.010 & -1.121 & 0.000 & 0.000 \\
+s0006 / Null link & +3.095 & -0.116 & 0.000 & 0.000 \\
+\bottomrule
+\end{tabular}
+\caption{Observed log odds, rounded to three decimals. YN and NY denote
+Yes/No definition order; label meanings remain fixed. Warm--cold columns
+subtract the corresponding cold score from its identical-prompt warm repeat.
+All rows share one previously inspected history.}
+\label{tab:control}
+\end{table}
+
+
+\section{Implications for the next study}
+\label{sec:next}
+Scorer robustness and source semantics are separate empirical gates. A
+correction-looking passage can fail the intended correction relation, while
+a structurally valid record can still misstate scope or time. Development
+adjudication must therefore precede method comparisons, with unchanged raw
+outputs and disclosed repairs. The next evaluation needs grouped source
+histories, human or independently adjudicated references, measured candidate
+coverage, a stronger pinned contextual baseline, and identical candidates and
+scores across decoders. Optimization gaps must be reported separately from
+source-grounded question accuracy.\claim{V08-C09}
+
+The distributed record binds code, manifests, results, and review artifacts.
+Full captured text and verbatim working annotations have separate
+redistribution constraints; hashes alone cannot reconstruct missing texts.
+This addendum is LaTeX source only: the available TeX installation lacks the
+required format/classes, so no compiled or visually verified PDF is claimed.
+The prior methods draft and bibliography remain unchanged.\claim{V08-C10}
+\end{document}

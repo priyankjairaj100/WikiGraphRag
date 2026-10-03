@@ -1,0 +1,84 @@
+{
+  "schema_version": "larger_scorer_smoke_v0.9",
+  "status": "failed",
+  "frozen_inputs": {
+    "config_sha256": "4196027ab74afbfe5b256d7670a9fe74b760530609ddbccab3b0f9a5b8c6e2e6",
+    "collector_sha256": "5af0ecb1a5f7d9bca53070db8c8f1f813d744246f22709ed43adea27da3e8957",
+    "created_unix_seconds": 1790997984.0168948,
+    "completed_distributions_at_freeze": 0
+  },
+  "purpose": "Separate resource and tokenizer feasibility; excluded from research scores.",
+  "started_unix_seconds": 1790997984.0169873,
+  "error": "llama-server exited with -15; see server.log",
+  "execution": {
+    "config_sha256": "4196027ab74afbfe5b256d7670a9fe74b760530609ddbccab3b0f9a5b8c6e2e6",
+    "assets": [
+      {
+        "relative_path": "Qwen3-4B-Q8_0.gguf",
+        "bytes": 4280404704,
+        "sha256": "8c2f07f26af9747e41988551106f149b03eb9b5cb6df636027b6bf6278473300",
+        "url": "https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/bc640142c66e1fdd12af0bd68f40445458f3869b/Qwen3-4B-Q8_0.gguf"
+      },
+      {
+        "relative_path": "llama-b11146-bin-ubuntu-x64.tar.gz",
+        "bytes": 16998357,
+        "sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11146/llama-b11146-bin-ubuntu-x64.tar.gz"
+      }
+    ],
+    "runtime_files_sha256": "677ee4aa7ac9a70d0d664474f589ba2f35ee2716ea0244d076ab103c3e5304c7",
+    "command": [
+      "/workspace/scratch/bdef663e3dfc/tmp/local_backend_v09/runtime/llama-b11146/llama-server",
+      "-m",
+      "/workspace/scratch/bdef663e3dfc/tmp/local_backend_v09/Qwen3-4B-Q8_0.gguf",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "18089",
+      "-c",
+      "4096",
+      "-t",
+      "4",
+      "-tb",
+      "4",
+      "-b",
+      "256",
+      "-ub",
+      "128",
+      "-ngl",
+      "0",
+      "--parallel",
+      "1",
+      "--no-warmup",
+      "--no-webui",
+      "-ctk",
+      "q8_0",
+      "-ctv",
+      "q8_0",
+      "-fa",
+      "on",
+      "--no-context-shift",
+      "--jinja",
+      "--chat-template-kwargs",
+      "{\"enable_thinking\":false}"
+    ],
+    "address_space_limit_bytes": 5905580032,
+    "cpu_seconds_limit": 300,
+    "cgroup_memory_before_bytes": 8581214208,
+    "process_id": 1906,
+    "cgroup_memory_observed_peak_bytes": 8589721600,
+    "watchdog_stop_reason": "cgroup current above frozen 7 GiB threshold",
+    "elapsed_seconds": 0.31123929800014594,
+    "process_exit_code": -15,
+    "children_peak_rss_kib": 63880,
+    "cgroup_memory_after_bytes": 8535740416
+  },
+  "error_type": "RuntimeError",
+  "finished_unix_seconds": 1790997987.1456802,
+  "artifact_hashes": {
+    "data/larger_scorer_v09/smoke_attempt01/executed_collector.py.txt": "5af0ecb1a5f7d9bca53070db8c8f1f813d744246f22709ed43adea27da3e8957",
+    "data/larger_scorer_v09/smoke_attempt01/frozen_config.json": "4196027ab74afbfe5b256d7670a9fe74b760530609ddbccab3b0f9a5b8c6e2e6",
+    "data/larger_scorer_v09/smoke_attempt01/frozen_inputs.json": "801eafc727b20cccc31348cf07db3eb586b4d1c4b013f4c9ac73650d25c97e80",
+    "data/larger_scorer_v09/smoke_attempt01/server.log": "b8e3a25504842b28d68a444293d7d4b5f20bbe5e54c85333d21a2e39ce92f7bd"
+  }
+}

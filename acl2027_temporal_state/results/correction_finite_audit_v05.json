@@ -1,0 +1,28 @@
+{
+  "audit": "independent_finite_correction_ledger_oracle_v0.5",
+  "evidence_level": "synthetic_implementation_check_not_natural_accuracy",
+  "oracle": "enumerate_all_16_subsets_then_choose_the_unique_greatest_admissible_subset",
+  "correction_dependency_dag_pairs": 576,
+  "support_dag_missing_reading_cases": 384,
+  "targeted_checks": 12,
+  "weighted_objective_decomposition_checks": 8,
+  "weighted_objective_decomposition_expected": {
+    "active_claim_unary_net": 9.7,
+    "inactive_claim_unary_net": 0.9,
+    "unresolved_unary_net": 6.9,
+    "active_temporal_link_net": 11.8,
+    "inactive_temporal_link_net": 9.7,
+    "correction_link_net": 7.6,
+    "null_link_score": 0.7,
+    "total": 47.3
+  },
+  "empty_active_ledgers_in_dag_pairs": 171,
+  "checks_passed": 10772,
+  "mismatches": 0,
+  "limitations": [
+    "Four assertions; one correction and one essential dependency per dependent; chronological DAGs.",
+    "Conditional on authored authority, target, whole-assertion scope and support declarations.",
+    "Finite coverage does not prove correctness for arbitrary graphs or source entailment.",
+    "No natural gold, model extraction, model scores or benchmark outcomes used."
+  ]
+}

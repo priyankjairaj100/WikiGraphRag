@@ -1,0 +1,88 @@
+Local model feasibility audit — v0.9, 2026-10-03
+
+Decision
+
+Use official Qwen/Qwen3-4B-GGUF, Q8_0, as the next guarded local diagnostic
+candidate. It retains the preceding 0.6B pilot's weight quantization family
+and needs less memory than the compared 8B Q5_K_M asset. This is a resource
+choice, not evidence that the larger model scores evidence more accurately.
+No model weights, inference, paid job or deployment were initiated by this
+audit. The accompanying JSON is a feasibility snapshot, not a run receipt.
+
+Observed environment
+
+The initial restricted probe could not see /proc or /sys quota files. An
+authorized read-only probe then established an 8 GiB cgroup memory limit,
+about 1.73 GiB cgroup usage, an eight-core CPU quota, nine logical/affinity
+CPUs and about 30.4 GB free disk. Physical-memory reporting describes the
+host and must not replace the cgroup limit. No swap, nvidia-smi or NVIDIA
+device nodes were observed. This supports a CPU plan, not a comprehensive
+hardware attestation. The hf executable is absent; no CLI was installed.
+
+Two immutable options
+
+Preferred: Qwen3-4B-Q8_0.gguf, 4,280,404,704 bytes (3.986 GiB), Apache-2.0.
+Repository revision: bc640142c66e1fdd12af0bd68f40445458f3869b
+File SHA256: 8c2f07f26af9747e41988551106f149b03eb9b5cb6df636027b6bf6278473300
+https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/bc640142c66e1fdd12af0bd68f40445458f3869b/Qwen3-4B-Q8_0.gguf
+
+Alternative: Qwen3-8B-Q5_K_M.gguf, 5,851,112,224 bytes (5.449 GiB), Apache-2.0.
+Repository revision: 7c41481f57cb95916b40956ab2f0b139b296d974
+File SHA256: 068bae163faa96ad48032daf4e071a6a28fe67d8dcc95367609c2ff165e52738
+https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/7c41481f57cb95916b40956ab2f0b139b296d974/Qwen3-8B-Q5_K_M.gguf
+
+The alternative changes weight precision and leaves less runtime headroom.
+It is not selected. Pinning identifies artifacts; it does not demonstrate
+quality, scorer calibration or immunity to label-order effects.
+
+Memory and runtime proposal
+
+Both pinned official configs describe 36 layers, eight KV heads and head
+dimension 128. At 4,096 context tokens, nominal Q8_0 KV storage is
+2 * 36 * 4096 * 8 * 128 * (34/32) = 320,864,256 bytes (306 MiB).
+Weights plus nominal KV therefore total 4.285 GiB for the preferred model
+and 5.748 GiB for the alternative. These are estimates, not measured peak
+memory. They exclude alignment, compute buffers, allocator overhead,
+libraries, token/logit arrays, collector memory and filesystem cache.
+
+Retain llama.cpp b11146, commit 7fe450e19305b828c199d602c23a8337aaa1f03b,
+and the archived runtime hashes in configs/local_backend_v07.json. The
+runtime already handled qwen3 architecture in v0.7/v0.8; compatibility with
+this specific 4B file remains to be tested. Use four CPU threads, zero GPU
+layers, one slot, context 4096, batch 256, microbatch 128, Q8_0 K/V cache,
+flash attention, no context shift and native non-thinking chat template.
+
+Start with a 5.5 GiB child address-space guard (5,905,580,032 bytes), which
+allows about 1.215 GiB beyond the estimated weights and KV. The observed
+shared cgroup usage leaves only about 0.77 GiB further headroom at that
+guard, so recheck and monitor cgroup usage. Proposed independent limits:
+7,200 CPU seconds, 2,400 wall seconds, 600 seconds per request; stop at
+7.5 GiB cgroup usage. Address space, resident memory and cgroup usage are
+different quantities. Do not silently raise limits or change settings.
+
+Bounded diagnostic
+
+Freeze four short new-source items and both label orders before observing
+output. Render and tokenize every prompt first: at most 3,840 input tokens
+including template, one predicted token, and no truncation. Do not reuse
+the prior approximately 8k-token prompts. Score eight completions total
+with cache_prompt=false, full-vocabulary unmodified label log probabilities
+and the previously validated label-token contract. The first scored item
+is also the load/latency smoke. Preserve failure artifacts and stop on a
+resource, token-budget or label-availability failure. Continue the remaining
+seven only if the smoke fits these bounds; record actual memory and time.
+
+This audit does not measure throughput or guarantee that the proposed guard
+will suffice. Eight outputs can diagnose execution and presentation effects;
+they cannot establish natural-data accuracy, broad stability, calibration,
+a strong publication baseline or a joint-inference gain.
+
+Evidence
+
+results/backend_feasibility_v09.json records exact probe values, timestamps,
+immutable Hugging Face API/config URLs, response hashes, artifact identities,
+formula inputs and the proposed bounds. Official model cards:
+https://huggingface.co/Qwen/Qwen3-4B-GGUF
+https://huggingface.co/Qwen/Qwen3-8B-GGUF
+The asset metadata were checked again through the revision-specific public
+API. No old code, old input or prior result was changed by this audit.

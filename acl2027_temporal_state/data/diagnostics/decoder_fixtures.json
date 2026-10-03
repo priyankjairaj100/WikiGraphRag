@@ -1,0 +1,1003 @@
+{
+  "schema_version": "0.1",
+  "evidence_class": "synthetic_candidate_contract_checks",
+  "cases": [
+    {
+      "case_id": "two_reading_coordinate_trap",
+      "purpose": "Requires two simultaneous reading changes to improve the authored score; seeded restarts can recover the same optimum.",
+      "problem": {
+        "cutoff": "2024-12-31",
+        "sources": [
+          {
+            "source_id": "a",
+            "text": "Earlier report refers to the appointment. a",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          },
+          {
+            "source_id": "b",
+            "text": "Earlier report refers to the appointment. b",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          }
+        ],
+        "mentions": [
+          {
+            "mention_id": "a",
+            "source_id": "a",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "parent",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Alice",
+                "unary_score": 1,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "subsidiary",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "subsidiary"
+                ],
+                "value": "Alice",
+                "unary_score": 0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          },
+          {
+            "mention_id": "b",
+            "source_id": "b",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "parent",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Bob",
+                "unary_score": 1,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "subsidiary",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "subsidiary"
+                ],
+                "value": "Bob",
+                "unary_score": 0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          }
+        ],
+        "links": [
+          {
+            "link_id": "predecessor",
+            "mention_id": "b",
+            "reading_id": "subsidiary",
+            "target_mention_id": "a",
+            "target_reading_id": "subsidiary",
+            "relation": "CHANGES",
+            "score": 3,
+            "context_source_ids": [],
+            "reference_span": null,
+            "violations": []
+          }
+        ],
+        "score_provenance": "hand_authored_synthetic_logits",
+        "context_source_ids": [],
+        "penalties": [],
+        "beta": 1.0
+      },
+      "expected_objectives": {
+        "independent": 2,
+        "iterative": 2,
+        "iterative_restarts_10": 3,
+        "joint_exact": 3
+      }
+    },
+    {
+      "case_id": "clear_no_benefit",
+      "purpose": "Clear shared candidate evidence should give identical choices.",
+      "problem": {
+        "cutoff": "2024-12-31",
+        "sources": [
+          {
+            "source_id": "a",
+            "text": "Earlier report refers to the appointment. a",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          },
+          {
+            "source_id": "b",
+            "text": "Earlier report refers to the appointment. b",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          }
+        ],
+        "mentions": [
+          {
+            "mention_id": "a",
+            "source_id": "a",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "parent",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Alice",
+                "unary_score": 1,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "subsidiary",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "subsidiary"
+                ],
+                "value": "Alice",
+                "unary_score": 0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          },
+          {
+            "mention_id": "b",
+            "source_id": "b",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "parent",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Bob",
+                "unary_score": 1,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "subsidiary",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "subsidiary"
+                ],
+                "value": "Bob",
+                "unary_score": 0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          }
+        ],
+        "links": [
+          {
+            "link_id": "clear",
+            "mention_id": "b",
+            "reading_id": "parent",
+            "target_mention_id": "a",
+            "target_reading_id": "parent",
+            "relation": "CHANGES",
+            "score": 3,
+            "context_source_ids": [],
+            "reference_span": null,
+            "violations": []
+          }
+        ],
+        "score_provenance": "hand_authored_synthetic_logits",
+        "context_source_ids": [],
+        "penalties": [],
+        "beta": 1.0
+      },
+      "expected_objectives": {
+        "independent": 5,
+        "iterative": 5,
+        "iterative_restarts_10": 5,
+        "joint_exact": 5
+      },
+      "diagnostic_identity_labels": {
+        "a": "parent",
+        "b": "parent"
+      }
+    },
+    {
+      "case_id": "one_coordinate_repair",
+      "purpose": "Iterative repair should close an objective gap accessible by a single reading change.",
+      "problem": {
+        "cutoff": "2024-12-31",
+        "sources": [
+          {
+            "source_id": "a",
+            "text": "Earlier report refers to the appointment. a",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          },
+          {
+            "source_id": "b",
+            "text": "Earlier report refers to the appointment. b",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          }
+        ],
+        "mentions": [
+          {
+            "mention_id": "a",
+            "source_id": "a",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "p",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Alice",
+                "unary_score": 1,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          },
+          {
+            "mention_id": "b",
+            "source_id": "b",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "p",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Bob",
+                "unary_score": 0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "s",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "subsidiary"
+                ],
+                "value": "Bob",
+                "unary_score": 1,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          }
+        ],
+        "links": [
+          {
+            "link_id": "l",
+            "mention_id": "b",
+            "reading_id": "p",
+            "target_mention_id": "a",
+            "target_reading_id": "p",
+            "relation": "CHANGES",
+            "score": 3,
+            "context_source_ids": [],
+            "reference_span": null,
+            "violations": []
+          }
+        ],
+        "score_provenance": "hand_authored_synthetic_logits",
+        "context_source_ids": [],
+        "penalties": [],
+        "beta": 1.0
+      },
+      "expected_objectives": {
+        "independent": 2,
+        "iterative": 4,
+        "iterative_restarts_10": 4,
+        "joint_exact": 4
+      }
+    },
+    {
+      "case_id": "misleading_pair_score",
+      "purpose": "Adversarial score calibration: exact inference and restarts prefer the wrong authored identities; optimizing the objective alone does not certify correctness.",
+      "problem": {
+        "cutoff": "2024-12-31",
+        "sources": [
+          {
+            "source_id": "a",
+            "text": "Earlier report refers to the appointment. a",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          },
+          {
+            "source_id": "b",
+            "text": "Earlier report refers to the appointment. b",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          }
+        ],
+        "mentions": [
+          {
+            "mention_id": "a",
+            "source_id": "a",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "parent",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Alice",
+                "unary_score": 1,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "subsidiary",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "subsidiary"
+                ],
+                "value": "Alice",
+                "unary_score": 0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          },
+          {
+            "mention_id": "b",
+            "source_id": "b",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "parent",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Bob",
+                "unary_score": 1,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "subsidiary",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "subsidiary"
+                ],
+                "value": "Bob",
+                "unary_score": 0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          }
+        ],
+        "links": [
+          {
+            "link_id": "predecessor",
+            "mention_id": "b",
+            "reading_id": "subsidiary",
+            "target_mention_id": "a",
+            "target_reading_id": "subsidiary",
+            "relation": "CHANGES",
+            "score": 3,
+            "context_source_ids": [],
+            "reference_span": null,
+            "violations": []
+          }
+        ],
+        "score_provenance": "hand_authored_synthetic_logits",
+        "context_source_ids": [],
+        "penalties": [],
+        "beta": 1.0
+      },
+      "expected_objectives": {
+        "independent": 2,
+        "iterative": 2,
+        "iterative_restarts_10": 3,
+        "joint_exact": 3
+      },
+      "diagnostic_identity_labels": {
+        "a": "parent",
+        "b": "parent"
+      }
+    },
+    {
+      "case_id": "irrelevant_pair_score",
+      "purpose": "An uninformative predecessor score supplies no reason to override unary identities.",
+      "problem": {
+        "cutoff": "2024-12-31",
+        "sources": [
+          {
+            "source_id": "a",
+            "text": "Earlier report refers to the appointment. a",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          },
+          {
+            "source_id": "b",
+            "text": "Earlier report refers to the appointment. b",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          }
+        ],
+        "mentions": [
+          {
+            "mention_id": "a",
+            "source_id": "a",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "parent",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Alice",
+                "unary_score": 1,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "subsidiary",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "subsidiary"
+                ],
+                "value": "Alice",
+                "unary_score": 0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          },
+          {
+            "mention_id": "b",
+            "source_id": "b",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "parent",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Bob",
+                "unary_score": 1,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "subsidiary",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "subsidiary"
+                ],
+                "value": "Bob",
+                "unary_score": 0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          }
+        ],
+        "links": [
+          {
+            "link_id": "predecessor",
+            "mention_id": "b",
+            "reading_id": "subsidiary",
+            "target_mention_id": "a",
+            "target_reading_id": "subsidiary",
+            "relation": "CHANGES",
+            "score": 0,
+            "context_source_ids": [],
+            "reference_span": null,
+            "violations": []
+          }
+        ],
+        "score_provenance": "hand_authored_synthetic_logits",
+        "context_source_ids": [],
+        "penalties": [],
+        "beta": 1.0
+      },
+      "expected_objectives": {
+        "independent": 2,
+        "iterative": 2,
+        "iterative_restarts_10": 2,
+        "joint_exact": 2
+      },
+      "diagnostic_identity_labels": {
+        "a": "parent",
+        "b": "parent"
+      }
+    },
+    {
+      "case_id": "a_b_b_a_reversion",
+      "purpose": "Selected RESTATES edges create three episode components and retain the returning first value as a separate episode.",
+      "problem": {
+        "cutoff": "2024-12-31",
+        "sources": [
+          {
+            "source_id": "a",
+            "text": "Earlier report refers to the appointment. a",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          },
+          {
+            "source_id": "b",
+            "text": "Earlier report refers to the appointment. b",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          },
+          {
+            "source_id": "c",
+            "text": "Earlier report refers to the appointment. c",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          },
+          {
+            "source_id": "d",
+            "text": "Earlier report refers to the appointment. d",
+            "available_at": "2024-01-01",
+            "uri": "",
+            "availability_basis": "synthetic_fixture",
+            "provenance": "synthetic"
+          }
+        ],
+        "mentions": [
+          {
+            "mention_id": "a",
+            "source_id": "a",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "r",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Alice",
+                "unary_score": 1,
+                "effective_start": "2020-01-01",
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          },
+          {
+            "mention_id": "b",
+            "source_id": "b",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "r",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Bob",
+                "unary_score": 1,
+                "effective_start": "2021-01-01",
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          },
+          {
+            "mention_id": "c",
+            "source_id": "c",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "r",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Bob",
+                "unary_score": 1,
+                "effective_start": "2021-01-01",
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          },
+          {
+            "mention_id": "d",
+            "source_id": "d",
+            "span_start": 0,
+            "span_end": 14,
+            "readings": [
+              {
+                "reading_id": "r",
+                "key": [
+                  "orion",
+                  "ceo",
+                  "parent"
+                ],
+                "value": "Alice",
+                "unary_score": 1,
+                "effective_start": "2023-01-01",
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              },
+              {
+                "reading_id": "unknown",
+                "key": null,
+                "value": null,
+                "unary_score": -100.0,
+                "effective_start": null,
+                "effective_end": null,
+                "observed_at": null,
+                "context_source_ids": [],
+                "violations": []
+              }
+            ],
+            "null_score": 0.0,
+            "context_source_ids": []
+          }
+        ],
+        "links": [
+          {
+            "link_id": "b-a",
+            "mention_id": "b",
+            "reading_id": "r",
+            "target_mention_id": "a",
+            "target_reading_id": "r",
+            "relation": "CHANGES",
+            "score": 5,
+            "context_source_ids": [],
+            "reference_span": null,
+            "violations": []
+          },
+          {
+            "link_id": "c-b",
+            "mention_id": "c",
+            "reading_id": "r",
+            "target_mention_id": "b",
+            "target_reading_id": "r",
+            "relation": "RESTATES",
+            "score": 5,
+            "context_source_ids": [],
+            "reference_span": null,
+            "violations": []
+          },
+          {
+            "link_id": "d-c",
+            "mention_id": "d",
+            "reading_id": "r",
+            "target_mention_id": "c",
+            "target_reading_id": "r",
+            "relation": "CHANGES",
+            "score": 5,
+            "context_source_ids": [],
+            "reference_span": null,
+            "violations": []
+          }
+        ],
+        "score_provenance": "hand_authored_synthetic_logits",
+        "context_source_ids": [],
+        "penalties": [],
+        "beta": 1.0
+      },
+      "expected_objectives": {
+        "independent": 19,
+        "iterative": 19,
+        "iterative_restarts_10": 19,
+        "joint_exact": 19
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+Independent numerical-validation amendment review — v0.9
+
+Decision: approve the complete sixteen-distribution restart with the frozen
+1e-4 absolute probability-mass tolerance at the identities below. This is
+an addendum to larger_scorer_collector_review_v09.txt; that original review
+and its prior hashes remain intact. No authored reference labels, per-item
+scores, correctness outcomes or final research results were inspected here.
+
+Approved amended collector SHA256:
+67b389f5fe8a87493e245f858607252cb72030f128215a3871db4882303e0dea
+Approved amended configuration SHA256:
+029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802
+Approved numerical_validation_amendment.json SHA256:
+bd5d15299ceed964bd39db0a34feb05bbc89ef61a25f74a2096767cdda218268
+
+Observed trigger
+
+The first small-model cold response had returned top-256 mass
+1.0000011818752477 when its log probabilities were exponentiated and summed.
+It exceeded the former 1 + 1e-6 ceiling by about 1.82e-7. The failed attempt
+has one raw completion and zero accepted distributions. The collector
+retained the raw response before validation; this was a validation failure,
+not a missing model execution. The failed receipt reports zero successfully
+completed research processes because its counter advances after validation;
+one research server process did in fact run, after two preflight processes.
+
+Assessment
+
+The retained pinned runtime source computes softmax with expf and a float
+accumulator. A small aggregate excess is consistent with finite-precision
+normalization and subsequent representation as log probabilities. This
+review does not establish the precise contribution of each numerical step,
+and 1e-4 is not a proved worst-case error bound. It is a fixed engineering
+sanity threshold for this bounded diagnostic.
+
+The change accepts aggregate mass up to 1.0001 for both the returned list
+and the two literal labels. It preserves every native log probability,
+Yes-minus-No log odds, zero decision threshold, prompt, label order and
+model setting. There is no clamping, renormalization, calibration or choice
+of a better scoring condition. Each result now exposes the actual returned
+mass, literal-label mass and configured tolerance. The finite/nonpositive
+log-probability, full-input, cold-cache and other prior checks remain.
+
+This amendment follows a raw model output and must not be described as
+zero-output preregistration. Its declared trigger was a numerical contract
+failure; the parent received aggregate mass/error only, with per-item score
+and reference-agreement analysis embargoed. All sixteen research calls are
+restarted in new directories; the first row is neither reused nor silently
+admitted after relaxing the gate. A further failure should be reported and
+reviewed rather than silently expanding this tolerance again.
+
+Preservation and checks
+
+The exact original config is retained in failed_attempt01_config.json,
+SHA256 475003ec342c16667360fac9ffd95894812967cace75a3a724a9b340273b4374.
+The original executed collector remains in data/larger_scorer_v09/research.
+The failed receipt, preserved without byte changes, has SHA256
+b5444933231d9873370c2c7398df1cba0613f8baa13a7771a4f896a76a449202.
+All thirteen files in that receipt's artifact manifest were independently
+hash-verified. The old directory remains unchanged. The new attempt uses
+research_attempt02 and research_external_attempt02 and freezes hashes of
+the amendment, failed config, prior executed collector/raw response and
+failed receipt alongside its usual inputs.
+
+The independent diff inspection found changes restricted to mass accounting,
+the disclosed tolerance, new attempt paths and prior-attempt provenance.
+Synthetic review controls confirmed acceptance of a 1.0000011818752477
+aggregate fixture, rejection of a 1.0002 fixture and exact retention of the
+supplied log probabilities. These are invented arithmetic fixtures, not
+new model measurements or assessments against source/reference labels.
+
+This approval concerns numerical validation and complete restart only.
+The original review's source-projection, resource-telemetry, nonhermetic-host
+and limited four-statement diagnostic qualifications remain applicable.

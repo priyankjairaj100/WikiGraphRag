@@ -1,0 +1,36 @@
+You are one source-only extraction pass in a developmental temporal-fact pilot.
+Read only early_prefix_input.json in this directory. Do not browse, read other
+project files, or use another annotator's output. Do not infer facts from prior
+knowledge. Your input contains two separate company histories with different
+cutoffs. Never mix their sources. Later sources are intentionally absent.
+
+Extract CEO and CFO assertions for the focal organizations Starbucks and Nike.
+Include interim CEO within the CEO role; retain acting/interim as a qualifier.
+Other companies and other roles are exclusions, not interchangeable aliases.
+Do not force a total timeline. An observed current role is not an appointment
+date. Unknown start/end dates stay null. Publication/announcement dates are not
+default validity boundaries. Explicitly flag planned future states, negative
+assertions and conflicting or ambiguous boundary readings. No full correction
+may be inferred without an identifiable correction statement and target.
+
+Return a JSON object with pass_id, backend={model_revision:null,
+decoding_settings:null,pinned:false,kind:"conversational_model_agent"},
+input_sha256, assertions, disagreements_or_ambiguities, exclusions, limitations.
+Each assertion: assertion_id, source_id, subject, relation (canonical "chief
+executive officer" or "chief financial officer"), scope (corporation), value,
+valid_from (YYYY-MM-DD or null), valid_to (exclusive YYYY-MM-DD or null),
+observed_on (date or null), status (reported/planned/negative/uncertain),
+qualifier, operation (ASSERT/RESTATES/CHANGES/CORRECTS/UNRESOLVED), target_id
+(or null), rationale, evidence=[{start,end,quote}] and context_source_ids.
+Offsets are zero-based Python Unicode character offsets into the source text
+field, end exclusive; verify every text[start:end] == quote with a script.
+Context_source_ids lists any other source used to interpret this assertion.
+If a date requires two spans (effective-date reference), include both. An unknown
+start must not be converted to a precise date simply to satisfy a downstream
+schema. A negative assertion should not be materialized as positive occupancy.
+Give source-specific assertions before reconciling apparent duplicates.
+
+Record only source-supported ambiguities, with evidence offsets. Do not assign
+confidence probabilities. Your output is machine extraction, not human labels.
+Persist the JSON exactly as your extraction output. You may write a temporary
+script in your own assigned output area to construct and verify offsets.

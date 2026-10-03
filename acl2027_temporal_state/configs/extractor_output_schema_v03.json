@@ -1,0 +1,288 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "source_extractor_v0.3"
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/candidate"
+      },
+      "minItems": 0,
+      "maxItems": 64
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/alias"
+      },
+      "minItems": 0,
+      "maxItems": 32
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unresolved"
+      },
+      "minItems": 0,
+      "maxItems": 32
+    }
+  },
+  "required": [
+    "schema_version",
+    "candidates",
+    "aliases",
+    "unresolved"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "bounds": {
+      "type": "object",
+      "properties": {
+        "lower": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            }
+          ]
+        },
+        "upper": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            }
+          ]
+        },
+        "precision": {
+          "enum": [
+            "exact_day",
+            "bounded_days",
+            "year_only",
+            "month_only",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "lower",
+        "upper",
+        "precision"
+      ],
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "source_id",
+        "quote"
+      ],
+      "additionalProperties": false
+    },
+    "candidate": {
+      "type": "object",
+      "properties": {
+        "candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mention_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string"
+        },
+        "role_qualifier": {
+          "type": "string"
+        },
+        "polarity": {
+          "enum": [
+            "positive",
+            "negative"
+          ]
+        },
+        "modality": {
+          "enum": [
+            "reported_actual",
+            "announced_future",
+            "conditional",
+            "uncertain"
+          ]
+        },
+        "reported_at": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            }
+          ]
+        },
+        "start": {
+          "$ref": "#/$defs/bounds"
+        },
+        "end": {
+          "$ref": "#/$defs/bounds"
+        },
+        "state_observed_at": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date"
+          },
+          "minItems": 0,
+          "maxItems": 16
+        },
+        "observation_kind": {
+          "enum": [
+            "effective_boundary",
+            "state_observation",
+            "mixed",
+            "report_only"
+          ]
+        },
+        "operation": {
+          "enum": [
+            "ASSERT",
+            "RESTATES",
+            "CHANGES",
+            "UNRESOLVED"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "derivation_note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "mention_id",
+        "source_id",
+        "subject",
+        "relation",
+        "value",
+        "scope",
+        "role_qualifier",
+        "polarity",
+        "modality",
+        "reported_at",
+        "start",
+        "end",
+        "state_observed_at",
+        "observation_kind",
+        "operation",
+        "evidence",
+        "derivation_note"
+      ],
+      "additionalProperties": false
+    },
+    "alias": {
+      "type": "object",
+      "properties": {
+        "alias_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "alias": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1,
+          "maxItems": 8
+        },
+        "derivation_note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "alias_id",
+        "canonical_name",
+        "alias",
+        "evidence",
+        "derivation_note"
+      ],
+      "additionalProperties": false
+    },
+    "unresolved": {
+      "type": "object",
+      "properties": {
+        "mention_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1,
+          "maxItems": 8
+        }
+      },
+      "required": [
+        "mention_id",
+        "reason",
+        "evidence"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,188 @@
+Correction-aware support replacement, version 0.5
+================================================
+
+Purpose and evidence status
+
+This checkpoint implements conditional support replacement before the existing
+temporal-network materializer. It is an engineering/reference semantics for
+selected interpretations, not a learned correction detector or an algorithmic
+novelty claim. All decoder methods must receive the same candidate graph,
+scores, correction policy, support dependencies, and state-semantics hook.
+The reference implementation does not inspect questions or evaluation labels.
+
+A correction changes which earlier assertion support is usable at a later
+information prefix. It does not terminate that assertion's real-world event
+interval on the correction's date. Original assertions and selected links are
+preserved in an audit ledger; inactive assertions supply no temporal variables,
+observations, endpoint bounds, or factual answer support. The original earlier
+prefix must be materialized separately from its own eligible source set.
+
+Immutable policy contract
+
+CorrectionPolicy has version='0.5', source_authorities, correction_evidence,
+and support_dependencies. All collections are tuples of frozen typed records.
+The scored-cache wrapper binds policy content and provenance cryptographically
+along with the original v0.4 candidate/score cache. Hashes certify artifact
+consistency, not truth or historical availability.
+
+SourceAuthority(source_id, authority_id, evidence_spans) attributes the assertion
+originator in a source. The authority is the issuer of the statement, which can
+differ from its hosting provider: an issuer filing on SEC is not thereby a
+statement issued by SEC. Evidence consists of exact nonempty Unicode-codepoint
+source slices. One authority attribution per source is supported. Sources that
+mix multiple speakers or quotation authorities require preprocessing into
+separate attribution units or a richer future claim-level authority schema.
+Do not equate a web domain with correction authority.
+
+CorrectionEvidence(link_id, reference_span, action='replace',
+coverage='whole_assertion') certifies the extracted interpretation of one
+existing CORRECTS candidate. Its reference span must match the link's source
+offsets and actual correcting-source text. The selected link names the exact
+replacement reading and exact target reading; authority attribution is required
+for both source records, with equal authority IDs. These checks verify structure
+and source-slice integrity. They do not independently prove that the text entails
+the attribution, reference resolution, or full replacement. Those remain
+annotated/model-selected assumptions and must be assessed separately.
+
+The only supported action is replacement of a whole atomic assertion. Partial
+field edits and bare retractions are rejected. Never represent a retraction of
+support as a negative real-world occupancy interval. TemporalClaim remains
+unchanged; its replacement factual content uses ASSERT or UNRESOLVED operation,
+and the selected CORRECTS link carries the correction relation. CORRECTS as a
+standalone TemporalClaim.operation remains unsupported by the bounded module.
+
+SupportDependency(dependent_claim_id, prerequisite_claim_id, evidence_spans)
+declares an essential factual support prerequisite. Its evidence must be an
+exact slice of the dependent's own source. Multiple prerequisite edges are
+conjunctive: every declared prerequisite is necessary, not interchangeable.
+The complete candidate dependency graph must be acyclic, and a prerequisite
+source cannot be dated later than its dependent source. This is a factual
+support dependence, not a dependency of the correction notice's speech act.
+
+Structural errors such as unknown IDs, duplicate records, malformed spans,
+unsupported actions, or essential-support cycles are rejected when the policy
+is validated. A CORRECTS candidate may lack a certificate or authority record;
+that candidate is infeasible if selected, while its null alternative remains
+available. The policy does not manufacture a correction for an unresolved cue.
+Every candidate claim must also remain individually well-formed before selection.
+The projection can remove conflicts between valid claims, but cannot ingest an
+intrinsically impossible resolved interval and repair its schema through a later
+correction. Such source errors need an unresolved/raw-record representation or a
+future richer malformed-assertion type.
+
+Selected-state algorithm
+
+1. Validate exactly one selected reading and one link or null for each mention.
+   Every non-null link must bind the selected resolved endpoint readings and
+   preserve the normalized factual key, including exact scope. A correction
+   cannot spread to other relations, scopes, neighboring metrics, or histories.
+   RESTATES also preserves value and polarity. CHANGES requires distinct
+   positive values. Current identity normalization is the existing bounded
+   normalization, not approximate scope matching.
+
+2. Validate each selected correction's explicit reference and common asserting
+   authority. Its target source must be earlier than or equal in day-level
+   availability to the correcting source. A reference is required on different
+   days as well as the same day: chronology alone is not correction evidence.
+   Reject cycles in the selected correction-reference graph.
+
+3. Mark every explicitly targeted assertion directly withdrawn. This set is
+   monotone within the selected prefix. For A <- B <- C, both A and B remain
+   withdrawn and C is the active replacement. Suppression of B's replacement
+   assertion does not undo B's original correction notice. Reinstating A's value
+   requires an explicit new assertion C with that value; the old A is not revived.
+   Retraction of a correction notice, cancellation of a withdrawal, and arbitrary
+   belief-revision semantics are outside this checkpoint.
+
+4. Propagate essential-support inactivity to a fixed point. If any prerequisite
+   is not selected as that exact candidate claim, or is inactive, mark the
+   dependent inactive. Record missing_prerequisite or inactive_prerequisite
+   separately from direct replacement. Missing support does not reject the whole
+   reading vector: all-null link assignments must remain available to each
+   decoder's reading-selection baseline. No undeclared prerequisite is inferred.
+
+5. Remove inactive claims and their incident RESTATES/CHANGES edges from the
+   temporal graph. Materialize the surviving claims with the existing exact
+   integer difference-constraint solver, preserving every surviving claim's
+   interval bounds, polarity, modality, observations, and report horizon.
+   Correction edges contribute no event-date inequalities.
+
+6. Answer over the active claims with the same bounded query semantics. A
+   planned replacement remains a planned claim and does not prove realized
+   outcomes. Two independently selected sibling corrections of the same target
+   remain active. If their content is incompatible for the queried event time,
+   the answer remains indeterminate; no latest-source or preferred-authority
+   ranking silently selects a winner.
+
+RESTATES and evidence dependence
+
+RESTATES in v0.4 means a shared temporal episode. It does not mean a source copied
+another source. Therefore a correction of A does not automatically withdraw R
+just because R RESTATES A. R's edge to A is deactivated, preventing A's bounds
+and observations from tightening R. R's own assertion survives unless an
+explicit essential-support dependency makes it inactive. Its status is 'no
+declared derivative dependence', not independently verified corroboration.
+
+This distinction is essential. Blanket component deletion would suppress
+independent evidence; leaving the original episode equality active would retain
+withdrawn temporal evidence. Explicitly copied or derived assertions can be
+withdrawn transitively through SupportDependency instead.
+
+Source eligibility and same-day limitations
+
+The materializer accepts only a strict eligible prefix: all sources, source
+contexts, candidates, policy evidence, and dependency records must belong to
+that prefix. An explicit same-day target reference gives direction to a
+correction relation, but supplies no reliable clock time or within-day cutoff.
+The implementation never invents such a time. Publication datelines, SEC
+acceptance metadata, immutable raw-response captures, and demonstrated first
+public availability are different evidential objects. Benchmark admission
+must establish availability/version eligibility outside this materializer.
+
+Provenance and the decoder interface
+
+materialize_corrected_selection(problem, reading_ids, link_ids, claims, policy)
+returns the existing CoupledMemory interface with active claims only. Its
+correction_ledger retains all original selected claim records, all selected
+links/readings, active/inactive IDs and reasons, operative notices, deactivated
+temporal edges, authority declarations, and timing assumptions. Original records
+are not modified.
+
+Factual support and support-control provenance are separate concepts. Active
+claims retain their own support sources and ordinary context dependencies.
+Sources of operative correction notices, their target sources, and both
+endpoints' declared source contexts are conservatively retained as control
+dependencies. These justify the source-attribution and reference-resolution
+decision, including the target's identification. Controls propagate through
+inactive essential dependents, including across factual keys, and attach to
+active competitors with each affected key. Thus removing a derived competitor
+cannot silently omit the correction that enabled an answer. A source containing
+a withdrawn replacement assertion may still be cited for its retained correction
+notice in a chain or as a target-identification record. Its withdrawn assertion
+contributes no fact or interval constraint. The broad same-key control-source
+union can overcite records; it is not a minimal proof trace. The ledger separates
+these control dependencies from active factual assertions.
+When inactivity instead follows a missing selected prerequisite, controls also
+retain the prerequisite's source, its mention context, the currently selected
+alternative reading's context (including unresolved readings), and a resolved
+alternative's claim context. Choosing an alternative identity can therefore
+remove dependent support without hiding the source/context of that choice.
+
+make_correction_state_semantics returns the shared decoder hook. It validates
+the selected state, performs support projection, and returns only the active
+RESTATES components, or None for an infeasible link assignment. It must replace
+the legacy decoder's global exact-date checks, not run after them: withdrawn
+assertions can otherwise cause premature RESTATES date-conflict rejection.
+Local endpoint/key checks remain in the decoder. Scoring retains every selected
+historical interpretation and link; inactive support is not equivalent to an
+unselected candidate, and no method receives a special objective advantage.
+
+Validation and scope of results
+
+The local authored tests exercise atomic replacement, same-day references,
+authority mismatch, scope isolation, chains, siblings, explicit reinstatement,
+dependency cascades and missing prerequisites, cycles, interval deactivation,
+query modality, exact provenance, and immutable historical records. A separate
+finite oracle independently enumerates admissible active subsets. These are
+implementation diagnostics. They do not establish extraction accuracy, calibrated
+authority judgments, held-out QA gains, a joint-decoding advantage, or scalability.

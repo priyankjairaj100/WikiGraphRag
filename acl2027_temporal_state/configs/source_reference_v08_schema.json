@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "source_reference_v0.8"
+    },
+    "history_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prefix_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "eligible_source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "reference_kind": {
+      "const": "unversioned_model_source_only_not_human_gold"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "supported",
+              "conflict",
+              "not_established"
+            ]
+          },
+          "answer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "start": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "end": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "source_id",
+                "start",
+                "end",
+                "quote"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "question_id",
+          "question",
+          "status",
+          "answer",
+          "rationale",
+          "evidence"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2
+    }
+  },
+  "required": [
+    "schema_version",
+    "history_id",
+    "prefix_id",
+    "request_sha256",
+    "eligible_source_ids",
+    "reference_kind",
+    "questions"
+  ],
+  "additionalProperties": false
+}

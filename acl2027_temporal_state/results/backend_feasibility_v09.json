@@ -1,0 +1,154 @@
+{
+  "schema_version": "backend_feasibility_v0.9",
+  "status": "metadata_and_resources_verified_execution_not_attempted",
+  "observed_at_utc": "2026-10-03T03:23:30.034925+00:00",
+  "scope": "Read-only feasibility, no weights downloaded and no inference, training, cloud job or deployment launched by this audit.",
+  "environment": {
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "cpu_logical_count": 9,
+    "cpu_affinity_count": 9,
+    "cgroup": {
+      "memory.max": "8589934592",
+      "memory.current": "1856733184",
+      "cpu.max": "800000 100000",
+      "pids.max": "max"
+    },
+    "meminfo_selected": {
+      "MemTotal": "10206508 kB",
+      "MemAvailable": "9537448 kB",
+      "SwapTotal": "0 kB",
+      "SwapFree": "0 kB"
+    },
+    "sysconf_physical_ram_bytes": 10451464192,
+    "sysconf_available_ram_bytes": 8304459776,
+    "disk_free_bytes": 30408323072,
+    "nvidia_smi_path": null,
+    "nvidia_device_nodes": [],
+    "hf_cli_path": null,
+    "initial_sandbox_probe_note": "/proc and /sys files were absent in restricted execution; an authorized read-only escalated probe obtained cgroup quotas.",
+    "unrestricted_rlimit_note": "Parent shell RLIMIT_AS and RLIMIT_CPU initially unlimited; proposed child guards do not change container quotas."
+  },
+  "options": [
+    {
+      "repo": "Qwen/Qwen3-4B-GGUF",
+      "revision": "bc640142c66e1fdd12af0bd68f40445458f3869b",
+      "filename": "Qwen3-4B-Q8_0.gguf",
+      "bytes": 4280404704,
+      "sha256": "8c2f07f26af9747e41988551106f149b03eb9b5cb6df636027b6bf6278473300",
+      "license": "apache-2.0",
+      "download_url": "https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/bc640142c66e1fdd12af0bd68f40445458f3869b/Qwen3-4B-Q8_0.gguf",
+      "api_evidence": {
+        "url": "https://huggingface.co/api/models/Qwen/Qwen3-4B-GGUF/revision/bc640142c66e1fdd12af0bd68f40445458f3869b?blobs=true",
+        "response_bytes": 7320,
+        "response_sha256": "fdb951dee76e9edc9ad60416c09b23a0eb6a5ee2c795f9e1999d240a55cf33b1"
+      },
+      "config_repo": "Qwen/Qwen3-4B",
+      "config_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "config_evidence": {
+        "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/config.json",
+        "response_bytes": 726,
+        "response_sha256": "8ba006f74fecfaaeb392872a60f4a480e7ec9860153d2e1b769ec81f9a147f8a"
+      },
+      "architecture": {
+        "model_type": "qwen3",
+        "head_dim": 128,
+        "hidden_size": 2560,
+        "num_hidden_layers": 36,
+        "num_attention_heads": 32,
+        "num_key_value_heads": 8,
+        "vocab_size": 151936
+      },
+      "estimated_q8_0_kv_bytes_at_4096": 320864256,
+      "estimated_weights_plus_kv_bytes": 4601268960,
+      "measured_peak_memory_bytes": null,
+      "smoke_run": false
+    },
+    {
+      "repo": "Qwen/Qwen3-8B-GGUF",
+      "revision": "7c41481f57cb95916b40956ab2f0b139b296d974",
+      "filename": "Qwen3-8B-Q5_K_M.gguf",
+      "bytes": 5851112224,
+      "sha256": "068bae163faa96ad48032daf4e071a6a28fe67d8dcc95367609c2ff165e52738",
+      "license": "apache-2.0",
+      "download_url": "https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/7c41481f57cb95916b40956ab2f0b139b296d974/Qwen3-8B-Q5_K_M.gguf",
+      "api_evidence": {
+        "url": "https://huggingface.co/api/models/Qwen/Qwen3-8B-GGUF/revision/7c41481f57cb95916b40956ab2f0b139b296d974?blobs=true",
+        "response_bytes": 7394,
+        "response_sha256": "03fc7dc0451db8c4efacd2a80e152bea4cdf4582984f6a5cc35f9b4062a9cfd0"
+      },
+      "config_repo": "Qwen/Qwen3-8B",
+      "config_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "config_evidence": {
+        "url": "https://huggingface.co/Qwen/Qwen3-8B/resolve/b968826d9c46dd6066d109eabc6255188de91218/config.json",
+        "response_bytes": 728,
+        "response_sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30"
+      },
+      "architecture": {
+        "model_type": "qwen3",
+        "head_dim": 128,
+        "hidden_size": 4096,
+        "num_hidden_layers": 36,
+        "num_attention_heads": 32,
+        "num_key_value_heads": 8,
+        "vocab_size": 151936
+      },
+      "estimated_q8_0_kv_bytes_at_4096": 320864256,
+      "estimated_weights_plus_kv_bytes": 6171976480,
+      "measured_peak_memory_bytes": null,
+      "smoke_run": false
+    }
+  ],
+  "preferred_option_index": 0,
+  "decision": "Prefer official 4B Q8_0 over 8B Q5_K_M for lower memory and matching previous weight quantization family. Larger parameter count is not evidence of improved scoring or accuracy.",
+  "memory_estimate": {
+    "formula": "2(K,V) * layers * context_tokens * kv_heads * head_dim * 34/32 bytes per q8_0 element",
+    "context_tokens": 4096,
+    "q8_0_block_elements": 32,
+    "q8_0_block_bytes": 34,
+    "limitations": "Architectural nominal KV estimate excludes tensor alignment, runtime graph/workspace buffers, allocator overhead, executable/shared libraries, token/logit arrays, page cache and collector. Weight file size is a mapping estimate, not measured RSS or PSS. GGUF architecture must be checked at load."
+  },
+  "proposed_runtime": {
+    "runtime_repository": "ggml-org/llama.cpp",
+    "runtime_release": "b11146",
+    "runtime_commit": "7fe450e19305b828c199d602c23a8337aaa1f03b",
+    "runtime_archive_sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+    "runtime_archive_bytes": 16998357,
+    "runtime_archive_url": "https://github.com/ggml-org/llama.cpp/releases/download/b11146/llama-b11146-bin-ubuntu-x64.tar.gz",
+    "compatibility": "Expected from same qwen3 architecture already used with this runtime; this 4B asset has not been loaded or measured.",
+    "cpu_threads": 4,
+    "gpu_layers": 0,
+    "parallel_slots": 1,
+    "context_tokens": 4096,
+    "maximum_input_tokens_including_chat_template": 3840,
+    "maximum_generated_tokens": 1,
+    "batch_tokens": 256,
+    "microbatch_tokens": 128,
+    "kv_cache_key_type": "q8_0",
+    "kv_cache_value_type": "q8_0",
+    "flash_attention": "on",
+    "enable_thinking": false,
+    "no_context_shift": true,
+    "address_space_limit_bytes": 5905580032,
+    "address_space_limit_gib": 5.5,
+    "cpu_seconds_limit": 7200,
+    "wall_seconds_limit": 2400,
+    "per_request_timeout_seconds": 600,
+    "total_scored_completions": 8,
+    "execution_design": "Four short new-source diagnostic items, two fixed answer-label orders, exact prompt selection frozen before output. Use cache_prompt=false for each measured prompt. Do not reuse 8k-token previous prompts. Probe rendering/tokenization first, then one measured prompt as load/latency smoke; stop on memory/time/context/label-availability failure and preserve receipt. Continue remaining seven only if smoke fits predeclared resource limits.",
+    "memory_monitor": "Capture cgroup memory.current, process RSS/PSS when available and child peak RSS; fail if cgroup reaches 7.5GiB or process exceeds guard. Do not raise guards in-place or silently change numerical settings.",
+    "statistics_scope": "A bounded diagnostic tests execution and label-order behavior; eight outputs do not establish accuracy, general stability, calibration or inference advantage."
+  },
+  "safety_and_scope": {
+    "paid_jobs_launched": 0,
+    "models_downloaded_by_audit": 0,
+    "inference_completions_by_audit": 0,
+    "existing_project_code_modified": false
+  },
+  "known_limitations": [
+    "8 GiB cgroup limit is shared; memory.current is only a snapshot and may rise.",
+    "No GPU tooling or NVIDIA device nodes were observed; this is not a complete hardware attestation.",
+    "Performance and fit estimates require an actual guarded smoke; no throughput or peak memory is measured here.",
+    "No guarantee that 4B removes yes/no presentation sensitivity or is a strong publication baseline.",
+    "Host libraries are not pinned by this feasibility audit; bind them in the actual execution receipt."
+  ]
+}

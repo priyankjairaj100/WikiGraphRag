@@ -1,0 +1,118 @@
+INDEPENDENT IMPLEMENTATION REVIEW: v0.4 COUPLED TEMPORAL INFERENCE
+
+Review date: 2026-10-02.
+Scope: source code, authored unit fixtures, and independently generated finite
+temporal networks. The reviewer did not read natural-pilot development gold,
+expectations, or answer labels. This is implementation evidence, not a natural
+accuracy result or an assessment of learned model scores.
+
+Files inspected
+
+src/temporal_state/decoder.py
+src/temporal_state/bounded.py
+src/temporal_state/coupled.py
+src/temporal_state/scored_io.py
+tests/test_decoder_extension.py
+tests/test_scored_io.py
+tests/test_coupled.py
+
+Executed checks
+
+1. The four decoder extension tests passed, including the local-penalty fairness
+   regression, a common feasibility hook for all methods and the assignment
+   evaluator, strict boolean hook results, and propagation of malformed-input
+   errors rather than silently treating errors as candidate rejection.
+
+2. All 22 scored-cache tests passed. These cover immutable defensive copies,
+   complete candidate-to-claim bindings, exact evidence, bounded-to-exact date
+   projection, declared prefix dependencies, score/provenance/source hashing,
+   unknown label fields, duplicate keys, and nonfinite scores.
+
+3. An independently written finite-domain audit used seed 20261002 to generate
+   500 networks with two or three intervals over five integer days. The audit
+   enumerated every allowed start/end pair for each claim and applied selected
+   RESTATES equalities and CHANGES ordering constraints directly, without using
+   the implementation's closure to construct the expected answer.
+
+   Results: 50 networks feasible; 450 infeasible; 721 explicitly enumerated
+   feasible assignments; 1,178 checks passed. Checks compared infeasibility,
+   all four endpoint extrema, and existential/universal day membership against
+   the temporal-network materializer. This is finite generated coverage, not a
+   proof over arbitrary inputs. The audit is preserved as scripts/audit_coupled_finite.py; root changed only
+   its import/output paths and JSON report persistence.
+
+4. All 29 coupled-materializer tests passed after the review fixes. These
+   include a separately implemented small finite-domain oracle, same-episode
+   continuity, reversions, nonadjacent changes, actual reporting horizons,
+   planned-versus-actual separation, negative polarity, contextual citations,
+   malformed candidate contracts, mutable input rejection, and the explicit
+   selected-state certainty limitation. The independent 500-network audit was
+   rerun against that final implementation and retained the counts above.
+
+Findings addressed during review
+
+- Independent initialization originally maximized raw unary scores while its
+  reported objective subtracted reading-level violation costs. This could
+  create an artificial joint advantage even with no links. The initializer now
+  includes the same local penalties. Its dedicated regression passed.
+
+- The optional decoder hook can only add link-induced constraints in this
+  checkpoint. Every individually valid reading vector must retain a feasible
+  all-null link choice. Code inspection confirms the coupled solver imposes no
+  cross-claim constraint for null links, including conflicting same-key claims.
+  The generic decoder deliberately raises when this hook contract is violated;
+  it does not implement arbitrary infeasible-reading-vector recovery.
+
+- A direct-API shallow-immutability counterexample was executed and reported
+  to the implementation owner. A caller supplied a mutable observation list,
+  created a feasibility hook, and appended an observation outside the interval.
+  The same null-link call changed from feasible to infeasible. Cached inputs
+  were already defensively copied; the direct hook boundary required hardening.
+  Final disposition: fixed by rejecting mutable sequence fields at the direct
+  API boundary across the problem, mention, reading, link, and claim objects.
+  The exact counterexample was rerun: hook construction now raises ValueError
+  before it can capture the mutable observation list. The cache path remains
+  compatible because it already supplies immutable copies.
+
+Semantic assessment
+
+The closure uses standard integer difference constraints. Its edge directions
+encode positive duration, endpoint bounds, observations, and predecessor end
+less than or equal to successor start correctly in the checked cases. CHANGES
+allows a gap and does not invent an adjacent handover boundary. RESTATES merges
+the complete episode interval, so continuity and same-episode identity remain
+explicit selected assumptions. Equal names alone do not merge episodes.
+
+Selected links require equal modality; CHANGES additionally requires two
+positive claims with distinct values. Consequently an announced-future linked
+component cannot tighten a reported-actual component through this solver.
+Actual answering keeps each claim's original reporting horizon. The schema
+still lacks separate modality for each endpoint, so extraction that places a
+planned boundary inside a reported-actual claim is outside this guarantee.
+
+Negative assertions retain their polarity, and cannot become positive change
+episodes. Unlinked contradictory reports remain available instead of forcing
+an entity/scope split or suppressing a disagreement to satisfy nonoverlap.
+CORRECTS candidates are currently rejected when selected by this materializer;
+correction-aware answering remains unimplemented.
+
+Connected-component provenance conservatively retains every selected source
+and declared problem, mention, reading, claim, and link context, including
+redundant inequalities. This can overcite; it is safer than omitting a source
+whose constraint contributed indirectly. Exact source slices and consistent
+hashes certify neither source entailment nor provenance truth.
+
+Answer certainty is conditional on the selected interpretation. An exact
+objective optimum, including a lexicographic tie decision, does not establish
+agreement across alternative optima or plausible readings. Scores remain a
+separate empirical question: incorrect frozen scores can reward an incorrect
+identity while the temporal network and optimizer are functioning correctly.
+The final implementation exposes this boundary in certainty_scope and sets
+alternative_assignment_agreement_certified to false; its regression passed.
+
+Review disposition: no remaining high-priority implementation blocker found
+within the reviewed v0.4 scope. This is not a guarantee that no bugs remain.
+
+No natural joint-inference advantage, scalability result, calibrated confidence,
+novel temporal-closure algorithm, or held-out generalization result follows
+from this review.

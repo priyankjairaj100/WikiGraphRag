@@ -1,0 +1,192 @@
+{
+  "schema_version": "1.0",
+  "check_id": "correction_literature_v10",
+  "checked_date": "2026-10-03",
+  "status": "bounded_non_exhaustive_review",
+  "budgets": {
+    "search_queries_max": 4,
+    "search_queries_executed": 4,
+    "papers_max": 4,
+    "papers_inspected": 4
+  },
+  "queries": [
+    {
+      "query_id": "L1",
+      "q": "correction aware memory RAG dependency belief maintenance benchmark ERASE evolving knowledge 2025 2026 arxiv",
+      "engine": "system1_search_query",
+      "batch_reference": "turn172",
+      "result_attribution": "Combined tool response did not map every result to an individual query."
+    },
+    {
+      "query_id": "L2",
+      "q": "dynamic knowledge update benchmark RAG temporal evolving facts corrections 2025 2026 arxiv",
+      "engine": "system1_search_query",
+      "batch_reference": "turn172",
+      "result_attribution": "Combined tool response did not map every result to an individual query."
+    },
+    {
+      "query_id": "L3",
+      "q": "MQuAKE multi hop knowledge editing counterfactual memorization retrieval 2023 paper",
+      "engine": "system1_search_query",
+      "batch_reference": "turn172",
+      "result_attribution": "Combined tool response did not map every result to an individual query."
+    },
+    {
+      "query_id": "L4",
+      "q": "LLM memory updates preserve unaffected facts belief revision truth maintenance 2025 2026 paper",
+      "engine": "system1_search_query",
+      "batch_reference": "turn172",
+      "result_attribution": "Combined tool response did not map every result to an individual query."
+    }
+  ],
+  "retrieval_limitations": [
+    "Many irrelevant generic pages returned alongside relevant primary hits.",
+    "No absence-of-prior-work inference; 2026 coverage incomplete.",
+    "Known exact identifiers used for two papers; no additional queries."
+  ],
+  "papers": [
+    {
+      "id": "2305.14795",
+      "title": "MQuAKE: Assessing Knowledge Editing in Language Models via Multi-Hop Questions",
+      "first_submitted": "2023-05-24",
+      "version_read": "v3",
+      "version_date": "2024-09-09",
+      "urls": [
+        "https://arxiv.org/abs/2305.14795",
+        "https://arxiv.org/html/2305.14795"
+      ],
+      "selection": "Relevant primary search hit",
+      "claims": [
+        "Tests downstream consequences of edits; MeLLo stores edits externally and checks intermediate answers.",
+        "Temporal subset uses selected Wikidata changes, principally position changes."
+      ],
+      "limitations": [
+        "Different evidence regime from natural publisher corrections.",
+        "No reproduction conducted."
+      ],
+      "refs": [
+        "turn174view0",
+        "turn177view0"
+      ]
+    },
+    {
+      "id": "2504.12523",
+      "title": "Memorization vs. Reasoning: Updating LLMs with New Knowledge",
+      "first_submitted": "2025-04-16",
+      "version_read": "v1",
+      "version_date": "2025-04-16",
+      "urls": [
+        "https://arxiv.org/abs/2504.12523",
+        "https://arxiv.org/html/2504.12523v1"
+      ],
+      "selection": "Relevant primary search hit",
+      "claims": [
+        "KUP uses synthetic updates and evidence with direct and indirect probes.",
+        "Includes retrieved and oracle RAG contexts; distinguishes historical retention from current surfacing."
+      ],
+      "limitations": [
+        "Synthetic corpora are not natural publisher corrections.",
+        "No reproduction conducted."
+      ],
+      "refs": [
+        "turn174view1",
+        "turn175view3",
+        "turn175view4",
+        "turn176view3"
+      ]
+    },
+    {
+      "id": "2410.10813",
+      "title": "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory",
+      "first_submitted": "2024-10-14",
+      "version_read": "v2",
+      "version_date": "2025-03-04",
+      "urls": [
+        "https://arxiv.org/abs/2410.10813",
+        "https://arxiv.org/html/2410.10813v2"
+      ],
+      "selection": "Direct navigation to known identifier",
+      "claims": [
+        "Tests updates, temporal reasoning, abstention, and multi-session reasoning.",
+        "Separates indexing, retrieval, and reading; uses constructed histories with human question revision."
+      ],
+      "limitations": [
+        "Conversation-memory setting differs from publisher corrections.",
+        "Failed attempted v3 URL is not evidence of paper absence."
+      ],
+      "refs": [
+        "turn175view0",
+        "turn177view1"
+      ]
+    },
+    {
+      "id": "2504.19413",
+      "title": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+      "first_submitted": "2025-04-28",
+      "version_read": "v1",
+      "version_date": "2025-04-28",
+      "urls": [
+        "https://arxiv.org/abs/2504.19413",
+        "https://arxiv.org/html/2504.19413v1"
+      ],
+      "selection": "Direct navigation to known identifier",
+      "claims": [
+        "Memory controller chooses addition, update, deletion, or no change.",
+        "Graph variant marks obsolete relationships invalid; reported evaluation uses conversational LoCoMo."
+      ],
+      "limitations": [
+        "Inspected specification does not establish essential-support or alternative-proof semantics.",
+        "No negative expressive-power claim and no reproduction."
+      ],
+      "refs": [
+        "turn174view3",
+        "turn175view5",
+        "turn176view4"
+      ]
+    }
+  ],
+  "failed_reads": [
+    {
+      "url": "https://arxiv.org/html/2410.10813v3",
+      "result": "Internal Error",
+      "followup": "Abstract page advertised v2; followed that link."
+    }
+  ],
+  "additional_search_hits_not_read": [
+    {
+      "url": "https://arxiv.org/abs/2506.02503",
+      "title": "KARE-RAG: Knowledge-Aware Refinement and Enhancement for RAG",
+      "status": "Search lead only; not reviewed or used as evidence"
+    },
+    {
+      "url": "https://arxiv.org/abs/2407.10275",
+      "title": "Cross-Lingual Multi-Hop Knowledge Editing",
+      "status": "Search lead only; not reviewed or used as evidence"
+    }
+  ],
+  "inherited_classical_boundary": {
+    "artifact": "docs/related_work_update_v07.txt",
+    "citation": "Doyle 1979, A truth maintenance system",
+    "independently_reread_this_pass": false
+  },
+  "inferences": {
+    "novelty_established": false,
+    "natural_qa_results_at_task_start": 0,
+    "broad_claims_already_have_precedents": [
+      "Memory update operations",
+      "Multi-hop consequences of knowledge edits",
+      "Historical retention with current-answer selection",
+      "Obsolete graph relation invalidation"
+    ],
+    "residual_question": "Does joint correction-target and essential-dependency interpretation improve grounded answers over full-source, competent direct-target, and iterative memory baselines while preserving unaffected and independently supported claims?",
+    "direct_dependent_correction_rule": "Retain every explicit dependent correction in all competent baselines; do not suppress one to manufacture propagation benefit.",
+    "algorithmic_gate": "Answer improvement beyond strong direct and restarted iterative baselines; internal objective gain alone does not pass.",
+    "future_extensions_not_claimed_novel": [
+      "Alternative support sets",
+      "Numeric dependency recomputation"
+    ]
+  },
+  "no_model_inference": true,
+  "no_core_mutation": true,
+  "no_publication_readiness_claim": true
+}

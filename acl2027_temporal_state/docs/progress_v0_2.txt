@@ -1,0 +1,132 @@
+ACL 2027 REWORK: CHECKPOINT v0.2
+Work date: 2026-10-02
+Research direction: joint factual identity and temporal update inference.
+
+Outcome
+The project now has executable small-component decoder comparisons and its
+first source-only natural development replay. This checkpoint establishes
+engineering behavior and exposes representation gaps. It does not establish
+the natural accuracy gain needed for an ACL paper.
+
+Completed work
+- Captured five SEC filing/exhibit text representations from three accessions,
+  covering Starbucks and Nike leadership histories. Saved URLs, original web
+  retrieval representations, transformed text, SHA-256 hashes and metadata.
+- Audited source eligibility: SEC acceptance is not first public availability.
+  The pilot uses the next calendar day after acceptance as a development-only
+  convention. None of these histories is admitted to a strict historical
+  benchmark. A current representation hash does not prove historical bytes.
+- Ran A and B in separate fresh contexts on four early-prefix sources; ran L
+  separately on the three-source later Starbucks prefix. Saved exact source
+  inputs, shared prompt, backend limitations and unedited output files.
+- Reconciled A/B in a separate source-only model pass C: 12 aligned semantic
+  pairs agree after organization normalization; three polarity/granularity
+  units remain unmatched. No human agreement statistic is claimed.
+- Validated 37 source-specific assertions and 68 assertion evidence spans.
+  Additional ambiguity/exclusion evidence is retained in the raw files.
+- Connected frozen extraction to the existing episode/newest-source memory
+  and gold-only scorer using nine deliberately selected development questions.
+  Questions contain no answer labels; gold is loaded only after prediction
+  output has been written. The replay does not call a reproducible model API.
+- Implemented exact joint, independent, coordinate-ascent iterative and seeded
+  restarted iterative decoding over identical frozen candidates/scores.
+- Passed 85 unit tests and 48 additional decoder contract checks across six
+  authored candidate cases. Existing memory diagnostics and original bug audit
+  also pass. No cloud training or paid model job was launched.
+
+What the natural replay revealed
+1. Unknown appointment time is not the same as unknown current occupancy.
+   A source can clearly identify a CFO without specifying the appointment day.
+   The v0.1 baseline treats unknown starts as broad uncertainty. Later observed
+   roles can consequently make even an earlier explicit answer indeterminate.
+   The next materializer must represent bounded times and state observations.
+
+2. Modality and polarity must be separate fields.
+   The prompt's status enum mixes reported/planned/negative/uncertain. Pass B
+   expresses planned cessation using status=planned and a negative qualifier.
+   The replay explicitly excludes those machine-marked negative records from
+   positive occupancy and logs the loss. That narrow adapter is not a general
+   negation solution. Raw extractions remain untouched.
+
+3. Legal-name aliases already affect end-to-end behavior.
+   A uses NIKE, Inc.; B uses Nike. The original lexical router does not treat
+   these as equivalent for an ordinary Nike question. Canonicalization and
+   source-supported alias generation must occur within each source prefix.
+   No gold entity IDs or names were inserted into inference to hide this error.
+
+4. Boundary uncertainty is local.
+   The Nike records use October 13/14 retirement wording. This does not justify
+   inventing an explicit correction or uncertainty about every later date.
+   Starbucks records also differ in departure-date specificity. Model agreement
+   cannot settle ambiguity that the available source evidence leaves open.
+
+Recorded diagnostic counts, not paper accuracy
+                          Episode baseline        Newest-source baseline
+Early extraction A             1 / 7                       1 / 7
+Early extraction B             2 / 7                       2 / 7
+Later extraction L             0 / 2                       1 / 2
+
+Do not pool these into an overall benchmark score. A/B repeat the same early
+questions; L uses a different prefix and separately generated extraction. The
+two histories were selected deliberately, labels are machine-generated, and
+historical availability is unverified. These counts identify failures to fix,
+not evidence for or against the proposed joint method, which has not been
+connected to this natural replay. The full prediction/error ledger is in
+results/natural_pilot_predictions.json and results/natural_pilot_replay.json.
+
+Decoder findings and their limits
+All methods share a feasibility evaluator, unary/pair/null scores, explicit
+penalties, source eligibility rules and candidate graph. They retain unresolved
+readings and no-link alternatives. Exact decoding enumerates all allowed states
+under conservative configurable ceilings; default limits are eight mentions,
+five readings per mention and 250,000 potential states. Oversized cases fail
+explicitly. The implementation is an exact small reference, not a scale claim.
+
+An authored local-optimum example separates plain coordinate ascent from exact
+optimization, but seeded restarts also recover the better objective. A clean
+control gives no joint benefit. A misleading-score control makes stronger
+optimization choose incorrect authored identities. Therefore the contribution
+cannot be simply that joint search achieves a higher objective. Natural score
+quality, candidate recall, useful QA improvement and cost must justify it.
+
+Output currently consists of candidate readings, links and restatement
+components. Correction-aware materialization and natural QA integration remain
+unfinished. Bounded intervals, modality and polarity are not yet supported by
+the candidate decoder. See docs/decoder_implementation.txt for exact semantics.
+
+Evidence and reproducibility boundaries
+- Public sources: accession-specific SEC URLs listed in the pilot manifest.
+- SEC permission/availability reference:
+  https://www.sec.gov/about/webmaster-frequently-asked-questions
+  The FAQ permits reuse of EDGAR public filing content, describes acceptance
+  timestamps, and states that public dissemination lag is not guaranteed.
+- Original raw HTML download was unavailable in this runtime. Saved text is
+  explicitly the web tool's retrieved representation; it can omit layout.
+- Same-accession exhibits are dependent reporting, not independent corroboration.
+- Extractor model revision, sampling parameters, token counts and costs were
+  unavailable/uninstrumented; their fields are null, not invented or zero.
+- Fresh contexts limit supplied information, not knowledge in model weights.
+  A/B are correlated machine passes, not independent human annotators.
+- Development expectations were drafted from source review before inspecting
+  extraction outputs/running predictions. Root review was not history-blind.
+  These expectations remain development hypotheses, not final gold labels.
+- All connected variants of these development histories are excluded from any
+  future untouched test split.
+
+Immediate next work
+Implement the requirements in docs/next_candidate_schema.txt: separate polarity
+and modality; distinguish report dates from state observations; retain bounded
+or unknown boundaries; derive aliases exclusively from eligible sources. Then
+pin an extractor backend, measure candidate recall, and cache shared candidate
+scores before comparing natural independent/iterative/joint inference. Expand
+to product-lifecycle records and genuine correction pairs. Finish historical
+version/availability admission in parallel. The twenty-history development
+milestone and full empirical paper remain open.
+
+Reproduce
+From the project root with Python 3.11 or later:
+  python scripts/verify_project.py
+This executes local tests, synthetic diagnostics, frozen natural replay and
+the original submission audit. It needs no weights or credentials. The replay
+is reproducible from stored predictions; the conversational extraction itself
+is not reproducible as a pinned model experiment.

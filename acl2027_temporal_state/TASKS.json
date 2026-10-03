@@ -1,0 +1,564 @@
+{
+  "version": "0.11",
+  "created": "2026-10-01",
+  "date_basis": "planning targets; not scheduled background jobs",
+  "tasks": [
+    {
+      "id": "F01",
+      "phase": "Foundation",
+      "task": "Preserve submission and reproduce audited failure",
+      "depends_on": [],
+      "target_date": "2026-10-01",
+      "status": "completed",
+      "acceptance": "Original ZIP hash recorded; A B B failure reproduced."
+    },
+    {
+      "id": "F02",
+      "phase": "Foundation",
+      "task": "Separate inference records from evaluation labels",
+      "depends_on": [
+        "F01"
+      ],
+      "target_date": "2026-10-01",
+      "status": "completed",
+      "acceptance": "Source, Assertion and Question have no answer labels; scorer defines its own label schema."
+    },
+    {
+      "id": "F03",
+      "phase": "Foundation",
+      "task": "Implement prefix memory and corrected episode baseline",
+      "depends_on": [
+        "F02"
+      ],
+      "target_date": "2026-10-07",
+      "status": "completed",
+      "acceptance": "Restatement, reversion, correction, future context, conflict and gap tests pass."
+    },
+    {
+      "id": "F04",
+      "phase": "Foundation",
+      "task": "Implement strict grounded scoring and grouped uncertainty",
+      "depends_on": [
+        "F02"
+      ],
+      "target_date": "2026-10-07",
+      "status": "completed",
+      "acceptance": "Partial matches and invalid support fail; answerable abstentions fail; bootstrap unit is history."
+    },
+    {
+      "id": "F05",
+      "phase": "Foundation",
+      "task": "Create reproducible diagnostics and project checkpoint",
+      "depends_on": [
+        "F03",
+        "F04"
+      ],
+      "target_date": "2026-10-07",
+      "status": "completed",
+      "acceptance": "One-command runs, input/code hashes, manifest and versioned archive."
+    },
+    {
+      "id": "F06",
+      "phase": "Foundation",
+      "task": "Adapt old datasets without annotation-assisted inference",
+      "depends_on": [
+        "F05"
+      ],
+      "target_date": "2026-10-10",
+      "status": "pending",
+      "acceptance": "Adapter produces sources/questions separately from scorer labels; metadata limitations documented."
+    },
+    {
+      "id": "D01",
+      "phase": "Data",
+      "task": "Research primary-source seed histories",
+      "depends_on": [],
+      "target_date": "2026-10-03",
+      "status": "completed",
+      "acceptance": "Two domains with verified source URLs and explicit version/availability gaps.",
+      "progress": "Five additional histories/eleven primary-source records discovered beyond original register. Includes explicit Lyft forecast correction; discovery-only, no benchmark admission."
+    },
+    {
+      "id": "D02",
+      "phase": "Data",
+      "task": "Recover exact versions and their availability evidence",
+      "depends_on": [
+        "D01"
+      ],
+      "target_date": "2026-10-10",
+      "status": "in_progress",
+      "acceptance": "Admitted documents have stable version IDs, hashes and defensible information cutoffs.",
+      "progress": "Eight current public HTTP responses captured for one Lyft correction pair; receipt/hash and derived-excerpt lineage retained. SEC amendment establishes record dependency, not first historical public access. Historical clock-time availability and exact eligible prefix remain unresolved; other new histories remain discovery-only."
+    },
+    {
+      "id": "D03",
+      "phase": "Data",
+      "task": "Freeze annotation schema and model-assisted review procedure",
+      "depends_on": [
+        "F02"
+      ],
+      "target_date": "2026-10-07",
+      "status": "completed",
+      "acceptance": "Blind extraction/reconstruction/reconciliation and uncertainty labels specified."
+    },
+    {
+      "id": "D04",
+      "phase": "Data",
+      "task": "Build first twenty annotated development histories",
+      "depends_on": [
+        "D08",
+        "D03"
+      ],
+      "target_date": "2026-10-15",
+      "status": "in_progress",
+      "acceptance": "Evidence offsets checked; label provenance retained; annotation cost measured.",
+      "progress": "v09 adds four histories/eight reviewed prefix annotations (123 claim instances) and seven reference files (14 judgments). Combined v08-v09: seven annotated histories, 14 prefixes, 180 claim instances; 13 reference prefixes/26 judgments, six histories fully paired. One Disney p2 reference write remains blocked. Twenty-history target, human adjudication and benchmark admission remain incomplete."
+    },
+    {
+      "id": "D05",
+      "phase": "Data",
+      "task": "Complete sixty to eighty development pilot histories",
+      "depends_on": [
+        "D04"
+      ],
+      "target_date": "2026-10-31",
+      "status": "pending",
+      "acceptance": "Sampling and challenge slices separate; main errors classified without test access."
+    },
+    {
+      "id": "D06",
+      "phase": "Data",
+      "task": "Freeze full sampling frame and grouped splits",
+      "depends_on": [
+        "D05"
+      ],
+      "target_date": "2026-11-05",
+      "status": "pending",
+      "acceptance": "Independent split manifest, connected-entity grouping and leakage audit."
+    },
+    {
+      "id": "D07",
+      "phase": "Data",
+      "task": "Expand natural histories to feasible target",
+      "depends_on": [
+        "D06"
+      ],
+      "target_date": "2026-11-20",
+      "status": "pending",
+      "acceptance": "Target around 300 adjusted by pilot throughput; unknowns and exclusions reported."
+    },
+    {
+      "id": "M01",
+      "phase": "Method",
+      "task": "Specify joint decoder and matched pipeline objectives",
+      "depends_on": [],
+      "target_date": "2026-10-03",
+      "status": "completed",
+      "acceptance": "Explicit variables, candidate conditioning, null choices, constraints and comparative algorithms."
+    },
+    {
+      "id": "M02",
+      "phase": "Method",
+      "task": "Implement prefix-specific candidate extraction and caching",
+      "depends_on": [
+        "D04"
+      ],
+      "target_date": "2026-10-19",
+      "status": "in_progress",
+      "acceptance": "Caches keyed by eligible source hash, extractor revision and prompt; candidate recall measured.",
+      "progress": "First fresh Nike pass failed plan_with_actual_state_observation and remains preserved. One versioned source-only repair passed with 7 mentions, 7 resolved readings and 11 links. One resolved reading per mention plus unresolved; no competing resolved identity alternatives or recall measurement. v0.7 residual full-context ambiguity audit adds zero readings/links after reviewing seven mentions and sixteen candidate differences; this is not a proposal-recall measure. v0.8 produces source-semantic annotations for6newprefixes, but no scored candidate graphs or candidate-recall estimates. Clarification/correction and stance errors required4reviewed annotationversions."
+    },
+    {
+      "id": "C01",
+      "phase": "Compute",
+      "task": "Check local and connected model execution capability",
+      "depends_on": [],
+      "target_date": "2026-10-03",
+      "status": "completed",
+      "acceptance": "CPU runtime and authenticated connected identity checked. Advertised Jobs call failed UNAVAILABLE before job identifier; plugin installed/enabled. Credits, cloud output and model runtime unverified.",
+      "progress": "Fresh v0.6 whoami succeeds; read-only Jobs ps returns UNAVAILABLE (operation not exposed). No credit shortage inferred. Local ML dependencies, GPU and resource quota are unverified; no installs, weights or jobs. v0.7 established a separate bounded local llama.cpp/Qwen3-0.6B path; cloud capability/credit limitations are not resolved by local execution."
+    },
+    {
+      "id": "C02",
+      "phase": "Compute",
+      "task": "Pin model backend and prepare bounded pilot job",
+      "depends_on": [
+        "C01",
+        "D04"
+      ],
+      "target_date": "2026-10-17",
+      "status": "in_progress",
+      "acceptance": "Model revision/license, exact script, timeout, cost estimate and result destination verified.",
+      "progress": "Immutable Qwen3-8B revision/license verified; disabled bounded job configuration, source-only prompt/schema, local builder and transport validation prepared. Actual runtime lock, tokenizer limits, memory and result destination remain unverified. Separate v0.7 0.6B scorer, model hash, runtime revision/template/tokens and local output path verified under C04. This does not execute the prepared 8B protocol."
+    },
+    {
+      "id": "C03",
+      "phase": "Compute",
+      "task": "Establish credit/budget and result persistence",
+      "depends_on": [
+        "C02"
+      ],
+      "target_date": "2026-10-17",
+      "status": "blocked",
+      "acceptance": "Actual supported execution path and durable outputs; no speculative full training launch.",
+      "progress": "Cloud Jobs remains unavailable with no submitted jobs or verified credits/cloud output. Separate local pinned 0.6B execution under C04 completed; cloud planning remains blocked, not local cached replay."
+    },
+    {
+      "id": "M03",
+      "phase": "Method",
+      "task": "Cache contextual unary and pair scores",
+      "depends_on": [
+        "M02",
+        "C04"
+      ],
+      "target_date": "2026-10-23",
+      "status": "in_progress",
+      "acceptance": "All attribution methods read identical scored candidates and null alternatives.",
+      "progress": "v0.7 cached 64 actual pinned full-vocabulary single-token Yes/No likelihood rows over32 shared options and two display conditions. All16 decoder/objective runs replay; five derived artifacts byte-identical. 26/32 sign flips show major condition sensitivity; candidate generation remains unversioned. Stronger contextual scorer, calibration and independent natural coverage remain open. v0.8 16-distribution control on4fixed old items finds allcold label-order signs flip andall8warm pairs match. Scorer reliability remains an issue; newhistories notyet scored. v09 matched four authored reading statements on Disney/Intel: 16 retained 0.6B/4B scores. Small model flips 4/4 and agrees 2/4 per order; large flips 0/4 but agrees only 3/4, accepting the wrong non-executive role. No retuning or natural accuracy claim. Larger-model link/unresolved/no-link validation and same-source QA are still pending.",
+      "priority": "highest_research_priority"
+    },
+    {
+      "id": "M04",
+      "phase": "Method",
+      "task": "Implement independent and iterative decoders",
+      "depends_on": [
+        "M01",
+        "M03"
+      ],
+      "target_date": "2026-10-26",
+      "status": "in_progress",
+      "acceptance": "Strong unary context baseline and coordinate revision share full objective and evidence.",
+      "progress": "All four decoders share objective callbacks after identical semantic feasibility. Historical compatibility passes; active-support ablation uses reference anchoring. 825 contracts and 23,497 independent audit checks pass. Strong contextual natural comparison remains open. v0.7 primary all four methods agree; diagnostic independent exact gap0.1168766 is already closed by ordinary coordinate iteration. No QA comparison or joint algorithm advantage."
+    },
+    {
+      "id": "M05",
+      "phase": "Method",
+      "task": "Implement bounded joint decoder",
+      "depends_on": [
+        "M01",
+        "M03"
+      ],
+      "target_date": "2026-10-28",
+      "status": "in_progress",
+      "acceptance": "Small exact cases verified; timeouts, gaps, fallback and severed links logged.",
+      "progress": "Exact enumeration supports both shared objective modes. Active-support suppresses all previously selected corrections under unchanged authored 10/2 scores, including Lyft 50-only to 500+50. Exact optimization does not repair a misspecified objective. Scalable inference/alternate-state certainty remain open. v0.7 likelihood pilot provides no exact-over-iterative benefit in either condition; stronger natural evaluation is needed before new search development."
+    },
+    {
+      "id": "G01",
+      "phase": "Decision",
+      "task": "Evaluate the late October method gate",
+      "depends_on": [
+        "D05",
+        "M04",
+        "M05",
+        "M08"
+      ],
+      "target_date": "2026-10-31",
+      "status": "pending",
+      "acceptance": "Natural coupling errors and useful accuracy-cost gains survive strong contextual and restarted baselines, source-access controls and certainty analysis; otherwise narrow the contribution."
+    },
+    {
+      "id": "B01",
+      "phase": "Baselines",
+      "task": "Run strong extractor and listwise pilot baselines",
+      "depends_on": [
+        "C06",
+        "D04"
+      ],
+      "target_date": "2026-10-23",
+      "status": "pending",
+      "acceptance": "Same sources and context; model calls and costs logged; failures inspected."
+    },
+    {
+      "id": "B02",
+      "phase": "Baselines",
+      "task": "Reproduce closest temporal methods",
+      "depends_on": [
+        "G01"
+      ],
+      "target_date": "2026-11-20",
+      "status": "pending",
+      "acceptance": "Pinned code/configs or explicit adaptation labels; comparable source access and reader."
+    },
+    {
+      "id": "M06",
+      "phase": "Method",
+      "task": "Train compact scorer only if pilot warrants it",
+      "depends_on": [
+        "G01"
+      ],
+      "target_date": "2026-11-15",
+      "status": "pending",
+      "acceptance": "Train/dev isolation; multiple seeds where feasible; extractor improvements separated from decoding."
+    },
+    {
+      "id": "E01",
+      "phase": "Evaluation",
+      "task": "Freeze primary comparison and useful effect criterion",
+      "depends_on": [
+        "D05",
+        "B01"
+      ],
+      "target_date": "2026-11-20",
+      "status": "pending",
+      "acceptance": "Strongest development pipeline selected without test access; primary metric and uncertainty fixed."
+    },
+    {
+      "id": "E02",
+      "phase": "Evaluation",
+      "task": "Run held-out natural benchmark",
+      "depends_on": [
+        "D07",
+        "B02",
+        "E01"
+      ],
+      "target_date": "2026-12-01",
+      "status": "pending",
+      "acceptance": "Traceable predictions from all methods; no oracle keys/values; primary paired history comparison."
+    },
+    {
+      "id": "E03",
+      "phase": "Evaluation",
+      "task": "Complete ablations robustness and cost analyses",
+      "depends_on": [
+        "E02"
+      ],
+      "target_date": "2026-12-07",
+      "status": "pending",
+      "acceptance": "Joint attribution, clean/hard slices, controlled sensitivity, evidence recall and total costs."
+    },
+    {
+      "id": "W01",
+      "phase": "Writing",
+      "task": "Write methods and data skeleton with claim ledger",
+      "depends_on": [
+        "M01",
+        "D03"
+      ],
+      "target_date": "2026-10-15",
+      "status": "completed",
+      "acceptance": "No fabricated results; proposed vs measured claims explicit.",
+      "progress": "Exploratory methods/data LaTeX source,14 artifact-linked claims and10 targeted references completed. Results boundary deliberately v0.6. No final ACL formatting, compiled PDF or completed submission paper. Separatev0.8 evidence addendum andclaimledgerrecord controlledscorerdiagnosis andsource annotation; v0.7draft preserved. v09 adds a source-only development addendum with ten artifact-linked claims and all sixteen matched score values. No compiled PDF or submission-ready manuscript. v0.10 adds an eight-claim source-only correction-evidence addendum; no compiled PDF or submission-ready manuscript. v0.11 source-only addendum records support lookup, admitted-source shortfall and strict reader schema failures; no compiled PDF."
+    },
+    {
+      "id": "W02",
+      "phase": "Writing",
+      "task": "Prepare complete eight-page manuscript",
+      "depends_on": [
+        "E03",
+        "W01"
+      ],
+      "target_date": "2026-12-18",
+      "status": "pending",
+      "acceptance": "Every claim maps to an experiment, source or proof; limitations and AI-use disclosures accurate."
+    },
+    {
+      "id": "W03",
+      "phase": "Writing",
+      "task": "Run independent reviewer and reproducibility passes",
+      "depends_on": [
+        "W02"
+      ],
+      "target_date": "2026-12-26",
+      "status": "pending",
+      "acceptance": "Critical objections addressed; clean-environment execution and evidence tracing pass."
+    },
+    {
+      "id": "W04",
+      "phase": "Writing",
+      "task": "Finalize submission package",
+      "depends_on": [
+        "W03"
+      ],
+      "target_date": "2027-01-03",
+      "status": "pending",
+      "acceptance": "Anonymized paper, appendix, code, data statement and ARR requirements checked."
+    },
+    {
+      "id": "W05",
+      "phase": "Writing",
+      "task": "Submit to ARR for ACL 2027",
+      "depends_on": [
+        "W04"
+      ],
+      "target_date": "2027-01-04",
+      "status": "pending",
+      "acceptance": "Actual user-authorized submission confirmation; deadline 23:59 UTC-12."
+    },
+    {
+      "id": "M07",
+      "phase": "Method",
+      "task": "Implement limited whole-assertion correction materialization",
+      "depends_on": [
+        "F02",
+        "M01"
+      ],
+      "target_date": "2026-10-23",
+      "status": "completed",
+      "acceptance": "Targeted whole-assertion replacement with preserved records, explicit authority/target evidence, chain and dependency semantics, shared decoder hook and independent finite audit. Pure retraction and partial edits excluded.",
+      "progress": "v0.5: 10 authored cases/44 predictions/544 contracts; 960-ledger independent audit with 10,772 checks; one current-source record illustration with 8 decodes/40 contracts and no QA. This limited semantic implementation is complete; no method or benchmark gain is claimed."
+    },
+    {
+      "id": "M08",
+      "phase": "Method",
+      "task": "Assess scalable search and certainty across alternative states",
+      "depends_on": [
+        "M03",
+        "M04",
+        "M05"
+      ],
+      "target_date": "2026-10-31",
+      "status": "pending",
+      "priority": "high",
+      "acceptance": "Report search budgets, costs and alternate-state answer agreement on shared natural candidates. Distinguish score/objective changes from inference gains; evaluate ordinal spacing, unary/link scale and calibration. Authored objective ablation is complete but natural accuracy remains unmeasured."
+    },
+    {
+      "id": "M09",
+      "phase": "Method",
+      "task": "Audit score scale, calibration and correction suppression",
+      "depends_on": [
+        "M03",
+        "M07"
+      ],
+      "target_date": "2026-10-31",
+      "status": "in_progress",
+      "priority": "high",
+      "acceptance": "Freeze ordinal and unary/link sensitivity conventions before answer evaluation; test correction suppression, candidate recall, alternative quality and negative-score withdrawal without answer-guided tuning.",
+      "progress": "Authored active-support failure documented without retuning. Three fixed monotone codings across four methods produced 12 decodes with identical readings, links, active claims and envelopes; all within-map exact gaps zero, four malformed-map controls pass. Declared after scorer completion reported but before root read values/decoder outputs; not ex ante preregistration. Broader scale sensitivity, calibration and independent natural coverage remain open. v0.7 primary32/32 support scores positive versus diagnostic6/32;26 sign flips and all8 state-pair changes. Preserve both conditions, no retuning/averaging. Prompt-order and cache-history causes require a separately designed control. v0.8 disambiguates cachecarryover fromthese4label-order effects; no scale/calibration/strongermodel result. v09 matched four authored reading statements on Disney/Intel: 16 retained 0.6B/4B scores. Small model flips 4/4 and agrees 2/4 per order; large flips 0/4 but agrees only 3/4, accepting the wrong non-executive role. No retuning or natural accuracy claim. Larger-model link/unresolved/no-link validation and same-source QA are still pending."
+    },
+    {
+      "id": "C04",
+      "phase": "Compute",
+      "task": "Execute bounded pinned local likelihood pilot",
+      "depends_on": [
+        "C01"
+      ],
+      "target_date": "2026-10-03",
+      "status": "completed",
+      "acceptance": "Actual full-vocabulary label likelihoods with immutable assets/runtime, exact prompt/token traces, explicit resource limits, native responses and replay receipt.",
+      "progress": "64 final rows plus one numerical spot repeat; one smoke and15 discarded partial rows retained separately.25.17min final run,1.14235GiB peakRSS, zero truncation, clean server exit. One spot repeat exact; not all64 cold regeneration."
+    },
+    {
+      "id": "D08",
+      "phase": "Data",
+      "task": "Capture and freeze controlled document-prefix development streams",
+      "depends_on": [
+        "D01",
+        "D03"
+      ],
+      "target_date": "2026-10-10",
+      "status": "in_progress",
+      "acceptance": "Exact current versions, source hashes, delivery batches frozen before candidates/questions; clocks separate, exclusions and overlap reviewed, historical replay separate.",
+      "progress": "All39frozenURLs attempted;32usable/15complete source sets. Two-passnetworkattempts anddeterministic extractionrepair preserved. Four-history firstannotationplan frozen:IBMblocked, Docker/Chrome/HS2 sixprefixes deliveredintact andsource-reviewed. Currentupdatedpagesnot historical originals; remaininghistories notyet delivered/annotated. v09 recaptures eight fixed URLs as new versions; all eight usable and frozen into four additional two-prefix streams. Six extracted texts match v08 and two NASA texts differ. No historical original certification."
+    },
+    {
+      "id": "M10",
+      "phase": "Method",
+      "task": "Separate scoring-condition sensitivity from numerical history and test stronger scoring",
+      "depends_on": [
+        "C04",
+        "D08"
+      ],
+      "target_date": "2026-10-15",
+      "status": "in_progress",
+      "acceptance": "Predeclared controlled contrasts on separate development examples, cold/no-reuse condition control, additional pinned contextual/listwise scorer, independent labels for calibration; no selecting v0.7 condition for desired answers.",
+      "progress": "Technical cold/warm factor completed underC05:16distributions/8processes,4cold signflips and8exactwarm repeats. Stronger scorer and separate-history validation stillpending; this task is not fully complete. v09 matched four authored reading statements on Disney/Intel: 16 retained 0.6B/4B scores. Small model flips 4/4 and agrees 2/4 per order; large flips 0/4 but agrees only 3/4, accepting the wrong non-executive role. No retuning or natural accuracy claim. Larger-model link/unresolved/no-link validation and same-source QA are still pending."
+    },
+    {
+      "id": "C05",
+      "phase": "Compute",
+      "task": "Run fixed native cold/warm label-order technical control",
+      "depends_on": [
+        "C04"
+      ],
+      "target_date": "2026-10-03",
+      "status": "completed",
+      "acceptance": "Fresh process cold token accounting, explicitwarmreuse, immutable16distributions, independentprocess/log/likelihood audit andoffline replay.",
+      "progress": "4fixeditemsof4kinds fromoneexistinghistory;8processes,16distributions,all4coldsignflips,8warm repeatswithzeroarchivedlabelLPdifference; nofailures/amendments. 26.4minutes."
+    },
+    {
+      "id": "C06",
+      "phase": "Compute",
+      "task": "Establish a larger pinned scorer execution path",
+      "depends_on": [
+        "C04"
+      ],
+      "target_date": "2026-10-10",
+      "status": "completed",
+      "acceptance": "Checklocalresource feasibility oravailablecloudpath, pinassets/runtime, token/contextbudgets andbounded cost before execution. Tiny0.6B technicalcontrol is notstrongbaseline. ExistingcloudJobs/credit limitationremainsunresolved.",
+      "progress": "Official pinned Qwen3-4B Q8_0 ran locally under 5.5 GiB AS with full 2520\u20132546-token prompts. Sixteen matched scores plus one discarded response and one authored smoke are accounted for; exact external/tokenizer and independent native-artifact audits pass. This execution path does not establish a strong contextual baseline."
+    },
+    {
+      "id": "G02",
+      "phase": "Decision",
+      "task": "Run the eight-history correction-dependent support gate before more routine expansion",
+      "depends_on": [
+        "C06",
+        "M07",
+        "D08"
+      ],
+      "target_date": "2026-10-15",
+      "status": "in_progress",
+      "priority": "highest_research_priority",
+      "acceptance": "Admit only explicit corrections with source-grounded essential downstream support and unaffected controls; report shortfalls. Under identical evidence compare reader and structured baselines plus three withdrawal policies. Positive history-level policy and search gains must be separated; no gain narrows the route.",
+      "protocol": "data/provenance/route_decision_v09.json",
+      "progress": "v0.10 screened12 histories using18queries;11 full captures failed beforeHTTP. Four frozen web excerpts support2independently reviewed five-claim controls and6conditional states. Both direct/dependency policies leave identical active assertions with control retained. Zero full-prefix admission and zero new model/QA predictions: empirical gate incomplete, not passed or failed. v0.11 adds nine queries/six disjoint histories with zero full-source/core admissions. A separate selected-passage reader completed two native calls but both strict response schemas fail; this neither passes the method gate nor evaluates dependency updates.",
+      "latest_protocol": "data/provenance/route_decision_v11.json"
+    },
+    {
+      "id": "D09",
+      "phase": "Data",
+      "task": "Resolve the missing Disney second-prefix reference artifact",
+      "depends_on": [
+        "D08"
+      ],
+      "target_date": null,
+      "status": "blocked",
+      "acceptance": "A legitimate permitted source-only reference artifact with exact request binding; no promotion of chat findings or retry workaround.",
+      "progress": "Content filter blocked the artifact-writing invocation without a stated policy reason. No artifact saved and no retry/substitute attempted. Receipt: data/source_stream_v09/generation_failure.json."
+    },
+    {
+      "id": "D10",
+      "phase": "Data",
+      "task": "Restore full correction-source capture and adjudicate unshadowed dependencies",
+      "depends_on": [
+        "G02"
+      ],
+      "status": "in_progress",
+      "target_date": null,
+      "priority": "highest_research_priority",
+      "acceptance": "Fresh exact full-source versions, bounded search frozen before execution, source-present essential consequences and retention controls; preserve explicit dependent corrections, alternative support, failures and shortfall.",
+      "protocol": "data/provenance/route_decision_v11.json",
+      "progress": "Bounded v11 expansion and known-source raw probe complete; full source access remains unestablished. Next eight-URL access pilot specified but not executed."
+    },
+    {
+      "id": "M11",
+      "phase": "Method",
+      "task": "Specify non-temporal source-support answering for admitted correction cases",
+      "depends_on": [
+        "M07"
+      ],
+      "status": "completed",
+      "target_date": null,
+      "priority": "high",
+      "acceptance": "Separate evidence-support status from truth, temporal succession and numeric recomputation; never create event intervals to fit current QA API. Introduce only semantics needed by admitted cases.",
+      "progress": "Assertion-ID source-support adapter implemented under unchanged correction semantics; 16 contract tests and independent 30-lookup integration audit pass. Natural-language routing/extraction, truth and recomputation excluded."
+    },
+    {
+      "id": "E04",
+      "phase": "Evaluation",
+      "task": "Establish a competent matched reader and update comparison after complete source admission",
+      "depends_on": [
+        "D10",
+        "M11"
+      ],
+      "status": "pending",
+      "target_date": null,
+      "priority": "highest_research_priority",
+      "acceptance": "Same complete source evidence, frozen reference answers, explicit failure accounting, all direct corrections retained; demonstrate any dependency value beyond reader and direct baseline. A small-model selected-passage diagnostic is insufficient.",
+      "progress": "v11 bounded current-document diagnostic complete separately; both strict response schemas failed and no structured-method comparison ran."
+    }
+  ],
+  "updated": "2026-10-03",
+  "current_focus": "Recover complete versioned primary evidence through the bounded access pilot; no further solver expansion before matched answer-level evidence."
+}

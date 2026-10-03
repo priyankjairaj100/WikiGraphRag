@@ -1,0 +1,150 @@
+{
+  "schema_version": "correction_expansion_discovery_v0.11",
+  "domain": "technical_and_public_record",
+  "protocol_path": "data/correction_gate_v11/expansion_protocol.json",
+  "screen_date_utc": "2026-10-03",
+  "status": "Discovery only. No admitted case, questions, predictions, scores, or algorithmic result.",
+  "budget_used": {
+    "queries": 3,
+    "new_histories": 2,
+    "maximum_primary_document_targets_per_history": 4,
+    "secondary_navigation_pages": 1
+  },
+  "queries_executed": [
+    {
+      "engine": "system1",
+      "query": "site.pbl.nl \"55%\" \"26%\" \"IPCC\" correction",
+      "batch": "turn209",
+      "result_summary": "One relevant secondary Netherlands correction lead; mostly generic IPCC pages. The batched response did not partition results by query."
+    },
+    {
+      "engine": "system1",
+      "query": "site.curl.se \"CVE\" \"incorrect\" \"retracted\"",
+      "batch": "turn209",
+      "result_summary": "No relevant curl source returned. Batch instead included dictionaries defining incorrect and generic Google Sites pages."
+    },
+    {
+      "engine": "system1",
+      "query": "site.rfc-editor.org errata \"therefore\" \"incorrect\" security",
+      "batch": "turn209",
+      "result_summary": "No relevant RFC erratum returned. Batch included unrelated technical forums and research abstracts. No RFC history was promoted for inspection."
+    }
+  ],
+  "search_anomalies": [
+    "Requested domain and phrase constraints were not respected by much of the displayed result batch. This is a retrieval limitation, not evidence that appropriate correction histories do not exist.",
+    "Wikipedia outbound links exposed by one open response could not be resolved by click; retrying against the response that displayed the links also failed. These are navigation failures, not HTTP failures from the target publishers."
+  ],
+  "secondary_navigation": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Criticism_of_the_IPCC_Fourth_Assessment_Report",
+      "source_refs": ["turn209search24", "turn211view0", "turn212view1"],
+      "purpose": "Locate primary PBL correction and IPCC report; never used for admission.",
+      "failed_clicks": [
+        {"ref": "turn211view0", "id": 343, "result": "Unable to resolve click call due to invalid arguments", "output_ref": "turn214view1"},
+        {"ref": "turn211view0", "id": 335, "result": "Unable to resolve click call due to invalid arguments", "output_ref": "turn214view2"},
+        {"ref": "turn212view1", "id": 343, "result": "Unable to resolve click call due to invalid arguments", "output_ref": "turn215view2"},
+        {"ref": "turn212view1", "id": 335, "result": "Unable to resolve click call due to invalid arguments", "output_ref": "turn215view3"}
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "pbl_ipcc_netherlands_2010",
+      "lead_origin": "Relevant secondary result from the first frozen query; public-record domain, with environmental-science overlap disclosed.",
+      "documents": [
+        {
+          "url": "https://www.pbl.nl/en/news/2010/correction-wording-flood-risks-for-the-netherlands-in-ipcc-report",
+          "url_basis": "Candidate publisher URL inferred from the observed correction title after failed outbound navigation; not a verified canonical address.",
+          "role": "Attempted PBL correction",
+          "status": "not accessible via web reader",
+          "source_ref": "turn217view0"
+        },
+        {
+          "url": "https://www.ipcc.ch/publications_and_data/ar4/wg2/en/ch12s12-2-3.html",
+          "url_basis": "Known legacy chapter-section URL pattern for the observed report section; canonical status unverified.",
+          "role": "Attempted original IPCC report section",
+          "status": "not accessible via web reader",
+          "source_ref": "turn217view1"
+        },
+        {
+          "url": "https://www.ipcc.ch/site/assets/uploads/2018/02/ar4-wg2-chapter12-1.pdf",
+          "url_basis": "Known publisher PDF naming pattern; source contents not retrieved.",
+          "role": "Attempted original report chapter PDF",
+          "status": "403 Forbidden",
+          "source_ref": "turn221view0"
+        },
+        {
+          "url": "https://www.ipcc.ch/site/assets/uploads/2018/05/ar4-wg2-errata-1.pdf",
+          "url_basis": "Candidate publisher errata URL; existence and canonical status unverified.",
+          "role": "Attempted IPCC errata",
+          "status": "not accessible via web reader",
+          "source_ref": "turn221view1"
+        }
+      ],
+      "lead_only_hypothesis": "The secondary account describes a 55% to 26% correction of below-sea-level territory, with another 29% susceptible to river flooding. The general flood-susceptibility conclusion may therefore retain support. These figures are leads only here, not primary-verified labels.",
+      "explicit_old_assertion_verified": false,
+      "same_authority_replacement_verified": false,
+      "essential_dependency_verified": false,
+      "independent_support_verified": false,
+      "direct_correction_of_dependent": "unknown; primary correction not retrieved",
+      "representation_limits": [
+        "IPCC assertion and PBL source authority must be distinguished; no single-authority flattening.",
+        "The retained flood-risk conclusion could require alternative or revised support. Do not encode the old numerical premise as an essential AND edge without source review.",
+        "Below sea level and vulnerable to river flooding are distinct predicates and scopes."
+      ],
+      "stratum": "discovery_only",
+      "exclusion_reason": "No primary document body recovered. No exact source capture, original/correction pair, dependency, or retention control has been established."
+    },
+    {
+      "id": "curl_cve_2020_19909",
+      "lead_origin": "Known exact project advisory URL, opened after the frozen curl query returned no useful source; not an additional search.",
+      "documents": [
+        {
+          "url": "https://curl.se/docs/CVE-2020-19909.html",
+          "role": "Project dismissal; quotes original description and MITRE refusal",
+          "status": "accessible through web reader",
+          "source_refs": ["turn211view1", "turn212view0"]
+        },
+        {
+          "url": "https://daniel.haxx.se/blog/2023/08/26/cve-2020-19909-is-everything-that-is-wrong-with-cves/",
+          "role": "Project maintainer's first-person account",
+          "status": "accessible through web reader; reader comments are not attributed to maintainer",
+          "source_ref": "turn214view0"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-19909",
+          "resolved_url": "https://nvd.nist.gov/vuln/detail/cve-2020-19909",
+          "role": "Attempted authoritative NVD record",
+          "status": "reader returned zero lines; no usable body",
+          "source_ref": "turn215view0"
+        },
+        {
+          "url": "https://daniel.haxx.se/blog/2023/09/05/bogus-cve-follow-ups/",
+          "role": "Maintainer's follow-up, including attributed NVD correspondence",
+          "status": "accessible through web reader; comments excluded from asserting-authority evidence",
+          "source_ref": "turn215view1"
+        }
+      ],
+      "assertion_and_authority": "An anonymous CVE submission classified an integer overflow as a vulnerability. Curl maintainers disputed that classification, while MITRE retained the disputed record. This is disagreement across authorities, not a curl correction of its own earlier claim.",
+      "candidate_same_authority_change": "The maintainer's follow-up quotes NVD revising its vector and score from 9.8 to 3.3. Both the premises and score are expressly amended. The original NVD body and its historical version were not recovered.",
+      "source_present_downstream_conclusion": "The initial severity assessment was repeated by downstream services, according to the maintainer. No concrete downstream document and essential support edge were captured within this screen.",
+      "direct_correction_of_dependent": "yes for the quoted NVD numerical score; competent direct correction includes that score",
+      "retention_control": "The project recognizes an actual ordinary integer-overflow bug and a 2019 fix while disputing security significance. That distinction is useful but does not establish a independently supported downstream conclusion from the original asserting authority.",
+      "representation_limits": [
+        "Disputed cross-authority vulnerability classification cannot be encoded as same-authority CORRECTS.",
+        "The historical patch changed software; it is not a factual assertion replacement.",
+        "The quoted NVD score change is already direct and gives no demonstrated incremental dependency effect.",
+        "The maintainer's page includes third-party comments, which must remain separately attributed."
+      ],
+      "stratum": "discovery_only",
+      "exclusion_reason": "No source-present downstream conclusion outside the direct correction targets with an established essential support edge; NVD primary body and a qualifying unaffected control were not recovered."
+    }
+  ],
+  "summary": {
+    "admitted_histories": 0,
+    "discovery_only_histories": 2,
+    "new_nondirect_dependency_positive": 0,
+    "alternative_support_control_admitted": 0,
+    "conclusion": "Bounded discovery exhausted. Preserve exclusions and retrieval failures; neither scarcity nor solver usefulness can be inferred from this screen."
+  }
+}

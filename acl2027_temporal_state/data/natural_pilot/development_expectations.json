@@ -1,0 +1,245 @@
+{
+  "status": "development_expectations_not_benchmark_gold",
+  "prepared_at_utc": "2026-10-02T11:01:49.897438+00:00",
+  "provenance": "Root model source review, prepared before inspecting extraction outputs or running predictions. Not human adjudicated; source-conditional announced schedules only.",
+  "model_revision": null,
+  "pinned_model": false,
+  "histories": 2,
+  "items": [
+    {
+      "question": {
+        "question_id": "sb_interim",
+        "text": "According to the available records and their announced schedule, who is the chief executive officer of Starbucks corporation on 2024-08-20?",
+        "event_time": "2024-08-20",
+        "information_cutoff": "2024-08-15"
+      },
+      "gold": {
+        "question_id": "sb_interim",
+        "history_id": "leadership_starbucks_2024",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Rachel Ruggeri"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "sbux_8k_20240814"
+          ],
+          [
+            "sbux_archived_press_exhibit"
+          ]
+        ]
+      },
+      "rationale": "Interim CEO pending the stated September 9 handover. This asks about the announced schedule, not later real-world confirmation."
+    },
+    {
+      "question": {
+        "question_id": "sb_before_handover",
+        "text": "According to the available records and their announced schedule, who is the chief executive officer of Starbucks corporation on 2024-09-08?",
+        "event_time": "2024-09-08",
+        "information_cutoff": "2024-08-15"
+      },
+      "gold": {
+        "question_id": "sb_before_handover",
+        "history_id": "leadership_starbucks_2024",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Rachel Ruggeri"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "sbux_8k_20240814"
+          ],
+          [
+            "sbux_archived_press_exhibit"
+          ]
+        ]
+      },
+      "rationale": "Interim period ends at the September 9 start; exact first interim day is not needed for this interior point."
+    },
+    {
+      "question": {
+        "question_id": "sb_handover",
+        "text": "According to the available records and their announced schedule, who is the chief executive officer of Starbucks corporation on 2024-09-09?",
+        "event_time": "2024-09-09",
+        "information_cutoff": "2024-08-15"
+      },
+      "gold": {
+        "question_id": "sb_handover",
+        "history_id": "leadership_starbucks_2024",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Brian Niccol"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "sbux_8k_20240814"
+          ],
+          [
+            "sbux_archived_press_exhibit"
+          ]
+        ]
+      },
+      "rationale": "Explicit announced appointment date. Planned status is not converted into proof the event later occurred."
+    },
+    {
+      "question": {
+        "question_id": "sb_cfo",
+        "text": "According to the available records and their announced schedule, who is the chief financial officer of Starbucks corporation on 2024-08-20?",
+        "event_time": "2024-08-20",
+        "information_cutoff": "2024-08-15"
+      },
+      "gold": {
+        "question_id": "sb_cfo",
+        "history_id": "leadership_starbucks_2024",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Rachel Ruggeri"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "sbux_8k_20240814"
+          ]
+        ]
+      },
+      "rationale": "Filing explicitly states she retains current CFO role during interim CEO service."
+    },
+    {
+      "question": {
+        "question_id": "nike_before",
+        "text": "According to the available records and their announced schedule, who is the chief executive officer of Nike corporation on 2024-10-10?",
+        "event_time": "2024-10-10",
+        "information_cutoff": "2024-09-20"
+      },
+      "gold": {
+        "question_id": "nike_before",
+        "history_id": "leadership_nike_2024",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "John Donahoe"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "nike_8k_20240919"
+          ]
+        ]
+      },
+      "rationale": "Agreement says Donahoe continues in the CEO role until the defined Effective Date."
+    },
+    {
+      "question": {
+        "question_id": "nike_boundary",
+        "text": "According to the available records and their announced schedule, who is the chief executive officer of Nike corporation on 2024-10-13?",
+        "event_time": "2024-10-13",
+        "information_cutoff": "2024-09-20"
+      },
+      "gold": {
+        "question_id": "nike_boundary",
+        "history_id": "leadership_nike_2024",
+        "status": "indeterminate",
+        "accepted_value_sets": [],
+        "sufficient_evidence_sets": [
+          [
+            "nike_8k_20240919",
+            "nike_archived_press_exhibit"
+          ]
+        ]
+      },
+      "rationale": "8-K transition date October 14 and press effective retirement October 13 do not uniquely settle occupancy across the October 13 calendar day. Preserve boundary uncertainty, not an inferred explicit correction."
+    },
+    {
+      "question": {
+        "question_id": "nike_handover",
+        "text": "According to the available records and their announced schedule, who is the chief executive officer of Nike corporation on 2024-10-14?",
+        "event_time": "2024-10-14",
+        "information_cutoff": "2024-09-20"
+      },
+      "gold": {
+        "question_id": "nike_handover",
+        "history_id": "leadership_nike_2024",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Elliott Hill"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "nike_8k_20240919"
+          ],
+          [
+            "nike_archived_press_exhibit"
+          ]
+        ]
+      },
+      "rationale": "Both reports announce October 14 appointment; separate later non-executive employment retirement must not extend CEO service."
+    },
+    {
+      "question": {
+        "question_id": "sb_handover_late",
+        "text": "According to the available records and their announced schedule, who is the chief executive officer of Starbucks corporation on 2024-09-09?",
+        "event_time": "2024-09-09",
+        "information_cutoff": "2024-11-21"
+      },
+      "gold": {
+        "question_id": "sb_handover_late",
+        "history_id": "leadership_starbucks_2024",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Brian Niccol"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "sbux_8k_20240814"
+          ],
+          [
+            "sbux_archived_press_exhibit"
+          ]
+        ]
+      },
+      "rationale": "Same effective date under a later source prefix. Later certification is not sufficient alone to prove September 9 occupancy."
+    },
+    {
+      "question": {
+        "question_id": "sb_observed_late",
+        "text": "According to the available records and their announced schedule, who is the chief executive officer of Starbucks corporation on 2024-11-20?",
+        "event_time": "2024-11-20",
+        "information_cutoff": "2024-11-21"
+      },
+      "gold": {
+        "question_id": "sb_observed_late",
+        "history_id": "leadership_starbucks_2024",
+        "status": "answered",
+        "accepted_value_sets": [
+          [
+            "Brian Niccol"
+          ]
+        ],
+        "sufficient_evidence_sets": [
+          [
+            "sbux_2024_10k_certification"
+          ]
+        ]
+      },
+      "rationale": "Dated signed certification names current role. This is an observation date, not a fresh appointment boundary."
+    }
+  ],
+  "limitations": [
+    "Purposeful small diagnostic sample, no random sampling or held-out test.",
+    "Unknown dates and boundary ambiguity must not be removed to raise system score.",
+    "Later-prefix expectations were reviewed with later sources; early labels reference only early source evidence.",
+    "Root reviewer has seen full history and is not a blinded early-prefix annotator. Separate A/B extraction passes are prefix-limited.",
+    "Scorer membership checks do not establish entailment; qualifications require manual audit."
+  ]
+}

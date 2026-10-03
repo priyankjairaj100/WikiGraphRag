@@ -1,0 +1,115 @@
+Independent completed-execution audit — v0.9
+
+Outcome: passed. The pinned 4B model changed its Yes/No score sign on zero
+of four authored statements across label orders; the matched 0.6B model
+changed sign on all four. This reproduces the recorded arithmetic, not a
+source-accuracy claim. Expected labels were not read by this audit. The
+statements come from two histories and are an authored diagnostic, not a
+random sample, heldout benchmark or independent evidence of an algorithmic
+advantage. Model-size causality is not identified by this comparison.
+
+Identity and repeatability
+
+Independent script: scripts/audit_larger_scorer_v09.py
+Script SHA256: 8ef10ce3f774bf806e4bf5714357c99b98767c6785e47095141b7b2e5dcefe77
+Report: results/larger_scorer_execution_review_v09.json
+Report SHA256: 44b2adf61ea54469e2fc071e8b05d01dc716e0d131603d71e7f464e35ddb4165
+Completed collection receipt SHA256:
+f489183f15fe52d3600a8cc835c97a0660ff156b2e891a1bd79352b838c1aa1e
+
+The independent script imports no collector code and reads only saved
+project artifacts. Two executions produced byte-identical JSON. It made
+zero model calls, zero tokenizer calls, zero network requests and no model
+weight reads. It can be rerun with:
+python3 scripts/audit_larger_scorer_v09.py
+
+The collector and configuration retain the exact amendment-approved hashes:
+67b389f5fe8a87493e245f858607252cb72030f128215a3871db4882303e0dea
+029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802
+The prior review and numerical amendment review remain separate documents.
+
+Coverage and numerical checks
+
+The audit independently checked the full Cartesian coverage of two models,
+four fixed statements and two fixed label orders: sixteen records from
+sixteen distinct research process IDs. Both models had all eight inputs
+preflighted before scoring. Inputs contained 2,520–2,546 tokens including
+the native template; every input retained a generation slot within 4096.
+Every response reported cache_n=0, prompt_n equal to the full input count,
+one predicted token and no truncation.
+
+For each record the audit recomputed Yes-minus-No native log odds, sign
+decision, literal-label mass and returned-top-256 mass. It recomputed the
+order comparisons independently and matched all collector-derived values.
+Every raw log probability remained finite, nonpositive and unmodified.
+The fixed 1e-4 mass-accounting tolerance was checked for both probability
+sums. Returned mass ranged from 1.0000000003291845 to 1.0000013969365011.
+These small finite-precision excesses are retained and disclosed, not
+clamped or renormalized. They do not justify treating the scores as
+calibrated probabilities.
+
+Native request/response settings establish the unconstrained pre-sampling
+probability route: no grammar, logit bias or adapter; neutral repetition,
+presence and frequency penalties; post_sampling_probs=false; backend
+sampling disabled; and only the temperature sampler. The request uses -1
+temperature and this runtime echoes its normalized value as 0.0. Returned
+probabilities are from the separately documented full-vocabulary route,
+before top-256 output slicing; they are not normalized over Yes/No alone.
+
+Execution and resource checks
+
+Each native model path, asset revision/SHA, Q8_0 type, runtime manifest,
+build b11146-7fe450e19 and single-slot process matched its recorded binding.
+All sixteen processes exited successfully without a watchdog stop. The
+audit checked the 5.5 GiB address-space and 3,600 CPU-second guards, four
+threads, CPU-only execution, Q8_0 K/V cache, no context shift and bounded
+wall time against command records and observed traces.
+
+Summed research-process elapsed time was 1,175.512 seconds, excluding asset
+verification outside each process timer and other workflow overhead. The
+largest recorded cgroup resident proxy was 5,280,120,832 bytes, below its
+7 GiB threshold. This proxy is anon+file_mapped+kernel, not process RSS or
+all unreclaimable memory. RUSAGE_CHILDREN maximum RSS is cumulative over
+prior child processes and cannot support per-model peak-RSS claims.
+Runtime/model identities are bound through collection receipts; the full
+host container and dynamic system libraries are not hermetically pinned.
+
+Attempt accounting and preserved evidence
+
+The final run contributes sixteen accepted distributions. The preserved
+failed research attempt contributes one discarded raw distribution and
+zero accepted distributions. The successful feasibility smoke contributes
+one distribution; the earlier failed smoke contributes none. Total scorer
+distributions for this v0.9 work: eighteen. The independent audit verified
+all thirteen original failed-attempt artifact hashes, thirteen frozen
+input hashes and all fifty-eight final research artifact hashes. It also
+recomputed the discarded top-256 mass and matched the declared amendment
+trigger. No discarded row was substituted into the final sixteen.
+
+Source projection and optional external check
+
+Packaged records omit full source strings and complete input token arrays.
+The audit checked projection schemas and retained only input hashes/counts,
+native single-token label/vocabulary representations and score records.
+The archive alone cannot reconstruct or independently retokenize the
+original mutable full sources.
+
+The saved external audit has SHA256:
+12f9a9b1aa0b08341917a0038c354a7e2a67b13cbd41e3a668a05120e0c74754
+It compared all sixteen exact retained external prompts/raw responses to
+their packaged projections, verified eight whole-source condition messages,
+and checked that only label-definition order changed. Both models had
+identical rendered prompt bytes and input token sequences in all eight
+matched conditions. Its forty-eight pinned vocabulary-only CLI checks
+verified each prefix and each exact one-token Yes/No continuation, with
+zero forward-pass completions. The independent script checked the saved
+receipt's collection binding, identities, prefix hashes, token counts and
+resource limits; it did not rerun those CLI checks. The pinned tokenizer
+source explicitly enables vocab_only and its main source contains no
+llama_decode or llama_encode call. These are tokenizer-boundary checks,
+not independent likelihood regeneration or source-label adjudication.
+
+No blocking discrepancy remains in this completed cached-record audit.
+Accuracy against the separately reviewed authored expectations is a
+different analysis. Natural candidate accuracy, general stability,
+calibration and joint-inference benefit remain outside this evidence.

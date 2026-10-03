@@ -1,0 +1,581 @@
+#!/usr/bin/env python3
+"""Pinned 4B CPU scorer: bounded download, separate smoke, cold research calls.
+
+No paid services or fallback models. Model/runtime bytes stay outside project.
+"""
+from __future__ import annotations
+
+import argparse
+from contextlib import contextmanager
+import hashlib
+import json
+import math
+import os
+from pathlib import Path
+import resource
+import subprocess
+import threading
+import time
+import urllib.request
+
+import fetch_local_backend_v07 as fetch
+import local_backend_v07 as base
+
+PROJECT = Path(__file__).resolve().parents[1]
+CONFIG = PROJECT / 'configs/model_backend_v09.json'
+DEFAULT_ASSETS = PROJECT.parent / 'tmp/local_backend_v09'
+DATA = PROJECT / 'data/larger_scorer_v09'
+
+
+def load(path):
+    return json.loads(Path(path).read_text())
+
+
+def config():
+    c = load(CONFIG)
+    if c['schema_version'] != 'larger_backend_v0.9' or len(c['assets']) != 2:
+        raise ValueError('invalid v0.9 config')
+    return c
+
+
+def download(assets):
+    c = config()
+    assets.mkdir(parents=True, exist_ok=True)
+    report = {'schema_version':'larger_scorer_assets_v0.9','status':'started',
+              'config_sha256':base.digest(CONFIG),'started_unix_seconds':time.time(),
+              'assets':[],'error':None}
+    out = PROJECT / 'results/larger_scorer_v09_assets.json'
+    base.write_json(out, report)
+    try:
+        for spec in c['assets']:
+            fetch.download_asset(assets, spec)
+            fetch.verify_asset(assets/spec['relative_path'], spec)
+            report['assets'].append(spec | {'verified_sha256':base.digest(assets/spec['relative_path'])})
+            base.write_json(out, report)
+            print(json.dumps({'asset_verified':spec['relative_path']}), flush=True)
+        fetch.extract_runtime(assets, assets/c['assets'][1]['relative_path'], c)
+        report['runtime_files'] = fetch.inspect_runtime(assets/c['runtime_directory'], c)
+        report['runtime_files_sha256'] = base.canonical_hash(report['runtime_files'])
+        report['status']='completed'
+    except BaseException as error:
+        report.update(status='failed', error_type=type(error).__name__, error=str(error))
+        raise
+    finally:
+        report['finished_unix_seconds']=time.time()
+        base.write_json(out, report)
+    return report
+
+
+def verify_assets(assets):
+    c=config()
+    for spec in c['assets']:
+        fetch.verify_asset(assets/spec['relative_path'], spec)
+    files=fetch.inspect_runtime(assets/c['runtime_directory'], c)
+    return {'config_sha256':base.digest(CONFIG),'assets':c['assets'],
+            'runtime_files_sha256':base.canonical_hash(files)}
+
+
+def download_comparator(assets):
+    c=config(); spec=c['comparator']['asset']
+    receipt={'schema_version':'larger_scorer_comparator_asset_v0.9','status':'started',
+             'config_sha256':base.digest(CONFIG),'started_unix_seconds':time.time(),
+             'asset':spec,'error':None}
+    path=PROJECT/'results/larger_scorer_v09_comparator_asset.json'
+    base.write_json(path,receipt)
+    try:
+        fetch.download_asset(assets,spec)
+        fetch.verify_asset(assets/spec['relative_path'],spec)
+        receipt.update(status='completed',verified_sha256=base.digest(assets/spec['relative_path']))
+    except BaseException as error:
+        receipt.update(status='failed',error=str(error),error_type=type(error).__name__)
+        raise
+    finally:
+        receipt['finished_unix_seconds']=time.time();base.write_json(path,receipt)
+    return receipt
+
+
+def cgroup_current():
+    p=Path('/sys/fs/cgroup/memory.current')
+    try:
+        return int(p.read_text())
+    except (OSError, ValueError):
+        return None
+
+
+def cgroup_resident():
+    try:
+        stats=dict(line.split() for line in Path('/sys/fs/cgroup/memory.stat').read_text().splitlines())
+        return sum(int(stats[name]) for name in ('anon','file_mapped','kernel'))
+    except (OSError,ValueError,KeyError):
+        return None
+
+
+@contextmanager
+def server(assets, log_path, *, cpu_seconds=None, port=18089, trace=None, model='large'):
+    c=config()
+    binding=trace if trace is not None else {}
+    binding.update(verify_assets(assets))
+    model_spec=c if model=='large' else c['comparator']
+    if model not in ('large','small'):
+        raise ValueError('unknown model')
+    if model=='small':
+        fetch.verify_asset(assets/model_spec['model_file'],model_spec['asset'])
+    binding.update(model_key=model,model_id=model_spec['model_id'],model_sha256=model_spec['model_sha256'],
+                   model_repo_revision=model_spec['model_repo_revision'])
+    runtime=assets/c['runtime_directory']
+    command=[str(runtime/'llama-server'),'-m',str(assets/model_spec['model_file']),
+             '--host','127.0.0.1','--port',str(port),'-c',str(c['maximum_context_tokens']),
+             '-t',str(c['threads']),'-tb',str(c['threads']),'-b',str(c['batch_tokens']),
+             '-ub',str(c['microbatch_tokens']),'-ngl','0','--parallel','1',
+             '--no-warmup','--no-webui','-ctk',c['kv_cache_key_type'],
+             '-ctv',c['kv_cache_value_type'],'-fa',c['flash_attention'],
+             '--no-context-shift','--jinja','--chat-template-kwargs','{"enable_thinking":false}']
+    cpu=cpu_seconds or c['cpu_seconds_limit']
+    def limits():
+        resource.setrlimit(resource.RLIMIT_AS,(c['address_space_limit_bytes'],)*2)
+        resource.setrlimit(resource.RLIMIT_CPU,(cpu,)*2)
+        resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+    env=dict(os.environ,LD_LIBRARY_PATH=str(runtime),OMP_NUM_THREADS=str(c['threads']))
+    start=time.monotonic()
+    binding.update(command=command,address_space_limit_bytes=c['address_space_limit_bytes'],
+                   cpu_seconds_limit=cpu,cgroup_memory_before_bytes=cgroup_current())
+    if binding['cgroup_memory_before_bytes'] is None or cgroup_resident() is None:
+        raise RuntimeError('required cgroup memory telemetry is unavailable')
+    log_path.parent.mkdir(parents=True,exist_ok=True)
+    with log_path.open('xb') as log:
+        process=subprocess.Popen(command,stdout=log,stderr=subprocess.STDOUT,env=env,preexec_fn=limits)
+        binding['process_id']=process.pid
+        stop_monitor=threading.Event()
+        def monitor():
+            while not stop_monitor.wait(.25):
+                current=cgroup_current()
+                if current is not None:
+                    binding['cgroup_memory_observed_peak_bytes']=max(current,binding.get('cgroup_memory_observed_peak_bytes',0))
+                resident=cgroup_resident()
+                if current is None or resident is None:
+                    binding['watchdog_stop_reason']='required cgroup memory telemetry disappeared'
+                    process.terminate()
+                    return
+                if resident is not None:
+                    binding['cgroup_resident_observed_peak_bytes']=max(resident,binding.get('cgroup_resident_observed_peak_bytes',0))
+                if resident is not None and resident>c['cgroup_stop_threshold_bytes']:
+                    binding['watchdog_stop_reason']='cgroup resident metric above frozen 7 GiB threshold'
+                    process.terminate()
+                    return
+                if time.monotonic()-start>c['wall_timeout_seconds_per_process']:
+                    binding['watchdog_stop_reason']='frozen process wall deadline exceeded'
+                    process.terminate()
+                    return
+        watcher=threading.Thread(target=monitor,daemon=True)
+        watcher.start()
+        try:
+            while True:
+                if process.poll() is not None:
+                    raise RuntimeError(f'llama-server exited with {process.returncode}; see {log_path.name}')
+                try:
+                    with urllib.request.urlopen(f'http://127.0.0.1:{port}/health',timeout=1) as response:
+                        health=json.load(response)
+                    if health.get('status')=='ok':
+                        break
+                except OSError:
+                    pass
+                if time.monotonic()-start>c['startup_timeout_seconds']:
+                    raise TimeoutError('backend startup exceeded frozen wall limit')
+                time.sleep(.1)
+            binding.update(startup_seconds=time.monotonic()-start,port=port,
+                           cgroup_memory_loaded_bytes=cgroup_current())
+            resident=cgroup_resident()
+            if resident is not None and resident>c['cgroup_stop_threshold_bytes']:
+                raise MemoryError('cgroup resident metric exceeds frozen 7 GiB stop threshold')
+            yield binding
+        finally:
+            stop_monitor.set()
+            watcher.join(timeout=1)
+            if process.poll() is None:
+                process.terminate()
+            try:
+                process.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                process.kill();process.wait(timeout=5)
+            binding.update(elapsed_seconds=time.monotonic()-start,process_exit_code=process.returncode,
+                           children_peak_rss_kib=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss,
+                           cgroup_memory_after_bytes=cgroup_current())
+
+
+def render(port,messages):
+    prompt=base.render_and_tokenize(port,messages)
+    labels={label:base.post(port,'tokenize',{'content':label,'add_special':False,'parse_special':False})['tokens']
+            for label in ('Yes','No')}
+    if any(len(ids)!=1 for ids in labels.values()):
+        raise ValueError('labels must each be one token')
+    for label,ids in labels.items():
+        appended=base.post(port,'tokenize',{'content':prompt['rendered_prompt']+label,
+                     'add_special':True,'parse_special':True})['tokens']
+        if appended!=prompt['input_token_ids']+ids:
+            raise ValueError('exact single-token label continuation failed')
+    prompt['label_tokens']=labels
+    if not prompt['rendered_prompt'].endswith('<think>\n\n</think>\n\n'):
+        raise ValueError('thinking-off assistant suffix changed')
+    return prompt
+
+
+def check_props(props,assets,model):
+    c=config();spec=c if model=='large' else c['comparator']
+    if props.get('model_path')!=str(assets/spec['model_file']) or props.get('total_slots')!=1:
+        raise ValueError('server identity or slot count mismatch')
+
+
+def projected_prompt(prompt):
+    return {k:v for k,v in prompt.items() if k not in ('rendered_prompt','input_token_ids')}
+
+
+def projected_request(request):
+    return {k:v for k,v in request.items() if k!='prompt'}|{
+        'prompt_token_ids_sha256':base.canonical_hash(request['prompt']),
+        'prompt_tokens':len(request['prompt'])}
+
+
+def projected_response(response,prompt):
+    if response['prompt']!=prompt['rendered_prompt']:
+        raise ValueError('response prompt differs from exact rendered input')
+    if response.get('generation_settings',{}).get('generation_prompt') not in ('',None):
+        raise ValueError('unexpected generation prompt; source-text projection requires review')
+    return {k:v for k,v in response.items() if k!='prompt'}|{
+        'prompt_sha256':hashlib.sha256(response['prompt'].encode()).hexdigest(),
+        'full_response_canonical_sha256':base.canonical_hash(response),
+        'projection_note':'Only full source-bearing prompt text omitted; exact original retained externally.'}
+
+
+def payload(tokens):
+    result=base.one_token_request(tokens)
+    result['cache_prompt']=False
+    return result
+
+
+def smoke(assets):
+    c=config()
+    directory=DATA/'smoke_attempt02'
+    if directory.exists():
+        raise ValueError('refusing to overwrite smoke attempt')
+    directory.mkdir(parents=True)
+    base.write_json(directory/'frozen_config.json',c)
+    (directory/'executed_collector.py.txt').write_bytes(Path(__file__).read_bytes())
+    frozen={'config_sha256':base.digest(CONFIG),'collector_sha256':base.digest(Path(__file__)),
+            'created_unix_seconds':time.time(),'completed_distributions_at_freeze':0}
+    base.write_json(directory/'frozen_inputs.json',frozen)
+    receipt={'schema_version':'larger_scorer_smoke_v0.9','status':'started','frozen_inputs':frozen,
+             'purpose':c['smoke']['purpose'],'started_unix_seconds':time.time(),'error':None}
+    out=PROJECT/'results/larger_scorer_v09_smoke.json'
+    base.write_json(out,receipt)
+    try:
+        receipt['execution']={}
+        with server(assets,directory/'server.log',cpu_seconds=c['smoke']['cpu_seconds_limit'],trace=receipt['execution']) as execution:
+            port=execution['port']
+            with urllib.request.urlopen(f'http://127.0.0.1:{port}/props',timeout=30) as response:
+                props=json.load(response)
+            base.write_json(directory/'server_props.json',props)
+            rendered=render(port,c['smoke']['messages'])
+            base.write_json(directory/'rendered_prompt.json',rendered)
+            request=payload(rendered['input_token_ids'])
+            response=base.post(port,'completion',request,c['smoke']['wall_timeout_seconds'])
+            base.write_json(directory/'raw_response.json',{'request':request,'response':response})
+            receipt.update(status='completed',input_tokens=rendered['input_tokens'],
+                           label_tokens=rendered['label_tokens'],timings=response['timings'],
+                           completed_distributions=1,chat_template_sha256=hashlib.sha256(props['chat_template'].encode()).hexdigest())
+    except BaseException as error:
+        receipt.update(status='failed',error_type=type(error).__name__,error=str(error))
+        raise
+    finally:
+        receipt['finished_unix_seconds']=time.time()
+        receipt['artifact_hashes']={str(p.relative_to(PROJECT)):base.digest(p) for p in sorted(directory.iterdir())}
+        base.write_json(out,receipt)
+    return receipt
+
+
+def request_items(path):
+    request=load(path)
+    source_items=request['items']
+    if len(source_items)!=4 or len({x['item_id'] for x in source_items})!=4:
+        raise ValueError('expected four unique source-only challenge statements')
+    system=(PROJECT/'configs/likelihood_scoring_v07_prompt.txt').read_text()
+    definitions={'Yes':'Yes: the complete option is adequately supported under the rule for ITEM.kind.',
+                 'No':'No: the complete option is not adequately supported under the rule for ITEM.kind.'}
+    items=[]
+    for original in source_items:
+        if set(original)!={'item_id','history_id','statement','source_text','source_request_sha256'}:
+            raise ValueError('unexpected source item fields; references must stay excluded')
+        if not all(isinstance(v,str) and v for v in original.values()):
+            raise ValueError('source fields must be nonempty strings')
+        for condition,labels in [('yes_no',['Yes','No']),('no_yes',['No','Yes'])]:
+            content='SOURCE_CONTEXT\n'+original['source_text']+'\n\nITEM\n'+json.dumps({'kind':'reading','statement':original['statement']},ensure_ascii=False,sort_keys=True)
+            content+='\n\nLABELS\n'+'\n'.join(definitions[label] for label in labels)
+            content+='\n\nIs this complete option adequately supported? Answer with exactly one label.'
+            items.append({'item_id':original['item_id'],'history_id':original['history_id'],'condition_id':condition,
+                          'source_sha256':hashlib.sha256(original['source_text'].encode()).hexdigest(),
+                          'messages':[{'role':'system','content':system},{'role':'user','content':content}]})
+    if len(items)!=8:
+        raise ValueError('expected four items and two label orders')
+    keys=[(x['item_id'],x['condition_id']) for x in items]
+    if len(set(keys))!=8 or len({x[0] for x in keys})!=4:
+        raise ValueError('duplicate or missing item-condition')
+    histories={x['history_id'] for x in items}
+    if histories!=set(load(DATA/'challenge_selection_protocol.json')['history_ids']):
+        raise ValueError('histories differ from fixed selection protocol')
+    for ident in dict.fromkeys(x[0] for x in keys):
+        pair=[x for x in items if x['item_id']==ident]
+        if [x['condition_id'] for x in pair]!=['yes_no','no_yes']:
+            raise ValueError('expected fixed primary then diagnostic order')
+        if pair[0]['history_id']!=pair[1]['history_id']:
+            raise ValueError('condition history mismatch')
+        for key in ('source_ids','source_sha256'):
+            if pair[0].get(key)!=pair[1].get(key):
+                raise ValueError('condition source metadata mismatch')
+    for item in items:
+        if set(item)-{'item_id','history_id','condition_id','messages','source_ids','source_sha256'}:
+            raise ValueError('unexpected item metadata; expected labels/rationales must be excluded')
+        if not isinstance(item['messages'],list) or not item['messages']:
+            raise ValueError('missing messages')
+        for message in item['messages']:
+            if set(message)!={'role','content'} or message['role'] not in ('system','user') or not isinstance(message['content'],str):
+                raise ValueError('unexpected source-only message shape')
+    return items
+
+
+def extract(prompt,request,response):
+    if 'input_token_ids' in prompt:
+        expected=payload(prompt['input_token_ids'])
+        if prompt['input_tokens']!=len(prompt['input_token_ids']):
+            raise ValueError('exact token array count mismatch')
+    else:
+        expected={k:v for k,v in payload([]).items() if k!='prompt'}|{
+            'prompt_token_ids_sha256':prompt['input_token_ids_sha256'],'prompt_tokens':prompt['input_tokens']}
+    if request!=expected:
+        raise ValueError('request differs from full-vocabulary fixed policy')
+    n=prompt['input_tokens']
+    if type(n) is not int or n<1 or n>config()['maximum_research_prompt_tokens'] or n+1>config()['maximum_context_tokens']:
+        raise ValueError('prompt count/cap mismatch')
+    if response.get('truncated') is not False or response.get('tokens_evaluated')!=n or response.get('tokens_predicted')!=1:
+        raise ValueError('truncation or response token-count mismatch')
+    timing=response['timings']
+    if timing['cache_n']!=0 or timing['prompt_n']!=n:
+        raise ValueError('cold process reused prompt tokens')
+    distributions=response['completion_probabilities']
+    if len(distributions)!=1:
+        raise ValueError('expected one next-token distribution')
+    top=distributions[0]['top_logprobs']
+    if not 2<=len(top)<=256 or len({x['id'] for x in top})!=len(top):
+        raise ValueError('invalid top-rank coverage')
+    probabilities={x['id']:x['logprob'] for x in top}
+    if not all(type(v) in (float,int) and math.isfinite(v) and v<=0 for v in probabilities.values()):
+        raise ValueError('nonfinite or positive log probability')
+    if sum(math.exp(v) for v in probabilities.values())>1+1e-6:
+        raise ValueError('returned probability mass exceeds one')
+    yes,no=(probabilities[prompt['label_tokens'][x][0]] for x in ('Yes','No'))
+    odds=yes-no
+    return {'input_tokens':n,'cache_tokens':0,'prompt_tokens':n,'yes_logprob':yes,'no_logprob':no,
+            'logodds':odds,'literal_label_mass':math.exp(yes)+math.exp(no),
+            'decision':'Yes' if odds>0 else 'No' if odds<0 else 'abstain',
+            'prompt_ms':timing['prompt_ms']}
+
+
+def collect(assets,request_path):
+    c=config(); items=request_items(request_path)
+    directory=DATA/'research'
+    external=assets/'research_external'
+    receipt_path=PROJECT/'results/larger_scorer_v09_receipt.json'
+    if directory.exists() or receipt_path.exists() or external.exists():
+        raise ValueError('refusing to overwrite a research attempt')
+    directory.mkdir(parents=True)
+    external.mkdir(parents=True)
+    frozen_paths=[CONFIG,Path(__file__),PROJECT/'scripts/local_backend_v07.py',
+                  PROJECT/'scripts/fetch_local_backend_v07.py',
+                  PROJECT/'configs/likelihood_scoring_v07_prompt.txt',
+                  DATA/'challenge_selection_protocol.json',
+                  PROJECT/'results/local_backend_v07_softmax_evidence.txt',
+                  PROJECT/'results/local_backend_v07_vocab_fallback_evidence.txt']
+    frozen={'schema_version':'larger_scorer_frozen_inputs_v0.9','created_unix_seconds':time.time(),
+            'completed_research_distributions_at_freeze':0,
+            'source_hashes':{str(p.relative_to(PROJECT)):base.digest(p) for p in frozen_paths},
+            'external_request_sha256':base.digest(request_path),
+            'external_request_bytes':request_path.stat().st_size,
+            'request_projection':[{'item_id':x['item_id'],'history_id':x['history_id'],'condition_id':x['condition_id'],
+                                   'messages_canonical_sha256':base.canonical_hash(x['messages'])} for x in items],
+            'execution_order':[{'model_key':m,'item_id':x['item_id'],'condition_id':x['condition_id'],
+                                'history_id':x['history_id']} for m in c['models_order'] for x in items],
+            'preflight_policy':'All eight full inputs on both model tokenizers checked before any research score.',
+            'cache_policy':'One research distribution per fresh server process; cache_prompt=false.'}
+    base.write_json(directory/'frozen_inputs.json',frozen)
+    (directory/'executed_collector.py.txt').write_bytes(Path(__file__).read_bytes())
+    receipt={'schema_version':'larger_scorer_receipt_v0.9','status':'started','started_unix_seconds':time.time(),
+             'frozen_inputs_sha256':base.digest(directory/'frozen_inputs.json'),
+             'completed_distributions':0,'raw_completed_distributions':0,'preflight_processes':0,'research_processes':0,'error':None}
+    base.write_json(receipt_path,receipt)
+    try:
+        prompts={}
+        for model in c['models_order']:
+            trace={};prefix=directory/f'preflight_{model}'
+            try:
+                with server(assets,prefix.with_suffix('.server.log'),trace=trace,model=model) as execution:
+                    port=execution['port']
+                    with urllib.request.urlopen(f'http://127.0.0.1:{port}/props',timeout=30) as response:
+                        props=json.load(response)
+                    check_props(props,assets,model)
+                    base.write_json(prefix.with_suffix('.props.json'),props)
+                    for item in items:
+                        rendered=render(port,item['messages'])
+                        if rendered['input_tokens']>c['maximum_research_prompt_tokens'] or rendered['input_tokens']+1>c['maximum_context_tokens']:
+                            raise ValueError('full matched prompt exceeds frozen cap; no truncation or substitution')
+                        key=(model,item['item_id'],item['condition_id'])
+                        prompts[key]=rendered
+            finally:
+                base.write_json(prefix.with_suffix('.execution.json'),trace)
+            receipt['preflight_processes']+=1
+            base.write_json(receipt_path,receipt)
+        prompt_rows=[identity|{'prompt':projected_prompt(prompts[(identity['model_key'],identity['item_id'],identity['condition_id'])])}
+                     for identity in frozen['execution_order']]
+        (directory/'rendered_prompts.jsonl').write_text(''.join(json.dumps(x,ensure_ascii=False,sort_keys=True)+'\n' for x in prompt_rows))
+        (external/'rendered_prompts.jsonl').write_text(''.join(json.dumps(identity|{'prompt':prompts[(identity['model_key'],identity['item_id'],identity['condition_id'])]},ensure_ascii=False,sort_keys=True)+'\n' for identity in frozen['execution_order']))
+        receipt['all_inputs_preflight_passed']=True
+        receipt['preflight_finished_unix_seconds']=time.time()
+        base.write_json(receipt_path,receipt)
+        raw_path=directory/'raw_responses.jsonl'
+        with raw_path.open('x') as out,(external/'raw_responses.jsonl').open('x') as original_out:
+            for i,identity in enumerate(frozen['execution_order']):
+                model=identity['model_key'];key=(model,identity['item_id'],identity['condition_id'])
+                item=next(x for x in items if (x['item_id'],x['condition_id'])==key[1:])
+                prompt=prompts[key];trace={};prefix=directory/f'process_{i:02d}'
+                try:
+                    with server(assets,prefix.with_suffix('.server.log'),trace=trace,model=model) as execution:
+                        port=execution['port']
+                        with urllib.request.urlopen(f'http://127.0.0.1:{port}/props',timeout=30) as response:
+                            props=json.load(response)
+                        check_props(props,assets,model)
+                        base.write_json(prefix.with_suffix('.props.json'),props)
+                        if props['chat_template']!=load(directory/f'preflight_{model}.props.json')['chat_template']:
+                            raise ValueError('native chat template changed since preflight')
+                        if render(port,item['messages'])!=prompt:
+                            raise ValueError('fresh prompt/token boundary differs from preflight')
+                        request=payload(prompt['input_token_ids'])
+                        response=base.post(port,'completion',request,c['per_request_timeout_seconds'])
+                        record=identity|{'process_index':i,'request':request,'response':response}
+                        original_out.write(json.dumps(record,ensure_ascii=False,sort_keys=True)+'\n');original_out.flush()
+                        receipt['raw_completed_distributions']+=1
+                        base.write_json(receipt_path,receipt)
+                        if execution.get('watchdog_stop_reason'):
+                            raise RuntimeError(execution['watchdog_stop_reason'])
+                        record['response']=projected_response(response,prompt)
+                        record['request']=projected_request(request)
+                        out.write(json.dumps(record,ensure_ascii=False,sort_keys=True)+'\n');out.flush()
+                        measured=extract(prompt,request,response)
+                        receipt['completed_distributions']+=1
+                        base.write_json(receipt_path,receipt)
+                        print(json.dumps({'completed':receipt['completed_distributions'],'of':16,
+                                          **identity,'input_tokens':measured['input_tokens'],'prompt_ms':measured['prompt_ms']}),flush=True)
+                finally:
+                    base.write_json(prefix.with_suffix('.execution.json'),trace)
+                receipt['research_processes']+=1
+                base.write_json(receipt_path,receipt)
+        for path,sha in frozen['source_hashes'].items():
+            if base.digest(PROJECT/path)!=sha:
+                raise ValueError(f'frozen file changed during execution: {path}')
+        if base.digest(request_path)!=frozen['external_request_sha256']:
+            raise ValueError('external request changed during execution')
+        receipt['status']='completed'
+    except BaseException as error:
+        receipt.update(status='failed',error_type=type(error).__name__,error=str(error))
+        raise
+    finally:
+        receipt['finished_unix_seconds']=time.time()
+        receipt['artifact_hashes']={str(p.relative_to(PROJECT)):base.digest(p) for p in sorted(directory.iterdir())}
+        receipt['external_artifacts']={p.name:{'bytes':p.stat().st_size,'sha256':base.digest(p)} for p in sorted(external.iterdir())}
+        base.write_json(receipt_path,receipt)
+    return verify()
+
+
+def verify():
+    """Offline audit and result derivation; no model, network or expected labels."""
+    c=config();directory=DATA/'research'
+    frozen=load(directory/'frozen_inputs.json')
+    receipt_path=PROJECT/'results/larger_scorer_v09_receipt.json';receipt=load(receipt_path)
+    if receipt['status']!='completed' or receipt['completed_distributions']!=16 or receipt['raw_completed_distributions']!=16 or receipt['research_processes']!=16:
+        raise ValueError('matched collection incomplete')
+    if receipt['preflight_processes']!=2 or receipt.get('all_inputs_preflight_passed') is not True:
+        raise ValueError('both-model preflight missing')
+    if base.digest(directory/'frozen_inputs.json')!=receipt['frozen_inputs_sha256']:
+        raise ValueError('frozen manifest hash mismatch')
+    for path,sha in frozen['source_hashes'].items():
+        if base.digest(PROJECT/path)!=sha:
+            raise ValueError(f'frozen file changed: {path}')
+    if base.digest(directory/'executed_collector.py.txt')!=base.digest(Path(__file__)):
+        raise ValueError('executed collector snapshot mismatch')
+    items=frozen['request_projection']
+    expected=[{'model_key':m,'item_id':x['item_id'],'condition_id':x['condition_id'],'history_id':x['history_id']}
+              for m in c['models_order'] for x in items]
+    if frozen['execution_order']!=expected:
+        raise ValueError('frozen execution order mismatch')
+    actual_paths={str(p.relative_to(PROJECT)) for p in directory.iterdir()}
+    if set(receipt['artifact_hashes'])!=actual_paths:
+        raise ValueError('artifact manifest coverage mismatch')
+    for path,sha in receipt['artifact_hashes'].items():
+        if base.digest(PROJECT/path)!=sha:
+            raise ValueError('artifact hash mismatch')
+    prompt_rows=list(map(json.loads,(directory/'rendered_prompts.jsonl').read_text().splitlines()))
+    records=list(map(json.loads,(directory/'raw_responses.jsonl').read_text().splitlines()))
+    if len(prompt_rows)!=16 or len(records)!=16:
+        raise ValueError('record coverage mismatch')
+    measured=[]
+    for i,(identity,prompt_row,record) in enumerate(zip(expected,prompt_rows,records)):
+        for key,value in identity.items():
+            if record[key]!=value or prompt_row[key]!=value:
+                raise ValueError('prompt/raw record identity mismatch')
+        if record['process_index']!=i:
+            raise ValueError('raw process order mismatch')
+        prompt=prompt_row['prompt']
+        if record['request']['prompt_token_ids_sha256']!=prompt['input_token_ids_sha256'] or record['response']['prompt_sha256']!=prompt['rendered_prompt_sha256']:
+            raise ValueError('rendered prompt hash mismatch')
+        execution=load(directory/f'process_{i:02d}.execution.json')
+        model_spec=c if identity['model_key']=='large' else c['comparator']
+        if execution['model_sha256']!=model_spec['model_sha256'] or execution['model_repo_revision']!=model_spec['model_repo_revision'] or execution['model_key']!=identity['model_key']:
+            raise ValueError('wrong model binding')
+        if execution['config_sha256']!=base.digest(CONFIG) or execution['process_exit_code']!=0 or execution.get('watchdog_stop_reason'):
+            raise ValueError('process failed or wrong config binding')
+        if execution['address_space_limit_bytes']!=c['address_space_limit_bytes'] or execution['cpu_seconds_limit']!=c['cpu_seconds_limit']:
+            raise ValueError('resource binding mismatch')
+        measured.append(identity|{'process_index':i}|extract(prompt,record['request'],record['response']))
+    comparisons=[]
+    for model in c['models_order']:
+        for ident in dict.fromkeys(x['item_id'] for x in items):
+            yes_no,no_yes=[x for x in measured if x['model_key']==model and x['item_id']==ident]
+            comparisons.append({'model_key':model,'item_id':ident,
+                'no_yes_minus_yes_no_logodds':no_yes['logodds']-yes_no['logodds'],
+                'label_order_sign_flip':yes_no['logodds']*no_yes['logodds']<0,
+                'decision_changed':yes_no['decision']!=no_yes['decision']})
+    result={'schema_version':'larger_scorer_result_v0.9','status':'passed_offline_artifact_and_cold_cache_validation',
+            'new_model_executions_in_replay':0,'research_distributions':16,'fresh_research_processes':16,
+            'preflight_processes':2,'source_histories':2,'unique_statements':4,
+            'measurements':measured,'order_comparisons':comparisons,
+            'order_sign_flips_by_model':{m:sum(x['label_order_sign_flip'] for x in comparisons if x['model_key']==m) for m in c['models_order']},
+            'natural_candidate_accuracy_measured':False,'heldout_performance_measured':False,
+            'label_agreement_measured_in_this_collector':False,
+            'full_external_text_verification_in_replay':False,
+            'external_text_limit':'Packaged replay verifies token-count/hash metadata and projected raw distributions. Source-bearing messages, rendered strings, exact input token arrays and original full responses are external and are not checked by this replay. Archive alone cannot independently reconstruct mutable full sources.',
+            'receipt_sha256':base.digest(receipt_path)}
+    base.write_json(PROJECT/'results/larger_scorer_v09.json',result)
+    return result
+
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('mode',nargs='?',default='verify',choices=['download','download-comparator','verify-assets','smoke','collect','verify'])
+    parser.add_argument('--assets',type=Path,default=DEFAULT_ASSETS)
+    parser.add_argument('--request',type=Path)
+    args=parser.parse_args()
+    if args.mode=='collect':
+        if args.request is None:
+            parser.error('--request required for collect')
+        result=collect(args.assets,args.request.resolve())
+    elif args.mode=='verify':
+        result=verify()
+    else:
+        result={'download':download,'download-comparator':download_comparator,'verify-assets':verify_assets,'smoke':smoke}[args.mode](args.assets)
+    print(json.dumps({k:v for k,v in result.items() if k not in ('runtime_files','assets','artifact_hashes','execution')}))

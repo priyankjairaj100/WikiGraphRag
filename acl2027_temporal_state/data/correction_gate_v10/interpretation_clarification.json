@@ -1,0 +1,31 @@
+{
+  "schema_version": "correction_gate_interpretation_v0.10",
+  "recorded_at_utc": "2026-10-03T05:50:25.387799+00:00",
+  "parent_protocol_sha256": "9461df432d89fa68bacbe36b4b61262775b780dbc667b718d67dae08c4fedcff",
+  "stage": "After source discovery leads, before exact-capture eligibility adjudication or any v10 prediction. Not ex ante to discovery.",
+  "admission_unchanged": true,
+  "rules": [
+    {
+      "name": "directly_corrected_dependent",
+      "rule": "Record whether the correction explicitly replaces the dependent conclusion too. Preserve every supported direct correction in the direct and dependency conditions. Such a case may satisfy admission but is a redundant-propagation control, not evidence of incremental propagation gain."
+    },
+    {
+      "name": "original_documents",
+      "rule": "Capturing an actual versioned old document today supports document-version comparison, not reconstructed historical first-public availability."
+    },
+    {
+      "name": "full_source_limits",
+      "rule": "Full source documents cannot be silently shortened to fit the pinned 4096-token reader. Any selected-state replay uses source-adjudicated inputs and reports itself as annotation-conditioned support materialization, not full-source reader QA."
+    },
+    {
+      "name": "claims_and_context",
+      "rule": "Preserve changed measurement selections and scope differences. A same-experiment label does not make changed selected events identical; source review decides representability."
+    },
+    {
+      "name": "outcome_denominators",
+      "rule": "Report discovered, captured, eligible, replayed and predicted separately. No model execution means no empirical QA test, neither a pass nor evidence of a failed algorithm."
+    }
+  ],
+  "model_outputs_inspected": 0,
+  "reference_questions_created": 0
+}

@@ -1,0 +1,186 @@
+{
+  "schema_version": "backend_pilot_preparation_1",
+  "verified_on": "2026-10-02",
+  "enabled": false,
+  "status": "local_preparation_complete_execution_blocked_jobs_tool_unavailable",
+  "model": {
+    "repo_id": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "revision_verified_via": "https://huggingface.co/api/models/Qwen/Qwen3-8B",
+    "gated": false,
+    "license": "Apache-2.0",
+    "license_url": "https://huggingface.co/Qwen/Qwen3-8B/blob/b968826d9c46dd6066d109eabc6255188de91218/LICENSE",
+    "trust_remote_code": false,
+    "use_safetensors": true,
+    "weight_files_downloaded": false,
+    "asset_hash_manifest": null,
+    "native_context_tokens_from_model_card": 32768,
+    "config_max_position_embeddings": 40960,
+    "rope_scaling": null
+  },
+  "input": {
+    "mode": "isolated_history_prefix_bundle",
+    "unique_source_representations": 5,
+    "expected_requests": 3,
+    "source_packs": [
+      {
+        "path": "data/natural_pilot/early_prefix_input.json",
+        "sha256": "931dfd99c99c7fb0abb049f820221a3ed372fcb435c9e7326f973c60d07404b6",
+        "history_prefixes": {
+          "leadership_starbucks_2024": "2024-08-15",
+          "leadership_nike_2024": "2024-09-20"
+        }
+      },
+      {
+        "path": "data/natural_pilot/late_prefix_input.json",
+        "sha256": "47064e99e1c4cb0b54151dbb6430157746c8b7b82fbc5e1b45c6231a741d13e9",
+        "history_prefixes": {
+          "leadership_starbucks_2024": "2024-11-21"
+        }
+      }
+    ],
+    "prompt_path": "configs/extractor_prompt_v03.txt",
+    "prompt_sha256": "23de08678008726bf5a53e33ef817205c542588f6ebcffa50f86d67ce2178baf",
+    "prompt_status": "frozen_for_first_pilot_no_model_execution",
+    "output_schema_path": "configs/extractor_output_schema_v03.json",
+    "output_schema_sha256": "e3ef8b3769b56c3af4d3b91a8e3153e5c5f806382e1856b70e9ede018f6999c2",
+    "request_manifest_path": "results/model_pilot_preparation.json",
+    "prohibited_inputs": [
+      "gold",
+      "development_expectations",
+      "question_ids",
+      "prior_annotation_outputs",
+      "future_source_text",
+      "future_aliases"
+    ],
+    "max_rendered_input_tokens": 12288,
+    "overflow_policy": "fail_no_truncation",
+    "conversation_reuse": false
+  },
+  "runtime": {
+    "backend": "transformers_AutoModelForCausalLM",
+    "candidate_python_minor": "3.12",
+    "candidate_direct_dependencies": [
+      "transformers==4.51.3",
+      "torch==2.6.0",
+      "accelerate==1.6.0"
+    ],
+    "transitive_lock_path": null,
+    "transitive_lock_sha256": null,
+    "container_digest": null,
+    "integration_tested": false,
+    "torch_dtype": "bfloat16",
+    "attn_implementation": "sdpa",
+    "device_map": 0,
+    "quantization": null,
+    "batch_size": 1,
+    "chat_template_options": {
+      "add_generation_prompt": true,
+      "enable_thinking": false
+    },
+    "generation": {
+      "do_sample": false,
+      "num_beams": 1,
+      "max_new_tokens": 4096,
+      "repetition_penalty": 1.0
+    },
+    "seed": 17,
+    "automatic_repair_requests": 0,
+    "automatic_retries": 0,
+    "cross_hardware_bitwise_reproducibility_claimed": false
+  },
+  "cloud_job_proposal": {
+    "provider": "hugging_face_jobs",
+    "tool_operation": "uv",
+    "flavor": "l4x1",
+    "gpu": "1x NVIDIA L4 24 GB",
+    "host_ram_gb": 30,
+    "vcpus": 8,
+    "timeout": "30m",
+    "exposed_ports": [],
+    "hourly_price_usd_documented": 0.8,
+    "per_minute_price_usd_api": 0.013333,
+    "hardware_cost_ceiling_usd_approx": 0.4,
+    "price_source": "https://huggingface.co/api/jobs/hardware",
+    "price_recheck_required_before_launch": true,
+    "capacity_estimate_only": {
+      "bf16_weights_gib": 15.256,
+      "kv_cache_at_16384_tokens_gib": 2.25,
+      "other_overhead_excluded": true
+    },
+    "measured_peak_memory_gib": null,
+    "measured_runtime_seconds": null,
+    "jobs_launched": 0,
+    "automatic_hardware_upgrade": false
+  },
+  "observed_capabilities": {
+    "local_python": "3.12.14",
+    "local_os_cpu_count": 9,
+    "local_torch_installed": false,
+    "local_transformers_installed": false,
+    "local_huggingface_hub_installed": false,
+    "local_hf_cli_found": false,
+    "local_nvidia_smi_found": false,
+    "local_usable_gpu_verified": false,
+    "local_memory_budget_verified": false,
+    "connector_account": "priyankjairaj",
+    "connector_authenticated": true,
+    "connector_scopes": [
+      "jobs",
+      "openid",
+      "profile",
+      "read-mcp",
+      "read-repos"
+    ],
+    "credential_expiry_reported_utc": "2026-10-02T18:10:11Z",
+    "repository_write_scope_observed": false,
+    "account_is_pro": false,
+    "pro_plan_required_by_current_jobs_docs": false,
+    "positive_credit_balance_verified": false,
+    "durable_cloud_output_path_verified": false,
+    "small_result_logs_transport_documented": true,
+    "small_result_logs_transport_tested": false,
+    "jobs_tool_advertised": true,
+    "jobs_tool_runtime_available": false,
+    "transport_probe_attempts": 1,
+    "confirmed_cloud_jobs_created": 0,
+    "hugging_face_plugin_installed": true,
+    "hugging_face_plugin_enabled": true
+  },
+  "required_cache_fields": [
+    "source_ids",
+    "source_sha256",
+    "information_cutoff",
+    "ordered_request_json_sha256",
+    "prompt_sha256",
+    "output_schema_sha256",
+    "model_revision",
+    "tokenizer_revision",
+    "rendered_template_sha256",
+    "input_token_ids_sha256",
+    "generation_config",
+    "raw_output_text",
+    "generated_token_ids",
+    "termination_reason",
+    "parse_result",
+    "resolved_package_versions",
+    "dependency_lock_sha256",
+    "container_digest",
+    "python_version",
+    "torch_cuda_version",
+    "gpu_model",
+    "peak_memory",
+    "wall_time",
+    "job_id",
+    "raw_output_sha256",
+    "transport_completion_digest"
+  ],
+  "execution_blockers": [
+    "Jobs operation returned UNAVAILABLE during the CPU-only transport submission; no job identifier returned. The installed/enabled connector must expose a supported execution operation.",
+    "Verify token caps using the pinned tokenizer; local dry-run verifies source hashes and three isolated request structures only.",
+    "Resolve full runtime lock and immutable container digest; validate model loading before claiming full environment reproducibility.",
+    "Verify positive compute credits and refresh the authentication context at execution time.",
+    "Verify complete bounded cloud result-return or durable cloud persistence before model execution."
+  ]
+}

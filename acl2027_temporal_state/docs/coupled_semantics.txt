@@ -1,0 +1,137 @@
+Conditional temporal materialization — v0.4 implementation diagnostics
+
+Purpose and evidence status
+
+The module temporal_state.coupled joins an explicitly selected decoder state to
+source-grounded bounded claims. It does not extract readings, learn or improve
+scores, establish natural-data quality, or claim a new temporal solver. Simple
+Temporal Networks and shortest-path closure are classical techniques; see
+Dechter, Meiri and Pearl (1991), Temporal Constraint Networks, Artificial
+Intelligence 49, 61–95:
+https://ftp.cs.ucla.edu/pub/stat_ser/r113-L-reprint.pdf
+
+The contribution at this stage is an executable and tested integration contract.
+An exact objective optimum is not proof that the interpretation is factual.
+Every returned answer is conditional on the selected readings, links, supplied
+evidence interpretations, and connected-episode assumption. The materializer
+does not test whether alternative optimum or plausible assignments agree. In
+particular, deterministic tie-breaking does not establish semantic certainty.
+
+Public API
+
+materialize_selection(problem, reading_ids, link_ids, claims) -> CoupledMemory
+selection_feasible(problem, reading_ids, link_ids, claims) -> bool
+make_feasibility_check(problem, claims) -> decoder callback(selected, chosen)
+
+The claims mapping uses (mention_id, reading_id) keys. It must contain exactly
+one TemporalClaim for each resolved candidate, and no claim for an unresolved
+candidate. Each mapped claim must match its candidate's source, normalized
+factual key, and exact value. Candidate exact endpoints and observations, when
+present, must be preserved. All mapped candidates are validated, including
+unselected candidates. Exact source slices are checked; this is an integrity
+check, not an independent semantic-entailment annotation.
+
+Every source and declared problem, mention, reading, claim, and link context
+must belong to the information prefix. Future records are rejected rather than
+silently filtered. No natural questions, labels, or scoring files are read.
+Mapping errors raise ValueError. A well-formed but contradictory selected state
+raises TemporalInfeasible; selection_feasible maps only this semantic exception
+to False. Mutable observation, evidence, and context lists are rejected. The
+callback validates once and copies the mapping, then shares the same pure
+feasibility test with every decoder. Null links impose no temporal relations;
+all-null states remain feasible when the individual claims are valid.
+
+Conditional interval semantics
+
+Each latent episode has integer-day endpoints s and e and denotes [s,e).
+Every episode satisfies s + 1 <= e. Supplied endpoint ranges are inclusive
+bounds on latent endpoints. An observation on day t adds s <= t and t + 1 <= e.
+An unknown endpoint remains unbounded unless an explicit selected constraint
+implies a bound. Internal ordinals can extend outside the ISO date range by one
+or more days; they are mathematical boundaries and are never invented dates in
+the source claim record.
+
+RESTATES asserts the same connected episode: selected claims must have equal
+key, value, polarity, and modality. Their start variables are equal, their end
+variables are equal, endpoint ranges intersect, and observations constrain the
+shared interval. Two mentions of the same value do not automatically restate
+each other. This matters for A→B→A: the first and last A episodes stay separate
+unless an explicit, feasible RESTATES link says otherwise. Combining two
+observations of one selected episode entails continuity between them; this is
+an assumption of the selected episode model, not a independently witnessed
+state at each intervening date.
+
+CHANGES points from the later episode to the earlier episode, matching the
+decoder's direction. It requires the same factual key, different values, positive
+polarity at both endpoints, and equal modality. It imposes only
+e_earlier <= s_later. It never asserts endpoint equality, immediate succession,
+complete historical coverage, or absence of gaps. Negative claims cannot become
+positive successor episodes. Unlinked intervals may overlap or conflict; the
+solver adds no universal single-valued nonoverlap constraint. CORRECTS is
+unsupported and a selected correction is rejected; unselected correction
+candidates do not prevent other states from being evaluated.
+
+Each inequality x_j - x_i <= c becomes an edge i→j of weight c. A fixed zero
+variable represents absolute calendar bounds. Floyd–Warshall closure gives
+all-pairs shortest upper bounds. A negative cycle makes the selected state
+infeasible. Tight projected bounds for an endpoint x are
+[-distance(x,0), distance(0,x)]. The original claim records remain unchanged;
+CoupledMemory.envelopes holds the derived ordinal bounds. Single-interval may
+and must membership are computed from these exact conditional projections.
+Finite enumeration tests compare feasibility, endpoint extrema, and membership
+against every satisfying small integer model.
+
+Modality and actual-state report horizons
+
+Every selected link requires identical modality. Consequently, a planned claim
+cannot become connected to an actual episode and cannot tighten its bounds.
+This deliberately rejects actual/planned mixed lifecycle links instead of
+silently upgrading a schedule to observed state. More expressive endpoint-level
+modality is future work. Planned components are allowed in announced_schedule
+queries and excluded in reported_actual queries. Conditional or uncertain
+claims can remain possible but never supply a certain answer.
+
+Every reported_actual claim retains its ORIGINAL reported_at horizon, falling
+back to its original source available_at only when reported_at is missing.
+Derived bounds, later linked episodes, and late context sources cannot raise
+that horizon. At query dates after it, that original claim is excluded as an
+actual projection even if schedule-mode bounds cover the date.
+
+A later actual RESTATES claim is still a distinct evidence record with its own
+original horizon. Conditional on the selected same-episode link, it can support
+a retrospective interval between actual observations. Earlier records remain
+excluded beyond their own horizons. This is not silently replacing every
+record's report date with the maximum component date. Likewise, a later
+different-value CHANGES claim cannot extend the earlier value's actual horizon.
+
+Provenance and answer contract
+
+CoupledMemory.answer_key(question, predicted_key, query_mode) follows the
+bounded positive/negative query rules using propagated interval envelopes.
+It returns answered only for one certain value with no competing possible
+value or applicable positive/negative conflict. Otherwise it returns
+indeterminate or abstain. Routing and factual key inference remain separate.
+
+Derived support cites every source and declared context in the selected
+RESTATES/CHANGES connected component, including problem, mention, reading, and
+link context. This conservative provenance includes redundant constraints;
+minimal proof extraction is not implemented. Link IDs and constraints remain
+in diagnostics, so a date propagated from another episode cannot be presented
+as if independently stated in the target claim. An answer's assertion IDs name
+its supporting claim records, while source IDs include the full dependency
+component. Query diagnostics explicitly state that certainty is conditional on
+the selected state and that alternative-assignment agreement is uncertified.
+
+Limitations and next evidence
+
+The dense closure costs O(V^3) time and O(V^2) memory for V = 2E + 1 variables,
+where E is the number of selected restatement episodes. It is a small-instance
+reference materializer, not a scalability result. Dense provenance is an
+over-approximation of necessary support. Exact source matching cannot prove
+that an extracted identity, modality, bound, or link is entailed by its text.
+Mixed-modality updates, endpoint-level modality, corrections, partial selection
+uncertainty, and agreement across alternative readings remain unsupported.
+No benchmark score, model quality gain, or new algorithmic claim follows from
+passing these tests. The required empirical comparison remains frozen shared
+candidates and scores, with this same feasibility contract used by the strong
+pipeline, iterative/restarted pipeline, and exact small-instance decoder.

@@ -1,0 +1,126 @@
+CANDIDATE AMBIGUITY AUDIT DESIGN v0.7
+
+Purpose and frozen boundary
+---------------------------
+The existing Nike development graph has seven atomic mentions, one resolved
+reading each, and an adapter-added unresolved choice for each. This pass asks
+whether the graph omitted genuine rival interpretations of those same source
+statements. It does not presume such interpretations exist. The audit protocol
+and prompt were written before a fresh audit output or any v0.7 scores. They
+are development protocol artifacts, not a preregistered benchmark experiment.
+
+The audit designer read only the source request, repaired candidate graph,
+repaired prompt/schema and source-protocol documentation. No questions, answer
+labels, prior numerical scores or decoder-result files were consulted for this
+design. The designer is not the fresh audit generator. This document must not
+be included in the fresh auditor's context: it contains case-specific design
+observations, whereas the frozen prompt states generic acceptance rules.
+
+Exact generator inputs, relative to the project root
+---------------------------------------------------
+configs/candidate_ambiguity_prompt_v07.txt
+configs/candidate_schema_v06_repair.json
+data/natural_model_pilot_v06/candidate_request.json
+data/natural_model_pilot_v06/candidate_output_repaired.json
+data/natural_model_pilot_v07/candidate_expansion_protocol.json
+
+Invoke once in an isolated context restricted to those paths. Save the exact
+raw JSON plus a receipt listing input hashes, visible task, model identity if
+available, revision if known, and output hash. An unversioned conversational
+audit remains unversioned; a fresh context is not proof of model-family
+independence, lack of training exposure or annotation correctness. The source
+request supplies full eligible context, including text outside the CEO scope.
+Operational cutoff remains the existing development eligibility convention,
+not independently authenticated historical first-public availability.
+
+The audit output is a report and proposals, not a silently rewritten graph.
+It must cover all existing mentions and may legitimately propose no candidates.
+No alternative is admitted solely because its JSON differs from a base reading.
+If any reading is proposed, or any existing representation defect is flagged,
+a single fresh source-only adjudication is required before graph augmentation.
+Its decisions and unresolved findings must be preserved; it sees no scores,
+answers or decoder choices. The protocol specifies this conditional stage;
+it does not claim it has already happened or that it constitutes human gold.
+
+Key distinctions
+----------------
+1. Semantic equivalence. A role abbreviation, alternate evidence span or
+   paraphrase does not form a new factual hypothesis. Exact core-semantic
+   duplicates are collapsed within each mention and recorded in a lineage log.
+2. Weaker information. An unbounded end includes a supported exact end; it is
+   not a mutually exclusive alternative to that end. Likewise deleting an
+   observation or replacing a specific modality with an unmotivated hedge
+   does not create a genuinely rival reading. Bound uncertainty should not be
+   discretized into arbitrary point candidates merely to enlarge search.
+3. Separate assertions. Current incumbency and planned future departure can
+   both be asserted. Their required separation into compatible modality
+   records is representation work, not evidence of identity ambiguity.
+4. Conflicting source assertions. The filing explicitly uses an October 14
+   effective date for the CEO retirement; the press exhibit says effective
+   October 13. These are separately attributed claims. Without additional
+   linguistic support, the disagreement is not permission to offer both dates
+   as readings of either statement, or to infer that either corrects the other.
+5. Genuine alternatives. A candidate must specify both its supporting evidence
+   and why its meaning cannot coexist with a particular base reading under the
+   same interpretation convention. Full primary-source context must leave both
+   readings defensible. An isolated phrase is insufficient if another clause
+   resolves its referent or effective-time convention.
+6. Representation defects. An erroneous old reading, unsupported relation or
+   missing independent fact is reported separately. A needed correction blocks
+   automatic augmentation; it needs an explicit new repair protocol rather
+   than being added as a convenient competitor to the defective old record.
+
+Case-specific source-only assessment to motivate caution
+-------------------------------------------------------
+Nike's organization, outgoing/incoming people and CEO role are stated explicitly
+in these two documents. They do not obviously offer a factual identity ambiguity.
+The filing's later paragraph says Donahoe will resign his positions and become
+an adviser as of the defined effective date. That contextual clause constrains
+an isolated inclusive-versus-exclusive interpretation of the preceding word
+"until". A generic last-day shift should not override such surrounding text.
+The statement thanking Donahoe for his CEO service supports a historical service
+assertion; reducing it to an unknown end or adding a future endpoint would need
+a separate semantic justification. The announced succession does not show that
+the departure or appointment actually occurred by the report date.
+
+These observations are design cautions, not the fresh auditor's result. No
+source-grounded rival reading was inserted by the designer. A fresh audit can
+still report an overlooked reading or a defect, but a zero-addition outcome is
+plausible and must remain an acceptable terminal outcome for this pass.
+
+Compute and union rules
+-----------------------
+The inherited bounded decoder interface supports at most eight mentions and
+four resolved readings plus one unresolved option per mention. This audit holds
+the seven existing mention anchors fixed and creates no new mentions. The upper
+bound is therefore 28 resolved readings. Counts are caps, not required quotas.
+An overflow fails, with omitted descriptions retained; no score, answer label,
+or decoder preference can choose which supported reading to retain.
+
+The protocol freezes exact semantic fields, canonical hashing, representative
+choice, source-only adjudication, append order and temporary-to-canonical ID
+mapping. Existing graph records remain unchanged. New links are never cloned
+from an old reading; each must receive its own source-supported proposal and
+admission decision. Unresolved is added by the deterministic adapter. Hash and
+schema validity establish artifact integrity and representation compatibility,
+not source entailment or semantic completeness.
+
+If no alternatives are admitted, reuse the existing graph identity for the
+pinned-scoring pilot. Report that this selected development case does not yet
+exercise competing resolved readings. Do not call one resolved option versus
+unresolved a multiple-identity candidate evaluation. Do not keep regenerating
+until a candidate produces a favorable decoding contrast.
+
+Consequence for the ACL research route
+-------------------------------------
+A zero-addition audit would identify a data-selection limitation, not refute
+joint inference in general. The next corpus step should prospectively specify
+source-only discovery criteria for naturally ambiguous roles, entities,
+references and update types before inspecting answers or method comparisons.
+Retain cases with and without ambiguity, record exclusions and uncertainty,
+and separate source conflict from within-assertion ambiguity. A sample chosen
+only after it produces a joint-decoding gain cannot support a general empirical
+claim. Any observed algorithmic comparison still needs independently assessed
+interpretations and updates, realistic candidate recall, multiple histories,
+strong matched-budget baselines and uncertainty reporting. None of those are
+supplied by the audit alone.

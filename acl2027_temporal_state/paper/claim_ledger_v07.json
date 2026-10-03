@@ -1,0 +1,329 @@
+{
+  "schema_version": "manuscript_claim_ledger_v0.7",
+  "draft": "paper/methods_draft_v07.tex",
+  "draft_sha256": "17863aa927ae02f691fd2a806c5797d1e7dbfbcdc7269ff90502845b561ed948",
+  "created_date": "2026-10-02",
+  "status": "W01 exploratory methods/data manuscript skeleton; not completed paper",
+  "results_boundary": "Only explicitly identified completed v0.6 artifacts. Ongoing v0.7 scoring/backend outcomes intentionally excluded. v0.7 planning documents may support prospective study design.",
+  "citation_status": "Ten references from the verified targeted primary-source review are cited. arXiv records remain preprints. Explicit remaining literature gaps are not claimed covered; no exhaustive novelty audit or reproduced external results.",
+  "claims": [
+    {
+      "claim_id": "C01",
+      "draft_anchor": "sec:task",
+      "evidence_status": "proposal",
+      "claim": "Correction-dependent record reconstruction under uncertain factual interpretations and update targets is the working empirical question; prevalence and useful joint-inference benefit remain unmeasured.",
+      "artifacts": [
+        {
+          "path": "docs/next_empirical_gate_v07.txt",
+          "sha256": "0173974e2651072a549964df11870685c727b4c46a5c61c5dbe8ae71291e6946"
+        },
+        {
+          "path": "docs/related_work_update_v07.txt",
+          "sha256": "e7aab10c490cb404b2309bcb00072fafd9745db89c2e0e806abbe4a7dff38489"
+        }
+      ],
+      "scope_and_caveat": "No demonstrated natural-data joint-inference advantage or novelty claim."
+    },
+    {
+      "claim_id": "C02",
+      "draft_anchor": "sec:task",
+      "evidence_status": "implemented_contract",
+      "claim": "Availability cutoff, event day and report time are separate; every declared dependency must be eligible.",
+      "artifacts": [
+        {
+          "path": "src/temporal_state/coupled.py",
+          "sha256": "87067798f33b76810e0b39a46840dc33faef45df66d0e9eb2b237d4e6dcf632c"
+        },
+        {
+          "path": "src/temporal_state/bounded.py",
+          "sha256": "9897a479f5300252da605c60f16daac990ac235534edfd1e01c25364837e1653"
+        },
+        {
+          "path": "docs/bounded_semantics.txt",
+          "sha256": "64a0d5752dd6900fbf235b2ca44a238148ddd5e2e5ddca3f0edf169a99f292c3"
+        }
+      ],
+      "scope_and_caveat": "Recorded dates and declared dependencies are not independently authenticated historical availability or protection against undeclared context."
+    },
+    {
+      "claim_id": "C03",
+      "draft_anchor": "sec:representation",
+      "evidence_status": "implemented_contract",
+      "claim": "One resolved/unresolved reading and one outgoing typed link/null are selected per mention; resolved claims preserve key, value and evidence.",
+      "artifacts": [
+        {
+          "path": "src/temporal_state/decoder.py",
+          "sha256": "5be5067d11b455aa9991ea07aa34afb3c95331bd0ca349ce46fbecf2eb077794"
+        },
+        {
+          "path": "src/temporal_state/scored_io.py",
+          "sha256": "d51ae7b5d2d47960b84bf06b4b0e6da40d1348032b474ab71ae4f5f6c6951e2c"
+        },
+        {
+          "path": "src/temporal_state/coupled.py",
+          "sha256": "87067798f33b76810e0b39a46840dc33faef45df66d0e9eb2b237d4e6dcf632c"
+        }
+      ],
+      "scope_and_caveat": "Scope must encode single-valued distinctions. Structural validity is not source entailment."
+    },
+    {
+      "claim_id": "C04",
+      "draft_anchor": "sec:temporal",
+      "evidence_status": "implemented_contract",
+      "claim": "Connected half-open integer-day episodes, equality links, ordered change links and exact conditional temporal-network projections are implemented.",
+      "artifacts": [
+        {
+          "path": "src/temporal_state/coupled.py",
+          "sha256": "87067798f33b76810e0b39a46840dc33faef45df66d0e9eb2b237d4e6dcf632c"
+        },
+        {
+          "path": "src/temporal_state/bounded.py",
+          "sha256": "9897a479f5300252da605c60f16daac990ac235534edfd1e01c25364837e1653"
+        },
+        {
+          "path": "docs/coupled_semantics.txt",
+          "sha256": "015d776b78095dc46c389beb92887c1f0e74cb18de43685dbb4f38e49fb14298"
+        },
+        {
+          "path": "tests/test_coupled.py",
+          "sha256": "11e4e9dbf593f8f2ce306470fb69fe70fcf86e024a47ba153469227349ead93a"
+        }
+      ],
+      "scope_and_caveat": "No universal nonoverlap or forward persistence; no claims over alternative decoder assignments; classical solver novelty not asserted."
+    },
+    {
+      "claim_id": "C05",
+      "draft_anchor": "sec:correction",
+      "evidence_status": "implemented_contract",
+      "claim": "Whole-assertion corrections withdraw selected target support before temporal closure; correction-chain notices remain operative and essential dependencies propagate inactivity.",
+      "artifacts": [
+        {
+          "path": "src/temporal_state/corrections.py",
+          "sha256": "218c20ce25030249760db3bda023cab7e351a7518e635751684c8b562c92c85f"
+        },
+        {
+          "path": "docs/correction_semantics_v05.txt",
+          "sha256": "cfd0920c14d44e1f85c50ed441fc058852ef14a7fade10b9708206c50cfb85db"
+        },
+        {
+          "path": "tests/test_corrections.py",
+          "sha256": "1e505aba6eb48c1611626c25c5f11916a65b69d5a056570a411ffed9eda68990"
+        }
+      ],
+      "scope_and_caveat": "Authority/reference entailment is annotated, not mechanically proven; bare retraction, partial edits and correction-notice reversal unsupported."
+    },
+    {
+      "claim_id": "C06",
+      "draft_anchor": "sec:answers",
+      "evidence_status": "implemented_contract",
+      "claim": "Answers distinguish schedule versus actual state, preserve original report horizons, and track may/must support, conflict, indeterminacy and abstention.",
+      "artifacts": [
+        {
+          "path": "src/temporal_state/bounded.py",
+          "sha256": "9897a479f5300252da605c60f16daac990ac235534edfd1e01c25364837e1653"
+        },
+        {
+          "path": "src/temporal_state/coupled.py",
+          "sha256": "87067798f33b76810e0b39a46840dc33faef45df66d0e9eb2b237d4e6dcf632c"
+        },
+        {
+          "path": "src/temporal_state/correction_pipeline.py",
+          "sha256": "cf45a6b48c8f72180e42f6acfa400f09ef35b54399a3c9967a0b3d86776813f4"
+        },
+        {
+          "path": "docs/coupled_semantics.txt",
+          "sha256": "015d776b78095dc46c389beb92887c1f0e74cb18de43685dbb4f38e49fb14298"
+        }
+      ],
+      "scope_and_caveat": "Returned certainty is conditional on one selected interpretation; no uncertainty integration across plausible assignments."
+    },
+    {
+      "claim_id": "C07",
+      "draft_anchor": "sec:inference",
+      "evidence_status": "implemented_contract",
+      "claim": "Historical objective sums net reading, selected-link and null scores over the shared feasible space.",
+      "artifacts": [
+        {
+          "path": "src/temporal_state/decoder.py",
+          "sha256": "5be5067d11b455aa9991ea07aa34afb3c95331bd0ca349ce46fbecf2eb077794"
+        },
+        {
+          "path": "src/temporal_state/objectives.py",
+          "sha256": "dd0f8211b54a2850f0c9b674a2534c28c9a7c4ee3261512929a326787a40e8d4"
+        },
+        {
+          "path": "src/temporal_state/objective_pipeline.py",
+          "sha256": "4c520bd6c5439623f6852224b29a72807f2a9097e4e47425e01d428b8fe430fc"
+        }
+      ],
+      "scope_and_caveat": "Numeric score objective is not calibrated probability or factual utility. Null scores are not beta scaled."
+    },
+    {
+      "claim_id": "C08",
+      "draft_anchor": "sec:inference",
+      "evidence_status": "implemented_contract",
+      "claim": "Independent maximizes net unaries and then exactly optimizes links; coordinate trials reoptimize all links; exact reference enumerates within shared limits.",
+      "artifacts": [
+        {
+          "path": "src/temporal_state/decoder.py",
+          "sha256": "5be5067d11b455aa9991ea07aa34afb3c95331bd0ca349ce46fbecf2eb077794"
+        },
+        {
+          "path": "tests/test_decoder.py",
+          "sha256": "8752e9000b974850622eeb44c22c3cf4b3871b78cabcf952611a005586fc2838"
+        }
+      ],
+      "scope_and_caveat": "Bounds are common engineering limits, not scalability evidence. Exact score optimality is not factual correctness."
+    },
+    {
+      "claim_id": "C09",
+      "draft_anchor": "sec:objective",
+      "evidence_status": "implemented_ablation_and_diagnostic_observation",
+      "claim": "Active-support objective anchors inactive terms to unresolved/null alternatives and can suppress a valid correction; existing frozen-score diagnostics observe suppression.",
+      "artifacts": [
+        {
+          "path": "src/temporal_state/objectives.py",
+          "sha256": "dd0f8211b54a2850f0c9b674a2534c28c9a7c4ee3261512929a326787a40e8d4"
+        },
+        {
+          "path": "docs/active_support_objective_v06.txt",
+          "sha256": "abe80ce1589523c844ca3bd2c7d06de2bb2586093f10933a78f8b37738504e53"
+        },
+        {
+          "path": "results/objective_v06_replay.json",
+          "sha256": "5cdf64f90fee7858c67223df64719156ad25a05b1c07cb79da7bdcfe97d41a32"
+        },
+        {
+          "path": "data/correction_pilot_v05/replay_config.json",
+          "sha256": "4cf106d28fd37c3c8317d4d0262c60df53813f289ac0eb2d5c214936cbcfaa2c"
+        }
+      ],
+      "scope_and_caveat": "Ablation is not a successful proposed method; offset invariance is not scale/duplication invariance. Source replay is forecast-record correction with authored scores, not financial outcomes or natural accuracy."
+    },
+    {
+      "claim_id": "C10",
+      "draft_anchor": "sec:data",
+      "evidence_status": "exploratory_natural_observation",
+      "claim": "Completed v0.6 pilot has 2 source records, 7 mentions, 7 resolved readings, 7 unresolved readings, 11 links and 32 unversioned ordinal judgments; all methods agree; 3 recodings preserve selections in 12 historical decodes.",
+      "artifacts": [
+        {
+          "path": "data/natural_model_pilot_v06/candidate_request.json",
+          "sha256": "8874b90fda88c503f0b571fcb03c17a7a1786df595f3721108f29df293e11224"
+        },
+        {
+          "path": "data/natural_model_pilot_v06/candidate_validation_first_pass.json",
+          "sha256": "757aecb3217054f5de0d58426fe2f97b02da0275492ab452a9fb9062926bc298"
+        },
+        {
+          "path": "data/natural_model_pilot_v06/validation_repair_protocol.json",
+          "sha256": "0c2089e0ed9d0706e5a2fcb3891445c93472d3e681cfbd9db59057dc1c1c8931"
+        },
+        {
+          "path": "data/natural_model_pilot_v06/candidate_repair_receipt.json",
+          "sha256": "00df731a74fcf44c1295d8f919cb336d6758c7271cc65f1c8a3a09f7327d45b5"
+        },
+        {
+          "path": "data/natural_model_pilot_v06/scorer_run_receipt.json",
+          "sha256": "c6c6895ee3f7d9e6bf5a57c7a334abbaa6a85b79c7247bb1779a7f7e33c2c1c9"
+        },
+        {
+          "path": "results/natural_model_pilot_v06.json",
+          "sha256": "002b1bedeaa2a68bd845fc20c2a3fefd0997eda75b4548534f035bd4d00ae712"
+        },
+        {
+          "path": "results/ordinal_sensitivity_v06.json",
+          "sha256": "3735f399c53231eb68bd9cb3f1ca6d2b709d0eca0ba8ef35cb35d9c014b4e5b3"
+        }
+      ],
+      "scope_and_caveat": "One development history/prefix; one resolved reading per mention; recorded representation repair; unknown model revision; no QA gold, accuracy, candidate recall, calibrated probabilities, or pinned generation reproducibility."
+    },
+    {
+      "claim_id": "C11",
+      "draft_anchor": "sec:data",
+      "evidence_status": "finite_engineering_audit",
+      "claim": "The v0.6 objective audit records 23497 checks and zero mismatches in its finite domains.",
+      "artifacts": [
+        {
+          "path": "results/objective_audit_v06.json",
+          "sha256": "ce55e00241dbd5c279d5007bc6a1faeab0d0beef2ac68a96bfeaea91e82c9662"
+        },
+        {
+          "path": "scripts/audit_objectives_v06.py",
+          "sha256": "4e2db1dd0b701a6123074ce9ea7ead77f1082cf715625fd0bfa91dee31b53294"
+        }
+      ],
+      "scope_and_caveat": "Checks are not independent natural histories or model-evaluation samples. Verified only the implemented bounded score/state contracts."
+    },
+    {
+      "claim_id": "C12",
+      "draft_anchor": "sec:evaluation",
+      "evidence_status": "proposal",
+      "claim": "Prospective primary evaluation uses controlled prefixes of frozen document versions, distinct delivery/retrieval/publication/event clocks, a target of twenty development histories, and separate routine/enriched slices. Historically faithful replay is a separately certified slice. Candidate proposal coverage differs from residual full-context ambiguity.",
+      "artifacts": [
+        {
+          "path": "docs/next_empirical_gate_v07.txt",
+          "sha256": "0173974e2651072a549964df11870685c727b4c46a5c61c5dbe8ae71291e6946"
+        },
+        {
+          "path": "docs/candidate_design_v07.txt",
+          "sha256": "9a19ed3110c30f654d0a1b1993e0d22688b5658314577ee0b77f6a7a01caac62"
+        },
+        {
+          "path": "configs/source_stream_protocol_v07.json",
+          "sha256": "a60e9cbdc1fb28b5e238541f6c32bef693421da2591ca64bb423f3a79c1b091b"
+        }
+      ],
+      "scope_and_caveat": "Frozen design only: zero histories completed under the new protocol. Existing cutoffs/results are not retroactively admitted. The sampling frame, annotation materials and executable collection pipeline remain future work. No v0.7 audit/scoring outcome is claimed in this draft."
+    },
+    {
+      "claim_id": "C13",
+      "draft_anchor": "sec:limitations",
+      "evidence_status": "implemented_scope_and_unmet_gates",
+      "claim": "Current representation/search limits and unresolved source, candidate, uncertainty and evaluation limitations preclude a paper-level empirical claim.",
+      "artifacts": [
+        {
+          "path": "src/temporal_state/decoder.py",
+          "sha256": "5be5067d11b455aa9991ea07aa34afb3c95331bd0ca349ce46fbecf2eb077794"
+        },
+        {
+          "path": "docs/correction_semantics_v05.txt",
+          "sha256": "cfd0920c14d44e1f85c50ed441fc058852ef14a7fade10b9708206c50cfb85db"
+        },
+        {
+          "path": "docs/coupled_semantics.txt",
+          "sha256": "015d776b78095dc46c389beb92887c1f0e74cb18de43685dbb4f38e49fb14298"
+        },
+        {
+          "path": "docs/next_empirical_gate_v07.txt",
+          "sha256": "0173974e2651072a549964df11870685c727b4c46a5c61c5dbe8ae71291e6946"
+        }
+      ],
+      "scope_and_caveat": "Limitations are specific to this checkpoint; do not imply they are fundamental impossibility results."
+    },
+    {
+      "claim_id": "C14",
+      "draft_anchor": "sec:relatedwork",
+      "evidence_status": "verified_targeted_literature_comparison_and_unmet_publication_gate",
+      "claim": "Temporal graph memory, multiple clocks, dynamic-fact evaluation, joint local-label/temporal-link inference, temporal constraint networks and truth maintenance have direct precedents. The narrower correction-dependent reconstruction question remains empirical and unproven; neither the controlled stream nor jointly selecting labels establishes novelty.",
+      "artifacts": [
+        {
+          "path": "docs/next_empirical_gate_v07.txt",
+          "sha256": "0173974e2651072a549964df11870685c727b4c46a5c61c5dbe8ae71291e6946"
+        },
+        {
+          "path": "docs/related_work_update_v07.txt",
+          "sha256": "e7aab10c490cb404b2309bcb00072fafd9745db89c2e0e806abbe4a7dff38489"
+        },
+        {
+          "path": "paper/references_v07.bib",
+          "sha256": "679d89f9b58e2d7db9b2a54f0d206bb20b6b2f30deac7e82d7d9bde6d24d7a50"
+        }
+      ],
+      "scope_and_caveat": "Targeted review of ten verified references, not exhaustive related work or a novelty certificate. No external experiment reproduced and no negative expressive-power claim about prior frameworks. arXiv entries are preprints. Modern entity/coreference, temporal database, belief revision and uncertainty-aware structured-prediction gaps remain explicitly open."
+    }
+  ],
+  "compile_status": {
+    "compiled": false,
+    "reason": "Installed pdflatex executable has no pdflatex.fmt; kpsewhich also found neither article.cls nor latex.ltx. No PDF or visual verification claimed."
+  }
+}

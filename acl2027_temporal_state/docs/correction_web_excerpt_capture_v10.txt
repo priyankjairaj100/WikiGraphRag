@@ -1,0 +1,22 @@
+Financial web-excerpt preservation v0.10
+
+A distinct web-tool excerpt batch followed the failed full-response capture. Its four-source selection and rationale were frozen before any excerpt calls. The initial failure manifest remains unchanged. This batch does not claim to repair or replace the missing publisher-byte capture.
+
+Four financial sources were inspected: Plug Power FY2019 and FY2020 reports, and Molson Coors FY2017 and FY2018 reports. Each used three web-tool calls: one initial open for issuer/report context, one batch of three finds for relevant financial concepts or values, and one targeted-open batch for the requested passages. Total: 12 tool calls containing 25 individual read commands. No source used the maximum fourth call; all requested issuer context, table headings, units, formulas, correction rows, and retention controls were present after call three.
+
+Representation: each external document.txt is the exact concatenation of returned text content blocks, separated by explicit synthetic boundary markers. The returned text itself includes web-tool metadata, PDF line/page labels, noncontiguous passages, overlaps, and repeated passages. No de-duplication, content cleanup, paraphrasing, or PDF reconstruction was performed. These are excerpts; they are neither publisher PDF bytes, complete PDF text, nor full-prefix reader inputs. Historical first public availability remains unestablished.
+
+For each call, the complete returned web-tool JSON object and request object are serialized as UTF-8 JSON and retained externally with an individual receipt. The project manifest stores their hashes and local paths, each block's character and UTF-8-byte offsets in document.txt, final document hashes, tool reference IDs, and representation limits. Source text and responses remain outside the distributable project. No source quotations are included in this report or the manifest.
+
+Verification passed for all 12 calls: each request/response/receipt hash matches; every document span reproduces the returned text block exactly in both character and byte indexing; block hashes match; the source-selection freeze precedes every call. All four final document files are frozen. Own-source issuer attribution is present in each first-call cover-page excerpt, including the FY2020 Plug cover extraction where the issuer is concatenated onto another labeled line.
+
+PDF table visual QA was not completed in this batch. Root reported that the screenshot endpoint returned text markers without image blocks; line-label extraction must therefore remain distinguished from direct visual table inspection. Separate source-only review controls eligibility and any conditional support-state replay. No questions, scoring inputs, scores, predictions, model calls, or full-source admissions were generated here.
+
+Artifacts:
+- data/correction_gate_v10/web_excerpt_selection_v10.json
+- data/correction_gate_v10/web_excerpt_manifest_v10.json
+- scripts/preserve_web_excerpt_v10.py
+- External evidence: /workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/web_excerpts/<source_id>/
+
+Manifest SHA256: 927bf90ab11753094b1d64ba17ba1a25744137c928b0e01ff9f20eaa459d9c41
+Manifest frozen: 2026-10-03T06:01:02.380917+00:00

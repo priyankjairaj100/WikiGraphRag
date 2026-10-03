@@ -1,0 +1,101 @@
+{
+  "schema_version": "reader_execution_amendment_v0.11",
+  "frozen_at_utc": "2026-10-03T06:49:53.405135+00:00",
+  "parent_protocol_path": "data/correction_gate_v11/reader_protocol.json",
+  "parent_protocol_sha256": "385bedf7d20aac4ee7d03bb82012b29d70bbfb45006cec5d715c165979824a56",
+  "parent_protocol": {
+    "schema_version": "current_document_reader_protocol_v0.11",
+    "frozen_at_utc": "2026-10-03T06:40:39.222833+00:00",
+    "stage": "After source discovery/review and passage selection, before native predictions; development diagnostic, not held-out or pre-discovery preregistration.",
+    "task": "Source-reported point-estimate and prose consistency on one current-document example",
+    "history_count": 1,
+    "conditions": {
+      "article_then_notice": [
+        "P2",
+        "P3",
+        "P4",
+        "P1"
+      ],
+      "notice_then_article": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ]
+    },
+    "primary_condition": "article_then_notice",
+    "contrast": "Notice position only. Same exact four passage strings, questions and response schema in both conditions. No label definitions reordered.",
+    "request_sha256": "03618301c201d00618ae49899408a9c6db084ddd781bc194050f8ef3b2f61c51",
+    "passage_pack_sha256": "9bcb2cc78bc875ac9eca4d0d1844799a35c108981466759c75c00727ac80869e",
+    "questions_sha256": "14f331652eeee4555afae48d11810dcb99ff0ddb7aaa0ce1e3975b337453b7f0",
+    "source_review_sha256": "8f8eae648bbbbe6b8c3312b2e3c837863393d6566eb782c8700020c818289a99",
+    "passage_manifest_sha256": "97ded2b5d47efce9bd0b31d398a31f77e5165a96b8a7193157789b010b2dc4d5",
+    "model": "Existing pinned Qwen3-4B Q8_0 and llama.cpp v09 assets; no fallback or training",
+    "generation": {
+      "calls": 2,
+      "fresh_process_per_call": true,
+      "temperature": -1.0,
+      "seed": 7,
+      "n_predict": 384,
+      "cache_prompt": false,
+      "maximum_context_tokens": 4096,
+      "overflow_action": "Reject before prediction; no truncation or on-output editing",
+      "grammar_constraint": false,
+      "retry_after_native_completion": false
+    },
+    "reference_policy": "Separate source-only model-assisted references frozen before prediction; no reference answer enters request; not human gold.",
+    "evaluation": "Strict duplicate-key-free JSON, exact question order/fields/enums; compare reference exposure/value or agreement and sufficient evidence IDs. Format failure, truncation, missing response or invalid evidence retained as failures. No repairs. Report each of three questions per condition, not a population accuracy estimate.",
+    "boundary": [
+      "Not a full-source reader, historical prefix, natural correction-core replay or comparison against the annotated support adapter.",
+      "Current-document source passage selection was informed by known inconsistency; no representative prevalence/generalization claim.",
+      "Official publisher notice and authors are not silently assigned one asserting authority.",
+      "Source aRR terminology and Tobit-method caveat remain visible; no scientific re-estimation, causal inference or significance testing.",
+      "The original full-source eight-history method gate remains incomplete."
+    ],
+    "native_outputs_at_freeze": 0,
+    "reference_sha256": "465030d41a4819c75cab310de81be4e60086ca8b721375dde5b1897f5080bd6b",
+    "reference_join_frozen_at_utc": "2026-10-03T06:41:02.030818+00:00",
+    "evidence_scoring": "Require a source-adjudicated sufficient evidence subset; additional valid passage IDs recorded separately rather than penalized automatically. Unknown IDs invalidate schema."
+  },
+  "amendment": "A separately recorded engineering attempt after attempt01 failed before native launch. Original no-retry policy was relaxed only for this zero-inference environment failure. No attempt01 artifact was overwritten.",
+  "prior_attempt_receipt_sha256": "faa6e6726f33761c655009309b9f88c7d868c93336da2a4b5e2409f639131b5f",
+  "prior_attempt_launched_model_processes": 0,
+  "prior_attempt_completion_calls": 0,
+  "diagnosis": "Default sandbox hid /sys/fs/cgroup telemetry; an auto-approved read-only host probe established its availability outside sandbox. Attempt02 requires separately auto-reviewed host execution to preserve unchanged memory guards and loopback server.",
+  "observed_cgroup": {
+    "memory_max": 8589934592,
+    "memory_current": 8565469184,
+    "anon": 91566080,
+    "kernel": 207818752,
+    "file_mapped": 36864,
+    "resident_proxy": 299421696
+  },
+  "unchanged": [
+    "model and runtime identity",
+    "request bytes and passage order",
+    "questions and pre-output references",
+    "all generation parameters",
+    "context reserve and rejection policy",
+    "all resource guards",
+    "two maximum completion calls, each in a fresh process",
+    "no retry after any native completion"
+  ],
+  "collector_original_sha256": "2870b956c458a8fc1d7c7d0618d5b998372513af5499bec89be1b4136efd1621",
+  "collector_attempt02_sha256": "f4719e1e30395421ef03adace939bb35a8b88e5a64f19762ea654a1a903f2a51",
+  "collector_diff": [
+    "--- native_reader_v11.py",
+    "+++ native_reader_attempt02_v11.py",
+    "@@ -21,8 +21,8 @@",
+    " ",
+    " PROJECT = Path(__file__).resolve().parents[1]",
+    " CONFIG = PROJECT / 'configs/native_reader_v11.json'",
+    "-DATA = PROJECT / 'data/native_reader_v11/attempt01'",
+    "-RECEIPT = PROJECT / 'results/native_reader_v11_receipt.json'",
+    "+DATA = PROJECT / 'data/native_reader_v11/attempt02'",
+    "+RECEIPT = PROJECT / 'results/native_reader_attempt02_v11_receipt.json'",
+    " ",
+    " ",
+    " def load(path):"
+  ],
+  "completion_outputs_at_amendment": 0
+}

@@ -1,0 +1,35 @@
+{
+  "evaluation_kind": "targeted_original_code_audit",
+  "archive_sha256": "c7b692bf8737cb57408aaf4eee4ece64d9ed7b20f82b6460584eb972bdb2ca43",
+  "fixture": "A at 2000; B at 2001; B restated at 2002",
+  "edges": [
+    {
+      "newer": "c3",
+      "older": "c1",
+      "key": [
+        "acme",
+        "chief executive officer"
+      ],
+      "confidence": 1.0
+    }
+  ],
+  "components": [
+    [
+      "c1",
+      "c3"
+    ],
+    [
+      "c2"
+    ]
+  ],
+  "query_time": 2001.5,
+  "component_anchor": "c1 (explicit diagnostic anchor, not natural query routing)",
+  "expected": "Bob Jones",
+  "actual": "Alice Smith",
+  "failure_reproduced": true,
+  "limitations": [
+    "Constructed regression only",
+    "Original interval function reads Claim.value",
+    "Does not measure end-to-end natural question answering"
+  ]
+}

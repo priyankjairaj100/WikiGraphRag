@@ -1,0 +1,26 @@
+{
+  "protocol": "development_only_matched_representation_replay",
+  "created_date": "2026-10-02",
+  "source_assertions_added_by_migration": true,
+  "question_labels_reused_unchanged_from": "v0.2",
+  "primary_within_checkpoint_comparison": "exact_aliases vs bounded_aliases on the same derived claims and aliases",
+  "controls": [
+    "canonical vs prefix aliases",
+    "remove state observations",
+    "remove endpoint bounds"
+  ],
+  "read_before_interpreting": [
+    "docs/bounded_semantics.txt",
+    "results/representation_v03_replay.json"
+  ],
+  "prohibited_claims": [
+    "held_out_accuracy",
+    "joint_decoding_benefit",
+    "pure_representation_gain_vs_v0.2",
+    "human_annotation_agreement"
+  ],
+  "raw_extractions_unchanged": true,
+  "source_prefixes_unchanged": true,
+  "annotation_model_backend_pinned": false,
+  "model_migration_note": "Independent source-only passes A/B/L revised semantic readings; all changes logged and raw data retained."
+}

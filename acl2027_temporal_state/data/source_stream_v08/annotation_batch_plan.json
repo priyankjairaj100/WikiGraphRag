@@ -1,0 +1,106 @@
+{
+  "schema_version": "initial_annotation_batch_v0.8",
+  "declared_at_utc": "2026-10-02T16:46:43.269175+00:00",
+  "parent_frame_sha256": "92a41392f1557fe5113cc867a45c580152f154c67769936f90bde8d80a6b2d2e",
+  "status": "fixed_history_and_delivery_order_before_annotations",
+  "selection_rule": "First leadership history, first two public-plan histories in the existing frozen frame, plus its sole explicit-correction lead. Deliberately mixed initial feasibility batch, not representative sampling or selection by model scores. No fallback replacements if captures fail.",
+  "target_history_count": 4,
+  "target_prefix_count": 8,
+  "history_ids": [
+    "leadership_ibm_2020",
+    "service_docker_free_team_2023",
+    "browser_chrome_cookie_plan_2023_2025",
+    "plan_hs2_phase2_2017_2023"
+  ],
+  "source_capture_scope": "Attempt all39URLs from19histories; annotate only this predeclared initial batch.",
+  "freeze_timing": "Before candidate/reference annotation or model inference on these sources; prior metadata explicitly mentions mutable-page updates. Source hashes will be bound after capture, before annotation.",
+  "delivery_semantics": "Author-defined current-version document stream, not historical public availability. Current corrected/updated pages are delivered whole, including later edits. Prefix1 does not imply knowledge as of page original publication.",
+  "histories": [
+    {
+      "history_id": "leadership_ibm_2020",
+      "selection_basis": "fixed_frame_order",
+      "delivery_batches": [
+        {
+          "delivery_batch_index": 1,
+          "source_ids": [
+            "ibm_ceo_announcement_20200130"
+          ]
+        },
+        {
+          "delivery_batch_index": 2,
+          "source_ids": [
+            "ibm_ceo_letter_20201109"
+          ]
+        }
+      ],
+      "delivery_order_basis": "January announcement precedes November dated CEO letter by reported dates.",
+      "historical_originals_verified": false
+    },
+    {
+      "history_id": "service_docker_free_team_2023",
+      "selection_basis": "fixed_frame_order",
+      "delivery_batches": [
+        {
+          "delivery_batch_index": 1,
+          "source_ids": [
+            "docker_pre_reversal_archive_frame_v07"
+          ]
+        },
+        {
+          "delivery_batch_index": 2,
+          "source_ids": [
+            "docker_reversal_frame_v07"
+          ]
+        }
+      ],
+      "delivery_order_basis": "March 16 article and March 24 reversal have displayed dates; current March 16 page contains March 24 updates.",
+      "historical_originals_verified": false
+    },
+    {
+      "history_id": "browser_chrome_cookie_plan_2023_2025",
+      "selection_basis": "fixed_frame_order",
+      "delivery_batches": [
+        {
+          "delivery_batch_index": 1,
+          "source_ids": [
+            "chrome_user_choice_proposal_frame_v07"
+          ]
+        },
+        {
+          "delivery_batch_index": 2,
+          "source_ids": [
+            "chrome_prompt_cancellation_frame_v07"
+          ]
+        }
+      ],
+      "delivery_order_basis": "July 2024 proposal and April 2025 notice have displayed dates and an explicit backward reference.",
+      "historical_originals_verified": false
+    },
+    {
+      "history_id": "plan_hs2_phase2_2017_2023",
+      "selection_basis": "explicit_correction_lead_with_missing_original",
+      "delivery_batches": [
+        {
+          "delivery_batch_index": 1,
+          "source_ids": [
+            "hs2_phase2_route_current"
+          ]
+        },
+        {
+          "delivery_batch_index": 2,
+          "source_ids": [
+            "hs2_network_north_20231004"
+          ]
+        }
+      ],
+      "delivery_order_basis": "Publication/update history distinguishes July plan, December correction metadata and October 2023 new policy. Exact original/corrected document versions remain missing.",
+      "historical_originals_verified": false
+    }
+  ],
+  "special_constraints": {
+    "service_docker_free_team_2023": "The currently captured earlier-dated page already contains the reversal; never remove it or label prefix1 as pre-reversal knowledge.",
+    "plan_hs2_phase2_2017_2023": "Current landing page includes both erroneous quoted wording and replacement notice. Original erroneous document is not captured. Distinguish reported erroneous quotation from factual assertion; do not invent a pre-correction prefix."
+  },
+  "evaluation_scope": "Model-assisted development annotations and separate source-only reference judgments; no human gold, accuracy comparison or benchmark admission implied.",
+  "model_method_outputs_seen_by_annotators": false
+}

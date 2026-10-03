@@ -1,0 +1,66 @@
+{
+  "schema_version": "natural_protocol_v0.6",
+  "status": "prepared_no_model_execution",
+  "extraction_domains": [
+    "organizational_role_occupancy",
+    "explicit_financial_forecasts"
+  ],
+  "source_packs": [
+    {
+      "path": "data/natural_pilot/early_prefix_input.json",
+      "sha256": "931dfd99c99c7fb0abb049f820221a3ed372fcb435c9e7326f973c60d07404b6",
+      "history_prefixes": {
+        "leadership_starbucks_2024": "2024-08-15",
+        "leadership_nike_2024": "2024-09-20"
+      }
+    },
+    {
+      "path": "data/natural_pilot/late_prefix_input.json",
+      "sha256": "47064e99e1c4cb0b54151dbb6430157746c8b7b82fbc5e1b45c6231a741d13e9",
+      "history_prefixes": {
+        "leadership_starbucks_2024": "2024-11-21"
+      }
+    }
+  ],
+  "pilot": {
+    "history_id": "leadership_nike_2024",
+    "information_cutoff": "2024-09-20",
+    "scope": "NIKE, Inc. chief executive officer appointment, occupancy, and departure only. Exclude separate president, director, chair, adviser, and employment claims. Preserve their contextual text. Merge repeated wording within one source only if it states the identical atomic proposition; retain distinct sources as distinct mentions.",
+    "max_mentions": 8,
+    "max_resolved_readings_per_mention": 4,
+    "overflow_policy": "fail_no_score_or_label_based_pruning"
+  },
+  "candidate_prompt": "configs/candidate_prompt_v06.txt",
+  "candidate_schema": "configs/candidate_schema_v06.json",
+  "scorer_prompt": "configs/scorer_prompt_v06.txt",
+  "scorer_schema": "configs/scorer_schema_v06.json",
+  "source_visibility": "all_exact_sources_in_one_eligible_history_prefix",
+  "conversation_reuse": false,
+  "scoring": {
+    "mode": "teacher_forced_label_logodds",
+    "permutations": [
+      "A_supported",
+      "B_supported"
+    ],
+    "aggregation": "mean(logP(supported_label)-logP(insufficient_label)) across the two permutations",
+    "unresolved_unary": 0.0,
+    "no_link_score": 0.0,
+    "beta": 1.0,
+    "penalties": [],
+    "normalization": "none; additive uncalibrated potentials",
+    "calibration": "none; no probability claim",
+    "candidate_derivation_notes_visible_to_scorer": false,
+    "other_candidate_scores_visible_to_scorer": false,
+    "decoder_outputs_visible_to_scorer": false,
+    "overflow_policy": "fail_no_truncation"
+  },
+  "adapter_status": "not_implemented_for_general_candidate_graph_v0.6",
+  "required_next_validation": [
+    "strict schema and unique ID/reference validation",
+    "exact evidence alignment and prefix/context propagation",
+    "candidate claims satisfy bounded and correction policy validators",
+    "all four conditional label loglikelihoods and sum/finite checks",
+    "shared immutable scored cache with complete prompt/config/runtime hashes",
+    "no silent pruning or automatic evidence repair"
+  ]
+}

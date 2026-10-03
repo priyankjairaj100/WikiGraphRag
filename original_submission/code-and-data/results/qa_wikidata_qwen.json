@@ -1,0 +1,70 @@
+{
+  "dataset": "wikidata",
+  "reader": "qwen",
+  "k": 5,
+  "n_questions": 33,
+  "current_answer_em": {
+    "flat": 0.4242,
+    "date_prompt": 0.5152,
+    "date_rerank": 0.3636,
+    "tempralm": 0.1515,
+    "ragtime_default": 0.303,
+    "ragtime_tuned": 0.5455,
+    "lifecycle": 0.9697,
+    "gold": 0.9697
+  },
+  "current_answer_em_strict": {
+    "flat": 0.4242,
+    "date_prompt": 0.5152,
+    "date_rerank": 0.3636,
+    "tempralm": 0.1515,
+    "ragtime_default": 0.303,
+    "ragtime_tuned": 0.5455,
+    "lifecycle": 0.9697,
+    "gold": 0.9697
+  },
+  "paired_tests": {
+    "lifecycle_vs_flat": {
+      "mean_diff": 0.5455,
+      "ci95_low": 0.3636,
+      "ci95_high": 0.697,
+      "p_value": 0.0,
+      "n": 33
+    },
+    "lifecycle_vs_date_prompt": {
+      "mean_diff": 0.4545,
+      "ci95_low": 0.303,
+      "ci95_high": 0.6364,
+      "p_value": 0.0,
+      "n": 33
+    },
+    "lifecycle_vs_date_rerank": {
+      "mean_diff": 0.6061,
+      "ci95_low": 0.4242,
+      "ci95_high": 0.7879,
+      "p_value": 0.0,
+      "n": 33
+    },
+    "lifecycle_vs_tempralm": {
+      "mean_diff": 0.8182,
+      "ci95_low": 0.6667,
+      "ci95_high": 0.9394,
+      "p_value": 0.0,
+      "n": 33
+    },
+    "lifecycle_vs_ragtime_default": {
+      "mean_diff": 0.6667,
+      "ci95_low": 0.4848,
+      "ci95_high": 0.8182,
+      "p_value": 0.0,
+      "n": 33
+    },
+    "lifecycle_vs_ragtime_tuned": {
+      "mean_diff": 0.4242,
+      "ci95_low": 0.2424,
+      "ci95_high": 0.6061,
+      "p_value": 0.0,
+      "n": 33
+    }
+  }
+}

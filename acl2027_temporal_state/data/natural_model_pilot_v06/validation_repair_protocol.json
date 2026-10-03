@@ -1,0 +1,34 @@
+{
+  "schema_version": "validation_repair_protocol_v0.6",
+  "repair_budget": 1,
+  "automatic_retry_loop": false,
+  "reason": "Original prompt/schema did not explicitly prohibit actual state observations on every announced_future reading; existing bounded representation rejects that combination. Endpoint link modality/polarity restrictions also clarified generically.",
+  "first_failure_path": "data/natural_model_pilot_v06/candidate_validation_first_pass.json",
+  "first_failure_sha256": "757aecb3217054f5de0d58426fe2f97b02da0275492ab452a9fb9062926bc298",
+  "first_failure": "plan_with_actual_state_observation",
+  "original_candidate_raw_sha256": "ddaa83c4d97b58b14093c7cca08b33573d659f37b9500268f267fdbd81362bd1",
+  "original_prompt_sha256": "ae58b806106a79e807d8c9fae71fcdfb60e57e7eed4d4a6f740799f86f295275",
+  "original_schema_sha256": "4dfaf3fd3f4100250e572dc0069f36f24190703a77fdfbaf2e690efc38d06282",
+  "repair_prompt_path": "configs/candidate_prompt_v06_repair.txt",
+  "repair_prompt_sha256": "9433ab3cfd3de9029e6d3d206772b40ade8e5b27214b9f0c766ebe91e0986ee7",
+  "repair_schema_path": "configs/candidate_schema_v06_repair.json",
+  "repair_schema_sha256": "2d6f3be0b55a14e26be74e7ee4b903272f38ec9a2486b251ac55711128b3df56",
+  "review_status": "Root conveyed independent reviewer agreement that this was a protocol/representation mismatch; do not relax the existing gate.",
+  "allowed_inputs": [
+    "Original source request",
+    "Original failed raw candidate output",
+    "Repair prompt",
+    "Repair schema"
+  ],
+  "forbidden_inputs": [
+    "Scores",
+    "QA labels/questions",
+    "Decoder outputs",
+    "Other prior annotation outputs",
+    "External or later sources"
+  ],
+  "output_path": "data/natural_model_pilot_v06/candidate_output_repaired.json",
+  "receipt_path": "data/natural_model_pilot_v06/candidate_repair_receipt.json",
+  "validation_policy": "Same strict candidate validator and existing temporal compatibility gates; fail if invalid; preserve both attempts.",
+  "repair_executed_by_this_script": false
+}

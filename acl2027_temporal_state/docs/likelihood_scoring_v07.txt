@@ -1,0 +1,134 @@
+v0.7 source-grounded conditional label likelihood pilot
+
+This protocol replaces the earlier ordinal scorer only for a new, separately
+identified scoring run. It reuses the repaired v0.6 source-only candidate graph;
+that generator remains unversioned. The new tiny quantized CPU scorer must bind
+an immutable model asset, tokenizer, runtime, chat template, tokenization and
+actual invocation receipt before any cache may describe it as pinned. It is not
+the prepared 8B baseline, and it does not retrospectively pin the generator.
+
+The request was prepared before reading any v0.7 scorer values or decoder
+outputs. This is a development protocol freeze, not an untouched benchmark
+preregistration: the sources and graph were already used in v0.6. No v0.6
+ordinal values, QA, gold answers or selected decoder state enter preparation.
+The checked-in configuration and prompt hashes bind the protocol. A review
+clarification that CHANGES can describe announced future succession within the
+endpoints' shared modality was made before execution and before the final
+request was delivered to the backend. Passing a future date still does not
+establish that the event occurred.
+
+Exact target and primary score
+
+Each of the 32 neutral items is judged twice, with two fixed orders in which the
+same Yes and No response definitions are displayed. The yes_no condition is
+primary. The no_yes condition is a presentation-order diagnostic only. It does
+not swap label meanings, establish label mapping invariance, or remove the
+model's inherent preference for Yes versus No. It is not averaged with the
+primary condition and cannot replace it because it produces a desirable
+outcome. Both conditions require complete coverage (64 measurement rows).
+
+For each item and condition, the scorer records the next-token probabilities
+of the exact continuations Yes and No after one identical rendered prompt.
+Both labels must be single tokens with the actual model tokenizer. Tokenizing
+the complete prompt with either label appended must preserve every prompt
+token and add exactly that label token. Otherwise the run fails without
+substituting labels, inserting a workaround, or silently shortening context.
+The stored scalar is
+
+  score = ln P(Yes | prompt) - ln P(No | prompt).
+
+Both natural-log probabilities come from the unfiltered full-vocabulary
+next-token distribution. No explanation, end-of-sequence token, generated
+confidence, grammar mask, candidate-only normalization, logit bias, temperature
+rescaling, top-k or top-p filtering is used. A backend may compute full-vocabulary
+log-softmax directly. The difference equals the corresponding raw logit
+difference, but both full-vocabulary log probabilities must be retained. The
+backend must preserve raw response or logit-evaluation evidence sufficient to
+show where the two values came from, and hash the rendered prompt and full
+prompt token ID sequence. Requests bind the exact raw message serialization;
+the receipt additionally binds model-specific rendering and no-thinking mode.
+This is a next-token label likelihood, not a likelihood of the entire source,
+claim or response.
+
+Every prompt contains both complete eligible source texts and their supplied
+metadata, the cutoff and scope, followed by one neutral structural item. No
+source is retrieved or truncated to improve a score. The largest and smallest
+prepared prompt contents have 30,646 and 20,631 Unicode characters respectively;
+these counts are not tokenizer measurements. The protocol cap is 12,288 tokens;
+an executor may enforce a stricter resource cap. At least one continuation
+position must fit. Any overflow fails without dropping an item or shortening a
+source. Prefix KV reuse is allowed only if mathematically equivalent to the
+same complete logical prompt; previous item responses or item-specific suffixes
+must not survive into the next item context.
+
+The neutral item builder is inherited exactly from v0.6. It omits generator
+candidate IDs, derivation notes, unresolved reasons, candidate order, confidence,
+QA and decoder outputs from model content. Item IDs exist only in the routing
+metadata. Exact semantic content, item mapping, source request, original
+candidate bytes, configuration and prompt are bound and recomputed by the
+adapter. Every resolved reading, unresolved option, link and mention-level
+no_link option must receive actual model measurements; there are no default
+numbers or score-driven omissions.
+
+Reading scores concern faithful interpretation of the historical anchored
+assertion. They do not rejudge the older assertion as false merely because a
+later correction withdraws its support. Link scores condition on admitting the
+two endpoint readings and concern the relation itself. Unresolved is explicit
+abstention when no supplied reading is sufficiently supported or essential
+ambiguity prevents choosing one. No_link asks whether none of the supplied
+outgoing relations is justified, conditional on their endpoints. With no
+represented outgoing alternatives, the represented none-of-these option is
+true; it does not claim that no possible relation exists outside the generated
+candidate set. No_link is shared at mention level even when different readings
+would justify different relations. The protocol does not fix that limitation.
+
+What the numbers do and do not mean
+
+These are model conditional label log-odds used as additive heuristic
+potentials. They are not calibrated factual truth probabilities, a categorical
+distribution over alternatives, or a joint likelihood of a graph. The Yes and
+No labels can have unequal prior likelihood. Separately prompted reading and
+unresolved judgments need not be logical complements. Link and no_link prompts
+need not be complements when a mention has several outgoing alternatives.
+A reading may receive support while unresolved also receives support because
+an ambiguity remains. The validation contract cannot establish coherence.
+
+Evidence is correlated across claims and repeated across prompts. Summing
+unary, link and null potentials may count source support repeatedly. Exact
+search does not resolve that modeling problem. The use of a common Yes/No
+vocabulary does not prove a common evidence scale across item kinds or prompt
+lengths. Different quantization, templates or thinking behavior could change
+the scores. No clipping, calibration, class balancing, temperature tuning,
+normalization across alternatives, label-prior correction or scale adjustment
+is fitted in this pilot. Beta is fixed at 1 and there are no penalties. The
+historical objective is primary; active_support is an explicitly separate
+ablation. No winner is chosen from the two orders, objectives or decoder
+methods on the basis of these exploratory outcomes.
+
+Reproduction and failure boundaries
+
+Run preparation with:
+
+  python scripts/prepare_likelihood_scoring_v07.py \
+    --source-request data/natural_model_pilot_v06/candidate_request.json \
+    --candidates data/natural_model_pilot_v06/candidate_output_repaired.json \
+    --request data/likelihood_scoring_v07/request.json \
+    --manifest data/likelihood_scoring_v07/manifest.json
+
+prepare(source_request, candidate_raw) returns the request and private routing
+manifest. validate_prepared recomputes and compares both exactly.
+validate_measurements checks exact item/condition coverage, bound messages,
+finite nonpositive log probabilities, distinct fixed label token IDs, context
+bounds and finite log-odds. It does not prove that a declared model was executed;
+the independently bound backend receipt supplies execution provenance and
+actual token-prefix checks. The adapter must validate that receipt and the raw
+measurements before making a cache. The full source request and candidate bytes
+are explicit caller inputs; receipt paths are metadata, not file locators.
+
+This run can establish that a specified small local scorer was actually
+executed and that all decoders consume its same scores. It cannot establish
+accuracy, candidate completeness, novelty, a joint-inference advantage or
+reliability on an independently held-out benchmark. The inherited graph still
+has a single resolved reading per mention. A competing-candidate source-only
+pass is a separate experiment and must not be mixed into this run after seeing
+scores.

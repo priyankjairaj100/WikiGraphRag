@@ -1,0 +1,407 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,booktabs,array}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{1em}
+\newcommand{\claim}[1]{\textsuperscript{\scriptsize[#1]}}
+\newcommand{\todo}[1]{\textit{Citation TODO: #1.}}
+\title{Joint Interpretation of Time-Varying Factual Records\\
+\large Exploratory manuscript skeleton for an ACL 2027 research target}
+\author{Working draft; authorship to be supplied}
+\date{2 October 2026 \quad | \quad W01 / v0.7}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Public records can announce future changes, describe an ongoing state, repeat an
+earlier assertion, or correct what was previously reported. We study a proposed
+task in which a system selects interpretations of source mentions together with
+their temporal and correction relations, then answers questions conditional on
+the resulting record. This draft specifies the implemented small-instance
+reference semantics, shared inference objective, and comparison protocol. It
+also documents two development observations: agreement among the implemented
+decoders on one model-scored natural example, and correction suppression under
+an active-support objective ablation with existing authored scores. Neither
+observation establishes a natural-data accuracy gain. Independent evaluation,
+strong contextual baselines, candidate-coverage assessment, and a broader
+related-work audit remain necessary before a paper contribution can be stated.
+\end{abstract}
+
+\noindent\textbf{Draft status.} This is a methods and data-design skeleton, not a
+submission-ready paper. Numbered claim markers refer to the accompanying
+\texttt{claim\_ledger\_v07.json}. Results here are frozen to the stated v0.6
+artifacts; ongoing v0.7 backend and scoring work is not reported as complete.
+The article layout is portable LaTeX, not an asserted ACL 2027 format.
+
+\section{Research question and information boundary}
+\label{sec:task}
+The working question is whether revisiting uncertain factual interpretations
+together with their update relations improves correction-dependent record
+reconstruction beyond strong contextual extraction and conditional relation
+inference. An interpretation can
+change a subject, relation, scope, value, episode assignment, temporal boundary,
+or correction target. These are distinct error categories. Their frequency and
+their susceptibility to joint inference are empirical questions, not assumed
+properties of every factual history.\claim{C01}
+
+Let a source record $d$ have text, a version identifier, and a recorded
+availability day $a_d$. At information cutoff $\tau$, the eligible source set is
+$D_\tau=\{d:a_d\leq\tau\}$. Every declared context dependency of a candidate
+must also belong to this set. A question's event day $t$ is separate from
+$\tau$: the system may ask what a record available in September announced for
+October, without treating that announcement as evidence of the event's eventual
+occurrence. A claim's report date is another field and does not automatically
+mark an event onset or a state observation.\claim{C02}
+
+The implementation checks declared provenance, dates, and exact source spans.
+It cannot authenticate an assigned historical availability date or detect an
+undeclared context dependency. A current page and a retrieved text hash establish
+the captured bytes, not when those bytes first became public. Development
+eligibility conventions must therefore remain explicit, and current-record
+experiments must not be described as historically faithful prefix evaluation.
+The original and revised information prefixes are constructed separately.
+
+The prospective primary study instead defines a controlled stream of frozen
+document versions. At delivery batch $b$, its prefix is
+$D^{\mathrm{stream}}_b=\{d:\operatorname{batch}(d)\leq b\}$. Delivery index,
+retrieval time, reported publication time, and event time remain separate.
+This task asks what the supplied prefix justifies, not what all public evidence
+justified at a historical instant. A separately certified historical slice
+would require evidence for the original versions and their availability bounds.
+No histories have yet been completed under this new stream protocol.\claim{C12}
+
+\section{Candidate representation and conditional semantics}
+\label{sec:representation}
+For each anchored source mention $m$, the candidate set $R_m$ contains resolved
+readings and at least one unresolved reading. A resolved reading supplies a
+factual key $k=(\text{subject},\text{relation},\text{scope})$, value, polarity,
+modality, evidence spans, and bounded temporal information. Scope must carry
+distinctions needed for a single-valued relation; a descriptive role qualifier
+does not silently create a separate key. Unresolved readings do not invent a
+value or exact date. An assignment selects exactly one $r_m\in R_m$ and one
+outgoing typed link $\ell_m$ or null per mention.\claim{C03}
+
+Candidates are hypotheses, not automatically accepted source interpretations.
+Syntactic integrity and exact span alignment do not prove that a quote entails
+a candidate. In particular, a reading that is plausible in a local passage may
+be rejected by other available context. Such cases can test inference even if
+the full document leaves no residual ambiguity. A separate audit that requires
+two defensible full-context readings measures a narrower phenomenon and cannot
+establish candidate recall or the absence of useful joint reasoning.\claim{C12}
+
+\subsection{Episodes and typed temporal links}
+\label{sec:temporal}
+An active episode has integer-day endpoints $s,e$ and denotes the half-open
+interval $[s,e)$, with $s+1\leq e$. Supplied endpoint ranges are inclusive bounds
+on the latent endpoints. An observation on day $t_o$ adds
+$s\leq t_o$ and $t_o+1\leq e$. Missing bounds remain unknown; they are not a
+persistence rule. Combining observations into one episode does assume
+continuity between them.\claim{C04}
+
+\textsc{Restates} asserts equality of the two episode endpoints and requires
+equal keys, values, polarity, and modality. Equal values alone do not imply the
+same episode: a return to value A after an intervening B can be a distinct A
+episode. \textsc{Changes} points from a later episode to an earlier episode,
+requires equal keys, distinct positive values, and equal modality, and imposes
+$e_{\mathrm{earlier}}\leq s_{\mathrm{later}}$. It permits a gap and does not
+assert immediate succession. Null adds no temporal relation. Unlinked claims
+can still overlap or conflict; the solver does not impose universal same-key
+nonoverlap.\claim{C04}
+
+Each inequality $x_j-x_i\leq c$ becomes an edge $i\to j$ of weight $c$, with a
+fixed zero variable for calendar bounds. Shortest-path closure detects an
+infeasible state by a negative cycle and projects tight endpoint bounds.
+For an active episode with projected bounds
+$s\in[s_l,s_u]$ and $e\in[e_l,e_u]$, conditional membership is
+\begin{align}
+\operatorname{may}(t)&\iff s_l\leq t<e_u, &
+\operatorname{must}(t)&\iff s_u\leq t<e_l. \label{eq:membership}
+\end{align}
+These statements are conditional on the selected readings and links. They do
+not quantify over alternative decoder assignments. The temporal-network solver
+and exhaustive inference are reference techniques; no novelty is claimed for
+them. This feasibility layer instantiates the established temporal constraint
+network family~\cite{dechter1991temporal}.
+
+\subsection{Correction and essential support}
+\label{sec:correction}
+\textsc{Corrects} replaces support for a particular earlier atomic assertion;
+it does not end that assertion's real-world interval on the correction date.
+A selected correction requires an exact reference span, compatible factual
+keys, recorded nondecreasing source availability, and equal annotated asserting
+authority. Hosting domains do not establish authority. These conditions check
+the representation of an attributed correction, not independently verified
+entailment or speaker identity.\claim{C05}
+
+The selected correction graph must be acyclic. Its targets are withdrawn before
+temporal closure. In a chain where B corrects A and C corrects B, both A and B
+stay withdrawn: withdrawal of B's replacement content does not reverse B's
+correction notice. Declared essential-support dependencies then propagate
+inactivity to a fixed point if a prerequisite is absent or inactive. Dependencies
+are conjunctive and are not inferred merely from a \textsc{Restates} relation.
+Inactive assertions and their incident temporal links supply no temporal bounds
+or answer support. Correction links supply no event-date inequality.
+
+The implemented scope is whole-assertion replacement. Bare retraction,
+partial-field revision, retraction of a correction notice, and arbitrary
+belief revision require a richer representation. Independently selected sibling
+corrections can remain conflicting assertions; the implementation does not
+manufacture a winner from chronology alone.\claim{C05}
+
+Maintaining reasons for beliefs and revising dependent support has a classical
+truth-maintenance precedent~\cite{doyle1979truth}. Our restricted projection
+specifies one correction policy; it neither invents dependency withdrawal nor
+implements general truth maintenance or arbitrary belief revision.
+
+\subsection{Answers and their interpretation}
+\label{sec:answers}
+Queries distinguish announced schedules from reported actual state. Announced
+future claims cannot prove actual realization simply because the scheduled day
+has passed. Actual-state queries preserve each claim's original report horizon,
+with source availability as a documented fallback when no report date exists.
+Conditional or uncertain claims can supply possibilities but not certainty.
+An affirmative answer requires one certainly supported value without a surviving
+possible alternative or conflicting negative support. Otherwise the memory
+returns indeterminate or abstain, according to whether affirmative possibilities
+remain. Negative-only evidence cannot identify an affirmative value.\claim{C06}
+
+Evidence citations retain exact supporting source spans and declared context
+dependencies. Temporal certainty is conditional on one selected state and its
+episode assumptions. Deterministic selection among equally scored assignments
+is not evidence that those assignments agree on the answer. Evaluation of
+uncertainty across plausible assignments remains future work.
+
+\section{Shared score function and inference comparisons}
+\label{sec:inference}
+Let $u_m(r)$ be a reading's supplied unary score minus its configured local
+violation penalties. A non-null link has net score
+$w(\ell)=\beta\,\mathrm{score}(\ell)-\mathrm{penalty}(\ell)$, while $n_m$ is
+the supplied null score, without $\beta$ scaling. Over semantically feasible
+assignments, the historical-interpretation objective is
+\begin{equation}
+J_{\mathrm{hist}}(r,\ell)=\sum_m u_m(r_m)
++\sum_{m:\ell_m\ne\varnothing}w(\ell_m)
++\sum_{m:\ell_m=\varnothing}n_m. \label{eq:historical}
+\end{equation}
+It scores interpretations of historical assertions, including assertions whose
+support is later withdrawn. Scores are finite numeric inputs, not automatically
+calibrated probabilities. All methods receive the same candidate graph, scores,
+null alternatives, penalties, correction policy, and feasibility semantics.
+\claim{C07}
+
+The \emph{independent-reading baseline} first selects
+$r_m=\arg\max_{r\in R_m}u_m(r)$ and then exactly optimizes all eligible link/null
+assignments conditional on those readings. This is stronger than independently
+choosing each link. \emph{Iterative inference} starts from the same readings,
+tries each alternative at one mention, exactly reoptimizes all links for each
+trial, and accepts strict objective improvements. The restarted variant repeats
+this procedure from seeded random reading assignments. \emph{Exact joint
+inference} enumerates reading assignments and feasible link assignments to
+maximize the same objective. Tie-breaking is deterministic.\claim{C08}
+
+The shared default ceiling is eight mentions, five readings per mention,
+250,000 conservatively counted states, 50 coordinate sweeps, and ten optional
+restarts. The state bound is
+$\prod_m|R_m|\prod_m(1+|L_m|)$, which overcounts links incompatible with
+particular readings. Every method rejects a graph above that bound. Exact
+search certifies the implemented finite objective optimum, not factual truth;
+these common limits do not measure scalability beyond the reference regime.
+
+Coupling local interpretation scores with temporal constraints is established
+structured prediction~\cite{han-etal-2019-joint,ning-etal-2018-joint}. A standard
+constrained-prediction adaptation is therefore an appropriate future solver
+baseline for this graph. The present enumerator supplies a small-instance
+reference, not evidence of a new optimization algorithm.\claim{C14}
+
+\subsection{An active-support ablation and its failure condition}
+\label{sec:objective}
+Let $A$ contain active resolved mentions, $U$ the selected unresolved mentions,
+and $b_m=\max_{r\in R_m\text{ unresolved}}u_m(r)$. Let $T$ be selected temporal
+links with both endpoints active, $I$ the remaining selected temporal links,
+$C$ the operative correction links, and $N$ mentions choosing null. Write
+$\operatorname{out}(\ell)$ for a link's outgoing mention. The
+implemented ablation is
+\begin{align}
+J_{\mathrm{active}}={}&\sum_{m\in A\cup U}u_m(r_m)
++\sum_{m\notin A\cup U}b_m
++\sum_{\ell\in T\cup C}w(\ell) \nonumber\\
+&+\sum_{\ell\in I}n_{\operatorname{out}(\ell)}+\sum_{m\in N}n_m.
+\label{eq:active}
+\end{align}
+Inactive support is anchored to existing unresolved/null references, avoiding
+dependence on arbitrary additive unary and outgoing net-score offsets. This
+does not provide calibration, duplication invariance, or invariance to changing
+only the unary or link scale.\claim{C09}
+
+The ablation can suppress a valid correction. With fixed readings, if selecting
+a correction $c\to q$ only withdraws target $q$, its objective gain over null is
+\begin{equation}
+\Delta J_{\mathrm{active}}=(w(c\to q)-n_c)-(u_q(r_q)-b_q).
+\end{equation}
+A positive historical reading margin can therefore outweigh correction support.
+Conversely, withdrawing a negative-margin reading can increase the score.
+Existing authored scores expose this failure in development replays, including
+a source-record correction example. Scores were not retuned to remove the
+failure. The historical objective remains the default; this ablation is not
+presented as a successful method.\claim{C09}
+
+\section{Data and score provenance: present evidence}
+\label{sec:data}
+The completed v0.6 natural pilot uses two Nike records concerning a CEO
+transition, within one development history and one operational information
+prefix. A source-only conversational extraction produced an invalid initial
+temporal representation; one recorded repair separated actual observations
+from planned information. The retained graph has seven anchored mentions,
+seven resolved readings, seven unresolved alternatives, and eleven candidate
+links. Each mention has only one resolved reading. This pilot therefore does
+not test selection among competing resolved factual interpretations.\claim{C10}
+
+A separate conversational scoring pass supplied 32 ordinal judgments:
+resolved and unresolved readings, candidate links, and null choices. The backend
+revision was unavailable, so these outputs are explicitly unversioned and are
+not log probabilities. Exact requests, outputs, repair lineage, and score-cache
+hashes are retained. Replaying stored outputs is reproducible artifact
+processing; it is not reproducible generation from a pinned model.\claim{C10}
+
+All four decoders selected the same readings and links under both objectives;
+the selected states had no correction or essential-support inactivity. Three
+declared monotone score recodings also produced unchanged selections in twelve
+historical-objective decodes. No answer labels or factual accuracy measurement
+were used in these runs. Agreement on this example and these recodings provides
+neither a joint-inference gain nor general score-robustness evidence.\claim{C10}
+
+Engineering diagnostics separately check schema, temporal closure, corrections,
+shared-objective evaluation, and artifact replay. The v0.6 objective audit
+reports 23,497 checks without a mismatch against its independent finite oracle.
+These checks support implementation contracts within their enumerated domains;
+they are not independent natural-data observations or a measure of extraction
+quality.\claim{C11}
+
+\section{Prospective evaluation and decision gates}
+\label{sec:evaluation}
+The next empirical unit is a prospectively sampled batch of twenty development
+histories under the controlled document-stream protocol, with routine cases and
+an enriched ambiguity/correction slice reported separately. Previously inspected
+Nike, OpenAI, and Lyft examples remain
+development demonstrations. A sampling rule, exclusion log, source version and
+availability policy, delivery batches, and candidate budgets must be fixed before
+extraction or method-output inspection. Simultaneous or uncertain ordering stays
+in a common delivery batch. Every method receives identical source IDs and bytes
+for a prefix. A present-day retrieval may contain later edits; controlled-stream
+admission does not certify it as the original historical version. Existing
+cutoffs and results are not retroactively admitted to the new benchmark.
+Connected histories must remain together in subsequent
+train, development, and held-out splits. This is a proposed study, not a
+completed benchmark.\claim{C12}
+
+Candidate generation should be frozen without questions, answer labels, or
+decoder outputs. The evaluation must distinguish missing valid alternatives,
+unsupported alternatives, structural exclusions, and scoring errors. A useful
+controlled comparison can generate hypotheses from local windows while giving
+both structured inference and a strong contextual/listwise baseline identical
+full-prefix access. Full-context source judgments evaluate the predictions;
+they must not act as an oracle that removes every falsifiable hypothesis before
+inference. Residual semantic ambiguity should be reported separately from
+extractor uncertainty. These principles are frozen in the prospective stream
+protocol; the sampling frame, annotation materials, and executable collection
+pipeline still need to be completed before the batch is run.\claim{C12}
+
+Independent source-based reference judgments should cover interpretations,
+update targets, temporal support, and answerability, with recorded provenance
+and a disagreement process. Model-assisted judgments must be labeled as such;
+isolated model roles do not create human gold. Candidate coverage, link validity,
+factual answers, supporting evidence, indeterminate/abstain behavior, and cost
+must be reported separately from objective gaps. Natural-history resampling and
+uncertainty estimates should use independent histories rather than treating
+correlated questions as independent samples.\claim{C12}
+
+The comparison must include contextual extraction, independent-reading plus
+exact conditional links, coordinate ascent, restarted inference, and the exact
+reference where feasible. Model sizes, prompts, objectives, and score scales
+are separate ablations. Record every model call, token budget, failure, wall
+time, and measured memory. If nontrivial coupling survives source adjudication
+and strong contextual/restarted baselines, a scalable algorithm should target
+that measured structure. If it does not, the paper direction must narrow to a
+supported representation or uncertainty question after a fresh novelty audit.
+A positive outcome is not guaranteed.\claim{C12}
+
+\section{Related work and the remaining empirical question}
+\label{sec:relatedwork}
+\paragraph{Temporal memory and evolving evidence.}
+Source-grounded temporal graph memory, separated clocks, and typed updates have
+close precedents. SodaMem represents fact events with evidence spans, modality,
+status, and multiple temporal fields~\cite{wan2026sodamem}. Zep separates
+transaction and fact-validity times while resolving entities and updating
+contradictory facts~\cite{rasmussen2025zep}. Temporal Semantic Memory separates
+semantic occurrence from dialogue time and maintains durative
+facts~\cite{su2026temporal}. A-TMA preserves states and audits suspicious
+same-slot pairs through proposal, judgment, and commit
+stages~\cite{shi2026atma}. These overlaps make provenance, multiple clocks,
+and state-preserving ingestion insufficient novelty claims. The listed arXiv
+works are cited as preprints; no external reported result is reproduced here.
+
+TG-RAG studies temporal graph updates and evaluation over an incrementally
+enlarged corpus~\cite{han2025tgrag}. HoH evaluates evolving factual questions
+and interference from obsolete evidence using Wikipedia
+versions~\cite{ouyang-etal-2025-hoh}. A controlled document stream or a benchmark
+of changing facts is therefore not a new contribution by itself. Our proposed
+evaluation must make its additional distinctions explicit: correcting an
+erroneous assertion versus changing a previously valid state, announced versus
+observed outcomes, and uncertainty about interpretations and update targets.
+Whether those distinctions yield useful new evidence remains untested.
+
+\paragraph{Joint constrained prediction.}
+Han et al. jointly predict event labels and temporal relations using shared
+representations and constrained structured prediction, allowing relation
+evidence to revise an event decision~\cite{han-etal-2019-joint}. Ning et al.
+couple temporal and causal relations through joint constraints and integer
+linear programming~\cite{ning-etal-2018-joint}. These are direct precedents for
+jointly choosing local labels and relations under an additive score. Their
+different application does not establish an expressive limitation. Our proposed
+source-claim alternatives, correction-dependent activation, and uncertain
+intervals require a formal comparison and a measured benefit over a
+straightforward constrained-prediction adaptation.
+
+The narrow working question is whether correction-dependent reconstruction
+benefits from retaining and revisiting competing interpretations once their
+support and temporal consequences interact. A fair experiment must compare
+strong full-context extraction, source-based verification, temporal-memory
+update auditing, and standard constrained inference with matched evidence.
+If correction semantics help while all solvers select the same readings, the
+finding concerns representation or update policy rather than joint search.
+Neither a new task nor a new algorithm is established by this draft.\claim{C14}
+
+\section{Limitations and literature work still required}
+\label{sec:limitations}
+The implementation uses connected intervals at day resolution, claim-level
+modality, single-valued qualified keys, one primary outgoing link per mention,
+and small exhaustive components. It lacks endpoint-specific modality,
+alternative-assignment uncertainty, broad correction actions, authenticated
+historical availability, and a scalable solver. Exact quotes and hashes verify
+integrity rather than entailment. Pretraining exposure and undeclared context
+cannot be ruled out by an isolated request. Existing development data do not
+establish natural candidate recall, factual accuracy, or generalization.
+\claim{C13}
+
+The targeted review above is not exhaustive. Remaining literature gaps include
+joint entity resolution and event coreference, modern temporal relation
+extraction, probabilistic temporal databases, assumption-based truth maintenance,
+belief revision, temporal knowledge-base population, and uncertainty-aware
+structured prediction. Later versions and released code of the cited systems
+also require inspection before a formal novelty claim. The comparison must
+align task assumptions, supervision, evidence access, and evaluation rather
+than infer a gap from different terminology or omitted search results.
+\todo{verified primary sources and closest-method comparison for these remaining gaps}
+Classical closure, exhaustive search, withdrawal semantics, and reproducible
+caching alone do not establish an algorithmic contribution. The intended ACL
+2027 target is a research objective, not evidence of novelty or acceptance.
+\claim{C14}
+
+\bibliographystyle{plain}
+\bibliography{paper/references_v07}
+
+\end{document}

@@ -1,0 +1,460 @@
+{
+  "schema_version": "correction_expansion_screen_register_v0.11",
+  "recorded_date_utc": "2026-10-03",
+  "scope": "Metadata aggregation of bounded discovery, not source adjudication or model evaluation.",
+  "input_bindings": {
+    "protocol": {
+      "path": "data/correction_gate_v11/expansion_protocol.json",
+      "sha256": "de8469844bde89b97622c24778d392a66a7a2762f01536ee246515784abadab9"
+    },
+    "parent_route": {
+      "path": "data/provenance/route_decision_v10.json",
+      "sha256": "8dbb9b2af88822d312381d6ee33fd5392eb349ceff162f2f84198172e6665f43"
+    },
+    "v10_screen_register": {
+      "path": "data/correction_gate_v10/screen_register.json",
+      "sha256": "b73245a1750e53aab2a0c411d8974d656b891800dce3eb23cbc93e9e055dac34"
+    },
+    "discoveries": {
+      "corporate": {
+        "path": "data/correction_gate_v11/discovery_corporate.json",
+        "sha256": "f8d6c040681040bac39090980b72a0acbf3001ded3a2cb83f8e53d116fafa782"
+      },
+      "science": {
+        "path": "data/correction_gate_v11/discovery_science.json",
+        "sha256": "2115b29eba2fc5c1abe3ae2e549ec8fe505d17fc5f46c4194e9a0cfcc6a17b01"
+      },
+      "technical": {
+        "path": "data/correction_gate_v11/discovery_technical.json",
+        "sha256": "08fe4745210a5f742c58b65eb24f11b4341d6736bfa92b7d882ae65f94abc94b"
+      }
+    }
+  },
+  "protocol_budget_snapshot": {
+    "queries_per_domain": 3,
+    "new_histories_per_domain": 2,
+    "new_histories_total": 6,
+    "authored_documents_per_history": 4
+  },
+  "protocol_budget_sha256": "062071e8102286298f14e34f67cedce960fbb6f8e710c43c99022bb81c015da7",
+  "per_domain_budgets": {
+    "corporate": {
+      "queries_used": 3,
+      "queries_limit": 3,
+      "histories_inspected": 2,
+      "histories_limit": 2,
+      "document_targets_by_history": {
+        "amex_2017_report_link": 2,
+        "lee_q4_release": 2
+      },
+      "document_targets_limit_per_history": 4
+    },
+    "science": {
+      "queries_used": 3,
+      "queries_limit": 3,
+      "histories_inspected": 2,
+      "histories_limit": 2,
+      "document_targets_by_history": {
+        "jama_opioid_marketing": 2,
+        "grace_root_zone_storage": 4
+      },
+      "document_targets_limit_per_history": 4
+    },
+    "technical": {
+      "queries_used": 3,
+      "queries_limit": 3,
+      "histories_inspected": 2,
+      "histories_limit": 2,
+      "document_targets_by_history": {
+        "pbl_ipcc_netherlands_2010": 4,
+        "curl_cve_2020_19909": 4
+      },
+      "document_targets_limit_per_history": 4
+    }
+  },
+  "per_domain_budget_sha256": {
+    "corporate": "46e7caafd808d6b9188b7e1b38c95f9503af3b343c166ac451484b99ff871aaf",
+    "science": "663129f6b3932b9b93e6ed74ed1ae5f7825ac75b39dab4775247fc59434f03ec",
+    "technical": "76ba1f624fd5217e6f7b65fde58c367e07383929e5128205407d9e75b5fb4f2e"
+  },
+  "queries_executed": 9,
+  "candidate_histories_screened": 6,
+  "full_prefix_admitted": 0,
+  "core_admitted": 0,
+  "target_is_not_quota": true,
+  "failure_interpretation": "Access failures leave source eligibility unresolved. They do not establish substantive ineligibility, rarity of suitable histories, empirical method failure, or solver usefulness.",
+  "claim_guardrails": {
+    "access_failure_implies_substantive_ineligibility": false,
+    "screen_shortfall_implies_population_rarity": false,
+    "discovery_implies_method_gain": false,
+    "current_document_diagnostic_is_paired_history": false,
+    "current_document_diagnostic_is_core_admission": false
+  },
+  "histories": [
+    {
+      "id": "amex_2017_report_link",
+      "domain": "corporate",
+      "discovery_file": "data/correction_gate_v11/discovery_corporate.json",
+      "discovery_sha256": "f8d6c040681040bac39090980b72a0acbf3001ded3a2cb83f8e53d116fafa782",
+      "discovery_record_sha256": "46518026697a641204d98e42e89211f9fb91e5cf9f7a79ec1b2355e4910397bf",
+      "provisional_discovery_stratum": "discovery_only",
+      "full_prefix_admitted": false,
+      "core_admitted": false,
+      "reason": "Only a hyperlink correction was identified in the inspected secondary syndication; primary origin failed. No qualifying factual-premise correction established.",
+      "current_document_diagnostic_candidate": false,
+      "discovery_record": {
+        "id": "amex_2017_report_link",
+        "authority_claimed_by_syndication": "American Express OPEN",
+        "title": "Correcting and Replacing Number of Women-Owned Businesses Growing 2.5 Times Faster Than National Average",
+        "admitted": false,
+        "provisional_stratum": "discovery_only",
+        "earlier_actual_version_captured": false,
+        "primary_origin_accessible": false,
+        "observed_correction": "Syndicated correction notice replaces the hyperlink immediately before the methodology section with the intended 2017 report PDF URL.",
+        "original_erroneous_factual_assertion": null,
+        "downstream_source_assertion_with_essential_dependency": null,
+        "independent_retention_control": null,
+        "downstream_directly_corrected_in_source": null,
+        "alternative_support": "Not adjudicated; no eligible factual premise correction established.",
+        "representation_fit": "Hyperlink repair is not a whole factual assertion replacement in the current task.",
+        "exclusion_reasons": [
+          "Only an administrative hyperlink correction is identified in the inspected syndication.",
+          "Linked primary-origin release could not be retrieved.",
+          "No qualifying erroneous factual premise or essential dependent conclusion established."
+        ],
+        "source_urls": [
+          "https://www.marketscreener.com/quote/stock/AMERICAN-EXPRESS-COMPANY-4814/news/American-Express-CORRECTING-and-REPLACING-Number-of-Women-Owned-Businesses-Growing-2-5-Times-Faste-25465892/",
+          "https://www.businesswire.com/news/home/20171108005232/en/"
+        ],
+        "limits": "The secondary lead is sufficient to stop this lead search, not to certify primary-source truth or supply evaluation labels. No reported numerical business statistics were extracted into claims."
+      }
+    },
+    {
+      "id": "lee_q4_release",
+      "domain": "corporate",
+      "discovery_file": "data/correction_gate_v11/discovery_corporate.json",
+      "discovery_sha256": "f8d6c040681040bac39090980b72a0acbf3001ded3a2cb83f8e53d116fafa782",
+      "discovery_record_sha256": "6451128fe1ff6b9b09aaa8434b8c5f00fcde9c6afa0b837f844c126e313dfe4d",
+      "provisional_discovery_stratum": "discovery_only",
+      "full_prefix_admitted": false,
+      "core_admitted": false,
+      "reason": "Primary representations could not be retrieved. Correction semantics, dependencies and controls remain unknown; access failure is not substantive ineligibility.",
+      "current_document_diagnostic_candidate": false,
+      "discovery_record": {
+        "id": "lee_q4_release",
+        "authority": "Lee Enterprises investor-relations site",
+        "search_title": "CORRECTING and REPLACING Lee Enterprises Reports Results for Fourth Fiscal Quarter",
+        "admitted": false,
+        "provisional_stratum": "discovery_only",
+        "earlier_actual_version_captured": false,
+        "primary_origin_accessible": false,
+        "observed_correction": null,
+        "original_erroneous_factual_assertion": null,
+        "downstream_source_assertion_with_essential_dependency": null,
+        "independent_retention_control": null,
+        "downstream_directly_corrected_in_source": null,
+        "alternative_support": "Unknown because full source retrieval failed.",
+        "representation_fit": "Unknown; correction title and financial-table snippet do not establish eligible semantics.",
+        "exclusion_reasons": [
+          "Issuer PDF and HTML representation unavailable through the web tool.",
+          "Correction target, dependency, control, and publication chronology could not be inspected."
+        ],
+        "source_urls": [
+          "https://investors.lee.net/node/8526/pdf",
+          "https://investors.lee.net/node/8526"
+        ],
+        "limits": "Do not infer source content, numerical values, source date, or failure of the method from this transport failure."
+      }
+    },
+    {
+      "id": "jama_opioid_marketing",
+      "domain": "science",
+      "discovery_file": "data/correction_gate_v11/discovery_science.json",
+      "discovery_sha256": "2115b29eba2fc5c1abe3ae2e549ec8fe505d17fc5f46c4194e9a0cfcc6a17b01",
+      "discovery_record_sha256": "bb25b5cc0e984b5be9102deb4cf93a72d4f595aed10553f9d5a211cfd91b2c4a",
+      "provisional_discovery_stratum": "current_document_only",
+      "full_prefix_admitted": false,
+      "core_admitted": false,
+      "reason": "Promising current-document inconsistency only. No earlier exact version, frozen source capture, or separate same-authority/core admission. Keep diagnostic separate from a paired-history result.",
+      "current_document_diagnostic_candidate": true,
+      "discovery_record": {
+        "history_id": "jama_opioid_marketing",
+        "title": "Opioid marketing coefficient swap and a retained ranking sentence",
+        "provisional_stratum": "current_document_only",
+        "discovery_assessment": "Promising source-present residual inconsistency, requiring independent source and authority review; not admitted as a paired correction history.",
+        "sources": [
+          {
+            "source_id": "jama_correction_2019",
+            "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2728611",
+            "status": "Accessible full correction body via web reader",
+            "refs": [
+              "turn203search0",
+              "turn204view0"
+            ],
+            "locators": "Lines 73-87, especially 80-82",
+            "reported_publication_date": "2019-03-22",
+            "authority_note": "Official JAMA Network Open notice, with no author byline shown. Do not silently relabel as an author-signed statement.",
+            "observation": "Notice says prescribing coefficients and confidence intervals for payment counts and recipient counts were switched. Correct assignments are 11.08 and 13.59 respectively. It retains conclusions and also corrects covariate columns and supplementary tables."
+          },
+          {
+            "source_id": "jama_article_current_corrected",
+            "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720914",
+            "also_requested_url": "https://jamanetwork.com/article.aspx?doi=10.1001%2Fjamanetworkopen.2018.6007",
+            "status": "Accessible current corrected HTML; not a historical original",
+            "refs": [
+              "turn206view1",
+              "turn206view2",
+              "turn208view0",
+              "turn208view1",
+              "turn208view2",
+              "turn213view0"
+            ],
+            "locators": "Results lines 335-380; correction statement line 435",
+            "reported_publication_date": "2019-01-18",
+            "reported_correction_date": "2019-03-22",
+            "authority_note": "Hadland, Rivera-Aguirre, Marshall and Cerda; current article explicitly acknowledges the journal correction.",
+            "observation": "Current prescribing Results still ranks payment counts highest, beside corrected Table 3 point estimates: payments 11.08, recipients 13.59, dollars 1.82. The paper states effects per 1-SD increment. Separate mortality Table 2 retains payments 1.18, recipients 1.12, dollars 1.09.",
+            "table_image_representation": {
+              "action": "Clicked article link 53 (Table 3 View Large)",
+              "ref": "turn213view1",
+              "observed_url_base": "https://cdn.jamanetwork.com/ama/content_public/journal/jamanetworkopen/937734/zoi180253t3.png",
+              "note": "Click resolved to this asset with public expiring query parameters. Web returned an image representation; no local image capture or visual QA claimed."
+            }
+          }
+        ],
+        "proposed_dependency_for_review": "The paper's explicit prescribing-effect ordering is a comparison of its reported point estimates. The corrected numeric assignment conflicts with the retained ordering. This is a numerical comparison inference, not an author-invented threshold or a significance claim.",
+        "direct_correction_of_dependent": "No specific replacement of the ranking sentence found in the complete short notice. Its broad assurance that conclusions persist must remain visible; do not delete it to favor propagation.",
+        "retention_control_candidate": "The mortality ordering uses a different outcome and unchanged Table 2 estimates; never transfer prescribing correction to that scope.",
+        "alternative_support": "Broad association conclusions have multiple marketing measures, but no OR support annotation is supplied here. A broad unaffected conclusion does not validate the narrower ranking.",
+        "limitations": [
+          "No pre-correction article version obtained; the notice's swap description must not become a fabricated historical document.",
+          "Unsigned journal notice versus named article authors requires explicit same-authority adjudication under the current core.",
+          "The ranking sentence introduces an analogy to mortality, but explicitly names prescribing as its outcome; independently verify scope.",
+          "Corrected point-estimate ordering is not evidence that the estimates differ significantly. No statistical or causal claim is inferred.",
+          "Whole assertion replacement could target each scoped estimate with its uncertainty; do not silently change scalar fields or ignore the second swapped estimate.",
+          "Current core can withdraw unsupported claims but cannot independently recompute a replacement ranking. Source reading, arithmetic and support withdrawal must be evaluated separately.",
+          "Exact source bytes, earliest availability, frozen extraction and table visual QA remain absent."
+        ]
+      }
+    },
+    {
+      "id": "grace_root_zone_storage",
+      "domain": "science",
+      "discovery_file": "data/correction_gate_v11/discovery_science.json",
+      "discovery_sha256": "2115b29eba2fc5c1abe3ae2e549ec8fe505d17fc5f46c4194e9a0cfcc6a17b01",
+      "discovery_record_sha256": "629e8f8d1f466cc339348b5feac39567e36b3d7a0d899a7ca0e15aca35574b53",
+      "provisional_discovery_stratum": "discovery_only",
+      "full_prefix_admitted": false,
+      "core_admitted": false,
+      "reason": "Removal of analysis and changed validation evidence/scope do not instantiate fixed-scope whole-assertion replacement; original PDF also unavailable.",
+      "current_document_diagnostic_candidate": false,
+      "discovery_record": {
+        "history_id": "grace_root_zone_storage",
+        "title": "Root-zone storage revision removes mistaken analysis and adds independent validation",
+        "provisional_stratum": "discovery_only",
+        "discovery_assessment": "Exclude from simple whole-assertion replacement positive: analysis removal and new validation evidence, with changed scope and no recovered replacement estimate.",
+        "sources": [
+          {
+            "source_id": "grace_author_response",
+            "url": "https://egusphere.copernicus.org/preprints/2024/egusphere-2024-1939/egusphere-2024-1939-AR1.pdf",
+            "status": "Accessible 25-page PDF through web reader",
+            "refs": [
+              "turn203search25",
+              "turn204view1",
+              "turn206view3",
+              "turn206view4",
+              "turn206view5",
+              "turn206view6"
+            ],
+            "locators": "Page 1 lines 7-44; page 9 lines 309-321; page 16 lines 556-569",
+            "authority_note": "Meng Zhao signs on behalf of coauthors. Reviewer quotations in the same PDF are separate voices, not author assertions.",
+            "observation": "Authors identify misinterpretation of Miguez-Macho and Fan data and remove the Sr-GPP analysis. They replace circular GRACE-based validation with GLEAM ET, retaining broad conclusions. This adds new support rather than proving an old independent branch survived."
+          },
+          {
+            "source_id": "grace_preprint_landing",
+            "url": "https://egusphere.copernicus.org/preprints/2024/egusphere-2024-1939/",
+            "status": "Accessible landing page, abstract and discussion",
+            "refs": [
+              "turn206view0",
+              "turn208view3",
+              "turn208view4",
+              "turn216view3",
+              "turn216view4"
+            ],
+            "locators": "Abstract lines 95-105; final-publication metadata 125-142",
+            "reported_discussion_start": "2024-07-16",
+            "observation": "Preprint abstract ties hydrological-estimate robustness to vegetation-productivity correlation; landing page links the final paper and original preprint. Reviewer discussion is not an author correction by itself."
+          },
+          {
+            "source_id": "grace_original_preprint_pdf",
+            "action": "Clicked preprint link 15 on landing page",
+            "status": "Internal Error; full original not obtained",
+            "ref": "turn213view2",
+            "url_status": "Tool error exposed no resolved URL; preserve observed link identity rather than inventing a successful PDF retrieval.",
+            "publisher_link_size": "19316 KB"
+          },
+          {
+            "source_id": "grace_final_article",
+            "url": "https://hess.copernicus.org/articles/29/2293/2025/",
+            "status": "Accessible final HTML",
+            "refs": [
+              "turn213view3",
+              "turn216view0",
+              "turn216view1",
+              "turn216view2"
+            ],
+            "locators": "Section 2.4 lines 297-306; validation results 326-333",
+            "reported_publication_date": "2025-05-19",
+            "observation": "Final methods state GLEAM did not enter any compared storage calculation. Validation concerns standardized ET anomalies, with strongest relative improvement during droughts. This is not the same validation quantity and dataset as the removed analysis."
+          }
+        ],
+        "direct_correction_of_dependent": "Authors explicitly remove the related analysis and discussion, so withholding that direct action would manufacture propagation value.",
+        "alternative_support": "New GLEAM validation may support a related broad conclusion, but is new evidence rather than a pre-existing independent alternative. No AND edge or OR branch adjudicated.",
+        "limitations": [
+          "No explicit corrected numerical replacement for the mistaken Sr estimate recovered.",
+          "Removal requires retraction semantics, beyond current whole-assertion replace-only core.",
+          "Changed validation dataset, metric and scope prevent silent fixed-claim alignment.",
+          "Original full PDF retrieval failed. Browser-visible excerpts are not exact locally captured source bytes.",
+          "The original PDF's stated size exceeds the root's prior 8 MiB capture limit; no local transport attempted or cap changed."
+        ]
+      }
+    },
+    {
+      "id": "pbl_ipcc_netherlands_2010",
+      "domain": "technical",
+      "discovery_file": "data/correction_gate_v11/discovery_technical.json",
+      "discovery_sha256": "08fe4745210a5f742c58b65eb24f11b4341d6736bfa92b7d882ae65f94abc94b",
+      "discovery_record_sha256": "602c948b71ff69f6a1182830a3851bfbfe09a4a06b19183e0fd6c056dbf33179",
+      "provisional_discovery_stratum": "discovery_only",
+      "full_prefix_admitted": false,
+      "core_admitted": false,
+      "reason": "No primary document body recovered; candidate URLs are unverified. Scope and authority questions remain unresolved. Access failure does not establish semantic ineligibility.",
+      "current_document_diagnostic_candidate": false,
+      "discovery_record": {
+        "id": "pbl_ipcc_netherlands_2010",
+        "lead_origin": "Relevant secondary result from the first frozen query; public-record domain, with environmental-science overlap disclosed.",
+        "documents": [
+          {
+            "url": "https://www.pbl.nl/en/news/2010/correction-wording-flood-risks-for-the-netherlands-in-ipcc-report",
+            "url_basis": "Candidate publisher URL inferred from the observed correction title after failed outbound navigation; not a verified canonical address.",
+            "role": "Attempted PBL correction",
+            "status": "not accessible via web reader",
+            "source_ref": "turn217view0"
+          },
+          {
+            "url": "https://www.ipcc.ch/publications_and_data/ar4/wg2/en/ch12s12-2-3.html",
+            "url_basis": "Known legacy chapter-section URL pattern for the observed report section; canonical status unverified.",
+            "role": "Attempted original IPCC report section",
+            "status": "not accessible via web reader",
+            "source_ref": "turn217view1"
+          },
+          {
+            "url": "https://www.ipcc.ch/site/assets/uploads/2018/02/ar4-wg2-chapter12-1.pdf",
+            "url_basis": "Known publisher PDF naming pattern; source contents not retrieved.",
+            "role": "Attempted original report chapter PDF",
+            "status": "403 Forbidden",
+            "source_ref": "turn221view0"
+          },
+          {
+            "url": "https://www.ipcc.ch/site/assets/uploads/2018/05/ar4-wg2-errata-1.pdf",
+            "url_basis": "Candidate publisher errata URL; existence and canonical status unverified.",
+            "role": "Attempted IPCC errata",
+            "status": "not accessible via web reader",
+            "source_ref": "turn221view1"
+          }
+        ],
+        "lead_only_hypothesis": "The secondary account describes a 55% to 26% correction of below-sea-level territory, with another 29% susceptible to river flooding. The general flood-susceptibility conclusion may therefore retain support. These figures are leads only here, not primary-verified labels.",
+        "explicit_old_assertion_verified": false,
+        "same_authority_replacement_verified": false,
+        "essential_dependency_verified": false,
+        "independent_support_verified": false,
+        "direct_correction_of_dependent": "unknown; primary correction not retrieved",
+        "representation_limits": [
+          "IPCC assertion and PBL source authority must be distinguished; no single-authority flattening.",
+          "The retained flood-risk conclusion could require alternative or revised support. Do not encode the old numerical premise as an essential AND edge without source review.",
+          "Below sea level and vulnerable to river flooding are distinct predicates and scopes."
+        ],
+        "stratum": "discovery_only",
+        "exclusion_reason": "No primary document body recovered. No exact source capture, original/correction pair, dependency, or retention control has been established."
+      }
+    },
+    {
+      "id": "curl_cve_2020_19909",
+      "domain": "technical",
+      "discovery_file": "data/correction_gate_v11/discovery_technical.json",
+      "discovery_sha256": "08fe4745210a5f742c58b65eb24f11b4341d6736bfa92b7d882ae65f94abc94b",
+      "discovery_record_sha256": "d55981c311516aa9b3334a42d4018013f1c7da169a9269382515cf9314d38f20",
+      "provisional_discovery_stratum": "discovery_only",
+      "full_prefix_admitted": false,
+      "core_admitted": false,
+      "reason": "Cross-authority disagreement cannot be same-authority correction. Quoted NVD score is already directly corrected; original NVD body and independent downstream dependency are absent.",
+      "current_document_diagnostic_candidate": false,
+      "discovery_record": {
+        "id": "curl_cve_2020_19909",
+        "lead_origin": "Known exact project advisory URL, opened after the frozen curl query returned no useful source; not an additional search.",
+        "documents": [
+          {
+            "url": "https://curl.se/docs/CVE-2020-19909.html",
+            "role": "Project dismissal; quotes original description and MITRE refusal",
+            "status": "accessible through web reader",
+            "source_refs": [
+              "turn211view1",
+              "turn212view0"
+            ]
+          },
+          {
+            "url": "https://daniel.haxx.se/blog/2023/08/26/cve-2020-19909-is-everything-that-is-wrong-with-cves/",
+            "role": "Project maintainer's first-person account",
+            "status": "accessible through web reader; reader comments are not attributed to maintainer",
+            "source_ref": "turn214view0"
+          },
+          {
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-19909",
+            "resolved_url": "https://nvd.nist.gov/vuln/detail/cve-2020-19909",
+            "role": "Attempted authoritative NVD record",
+            "status": "reader returned zero lines; no usable body",
+            "source_ref": "turn215view0"
+          },
+          {
+            "url": "https://daniel.haxx.se/blog/2023/09/05/bogus-cve-follow-ups/",
+            "role": "Maintainer's follow-up, including attributed NVD correspondence",
+            "status": "accessible through web reader; comments excluded from asserting-authority evidence",
+            "source_ref": "turn215view1"
+          }
+        ],
+        "assertion_and_authority": "An anonymous CVE submission classified an integer overflow as a vulnerability. Curl maintainers disputed that classification, while MITRE retained the disputed record. This is disagreement across authorities, not a curl correction of its own earlier claim.",
+        "candidate_same_authority_change": "The maintainer's follow-up quotes NVD revising its vector and score from 9.8 to 3.3. Both the premises and score are expressly amended. The original NVD body and its historical version were not recovered.",
+        "source_present_downstream_conclusion": "The initial severity assessment was repeated by downstream services, according to the maintainer. No concrete downstream document and essential support edge were captured within this screen.",
+        "direct_correction_of_dependent": "yes for the quoted NVD numerical score; competent direct correction includes that score",
+        "retention_control": "The project recognizes an actual ordinary integer-overflow bug and a 2019 fix while disputing security significance. That distinction is useful but does not establish a independently supported downstream conclusion from the original asserting authority.",
+        "representation_limits": [
+          "Disputed cross-authority vulnerability classification cannot be encoded as same-authority CORRECTS.",
+          "The historical patch changed software; it is not a factual assertion replacement.",
+          "The quoted NVD score change is already direct and gives no demonstrated incremental dependency effect.",
+          "The maintainer's page includes third-party comments, which must remain separately attributed."
+        ],
+        "stratum": "discovery_only",
+        "exclusion_reason": "No source-present downstream conclusion outside the direct correction targets with an established essential support edge; NVD primary body and a qualifying unaffected control were not recovered."
+      }
+    }
+  ],
+  "current_document_diagnostics": [
+    {
+      "history_id": "jama_opioid_marketing",
+      "status": "Separate current-document diagnostic candidate; no admission certified by this register.",
+      "paired_history": false,
+      "core_admitted": false,
+      "discovery_only_in_this_register": true,
+      "interpretation": "Corrected prescribing point estimates appear inconsistent with a retained ranking sentence in a current article. Separate source review is required. This does not supply historical paired versions, a same-authority adjudication, a full-source benchmark, or an algorithmic gain.",
+      "preserved_limits": [
+        "Current corrected article cannot be used as the historical original.",
+        "Unsigned journal notice and named authors cannot be flattened into one asserting authority without review.",
+        "Both swapped coefficient assignments and the notice assurance that conclusions persist must remain visible.",
+        "Point-estimate order does not establish a statistically significant difference or a causal effect.",
+        "A separate outcome is a possible retention control; do not transfer the correction across scopes.",
+        "Exact source bytes, historical availability, extraction freeze, and table visual QA are absent from discovery."
+      ]
+    }
+  ],
+  "metadata_verification_limit": "Hashes and consistency checks bind these records; they do not independently verify primary-source truth, dependency semantics, access status, or empirical results."
+}

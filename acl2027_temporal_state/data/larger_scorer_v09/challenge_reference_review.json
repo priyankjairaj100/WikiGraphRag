@@ -1,0 +1,53 @@
+{
+  "schema_version": "source_challenge_review_v0.9",
+  "reviewed_at_utc": "2026-10-03T03:34:48.770048+00:00",
+  "reviewer": "Separate root source review after isolated designer; unversioned conversational model, not independent human gold.",
+  "scorer_distributions_seen": 0,
+  "raw_design_sha256": "d23bc38e09e4207369b4a30a9cb686578a0a33468dacf4152f54e77644ffa669",
+  "scorer_request_sha256": "cbdb59b4e9662b0c83340aedc16d367ea5385b3203283a6b1721e28c87101bd4",
+  "decision": "Accept all four statements and labels without changes.",
+  "basis": [
+    "Disney article says Iger assumes executive chairman role; non-executive is a contradicted role variant. February 2020 tied to explicit article dateline and present-tense assumption.",
+    "Intel explicitly gives February 15, 2021 effective date; January 13 is the announcement dateline. Statement wording remains announcement-modality, not actual event assertion."
+  ],
+  "structural_checks": "All request bindings and six evidence spans match exactly. Scorer sees neutral sequential item IDs, statements and full source text, with no labels/rationales.",
+  "items": [
+    {
+      "item_id": "v09_item_01",
+      "designer_item_id": "v09_disney_role_yes",
+      "history_id": "leadership_disney_2020_2022",
+      "statement": "In Disney's February 2020 leadership change, Bob Iger became executive chairman.",
+      "expected_label": "Yes",
+      "contrast_pair_id": "v09_disney_chairman_role"
+    },
+    {
+      "item_id": "v09_item_02",
+      "designer_item_id": "v09_disney_role_no",
+      "history_id": "leadership_disney_2020_2022",
+      "statement": "In Disney's February 2020 leadership change, Bob Iger became non-executive chairman.",
+      "expected_label": "No",
+      "contrast_pair_id": "v09_disney_chairman_role"
+    },
+    {
+      "item_id": "v09_item_03",
+      "designer_item_id": "v09_intel_effective_date_yes",
+      "history_id": "leadership_intel_2021_2024",
+      "statement": "Intel announced Pat Gelsinger would become CEO effective February 15, 2021.",
+      "expected_label": "Yes",
+      "contrast_pair_id": "v09_intel_ceo_effective_date"
+    },
+    {
+      "item_id": "v09_item_04",
+      "designer_item_id": "v09_intel_effective_date_no",
+      "history_id": "leadership_intel_2021_2024",
+      "statement": "Intel announced Pat Gelsinger would become CEO effective January 13, 2021.",
+      "expected_label": "No",
+      "contrast_pair_id": "v09_intel_ceo_effective_date"
+    }
+  ],
+  "limitations": [
+    "Balanced authored contrast set; no natural candidate accuracy or confidence interval.",
+    "Two histories only, shared model-assisted design/review provenance.",
+    "Not matched to old Nike items, no size-only causal interpretation."
+  ]
+}

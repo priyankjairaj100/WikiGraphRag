@@ -1,0 +1,27 @@
+{
+  "schema_version": "scorer_controls_protocol_v0.8",
+  "status": "post_v07_diagnostic_frozen_before_v08_execution",
+  "selection_rule": "First item of each kind in the immutable v0.7 primary request, preserving original item order; chosen without using item-level scores.",
+  "selected_items": [
+    {"item_id": "s0001", "kind": "link", "condition_order": ["yes_no", "no_yes"]},
+    {"item_id": "s0003", "kind": "unresolved", "condition_order": ["no_yes", "yes_no"]},
+    {"item_id": "s0004", "kind": "reading", "condition_order": ["yes_no", "no_yes"]},
+    {"item_id": "s0006", "kind": "no_link", "condition_order": ["no_yes", "yes_no"]}
+  ],
+  "process_policy": "Start a fresh single-slot llama-server for every item/condition pair; cold completion is the first completion in that process and uses cache_prompt=false; warm completion immediately repeats the identical full token array with cache_prompt=true; then terminate the owned process.",
+  "cold_accounting": "Require timings.cache_n=0, timings.prompt_n=input_tokens, tokens_evaluated=input_tokens, tokens_predicted=1, and truncated=false.",
+  "warm_accounting": "Require timings.cache_n>0, timings.cache_n+timings.prompt_n=input_tokens, tokens_evaluated=input_tokens, tokens_predicted=1, and truncated=false.",
+  "model_distributions": 16,
+  "fresh_processes": 8,
+  "context_tokens": 8192,
+  "threads": 4,
+  "address_space_limit_bytes": 2147483648,
+  "cpu_seconds_per_process": 2250,
+  "cpu_seconds_sum_of_process_limits": 18000,
+  "per_request_timeout_seconds": 600,
+  "score_definition": "Natural log P(Yes) minus natural log P(No) from the same unconstrained full-vocabulary next-token distribution; preserve both log probabilities and their total literal-label mass.",
+  "numerical_comparison_absolute_tolerance": 0.000001,
+  "analysis": "Report every cold/warm score and per-label difference, cold no_yes-minus-yes_no score differences, warm no_yes-minus-yes_no differences, and interaction of these differences. No averaging, prompt selection, calibration, decoder replacement, significance test, or accuracy estimate.",
+  "failure_policy": "Retain every request/response and failure; abort on contract violations, with no retry, item replacement or score substitution.",
+  "claim_limits": "Four items from one previously inspected development history, same tiny quantized model. Cold/cold comparison controls prompt-cache carryover but does not establish general population behavior, accuracy, model-independent effects or a novel method. Cold/warm differences are conditional on this CPU runtime, quantized KV cache and batch schedule. First-item selection is deterministic but this diagnostic was designed after observing v0.7 aggregate instability."
+}

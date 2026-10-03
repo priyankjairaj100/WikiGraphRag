@@ -1,0 +1,492 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "source_annotation_v0.8",
+  "title": "Source-only controlled-prefix annotation, not gold or scored candidates",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "source_annotation_v0.8"
+    },
+    "history_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+    },
+    "prefix_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+    },
+    "request_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "eligible_source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+      },
+      "minItems": 1
+    },
+    "annotation_kind": {
+      "const": "unversioned_model_source_only_not_gold"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relation": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*:[a-z][a-z0-9_]*$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "string"
+          },
+          "modality": {
+            "enum": [
+              "observed",
+              "planned",
+              "announcement",
+              "retrospective_report",
+              "unknown"
+            ]
+          },
+          "assertion_status": {
+            "enum": [
+              "asserted_by_source",
+              "quoted_as_error",
+              "reported_prior_statement",
+              "uncertain"
+            ]
+          },
+          "temporal_constraints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "time_role": {
+                  "enum": [
+                    "event_start",
+                    "event_end",
+                    "deadline",
+                    "event_occurrence",
+                    "unknown"
+                  ]
+                },
+                "lower": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "upper": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "precision": {
+                  "enum": [
+                    "day",
+                    "month",
+                    "year",
+                    "range",
+                    "relative",
+                    "unknown"
+                  ]
+                },
+                "interpretation": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "source_id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+                      },
+                      "start": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "end": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "quote": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "source_id",
+                      "start",
+                      "end",
+                      "quote"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "time_role",
+                "lower",
+                "upper",
+                "precision",
+                "interpretation",
+                "evidence"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+                },
+                "start": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "end": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "source_id",
+                "start",
+                "end",
+                "quote"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "claim_id",
+          "subject",
+          "relation",
+          "value",
+          "scope",
+          "modality",
+          "assertion_status",
+          "temporal_constraints",
+          "evidence",
+          "notes"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "correction_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+          },
+          "target_claim_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "target_description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "corrected_claim_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+          },
+          "authority_name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "authority_basis": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+                },
+                "start": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "end": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "source_id",
+                "start",
+                "end",
+                "quote"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "correction_id",
+          "target_claim_id",
+          "target_description",
+          "corrected_claim_id",
+          "authority_name",
+          "authority_basis",
+          "evidence"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "link_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+          },
+          "type": {
+            "enum": [
+              "supports",
+              "changes",
+              "corrects"
+            ]
+          },
+          "from_claim_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+          },
+          "to_claim_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+          },
+          "interpretation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+                },
+                "start": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "end": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "source_id",
+                "start",
+                "end",
+                "quote"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "link_id",
+          "type",
+          "from_claim_id",
+          "to_claim_id",
+          "interpretation",
+          "evidence"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+                },
+                "start": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "end": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "source_id",
+                "start",
+                "end",
+                "quote"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "field",
+          "description",
+          "evidence"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "representation_limits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"
+            },
+            "minItems": 0
+          },
+          "reason": {
+            "enum": [
+              "non_role_relation",
+              "nonexclusive_values",
+              "non_day_time",
+              "planned_vs_actual",
+              "quoted_error_not_world_fact",
+              "external_correction_target",
+              "unsupported_core_projection",
+              "other"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "claim_ids",
+          "reason",
+          "description"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "history_id",
+    "prefix_id",
+    "request_sha256",
+    "eligible_source_ids",
+    "annotation_kind",
+    "claims",
+    "corrections",
+    "links",
+    "unknowns",
+    "representation_limits"
+  ],
+  "additionalProperties": false
+}

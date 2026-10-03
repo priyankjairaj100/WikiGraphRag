@@ -1,0 +1,52 @@
+ACL 2027 research update — v0.11
+3 October 2026
+
+The new work delivers a source-support answering API, a completed local reader diagnostic, and a narrower decision about the paper. The reader failed the strict diagnostic in both evidence orders. That supplies a concrete development failure to investigate, but does not yet show that our proposed correction method improves answers. The full-source correction study remains unestablished.
+
+Implemented and checked
+
+The new support API answers an assertion-ID query with active support, withdrawn support, or unresolved. It re-materializes the existing correction core and rejects a supplied memory that disagrees with that core. It preserves the selected assertion's original dates, polarity, modality and unknown interval bounds. Structured evidence distinguishes assertion records, correction references, essential dependencies and authority provenance. Active support means survival under the supplied policy, not factual truth; withdrawal is not a new numerical answer. Natural-language routing, extraction, OR support, contested authority and numerical recomputation remain outside this adapter.
+
+Thirty lookups were executed on the two unchanged financial annotations from v0.10, across three policies. They return 22 active and 8 withdrawn statuses. Direct and dependency policies agree on all ten corresponding statuses because the dependent EPS assertions are themselves explicitly corrected. Both redundant withdrawal reasons are retained. An independent audit checks 124 evidence records and 190 evidence-span occurrences. This is annotation-conditioned integration, not model QA accuracy and not a matched comparison with the reader below.
+
+Source discovery and the usable diagnostic
+
+The frozen expansion screened six additional histories using nine queries, two histories and three queries per domain. All six are distinct from the prior v0.10 screen. Zero qualify as full-source/core correction admissions. Corporate leads include an administrative hyperlink repair and an inaccessible issuer release. Technical leads include unavailable primary evidence and a dispute across authorities; the quoted severity update also directly revises its downstream score. A scientific revision changes the analysis and adds validation evidence. These outcomes do not establish how rare suitable cases are; failed access is distinct from semantic exclusion.
+
+One scientific lead permits a deliberately narrower reading task. A current JAMA article retains a prescribing-effect rank sentence inconsistent with its displayed corrected point estimates. An independent source review verified the local inconsistency, but the actual historical original was not recovered, and publisher correction authority cannot silently be equated with article authorship. The example therefore does not execute the current correction core or count as a longitudinal benchmark case. The questions concern source-reported numbers, not clinical advice, causal effects or significance of differences.
+
+Four exact web-reader passages were frozen: methods, prescribing results, mortality results, and the correction notice. These are selected representations, not full publisher documents. Three questions ask for the prescribing numeric ordering, agreement between prose and corrected numbers, and the separate mortality ordering. A separate source-only model-assisted reference was frozen before prediction. It is not human gold. Selection followed discovery of the inconsistency; this is a development diagnostic, not a held-out benchmark.
+
+Executed local reader
+
+The pinned Qwen3-4B Q8_0 model read all four passages with the notice last, then first. Both prompts contained 3,327 native tokens and fit the unchanged 4,096-token context with the complete 384-token output reserve. Each completion ran in a fresh CPU process, used greedy decoding and zero cached prompt tokens, and ended normally at EOS without truncation. It returned 86 and 91 tokens. The successful attempt, including preflight and process setup, took 403.41 seconds.
+
+Both responses are parseable JSON but violate the frozen exposure-label vocabulary. The strict scorer records three failed questions in each condition and does not normalize labels, salvage individual fields or repair outputs. The unchanged generated texts are retained for inspection. The protocol's between-condition answer comparison remains unavailable because both responses fail schema validation. This is not a six-example independent sample or a population accuracy estimate. A small model failing on one selected example is not evidence that a strong matched reader fails, nor evidence that the proposed method wins.
+
+The initial attempt stopped before model launch because the default sandbox did not expose required cgroup memory counters. A read-only host check found them available. A separate pre-output amendment and new frozen collector changed only its two output paths and recorded host execution under the same model, request, parameters and memory limits. The failed attempt remains intact with zero launched processes and zero completions. This was a disclosed engineering retry after zero inference, not a hidden rerun after seeing an answer. No paid jobs or new model downloads were used.
+
+Verification and preservation
+
+All 410 unit tests pass, including 16 support-adapter tests, 8 native-runner tests and 9 evaluator tests. The first suite command lacked PYTHONPATH=src and failed to import one existing test module; the failure receipt remains, and the corrected command runs the entire suite without code or test changes. Discovery metadata verification passes 100 checks. Reader input verification passes 35 portable and 106 external checks, including independently recomputed source hashes and exact reconstruction of both requests. Support integration and native execution receive separate audits. Rescoring the stored responses exactly reproduces the retained result with no model call. Earlier canonical command-gate results are preserved rather than claimed as rerun.
+
+The prior 662-file manifest is checked, with changes allowed only to four current-state bookkeeping files. Previous code, data, results and manuscript sources remain byte-identical. The v0.11 paper addendum and claim ledger are development sources; no compiled PDF, submission-ready paper or acceptance claim is made. Exact external source strings, quote-bearing working annotations, full native prompts/token arrays and binaries are omitted from the distribution. Hashes identify the inputs but cannot reconstruct missing bytes or certify historical availability.
+
+Research decision
+
+The strongest defensible route remains scoped evidence revision and selective support retention, with an algorithmic contribution conditional on answer-level evidence. Stop adding solver features until a competent reader and direct-correction baseline leave a residual that dependency reasoning can resolve. The adapter removes an implementation obstacle, but it is not itself the novelty claim.
+
+The next bounded access pilot is specified in docs/route_decision_v11.txt and data/provenance/route_decision_v11.json. It attempts eight already identified representations across Plug Power, versioned OPERA, and current JAMA, with no new discovery queries. This is an access pilot, not eight histories or an experiment result. The original eight-history feasibility target is unchanged. Admit a genuinely nondirect downstream consequence, a competent direct-correction control, and a conclusion with independently supported retention before matched comparison. All explicit downstream direct corrections must remain available.
+
+If complete qualifying histories cannot be recovered within that pilot, explicitly stop expanding the longitudinal claim. A full-document inconsistency study is a possible alternative only with complete accessible inputs, independent source review and its own frozen design. The present selected-passage failure cannot silently become a temporal benchmark or justify algorithmic novelty.
+
+Sources for the current-document diagnostic
+https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720914
+https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2728611
+
+Reproduction
+PYTHONPATH=src python3 -m unittest discover -s tests -q
+python3 scripts/verify_discovery_v11.py
+python3 scripts/verify_reader_inputs_v11.py
+python3 scripts/evaluate_reader_v11.py --check
+python3 scripts/review_input_preservation_v11.py
+See docs/reproduce_v11.txt for full-input requirements and execution provenance.

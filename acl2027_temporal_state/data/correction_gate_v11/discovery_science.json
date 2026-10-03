@@ -1,0 +1,153 @@
+{
+  "schema_version": "correction_expansion_discovery_v0.11",
+  "domain": "science",
+  "protocol": "data/correction_gate_v11/expansion_protocol.json",
+  "protocol_sha256": "de8469844bde89b97622c24778d392a66a7a2762f01536ee246515784abadab9",
+  "status": "Discovery observations only; no frozen byte capture, independent admission, questions, model predictions or gain claims.",
+  "search_date_utc": "2026-10-03",
+  "budget": {
+    "queries_used": 3,
+    "queries_limit": 3,
+    "new_histories_inspected": 2,
+    "new_histories_limit": 2,
+    "authored_documents_limit_per_history": 4,
+    "documents_by_history": {"jama_opioid_marketing": 2, "grace_root_zone_storage": 4},
+    "counting_rule": "Article HTML and its table image are representations of one authored document. EGU landing/version/discussion page is conservatively a separate document; original PDF attempt counts although it failed. Find/open operations on the same document do not add documents."
+  },
+  "queries": [
+    {
+      "id": "science_q1",
+      "engine": "system2",
+      "query": "erratum \"conclusions remain unchanged\" \"independent\" calculation error",
+      "execution_batch": "turn203",
+      "result_note": "Batched with q2; tool does not assign individual results to individual queries.",
+      "selected_result_refs": ["turn203search0", "turn203search25"]
+    },
+    {
+      "id": "science_q2",
+      "engine": "system2",
+      "query": "\"correction\" \"independent evidence\" \"error\" scientific paper conclusions",
+      "execution_batch": "turn203",
+      "result_note": "Batched with q1. JAMA correction and EGU author response selected; other results remained unopened leads.",
+      "selected_result_refs": ["turn203search0", "turn203search25"]
+    },
+    {
+      "id": "science_q3",
+      "engine": "system1",
+      "query": "\"Author Correction\" \"independent\" \"unaffected\"",
+      "execution_batch": "turn204",
+      "result_note": "Coverage anomaly: results were dictionary definitions of unaffected, stroke/upper-extremity studies, market rules, music and software forum questions. No relevant correction lead. This is a search failure, not evidence that cases are absent.",
+      "result_refs": ["turn204search0", "turn204search1", "turn204search2", "turn204search3", "turn204search4", "turn204search5", "turn204search6", "turn204search7", "turn204search8"]
+    }
+  ],
+  "histories": [
+    {
+      "history_id": "jama_opioid_marketing",
+      "title": "Opioid marketing coefficient swap and a retained ranking sentence",
+      "provisional_stratum": "current_document_only",
+      "discovery_assessment": "Promising source-present residual inconsistency, requiring independent source and authority review; not admitted as a paired correction history.",
+      "sources": [
+        {
+          "source_id": "jama_correction_2019",
+          "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2728611",
+          "status": "Accessible full correction body via web reader",
+          "refs": ["turn203search0", "turn204view0"],
+          "locators": "Lines 73-87, especially 80-82",
+          "reported_publication_date": "2019-03-22",
+          "authority_note": "Official JAMA Network Open notice, with no author byline shown. Do not silently relabel as an author-signed statement.",
+          "observation": "Notice says prescribing coefficients and confidence intervals for payment counts and recipient counts were switched. Correct assignments are 11.08 and 13.59 respectively. It retains conclusions and also corrects covariate columns and supplementary tables."
+        },
+        {
+          "source_id": "jama_article_current_corrected",
+          "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720914",
+          "also_requested_url": "https://jamanetwork.com/article.aspx?doi=10.1001%2Fjamanetworkopen.2018.6007",
+          "status": "Accessible current corrected HTML; not a historical original",
+          "refs": ["turn206view1", "turn206view2", "turn208view0", "turn208view1", "turn208view2", "turn213view0"],
+          "locators": "Results lines 335-380; correction statement line 435",
+          "reported_publication_date": "2019-01-18",
+          "reported_correction_date": "2019-03-22",
+          "authority_note": "Hadland, Rivera-Aguirre, Marshall and Cerda; current article explicitly acknowledges the journal correction.",
+          "observation": "Current prescribing Results still ranks payment counts highest, beside corrected Table 3 point estimates: payments 11.08, recipients 13.59, dollars 1.82. The paper states effects per 1-SD increment. Separate mortality Table 2 retains payments 1.18, recipients 1.12, dollars 1.09.",
+          "table_image_representation": {
+            "action": "Clicked article link 53 (Table 3 View Large)",
+            "ref": "turn213view1",
+            "observed_url_base": "https://cdn.jamanetwork.com/ama/content_public/journal/jamanetworkopen/937734/zoi180253t3.png",
+            "note": "Click resolved to this asset with public expiring query parameters. Web returned an image representation; no local image capture or visual QA claimed."
+          }
+        }
+      ],
+      "proposed_dependency_for_review": "The paper's explicit prescribing-effect ordering is a comparison of its reported point estimates. The corrected numeric assignment conflicts with the retained ordering. This is a numerical comparison inference, not an author-invented threshold or a significance claim.",
+      "direct_correction_of_dependent": "No specific replacement of the ranking sentence found in the complete short notice. Its broad assurance that conclusions persist must remain visible; do not delete it to favor propagation.",
+      "retention_control_candidate": "The mortality ordering uses a different outcome and unchanged Table 2 estimates; never transfer prescribing correction to that scope.",
+      "alternative_support": "Broad association conclusions have multiple marketing measures, but no OR support annotation is supplied here. A broad unaffected conclusion does not validate the narrower ranking.",
+      "limitations": [
+        "No pre-correction article version obtained; the notice's swap description must not become a fabricated historical document.",
+        "Unsigned journal notice versus named article authors requires explicit same-authority adjudication under the current core.",
+        "The ranking sentence introduces an analogy to mortality, but explicitly names prescribing as its outcome; independently verify scope.",
+        "Corrected point-estimate ordering is not evidence that the estimates differ significantly. No statistical or causal claim is inferred.",
+        "Whole assertion replacement could target each scoped estimate with its uncertainty; do not silently change scalar fields or ignore the second swapped estimate.",
+        "Current core can withdraw unsupported claims but cannot independently recompute a replacement ranking. Source reading, arithmetic and support withdrawal must be evaluated separately.",
+        "Exact source bytes, earliest availability, frozen extraction and table visual QA remain absent."
+      ]
+    },
+    {
+      "history_id": "grace_root_zone_storage",
+      "title": "Root-zone storage revision removes mistaken analysis and adds independent validation",
+      "provisional_stratum": "discovery_only",
+      "discovery_assessment": "Exclude from simple whole-assertion replacement positive: analysis removal and new validation evidence, with changed scope and no recovered replacement estimate.",
+      "sources": [
+        {
+          "source_id": "grace_author_response",
+          "url": "https://egusphere.copernicus.org/preprints/2024/egusphere-2024-1939/egusphere-2024-1939-AR1.pdf",
+          "status": "Accessible 25-page PDF through web reader",
+          "refs": ["turn203search25", "turn204view1", "turn206view3", "turn206view4", "turn206view5", "turn206view6"],
+          "locators": "Page 1 lines 7-44; page 9 lines 309-321; page 16 lines 556-569",
+          "authority_note": "Meng Zhao signs on behalf of coauthors. Reviewer quotations in the same PDF are separate voices, not author assertions.",
+          "observation": "Authors identify misinterpretation of Miguez-Macho and Fan data and remove the Sr-GPP analysis. They replace circular GRACE-based validation with GLEAM ET, retaining broad conclusions. This adds new support rather than proving an old independent branch survived."
+        },
+        {
+          "source_id": "grace_preprint_landing",
+          "url": "https://egusphere.copernicus.org/preprints/2024/egusphere-2024-1939/",
+          "status": "Accessible landing page, abstract and discussion",
+          "refs": ["turn206view0", "turn208view3", "turn208view4", "turn216view3", "turn216view4"],
+          "locators": "Abstract lines 95-105; final-publication metadata 125-142",
+          "reported_discussion_start": "2024-07-16",
+          "observation": "Preprint abstract ties hydrological-estimate robustness to vegetation-productivity correlation; landing page links the final paper and original preprint. Reviewer discussion is not an author correction by itself."
+        },
+        {
+          "source_id": "grace_original_preprint_pdf",
+          "action": "Clicked preprint link 15 on landing page",
+          "status": "Internal Error; full original not obtained",
+          "ref": "turn213view2",
+          "url_status": "Tool error exposed no resolved URL; preserve observed link identity rather than inventing a successful PDF retrieval.",
+          "publisher_link_size": "19316 KB"
+        },
+        {
+          "source_id": "grace_final_article",
+          "url": "https://hess.copernicus.org/articles/29/2293/2025/",
+          "status": "Accessible final HTML",
+          "refs": ["turn213view3", "turn216view0", "turn216view1", "turn216view2"],
+          "locators": "Section 2.4 lines 297-306; validation results 326-333",
+          "reported_publication_date": "2025-05-19",
+          "observation": "Final methods state GLEAM did not enter any compared storage calculation. Validation concerns standardized ET anomalies, with strongest relative improvement during droughts. This is not the same validation quantity and dataset as the removed analysis."
+        }
+      ],
+      "direct_correction_of_dependent": "Authors explicitly remove the related analysis and discussion, so withholding that direct action would manufacture propagation value.",
+      "alternative_support": "New GLEAM validation may support a related broad conclusion, but is new evidence rather than a pre-existing independent alternative. No AND edge or OR branch adjudicated.",
+      "limitations": [
+        "No explicit corrected numerical replacement for the mistaken Sr estimate recovered.",
+        "Removal requires retraction semantics, beyond current whole-assertion replace-only core.",
+        "Changed validation dataset, metric and scope prevent silent fixed-claim alignment.",
+        "Original full PDF retrieval failed. Browser-visible excerpts are not exact locally captured source bytes.",
+        "The original PDF's stated size exceeds the root's prior 8 MiB capture limit; no local transport attempted or cap changed."
+      ]
+    }
+  ],
+  "unopened_leads": [
+    {"ref": "turn203search6", "note": "BESIII branching-ratio erratum on ResearchGate; not opened after selecting two histories."},
+    {"ref": "turn203search13", "note": "Related BESIII resonance erratum on ResearchGate; not opened."},
+    {"ref": "turn203search21", "note": "Solar-neutrino dark-matter erratum on an aggregator; not opened."},
+    {"ref": "turn203search14", "note": "Science digital issue with parasite-study correction snippet; not opened."}
+  ],
+  "stopping_reason": "Three queries and two histories reached. Four-document EGU cap reached; no quota-driven search or transport workaround. One promising current-document residual was sent to root for separate source review, without admission or outcome claims."
+}

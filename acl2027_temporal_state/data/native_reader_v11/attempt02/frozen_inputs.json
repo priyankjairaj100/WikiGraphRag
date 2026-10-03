@@ -1,0 +1,68 @@
+{
+  "schema_version": "native_reader_frozen_v0.11",
+  "created_unix_seconds": 1791010193.9201741,
+  "completion_calls_at_freeze": 0,
+  "request_sha256": "03618301c201d00618ae49899408a9c6db084ddd781bc194050f8ef3b2f61c51",
+  "request_bytes": 27018,
+  "protocol_sha256": "9851344586714ecdef9ba2127e1e5665ff907f2aaa55166cc3879cd5cfdcf555",
+  "source_hashes": {
+    "configs/native_reader_v11.json": "90d7cb59d3427f1e101ddbf127fb62a0ba30ee511eac4db5e572c18e867209fe",
+    "scripts/native_reader_attempt02_v11.py": "f4719e1e30395421ef03adace939bb35a8b88e5a64f19762ea654a1a903f2a51",
+    "scripts/larger_scorer_v09.py": "67b389f5fe8a87493e245f858607252cb72030f128215a3871db4882303e0dea",
+    "scripts/local_backend_v07.py": "c63acf150c86c09aca24a53ca9892170385de84e84d7d69308212d71a23260b7",
+    "scripts/fetch_local_backend_v07.py": "b2105c02be04cde9d14e5ea126762d8fdb929b0ad525e453edb1bd60a4cf2f29",
+    "configs/model_backend_v09.json": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "data/correction_gate_v11/reader_execution_amendment_v11.json": "9851344586714ecdef9ba2127e1e5665ff907f2aaa55166cc3879cd5cfdcf555"
+  },
+  "execution_order": [
+    "article_then_notice",
+    "notice_then_article"
+  ],
+  "request_projection": [
+    {
+      "item_id": "article_then_notice",
+      "messages_sha256": "33e851f391b5615502c8a8ae43301aca87ad34644ae53c6a236e47fbd1b5c639"
+    },
+    {
+      "item_id": "notice_then_article",
+      "messages_sha256": "045e936cbab904be2e562865747a7b013f04c37855127f70aa9731dfbaf84026"
+    }
+  ],
+  "config": {
+    "schema_version": "native_reader_config_v0.11",
+    "backend_config": "configs/model_backend_v09.json",
+    "backend_config_sha256": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "model_key": "large",
+    "expected_items": 2,
+    "maximum_completion_calls": 2,
+    "maximum_context_tokens": 4096,
+    "maximum_generated_tokens": 384,
+    "port": 18091,
+    "per_request_timeout_seconds": 900,
+    "process_guard": "Unmodified larger_scorer_v09.server: 5.5 GiB hard AS, 7 GiB resident cgroup watchdog, 3600 CPU seconds, 1050 wall seconds per process.",
+    "preflight_policy": "All inputs rendered and tokenized in one forward-pass-free process before either completion; exact prompt plus full 384-token reserve must fit 4096. No truncation or substitution.",
+    "cache_policy": "One completion in each fresh process; cache_prompt=false. Require native timings.cache_n=0.",
+    "failure_policy": "Stop at first execution/validation failure, preserve every response and failure; no retry, prompt repair, output repair, fallback, or changed parameter.",
+    "export_policy": "Generated text and tokens remain external until a separate source-copy-budget review binds each response content hash. Initial project receipts contain no source, prompt, response text, or generated token IDs.",
+    "completion_parameters": {
+      "n_predict": 384,
+      "temperature": -1.0,
+      "seed": 7,
+      "n_probs": 0,
+      "post_sampling_probs": false,
+      "cache_prompt": false,
+      "return_tokens": true,
+      "stream": false,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "logit_bias": [],
+      "samplers": [
+        "temperature"
+      ],
+      "grammar": "",
+      "stop": [],
+      "ignore_eos": false
+    }
+  }
+}

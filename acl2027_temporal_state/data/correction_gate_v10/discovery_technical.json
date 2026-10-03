@@ -1,0 +1,234 @@
+{
+  "schema_version": "correction_gate_discovery_v0.10",
+  "domain": "technical_product_security_and_public_record_corrections",
+  "protocol_path": "data/correction_gate_v10/admission_search_protocol.json",
+  "screen_date_utc": "2026-10-03",
+  "status": "discovery screen only; no final admission, questions, proposals, or model results",
+  "budget_used": {
+    "initial_queries": 6,
+    "candidate_histories_inspected": 4,
+    "maximum_primary_documents_attempted_per_candidate": 4
+  },
+  "queries_executed": [
+    {
+      "engine": "system2",
+      "query": "site.redhat.com \"CVE\" \"correction\" \"not vulnerable\""
+    },
+    {
+      "engine": "system2",
+      "query": "site.openssl.org \"correction\" \"advisory\" \"affected\""
+    },
+    {
+      "engine": "system2",
+      "query": "site.curl.se \"security\" \"wrong\" \"advisory\" \"not affected\""
+    },
+    {
+      "engine": "system1",
+      "query": "security advisory \"incorrectly stated\" \"not affected\""
+    },
+    {
+      "engine": "system1",
+      "query": "security advisory \"previously stated\" \"correction\""
+    },
+    {
+      "engine": "system1",
+      "query": "site.cisa.gov \"removed\" \"KEV\" \"analysis\""
+    }
+  ],
+  "search_limitations": "First batch mostly returned ordinary vulnerability advisories; second batch returned mostly irrelevant exact-phrase matches. Those result snippets were not promoted into candidate histories. Three histories came from concrete known primary-source leads, not additional search queries. No secondary source is used as screen evidence.",
+  "candidates": [
+    {
+      "id": "libreswan_cve_2019_12312",
+      "authority": "Libreswan maintainers and Red Hat/Fedora bug tracker participants; original MITRE submission came from an unknown requester",
+      "documents": [
+        {
+          "url": "https://libreswan.org/security/CVE-2019-12312/CVE-2019-12312.txt",
+          "status": "accessible",
+          "role": "signed project correction/advisory",
+          "source_ref": "turn151view0"
+        },
+        {
+          "url": "https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2019-12312",
+          "status": "accessible",
+          "role": "original copied CVE wording and dated corrective comments",
+          "source_ref": "turn151view1"
+        },
+        {
+          "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1716921",
+          "status": "accessible",
+          "role": "dependent EPEL-6 tracking bug and closure rationale",
+          "source_ref": "turn155view1"
+        },
+        {
+          "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1716920",
+          "status": "accessible",
+          "role": "strongSwan tracking bug and code-provenance correction",
+          "source_ref": "turn155view2"
+        }
+      ],
+      "original_assertion": "The main bug description at 2019-06-04 12:05 UTC copied a vulnerability claim covering Libreswan versions before 3.28. The same reporter subsequently created EPEL-6 Libreswan and EPEL strongSwan security-fix trackers.",
+      "explicit_replacement": "Paul Wouters corrected the vulnerable range to Libreswan 3.27 only; the signed project advisory also enumerates unaffected earlier and later versions. He separately explained that the involved Libreswan code was never part of strongSwan.",
+      "bounded_quote": {
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2019-12312",
+        "text": "correction: only version 3.27 is vulnerable. versions older and later are not vulnerable.",
+        "word_count": 13
+      },
+      "source_present_dependent_assertion": "The EPEL-6 tracker states it was created to ensure security vulnerabilities were fixed in affected EPEL-6 versions and points explicitly to its parent CVE bug. The reporter also marked strongSwan EPEL versions as requiring correction.",
+      "dependency_rationale": "Bug parent references explicitly connect package remediation trackers to the CVE scope claim. Closing them is consistent with corrected non-vulnerability, but a tracker action is not automatically a separately asserted factual conclusion.",
+      "alternative_support": "EPEL-6 closure additionally says Libreswan is no longer updated there because it moved into RHEL6 core. This independently supports closing that tracker and prevents claiming the range correction was essential to closure. StrongSwan's code-provenance correction is a separate mistaken product attribution.",
+      "retention_control": "Project advisory independently describes the actual Libreswan 3.27 null-key dereference and the continuing-packet denial of service; it explicitly rules out remote code execution. This narrow vulnerability survives removal of other versions/products.",
+      "earlier_version_availability": "Dated original bug description and later comments coexist in current tracker pages. No independently captured earlier page or original MITRE record was obtained. Dates establish asserted comment times, not independently certified first availability.",
+      "representation_limitations": [
+        "range correction is a partial scope edit",
+        "strongSwan correction is separate product attribution",
+        "original CVE requester and correcting upstream project differ",
+        "independent tracker-closure rationale defeats essentiality"
+      ],
+      "provisional_stratum": "discovery_only",
+      "remaining_gate": "Need an asserting-authority replacement and a distinct dependent factual conclusion without independent surviving support."
+    },
+    {
+      "id": "openssl_cve_2022_3602",
+      "authority": "OpenSSL project",
+      "documents": [
+        {
+          "url": "https://www.openssl.org/blog/blog/2022/11/01/email-address-overflows/",
+          "status": "web reader inaccessible",
+          "role": "attempted legacy blog address",
+          "source_ref": "turn151view2"
+        },
+        {
+          "url": "https://openssl-library.org/post/2022-11-01-email-address-overflows/",
+          "status": "accessible",
+          "role": "project explanation of severity correction and independent second vulnerability",
+          "source_ref": "turn155view0"
+        },
+        {
+          "url": "https://www.openssl.org/news/secadv/20221101.txt",
+          "resolved_url": "https://openssl-library.org/news/secadv/20221101.txt",
+          "status": "accessible",
+          "role": "security advisory explicitly documenting downgrade",
+          "source_ref": "turn159view2"
+        },
+        {
+          "url": "https://www.openssl-library.org/policies/general/security-policy",
+          "resolved_url": "https://www.openssl-library.org/policies/general/security-policy/index.html",
+          "status": "accessible",
+          "role": "current severity policy; not certified historical policy version",
+          "source_ref": "turn159view3"
+        }
+      ],
+      "original_assertion": "The project says it initially assigned CVE-2022-3602 critical severity because an arbitrary four-byte stack overwrite may permit remote code execution.",
+      "explicit_replacement": "On 2022-11-01 the project replaced critical with high after external testing showed benign adjacent-buffer overwrites on certain Linux layouts and existing stack protections on many platforms. Possible remote execution on other platform/compiler combinations remained.",
+      "bounded_quote": {
+        "url": "https://openssl-library.org/post/2022-11-01-email-address-overflows/",
+        "text": "remote code execution is considered likely in common situations",
+        "word_count": 9
+      },
+      "source_present_dependent_assertion": "The high-versus-critical classification is explicitly derived from the revised exploitability assessment under the quoted project criterion.",
+      "dependency_rationale": "This is documented reanalysis of unchanged vulnerable code and existing platform properties, not deployment of a new mitigation. However, the only clearly explicit OLD erroneous assertion recovered is the classification itself; a distinct old platform-exploitability assertion is implied rather than quoted. Treating classification as both corrected premise and dependent consequence would be circular.",
+      "alternative_support": "The recommendation to upgrade promptly remains supported by high severity and by CVE-2022-3786. It must not be used as a withdrawn dependent conclusion.",
+      "retention_control": "The blog calls CVE-2022-3786 independently triggerable and explains why it was high from the outset: the attacker chooses overwrite length but not content. Its classification does not depend on the corrected CVE-2022-3602 platform assessment.",
+      "earlier_version_availability": "Only present-day access to November 1 explanatory materials was obtained. No actual critical preannouncement captured. The correction describes its existence; the current policy cannot be backdated wholesale.",
+      "representation_limitations": [
+        "old corrected premise may collapse into the proposed dependent severity conclusion",
+        "platform-specific qualification must not be converted into universal absence of RCE",
+        "no actual earlier captured prefix"
+      ],
+      "provisional_stratum": "discovery_only",
+      "remaining_gate": "Find distinct explicit old exploitability assertion and a separately dependent classification, or keep only a labelled current-document mechanism illustration outside admitted core."
+    },
+    {
+      "id": "rust_command_windows_2024",
+      "authority": "Rust Security Response Working Group",
+      "documents": [
+        {
+          "url": "https://blog.rust-lang.org/2024/09/04/cve-2024-43402/",
+          "status": "accessible",
+          "role": "explicit correction of April fix completeness",
+          "source_ref": "turn159view0"
+        },
+        {
+          "url": "https://blog.rust-lang.org/2024/04/09/cve-2024-24576/",
+          "status": "accessible",
+          "role": "quotes old API promise, dependent safety conclusion, and violated implementation",
+          "source_ref": "turn159view1"
+        },
+        {
+          "url": "https://doc.rust-lang.org/1.77.1/std/process/struct.Command.html",
+          "status": "web reader inaccessible; local urllib retry blocked with Operation not permitted",
+          "role": "attempted actual earlier versioned API documentation",
+          "source_ref": "turn162view0"
+        },
+        {
+          "url": "https://doc.rust-lang.org/1.77.2/std/process/struct.Command.html",
+          "status": "web reader inaccessible",
+          "role": "attempted versioned documentation at first fix",
+          "source_ref": "turn162view1"
+        }
+      ],
+      "original_assertion": "The April advisory attributes to Command::arg and Command::args documentation a promise that supplied arguments are passed unchanged and not evaluated by a shell.",
+      "explicit_replacement": "That same authority explains that Windows cmd.exe uses exceptional parsing and the escaping implementation allowed malicious arguments to cause arbitrary shell execution. September separately admits the April fix missed filenames ending with whitespace or periods because Windows strips those characters.",
+      "bounded_quotes": [
+        {
+          "url": "https://blog.rust-lang.org/2024/04/09/cve-2024-24576/",
+          "text": "This means it should be safe to pass untrusted input as an argument.",
+          "word_count": 13
+        },
+        {
+          "url": "https://blog.rust-lang.org/2024/09/04/cve-2024-43402/",
+          "text": "our fix for the vulnerability was incomplete",
+          "word_count": 7
+        }
+      ],
+      "source_present_dependent_assertion": "The April advisory explicitly derives the safety of untrusted argument input from the documentation guarantee, then explains the Windows batch exception that invalidated that safety conclusion.",
+      "dependency_rationale": "The source itself states the guarantee-to-safety support relation and identifies the failed escaping mechanism. This is the strongest found potential current-document illustration; it is not an invented question, arithmetic threshold, or mere topical association.",
+      "alternative_support": "The safety conclusion is conditional: trusted input, non-batch use, other platforms, or separately implemented escaping must not be swept into it. The September fix-completeness correction is related evidence, not an independent second positive history.",
+      "retention_control": "The April advisory explicitly exempts other platforms and other Windows uses. Its explanation distinguishes usual C-runtime argument splitting from cmd.exe's special parsing. This is mechanism-based support, but the unaffected-control granularity still needs adjudication.",
+      "earlier_version_availability": "Both currently accessible dated advisories were obtained. Neither historical versioned API page was accessible. The old wording exists only as an authority-attributed account in the April correction; do not delete that correction to manufacture an earlier prefix. Historical first-public-availability was not independently certified.",
+      "representation_limitations": [
+        "general API promise requires a Windows-batch scope qualification rather than universal replacement",
+        "patch releases also change software reality and must not be used as factual correction positives",
+        "first-fix incompleteness may be represented separately from the older API guarantee correction",
+        "no actual earlier captured documentation version"
+      ],
+      "provisional_stratum": "current_document_only",
+      "remaining_gate": "Source-only adjudication must decide whether scoped guarantee violation meets whole-assertion replacement and independently supported control requirements. No admission claimed."
+    },
+    {
+      "id": "redhat_xz_fedora40_2024",
+      "authority": "Red Hat",
+      "documents": [
+        {
+          "url": "https://www.redhat.com/en/blog/urgent-security-alert-fedora-41-and-rawhide-users",
+          "resolved_url": "https://www.redhat.com/en/blog/urgent-security-alert-fedora-40-and-rawhide-users",
+          "status": "accessible",
+          "role": "dated updated alert with source clarification",
+          "source_ref": "turn166view0"
+        },
+        {
+          "url": "https://www.cisa.gov/news-events/alerts/2024/03/29/reported-supply-chain-compromise-affecting-xz-utils-data-compression-library-cve-2024-3094",
+          "status": "403 Forbidden",
+          "role": "attempted contemporaneous agency corroboration",
+          "source_ref": "turn166view1"
+        }
+      ],
+      "original_assertion": "No exact erroneous original was recovered. The current alert says editorial updates clarified affected Fedora versions and added mitigations.",
+      "explicit_replacement": "March 30 update identifies two Fedora 40 beta xz packages containing affected library versions while saying the actual malware exploit does not appear to affect Fedora 40. This is a distinction between code presence and activation, not a proven assertion replacement.",
+      "source_present_dependent_assertion": "The alert recommends downgrading Fedora 40 despite its non-demonstrated exploit activation, and stopping Rawhide use until downgrade.",
+      "dependency_rationale": "A supposed withdrawal of the Fedora 40 remediation recommendation is contradicted by the current source. Precautionary downgrade remains supported independently of confirmed activation.",
+      "alternative_support": "Presence of the malicious library versions continues to support precautionary remediation even if injection did not activate in Fedora 40 builds.",
+      "retention_control": "The alert says no RHEL versions are affected, but an independent package-version basis was not inspected within this screen.",
+      "earlier_version_availability": "Current updated alert only; old URL redirects to current title. No earlier captured page. Redirect is not evidence of prior wording.",
+      "representation_limitations": [
+        "clarification or evolving investigation rather than explicit correction",
+        "code presence and successful exploit activation are distinct scopes",
+        "remediation changes runtime reality",
+        "independent control support incomplete"
+      ],
+      "provisional_stratum": "discovery_only",
+      "remaining_gate": "Missing explicit original/replacement pair and changing dependent factual assertion."
+    }
+  ],
+  "screen_summary": "One provisional current-document illustration and three discovery-only histories. No paired-prefix-ready history was established. Initial-query budget exhausted; no quota filling or final admission."
+}

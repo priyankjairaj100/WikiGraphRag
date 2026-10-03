@@ -1,0 +1,121 @@
+Natural model pilot v0.6: strict graph-to-cache translation
+
+The adapter consumes the exact candidate request and raw candidate output,
+neutral ordinal scoring request and manifest, raw scorer output, execution
+receipts, and prompt/schema files. It never reads QA, answers, or natural labels.
+No model call is performed during translation or replay.
+
+Translation contract
+- Candidate structure, source hashes, prefix membership, unique exact evidence
+  alignment, temporal bounds, links, and support references pass the existing
+  source-only validator. Invalid input fails; it is not repaired or pruned.
+- The neutral scorer request and its item mapping are regenerated from the exact
+  candidate input and compared to stored files. Each actual ordinal score is
+  consumed exactly once. Resolved and unresolved readings, candidate links, and
+  no-link choices each require an actual judgment; no numeric default is used.
+- Lower/upper temporal bounds, observations, reported date, modality, polarity,
+  scope, role qualifier, and candidate derivation note are translated verbatim.
+  The decoder's exact-date fields are populated only for equal lower/upper
+  bounds, and its observation projection is the earliest declared observation.
+- All sources shown to either model are declared as context on the problem,
+  each mention, each reading including unresolved, each claim, and each link.
+- TemporalClaim evidence fields support only the claim's primary source. Other
+  exact evidence spans remain in the manifest's alignment table and raw output,
+  and their source IDs remain explicit context dependencies.
+- Bound precision tags and observation-kind tags have no TemporalClaim fields.
+  Their exact values remain in the manifest as metadata, while all numeric
+  bounds and observations remain unchanged. Link derivation notes, unresolved
+  reasons, and unsupported rows remain in the raw output bound by hash.
+- Only aliases whose canonical name exactly matches a predicted subject enter
+  the subject-alias cache. Evidence is grouped into one alias row per source.
+  Role or value aliases are explicitly logged as excluded metadata; the raw
+  annotations are retained without conversion or silent deletion.
+- Authority IDs, whole-assertion correction certificates, and essential-support
+  declarations are translated without issuer merging or semantic repair.
+- Beta is fixed at 1; no penalty terms are configured. Existing conservative
+  search budgets remain in force. Overflow fails rather than selecting a subset.
+
+Provenance and repair lineage
+The scored base cache uses evidence_type unversioned_model_scores, schema 0.6,
+and honest candidate/scorer backend-role IDs with both revisions null. Scores
+are actual conversational ordinal compatibility judgments, not probabilities,
+log probabilities, or independently calibrated evidence.
+
+Receipt input/output hashes must match explicitly supplied unchanged files.
+The adapter does not open arbitrary paths named inside receipts. Exact task
+text, prompts, schemas, raw outputs, scoring manifests, receipts, adapter code,
+and validation/preparation code enter the configuration binding. A combined
+prompt manifest binds both model prompts and their exact task texts. These
+checks certify artifact consistency, not independent attestation of execution.
+
+A first model pass that fails validation is retained. If a separate source-only
+model repair is authorized, --candidates and --candidate-receipt select that
+new execution. --candidate-prompt and --candidate-schema bind its actual inputs;
+--repair-protocol, --original-candidates, --original-candidate-receipt, and
+repeatable --lineage-input bind the earlier failure and repair protocol. Upstream
+repair lineage remains in the manifest; adapter_semantic_repairs stays empty
+because this program does not change the model's interpretations.
+
+Replay and interpretation
+One immutable correction-wrapped scored cache is passed to independent,
+iterative, iterative-with-restarts, and exact joint decoding under both
+historical and active_support objectives. The same candidates, numeric scores,
+constraints, context, and budgets are used in all eight runs. Outputs preserve
+selected readings and links, active claims, correction ledgers, objective
+components, and search diagnostics. Wall-clock timings are omitted.
+
+Pairwise state comparisons report only whether selected readings, links, and
+active claim IDs agree. Neither agreement nor a higher heuristic objective is
+an accuracy measure. This selected development history is not held-out evidence.
+Unknown model revisions prevent a pinned model-regeneration claim. Operational
+source availability is inherited development metadata, not verified historical
+first-publication timing. If no correction/support edges occur in the actual
+candidate graph, the two objectives have no natural correction contrast here.
+
+Validation
+12 synthetic contract tests exercise exact translation and full context,
+correction-aware eight-way replay, explicit non-subject alias exclusions,
+cross-source evidence retention, ambiguous evidence rejection, invalid forecast
+observations, missing score rejection, mapping/request tampering, overflow,
+partial numeric bounds and polarity preservation, and receipt stale/unknown
+input rejection. The portability regression uses nonexistent original receipt paths and rejects a scorer output falsely listed as a candidate input even though that output is a known bound file. These authored tests read no natural QA or labels.
+
+Recorded repaired-run command (run only after both model outputs exist)
+python scripts/run_natural_model_pilot_v06.py \
+  --candidates data/natural_model_pilot_v06/candidate_output_repaired.json \
+  --candidate-receipt data/natural_model_pilot_v06/candidate_repair_receipt.json \
+  --candidate-prompt configs/candidate_prompt_v06_repair.txt \
+  --candidate-schema configs/candidate_schema_v06_repair.json \
+  --repair-protocol data/natural_model_pilot_v06/validation_repair_protocol.json \
+  --original-candidates data/natural_model_pilot_v06/candidate_output_raw.json \
+  --original-candidate-receipt data/natural_model_pilot_v06/candidate_run_receipt.json \
+  --lineage-input data/natural_model_pilot_v06/candidate_validation_first_pass.json
+
+Use --validate-only with the same inputs to check the adapter without writing
+outputs or running decoder searches.
+
+Observed development replay
+The first raw candidate pass failed plan_with_actual_state_observation. It is
+preserved alongside one separate source-only representation repair. The repaired
+graph contains 7 mentions, each with one resolved reading, 11 candidate links,
+4 aliases, 2 declared authorities, no correction certificates, and no essential
+support dependencies. A fresh scorer supplied all 32 ordinal judgments: 7
+resolved, 7 unresolved, 7 no-link, and 11 link scores. The adapter retained all
+readings/links and adapted 2 subject aliases, logging 2 role/value exclusions.
+
+All eight decoder/objective runs selected the same 7 active claims and 4 links
+with heuristic objective 33. This result shows neither a joint-search advantage
+nor an active-support advantage. Competing factual-identity readings are absent;
+resolved-versus-unresolved and link choices remain. No natural correction
+contrast occurs because the extracted graph has no correction/dependency edges.
+The conservative state ceiling is 30,720. Two full repeated executions produced
+byte-identical cache, adapter manifest, and result artifacts.
+
+Final shared correction cache digest:
+416dd8d2977124eee779e186e7a5d3f73beeb2c6863e803e7d92233ad6440224
+Cache file SHA-256:
+6b741723fc676c3fb76f004b95c5112cab921eb264adaa6a1301b914d82ed9e9
+Adapter manifest file SHA-256:
+2a76dbc2096abc8bcac1a11c9a35bf42aba25a786bbf210c295974de9c9b122e
+Replay result file SHA-256:
+002b1bedeaa2a68bd845fc20c2a3fefd0997eda75b4548534f035bd4d00ae712

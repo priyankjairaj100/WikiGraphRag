@@ -1,0 +1,14 @@
+{
+  "schema_version": "scorer_numerical_validation_amendment_v0.9",
+  "frozen_unix_seconds": 1790999156.4195406,
+  "prior_raw_distributions": 1,
+  "prior_accepted_distributions": 0,
+  "observed_returned_top256_mass": 1.0000011818752477,
+  "previous_absolute_tolerance": 1e-06,
+  "revised_absolute_tolerance": 0.0001,
+  "scope": "Same fixed tolerance for sum of returned exp(logprob) and two literal label probabilities; no clamp, renormalization, score transformation, threshold change or prompt change. All16 research calls restart; original one row excluded from final design.",
+  "rationale": "Returned natural log probabilities originate in float32 softmax. A generic1e-6 sum tolerance rejected finite native output by1.82e-7;1e-4 is a conservative numerical accounting check, not a learned calibration parameter or numerical replay tolerance.",
+  "exposure": "Amendment follows one raw completion; not zero-output preregistration. Root was told only aggregate mass/error and no item score or reference agreement.",
+  "review_required_before_restart": true,
+  "error_bound_status": "Engineering validation tolerance, not a proved universal numerical error bound. The excess is consistent with float32 normalization/log serialization; its precise numerical cause was not isolated."
+}

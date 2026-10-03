@@ -1,0 +1,229 @@
+#!/usr/bin/env python3
+"""Pinned 4B CPU scorer: bounded download, separate smoke, cold research calls.
+
+No paid services or fallback models. Model/runtime bytes stay outside project.
+"""
+from __future__ import annotations
+
+import argparse
+from contextlib import contextmanager
+import hashlib
+import json
+import os
+from pathlib import Path
+import resource
+import subprocess
+import threading
+import time
+import urllib.request
+
+import fetch_local_backend_v07 as fetch
+import local_backend_v07 as base
+
+PROJECT = Path(__file__).resolve().parents[1]
+CONFIG = PROJECT / 'configs/model_backend_v09.json'
+DEFAULT_ASSETS = PROJECT.parent / 'tmp/local_backend_v09'
+DATA = PROJECT / 'data/larger_scorer_v09'
+
+
+def load(path):
+    return json.loads(Path(path).read_text())
+
+
+def config():
+    c = load(CONFIG)
+    if c['schema_version'] != 'larger_backend_v0.9' or len(c['assets']) != 2:
+        raise ValueError('invalid v0.9 config')
+    return c
+
+
+def download(assets):
+    c = config()
+    assets.mkdir(parents=True, exist_ok=True)
+    report = {'schema_version':'larger_scorer_assets_v0.9','status':'started',
+              'config_sha256':base.digest(CONFIG),'started_unix_seconds':time.time(),
+              'assets':[],'error':None}
+    out = PROJECT / 'results/larger_scorer_v09_assets.json'
+    base.write_json(out, report)
+    try:
+        for spec in c['assets']:
+            fetch.download_asset(assets, spec)
+            fetch.verify_asset(assets/spec['relative_path'], spec)
+            report['assets'].append(spec | {'verified_sha256':base.digest(assets/spec['relative_path'])})
+            base.write_json(out, report)
+            print(json.dumps({'asset_verified':spec['relative_path']}), flush=True)
+        fetch.extract_runtime(assets, assets/c['assets'][1]['relative_path'], c)
+        report['runtime_files'] = fetch.inspect_runtime(assets/c['runtime_directory'], c)
+        report['runtime_files_sha256'] = base.canonical_hash(report['runtime_files'])
+        report['status']='completed'
+    except BaseException as error:
+        report.update(status='failed', error_type=type(error).__name__, error=str(error))
+        raise
+    finally:
+        report['finished_unix_seconds']=time.time()
+        base.write_json(out, report)
+    return report
+
+
+def verify_assets(assets):
+    c=config()
+    for spec in c['assets']:
+        fetch.verify_asset(assets/spec['relative_path'], spec)
+    files=fetch.inspect_runtime(assets/c['runtime_directory'], c)
+    return {'config_sha256':base.digest(CONFIG),'assets':c['assets'],
+            'runtime_files_sha256':base.canonical_hash(files)}
+
+
+def cgroup_current():
+    p=Path('/sys/fs/cgroup/memory.current')
+    try:
+        return int(p.read_text())
+    except (OSError, ValueError):
+        return None
+
+
+@contextmanager
+def server(assets, log_path, *, cpu_seconds=None, port=18089, trace=None):
+    c=config()
+    binding=trace if trace is not None else {}
+    binding.update(verify_assets(assets))
+    runtime=assets/c['runtime_directory']
+    command=[str(runtime/'llama-server'),'-m',str(assets/c['model_file']),
+             '--host','127.0.0.1','--port',str(port),'-c',str(c['maximum_context_tokens']),
+             '-t',str(c['threads']),'-tb',str(c['threads']),'-b',str(c['batch_tokens']),
+             '-ub',str(c['microbatch_tokens']),'-ngl','0','--parallel','1',
+             '--no-warmup','--no-webui','-ctk',c['kv_cache_key_type'],
+             '-ctv',c['kv_cache_value_type'],'-fa',c['flash_attention'],
+             '--no-context-shift','--jinja','--chat-template-kwargs','{"enable_thinking":false}']
+    cpu=cpu_seconds or c['cpu_seconds_limit']
+    def limits():
+        resource.setrlimit(resource.RLIMIT_AS,(c['address_space_limit_bytes'],)*2)
+        resource.setrlimit(resource.RLIMIT_CPU,(cpu,)*2)
+        resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+    env=dict(os.environ,LD_LIBRARY_PATH=str(runtime),OMP_NUM_THREADS=str(c['threads']))
+    start=time.monotonic()
+    binding.update(command=command,address_space_limit_bytes=c['address_space_limit_bytes'],
+                   cpu_seconds_limit=cpu,cgroup_memory_before_bytes=cgroup_current())
+    log_path.parent.mkdir(parents=True,exist_ok=True)
+    with log_path.open('xb') as log:
+        process=subprocess.Popen(command,stdout=log,stderr=subprocess.STDOUT,env=env,preexec_fn=limits)
+        binding['process_id']=process.pid
+        stop_monitor=threading.Event()
+        def monitor():
+            while not stop_monitor.wait(.25):
+                current=cgroup_current()
+                if current is not None:
+                    binding['cgroup_memory_observed_peak_bytes']=max(current,binding.get('cgroup_memory_observed_peak_bytes',0))
+                if current is not None and current>c['cgroup_stop_threshold_bytes']:
+                    binding['watchdog_stop_reason']='cgroup current above frozen 7 GiB threshold'
+                    process.terminate()
+                    return
+                if time.monotonic()-start>c['wall_timeout_seconds_per_process']:
+                    binding['watchdog_stop_reason']='frozen process wall deadline exceeded'
+                    process.terminate()
+                    return
+        watcher=threading.Thread(target=monitor,daemon=True)
+        watcher.start()
+        try:
+            while True:
+                if process.poll() is not None:
+                    raise RuntimeError(f'llama-server exited with {process.returncode}; see {log_path.name}')
+                try:
+                    with urllib.request.urlopen(f'http://127.0.0.1:{port}/health',timeout=1) as response:
+                        health=json.load(response)
+                    if health.get('status')=='ok':
+                        break
+                except OSError:
+                    pass
+                if time.monotonic()-start>c['startup_timeout_seconds']:
+                    raise TimeoutError('backend startup exceeded frozen wall limit')
+                time.sleep(.1)
+            binding.update(startup_seconds=time.monotonic()-start,port=port,
+                           cgroup_memory_loaded_bytes=cgroup_current())
+            if binding['cgroup_memory_loaded_bytes'] and binding['cgroup_memory_loaded_bytes']>c['cgroup_stop_threshold_bytes']:
+                raise MemoryError('cgroup current exceeds frozen 7 GiB stop threshold')
+            yield binding
+        finally:
+            stop_monitor.set()
+            watcher.join(timeout=1)
+            if process.poll() is None:
+                process.terminate()
+            try:
+                process.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                process.kill();process.wait(timeout=5)
+            binding.update(elapsed_seconds=time.monotonic()-start,process_exit_code=process.returncode,
+                           children_peak_rss_kib=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss,
+                           cgroup_memory_after_bytes=cgroup_current())
+
+
+def render(port,messages):
+    prompt=base.render_and_tokenize(port,messages)
+    labels={label:base.post(port,'tokenize',{'content':label,'add_special':False,'parse_special':False})['tokens']
+            for label in ('Yes','No')}
+    if any(len(ids)!=1 for ids in labels.values()):
+        raise ValueError('labels must each be one token')
+    for label,ids in labels.items():
+        appended=base.post(port,'tokenize',{'content':prompt['rendered_prompt']+label,
+                     'add_special':True,'parse_special':True})['tokens']
+        if appended!=prompt['input_token_ids']+ids:
+            raise ValueError('exact single-token label continuation failed')
+    prompt['label_tokens']=labels
+    if not prompt['rendered_prompt'].endswith('<think>\n\n</think>\n\n'):
+        raise ValueError('thinking-off assistant suffix changed')
+    return prompt
+
+
+def payload(tokens):
+    result=base.one_token_request(tokens)
+    result['cache_prompt']=False
+    return result
+
+
+def smoke(assets):
+    c=config()
+    directory=DATA/'smoke_attempt01'
+    if directory.exists():
+        raise ValueError('refusing to overwrite smoke attempt')
+    directory.mkdir(parents=True)
+    base.write_json(directory/'frozen_config.json',c)
+    (directory/'executed_collector.py.txt').write_bytes(Path(__file__).read_bytes())
+    frozen={'config_sha256':base.digest(CONFIG),'collector_sha256':base.digest(Path(__file__)),
+            'created_unix_seconds':time.time(),'completed_distributions_at_freeze':0}
+    base.write_json(directory/'frozen_inputs.json',frozen)
+    receipt={'schema_version':'larger_scorer_smoke_v0.9','status':'started','frozen_inputs':frozen,
+             'purpose':c['smoke']['purpose'],'started_unix_seconds':time.time(),'error':None}
+    out=PROJECT/'results/larger_scorer_v09_smoke.json'
+    base.write_json(out,receipt)
+    try:
+        receipt['execution']={}
+        with server(assets,directory/'server.log',cpu_seconds=c['smoke']['cpu_seconds_limit'],trace=receipt['execution']) as execution:
+            port=execution['port']
+            with urllib.request.urlopen(f'http://127.0.0.1:{port}/props',timeout=30) as response:
+                props=json.load(response)
+            base.write_json(directory/'server_props.json',props)
+            rendered=render(port,c['smoke']['messages'])
+            base.write_json(directory/'rendered_prompt.json',rendered)
+            request=payload(rendered['input_token_ids'])
+            response=base.post(port,'completion',request,c['smoke']['wall_timeout_seconds'])
+            base.write_json(directory/'raw_response.json',{'request':request,'response':response})
+            receipt.update(status='completed',input_tokens=rendered['input_tokens'],
+                           label_tokens=rendered['label_tokens'],timings=response['timings'],
+                           completed_distributions=1,chat_template_sha256=hashlib.sha256(props['chat_template'].encode()).hexdigest())
+    except BaseException as error:
+        receipt.update(status='failed',error_type=type(error).__name__,error=str(error))
+        raise
+    finally:
+        receipt['finished_unix_seconds']=time.time()
+        receipt['artifact_hashes']={str(p.relative_to(PROJECT)):base.digest(p) for p in sorted(directory.iterdir())}
+        base.write_json(out,receipt)
+    return receipt
+
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('mode',choices=['download','verify-assets','smoke'])
+    parser.add_argument('--assets',type=Path,default=DEFAULT_ASSETS)
+    args=parser.parse_args()
+    result={'download':download,'verify-assets':verify_assets,'smoke':smoke}[args.mode](args.assets)
+    print(json.dumps({k:v for k,v in result.items() if k not in ('runtime_files','assets','artifact_hashes','execution')}))

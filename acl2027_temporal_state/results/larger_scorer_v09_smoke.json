@@ -1,0 +1,111 @@
+{
+  "schema_version": "larger_scorer_smoke_v0.9",
+  "status": "completed",
+  "frozen_inputs": {
+    "config_sha256": "d0467b3099c035353c26124a618dcd44749fb8b2e9a797b863a6a160b8e6221e",
+    "collector_sha256": "f0fbf91a97a63f9fc34ac1d745016714933060aef9b86043a75f31cf633a8b75",
+    "created_unix_seconds": 1790998089.1478567,
+    "completed_distributions_at_freeze": 0
+  },
+  "purpose": "Separate resource and tokenizer feasibility; excluded from research scores.",
+  "started_unix_seconds": 1790998089.1479425,
+  "error": null,
+  "execution": {
+    "config_sha256": "d0467b3099c035353c26124a618dcd44749fb8b2e9a797b863a6a160b8e6221e",
+    "assets": [
+      {
+        "relative_path": "Qwen3-4B-Q8_0.gguf",
+        "bytes": 4280404704,
+        "sha256": "8c2f07f26af9747e41988551106f149b03eb9b5cb6df636027b6bf6278473300",
+        "url": "https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/bc640142c66e1fdd12af0bd68f40445458f3869b/Qwen3-4B-Q8_0.gguf"
+      },
+      {
+        "relative_path": "llama-b11146-bin-ubuntu-x64.tar.gz",
+        "bytes": 16998357,
+        "sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11146/llama-b11146-bin-ubuntu-x64.tar.gz"
+      }
+    ],
+    "runtime_files_sha256": "677ee4aa7ac9a70d0d664474f589ba2f35ee2716ea0244d076ab103c3e5304c7",
+    "command": [
+      "/workspace/scratch/bdef663e3dfc/tmp/local_backend_v09/runtime/llama-b11146/llama-server",
+      "-m",
+      "/workspace/scratch/bdef663e3dfc/tmp/local_backend_v09/Qwen3-4B-Q8_0.gguf",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "18089",
+      "-c",
+      "4096",
+      "-t",
+      "4",
+      "-tb",
+      "4",
+      "-b",
+      "256",
+      "-ub",
+      "128",
+      "-ngl",
+      "0",
+      "--parallel",
+      "1",
+      "--no-warmup",
+      "--no-webui",
+      "-ctk",
+      "q8_0",
+      "-ctv",
+      "q8_0",
+      "-fa",
+      "on",
+      "--no-context-shift",
+      "--jinja",
+      "--chat-template-kwargs",
+      "{\"enable_thinking\":false}"
+    ],
+    "address_space_limit_bytes": 5905580032,
+    "cpu_seconds_limit": 300,
+    "cgroup_memory_before_bytes": 8532451328,
+    "process_id": 2276,
+    "cgroup_memory_observed_peak_bytes": 8589934592,
+    "cgroup_resident_observed_peak_bytes": 5075468288,
+    "startup_seconds": 0.8187694389998796,
+    "port": 18089,
+    "cgroup_memory_loaded_bytes": 8585216000,
+    "elapsed_seconds": 1.9662457719996382,
+    "process_exit_code": 0,
+    "children_peak_rss_kib": 4569240,
+    "cgroup_memory_after_bytes": 8187187200
+  },
+  "input_tokens": 46,
+  "label_tokens": {
+    "Yes": [
+      9454
+    ],
+    "No": [
+      2753
+    ]
+  },
+  "timings": {
+    "cache_n": 0,
+    "prompt_n": 46,
+    "prompt_ms": 1068.012,
+    "prompt_per_token_ms": 23.21765217391304,
+    "prompt_per_second": 43.07067710849691,
+    "predicted_n": 1,
+    "predicted_ms": 0.001,
+    "predicted_per_token_ms": 0.0,
+    "predicted_per_second": 0.0
+  },
+  "completed_distributions": 1,
+  "chat_template_sha256": "57f1fd00f0013a2be96aa79b857391f27e23df5b5f847072b524c897e24d0361",
+  "finished_unix_seconds": 1790998093.9703538,
+  "artifact_hashes": {
+    "data/larger_scorer_v09/smoke_attempt02/executed_collector.py.txt": "f0fbf91a97a63f9fc34ac1d745016714933060aef9b86043a75f31cf633a8b75",
+    "data/larger_scorer_v09/smoke_attempt02/frozen_config.json": "d0467b3099c035353c26124a618dcd44749fb8b2e9a797b863a6a160b8e6221e",
+    "data/larger_scorer_v09/smoke_attempt02/frozen_inputs.json": "964a996b91353548ef087e23fc75018fab8d6edaa55c25db718055d6603d6c3f",
+    "data/larger_scorer_v09/smoke_attempt02/raw_response.json": "7320198b7e742402b6b3579e673ed5d7c3bbdaa0b046574e6ad488e64c724137",
+    "data/larger_scorer_v09/smoke_attempt02/rendered_prompt.json": "2fb826720aaef8c5dd596d62a9bcb32c0c5075e2ca4ac62e87c70638173e335e",
+    "data/larger_scorer_v09/smoke_attempt02/server.log": "9ea40e059e02219e6769447974bd6e6e89228c1b115fb2d0b32c2b9701d232c1",
+    "data/larger_scorer_v09/smoke_attempt02/server_props.json": "3c5aeb0618b282304f736582b08e6acb419faae61e4a414a7b8cc08933352ed0"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "dataset": "realprose",
+  "n_claims": 132,
+  "n_subjects": 35,
+  "n_categories": 5,
+  "claims_per_category": {
+    "club_manager": 19,
+    "company_ceo": 26,
+    "national_head_of_gov": 38,
+    "national_head_of_state": 20,
+    "org_leader": 29
+  },
+  "n_gold_superseded": 97,
+  "precision": 0.9778,
+  "recall": 0.9072,
+  "f1": 0.9412,
+  "tp": 88,
+  "fp": 2,
+  "fn": 9,
+  "per_category": {
+    "club_manager": {
+      "precision": 0.8824,
+      "recall": 1.0,
+      "f1": 0.9375,
+      "tp": 15,
+      "fp": 2,
+      "fn": 0
+    },
+    "company_ceo": {
+      "precision": 1.0,
+      "recall": 0.7857,
+      "f1": 0.88,
+      "tp": 11,
+      "fp": 0,
+      "fn": 3
+    },
+    "national_head_of_gov": {
+      "precision": 1.0,
+      "recall": 0.9333,
+      "f1": 0.9655,
+      "tp": 28,
+      "fp": 0,
+      "fn": 2
+    },
+    "national_head_of_state": {
+      "precision": 1.0,
+      "recall": 0.9375,
+      "f1": 0.9677,
+      "tp": 15,
+      "fp": 0,
+      "fn": 1
+    },
+    "org_leader": {
+      "precision": 1.0,
+      "recall": 0.8636,
+      "f1": 0.9268,
+      "tp": 19,
+      "fp": 0,
+      "fn": 3
+    }
+  },
+  "false_positives": [
+    "rp:102",
+    "rp:93"
+  ],
+  "false_negatives": [
+    "rp:111",
+    "rp:123",
+    "rp:126",
+    "rp:18",
+    "rp:20",
+    "rp:3",
+    "rp:32",
+    "rp:58",
+    "rp:72"
+  ],
+  "note": "genuine English Wikipedia leads across 5 relation families; gold from known chronology order; single pooled index (same-relation different-subject pairs are hard negatives)"
+}

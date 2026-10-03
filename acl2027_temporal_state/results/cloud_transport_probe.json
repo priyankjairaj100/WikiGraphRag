@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-02",
+  "purpose": "Bounded result transport capability probe",
+  "request_path": "configs/transport_probe.json",
+  "attempted_operation": "hf_jobs run cpu-basic timeout 3m",
+  "job_id": null,
+  "confirmed_jobs_created": 0,
+  "model_inference_executed": false,
+  "transport_verified": false,
+  "billing_balance_verified": false,
+  "status": "blocked_tool_unavailable",
+  "provider_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "McpServerError: MCP tool hf_jobs was not returned by tools/list"
+      }
+    ],
+    "structuredContent": {
+      "error": "McpServerError: MCP tool hf_jobs was not returned by tools/list",
+      "error_code": "UNAVAILABLE",
+      "error_data": {
+        "type": "invalid_mcp_response",
+        "message": "MCP tool hf_jobs was not returned by tools/list",
+        "level": "error"
+      }
+    },
+    "isError": true
+  },
+  "note": "This is a tool capability failure before any job identifier was returned. It is not an automatic approval rejection, an established credit-balance failure, or evidence of model/runtime failure. No alternate submission path attempted.",
+  "plugin_discovery_followup": {
+    "provider": "Hugging Face",
+    "installed": true,
+    "enabled": true,
+    "jobs_tool_still_unavailable": true,
+    "permission_changes_made": false,
+    "alternative_plugins_suggested": false,
+    "interpretation": "Enabled plugin does not establish that its provider exposes the Jobs operation. Do not infer insufficient credits or require Pro from this error."
+  }
+}

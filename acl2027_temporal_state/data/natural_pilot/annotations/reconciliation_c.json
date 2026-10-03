@@ -1,0 +1,1829 @@
+{
+  "reconciliation_id": "C",
+  "artifact_kind": "model_assisted_source_only_reconciliation_not_human_adjudication",
+  "backend": {
+    "model_revision": null,
+    "decoding_settings": null,
+    "pinned": false,
+    "kind": "conversational_model_agent"
+  },
+  "scope": {
+    "focal_organizations": [
+      "Starbucks Corporation",
+      "NIKE, Inc."
+    ],
+    "roles": [
+      "chief executive officer",
+      "chief financial officer"
+    ],
+    "prefixes": {
+      "leadership_starbucks_2024": "2024-08-15",
+      "leadership_nike_2024": "2024-09-20"
+    },
+    "allowed_input_files": [
+      "early_prefix_input.json",
+      "annotation_prompt.txt",
+      "annotations/pass_a.json",
+      "annotations/pass_b.json"
+    ],
+    "external_or_later_sources_used": false,
+    "human_adjudication": false,
+    "final_gold_created": false,
+    "system_predictions_created": false,
+    "new_positive_occupancy_from_cessation_created": false
+  },
+  "input_hashes": {
+    "early_prefix_input.json": {
+      "sha256": "931dfd99c99c7fb0abb049f820221a3ed372fcb435c9e7326f973c60d07404b6",
+      "bytes": 34306
+    },
+    "annotation_prompt.txt": {
+      "sha256": "178b49108fd82a879f01abb6ec85df0cff90cf09e83fe35e853b1f78953f1728",
+      "bytes": 2535
+    },
+    "annotations/pass_a.json": {
+      "sha256": "c12e59218cf24c11b561e29d9836f5493086ec02fb7d61bbf65dfec01da9b0b1",
+      "bytes": 35028
+    },
+    "annotations/pass_b.json": {
+      "sha256": "7aa17bb72dca12b08b48ab9c9c23bddc51835448f5c47c22d29a1a8b36f54fdc",
+      "bytes": 39581
+    }
+  },
+  "source_manifest": [
+    {
+      "source_id": "sbux_8k_20240814",
+      "history_id": "leadership_starbucks_2024",
+      "text_sha256": "2c5b006ac7272e423cacda72ddc893255fc90f5d161a1dde059f7d6ef4573a36",
+      "declared_text_sha256_matches": true,
+      "reported_publication_date": "2024-08-14",
+      "operational_available_at": "2024-08-15",
+      "availability_basis": "development_next_calendar_day_after_SEC_acceptance_NOT_verified_publication"
+    },
+    {
+      "source_id": "sbux_archived_press_exhibit",
+      "history_id": "leadership_starbucks_2024",
+      "text_sha256": "5638de5e8741ae97b8bd3469bd605b45ccf2feb2697e217a5950b6670f2b2fe3",
+      "declared_text_sha256_matches": true,
+      "reported_publication_date": "2024-08-13",
+      "operational_available_at": "2024-08-15",
+      "availability_basis": "development_next_calendar_day_after_SEC_acceptance_NOT_verified_publication"
+    },
+    {
+      "source_id": "nike_8k_20240919",
+      "history_id": "leadership_nike_2024",
+      "text_sha256": "673d4ddfed5e0b24c95d86561361d1266a1720eaff145911127ef2ad6173ad94",
+      "declared_text_sha256_matches": true,
+      "reported_publication_date": "2024-09-19",
+      "operational_available_at": "2024-09-20",
+      "availability_basis": "development_next_calendar_day_after_SEC_acceptance_NOT_verified_publication"
+    },
+    {
+      "source_id": "nike_archived_press_exhibit",
+      "history_id": "leadership_nike_2024",
+      "text_sha256": "b949b85aa047894d392be9de9783f0185234a93211eba5ef5bead8710b71b138",
+      "declared_text_sha256_matches": true,
+      "reported_publication_date": "2024-09-19",
+      "operational_available_at": "2024-09-20",
+      "availability_basis": "development_next_calendar_day_after_SEC_acceptance_NOT_verified_publication"
+    }
+  ],
+  "raw_output_preservation": {
+    "policy": "A and B remain unmodified in their existing files; this reconciliation references their assertion IDs and evidence indices. No normalized output overwrites a raw assertion.",
+    "A_path": "annotations/pass_a.json",
+    "B_path": "annotations/pass_b.json",
+    "verified_unchanged_after_reconciliation": {
+      "early_prefix_input.json": true,
+      "annotation_prompt.txt": true,
+      "annotations/pass_a.json": true,
+      "annotations/pass_b.json": true
+    }
+  },
+  "method": {
+    "alignment_key": [
+      "source_id",
+      "normalized_subject",
+      "relation",
+      "scope",
+      "value",
+      "semantic_polarity"
+    ],
+    "organization_normalization": {
+      "Starbucks": "Starbucks Corporation",
+      "Starbucks Corporation": "Starbucks Corporation",
+      "Nike": "NIKE, Inc.",
+      "NIKE, Inc.": "NIKE, Inc."
+    },
+    "normalization_basis": "Restricted to each supplied source’s focal company identity, including the Starbucks filing alias and Nike release identification; not a global alias merger.",
+    "polarity_interpretation": "negative status is negative; B11/B14 explicitly say Negative assertion in qualifier; other affirmative assertions are positive representations. A13 is a positive-incumbent representation in its prose but remains unresolved and is not adopted as new occupancy.",
+    "same_key_different_polarity_policy": "Related event-level comparison only, never an exact assertion match.",
+    "paired_core_fields": [
+      "source_id",
+      "relation",
+      "scope",
+      "value",
+      "valid_from",
+      "valid_to",
+      "observed_on",
+      "status",
+      "operation",
+      "target_id",
+      "context_source_ids",
+      "normalized_subject",
+      "semantic_polarity"
+    ],
+    "evidence_reference_format": "pass_id + assertion_id + zero-based evidence_indices in the unmodified raw pass; no new quote spans added.",
+    "reconciliation_rule": "Resolve only source-supported representational issues; retain factual or day-boundary alternatives without source precedence or invented correction targets."
+  },
+  "descriptive_counts": {
+    "A_assertions": 13,
+    "B_assertions": 14,
+    "source_subject_role_value_groups_ignoring_polarity": 13,
+    "one_to_one_polarity_matched_pairs": 12,
+    "paired_assertions_total": 24,
+    "single_pass_alignment_records": 3,
+    "alignment_records_total": 15,
+    "A_only_assertion_ids": [
+      "A13"
+    ],
+    "B_only_assertion_ids": [
+      "B11",
+      "B14"
+    ],
+    "paired_core_disagreements_after_normalization": 0,
+    "interpretation": "Descriptive machine-output comparison only. Not human IAA, independent family agreement, precision, recall, F1, or benchmark accuracy."
+  },
+  "input_and_span_validation": {
+    "A": {
+      "assertion_count": 13,
+      "ambiguity_count": 5,
+      "exclusion_count": 11,
+      "declared_input_sha256_matches": true,
+      "evidence_span_checks": 58,
+      "evidence_span_checks_by_section": {
+        "assertions": 25,
+        "disagreements_or_ambiguities": 17,
+        "exclusions": 16
+      },
+      "all_evidence_spans_match": true,
+      "failed_evidence_checks": [],
+      "required_assertion_fields_and_basic_enum_date_checks_pass": true,
+      "structural_check_defects": [],
+      "backend_as_declared": {
+        "model_revision": null,
+        "decoding_settings": null,
+        "pinned": false,
+        "kind": "conversational_model_agent"
+      }
+    },
+    "B": {
+      "assertion_count": 14,
+      "ambiguity_count": 6,
+      "exclusion_count": 11,
+      "declared_input_sha256_matches": true,
+      "evidence_span_checks": 63,
+      "evidence_span_checks_by_section": {
+        "assertions": 25,
+        "disagreements_or_ambiguities": 22,
+        "exclusions": 16
+      },
+      "all_evidence_spans_match": true,
+      "failed_evidence_checks": [],
+      "required_assertion_fields_and_basic_enum_date_checks_pass": true,
+      "structural_check_defects": [],
+      "backend_as_declared": {
+        "model_revision": null,
+        "decoding_settings": null,
+        "pinned": false,
+        "kind": "conversational_model_agent"
+      }
+    }
+  },
+  "alignment_records": [
+    {
+      "alignment_id": "C01",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "sbux_8k_20240814",
+        "subject": "Starbucks Corporation",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Brian Niccol",
+        "polarity": "positive"
+      },
+      "assertion_ids": {
+        "A": [
+          "A01"
+        ],
+        "B": [
+          "B01"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "sbux_8k_20240814",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Brian Niccol",
+        "valid_from": "2024-09-09",
+        "valid_to": null,
+        "observed_on": "2024-08-14",
+        "status": "planned",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "Starbucks Corporation",
+        "polarity": "positive"
+      },
+      "raw_subject_labels": {
+        "A": "Starbucks Corporation",
+        "B": "Starbucks"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain a planned Starbucks CEO appointment effective 2024-09-09. It is not realized occupancy at the Starbucks cutoff.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A01",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B01",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C02",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "sbux_8k_20240814",
+        "subject": "Starbucks Corporation",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Laxman Narasimhan",
+        "polarity": "negative"
+      },
+      "assertion_ids": {
+        "A": [
+          "A02"
+        ],
+        "B": [
+          "B02"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "sbux_8k_20240814",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Laxman Narasimhan",
+        "valid_from": "2024-08-12",
+        "valid_to": null,
+        "observed_on": "2024-08-14",
+        "status": "negative",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "Starbucks Corporation",
+        "polarity": "negative"
+      },
+      "raw_subject_labels": {
+        "A": "Starbucks Corporation",
+        "B": "Starbucks"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain negative Starbucks CEO cessation from 2024-08-12 as the filing-specific reading. Do not create a positive Narasimhan tenure.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A02",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B02",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C03",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "sbux_8k_20240814",
+        "subject": "Starbucks Corporation",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Rachel Ruggeri",
+        "polarity": "positive"
+      },
+      "assertion_ids": {
+        "A": [
+          "A03"
+        ],
+        "B": [
+          "B04"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "sbux_8k_20240814",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Rachel Ruggeri",
+        "valid_from": null,
+        "valid_to": "2024-09-09",
+        "observed_on": "2024-08-14",
+        "status": "reported",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "Starbucks Corporation",
+        "polarity": "positive"
+      },
+      "raw_subject_labels": {
+        "A": "Starbucks Corporation",
+        "B": "Starbucks"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale",
+        "evidence"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain the reported interim CEO appointment with unknown exact start and a planned exclusive end of 2024-09-09. No predecessor or publication date fills the missing start.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A03",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B04",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C04",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "sbux_8k_20240814",
+        "subject": "Starbucks Corporation",
+        "relation": "chief financial officer",
+        "scope": "corporation",
+        "value": "Rachel Ruggeri",
+        "polarity": "positive"
+      },
+      "assertion_ids": {
+        "A": [
+          "A04"
+        ],
+        "B": [
+          "B03"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "sbux_8k_20240814",
+        "relation": "chief financial officer",
+        "scope": "corporation",
+        "value": "Rachel Ruggeri",
+        "valid_from": null,
+        "valid_to": null,
+        "observed_on": "2024-08-14",
+        "status": "reported",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "Starbucks Corporation",
+        "polarity": "positive"
+      },
+      "raw_subject_labels": {
+        "A": "Starbucks Corporation",
+        "B": "Starbucks"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale",
+        "evidence"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain observed CFO service and concurrent continuation during interim CEO service; exact start remains null. Both passes preserve the source-stated year 2021 in prose.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A04",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B03",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C05",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "sbux_archived_press_exhibit",
+        "subject": "Starbucks Corporation",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Brian Niccol",
+        "polarity": "positive"
+      },
+      "assertion_ids": {
+        "A": [
+          "A05"
+        ],
+        "B": [
+          "B05"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "sbux_archived_press_exhibit",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Brian Niccol",
+        "valid_from": "2024-09-09",
+        "valid_to": null,
+        "observed_on": "2024-08-13",
+        "status": "planned",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "Starbucks Corporation",
+        "polarity": "positive"
+      },
+      "raw_subject_labels": {
+        "A": "Starbucks Corporation",
+        "B": "Starbucks"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale",
+        "evidence"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain the press-release-specific planned CEO start on 2024-09-09; do not merge away the source record.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A05",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B05",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C06",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "sbux_archived_press_exhibit",
+        "subject": "Starbucks Corporation",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Laxman Narasimhan",
+        "polarity": "negative"
+      },
+      "assertion_ids": {
+        "A": [
+          "A06"
+        ],
+        "B": [
+          "B06"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "sbux_archived_press_exhibit",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Laxman Narasimhan",
+        "valid_from": "2024-08-13",
+        "valid_to": null,
+        "observed_on": "2024-08-13",
+        "status": "negative",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "Starbucks Corporation",
+        "polarity": "negative"
+      },
+      "raw_subject_labels": {
+        "A": "Starbucks Corporation",
+        "B": "Starbucks"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale",
+        "evidence"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain negative cessation anchored by immediate effect to the release dated 2024-08-13; preserve the conflicting filing-specific date separately.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A06",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B06",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C07",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "sbux_archived_press_exhibit",
+        "subject": "Starbucks Corporation",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Rachel Ruggeri",
+        "polarity": "positive"
+      },
+      "assertion_ids": {
+        "A": [
+          "A07"
+        ],
+        "B": [
+          "B08"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "sbux_archived_press_exhibit",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Rachel Ruggeri",
+        "valid_from": null,
+        "valid_to": "2024-09-09",
+        "observed_on": "2024-08-13",
+        "status": "planned",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "Starbucks Corporation",
+        "polarity": "positive"
+      },
+      "raw_subject_labels": {
+        "A": "Starbucks Corporation",
+        "B": "Starbucks"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale",
+        "evidence"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain the press-release-specific planned interim CEO role with unknown start and endpoint 2024-09-09. The will-serve wording differs from the filing reporting appointment.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A07",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B08",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C08",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "sbux_archived_press_exhibit",
+        "subject": "Starbucks Corporation",
+        "relation": "chief financial officer",
+        "scope": "corporation",
+        "value": "Rachel Ruggeri",
+        "polarity": "positive"
+      },
+      "assertion_ids": {
+        "A": [
+          "A08"
+        ],
+        "B": [
+          "B07"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "sbux_archived_press_exhibit",
+        "relation": "chief financial officer",
+        "scope": "corporation",
+        "value": "Rachel Ruggeri",
+        "valid_from": null,
+        "valid_to": null,
+        "observed_on": "2024-08-13",
+        "status": "reported",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "Starbucks Corporation",
+        "polarity": "positive"
+      },
+      "raw_subject_labels": {
+        "A": "Starbucks Corporation",
+        "B": "Starbucks"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain the press-release-specific current CFO observation with a year-only 2021 start, leaving the exact-day field null.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A08",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B07",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C09",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "nike_8k_20240919",
+        "subject": "NIKE, Inc.",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Elliott Hill",
+        "polarity": "positive"
+      },
+      "assertion_ids": {
+        "A": [
+          "A09"
+        ],
+        "B": [
+          "B09"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "nike_8k_20240919",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Elliott Hill",
+        "valid_from": "2024-10-14",
+        "valid_to": null,
+        "observed_on": "2024-09-19",
+        "status": "planned",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "NIKE, Inc.",
+        "polarity": "positive"
+      },
+      "raw_subject_labels": {
+        "A": "NIKE, Inc.",
+        "B": "Nike"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain the planned Nike CEO appointment effective 2024-10-14; announcement and offer dates do not replace it.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A09",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B09",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C10",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "nike_8k_20240919",
+        "subject": "NIKE, Inc.",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "John Donahoe",
+        "polarity": "positive"
+      },
+      "assertion_ids": {
+        "A": [
+          "A10"
+        ],
+        "B": [
+          "B10"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "nike_8k_20240919",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "John Donahoe",
+        "valid_from": null,
+        "valid_to": "2024-10-14",
+        "observed_on": "2024-09-19",
+        "status": "reported",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "NIKE, Inc.",
+        "polarity": "positive"
+      },
+      "raw_subject_labels": {
+        "A": "NIKE, Inc.",
+        "B": "Nike"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale",
+        "evidence"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain reported incumbent CEO service explicitly supported by will continue to serve in the filing, with unknown start and planned exclusive end 2024-10-14. Advisory employment is separate.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A10",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B10",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C11",
+      "match_type": "B_only_negative_assertion",
+      "key": {
+        "source_id": "nike_8k_20240919",
+        "subject": "NIKE, Inc.",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "John Donahoe",
+        "polarity": "negative"
+      },
+      "polarity_basis": "negative status or explicit Negative assertion qualifier",
+      "assertion_ids": {
+        "A": [],
+        "B": [
+          "B11"
+        ]
+      },
+      "raw_structured_fields": {
+        "source_id": "nike_8k_20240919",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "John Donahoe",
+        "valid_from": "2024-10-14",
+        "valid_to": null,
+        "observed_on": "2024-09-19",
+        "status": "planned",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": []
+      },
+      "related_alignment_ids": [
+        "C10"
+      ],
+      "agreement": "no_exact_polarity_matched_counterpart",
+      "resolution": "Pass B additionally encodes the filing’s explicitly planned cessation as negative from 2024-10-14. It complements the positive incumbent record A10/B10; it is not a positive CEO interval beginning on that date and is not an exact polarity match to A10. This is an assertion-granularity difference, not a conflicting factual date.",
+      "evidence_refs": [
+        {
+          "pass_id": "B",
+          "assertion_id": "B11",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C12",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "nike_8k_20240919",
+        "subject": "NIKE, Inc.",
+        "relation": "chief financial officer",
+        "scope": "corporation",
+        "value": "Matthew Friend",
+        "polarity": "positive"
+      },
+      "assertion_ids": {
+        "A": [
+          "A11"
+        ],
+        "B": [
+          "B12"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "nike_8k_20240919",
+        "relation": "chief financial officer",
+        "scope": "corporation",
+        "value": "Matthew Friend",
+        "valid_from": null,
+        "valid_to": null,
+        "observed_on": "2024-09-19",
+        "status": "reported",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "NIKE, Inc.",
+        "polarity": "positive"
+      },
+      "raw_subject_labels": {
+        "A": "NIKE, Inc.",
+        "B": "Nike"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain the CFO observation on 2024-09-19 from the filing signature. This is not a CFO appointment on that date.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A11",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B12",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C13",
+      "match_type": "one_to_one_after_source_local_subject_normalization",
+      "key": {
+        "source_id": "nike_archived_press_exhibit",
+        "subject": "NIKE, Inc.",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Elliott Hill",
+        "polarity": "positive"
+      },
+      "assertion_ids": {
+        "A": [
+          "A12"
+        ],
+        "B": [
+          "B13"
+        ]
+      },
+      "agreement": "same_structured_core_after_subject_normalization",
+      "agreed_core": {
+        "source_id": "nike_archived_press_exhibit",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "Elliott Hill",
+        "valid_from": "2024-10-14",
+        "valid_to": null,
+        "observed_on": "2024-09-19",
+        "status": "planned",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": [],
+        "subject": "NIKE, Inc.",
+        "polarity": "positive"
+      },
+      "raw_subject_labels": {
+        "A": "NIKE, Inc.",
+        "B": "Nike"
+      },
+      "nonidentical_fields": [
+        "subject",
+        "qualifier",
+        "rationale"
+      ],
+      "semantic_core_disagreements": {},
+      "resolution": "Retain the press-release-specific planned Nike CEO start 2024-10-14; do not infer realized service after the early cutoff.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A12",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B13",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C14",
+      "match_type": "A_only_unresolved_positive_representation",
+      "key": {
+        "source_id": "nike_archived_press_exhibit",
+        "subject": "NIKE, Inc.",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "John Donahoe",
+        "polarity": "positive"
+      },
+      "polarity_basis": "A13 qualifier/rationale describe incumbent service; positive representation is not adopted as a new interval",
+      "assertion_ids": {
+        "A": [
+          "A13"
+        ],
+        "B": []
+      },
+      "raw_structured_fields": {
+        "source_id": "nike_archived_press_exhibit",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "John Donahoe",
+        "valid_from": null,
+        "valid_to": null,
+        "observed_on": "2024-09-19",
+        "status": "uncertain",
+        "operation": "UNRESOLVED",
+        "target_id": null,
+        "context_source_ids": []
+      },
+      "related_alignment_ids": [
+        "C15"
+      ],
+      "agreement": "no_exact_polarity_matched_counterpart",
+      "resolution": "Pass A represents an incumbent CEO with unresolved exclusive end. Its cited press-release evidence is a planned departure from his role and does not independently state a positive service interval. Preserve A13 unchanged as raw output, but do not materialize or add positive occupancy from cessation in reconciliation C. Compare its departure interpretation with B14 only as a related event, not an exact polarity match.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A13",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "alignment_id": "C15",
+      "match_type": "B_only_planned_negative_assertion",
+      "key": {
+        "source_id": "nike_archived_press_exhibit",
+        "subject": "NIKE, Inc.",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "John Donahoe",
+        "polarity": "negative"
+      },
+      "polarity_basis": "negative status or explicit Negative assertion qualifier",
+      "assertion_ids": {
+        "A": [],
+        "B": [
+          "B14"
+        ]
+      },
+      "raw_structured_fields": {
+        "source_id": "nike_archived_press_exhibit",
+        "relation": "chief executive officer",
+        "scope": "corporation",
+        "value": "John Donahoe",
+        "valid_from": "2024-10-13",
+        "valid_to": null,
+        "observed_on": "2024-09-19",
+        "status": "planned",
+        "operation": "ASSERT",
+        "target_id": null,
+        "context_source_ids": []
+      },
+      "related_alignment_ids": [
+        "C14"
+      ],
+      "agreement": "no_exact_polarity_matched_counterpart",
+      "resolution": "Pass B encodes planned negative cessation from the literal 2024-10-13 reading, with ambiguity in its prose. Preserve the stated date as a literal source reading and retain the possible 2024-10-14 exclusive-day alternative; do not treat either normalized boundary as finally resolved or create positive occupancy.",
+      "evidence_refs": [
+        {
+          "pass_id": "B",
+          "assertion_id": "B14",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "related_comparisons_and_unresolved_alternatives": [
+    {
+      "comparison_id": "C-CROSS01",
+      "kind": "source_boundary_disagreement_preserved_by_both_passes",
+      "assertion_ids": [
+        "A02",
+        "B02",
+        "A06",
+        "B06"
+      ],
+      "source_ids": [
+        "sbux_8k_20240814",
+        "sbux_archived_press_exhibit"
+      ],
+      "finding": "The filing expressly gives 2024-08-12 for Narasimhan no longer serving; the August 13 release says immediate effect. Both passes retain these distinct negative boundaries. This is a source disagreement, not A-versus-B disagreement.",
+      "resolution_status": "unresolved_across_sources",
+      "alternatives": [
+        {
+          "source_id": "sbux_8k_20240814",
+          "cessation_date": "2024-08-12"
+        },
+        {
+          "source_id": "sbux_archived_press_exhibit",
+          "cessation_date": "2024-08-13",
+          "basis": "immediate effect anchored to explicit release date"
+        }
+      ],
+      "operation_assessment": "No identifiable correction statement or target; neither source supersedes the other as CORRECTS.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A02",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B02",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0
+          ]
+        },
+        {
+          "pass_id": "A",
+          "assertion_id": "A06",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B06",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "ambiguity_refs": [
+        "A-amb-01",
+        "B-A01"
+      ]
+    },
+    {
+      "comparison_id": "C-CROSS02",
+      "kind": "complementary_assertion_granularity",
+      "assertion_ids": [
+        "A10",
+        "B10",
+        "B11"
+      ],
+      "source_ids": [
+        "nike_8k_20240919"
+      ],
+      "finding": "A10 and B10 agree on incumbent service and the planned exclusive end 2024-10-14. B11 adds a planned negative cessation beginning the same day, supported by explicit retirement and resignation language.",
+      "resolution_status": "semantic_compatibility_resolved_representation_policy_unspecified",
+      "resolution": "Keep B11 linked as a complementary planned cessation. Do not count it as an extra independent source or a positive tenure. A lacks this separate assertion but not the scheduled end information.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A10",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B10",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B11",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "comparison_id": "C-CROSS03",
+      "kind": "polarity_granularity_and_boundary_representation_difference",
+      "assertion_ids": [
+        "A13",
+        "B14"
+      ],
+      "source_ids": [
+        "nike_archived_press_exhibit"
+      ],
+      "finding": "A13 uses uncertain/UNRESOLVED with both dates null and an incumbent qualifier. B14 uses planned/ASSERT with a negative qualifier and literal cessation date 2024-10-13. They share departure evidence but are not equivalent positive/negative assertions. Both texts flag day-boundary ambiguity.",
+      "resolution_status": "unresolved_normalized_boundary_and_nonmatching_polarity",
+      "resolution": "For the reconciliation note, retain only the common supported planned cessation event, its literal effective-October-13 language, and the two boundary readings. Preserve raw A13 and B14, but do not synthesize a positive occupancy interval or a final gold assertion.",
+      "shared_event_interpretation": {
+        "kind": "cessation",
+        "polarity": "negative",
+        "temporal_modality": "planned",
+        "literal_stated_effective_date": "2024-10-13",
+        "literal_year_basis": "same release’s September 19, 2024 dateline and October 14, 2024 incoming appointment",
+        "normalized_exclusive_boundary": null,
+        "boundary_resolution": "ambiguous"
+      },
+      "alternatives": [
+        {
+          "interpretation": "October 13 is the first day no longer CEO",
+          "candidate_nonoccupancy_from": "2024-10-13",
+          "status": "literal_effective_date_reading"
+        },
+        {
+          "interpretation": "October 13 names final service day",
+          "candidate_nonoccupancy_from": "2024-10-14",
+          "status": "possible_day_convention_not_explicitly_established"
+        }
+      ],
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A13",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B14",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "ambiguity_refs": [
+        "A-amb-04",
+        "B-A04"
+      ]
+    },
+    {
+      "comparison_id": "C-CROSS04",
+      "kind": "source_boundary_conflict_or_day_convention",
+      "assertion_ids": [
+        "A10",
+        "B10",
+        "B11",
+        "A13",
+        "B14"
+      ],
+      "source_ids": [
+        "nike_8k_20240919",
+        "nike_archived_press_exhibit"
+      ],
+      "finding": "The filing supports cessation and transition to advisor as of 2024-10-14. The release literally says retirement effective October 13. A final-service-day interpretation could reconcile them, but the supplied text does not establish that convention.",
+      "resolution_status": "unresolved_across_sources",
+      "resolution": "Preserve filing 2024-10-14 and release alternatives; no correction or source-precedence rule is available. January 31, 2025 refers to advisor/non-executive employment, not a CEO extension.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A10",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B10",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B11",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "pass_id": "A",
+          "assertion_id": "A13",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B14",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "ambiguity_refs": [
+        "A-amb-04",
+        "A-amb-05",
+        "B-A04",
+        "B-A05"
+      ]
+    }
+  ],
+  "additional_shared_findings": [
+    {
+      "finding": "No supplied identifiable correction statement and target justify CORRECTS. All matched operations agree; source order alone cannot resolve conflicts.",
+      "assertion_ids": [
+        "A02",
+        "B02",
+        "A06",
+        "B06",
+        "A10",
+        "B10",
+        "A13",
+        "B14"
+      ]
+    },
+    {
+      "finding": "Ruggeri interim CEO start remains unknown in both sources. A03/B04 report appointment; A07/B08 retain the release’s planned wording. Both resolve the prospective endpoint to 2024-09-09 from same-source antecedents.",
+      "assertion_ids": [
+        "A03",
+        "B04",
+        "A07",
+        "B08"
+      ],
+      "ambiguity_refs": [
+        "A-amb-02",
+        "B-A02"
+      ]
+    },
+    {
+      "finding": "Both sources state Ruggeri CFO start at year 2021 only. Both passes correctly retain exact valid_from null.",
+      "assertion_ids": [
+        "A04",
+        "B03",
+        "A08",
+        "B07"
+      ],
+      "ambiguity_refs": [
+        "A-amb-03",
+        "B-A03"
+      ]
+    },
+    {
+      "finding": "Observed_on consistently uses supplied reported publication dates, not appointment dates or verified operational availability. All supplied availability metadata marks its next-calendar-day rule as developmental and unverified."
+    },
+    {
+      "finding": "The Nike release contains no CFO assertion; both passes refrain from transferring the filing’s Matthew Friend signature observation into it.",
+      "assertion_ids": [
+        "A11",
+        "B12"
+      ]
+    },
+    {
+      "finding": "B-A06 separately flags future appointment wording. A contains the same substance in A01/A05/A09/A12 and limitations, although it has no separately numbered equivalent ambiguity. This is record granularity, not a substantive disagreement.",
+      "assertion_ids": [
+        "A01",
+        "A05",
+        "A09",
+        "A12",
+        "B01",
+        "B05",
+        "B09",
+        "B13"
+      ]
+    }
+  ],
+  "exclusion_comparison": {
+    "assessment": "Both passes identify the same eleven broad exclusion groups; evidence span boundaries and descriptions differ. A exclusion IDs are absent but not required by the prompt, so array indices identify them. No focal CFO or CEO assertion is added from another organization, board title, legal-officer title, functional president role, or advisory employment.",
+    "alignments": [
+      {
+        "A_exclusion_index": 0,
+        "B_exclusion_id": "B-X01"
+      },
+      {
+        "A_exclusion_index": 1,
+        "B_exclusion_id": "B-X03"
+      },
+      {
+        "A_exclusion_index": 2,
+        "B_exclusion_id": "B-X04"
+      },
+      {
+        "A_exclusion_index": 3,
+        "B_exclusion_id": "B-X11"
+      },
+      {
+        "A_exclusion_index": 4,
+        "B_exclusion_id": "B-X02"
+      },
+      {
+        "A_exclusion_index": 5,
+        "B_exclusion_id": "B-X05"
+      },
+      {
+        "A_exclusion_index": 6,
+        "B_exclusion_id": "B-X06"
+      },
+      {
+        "A_exclusion_index": 7,
+        "B_exclusion_id": "B-X08"
+      },
+      {
+        "A_exclusion_index": 8,
+        "B_exclusion_id": "B-X10"
+      },
+      {
+        "A_exclusion_index": 9,
+        "B_exclusion_id": "B-X07"
+      },
+      {
+        "A_exclusion_index": 10,
+        "B_exclusion_id": "B-X09"
+      }
+    ]
+  },
+  "schema_defects_and_policy_gaps": [
+    {
+      "defect_id": "C-S01",
+      "kind": "schema_design",
+      "title": "Single status enum conflates polarity, temporal modality, and uncertainty",
+      "affected_assertion_ids": [
+        "A02",
+        "A06",
+        "A13",
+        "B02",
+        "B06",
+        "B11",
+        "B14"
+      ],
+      "assessment": "Future negation cannot be represented cleanly as a structured combination in the supplied reported/planned/negative/uncertain enum. Choosing planned loses machine-readable negative polarity; choosing negative loses machine-readable future modality; choosing uncertain loses the underlying positive/negative and reported/planned dimensions. B11/B14 recover polarity only through qualifier prose. A13 uses uncertain for a boundary issue even though a planned cessation is explicit. This is a schema defect, not an enum syntax violation by either pass.",
+      "consequence": "A consumer treating every planned assertion as a positive appointment would misread B11/B14 valid_from as a CEO start. It must consult the negative qualifier until the schema is revised.",
+      "suggested_separable_dimensions": {
+        "polarity": [
+          "positive",
+          "negative"
+        ],
+        "temporal_modality": [
+          "reported",
+          "planned"
+        ],
+        "interpretation_status": [
+          "unambiguous",
+          "ambiguous"
+        ],
+        "assertion_kind": [
+          "occupancy",
+          "appointment",
+          "cessation",
+          "role_observation"
+        ]
+      },
+      "example_interpretation_only": {
+        "assertion_id": "B11",
+        "polarity": "negative",
+        "temporal_modality": "planned",
+        "assertion_kind": "cessation",
+        "cessation_date": "2024-10-14"
+      },
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A13",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B11",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B14",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "defect_id": "C-S02",
+      "kind": "schema_design",
+      "title": "One assertion status cannot encode reported service with a planned end separately",
+      "affected_assertion_ids": [
+        "A03",
+        "B04",
+        "A10",
+        "B10"
+      ],
+      "assessment": "The reported status coexists with a prospective valid_to. This is accurately explained in qualifiers but not structured at the boundary level. A downstream interval consumer may mistake a scheduled end for an observed outcome.",
+      "suggestion": "Record boundary modality/realization separately from current-role observation, while retaining original source assertions.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A03",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B04",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "A",
+          "assertion_id": "A10",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B10",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "defect_id": "C-S03",
+      "kind": "schema_design",
+      "title": "Exact date or null loses partial precision and competing boundary interpretations",
+      "affected_assertion_ids": [
+        "A04",
+        "A08",
+        "B03",
+        "B07",
+        "A13",
+        "B14"
+      ],
+      "assessment": "Ruggeri CFO start year 2021 is known but an exact date is not. Null is correct under the required date schema; year precision is otherwise retained only in prose. For Donahoe the schema also cannot distinguish a literal date from a selected exclusive-day normalization or preserve structured alternatives.",
+      "suggestion": "Add date precision, literal date text, boundary meaning, and alternative interpretations without manufacturing YYYY-MM-DD dates.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A04",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "pass_id": "A",
+          "assertion_id": "A08",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B03",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B07",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "A",
+          "assertion_id": "A13",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B14",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "defect_id": "C-S04",
+      "kind": "annotation_policy_gap",
+      "title": "Assertion unit does not specify whether cessation is separate from an incumbent interval",
+      "affected_assertion_ids": [
+        "A10",
+        "B10",
+        "B11",
+        "A13",
+        "B14"
+      ],
+      "assessment": "Pass B adds a negative filing cessation beyond its incumbent assertion; pass A does not. At the release, the passes choose different polarity/granularity. Raw assertion count differences therefore cannot be treated as recall errors without an explicit annotation-unit policy.",
+      "suggestion": "Specify whether explicit cessation is always a separate assertion and how complementary occupancy/cessation records are linked. Never derive a new positive interval from cessation alone."
+    },
+    {
+      "defect_id": "C-S05",
+      "kind": "normalization_policy_gap",
+      "title": "Organization aliases differ across all matched assertions",
+      "assessment": "A uses Starbucks Corporation and NIKE, Inc.; B uses Starbucks and Nike. The prompt does not mandate a subject label vocabulary. Source-local focal-organization normalization makes these equivalent without changing the raw files.",
+      "suggestion": "Use stable subject IDs plus the observed/canonical labels, and never carry a role between corporations."
+    },
+    {
+      "defect_id": "C-S06",
+      "kind": "provenance_hygiene",
+      "title": "A06 embeds a cross-source comparison while context_source_ids is empty",
+      "affected_assertion_ids": [
+        "A06"
+      ],
+      "assessment": "A06’s qualifier explicitly says its date conflicts with the filing’s August 12 date, but context_source_ids is empty. Its cessation/date evidence is still fully source-local, so the core assertion is supported. The separate ambiguity record correctly cites both sources.",
+      "suggestion": "Move that comparison entirely into the cross-source ambiguity record or identify the filing as interpretive context. Preserve the raw output.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A06",
+          "source_id": "sbux_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "A",
+          "assertion_id": "A02",
+          "source_id": "sbux_8k_20240814",
+          "evidence_indices": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "defect_id": "C-S07",
+      "kind": "representation_risk",
+      "title": "A13 positive-incumbent representation relies on cessation evidence",
+      "affected_assertion_ids": [
+        "A13"
+      ],
+      "assessment": "The cited release text says he will retire from his role and later advise the company. This supports a planned cessation. An incumbent reading is pragmatically suggested, but no independently explicit positive service interval is supplied in the cited spans. C does not turn this into new positive occupancy. The filing’s explicit continuing-service statement belongs to a different source and must not be imported into the release assertion.",
+      "suggestion": "Retain A13 for audit and compare its boundary reading with B14 as an event-level interpretation only.",
+      "evidence_refs": [
+        {
+          "pass_id": "A",
+          "assertion_id": "A13",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "pass_id": "B",
+          "assertion_id": "B14",
+          "source_id": "nike_archived_press_exhibit",
+          "evidence_indices": [
+            0,
+            1
+          ]
+        },
+        {
+          "pass_id": "A",
+          "assertion_id": "A10",
+          "source_id": "nike_8k_20240919",
+          "evidence_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "This is model-assisted reconciliation of two developmental machine extraction passes, not human adjudication or gold truth.",
+    "Neither pass pins a model revision or decoding settings. Separate conversational agents do not establish true model-family independence; no such independence or human IAA is claimed.",
+    "Only the four authorized local inputs were read for task data. No web, later sources, questions, expectations, gold annotations, predictions, or other project files informed C.",
+    "Four documents from two company announcements are a narrow pilot. Filing/exhibit repetition is related reporting, not independent corroboration of future realization.",
+    "Early cutoffs do not establish that announced future appointments or departures actually occurred. Scheduled boundaries remain planned.",
+    "Exact quote matches establish provenance accuracy, not completeness or semantic correctness of an extraction.",
+    "Ambiguous day normalization and source conflicts remain unresolved. C supplies no total timeline, new appointment dates, unsupported corrections, or invented positive occupancy.",
+    "Recommendations about schema and annotation units are proposals in this report; no existing prompt or raw output is modified."
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": "correction_gate_execution_capabilities_v0.10",
+  "status": "read_only_feasibility_audit_not_method_execution",
+  "input_sha256": {
+    "data/correction_gate_v10/admission_search_protocol.json": "9461df432d89fa68bacbe36b4b61262775b780dbc667b718d67dae08c4fedcff",
+    "data/provenance/route_decision_v09.json": "dca3315fcbcf4ed4d2804c24d9ea77c3788d7acc57be03f9ba93e859b3097084",
+    "src/temporal_state/corrections.py": "218c20ce25030249760db3bda023cab7e351a7518e635751684c8b562c92c85f",
+    "src/temporal_state/correction_io.py": "17802b4234aac15a40a0a2b2a64feea47cb6342d8c92291307956d665c421620",
+    "src/temporal_state/correction_pipeline.py": "cf45a6b48c8f72180e42f6acfa400f09ef35b54399a3c9967a0b3d86776813f4",
+    "src/temporal_state/decoder.py": "5be5067d11b455aa9991ea07aa34afb3c95331bd0ca349ce46fbecf2eb077794",
+    "src/temporal_state/scored_io.py": "d51ae7b5d2d47960b84bf06b4b0e6da40d1348032b474ab71ae4f5f6c6951e2c",
+    "src/temporal_state/coupled.py": "87067798f33b76810e0b39a46840dc33faef45df66d0e9eb2b237d4e6dcf632c",
+    "src/temporal_state/bounded.py": "9897a479f5300252da605c60f16daac990ac235534edfd1e01c25364837e1653",
+    "src/temporal_state/models.py": "f40919bf8b3239f0bea8cf9262d26a4eb7bbbd81dc9bd101b8d65a859b503a4e",
+    "src/temporal_state/representation_io.py": "2f88257df33b9208025e4e490b71fbe6c1f0602eb4b9ef79cc5a447a398341aa",
+    "scripts/run_correction_source_demo.py": "204c8f20ecf0fb14bcb0a1b334db4b75eb587bafdbc54684577f045611a4b9df",
+    "scripts/validate_source_reference_v08.py": "57418bc8d5fa96db76808287f5990fac195777bc8e86a7ed613883cc6c9677e2",
+    "tests/test_corrections.py": "1e505aba6eb48c1611626c25c5f11916a65b69d5a056570a411ffed9eda68990",
+    "tests/test_correction_io.py": "001d786c90ead1bba64c7aa45ba7f4c3ba03f5ae0ec209525d620160a23da4e3",
+    "docs/correction_gate_execution_design_v10.txt": "f55e0eb8ea91b3f698678544fcf851e5a44848267e2803bd614179686431bb4e"
+  },
+  "new_discovery_artifacts_inspected": false,
+  "core_mutated": false,
+  "models_run": false,
+  "natural_qa_predictions": 0,
+  "natural_scores_created": false,
+  "expensive_tests_run": false,
+  "entry_points": {
+    "policy_validation": "temporal_state.corrections.validate_correction_policy",
+    "explicit_selection_replay": "temporal_state.corrections.materialize_corrected_selection",
+    "shared_decoder_semantics": "temporal_state.corrections.make_correction_state_semantics",
+    "immutable_cache": "temporal_state.correction_io.make_correction_cache",
+    "scored_methods": "temporal_state.correction_pipeline.decode_correction_cache",
+    "temporal_answering": "temporal_state.correction_pipeline.answer_corrected"
+  },
+  "capabilities": {
+    "conditional_whole_atomic_assertion_withdrawal": true,
+    "unknown_event_bounds_preserved": true,
+    "cross_key_essential_dependency_withdrawal": true,
+    "transitive_dependency_withdrawal": true,
+    "non_temporal_numeric_or_scientific_value_qa": false,
+    "automatic_numeric_recomputation": false,
+    "general_entailment": false,
+    "alternative_support_or_semantics": false,
+    "partial_field_edit": false,
+    "pure_retraction": false,
+    "correction_notice_reversal": false,
+    "automatic_authority_or_dependency_certification": false
+  },
+  "binding_requirements": [
+    "Freeze captured source bytes, version limits, extraction text, capture/request hashes, source order and reversible excerpt maps before annotation.",
+    "Keep availability cutoff separate from event time; current correction quotations do not establish earlier captured prefixes.",
+    "Resolved reading maps exactly to one TemporalClaim with matching source, normalized entity/relation/scope and exact value.",
+    "Whole replacement binds exact resolved endpoint IDs, equal factual keys/scopes, same declared asserting authority and exact correcting-source reference offsets.",
+    "Authority attribution is one record per source; mixed speakers require explicitly mapped attribution units.",
+    "Dependency binds exact dependent/prerequisite claim IDs, exact evidence in dependent source, earlier-or-same-day prerequisite availability and an acyclic graph.",
+    "Every dependency is an essential AND prerequisite; record and adjudicate independent alternative support before adding an edge.",
+    "Keep original source modality, numerical units, meaningful atomic scope, reporting date and unknown bounds; add no observation or interval to enable QA.",
+    "Reader and decoder receive identical frozen eligible source content; source projection claims must be explicit.",
+    "Pinned reader needs prompt/schema, model/runtime revisions, request/source hashes, context/truncation policy, generation settings, raw response and exact evidence spans.",
+    "Reference adjudication is separate from reader, candidate, scorer and decoder outputs.",
+    "Scored decoder comparison requires actual raw candidate/scoring receipts, immutable shared base cache, policy hashes, aliases, objective, limits and seeds."
+  ],
+  "explicit_selection_policy_illustration": {
+    "roles": "Source-grounded O original, R replacement, D downstream essential dependent, U independently supported unaffected control; schematic role names only.",
+    "scores": "Mandatory numeric schema fields may be neutral zero placeholders; never optimized or reported as model scores.",
+    "variants": {
+      "no_withdrawal": "Identical selected readings; null correction links; no certificates or dependencies.",
+      "direct_withdrawal": "Select certified R CORRECTS O; no dependencies.",
+      "dependency_withdrawal": "Same direct selection and certificate plus source-adjudicated D depends on O."
+    },
+    "observables": [
+      "active_claim_ids",
+      "directly_withdrawn_claim_ids",
+      "inactive_claim_ids",
+      "inactive_reasons",
+      "operative_notices",
+      "retention_control_survives",
+      "original_records_and_unknown_bounds_preserved"
+    ],
+    "interpretation": "Conditional materialization contract, not predicted QA, learned correction detection, or a decoder advantage."
+  },
+  "validation_limits": [
+    "Exact offsets and hashes validate artifact structure and lineage, not semantic entailment or first public availability.",
+    "The core requires event_time and interval membership.must for a definite temporal answer; unknown endpoints with no observations do not supply certainty.",
+    "Inactive dependent means lost declared support; neither falsity nor a replacement answer is inferred.",
+    "Null correction-link intervention is required for explicit no-withdrawal materialization; unchanged selected CORRECTS cannot disable its own effect.",
+    "Unavailable or truncated evidence, unsupported semantics, candidate/scoring failures and unresolved histories remain in the denominator/accounting.",
+    "Existing v08 source-reference validator is structural and is not a pinned reader execution path.",
+    "Current-document-only mechanism illustrations and non-temporal unsupported QA cannot satisfy v09 empirical method-gain falsification."
+  ],
+  "required_next_decision": "Admit only supported representation cases for labelled policy replay; require actual comparable predictions or a separately specified atomic QA adapter before any empirical method gate.",
+  "verification": "Static code and existing test inspection only; no new natural example, score, or test result created."
+}

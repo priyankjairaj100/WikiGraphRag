@@ -1,0 +1,54 @@
+{
+  "schema_version": "candidate_audit_receipt_v0.7",
+  "recorded_at_utc": "2026-10-02T15:27:21.931685+00:00",
+  "role": "source_only_ambiguity_auditor",
+  "backend": "conversation_isolated_agent",
+  "agent_name": "/root/audit_candidates_v07",
+  "model_id": "unversioned_conversational_model",
+  "model_revision": null,
+  "fresh_context": true,
+  "allowed_inputs": [
+    {
+      "path": "configs/candidate_ambiguity_prompt_v07.txt",
+      "bytes": 6969,
+      "sha256": "f929852469f3e905304561ae37a1fde6be6762444fb041595e91b2ba5a215cff"
+    },
+    {
+      "path": "configs/candidate_schema_v06_repair.json",
+      "bytes": 10054,
+      "sha256": "2d6f3be0b55a14e26be74e7ee4b903272f38ec9a2486b251ac55711128b3df56"
+    },
+    {
+      "path": "data/natural_model_pilot_v06/candidate_request.json",
+      "bytes": 17749,
+      "sha256": "8874b90fda88c503f0b571fcb03c17a7a1786df595f3721108f29df293e11224"
+    },
+    {
+      "path": "data/natural_model_pilot_v06/candidate_output_repaired.json",
+      "bytes": 27787,
+      "sha256": "5551ca4e5c5c4106a49d7f9cc9652cdf75e3211642bc061ddcd5dbc53bfb76ef"
+    },
+    {
+      "path": "data/natural_model_pilot_v07/candidate_expansion_protocol.json",
+      "bytes": 7667,
+      "sha256": "13722295994ab011deac652571227a51b01ca14422ba09e2c97df55905f80fca"
+    }
+  ],
+  "prohibited_inputs": [
+    "QA",
+    "gold",
+    "scores",
+    "decoder_results",
+    "external_sources",
+    "other_project_files"
+  ],
+  "input_access_evidence": "Exact five-file instruction and agent report; no OS-level file-read sandbox or independent model family established.",
+  "generation_calls": 1,
+  "repair_calls": 0,
+  "output": {
+    "path": "data/natural_model_pilot_v07/candidate_ambiguity_audit_raw.json",
+    "bytes": 21384,
+    "sha256": "c17bf54ad74361af58a47eff2c28262addd2b42c3363c796894383365a20aa0f"
+  },
+  "claim_scope": "Unversioned model-assisted source ambiguity audit, not human annotation, independent gold or completeness measurement."
+}

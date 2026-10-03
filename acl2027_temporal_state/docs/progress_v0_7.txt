@@ -1,0 +1,66 @@
+ACL 2027 research rework — checkpoint v0.7
+Completed 2026-10-02
+
+Decision and evidence boundary
+
+The next useful step is natural source capture and annotation plus a controlled scorer study, before extending exact search. Actual pinned likelihood execution is now established. On this single development graph, however, the scorer is sensitive to the two recorded conditions and exact search offers no advantage over ordinary iteration. This is an exploratory diagnostic, not an ACL-ready empirical contribution, accuracy result or novelty claim.
+
+The working research question is correction-dependent reconstruction under uncertain interpretations: when a reading changes the active correction target or essential support, can a method improve grounded answers beyond strong full-prefix extraction and iterative inference? Current natural evidence does not yet test that question. Temporal memory, joint extraction/temporal-link inference, truth maintenance and temporal constraint networks all have direct predecessors. The implemented machinery alone is not an algorithmic advance.
+
+Actual pinned execution
+
+A public Qwen3-0.6B Q8_0 asset was verified by repository revision and SHA-256, then executed through pinned llama.cpp b11146 (commit 7fe450e19305b828c199d602c23a8337aaa1f03b). Model asset SHA-256 is 9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031. Runtime files, chat template, source snapshot, prompts, token IDs, configuration and execution order are recorded. System library hashes are observed; this is not a fully hermetic container. The prepared Qwen3-8B experiment remains unrun.
+
+Each of 32 existing atomic options received a full-vocabulary next-token Yes and No log probability under one identical prompt prefix. Both label continuations were verified as single tokens. The score is log P(Yes) minus log P(No), an uncalibrated additive potential. There are 32 primary yes_no and 32 diagnostic no_yes items; semantics of Yes and No never flip. No best-condition selection, averaging, score retuning or answer labels were used. Beta remains one. Historical scoring is primary and active_support is an ablation.
+
+All 64 final rows completed. Prompt lengths were 5,034–7,856 tokens under the actual 8,192-token backend; no input was truncated. The four-thread CPU run used Q8 KV cache, prompt reuse and a 2 GiB address-space guard. It took 1,509.884 seconds (25.17 minutes), peaked at 1,197,840 KiB RSS (1.14235 GiB), and exited cleanly. A predeclared repeat of the first primary prompt after all64 returned exactly the same Yes and No log probabilities; absolute tolerance was fixed at 1e-6. This single same-server check does not prove all64 cold regeneration, cross-machine equivalence or model quality.
+
+Attempt accounting is retained: one loopback setup failure; an F16 KV allocation failure under the address-space guard; a slow cache-disabled attempt interrupted before a returned score; an earlier cache-enabled run stopped after15 responses because its CPU limit was inadequate; and the final complete run. A live hard-limit increase was denied by the kernel, so the owned process was restarted with a revised limit. The15 partial scores are not final measurements. Final execution pairs the two conditions per item for cache reuse. This timing-driven order/CPU amendment followed partial responses but preceded root inspection of their values or decoder outcomes. It is not ex ante benchmark preregistration. Total completed native distributions across attempts are81:64final,1repeat,15discarded and1smoke; setup/prefill failures add cost without a returned distribution. No paid jobs launched.
+
+Observed scoring and decoder outcomes
+
+Condition        Methods                      Active claims  Links  Exact objective gap
+primary yes_no   independent/iterative/
+                 restarted/exact              7              3      0
+control no_yes   independent                   4              1      0.1168765724
+control no_yes   iterative/restarted/exact     5              1      0
+
+The primary condition selects r1–r7 with l9, l1 and l14. The diagnostic independent state selects r2,r4,r6,r7 with l12; the other methods add r5 and select l14 instead. Ordinary iteration already closes the gap, so the example gives no exact-over-iterative algorithm benefit. Exact gaps compare scores only within a condition and objective mode; they are not factual improvements. No natural QA questions or gold answers were loaded.
+
+Twenty-six of32 support-logodds signs change across conditions: seven reading, seven unresolved, eight link and four null scores. Primary has32positive scores; diagnostic has6. All eight method/objective state pairs change. Yes-plus-No probability mass remains high (0.994966–0.999992), so the effect is not explained by absent literal-label mass. Items share one development history and do not form32 independent evaluation examples. No significance or population-level claim follows.
+
+The two display conditions also have different cache histories and numerical batching. Their differences cannot be attributed solely to label wording without a cold/no-reuse or crossed-order follow-up. Both stored objective modes coincide because this graph has no correction links or essential dependencies. Unary/link comparability, correlated evidence, explicit unresolved/null semantics and probability calibration remain open. The v0.6 correction-suppression failure remains preserved and historical scoring stays default.
+
+Offline integrity and candidate coverage
+
+The new cache provenance explicitly combines a pinned scorer with unversioned candidates; it does not relabel candidate generation as pinned. Native response coverage, label token IDs, log probabilities, source/candidate lineage, immutable assets, exact rendered prompts, execution order and all unsuccessful attempt receipts are checked. Two offline executions produced identical bytes for both caches, both lineage files and the full decoder result. This proves cached replay for five artifacts, not independent model regeneration.
+
+A fresh source-only conversational audit, with unavailable model revision, read only five declared inputs and inspected seven mentions and sixteen potential differences. It returned zero new readings, zero links and zero graph defects. Thirty-four unique evidence occurrences and exact receipt hashes passed validation. The graph remains unchanged. This is a residual full-context ambiguity audit, not a candidate-recall estimate or a certificate of completeness. Future local proposals may be locally plausible even when broader context resolves them; they must not be removed using answer knowledge before inference comparisons.
+
+Prospective data work
+
+The primary proposed evaluation now uses controlled prefixes of exact frozen document versions. Delivery index, retrieval time, publication metadata and event time remain distinct. Questions ask what a supplied record prefix supports. Historically faithful public-knowledge replay is a separate slice requiring genuine version/availability evidence. Existing examples and cutoffs are not retroactively certified under the new protocol.
+
+The development discovery frame contains19 histories and39 opened primary URLs:10 leadership histories and9 plan histories, with14 new metadata discoveries and5 previously visible development histories. A predetermined20-organization convenience frame and a disclosed no-replacement exclusion leave a one-history shortfall. Nineteen provisional groups are not yet19 independently verified groups. There are zero new raw byte captures, annotated histories, questions, completed streams or benchmark admissions under this protocol. Explicit failures, mutable sources, missing intermediates and overlap need review before admission.
+
+HS2 is a promising correction lead: an official route-decision page explicitly records a December2017 change from81% to41% and a scope clarification. The original uncorrected version remains missing. This is a lead within one history, not an additional independent example or a completed correction benchmark. The full frame is data/source_stream_v07/development_frame.json.
+
+Writing and literature
+
+W01 is complete as an exploratory methods/data LaTeX draft, with14 claims linked to source artifacts and10 verified references. The draft intentionally freezes its measured-results boundary at v0.6; this report carries v0.7 observations. All48 hash references, including the draft itself, match. Ten cited bibliography entries resolve. The targeted literature review includes current temporal memory systems, dynamic-fact evaluation, prior joint extraction/temporal-link methods, classical temporal networks and truth maintenance. Broader novelty review remains open.
+
+The installed pdflatex executable lacks its format and basic LaTeX support files. No compiled PDF or visual QA is claimed. The source is not final ACL formatting or a complete paper.
+
+Verification
+
+Canonical python scripts/verify_project.py passed325 unit tests and all19 command gates. The two new gates validate the ambiguity audit and replay the pinned likelihood artifacts without network/model calls. Of114 prior v0.6 data/config/prepared/reference files,112 inputs/configurations remain byte-identical; two existing diagnostic outputs were regenerated with only timestamps, elapsed times and current code hashes changed. Their semantic results are unchanged. Independent review recomputed the16 selected-state objectives, checked the64 raw rows and confirmed the limits above. No unresolved implementation blocker was found within that reviewed scope.
+
+The checkpoint excludes model/runtime binaries and the14 previously excluded full external Lyft response/derivative files. Their hashes, capture receipts, short excerpts and a retriever remain recorded. The asset bootstrap downloads public pinned model/runtime assets into a separate directory and verifies exact hashes. A fresh source download can differ from the original capture; excluded full-text offsets cannot be independently rechecked from excerpts alone.
+
+Next authorized work
+
+1. Capture the19-history source frame, preserve exact response bytes and clocks, review connected groups and exclusions, and freeze delivery batches before candidates/questions. Keep routine convenience and enriched challenge slices separate. Report the20-history shortfall transparently.
+2. Annotate correction targets and essential support, candidate proposal coverage and prefix-supported answers with explicit uncertainty and source evidence. Independent evaluation labels must remain outside inference inputs.
+3. On separate development examples, predeclare a crossed label-order/cache-control study and at least one stronger pinned contextual or listwise scorer. Do not promote the diagnostic v0.7 condition into the primary result or average it post hoc. Evaluate calibration only against independent labels.
+4. Compare a strong full-prefix extractor and ordinary/restarted iterative inference at matched source access and cost. Develop scalable search and alternative-state answer agreement only after natural coupling errors warrant them.
+5. Reassess the method contribution after20 measured histories. If useful gains and a clear extension over prior joint inference do not appear, narrow the paper to the supported research question or findings instead of manufacturing an algorithmic claim.

@@ -1,0 +1,240 @@
+ACL 2027 RESEARCH CHECKPOINT v0.6 — 2026-10-02
+
+Current finding
+The active-support objective exposed a failure rather than an empirical gain.
+Under the preserved authored scores, removing rewards from withdrawn support
+makes valid correction links unattractive. The correction-aware historical
+pipeline remains the default. Neither objective is a factual-truth guarantee.
+
+Final verification passes 302 unit tests and all seventeen command gates.
+results/verification.json records the complete integrated run.
+The prior v0.5 report stays unchanged.
+The one bounded source-only repair and separate fresh scorer both passed their
+structural gates; the shared cache and eight record replays are complete.
+Three fixed monotone ordinal codings across four methods have been replayed
+separately, preserving selections on this case. No accuracy measure is inferred
+from execution.
+
+Objective implementation
+The decoder accepts one question-independent objective callback after the shared
+feasibility projection. Independent, iterative, restarted and exact search use
+the same selected objective, candidates, scores, correction policy and budgets.
+The independent baseline keeps its prior per-mention maximum net-unary reading
+choice and then optimizes links; it is not a global active-support optimizer.
+
+The historical objective scores every selected reading and link as before.
+The active_support ablation replaces each inactive resolved reading by that
+mention's maximum net unresolved score, and each inactive temporal link by the
+outgoing mention's null score. Operative correction notices retain their link
+contributions, including notices whose replacement assertion is later retired.
+The breakdown retains selected, reference and scored values for every term.
+Objective identity hashes bind both the frozen correction cache and the exact
+scoring convention. Old correction-pipeline callers keep historical behavior.
+
+Reference anchoring preserves rankings under a constant added to every reading
+at a mention, and under a constant added to every outgoing net-link score and
+its null reference. Naively zeroing inactive terms lacks these invariances.
+This property does not imply scale invariance, source independence, duplicate
+invariance, calibration, or a joint posterior interpretation. Removed inactive
+mass is signed and may be negative. A negative historical reading can be chosen
+and then neutralized by correction; these failure controls remain disclosed.
+
+Measured matched replay
+scripts/run_objective_diagnostics_v06.py uses only the ten existing authored
+correction caches/questions and the two existing Lyft source-record caches.
+No source data, candidate, score, policy or question is edited, and no natural
+gold or authored expectation file is read. It produces:
+  80 authored case x objective x method decodes;
+  88 authored question x objective x method predictions;
+  16 source-record variant x objective x method decodes;
+  48 additional v0.5 pipeline compatibility decodes;
+  825 passing implementation contracts.
+Two runs produced byte-identical result files after elapsed-time fields were
+excluded. This is replay determinism, not a speed measurement or independent
+replication of a model run.
+
+Historical mode exactly matches legacy selections, selected objective values,
+active claims, correction ledgers, and authored answer/evidence outputs.
+Active-support changes 32 of 40 authored case/method selections and ledgers,
+suppresses all 40 previously selected authored correction links, and changes
+32 of 44 matched authored answer/evidence pairs. These are behavior counts,
+not accuracy differences. No desired result was used to retune scores.
+
+For the certificate-enabled Lyft illustration, all four historical decoders
+retain the approximately 50-basis-point forecast. All four active-support
+decoders select no correction and retain both approximately 500 and 50 basis
+points. With resolved unary 10, unresolved 0, correction 2 and null 0, the
+correction state scores 12 under active-support; the no-correction state scores
+20. Its source support does not make the optional correction edge mandatory.
+Forecast modality and unknown event endpoints remain unchanged. The illustration
+has zero temporal QA questions and is not an actual financial-outcome claim.
+
+Independent audit
+scripts/audit_objectives_v06.py compares independent support-subset/arithmetic
+oracles with the implementation. results/objective_audit_v06.json reports
+23,497 checks, 1,836 feasible assignments, 7,344 offset-invariance state
+comparisons, 664 decoder runs and zero mismatches. It includes explicit
+correction-suppression, negative-target and naive-zeroing counterexamples.
+The finite audit establishes bounded implementation agreement, not a new search
+algorithm, natural extraction quality or a method advantage.
+
+Score-cache provenance
+The new unversioned_model_scores evidence kind uses scored-cache schema 0.6.
+It requires explicit candidate/scorer backend identifiers, null model revisions,
+prompt/config hashes and a precise matching score description. It does not
+pretend that ordinal judgments are likelihoods or reproducible model generation.
+The three older provenance kinds keep schema 0.4 and unchanged canonical
+serialization. The correction wrapper can embed either valid scored-cache
+version while enforcing the existing nested/lineage/policy hashes.
+See docs/scored_cache_v06.txt and the new provenance tests for details.
+
+Natural protocol and first failed attempt
+The new candidate and scoring protocol has three source-only development-prefix
+requests and a bounded Nike CEO pilot. Earlier source packs, annotations and
+question/expectation files stay unchanged. The selected pilot is development
+visible and manually scoped; it is not a random sample or an untouched test.
+Source availability conventions remain operational and do not prove historical
+first public accessibility.
+
+A fresh unversioned conversational candidate pass saw only two eligible source
+documents plus the frozen task/prompt/schema. Its first completed raw output
+contains six mentions, six resolved readings, fifteen candidate links, four
+aliases and two source-authority records. It had one resolved reading per
+mention; that is not evidence of multiple competing resolved interpretations.
+Schema and exact-span checks did not establish semantic compatibility: the
+existing bounded validator rejected plan_with_actual_state_observation.
+
+The prompt/schema did not explicitly prohibit actual observations on every
+announced_future reading. The rejection is preserved, the old gate is retained,
+and one separately versioned source-only repair is authorized. The repair may
+read the original sources and failed response plus the clarified prompt/schema;
+it cannot read scores, QA labels, decoder outputs or other prior annotations.
+There is no automatic retry loop or hidden output replacement.
+
+First-attempt and repair records:
+  data/natural_model_pilot_v06/candidate_request.json
+  data/natural_model_pilot_v06/candidate_output_raw.json
+  data/natural_model_pilot_v06/candidate_run_receipt.json
+  data/natural_model_pilot_v06/candidate_validation_first_pass.json
+  data/natural_model_pilot_v06/validation_repair_protocol.json
+  configs/candidate_prompt_v06_repair.txt
+  configs/candidate_schema_v06_repair.json
+  data/natural_model_pilot_v06/candidate_output_repaired.json (repair output)
+  data/natural_model_pilot_v06/candidate_repair_receipt.json (repair receipt)
+The single repaired output passed the existing validator with seven mentions,
+seven resolved readings and eleven links. It preserves the first failed attempt
+and adds no repeated repair loop. Every mention has one resolved reading plus
+an adapter-added unresolved option. This case can test link/unresolved choices,
+not competing resolved factual-identity interpretations or an identity-coupling
+advantage. candidate_validation_repaired.json records the validation outcome.
+One fresh separate scorer supplied all 32 actual judgments: seven resolved,
+seven unresolved, eleven link and seven no-link items. Exact coverage, integer
+bounds and source evidence gates passed; this does not establish entailment or
+judgment quality. scorer_output_raw.json and scorer_run_receipt.json preserve
+its raw output and declared execution inputs.
+
+The executed exploratory ordinal branch uses a separate fresh scoring context
+and explicit judgments for resolved, unresolved, link and no-link items. It uses
+neutral opaque item IDs and strips generation rationales before scoring. Exact
+score-request hashes, mappings, raw judgments, receipts and failures are
+retained. This is elicited ordinal judgment, not conditional token likelihood.
+Any equal spacing of ordinal categories and unary/link tradeoff is a modeling
+choice requiring sensitivity analysis before research interpretation.
+
+Natural execution result
+The accepted graph has seven mentions, seven resolved readings and seven added
+unresolved choices, eleven candidate links, two subject aliases and two recorded
+non-subject alias exclusions. It has zero correction certificates and zero
+essential-support dependencies. The adapter preserves full source context and
+uses every actual ordinal judgment, including unresolved/no-link scores, with
+no numeric score defaults or result-guided candidate pruning. The bounded state
+ceiling is 30,720.
+
+All eight objective/method decodes select the same seven active claims and four
+links, objective 33. No selected support is withdrawn, so the objective modes
+coincide on this case. Method agreement is not correctness, and this case cannot
+test competing resolved identity interpretations or an active-withdrawal benefit.
+There were three conversational generations: first candidate extraction, one
+accepted source-only repair, and one fresh ordinal score pass. Stored replay
+performs no model calls. Pinned model and token-likelihood executions remain zero.
+No natural QA/gold was loaded and no accuracy, recall or held-out metric exists.
+
+Run records and cache:
+  data/natural_model_pilot_v06/scoring_request.json
+  data/natural_model_pilot_v06/scoring_manifest.json
+  data/natural_model_pilot_v06/scorer_output_raw.json
+  data/natural_model_pilot_v06/scorer_run_receipt.json
+  data/natural_model_pilot_v06/shared_cache.json
+  data/natural_model_pilot_v06/adapter_manifest.json
+  results/natural_model_pilot_v06.json
+Receipt validation binds declared role-specific input hashes; it is not an
+independent attestation of hidden model execution or training-data exposure.
+
+Ordinal sensitivity declaration
+Identity, signed-square and compressed-extremes mappings were applied to all
+32 unary, unresolved, pair and null scores, with the historical objective and
+all four methods. All twelve decodes preserve the selected readings, links,
+active claims and interval envelopes. Every within-mapping exact-objective gap
+is zero. Four malformed-mapping controls pass, and all seven generated sensitivity
+artifacts are byte-identical on replay. The check uses no new model
+call, QA label or score tuning. The plan was written after scorer
+completion was reported but before root inspected raw score values or any
+natural decoder output. This is an exploratory declaration, not an ex ante
+benchmark preregistration. Three monotone mappings cannot establish robustness
+to every ordinal recoding, calibration, accuracy, or a best transformation.
+The exact declaration is data/natural_model_pilot_v06/ordinal_sensitivity_plan.json.
+The runner is scripts/run_ordinal_sensitivity_v06.py and its result is
+results/ordinal_sensitivity_v06.json. Stability on these three fixed maps is
+not robustness to all possible order-preserving score transformations.
+
+The separately prepared future likelihood branch requires actual teacher-forced
+continuation log probabilities under a pinned runtime and label permutations.
+No likelihood collector or such numerical likelihood record has been executed.
+The candidate/repair/ordinal roles are not a substitute for the prepared pinned
+Qwen3-8B backend. See docs/natural_protocol_v06.txt, configs/natural_protocol_v06.json,
+the candidate/scorer prompt-schema pairs, and data/natural_protocol_v06/request_manifest.json.
+
+Backend status
+A fresh read-only identity check succeeds. Jobs ps returns UNAVAILABLE because
+hf_jobs was not exposed by the connector at dispatch. No job was submitted and
+no credit shortage or automatic approval rejection is inferred. The local
+runtime exposes nine CPUs and about 3.35 GiB available host memory in one
+snapshot, but workspace quotas are unknown. No local GPU or ML inference stack
+is established. No dependency installation or weight download occurred.
+The small CPU alternative remains a bounded proposal, not a measured backend.
+
+Research implications and next evidence gate
+The objective audit argues against selling active-support suppression as an
+advance. The next useful step is to audit the shared natural candidate/score
+artifact, inspect unsupported and missing candidates, measure genuine candidate
+alternatives and recall, and separate extraction errors from score errors and
+search errors. Test ordinal spacing and relative unary/link scales without
+tuning against desired QA outputs. Calibration, independent natural histories,
+strong contextual baselines and answer uncertainty remain necessary.
+
+No held-out natural accuracy, candidate recall, calibrated likelihood, scalable
+joint solver, natural joint-over-pipeline gain or ACL acceptance claim exists.
+No manuscript result should be inferred from contract counts. Preserve the
+negative findings and failed attempts when deciding the paper contribution.
+
+Canonical replay
+Run python scripts/verify_project.py after all checkpoint artifacts are present.
+It supplies the explicit repaired-candidate prompt/schema/receipt and preserved
+first-failure lineage flags. README.md records the complete standalone command.
+The natural pilot script without these flags intentionally points to the failed
+first output and is not the command for the accepted repaired pilot.
+
+Preservation and future model budget
+The 82 v0.5 data/config/prepared/reference files checked in
+results/input_preservation_v06.json are byte-identical. The corrected shared
+cache identity is 416dd8d2977124eee779e186e7a5d3f73beeb2c6863e803e7d92233ad6440224.
+Tightening role-specific receipt validation changed the adapter/cache identity
+without changing raw judgments or selected outcomes.
+
+The repaired candidate file is 27,787 bytes and the full scoring request is
+89,707 bytes. These are byte counts, not token counts. The conversational
+model revision and its context limit are unknown, and token usage was not
+measured. The pinned Qwen3-8B v0.3 preparation uses a different prompt/schema;
+its 12,288-input/4,096-output caps must not be assumed adequate for this v0.6
+batched ordinal request. A pinned tokenizer check, bounded request design and
+explicit chunking/coverage policy remain necessary before that future run.

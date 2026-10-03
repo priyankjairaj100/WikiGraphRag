@@ -1,0 +1,126 @@
+ACL 2027 REWORK: CHECKPOINT v0.4
+Work date: 2026-10-02
+Focus: a common path from scored candidates to temporal answers, and broader
+primary-source discovery. This is an implementation checkpoint, not a paper result.
+
+Outcome and research interpretation
+Independent, iterative, restarted iterative and exact joint decoding now consume
+one validated candidate/score cache and use identical conditional temporal
+constraints and answer rules. The cache includes full bounded claims, explicit
+null alternatives, unary and pair scores, local penalties, source hashes,
+prefix context and model/prompt/configuration provenance. It rejects unexpected
+label fields, stale hashes, undeclared/future context and invalid evidence spans.
+Hashing establishes consistency, not semantic entailment or provenance truth.
+
+Two authored controls show linked constraints improving answers for every method:
+same-episode observations can support an intervening day, and a predecessor link
+can rule an earlier holder out at a later observation without inventing the exact
+handover. These effects belong to the shared materializer, not to joint search.
+The fixed-selection, links-removed control makes this distinction visible.
+
+A coordinated identity trap is solved by exact search and seeded restarts but
+not by the independent or single-start iterative methods. A paired misleading-
+score control reverses that correctness pattern: exact optimization and restarts
+choose the wrong identity despite a higher objective. These constructed examples
+validate the intended controls. They cannot demonstrate that joint inference
+helps on natural language, beats a strong model scorer, or warrants a paper claim.
+
+Fourteen integration contracts pass across seven authored cases, eight queries
+and four methods (32 predictions). Predictions are written before the script
+loads expected answers. One future-actual query is an unscored mode guard; it
+must abstain. Other controls cover a clean no-interaction case, incompatible
+restatement bounds and a planned/actual merge that every method must reject.
+
+Temporal semantics implemented
+Each selected episode has integer start and end variables with positive
+duration. RESTATES equates endpoints only for compatible same-key/value,
+same-polarity, same-modality readings. CHANGES orders the predecessor's end no
+later than the successor's start; gaps remain possible. It does not assert that
+the intervals meet. Equal-valued episodes separated by a change remain separate.
+No nonoverlap constraint is imposed on unlinked reports, so contradictory
+evidence need not force an artificial entity split or be silently deleted.
+
+Classical difference-constraint closure computes conditional endpoint bounds
+and rejects infeasible selected links. The closure itself is not new research:
+see Dechter, Meiri and Pearl, Temporal constraint networks, Artificial
+Intelligence 49 (1991), 61-95, https://doi.org/10.1016/0004-3702(91)90006-6
+Primary author-hosted paper: https://ftp.cs.ucla.edu/pub/stat_ser/r113-L-reprint.pdf
+
+Every method gets the same feasibility callback, objective and evidence. The
+callback is constrained to link-induced interactions: each valid reading vector
+retains a feasible all-null link choice. This implementation does not support
+arbitrary globally infeasible reading vectors. Original actual-report horizons
+remain unchanged; graph links cannot mix planned and actual modalities. A
+separately modeled modality for each endpoint is still missing.
+
+Review and verification
+Independent review found two issues and verified their fixes. First, independent
+decoding ignored a local violation cost that the joint objective subtracted;
+the independent initializer now uses the same local penalties. This prevents a
+spurious advantage even in a graph with no interactions. Second, mutable
+observation collections could change a direct feasibility callback after its
+creation; the boundary now requires immutable tuples.
+
+An independently generated audit enumerates small integer-day networks directly,
+without using the closure implementation to define its expected results. Across
+500 networks, 50 are feasible and 450 infeasible; 721 feasible interval assignments
+support 1,178 passing checks of feasibility, endpoint extrema and may/must
+membership. The reproducible script is scripts/audit_coupled_finite.py.
+Unit-suite counts and all runner outcomes are in results/verification.json.
+
+All 39 previously migrated natural claims also undergo a lossless singleton
+cache/decoder/materializer smoke check under all four methods. Its fixed 0/-1
+admission scores are artificial; there is one resolved reading and no pair link.
+This tests compatibility only and cannot measure method differences or natural
+accuracy. No natural questions or expectations are read by that smoke runner.
+The v0.3 sources, annotations, labels and backend preparation remain unchanged;
+results/v04_input_preservation.json checks 38 files against the v0.3 archive.
+
+Broader sources and a genuine correction pair
+Five new discovery histories add eleven source records: Docker Free Team sunset
+reversal, Chrome cookie-plan revisions, Artemis mission schedule changes,
+PlayStation legacy-store reversal, and Lyft's explicit margin-forecast correction.
+The original Lyft SEC exhibit says 500 basis points and its replacement explicitly
+corrects that to 50. This is a correction of a forecast statement, not a transition
+in actual financial performance. Same-day public timing is not yet established.
+URLs, short evidence excerpts, scope/date distinctions and admission gaps are in
+data/source_register/expansion_v04.json and docs/source_expansion_v04.txt.
+
+The Docker publisher-linked archive was opened by the discovery agent, but the
+root's follow-up retrieval returned an internal error; historical-byte capture is
+still pending. A current Chrome page carrying an old date visibly contains later
+material. This is a concrete reason not to backdate live pages using their footer.
+All five histories are discovery-only and visible to development. None has exact
+raw bytes, a frozen historical prefix, gold QA, or held-out benchmark admission.
+
+Execution status
+A new read-only Jobs listing returned the same UNAVAILABLE provider error before
+any execution. No new submission, model generation, training or alternate
+execution path was attempted. The pinned extractor remains prepared and disabled.
+See results/cloud_execution_recheck_v04.json. This is not a demonstrated credit
+shortage or an automatic approval rejection.
+
+What still limits a publishable claim
+The exact search remains deliberately small and exponential in candidate/link
+choices. Temporal closure per selected state is cubic in its endpoint-variable
+count. There is no component-scaling, timeout-quality or matched-runtime result.
+CORRECTS is rejected when selected; correction-aware temporal answering remains
+unimplemented, despite discovery of a real correction pair. Predictions are
+conditional on one selected discrete interpretation; ties/near-optimal states
+are not aggregated into a certified answer. Source membership is not an
+independent entailment check. There are no model-scored natural alternatives,
+candidate-recall results, held-out experiments or natural joint-versus-restart gains.
+
+Next research gate
+Acquire defensible historical versions and implement targeted correction semantics
+without confusing changed plans with retracted claims. Execute the pinned extractor
+when a supported backend is available. Then freeze contextual unary/pair scores
+shared by every method and measure candidate recall before decoder comparisons.
+The decisive test remains natural answer gains over the strongest contextual and
+restarted baseline at measured cost. If that gain is absent, revise the paper's
+contribution instead of selling exact optimization or these authored examples as
+the empirical advance.
+
+Reproduce
+  python scripts/verify_project.py
+This uses stored artifacts and standard-library code, without model execution.

@@ -1,0 +1,313 @@
+{
+  "methods": {
+    "tempralm": "Gade and Jetcheva (2024), full-pool dense-score implementation",
+    "ragtime_default": "Grofsky (2025), alpha=0.7, half-life=14 days",
+    "ragtime_real_best": "Grofsky (2025), alpha=0.3, half-life=14 days",
+    "ragtime_tuned": "Held-out selected alpha=0.7, half-life=1825 days"
+  },
+  "current_answer": {
+    "dataset": "wikidata",
+    "reader": "qwen",
+    "k": 5,
+    "n_questions": 33,
+    "current_answer_em": {
+      "flat": 0.4242,
+      "tempralm": 0.1515,
+      "ragtime_default": 0.303,
+      "ragtime_real_best": 0.1515,
+      "ragtime_tuned": 0.5455,
+      "lifecycle": 0.9697,
+      "gold": 0.9697
+    },
+    "current_answer_em_strict": {
+      "flat": 0.4242,
+      "tempralm": 0.1515,
+      "ragtime_default": 0.303,
+      "ragtime_real_best": 0.1515,
+      "ragtime_tuned": 0.5455,
+      "lifecycle": 0.9697,
+      "gold": 0.9697
+    },
+    "paired_tests": {
+      "lifecycle_vs_tempralm": {
+        "mean_diff": 0.8182,
+        "ci95_low": 0.6667,
+        "ci95_high": 0.9394,
+        "p_value": 0.0,
+        "n": 33
+      },
+      "lifecycle_vs_ragtime_default": {
+        "mean_diff": 0.6667,
+        "ci95_low": 0.4848,
+        "ci95_high": 0.8182,
+        "p_value": 0.0,
+        "n": 33
+      },
+      "lifecycle_vs_ragtime_real_best": {
+        "mean_diff": 0.8182,
+        "ci95_low": 0.6667,
+        "ci95_high": 0.9394,
+        "p_value": 0.0,
+        "n": 33
+      },
+      "lifecycle_vs_ragtime_tuned": {
+        "mean_diff": 0.4242,
+        "ci95_low": 0.2424,
+        "ci95_high": 0.6061,
+        "p_value": 0.0,
+        "n": 33
+      }
+    }
+  },
+  "as_of": {
+    "wikidata": {
+      "dataset": "wikidata",
+      "n_historical_probes": 134,
+      "n_current_probes": 33,
+      "historical_accuracy": {
+        "accuracy": {
+          "tempralm": 0.3881,
+          "ragtime_default": 0.2985,
+          "ragtime_real_best": 0.2836,
+          "ragtime_tuned": 0.8731,
+          "lifecycle_asof": 0.9403
+        },
+        "paired_tests": {
+          "lifecycle_asof_vs_tempralm": {
+            "mean_diff": 0.5522,
+            "ci95_low": 0.4552,
+            "ci95_high": 0.6493,
+            "p_value": 0.0,
+            "n": 134
+          },
+          "lifecycle_asof_vs_ragtime_default": {
+            "mean_diff": 0.6418,
+            "ci95_low": 0.5448,
+            "ci95_high": 0.7313,
+            "p_value": 0.0,
+            "n": 134
+          },
+          "lifecycle_asof_vs_ragtime_real_best": {
+            "mean_diff": 0.6567,
+            "ci95_low": 0.5597,
+            "ci95_high": 0.7537,
+            "p_value": 0.0,
+            "n": 134
+          },
+          "lifecycle_asof_vs_ragtime_tuned": {
+            "mean_diff": 0.0672,
+            "ci95_low": 0.0,
+            "ci95_high": 0.1343,
+            "p_value": 0.055,
+            "n": 134
+          }
+        }
+      },
+      "current_accuracy": {
+        "accuracy": {
+          "tempralm": 0.1818,
+          "ragtime_default": 0.1212,
+          "ragtime_real_best": 0.0909,
+          "ragtime_tuned": 0.9091,
+          "lifecycle_asof": 0.9394
+        },
+        "paired_tests": {
+          "lifecycle_asof_vs_tempralm": {
+            "mean_diff": 0.7576,
+            "ci95_low": 0.6061,
+            "ci95_high": 0.8788,
+            "p_value": 0.0,
+            "n": 33
+          },
+          "lifecycle_asof_vs_ragtime_default": {
+            "mean_diff": 0.8182,
+            "ci95_low": 0.697,
+            "ci95_high": 0.9394,
+            "p_value": 0.0,
+            "n": 33
+          },
+          "lifecycle_asof_vs_ragtime_real_best": {
+            "mean_diff": 0.8485,
+            "ci95_low": 0.7273,
+            "ci95_high": 0.9697,
+            "p_value": 0.0,
+            "n": 33
+          },
+          "lifecycle_asof_vs_ragtime_tuned": {
+            "mean_diff": 0.0303,
+            "ci95_low": -0.0606,
+            "ci95_high": 0.1212,
+            "p_value": 0.794,
+            "n": 33
+          }
+        }
+      }
+    },
+    "templama": {
+      "dataset": "templama",
+      "n_historical_probes": 447,
+      "n_current_probes": 300,
+      "historical_accuracy": {
+        "accuracy": {
+          "tempralm": 0.6711,
+          "ragtime_default": 0.4586,
+          "ragtime_real_best": 0.4497,
+          "ragtime_tuned": 0.9105,
+          "lifecycle_asof": 0.9732
+        },
+        "paired_tests": {
+          "lifecycle_asof_vs_tempralm": {
+            "mean_diff": 0.302,
+            "ci95_low": 0.255,
+            "ci95_high": 0.3512,
+            "p_value": 0.0,
+            "n": 447
+          },
+          "lifecycle_asof_vs_ragtime_default": {
+            "mean_diff": 0.5145,
+            "ci95_low": 0.4631,
+            "ci95_high": 0.566,
+            "p_value": 0.0,
+            "n": 447
+          },
+          "lifecycle_asof_vs_ragtime_real_best": {
+            "mean_diff": 0.5235,
+            "ci95_low": 0.472,
+            "ci95_high": 0.5749,
+            "p_value": 0.0,
+            "n": 447
+          },
+          "lifecycle_asof_vs_ragtime_tuned": {
+            "mean_diff": 0.0626,
+            "ci95_low": 0.0336,
+            "ci95_high": 0.0917,
+            "p_value": 0.0,
+            "n": 447
+          }
+        }
+      },
+      "current_accuracy": {
+        "accuracy": {
+          "tempralm": 0.3767,
+          "ragtime_default": 0.0433,
+          "ragtime_real_best": 0.04,
+          "ragtime_tuned": 0.94,
+          "lifecycle_asof": 0.95
+        },
+        "paired_tests": {
+          "lifecycle_asof_vs_tempralm": {
+            "mean_diff": 0.5733,
+            "ci95_low": 0.5133,
+            "ci95_high": 0.6333,
+            "p_value": 0.0,
+            "n": 300
+          },
+          "lifecycle_asof_vs_ragtime_default": {
+            "mean_diff": 0.9067,
+            "ci95_low": 0.87,
+            "ci95_high": 0.94,
+            "p_value": 0.0,
+            "n": 300
+          },
+          "lifecycle_asof_vs_ragtime_real_best": {
+            "mean_diff": 0.91,
+            "ci95_low": 0.8733,
+            "ci95_high": 0.9433,
+            "p_value": 0.0,
+            "n": 300
+          },
+          "lifecycle_asof_vs_ragtime_tuned": {
+            "mean_diff": 0.01,
+            "ci95_low": -0.0233,
+            "ci95_high": 0.0467,
+            "p_value": 0.666,
+            "n": 300
+          }
+        }
+      }
+    },
+    "realworld": {
+      "dataset": "realworld",
+      "n_historical_probes": 36,
+      "n_current_probes": 20,
+      "historical_accuracy": {
+        "accuracy": {
+          "tempralm": 0.75,
+          "ragtime_default": 0.75,
+          "ragtime_real_best": 0.6667,
+          "ragtime_tuned": 0.9722,
+          "lifecycle_asof": 1.0
+        },
+        "paired_tests": {
+          "lifecycle_asof_vs_tempralm": {
+            "mean_diff": 0.25,
+            "ci95_low": 0.1111,
+            "ci95_high": 0.4167,
+            "p_value": 0.0,
+            "n": 36
+          },
+          "lifecycle_asof_vs_ragtime_default": {
+            "mean_diff": 0.25,
+            "ci95_low": 0.1111,
+            "ci95_high": 0.3889,
+            "p_value": 0.0,
+            "n": 36
+          },
+          "lifecycle_asof_vs_ragtime_real_best": {
+            "mean_diff": 0.3333,
+            "ci95_low": 0.1667,
+            "ci95_high": 0.5,
+            "p_value": 0.0,
+            "n": 36
+          },
+          "lifecycle_asof_vs_ragtime_tuned": {
+            "mean_diff": 0.0278,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0833,
+            "p_value": 0.739,
+            "n": 36
+          }
+        }
+      },
+      "current_accuracy": {
+        "accuracy": {
+          "tempralm": 0.55,
+          "ragtime_default": 0.35,
+          "ragtime_real_best": 0.15,
+          "ragtime_tuned": 0.9,
+          "lifecycle_asof": 1.0
+        },
+        "paired_tests": {
+          "lifecycle_asof_vs_tempralm": {
+            "mean_diff": 0.45,
+            "ci95_low": 0.2,
+            "ci95_high": 0.65,
+            "p_value": 0.0,
+            "n": 20
+          },
+          "lifecycle_asof_vs_ragtime_default": {
+            "mean_diff": 0.65,
+            "ci95_low": 0.45,
+            "ci95_high": 0.85,
+            "p_value": 0.0,
+            "n": 20
+          },
+          "lifecycle_asof_vs_ragtime_real_best": {
+            "mean_diff": 0.85,
+            "ci95_low": 0.7,
+            "ci95_high": 1.0,
+            "p_value": 0.0,
+            "n": 20
+          },
+          "lifecycle_asof_vs_ragtime_tuned": {
+            "mean_diff": 0.1,
+            "ci95_low": 0.0,
+            "ci95_high": 0.25,
+            "p_value": 0.251,
+            "n": 20
+          }
+        }
+      }
+    }
+  }
+}

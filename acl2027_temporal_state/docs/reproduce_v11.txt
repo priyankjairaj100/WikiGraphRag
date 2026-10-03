@@ -1,0 +1,54 @@
+v0.11 reproduction and evidence boundaries
+
+Portable checks (no model or network):
+  PYTHONPATH=src python3 -m unittest discover -s tests -q
+  python3 scripts/verify_discovery_v11.py
+  python3 scripts/verify_reader_inputs_v11.py
+  python3 scripts/evaluate_reader_v11.py --check
+  python3 scripts/review_input_preservation_v11.py
+
+These checks validate packaged contracts, hashes and stored-response comparisons.
+They do not recreate omitted full publisher documents or independently adjudicate
+the source semantics. Original canonical v0.9 command-gate results are preserved;
+this checkpoint does not claim to have rerun those 28 gates.
+
+Full-input checks need the exact analysis-only working files:
+  python3 scripts/verify_reader_inputs_v11.py --external
+  python3 scripts/audit_native_reader_v11.py --external ../tmp/correction_gate_v11/native_reader_attempt01
+  python3 scripts/native_reader_attempt02_v11.py verify --external ../tmp/correction_gate_v11/native_reader_attempt02
+
+The failed attempt01 and separate attempt02 remain distinct. Attempt01's default
+sandbox did not expose required cgroup telemetry; no model process or completion
+started. A read-only host probe found the counters. A pre-output amendment records
+an engineering retry with the same request, parameters, backend and resource
+guards. Only the new collector's two output paths differ. Host execution was
+automatically approved. This amendment relaxes the original no-retry policy for a
+zero-inference environment failure; it is not described as an unmodified initial
+execution or hidden in the final outcome.
+
+Raw web tool snapshots, passage strings, complete model requests/responses, token
+arrays, logs and model/runtime assets remain outside the checkpoint. Packaged
+records retain hashes and metadata, and reviewed generated answer text may be
+included unchanged. Redownloading current documents cannot guarantee the same
+bytes, historical availability, or publication authority. The four selected
+passages are web-reader representations, not a full-source benchmark input.
+
+The pinned local runner uses a 4096-token context, full 384-token generation
+reserve, two independent fresh completion processes, greedy decoding and no
+sampling repair or output repair. All inputs must fit before either completion.
+A separate preflight process renders and tokenizes without a forward pass. The
+5.5 GiB address-space limit and 7 GiB resident cgroup watchdog are unchanged.
+No fresh model execution is part of verification. Frozen attempts refuse reuse;
+a new experiment requires new paths and a new declared protocol.
+
+The support lookup illustration uses prior v0.10 annotations and supplied
+assertion IDs/selections. To reproduce it while exact external annotations and
+excerpts are available, run scripts/run_support_lookup_v11.py. This script writes
+results/support_lookup_v11.json, so compare its bytes with the saved manifest
+before accepting an identical replay. It is not natural-language routing, model
+extraction, truth adjudication, numeric recomputation, or a baseline matched to
+the selected-passage reader.
+
+Manuscript sources and claim ledger are development artifacts. No compiled PDF,
+layout verification, submission-ready manuscript or ACL acceptance claim follows
+from this checkpoint.

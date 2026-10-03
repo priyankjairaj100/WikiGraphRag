@@ -1,0 +1,108 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,booktabs}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\claim}[1]{\textsuperscript{\scriptsize[#1]}}
+\title{Development Evidence Update: Matched Scoring and Source Extension}
+\author{Exploratory addendum to the v0.7 methods draft}
+\date{3 October 2026 \quad | \quad v0.9}
+\begin{document}
+\maketitle
+\noindent\textbf{Status.} This source draft reports development work toward an
+ACL 2027 paper. It does not establish a publishable method advantage or replace
+held-out evaluation. Claim markers map to \texttt{claim\_ledger\_v09.json}.
+
+\section{Additional controlled document streams}
+\label{sec:sources}
+Four histories selected from the existing development frame cover Disney,
+Intel, CVS and Artemis. Eight fixed URLs yielded usable current captures and
+eight cumulative document prefixes. Six extracted-text hashes match the earlier
+checkpoint and two NASA text hashes differ; all eight are recorded as new
+captures. The Intel PDF's archive metadata and its article date differ, and the
+NASA pages contain current navigation. Document delivery therefore remains an
+author-defined experiment, not certified historical public availability.
+\claim{V09-C01}
+
+Eight isolated source-only annotation roles produced 123 claim instances.
+Separate reference roles saved seven artifacts containing fourteen judgments.
+A content filter blocked the second Disney reference artifact without a
+specific policy reason; no saved reference or substitute was produced. All
+fifteen saved raw outputs passed schema, exact-span and prefix-binding checks.
+Separate source-only model reviewers selected one annotation revision: an
+unsupported exact Executive Chairman start day was removed while the stated
+month-level retrospective evidence was retained. The other fourteen artifacts
+were unchanged. Model-assisted review is not independent human gold.
+\claim{V09-C02}
+
+The selected records contain no explicit factual correction and four change
+links. Together with the prior three controlled streams, seven histories have
+fourteen annotated prefixes and 180 claim instances. Thirteen prefixes have
+reference artifacts, yielding twenty-six judgments; only six histories have
+both reference prefixes complete. Repeated-prefix counts are not independent
+samples. These records have not yet been projected into executable candidates
+or evaluated through the QA decoders.\claim{V09-C03}
+
+\section{Matched source-grounded scoring diagnostic}
+\label{sec:design}
+The first two ready histories in the frozen selection order, Disney and Intel,
+were fixed for a bounded scorer comparison. Before research scoring, a separate
+source-only model role authored one supported statement and one semantic
+near-miss for each first prefix. The Disney contrast changes executive to
+non-executive chairman; the Intel contrast replaces the stated effective date
+with the announcement date. Separate source review accepted all four statements
+and expected labels before any research distributions. The scorer received
+neutral item identifiers, statements and complete source text without labels
+or rationales. This balanced authored challenge set is not a sample of natural
+candidate errors. All four items are reading statements; the 4B model has not
+been evaluated on the earlier link, unresolved-reading or no-link options.\claim{V09-C04}
+
+Official pinned Qwen3-0.6B and Qwen3-4B Q8\_0 assets used the same pinned
+llama.cpp runtime and source-bearing prompt wording. Each model evaluated four
+statements under two label-display orders, for sixteen retained distributions.
+Both model tokenizers were checked before scoring; complete rendered prompts
+fit the 4,096-token context without truncation. Every score used a fresh process,
+four CPU threads, thinking disabled, and a 5.5 GiB address-space guard. The score
+is the unmodified next-token log-probability difference
+$\log P(\mathrm{Yes})-\log P(\mathrm{No})$; its sign selects the label and exactly
+zero abstains. Native templates are recorded for both models. This is a matched
+model comparison, not a causal identification of parameter-count effects.
+\claim{V09-C05}
+
+\input{paper/results_numeric_v09.tex}
+
+\section{Implication for the research route}
+\label{sec:implication}
+The source extension supplies succession and planning controls but no new
+explicit correction case. It cannot support a correction-specific method claim.
+The next method experiment should prioritize explicit correction histories
+with supported downstream dependencies, compare against a pinned full-prefix
+reader and contextual independent scorer under equal evidence access, and
+separate proposal, entailment, correction-targeting, dependency-withdrawal and
+search errors. The earlier active-support objective failure remains relevant:
+optimizing a misspecified objective does not recover the desired state.
+No new scalable search algorithm is justified by the present diagnostic alone.
+\claim{V09-C08}
+
+\section{Reproducibility and limits}
+\label{sec:limits}
+The restored v0.8 archive passed CRC and all 433 manifest-entry checks. Its
+packaged evidence was recovered; excluded source fulltexts and model binaries
+were not. The v0.9 package retains compact semantic projections, exact capture
+and request bindings, model/runtime identities, prompt/token hashes and counts,
+projected raw score responses, execution logs, failed attempts and review
+receipts. Full external source strings and recoverable input-token arrays remain
+outside the package. Default replay verifies packaged metadata and score
+arithmetic, not exact source occurrence, tokenization or a new model execution.
+The separate external audit records what was checked while matching inputs were
+available. Fresh public downloads may differ.\claim{V09-C09}
+
+All findings are development observations. There is no human-gold benchmark,
+naturally sampled accuracy estimate, independent calibration study, held-out
+result, candidate-recall result, or end-to-end comparison on the new histories.
+The four statements share two histories, and annotation roles can share training.
+No confidence interval or significance test is reported for these authored
+contrasts. A completed submission manuscript and verified layout remain future
+work.\claim{V09-C10}
+\end{document}

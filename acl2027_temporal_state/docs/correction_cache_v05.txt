@@ -1,0 +1,131 @@
+v0.5 correction-policy cache boundary
+
+Purpose and evidence level
+
+The correction cache is an immutable, inference-only wrapper around an existing
+v0.4 FrozenScoredInput and a CorrectionPolicy. It freezes the source prefix,
+candidate alternatives, scores, temporal claims, aliases, authority attributions,
+correction references, and essential support dependencies before any decoder or
+question is run. It does not extract candidates, estimate scores, establish
+source authority, certify reference entailment, or demonstrate model accuracy.
+
+The base candidate/scorer provenance and correction-policy provenance are
+separate. A source-derived correction annotation does not turn authored base
+scores into model scores. The two-argument factory explicitly labels its policy
+as authored_diagnostic. No model execution is implied.
+
+Public API
+
+  FrozenCorrectionInput(base, policy, provenance, digest)
+  make_correction_cache(base, policy, correction_provenance=None)
+  correction_cache_digest(cache)
+  dump_correction_cache(cache, path)
+  load_correction_cache(path)
+
+The frozen wrapper exposes .base, .policy, .provenance and .digest. Nested maps
+are read-only; policy records and evidence spans are frozen dataclasses inside
+tuples. Construction defensively copies both inputs through canonical JSON and
+validates the reconstructed objects. Digest recomputation also revalidates the
+entire object, rejecting manually forged dataclass wrappers.
+
+Lineage and version preservation
+
+The outer schema is 0.5. Its base_cache object is exactly the existing v0.4
+canonical cache serialization, including its original digest. The base_digest
+field separately records that lineage. The correction_policy_digest hashes only
+the serialized policy. The outer digest hashes the complete outer payload,
+including both nested records, their hashes and the annotation provenance.
+
+The serializer reuses the v0.4 payload builder and validator without modifying
+scored_io.py. Loading and then dumping the nested base produces the same bytes
+as dumping that original base directly. Changes to policy or its provenance
+therefore create a new v0.5 digest while leaving the v0.4 digest unchanged.
+Existing v0.4 files and caches are neither rewritten nor migrated in place.
+
+The digest records tuple order, including evidence span order, and all actual
+source text and source metadata inherited from the base. It is an integrity
+mechanism, not a signature, authenticity guarantee, or proof of historical
+availability. An authorized author can create another valid cache with changed
+content; that cache has a distinct identity and must be reported separately.
+
+Policy declarations
+
+SourceAuthority(source_id, authority_id, evidence_spans) attributes a publisher
+authority using exact source text. Every source reference must occur in the
+eligible base prefix. Authority labels are supplied annotations. A URL, domain,
+document title, or hash never creates authority automatically. Empty authority
+policies remain empty even for apparently official source URLs.
+
+CorrectionEvidence(link_id, reference_span, action='replace',
+coverage='whole_assertion') supplies an explicit source reference for one
+CORRECTS candidate link. The quote and offsets must exactly match the correcting
+source and the link's recorded reference offsets. This version supports only
+whole-assertion replacement. Partial corrections and retractions require a later
+explicit design and are rejected instead of being treated as full replacements.
+
+SupportDependency(dependent_claim_id, prerequisite_claim_id, evidence_spans)
+declares essential factual dependence. Its exact evidence belongs to the
+dependent claim's source. Both claim IDs must exist among candidate readings;
+the prerequisite source cannot be later than the dependent source. Dependencies
+must be acyclic. These are conjunctive prerequisites, not an assertion that all
+context sources are essential or that two matching claims share a derivation.
+
+Missing correction certificates and missing authority attributions are allowed
+structurally. Such candidates remain visible in the unchanged base graph. The
+correction-aware semantic layer rejects selecting an uncertified CORRECTS link;
+the cache loader neither deletes that link nor invents a certificate. Malformed
+certificates, unknown references and duplicate policy records are input errors.
+This distinction preserves explicit uncertainty without permitting silent
+unsupported overwrites.
+
+Provenance fields
+
+The exact correction_provenance schema is:
+
+  evidence_type
+  policy_builder_id
+  policy_builder_revision
+  prompt_sha256
+  config_sha256
+  policy_description
+
+Allowed evidence_type values are authored_diagnostic, source_derived_annotation,
+and pinned_model_annotation. The default authored diagnostic has null builder,
+revision and prompt hash and a documented default-configuration hash. Source-
+derived annotations require a nonempty builder ID and prompt SHA-256; an
+unpinned conversational annotator may have a null revision. Pinned-model
+annotations additionally require an explicit nonfloating builder revision.
+Floating labels including main, latest, master, unknown and unversioned fail.
+All configuration and non-null prompt hashes are lowercase SHA-256 strings.
+An asserted model revision is recorded provenance, not independent evidence that
+the model actually ran; the experiment must retain its execution records.
+
+Strictness and leakage boundary
+
+The reader rejects duplicate JSON object keys, nonfinite numbers, missing or
+unknown fields at every new schema level, invalid types, stale outer or inner
+hashes, empty/inexact spans, boolean offsets, unknown source/link/claim
+references, duplicate declarations, and unsupported versions or operations.
+The unchanged v0.4 validator also checks all its schemas, source hashes,
+eligible cutoffs, candidate/claim bindings, projected dates and aliases.
+
+There are no question, answer, or gold-label fields. This is a strict schema
+boundary rather than a claim that arbitrary free text could never contain such
+information. The producer must still be isolated from evaluation labels. The
+cache code itself imports no evaluation module and reads no QA annotations.
+
+Verification
+
+tests/test_correction_io.py contains 22 tests. They cover canonical byte-for-byte
+v0.4 round trips, defensive copying, nested immutability, three independent hash
+checks, forged wrappers, duplicate and nonfinite JSON, unknown fields, exact
+spans, source/claim/link references, uncertified candidates, unsupported partial
+operations, future-source rejection even after resigning all hashes, provenance
+requirements, and policy/provenance changes with preserved base lineage.
+
+Command:
+  PYTHONPATH=src python -m unittest discover -s tests -p test_correction_io.py -v
+
+All 22 passed during implementation. These are implementation integrity checks,
+not empirical correction-extraction results or evidence of a joint-decoding
+advantage.

@@ -1,0 +1,138 @@
+Shared scored-input contract, version 0.4
+
+Purpose and evidence status
+
+Every decoder must consume the same loaded FrozenScoredInput.problem and the
+same full bounded claim bindings. The cache contains source-prefix evidence,
+candidates, unary scores, link scores, per-mention null-link scores, penalties,
+beta, aliases and explicit scoring provenance. It does not extract candidates,
+score them, learn parameters, choose readings, answer a question, or read an
+evaluation label. The authored diagnostic and migration singleton smoke modes
+are engineering checks. They cannot support a claim about learned scoring or
+natural joint-inference gains.
+
+Public API in temporal_state.scored_io
+
+    cache = make_cache(problem, claims, aliases, provenance)
+    dump_cache(cache, path)
+    cache = load_cache(path)
+    digest = cache_digest(cache)
+
+claims is a mapping from (mention_id, reading_id) to TemporalClaim. Every resolved
+reading requires exactly one binding; unresolved readings require none.
+make_cache and load_cache are the validated constructors. They defensively copy
+and freeze the nested objects. The returned fields are problem, claims, aliases,
+provenance and digest. Claims and provenance are read-only mappings; aliases are
+a tuple of read-only mappings, whose evidence_spans arrays are tuples. The
+existing lexical router can read those mappings directly. Code that needs JSON
+objects can use json.loads of the persisted file rather than mutate the cache.
+cache_digest and dump_cache revalidate a manually constructed/forged dataclass
+wrapper. Calling the dataclass constructor directly is not an admission check.
+
+The Problem dataclasses are serialized with every field, including default or
+null fields. Claim bindings preserve the full explicit TemporalClaim schema.
+The top-level JSON fields are exactly:
+
+    schema_version: "0.4"
+    problem: complete Problem object
+    claims: [{mention_id, reading_id, claim}, ...]
+    aliases: [{subject, alias, source_id, evidence_spans}, ...]
+    provenance: the strict object described below
+    source_sha256: source ID to UTF-8 text SHA-256
+    digest: canonical payload SHA-256 excluding this digest field
+
+No unknown keys are allowed at any schema level. In particular, question,
+answer and gold fields cannot enter this inference artifact. Duplicate JSON
+keys, duplicate bindings and nonfinite numeric scores are rejected. An empty
+claim map is valid only if every reading in the candidate graph is unresolved.
+
+Provenance fields, all explicitly required
+
+evidence_type is authored_diagnostic, migration_singleton_smoke or
+pinned_model_scores. The last value describes a future admitted artifact with
+explicit model provenance; this implementation does not create model scores.
+
+candidate_model_id and candidate_model_revision identify the candidate backend.
+scorer_model_id and scorer_model_revision identify the score-producing backend.
+Unknown identifiers/revisions are null, not fabricated revision strings. The
+diagnostic and smoke types require both scorer fields to be null. A candidate
+model identifier may be known while its revision is unknown; that is not a
+pinned model run. A non-null revision always requires its model identifier.
+
+prompt_sha256 is the extraction/scoring prompt artifact digest or null when no
+prompt exists. config_sha256 is required and identifies the exact configuration
+used to construct and score the graph. This configuration should include score
+definitions, preprocessing, candidate constraints and temporal policy. Keeping
+the matching prompt/configuration bytes and execution receipts is the runner's
+responsibility. The cache validates hash syntax, not inaccessible external
+artifacts.
+
+score_definition is nonempty text and must exactly equal Problem.score_provenance.
+It must describe the scores actually supplied. For the diagnostic/smoke modes,
+state explicitly that the scores are authored or fixed control values. Do not
+describe a convenient hand-set score as model confidence or log probability.
+
+Pinned-model mode requires all model identifiers/revisions and the prompt hash.
+Common floating revisions (main/latest/master/unversioned/unknown) are rejected.
+These checks enforce explicit declarations, not their truth; admission as real
+model evidence still requires immutable asset revisions, raw execution outputs,
+the scoring procedure and runtime metadata. Renaming provenance cannot turn a
+diagnostic result into an experiment.
+
+Source and candidate validation
+
+Every declared Source must be available at or before the Problem cutoff. All
+source, mention, reading and link context references must resolve within that
+prefix. The contract rejects future records rather than filtering a graph that
+could already contain information from the future. Report dates may not follow
+their source availability. Exact code-point evidence slices must match source
+text. Alias evidence must match an eligible source and reference a subject that
+appears in the predicted claims. Hashes and offsets certify consistency; they do
+not independently certify publication time, entailment or model honesty.
+
+Each bound claim must have the same source as its mention, the same normalized
+subject/relation/scope key as its reading, and the same value string. At least
+one claim evidence span must overlap that mention in the shared source. Every
+claim context dependency must also be declared by the problem, mention or
+reading, so the decoder graph cannot conceal the materializer's dependencies.
+
+For each resolved reading, effective_start equals the claim's start date only
+when its two start bounds are equal; otherwise it is null. effective_end follows
+the same rule. observed_at is the minimum of state_observed_at or null when the
+observation set is empty. All observations and full bounds remain in the bound
+claim; the scalar observation does not replace them. An observation is never
+projected into an appointment date. Polarity, modality and endpoint uncertainty
+remain explicit claim fields and must be respected by the coupled materializer.
+
+The cache uses the decoder's validation engine without enumerating assignments.
+Validation raises its count ceilings only enough to inspect the supplied graph;
+this does not grant permission to enumerate it. Individual decoder runs still
+apply their configured Limits and common feasibility hook. The cache cannot
+prove that a caller actually used the common hook; the experiment runner records
+the cache digest, temporal-policy configuration and method settings for each run.
+
+Reproducibility and limitations
+
+The payload digest covers source text and metadata, all candidate and link IDs,
+every score, null score, beta, penalties, all claim fields and evidence, aliases,
+and all provenance fields. Binding order is canonicalized by mention/reading ID
+when constructing a cache; loading rejects a noncanonical binding order, so the
+loaded digest remains reproducible when saved again. The JSON is UTF-8, keys are sorted, whitespace is
+removed for hashing, and NaN/Infinity are forbidden. JSON property order or
+formatting changes do not affect the digest; ordered candidate/source arrays
+remain part of the exact artifact. A text digest is also checked independently
+for each source. Editing any covered content requires a new valid cache digest.
+
+The digest is an integrity identifier, not a signature or external timestamp.
+Someone who changes evidence and recomputes every digest creates a different
+artifact; the schema cannot prove that the replacement is truthful. Undeclared
+model context hidden in free text or an external extraction process cannot be
+detected by these structural checks. Preserve the extraction input and raw
+outputs separately and exclude evaluation targets at their actual production
+boundary, not only at serialization time.
+
+Tests cover stale score edits, source-text corruption, duplicate/nonfinite JSON,
+unknown label fields at ten nesting levels, missing/extra bindings, mismatched
+source/key/value, future context, unsupported aliases, false exact-date
+projections, retained multiple observations, provenance restrictions, deep
+immutability and reproducible hashing. No natural development labels are used.

@@ -1,0 +1,39 @@
+MODEL ASSISTED ANNOTATION PROTOCOL v0.1
+Status: v0.2 has two independent early-prefix conversational passes and a separate later-prefix pass on two developmental histories. No natural benchmark or human adjudication is claimed. Exact prompts, inputs and unedited outputs are in data/natural_pilot. The single status enum's polarity/modality defect is recorded in docs/next_candidate_schema.txt; retain raw outputs when migrating to a revised schema.
+
+Purpose
+Create traceable source-supported labels without describing AI review as human adjudication. The unit is a document history and a permitted information prefix, not a single question. Every source must have exact text/version, retrieval time, a content hash, and an explicit basis for availability.
+
+Source admission
+1. Record discovery URL, source owner, public dateline, stated effective dates, and stable version/accession/commit if any.
+2. Acquire the version and its availability evidence. A current page bearing an old publication date is a collection lead until the historical text is verified.
+3. Distinguish source publication, exact-version availability, effective event time and our retrieval time. Do not substitute one for another.
+4. Use day resolution only where within-day ordering cannot affect the answer. Upgrade to UTC timestamps or mark ambiguous when that assumption fails.
+5. Keep selection and exclusion reasons, including source failure, unresolved boundaries, duplicate reporting and genuinely conflicting evidence.
+
+Three-pass workflow in this conversation
+Pass A receives only the permitted source prefix and schema. It independently extracts entities, relation/scope, values, assertion status, temporal expressions and supported links. It quotes source offsets for every substantive label and may return unknown.
+Pass B receives the same prefix and schema in a fresh context, without Pass A labels, system predictions or later documents. It creates its own interpretation. A different model family is preferred when a reproducible model backend is available. Two executions of the same model remain correlated.
+Pass C compares A and B, checks each disagreement against source text and records a reasoned resolution or an unresolved set. This is model-assisted reconciliation. It is never called independent human adjudication or treated as proof of factual truth.
+
+Early conversational annotation is developmental. Formal benchmark labels require logged model IDs/revisions where available, exact prompts, source hashes, decoding settings, unedited outputs and reconciliation records. If the conversational backend cannot be pinned, record that limitation rather than inventing a model revision. Subagents are review tools; they do not create additional human annotators.
+
+Label fields
+- Canonical factual key: subject, relation, scope. Multi-holder or cross-scope cases remain unresolved under the initial single-valued task.
+- Source assertion: exact supporting span and offsets, selected value or set, factual/planned/negated/uncertain status.
+- Event time: stated start/end or bounded/unknown endpoints. Never infer a precise transition date solely from observation order.
+- Update link: restatement, change, explicit correction target, or unresolved. Retrospective reporting is a separate temporal property.
+- Answerability: determinate, conflicting, insufficient, or outside admitted scope, with reasons.
+- Question: event time, information cutoff, full accepted value sets, and sufficient source support alternatives.
+
+Question construction
+Derive temporal questions from admitted source evidence, then create paraphrases without exposing answer strings to the inference pipeline. Include current, historical and same-event/different-cutoff pairs. An early-prefix answer states what the available sources support; later corrections do not rewrite the early-prefix label. Keep questions, all prefixes, all aliases and connected histories together in the split.
+
+Quality measures
+Report model-pass disagreement rates by entity linkage, time boundary, operation and answerability. These are not human inter-annotator agreement. Audit schema consistency, source quote offsets, source availability and equivalent question forms. Keep low-certainty examples in a separately reported slice or score set-valued/indeterminate labels. Do not discard examples merely because the preferred model fails.
+
+Leakage controls
+Annotators of early prefixes see no later sources. Annotators see no evaluated system output while defining initial labels. Freeze reconciliation before test evaluation. Any later challenge to a label is reviewed without system identity; corrections are applied to every system and logged. A source-prefix control does not eliminate knowledge in model weights.
+
+Release description
+State explicitly which annotations are machine-generated, machine-reconciled, source-verifiable or reviewed by the user. User review in this conversation can be recorded where it actually occurs; do not imply it occurred elsewhere. Give source licenses, accessible reconstruction references and uncertainty. If independent human validation remains absent, document this limitation and narrow the empirical claims accordingly.

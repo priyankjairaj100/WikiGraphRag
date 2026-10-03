@@ -1,0 +1,279 @@
+{
+  "schema_version": "source_annotation_v1",
+  "annotation_id": "lyft_fy2024_margin_forecast_correction",
+  "purpose": "unscored source-only development illustration",
+  "backend": "unversioned_conversational_agent",
+  "model_revision": "unknown",
+  "source_ids": [
+    "lyft_original_sec_exhibit",
+    "lyft_corrected_sec_exhibit",
+    "lyft_amendment_sec_report"
+  ],
+  "offset_convention": {
+    "unit": "Python Unicode code points",
+    "index_origin": 0,
+    "end": "exclusive",
+    "representation": "UTF-8 decoded derived.txt; no newline or Unicode normalization"
+  },
+  "evidence": {
+    "original_claim": {
+      "source_id": "lyft_original_sec_exhibit",
+      "start": 4594,
+      "end": 4723,
+      "quote": "Adjusted EBITDA margin expansion (calculated as a percentage of Gross Bookings) of approximately 500 basis points year-over-year."
+    },
+    "original_target_period": {
+      "source_id": "lyft_original_sec_exhibit",
+      "start": 4435,
+      "end": 4464,
+      "quote": "FY’24 Directional Commentary:"
+    },
+    "issuer_attribution": {
+      "source_id": "lyft_original_sec_exhibit",
+      "start": 208,
+      "end": 218,
+      "quote": "Lyft, Inc."
+    },
+    "replacement_claim": {
+      "source_id": "lyft_corrected_sec_exhibit",
+      "start": 4594,
+      "end": 4722,
+      "quote": "Adjusted EBITDA margin expansion (calculated as a percentage of Gross Bookings) of approximately 50 basis points year-over-year."
+    },
+    "replacement_target_period": {
+      "source_id": "lyft_corrected_sec_exhibit",
+      "start": 4435,
+      "end": 4464,
+      "quote": "FY’24 Directional Commentary:"
+    },
+    "correction_cue": {
+      "source_id": "lyft_amendment_sec_report",
+      "start": 2181,
+      "end": 2240,
+      "quote": "correct a clerical error in the 2024 directional commentary"
+    },
+    "explicit_target_document": {
+      "source_id": "lyft_amendment_sec_report",
+      "start": 2258,
+      "end": 2307,
+      "quote": "press release issued by Lyft on February 13, 2024"
+    },
+    "replacement_exhibit_id": {
+      "source_id": "lyft_amendment_sec_report",
+      "start": 2455,
+      "end": 2467,
+      "quote": "Exhibit 99.1"
+    },
+    "original_forward_looking_classification": {
+      "source_id": "lyft_original_sec_exhibit",
+      "start": 11781,
+      "end": 11943
+    },
+    "replacement_forward_looking_classification": {
+      "source_id": "lyft_corrected_sec_exhibit",
+      "start": 11780,
+      "end": 11942
+    },
+    "amendment_replacement_link": {
+      "source_id": "lyft_amendment_sec_report",
+      "start": 2401,
+      "end": 2526
+    },
+    "original_document_date": {
+      "source_id": "lyft_original_sec_exhibit",
+      "start": 188,
+      "end": 205
+    },
+    "corrected_document_date": {
+      "source_id": "lyft_corrected_sec_exhibit",
+      "start": 188,
+      "end": 205
+    },
+    "amendment_stated_report_date": {
+      "source_id": "lyft_amendment_sec_report",
+      "start": 200,
+      "end": 267
+    },
+    "amendment_explanatory_note": {
+      "source_id": "lyft_amendment_sec_report",
+      "start": 2025,
+      "end": 2526
+    }
+  },
+  "claim_identity": {
+    "issuer": "Lyft, Inc.",
+    "metric": "Adjusted EBITDA margin expansion",
+    "denominator": "Gross Bookings",
+    "comparison": "year over year",
+    "target_period": "FY2024",
+    "modality": "forecast",
+    "unit": "basis points"
+  },
+  "original_version": {
+    "claim_id": "lyft_fy2024_margin_forecast_original",
+    "source_id": "lyft_original_sec_exhibit",
+    "value": 500,
+    "approximate": true,
+    "claim_evidence": "original_claim",
+    "period_evidence": "original_target_period",
+    "actual_realized_outcome": false
+  },
+  "corrected_version": {
+    "claim_id": "lyft_fy2024_margin_forecast_corrected",
+    "source_id": "lyft_corrected_sec_exhibit",
+    "value": 50,
+    "approximate": true,
+    "claim_evidence": "replacement_claim",
+    "period_evidence": "replacement_target_period",
+    "actual_realized_outcome": false
+  },
+  "relation": {
+    "type": "explicit_correction",
+    "from_claim_id": "lyft_fy2024_margin_forecast_corrected",
+    "to_claim_id": "lyft_fy2024_margin_forecast_original",
+    "supporting_source_id": "lyft_amendment_sec_report",
+    "meaning": "The corrected exhibit replaces the numeric magnitude in the prior issuer forecast. It repairs an erroneous statement of the same forecast rather than recording a new realized financial event.",
+    "scope": "Only the approximate FY2024 year-over-year increase in adjusted EBITDA divided by Gross Bookings: 500 basis points becomes 50 basis points. The issuer, financial metric, denominator, comparison period and forecast modality persist.",
+    "explicit_target_evidence": [
+      "correction_cue",
+      "explicit_target_document",
+      "replacement_exhibit_id",
+      "amendment_replacement_link"
+    ],
+    "target_resolution": "The amendment explicitly identifies the prior release and its FY2024 directional commentary, and designates the replacement exhibit. It does not restate the numeric bullet in its explanatory note; matching the two exhibits identifies the precise value corrected.",
+    "modality_evidence": [
+      "original_target_period",
+      "replacement_target_period",
+      "original_forward_looking_classification",
+      "replacement_forward_looking_classification"
+    ],
+    "not_an_absolute_margin_level": true,
+    "not_a_change_in_realized_business_state": true
+  },
+  "temporal_semantics": {
+    "fact_claim_target": {
+      "type": "fiscal_period",
+      "label": "FY2024",
+      "calendar_start": null,
+      "calendar_end": null,
+      "daily_event_time": null
+    },
+    "source_stated_dates": {
+      "original_release_date": "2024-02-13",
+      "corrected_release_dateline": "2024-02-13",
+      "amendment_report_date": "2024-02-13"
+    },
+    "date_interpretation": "The FY2024 label is the forecast target, whereas release/report dates describe documents. The corrected release retains the original dateline; that date alone does not establish when the correction became available.",
+    "record_observation_times": {
+      "lyft_original_sec_exhibit": "2026-10-02T12:47:30.848193+00:00",
+      "lyft_corrected_sec_exhibit": "2026-10-02T12:49:36.407097+00:00",
+      "lyft_amendment_sec_report": "2026-10-02T12:48:49.442067+00:00"
+    },
+    "record_observation_interpretation": "These timestamps describe the supplied current HTTP captures. They can anchor this capture record, not the historical first public availability or the time an earlier observer knew the correction.",
+    "historical_first_availability": null,
+    "knowledge_interval_start": null,
+    "knowledge_interval_end": null,
+    "ordering_basis": "The amendment-to-original and replacement-exhibit relations establish revision order; no daily realized event or historical knowledge boundary is assigned."
+  },
+  "unchanged_other_items_caveat": {
+    "observed_derived_text_comparison": "The supplied complete exhibit text strings are identical except for deletion of one zero from the forecast magnitude.",
+    "difference": {
+      "original_source_id": "lyft_original_sec_exhibit",
+      "original_start": 4692,
+      "original_end": 4693,
+      "corrected_source_id": "lyft_corrected_sec_exhibit",
+      "corrected_start": 4692,
+      "corrected_end": 4692
+    },
+    "scope_limit": "This observation applies to the two captured derived text representations. It does not assert byte-identical source documents or universal invariance of other disclosures over time, and it does not turn other forecast bullets into actual outcomes.",
+    "amendment_explicitly_says_all_other_items_unchanged": false
+  },
+  "input_provenance": {
+    "read_scope": "Three source-derived text files and their capture metadata only; source_manifest.json was absent at the existence check.",
+    "files": [
+      {
+        "path": "source_capture/lyft_original_sec_exhibit.derived.txt",
+        "bytes": 36811,
+        "sha256": "5b919fd1024dafc363d165a4ea9895734d8348d3c2b44bbac5dc063a8d100f8c"
+      },
+      {
+        "path": "source_capture/lyft_original_sec_exhibit.capture.json",
+        "bytes": 1120,
+        "sha256": "5a5ad6498a8b8cb6168e39bb98c615096990d568e10a6a5a6e1c973da4e6c51e"
+      },
+      {
+        "path": "source_capture/lyft_corrected_sec_exhibit.derived.txt",
+        "bytes": 36810,
+        "sha256": "45b85f03416a3cb1e6d1a7336cd3e47c27118d7e4d5950dabaf0cbd37b8bc6e8"
+      },
+      {
+        "path": "source_capture/lyft_corrected_sec_exhibit.capture.json",
+        "bytes": 1122,
+        "sha256": "babaad102711ebab304a93d32b3ee3dadfb1bb4915784f82726ba8600b038883"
+      },
+      {
+        "path": "source_capture/lyft_amendment_sec_report.derived.txt",
+        "bytes": 4607,
+        "sha256": "1bff645bea10189cee1efd0950fbb7339a79f950dd49385a9c84ebf683f3e429"
+      },
+      {
+        "path": "source_capture/lyft_amendment_sec_report.capture.json",
+        "bytes": 1124,
+        "sha256": "601c1c3a42b066e3553fd6ab071aa512b4acf61542a90a2f7a0924f0f8e6a3ef"
+      }
+    ],
+    "source_bundle_sha256": "afafb4b83aac3df1171aad1670e9391009397a495f141bfcc698f723b9102d02",
+    "source_bundle_hash_method": "In source_ids order, derived.txt then capture.json: concatenate 8-byte unsigned big-endian path-byte length, UTF-8 relative path, 8-byte unsigned big-endian content-byte length, and exact complete file bytes.",
+    "annotation_task_text": "Source-only annotation pass for research project /workspace/scratch/bdef663e3dfc/acl2027_temporal_state. You may read ONLY data/correction_pilot_v05/source_capture/lyft_original_sec_exhibit.derived.txt, lyft_corrected_sec_exhibit.derived.txt, lyft_amendment_sec_report.derived.txt, their .capture.json and data/correction_pilot_v05/source_manifest.json ifexists. No other projectfiles, noquestions/gold/systempredictions, no web. Task extract ONE explicitly corrected forecast claim and its original version from these source documents. Output JSON at data/correction_pilot_v05/source_annotation.json and concise rationale at data/correction_pilot_v05/source_annotation.txt. Need source IDs, exactsourcequotes+Pythoncodepoint offsets, issuer attribution, relationmeaning andscope, originalvalue/replacementvalue, targetperiod, modality vsactual, correctioncue and explicit-target evidence, factclaim vsrecordknowledge date, unchanged-other-items caveat. Totalquotedwords per source in OUTPUT <=25 (select shortest sufficient fragments; JSONquotes+rationale combined unique≤25), can listoffsetswithout fullquote foradditionalevidence ifneeded. Include backend='unversioned_conversational_agent', noaccuracy/humanverification claim. DO NOT choose querydates, QA labels, algorithmscores, or claim historicalfirstavailability. Temporalrecord can use fiscal period FY2024astext ifcalendarboundariesnotexplicit; do notinvent dailyactualevents. Need capturefullinputSHA and outputprovenance. Source passages may be long; read/search onlyallowedfiles. Exactmodelrevision unavailable, stateunknown. Parent is building executable correction semantics and will use source-onlyannotation asunscoreddevelopmentillustration.",
+    "annotation_task_sha256": "948f758dd842354193d535259b17f500005c63c2b0b75276fe7e88a74b28dd07",
+    "full_input_sha256": "412ee1114f0a0d4adf01f992064139ee1d22e5350620bbfc4511fbd4539825ee",
+    "full_input_hash_method": "SHA256 of 8-byte unsigned big-endian task-text UTF-8 byte length, exact annotation_task_text UTF-8 bytes, then the complete framed source bundle; does not purport to hash undisclosed model/system context.",
+    "source_capture_metadata": {
+      "lyft_original_sec_exhibit": {
+        "requested_url": "https://www.sec.gov/Archives/edgar/data/1759509/000175950924000011/lyft-2023x12x31pressreleas.htm",
+        "retrieval_started_utc": "2026-10-02T12:47:30.609752+00:00",
+        "retrieval_finished_utc": "2026-10-02T12:47:30.848193+00:00",
+        "captured_response_body_sha256_as_reported": "524d0eb43aed135d280dcc10164f3fcacf0ad5b48e52fb78e13cfc774c27947d",
+        "historical_original_bytes_claimed": false,
+        "http_last_modified_as_reported": "Tue, 13 Feb 2024 21:08:10 GMT"
+      },
+      "lyft_corrected_sec_exhibit": {
+        "requested_url": "https://www.sec.gov/Archives/edgar/data/1759509/000175950924000015/lyft-2023x12x31pressreleas.htm",
+        "retrieval_started_utc": "2026-10-02T12:49:36.092529+00:00",
+        "retrieval_finished_utc": "2026-10-02T12:49:36.407097+00:00",
+        "captured_response_body_sha256_as_reported": "b1352503cca029442d5ce00f4bdaea032d9dea2e4031fd2e3a3b3455b1499615",
+        "historical_original_bytes_claimed": false,
+        "http_last_modified_as_reported": "Wed, 14 Feb 2024 11:01:13 GMT"
+      },
+      "lyft_amendment_sec_report": {
+        "requested_url": "https://www.sec.gov/Archives/edgar/data/1759509/000175950924000015/lyft-20240213.htm",
+        "retrieval_started_utc": "2026-10-02T12:48:49.182271+00:00",
+        "retrieval_finished_utc": "2026-10-02T12:48:49.442067+00:00",
+        "captured_response_body_sha256_as_reported": "ac2e994b8cb3cc980bcc85d2ea3fe36dc7409263285a09a2014cecaf41156727",
+        "historical_original_bytes_claimed": false,
+        "http_last_modified_as_reported": "Wed, 14 Feb 2024 11:01:13 GMT"
+      }
+    },
+    "capture_metadata_limitation": "Response-body hashes and headers are reported by the permitted capture JSON; response.bin files were not opened for this annotation."
+  },
+  "quotation_budget": {
+    "method": "Whitespace-separated words in explicit evidence quotes; rationale contains no direct quotations.",
+    "words_per_source": {
+      "lyft_original_sec_exhibit": 22,
+      "lyft_corrected_sec_exhibit": 20,
+      "lyft_amendment_sec_report": 20
+    },
+    "maximum_per_source": 25
+  },
+  "output_provenance": {
+    "created_utc": "2026-10-02T12:58:15.519990+00:00",
+    "writer_backend": "unversioned_conversational_agent",
+    "model_revision": "unknown",
+    "json_payload_sha256_excluding_output_provenance": "29fce8c92a653296bd54bcd1ab4390dcfc5d3d468ff16c2f3dfc6ccca9469d99",
+    "payload_hash_encoding": "UTF-8 JSON with ensure_ascii=false, sort_keys=true and separators comma/colon; omit output_provenance.",
+    "rationale_path": "source_annotation.txt",
+    "rationale_sha256": "1fdf76db396dc3625d49fe3a262be8704363f41e60ddfdc9210351b594bc0509",
+    "source_span_validation": "Programmatically checked quoted substrings against supplied decoded inputs.",
+    "full_exhibit_text_comparison": "Programmatically checked equality after removing the single character at original offset 4692."
+  }
+}

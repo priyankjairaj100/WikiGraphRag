@@ -1,0 +1,105 @@
+Reproduce the pinned local v0.7 scorer
+
+Run these commands from the unpacked acl2027_temporal_state project directory.
+The bootstrap and backend scripts use Python's standard library. The binary is
+the pinned llama.cpp Ubuntu Linux x86-64 CPU release; another OS, architecture
+or incompatible system C/C++ libraries require a distinct backend declaration,
+not a silent runtime replacement. No CUDA or Python ML framework is needed.
+The project checkpoint does not contain the large weights or executable bundle.
+
+1. Obtain and verify the exact pinned assets:
+
+  python scripts/fetch_local_backend_v07.py
+
+The default asset directory is ../tmp/local_backend_v07 relative to the project
+root, independent of the shell's working directory. To select another directory,
+pass the same --assets path to both the fetch and model commands:
+
+  python scripts/fetch_local_backend_v07.py --assets /absolute/path/to/assets
+
+The command reads configs/local_backend_v07.json and obtains only its two named
+assets: Qwen3-0.6B-Q8_0.gguf (639,446,688 bytes) from an immutable Hugging Face
+repository revision and llama-b11146-bin-ubuntu-x64.tar.gz (16,998,357 bytes) from
+the pinned llama.cpp release. Total download size is 656,445,045 bytes. The
+archive expands to about 43 MB of ordinary files plus local symlinks. Allow
+additional disk space for temporary downloads and staged extraction. The
+bootstrap verifies each asset's exact byte length and SHA256 before installing
+it. Model and runtime identities, URLs and file hashes are recorded in
+configs/local_backend_v07.json and the backend receipts. The runtime LICENSE
+file is included in the verified archive.
+
+Downloads use ordinary TLS certificate verification, HTTPS-only redirects,
+30-second socket timeouts and an 1,800-second wall budget per asset (a blocked
+socket may add up to its socket timeout). Downloads stream in at most 1 MiB
+blocks and cannot exceed the pinned byte length. Partial temporary files are
+removed on ordinary failure; a verified file is atomically installed without
+overwriting an existing destination. Valid existing assets are reused with no
+network request. A corrupt existing asset or runtime fails; there is no automatic
+repair, deletion, fallback model or substitute runtime. Investigate the stated
+path and use a separate clean --assets directory when needed.
+
+Extraction does not call extractall. The archive must contain exactly its
+single expected directory and the 60 named runtime entries. The extractor
+permits ordinary files and acyclic symlinks to named files within that same
+flat directory; absolute paths, traversal, unexpected members, devices,
+hardlinks and escaping links fail. File writes finish before creating links.
+All 60 resulting paths are checked against the frozen byte/hash manifest, then
+local_backend_v07.verify_assets checks both assets and the complete runtime.
+The bootstrap never starts a model server.
+
+For read-only verification without downloads or extraction:
+
+  python scripts/fetch_local_backend_v07.py --verify-only
+
+On the original assets, verification reported two assets, 61 archive members,
+60 runtime files and this canonical runtime file-manifest SHA256:
+
+  677ee4aa7ac9a70d0d664474f589ba2f35ee2716ea0244d076ab103c3e5304c7
+
+2. Recreate the source-only request deterministically:
+
+  python scripts/prepare_likelihood_scoring_v07.py \
+    --source-request data/natural_model_pilot_v06/candidate_request.json \
+    --candidates data/natural_model_pilot_v06/candidate_output_repaired.json \
+    --request data/likelihood_scoring_v07/request.json \
+    --manifest data/likelihood_scoring_v07/manifest.json
+
+The canonical request SHA256 is:
+
+  04cf18e8fc87f975aca3b08050da87e2a5124005e11892f0be882580dca2d71b
+
+3. Execute the 64 prompt evaluations into a fresh reproduction directory:
+
+  python scripts/local_backend_v07.py \
+    --assets ../tmp/local_backend_v07 \
+    --context 8192 \
+    --score-request data/likelihood_scoring_v07/request.json \
+    --score-output-dir results/reproduction_v07
+
+Use a new output directory for each independent rerun to preserve previous raw
+responses and receipts. This is actual CPU inference and may take many minutes.
+The backend starts only a loopback server and terminates it on exit. Resource
+limits and numerical settings are frozen in configs/local_backend_v07.json:
+8,192-token context, 2 GiB address-space limit, Q8_0 model and Q8_0 KV cache,
+four CPU threads, one request slot, fixed batch/microbatch sizes and fixed
+prepared request order. Prompt token counts and label-prefix tokenization are
+checked before scoring. Context overflow or missing label probabilities fails
+without changing source text or substituting a score. The smaller runtime
+context cap is stricter than the scoring protocol's 12,288-token upper cap.
+
+The backend applies the model's stored chat template with thinking disabled,
+retains exact rendered prompts and token IDs, and records unfiltered
+full-vocabulary next-token log probabilities for Yes and No. Returned top ranks
+must include both exact label tokens; the backend does not normalize those two
+labels into a new probability distribution. Full source context remains in
+every prompt. Prefix caching reuses only identical tokens in the fixed request
+order; cache counts and numerical execution settings are part of the receipt.
+See docs/likelihood_scoring_v07.txt for the score's meaning and limitations.
+
+Pinned assets and source code make the invocation identifiable and rerunnable;
+they do not guarantee bitwise equality across CPU architectures, host libraries
+or numerical backends. Compare reruns under the declared numerical tolerance,
+retain all raw responses, and report deviations. The candidate generator remains
+unversioned and this small quantized scorer remains distinct from the planned
+8B model. This reproducibility procedure does not establish model accuracy,
+calibration, candidate completeness or a joint-decoding advantage.

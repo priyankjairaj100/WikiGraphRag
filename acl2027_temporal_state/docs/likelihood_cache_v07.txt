@@ -1,0 +1,129 @@
+v0.7 likelihood cache and decoder contract
+=========================================
+
+Status: implemented and executed against the completed 64-measurement backend
+run. Two complete offline adapter executions produced byte-identical derived
+caches, lineages and results. Native model execution and offline replay remain
+separate; see results/likelihood_replay_identity_v07.json.
+
+Mixed model provenance
+----------------------
+The new scored-cache schema 0.7 has one new evidence type:
+pinned_scorer_unversioned_candidates. Its candidate model ID remains explicit,
+and its candidate model revision must be JSON null. The scorer model ID names
+the actual model asset and scorer_model_revision is the lowercase, 64-character
+SHA-256 of the model asset bytes. This field is an asset hash, not the model
+repository commit. Repository and runtime revisions, executable/library hashes,
+chat template and token evidence are separately retained and bound in lineage.
+
+This does not retroactively pin the v0.6 candidate generation or its source-only
+annotation policy. The exact original correction policy AND its provenance are
+copied unchanged. Schema 0.4 and schema 0.6 canonical serialization remain
+unchanged; the frozen v0.6 natural cache is checked byte for byte by a regression
+test, in addition to the legacy fixture digests.
+
+Inference contract
+------------------
+The v0.6 source-only neutral item mapping supplies a bijection onto every
+resolved reading, every explicit unresolved alternative, each candidate link,
+and each mention's explicit no_link option. A missing, duplicate or unknown
+target is an error. No score defaults or source/score-based pruning are allowed.
+Every score is fixed as log P(Yes | prompt) minus log P(No | prompt), using the
+full vocabulary next-token distribution and natural logarithms. There is no
+clipping, rescaling, calibration or label-probability renormalization.
+
+Both predeclared label orders are retained: yes_no is primary and no_yes is a
+diagnostic. For each condition, independent, iterative, iterative with restarts,
+and joint exact use the same immutable cache. The historical objective is primary
+and active_support is an ablation. The adapter compares methods only within the
+same condition and objective. Exact gaps are optimization diagnostics; an exact
+optimum does not certify factual truth. Label-order comparisons report selected
+reading, link, active-claim and interval-envelope changes without choosing an
+order based on the result.
+
+Limitations that matter for interpretation
+-----------------------------------------
+The candidate graph contains one resolved reading per mention plus unresolved.
+It is not evidence of competing factual-identity candidate quality. No QA or gold
+is loaded by the scoring adapter and no accuracy is measured. The small quantized
+CPU scorer is a distinct pilot, not the prepared 8B baseline. Comparing its states
+with v0.6 ordinal states simultaneously changes model, prompt and score semantics;
+such a comparison cannot isolate an algorithmic or likelihood-scoring benefit.
+
+Unresolved and no_link are separately judged options, not zero reference scores.
+The decoder charges a mention's no_link score even if its chosen reading is
+unresolved; the model judges absence among the supplied outgoing options. That
+state-independent option score is a heuristic and need not equal a calibrated
+state-conditional fallback probability. Likewise, summing binary support logodds
+does not give a normalized probability over mutually exclusive readings or graph
+states. The total probability assigned to the literal Yes/No tokens is reported
+as a diagnostic, without filtering or thresholding measurements.
+
+Offline replay is not another model execution. A replay consumes the complete
+stored measurements and bound evidence. New model execution requires the separate
+backend runner and exact external model/runtime assets.
+
+Retained execution verification
+-------------------------------
+The default runner binds all explicit input files, including the native backend
+receipt, external asset configuration, raw HTTP responses, complete rendered
+prompts and token sequences, template/runtime evidence, and environment audit.
+It independently expands the supported Qwen system/user non-thinking template
+branch, checks that appending each literal label preserves the entire recorded
+token prefix, verifies raw response settings and probabilities, and compares
+normalized measurements with their exact raw values. No receipt-supplied path is
+dereferenced. Recorded tokenization is checked for consistency; an offline replay
+does not independently rerun the external tokenizer.
+
+The final pilot uses Q8 KV and prefix reuse in a fixed paired execution order:
+each primary item is immediately followed by its already-frozen diagnostic label
+order. The request's original item records and all message bytes remain unchanged;
+an independently bound execution plan supplies the order of actual model calls.
+The adapter checks the complete order against that plan and looks up each frozen
+request by its condition/item key. Each response
+must account for every input token as cached prefix tokens plus newly evaluated
+prompt tokens. Both counts are retained; prior model output is absent from the
+new supplied prompt. Prefix reuse can change numerical batch grouping, so the
+one declared same-server replay reports actual errors at tolerance 1e-6 rather
+than promising bitwise reproducibility. An unsuccessful numerical check is
+reported without replacing or averaging any original score.
+
+The earlier loopback sandbox failure, F16 KV memory-limit failure, and interrupted
+cache-disabled prefill remain in lineage. The interrupted attempt must have zero
+response rows. These are setup failures, not candidate scoring alternatives.
+
+The first cache-enabled run was separately interrupted after 15 complete primary
+responses because its 7200 CPU-second hard limit could not complete all prompts.
+All raw responses, configs, code and receipts remain in attempt_cpu7200. None of
+those partial scores enters a final cache. A fresh complete run uses an 18000
+CPU-second guard and the resource-driven paired order above, with the same 2 GiB
+address-space guard and numerical settings. The order was changed after a partial
+run using timing information; it is not claimed as an ex ante benchmark protocol.
+The exact collector source and its receipt are bound alongside the execution plan.
+
+Because prefix reuse can change numerical batch grouping, primary-versus-diagnostic
+comparisons also carry that execution-order limitation. They are recorded condition
+sensitivity, not a causal isolation of label wording from all numerical effects.
+
+Observed pilot findings
+-----------------------
+The primary yes_no condition gives positive support logodds to all 32 options.
+The no_yes condition gives positive logodds to 6 of 32; 26 signs change. Literal
+Yes/No tokens retain total probability mass at least 0.994966 across all 64
+prompts. High literal-label mass therefore does not imply stable support judgments.
+
+Under primary yes_no, all four methods select all seven resolved claims and links
+l9, l1 and l14, with objective 70.57755028217798 and zero exact gaps. Under the
+diagnostic no_yes condition, independent selects r2, r4, r6, r7 and link l12,
+with objective -7.7397231459617615 and within-condition exact gap
+0.11687657237052917. Iterative, iterative with restarts and joint exact all select
+r2, r4, r5, r6, r7 and link l14, with objective -7.622846573591232 and zero gaps.
+Historical and active_support objectives coincide on this graph. Objective values
+from different conditions are not used to select an order or claim improvement.
+
+The one declared same-server repetition of the first primary prompt reproduced
+both literal-label log probabilities exactly (absolute errors 0.0 at tolerance
+1e-6). This is one numerical spot check, not a complete independent model rerun.
+These observations support a scoring-sensitivity diagnosis. They do not establish
+accuracy, a joint method advantage over iteration, or publication-level novelty.
+Compact derived counts are saved in results/likelihood_summary_v07.json.

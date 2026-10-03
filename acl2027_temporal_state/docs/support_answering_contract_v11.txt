@@ -1,0 +1,103 @@
+Assertion-support lookup contract v0.11
+
+Purpose and scope
+The new temporal_state.support_answers module answers an exact assertion-ID
+lookup against an explicitly supplied selected state. It is annotation-conditioned
+support lookup, not extraction, natural-language question answering, factual
+verification, value recomputation, temporal QA, a learned system or a new algorithm.
+No model runs or natural-data evaluations are required by this contract. The
+v0.5 correction core remains unchanged.
+
+Public entry point
+answer_support(SupportQuery(assertion_id), memory=memory, problem=problem,
+               reading_ids=reading_ids, link_ids=link_ids, claims=claims,
+               policy=policy)
+
+The query is a typed immutable record containing one nonempty exact assertion ID.
+IDs are opaque; punctuation and capitalization do not encode semantics. There is
+no event-time argument, natural-language routing, key/value matching or fallback
+to the latest record. Unknown IDs and candidates not selected by the supplied
+reading selection both yield unresolved, with distinct reason kinds.
+
+Validation boundary
+The caller supplies the typed CoupledMemory and the original typed Problem,
+candidate claim map, explicit reading/link selections and CorrectionPolicy.
+The adapter invokes materialize_corrected_selection again and compares the entire
+result against the supplied memory with recursive type-sensitive equality. This
+includes all sources and source metadata, original selected records, active
+records, envelopes, dependency provenance and the complete correction ledger.
+Missing/forged ledgers, extra diagnostics, altered source identity, changed
+selection and bool/integer substitutions are rejected. A plain JSON dictionary
+is not a valid memory. Existing exact-span, source-prefix, authority, scope,
+cycle and whole-assertion restrictions run unchanged. The adapter adds typed
+input checks, not new correction semantics.
+
+This proves only consistency with the caller's supplied inputs. It cannot prove
+that the caller's source bytes are authentic, that dates establish historical
+availability, that a span entails its annotation, or that a dependency is truly
+essential. A fabricated but internally consistent annotation remains fabricated.
+An external source/version manifest and independent adjudication remain necessary.
+No trust is inferred from a URI or from an authority-looking source/assertion ID.
+
+Output semantics
+SupportAnswer.status is one of:
+- active_support: the queried resolved candidate was selected and survived this
+  policy. This does not assert truth, present-day validity, certainty, uniqueness,
+  or absence of conflicting active assertions. Negative, conditional, uncertain
+  and planned records retain their original qualifiers.
+- withdrawn_support: the record was selected but made inactive by an explicit
+  replacement and/or a missing or inactive essential prerequisite. This does not
+  mean its value is false and does not provide a recomputed replacement value.
+- unresolved: the assertion ID is unknown or that candidate was not selected.
+  No selected assertion or evidence is returned for this status.
+
+selected_assertion is the original immutable TemporalClaim when selected, even
+when withdrawn. Original event endpoints, unknown bounds, observations, report
+date, polarity, modality and operation are preserved. information_cutoff is the
+core's source-prefix cutoff; it is not an event date. Reasons distinguish explicit
+replacement, inactive prerequisite, missing prerequisite, selected active,
+unknown assertion and assertion not selected. Replacement and prerequisite IDs
+are structured fields; no reason-string parsing is used.
+
+Evidence and context
+SupportEvidence records have roles assertion_record, correction_reference,
+essential_dependency and source_authority. They preserve exact typed EvidenceSpan
+objects and explicit source/assertion/link/authority IDs. Assertion records may
+be inactive historical records; evidence provenance is not a claim that every
+listed record is still supporting the answer. Essential-dependency assertion IDs
+are ordered (dependent, prerequisite); correction-reference IDs are ordered
+(replacement, target). Source-authority records bind only a source, never an
+invented per-claim authority. No authority is inferred when none is declared.
+
+source_identity_sha256 hashes canonical JSON of every supplied Source field,
+including exact text. evidence_id hashes canonical JSON of the entire evidence
+record with a support_evidence: prefix. JSON uses sorted keys, compact separators,
+UTF-8, unescaped Unicode and disallows NaN. These identify supplied representations;
+they are not historical-access or authenticity certificates. Evidence IDs change
+if source metadata changes even while text and source_id are unchanged.
+
+The evidence closure contains the selected queried assertion, selected essential
+prerequisite ancestors, connected selected correction chains and their declared
+authority spans. It does not include unrelated descendants or claims merely
+sharing a name, key, value or source. Missing prerequisites have dependency
+evidence but no selected-assertion evidence. The separate context_source_ids
+field preserves the core's conservative context/control IDs, including an
+unresolved prerequisite's source when appropriate. Context IDs are not relabeled
+as exact evidence spans. The property evidence_source_ids lists sources of actual
+evidence records only. All output tuples are sorted deterministically.
+
+Explicit limits
+The core retains AND-only essential dependencies, atomic whole-assertion
+replacement, source-level authority and no automatic ancestor resurrection.
+Independent OR support, contested-state semantics, numeric recomputation, partial
+edits, pure retraction and inferred causal links are not implemented here.
+The adapter never resolves competition between two active IDs and does not call
+the temporal answer_key API. Re-materializing on each query favors a small clear
+validation boundary over throughput; no scalability claim is made.
+
+Verification
+tests/test_support_answers_v11.py uses authored diagnostic fixtures to check
+active/direct/dependency/missing states, retained controls and bounds, unresolved
+identities, chain behavior, exact provenance, deterministic nonmutation, typed
+input rejection, forged ledgers/source identity and strict bool/integer checking.
+Passing these tests is implementation evidence, not natural task performance.

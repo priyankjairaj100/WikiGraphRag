@@ -1,0 +1,237 @@
+{
+  "schema_version": "0.5-evidence-capsules",
+  "status": "development_evidence_not_benchmark",
+  "historical_availability_policy": "Explicit record/correction ordering can be established; no intraday public-access cutoff or original historical bytes claimed.",
+  "gold_answers_created": 0,
+  "algorithm_scores_created": 0,
+  "sources": [
+    {
+      "source_id": "lyft_original_sec_exhibit",
+      "representation": "selected_exact_excerpts_from_current_http_capture",
+      "raw_parent_path": "source_capture/lyft_original_submission.response.bin",
+      "raw_parent_sha256": "ba95085cf90a9ff89ed56e2b0394a355b1319f0b26498f62d00af747b63ec8ae",
+      "raw_parent_bytes": 631763,
+      "derived_text_path": "source_capture/lyft_original_sec_exhibit.derived.txt",
+      "derived_text_sha256": "5b919fd1024dafc363d165a4ea9895734d8348d3c2b44bbac5dc063a8d100f8c",
+      "derived_text_characters": 36572,
+      "extraction": {
+        "script": "source_capture/derive_evidence.py",
+        "script_sha256": "3e20c5c07d4ab39dfce7c2afad94f3b6b4e8e44ffa84e9ee7a1205f03d4edde6",
+        "character_decoding": "UTF-8 strict",
+        "parser": "Python standard-library HTMLParser(convert_charrefs=True)",
+        "normalization": "Omit head/script/style/ix:hidden; block tags create newlines; collapse each line whitespace; remove empty lines; final LF.",
+        "offset_unit": "Python Unicode code points in derived text, not raw HTML bytes",
+        "python_version": "3.12.14",
+        "embedded_document_type": "EX-99.1",
+        "raw_byte_start": 27532,
+        "raw_byte_end": 365224,
+        "embedded_html_sha256": "91c94e7d79b395dbb49f739c93d767e7eb41991ff1e99f0927b7471fa593b663"
+      },
+      "excerpts": [
+        {
+          "purpose": "issuer_attribution",
+          "text": "Lyft, Inc.",
+          "start": 208,
+          "end": 218,
+          "occurrences_in_full_derived_text": 6
+        },
+        {
+          "purpose": "forecast_target_period",
+          "text": "FY’24 Directional Commentary:",
+          "start": 4435,
+          "end": 4464,
+          "occurrences_in_full_derived_text": 1
+        },
+        {
+          "purpose": "forecast_metric",
+          "text": "Adjusted EBITDA margin expansion (calculated as a percentage of Gross Bookings)",
+          "start": 4594,
+          "end": 4673,
+          "occurrences_in_full_derived_text": 1
+        },
+        {
+          "purpose": "reported_forecast_value",
+          "text": "approximately 500 basis points year-over-year.",
+          "start": 4677,
+          "end": 4723,
+          "occurrences_in_full_derived_text": 1
+        }
+      ],
+      "total_quoted_words": 21,
+      "context_omitted": true,
+      "excerpt_selection": "Model-assisted development selection of this already-discovered correction; not a sampled or blinded test.",
+      "factual_paraphrase": "The original SEC exhibit gives a 500-basis-point year-over-year expansion forecast for adjusted EBITDA margin as a fraction of Gross Bookings for FY2024. It is a forecast, not a realized result.",
+      "historical_first_availability_verified": false,
+      "full_raw_and_derived_text_distribution": "external_working_data_excluded_from_checkpoint; replay capture_public.py then derive_evidence.py"
+    },
+    {
+      "source_id": "lyft_corrected_sec_exhibit",
+      "representation": "selected_exact_excerpts_from_current_http_capture",
+      "raw_parent_path": "source_capture/lyft_amendment_submission.response.bin",
+      "raw_parent_sha256": "d4029b1d37b4100395ed69d55daae11b05101b82c8c01a9e35e3d4e14dc75613",
+      "raw_parent_bytes": 638753,
+      "derived_text_path": "source_capture/lyft_corrected_sec_exhibit.derived.txt",
+      "derived_text_sha256": "45b85f03416a3cb1e6d1a7336cd3e47c27118d7e4d5950dabaf0cbd37b8bc6e8",
+      "derived_text_characters": 36571,
+      "extraction": {
+        "script": "source_capture/derive_evidence.py",
+        "script_sha256": "3e20c5c07d4ab39dfce7c2afad94f3b6b4e8e44ffa84e9ee7a1205f03d4edde6",
+        "character_decoding": "UTF-8 strict",
+        "parser": "Python standard-library HTMLParser(convert_charrefs=True)",
+        "normalization": "Omit head/script/style/ix:hidden; block tags create newlines; collapse each line whitespace; remove empty lines; final LF.",
+        "offset_unit": "Python Unicode code points in derived text, not raw HTML bytes",
+        "python_version": "3.12.14",
+        "embedded_document_type": "EX-99.1",
+        "raw_byte_start": 28913,
+        "raw_byte_end": 366578,
+        "embedded_html_sha256": "d496bb6966b34accd5110760f0f2bf83d78f1eafd62cb34723164f297ba4477f"
+      },
+      "excerpts": [
+        {
+          "purpose": "issuer_attribution",
+          "text": "Lyft, Inc.",
+          "start": 208,
+          "end": 218,
+          "occurrences_in_full_derived_text": 6
+        },
+        {
+          "purpose": "forecast_target_period",
+          "text": "FY’24 Directional Commentary:",
+          "start": 4435,
+          "end": 4464,
+          "occurrences_in_full_derived_text": 1
+        },
+        {
+          "purpose": "forecast_metric",
+          "text": "Adjusted EBITDA margin expansion (calculated as a percentage of Gross Bookings)",
+          "start": 4594,
+          "end": 4673,
+          "occurrences_in_full_derived_text": 1
+        },
+        {
+          "purpose": "reported_forecast_value",
+          "text": "approximately 50 basis points year-over-year.",
+          "start": 4677,
+          "end": 4722,
+          "occurrences_in_full_derived_text": 1
+        }
+      ],
+      "total_quoted_words": 21,
+      "context_omitted": true,
+      "excerpt_selection": "Model-assisted development selection of this already-discovered correction; not a sampled or blinded test.",
+      "factual_paraphrase": "The corrected exhibit in accession 0001759509-24-000015 gives 50 basis points for the same FY2024 adjusted EBITDA margin expansion forecast.",
+      "historical_first_availability_verified": false,
+      "full_raw_and_derived_text_distribution": "external_working_data_excluded_from_checkpoint; replay capture_public.py then derive_evidence.py"
+    },
+    {
+      "source_id": "lyft_amendment_sec_report",
+      "representation": "selected_exact_excerpts_from_current_http_capture",
+      "raw_parent_path": "source_capture/lyft_amendment_sec_report.response.bin",
+      "raw_parent_sha256": "ac2e994b8cb3cc980bcc85d2ea3fe36dc7409263285a09a2014cecaf41156727",
+      "raw_parent_bytes": 27602,
+      "derived_text_path": "source_capture/lyft_amendment_sec_report.derived.txt",
+      "derived_text_sha256": "1bff645bea10189cee1efd0950fbb7339a79f950dd49385a9c84ebf683f3e429",
+      "derived_text_characters": 4563,
+      "extraction": {
+        "script": "source_capture/derive_evidence.py",
+        "script_sha256": "3e20c5c07d4ab39dfce7c2afad94f3b6b4e8e44ffa84e9ee7a1205f03d4edde6",
+        "character_decoding": "UTF-8 strict",
+        "parser": "Python standard-library HTMLParser(convert_charrefs=True)",
+        "normalization": "Omit head/script/style/ix:hidden; block tags create newlines; collapse each line whitespace; remove empty lines; final LF.",
+        "offset_unit": "Python Unicode code points in derived text, not raw HTML bytes",
+        "python_version": "3.12.14"
+      },
+      "excerpts": [
+        {
+          "purpose": "issuer_attribution",
+          "text": "Lyft, Inc.",
+          "start": 268,
+          "end": 278,
+          "occurrences_in_full_derived_text": 3
+        },
+        {
+          "purpose": "correction_authorization",
+          "text": "to correct a clerical error in the 2024 directional commentary",
+          "start": 2178,
+          "end": 2240,
+          "occurrences_in_full_derived_text": 1
+        },
+        {
+          "purpose": "prior_record_type",
+          "text": "to the Current Report on Form 8-K",
+          "start": 2062,
+          "end": 2095,
+          "occurrences_in_full_derived_text": 1
+        },
+        {
+          "purpose": "target_release_date",
+          "text": "February 13, 2024",
+          "start": 250,
+          "end": 267,
+          "occurrences_in_full_derived_text": 7
+        }
+      ],
+      "total_quoted_words": 22,
+      "context_omitted": true,
+      "excerpt_selection": "Model-assisted development selection of this already-discovered correction; not a sampled or blinded test.",
+      "factual_paraphrase": "The SEC 8-K/A explanatory note explicitly identifies the earlier 8-K and February 13 press release, classifies the issue as a clerical error, and supplies a corrected Exhibit 99.1.",
+      "historical_first_availability_verified": false,
+      "full_raw_and_derived_text_distribution": "external_working_data_excluded_from_checkpoint; replay capture_public.py then derive_evidence.py"
+    },
+    {
+      "source_id": "lyft_explicit_correction",
+      "representation": "selected_exact_excerpts_from_current_http_capture",
+      "raw_parent_path": "source_capture/lyft_explicit_correction.response.bin",
+      "raw_parent_sha256": "0bc6a05cfe5891120cd990010d60c893193d592fc0a7af57bf94421a5427c0b0",
+      "raw_parent_bytes": 360216,
+      "derived_text_path": "source_capture/lyft_explicit_correction.derived.txt",
+      "derived_text_sha256": "771d2bc2486b809853f4a5cb5ae59ffb825329db5eaea7237931293a8e9098dc",
+      "derived_text_characters": 38790,
+      "extraction": {
+        "script": "source_capture/derive_evidence.py",
+        "script_sha256": "3e20c5c07d4ab39dfce7c2afad94f3b6b4e8e44ffa84e9ee7a1205f03d4edde6",
+        "character_decoding": "UTF-8 strict",
+        "parser": "Python standard-library HTMLParser(convert_charrefs=True)",
+        "normalization": "Omit head/script/style/ix:hidden; block tags create newlines; collapse each line whitespace; remove empty lines; final LF.",
+        "offset_unit": "Python Unicode code points in derived text, not raw HTML bytes",
+        "python_version": "3.12.14"
+      },
+      "excerpts": [
+        {
+          "purpose": "issuer_attribution",
+          "text": "Lyft, Inc.",
+          "start": 1444,
+          "end": 1454,
+          "occurrences_in_full_derived_text": 8
+        },
+        {
+          "purpose": "claim_location",
+          "text": "Fifth bulleted list, third bullet of release should read:",
+          "start": 930,
+          "end": 987,
+          "occurrences_in_full_derived_text": 1
+        },
+        {
+          "purpose": "replacement_value",
+          "text": "approximately 50 basis points year-over-year.",
+          "start": 1071,
+          "end": 1116,
+          "occurrences_in_full_derived_text": 2
+        },
+        {
+          "purpose": "replaced_value",
+          "text": "approximately 500 basis points year-over-year.",
+          "start": 1212,
+          "end": 1258,
+          "occurrences_in_full_derived_text": 1
+        }
+      ],
+      "total_quoted_words": 21,
+      "context_omitted": true,
+      "excerpt_selection": "Model-assisted development selection of this already-discovered correction; not a sampled or blinded test.",
+      "factual_paraphrase": "The current issuer release explicitly replaces 500 with 50 in a precisely located forecast bullet. Its displayed 4:05pm EST timestamp does not authenticate when the corrected version first appeared.",
+      "historical_first_availability_verified": false,
+      "full_raw_and_derived_text_distribution": "external_working_data_excluded_from_checkpoint; replay capture_public.py then derive_evidence.py"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+Fixed-selection correction replay input v0.10
+
+Run from the project directory:
+python scripts/replay_correction_gate_v10.py --annotation ANNOTATION.json \
+  --fulltext-root FULLTEXT_DIRECTORY --output RESULTS.json
+
+This script consumes a supplied source annotation. It does not author assertions,
+score candidates, decode alternatives, answer questions, or certify entailment.
+The annotation contains quotes and is a working file; the report omits source and
+claim text and replaces evidence quotes with their SHA-256 hashes and offsets.
+
+Strict top-level object (fields required except the stated optional field):
+schema_version: exactly "correction_gate_annotation_v0.10"
+history_id: nonempty string
+operational_cutoff: canonical YYYY-MM-DD, equal to maximum source capture_date
+sources: nonempty array of source objects
+claims: nonempty array of claim objects
+authorities: array of source authority objects
+corrections: nonempty array of correction objects
+dependencies: array of essential dependency objects; may be empty
+unaffected_claim_ids: nonempty array of unique existing claim IDs
+source_representation: optional nonempty provenance label, default
+  "supplied_text_unspecified_representation"; use
+  "web_tool_noncontiguous_excerpt_projection" for a joined web-excerpt artifact.
+  This label is preserved in the report and does not certify full-document access,
+  a complete source version, or paired historical prefixes. An excerpt projection
+  is an excerpt-only mechanism illustration, not a full-source empirical result.
+
+Source object:
+source_id: unique nonempty string
+local_path: relative file path beneath --fulltext-root; no '..', absolute paths,
+            or symlink resolution outside that directory
+sha256: lowercase SHA-256 of exact source file bytes
+capture_date: actual capture calendar day in canonical YYYY-MM-DD
+uri: optional string, default empty; does not establish asserting authority
+
+The file must be nonempty strict UTF-8. Bytes are hashed before decoding and no
+newline or Unicode normalization is performed. capture_date is an annotation
+declaration and is not independently certified by the runner. Source.available_at
+uses that date solely for operational eligibility; cutoff is its maximum. This is
+not first public availability or an event date. Do not alter capture dates to
+satisfy core ordering: if captures conflict with required correction/dependency
+ordering, report the case as unsupported by this projection.
+
+Claim object (all listed fields required except reported_at):
+claim_id: unique nonempty string
+source_id: existing source ID
+entity, relation, value: nonempty strings preserving the sourced assertion
+scope: string, including empty if genuinely unqualified
+modality: reported_actual | announced_future | conditional | uncertain
+evidence_spans: nonempty array of exact evidence objects
+reported_at: optional source-supported YYYY-MM-DD or null; no later than capture
+
+Evidence object:
+start: integer character offset, inclusive; boolean is invalid
+end: integer character offset, exclusive; boolean is invalid
+quote: nonempty string exactly equal to source_text[start:end]
+Offsets count Python Unicode characters, not UTF-8 bytes. Claims and authorities
+use their own source; correction references use the replacement claim's source;
+dependency evidence uses the dependent claim's source. No offset guessing or
+normalization repair is performed.
+
+Authority object:
+source_id: existing source ID, unique across authority records
+authority_id: nonempty identity of the asserting authority, not hosting domain
+evidence_spans: nonempty array of evidence objects establishing attribution
+
+Correction object:
+replacement_claim_id: existing claim ID
+target_claim_id: distinct existing claim ID
+reference_span: one exact evidence object in replacement claim's source
+Each replacement may have only one target: the core selects at most one link per
+mention. Multiple replacements may target one old assertion. The runner rejects
+multiple targets from one replacement rather than dropping an edge. Correction
+cycles are rejected. Both endpoint sources need equal declared authority IDs;
+normalized entity/relation/scope must match. Target capture date cannot be later
+than replacement capture date. Same-day explicit reference is allowed, without
+inventing intraday order. Every correction is whole-assertion replacement; no
+action/coverage fields or partial edits/retraction are accepted. The core permits
+different endpoint modalities; each is preserved and reported, never relabelled.
+
+Dependency object:
+dependent_claim_id: existing claim ID
+prerequisite_claim_id: distinct existing claim ID
+evidence_spans: nonempty array in dependent claim's own source
+Pairs are unique and the complete dependency graph must be acyclic. Prerequisite
+capture cannot be later than dependent capture. Every edge asserts an essential
+prerequisite (AND); OR/alternative support and recomputation are unsupported.
+Independently supported conclusions must not receive a false essential edge.
+
+Projection and execution:
+Each claim becomes one resolved reading and one unused unresolved alternative.
+Every claim is explicitly selected in all three arms. Unary/link/null numeric
+fields are all 0.0, unused schema placeholders, not model or oracle scores.
+Claims have positive assertion polarity, operation ASSERT, unknown start and end
+bounds, no state observations, and all supplied source IDs as annotation context.
+This schema does not expose polarity, event endpoints, observations, questions,
+scores, or alternative readings. Unsupported fields are rejected, not ignored.
+
+no_withdrawal: all correction links null; no certificates or dependencies.
+direct_withdrawal: all supplied correction links selected; authorities and
+                  replacement certificates; no essential dependencies.
+dependency_withdrawal: the same direct corrections plus all supplied dependencies.
+
+Direct correction of a downstream assertion must be included when the source
+states it. It remains selected in both withdrawal arms; never omit it to create
+an apparent dependency benefit. A replacement becoming inactive does not revive
+its old target. The script reports the possibly empty set of additional inactive
+IDs in the dependency arm. This is a materialization difference, not a gain.
+
+Core validation and materialization run unchanged. All original selected records
+must remain identical in the internal ledger; active endpoints/observations must
+stay unknown/empty. Declared unaffected controls must survive every arm or the
+runner fails. Empty dependencies are allowed but do not establish gate admission.
+Exact evidence and successful replay certify structure, not semantic correctness,
+essential dependence, historical availability, or source admissibility.
+
+Output binds exact annotation bytes, source files, script, schema documentation,
+core files and per-arm policies by SHA-256. It records projected correction ledgers,
+active/inactive/direct-target IDs and reasons, all direct correction pairs,
+dependencies, source order, operational dates and preservation checks. Selected
+claims contain IDs, modality, polarity, reporting date, unknown endpoints,
+context IDs, span offsets/hashes and full-record hash; entity/relation/value/scope
+and evidence quotes are omitted. Full internal ledger hashes permit exact replay.
+No full diagnostics, source text, evidence quotes, QA, objective or accuracy scores
+are exported. The implementation never overwrites its annotation/source/core
+inputs. A validation failure exits nonzero without writing a new report.

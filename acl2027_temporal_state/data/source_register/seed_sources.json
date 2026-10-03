@@ -1,0 +1,588 @@
+{
+  "schema_version": "0.2",
+  "register_created_date": "2026-10-01",
+  "status": "candidate_not_benchmark",
+  "annotation_provenance": "Model-assisted source-feasibility notes. No human verification or benchmark adjudication has occurred.",
+  "retrieval_method": "Public web search followed by full-text opens of primary pages and, where available, accession-specific SEC records.",
+  "source_bytes_downloaded": false,
+  "local_snapshots_created": true,
+  "content_hashes_computed": true,
+  "classification_rules": {
+    "publication_only": "The currently served page and its reported date were inspected, but the exact text at a historical cutoff was not established. A repository link without an inspected immutable revision remains in this class.",
+    "version_verifiable": "An accession-specific archived filing or exhibit was inspected and its filing/acceptance metadata was inspected. This is an archival anchor, not a claim that local bytes were downloaded or checksummed.",
+    "source_prefix_policy": "SEC acceptance is an archival event, not proof of exact public availability or unchanged historical bytes. Development replay uses next-day operational cutoffs only. Strict benchmark admission requires historical availability evidence."
+  },
+  "histories": [
+    {
+      "history_id": "leadership_starbucks_2024",
+      "domain": "organizational_leadership",
+      "title": "Starbucks 2024 CEO and board-chair transition",
+      "status": "development_snapshot_captured_not_benchmark",
+      "phenomena": [
+        "future_effective_appointment",
+        "interim_role",
+        "concurrent_distinct_roles",
+        "retrospective_effective_date",
+        "later_restatement",
+        "organization_scope"
+      ],
+      "feasibility": "Strongest first pilot candidate: an archived announcement, explicit interim state, simultaneous CFO role, and later archived role confirmation.",
+      "version_gap": "Current web-retrieval text captured and hashed for SEC records. Original HTML bytes, historical first availability, and unchanged historical versions remain unverified.",
+      "correction_status": "No explicit correction established. Do not relabel differing effective-date specificity as a correction.",
+      "sources": [
+        {
+          "source_id": "sbux_live_announcement",
+          "title": "Starbucks names Brian Niccol as Chairman and Chief Executive Officer",
+          "url": "https://investor.starbucks.com/news/financial-releases/news-details/2024/Starbucks-names-Brian-Niccol-as-Chairman-and-Chief-Executive-Officer/default.aspx",
+          "reported_publication_date": "2024-08-13",
+          "publication_date_basis": "Visible release dateline; no original-version capture inspected.",
+          "effective_dates": [
+            {
+              "date": "2024-09-09",
+              "event": "Niccol begins CEO role"
+            },
+            {
+              "date": null,
+              "event": "Narasimhan departure described as immediate; Ruggeri interim until Niccol begins"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Announces Niccol's future start, Ruggeri's interim service, and Hobson's change from chair to lead independent director; identifies Niccol's then-current Chipotle role.",
+          "phenomena": [
+            "future_effective",
+            "interim",
+            "organization_scope"
+          ],
+          "version_classification": "publication_only",
+          "historical_availability_date": null,
+          "version_gap": "Use the separately archived exhibit for a defensible cutoff; this live page alone is insufficient.",
+          "status": "candidate_not_benchmark"
+        },
+        {
+          "source_id": "sbux_8k_20240814",
+          "title": "Starbucks Corporation Form 8-K, report date August 11, 2024",
+          "url": "https://www.sec.gov/Archives/edgar/data/829224/000119312524200724/d848513d8k.htm",
+          "reported_publication_date": "2024-08-14",
+          "publication_date_basis": "SEC filing index; report-period date is August 11 and announcement date is August 13, which are distinct.",
+          "effective_dates": [
+            {
+              "date": "2024-08-12",
+              "event": "Narasimhan no longer CEO or director"
+            },
+            {
+              "date": "2024-09-09",
+              "event": "Niccol CEO/chair and Hobson lead-independent-director appointments"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Discloses a departure effective before publication, a future replacement, and Ruggeri retaining her CFO position during interim CEO service.",
+          "phenomena": [
+            "retrospective_effective_date",
+            "future_effective",
+            "concurrent_distinct_roles"
+          ],
+          "version_classification": "version_verifiable",
+          "historical_availability_date": null,
+          "archive_anchor": {
+            "accession": "0001193125-24-200724",
+            "metadata_url": "https://www.sec.gov/Archives/edgar/data/829224/000119312524200724/0001193125-24-200724-index.html",
+            "accepted_time_as_displayed": "2024-08-14 17:10:59",
+            "timezone": "SEC FAQ labels acceptance time EST; index itself does not specify; no intraday cutoff used."
+          },
+          "version_gap": "Current retrieved text representation hashed; not raw historical HTML or proof of exact public availability. Next-day cutoff is a development convention only.",
+          "status": "development_snapshot_captured_not_benchmark",
+          "archive_acceptance_date": "2024-08-14",
+          "pilot_manifest": "data/natural_pilot/manifest.json"
+        },
+        {
+          "source_id": "sbux_archived_press_exhibit",
+          "title": "Starbucks names Brian Niccol as Chairman and Chief Executive Officer",
+          "url": "https://www.sec.gov/Archives/edgar/data/829224/000119312524200724/d848513dex991.htm",
+          "reported_publication_date": "2024-08-13",
+          "publication_date_basis": "Enclosed release states August 13 at 5:05am PT; this inspected archive was accepted August 14.",
+          "effective_dates": [
+            {
+              "date": "2024-09-09",
+              "event": "Niccol's planned start"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Archived press text announces the planned succession and temporary CEO arrangement.",
+          "phenomena": [
+            "future_effective",
+            "interim",
+            "dependent_duplicate"
+          ],
+          "version_classification": "version_verifiable",
+          "historical_availability_date": null,
+          "archive_anchor": {
+            "accession": "0001193125-24-200724",
+            "metadata_url": "https://www.sec.gov/Archives/edgar/data/829224/000119312524200724/0001193125-24-200724-index.html",
+            "accepted_time_as_displayed": "2024-08-14 17:10:59",
+            "timezone": "SEC FAQ labels acceptance time EST; index itself does not specify; no intraday cutoff used."
+          },
+          "version_gap": "Current retrieved text representation hashed; not raw historical HTML or proof of exact public availability. Next-day cutoff is a development convention only.",
+          "status": "development_snapshot_captured_not_benchmark",
+          "archive_acceptance_date": "2024-08-14",
+          "pilot_manifest": "data/natural_pilot/manifest.json"
+        },
+        {
+          "source_id": "sbux_2024_10k_certification",
+          "title": "Starbucks 2024 Form 10-K Exhibit 32 certifications",
+          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922424000057/sbux-9292024xexhibit32.htm",
+          "reported_publication_date": "2024-11-20",
+          "publication_date_basis": "Dated certification and SEC filing index agree; fiscal period ending September 29 is not publication time.",
+          "effective_dates": [
+            {
+              "date": "2024-11-20",
+              "event": "Observation of Niccol as CEO/chair and Ruggeri as CFO; not an appointment date"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Names Niccol as chairman/CEO and Ruggeri as CFO in a later certification, supporting state persistence rather than another succession.",
+          "phenomena": [
+            "later_restatement",
+            "role_scope"
+          ],
+          "version_classification": "version_verifiable",
+          "historical_availability_date": null,
+          "archive_anchor": {
+            "accession": "0000829224-24-000057",
+            "metadata_url": "https://www.sec.gov/Archives/edgar/data/829224/000082922424000057/0000829224-24-000057-index.html",
+            "accepted_time_as_displayed": "2024-11-20 16:08:06",
+            "timezone": "SEC FAQ labels acceptance time EST; index itself does not specify; no intraday cutoff used."
+          },
+          "version_gap": "Current retrieved text representation hashed; not raw historical HTML or proof of exact public availability. Next-day cutoff is a development convention only.",
+          "status": "development_snapshot_captured_not_benchmark",
+          "archive_acceptance_date": "2024-11-20",
+          "pilot_manifest": "data/natural_pilot/manifest.json"
+        }
+      ]
+    },
+    {
+      "history_id": "leadership_nike_2024",
+      "domain": "organizational_leadership",
+      "title": "Nike 2024 CEO succession and continuing adviser role",
+      "status": "development_snapshot_captured_not_benchmark",
+      "phenomena": [
+        "future_effective_appointment",
+        "role_scope",
+        "later_restatement",
+        "boundary_ambiguity"
+      ],
+      "feasibility": "Strong archived succession case with role-specific retirement; retain the observed October 13/14 boundary difference for adjudication.",
+      "version_gap": "Current web-retrieval text captured and hashed for SEC records. Original HTML bytes, historical first availability, and unchanged historical versions remain unverified.",
+      "correction_status": "No explicit correction established: the October 13 press wording and October 14 contractual transition could reflect boundary convention or inconsistency.",
+      "sources": [
+        {
+          "source_id": "nike_live_announcement",
+          "title": "NIKE, Inc. Announces Return of Long-Time Nike Veteran Elliott Hill as President & CEO",
+          "url": "https://about.nike.com/en/newsroom/releases/nike-inc-announces-return-of-long-time-nike-veteran-elliott-hill-as-president-and-ceo",
+          "reported_publication_date": "2024-09-19",
+          "publication_date_basis": "Visible newsroom dateline.",
+          "effective_dates": [
+            {
+              "date": "2024-10-14",
+              "event": "Hill becomes CEO/president"
+            },
+            {
+              "date": "2024-10-13",
+              "event": "Press text's Donahoe CEO/director retirement date"
+            },
+            {
+              "date": "2025-01-31",
+              "event": "Donahoe adviser period ends"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Distinguishes Hill's upcoming CEO appointment from Donahoe's continuing advisory role.",
+          "phenomena": [
+            "future_effective",
+            "role_scope"
+          ],
+          "version_classification": "publication_only",
+          "historical_availability_date": null,
+          "version_gap": "Use the archived press exhibit for historical availability; the live page alone is not an original snapshot.",
+          "status": "candidate_not_benchmark"
+        },
+        {
+          "source_id": "nike_8k_20240919",
+          "title": "NIKE, Inc. Form 8-K, September 19, 2024",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018724000053/nke-20240919.htm",
+          "reported_publication_date": "2024-09-19",
+          "publication_date_basis": "SEC filing index and signed report.",
+          "effective_dates": [
+            {
+              "date": "2024-10-14",
+              "event": "Hill becomes CEO/president; Donahoe transitions to adviser under described agreement"
+            },
+            {
+              "date": "2025-01-31",
+              "event": "Donahoe employment retirement date"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "The contractual description separates the CEO transition from later retirement as a non-executive employee.",
+          "phenomena": [
+            "future_effective",
+            "role_scope",
+            "boundary_ambiguity"
+          ],
+          "version_classification": "version_verifiable",
+          "historical_availability_date": null,
+          "archive_anchor": {
+            "accession": "0000320187-24-000053",
+            "metadata_url": "https://www.sec.gov/Archives/edgar/data/320187/000032018724000053/0000320187-24-000053-index.htm",
+            "accepted_time_as_displayed": "2024-09-19 16:16:42",
+            "timezone": "SEC FAQ labels acceptance time EST; index itself does not specify; no intraday cutoff used."
+          },
+          "version_gap": "Current retrieved text representation hashed; not raw historical HTML or proof of exact public availability. Next-day cutoff is a development convention only.",
+          "status": "development_snapshot_captured_not_benchmark",
+          "archive_acceptance_date": "2024-09-19",
+          "pilot_manifest": "data/natural_pilot/manifest.json"
+        },
+        {
+          "source_id": "nike_archived_press_exhibit",
+          "title": "NIKE, Inc. Board of Directors announces long-time Nike veteran Elliott Hill to return as President and Chief Executive Officer",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018724000053/exhibit991-pressreleasesep.htm",
+          "reported_publication_date": "2024-09-19",
+          "publication_date_basis": "Enclosed press dateline and SEC filing index.",
+          "effective_dates": [
+            {
+              "date": "2024-10-14",
+              "event": "Hill's appointment"
+            },
+            {
+              "date": "2024-10-13",
+              "event": "Press wording's Donahoe CEO/director retirement"
+            },
+            {
+              "date": "2025-01-31",
+              "event": "End of advisory service"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Preserves the press account within the accession, including the one-day boundary difference from the contractual description.",
+          "phenomena": [
+            "future_effective",
+            "boundary_ambiguity",
+            "dependent_duplicate"
+          ],
+          "version_classification": "version_verifiable",
+          "historical_availability_date": null,
+          "archive_anchor": {
+            "accession": "0000320187-24-000053",
+            "metadata_url": "https://www.sec.gov/Archives/edgar/data/320187/000032018724000053/0000320187-24-000053-index.htm",
+            "accepted_time_as_displayed": "2024-09-19 16:16:42",
+            "timezone": "SEC FAQ labels acceptance time EST; index itself does not specify; no intraday cutoff used."
+          },
+          "version_gap": "Current retrieved text representation hashed; not raw historical HTML or proof of exact public availability. Next-day cutoff is a development convention only.",
+          "status": "development_snapshot_captured_not_benchmark",
+          "archive_acceptance_date": "2024-09-19",
+          "pilot_manifest": "data/natural_pilot/manifest.json"
+        },
+        {
+          "source_id": "nike_hill_interview",
+          "title": "Elliott Hill on Nike's Next Great Chapter",
+          "url": "https://about.nike.com/en/magazine/elliott-hill-nike-interview",
+          "reported_publication_date": "2024-10-21",
+          "publication_date_basis": "Visible article date.",
+          "effective_dates": [
+            {
+              "date": "2024-10-21",
+              "event": "Observation that Hill is CEO; no new appointment date implied"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Introduces Hill as the new CEO after the announced start date, providing a natural restatement in interview prose.",
+          "phenomena": [
+            "later_restatement"
+          ],
+          "version_classification": "publication_only",
+          "historical_availability_date": null,
+          "version_gap": "No October 2024 version of this interview was inspected.",
+          "status": "candidate_not_benchmark"
+        }
+      ]
+    },
+    {
+      "history_id": "product_ie11_scoped_retirement",
+      "domain": "product_lifecycle_support_availability",
+      "title": "IE11 retirement with Windows edition and channel exceptions",
+      "status": "candidate_not_benchmark",
+      "phenomena": [
+        "future_effective_retirement",
+        "restatement",
+        "version_scope",
+        "channel_scope",
+        "component_scope",
+        "editorial_scope_clarification"
+      ],
+      "feasibility": "High semantic value but currently blocked for historical-prefix evaluation by unpinned live revisions.",
+      "version_gap": "All inspected pages display later update banners. Need archived text for each cutoff; page datelines cannot date those banners. The April 4 editorial clarification requires pre-edit and post-edit versions.",
+      "correction_status": "An explicit scope-clarification edit is acknowledged, but no before/after factual correction has been established.",
+      "sources": [
+        {
+          "source_id": "ie11_retirement_announcement",
+          "title": "The future of Internet Explorer on Windows 10 is in Microsoft Edge",
+          "url": "https://blogs.windows.com/windowsexperience/2021/05/19/the-future-of-internet-explorer-on-windows-10-is-in-microsoft-edge/",
+          "reported_publication_date": "2021-05-19",
+          "publication_date_basis": "Visible blog dateline; observed page includes a later permanent-disablement update.",
+          "effective_dates": [
+            {
+              "date": "2022-06-15",
+              "event": "IE11 desktop retirement for specified Windows 10 versions"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Announces retirement while excluding in-market LTSC, Server, and the underlying rendering engine.",
+          "phenomena": [
+            "future_effective",
+            "version_scope",
+            "component_scope"
+          ],
+          "version_classification": "publication_only",
+          "historical_availability_date": null,
+          "version_gap": "Current page demonstrably contains later text. No original 2021 snapshot was inspected.",
+          "status": "candidate_not_benchmark"
+        },
+        {
+          "source_id": "ie11_reminder_scope_edit",
+          "title": "With 3 months left before IE retirement, new enhancements arrive in Microsoft Edge for IE mode",
+          "url": "https://blogs.windows.com/windowsexperience/2022/03/29/with-3-months-left-before-ie-retirement-new-enhancements-arrive-in-microsoft-edge-for-ie-mode/",
+          "reported_publication_date": "2022-03-29",
+          "publication_date_basis": "Blog dateline; an editor note dates an additional scope clarification to April 4, 2022.",
+          "effective_dates": [
+            {
+              "date": "2022-06-15",
+              "event": "Repeated retirement target"
+            },
+            {
+              "date": "2022-04-04",
+              "event": "Editorial clarification date, not product-state transition"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Restates the retirement date and specifies OS-update requirements for restored COM behavior; an editor note acknowledges adding Windows-version requirements.",
+          "phenomena": [
+            "restatement",
+            "version_scope",
+            "editorial_scope_clarification"
+          ],
+          "version_classification": "publication_only",
+          "historical_availability_date": null,
+          "version_gap": "Pre-April-4 wording is unknown; cannot label a correction pair or backdate clarified scope to March 29.",
+          "status": "candidate_not_benchmark"
+        },
+        {
+          "source_id": "ie11_retirement_effective",
+          "title": "Internet Explorer 11 has retired and is officially out of support\u2014what you need to know",
+          "url": "https://blogs.windows.com/windowsexperience/2022/06/15/internet-explorer-11-has-retired-and-is-officially-out-of-support-what-you-need-to-know/",
+          "reported_publication_date": "2022-06-15",
+          "publication_date_basis": "Visible blog dateline; July 11 visual-edit note and later disablement banner also present.",
+          "effective_dates": [
+            {
+              "date": "2022-06-15",
+              "event": "Retirement announced as effective for specified editions"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Reports retirement while retaining support exceptions for LTSC, Server, and other listed environments, and separately discusses Edge IE mode.",
+          "phenomena": [
+            "state_change",
+            "version_scope",
+            "channel_scope",
+            "component_scope"
+          ],
+          "version_classification": "publication_only",
+          "historical_availability_date": null,
+          "version_gap": "Observed page mixes original narrative with later edits; archived revisions required.",
+          "status": "candidate_not_benchmark"
+        }
+      ]
+    },
+    {
+      "history_id": "product_python38_lifecycle",
+      "domain": "product_lifecycle_support_availability",
+      "title": "Python 3.8 security-only support followed by end of life",
+      "status": "candidate_not_benchmark",
+      "phenomena": [
+        "version_scope",
+        "support_phase_change",
+        "future_effective",
+        "later_restatement",
+        "revision_contamination"
+      ],
+      "feasibility": "Promising product-domain acquisition target because the PEP explicitly links to its source repository, but no immutable historical revision was successfully inspected in this pass.",
+      "version_gap": "GitHub main is mutable. The commits-history request failed, so no commit SHA or historical snapshot is claimed. Current release pages contain later EOL warnings.",
+      "correction_status": "No explicit correction established.",
+      "sources": [
+        {
+          "source_id": "python3818_release",
+          "title": "Python 3.8.18",
+          "url": "https://www.python.org/downloads/release/python-3818/",
+          "reported_publication_date": "2023-08-24",
+          "publication_date_basis": "Reported release date, not independently verified original page-publication time.",
+          "effective_dates": [
+            {
+              "date": "2023-08-24",
+              "event": "Security release"
+            },
+            {
+              "date": "2024-10",
+              "event": "Security-only support horizon stated with month precision"
+            },
+            {
+              "date": "2024-10-07",
+              "event": "Later EOL banner on current page"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Release narrative describes source-only security maintenance and no regular bug fixes; the served page now also includes an EOL warning.",
+          "phenomena": [
+            "version_scope",
+            "future_effective",
+            "revision_contamination"
+          ],
+          "version_classification": "publication_only",
+          "historical_availability_date": null,
+          "version_gap": "The EOL warning cannot be assigned to the 2023 release date; a pre-EOL page capture is needed.",
+          "status": "candidate_not_benchmark"
+        },
+        {
+          "source_id": "python_pep569_current",
+          "title": "PEP 569 \u2013 Python 3.8 Release Schedule",
+          "url": "https://peps.python.org/pep-0569/",
+          "reported_publication_date": null,
+          "publication_date_basis": "Document creation date is January 27, 2018; currently displayed last modification is November 10, 2025. Neither dates every observed sentence.",
+          "effective_dates": [
+            {
+              "date": "2021-05-03",
+              "event": "Final regular bugfix release with installers"
+            },
+            {
+              "date": "2024-09-06",
+              "event": "Final security release"
+            },
+            {
+              "date": "2024-10-07",
+              "event": "End of life"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Current schedule summarizes successive maintenance phases and records the final security release and support termination.",
+          "phenomena": [
+            "support_phase_change",
+            "retrospective_report"
+          ],
+          "version_classification": "publication_only",
+          "historical_availability_date": null,
+          "repository_source_url": "https://github.com/python/peps/blob/main/peps/pep-0569.rst",
+          "version_gap": "Repository main text was inspected but no immutable historical SHA was verified; do not call this Git-pinned yet.",
+          "status": "candidate_not_benchmark"
+        },
+        {
+          "source_id": "python38_eol_announcement",
+          "title": "Python 3.8 is now officially EOL",
+          "url": "https://discuss.python.org/t/python-3-8-is-now-officially-eol/66983",
+          "reported_publication_date": "2024-10-07",
+          "publication_date_basis": "Release manager's forum post displays October 7, 2024 at 7:13pm; timezone and edit history not established.",
+          "effective_dates": [
+            {
+              "date": "2024-10-07",
+              "event": "EOL announcement and related repository/documentation actions"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "The release manager announces EOL and says the schedule, download information, and developer guide were updated.",
+          "phenomena": [
+            "state_change",
+            "version_scope",
+            "later_restatement"
+          ],
+          "version_classification": "publication_only",
+          "historical_availability_date": null,
+          "version_gap": "Current post is inspectable, but its historical revision/edit metadata was not inspected.",
+          "status": "candidate_not_benchmark"
+        }
+      ]
+    },
+    {
+      "history_id": "product_apple_intelligence_eu",
+      "domain": "product_lifecycle_support_availability",
+      "title": "Apple Intelligence EU availability across devices and OS versions",
+      "status": "candidate_not_benchmark",
+      "phenomena": [
+        "region_scope",
+        "device_scope",
+        "version_scope",
+        "language_scope",
+        "future_effective",
+        "rollout_change"
+      ],
+      "feasibility": "Strong scope example: EU Mac availability and later EU iPhone/iPad availability must not be merged into one global product state.",
+      "version_gap": "Both sources are live dated newsroom pages without inspected historical captures; the October plan and March launch should not become a correction label automatically.",
+      "correction_status": "No explicit correction. A planned April rollout and March 31 availability may reflect schedule change or boundary wording, not an error admission.",
+      "sources": [
+        {
+          "source_id": "apple_intelligence_initial_eu_scope",
+          "title": "Apple Intelligence is available today on iPhone, iPad, and Mac",
+          "url": "https://www.apple.com/ie/newsroom/2024/10/apple-intelligence-is-available-today-on-iphone-ipad-and-mac/",
+          "reported_publication_date": "2024-10-28",
+          "publication_date_basis": "Ireland newsroom press-release dateline; current text only.",
+          "effective_dates": [
+            {
+              "date": "2024-10-28",
+              "event": "Initial release including EU Mac availability under stated conditions"
+            },
+            {
+              "date": "2025-04",
+              "event": "Planned EU iPhone/iPad rollout; year inferred from October 2024 context, month precision only"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Availability text distinguishes EU Macs from the future EU iPhone/iPad rollout and conditions support on hardware, OS release, and language settings.",
+          "phenomena": [
+            "region_scope",
+            "device_scope",
+            "version_scope",
+            "language_scope",
+            "future_effective"
+          ],
+          "version_classification": "publication_only",
+          "historical_availability_date": null,
+          "version_gap": "No October 2024 archived text inspected; the currently served availability wording must not be presumed original.",
+          "status": "candidate_not_benchmark"
+        },
+        {
+          "source_id": "apple_intelligence_eu_expansion",
+          "title": "Apple Intelligence features expand to new languages and regions today",
+          "url": "https://www.apple.com/newsroom/2025/03/apple-intelligence-features-expand-to-new-languages-and-regions-today/",
+          "reported_publication_date": "2025-03-31",
+          "publication_date_basis": "Visible newsroom update date.",
+          "effective_dates": [
+            {
+              "date": "2025-03-31",
+              "event": "EU iPhone/iPad availability with iOS/iPadOS 18.4; expanded OS and language support"
+            }
+          ],
+          "observed_retrieval_date": "2026-10-01",
+          "evidence_paraphrase": "Announces first EU iPhone/iPad access alongside OS 18.4 releases and additional languages; Vision Pro receives a separately scoped initial feature set.",
+          "phenomena": [
+            "state_change",
+            "region_scope",
+            "device_scope",
+            "version_scope",
+            "language_scope"
+          ],
+          "version_classification": "publication_only",
+          "historical_availability_date": null,
+          "version_gap": "No March 2025 historical revision was inspected.",
+          "status": "candidate_not_benchmark"
+        }
+      ]
+    }
+  ],
+  "updated_date": "2026-10-02",
+  "snapshot_scope": "Five SEC source representations in data/natural_pilot; original raw HTML not downloaded."
+}

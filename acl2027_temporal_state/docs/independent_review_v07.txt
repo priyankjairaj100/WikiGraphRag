@@ -1,0 +1,420 @@
+INDEPENDENT RESEARCH REVIEW v0.7
+Review date: 2026-10-02
+Status: completed measurement, adapter, and empirical-result review. No unresolved implementation blocker in the reviewed scope; no publication-level performance claim established.
+
+Scope and independence
+The reviewer inspected the v0.6 source-only protocol, accepted neutral scoring
+request, objective/cache documentation, current decoder objective and local-link
+semantics, and project status. This review has not read natural QA, answer labels,
+or a held-out evaluation artifact. The source graph is already development data.
+No accuracy, entailment certification, or novelty assessment follows from review.
+
+Provisional disposition
+A pinned small-model likelihood pass is a useful execution and score-sensitivity
+milestone if all raw input/token/logit provenance is retained. It is not yet a
+comparison supporting the proposed ACL research claim. The repaired graph has
+seven resolved readings for seven mentions; alternative resolved identities are
+absent. A fresh source-only audit should be permitted to return zero justified
+alternatives. Inventing ambiguous candidates to induce a joint-search difference
+would invalidate the empirical motivation. This pilot also has no correction or
+essential-support edges, so it cannot compare correction-sensitive objectives.
+
+Score target and construction
+Each score must concern faithful interpretation of its historical source, not
+whether that source statement remains true after a later correction. A link is
+judged conditional on endpoint admission. Planned CHANGES must be judged as
+planned succession within the endpoints' shared modality; requiring an already
+observed actual transition would silently change the target on this graph.
+
+Binary support log-odds are real model-derived numerical features when collected
+from actual next-token probabilities. Their common unit does not establish a
+common semantic calibration across readings, links, unresolved, and no_link.
+Separate binary prompts need not produce mutually consistent judgments or a
+categorical probability distribution over mutually exclusive alternatives.
+Adding the potentials defines an energy objective. A constrained distribution
+could be defined mathematically from that energy, but it would not thereby be
+the language model's joint posterior, calibrated factual confidence, or answer
+probability. Correlated sources and repeated mentions may still be counted more
+than once. More candidate alternatives can change the abstention prompt itself.
+
+The unresolved item asks whether no single supplied resolved reading is adequate.
+It is not the factual negation of every resolved proposition. The no_link item
+asks whether none of the proposed outgoing relationships is supported. The
+implementation nevertheless assigns one common no_link potential to a mention
+for every selected reading, including unresolved. When all outgoing links are
+inadmissible because an endpoint is unresolved, that no_link value can still be
+negative because an otherwise plausible relationship exists. This is a declared
+heuristic compatibility mismatch, not a code arithmetic failure. It can affect
+whether an endpoint is resolved and must remain explicit in interpretation.
+
+For a singleton resolved candidate with a perfectly complementary abstention
+judgment, scoring both binary odds would double the resolved-versus-unresolved
+margin compared with a single supported-versus-zero score. With multiple links
+and independently worded abstention prompts no such fixed relationship need
+hold. Therefore the v0.7 explicit-null path must not silently borrow the unused
+v0.6 likelihood proposal's zero-reference convention. Beta, penalties, label
+mapping, aggregation across label orders, and primary versus diagnostic scores
+must be fixed before inspection. Do not select whichever coding yields a gap.
+
+Execution and reproducibility requirements
+Record immutable model revision and exact GGUF hash, tokenizer metadata/tokens,
+runtime/library binary hashes and build provenance, CPU/thread/precision/context
+settings, prompt serialization, actual chat template and thinking setting,
+input token IDs, and label token IDs. Both label continuations must start from
+identical context state. Teacher-force every continuation token; record its
+conditional log probability using the complete vocabulary normalizer. Preserve
+both display-order conditions. A sampled token's confidence cannot stand in for the
+unobserved alternative. Top-k-only logits cannot establish the normalizer.
+
+The total unnormalized label mass P(Yes)+P(No) should be reported along with the
+signed log-odds. Strong conditional Yes/No preference is compatible with very low
+absolute probability of either label, for example under a mismatched response
+format or thinking prefix. Do not discard low-mass items or repair prompts after
+viewing values without declaring a separate exploratory attempt. Include every
+failed or truncated attempt, and fail rather than silently truncate sources.
+
+Pinned scoring does not pin the earlier unversioned candidate generation and
+validation-triggered repair. Correct provenance is a reproducible scoring stage
+on an archived unversioned graph, with its full candidate lineage retained.
+Byte-identical deterministic cache replay is distinct from model regeneration.
+An observed numerical regeneration tolerance must be stated with hardware and
+runtime scope; bitwise portability across environments must not be assumed.
+
+Attribution boundary
+Within one frozen cache, matched decoders differ in search alone. They share
+candidate coverage, scoring, temporal feasibility, and correction policy. The
+independent baseline already performs exact conditional link optimization;
+calling it purely independent edge selection would understate that baseline.
+A greater objective can establish better optimization only. With no gold it
+cannot establish better factual inference, extraction, abstention, or answers.
+A v0.6-to-v0.7 output change also changes model, score family, item prompting,
+and possibly label treatment. It is a score/backend sensitivity observation,
+not an algorithmic improvement or causal calibration result.
+
+Publication decision
+Even a successful local run leaves the research gate unchanged: multiple
+independent histories; supported competing readings and candidate recall;
+source adjudication; frozen held-out evaluation; strong contextual baselines;
+error decomposition by extraction, score, and search; factual answer metrics;
+and a scalable inference contribution if joint search is the main claim.
+Development repairs and retrospective source-availability uncertainty stay in
+the paper's limitations. Repeated implementation checks cannot substitute for
+those measurements. A null ambiguity audit is useful evidence to change data
+collection priorities, rather than a reason to force a positive example.
+
+Prepared protocol inspection
+The v0.7 protocol, prompt, deterministic per-item builder, and measurement
+validator have now been inspected before model outputs. The primary condition
+is yes_no; no_yes is a display-order diagnostic only. Label meanings do not
+swap. The two results are not averaged and no better order is selected. This
+is an explicitly different design from the unused v0.6 A/B meaning-swap
+proposal. Reversing presentation order can detect that form of sensitivity; it
+does not remove intrinsic Yes/No token preference or demonstrate calibration.
+
+The builder reproduces all 32 frozen neutral items, giving 64 full-source
+prompts without generator IDs or notes. The request's canonical SHA256 is
+04cf18e8fc87f975aca3b08050da87e2a5124005e11892f0be882580dca2d71b.
+The prompt explicitly preserves planned succession, historical interpretation,
+and null/unresolved judgments. Score beta=1, no penalties, no normalization,
+no clipping, and historical primary objective are frozen. The measurement
+validator enforces coverage, distinct stable label token IDs, prompt digests,
+finite likelihoods, context bounds, and valid total label mass. It explicitly
+leaves runtime token-prefix evidence to the backend receipt. No blocker was
+identified in these prepared contracts.
+
+A backend may retain only the top 256 probability entries if it verifiably
+computes their probabilities using the entire vocabulary normalizer and both
+required labels occur in the retained entries. Missing labels must fail. It
+need not retain every vocabulary logit. Normalizing only the reported top 256
+would not satisfy this contract. Exact pinned source semantics remain to be
+inspected with execution records.
+
+Source-only ambiguity audit observation
+The subsequent fresh isolated audit reports coverage of all seven mentions,
+16 considered differences, no proposed extra reading, no proposed extra link,
+no representation defect, and two cross-source findings. I inspected its short
+conclusions and cross-source findings. It distinguishes the October 13 versus
+October 14 source disagreement from ambiguity within either explicit assertion,
+and preserves the difference instead of inventing CORRECTS or a reconciled date.
+The current-versus-planned occupancy distinction is treated as separate facts,
+not mutually exclusive readings. These are appropriate distinctions for this
+representation and provide no positive multi-reading joint-search example.
+
+This is one unversioned model audit of an already inspected development case.
+Zero proposals is not an independent human adjudication, candidate recall
+estimate, proof of completeness, or evidence that natural ambiguity is absent.
+The next useful step is a new batch of independently collected histories with
+an evidence admission rule fixed before scores, rather than more attempts to
+elicit alternatives from this same graph. Its scoring run remains a reproducible
+feature measurement on the archived graph, whichever audit outcome was found.
+
+Runtime implementation and preflight inspection
+The local collector now runs the pinned official Qwen3-0.6B Q8_0 GGUF asset
+(SHA256 9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031)
+under the pinned llama.cpp b11146 binary bundle, commit
+7fe450e19305b828c199d602c23a8337aaa1f03b. Its complete extracted executable and
+shared-library manifest is verified before startup. This tiny quantized CPU
+backend is explicitly distinct from the proposed 8B research baseline.
+
+I inspected the server/helper and collector code plus actual preflight binding.
+All 64 prompts have 5034--7856 input tokens and fit the 8192-token runtime context.
+Every prompt is rendered with the recorded native chat template and disabled
+thinking prefix, then tokenized without truncation. For every item and condition,
+tokenizing the exact rendered prompt plus Yes or No preserves the entire prompt
+prefix and appends exactly token 9454 or 2753, respectively. The complete prompt
+strings and token arrays are retained. The completion receives that exact token
+array, cache_prompt=false, one next-token position, no logit bias or label grammar,
+and checks response token counts, non-truncation, and both retained label IDs.
+Two CPU threads and bounded memory/CPU execution are used.
+
+The initial sandbox socket startup failure and subsequent f16 KV-cache memory
+startup failure are preserved as separate failures. The latter prompted a
+recorded q8 KV-cache configuration before scored measurements. A successful
+short smoke run is not counted as one of the 64 source-scoring measurements.
+
+I inspected the pinned server-context.cpp call path: requesting probabilities
+with post_sampling_probs=false disables backend sampling. Its raw-probability
+branch invokes get_token_probabilities, which normalizes all available logits,
+and only then limits the number of entries copied to top_logprobs. The inspected
+server-common.cpp normalizer loops over the whole vector, not the top-256 prefix.
+The runtime evidence must retain the no-backend full-vocabulary fallback as well.
+This path avoids conflating a sampled-token likelihood with an unevaluated label.
+Both labels are read from the same unmodified next-token distribution.
+
+The predeclared numerical regeneration check repeats only the first primary
+prompt after the 64 measurements, with absolute logprob tolerance 1e-6. That is
+one same-runtime spot check, not regeneration of every item, a cold-process
+replication, or a guarantee across hardware. Final status and any deviation must
+be stated literally. Offline cache replay is a separate deterministic check.
+
+Resource-driven execution amendment before measurements
+The uncached q8 KV attempt was interrupted before its first completed response;
+its raw response file had zero rows. Its request/config/log/preflight artifacts
+are preserved. The final prospective resource amendment uses four CPU threads,
+batch size 256, microbatch 128, q8 KV, unchanged 8192 context and 2 GiB address
+space guard, a 600-second request timeout, and cache_prompt=true. No prompt,
+label, score mapping, source content, or candidate changed. This supersedes the
+uncached execution setting described in the preflight section above. No scored
+value was used to choose the amendment.
+
+The pinned server implementation obtains the exact common token prefix, retains
+only those prompt tokens, and removes subsequent KV entries before appending the
+new prompt. With chunk reuse disabled, no prior item output or suffix survives
+as extra logical input. Each request still supplies the entire tokenized prompt.
+Response tokens_evaluated denotes the full task token count; timings.cache_n and
+timings.prompt_n distinguish prefix reuse from newly processed tokens. These
+must not be misreported as all-new model evaluations on every item.
+
+Identical logical context is not a promise of bitwise equivalence to uncached
+prefill. Floating arithmetic can depend on batch boundaries and cache history.
+The exact item order and cache settings are therefore part of the executable
+measurement recipe. The existing 1e-6 numerical spot-check tolerance remains
+unchanged, and any failure must be reported rather than relaxed or averaged
+away. This execution amendment is an infrastructure adjustment, not a new score
+condition or evidence that a preferred semantic result was reproduced.
+
+Clarification: full-context ambiguity is not candidate proposal recall
+The v0.7 audit requires two mutually exclusive readings to remain defensible
+within the full supplied source context. This is a deliberately strict test of
+residual semantic ambiguity. It is not a test of whether a local proposal model
+could reasonably produce several hypotheses before cross-document or global
+constraints resolve them. Globally falsifiable but locally plausible hypotheses
+can be legitimate candidates; excluding all of them before inference can screen
+out exactly the resolution problem the proposed system should study.
+
+Accordingly, zero alternatives in this audit does not establish that joint
+inference is unnecessary. The next study should separate (a) local-window
+candidate proposal coverage and precision, (b) resolution using the full source
+prefix, and (c) global search on one shared candidate union. Fallible proposals
+are permitted; gold-driven pruning and invented source facts are not. Compare
+against a strong full-context unary scorer and give matched decoders identical
+candidates and scores. Natural source ambiguity, model uncertainty, proposal
+error, and globally resolvable uncertainty must be reported as distinct cases.
+No frozen v0.6/v0.7 graph or score protocol is changed by this clarification.
+
+Recommendation: a controlled document-prefix primary task
+A defensible primary benchmark can use immutable retrieved document versions
+with explicitly experimental delivery order and cutoffs. This evaluates what
+follows from the supplied record stream, not what was publicly knowable at a
+historical instant. Keep delivery index/time, document-reported publication
+time, event time, and present retrieval time as separate fields. Freeze admission
+and delivery order before labels or model scores. Every method receives the same
+prefix, and reference answers must express record-supported facts, conflicts,
+unknowns and unrealized plans rather than omniscient real-world truth.
+
+This task removes historical first-public-availability certification as a gate
+for the controlled primary benchmark while narrowing the conclusion honestly.
+Current document versions may contain later revisions; they cannot authenticate
+historical public knowledge even when their hashes are fixed. Document that
+limitation, inspect whether an alleged original/correction pair still exposes
+the original assertion, and never claim a predictive historical backtest.
+A separately certified historical-replay slice can test external realism later.
+This recommendation does not alter any existing source cutoff or replay result.
+
+Additional numerical attribution limit
+The no_yes prompts run after the yes_no prompts in one fixed sequence with
+prefix reuse. A difference between conditions can therefore include floating
+batch/cache-history effects as well as the changed text order. The one repeated
+primary prompt diagnoses such sensitivity at one position only. Report observed
+condition-associated score and state differences descriptively; they are not a
+clean causal estimate of textual label-order effects on every item. No frozen
+run is changed to obtain a preferred comparison.
+
+Final adapter and bootstrap code inspection
+The adapter verifies every raw next-token response against its normalized row,
+all prepared item order and coverage, full prompt framing and token hashes,
+label-prefix records, runtime/model/template hashes, bounded CPU/KV/context
+settings, explicit model-choice limitations, and original candidate-cache
+lineage. It compares all four decoders under both objectives in both conditions
+without winner selection or score filtering. The fresh mixed provenance kind
+requires unknown candidate revision and pinned scorer asset hash. Non-score
+claims, aliases, sources, policy, and policy provenance remain identical.
+No code blocker was identified in that translation. Cache timing integrity
+checks and the absence of environment cache overrides are also bound.
+
+The stdlib reproduction bootstrap verifies the two exact assets, stages bounded
+downloads, rejects changed existing assets, and manually extracts only its fixed
+flat archive of regular files and internal acyclic symlinks. No extractall or
+arbitrary archive path write is used. One concrete reproduction bug was found:
+a fresh raw-output directory still reused the canonical receipt/log paths.
+The responsible agents have been asked to add explicit fresh receipt/log routing
+before delivery so an independent rerun cannot overwrite original provenance.
+Its resolution must be confirmed in the final review disposition.
+
+Output-routing issue resolved
+The backend now accepts --score-receipt and derives its server-log path beside
+that explicit receipt; the documented reproduction uses a fresh directory for
+both raw outputs and receipt/log. I inspected this fix. The active process is
+unchanged, and its exact pre-edit collector source is retained separately as
+executed_collector.py.txt, SHA256
+c3161fc36e2ece7c5aa87c667d045c6402736bf0b7206f1f26907a69aadd350b.
+The source receipt records that only later artifact-output routing changed.
+
+The supplementary pinned llama-context.cpp inspection also confirms that without
+backend sampling its sampled-logits count falls back to the full vocabulary,
+and candidate IDs fall back to the full identity list. This closes the earlier
+normalizer-path concern. The supplementary evidence is retained and bound
+separately so no already hashed softmax evidence was mutated during the run.
+
+Later paired-order execution amendment after partial outputs existed
+The initial cached, four-thread run produced partial measurements but its
+7200-CPU-second guard could not be increased in place and was expected to expire
+before all 64 requests. A fresh bounded run is authorized with an 18000-CPU-second
+guard and unchanged 2 GiB memory and numerical settings. Its prospective execution
+plan pairs each neutral item in yes_no then no_yes order, instead of processing
+all primary items and then all diagnostic items. This avoids repeating most of
+the long item prefill. The original request and manifest remain unchanged; a
+separate immutable execution-plan key sequence must bind the new actual order.
+
+This later amendment occurs AFTER partial score outputs existed, unlike the
+earlier setup adjustments that occurred before any completed response. Root
+reports that only timings and row counts, not likelihood values or outcomes,
+informed the change. Retain the entire partial attempt and its executed settings,
+do not merge its measurements into the new run, and obtain all 64 final rows
+from the fresh process. No prompt, source, candidate, label semantics, primary
+condition, score formula, or calibration parameter changes. Both conditions
+remain mandatory and no preferred result may be selected.
+
+Paired execution still has different cache histories for the two conditions,
+so it does not remove the causal interpretation limit above. The first primary
+prompt's repeated measurement retains the same 1e-6 tolerance without tuning.
+The final review must identify the new attempt's actual completion and numerical
+outcome; successful code or partial rows alone do not establish a complete run.
+
+Completed fresh-run measurement review
+The fresh paired-order run completed all 64 declared prompt evaluations, followed
+by the predeclared first-primary repeat. I independently checked exact 64-key
+coverage, paired order, complete rendered inputs, token arrays, label-appended
+prefixes, response non-truncation and counts, cache/new-token accounting, and
+identity of stored Yes/No likelihoods with the raw backend distributions. All
+checks passed. No partial-attempt score was used in these measurements. The
+completed measurements file SHA256 is
+62b1eb58a5a66615fe700baeb0cba008a7ade2936cb0133acc4fbe989f110f02.
+The final executed collector source SHA256 is
+c63acf150c86c09aca24a53ca9892170385de84e84d7d69308212d71a23260b7;
+the earlier collector snapshot remains under attempt_cpu7200.
+
+The 64 main prompts contain 359654 logical input tokens, of which recorded
+cache accounting reports 28109 newly processed prefill tokens and 331545 reused
+prefix tokens. These counts exclude the separate numerical repeat. The process
+receipt records 1509.883747451 elapsed seconds and 1197840 KiB peak child RSS.
+This is measured local-run resource use, not a portable runtime/cost guarantee.
+Both repeated first-prompt label log probabilities were identical to their
+first measurements (absolute error 0.0 for each; frozen tolerance 1e-6). This is
+one successful same-process numerical spot check, not a full independent rerun.
+
+The main score finding is substantial condition-associated instability. All
+32 primary yes_no items have positive Yes-minus-No log-odds, including all seven
+resolved readings and all seven unresolved options. Only six of 32 no_yes items
+have positive log-odds. Twenty-six of 32 items change sign: all seven readings,
+all seven unresolved items, eight of eleven links, and four of seven no_link
+items. Every diagnostic-minus-primary log-odds difference is negative, ranging
+from -8.408853542641737 to -1.9455967843532562. Literal Yes/No probability mass
+across all 64 measurements ranges from 0.9949660334364772 to
+0.9999924792309038; tiny label mass is therefore not the explanation here.
+
+These numerical observations reveal a serious weakness of this tiny-model
+compatibility scorer. Simultaneously endorsing a singleton complete reading and
+its abstention option illustrates why separately prompted binary scores need
+not be logically coherent. This is not a measured factual error rate because
+there is no independent ground truth. It is consistent with strong response-
+order preference, but text order and cached execution history are not fully
+isolated by this run. Keep both conditions and the original primary choice;
+do not average, clip, tune or discard scores to obtain a preferred outcome.
+The source interpretation, candidate graph, and score formula remain frozen.
+
+Final decoder-result disposition
+The completed adapter reports 16 decodes: two score conditions, two objectives,
+and four search methods. I read the saved result and independently recomputed
+all 16 selected-state additive totals directly from the derived cache scores;
+they match within 1e-12. Both objectives coincide here because the graph contains
+no correction or essential-support edges. No gold, QA, or answer metric is used.
+
+In the fixed primary yes_no condition, all four methods select all seven resolved
+readings and the same three links (l9, l1, l14), with objective
+70.57755028217798 and exact gap zero. There is no primary search advantage.
+
+In the diagnostic no_yes condition, independent selects r2, r4, r6, r7 with
+link l12, giving -7.7397231459617615. Iterative, iterative with restarts, and
+exact joint select r2, r4, r5, r6, r7 with link l14, giving
+-7.622846573591232. The independent exact gap is 0.11687657237052917; all three
+other methods have zero gap. Relative to independent, accepting r5 costs
+0.016431838274002075 in unary score and replacing l12 with l14 gains
+0.13330841064453125 in link score. The net gain exactly explains the observed
+optimization difference. Ordinary iteration already closes it; the result does
+not motivate a new exact-search algorithm by itself.
+
+All eight method/objective pairs change selected states across the two conditions.
+These are condition-dependent optima under uncalibrated scores. Comparing the
+raw objective totals across conditions has no accuracy meaning. Promoting the
+diagnostic gap while omitting the primary zero gap would misrepresent the fixed
+primary/diagnostic design. Adding r5 is not called an accuracy improvement: no
+independent reference evaluation was performed, and the entire candidate graph
+still has only one resolved interpretation per mention plus abstention.
+
+The saved replay result SHA256 is
+9c9e203cc001c225bc894b43bfd5103235ae33b82fcd53c90c5fd9bbc4a092be.
+The recorded offline identity check covers the two caches, their two lineages,
+and this result: all five files are byte-identical across two complete replay
+executions. That is distinct from the one successful numerical model spot check.
+
+Final recommendation
+Accept v0.7 as a completed pinned-scoring and reproducible-artifact milestone,
+with a substantive scorer-sensitivity failure and a small secondary optimization
+example. Do not describe it as a publishable method, calibrated scoring result,
+new algorithm, natural accuracy gain, or demonstrated need for joint inference.
+A stronger contextual scorer and the independent controlled-prefix data study
+now matter more than additional permutations of this Nike example. I checked the
+new collection frame: it contains nineteen metadata histories and explicitly
+records zero completed streams, candidate annotations, reference questions, or
+benchmark admissions. These remain source-discovery records, not additional
+empirical samples.
+
+Manuscript artifact consistency check
+At this review point, the working claim ledger contains 14 claims with 47
+file-hash references to 31 distinct existing files; all recorded hashes match.
+All ten bibliography keys are cited by the methods draft, with no unresolved
+or unused bibliography key. This is an artifact-consistency check, not an
+independent exhaustive literature search, novelty certification, or verification
+of claims that may be added after this check. The working draft remains a
+methods and evidence draft, not a submission-ready empirical paper.

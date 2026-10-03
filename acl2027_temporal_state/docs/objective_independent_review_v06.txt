@@ -1,0 +1,229 @@
+INDEPENDENT REVIEW: SHARED ACTIVE-SUPPORT OBJECTIVE ABLATION v0.6
+
+Review date: 2026-10-02.
+Disposition: implementation checks pass in the finite reviewed scope; the new
+objective has substantive counterexamples and is not recommended as a default
+replacement for historical scoring without an independent empirical test.
+
+Access boundary
+
+The reviewer read objectives.py, the decoder objective-function extension,
+objective_pipeline.py, the existing correction semantics, authored control
+fixtures, prepared v0.6 candidate/scorer prompts and schemas, source-request
+builder and manifest, graph validator, and backend-readiness documentation.
+No natural gold, development questions, expectations, natural score output, or
+natural inference results were read. The initial objective audit also excluded
+natural candidate output. A later source-only protocol inspection read the first
+new candidate output and its exact source request after validation failed; that
+inspection is recorded below. The executable independent objective audit still
+creates only synthetic source text, claims, score grids, and a synthetic query
+for pipeline identity checking. It does not assess factual source truth, natural
+extraction accuracy, model calibration, or publication novelty.
+
+Objective reasoning
+
+Let u_m denote a selected net unary score; b_m the best unresolved net unary
+score at the same mention; n_m its null-link score; and w_l the selected net
+link score. An active-support score can be written as a constant baseline
+
+  sum_m (b_m + n_m)
+
+plus (u_m - b_m) for each active resolved or selected unresolved reading and
+(w_l - n_source(l)) for each operative correction or active temporal link.
+An inactive resolved reading or temporal edge adds no margin over its existing
+reference. This expression was used as the independent arithmetic oracle.
+The production scorer instead computes per-category contributions directly.
+
+This baseline establishes two required reparameterization properties. Adding
+the same constant to every unary score at one mention, including all unresolved
+alternatives, changes every feasible state's objective by the same constant.
+Adding a constant to every outgoing NET link score and the outgoing null score
+does the same. With beta>0, the latter shift is implemented by dividing the
+desired net offset by beta before adding to raw link scores. These are algebraic
+properties, subject to ordinary floating-point rounding, not invariance to
+independent unary/link rescaling or to candidate-set changes.
+
+Replacing retired evidence with numeric zero would not satisfy these properties:
+the score of an active state changes under an offset, but that of a state where
+the same evidence is retired does not. An executed arithmetic control shows an
+old-mention +10 unary offset reversing the preferred correction under raw
+zeroing. Anchored scoring preserves the original ordering. No selectable
+zeroing algorithm was added to the project.
+
+The best unresolved reference is important when multiple unresolved readings
+have different scores. Using the selected inactive resolved reading's raw score
+as the reference would fail to remove it; using an arbitrary unresolved reading
+would make the reference depend on incidental list order. The implementation
+uses the maximum net unresolved score and a deterministic reading-ID tie break.
+Selected unresolved readings themselves keep their actual score, so a lower
+scored unresolved alternative is not silently upgraded.
+
+Independent executable audit
+
+scripts/audit_objectives_v06.py defines three synthetic mentions with resolved
+and two unresolved readings, unequal null scores, beta=2, and four nonzero
+penalty types. It enumerates 27 unary score vectors in each of two dependency
+settings, one with an essential-support dependency and one without. Candidate
+graphs include a certified correction and an incident RESTATES alternative.
+
+Expected active membership is determined by enumerating all eight subsets and
+selecting the unique greatest subset that contains no correction target and
+satisfies the essential-support implication. This does not call production
+withdrawal code to compute expected membership. Every feasible reading/link
+assignment is then scored using an independently authored closed expression:
+null baseline 0.5, resolved margins score-0.5, second-unresolved margin -1,
+correction margin 4, and surviving temporal-link margin 1.
+
+The audit checks assignment scores, active membership, signed removed mass,
+all-state unary and outgoing-net-score offset invariance, and exact optimum
+agreement with the independently enumerated maximum. The independent method
+is compared with the oracle restricted to its declared frozen local readings.
+Iterative and restarted results are checked for objective consistency and their
+ordering under one shared objective. Offset-shifted exact decodes must retain
+the same selected readings and links as well as the shifted objective.
+
+It also exercises all four methods through objective_pipeline.py for both
+objectives, checks answer provenance identity, rejects altered objective modes
+and stale objective digests, and compares historical-mode selections/objectives
+with the unchanged v0.5 correction pipeline. These identity checks are artifact
+consistency checks, not a security claim about mutable Python objects.
+
+Executed coverage: 54 score grids; 1,836 feasible assignments; 7,344 all-state
+offset comparisons; 664 decoder invocations; 23,497 checks; zero mismatches.
+The reproducible result is results/objective_audit_v06.json. Counts include
+targeted production counterexamples and pipeline checks. Finite enumeration
+does not prove correctness for arbitrary graphs, score magnitudes, or floats.
+
+Scientific counterexamples, executed through exact decoding
+
+1. A valid correction can be suppressed. Let the old reading's advantage over
+   unresolved be 10, the replacement's advantage be 2, and the correction's
+   advantage over null be 3. Historical scoring chooses the correction at 15
+   instead of 12. Active-support scoring chooses no correction at 12 instead
+   of the corrected state at 5. A valid certificate permits a correction but
+   does not force it. The loss of old active support can outweigh the correction
+   reward. This behavior follows the declared objective; it is not a solver bug.
+
+2. A negative target can be selected only to enable its own withdrawal. Set the
+   old advantage to -4, replacement advantage to 2, and correction advantage to
+   3. Historical scoring leaves the old mention unresolved and scores 2; a
+   corrected historical state scores 1. Active-support scoring selects the old
+   resolved candidate and immediately retires it, scoring 5. The negative unary
+   disappears into its unresolved reference while the control reward remains.
+   Such a reading selection does not mean the decoder believes the old fact.
+
+Dependencies and incident temporal edges extend both effects: withdrawing a
+target also removes their signed advantages. Removed mass is therefore signed,
+not a nonnegative error penalty. If the scorer judges a historical assertion
+against later factual truth instead of whether it was faithfully interpreted
+from its source, it can assign low scores to the very target needed to represent
+a correction. This distinction must be specified before natural scoring.
+
+Other research limitations
+
+- Every selected correction notice remains operative, even if its replacement
+  assertion is later inactive. Retaining its score matches the current chain
+  semantics, but redundant notices can accumulate control rewards. This is not
+  duplicate-invariant scoring, source independence, or trust estimation.
+- Inactive temporal-link contributions are neutralized; active duplicates still
+  add margins. Absence of a dependency declaration does not prove independent
+  evidence. Duplicate-aware scoring would require a separate explicit model.
+- The independent baseline still freezes maximum net unary readings. Because
+  activity depends on other readings and links, this is not a separable optimum
+  for the new objective. It is a declared baseline policy. Strong iterative and
+  restarted comparisons are necessary, and a gap against independent alone is
+  not evidence for a publishable joint-inference advantage.
+- Exact objective dominance under the same objective is guaranteed by exhaustive
+  enumeration. Objective values across historical and active-support scoring
+  are different quantities. Neither the larger number nor a changed answer
+  establishes factual improvement. Shared search ceilings are not equal actual
+  compute; future efficiency claims require measured costs and search counts.
+- The decoder hook is evaluated only after shared feasibility. All four search
+  paths and assignment evaluation use the same callback. Finite numeric output
+  is enforced. Active-support scoring does not modify correction authority,
+  temporal feasibility, candidate coverage, or answer-consensus semantics.
+- The objective pipeline hashes the full objective specification together with
+  the correction-cache digest. Answers reject mismatched identities. This binds
+  which objective was used but does not make an unversioned model reproducible.
+
+Prepared natural-protocol review
+
+The source-request builder reads only predeclared source packs, keeps the full
+eligible history-prefix context, records text hashes and operational availability
+warnings, and declares a bounded CEO-only pilot scope before extraction. Its
+manifest states that historical first-public availability is not verified.
+Request isolation and source hashes do not make these existing development
+histories held-out data, nor establish exact historical availability.
+
+The candidate prompt separates mutually exclusive readings from independent
+facts; preserves role, modality, scope, and unknown dates; requires exact source
+quotes; and records full model context. The validator checks structure and
+evidence alignment, not entailment. A later adapter must preserve these contexts
+and fail on overflow or invalid states without score/label-driven pruning.
+
+The prepared scorer protocol requires actual teacher-forced token log-likelihoods
+for both label meanings and both label permutations. It withholds generation
+notes, other scores, decoder outputs, questions, and labels. A conversational
+ordinal judgment is a different measurement: it must use a separately frozen
+prompt, scale, schema, manifest, and evidence type. It cannot be inserted into
+the likelihood schema, called a token probability, or described as execution of
+the prepared pinned-model protocol. Candidate generation and scoring contexts
+must remain isolated, and exact prompts/raw outputs should be preserved.
+
+For either scoring route, the meaning of unary evidence must be explicit:
+support for a source assertion's represented interpretation and support for its
+currently active truth are different targets. The correction ablation can
+otherwise conflate scorer behavior with the new objective. Link scores should
+condition on endpoint admission and judge the relationship itself. A single
+development history with shared caches can validate transport and expose a
+failure, but cannot establish calibration, generalization, or an ACL-level gain.
+
+Source-only first-output validation addendum
+
+After the objective audit finished, the root requested review of a failed first
+candidate output. The reviewer read only the new candidate request/output/run
+receipt, prepared prompt/schema, validator, and existing representation code.
+No scorer had run. The failed output had six singleton readings and 15 links.
+One continuation/retirement interpretation, m3/r3 in the inspected first file,
+combined a report-day actual incumbency observation with a planned future role
+end under a single announced_future modality and observation_kind=mixed.
+
+The schema permits mixed observation_kind and the prompt calls for current-state
+observations while explicitly prohibiting observations only for future
+appointments. The inherited model validator nevertheless prohibits every
+announced_future claim with an observation. This is an incompletely declared
+protocol boundary, so the failure is not solely an extraction error.
+
+Relaxing the gate is not a faithful repair under the current semantics. Although
+the base TemporalClaim can store such fields, reported_actual querying excludes
+the entire announced_future claim, losing the actual observation. Conversely,
+changing the whole claim to reported_actual would treat a planned boundary as
+actual evidence. The coupling code also requires homogeneous modality for
+RESTATES and CHANGES. The raw graph contains cross-modality candidate links
+that meet this additional downstream boundary.
+
+Recommended principled action: retain the first output and failed validation;
+version the source-only prompt to state that one claim has one global modality;
+when supported, represent actual current occupancy and a planned endpoint as
+separate atomic claims rather than mutually exclusive readings of one mention;
+give actual occupancy no planned endpoint and give the plan no actual observation;
+state the homogeneous-modality link restriction explicitly. Mixed observation
+kind can still combine an actual observation and actual boundary under the same
+modality. The source-only agent must choose the claims and dates; no expected
+natural values, scores, questions, or repair target IDs should be prescribed.
+
+A single validation repair or fresh generation under the explicit new protocol
+can then be attempted, with preserved failure-triggered lineage. It is not a
+first-pass success or a held-out extraction result. The reviewer did not change
+the gate or natural output and did not inspect any subsequent repair/scoring
+result as part of this addendum.
+
+Final disposition
+
+No implementation blocker was identified in the objective module, shared
+decoder extension, or objective/cache binding after the finite checks above.
+The correction-suppression and negative-target-selection cases are substantive
+limitations of the objective, retained as counterexamples rather than repaired
+with hand-tuned scores. Preserve historical scoring as the default, evaluate
+the new score as a preregistered ablation, and require independent natural
+evaluation before selecting either as the paper's main method.

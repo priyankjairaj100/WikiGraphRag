@@ -1,0 +1,48 @@
+{
+  "schema_version": "local_backend_system_libraries_v0.7",
+  "ldd_exit_code": 0,
+  "ldd_output": "\tlinux-vdso.so.1 (0x00007f6a170d0000)\n\tlibllama-server-impl.so => /workspace/scratch/bdef663e3dfc/tmp/local_backend_v07/runtime/llama-b11146/libllama-server-impl.so (0x00007f6a16a9e000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f6a16817000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f6a167e9000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f6a165d7000)\n\tlibllama-common.so.0 => /workspace/scratch/bdef663e3dfc/tmp/local_backend_v07/runtime/llama-b11146/libllama-common.so.0 (0x00007f6a160f4000)\n\tlibmtmd.so.0 => /workspace/scratch/bdef663e3dfc/tmp/local_backend_v07/runtime/llama-b11146/libmtmd.so.0 (0x00007f6a15f4e000)\n\tlibllama.so.0 => /workspace/scratch/bdef663e3dfc/tmp/local_backend_v07/runtime/llama-b11146/libllama.so.0 (0x00007f6a15b8b000)\n\tlibggml.so.0 => /workspace/scratch/bdef663e3dfc/tmp/local_backend_v07/runtime/llama-b11146/libggml.so.0 (0x00007f6a15b7e000)\n\tlibggml-base.so.0 => /workspace/scratch/bdef663e3dfc/tmp/local_backend_v07/runtime/llama-b11146/libggml-base.so.0 (0x00007f6a15aaf000)\n\tlibssl.so.3 => /lib/x86_64-linux-gnu/libssl.so.3 (0x00007f6a15a05000)\n\tlibcrypto.so.3 => /lib/x86_64-linux-gnu/libcrypto.so.3 (0x00007f6a154f0000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f6a15407000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f6a170d2000)\n\tlibgomp.so.1 => /lib/x86_64-linux-gnu/libgomp.so.1 (0x00007f6a153b1000)\n",
+  "linked_system_library_files": [
+    {
+      "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+      "bytes": 2592224,
+      "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11"
+    },
+    {
+      "path": "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+      "bytes": 183024,
+      "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb"
+    },
+    {
+      "path": "/lib/x86_64-linux-gnu/libc.so.6",
+      "bytes": 2125328,
+      "sha256": "511f825ee075610ac9c0f7f91e2c13de2000d0f7b859f6461137e809a0a009d0"
+    },
+    {
+      "path": "/lib/x86_64-linux-gnu/libssl.so.3",
+      "bytes": 696512,
+      "sha256": "63597a81ef19496ad0423cbaaf04d5b0244c7a9e261e331a5a7f3ac0fcdb9590"
+    },
+    {
+      "path": "/lib/x86_64-linux-gnu/libcrypto.so.3",
+      "bytes": 5305304,
+      "sha256": "c19c2cf8d7cf91c4f273b1d3bbc56a9d19c91a739bfe57ad630756ee8ede7b77"
+    },
+    {
+      "path": "/lib/x86_64-linux-gnu/libm.so.6",
+      "bytes": 952616,
+      "sha256": "f06f2ce1f1833df5f41cf13b6447ff07bea993ad9b27297d3428c2f70ab3f0e7"
+    },
+    {
+      "path": "/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+      "bytes": 236616,
+      "sha256": "6222a16be7f2d458d6870efe6e715fc0c8d45766fb79cf7dcc3125538d703e28"
+    },
+    {
+      "path": "/lib/x86_64-linux-gnu/libgomp.so.1.0.0",
+      "bytes": 352304,
+      "sha256": "135f3c8f006d2fe5e68e51281c7974cb991a03de3bfb3593d68d174dfcf854d1"
+    }
+  ],
+  "scope": "Read-only observation during scoring; these system libraries were not installed or changed. Packaged runtime files are separately bound; model re-execution is not a fully hermetic container claim."
+}

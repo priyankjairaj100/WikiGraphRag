@@ -1,0 +1,46 @@
+INDEPENDENT CODE REVIEW OF BOUNDED MATERIALIZATION
+Date: 2026-10-02
+Review provenance: separate model agent; code and tests only. No natural questions,
+labels, migrations or prediction results were supplied to the reviewer.
+
+Interval arithmetic
+The reviewer independently enumerated 4,896 finite interval/observation checks
+and found no mismatch with the analytic may/must membership rule. The owned
+unit suite additionally includes exhaustive finite-domain checks. These checks
+validate interval arithmetic, not the truth of extracted temporal constraints.
+
+Concrete defects found and fixed
+1. Answer citations initially lost declared context-source dependencies.
+   The engine now retains context sources of selected supporting claims and
+   distinguishes primary evidence sources from context dependencies in diagnostics.
+2. A report dated after the source's operational availability could initially
+   permit future factual answers. The build step now rejects inconsistent report
+   metadata; actual mode also excludes projections beyond the report horizon.
+3. The diagnostic label 'no persistence' omitted continuity within a selected
+   interval containing multiple observations. Diagnostics now state the contiguous
+   episode assumption separately from the absence of forward persistence.
+4. Root integration identified that UNRESOLVED update-link provenance was being
+   treated as uncertain factual occupancy. UNRESOLVED is now provenance-only;
+   uncertain/conditional modality, rather than link uncertainty, blocks certainty.
+
+Deliberately unresolved limitations
+- There is no joint constraint propagation between all claims of a functional
+  key. A possible competing later observation with unknown start may conservatively
+  block an earlier known value. This engine is a safe, conservative per-claim
+  materializer, not a complete solver over globally consistent temporal worlds.
+- Polarity must already be resolved positive or negative. Unresolved polarity
+  is unsupported; it must not be silently guessed in candidate construction.
+- Modality applies to whole claims. A current role with an announced future end
+  cannot express both endpoint modalities fully. Actual-mode horizon guards avoid
+  treating that projected tenure as demonstrated future reality.
+- Multiple observations inside one claim assert one continuous episode. Separate
+  observations before/after a possible reversion must not be merged by default.
+- Corrections are explicitly unsupported by this module and rejected. The old
+  diagnostic memory's correction handling does not make the new module complete.
+- Source spans establish exact provenance matches; they do not prove entailment.
+
+Follow-up validation
+43 bounded-module tests pass after fixes. Natural migration outputs retain every
+raw assertion and all changes separately. The shared-candidate replay is a
+development repair exercise; perfect scores on these known examples are not
+independent evidence of generalization or joint decoding benefit.

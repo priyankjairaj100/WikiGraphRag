@@ -1,0 +1,109 @@
+{
+  "schema_version": "model_pilot_preparation_checks_1",
+  "recorded_date": "2026-10-02",
+  "evidence_type": "executed_local_standard_library_checks_not_model_results",
+  "check_count": 9,
+  "passed": 9,
+  "failed": 0,
+  "execution_context": {
+    "interpreter": "python3",
+    "project_root": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state",
+    "model_inference_executed": false,
+    "transformers_imported": false,
+    "torch_imported": false,
+    "network_used_by_checks": false,
+    "cloud_job_submitted_by_checks": false,
+    "temporary_files": "TemporaryDirectory; cleaned after checks",
+    "persistent_test_file_created": false
+  },
+  "checks": [
+    {
+      "id": "P01",
+      "action": "emit_transport then decode_transport on a small result containing Unicode text",
+      "expected": "Complete gzip/base64 payload decodes and verifies its SHA-256 footer",
+      "observed": "Roundtrip decoded object retained model_executed=false; no exception",
+      "status": "passed"
+    },
+    {
+      "id": "P02",
+      "action": "Remove MODEL_PILOT_COMPLETE footer from emitted transport",
+      "expected": "Reject incomplete transport",
+      "observed": "decode_transport raised ValueError",
+      "status": "passed"
+    },
+    {
+      "id": "P03",
+      "action": "Duplicate first MODEL_PILOT_CHUNK line",
+      "expected": "Reject duplicate chunk",
+      "observed": "decode_transport raised ValueError",
+      "status": "passed"
+    },
+    {
+      "id": "P04",
+      "action": "Generate a prepared standalone script using --output and run it without inference flags",
+      "expected": "Generated script compiles and default dry-run verifies embedded payload without model imports",
+      "observed": "Both builder subprocess and generated-script subprocess exited successfully",
+      "status": "passed"
+    },
+    {
+      "id": "P05",
+      "action": "Invoke generated standalone script with --run-model while embedded config enabled=false",
+      "expected": "Refuse inference before importing model libraries",
+      "observed": "Subprocess returned nonzero and stderr contained disabled",
+      "status": "passed"
+    },
+    {
+      "id": "P06",
+      "action": "Validate schema_version=source_extractor_v0.3 with empty candidates, aliases and unresolved arrays",
+      "expected": "Accept structurally valid empty model response",
+      "observed": "validate_output returned an empty candidates list",
+      "status": "passed"
+    },
+    {
+      "id": "P07",
+      "action": "Add unexpected extra top-level field to otherwise valid response",
+      "expected": "Reject fields outside the output schema",
+      "observed": "validate_output raised ValueError",
+      "status": "passed"
+    },
+    {
+      "id": "P08",
+      "action": "Parse a JSON object containing the same key twice",
+      "expected": "Reject ambiguous duplicate-key JSON",
+      "observed": "strict_json raised ValueError",
+      "status": "passed"
+    },
+    {
+      "id": "P09",
+      "action": "Align an absent quote, then align the complete exact text of one supplied source",
+      "expected": "Reject absent evidence and compute exact Python-character boundaries for the unique full-source quote",
+      "observed": "Absent quote raised ValueError; exact source quote returned start=0 and end=len(source text)",
+      "status": "passed"
+    }
+  ],
+  "separate_dry_run": {
+    "command": "python3 scripts/prepare_model_pilot.py --dry-run",
+    "observed": "Exited successfully; verified three isolated request hashes, prompt/schema hashes and source text hashes",
+    "request_count": 3,
+    "prompt_sha256": "23de08678008726bf5a53e33ef817205c542588f6ebcffa50f86d67ce2178baf",
+    "schema_file_sha256": "e3ef8b3769b56c3af4d3b91a8e3153e5c5f806382e1856b70e9ede018f6999c2",
+    "schema_canonical_sha256": "0e2725d5f95f456e536b996c7cb721edd3f15ceea5ef203e2472657b2cea1d02",
+    "token_count_verified": false,
+    "model_executed": false
+  },
+  "final_static_review": {
+    "reviewed_files": [
+      "scripts/prepare_model_pilot.py",
+      "scripts/model_pilot_job_template.py"
+    ],
+    "packaging_blockers_identified": [],
+    "scope": "Inspection of final preparation/transport/default-entry and inference code, not an integration execution. The check batch preceded the small configured-hash and mutually-exclusive dry-run/output guards; a subsequent dry-run passed after those guards were added.",
+    "remaining_execution_gates": [
+      "Jobs operation returned UNAVAILABLE in the root attempt; no alternate submission path was attempted.",
+      "Pinned tokenizer and model have not been loaded; token counts, GPU fit and generation behavior remain unverified.",
+      "Direct dependencies are proposed pins; transitive lock and immutable container digest are unresolved.",
+      "Remote log return completeness and provider output limits have not been tested.",
+      "Candidate validation checks schema, exact spans and temporal consistency; it does not independently establish semantic entailment or select candidate readings."
+    ]
+  }
+}

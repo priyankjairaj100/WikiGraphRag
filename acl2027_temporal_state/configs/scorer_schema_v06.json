@@ -1,0 +1,152 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "atomic_scorer_record_v0.6"
+    },
+    "mode": {
+      "const": "teacher_forced_label_logodds"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "item_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "item_kind": {
+      "enum": [
+        "reading",
+        "conditional_link"
+      ]
+    },
+    "source_request_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidate_graph_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "atomic_item_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tokenizer_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prompt_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runtime_record_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "label_likelihoods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "permutation": {
+            "enum": [
+              "A_supported",
+              "B_supported"
+            ]
+          },
+          "label": {
+            "enum": [
+              "A",
+              "B"
+            ]
+          },
+          "continuation_text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rendered_input_sha256": {
+            "type": "string",
+            "minLength": 1
+          },
+          "input_token_ids_sha256": {
+            "type": "string",
+            "minLength": 1
+          },
+          "continuation_token_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 1,
+            "maxItems": 8
+          },
+          "continuation_token_logprobs": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 1,
+            "maxItems": 8
+          },
+          "sequence_logprob": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "permutation",
+          "label",
+          "continuation_text",
+          "rendered_input_sha256",
+          "input_token_ids_sha256",
+          "continuation_token_ids",
+          "continuation_token_logprobs",
+          "sequence_logprob"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "averaged_logodds": {
+      "type": "number"
+    },
+    "score_interpretation": {
+      "const": "uncalibrated_model_evidence_potential_not_truth_probability"
+    },
+    "calibration_artifact_sha256": {
+      "type": "null"
+    }
+  },
+  "required": [
+    "schema_version",
+    "mode",
+    "request_id",
+    "item_id",
+    "item_kind",
+    "source_request_sha256",
+    "candidate_graph_sha256",
+    "atomic_item_sha256",
+    "model_id",
+    "model_revision",
+    "tokenizer_revision",
+    "prompt_sha256",
+    "runtime_record_sha256",
+    "label_likelihoods",
+    "averaged_logodds",
+    "score_interpretation",
+    "calibration_artifact_sha256"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

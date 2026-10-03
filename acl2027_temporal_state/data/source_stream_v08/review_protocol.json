@@ -1,0 +1,19 @@
+{
+  "schema_version": "source_semantic_review_protocol_v0.8",
+  "declared_at_utc": "2026-10-02T17:01:26.845362+00:00",
+  "timing": "Initial three rawannotation summaries known and structuralvalidation passed; root has not inspected full candidate content. No decoder/scorer outputs on thesehistories exist. This is disclosed developmental source adjudication, not preregistered benchmarkevaluation.",
+  "inputs": "Each rawannotation/reference plus exactlyitseligiblecapturedprefix; sharedschema/prompt and frozenquestionplan. Noexternalfacts or methodoutputs.",
+  "review_scope": [
+    "sourceentailment",
+    "assertionstance includingquotederror",
+    "explicitcorrection vs clarification/plancancellation",
+    "planned vs actual/eventdates",
+    "article vs sitewidebanner scope",
+    "unsupported relationalprojection and unknowns"
+  ],
+  "outputs": "Perartifact findings boundtosource/rawhashes. Acceptedfinalannotations may be separately versioned with itemized semantic changes; rawoutputs remain unchanged. Referencejudgments also reviewed.",
+  "no_automatic_semantic_passing": "A structural/span pass proves occurrence and lineage, notentailment.",
+  "role_limitations": "Independentreviewroleis anotherunversionedmodel, nothumanadjudication orindependenttraining; sharedtrainingbias remains. Fullcontextreviewmayseeotherprefixes but must justify eachfindingonlyfromeligiblesourceIDs. Noheldout/accuracyclaim.",
+  "repair_limit": "At most one recorded source-only adjudicated version perrawartifact; no score-guided editing, no new modelscorecalls and no claim of complete candidate recall.",
+  "distribution": "Full requests/rawresponsequotes keptanalysis-only; projectdistributes span/hash metadata and bounded paraphrased summaries, with exactinput/outputhashes."
+}

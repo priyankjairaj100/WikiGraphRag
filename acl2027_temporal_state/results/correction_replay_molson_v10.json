@@ -1,0 +1,898 @@
+{
+  "annotation_sha256": "924a16d0ba09de40ad5796ef7ac71a50e5e5f966857e6341a354d2731c14538a",
+  "capture_dates_independently_verified": false,
+  "clock_policy": "Source available_at is the declared actual capture date; cutoff is max capture date. Neither is an event boundary or certified historical availability.",
+  "core_sha256": {
+    "src/temporal_state/__init__.py": "63b1f226a16dd461bad7e8ecdd3d262d8e7b6867d366b6f4ed609254e62f02f4",
+    "src/temporal_state/bounded.py": "9897a479f5300252da605c60f16daac990ac235534edfd1e01c25364837e1653",
+    "src/temporal_state/corrections.py": "218c20ce25030249760db3bda023cab7e351a7518e635751684c8b562c92c85f",
+    "src/temporal_state/coupled.py": "87067798f33b76810e0b39a46840dc33faef45df66d0e9eb2b237d4e6dcf632c",
+    "src/temporal_state/decoder.py": "5be5067d11b455aa9991ea07aa34afb3c95331bd0ca349ce46fbecf2eb077794",
+    "src/temporal_state/models.py": "f40919bf8b3239f0bea8cf9262d26a4eb7bbbd81dc9bd101b8d65a859b503a4e"
+  },
+  "correction_pairs": [
+    {
+      "link_id": "correction:0000",
+      "replacement_claim_id": "molson_2017_R",
+      "replacement_modality": "reported_actual",
+      "target_claim_id": "molson_2017_O",
+      "target_modality": "reported_actual"
+    },
+    {
+      "link_id": "correction:0001",
+      "replacement_claim_id": "molson_2017_E",
+      "replacement_modality": "reported_actual",
+      "target_claim_id": "molson_2017_D",
+      "target_modality": "reported_actual"
+    }
+  ],
+  "counts": {
+    "direct_corrections": 2,
+    "essential_dependencies": 1,
+    "selected_claims": 5,
+    "sources": 2,
+    "unaffected_controls": 1
+  },
+  "decoder_run": false,
+  "dependency_additional_inactive_claim_ids": [],
+  "dependency_pairs": [
+    {
+      "dependent_claim_id": "molson_2017_D",
+      "prerequisite_claim_id": "molson_2017_O"
+    }
+  ],
+  "evidence_quotes_in_output": false,
+  "full_source_text_in_output": false,
+  "history_id": "molson_2017_eps_restatement",
+  "interpretation": "A conditional annotation replay. Inactivity removes declared support; it does not establish falsity, compute replacement values, or predict QA answers. Empty extra withdrawal is reported without suppressing direct corrections.",
+  "method_advantage_claim": false,
+  "model_calls": 0,
+  "model_scores_created": false,
+  "natural_accuracy_claim": false,
+  "neutral_score_disclaimer": "All unary, link, and null numeric fields are neutral 0.0 schema placeholders. All claims and specified correction links are selected explicitly; no scores are optimized, learned, or interpreted as natural predictions.",
+  "operational_cutoff": "2026-10-03",
+  "policies": [
+    {
+      "active_claim_ids": [
+        "molson_2017_D",
+        "molson_2017_E",
+        "molson_2017_O",
+        "molson_2017_R",
+        "molson_2017_U"
+      ],
+      "ledger": {
+        "active_claim_ids": [
+          "molson_2017_D",
+          "molson_2017_E",
+          "molson_2017_O",
+          "molson_2017_R",
+          "molson_2017_U"
+        ],
+        "active_temporal_link_ids": [],
+        "certificate_status": "exact_spans_validated; authority_and_reference_entailment_not_certified",
+        "control_source_ids": [],
+        "directly_withdrawn_claim_ids": [],
+        "full_ledger_sha256": "8bc7e06a57efa160e188e65294259d35e251a0eeb6c3b744da64c7ad321cf862",
+        "inactive_claim_control_source_ids": {},
+        "inactive_claim_ids": [],
+        "inactive_reasons": {},
+        "inactive_temporal_link_ids": [],
+        "operative_notices": [],
+        "policy_version": "0.5",
+        "projection": "Claim text omitted; exact source evidence represented by offsets and quote hashes.",
+        "reinstatement_policy": "explicit_new_replacement_only; no_ancestor_resurrection",
+        "restatement_dependency_semantics": "RESTATES_is_episode_identity_not_copying",
+        "selected_claims": [
+          {
+            "claim_id": "molson_2017_D",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 71389,
+                "quote_characters": 215,
+                "quote_sha256": "79224de7d801d5e9c4001c68f2363cb2edfbcf49c43d1ac0caee74ef9f3129bc",
+                "start": 71174
+              },
+              {
+                "end": 72255,
+                "quote_characters": 321,
+                "quote_sha256": "c4291bf7892df76c9763ccceae5256b1b27477e23cc8a1146ccbb46f6f4308ca",
+                "start": 71934
+              }
+            ],
+            "full_claim_record_sha256": "6cd72c0a49f7b2b1be9b2c977bdf444d5e46f6d01b7050828f69e8b0f65a69ea",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2017_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_E",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 81043,
+                "quote_characters": 303,
+                "quote_sha256": "4960b8c9438aaa554a938cd9c0063d16b2cd8ee19bbd01228d51004767be905a",
+                "start": 80740
+              },
+              {
+                "end": 81423,
+                "quote_characters": 117,
+                "quote_sha256": "7806c06682a46920f392209b6542cfb0ae9599e174a4c5d42e949883a2761064",
+                "start": 81306
+              }
+            ],
+            "full_claim_record_sha256": "15d0c4719304643428f62a90f5fd5c580e16bfa2da564b7b2cc0986fa20cbb8b",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2018_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_O",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 71389,
+                "quote_characters": 215,
+                "quote_sha256": "79224de7d801d5e9c4001c68f2363cb2edfbcf49c43d1ac0caee74ef9f3129bc",
+                "start": 71174
+              },
+              {
+                "end": 71658,
+                "quote_characters": 102,
+                "quote_sha256": "4a8f080e5bc0b39b9e91c7fc289edd4416974acaeffbecddf5ed132052a41bd0",
+                "start": 71556
+              }
+            ],
+            "full_claim_record_sha256": "f79a91849f66a934ca773d853f7a184eab9d860a9c98a0d7b5dda4314557f4fb",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2017_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_R",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 81043,
+                "quote_characters": 303,
+                "quote_sha256": "4960b8c9438aaa554a938cd9c0063d16b2cd8ee19bbd01228d51004767be905a",
+                "start": 80740
+              },
+              {
+                "end": 81305,
+                "quote_characters": 113,
+                "quote_sha256": "2967e6115c188877b2e37a712e60cb451e5f08389b350764023d6a23a4024a07",
+                "start": 81192
+              }
+            ],
+            "full_claim_record_sha256": "39d1399a245143fe9483b306cb20100c5572f27db2eb8d1e99f0f3384c2946e6",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2018_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_U",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 62973,
+                "quote_characters": 276,
+                "quote_sha256": "ba52082ba362ee92871fdbeed0de5086824d9a44b66f680951e5e6619c5a6104",
+                "start": 62697
+              },
+              {
+                "end": 64733,
+                "quote_characters": 74,
+                "quote_sha256": "ff4ecadc7598dc6f7f099403da4deb277e75b394e721b689123b1e4968057bf4",
+                "start": 64659
+              }
+            ],
+            "full_claim_record_sha256": "7211d53eaf433117d229d2f000f30fb8b3dd5c36d5440a5109fdd281e291838b",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2017_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          }
+        ],
+        "selected_link_ids": {
+          "mention:molson_2017_D": null,
+          "mention:molson_2017_E": null,
+          "mention:molson_2017_O": null,
+          "mention:molson_2017_R": null,
+          "mention:molson_2017_U": null
+        },
+        "selected_reading_ids": {
+          "mention:molson_2017_D": "selected",
+          "mention:molson_2017_E": "selected",
+          "mention:molson_2017_O": "selected",
+          "mention:molson_2017_R": "selected",
+          "mention:molson_2017_U": "selected"
+        },
+        "support_dependency_semantics": "all_declared_prerequisites_are_essential",
+        "time_policy": "no_event_boundary_added_from_correction_or_availability_date"
+      },
+      "original_selected_records_preserved": true,
+      "policy": "no_withdrawal",
+      "policy_sha256": "117705ef7558331cdf0da871e12cd7e2ebabdf729ad6f7beef91a13f47226c0e",
+      "unaffected_claims_retained": {
+        "molson_2017_U": true
+      },
+      "unknown_endpoints_preserved": true
+    },
+    {
+      "active_claim_ids": [
+        "molson_2017_E",
+        "molson_2017_R",
+        "molson_2017_U"
+      ],
+      "ledger": {
+        "active_claim_ids": [
+          "molson_2017_E",
+          "molson_2017_R",
+          "molson_2017_U"
+        ],
+        "active_temporal_link_ids": [],
+        "certificate_status": "exact_spans_validated; authority_and_reference_entailment_not_certified",
+        "control_source_ids": [
+          "molson_2017_10k_web_v10",
+          "molson_2018_10k_web_v10"
+        ],
+        "directly_withdrawn_claim_ids": [
+          "molson_2017_D",
+          "molson_2017_O"
+        ],
+        "full_ledger_sha256": "1f841190512b0a5192cdc0aebd95ad8996c6aaff07f28d478bbd13865befc8c6",
+        "inactive_claim_control_source_ids": {
+          "molson_2017_D": [
+            "molson_2017_10k_web_v10",
+            "molson_2018_10k_web_v10"
+          ],
+          "molson_2017_O": [
+            "molson_2017_10k_web_v10",
+            "molson_2018_10k_web_v10"
+          ]
+        },
+        "inactive_claim_ids": [
+          "molson_2017_D",
+          "molson_2017_O"
+        ],
+        "inactive_reasons": {
+          "molson_2017_D": [
+            "explicit_replacement"
+          ],
+          "molson_2017_O": [
+            "explicit_replacement"
+          ]
+        },
+        "inactive_temporal_link_ids": [],
+        "operative_notices": [
+          {
+            "action": "replace",
+            "authority_id": "Molson Coors Brewing Company",
+            "control_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "coverage": "whole_assertion",
+            "link_id": "correction:0000",
+            "notice_effect_retained": true,
+            "notice_source_id": "molson_2018_10k_web_v10",
+            "replacement_claim_active": true,
+            "replacement_claim_id": "molson_2017_R",
+            "same_day_reference": true,
+            "target_claim_id": "molson_2017_O",
+            "target_source_id": "molson_2017_10k_web_v10"
+          },
+          {
+            "action": "replace",
+            "authority_id": "Molson Coors Brewing Company",
+            "control_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "coverage": "whole_assertion",
+            "link_id": "correction:0001",
+            "notice_effect_retained": true,
+            "notice_source_id": "molson_2018_10k_web_v10",
+            "replacement_claim_active": true,
+            "replacement_claim_id": "molson_2017_E",
+            "same_day_reference": true,
+            "target_claim_id": "molson_2017_D",
+            "target_source_id": "molson_2017_10k_web_v10"
+          }
+        ],
+        "policy_version": "0.5",
+        "projection": "Claim text omitted; exact source evidence represented by offsets and quote hashes.",
+        "reinstatement_policy": "explicit_new_replacement_only; no_ancestor_resurrection",
+        "restatement_dependency_semantics": "RESTATES_is_episode_identity_not_copying",
+        "selected_claims": [
+          {
+            "claim_id": "molson_2017_D",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 71389,
+                "quote_characters": 215,
+                "quote_sha256": "79224de7d801d5e9c4001c68f2363cb2edfbcf49c43d1ac0caee74ef9f3129bc",
+                "start": 71174
+              },
+              {
+                "end": 72255,
+                "quote_characters": 321,
+                "quote_sha256": "c4291bf7892df76c9763ccceae5256b1b27477e23cc8a1146ccbb46f6f4308ca",
+                "start": 71934
+              }
+            ],
+            "full_claim_record_sha256": "6cd72c0a49f7b2b1be9b2c977bdf444d5e46f6d01b7050828f69e8b0f65a69ea",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2017_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_E",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 81043,
+                "quote_characters": 303,
+                "quote_sha256": "4960b8c9438aaa554a938cd9c0063d16b2cd8ee19bbd01228d51004767be905a",
+                "start": 80740
+              },
+              {
+                "end": 81423,
+                "quote_characters": 117,
+                "quote_sha256": "7806c06682a46920f392209b6542cfb0ae9599e174a4c5d42e949883a2761064",
+                "start": 81306
+              }
+            ],
+            "full_claim_record_sha256": "15d0c4719304643428f62a90f5fd5c580e16bfa2da564b7b2cc0986fa20cbb8b",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2018_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_O",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 71389,
+                "quote_characters": 215,
+                "quote_sha256": "79224de7d801d5e9c4001c68f2363cb2edfbcf49c43d1ac0caee74ef9f3129bc",
+                "start": 71174
+              },
+              {
+                "end": 71658,
+                "quote_characters": 102,
+                "quote_sha256": "4a8f080e5bc0b39b9e91c7fc289edd4416974acaeffbecddf5ed132052a41bd0",
+                "start": 71556
+              }
+            ],
+            "full_claim_record_sha256": "f79a91849f66a934ca773d853f7a184eab9d860a9c98a0d7b5dda4314557f4fb",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2017_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_R",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 81043,
+                "quote_characters": 303,
+                "quote_sha256": "4960b8c9438aaa554a938cd9c0063d16b2cd8ee19bbd01228d51004767be905a",
+                "start": 80740
+              },
+              {
+                "end": 81305,
+                "quote_characters": 113,
+                "quote_sha256": "2967e6115c188877b2e37a712e60cb451e5f08389b350764023d6a23a4024a07",
+                "start": 81192
+              }
+            ],
+            "full_claim_record_sha256": "39d1399a245143fe9483b306cb20100c5572f27db2eb8d1e99f0f3384c2946e6",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2018_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_U",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 62973,
+                "quote_characters": 276,
+                "quote_sha256": "ba52082ba362ee92871fdbeed0de5086824d9a44b66f680951e5e6619c5a6104",
+                "start": 62697
+              },
+              {
+                "end": 64733,
+                "quote_characters": 74,
+                "quote_sha256": "ff4ecadc7598dc6f7f099403da4deb277e75b394e721b689123b1e4968057bf4",
+                "start": 64659
+              }
+            ],
+            "full_claim_record_sha256": "7211d53eaf433117d229d2f000f30fb8b3dd5c36d5440a5109fdd281e291838b",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2017_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          }
+        ],
+        "selected_link_ids": {
+          "mention:molson_2017_D": null,
+          "mention:molson_2017_E": "correction:0001",
+          "mention:molson_2017_O": null,
+          "mention:molson_2017_R": "correction:0000",
+          "mention:molson_2017_U": null
+        },
+        "selected_reading_ids": {
+          "mention:molson_2017_D": "selected",
+          "mention:molson_2017_E": "selected",
+          "mention:molson_2017_O": "selected",
+          "mention:molson_2017_R": "selected",
+          "mention:molson_2017_U": "selected"
+        },
+        "support_dependency_semantics": "all_declared_prerequisites_are_essential",
+        "time_policy": "no_event_boundary_added_from_correction_or_availability_date"
+      },
+      "original_selected_records_preserved": true,
+      "policy": "direct_withdrawal",
+      "policy_sha256": "c3227fa542dddd04976923f030eeeced8921afcf9bb984f8c0632231d497d5d9",
+      "unaffected_claims_retained": {
+        "molson_2017_U": true
+      },
+      "unknown_endpoints_preserved": true
+    },
+    {
+      "active_claim_ids": [
+        "molson_2017_E",
+        "molson_2017_R",
+        "molson_2017_U"
+      ],
+      "ledger": {
+        "active_claim_ids": [
+          "molson_2017_E",
+          "molson_2017_R",
+          "molson_2017_U"
+        ],
+        "active_temporal_link_ids": [],
+        "certificate_status": "exact_spans_validated; authority_and_reference_entailment_not_certified",
+        "control_source_ids": [
+          "molson_2017_10k_web_v10",
+          "molson_2018_10k_web_v10"
+        ],
+        "directly_withdrawn_claim_ids": [
+          "molson_2017_D",
+          "molson_2017_O"
+        ],
+        "full_ledger_sha256": "e9683dc18622bf10f023199690a769c51a4733843b56ba64c7173e29d27f3056",
+        "inactive_claim_control_source_ids": {
+          "molson_2017_D": [
+            "molson_2017_10k_web_v10",
+            "molson_2018_10k_web_v10"
+          ],
+          "molson_2017_O": [
+            "molson_2017_10k_web_v10",
+            "molson_2018_10k_web_v10"
+          ]
+        },
+        "inactive_claim_ids": [
+          "molson_2017_D",
+          "molson_2017_O"
+        ],
+        "inactive_reasons": {
+          "molson_2017_D": [
+            "explicit_replacement",
+            "inactive_prerequisite:molson_2017_O"
+          ],
+          "molson_2017_O": [
+            "explicit_replacement"
+          ]
+        },
+        "inactive_temporal_link_ids": [],
+        "operative_notices": [
+          {
+            "action": "replace",
+            "authority_id": "Molson Coors Brewing Company",
+            "control_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "coverage": "whole_assertion",
+            "link_id": "correction:0000",
+            "notice_effect_retained": true,
+            "notice_source_id": "molson_2018_10k_web_v10",
+            "replacement_claim_active": true,
+            "replacement_claim_id": "molson_2017_R",
+            "same_day_reference": true,
+            "target_claim_id": "molson_2017_O",
+            "target_source_id": "molson_2017_10k_web_v10"
+          },
+          {
+            "action": "replace",
+            "authority_id": "Molson Coors Brewing Company",
+            "control_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "coverage": "whole_assertion",
+            "link_id": "correction:0001",
+            "notice_effect_retained": true,
+            "notice_source_id": "molson_2018_10k_web_v10",
+            "replacement_claim_active": true,
+            "replacement_claim_id": "molson_2017_E",
+            "same_day_reference": true,
+            "target_claim_id": "molson_2017_D",
+            "target_source_id": "molson_2017_10k_web_v10"
+          }
+        ],
+        "policy_version": "0.5",
+        "projection": "Claim text omitted; exact source evidence represented by offsets and quote hashes.",
+        "reinstatement_policy": "explicit_new_replacement_only; no_ancestor_resurrection",
+        "restatement_dependency_semantics": "RESTATES_is_episode_identity_not_copying",
+        "selected_claims": [
+          {
+            "claim_id": "molson_2017_D",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 71389,
+                "quote_characters": 215,
+                "quote_sha256": "79224de7d801d5e9c4001c68f2363cb2edfbcf49c43d1ac0caee74ef9f3129bc",
+                "start": 71174
+              },
+              {
+                "end": 72255,
+                "quote_characters": 321,
+                "quote_sha256": "c4291bf7892df76c9763ccceae5256b1b27477e23cc8a1146ccbb46f6f4308ca",
+                "start": 71934
+              }
+            ],
+            "full_claim_record_sha256": "6cd72c0a49f7b2b1be9b2c977bdf444d5e46f6d01b7050828f69e8b0f65a69ea",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2017_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_E",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 81043,
+                "quote_characters": 303,
+                "quote_sha256": "4960b8c9438aaa554a938cd9c0063d16b2cd8ee19bbd01228d51004767be905a",
+                "start": 80740
+              },
+              {
+                "end": 81423,
+                "quote_characters": 117,
+                "quote_sha256": "7806c06682a46920f392209b6542cfb0ae9599e174a4c5d42e949883a2761064",
+                "start": 81306
+              }
+            ],
+            "full_claim_record_sha256": "15d0c4719304643428f62a90f5fd5c580e16bfa2da564b7b2cc0986fa20cbb8b",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2018_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_O",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 71389,
+                "quote_characters": 215,
+                "quote_sha256": "79224de7d801d5e9c4001c68f2363cb2edfbcf49c43d1ac0caee74ef9f3129bc",
+                "start": 71174
+              },
+              {
+                "end": 71658,
+                "quote_characters": 102,
+                "quote_sha256": "4a8f080e5bc0b39b9e91c7fc289edd4416974acaeffbecddf5ed132052a41bd0",
+                "start": 71556
+              }
+            ],
+            "full_claim_record_sha256": "f79a91849f66a934ca773d853f7a184eab9d860a9c98a0d7b5dda4314557f4fb",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2017_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_R",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 81043,
+                "quote_characters": 303,
+                "quote_sha256": "4960b8c9438aaa554a938cd9c0063d16b2cd8ee19bbd01228d51004767be905a",
+                "start": 80740
+              },
+              {
+                "end": 81305,
+                "quote_characters": 113,
+                "quote_sha256": "2967e6115c188877b2e37a712e60cb451e5f08389b350764023d6a23a4024a07",
+                "start": 81192
+              }
+            ],
+            "full_claim_record_sha256": "39d1399a245143fe9483b306cb20100c5572f27db2eb8d1e99f0f3384c2946e6",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2018_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "molson_2017_U",
+            "context_source_ids": [
+              "molson_2017_10k_web_v10",
+              "molson_2018_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 62973,
+                "quote_characters": 276,
+                "quote_sha256": "ba52082ba362ee92871fdbeed0de5086824d9a44b66f680951e5e6619c5a6104",
+                "start": 62697
+              },
+              {
+                "end": 64733,
+                "quote_characters": 74,
+                "quote_sha256": "ff4ecadc7598dc6f7f099403da4deb277e75b394e721b689123b1e4968057bf4",
+                "start": 64659
+              }
+            ],
+            "full_claim_record_sha256": "7211d53eaf433117d229d2f000f30fb8b3dd5c36d5440a5109fdd281e291838b",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "molson_2017_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          }
+        ],
+        "selected_link_ids": {
+          "mention:molson_2017_D": null,
+          "mention:molson_2017_E": "correction:0001",
+          "mention:molson_2017_O": null,
+          "mention:molson_2017_R": "correction:0000",
+          "mention:molson_2017_U": null
+        },
+        "selected_reading_ids": {
+          "mention:molson_2017_D": "selected",
+          "mention:molson_2017_E": "selected",
+          "mention:molson_2017_O": "selected",
+          "mention:molson_2017_R": "selected",
+          "mention:molson_2017_U": "selected"
+        },
+        "support_dependency_semantics": "all_declared_prerequisites_are_essential",
+        "time_policy": "no_event_boundary_added_from_correction_or_availability_date"
+      },
+      "original_selected_records_preserved": true,
+      "policy": "dependency_withdrawal",
+      "policy_sha256": "030d49ee3d69d0540b0def3411336ed994762a7ce482793515dd693ec91fe732",
+      "unaffected_claims_retained": {
+        "molson_2017_U": true
+      },
+      "unknown_endpoints_preserved": true
+    }
+  ],
+  "qa_predictions": 0,
+  "schema_document_sha256": "7c92553a1d0534904f684ece1ebde294ea052e051b02d871ab5fd940c1855737",
+  "schema_version": "correction_gate_fixed_selection_replay_v0.10",
+  "script_sha256": "eaf8759a7e9b469a1182002490c2b7d3abb1ea088c8db901a8b07828959b67a9",
+  "selection_policy": "All supplied claims selected in every arm; all supplied direct CORRECTS links selected in both withdrawal arms, including directly corrected downstream assertions.",
+  "semantic_entailment_certified": false,
+  "source_bindings": [
+    {
+      "bytes": 76729,
+      "capture_date": "2026-10-03",
+      "characters": 75865,
+      "local_path": "molson_2017_10k_web_v10/document.txt",
+      "sha256": "d5fcead913a17f27370b1756e42b96fe02880799749f84bcd33b54d2ec8ba9fa",
+      "source_id": "molson_2017_10k_web_v10",
+      "uri": "https://s27.q4cdn.com/826627388/files/doc_financials/2017/ar/MC201710-K.pdf"
+    },
+    {
+      "bytes": 85136,
+      "capture_date": "2026-10-03",
+      "characters": 84082,
+      "local_path": "molson_2018_10k_web_v10/document.txt",
+      "sha256": "e1362092d147d15aadfb7a1c4ac504789526426b63258e1f48e897c54247c2e8",
+      "source_id": "molson_2018_10k_web_v10",
+      "uri": "https://s27.q4cdn.com/826627388/files/doc_financials/2018/ar/molson-coors-10K.pdf"
+    }
+  ],
+  "source_delivery_order": [
+    "molson_2017_10k_web_v10",
+    "molson_2018_10k_web_v10"
+  ],
+  "source_representation": "web_tool_noncontiguous_excerpt_projection",
+  "source_scope_limit": "Replay is restricted to the supplied hash-bound text representation; it does not certify full-document access, a complete version, or paired historical prefixes.",
+  "status": "completed_annotation_conditioned_policy_materialization"
+}

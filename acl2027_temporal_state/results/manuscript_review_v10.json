@@ -1,0 +1,134 @@
+{
+  "schema_version": "manuscript_review_v0.10",
+  "reviewed_at_utc": "2026-10-03T06:19:09.587437+00:00",
+  "status": "pass_claim_boundaries_and_current_manuscript_bindings",
+  "review_role": "Model-assisted unversioned reviewer, separate from manuscript and natural-annotation authors; replay-interface author reused, so not an independent implementation audit.",
+  "scope": "Read-only manuscript claim boundary, numeric consistency, source qualification and recorded artifact binding review. No new source adjudication, broad search, model run, replay, or tests.",
+  "primary_files": [
+    "docs/research_update_v10.txt",
+    "paper/results_update_v10.tex",
+    "paper/claim_ledger_v10.json",
+    "results/correction_gate_summary_v10.json"
+  ],
+  "reviewed_file_hashes": {
+    "docs/research_update_v10.txt": "2e46a0a35a06e1ee684b366f7ec5f1c815b1de60afd3dc2625be02bd36508bc7",
+    "paper/results_update_v10.tex": "20fd3ce4f5e27e23e93bdbeb888941ce27c5876a4e6fb14d41079257747e0e28",
+    "paper/claim_ledger_v10.json": "32d5b8a178d09c754053214b1d67f7cd8568432369dab47da9e19230ef9640c4",
+    "results/correction_gate_summary_v10.json": "562a5311e7a976e82ca39ffc4fea0d71b0add7c2707e547859ec7cd8154b6a19",
+    "data/correction_gate_v10/admission_search_protocol.json": "9461df432d89fa68bacbe36b4b61262775b780dbc667b718d67dae08c4fedcff",
+    "data/correction_gate_v10/screen_register.json": "b73245a1750e53aab2a0c411d8974d656b891800dce3eb23cbc93e9e055dac34",
+    "data/correction_gate_v10/capture_manifest_v10.json": "377bbd7f231114062f212a0b69186a04352549b75b152727071d3811169691d7",
+    "data/correction_gate_v10/web_excerpt_manifest_v10.json": "927bf90ab11753094b1d64ba17ba1a25744137c928b0e01ff9f20eaa459d9c41",
+    "data/correction_gate_v10/annotation_index.json": "567260c1a7db9461eadd0277708d1f7f38e5b1389dc48a652c565ea3dc473c7c",
+    "data/correction_gate_v10/interpretation_clarification.json": "2ee12c2f12763fc14afc7c74e40c942863edd890dddb8a7756b0a0e2a2cd7ab0",
+    "results/correction_eligibility_corporate_v10.json": "ddae4caed6ddece154de4c8160244527644832df001136e1b0bc79864ffbd824",
+    "docs/correction_eligibility_corporate_v10.txt": "2566cda3379c03e4eca3a153ca8bf5a1d2a13ee8c6271ca9ef3da5ce64571078",
+    "results/correction_gate_independent_audit_v10.json": "dbce6f63adca2fe5e5f915117008cd883cf02ac0b8901f448abd610b7f9a9640",
+    "results/correction_gate_external_verification_v10.json": "4625b197cfee95bf3eac0071552f91357581e47239c6698f60fc830f220e9abe",
+    "results/unit_verification_v10.json": "4135e6e6066cab71848e1ffa784b803c54e58ca6567db5c0806678563f29481b",
+    "results/correction_replay_plug_v10.json": "1f6a43013b70a004b8f4063490ade19d546a101b1f5d964adb582dd442c04274",
+    "results/correction_replay_molson_v10.json": "24a85a1560ad97df1cabd60c71cae57fdc670e0ab48e3acd3bc9178f4f1ac6a4",
+    "data/correction_gate_v10/literature_check.json": "a53b4e1d5a1f5f3a6530317e9f4af8da1d6bdf0427e3c5c9d9eff0859964a233",
+    "docs/correction_web_excerpt_capture_v10.txt": "7e5d2cfe576932c86db768fd73802b304167103aba9f6eb1f49d28ea49bb457f",
+    "docs/correction_gate_execution_design_v10.txt": "169fde899e0baa4b0176a206dc7d66ee83a066eba5b99d36d8882c5444849f90",
+    "docs/correction_gate_replay_schema_v10.txt": "7c92553a1d0534904f684ece1ebde294ea052e051b02d871ab5fd940c1855737",
+    "scripts/replay_correction_gate_v10.py": "eaf8759a7e9b469a1182002490c2b7d3abb1ea088c8db901a8b07828959b67a9",
+    "data/provenance/route_decision_v10.json": "8dbb9b2af88822d312381d6ee33fd5392eb349ceff162f2f84198172e6665f43",
+    "results/environment_recovery_v10.json": "289a97342269d9f0e367e2fd2490ade7d3e75decd5086c2c1666a24a223bcbd6",
+    "results/correction_gate_execution_capabilities_v10.json": "64f23e2f5c159ad6059fe6e2550cdf5d8ac645b8b8cc73b58583c9b346e5f08d",
+    "results/correction_gate_execution_capabilities_initial_v10.json": "05e738fc7d5a2f5de1e96bb7cda25b501947277469b3d334118eb2bca12a4e74"
+  },
+  "binding_only_file_hashes": {
+    "docs/correction_literature_check_v10.txt": "abcacc16b3ac05b486ef49cbacdb7583b7f56b50fba356c2554bad5cbfd8e0aa",
+    "docs/correction_gate_next_steps_v10.txt": "3c748e1835e4e24fc4cd21bf045fb2303b41826c947e866cabeb37561ce04d9e"
+  },
+  "binding_checks": {
+    "rows_checked": 32,
+    "unique_paths_checked": 20,
+    "draft_hash_matches": true,
+    "all_current_manuscript_summary_and_route_bindings_match": true,
+    "mismatches": []
+  },
+  "checks": [
+    {
+      "name": "no_qa_or_model_accuracy_claim",
+      "status": "pass",
+      "finding": "Both manuscript texts limit findings to annotation-conditioned support materialization. Saved replays record zero QA predictions and decoder_run=false; unversioned model-assisted source annotation is separately acknowledged."
+    },
+    {
+      "name": "no_novelty_or_solver_gain_claim",
+      "status": "pass",
+      "finding": "No algorithmic novelty, search improvement or decoder advantage is claimed. The four-paper review is explicitly bounded/nonexhaustive, and exact search remains a reference pending residual gains."
+    },
+    {
+      "name": "full_source_and_original_version_qualification",
+      "status": "pass",
+      "finding": "All eleven captures failed before HTTP (curl return 7, HTTP status 0, raw bytes 0). Four supplied representations are explicitly noncontiguous web excerpts, not full documents or historical prefixes; zero full-prefix admissions and unavailable screenshot pixels are disclosed. Research update qualifies Molson as pre-2018-restatement, not first-ever uncorrected original; neither text claims certified historical first availability."
+    },
+    {
+      "name": "financial_figures_and_units",
+      "status": "pass_against_bound_source_review",
+      "finding": "Research update matches source eligibility review: Plug -78.167 to -85.660 USD millions and -0.36 to -0.39 EPS, unchanged 22.002 services revenue; Molson 1414.2 to 1565.6 USD millions and 6.57 to 7.27 basic EPS, unchanged 1866.3 operating cashflow. Signs/fiscal years and no exact rounded-denominator recomputation are preserved."
+    },
+    {
+      "name": "all_direct_targets_preserved",
+      "status": "pass",
+      "finding": "Both histories retain numerator and downstream-EPS direct correction links in both withdrawal arms. No-withdrawal retains all five records; direct and dependency retain R/E/U and inactivate O/D. Additional dependency inactivity is empty in both cases; text does not interpret equality as zero model-QA effect."
+    },
+    {
+      "name": "temporal_api_limit",
+      "status": "pass",
+      "finding": "Unknown event endpoints and empty observations are preserved. Capture dates remain operational only. Both texts require a separate non-temporal support-answering contract rather than invented event intervals or permanent truth."
+    },
+    {
+      "name": "numeric_accounting",
+      "status": "pass",
+      "finding": "18 discovery queries; 12 screened histories (3 corporate, 5 science, 4 technical); 11 failed full-document attempts; 4 excerpt sources; 12 web calls/25 read commands; 2 illustrations; 10 claims; 4 direct corrections; 2 essential edges; 6 policy states; 0 additional inactive IDs; 0 full-prefix admissions. Recorded audit verifies 4 source hashes/32 span occurrences and 2 exact reruns. Recorded suite reports 377 passing tests including 8 new interface checks."
+    },
+    {
+      "name": "publication_and_reproduction_boundary",
+      "status": "pass",
+      "finding": "Draft is source-only, uncompiled and not submission-ready. Packaged binding checks are distinguished from external exact source/span checks; omitted quote-bearing inputs and inability to reconstruct them from hashes are disclosed."
+    },
+    {
+      "name": "post_discovery_protocol_timing",
+      "status": "pass",
+      "finding": "Manuscript explicitly locates all-direct-replacement clarification after discovery leads and before execution; no pre-discovery preregistration claim is made."
+    }
+  ],
+  "resolved_issues": [
+    {
+      "issue_id": "V10-MR-01",
+      "severity": "nonblocking_supporting_document_ambiguity",
+      "file": "docs/correction_gate_execution_design_v10.txt",
+      "finding": "Earlier four-role schematic could be read as universally keeping D under direct withdrawal.",
+      "resolution": "Parent appended dated post-discovery clarification restricting that pattern to a D without its own direct replacement and identifying five-role financial R/E/U equality; route and claim-ledger hashes refreshed.",
+      "resolution_verified": true,
+      "final_file_sha256": "169fde899e0baa4b0176a206dc7d66ee83a066eba5b99d36d8882c5444849f90"
+    },
+    {
+      "issue_id": "V10-MR-02",
+      "severity": "ancillary_documentation_binding",
+      "file": "results/correction_gate_execution_capabilities_v10.json",
+      "finding": "Initial capability report bound the design document before its dated clarification.",
+      "resolution": "Parent preserved original report under initial_v10, updated current design binding, and added explicit documentation_binding_revision with archived original hash/path.",
+      "resolution_verified": true,
+      "final_file_sha256": "64f23e2f5c159ad6059fe6e2550cdf5d8ac645b8b8cc73b58583c9b346e5f08d"
+    }
+  ],
+  "issues": [],
+  "ancillary_binding_observations": [],
+  "review_limits": [
+    "No raw PDFs or complete historical versions were newly read or certified in this pass.",
+    "Financial statements were checked against bound source-semantic review, not independently re-adjudicated from full sources.",
+    "Recorded unit tests, source/span checks and byte-identical reruns were inspected, not rerun.",
+    "Literature claims were checked for bounded framing against existing four-paper artifact; papers were not independently reread.",
+    "No rendered manuscript was inspected; typographic or publication readiness is not certified."
+  ],
+  "new_searches": 0,
+  "new_model_calls": 0,
+  "new_tests_run": 0,
+  "new_replays_run": 0,
+  "draft_or_ledger_or_summary_edited_by_reviewer": false,
+  "final_report_addition_reviewed": "The final research-update sentence reporting independent review of ten claims and two byte-identical replay outputs matches the existing bound independent-audit artifact."
+}

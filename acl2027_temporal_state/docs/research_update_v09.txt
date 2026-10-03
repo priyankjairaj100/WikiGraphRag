@@ -1,0 +1,23 @@
+ACL 2027 REWORK — v0.9 RESEARCH UPDATE
+3 October 2026
+
+The larger scorer is operational, but order stability did not ensure correctness.
+
+Matched experiment: four frozen source-grounded authored statements from Disney and Intel; official pinned Qwen3-0.6B and Qwen3-4B Q8_0 models; identical full sources, prompt wording and runtime; two label orders per model; sixteen retained scores in fresh processes. No truncation, score retuning, condition selection or label-guided item revision.
+
+                                  0.6B       4B
+Label-order decision flips        4 of 4     0 of 4
+Authored-label agreement, Y/N     2 of 4     3 of 4
+Authored-label agreement, N/Y     2 of 4     3 of 4
+
+The 4B model accepted the incorrect statement that Iger became non-executive chairman, despite the source assigning the executive chairman role. Its two log-odds margins for that error were +25.202 and +21.042. Large margins and consistent decisions are not proof of reliable interpretation. This four-item, two-history diagnostic does not estimate natural accuracy or establish a strong end-to-end baseline. All four items are reading statements; 4B scoring of links, unresolved options and no-link options remains untested.
+
+The final run took 20.68 minutes, with median full-prompt prefill times of 30.42 seconds for 0.6B and 114.71 seconds for 4B. All sixteen prompts used 2,520–2,546 tokens and zero reused prompt tokens. The 5.5 GiB process address-space guard held; peak owned-child RSS across final-run servers was about 4.37 GiB. Eighteen returned distributions are accounted for: sixteen final, one discarded numerical-validation response and one separate smoke. The pre-load watchdog stop yielded none. Two numerical/resource validation amendments and their timing are disclosed; no result was silently dropped. External exact-input and vocabulary-only checks passed with zero additional model completions.
+
+Data extension: eight current source captures across four new histories (Disney, Intel, CVS and Artemis), eight reviewed annotations, 123 claim instances and fourteen reference judgments in seven files. One annotation was revised to remove an unsupported exact role-start day. One Disney second-prefix reference write was blocked by a content filter without a stated policy reason; it remains incomplete and was not retried or substituted. The new histories contain zero explicit factual corrections, so they are succession/planning controls rather than positive evidence for the correction mechanism.
+
+Across v0.8–v0.9, seven controlled-stream histories have fourteen annotated prefixes and 180 claim instances; thirteen prefixes have reference files with twenty-six judgments. Repeated prefixes are not independent examples. All labels remain model-assisted development judgments, not human gold. These semantic annotations are not yet executable candidates or QA results.
+
+Next scientific decision: prioritize a bounded slice targeting eight independently grouped correction histories with an explicit essential downstream dependency and an unaffected retention control. Compare no withdrawal, direct-target withdrawal, and dependency propagation under shared source access, against a pinned full-prefix reader and independent, iterative, restarted and exact decoders. Report admission shortfalls rather than invent dependencies. If dependency propagation adds no history-level successes over the strongest simpler baseline, narrow the contribution. If exact inference adds nothing over restarted revision, do not build a more complex solver on this evidence.
+
+The package contains source/generation/review receipts, compact semantic projections, all score conditions, failed attempts, model/runtime identities, code, offline audits, the exploratory manuscript addendum and claim ledger. Full external source strings and recoverable token arrays are excluded; packaged replay checks metadata and arithmetic. Matching external inputs are needed to repeat source-span and tokenization checks, and new downloads may differ. No held-out result, algorithmic novelty or ACL acceptance claim is made.

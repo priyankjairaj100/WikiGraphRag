@@ -1,0 +1,43 @@
+{
+  "dataset": "realprose",
+  "reader": "qwen",
+  "k": 5,
+  "n_questions": 35,
+  "note": "current-value QA on genuine Wikipedia leads with natural recency cues; realistic (non-value-agnostic) end-to-end regime",
+  "current_answer_em": {
+    "flat": 0.7143,
+    "date_prompt": 0.6857,
+    "date_rerank": 0.1429,
+    "lifecycle": 0.8571,
+    "gold": 0.9143
+  },
+  "clean_em": {
+    "flat": 0.7143,
+    "date_prompt": 0.6857,
+    "date_rerank": 0.1429,
+    "lifecycle": 0.8571,
+    "gold": 0.9143
+  },
+  "ser": {
+    "flat": 0.9714,
+    "lifecycle": 0.2286
+  },
+  "aep": {
+    "flat": 0.3191,
+    "lifecycle": 0.8586
+  },
+  "lifecycle_vs_flat": {
+    "mean_diff": 0.1429,
+    "ci95_low": 0.0,
+    "ci95_high": 0.2857,
+    "p_value": 0.076,
+    "n": 35
+  },
+  "lifecycle_vs_date_rerank": {
+    "mean_diff": 0.7143,
+    "ci95_low": 0.5714,
+    "ci95_high": 0.8571,
+    "p_value": 0.0,
+    "n": 35
+  }
+}

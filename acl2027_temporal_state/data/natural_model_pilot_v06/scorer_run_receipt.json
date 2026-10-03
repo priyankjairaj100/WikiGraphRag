@@ -1,0 +1,47 @@
+{
+  "backend": "unversioned_conversational_agent",
+  "model_revision": null,
+  "inputs": [
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/scoring_request.json",
+      "sha256": "239c82f21617c70c5f14bf513dea11f86dad7f6a2495264176bc5d6416211e11"
+    },
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/scorer_ordinal_prompt_v06.txt",
+      "sha256": "e3565c6a233a8a3116d72bb3ed95bf0309a502bc85bbc7e08a50404dddc044ba"
+    },
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/scorer_ordinal_schema_v06.json",
+      "sha256": "6b8f926299880478c471598b226d71fd9f509da05db274132efa385feb44d325"
+    }
+  ],
+  "output_path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/scorer_output_raw.json",
+  "output_sha256": "9265dee5531fb9b28c0c87fa788a54b0357288d0a9f5b534b508856e2396517d",
+  "task_text": "Execute ONE fresh-context source-grounded ordinal scoring pass for a research development pilot. Authorized reads ONLY: /workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/scoring_request.json; /workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/scorer_ordinal_prompt_v06.txt; /workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/scorer_ordinal_schema_v06.json. Read all source text and all 32 neutral scoring items; you may read in batches if output length would truncate. No web, other project files, prior conversation, candidate-generation notes, original IDs/mapping, prior scores, QA/gold, or decoder outputs. Follow the frozen ordinal protocol exactly: one integer[-3,3] score for every item including unresolved/no_link. These are exploratory ordinal judgments, not probabilities/logprobs. Judge source-faithful historical interpretation, not later factual truth. Output complete JSON at /workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/scorer_output_raw.json. Preserve your first completed judgments; no score retuning or semantic repair after seeing outcomes. Mechanical JSON/unique exact-quote checks are permitted before finalizing; use short evidence or empty evidence where protocol permits, no private reasoning traces. Output scorer_run_receipt.json alongside with backend='unversioned_conversational_agent', model_revision=null, inputs:[{path,sha256}] for all three files, output_sha256, exact task_text, actual files read, mechanical changes and limitations. Do not run/read other project scripts. Return coverage count and score range only.",
+  "actual_files_read": [
+    "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/scoring_request.json",
+    "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/scorer_ordinal_prompt_v06.txt",
+    "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/scorer_ordinal_schema_v06.json"
+  ],
+  "mechanical_changes": [],
+  "mechanical_checks": [
+    "JSON serialization round-trip",
+    "32 unique item IDs matching request order and coverage",
+    "Integer scores within [-3,3]",
+    "Required fields and schema version",
+    "Every evidence quote occurs exactly once in its named source"
+  ],
+  "limitations": [
+    "Unversioned conversational-agent backend; no immutable model revision is exposed.",
+    "One exploratory ordinal judgment pass, not probabilities, log probabilities, or calibrated confidence.",
+    "Only the three authorized input files were read; no outcome, gold, mapping, prior-score, or decoder material was consulted.",
+    "Actual files read lists task input files; standard interpreter/runtime modules are not research inputs."
+  ],
+  "coverage_count": 32,
+  "score_range": [
+    -3,
+    3
+  ],
+  "judgment_passes": 1,
+  "score_retuning": false
+}

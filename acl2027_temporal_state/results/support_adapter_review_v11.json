@@ -1,0 +1,59 @@
+{
+  "schema_version": "support_adapter_review_v0.11",
+  "reviewer_role": "independent code review; implementation and tests not edited",
+  "review_date_utc": "2026-10-03",
+  "verdict": "pass_with_stated_scope_limits",
+  "blocking_findings": [],
+  "reviewed_file_sha256": {
+    "src/temporal_state/support_answers.py": "95bdcfafa4ff9ac0fdf5a9b29f876d2e5fbc78dce994d62dc5d75e483f84b4db",
+    "docs/support_answering_contract_v11.txt": "5aa33f241e34f16e09893c28ac34883e5fa6f9f097876f97a7789179a0624df3",
+    "tests/test_support_answers_v11.py": "bc62c3d56514f177b7ca7da189f8503c162eb1ca39e2b83f4c3225d723d622db",
+    "src/temporal_state/corrections.py": "218c20ce25030249760db3bda023cab7e351a7518e635751684c8b562c92c85f",
+    "src/temporal_state/coupled.py": "87067798f33b76810e0b39a46840dc33faef45df66d0e9eb2b237d4e6dcf632c"
+  },
+  "checks": [
+    {
+      "topic": "active_withdrawn_unresolved_semantics",
+      "result": "pass",
+      "basis": "Status derives from the re-materialized selected set and correction ledger. Active is record survival, withdrawn is loss of policy support, and neither is exposed as truth or falsity. Known unselected and unknown IDs have distinct unresolved reasons."
+    },
+    {
+      "topic": "temporal_truth_leakage",
+      "result": "pass",
+      "basis": "The adapter has no event-time query and never invokes answer_key. It returns original selected TemporalClaim records, including unknown bounds, negative polarity, uncertain modality and original dates. The source cutoff is separately named."
+    },
+    {
+      "topic": "corrupted_memory_rejection",
+      "result": "pass",
+      "basis": "Every query, including an unknown assertion query, first re-materializes inputs and compares all CoupledMemory fields with type-sensitive recursion. Forged ledgers, source identity changes and bool/integer substitutions are rejected in focused tests."
+    },
+    {
+      "topic": "evidence_provenance",
+      "result": "pass",
+      "basis": "Structured roles preserve exact source slices and explicitly ordered assertion endpoints. Source hashes bind all supplied Source fields. Evidence closure follows selected prerequisite ancestors and connected correction chains; unselected prerequisites do not contribute assertion records or activate their own dependency edges. Conservative context IDs remain separate."
+    },
+    {
+      "topic": "no_unadvertised_support_semantics",
+      "result": "pass",
+      "basis": "Core validation remains the authority for same-authority whole-assertion correction and AND-only essential dependencies. The adapter introduces no OR support, numeric recomputation, temporal persistence, conflict arbitration, extraction or natural-language routing. Direct and dependency reasons can both remain when redundant."
+    }
+  ],
+  "verification": {
+    "command": "PYTHONPATH=src python3 -m unittest discover -s tests -p test_support_answers_v11.py -v",
+    "exit_code": 0,
+    "tests_run": 16,
+    "tests_failed": 0,
+    "tests_errored": 0,
+    "test_kind": "authored contract diagnostics, not empirical task evaluation",
+    "new_adversarial_probes": 0,
+    "model_calls": 0,
+    "implementation_or_test_edits_by_reviewer": 0
+  },
+  "limits": [
+    "Internal consistency does not establish source authenticity, historical availability, annotation entailment or genuinely essential support.",
+    "A fabricated but consistent annotation can pass. Independent source/version capture and adjudication remain external requirements.",
+    "Evidence includes historical withdrawn assertion records and is not uniformly active support. The contract clearly discloses this.",
+    "Per-query re-materialization has no demonstrated scalability guarantee; this review makes none.",
+    "No natural-data or answer-level gain follows from this implementation review."
+  ]
+}

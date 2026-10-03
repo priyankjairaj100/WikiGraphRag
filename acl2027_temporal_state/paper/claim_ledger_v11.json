@@ -1,0 +1,240 @@
+{
+  "schema_version": "manuscript_claim_ledger_v0.11",
+  "draft": "paper/results_update_v11.tex",
+  "draft_sha256": "7dd32e18f7f3161d4a6a709fd30ed53c6e08f6fffd426dbdef49802621ab175b",
+  "included_numeric_section": "paper/results_numeric_v11.tex",
+  "included_numeric_section_sha256": "ff7515a7be800ead68c70cd83da1f3333686573394d0c00109d64a890191dd72",
+  "status": "Development addendum, not submission-ready",
+  "compiled_pdf_produced": false,
+  "visual_layout_verified": false,
+  "claims": [
+    {
+      "claim_id": "V11-C01",
+      "draft_anchor": "sec:v11scope",
+      "claim": "Nine queries screened six new histories, with zero full-source/core admissions; the known-source raw probe failed before HTTP.",
+      "evidence_status": "completed_development_observation",
+      "artifacts": [
+        {
+          "path": "data/correction_gate_v11/screen_register.json",
+          "sha256": "19174f46b899c47c23746a12c56fa09e84f699c2d948ab4d1ea264d357170769"
+        },
+        {
+          "path": "results/discovery_verification_v11.json",
+          "sha256": "517739ec440a08bb07b7372b8ac3f4aa85a0a1d86af30ea6e9ebd280554d08a7"
+        },
+        {
+          "path": "data/correction_gate_v11/transport_probe_receipt.json",
+          "sha256": "f722041e1e1020b6655c113d37404ab8804134cc500715bfc9dd4eea20944e82"
+        }
+      ]
+    },
+    {
+      "claim_id": "V11-C02",
+      "draft_anchor": "sec:v11support",
+      "claim": "The new assertion-ID adapter validates memory and returns conditional support status without changing the correction core or inventing event bounds.",
+      "evidence_status": "implemented_contract",
+      "artifacts": [
+        {
+          "path": "src/temporal_state/support_answers.py",
+          "sha256": "95bdcfafa4ff9ac0fdf5a9b29f876d2e5fbc78dce994d62dc5d75e483f84b4db"
+        },
+        {
+          "path": "docs/support_answering_contract_v11.txt",
+          "sha256": "5aa33f241e34f16e09893c28ac34883e5fa6f9f097876f97a7789179a0624df3"
+        },
+        {
+          "path": "results/support_adapter_review_v11.json",
+          "sha256": "15a96d1e1032b620386a70bef9c41f54e4fc18017e1e1d4bbab71c2cd098a0ea"
+        }
+      ]
+    },
+    {
+      "claim_id": "V11-C03",
+      "draft_anchor": "sec:v11support",
+      "claim": "Thirty supplied-annotation lookups return 22 active and 8 withdrawn; direct/dependency policies agree on ten corresponding statuses.",
+      "evidence_status": "annotation_conditioned_integration",
+      "artifacts": [
+        {
+          "path": "results/support_lookup_v11.json",
+          "sha256": "ac06f9cd2bad5e8d18142d31e9c7c4c01448323f44a3d70fb90bd5824451f051"
+        },
+        {
+          "path": "results/support_lookup_review_v11.json",
+          "sha256": "593f0ed3e755e6b46d5f9241274d1493d74274720f2dceede6ff05f9956a6f90"
+        }
+      ]
+    },
+    {
+      "claim_id": "V11-C04",
+      "draft_anchor": "sec:v11reader",
+      "claim": "Current-document prose/numeric inconsistency supports a selected-passage diagnostic, not a historical correction-core replay or causal ranking.",
+      "evidence_status": "model_assisted_source_review",
+      "artifacts": [
+        {
+          "path": "results/science_source_review_v11.json",
+          "sha256": "8f8eae648bbbbe6b8c3312b2e3c837863393d6566eb782c8700020c818289a99"
+        },
+        {
+          "path": "data/correction_gate_v11/passage_manifest.json",
+          "sha256": "97ded2b5d47efce9bd0b31d398a31f77e5165a96b8a7193157789b010b2dc4d5"
+        }
+      ]
+    },
+    {
+      "claim_id": "V11-C05",
+      "draft_anchor": "sec:v11reader",
+      "claim": "Four fixed passages and three source-reported questions were tested in two notice orders, with source-only model-assisted references frozen before prediction.",
+      "evidence_status": "frozen_development_design",
+      "artifacts": [
+        {
+          "path": "data/correction_gate_v11/reader_protocol.json",
+          "sha256": "385bedf7d20aac4ee7d03bb82012b29d70bbfb45006cec5d715c165979824a56"
+        },
+        {
+          "path": "data/correction_gate_v11/reader_questions.json",
+          "sha256": "14f331652eeee4555afae48d11810dcb99ff0ddb7aaa0ce1e3975b337453b7f0"
+        },
+        {
+          "path": "data/correction_gate_v11/reader_references_raw.json",
+          "sha256": "465030d41a4819c75cab310de81be4e60086ca8b721375dde5b1897f5080bd6b"
+        },
+        {
+          "path": "results/reader_inputs_verification_v11.json",
+          "sha256": "9ea5092cce168417109e5e6a2288ab0b0f2b8ffae68509aa84a7840d951577f2"
+        }
+      ]
+    },
+    {
+      "claim_id": "V11-C06",
+      "draft_anchor": "sec:v11execution",
+      "claim": "Two fresh native completions processed 3,327 tokens each with no cache/truncation and returned 86/91 tokens ending at EOS; elapsed 403.41 seconds.",
+      "evidence_status": "native_execution_observation",
+      "artifacts": [
+        {
+          "path": "results/native_reader_attempt02_v11_receipt.json",
+          "sha256": "1da6242f2588b6d40970e5d638a864c8d273a7a700bfc25934c2253f9ce3e3cf"
+        },
+        {
+          "path": "results/reader_execution_audit_v11.json",
+          "sha256": "a79241a8a6e565bbbc81321bd57c5a2143c69a1bc93839cde23356231d5cfc4d"
+        },
+        {
+          "path": "data/native_reader_v11/attempt02/process_00.response_projection.json",
+          "sha256": "5f0af43f9f7d2f9f021480d090f29cffdf259f1f70cf91881b6beccf60bb5643"
+        },
+        {
+          "path": "data/native_reader_v11/attempt02/process_01.response_projection.json",
+          "sha256": "af33b93d7b815340b3a97bfe786a75c9485c82f7ea80d979f32e5ffa60f070da"
+        }
+      ]
+    },
+    {
+      "claim_id": "V11-C07",
+      "draft_anchor": "sec:v11execution",
+      "claim": "Both parseable JSON outputs fail strict exposure enums; all three questions fail per condition with no normalization, repairs or between-condition answer comparison.",
+      "evidence_status": "strict_stored_response_evaluation",
+      "artifacts": [
+        {
+          "path": "results/native_reader_v11_outputs.json",
+          "sha256": "82b41a6a1b40415e48eed0aa484f4ce890e43118847aa0ebbb75dfb2a4b2c529"
+        },
+        {
+          "path": "results/reader_evaluation_v11.json",
+          "sha256": "c4b587b363d326697bad8f92b7293651e4d69ae8a8a4e806af306b06c3a6c47a"
+        },
+        {
+          "path": "scripts/evaluate_reader_v11.py",
+          "sha256": "840f1888c8ca9e3d1861b0f87994cda4f3b61ec814057b77d13575cf84f40e9b"
+        },
+        {
+          "path": "data/native_reader_v11/export_review.json",
+          "sha256": "c63576eca8e610a3ee5dc299eb5bd602820cb3c4b6ab7f50995a8f8235134ce3"
+        }
+      ]
+    },
+    {
+      "claim_id": "V11-C08",
+      "draft_anchor": "sec:v11decision",
+      "claim": "Attempt01 stopped before model launch; a separately frozen disclosed engineering amendment retained inputs/guards and changed only collector output paths before host execution.",
+      "evidence_status": "execution_provenance",
+      "artifacts": [
+        {
+          "path": "results/native_reader_v11_receipt.json",
+          "sha256": "faa6e6726f33761c655009309b9f88c7d868c93336da2a4b5e2409f639131b5f"
+        },
+        {
+          "path": "results/native_reader_v11_attempt_audit.json",
+          "sha256": "6927f7a2059cd39933b54294725bb7b7b9dd2468d084240d19d99458e199f312"
+        },
+        {
+          "path": "data/correction_gate_v11/reader_execution_amendment_v11.json",
+          "sha256": "9851344586714ecdef9ba2127e1e5665ff907f2aaa55166cc3879cd5cfdcf555"
+        },
+        {
+          "path": "results/reader_execution_audit_v11.json",
+          "sha256": "a79241a8a6e565bbbc81321bd57c5a2143c69a1bc93839cde23356231d5cfc4d"
+        }
+      ]
+    },
+    {
+      "claim_id": "V11-C09",
+      "draft_anchor": "sec:v11execution",
+      "claim": "All 410 unit tests pass with 33 new tests; initial missing-src-path collection failure remains preserved.",
+      "evidence_status": "implementation_verification",
+      "artifacts": [
+        {
+          "path": "results/unit_verification_v11.json",
+          "sha256": "47e55e67935903f08413cfa872b289a36947d0500d2377d95c25a736cd50db9a"
+        },
+        {
+          "path": "results/unit_verification_v11_initial_import_failure.json",
+          "sha256": "5f0f0283dd7324af47cfea5947085973288684b29887e764e3998263a8a0a398"
+        },
+        {
+          "path": "tests/test_support_answers_v11.py",
+          "sha256": "bc62c3d56514f177b7ca7da189f8503c162eb1ca39e2b83f4c3225d723d622db"
+        },
+        {
+          "path": "tests/test_native_reader_v11.py",
+          "sha256": "5010811c393b214244fc45cb24a5628806e3d889a3bcf06e6c7515beb583515d"
+        },
+        {
+          "path": "tests/test_reader_evaluation_v11.py",
+          "sha256": "c77140c8215f173a90fcb0f24fa4582615104b56c677311048cdfa38108af3a5"
+        }
+      ]
+    },
+    {
+      "claim_id": "V11-C10",
+      "draft_anchor": "sec:v11scope",
+      "claim": "All 662 prior manifest entries checked; 658 byte-identical and only four current-state bookkeeping files changed.",
+      "evidence_status": "file_preservation",
+      "artifacts": [
+        {
+          "path": "data/provenance/parent_manifest_v10.json",
+          "sha256": "641d1303b720075d66baa13790b527f6a8848b255abb8ce1de0dfd10fdd0f2d7"
+        },
+        {
+          "path": "results/input_preservation_v11.json",
+          "sha256": "6b21cf1c38ef39e5f5b45c289ae6bfca7ec22a2ac78d64170762c979465b770e"
+        }
+      ]
+    },
+    {
+      "claim_id": "V11-C11",
+      "draft_anchor": "sec:v11decision",
+      "claim": "Further method development requires complete evidence and residual answer gains over competent reader/direct baselines; next eight-URL access pilot is prospective.",
+      "evidence_status": "conditional_research_proposal",
+      "artifacts": [
+        {
+          "path": "data/provenance/route_decision_v11.json",
+          "sha256": "03c3190cdf1810c5464c39b1ac75fc7f54d30620a357b6a629e135ae922e6688"
+        },
+        {
+          "path": "docs/route_decision_v11.txt",
+          "sha256": "4caf405eca50ab82fd4e897b95fbec6133d547d8f4c8361c230481227d1758a3"
+        }
+      ]
+    }
+  ]
+}

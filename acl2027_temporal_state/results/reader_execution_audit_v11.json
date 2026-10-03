@@ -1,0 +1,100 @@
+{
+  "schema_version": "reader_execution_independent_audit_v0.11",
+  "status": "passed",
+  "scope": "Offline native execution provenance only; no medical/scientific interpretation or QA correctness scoring.",
+  "input_sha256": {
+    "results/native_reader_v11_receipt.json": "faa6e6726f33761c655009309b9f88c7d868c93336da2a4b5e2409f639131b5f",
+    "results/native_reader_attempt02_v11_receipt.json": "1da6242f2588b6d40970e5d638a864c8d273a7a700bfc25934c2253f9ce3e3cf",
+    "configs/native_reader_v11.json": "90d7cb59d3427f1e101ddbf127fb62a0ba30ee511eac4db5e572c18e867209fe",
+    "configs/model_backend_v09.json": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "data/correction_gate_v11/reader_execution_amendment_v11.json": "9851344586714ecdef9ba2127e1e5665ff907f2aaa55166cc3879cd5cfdcf555",
+    "data/correction_gate_v11/reader_protocol.json": "385bedf7d20aac4ee7d03bb82012b29d70bbfb45006cec5d715c165979824a56",
+    "scripts/native_reader_v11.py": "2870b956c458a8fc1d7c7d0618d5b998372513af5499bec89be1b4136efd1621",
+    "scripts/native_reader_attempt02_v11.py": "f4719e1e30395421ef03adace939bb35a8b88e5a64f19762ea654a1a903f2a51",
+    "scripts/audit_reader_execution_v11.py": "0ae0249703d8df1da0914f45f5c098e413f8bb794e2eca3b3d170545bc63037d",
+    "data/correction_gate_v11/reader_references_raw.json": "465030d41a4819c75cab310de81be4e60086ca8b721375dde5b1897f5080bd6b",
+    "data/correction_gate_v11/reader_questions.json": "14f331652eeee4555afae48d11810dcb99ff0ddb7aaa0ce1e3975b337453b7f0",
+    "results/science_source_review_v11.json": "8f8eae648bbbbe6b8c3312b2e3c837863393d6566eb782c8700020c818289a99",
+    "data/correction_gate_v11/passage_manifest.json": "97ded2b5d47efce9bd0b31d398a31f77e5165a96b8a7193157789b010b2dc4d5"
+  },
+  "external_passage_pack_sha256": "9bcb2cc78bc875ac9eca4d0d1844799a35c108981466759c75c00727ac80869e",
+  "artifact_manifests_checked": {
+    "attempt01": {
+      "external_artifacts": 8,
+      "project_artifacts": 2,
+      "external_bytes": 64938
+    },
+    "attempt02": {
+      "external_artifacts": 22,
+      "project_artifacts": 10,
+      "external_bytes": 314355
+    }
+  },
+  "attempt01": {
+    "status": "retained_prelaunch_failure",
+    "model_processes_launched": 0,
+    "completion_calls": 0,
+    "prompt_tokenizations": 0
+  },
+  "attempt02": {
+    "status": "completed",
+    "preflight_processes": 1,
+    "completion_processes": 2,
+    "completion_calls": 2,
+    "distinct_native_processes": 3,
+    "raw_responses": 2,
+    "rows": [
+      {
+        "item_id": "article_then_notice",
+        "prompt_tokens": 3327,
+        "generated_tokens_reported": 86,
+        "generated_token_ids_returned": 86,
+        "cache_tokens": 0,
+        "truncated": false,
+        "stop_type": "eos",
+        "prompt_sha256": "0e80e12b7fc7e248ce3885325d676302f055097198dcd72dbee8a46724273de6",
+        "response_file_sha256": "cf27b1c9f04fa6bc6201480c9ee38cfaec11b4582ab14b27c118789fa054fe39",
+        "content_sha256": "220b4bd0db89494e4a1c889330e1050cdba6f7be38d107838b870a939c54e3d6",
+        "prompt_ms": 175519.137,
+        "generation_ms": 18883.54,
+        "process_id": 38790
+      },
+      {
+        "item_id": "notice_then_article",
+        "prompt_tokens": 3327,
+        "generated_tokens_reported": 91,
+        "generated_token_ids_returned": 91,
+        "cache_tokens": 0,
+        "truncated": false,
+        "stop_type": "eos",
+        "prompt_sha256": "8852cc74daaaf93bd51eb35f288189fbae5207f29146ddf80b36dd87b4531040",
+        "response_file_sha256": "89b6e40824f4856ea9f79b22f4cffe9aa4ae1e9a261af1ac7c8dd421852ad603",
+        "content_sha256": "3e142fcd3a44f0069857f16450b088d408562646f8c34234b8b481f17cf30f4f",
+        "prompt_ms": 174798.512,
+        "generation_ms": 21275.181,
+        "process_id": 39275
+      }
+    ]
+  },
+  "checks": {
+    "collector_changes_only_data_and_receipt_paths": true,
+    "recorded_pre_output_freeze_and_amendment_chronology": true,
+    "request_reference_passage_bindings": true,
+    "full_prompt_plus_reserve_fits": true,
+    "exact_native_request_and_response_projections": true,
+    "pinned_assets_and_runtime_rehashed": true,
+    "resource_guards_unchanged": true,
+    "fresh_processes_no_cached_prompt_no_truncation": true
+  },
+  "asset_files_checked": 2,
+  "runtime_files_checked": 60,
+  "forward_passes_in_audit": 0,
+  "network_calls_in_audit": 0,
+  "source_or_native_content_exported_by_audit": false,
+  "limits": [
+    "Recorded timestamps establish internal chronological consistency, not independent historical attestation.",
+    "Token IDs are checked against saved native tokenizer outputs and echoed full prompt; the audit does not rerun a tokenizer.",
+    "Source-copy export approval and strict answer evaluation are separate reviews.",
+    "Observed RSS fields are cumulative child-process high-water marks; no isolated per-run peak claim."
+  ]
+}

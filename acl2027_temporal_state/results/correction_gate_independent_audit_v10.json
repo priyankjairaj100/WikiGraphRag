@@ -1,0 +1,152 @@
+{
+  "schema_version": "correction_gate_independent_audit_v0.10",
+  "reviewed_at_utc": "2026-10-03T06:10:00.396503+00:00",
+  "status": "pass_with_stated_scope_limits",
+  "review_role": "independent_of_annotation_author_and_runner_author; model_assisted_unversioned; source_eligibility_reviewer_reused",
+  "read_only_original_artifacts": true,
+  "inputs_sha256": {
+    "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/annotations/plug_2018_eps_restatement.json": "176757cc2bec7d122f5d82a107743462552c937f87df615831c0512a13881935",
+    "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/annotations/plug_2018_eps_restatement_raw.json": "3a18e9713b2200aae0d23b2b4cd848a7094dd79ad38ed2bc1c68eecd4111a2a1",
+    "results/correction_replay_plug_v10.json": "1f6a43013b70a004b8f4063490ade19d546a101b1f5d964adb582dd442c04274",
+    "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/annotations/molson_2017_eps_restatement.json": "924a16d0ba09de40ad5796ef7ac71a50e5e5f966857e6341a354d2731c14538a",
+    "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/annotations/molson_2017_eps_restatement_raw.json": "096d66e306e5001f18e6cc359c5c2b8722f61c21fcd3d67e96edf1f1cad7cf81",
+    "results/correction_replay_molson_v10.json": "24a85a1560ad97df1cabd60c71cae57fdc670e0ab48e3acd3bc9178f4f1ac6a4",
+    "data/correction_gate_v10/annotation_index.json": "567260c1a7db9461eadd0277708d1f7f38e5b1389dc48a652c565ea3dc473c7c",
+    "data/correction_gate_v10/annotation_index_raw.json": "25383a6056624374dc46fc67d91683d50fa15037daa0eb4c7b210b9915f903c7",
+    "results/correction_eligibility_corporate_v10.json": "ddae4caed6ddece154de4c8160244527644832df001136e1b0bc79864ffbd824",
+    "data/correction_gate_v10/web_excerpt_manifest_v10.json": "927bf90ab11753094b1d64ba17ba1a25744137c928b0e01ff9f20eaa459d9c41",
+    "scripts/replay_correction_gate_v10.py": "eaf8759a7e9b469a1182002490c2b7d3abb1ea088c8db901a8b07828959b67a9",
+    "docs/correction_gate_replay_schema_v10.txt": "7c92553a1d0534904f684ece1ebde294ea052e051b02d871ab5fd940c1855737"
+  },
+  "sources_sha256": {
+    "plug_2019_10k_web_v10": "6ae0995c60a64dc56453b8548cfe568fc9ee1259ba2136a3775cab04e28c7171",
+    "plug_2020_10k_web_v10": "d7140dc6ff86cc086cbcafb0a97f320531b762e1ae46488b86889146b7dd92c5",
+    "molson_2017_10k_web_v10": "d5fcead913a17f27370b1756e42b96fe02880799749f84bcd33b54d2ec8ba9fa",
+    "molson_2018_10k_web_v10": "e1362092d147d15aadfb7a1c4ac504789526426b63258e1f48e897c54247c2e8"
+  },
+  "counts": {
+    "histories": 2,
+    "claims": 10,
+    "direct_corrections": 4,
+    "old_EPS_essential_edges": 2,
+    "policy_states": 6,
+    "evidence_span_instances_verified": 32,
+    "distinct_annotation_spans_verified": 24,
+    "model_calls": 0,
+    "temporary_replays": 2
+  },
+  "cases": [
+    {
+      "history_id": "plug_2018_eps_restatement",
+      "claims_reviewed": 5,
+      "direct_replacements_preserved": 2,
+      "old_EPS_essential_edges": 1,
+      "source_scope_units_check": "pass",
+      "raw_final_difference": [
+        "source_representation"
+      ],
+      "exact_temporary_rerun_matches": true,
+      "excerpt_leak_scan": "no_quote_keys_or_source_line_passages",
+      "states": [
+        {
+          "policy": "no_withdrawal",
+          "active_ids": [
+            "plug_2018_D",
+            "plug_2018_E",
+            "plug_2018_O",
+            "plug_2018_R",
+            "plug_2018_U"
+          ],
+          "inactive_ids": []
+        },
+        {
+          "policy": "direct_withdrawal",
+          "active_ids": [
+            "plug_2018_E",
+            "plug_2018_R",
+            "plug_2018_U"
+          ],
+          "inactive_ids": [
+            "plug_2018_D",
+            "plug_2018_O"
+          ]
+        },
+        {
+          "policy": "dependency_withdrawal",
+          "active_ids": [
+            "plug_2018_E",
+            "plug_2018_R",
+            "plug_2018_U"
+          ],
+          "inactive_ids": [
+            "plug_2018_D",
+            "plug_2018_O"
+          ]
+        }
+      ]
+    },
+    {
+      "history_id": "molson_2017_eps_restatement",
+      "claims_reviewed": 5,
+      "direct_replacements_preserved": 2,
+      "old_EPS_essential_edges": 1,
+      "source_scope_units_check": "pass",
+      "raw_final_difference": [
+        "source_representation"
+      ],
+      "exact_temporary_rerun_matches": true,
+      "excerpt_leak_scan": "no_quote_keys_or_source_line_passages",
+      "states": [
+        {
+          "policy": "no_withdrawal",
+          "active_ids": [
+            "molson_2017_D",
+            "molson_2017_E",
+            "molson_2017_O",
+            "molson_2017_R",
+            "molson_2017_U"
+          ],
+          "inactive_ids": []
+        },
+        {
+          "policy": "direct_withdrawal",
+          "active_ids": [
+            "molson_2017_E",
+            "molson_2017_R",
+            "molson_2017_U"
+          ],
+          "inactive_ids": [
+            "molson_2017_D",
+            "molson_2017_O"
+          ]
+        },
+        {
+          "policy": "dependency_withdrawal",
+          "active_ids": [
+            "molson_2017_E",
+            "molson_2017_R",
+            "molson_2017_U"
+          ],
+          "inactive_ids": [
+            "molson_2017_D",
+            "molson_2017_O"
+          ]
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "All ten normalized assertions preserve reviewed signs, units, issuer and fiscal scope.",
+    "The four direct correction edges include both dependent EPS targets in both withdrawal arms.",
+    "The two old-EPS dependencies represent only the source-specified selected derivations, not proof that every possible support path was enumerated.",
+    "No-withdrawal retains all five claims per case; both correction arms retain R, E, U and deactivate O, D. Additional dependency withdrawal is empty in each case.",
+    "Original raw annotations remain hash-valid; only the explicit excerpt representation label was added.",
+    "Replay reports omit evidence quotations, claim text and source passages; hashes and offsets remain.",
+    "Two independent temporary reruns match saved result bytes exactly."
+  ],
+  "limits": [
+    "Exact source PDF bytes and complete historical prefixes were not captured. These are excerpt-conditioned annotation-selected illustrations, not benchmark gold or natural QA.",
+    "Textual evidence was reviewed; no inspectable screenshot pixels were returned. Visual table QA remains outstanding.",
+    "No accuracy, novel algorithm, search improvement or incremental propagation gain is established."
+  ]
+}

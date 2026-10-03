@@ -1,0 +1,66 @@
+{
+  "receipt_version": "candidate_run_receipt_v1",
+  "request_id": "leadership_nike_2024__2024-09-20__ceo_scope_v06",
+  "backend": "unversioned_conversational_agent",
+  "model_revision": null,
+  "pinned_reproducibility_claim": false,
+  "human_annotation_claim": false,
+  "task_text": "Execute one fresh-context SOURCE-ONLY candidate extraction for a research development pilot. You may read ONLY these three inputs: /workspace/scratch/bdef663e3dfc/tmp/natural_v06_pilot_input.json, /workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_prompt_v06.txt, /workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_schema_v06.json. No other project files, prior conversation context, QA/questions/gold, previous annotations, scores, decoder outputs, or web. Follow the provided prompt/scope/schema using only exact input sources. Output JSON at /workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/candidate_output_raw.json. Preserve your first completed candidate interpretation; do not perform an answer-guided repair. You may use Python to verify codepoint spans/JSON syntax and fix mechanical transcription before finalizing. Use concise exact evidence slices, avoiding whole paragraphs and minimizing repeated source quotation. Do not invent multiple alternatives when unambiguous; retain alternatives when supported and explicitly mark unsupported targets. No scoring. Also output candidate_run_receipt.json in same directory with input filenames+SHA256, exact task text, backend='unversioned_conversational_agent', model_revision=null, no pinned reproducibility or human annotation claim, actual files read and any mechanical changes made. Report counts only and any schema concerns; do not access other outputs.",
+  "inputs": [
+    {
+      "filename": "natural_v06_pilot_input.json",
+      "path": "/workspace/scratch/bdef663e3dfc/tmp/natural_v06_pilot_input.json",
+      "sha256": "8874b90fda88c503f0b571fcb03c17a7a1786df595f3721108f29df293e11224"
+    },
+    {
+      "filename": "candidate_prompt_v06.txt",
+      "path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_prompt_v06.txt",
+      "sha256": "ae58b806106a79e807d8c9fae71fcdfb60e57e7eed4d4a6f740799f86f295275"
+    },
+    {
+      "filename": "candidate_schema_v06.json",
+      "path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_schema_v06.json",
+      "sha256": "4dfaf3fd3f4100250e572dc0069f36f24190703a77fdfbaf2e690efc38d06282"
+    }
+  ],
+  "actual_files_read": [
+    "/workspace/scratch/bdef663e3dfc/tmp/natural_v06_pilot_input.json",
+    "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_prompt_v06.txt",
+    "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_schema_v06.json"
+  ],
+  "input_read_operations": {
+    "initial_read": [
+      "/workspace/scratch/bdef663e3dfc/tmp/natural_v06_pilot_input.json",
+      "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_prompt_v06.txt",
+      "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_schema_v06.json"
+    ],
+    "mechanical_validation_read": [
+      "/workspace/scratch/bdef663e3dfc/tmp/natural_v06_pilot_input.json",
+      "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_prompt_v06.txt",
+      "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_schema_v06.json"
+    ]
+  },
+  "output_path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/candidate_output_raw.json",
+  "output_sha256": "ddaa83c4d97b58b14093c7cca08b33573d659f37b9500268f267fdbd81362bd1",
+  "first_completed_candidate_interpretation_preserved": true,
+  "answer_guided_repair_performed": false,
+  "mechanical_changes_made": [],
+  "mechanical_validation": {
+    "json_roundtrip_passed": true,
+    "schema_validation_passed": true,
+    "scope_limits_passed": true,
+    "exact_unique_quotes_and_codepoint_slices_checked": 65,
+    "all_reading_evidence_overlaps_anchor": true
+  },
+  "counts": {
+    "source_documents_seen": 2,
+    "mentions": 6,
+    "resolved_readings": 6,
+    "links": 15,
+    "aliases": 4,
+    "authorities": 2,
+    "essential_support": 0,
+    "unsupported": 1
+  },
+  "schema_concerns": []
+}

@@ -1,0 +1,101 @@
+ACL 2027 research rework — checkpoint v0.8
+Date: 2026-10-02
+
+Research decision
+
+This checkpoint advances two concrete gaps from v0.7: current-source collection with prefix-bound source annotation, and a controlled diagnosis of scoring-condition sensitivity. Neither is a natural-data accuracy evaluation or a novel inference algorithm. The primary research question remains correction-dependent reconstruction under uncertain interpretations. Strong extraction, candidate coverage, scalable comparison and independent evaluation are still required before a paper-level method claim.
+
+Controlled scorer result
+
+A protocol fixed the first original-order item of each of four kinds before new
+execution: link, unresolved, reading and null link. For each item and unchanged
+v0.7 label-order prompt, a fresh pinned llama.cpp/Qwen3-0.6B process ran one cold
+completion followed immediately by one identical warm completion. Eight fresh
+processes produced sixteen native distributions; there were no failures,
+replacements, discarded rows or amendments. Cold responses all had zero cached
+input tokens; warm responses reused all but the last token. Exact token accounting
+and native likelihood policy passed independent review.
+
+Cold support log odds, natural-log units:
+Kind          Yes-first       No-first        No-first minus Yes-first
+Link             5.601485       -0.516766                  -6.118250
+Unresolved       4.386419       -2.174889                  -6.561308
+Reading          7.010147       -1.121359                  -8.131506
+Null link        3.095415       -0.115681                  -3.211096
+
+All four cold comparisons change sign. All eight identical-prompt warm repeats
+return exactly the same archived Yes and No log probabilities as their cold
+counterpart; the declared absolute tolerance was 1e-6. Literal-label probability
+mass lies between 0.997720 and 0.999990. Cache carryover is therefore not sufficient
+to explain these four label-definition order effects. The tiny model is not ready
+to serve as a reliable evidential scoring baseline merely because its scores are
+now pinned and reproducible on these checks.
+
+This is a technical follow-up after observing v0.7, on four dependent items from
+one existing development history. It is not an independent test, calibration
+study, accuracy measurement, general order-bias rate or novel methodological
+result. No prompt averaging, best-condition selection, score retuning or new
+natural decoder run occurred. The v0.7 primary condition remains unchanged.
+
+Execution took 1584.027 seconds (26.4 minutes). Every native process exited cleanly
+under the recorded four-thread, Q8 KV, 8192-token-context, 2 GiB address-space and
+2250 CPU-second per-process guard configuration. Native commands, properties,
+likelihood settings and logs were independently checked. Limits are evidenced
+by successful frozen pre-exec limit-setting code and receipts, not saved /proc
+snapshots. Reported child peak RSS is a cumulative high-water statistic, not an
+isolated per-process measurement. The runtime is pinned, not a hermetic container.
+The offline result replay is byte-identical and makes no model calls.
+
+Source acquisition and clocks
+
+All 39 URLs in the frozen 19-history convenience frame were attempted. The first sandbox network attempt returned no bytes for every URL; those failures are retained. A second, explicitly authorized public capture pass obtained 32 provisionally usable sources, covering 15 complete source sets. These are not 15 certified independent histories. Seven responses were rejected: two IBM HTTP200 responses contained only a site-unavailable page, and five investor-page responses returned HTTP403. There were no source substitutions, authenticated access, challenge bypasses or retries after a server response.
+
+The retrieved raw responses total 5,107,620 bytes. Exact raw/text hashes, HTTP receipts, source versions, retrieval clocks, reported publication/update metadata and distribution policy are recorded. The first extractor omitted text nested inside HTML forms; a preserved deterministic second derivation from the same response bytes repaired that bug. Nineteen extracted text hashes changed, restoring three usable articles. Retrieval code, first manifest/texts and the repair are separately recorded; this was not recapture of more favorable versions.
+
+Raw external sources and full request/quote-bearing response files remain analysis-only. Distributed artifacts include source receipts, hashes, compact semantic cores and evidence span/hash projections. Default checkpoint replay verifies those distributed bindings; it does not recheck quote occurrence without the exact source text. Fresh downloads can differ. These reproducibility limits are explicit rather than treating current URLs as immutable archives.
+
+Experimental delivery and source exposure
+
+Before annotations or reference judgments, an initial four-history batch was fixed from metadata: first leadership history (IBM), first two plan histories (Docker and Chrome), and the frame's explicit correction lead (HS2). Two one-document delivery batches were declared per history. IBM's blocked responses prevent both prefixes; the remaining three histories yield six exact current-version prefixes. The unavailable history is retained in the accounting and was not replaced after observing difficulty.
+
+Experimental delivery is distinct from retrieval time, publication metadata and event time. No captured page is certified as its original historical version. Docker's earlier-dated page already includes the later reversal; it is delivered intact at prefix1. HS2's landing page contains both erroneous quoted wording and a correction notice, not a separately captured old document followed by a corrected one. Both Chrome pages include an undated current banner beyond the dated article; its scope and date cannot silently become article-time policy. Related cards and navigation do not establish the target history's events.
+
+A separate source-frame audit found additional explicit organization links across selected bodies and prior development examples. Adobe, Chrome and Mozilla connect through Flash partners; Amazon and Disney have further organization links into that conservative grouping. NASA/ESA have explicit collaboration evidence. These are tiered overlap risks, not a claim that every industry or navigation link joins histories. Group independence and future split design remain open; all selected material is development-visible.
+
+Annotation, references and source adjudication
+
+Six fresh source-only roles each received exactly one prefix request, the annotation prompt and schema. Six separate fresh roles received the same individual prefix plus a fixed question plan and reference contract. No annotation role received questions, answer labels, model scores or decoder outputs. No reference role received candidate annotations. Full source hashes and exact declared input/output hashes are recorded. Roles are unversioned model executions with shared training, not human annotators or independent-training evidence.
+
+The initial annotations contain 57 claim instances across six prefix outputs. Repeated claims in overlapping prefixes are not separate facts or independent evaluation samples. Reference roles answered two fixed questions per prefix: 12 judgments over six distinct question texts. There is no model prediction scored against those references in this checkpoint. No candidate-recall estimate or held-out accuracy follows from the annotation counts.
+
+Five initial annotation outputs passed structural checks. Docker prefix2 failed a date-precision contract; its untouched raw response and failure remain recorded. All six initial reference outputs passed structural checks. Evidence matching validates occurrence and source eligibility, not interpretation.
+
+A separate model review examined each finding against its own eligible prefix. It produced one recorded adjudicated version for four annotations, leaving both HS2 annotations and all six reference artifacts unchanged. It removed unsupported formal CORRECTS records from the two Docker annotations: a policy clarification without an explicitly erroneous assertion is not automatically a correction target. The Docker date constraint became an open-lower-bound range rather than a falsely exact day. Chrome changes corrected assertion stance for the undated banner while retaining uncertainty, and removed unsupported ordering between feedback and a roadmap. The explicit HS2 correction and its narrower compensation scope were retained.
+
+All 12 selected annotation/reference artifacts pass structural validation after review. This remains source-only model adjudication, not semantic proof or human gold. Existing claims were reviewed, not exhaustively audited for missing candidates. Important gaps remain: exact Docker email dispatch, undated banner scope/timing, original erroneous HS2 versions, and the Leeds-specific disposition in the later source.
+
+Representational implication
+
+The source cases require separating a changed plan, a clarification, and an explicit correction, plus distinguishing a quoted error from an asserted fact. They also require retaining scope and unknown dates. These are observed annotation/representation requirements. They do not show that joint optimization is necessary, that the current decoder can consume the new annotations, or that the implementation extends prior work in a publishable way. The historical objective stays default and the v0.6 active-support suppression counterexample remains unchanged.
+
+Next research work
+
+1. Complete source-only annotation and separately reviewed references for the remaining usable histories, keeping blocked cases and connected groups visible. The target is twenty annotated development histories; the frame itself has a disclosed shortfall and only three have this initial annotation coverage.
+2. Define and measure candidate proposal coverage under local windows and strong full-prefix extraction. Do not filter locally plausible alternatives using answer labels or require a quota of competing readings.
+3. Run an additional pinned contextual or listwise scorer on separately declared development examples. A tiny model's technical control is not a strong baseline or calibration study. Keep scoring changes separate from search changes.
+4. Adapt the reviewed natural relations, stance and corrections to executable candidates with explicit exclusions. Compare independent, coordinate/restarted and joint inference only when source-grounded uncertainty survives a strong extractor.
+5. Decide the paper contribution from actual natural answer/evidence and cost outcomes. If useful gains or novelty do not survive, narrow the contribution; do not promote an optimization gap, annotation count or known label-order effect into an ACL method claim.
+
+Verification and paper artifacts
+
+Canonical verification passes 356 unit tests and 22 command gates, including source
+metadata replay, native control replay and the independent native audit. Across
+the 160-file historical data/config/prepared/reference scope, 158 prior inputs are
+byte-identical. Two diagnostic outputs were regenerated with only recorded timing
+and metadata differences; their semantic results are unchanged. The two manuscript
+claim ledgers and their source artifacts pass exact hash checks.
+
+The preserved v0.7 draft is supplemented by paper/results_update_v08.tex and a
+ten-claim v0.8 evidence ledger. The addendum reports only these development and
+technical observations. No compiled PDF, visually checked layout, completed ACL
+manuscript, trained scorer or strong-baseline comparison is claimed.

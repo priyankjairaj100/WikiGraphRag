@@ -1,0 +1,162 @@
+ACL 2027 REWORK: CHECKPOINT v0.5
+Work date: 2026-10-02
+Focus: conditional correction support and a source-grounded record illustration.
+This is implementation and data-provenance progress, not a paper result.
+
+Outcome and research interpretation
+
+Independent, iterative, restarted iterative and exact decoding now share an
+explicit correction-policy layer. It withdraws support for a targeted atomic
+assertion before building the active temporal network. Earlier selected records
+remain in a ledger, so the operation does not rewrite history, invent an event
+boundary at the correction date, or silently erase other facts in the source.
+The original v0.4 scored cache is embedded unchanged inside a separately hashed
+v0.5 wrapper containing the correction policy and annotation provenance.
+
+This completes the limited whole-assertion replacement implementation. The
+research bottleneck is now shared natural candidate alternatives and contextual
+scores, followed by strong baseline comparisons, scalable inference and an
+assessment of certainty across alternative discrete interpretations. More
+authored correction cases cannot establish the paper's proposed natural-data
+advantage. Neither exhaustive search, temporal closure nor these conditional
+replacement rules are claimed as new algorithms.
+
+Implemented semantics and limits
+
+A selected CORRECTS link names an exact target reading, has an exact source
+reference span, and requires equal declared asserting authority for both
+records. Missing certificates or authority records make the link ineligible,
+while leaving the uncertain candidate and its null choice visible in the cache.
+Chronology alone never creates a correction, and a domain or SEC hosting URL
+does not establish asserting authority. Exact spans verify source occurrence,
+not the semantic correctness of a target or authority annotation.
+
+The supported operation replaces one whole atomic assertion. Pure retraction,
+partial field or endpoint edits, retracting a correction notice, and disjunctive
+alternative derivations are outside this version. A replacement's correction
+notice remains operative if that replacement is later withdrawn. Thus A <- B <- C
+leaves A and B inactive without reviving an ancestor. Conflicting sibling
+replacements remain competing supports; there is no automatic recency winner.
+
+RESTATES means same-episode identity, not copying. Withdrawing an assertion
+removes its bounds, observations and incident temporal constraints, but does not
+automatically withdraw another assertion that corroborates it. Cascading
+inactivity requires an explicit essential support dependency. Those dependencies
+are conjunctive: a missing or inactive selected prerequisite makes its dependent
+inactive. The resulting active projection is materialized only after withdrawal,
+so stale temporal equalities cannot reject a valid corrected interpretation.
+
+Source-level control provenance is distinct from active factual support. A
+withdrawn assertion may still identify the target of an operative correction.
+The implementation conservatively retains notice and target contexts, including
+the controls that cause cross-key derived competitors to disappear. That can
+overcite sources; it is not a minimal proof trace. Withdrawal removes factual
+assertion support and event constraints, not every legitimate provenance use of
+the same document.
+
+The shared objective continues to score selected historical readings and links
+even when their factual support or temporal constraints become inactive. Every
+new diagnostic prediction explicitly records active, inactive and unresolved
+unary terms, active/inactive temporal-link terms, correction terms and null-link
+terms. Their sum matches the selected objective. This objective is not an
+active-answer utility, and better score alone cannot establish a better answer.
+An active-support objective ablation remains part of the later empirical work.
+
+Authored controls and independent review
+
+Ten new authored cases cover whole replacement over the same event interval,
+chains without resurrection, sibling conflicts, unrelated issuers, missing
+certificates, independent corroboration, explicit copied support, another
+relation in the same document, same-day references, and withdrawal before date
+closure. There are eleven authored queries, forty case/method decodes, forty-four
+predictions and 544 passing contract checks. The two queries in the neighboring-
+relation case confirm that a CEO correction preserves a CFO assertion in the
+same source.
+
+All four methods agree under deliberately simple authored scores. The fixed-
+selection control removes CORRECTS links while retaining selected readings and
+other links. It exposes the materialization consequence; it is not a reoptimized
+or trained baseline. Predictions are saved before expectations are loaded. Two
+executions reproduced all fifteen diagnostic JSON artifacts byte-for-byte;
+timings are omitted because no performance comparison is being made.
+
+The independent review uses a separately generated finite-subset oracle rather
+than copying the production inactivity loop. It covers 576 correction/dependency
+DAG pairs and 384 cases with missing selected prerequisites: 960 generated
+ledgers. The final audit records 10,772 passing checks and zero mismatches,
+including weighted objective decomposition and additional provenance regression
+checks. Finite coverage does not establish correctness for arbitrary graphs or
+validate source entailment. See scripts/audit_correction_finite.py and
+results/correction_finite_audit_v05.json.
+
+Final verification passes all thirteen command gates and 248 unit tests,
+including thirty correction-semantic tests and twenty-two correction-cache
+tests. The older 196 tests remain in the suite. The v0.4 preservation comparison
+confirms all 49 checked data, configuration, prepared and reference files are
+unchanged. The earlier progress reports and natural-development inputs remain
+historical records. See results/verification.json and
+results/input_preservation_v05.json.
+
+One actual correction history: capture and representation
+
+Eight selected public HTTP responses were captured for Lyft's FY2024 adjusted
+EBITDA margin expansion forecast correction. The original forecast reported
+approximately 500 basis points year over year; the corrected version reports
+approximately 50, with Gross Bookings as the denominator. This is a correction
+to a reported forecast, not evidence of a transition in realized performance.
+The SEC amendment explicitly identifies the prior record. Current complete
+submission captures also support a deterministic original/corrected text
+comparison, which differs at the replaced numerical value under that parser.
+
+The capture receipts preserve observed response hashes, while derived document
+hashes and exact excerpt offsets identify the representation used for annotation.
+Separately served SEC HTML contained an observed insertion relative to the
+submission's document block. Current response bytes must therefore not be called
+unchanged historical bytes. SEC acceptance time, filing date, a current issuer
+timestamp, and historical first public accessibility are separate facts. The
+first-public-access times remain unresolved; no intraday benchmark cutoff is
+admitted. The explicit amendment relation provides record-reference direction
+without proving an exact historical access time.
+
+The packaged artifacts contain capture receipts, limited source excerpts,
+derivation metadata and a public retriever. Full external releases are retained
+only as analysis inputs and excluded from the distributed checkpoint. A fresh
+retrieval can have different bytes and must be given its own hashes.
+
+A source-only conversational annotator, without a pinned model revision,
+produced the record-level interpretation. Its prompt/input and output provenance
+remain separate from the authored admission scores. The demonstration retains
+the complete source context seen during annotation in both comparison variants;
+it does not pretend that the original annotation came from a blind early prefix.
+Both records use the actual retrieval day, 2026-10-02, as operational cutoff.
+Calendar endpoints remain unknown and the forecast modality is preserved.
+
+scripts/run_correction_source_demo.py compares certificate-enabled and
+certificate-omitted wrappers over the same complete base cache and fixed scores.
+Four methods run each variant: eight decodes and forty representation checks,
+all passing. Enabling the declared certificate retains the corrected record and
+withdraws the old one; omitting it retains both. There are zero QA predictions,
+no historical knowledge reconstruction, no learned scores, and no actual
+financial-outcome inference. The four replay JSON outputs are byte-reproducible.
+This is a development illustration for one convenience-selected source history,
+not held-out extraction or a benchmark result.
+
+Execution status and next research gate
+
+No pinned extractor, trained scorer or new Jobs probe ran in this checkpoint.
+The earlier supported Jobs attempts reported UNAVAILABLE; the immutable model
+revision and disabled pilot configuration remain preparation only. Credits,
+model loading, token limits, runtime locking and complete output return remain
+unverified. This checkpoint does not reinterpret the failure as a demonstrated
+credit shortage or claim that a model executed through another path.
+
+The next work should first establish a supported model execution path, generate
+natural alternative readings and links, measure candidate recall, and freeze
+contextual unary/pair/null scores shared by every method. Then compare strong
+independent and restarted baselines under identical evidence and reader budgets.
+Assess search cost, scalable decomposition, alternate-state answer agreement,
+and the effect of retaining inactive historical objective terms before any
+held-out claim. Continue availability verification and history-group sampling
+in parallel; the three development-visible histories cannot become untouched
+test data. If natural gains do not survive these controls, narrow the proposed
+paper contribution instead of presenting implementation checks as evidence.

@@ -1,0 +1,1345 @@
+{
+  "schema_version": "0.1",
+  "evidence_class": "synthetic_candidate_contract_checks",
+  "fixture_sha256": "d4e1fa06e727f62d011e5eded1e94bb9ea07264adceafab49287248b43e74b39",
+  "paper_performance_claim": false,
+  "limitations": [
+    "Candidates, scores, and diagnostic identities are authored, not predicted from natural text.",
+    "Objective improvement is not answer accuracy or identity correctness.",
+    "The misleading-score control deliberately makes exact optimization prefer a wrong identity.",
+    "Exhaustive enumeration is bounded and supplies no scalability evidence.",
+    "Timings are single-process diagnostic observations, not matched-budget comparisons."
+  ],
+  "case_count": 6,
+  "passed_contract_checks": 48,
+  "cases": [
+    {
+      "case_id": "two_reading_coordinate_trap",
+      "purpose": "Requires two simultaneous reading changes to improve the authored score; seeded restarts can recover the same optimum.",
+      "methods": {
+        "independent": {
+          "method": "independent",
+          "objective": 2.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              null
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 1,
+            "link_assignments_evaluated": 1,
+            "feasible_assignments_evaluated": 1,
+            "elapsed_seconds": 0.00015380300010292558,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          }
+        },
+        "iterative": {
+          "method": "iterative",
+          "objective": 2.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              null
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 5,
+            "link_assignments_evaluated": 5,
+            "feasible_assignments_evaluated": 5,
+            "elapsed_seconds": 0.0001739429999361164,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              2.0
+            ]
+          }
+        },
+        "iterative_restarts_10": {
+          "method": "iterative",
+          "objective": 3.0,
+          "reading_ids": [
+            [
+              "a",
+              "subsidiary"
+            ],
+            [
+              "b",
+              "subsidiary"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "predecessor"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 9,
+            "link_assignments_evaluated": 10,
+            "feasible_assignments_evaluated": 10,
+            "elapsed_seconds": 0.0003767990001506405,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              3.0,
+              2.0,
+              2.0
+            ]
+          }
+        },
+        "joint_exact": {
+          "method": "joint_exact",
+          "objective": 3.0,
+          "reading_ids": [
+            [
+              "a",
+              "subsidiary"
+            ],
+            [
+              "b",
+              "subsidiary"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "predecessor"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 9,
+            "link_assignments_evaluated": 10,
+            "feasible_assignments_evaluated": 10,
+            "elapsed_seconds": 0.0001924600001075305,
+            "global_optimal": true,
+            "optimality_gap": 0.0,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "clear_no_benefit",
+      "purpose": "Clear shared candidate evidence should give identical choices.",
+      "methods": {
+        "independent": {
+          "method": "independent",
+          "objective": 5.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "clear"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 1,
+            "link_assignments_evaluated": 2,
+            "feasible_assignments_evaluated": 2,
+            "elapsed_seconds": 8.486800015816698e-05,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          },
+          "authored_identity_label_matches": 2,
+          "authored_identity_label_count": 2
+        },
+        "iterative": {
+          "method": "iterative",
+          "objective": 5.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "clear"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 5,
+            "link_assignments_evaluated": 6,
+            "feasible_assignments_evaluated": 6,
+            "elapsed_seconds": 0.0006863359994895291,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              5.0
+            ]
+          },
+          "authored_identity_label_matches": 2,
+          "authored_identity_label_count": 2
+        },
+        "iterative_restarts_10": {
+          "method": "iterative",
+          "objective": 5.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "clear"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 9,
+            "link_assignments_evaluated": 10,
+            "feasible_assignments_evaluated": 10,
+            "elapsed_seconds": 0.0003665730000648182,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0
+            ]
+          },
+          "authored_identity_label_matches": 2,
+          "authored_identity_label_count": 2
+        },
+        "joint_exact": {
+          "method": "joint_exact",
+          "objective": 5.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "clear"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 9,
+            "link_assignments_evaluated": 10,
+            "feasible_assignments_evaluated": 10,
+            "elapsed_seconds": 0.0007653760003449861,
+            "global_optimal": true,
+            "optimality_gap": 0.0,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          },
+          "authored_identity_label_matches": 2,
+          "authored_identity_label_count": 2
+        }
+      }
+    },
+    {
+      "case_id": "one_coordinate_repair",
+      "purpose": "Iterative repair should close an objective gap accessible by a single reading change.",
+      "methods": {
+        "independent": {
+          "method": "independent",
+          "objective": 2.0,
+          "reading_ids": [
+            [
+              "a",
+              "p"
+            ],
+            [
+              "b",
+              "s"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              null
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 12,
+            "reading_assignments_evaluated": 1,
+            "link_assignments_evaluated": 1,
+            "feasible_assignments_evaluated": 1,
+            "elapsed_seconds": 5.742700068367412e-05,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          }
+        },
+        "iterative": {
+          "method": "iterative",
+          "objective": 4.0,
+          "reading_ids": [
+            [
+              "a",
+              "p"
+            ],
+            [
+              "b",
+              "p"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "l"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 12,
+            "reading_assignments_evaluated": 5,
+            "link_assignments_evaluated": 6,
+            "feasible_assignments_evaluated": 6,
+            "elapsed_seconds": 0.0001422339992132038,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              4.0
+            ]
+          }
+        },
+        "iterative_restarts_10": {
+          "method": "iterative",
+          "objective": 4.0,
+          "reading_ids": [
+            [
+              "a",
+              "p"
+            ],
+            [
+              "b",
+              "p"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "l"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 12,
+            "reading_assignments_evaluated": 6,
+            "link_assignments_evaluated": 7,
+            "feasible_assignments_evaluated": 7,
+            "elapsed_seconds": 0.00031290200058720075,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0
+            ]
+          }
+        },
+        "joint_exact": {
+          "method": "joint_exact",
+          "objective": 4.0,
+          "reading_ids": [
+            [
+              "a",
+              "p"
+            ],
+            [
+              "b",
+              "p"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "l"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 12,
+            "reading_assignments_evaluated": 6,
+            "link_assignments_evaluated": 7,
+            "feasible_assignments_evaluated": 7,
+            "elapsed_seconds": 0.00011417200039431918,
+            "global_optimal": true,
+            "optimality_gap": 0.0,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "misleading_pair_score",
+      "purpose": "Adversarial score calibration: exact inference and restarts prefer the wrong authored identities; optimizing the objective alone does not certify correctness.",
+      "methods": {
+        "independent": {
+          "method": "independent",
+          "objective": 2.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              null
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 1,
+            "link_assignments_evaluated": 1,
+            "feasible_assignments_evaluated": 1,
+            "elapsed_seconds": 8.974499996838858e-05,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          },
+          "authored_identity_label_matches": 2,
+          "authored_identity_label_count": 2
+        },
+        "iterative": {
+          "method": "iterative",
+          "objective": 2.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              null
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 5,
+            "link_assignments_evaluated": 5,
+            "feasible_assignments_evaluated": 5,
+            "elapsed_seconds": 0.0001266409999516327,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              2.0
+            ]
+          },
+          "authored_identity_label_matches": 2,
+          "authored_identity_label_count": 2
+        },
+        "iterative_restarts_10": {
+          "method": "iterative",
+          "objective": 3.0,
+          "reading_ids": [
+            [
+              "a",
+              "subsidiary"
+            ],
+            [
+              "b",
+              "subsidiary"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "predecessor"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 9,
+            "link_assignments_evaluated": 10,
+            "feasible_assignments_evaluated": 10,
+            "elapsed_seconds": 0.0003300279995528399,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              3.0,
+              2.0,
+              2.0
+            ]
+          },
+          "authored_identity_label_matches": 0,
+          "authored_identity_label_count": 2
+        },
+        "joint_exact": {
+          "method": "joint_exact",
+          "objective": 3.0,
+          "reading_ids": [
+            [
+              "a",
+              "subsidiary"
+            ],
+            [
+              "b",
+              "subsidiary"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "predecessor"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 9,
+            "link_assignments_evaluated": 10,
+            "feasible_assignments_evaluated": 10,
+            "elapsed_seconds": 0.00019889999930455815,
+            "global_optimal": true,
+            "optimality_gap": 0.0,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          },
+          "authored_identity_label_matches": 0,
+          "authored_identity_label_count": 2
+        }
+      }
+    },
+    {
+      "case_id": "irrelevant_pair_score",
+      "purpose": "An uninformative predecessor score supplies no reason to override unary identities.",
+      "methods": {
+        "independent": {
+          "method": "independent",
+          "objective": 2.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              null
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 1,
+            "link_assignments_evaluated": 1,
+            "feasible_assignments_evaluated": 1,
+            "elapsed_seconds": 5.6134999795176554e-05,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          },
+          "authored_identity_label_matches": 2,
+          "authored_identity_label_count": 2
+        },
+        "iterative": {
+          "method": "iterative",
+          "objective": 2.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              null
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 5,
+            "link_assignments_evaluated": 5,
+            "feasible_assignments_evaluated": 5,
+            "elapsed_seconds": 0.00010411699986434542,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              2.0
+            ]
+          },
+          "authored_identity_label_matches": 2,
+          "authored_identity_label_count": 2
+        },
+        "iterative_restarts_10": {
+          "method": "iterative",
+          "objective": 2.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              null
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 9,
+            "link_assignments_evaluated": 10,
+            "feasible_assignments_evaluated": 10,
+            "elapsed_seconds": 0.0003141739998682169,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0
+            ]
+          },
+          "authored_identity_label_matches": 2,
+          "authored_identity_label_count": 2
+        },
+        "joint_exact": {
+          "method": "joint_exact",
+          "objective": 2.0,
+          "reading_ids": [
+            [
+              "a",
+              "parent"
+            ],
+            [
+              "b",
+              "parent"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              null
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "50173fdfd6ac0b09c23ee43fba78f86c25ab5171b509d298a8e7351704722d51",
+            "state_ceiling": 18,
+            "reading_assignments_evaluated": 9,
+            "link_assignments_evaluated": 10,
+            "feasible_assignments_evaluated": 10,
+            "elapsed_seconds": 0.00018822399943019263,
+            "global_optimal": true,
+            "optimality_gap": 0.0,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          },
+          "authored_identity_label_matches": 2,
+          "authored_identity_label_count": 2
+        }
+      }
+    },
+    {
+      "case_id": "a_b_b_a_reversion",
+      "purpose": "Selected RESTATES edges create three episode components and retain the returning first value as a separate episode.",
+      "methods": {
+        "independent": {
+          "method": "independent",
+          "objective": 19.0,
+          "reading_ids": [
+            [
+              "a",
+              "r"
+            ],
+            [
+              "b",
+              "r"
+            ],
+            [
+              "c",
+              "r"
+            ],
+            [
+              "d",
+              "r"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "b-a"
+            ],
+            [
+              "c",
+              "c-b"
+            ],
+            [
+              "d",
+              "d-c"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b",
+              "c"
+            ],
+            [
+              "d"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "8ab0cbd6dffa77311aae3425775d8d11a269a5da1366f157945252bfe3c78e8b",
+            "state_ceiling": 128,
+            "reading_assignments_evaluated": 1,
+            "link_assignments_evaluated": 8,
+            "feasible_assignments_evaluated": 8,
+            "elapsed_seconds": 0.00022867600000608945,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          }
+        },
+        "iterative": {
+          "method": "iterative",
+          "objective": 19.0,
+          "reading_ids": [
+            [
+              "a",
+              "r"
+            ],
+            [
+              "b",
+              "r"
+            ],
+            [
+              "c",
+              "r"
+            ],
+            [
+              "d",
+              "r"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "b-a"
+            ],
+            [
+              "c",
+              "c-b"
+            ],
+            [
+              "d",
+              "d-c"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b",
+              "c"
+            ],
+            [
+              "d"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "8ab0cbd6dffa77311aae3425775d8d11a269a5da1366f157945252bfe3c78e8b",
+            "state_ceiling": 128,
+            "reading_assignments_evaluated": 5,
+            "link_assignments_evaluated": 20,
+            "feasible_assignments_evaluated": 20,
+            "elapsed_seconds": 0.0005081870003778022,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              19.0
+            ]
+          }
+        },
+        "iterative_restarts_10": {
+          "method": "iterative",
+          "objective": 19.0,
+          "reading_ids": [
+            [
+              "a",
+              "r"
+            ],
+            [
+              "b",
+              "r"
+            ],
+            [
+              "c",
+              "r"
+            ],
+            [
+              "d",
+              "r"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "b-a"
+            ],
+            [
+              "c",
+              "c-b"
+            ],
+            [
+              "d",
+              "d-c"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b",
+              "c"
+            ],
+            [
+              "d"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "8ab0cbd6dffa77311aae3425775d8d11a269a5da1366f157945252bfe3c78e8b",
+            "state_ceiling": 128,
+            "reading_assignments_evaluated": 13,
+            "link_assignments_evaluated": 31,
+            "feasible_assignments_evaluated": 31,
+            "elapsed_seconds": 0.0009696839997559437,
+            "global_optimal": false,
+            "optimality_gap": null,
+            "conditional_links_optimal": true,
+            "coordinate_converged": true,
+            "stop_reason": "coordinate_fixed_point",
+            "restart_objectives": [
+              19.0,
+              19.0,
+              19.0,
+              19.0,
+              19.0,
+              19.0,
+              19.0,
+              19.0,
+              19.0,
+              19.0,
+              19.0
+            ]
+          }
+        },
+        "joint_exact": {
+          "method": "joint_exact",
+          "objective": 19.0,
+          "reading_ids": [
+            [
+              "a",
+              "r"
+            ],
+            [
+              "b",
+              "r"
+            ],
+            [
+              "c",
+              "r"
+            ],
+            [
+              "d",
+              "r"
+            ]
+          ],
+          "link_ids": [
+            [
+              "a",
+              null
+            ],
+            [
+              "b",
+              "b-a"
+            ],
+            [
+              "c",
+              "c-b"
+            ],
+            [
+              "d",
+              "d-c"
+            ]
+          ],
+          "restatement_components": [
+            [
+              "a"
+            ],
+            [
+              "b",
+              "c"
+            ],
+            [
+              "d"
+            ]
+          ],
+          "diagnostics": {
+            "prefix_digest": "8ab0cbd6dffa77311aae3425775d8d11a269a5da1366f157945252bfe3c78e8b",
+            "state_ceiling": 128,
+            "reading_assignments_evaluated": 16,
+            "link_assignments_evaluated": 34,
+            "feasible_assignments_evaluated": 34,
+            "elapsed_seconds": 0.0006225200004337239,
+            "global_optimal": true,
+            "optimality_gap": 0.0,
+            "conditional_links_optimal": true,
+            "coordinate_converged": null,
+            "stop_reason": "exhausted",
+            "restart_objectives": []
+          }
+        }
+      }
+    }
+  ]
+}

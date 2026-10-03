@@ -1,0 +1,211 @@
+SMALL EXACT DECODER: IMPLEMENTATION AND INTERPRETATION
+
+Status: executable candidate-level reference, 2026-10-02. No natural extraction,
+answer-accuracy result, scalability result, or paper contribution is established.
+
+Files and API
+
+src/temporal_state/decoder.py defines frozen Reading, Mention, Link, Penalty,
+Problem, Limits, Result, and Diagnostics records. Public functions:
+
+  decode_independent(problem, limits=Limits())
+  decode_iterative(problem, limits=Limits(), restarts=0, seed=0,
+                   initial_reading_ids=None)
+  decode_joint(problem, limits=Limits())
+  evaluate_assignment(problem, reading_ids, link_ids, limits=Limits())
+
+The evaluator returns the common objective, or None for a semantically
+infeasible complete assignment. Malformed IDs, invalid input metadata, and
+oversized problems raise exceptions. SearchLimitExceeded never returns an
+approximate answer labelled exact.
+
+Run:
+
+  PYTHONPATH=src python -m unittest discover -s tests -p test_decoder.py -v
+  python scripts/run_decoder_diagnostics.py
+
+Use the configured project Python runtime when necessary. The replay reads
+data/diagnostics/decoder_fixtures.json and writes decoder_results.json. Expected
+objectives and optional authored identity labels remain outside Problem and
+are not passed to any inference function. Source spans and scores are authored
+synthetic inputs. The test and replay stages do not execute an NLP extractor.
+
+Prefix, source, and score contract
+
+Every Problem is already a rebuilt source prefix, with a calendar-day cutoff.
+All supplied sources must have available_at <= cutoff. This implementation
+rejects a full-source problem rather than filtering its already generated
+candidates. Mention spans are nonempty Python Unicode code-point offsets into
+their recorded source text. Problem, mention, reading, and link context IDs
+must all name sources in the supplied prefix. Unknown declared context is an
+error. A stable prefix digest hashes the cutoff plus all supplied source IDs,
+text, dates, URIs, provenance, and availability bases in source-ID order.
+
+These checks detect declared leakage; they cannot detect an extractor that
+used undeclared future text, full-corpus aliases, or pretrained knowledge. The
+candidate/scorer implementation must separately prove prefix construction and
+cite available spans. The prefix digest alone is NOT a complete candidate/score
+cache key; scorer version, candidate input, penalties, and configuration must
+also be included by a production cache.
+
+Readings contain a canonical key (subject, relation, scope), value, unary score,
+optional exact effective episode boundaries, and an optional observation date.
+Key and value equality is exact: canonicalization is the candidate generator's
+responsibility. No alias or scope normalization is performed here. An unknown
+scope may be represented as an explicitly distinct candidate key; it must not
+be silently equated with a parent company. Every mention must contain a fully
+unresolved reading with no key, value, or invented exact date. A missing
+correction target remains unresolved/null; a dangling target ID is malformed.
+
+effective_start/effective_end are exact episode boundaries, not vague lower or
+upper bounds and not observation dates. Intervals are half-open and positive.
+An observation must fall inside any supplied exact bounds. Neither observation
+nor publication/availability automatically becomes an effective start. This
+prototype does not represent bounded or distributional date alternatives.
+
+Mention.null_score is the null primary-target alternative. Links have a frozen
+conditional score and connect a specific source reading to a specific target
+reading. The caller must state score_provenance; the diagnostics explicitly use
+hand-authored logits. No calibration, pair normalization, contextual identity
+scorer, or probability interpretation is supplied by the decoder.
+
+Objective and common hard constraints
+
+All methods use:
+
+  sum selected unary scores + beta * sum selected link scores
+  + sum null scores - sum selected configured violation costs.
+
+Named penalties are explicit nonnegative weights. A reading/link lists the
+named binary violations activated when it is selected. Costs add per selected
+reading/link; a repeated name on different candidates incurs a cost each time.
+Unconfigured violations and nonfinite scores are rejected. This local additive
+penalty mechanism does not implement arbitrary global soft factors. Scores use
+finite floating-point arithmetic and deterministic summation/tie-breaking;
+exact enumeration means exhaustive search of this implemented score function,
+not exact rational arithmetic or calibrated statistical confidence.
+
+Each mention selects one reading and one outgoing typed link or null. Selected
+links require identical canonical keys and resolved values. RESTATES requires
+equal values; CHANGES requires distinct values. Self-links are infeasible.
+Null does not suppress contradictory source readings or assert their truth.
+There is no universal same-key non-overlap constraint: incompatible reports
+can remain separate with null links without manufacturing a scope split.
+
+RESTATES connected components encode the equality graph order h. Exact start
+or end readings within a component must agree; their combined observations
+must fit the combined exact interval. CHANGES edges form a directed acyclic
+graph between these components, encoding strict h order. All ancestral paths,
+including those through unknown dates, must respect known exact boundaries and
+observation order. Known predecessor intervals cannot overlap a linked later
+episode. Gaps are allowed. Pure RESTATES cycles are allowed (equality); a cycle
+containing CHANGES is forbidden. This prevents a returning A episode from
+being collapsed into the first A across an accepted B transition.
+
+CORRECTS identifies a specific assertion candidate under the same key. Its
+source must be at least as late as the target source in recorded availability.
+Same-day references require a nonempty reference_span in the correcting source.
+The span validates recorded evidence offsets, not entailment or the quality of
+the reference resolver. Correction dependencies are acyclic. Correction links
+may revise an exact date or value; they are not constrained as state changes.
+
+Algorithms, determinism, and limits
+
+Independent: select the highest unary reading for each mention, ignoring link
+scores; freeze these readings and exactly optimize the same link objective.
+Named reading penalties remain part of the reported full objective but do not
+enter its explicitly unary-only reading initializer. A contextual-unary
+baseline requires a real contextual scorer upstream, with the same frozen
+unaries then supplied to all competing methods. No such scorer is claimed here.
+
+Iterative: initialize independently; sweep in sorted mention-ID order, trying
+each alternative reading. Reoptimize ALL links exactly for each trial, then
+accept a strictly improving full-objective move. This is stronger than holding
+links fixed during a reading update. Repeat until no improvement or max_sweeps.
+Optional seeded restarts sample the same candidate sets; retain the best result
+over all runs. Equal-score reading moves do not occur. A sweep limit returns the
+best incumbent with coordinate_converged=false and stop_reason=sweep_limit.
+Convergence of every restart does not certify global optimality.
+
+Joint: enumerate every reading assignment and every locally eligible primary
+link/null combination, reject graph/date-infeasible assignments, and retain the
+maximum. All methods use exactly the same evaluator and frozen scores. Exact
+ties use lexicographic reading/link IDs with null first; input order does not
+change decisions. Conditional link optima are cached by the full reading tuple
+within one decoding call; no cross-prefix cache exists.
+
+The conservative common state ceiling is:
+
+  product_i number_of_readings_i * product_i (1 + outgoing_link_candidates_i).
+
+It deliberately overcounts links incompatible with selected readings. Defaults
+are at most 8 mentions, 5 readings per mention, 250,000 states, 50 coordinate
+sweeps, and 10 optional restarts. Every method rejects a problem above the same
+ceiling. Consequently this implementation cannot measure a pipeline's ability
+to scale beyond the exhaustive reference limit. No component splitting, beam,
+solver dependency, wall-time timeout, or incremental inference is implemented.
+
+Diagnostics record the common ceiling, distinct reading assignments evaluated,
+actual link combinations considered, feasible combinations, elapsed time,
+prefix digest, stop reason, and restart objectives. Joint returns global_optimal
+and an objective optimality_gap of 0. Other methods report no global certificate
+and no inferred gap. Single diagnostic timings are not matched-budget evidence.
+
+Output boundary
+
+Result contains selected reading/link IDs and RESTATES components. Isolated
+resolved mentions remain components; unresolved mentions do not. Corrections
+remain explicit selected links and original assertions stay in the ledger.
+The output does NOT apply corrections, close intervals, construct answer
+support, or certify agreement across plausible interpretations. Do not feed
+restatement_components to a QA system as if they were corrected final episodes.
+A later adapter must carry uncertainty and provenance into the memory/answer
+contract and be evaluated independently.
+
+Authored diagnostics and observed results
+
+Six replay cases verify expected objective values and recheck each returned
+assignment with the shared evaluator, for 48 passed contract checks:
+
+  Case                       Independent  Iterative  10 restarts  Exact joint
+  Two-reading local trap          2            2           3           3
+  Clear no-benefit control        5            5           5           5
+  Single-reading repair           2            4           4           4
+  Misleading pair score           2            2           3           3
+  Irrelevant pair score           2            2           2           2
+  A,B,B,A reversion              19           19          19          19
+
+These are arbitrary objective units, not accuracy scores. The misleading-score
+case intentionally reuses the trap's identical candidate problem but gives the
+opposite diagnostic identity labels. Independent/ordinary iterative match both
+authored labels, while joint/restarted iterative match neither. It demonstrates
+that better optimization cannot repair wrong scores or establish correctness;
+it is not a separate natural history or measured error rate. The reversion
+case creates components {a}, {b,c}, {d}. The largest of these tiny problems has
+a conservative ceiling of 128 states, far below the configured ceiling.
+
+The 24 unit tests additionally cover change cycles through restatement
+components, permissible equality cycles, same-day and cyclic corrections,
+source ordering, date revisions, missing targets, unresolved readings, scope
+separation, transitive date conflicts, overlapping reports, unknown boundaries,
+prospective dates, report/effective order, declared future context, shuffled
+inputs, named penalties, invalid metadata, and exact-search ceiling rejection.
+
+Research implication
+
+The executable decoder supplies a feasibility/objective reference and a fair
+small-component comparator. Its authored trap motivates testing joint updates,
+while its successful restarts and misleading-score control make the decision
+gate explicit: natural candidate recall, score quality, uncertainty handling,
+and a strong contextual/iterative baseline must determine whether joint
+inference earns a manuscript contribution. No paper benefit is claimed.
+
+
+v0.4 extension (2026-10-02)
+All methods accept the same optional pure feasibility_check for conditional
+bounded temporal constraints; use pipeline.decode_cache for shared validation.
+Independent initialization includes configured local reading penalties, matching
+the unary part of the shared objective. This fixes a potential artificial gain.
+The callback contract preserves a feasible all-null link assignment for every
+valid reading vector; arbitrary globally infeasible vectors are unsupported.
+See coupled_semantics.txt and progress_v0_4.txt for semantics and measured limits.

@@ -1,0 +1,77 @@
+SOURCE-ONLY MIGRATION TO BOUNDED TEMPORAL CLAIMS v0.3
+
+You receive a source-prefix input, one frozen v0.2 extraction pass, and this
+schema. Do not read any questions, labels, predictions, other passes or later
+sources. Do not browse. This migration is a further model-assisted semantic
+interpretation, not a deterministic format conversion or independent human
+annotation. Preserve raw extraction outputs untouched. Do not assume agreement
+with a raw field establishes its truth when source text conflicts with it.
+
+Produce one derived JSON file with:
+schema_version "0.3", pass_id, provenance_kind "source_only_model_assisted_migration",
+backend {model_revision:null,decoding_settings:null,pinned:false,
+kind:"conversational_model_agent"}, prefix_input_sha256, raw_extraction_sha256,
+prompt_sha256, claims, aliases, change_log, limitations.
+
+Each claim uses EXACT fields:
+claim_id, raw_assertion_id, source_id, subject, relation, scope, value,
+polarity (positive or negative), modality (reported_actual, announced_future,
+conditional, or uncertain), reported_at (ISO day or null), start {lower,upper},
+end {lower,upper}, state_observed_at (list of ISO days), evidence_spans
+[{start,end,quote}], context_source_ids, derivation_note, role_qualifier,
+operation (ASSERT; other raw update labels may be retained but are provenance
+only; no CORRECTS unless truly explicit, in which case record unsupported).
+
+Bounds lower and upper are inclusive possible dates of a latent endpoint;
+occupancy/non-occupancy holds over [start,end), with end exclusive. Null means
+unbounded/unknown, never a guessed date. Exact endpoint has equal lower/upper.
+Each claim denotes one continuous interval in the supplied account. An observed
+state constrains start <= observation < end; it does not date appointment.
+Membership must be valid for every admissible endpoint pair before it is called
+certain. Preserve genuine uncertainty over last-service-day vs first-out-day
+using bounded endpoints; explain any interpretation. Year-only appointment can
+be bounded by Jan 1 and Dec 31 of that year without choosing either exact day.
+
+Polarity and modality are independent: an announced future departure is a
+negative announced_future claim. Its interval is non-occupancy after cessation,
+not positive service beginning then. A raw positive occupancy claim with a
+future end can remain reported_actual, with that endpoint explicitly described
+as scheduled/announced in derivation_note. This prototype cannot encode separate
+modality for each endpoint; log this representational limitation where relevant.
+
+reported_at is when the statement was made, distinct from archive availability.
+state_observed_at is when the source asserts the role actually holds (or does
+not hold for a negative claim). Do not put report dates into state_observed_at
+for a future appointment or prospective interim promise. Source-present-tense
+roles may use the document's dated observation if directly justified. If a source
+only describes appointment approved with future effectiveness, leave observations
+empty. Later certifications establish only their dated observations, not exact
+appointments or uninterrupted occupancy back to earlier reports.
+
+Use same-source references to resolve defined Effective Date where justified.
+If a source explicitly says a role is retained during another stated interval,
+an endpoint bound may express that guarantee without inventing the eventual end.
+Mark the announced nature of any projected guarantee in derivation_note.
+Do not add implicit indefinite persistence. Unknown endpoints remain unknown.
+If evidence requires another eligible source, list it in context_source_ids.
+
+Keep the raw subject/relation/scope/value labels when supported. Subject naming
+differences may be represented by aliases below. Every raw assertion ID must
+have one or more derived claims OR a documented exclusion in change_log with
+source rationale. If changing polarity or interpreting vague boundaries, record
+that explicitly; do not characterize the migration as unchanged extraction.
+
+Aliases: source-supported entity names only, no answer strings or gold IDs.
+Each alias has EXACT fields subject, alias, source_id, evidence_spans (same
+offset schema). subject must equal a claim's subject. Evidence must support that
+the alias names that subject within this history. Include the canonical name
+where supported, and short corporate names that actually occur in the source.
+An identical surface alias may refer to multiple subjects; never silently merge
+them. No full-corpus alias discovery or future source context is permitted.
+
+Evidence offsets are zero-based Python Unicode codepoints, end exclusive, into
+the exact source text field. Verify every span. Fields must have evidence for
+substantive inferences, including year bounds, report time, observation and
+endpoint references. Use short exact spans that preserve required context.
+Give full source-local reasoning in derivation_note. No questions or confidence
+probabilities, and no claims of human adjudication or pinned-model reproducibility.

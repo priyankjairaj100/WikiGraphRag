@@ -1,0 +1,14 @@
+{
+  "purpose": "Test bounded result-log return before any model/GPU workload",
+  "operation": "run",
+  "image": "python:3.12",
+  "flavor": "cpu-basic",
+  "timeout": "3m",
+  "hourly_price_usd": 0.01,
+  "max_estimated_hardware_usd": 0.0005,
+  "payload_bytes": 16384,
+  "script": "import base64,hashlib,json,random\nr=random.Random(17)\npayload=bytes(r.randrange(256) for _ in range(16384))\nencoded=base64.b64encode(payload).decode('ascii')\nchunks=[encoded[i:i+1024] for i in range(0,len(encoded),1024)]\nfor i,chunk in enumerate(chunks): print('TEMPORAL_PROBE_CHUNK '+json.dumps({'i':i,'n':len(chunks),'data':chunk}),flush=True)\nprint('TEMPORAL_PROBE_DONE '+json.dumps({'bytes':len(payload),'sha256':hashlib.sha256(payload).hexdigest(),'chunks':len(chunks)}),flush=True)\n",
+  "credentials_in_script": false,
+  "source_data_sent": false,
+  "public_ports": []
+}

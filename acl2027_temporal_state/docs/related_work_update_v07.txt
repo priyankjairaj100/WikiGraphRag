@@ -1,0 +1,233 @@
+RELATED-WORK COMPARISON — v0.7
+Primary-source checks: 2026-10-02. This is a targeted update, not an exhaustive
+review, a systematic search, or a novelty certificate. Publication status below
+is the status verified on the cited record; an arXiv entry is not treated as a
+peer-reviewed publication. No reported external result has been reproduced here.
+The companion paper/references_v07.bib contains verified citation metadata.
+
+Research implication
+--------------------
+The broad temporal-memory pitch is already occupied. Source provenance, multiple
+clocks, temporally valid graph facts, supersession, incremental ingestion, and
+evaluation with obsolete information all have close precedents. A defensible
+route remains a testable, narrower question: does jointly choosing competing
+source interpretations and update targets improve record reconstruction when
+strong contextual systems commit to interpretations before their temporal and
+correction consequences are considered? That is a working hypothesis, not a
+discovered gap or an established contribution.
+
+Eight focused references: six recent systems and two joint-inference precedents
+-------------------------------------------------------------------------------
+[R1] Fengrong Wan, Chengcan Wu, and Ningtao Lyu. 2026.
+SodaMem: Evidence-Grounded Temporal Graph Memory for LLM Agents.
+arXiv:2608.08055v1 (8 August 2026).
+https://arxiv.org/abs/2608.08055
+https://arxiv.org/html/2608.08055v1
+DOI: 10.48550/arXiv.2608.08055
+Read: definitions, ingest/store sections, and evaluation caveats in the abstract.
+Overlap: FactEvents carry modality, entity roles, provenance spans, status, and
+mention/occurrence/validity times. Ingestion rejects unmatched source spans;
+supersession closes an older competing subject-predicate fact's validity.
+Typed update edges and a planner-reader loop support evidence-based answers.
+Implication for us: mandatory spans, separated clocks, and typed updates cannot
+carry the novelty claim. Test an explicit correction of a previously erroneous
+assertion separately from a real-world transition that ends an earlier valid
+state. Whether this distinction yields a new method requires a direct semantic
+and implementation comparison, not merely different relation names.
+Evaluation caution: its abstract discloses best-of-three selection, the same
+model as reader and judge, and compiled cross-system cost comparisons. Do not
+treat its headline score as a matched experimental target for our pilot.
+
+[R2] Zitong Shi, Yixuan Tang, and Anthony Kum Hoe Tung. 2026.
+A-TMA: Decoupling State-Aware Memory Failures in Long-Term Agent Memory.
+arXiv:2607.01935v2 (2 July; revised 8 July 2026).
+https://arxiv.org/abs/2607.01935
+https://arxiv.org/html/2607.01935v2
+DOI: 10.48550/arXiv.2607.01935
+Read: sections 3–4 and benchmark description.
+Overlap: retains old/current/transition states and typed relations; a learned
+Sentry proposes suspicious same-slot pairs, a Judge audits them, and a commit
+updates state. Compatible refinements can coexist. Evaluation separates bank,
+retrieval, and answer failures and includes conflict-enriched LTP.
+Implication for us: state-preserving updates, identity-sensitive pair proposal,
+and stage-specific diagnostics are direct precedents. A joint-inference claim
+must outperform a strong proposal/audit/commit baseline under equal source
+access; a correction benchmark alone must be distinguished from LTP. Our
+potential contrast is revisiting alternative interpretations jointly with
+multiple update links and bounded time constraints. This is an inference about
+the comparison to perform, not a claim that A-TMA cannot express those cases.
+
+[R3] Miao Su, Yucan Guo, Zhongni Hou, Long Bai, Zixuan Li, Yufei Zhang, Guojun Yin,
+Wei Lin, Xiaolong Jin, Jiafeng Guo, and Xueqi Cheng. 2026.
+Beyond Dialogue Time: Temporal Semantic Memory for Personalized LLM Agents.
+arXiv:2601.07468v2 (12 January; revised 2 September 2026).
+https://arxiv.org/abs/2601.07468
+https://arxiv.org/html/2601.07468v2
+DOI: 10.48550/arXiv.2601.07468
+Read: sections 3.2–3.5.
+Overlap: semantic occurrence time differs from dialogue time. Episodic temporal
+facts support durative topics/personas; retrieval uses temporal constraints.
+Online graph maintenance provides DUPLICATE, ADD, INVALIDATE, and UPDATE
+operations with valid/invalid times, followed by duration consolidation.
+Implication for us: occurrence/report separation and duration-aware memory are
+established design axes. Compare uncertainty-preserving endpoint bounds and
+source correction semantics explicitly against point/interval extraction and
+consolidation. Different data domains alone do not establish a methodological
+advance. The paper's durative user summaries are not automatically equivalent
+to our single-valued factual episodes; this difference needs task alignment.
+
+[R4] Preston Rasmussen, Pavlo Paliychuk, Travis Beauvais, Jack Ryan, and Daniel
+Chalef. 2025. Zep: A Temporal Knowledge Graph Architecture for Agent Memory.
+arXiv:2501.13956v1 (20 January 2025).
+https://arxiv.org/abs/2501.13956
+https://arxiv.org/html/2501.13956v1
+DOI: 10.48550/arXiv.2501.13956
+Read: sections 2.1–2.2.3 and retrieval/evaluation setup.
+Overlap: Graphiti resolves entities, deduplicates facts, retains source links,
+and separates transaction time from fact validity. An LLM compares new and
+related edges for contradictions; temporally overlapping contradictions close
+old validity at the incoming fact's valid time, prioritizing newer information.
+Implication for us: entity resolution plus temporal graph updates is a concrete
+baseline, not a new combination. A useful challenge is distinguishing newer
+reports of old events, future plans, same-authority corrections, and ordinary
+state changes. We need matched evidence access and measured accuracy rather
+than an assertion that our explicit constraints must be better.
+
+[R5] Jiale Han, Austin Cheung, Yubai Wei, Zheng Yu, Xusheng Wang, Bing Zhu, and
+Yi Yang. 2025. RAG Meets Temporal Graphs: Time-Sensitive Modeling and Retrieval
+for Evolving Knowledge. arXiv:2510.13590v1 (15 October 2025).
+https://arxiv.org/abs/2510.13590
+https://arxiv.org/html/2510.13590v1
+DOI: 10.48550/arXiv.2510.13590
+Read: temporal graph construction/update and incremental evaluation sections.
+Overlap: TG-RAG combines timestamped fact edges with a hierarchical time graph;
+incoming documents update temporal facts and affected time summaries. ECT-QA
+evaluates a base corpus and an incrementally enlarged corpus, including stability
+on old questions and performance on new questions.
+Implication for us: a growing document stream, temporal GraphRAG, or update-cost
+measurement is not sufficient novelty. Our proposed stream should isolate
+reading/episode/correction-target uncertainty, preserve bounded times and
+distinguish delivery from event time. Joint inference must earn a measurable
+accuracy-cost advantage beyond time-aware retrieval and incremental summaries.
+
+[R6] Jie Ouyang, Tingyue Pan, Mingyue Cheng, Ruiran Yan, Yucong Luo, Jiaying Lin,
+and Qi Liu. 2025. HoH: A Dynamic Benchmark for Evaluating the Impact of Outdated
+Information on Retrieval-Augmented Generation.
+ACL 2025, long papers, pages 6036–6063.
+https://aclanthology.org/2025.acl-long.301/
+https://aclanthology.org/2025.acl-long.301.pdf
+DOI: 10.18653/v1/2025.acl-long.301
+Read: abstract and factual-change/QA-construction description (Figure 2).
+Overlap: a token-diff and LLM pipeline extracts factual changes from Wikipedia
+versions, creates evolving QA, and evaluates interference from obsolete evidence
+that coexists with current information.
+Implication for us: public changing facts and old/new conflicting answers have a
+direct ACL precedent. Benchmark value would require a verified additional task,
+such as distinguishing statement correction from event change or preserving
+announced versus observed state. Version differences do not by themselves prove
+either interpretation. Control for answer leakage during candidate generation,
+and compare against the relevant existing task instead of claiming a first
+dynamic-fact benchmark.
+
+[R7] Rujun Han, Qiang Ning, and Nanyun Peng. 2019.
+Joint Event and Temporal Relation Extraction with Shared Representations and
+Structured Prediction. EMNLP-IJCNLP 2019, pages 434–444.
+https://aclanthology.org/D19-1041/
+https://aclanthology.org/D19-1041.pdf
+DOI: 10.18653/v1/D19-1041
+Read: introduction and sections 3.1–3.3.
+Overlap: shared neural representations score event/non-event labels and temporal
+relations. A neural structured SVM and integer linear program combine local
+scores with one-label, event-relation consistency, symmetry, and transitivity
+constraints. Relation evidence can revise an event-extraction decision, directly
+addressing pipeline error propagation.
+Implication for us: jointly selecting local interpretations and temporal links,
+using a global additive score and constraints, is not a new algorithmic idea.
+Our richer source-claim alternatives and correction/support semantics require
+an explicit formal difference and a measured benefit. Adapt an ILP or other
+standard constrained structured predictor to the same graph as a solver baseline;
+if it matches our semantics and outcomes, describe that equivalence honestly.
+The paper handles event detection, not canonical entity identity; do not conflate
+these tasks or infer that all of our proposed update semantics are already solved.
+
+[R8] Qiang Ning, Zhili Feng, Hao Wu, and Dan Roth. 2018.
+Joint Reasoning for Temporal and Causal Relations.
+ACL 2018, long papers, pages 2278–2288.
+https://aclanthology.org/P18-1212/
+https://aclanthology.org/P18-1212.pdf
+DOI: 10.18653/v1/P18-1212
+Read: introduction, official abstract, and stated constraint families.
+Overlap: constrained conditional models combine temporal and causal predictions
+in an integer linear program. Symmetry, temporal transitivity, and cause-before-
+effect constraints couple the predictions.
+Implication for us: coupling multiple relation families through temporal
+constraints is also established. Replacing causality with revision links may
+constitute a task/formalization extension, but does not by itself establish a
+new inference method. Show why correction-dependent activation, support
+withdrawal, uncertain intervals, or changing identity require a nontrivial
+extension and beat a straightforward constrained-prediction adaptation. No
+negative claim about the expressive power of the older framework follows from
+its different application.
+
+Classical foundations that must be credited
+-------------------------------------------
+[C1] Rina Dechter, Itay Meiri, and Judea Pearl. 1991. Temporal constraint
+networks. Artificial Intelligence 49, pages 61–95.
+DOI: 10.1016/0004-3702(91)90006-6
+https://www.sciencedirect.com/science/article/pii/0004370291900066
+Author bibliography: https://ics.uci.edu/~dechter/new_site/publications.html
+The author bibliography and publisher search record verify the citation.
+Temporal constraint networks are a classical foundation, not our algorithmic
+contribution. Our bounded difference-constraint feasibility layer should be
+described as an implementation of that established family. This check did not
+re-audit the full original proof or all later temporal-constraint algorithms.
+
+[C2] Jon Doyle. 1979. A truth maintenance system. Artificial Intelligence 12,
+pages 231–272. DOI: 10.1016/0004-3702(79)90008-0
+https://www.sciencedirect.com/science/article/pii/0004370279900080
+Author bibliography: https://groups.csail.mit.edu/medg/ftp/doyle/
+Contemporaneous MIT report, AIM-521 (June 1979):
+https://dspace.mit.edu/entities/publication/5377b306-4ecc-4687-b1f5-78cbb4a0543a
+The author bibliography verifies the journal citation; the MIT report describes
+maintaining reasons for beliefs, revising assumptions, and dependency-directed
+backtracking. Dependency support and withdrawal have long precedents. Our
+restricted correction policy is not a general truth-maintenance system and
+should not be sold as inventing belief revision.
+
+Decisions for the next empirical gate
+------------------------------------
+1. Keep the current shared-cache exact small-instance solver as a reference
+   oracle for the specified objective. Exhaustive enumeration, classical temporal
+   closure, reproducible scores, and support withdrawal are implementation assets.
+   None presently establishes a new inference algorithm. R7–R8 are direct
+   precedents for learned local scores coupled by structured temporal inference.
+2. Test candidate/update coupling against three distinct competitors: strong
+   contextual extraction with conditional relation optimization; iterative
+   source-based verification; and temporal memory ingestion with entity/fact
+   resolution and update auditing. Align tasks and evidence, then record any
+   adaptation instead of presenting adapted replicas as original systems.
+3. Separate algorithm evidence from representation evidence. If source-aware
+   correction semantics prevent errors even when all methods agree on readings,
+   the result concerns representation or update policy. It does not establish a
+   joint search advantage. If a stronger scorer removes the objective gap, report
+   that finding rather than hiding the baseline.
+4. Treat the controlled source-stream protocol as an evaluation design. HoH,
+   ECT-QA, and LTP already address related changing/conflicting information. The
+   new stream needs a concrete additional distinction, defensible labels,
+   candidate coverage, and routine as well as enriched cases. Delivery order
+   defines the experiment; it does not certify historical public availability.
+5. Only propose scalable algorithm work after natural instances exhibit useful
+   coupling. Then measure accuracy, abstention, calibration, runtime, and memory
+   at matched source/model budgets. A better objective value alone remains an
+   optimization result. No acceptance or publication prediction follows here.
+
+Remaining review gaps
+---------------------
+This pass covers temporal memory, dynamic RAG, and two direct structured temporal
+inference precedents. Before claiming novelty, extend the audit of joint entity
+resolution and event coreference, modern temporal relation extraction, probabilistic
+temporal databases, assumption-based truth maintenance, belief revision, temporal
+knowledge-base population, uncertainty-aware structured prediction, and later
+versions/code of the listed systems. Search absence is not evidence of absence.
+The eight-paper shortlist is a baseline-planning aid, not a statement that every
+listed system must be reproduced wholesale for this narrower task.

@@ -1,0 +1,1122 @@
+{
+  "schema_version": "0.3",
+  "pass_id": "A",
+  "provenance_kind": "source_only_model_assisted_migration",
+  "backend": {
+    "model_revision": null,
+    "decoding_settings": null,
+    "pinned": false,
+    "kind": "conversational_model_agent"
+  },
+  "prefix_input_sha256": "931dfd99c99c7fb0abb049f820221a3ed372fcb435c9e7326f973c60d07404b6",
+  "raw_extraction_sha256": "c12e59218cf24c11b561e29d9836f5493086ec02fb7d61bbf65dfec01da9b0b1",
+  "prompt_sha256": "87b39eeaa3fb4fdc0843cb24092f78a4c66ee4ef211f09672657b5d183064e5f",
+  "claims": [
+    {
+      "claim_id": "A01-v03",
+      "raw_assertion_id": "A01",
+      "source_id": "sbux_8k_20240814",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Brian Niccol",
+      "polarity": "positive",
+      "modality": "announced_future",
+      "reported_at": "2024-08-13",
+      "start": {
+        "lower": "2024-09-09",
+        "upper": "2024-09-09"
+      },
+      "end": {
+        "lower": null,
+        "upper": null
+      },
+      "state_observed_at": [],
+      "evidence_spans": [
+        {
+          "start": 2292,
+          "end": 2593,
+          "quote": "On August 13, 2024, Starbucks Corporation (the “Company” or “Starbucks”) announced that the board of directors of the Company (the “Board”) approved the appointment of Brian Niccol as chief executive officer of the Company and chairman of the Board, effective September 9, 2024 (the “Effective Date”)."
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The source explicitly dates the announcement August 13 and the CEO appointment’s effectiveness September 9, 2024. The appointment approval does not establish actual service on either the announcement date or the August 14 filing date. The September 9 start is announced, not subsequently verified. No end is stated; its bounds remain unknown.",
+      "role_qualifier": null,
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A02-v03",
+      "raw_assertion_id": "A02",
+      "source_id": "sbux_8k_20240814",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Laxman Narasimhan",
+      "polarity": "negative",
+      "modality": "reported_actual",
+      "reported_at": "2024-08-13",
+      "start": {
+        "lower": "2024-08-12",
+        "upper": "2024-08-12"
+      },
+      "end": {
+        "lower": null,
+        "upper": null
+      },
+      "state_observed_at": [
+        "2024-08-13"
+      ],
+      "evidence_spans": [
+        {
+          "start": 7309,
+          "end": 7498,
+          "quote": "On August 13, 2024, the Company announced that effective as of August 12, 2024, Laxman Narasimhan would no longer serve as the Company’s chief executive officer or as a member of the Board."
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The August 13 announcement reports that Narasimhan would no longer serve effective as of August 12. The start is the beginning of non-occupancy, not an appointment. Because the stated cessation precedes the announcement, this is reported actual non-occupancy, observed as of that announcement. The raw August 14 observation is replaced by the expressly dated statement. Its negative-interval end is unknown; no indefinite persistence or correction of another source is asserted.",
+      "role_qualifier": null,
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A03-v03",
+      "raw_assertion_id": "A03",
+      "source_id": "sbux_8k_20240814",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Rachel Ruggeri",
+      "polarity": "positive",
+      "modality": "reported_actual",
+      "reported_at": "2024-08-14",
+      "start": {
+        "lower": null,
+        "upper": null
+      },
+      "end": {
+        "lower": "2024-09-09",
+        "upper": "2024-09-09"
+      },
+      "state_observed_at": [
+        "2024-08-14"
+      ],
+      "evidence_spans": [
+        {
+          "start": 7889,
+          "end": 8100,
+          "quote": "In connection with the chief executive officer transition described above, the Board appointed Rachel Ruggeri, chief financial officer of the Company, as interim chief executive officer until the Effective Date."
+        },
+        {
+          "start": 2292,
+          "end": 2593,
+          "quote": "On August 13, 2024, Starbucks Corporation (the “Company” or “Starbucks”) announced that the board of directors of the Company (the “Board”) approved the appointment of Brian Niccol as chief executive officer of the Company and chairman of the Board, effective September 9, 2024 (the “Effective Date”)."
+        },
+        {
+          "start": 10521,
+          "end": 10543,
+          "quote": "Dated: August 14, 2024"
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The filing says the Board appointed Ruggeri interim CEO, without a prospective start qualifier, and is signed August 14. This supports an August 14 observation of the interim role; it does not supply her appointment day. The unknown start is constrained by that observation, not replaced with the predecessor’s cessation or the announcement date. Same-source Effective Date is explicitly September 9, 2024, when Niccol’s role starts. “Until” is interpreted as an exclusive September 9 end in this stated transition. That endpoint is scheduled at the time of reporting; reported_actual describes the current role and the schema cannot separately mark the endpoint’s announced modality.",
+      "role_qualifier": "interim",
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A04-v03",
+      "raw_assertion_id": "A04",
+      "source_id": "sbux_8k_20240814",
+      "subject": "Starbucks Corporation",
+      "relation": "chief financial officer",
+      "scope": "corporation",
+      "value": "Rachel Ruggeri",
+      "polarity": "positive",
+      "modality": "reported_actual",
+      "reported_at": "2024-08-14",
+      "start": {
+        "lower": "2021-01-01",
+        "upper": "2021-12-31"
+      },
+      "end": {
+        "lower": "2024-09-09",
+        "upper": null
+      },
+      "state_observed_at": [
+        "2024-08-14"
+      ],
+      "evidence_spans": [
+        {
+          "start": 7889,
+          "end": 8100,
+          "quote": "In connection with the chief executive officer transition described above, the Board appointed Rachel Ruggeri, chief financial officer of the Company, as interim chief executive officer until the Effective Date."
+        },
+        {
+          "start": 8101,
+          "end": 8224,
+          "quote": "Ms. Ruggeri will also remain in her current position with the Company while serving as the interim chief executive officer."
+        },
+        {
+          "start": 8225,
+          "end": 8381,
+          "quote": "Ms. Ruggeri, age 54, joined Starbucks in 2001 as a member of the accounting team and was named executive vice president and chief financial officer in 2021."
+        },
+        {
+          "start": 2542,
+          "end": 2593,
+          "quote": "effective September 9, 2024 (the “Effective Date”)."
+        },
+        {
+          "start": 10521,
+          "end": 10543,
+          "quote": "Dated: August 14, 2024"
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The source identifies Ruggeri as current CFO and says she was named CFO in 2021. The latent start is therefore bounded by January 1 and December 31, 2021, without selecting a day. The signed August 14 filing supports a current-role observation. It expressly promises that she will remain in her current position while serving as interim CEO; that interim interval ends at the same-source Effective Date, September 9, 2024. Interpreting that end as exclusive, the announced retention guarantee supplies a CFO end lower bound of September 9, while the eventual end and upper bound remain unknown. The lower bound is a projected guarantee rather than verification of future service. A single modality cannot separately encode that future guarantee and the reported actual current role.",
+      "role_qualifier": null,
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A05-v03",
+      "raw_assertion_id": "A05",
+      "source_id": "sbux_archived_press_exhibit",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Brian Niccol",
+      "polarity": "positive",
+      "modality": "announced_future",
+      "reported_at": "2024-08-13",
+      "start": {
+        "lower": "2024-09-09",
+        "upper": "2024-09-09"
+      },
+      "end": {
+        "lower": null,
+        "upper": null
+      },
+      "state_observed_at": [],
+      "evidence_spans": [
+        {
+          "start": 404,
+          "end": 547,
+          "quote": "SEATTLE (August 13, 2024) – Starbucks (NASDAQ: SBUX) today announced that Brian Niccol has been appointed chairman and chief executive officer."
+        },
+        {
+          "start": 548,
+          "end": 603,
+          "quote": "Niccol will start in his new role on September 9, 2024."
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The August 13 dateline dates the announcement. Although appointment is described as completed, the next sentence explicitly says Niccol will start in his new role September 9, 2024. Actual occupancy is not observed on the report day. The announced interval starts September 9 and has an unknown end.",
+      "role_qualifier": null,
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A06-v03",
+      "raw_assertion_id": "A06",
+      "source_id": "sbux_archived_press_exhibit",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Laxman Narasimhan",
+      "polarity": "negative",
+      "modality": "reported_actual",
+      "reported_at": "2024-08-13",
+      "start": {
+        "lower": "2024-08-13",
+        "upper": "2024-08-13"
+      },
+      "end": {
+        "lower": null,
+        "upper": null
+      },
+      "state_observed_at": [
+        "2024-08-13"
+      ],
+      "evidence_spans": [
+        {
+          "start": 2325,
+          "end": 2442,
+          "quote": "Laxman Narasimhan is stepping down from his role as ceo and as a member of the Starbucks board with immediate effect."
+        },
+        {
+          "start": 404,
+          "end": 547,
+          "quote": "SEATTLE (August 13, 2024) – Starbucks (NASDAQ: SBUX) today announced that Brian Niccol has been appointed chairman and chief executive officer."
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The release says Narasimhan is stepping down with immediate effect. The explicit August 13 dateline anchors both the statement and its source-specific cessation reading. This interval is non-occupancy from August 13, observed that day; it is not a positive service interval. The end of non-occupancy is unknown. This source-local reading remains separate from the filing’s August 12 wording, and neither statement is an explicit correction.",
+      "role_qualifier": null,
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A07-v03",
+      "raw_assertion_id": "A07",
+      "source_id": "sbux_archived_press_exhibit",
+      "subject": "Starbucks Corporation",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Rachel Ruggeri",
+      "polarity": "positive",
+      "modality": "announced_future",
+      "reported_at": "2024-08-13",
+      "start": {
+        "lower": null,
+        "upper": null
+      },
+      "end": {
+        "lower": "2024-09-09",
+        "upper": "2024-09-09"
+      },
+      "state_observed_at": [],
+      "evidence_spans": [
+        {
+          "start": 604,
+          "end": 697,
+          "quote": "Starbucks chief financial officer, Rachel Ruggeri, will serve as interim ceo until that time."
+        },
+        {
+          "start": 548,
+          "end": 603,
+          "quote": "Niccol will start in his new role on September 9, 2024."
+        },
+        {
+          "start": 59,
+          "end": 102,
+          "quote": "Press Release for August 13, 2024_5:05am PT"
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The August 13 release says Ruggeri “will serve” as interim CEO, so the promise supplies no dated observation of actual interim occupancy. No interim start day is stated and none is inferred from the immediate predecessor departure. “Until that time” refers to the immediately preceding September 9, 2024 start of Niccol’s role. The prospective interim interval is interpreted to end exclusively at that transition date. Its unknown start is not silently equated with the release day.",
+      "role_qualifier": "interim",
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A08-v03",
+      "raw_assertion_id": "A08",
+      "source_id": "sbux_archived_press_exhibit",
+      "subject": "Starbucks Corporation",
+      "relation": "chief financial officer",
+      "scope": "corporation",
+      "value": "Rachel Ruggeri",
+      "polarity": "positive",
+      "modality": "reported_actual",
+      "reported_at": "2024-08-13",
+      "start": {
+        "lower": "2021-01-01",
+        "upper": "2021-12-31"
+      },
+      "end": {
+        "lower": null,
+        "upper": null
+      },
+      "state_observed_at": [
+        "2024-08-13"
+      ],
+      "evidence_spans": [
+        {
+          "start": 604,
+          "end": 697,
+          "quote": "Starbucks chief financial officer, Rachel Ruggeri, will serve as interim ceo until that time."
+        },
+        {
+          "start": 4300,
+          "end": 4368,
+          "quote": "Ruggeri is a 23-year Starbucks partner. She has been cfo since 2021."
+        },
+        {
+          "start": 59,
+          "end": 102,
+          "quote": "Press Release for August 13, 2024_5:05am PT"
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The August 13 release identifies Ruggeri as Starbucks CFO and says she has been CFO since 2021. This supports current CFO occupancy on the report day and a continuous tenure in this account beginning at an unknown day within 2021. The start bounds express the entire year rather than an invented January 1 appointment. This source does not expressly guarantee retention of the CFO role throughout the interim CEO interval, so no future CFO endpoint bound is added. The end remains unknown.",
+      "role_qualifier": null,
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A09-v03",
+      "raw_assertion_id": "A09",
+      "source_id": "nike_8k_20240919",
+      "subject": "NIKE, Inc.",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Elliott Hill",
+      "polarity": "positive",
+      "modality": "announced_future",
+      "reported_at": "2024-09-19",
+      "start": {
+        "lower": "2024-10-14",
+        "upper": "2024-10-14"
+      },
+      "end": {
+        "lower": null,
+        "upper": null
+      },
+      "state_observed_at": [],
+      "evidence_spans": [
+        {
+          "start": 2289,
+          "end": 2637,
+          "quote": "On September 19, 2024, NIKE, Inc. (the “Company”) announced that, effective as of October 14, 2024 (the “Effective Date”), the Board of Directors of the Company (the “Board”) has appointed Elliott Hill as President and Chief Executive Officer (“CEO”) of the Company, as a member of the Board and as a member of the Executive Committee of the Board."
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The September 19 announcement explicitly makes Hill’s CEO appointment effective October 14, 2024. Board approval on the report date is not actual service then. The start is an announced future boundary and the end is unknown. The concurrent president and board appointments do not change the retained CEO relation.",
+      "role_qualifier": "also President",
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A10-v03",
+      "raw_assertion_id": "A10",
+      "source_id": "nike_8k_20240919",
+      "subject": "NIKE, Inc.",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "John Donahoe",
+      "polarity": "positive",
+      "modality": "reported_actual",
+      "reported_at": "2024-09-19",
+      "start": {
+        "lower": null,
+        "upper": null
+      },
+      "end": {
+        "lower": "2024-10-14",
+        "upper": "2024-10-14"
+      },
+      "state_observed_at": [
+        "2024-09-19"
+      ],
+      "evidence_spans": [
+        {
+          "start": 3098,
+          "end": 3279,
+          "quote": "On September 19, 2024, the Company also announced that, effective as of the Effective Date, John Donahoe will retire as the Company’s President and CEO and as a member of the Board."
+        },
+        {
+          "start": 8866,
+          "end": 9373,
+          "quote": "On September 19, 2024, the Company entered into a letter agreement with Mr. Donahoe (the “Letter Agreement”), pursuant to which (1) he will continue to serve as President and CEO of the Company until the Effective Date, and (2) as of the Effective Date, he will resign from the Board and any other director, officer, manager, committee member or other positions that he holds with the Company and its subsidiaries (including the Executive Committee of the Board) and begin serving as advisor to the Company."
+        },
+        {
+          "start": 2289,
+          "end": 2637,
+          "quote": "On September 19, 2024, NIKE, Inc. (the “Company”) announced that, effective as of October 14, 2024 (the “Effective Date”), the Board of Directors of the Company (the “Board”) has appointed Elliott Hill as President and Chief Executive Officer (“CEO”) of the Company, as a member of the Board and as a member of the Executive Committee of the Board."
+        },
+        {
+          "start": 9378,
+          "end": 9540,
+          "quote": "Donahoe will remain a full-time non-executive employee of the Company in that role through the date of his retirement on January 31, 2025 (the “Retirement Date”)."
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The September 19 letter agreement says Donahoe will continue serving as President and CEO until the Effective Date, supporting incumbent CEO occupancy on September 19 but no appointment day. Same-source Effective Date is October 14, 2024. His resignation from officer positions and transition to advisor “as of” that date support an exclusive October 14 service end. This end is announced, not realized by the supplied source. The January 31, 2025 retirement concerns later advisory/non-executive employment and is not a CEO boundary. The claim remains reported_actual for current occupancy although its endpoint is scheduled; the schema has no separate endpoint modality.",
+      "role_qualifier": "also President",
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A10-v03-departure",
+      "raw_assertion_id": "A10",
+      "source_id": "nike_8k_20240919",
+      "subject": "NIKE, Inc.",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "John Donahoe",
+      "polarity": "negative",
+      "modality": "announced_future",
+      "reported_at": "2024-09-19",
+      "start": {
+        "lower": "2024-10-14",
+        "upper": "2024-10-14"
+      },
+      "end": {
+        "lower": null,
+        "upper": null
+      },
+      "state_observed_at": [],
+      "evidence_spans": [
+        {
+          "start": 3098,
+          "end": 3279,
+          "quote": "On September 19, 2024, the Company also announced that, effective as of the Effective Date, John Donahoe will retire as the Company’s President and CEO and as a member of the Board."
+        },
+        {
+          "start": 8866,
+          "end": 9373,
+          "quote": "On September 19, 2024, the Company entered into a letter agreement with Mr. Donahoe (the “Letter Agreement”), pursuant to which (1) he will continue to serve as President and CEO of the Company until the Effective Date, and (2) as of the Effective Date, he will resign from the Board and any other director, officer, manager, committee member or other positions that he holds with the Company and its subsidiaries (including the Executive Committee of the Board) and begin serving as advisor to the Company."
+        },
+        {
+          "start": 2289,
+          "end": 2637,
+          "quote": "On September 19, 2024, NIKE, Inc. (the “Company”) announced that, effective as of October 14, 2024 (the “Effective Date”), the Board of Directors of the Company (the “Board”) has appointed Elliott Hill as President and Chief Executive Officer (“CEO”) of the Company, as a member of the Board and as a member of the Executive Committee of the Board."
+        },
+        {
+          "start": 9378,
+          "end": 9540,
+          "quote": "Donahoe will remain a full-time non-executive employee of the Company in that role through the date of his retirement on January 31, 2025 (the “Retirement Date”)."
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "This second derived claim preserves the expressly announced future retirement component of raw A10 separately from its incumbent positive occupancy. The September 19 announcement and same-source Effective Date specify cessation as of October 14, 2024; the letter agreement also moves him out of officer positions and into an advisor role that day. The negative interval begins at this scheduled first day out of the CEO role. No actual future non-occupancy observation or end of non-occupancy is supplied. January 31, 2025 concerns advisory employment, not the end of this negative CEO interval.",
+      "role_qualifier": "also President",
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A11-v03",
+      "raw_assertion_id": "A11",
+      "source_id": "nike_8k_20240919",
+      "subject": "NIKE, Inc.",
+      "relation": "chief financial officer",
+      "scope": "corporation",
+      "value": "Matthew Friend",
+      "polarity": "positive",
+      "modality": "reported_actual",
+      "reported_at": "2024-09-19",
+      "start": {
+        "lower": null,
+        "upper": null
+      },
+      "end": {
+        "lower": null,
+        "upper": null
+      },
+      "state_observed_at": [
+        "2024-09-19"
+      ],
+      "evidence_spans": [
+        {
+          "start": 11793,
+          "end": 11943,
+          "quote": "Date:  | September 19, 2024  | By:  | /s/ Matthew Friend\n |    |    | Matthew Friend\n |    |    | Executive Vice President and Chief Financial Officer"
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The registrant signature block explicitly dates Matthew Friend’s signature September 19, 2024 and identifies him as Executive Vice President and Chief Financial Officer. This is a dated CFO occupancy observation only. Both appointment and eventual cessation remain unknown; the observation constrains their possible order but establishes neither an exact start nor indefinite later service.",
+      "role_qualifier": null,
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A12-v03",
+      "raw_assertion_id": "A12",
+      "source_id": "nike_archived_press_exhibit",
+      "subject": "NIKE, Inc.",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "Elliott Hill",
+      "polarity": "positive",
+      "modality": "announced_future",
+      "reported_at": "2024-09-19",
+      "start": {
+        "lower": "2024-10-14",
+        "upper": "2024-10-14"
+      },
+      "end": {
+        "lower": null,
+        "upper": null
+      },
+      "state_observed_at": [],
+      "evidence_spans": [
+        {
+          "start": 220,
+          "end": 435,
+          "quote": "(Beaverton, OR) -- September 19, 2024 -- The Board of Directors of NIKE, Inc. (NYSE:NKE) announced today that Elliott Hill will become President and Chief Executive Officer of NIKE, Inc., effective October 14, 2024."
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The release’s September 19 dateline and announcement sentence say Hill will become CEO effective October 14, 2024. The report day is not a CEO occupancy observation. The prospective start is explicit and the end is unknown. This release claim remains independent of the filing.",
+      "role_qualifier": "also President",
+      "operation": "ASSERT"
+    },
+    {
+      "claim_id": "A13-v03",
+      "raw_assertion_id": "A13",
+      "source_id": "nike_archived_press_exhibit",
+      "subject": "NIKE, Inc.",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "John Donahoe",
+      "polarity": "positive",
+      "modality": "reported_actual",
+      "reported_at": "2024-09-19",
+      "start": {
+        "lower": null,
+        "upper": null
+      },
+      "end": {
+        "lower": "2024-10-13",
+        "upper": "2024-10-14"
+      },
+      "state_observed_at": [
+        "2024-09-19"
+      ],
+      "evidence_spans": [
+        {
+          "start": 1229,
+          "end": 1403,
+          "quote": "The Board and John Donahoe have decided he will retire from his role as President and Chief Executive Officer and from the NIKE, Inc. Board of Directors effective October 13."
+        },
+        {
+          "start": 220,
+          "end": 435,
+          "quote": "(Beaverton, OR) -- September 19, 2024 -- The Board of Directors of NIKE, Inc. (NYSE:NKE) announced today that Elliott Hill will become President and Chief Executive Officer of NIKE, Inc., effective October 14, 2024."
+        },
+        {
+          "start": 1404,
+          "end": 1503,
+          "quote": "He will remain as an advisor to the company to ensure a smooth transition through January 31, 2025."
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "The September 19 release says Donahoe will retire from “his role” as President and CEO, supporting present incumbent occupancy but no appointment day. The surrounding transition announcement expressly dates October 14, 2024, supporting 2024 as the year of the stated October 13 departure. “Effective October 13” leaves a first-day-out versus last-service-day ambiguity: an exclusive service end can be October 13 or October 14. Both possibilities are preserved in inclusive endpoint bounds. The raw uncertain status is decomposed into reported actual incumbency plus a bounded, announced future end; it is not a statement that the future departure has occurred. January 31, 2025 applies to later advisory service. UNRESOLVED is retained solely as raw provenance, not a state update instruction.",
+      "role_qualifier": "also President",
+      "operation": "UNRESOLVED"
+    },
+    {
+      "claim_id": "A13-v03-departure",
+      "raw_assertion_id": "A13",
+      "source_id": "nike_archived_press_exhibit",
+      "subject": "NIKE, Inc.",
+      "relation": "chief executive officer",
+      "scope": "corporation",
+      "value": "John Donahoe",
+      "polarity": "negative",
+      "modality": "announced_future",
+      "reported_at": "2024-09-19",
+      "start": {
+        "lower": "2024-10-13",
+        "upper": "2024-10-14"
+      },
+      "end": {
+        "lower": null,
+        "upper": null
+      },
+      "state_observed_at": [],
+      "evidence_spans": [
+        {
+          "start": 1229,
+          "end": 1403,
+          "quote": "The Board and John Donahoe have decided he will retire from his role as President and Chief Executive Officer and from the NIKE, Inc. Board of Directors effective October 13."
+        },
+        {
+          "start": 220,
+          "end": 435,
+          "quote": "(Beaverton, OR) -- September 19, 2024 -- The Board of Directors of NIKE, Inc. (NYSE:NKE) announced today that Elliott Hill will become President and Chief Executive Officer of NIKE, Inc., effective October 14, 2024."
+        },
+        {
+          "start": 1404,
+          "end": 1503,
+          "quote": "He will remain as an advisor to the company to ensure a smooth transition through January 31, 2025."
+        }
+      ],
+      "context_source_ids": [],
+      "derivation_note": "This second derived claim preserves raw A13’s explicit prospective departure independently from current positive occupancy. The September 19 release announces retirement effective October 13, with year 2024 supplied by its nearby dated transition sentence. If October 13 is the first day out, non-occupancy begins October 13; if it is the final service day, non-occupancy begins October 14. The start bounds preserve those two readings. No actual future negative-state observation or endpoint for later non-occupancy is supplied. UNRESOLVED is raw provenance only.",
+      "role_qualifier": "also President",
+      "operation": "UNRESOLVED"
+    }
+  ],
+  "aliases": [
+    {
+      "subject": "Starbucks Corporation",
+      "alias": "Starbucks Corporation",
+      "source_id": "sbux_8k_20240814",
+      "evidence_spans": [
+        {
+          "start": 2312,
+          "end": 2364,
+          "quote": "Starbucks Corporation (the “Company” or “Starbucks”)"
+        }
+      ]
+    },
+    {
+      "subject": "Starbucks Corporation",
+      "alias": "Starbucks",
+      "source_id": "sbux_8k_20240814",
+      "evidence_spans": [
+        {
+          "start": 2312,
+          "end": 2364,
+          "quote": "Starbucks Corporation (the “Company” or “Starbucks”)"
+        }
+      ]
+    },
+    {
+      "subject": "Starbucks Corporation",
+      "alias": "Company",
+      "source_id": "sbux_8k_20240814",
+      "evidence_spans": [
+        {
+          "start": 2312,
+          "end": 2364,
+          "quote": "Starbucks Corporation (the “Company” or “Starbucks”)"
+        }
+      ]
+    },
+    {
+      "subject": "Starbucks Corporation",
+      "alias": "STARBUCKS CORPORATION",
+      "source_id": "sbux_8k_20240814",
+      "evidence_spans": [
+        {
+          "start": 10490,
+          "end": 10543,
+          "quote": "STARBUCKS CORPORATION\n |  |  |\nDated: August 14, 2024"
+        }
+      ]
+    },
+    {
+      "subject": "Starbucks Corporation",
+      "alias": "Starbucks",
+      "source_id": "sbux_archived_press_exhibit",
+      "evidence_spans": [
+        {
+          "start": 604,
+          "end": 697,
+          "quote": "Starbucks chief financial officer, Rachel Ruggeri, will serve as interim ceo until that time."
+        }
+      ]
+    },
+    {
+      "subject": "Starbucks Corporation",
+      "alias": "Starbucks Coffee Company",
+      "source_id": "sbux_archived_press_exhibit",
+      "evidence_spans": [
+        {
+          "start": 4370,
+          "end": 4505,
+          "quote": "About Starbucks\nSince 1971, Starbucks Coffee Company has been committed to ethically sourcing and roasting high-quality arabica coffee."
+        }
+      ]
+    },
+    {
+      "subject": "NIKE, Inc.",
+      "alias": "NIKE, Inc.",
+      "source_id": "nike_8k_20240919",
+      "evidence_spans": [
+        {
+          "start": 2312,
+          "end": 2338,
+          "quote": "NIKE, Inc. (the “Company”)"
+        }
+      ]
+    },
+    {
+      "subject": "NIKE, Inc.",
+      "alias": "Company",
+      "source_id": "nike_8k_20240919",
+      "evidence_spans": [
+        {
+          "start": 2312,
+          "end": 2338,
+          "quote": "NIKE, Inc. (the “Company”)"
+        }
+      ]
+    },
+    {
+      "subject": "NIKE, Inc.",
+      "alias": "NIKE, Inc.",
+      "source_id": "nike_archived_press_exhibit",
+      "evidence_spans": [
+        {
+          "start": 261,
+          "end": 435,
+          "quote": "The Board of Directors of NIKE, Inc. (NYSE:NKE) announced today that Elliott Hill will become President and Chief Executive Officer of NIKE, Inc., effective October 14, 2024."
+        }
+      ]
+    },
+    {
+      "subject": "NIKE, Inc.",
+      "alias": "Nike",
+      "source_id": "nike_archived_press_exhibit",
+      "evidence_spans": [
+        {
+          "start": 59,
+          "end": 185,
+          "quote": "NIKE, Inc. Board of Directors announces long-time Nike veteran Elliott Hill to return as President and Chief Executive Officer"
+        }
+      ]
+    },
+    {
+      "subject": "NIKE, Inc.",
+      "alias": "NIKE",
+      "source_id": "nike_archived_press_exhibit",
+      "evidence_spans": [
+        {
+          "start": 547,
+          "end": 625,
+          "quote": "“I am excited to welcome Elliott back to NIKE. Given our needs for the future,"
+        }
+      ]
+    }
+  ],
+  "change_log": [
+    {
+      "raw_assertion_id": "A01",
+      "derived_claim_ids": [
+        "A01-v03"
+      ],
+      "action": "semantic_migration",
+      "source_id": "sbux_8k_20240814",
+      "details": "Replaced raw filing-date observed_on with the explicit August 13 report date; removed an actual-state observation for a future-effective appointment; converted planned status to positive announced_future.",
+      "evidence_spans": [
+        {
+          "start": 2292,
+          "end": 2593,
+          "quote": "On August 13, 2024, Starbucks Corporation (the “Company” or “Starbucks”) announced that the board of directors of the Company (the “Board”) approved the appointment of Brian Niccol as chief executive officer of the Company and chairman of the Board, effective September 9, 2024 (the “Effective Date”)."
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A02",
+      "derived_claim_ids": [
+        "A02-v03"
+      ],
+      "action": "semantic_migration",
+      "source_id": "sbux_8k_20240814",
+      "details": "Separated negative polarity from reported_actual modality; interpreted valid_from as non-occupancy start; anchored report and negative observation to the explicit August 13 statement rather than the raw August 14 filing-date observation.",
+      "evidence_spans": [
+        {
+          "start": 7309,
+          "end": 7498,
+          "quote": "On August 13, 2024, the Company announced that effective as of August 12, 2024, Laxman Narasimhan would no longer serve as the Company’s chief executive officer or as a member of the Board."
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A03",
+      "derived_claim_ids": [
+        "A03-v03"
+      ],
+      "action": "semantic_migration",
+      "source_id": "sbux_8k_20240814",
+      "details": "Kept unknown appointment start and actual interim role observation at the signed filing date; resolved same-source Effective Date as scheduled exclusive September 9 end; explicitly recorded mixed current-role/future-endpoint modality limitation.",
+      "evidence_spans": [
+        {
+          "start": 7889,
+          "end": 8100,
+          "quote": "In connection with the chief executive officer transition described above, the Board appointed Rachel Ruggeri, chief financial officer of the Company, as interim chief executive officer until the Effective Date."
+        },
+        {
+          "start": 2292,
+          "end": 2593,
+          "quote": "On August 13, 2024, Starbucks Corporation (the “Company” or “Starbucks”) announced that the board of directors of the Company (the “Board”) approved the appointment of Brian Niccol as chief executive officer of the Company and chairman of the Board, effective September 9, 2024 (the “Effective Date”)."
+        },
+        {
+          "start": 10521,
+          "end": 10543,
+          "quote": "Dated: August 14, 2024"
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A04",
+      "derived_claim_ids": [
+        "A04-v03"
+      ],
+      "action": "semantic_migration",
+      "source_id": "sbux_8k_20240814",
+      "details": "Converted year-only 2021 appointment into inclusive start bounds; added a lower bound on eventual CFO cessation from explicit announced retention during the interim interval ending September 9; did not invent the ultimate CFO end.",
+      "evidence_spans": [
+        {
+          "start": 7889,
+          "end": 8100,
+          "quote": "In connection with the chief executive officer transition described above, the Board appointed Rachel Ruggeri, chief financial officer of the Company, as interim chief executive officer until the Effective Date."
+        },
+        {
+          "start": 8101,
+          "end": 8224,
+          "quote": "Ms. Ruggeri will also remain in her current position with the Company while serving as the interim chief executive officer."
+        },
+        {
+          "start": 8225,
+          "end": 8381,
+          "quote": "Ms. Ruggeri, age 54, joined Starbucks in 2001 as a member of the accounting team and was named executive vice president and chief financial officer in 2021."
+        },
+        {
+          "start": 2542,
+          "end": 2593,
+          "quote": "effective September 9, 2024 (the “Effective Date”)."
+        },
+        {
+          "start": 10521,
+          "end": 10543,
+          "quote": "Dated: August 14, 2024"
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A05",
+      "derived_claim_ids": [
+        "A05-v03"
+      ],
+      "action": "semantic_migration",
+      "source_id": "sbux_archived_press_exhibit",
+      "details": "Converted planned status to announced_future and removed raw report-day observed_on from actual occupancy observations.",
+      "evidence_spans": [
+        {
+          "start": 404,
+          "end": 547,
+          "quote": "SEATTLE (August 13, 2024) – Starbucks (NASDAQ: SBUX) today announced that Brian Niccol has been appointed chairman and chief executive officer."
+        },
+        {
+          "start": 548,
+          "end": 603,
+          "quote": "Niccol will start in his new role on September 9, 2024."
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A06",
+      "derived_claim_ids": [
+        "A06-v03"
+      ],
+      "action": "semantic_migration",
+      "source_id": "sbux_archived_press_exhibit",
+      "details": "Separated negative polarity and actual modality; retained the source-local August 13 immediate-effect interpretation without overriding the different filing date.",
+      "evidence_spans": [
+        {
+          "start": 2325,
+          "end": 2442,
+          "quote": "Laxman Narasimhan is stepping down from his role as ceo and as a member of the Starbucks board with immediate effect."
+        },
+        {
+          "start": 404,
+          "end": 547,
+          "quote": "SEATTLE (August 13, 2024) – Starbucks (NASDAQ: SBUX) today announced that Brian Niccol has been appointed chairman and chief executive officer."
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A07",
+      "derived_claim_ids": [
+        "A07-v03"
+      ],
+      "action": "semantic_migration",
+      "source_id": "sbux_archived_press_exhibit",
+      "details": "Converted prospective interim promise to announced_future and removed the report-day actual-state observation; retained unknown start and resolved the local September 9 antecedent.",
+      "evidence_spans": [
+        {
+          "start": 604,
+          "end": 697,
+          "quote": "Starbucks chief financial officer, Rachel Ruggeri, will serve as interim ceo until that time."
+        },
+        {
+          "start": 548,
+          "end": 603,
+          "quote": "Niccol will start in his new role on September 9, 2024."
+        },
+        {
+          "start": 59,
+          "end": 102,
+          "quote": "Press Release for August 13, 2024_5:05am PT"
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A08",
+      "derived_claim_ids": [
+        "A08-v03"
+      ],
+      "action": "semantic_migration",
+      "source_id": "sbux_archived_press_exhibit",
+      "details": "Converted year-only 2021 tenure start into bounded endpoints while retaining the current CFO observation and unknown eventual end; did not import another source’s continuation guarantee.",
+      "evidence_spans": [
+        {
+          "start": 604,
+          "end": 697,
+          "quote": "Starbucks chief financial officer, Rachel Ruggeri, will serve as interim ceo until that time."
+        },
+        {
+          "start": 4300,
+          "end": 4368,
+          "quote": "Ruggeri is a 23-year Starbucks partner. She has been cfo since 2021."
+        },
+        {
+          "start": 59,
+          "end": 102,
+          "quote": "Press Release for August 13, 2024_5:05am PT"
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A09",
+      "derived_claim_ids": [
+        "A09-v03"
+      ],
+      "action": "semantic_migration",
+      "source_id": "nike_8k_20240919",
+      "details": "Converted future-effective appointment to announced_future; removed report-day actual occupancy observation and retained explicit October 14 announced start.",
+      "evidence_spans": [
+        {
+          "start": 2289,
+          "end": 2637,
+          "quote": "On September 19, 2024, NIKE, Inc. (the “Company”) announced that, effective as of October 14, 2024 (the “Effective Date”), the Board of Directors of the Company (the “Board”) has appointed Elliott Hill as President and Chief Executive Officer (“CEO”) of the Company, as a member of the Board and as a member of the Executive Committee of the Board."
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A10",
+      "derived_claim_ids": [
+        "A10-v03",
+        "A10-v03-departure"
+      ],
+      "action": "semantic_migration",
+      "source_id": "nike_8k_20240919",
+      "details": "Retained positive reported actual incumbency with an explicitly scheduled October 14 exclusive end, and added a separate negative announced_future claim for the departure component of the same raw assertion. Neither claim treats January 31 advisory retirement as a CEO endpoint.",
+      "evidence_spans": [
+        {
+          "start": 3098,
+          "end": 3279,
+          "quote": "On September 19, 2024, the Company also announced that, effective as of the Effective Date, John Donahoe will retire as the Company’s President and CEO and as a member of the Board."
+        },
+        {
+          "start": 8866,
+          "end": 9373,
+          "quote": "On September 19, 2024, the Company entered into a letter agreement with Mr. Donahoe (the “Letter Agreement”), pursuant to which (1) he will continue to serve as President and CEO of the Company until the Effective Date, and (2) as of the Effective Date, he will resign from the Board and any other director, officer, manager, committee member or other positions that he holds with the Company and its subsidiaries (including the Executive Committee of the Board) and begin serving as advisor to the Company."
+        },
+        {
+          "start": 2289,
+          "end": 2637,
+          "quote": "On September 19, 2024, NIKE, Inc. (the “Company”) announced that, effective as of October 14, 2024 (the “Effective Date”), the Board of Directors of the Company (the “Board”) has appointed Elliott Hill as President and Chief Executive Officer (“CEO”) of the Company, as a member of the Board and as a member of the Executive Committee of the Board."
+        },
+        {
+          "start": 9378,
+          "end": 9540,
+          "quote": "Donahoe will remain a full-time non-executive employee of the Company in that role through the date of his retirement on January 31, 2025 (the “Retirement Date”)."
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A11",
+      "derived_claim_ids": [
+        "A11-v03"
+      ],
+      "action": "semantic_migration",
+      "source_id": "nike_8k_20240919",
+      "details": "Represented the dated CFO signature as one actual-state observation with both appointment and eventual cessation unknown.",
+      "evidence_spans": [
+        {
+          "start": 11793,
+          "end": 11943,
+          "quote": "Date:  | September 19, 2024  | By:  | /s/ Matthew Friend\n |    |    | Matthew Friend\n |    |    | Executive Vice President and Chief Financial Officer"
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A12",
+      "derived_claim_ids": [
+        "A12-v03"
+      ],
+      "action": "semantic_migration",
+      "source_id": "nike_archived_press_exhibit",
+      "details": "Converted planned appointment to announced_future and removed the report-day actual occupancy observation.",
+      "evidence_spans": [
+        {
+          "start": 220,
+          "end": 435,
+          "quote": "(Beaverton, OR) -- September 19, 2024 -- The Board of Directors of NIKE, Inc. (NYSE:NKE) announced today that Elliott Hill will become President and Chief Executive Officer of NIKE, Inc., effective October 14, 2024."
+        }
+      ]
+    },
+    {
+      "raw_assertion_id": "A13",
+      "derived_claim_ids": [
+        "A13-v03",
+        "A13-v03-departure"
+      ],
+      "action": "semantic_migration",
+      "source_id": "nike_archived_press_exhibit",
+      "details": "Replaced an undifferentiated uncertain status with positive reported actual incumbency and a separate negative announced_future departure; encoded the last-service-day/first-out-day ambiguity as October 13–14 endpoint bounds and retained UNRESOLVED solely as provenance.",
+      "evidence_spans": [
+        {
+          "start": 1229,
+          "end": 1403,
+          "quote": "The Board and John Donahoe have decided he will retire from his role as President and Chief Executive Officer and from the NIKE, Inc. Board of Directors effective October 13."
+        },
+        {
+          "start": 220,
+          "end": 435,
+          "quote": "(Beaverton, OR) -- September 19, 2024 -- The Board of Directors of NIKE, Inc. (NYSE:NKE) announced today that Elliott Hill will become President and Chief Executive Officer of NIKE, Inc., effective October 14, 2024."
+        },
+        {
+          "start": 1404,
+          "end": 1503,
+          "quote": "He will remain as an advisor to the company to ensure a smooth transition through January 31, 2025."
+        }
+      ]
+    },
+    {
+      "raw_assertion_ids": [
+        "A02",
+        "A06"
+      ],
+      "action": "retained_source_disagreement",
+      "details": "The filing states cessation effective August 12 and the August 13 release says immediate effect. Claims retain their source-local dates. There is no explicit correction target, so neither is CORRECTS.",
+      "evidence": [
+        {
+          "start": 7309,
+          "end": 7498,
+          "quote": "On August 13, 2024, the Company announced that effective as of August 12, 2024, Laxman Narasimhan would no longer serve as the Company’s chief executive officer or as a member of the Board.",
+          "source_id": "sbux_8k_20240814"
+        },
+        {
+          "start": 2325,
+          "end": 2442,
+          "quote": "Laxman Narasimhan is stepping down from his role as ceo and as a member of the Starbucks board with immediate effect.",
+          "source_id": "sbux_archived_press_exhibit"
+        },
+        {
+          "start": 404,
+          "end": 547,
+          "quote": "SEATTLE (August 13, 2024) – Starbucks (NASDAQ: SBUX) today announced that Brian Niccol has been appointed chairman and chief executive officer.",
+          "source_id": "sbux_archived_press_exhibit"
+        }
+      ]
+    },
+    {
+      "raw_assertion_ids": [
+        "A10",
+        "A13"
+      ],
+      "action": "retained_source_boundary_difference",
+      "details": "The filing explicitly transitions Donahoe out of officer positions as of October 14. The release’s effective October 13 wording retains two exclusive-boundary readings. Source order is not a correction and no later realization is imported.",
+      "evidence": [
+        {
+          "start": 8866,
+          "end": 9373,
+          "quote": "On September 19, 2024, the Company entered into a letter agreement with Mr. Donahoe (the “Letter Agreement”), pursuant to which (1) he will continue to serve as President and CEO of the Company until the Effective Date, and (2) as of the Effective Date, he will resign from the Board and any other director, officer, manager, committee member or other positions that he holds with the Company and its subsidiaries (including the Executive Committee of the Board) and begin serving as advisor to the Company.",
+          "source_id": "nike_8k_20240919"
+        },
+        {
+          "start": 2289,
+          "end": 2637,
+          "quote": "On September 19, 2024, NIKE, Inc. (the “Company”) announced that, effective as of October 14, 2024 (the “Effective Date”), the Board of Directors of the Company (the “Board”) has appointed Elliott Hill as President and Chief Executive Officer (“CEO”) of the Company, as a member of the Board and as a member of the Executive Committee of the Board.",
+          "source_id": "nike_8k_20240919"
+        },
+        {
+          "start": 1229,
+          "end": 1403,
+          "quote": "The Board and John Donahoe have decided he will retire from his role as President and Chief Executive Officer and from the NIKE, Inc. Board of Directors effective October 13.",
+          "source_id": "nike_archived_press_exhibit"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "This is further source-only conversational-model semantic interpretation of frozen pass A, not a deterministic conversion, independent original extraction, human annotation, or pinned-model reproducible run. The raw extraction and source inputs are unmodified.",
+    "Only the four source texts in the supplied prefix and frozen pass A were used; no questions, labels, predictions, other passes, or later sources were read. No announced future event is certified as realized.",
+    "All source-text SHA-256 hashes match their supplied metadata, and the raw input_sha256 matches the exact prefix-input bytes. Every claim, alias, and change-log evidence span was verified against the exact source text using zero-based Python Unicode offsets and exclusive ends.",
+    "reported_at follows an explicit statement date where given; otherwise a dated source signature or release dates the source-present statement. It is separate from operational availability, whose developmental next-day rule is not used as report time or an observation.",
+    "Unknown endpoints are represented by null bounds, not indefinite persistence. Dated observations constrain admissible start/end pairs through start <= observation < end. They do not identify appointments. Certain occupancy requires every admissible endpoint pair to contain the evaluated day.",
+    "The single claim modality cannot independently encode an actual current state and an announced future endpoint or retention guarantee. A03, A04, A10, and A13 therefore explain projected components in their derivation notes. The departure components of A10 and A13 also have separate negative announced_future claims.",
+    "October 13 versus October 14 in the Nike release is retained as bounded endpoint uncertainty at day precision. Immediate effect in the Starbucks release is anchored to its own August 13 dateline and not silently reconciled with the filing’s August 12 date.",
+    "Claims remain source-specific with empty context_source_ids because their substantive inferences use only their own source. The explicit cross-source comparisons are logged separately and do not alter the claims.",
+    "Only company aliases directly attested in the supplied source texts are included. The identical defined alias Company is preserved separately for Starbucks Corporation and NIKE, Inc.; it does not merge the subjects.",
+    "The raw assertion scope is retained. Out-of-scope roles described in the raw exclusion records are not promoted to claims, and no absent Nike press-release CFO assertion is invented.",
+    "No source supplies an explicit correction statement and target. ASSERT and retained UNRESOLVED operations are provenance only and do not authorize automatic state replacement."
+  ]
+}

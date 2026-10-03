@@ -1,0 +1,34 @@
+{
+  "schema_version": "correction_gate_admission_v0.10",
+  "frozen_at_utc": "2026-10-03T05:35:14.737359+00:00",
+  "parent_route_decision_sha256": "dca3315fcbcf4ed4d2804c24d9ea77c3788d7acc57be03f9ba93e859b3097084",
+  "target": 8,
+  "target_is_not_quota": true,
+  "domains": [
+    "corporate_primary_filings_and_issuer_corrections",
+    "scientific_and_government_measurement_corrections",
+    "technical_product_security_and_public_record_corrections"
+  ],
+  "initial_search_budget_per_domain": {
+    "queries": 6,
+    "candidate_histories_inspected": 6,
+    "followup_primary_documents_per_candidate": 4
+  },
+  "discovery_policy": "Primary sources only for admission; secondary search results can be leads. Preserve executed queries, inspected URLs, failed access and every screened candidate. No model outputs or reference answers drive selection. Stop at bounded search; report shortfall.",
+  "required_fields": [
+    "Explicit original erroneous assertion or quoted erroneous wording with original-version limits",
+    "An explicit correction replacing that assertion, attributed to the asserting authority",
+    "A downstream assertion present in a source, with essential dependence grounded in text or a source-specified computation, not topical similarity",
+    "An independently supported unaffected claim or component as retention control"
+  ],
+  "dependency_policy": "Downstream questions may be authored, but the underlying dependent assertion and essential support relation must be source-grounded. Author-invented arithmetic thresholds, guessed causal links, and paraphrases of the corrected assertion are not positive dependency cases. Alternative independent support must be recorded; correction of one premise need not withdraw a conclusion supported independently.",
+  "strata": {
+    "paired_prefix_ready": "Actual earlier captured version plus correction/version evidence; historical first public availability remains separate unless independently certified.",
+    "current_document_only": "Current correction document can support a clearly labelled mechanism illustration, without deleting its update to invent an earlier information state.",
+    "discovery_only": "Missing dependency, control, explicit replacement, accessible full text or unsupported core semantics. No method result."
+  },
+  "representation_policy": "Whole-assertion replacement only in current core. Pure retraction, partial-field change, changed measurement time/scope and update-policy reversals must be marked separately, not coerced. Scalar claims may be atomic only when text supports an independently meaningful assertion.",
+  "admission_sequence": "Discovery screen, exact capture freeze, separate source-only eligibility adjudication, then questions/proposals and model outputs. Preserve ambiguous/excluded cases.",
+  "negative_controls": "Ordinary succession and plan revision are not correction positives; existing v09 sources can later supply controls.",
+  "novelty_limit": "No new algorithm or empirical gain claimed. Eight eligible histories would only license a development test."
+}

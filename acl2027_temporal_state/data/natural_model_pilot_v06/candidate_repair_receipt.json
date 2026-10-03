@@ -1,0 +1,72 @@
+{
+  "backend": "unversioned_conversational_agent",
+  "model_revision": null,
+  "inputs": [
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/candidate_request.json",
+      "sha256": "8874b90fda88c503f0b571fcb03c17a7a1786df595f3721108f29df293e11224"
+    },
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/candidate_output_raw.json",
+      "sha256": "ddaa83c4d97b58b14093c7cca08b33573d659f37b9500268f267fdbd81362bd1"
+    },
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/candidate_validation_first_pass.json",
+      "sha256": "757aecb3217054f5de0d58426fe2f97b02da0275492ab452a9fb9062926bc298"
+    },
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/validation_repair_protocol.json",
+      "sha256": "0c2089e0ed9d0706e5a2fcb3891445c93472d3e681cfbd9db59057dc1c1c8931"
+    },
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_prompt_v06_repair.txt",
+      "sha256": "9433ab3cfd3de9029e6d3d206772b40ade8e5b27214b9f0c766ebe91e0986ee7"
+    },
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_schema_v06_repair.json",
+      "sha256": "2d6f3be0b55a14e26be74e7ee4b903272f38ec9a2486b251ac55711128b3df56"
+    }
+  ],
+  "output_path": "/workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/candidate_output_repaired.json",
+  "output_sha256": "5551ca4e5c5c4106a49d7f9cc9652cdf75e3211642bc061ddcd5dbc53bfb76ef",
+  "task_text": "Perform ONE source-only representation repair for an exploratory research extraction. Authorized reads ONLY: /workspace/scratch/bdef663e3dfc/acl2027_temporal_state/data/natural_model_pilot_v06/candidate_request.json; candidate_output_raw.json in same directory; candidate_validation_first_pass.json and validation_repair_protocol.json there; /workspace/scratch/bdef663e3dfc/acl2027_temporal_state/configs/candidate_prompt_v06_repair.txt; configs/candidate_schema_v06_repair.json. No other files, prior conversation, web, QA/gold, model scores or decoder outcomes. Follow the clarified one-modality representation and link compatibility contract from repair prompt. Retain facts only when supported by the input sources; no dates, extra claims or alternatives are mandated. Preserve original raw file unchanged. Write your repaired complete candidate graph JSON as data/natural_model_pilot_v06/candidate_output_repaired.json, retaining graph schema_version candidate_graph_v0.6. You may verify exact quotes and JSON syntax; do not read/run other project scripts. No scoring. Write candidate_repair_receipt.json alongside: backend='unversioned_conversational_agent', model_revision=null, inputs:[{path,sha256}] for ALL files read, output_sha256, exact task_text, repair_kind='failure_triggered_source_only_representation_repair', repair_budget=1, actual actions and limitations. This is not first-pass success or pinned execution. Return counts and paths.",
+  "repair_kind": "failure_triggered_source_only_representation_repair",
+  "repair_budget": 1,
+  "repair_attempts_performed": 1,
+  "first_pass_success": false,
+  "pinned_execution": false,
+  "actions": [
+    "Read only the six authorized input files; re-read the original two source texts embedded in candidate_request.json.",
+    "Retained r3 as announced_future with an empty state_observed_at array and effective_boundary observation kind; removed its actual observation.",
+    "Added m7/r7 for current actual Donahoe CEO incumbency supported by the same continue-to-serve passage, retaining unknown start and end and a September 19 report-day observation.",
+    "Removed cross-modality links l5, l6, l7, l11 and l15; recorded actual-service/future-plan and actual-service/announced-succession relationships as unsupported.",
+    "Updated l1’s note to describe only future-plan evidence, and added same-modality actual-service RESTATES link l16 from r6 to r7.",
+    "Preserved all original endpoint date claims, the original date-conflict unsupported item, aliases, authorities and remaining compatible links.",
+    "Performed exact-quote uniqueness and primary-anchor evidence-overlap checks on the complete repaired graph, plus JSON serialization round-trip verification.",
+    "A delegated read-only integrity audit checked the original raw anchors/evidence against the original request; it read only two of the six listed inputs, made no changes and proposed no repair.",
+    "Wrote one complete repaired candidate graph and this receipt; preserved the original raw output and first-pass failure artifact without modification."
+  ],
+  "limitations": [
+    "This is a failure-triggered exploratory representation repair by an unversioned conversational agent, not a first-pass success or a pinned model execution.",
+    "No scores, QA/gold labels or questions, decoder outcomes, other annotation artifacts, external sources, later outcomes or other project scripts were read or run.",
+    "No deterministic project validator, temporal gate, decoder or scoring run was performed; exact-quote and JSON integrity checks are not proof of entailment or downstream acceptance.",
+    "The single repair budget was used once; no validation-driven retry loop was performed."
+  ],
+  "integrity_checks": {
+    "unique_exact_anchors": 7,
+    "unique_exact_evidence_entries": 60,
+    "all_readings_have_primary_anchor_overlap": true,
+    "json_round_trip": true,
+    "original_raw_sha256": "ddaa83c4d97b58b14093c7cca08b33573d659f37b9500268f267fdbd81362bd1",
+    "original_raw_unchanged": true
+  },
+  "counts": {
+    "mentions": 7,
+    "resolved_readings": 7,
+    "links": 11,
+    "aliases": 4,
+    "authorities": 2,
+    "essential_support": 0,
+    "unsupported": 3
+  }
+}

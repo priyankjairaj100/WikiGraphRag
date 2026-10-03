@@ -1,0 +1,260 @@
+{
+  "schema_version": "backend_readiness_0_6",
+  "checked_on": "2026-10-02",
+  "scope": "Read-only backend inspection. No dependency installation, model weight download, model inference, or cloud job submission.",
+  "read_only_operations": [
+    {
+      "tool": "mcp__codex_apps__hugging_face_hf_whoami",
+      "arguments": {},
+      "result": {
+        "status": "authenticated",
+        "account_name": "priyankjairaj",
+        "account_is_pro": false,
+        "organization_count": 0,
+        "credential_type": "oauth",
+        "credential_expires_at": "2026-10-02T18:10:11.000Z",
+        "granted_scopes": [
+          "jobs",
+          "openid",
+          "profile",
+          "read-mcp",
+          "read-repos"
+        ]
+      },
+      "credential_values_obtained": false
+    },
+    {
+      "tool": "mcp__codex_apps__hugging_face_hf_jobs",
+      "arguments": {
+        "operation": "ps",
+        "args": {
+          "all": true
+        }
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "McpServerError: MCP tool hf_jobs was not returned by tools/list"
+          }
+        ],
+        "structuredContent": {
+          "error": "McpServerError: MCP tool hf_jobs was not returned by tools/list",
+          "error_code": "UNAVAILABLE",
+          "error_data": {
+            "type": "invalid_mcp_response",
+            "message": "MCP tool hf_jobs was not returned by tools/list",
+            "level": "error"
+          }
+        },
+        "isError": true
+      }
+    },
+    {
+      "tool": "mcp__codex_apps__hugging_face_hub_repo_details",
+      "arguments": {
+        "repo_ids": [
+          "Qwen/Qwen3-0.6B-GGUF"
+        ],
+        "repo_type": "model",
+        "include_readme": true
+      },
+      "result": {
+        "isError": false,
+        "repo_id": "Qwen/Qwen3-0.6B-GGUF",
+        "author": "Qwen",
+        "license": "apache-2.0",
+        "tags": [
+          "gguf",
+          "text-generation",
+          "base_model:Qwen/Qwen3-0.6B",
+          "base_model:quantized:Qwen/Qwen3-0.6B"
+        ],
+        "revision_returned": false,
+        "weight_file_metadata_returned": false,
+        "readme_returned": false
+      }
+    }
+  ],
+  "local_primary_probe": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "machine": "x86_64",
+    "cpu_count": 9,
+    "cpu_affinity_count": 9,
+    "cgroup": {
+      "/sys/fs/cgroup/cpu.max": {
+        "error": "FileNotFoundError"
+      },
+      "/sys/fs/cgroup/memory.max": {
+        "error": "FileNotFoundError"
+      },
+      "/sys/fs/cgroup/memory.current": {
+        "error": "FileNotFoundError"
+      },
+      "/sys/fs/cgroup/pids.max": {
+        "error": "FileNotFoundError"
+      }
+    },
+    "memory": {
+      "error": "FileNotFoundError"
+    },
+    "packages": {
+      "torch": {
+        "importable": false
+      },
+      "transformers": {
+        "importable": false
+      },
+      "huggingface_hub": {
+        "importable": false
+      },
+      "accelerate": {
+        "importable": false
+      },
+      "numpy": {
+        "importable": true,
+        "version": "2.3.5"
+      },
+      "safetensors": {
+        "importable": false
+      },
+      "tokenizers": {
+        "importable": false
+      },
+      "llama_cpp": {
+        "importable": false
+      },
+      "onnxruntime": {
+        "importable": false
+      },
+      "vllm": {
+        "importable": false
+      },
+      "psutil": {
+        "importable": false
+      }
+    },
+    "executables": {
+      "python": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "python3": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "uv": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/uv",
+      "hf": null,
+      "nvidia-smi": null,
+      "llama-cli": null
+    },
+    "accelerator_devices": [],
+    "workspace_disk_usage_bytes": {
+      "total": 33770192896,
+      "used": 13800857600,
+      "free": 18234572800
+    },
+    "runtime_paths": {
+      "CODEX_PRIMARY_RUNTIME_PYTHON": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "CODEX_PRIMARY_RUNTIME_ROOT": "/opt/codex/runtimes/codex-primary-runtime",
+      "CODEX_PRIMARY_RUNTIME_BUNDLE_VERSION": "26.927.11222"
+    }
+  },
+  "local_secondary_probe": {
+    "system": "Linux",
+    "resource_limits": {
+      "RLIMIT_AS": [
+        -1,
+        -1
+      ],
+      "RLIMIT_DATA": [
+        -1,
+        -1
+      ],
+      "RLIMIT_RSS": [
+        -1,
+        -1
+      ],
+      "RLIMIT_CPU": [
+        -1,
+        -1
+      ],
+      "RLIMIT_FSIZE": [
+        -1,
+        -1
+      ],
+      "RLIMIT_NPROC": [
+        39792,
+        39792
+      ]
+    },
+    "sysconf": {
+      "SC_PHYS_PAGES": 2551627,
+      "SC_AVPHYS_PAGES": 878742,
+      "SC_PAGE_SIZE": 4096,
+      "SC_NPROCESSORS_ONLN": 9
+    }
+  },
+  "derived_capacity": {
+    "host_physical_memory_bytes": 10451464192,
+    "host_available_memory_bytes_at_probe": 3599327232,
+    "memory_quota_verified": false,
+    "cpu_quota_verified": false,
+    "caution": "sysconf values and visible CPU count are observations, not verified workspace entitlements. Missing cgroup/proc files and unlimited rlimits do not prove unlimited resources."
+  },
+  "assessment": {
+    "jobs": "Unavailable at connector operation dispatch: MCP tool hf_jobs was not returned by tools/list.",
+    "jobs_credit_balance": "unknown; UNAVAILABLE is not evidence of insufficient credits",
+    "jobs_submitted": 0,
+    "jobs_listed_successfully": false,
+    "automatic_approval_rejection": false,
+    "local_model_backend_available": false,
+    "local_small_quantized_backend": "Plausible engineering candidate, not yet runnable or capacity-validated.",
+    "local_8b_bf16_backend": "Not feasible to establish in this runtime: no ML stack/GPU established and about 3.35 GiB memory was available in the host-level snapshot.",
+    "candidate_repo": "Qwen/Qwen3-0.6B-GGUF",
+    "candidate_commit": null,
+    "candidate_weight_file": null,
+    "candidate_weight_sha256": null,
+    "candidate_repository_verified": true,
+    "candidate_runtime_verified": false,
+    "candidate_memory_fit_verified": false,
+    "blocked_by_parent_scope": "This readiness pass intentionally does not install dependencies or acquire weights."
+  },
+  "bounded_local_followup": {
+    "purpose": "A separate small-model implementation pilot for short evidence units; not a replacement for the frozen 8B full-history protocol or paper-level extraction quality evidence.",
+    "steps": [
+      "Resolve an immutable official Qwen/Qwen3-0.6B-GGUF repository commit, selected quantized file, file size, license, and SHA-256 from primary metadata. Keep the existing 8B configuration unchanged.",
+      "Resolve a CPU llama.cpp or llama-cpp-python runtime to an immutable release/commit and artifact hash in a workspace-only environment. Verify architecture support and local execution before any extraction.",
+      "Use one batch, at most 4 CPU threads, a 2048-token context, at most 128 generated tokens, and a 60-second one-request smoke timeout. Reject overlong inputs rather than truncating them. Select a weight file no larger than 1 GiB.",
+      "Require measured process peak resident memory below 1.5 GiB for the smoke request, zero swap-based capacity assumptions, and an explicit lower limit if the runtime reveals one. Fail safely on any resource error. This is a target budget, not verified fit.",
+      "Preserve raw prompt/template/token IDs, model/runtime asset hashes, raw output and generated token IDs when exposed, stop reason, parse outcome, elapsed time and measured peak memory. No hidden retries or output repair.",
+      "Before a scoring pilot, verify that the chosen runtime exposes comparable token log probabilities, then freeze a source-only candidate/scoring protocol with no development expectations or QA answers in model inputs.",
+      "Run identical cached candidates and scores through all decoder variants. Label this small-model protocol separately and record all prompt/context differences from the 8B protocol."
+    ],
+    "initial_requests": 1,
+    "initial_timeout_seconds": 60,
+    "max_threads": 4,
+    "max_context_tokens": 2048,
+    "max_new_tokens": 128,
+    "max_weight_bytes": 1073741824,
+    "target_peak_rss_bytes": 1610612736,
+    "no_automatic_runtime_install_or_weight_download_in_this_pass": true,
+    "scientific_limit": "A successful short CPU smoke run establishes transport/runtime only. It does not establish adequate candidate recall, scoring calibration, correction understanding, generalization, or a joint-inference advantage."
+  },
+  "prior_configuration_preserved": [
+    "configs/model_backend_pilot.json",
+    "docs/model_backend_pilot.txt"
+  ],
+  "references": [
+    "https://huggingface.co/Qwen/Qwen3-0.6B-GGUF"
+  ],
+  "separate_exploratory_option": {
+    "backend": "fresh source-only conversational agent",
+    "status": "possible exploratory path; not executed as part of this readiness pass",
+    "model_revision": "unavailable",
+    "candidate_score_type": "declared elicited judgment only unless independently measured; never token log probability by implication",
+    "limits": [
+      "Not a pinned backend result or a replacement for the frozen 8B protocol.",
+      "Use a fresh agent context containing eligible source text, frozen task instructions and allowed schema only.",
+      "Exclude prior annotations, development expectations, questions and gold from extraction/scoring inputs.",
+      "Save exact task text, source hashes, raw output and any validation failures.",
+      "Share a single candidate/score cache across decoder variants and describe scores as unversioned conversational judgments.",
+      "Do not claim model reproducibility, calibration, independent human annotation, held-out accuracy or paper-level algorithmic superiority."
+    ]
+  }
+}

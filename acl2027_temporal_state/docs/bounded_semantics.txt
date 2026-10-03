@@ -1,0 +1,196 @@
+BOUNDED EVIDENCE-ONLY TEMPORAL MATERIALIZATION — v0.3
+
+Purpose and limits
+This module addresses a representation defect observed during development. It
+is not a trained extractor, learned identity resolver, global decoder, new
+benchmark, or empirical demonstration of joint-inference gains. It consumes
+already selected claim readings with predicted factual keys. Distinct readings
+of a mention must be selected upstream, not all flattened into simultaneous
+facts. The original memory and decoder implementations remain separate.
+
+Schema and serialization
+src/temporal_state/bounded.py provides:
+  DayBounds(lower=None, upper=None)
+  EvidenceSpan(start, end, quote)
+  TemporalClaim(claim_id, source_id, subject, relation, value, scope='',
+    polarity='positive', modality='reported_actual', reported_at=None,
+    start=DayBounds(), end=DayBounds(), state_observed_at=(),
+    evidence_spans=(), context_source_ids=(), raw_assertion_id='',
+    derivation_note='', role_qualifier='', operation='ASSERT')
+  claim_from_dict(record), claim_to_dict(claim)
+  materialize_claim(claim) -> IntervalEnvelope
+  claim_membership(claim, event_time) -> Membership(may, must)
+  build_bounded_memory(sources, claims, cutoff) -> BoundedMemory
+  memory.answer_key(question, key, query_mode='announced_schedule')
+    -> existing models.Prediction
+
+JSON uses these exact field names. DayBounds is an object with lower/upper;
+evidence_spans is a list of {start,end,quote}; state_observed_at and
+context_source_ids are lists. Source and Question use the existing models.
+Unknown schema fields are rejected. At least one nonempty exact evidence span
+is mandatory. Offsets are Python Unicode character offsets with half-open span
+coordinates [start,end), not byte offsets. All spans refer to claim.source_id.
+The raw assertion ID and derivation note preserve transformation provenance.
+The role qualifier is descriptive only; any distinction required to make a
+relation single-valued must be represented in scope by the upstream extractor.
+
+Polarity and modality are independent. Polarity is positive or negative;
+modality is reported_actual, announced_future, conditional, or uncertain.
+For unresolved polarity, keep alternative readings or an explicit unresolved
+candidate upstream; this materializer does not silently choose its sign.
+Operation ASSERT/RESTATES/CHANGES/UNRESOLVED is preserved as update-link
+provenance, not treated as a license to infer a boundary or alter factual
+certainty. An unresolved update link does not erase a directly observed role.
+Uncertainty about the factual proposition itself belongs in modality='uncertain'.
+CORRECTS is explicitly refused until a correction-aware interpretation exists.
+No correction is silently treated as an ordinary new assertion.
+Unresolved polarity and modality on individual endpoints are unsupported.
+Do not serialize unresolved polarity as positive, or use claim-level actual
+modality to erase an endpoint's prospective/planned provenance. Keep such
+alternatives unresolved upstream and record their limitations explicitly.
+
+Endpoint and observation semantics
+Each selected claim denotes one positive-duration interval [s,e) on an integer
+calendar-day axis. DayBounds lists inclusive bounds on the latent endpoint s
+or e. It does not describe an inclusive occupancy end. Missing lower/upper
+bounds mean an unbounded possible endpoint; they do not mean an infinite
+actual duration, an empty interval, or a known appointment time.
+
+An exact day x is DayBounds(x,x). A year-only start in year Y is
+DayBounds(Y-01-01,Y-12-31); January 1 is a lower bound, not an asserted onset.
+If a last-service-day phrase means through day x, a supported interpretation
+uses exclusive end x+1. If the wording permits both last-service-day and
+first-day-out readings, preserve alternatives or the corresponding endpoint
+bounds rather than choosing one for a desired answer.
+
+reported_at records when the assertion was reported and imposes no occupancy
+constraint. Source.available_at controls information access. Neither field
+is automatically a state observation or effective date. For each date t in
+state_observed_at, the property described by the claim's polarity holds then,
+so s <= t < e. A negative observation says that specific value does not hold;
+it is not a positive occupancy claim for the same value or for another value.
+Multiple observations in one claim refer to the same continuous interval.
+This assumes they describe one episode; separate episodes must remain separate
+claims. No unseen exit and re-entry is inferred inside that interval.
+
+Writing the original bounds as sl <= s <= su and el <= e <= eu, propagate:
+  su := min(su, earliest observation), if observations exist;
+  el := max(el, latest observation + 1), if observations exist;
+  su := min(su, eu - 1);
+  el := max(el, sl + 1).
+Reject if sl > su or el > eu. Unbounded limits are mathematical infinities.
+These constraints completely capture this interval model. At event date t:
+  may(t)  iff sl <= t < eu;
+  must(t) iff su <= t < el.
+The conjunction with s<e matters: an exact start on t entails membership at t
+even when the end is otherwise unknown. It does not entail membership on t+1.
+An observation entails membership at its date without assigning an appointment
+date. An uncertain end affects only dates where admissible intervals disagree.
+Internal IntervalEnvelope bounds are integer date ordinals (None for unbounded
+sides); adjacent internal ordinals may exceed Python's representable date range.
+The external source schema and queries retain canonical ISO calendar dates.
+
+No implicit persistence
+This implementation defaults to evidence-only bounds. An open endpoint means
+unknown, not persistence until the next different value. No optional persistence
+mode is implemented. This conservative choice can reduce answer coverage after
+an exact appointment if no observation or explicit lower bound on the end is
+available. Such abstentions/indeterminacy are expected behavior, not evidence
+that the endpoint should be filled from a gold answer. Any future persistence
+model must be separately named, tested, and evaluated as an assumption.
+The no-forward-persistence policy does not mean the model is assumption-free:
+within one selected episode the interval is connected, so multiple observations
+entail continuous membership between them. Returned persistence_assumption
+explicitly reports connected-interval semantics and no forward persistence.
+
+Query policy
+answer_key receives a key predicted from ordinary question text by an upstream
+router. Key normalization strips and casefolds subject/relation/scope only.
+It accepts no gold identifier and performs no hidden alias lookup. One value
+per factual key is assumed after scope qualification; co-held roles require
+an appropriate representation rather than arbitrary winner selection.
+
+In reported_actual mode, announced_future claims are excluded even if the
+scheduled date has elapsed. A past announcement does not prove execution.
+Reported-actual readings can still contain a prospective planned endpoint in
+this claim-level schema, which does not yet mark modality per endpoint. To
+avoid silently promoting that schedule into factual future occupancy, factual
+queries exclude reported_actual claims when event_time exceeds reported_at.
+When reported_at is missing, source.available_at is a documented fallback
+horizon. Exclusions and horizon bases are returned in diagnostics. Thus a
+report that the incumbent remains until next month can support its schedule
+interpretation next week, but cannot establish actual next-week occupancy.
+An actual state observation later than an explicit report date is rejected;
+when the report date is absent, an actual observation later than the source's
+availability is rejected at construction. Source/version dates themselves
+still require independent provenance verification. At build time any explicit
+reported_at later than the claim source's available_at is rejected, including
+for announced_future claims. This schema treats reported_at as a real report
+date, not a future dateline on a prereleased document. Future-dated/prereleased
+documents would require a separate semantics; they must not use future report
+metadata to authorize future factual observations from an early prefix.
+In announced_schedule mode, both reported_actual and announced_future can
+supply certain temporal support; returned diagnostics preserve the mode and
+the modalities of cited claims. Conditional/uncertain readings can create possible competitors but cannot
+independently establish certainty. Unresolved update links alone do not weaken
+otherwise certain temporal support.
+
+A positive claim is a possible value when may(t) holds, and supplies certainty
+when must(t) holds and its modality permits certainty. Unknown timing
+therefore remains possible rather than vanishing. A certain negative for value
+v blocks merely possible positive support for v. A certain positive together
+with any possible negative for v remains a conflict and yields indeterminacy;
+it is not silently cancelled. Negative-only evidence produces abstention,
+because it does not identify an affirmative value.
+
+Return answered only when exactly one value has certain support, no possible
+other value survives negative blocking, and no possible negative conflicts
+with that certain value. Return indeterminate when affirmative possibilities
+remain but this condition is unmet. Otherwise return abstain. Value comparison
+casefolds and collapses whitespace. Identity resolution remains upstream.
+
+Selected claims are checked independently. The query policy recognizes possible
+competitors and conflicts but does not propagate the single-valued-key constraint
+across their intervals. Thus a later observation of a different value with an
+unknown start can still make an earlier otherwise definite value indeterminate.
+It does not narrow the later claim's start merely because another claim is
+certain earlier. This conservative limitation differs from true joint temporal
+constraint reasoning and remains an explicit research/implementation question.
+
+For a definite answer, citations contain the positive claims that individually
+supply temporal certainty plus any certain negatives needed to eliminate
+possible competitors. Merely possible later observations of the same value
+are not cited as proof of an earlier definite state. For indeterminacy, cite
+the remaining positive possibilities and their relevant negative constraints.
+Returned source citations also retain every declared context source dependency
+of those selected evidence claims. Diagnostics separately identify primary
+quote sources and context dependencies. This makes dependencies reviewable;
+it does not claim that every context source independently supports the answer.
+The citations validate span membership and declared temporal interpretation;
+they do not mechanically prove that a natural-language quote entails the
+extracted bounds. Human/source interpretation quality remains an open issue.
+
+Prefix and leakage contract
+The constructor validates IDs, dates, interval feasibility, exact span matches,
+and every declared context source reference, including future records. Duplicate
+source/claim IDs and dangling dependencies are hard errors. It then admits only
+sources available on/before the cutoff, and only claims whose own source and
+all declared context sources are in that prefix. Future-dependent exclusions
+are recorded. Questions must use exactly the built memory's information cutoff.
+
+This contract prevents declared dependency leakage; it cannot detect hidden
+context an extractor omitted from provenance, model pretraining knowledge, or
+a falsely assigned source availability date. Upstream extraction and alias
+caches must still be constructed from the eligible source prefix. Source
+publication time is not automatically historical version availability.
+
+Validation
+The independent contract tests cover observation-only unknown starts, exact
+starts without persistence, year bounds, uncertain ends, impossible old ends,
+positive-duration propagation, boundary dates, planned negation, conditional
+claims, value conflicts, negative blockers, late same-value observations,
+strict schemas, exact spans, corrections, and source/context cutoff leakage.
+An exhaustive finite-domain check compares analytic may/must membership with
+all admissible concrete intervals over five integer days and all bounded
+endpoint ranges on those days. These are engineering checks, not natural QA
+accuracy measurements or evidence of algorithmic novelty.

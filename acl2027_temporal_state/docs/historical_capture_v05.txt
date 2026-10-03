@@ -1,0 +1,58 @@
+Historical source capture v0.5 — Lyft correction
+
+Outcome
+
+The discovery-only Lyft lead now has an accession-linked original/correction pair with locally captured response bytes, retrieval receipts, hashes and deterministic evidence extraction. This is a substantive provenance improvement, not admission of an exact historical cutoff or a new accuracy result. No QA gold, answer key, decoder score or benchmark split was produced in this pass.
+
+Eight public responses were captured on 2026-10-02: original SEC exhibit and filing index; current issuer correction release; SEC amendment report, corrected exhibit and filing index; and both complete SEC submission TXT files. All returned HTTP 200 through a scoped public-network read after the ordinary sandbox blocked network access before HTTP. No authentication, cookies, proxy workaround or access-control bypass was used. Receipts retain allowlisted response headers, requested and final URLs, UTC retrieval times, response lengths and SHA256. These are exact response entity bytes obtained now; they are not represented as original 2024 network captures.
+
+New primary-source anchor
+
+The original accession is 0001759509-24-000011. Its index and SGML header show acceptance at 2024-02-13 16:06:27, with filing date 2024-02-13. The amendment is accession 0001759509-24-000015, Form 8-K/A. Its explanatory note explicitly identifies the earlier report and describes correction of a clerical error in the forecast. It supplies corrected Exhibit 99.1. Its index and SGML header show acceptance at 2024-02-13 17:51:29 but filing date 2024-02-14.
+
+These timestamps must remain separate fields. The current SEC status guide explains that most submissions transmitted after 5:30pm ET are dated and disseminated on the next business day. A December 2022 SEC Filer Manual excerpt also states the next-business-day filing-date rule. This supports why the two date fields differ; it does not establish the exact public-access moment of this particular historical submission. The captured index/header do not themselves specify a timezone. Do not create an intraday public-information cutoff from their acceptance strings.
+
+The current issuer correction page displays 2024-02-13 4:05pm EST in its HTML. That metadata accompanies the corrected version now. It is not evidence that the correction was already available at that time. Its correction preamble and the 8-K/A establish an explicit dependency on the original claim without requiring that unsafe assumption. Current server Last-Modified headers are retained as observations, not authenticated first-publication evidence.
+
+Version comparison
+
+The original and amended complete submission TXT responses preserve EX-99.1 document blocks. The separately served exhibit HTML contains an extra 108-byte script tag in both captures. After removing precisely that observed tag, each separate response matches its own submission document block modulo surrounding newline whitespace. The index reports document sizes before that extra tag. This illustrates why current response hashes, extracted-document hashes and historical-origin claims must not be conflated.
+
+The extraction script identifies the single EX-99.1 TEXT block by SGML document type, decodes UTF-8 strictly, and uses Python HTMLParser. It omits head/script/style/ix:hidden text, inserts line breaks at block boundaries, collapses per-line whitespace and removes empty lines. Original byte offsets for the TEXT block and every hash are retained. Both extracted exhibits have 300 lines; their full normalized texts are identical after the sole replacement of 500 with 50 in the forecast bullet. This checks visible normalized text, not byte identity, rendering equivalence, financial truth or every hidden field.
+
+The amended exhibit and original describe a year-over-year expansion forecast for adjusted EBITDA margin relative to Gross Bookings in FY2024. It is a correction to the report of a forecast, not an actual realized margin, a new target period, or a plan revision. Adjacent text remains identical under the extraction recipe. Correction should therefore be localized to that claim rather than deleting all claims in the earlier release.
+
+Development evidence capsules
+
+source_capture/evidence_capsules.json contains exact excerpts with codepoint offsets into the hashed derived text. The original exhibit and corrected exhibit each quote 21 words in total, including issuer, metric, target period and value. The amendment report quotes 22 words; the current issuer correction page quotes 21. Each capsule explicitly discloses context omission and model-assisted selection from this already-discovered example. Offsets and hashes were validated locally. These compact, selected observations can support a source-grounded demonstration of correction semantics. They do not establish extraction quality on unseen full documents.
+
+Delivery and reproduction
+
+The checkpoint may include source_manifest.json, capture receipts, bounded evidence capsules, validation.json, capture_public.py and derive_evidence.py. Full .response.bin, .embedded.html and .derived.txt files are local external working data and should be excluded from the delivered checkpoint to avoid redistributing full issuer releases. The manifest lists the exact URLs and excluded patterns. The captured bytes remain available locally for authorized analysis. The downloader can create a fresh capture directory using --output-dir; copying the extractor beside those captures regenerates derived evidence. Fresh bytes may differ from the recorded hashes. Do not rewrite the recorded receipt as though a later response were the same capture.
+
+Admission limits
+
+The pair has official amendment and claim-replacement evidence, current byte provenance and a localized text delta. It still lacks independently authenticated first-publication timestamps and a complete history of what was publicly accessible at each clock-time cutoff. SEC documentation also notes that post-acceptance corrections/removals can occur, so an accession is an archive anchor rather than a universal historical immutability guarantee. Record-ordered development demonstrations are defensible if explicitly labeled; exact historical public-prefix evaluation remains unadmitted. One selected English corporate history is not a representative or held-out benchmark. Docker acquisition was not pursued in this bounded pass after the stronger SEC correction pair became available.
+
+Primary source URLs
+
+Original index:
+https://www.sec.gov/Archives/edgar/data/1759509/000175950924000011/0001759509-24-000011-index.htm
+Original complete submission:
+https://www.sec.gov/Archives/edgar/data/1759509/000175950924000011/0001759509-24-000011.txt
+Amendment index:
+https://www.sec.gov/Archives/edgar/data/1759509/000175950924000015/0001759509-24-000015-index.htm
+Amendment report:
+https://www.sec.gov/Archives/edgar/data/1759509/000175950924000015/lyft-20240213.htm
+Amendment complete submission:
+https://www.sec.gov/Archives/edgar/data/1759509/000175950924000015/0001759509-24-000015.txt
+Corrected exhibit:
+https://www.sec.gov/Archives/edgar/data/1759509/000175950924000015/lyft-2023x12x31pressreleas.htm
+Current issuer correction:
+https://investor.lyft.com/news-events-presentations/press-releases/detail/119/correcting-and-replacing-lyft-announces-fourth-quarter-and-full-year-2023-results
+SEC status guide:
+https://www.sec.gov/submit-filings/filer-support-resources/how-do-i-guides/determine-status-my-filing
+SEC Filer Manual, chapter 10 (indexed December 2022):
+https://www.sec.gov/files/edgar/filermanual/efmvol2-c10.pdf
+SEC archive access and post-acceptance correction documentation:
+https://www.sec.gov/search-filings/edgar-search-assistance/accessing-edgar-data

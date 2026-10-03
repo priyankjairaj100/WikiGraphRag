@@ -1,0 +1,326 @@
+{
+  "schema_version": "correction_gate_discovery_v0.10",
+  "domain": "corporate_primary_filings_and_issuer_corrections",
+  "read_date_utc": "2026-10-03",
+  "protocol": "data/correction_gate_v10/admission_search_protocol.json",
+  "status": "Discovery only; no admission, questions, proposals, reference answers, or model results created.",
+  "budget": {
+    "initial_search_queries_used": 6,
+    "initial_search_queries_limit": 6,
+    "candidate_histories_inspected": 3,
+    "candidate_histories_limit": 6,
+    "distinct_followup_primary_documents_attempted": {
+      "plug_2018_restatement": 2,
+      "molson_2017_restatement": 2,
+      "lyft_2024_margin_typo": 4
+    },
+    "followup_primary_documents_limit_per_candidate": 4,
+    "counting_note": "Issuer navigation indexes are logged separately from substantive primary documents. Reopens, finds, and failed retries of the same URL do not add distinct documents. Lyft's failed amendment-report retrieval counts as one of its four documents.",
+    "stop_reason": "Initial-query budget exhausted; two promising paired-document leads and one dependency exclusion. No quota-driven expansion."
+  },
+  "search_log": [
+    {
+      "batch": 1,
+      "engine": "system1_search_query",
+      "query": "site.sec.gov \"restatement\" \"Net income\" \"Earnings per share is calculated\" \"As previously reported\""
+    },
+    {
+      "batch": 1,
+      "engine": "system1_search_query",
+      "query": "site.investor* \"correction\" \"net income\" \"earnings per share\""
+    },
+    {
+      "batch": 1,
+      "engine": "system1_search_query",
+      "query": "site.sec.gov \"error\" \"As previously reported\" \"revenue\" \"Basic earnings per share is computed\""
+    },
+    {
+      "batch": 2,
+      "engine": "system1_search_query",
+      "query": "site.sec.gov restatement \"as previously reported\" \"net income\""
+    },
+    {
+      "batch": 2,
+      "engine": "system1_search_query",
+      "query": "earnings release correction net income 2024 2023 issuer"
+    },
+    {
+      "batch": 2,
+      "engine": "system1_search_query",
+      "query": "Lyft 2023 results correction 500 50 basis points investor"
+    }
+  ],
+  "search_results_note": "Both batches returned many apparently irrelevant Google Sites, Income, and generic EPS results despite correction terms. They were not treated as inspected correction histories. Batch 2 returned secondary Lyft leads (Reuters 2025-01-16, AP 2024-02-14), not used for factual admission evidence. No secondary article was opened. Plug Power and Molson Coors were prior-knowledge leads navigated directly to issuer report indexes; evidence below comes only from retrieved issuer documents. Root subsequently supplied exact Lyft SEC links from in-conversation project context.",
+  "navigation_log": [
+    {
+      "url": "https://investor.lyft.com/news-and-events/news-releases/",
+      "status": "inaccessible via web tool"
+    },
+    {
+      "url": "https://www.ir.plugpower.com/press-releases/default.aspx",
+      "status": "accessible HTML navigation; release list not exposed"
+    },
+    {
+      "url": "https://ir.molsoncoors.com/news/press-releases/default.aspx",
+      "status": "inaccessible via web tool"
+    },
+    {
+      "url": "https://investor.lyft.com",
+      "resolved_url": "https://investor.lyft.com/",
+      "status": "accessible issuer navigation"
+    },
+    {
+      "url": "https://ir.molsoncoors.com",
+      "resolved_url": "https://ir.molsoncoors.com/overview/default.aspx",
+      "status": "accessible issuer navigation"
+    },
+    {
+      "url": "https://www.ir.plugpower.com/financials/annual-reports/default.aspx",
+      "status": "accessible; links to FY2019 and FY2020 reports"
+    },
+    {
+      "url": "https://www.ir.plugpower.com/financials/quarterly-results/default.aspx",
+      "status": "accessible HTML navigation; quarterly documents not exposed"
+    },
+    {
+      "url": "https://investor.lyft.com/financials/financial-results",
+      "status": "accessible; FY2023 release link"
+    },
+    {
+      "url": "https://ir.molsoncoors.com/financials/annual-reports/default.aspx",
+      "status": "accessible; FY2017 and FY2018 report links"
+    }
+  ],
+  "retrieval_failures": [
+    "Initial FY2020 Plug PDF click timed out; same observed URL opened successfully on retry.",
+    "Two batches of clicks to Lyft FY2023 and Molson FY2017/FY2018 links returned invalid-argument errors (six clicks). Reopening the navigation URLs and clicking their refreshed references succeeded.",
+    "Read-only urllib attempts for the already-visited Lyft financial-results and Molson annual-reports indexes failed with Operation not permitted. No escalation or bypass was attempted; web navigation continued.",
+    "Lyft SEC amendment-report URL returned an internal error and no content; the original and corrected exhibit URLs were accessible."
+  ],
+  "sources": [
+    {
+      "id": "plug_old",
+      "url": "https://s29.q4cdn.com/600973483/files/doc_financials/2019/ar/4Q19-10K.pdf",
+      "authority": "Plug Power Inc., linked from issuer annual reports index",
+      "document": "FY2019 Form 10-K",
+      "accessible": true,
+      "format": "PDF, 142 pages",
+      "read_date_utc": "2026-10-03",
+      "locations": [
+        "PDF page index 62: consolidated statements of operations",
+        "PDF page index 80: Note 3 Earnings Per Share"
+      ],
+      "bounded_paraphrase": "FY2018 common-stockholder loss is $78.167m; basic/diluted loss per share $0.36; weighted shares 218,882,337; service revenue $22.002m. Note 3 specifies the EPS numerator and denominator.",
+      "quotes": [
+        "computed by dividing net loss attributable to common stockholders by the",
+        "weighted average number of common stock outstanding"
+      ],
+      "capture_status": "Accessible earlier report read through web extraction; exact byte freeze delegated to root, not certified here."
+    },
+    {
+      "id": "plug_corrected",
+      "url": "https://s29.q4cdn.com/600973483/files/doc_financials/2020/ar/4Q20-10K.pdf",
+      "authority": "Plug Power Inc., linked from issuer annual reports index",
+      "document": "FY2020 Form 10-K",
+      "accessible": true,
+      "format": "PDF, 347 pages",
+      "read_date_utc": "2026-10-03",
+      "locations": [
+        "PDF page indexes 2–3: explanatory note",
+        "PDF page index 149, F-18: FY2018 restatement",
+        "PDF page index 152, F-21: FY2018 cash-flow reconciliation"
+      ],
+      "bounded_paraphrase": "Issuer identifies errors and restates earlier financial statements. FY2018 common-stockholder loss becomes $85.660m and basic/diluted loss per share $0.39, with weighted shares unchanged at 218,882,337. Service revenue remains $22.002m. Cash plus restricted cash remains $110.153m. FY2019 EPS remains $0.36 despite its numerator correction, so that year is not the proposed positive.",
+      "quotes": [
+        "As Previously",
+        "As Restated",
+        "net loss per share"
+      ],
+      "capture_status": "Exact byte freeze pending."
+    },
+    {
+      "id": "molson_old",
+      "url": "https://s27.q4cdn.com/826627388/files/doc_financials/2017/ar/MC201710-K.pdf",
+      "authority": "Molson Coors Brewing Company, linked from issuer annual reports index",
+      "document": "FY2017 Form 10-K",
+      "accessible": true,
+      "format": "PDF, 238 pages",
+      "read_date_utc": "2026-10-03",
+      "locations": [
+        "PDF page index 125: Note 9 Earnings Per Share",
+        "PDF page index 87: consolidated cash flows"
+      ],
+      "bounded_paraphrase": "FY2017 attributable net income is $1,414.2m; basic EPS $6.57 and weighted basic shares 215.4m. The EPS note describes computation using weighted shares. Operating cash flow is $1,866.3m.",
+      "quotes": [
+        "Basic EPS was computed using the weighted-average number of shares of common stock outstanding during the period."
+      ],
+      "capture_status": "Accessible earlier report read through web extraction; exact byte freeze pending."
+    },
+    {
+      "id": "molson_corrected",
+      "url": "https://s27.q4cdn.com/826627388/files/doc_financials/2018/ar/molson-coors-10K.pdf",
+      "authority": "Molson Coors Brewing Company, linked from issuer annual reports index",
+      "document": "FY2018 Form 10-K",
+      "accessible": true,
+      "format": "PDF, 195 pages",
+      "read_date_utc": "2026-10-03",
+      "locations": [
+        "PDF page indexes 90–91: Note 1 income tax error and old/restated table",
+        "PDF page index 96: EPS accounting",
+        "PDF page index 86: consolidated cash flows"
+      ],
+      "bounded_paraphrase": "Income-tax accounting errors require FY2017 benefit $53.2m to become $204.6m. The issuer explicitly connects the correction to increased income/EPS: attributable income $1,414.2m becomes $1,565.6m and basic EPS $6.57 becomes $7.27. It excludes operating, investing and financing cash-flow subtotals from correction effects; FY2017 operating cash flow remains $1,866.3m.",
+      "quotes": [
+        "resulting in increases to our",
+        "net income and earnings per share",
+        "there are no impacts on the",
+        "operating, investing or financing subtotals"
+      ],
+      "capture_status": "Exact byte freeze pending."
+    },
+    {
+      "id": "lyft_issuer_corrected",
+      "url": "https://investor.lyft.com/news-events-presentations/press-releases/detail/119/correcting-and-replacing-lyft-announces-fourth-quarter-and-full-year-2023-results",
+      "authority": "Lyft Inc.",
+      "document": "Correcting and replacing FY2023 results release",
+      "accessible": true,
+      "format": "HTML",
+      "read_date_utc": "2026-10-03",
+      "locations": [
+        "correction introduction",
+        "FY24 directional commentary",
+        "operational highlights"
+      ],
+      "bounded_paraphrase": "Explicitly replaces expected FY2024 adjusted-EBITDA margin expansion of 500bp with 50bp. The updated release retains its positive-full-year-free-cash-flow prediction alongside rides, bookings and capital-expenditure premises, and retains Q42023 rides of 191m.",
+      "quotes": [
+        "should read",
+        "instead of",
+        "Given these factors"
+      ]
+    },
+    {
+      "id": "lyft_old_exhibit",
+      "url": "https://www.sec.gov/Archives/edgar/data/1759509/000175950924000011/lyft-2023x12x31pressreleas.htm",
+      "authority": "Lyft Inc., SEC-filed exhibit",
+      "accessible": true,
+      "format": "HTML",
+      "read_date_utc": "2026-10-03",
+      "locations": [
+        "FY24 directional commentary",
+        "operational highlights"
+      ],
+      "bounded_paraphrase": "Current earlier exhibit still contains 500bp, followed by the positive-free-cash-flow prediction using multiple premises. Q42023 rides are 191m.",
+      "quotes": [
+        "approximately 500 basis points year-over-year",
+        "Given these factors"
+      ],
+      "capture_status": "Earlier actual wording retrieved, but historical first-public-availability timing not certified."
+    },
+    {
+      "id": "lyft_amendment_failed",
+      "url": "https://www.sec.gov/Archives/edgar/data/1759509/000175950924000015/lyft-20240213.htm",
+      "authority": "Lyft Inc., intended SEC amendment report",
+      "accessible": false,
+      "read_date_utc": "2026-10-03",
+      "failure": "Web tool internal error; no content used."
+    },
+    {
+      "id": "lyft_corrected_exhibit",
+      "url": "https://www.sec.gov/Archives/edgar/data/1759509/000175950924000015/lyft-2023x12x31pressreleas.htm",
+      "authority": "Lyft Inc., SEC-filed corrected exhibit",
+      "accessible": true,
+      "format": "HTML",
+      "read_date_utc": "2026-10-03",
+      "locations": [
+        "FY24 directional commentary"
+      ],
+      "bounded_paraphrase": "Corrected exhibit contains the 50bp expected margin expansion.",
+      "quotes": [
+        "approximately 50 basis points year-over-year"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "plug_2018_restatement",
+      "provisional_stratum": "current_document_only",
+      "paired_prefix_upgrade_candidate": true,
+      "admitted": false,
+      "original_erroneous_assertion": "For FY2018, net loss attributable to common stockholders was $78.167m.",
+      "explicit_replacement": "FY2020 report restates the same FY2018 loss as $85.660m.",
+      "downstream_source_assertion": "FY2018 basic/diluted loss per share was $0.36; the restatement changes it to $0.39.",
+      "dependency_rationale": "The earlier issuer report explicitly computes basic EPS by dividing common-stockholder loss by weighted common shares. Its numerator changes while the same denominator is retained. Both old and replacement EPS are source-present; no authored threshold is involved.",
+      "independent_retention_control": "FY2018 service revenue $22.002m appears in the earlier report and unchanged in the restatement table; it does not depend on the loss/EPS calculation.",
+      "alternative_support": "No independent support for the old $0.36 FY2018 EPS was identified. FY2019's unchanged rounded EPS is explicitly excluded as a positive.",
+      "evidence_sources": [
+        "plug_old",
+        "plug_corrected"
+      ],
+      "representation_fit": "A dated common-stockholder-loss assertion can be replaced atomically. This is correction of the same reporting period, not a new-year update. Do not encode the entire multi-field table as one assertion.",
+      "limitations": [
+        "Exact earlier and correcting bytes not frozen by this discovery agent; current-document status is conservative pending root capture and separate review.",
+        "FY2019 report is an actual earlier document reporting FY2018 comparatives, not a claim to be FY2018's first original publication.",
+        "Issuer's broader restatement contains multiple errors and reclassifications; keep the selected numerator/EPS relation scoped.",
+        "PDF table columns should be verified in the frozen representation."
+      ],
+      "review_request": "Freeze both linked PDFs; separately adjudicate source-only eligibility and possible paired-prefix promotion.",
+      "downstream_directly_corrected_in_source": true,
+      "direct_correction_detail": "The correction table directly supplies replacement EPS $0.39 beside old $0.36; this is not a case requiring an algorithm to discover an unmentioned downstream correction.",
+      "method_interpretation": "Potential redundant-propagation control only; no algorithmic win or propagation gain inferred."
+    },
+    {
+      "id": "molson_2017_restatement",
+      "provisional_stratum": "current_document_only",
+      "paired_prefix_upgrade_candidate": true,
+      "admitted": false,
+      "original_erroneous_assertion": "FY2017 income tax benefit was $53.2m, as explicitly identified in the issuer's old/restated table.",
+      "explicit_replacement": "The issuer corrects FY2017 income tax benefit to $204.6m due to identified acquired-partnership tax accounting errors.",
+      "downstream_source_assertion": "FY2017 attributable net income changes from $1,414.2m to $1,565.6m and basic EPS from $6.57 to $7.27.",
+      "dependency_rationale": "The correction narrative explicitly says reducing deferred tax expense results in increased net income and EPS; the adjacent old/restated table gives both downstream assertions. The earlier report independently contains the old net income and EPS and its weighted-share computation description.",
+      "independent_retention_control": "FY2017 operating cash flow is $1,866.3m in both actual reports. The correction expressly states that operating, investing, and financing cash-flow subtotals are unaffected.",
+      "alternative_support": "The statements identify no independent route retaining the old net-income/EPS values; cash-flow totals remain supported through offsetting reconciliation components.",
+      "evidence_sources": [
+        "molson_old",
+        "molson_corrected"
+      ],
+      "representation_fit": "Same-period scalar tax-benefit assertion is independently meaningful and permits whole-assertion replacement; dependent income/EPS are separate source assertions. Other policy changes/reclassifications in the reports must not be mislabeled factual corrections.",
+      "limitations": [
+        "Exact earlier and correcting bytes still require freeze and separate review; no certified historical first-public date.",
+        "The old tax-benefit amount was read in the correction's explicit comparison; the earlier PDF was checked for old downstream values and control, not separately for that tax row.",
+        "Rounded weighted-share counts do not alone reproduce all displayed EPS decimals; use the issuer's textual dependency and source-present EPS, not invented exact arithmetic.",
+        "PDF table alignment needs capture-time verification."
+      ],
+      "review_request": "Freeze both reports and verify the earlier tax row before paired-prefix promotion.",
+      "downstream_directly_corrected_in_source": true,
+      "direct_correction_detail": "The correction table directly replaces attributable net income and basic EPS as well as the tax benefit; their changes are not latent consequences omitted by the source.",
+      "method_interpretation": "Potential redundant-propagation control only; no algorithmic win or propagation gain inferred."
+    },
+    {
+      "id": "lyft_2024_margin_typo",
+      "provisional_stratum": "discovery_only",
+      "paired_prefix_upgrade_candidate": false,
+      "admitted": false,
+      "original_erroneous_assertion": "Expected FY2024 adjusted-EBITDA margin expansion was approximately 500bp year over year.",
+      "explicit_replacement": "Issuer's correction replaces 500bp with 50bp; earlier and correcting SEC exhibits display the respective wording.",
+      "downstream_source_assertion": "The following directional-commentary bullet predicts positive full-year free cash flow, citing the preceding factors and lower capital expenditures.",
+      "dependency_rationale": "A textual multi-premise connection exists, but essential dependence on the erroneous 500bp is not established. The same conclusion remains in the corrected issuer release despite the 50bp replacement.",
+      "independent_retention_control": "Q42023 rides were 191m, independently reported in operational highlights and retained.",
+      "alternative_support": "Rides growth, bookings growth and lower capital expenditures are explicitly named alongside margin expansion. No source-specified computation establishes that the old margin value is necessary for positive free cash flow.",
+      "evidence_sources": [
+        "lyft_issuer_corrected",
+        "lyft_old_exhibit",
+        "lyft_corrected_exhibit"
+      ],
+      "representation_fit": "The forecast wording admits whole-assertion correction, but it is a typo in a stated expectation rather than an observed FY2024 outcome. It cannot be promoted using an authored margin threshold.",
+      "exclusion_reasons": [
+        "Essential dependency unresolved; alternative source support survives.",
+        "Amendment-report full text inaccessible.",
+        "Historical first-public-availability timing not certified."
+      ],
+      "possible_future_role": "Alternative-support/retention negative, only after independent review; no positive method result.",
+      "downstream_directly_corrected_in_source": false,
+      "direct_correction_detail": "The free-cash-flow prediction remains in the updated release; essential dependence on the erroneous margin value is unresolved."
+    }
+  ],
+  "shortfall": "Only two promising corporate histories were found. Both await exact capture and independent eligibility review; zero admitted by this discovery screen."
+}

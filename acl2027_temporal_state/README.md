@@ -1,0 +1,158 @@
+# ACL 2027 temporal state research
+
+## Current checkpoint (v0.11)
+
+Version 0.11 adds a source-support answering API, 30 annotation-conditioned lookups and a completed two-order local reader diagnostic. The lookups return 22 active and 8 withdrawn statuses; direct and dependency policies agree because both dependent financial results are explicitly corrected. This is conditional integration, not natural QA accuracy.
+
+The Qwen3-4B reader completed both 3,327-token inputs without cache or truncation. Both outputs are parseable JSON but use invalid exposure labels. The frozen strict scorer retains all three questions as failures in each condition; no output repair or label normalization is applied. One deliberately selected current-document example does not demonstrate a strong-reader failure rate or correction-method gain.
+
+Nine queries screened six new histories, with zero full-source/core admissions. The next step is the bounded access pilot in `data/provenance/route_decision_v11.json`, followed by a matched complete-evidence comparison if admission succeeds. Stop adding solver features until answer-level evidence supports them.
+
+All **410 unit tests pass**. Run `PYTHONPATH=src python3 -m unittest discover -s tests -q`, `python3 scripts/verify_discovery_v11.py`, `python3 scripts/verify_reader_inputs_v11.py`, and `python3 scripts/evaluate_reader_v11.py --check`. Read `docs/research_update_v11.txt` and `docs/reproduce_v11.txt` for evidence limits, the preserved failed runtime attempt and the explicit pre-inference engineering amendment. Earlier source/code/result/manuscript files are preserved; only current-state bookkeeping changes.
+
+The paper addendum is `paper/results_update_v11.tex` with `paper/results_numeric_v11.tex` and `paper/claim_ledger_v11.json`. It remains source only. Full source strings, quote-bearing working annotations, full prompts/token arrays and model binaries are omitted.
+
+This is the isolated rework of WikiGraphRAG toward joint factual identity and temporal update inference. The submission archive in `reference/` is unchanged. New code is a research foundation, not a completed joint model or a reproduction of the paper's reported performance.
+
+## Previous checkpoint (v0.10)
+
+Version 0.10 completes bounded correction discovery and two excerpt-conditioned policy illustrations. Eighteen queries screened twelve histories. All eleven full-document downloads failed before HTTP; a separately frozen web-reader batch preserves four financial excerpt representations. Zero histories are admitted as full-prefix benchmark inputs.
+
+Two independently reviewed financial cases provide ten selected assertion records, four explicit replacements, two essential dependencies and two unaffected controls. Six policy states execute through the unchanged core. In both cases direct and dependency withdrawal retain the same three records because the EPS conclusion is itself directly corrected. All original records remain in the ledger, and each control survives. These are annotation-conditioned support illustrations; no new native model inference, QA prediction or method advantage is claimed.
+
+All **377 unit tests pass**, including eight new interface checks. Independent audit reproduces both result files exactly and verifies source/evidence bindings. The v0.9 command-gate results remain preserved. Run `python3 -m unittest discover -s tests -q` and `python3 scripts/verify_correction_gate_v10.py`. The optional `--external` check requires omitted working excerpts and annotations.
+
+Read `docs/research_update_v10.txt`, `docs/correction_gate_next_steps_v10.txt`, and `data/provenance/route_decision_v10.json`. The paper addendum is `paper/results_update_v10.tex` with an eight-claim evidence ledger. It is source only. Complete source capture, a non-temporal support-answering contract and a matched strong-reader comparison remain prerequisites for the empirical gate. Full external source strings, quote-bearing annotations and model binaries are excluded from this checkpoint.
+
+## Previous checkpoint (v0.9)
+
+Version 0.9 completes a matched 0.6B/4B scorer diagnostic and adds four source-reviewed development histories. The exact v0.8 archive was restored and all 433 manifest entries verified before extension.
+
+The sixteen retained scores cover four authored reading statements from Disney and Intel under both label orders. The 0.6B model flips all four decisions and agrees with two of four reference labels in each order. The 4B model has no flips, but agrees with only three of four: it still accepts the incorrect non-executive chairman statement. Stability and high margins do not establish reliable source interpretation. The final run took 20.68 minutes; one discarded response and one separate smoke are retained, for eighteen returned distributions this checkpoint. No natural accuracy or method advantage is claimed.
+
+Eight new source captures yield four two-prefix histories, 123 reviewed claim instances, and fourteen reference judgments across seven saved reference files. One Disney p2 reference write remains blocked by a content filter and was not replaced. One annotation was revised to remove an unsupported exact role-start date. Across v0.8–v0.9, seven histories have fourteen annotated prefixes; thirteen prefixes have references. The new histories contain zero explicit factual corrections.
+
+The next priority is the eight-history correction-dependent support gate in `data/provenance/route_decision_v09.json`, before further routine annotation or new solver development. Compare correction policies against a same-source full-prefix reader and ordinary iterative/restarted inference; report admission shortfalls and negative findings.
+
+Read `docs/research_update_v09.txt`, `docs/source_annotations_v09.txt`, and `docs/research_route_review_v09.txt`. The exploratory paper update is `paper/results_update_v09.tex` with its numeric section and ten-claim ledger. Full source strings, raw quote-bearing outputs, token arrays and model binaries are excluded from the checkpoint; default replay is metadata/arithmetic only. The saved external audit records the full-input and vocabulary checks performed while those inputs were available.
+
+Verification: **369 unit tests and 28 command gates passed**. Run `python3 scripts/verify_project.py`; it performs no model calls or network access. Run `python3 scripts/review_input_preservation_v09.py` after verification for the complete v0.8 file-preservation audit. There is no compiled PDF or completed submission paper.
+
+## Previous checkpoint (v0.8)
+
+Version 0.8 completes a controlled scorer diagnosis and an initial source-reviewed document-prefix batch.
+
+The scoring control used the same pinned Qwen3-0.6B Q8_0 backend on the first item of each of four kinds. Eight fresh processes produced sixteen cold/warm distributions. All four items still changed support-score sign when the label definitions changed display order under cold execution; all eight identical-prompt warm repeats returned exactly the same label log probabilities. Cache carryover is therefore not sufficient to explain these four differences. This is a follow-up on one development history, not a general bias rate, accuracy result or novel method. No diagnostic condition is promoted over the v0.7 primary result.
+
+All 39 URLs in the frozen source frame were attempted: 32 supplied usable text, covering 15 complete source sets. These are not certified independent groups. The predeclared first batch selected IBM, Docker, Chrome and HS2; IBM's two unavailable responses were retained as failures. The remaining three histories yield six frozen current-version prefixes, 57 model-assisted claim instances and 12 separate reference judgments over six question texts. Four annotation artifacts required source-based revisions; untouched raw outputs and the initial date-contract failure remain recorded. These are development annotations, not human gold or measured model predictions.
+
+The cases expose a concrete semantic risk: a clarification or plan reversal must not automatically become a formal correction. Current-page updates and undated banners also cannot be backdated into historical prefixes. Stronger scoring, candidate coverage, executable natural candidates and matched answer/evidence comparisons remain the next research gates. Historical scoring stays default; prior negative results and v0.7 inputs are preserved.
+
+Canonical verification passes **356 unit tests and 22 command gates**. All 158 prior inputs remain byte-identical; two diagnostic outputs were regenerated with unchanged semantic results.
+
+Read `docs/progress_v0_8.txt`, `docs/source_semantic_review_v08.txt` and `docs/scorer_control_review_v08.txt`. The exploratory evidence addendum is `paper/results_update_v08.tex`; neither it nor the preserved v0.7 draft is a completed ACL submission or compiled PDF.
+
+## Reproduce this checkpoint
+
+From this directory, with Python 3.11 or later:
+
+```bash
+python scripts/verify_project.py
+```
+
+Or run each component:
+
+```bash
+PYTHONPATH=src python -m unittest discover -s tests -v
+python scripts/run_diagnostics.py
+python scripts/run_decoder_diagnostics.py
+python scripts/run_natural_pilot.py
+python scripts/run_representation_pilot.py
+python scripts/run_coupled_diagnostics.py
+python scripts/run_natural_cache_smoke.py
+python scripts/audit_coupled_finite.py
+python scripts/run_correction_diagnostics.py
+python scripts/run_correction_source_demo.py
+python scripts/audit_correction_finite.py
+python scripts/run_objective_diagnostics_v06.py
+python scripts/audit_objectives_v06.py
+python scripts/run_ordinal_sensitivity_v06.py
+python scripts/run_natural_model_pilot_v06.py \
+  --candidates data/natural_model_pilot_v06/candidate_output_repaired.json \
+  --candidate-receipt data/natural_model_pilot_v06/candidate_repair_receipt.json \
+  --candidate-prompt configs/candidate_prompt_v06_repair.txt \
+  --candidate-schema configs/candidate_schema_v06_repair.json \
+  --repair-protocol data/natural_model_pilot_v06/validation_repair_protocol.json \
+  --original-candidates data/natural_model_pilot_v06/candidate_output_raw.json \
+  --original-candidate-receipt data/natural_model_pilot_v06/candidate_run_receipt.json \
+  --lineage-input data/natural_model_pilot_v06/candidate_validation_first_pass.json
+python scripts/prepare_model_pilot.py --dry-run
+python scripts/audit_original.py
+python scripts/validate_candidate_ambiguity_v07.py --raw-output data/natural_model_pilot_v07/candidate_ambiguity_audit_raw.json
+python scripts/run_likelihood_pilot_v07.py
+python scripts/replay_source_stream_v08.py
+python scripts/scorer_controls_v08.py
+python scripts/review_scorer_controls_v08.py
+```
+
+Use `verify_project.py` as the canonical replay command; it includes the explicit repaired-candidate flags shown above. The natural pilot script without those flags intentionally defaults to the preserved failed first response. No model weights, API keys or GPU are needed to replay this checkpoint. Natural likelihood replay consumes stored responses and native pinned traces; verification does not rerun a model. New source-stream replay checks distributed semantic cores and span hashes, not the omitted full source text or exact quote occurrence. For fresh pinned inference and asset downloads, use `docs/reproduce_local_backend_v07.txt`. For the v0.8 cold/warm control, see `docs/scorer_controls_v08.txt`; its sixteen archived distributions have the limited scope stated above. The Lyft demonstration replays packaged evidence excerpts; a separate retriever can fetch current public responses, whose bytes may change. Full external release text is analysis-only and excluded from the distributed checkpoint. SHA-256 manifests identify the exact included files.
+
+## Research question
+
+When uncertain factual interpretations determine which corrections and support dependencies become active, does joint reconstruction improve grounded answers beyond strong contextual extraction and iterative construction using the same evidence and score budget? Natural prevalence, useful gains and novelty remain unestablished.
+
+## Evidence levels
+
+- Synthetic diagnostics establish implementation behavior only.
+- Source candidates establish collection feasibility only.
+- Model-assisted annotations must retain their model and prompt provenance; they are not human annotations.
+- Natural-data development experiments inform method selection.
+- A frozen, independently separated test evaluates the final claim.
+
+All final comparisons must control source access, information cutoff, candidate retrieval and reader context budgets. Gold keys, answers and validity annotations are scoring-only. Candidate assertion provenance must identify every source used during extraction; a cutoff filter cannot repair undisclosed future information.
+
+## Main paths
+
+- `src/temporal_state/models.py`: inference records and date validation.
+- `src/temporal_state/memory.py`: deterministic baseline memory and query routing.
+- `src/temporal_state/evaluation.py`: strict evaluation labels, scoring and grouped uncertainty.
+- `src/temporal_state/decoder.py`: small exact, independent and iterative candidate-level decoders.
+- `src/temporal_state/pilot_io.py`: source hashes, prefix admission, extraction span and provenance validation.
+- `src/temporal_state/bounded.py`: interval bounds, observations, polarity/modality and conservative source-supported answering.
+- `src/temporal_state/scored_io.py`: strict shared candidate/score cache and provenance checks.
+- `src/temporal_state/coupled.py`: conditional temporal-network closure and common answer semantics.
+- `src/temporal_state/pipeline.py`: question-free decoding followed by source-routed answering.
+- `src/temporal_state/corrections.py`: targeted support withdrawal, explicit dependencies and active temporal projection.
+- `src/temporal_state/correction_io.py`: immutable correction policy, provenance and preserved v0.4 cache lineage.
+- `src/temporal_state/correction_pipeline.py`: unchanged historical correction pipeline and active/inactive decomposition.
+- `src/temporal_state/objectives.py` and `objective_pipeline.py`: explicit matched objective modes, reference-anchored score auditing and cache/objective identities.
+- `src/temporal_state/representation_io.py`: migrated-claim integrity, prefix-supported alias routing, and matched legacy projection.
+- `data/diagnostics/`: constructed cases, explicitly separate from natural sources.
+- `data/source_register/`: researched collection leads and availability gaps.
+- `data/natural_pilot/`: retrieved text, source metadata, exact inputs, unedited machine extractions and separate development expectations.
+- `data/natural_pilot_v03/`: separately versioned semantic migrations and their provenance; original data stays unchanged.
+- `data/correction_diagnostics_v05/`: ten authored controls, separate queries and expected implementation contracts.
+- `data/correction_pilot_v05/`: Lyft capture receipts, short source excerpts, unversioned source annotation and current-prefix illustration.
+- `configs/extractor_prompt_v03.txt` and `configs/extractor_output_schema_v03.json`: preserved source-only pinned-backend preparation contract.
+- `configs/candidate_prompt_v06.txt`, `candidate_schema_v06.json` and their `_repair` versions: explicit source-only candidate contracts and bounded protocol correction.
+- `configs/scorer_ordinal_prompt_v06.txt` and `scorer_ordinal_schema_v06.json`: exploratory ordinal scoring with explicitly judged unresolved/null options.
+- `configs/scorer_prompt_v06.txt` and `scorer_schema_v06.json`: preserved older likelihood protocol. The executed v0.7 protocol is `configs/likelihood_scoring_v07.json`.
+- `data/natural_protocol_v06/request_manifest.json`: source/prompt/schema request fingerprints.
+- `data/natural_model_pilot_v06/`: raw extraction, receipts, retained first failure and versioned repair records.
+- `data/likelihood_scoring_v07/`: exact prompts, token IDs, full native responses, backend bindings, failed attempts and shared caches.
+- `data/source_stream_v07/development_frame.json`: prospective development metadata leads, not an admitted dataset.
+- `data/source_stream_v08/`: capture/delivery receipts, source-only generation provenance and compact initial/adjudicated annotation projections.
+- `data/scorer_controls_v08/`: frozen input bindings and all sixteen native cold/warm responses.
+- `paper/`: exploratory manuscript sources, claim ledgers and bibliography.
+- `prepared/model_pilot_job.py`: self-contained prepared script; verifies inputs by default and keeps model execution disabled. Rebuild with `python scripts/prepare_model_pilot.py --output prepared/model_pilot_job.py` after any configuration change.
+- `results/`: generated diagnostics and audit outputs, never claimed as paper results.
+- `docs/joint_decoder_spec.txt`: overall proposed method; see `docs/decoder_implementation.txt` for the implemented subset.
+- `docs/annotation_protocol.txt`: annotation workflow performed within this conversation.
+
+## Continuation procedure
+
+At each active work session, read the state and unfinished tasks, verify the previous checkpoint, complete the next unblocked task, run its targeted checks, record results and limitations, and create a new versioned checkpoint. Calendar dates in the execution plan are targets, not background jobs or reminders.
+
+The next empirical gate is broader source-reviewed annotation and stronger contextual scoring on separately declared development examples. The technical cache-control question is answered for four items; scorer reliability, candidate coverage and natural method value remain open. Extend search only after real coupling survives strong contextual and iterative/restarted baselines. See `TASKS.json` and `docs/progress_v0_8.txt`.
+
+Cloud Jobs remains unavailable; no paid jobs launched and credits remain unverified. The local 0.6B run is separate from the prepared 8B extractor. Model/runtime binaries and new full external source texts are excluded. Native scoring replay is portable without those binaries; exact source-text revalidation needs matching capture bytes, and redownloads may change. No GPU is needed for offline checkpoint verification.

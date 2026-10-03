@@ -1,0 +1,177 @@
+PINNED MATCHED SCORER DIAGNOSTIC v0.9
+
+Scope
+Four prospectively authored challenge statements from the first eligible Disney
+and Intel source prefixes, each scored under two label-definition orders by
+both Qwen3-0.6B-Q8_0 and Qwen3-4B-Q8_0. Expected labels are held in a separate
+model-assisted reference process and are never consumed by this collector.
+Balanced authored contrasts are not naturally sampled candidate accuracy,
+calibration, end-to-end QA, held-out generalization, or an algorithmic advance.
+The matched comparison changes model weights; it does not isolate parameter
+count causally. Both models may have prior training exposure to these sources.
+
+Pins and numerical settings
+configs/model_backend_v09.json binds exact model repository commits, full GGUF
+SHA256 digests, sizes and public download URLs. The GGUF binds tokenizer and
+native template together with weights. The shared llama.cpp b11146 release and
+all 60 runtime-file hashes match the earlier v0.7 pin. CPU only, four threads,
+4096 context, Q8 key/value KV, flash attention on, batch256/microbatch128, one
+server slot, no warmup, no context shifting, and native thinking disabled.
+Each full exact prompt plus Yes and plus No must tokenize to the same prefix
+and one distinct label token. All eight inputs on both model tokenizers pass
+preflight before any research completion. Full inputs must use <=4095 tokens,
+leaving one output token. No shortening, history substitution or truncation.
+
+The original v0.7 system instruction and Yes/No label definitions are reused.
+Each source-only ITEM is a complete reading statement; it is not a generated
+candidate graph. Conditions reverse only the order of the two definitions.
+Source text is presented as source data. Item/history IDs route outputs and
+are excluded from model messages. Primary condition is yes_no. The diagnostic
+no_yes condition is never selected as a better default based on its score.
+
+Each item/condition is scored in its own newly launched server process with
+cache_prompt=false. The fixed sequence runs eight small-model distributions
+then eight larger-model distributions. There are no warm repeats in v0.9.
+The generation request predicts exactly one token with temperature=-1,
+post_sampling_probs=false, seed7, n_probs256, no grammar, no logit bias, and no
+repetition/presence/frequency penalties. The full-vocabulary normalization
+semantics of this pinned runtime are documented by the bound v0.7 C++ source
+evidence files. Top256 is a returned-rank limit, not label renormalization.
+Both literal labels must occur with finite nonpositive log probabilities;
+missing labels fail the complete run without substituting a floor or retry.
+All reported label mass is exp(logPYes)+exp(logPNo). Log odds are uncalibrated
+support scores, not factual probabilities. Positive odds decide Yes, negative
+odds No, and exact zero abstains; reference agreement is analyzed separately.
+
+Resource boundary and failed smoke
+The process hard address-space guard is 5.5 GiB, unchanged from the initial
+attempt. Research CPU limit is3600 seconds per process; each HTTP completion
+has a900 second timeout and the process has a1050 second wall watchdog. The
+first trivial Earth/moon smoke stopped before model load with zero completed
+distributions because total cgroup memory included about7.57 GiB reclaimable
+file cache after asset download. This was a watchdog stop, not an OOM or
+proof that weights could not fit. Its exact code/config/log/receipt survive.
+The second smoke retained the AS guard and7 GiB watchdog threshold but used
+anon+file_mapped+kernel as an approximate resident-footprint metric while
+retaining total-cgroup telemetry. This proxy is not measured process RSS;
+file mappings and global host activity have limitations. Memory telemetry is
+required and collection fails closed if it is unavailable. The second smoke
+completed46 input tokens in1.068 seconds of prefill, with single-token label
+IDs9454 and2753 and a clean server exit. Its evidence is separate from all
+research scores. The provisional1500-token sizing preference was raised to
+the full4095-token context budget after smoke success, before research calls.
+
+children_peak_rss_kib uses getrusage(RUSAGE_CHILDREN).ru_maxrss: it is a
+cumulative maximum across prior owned children in that Python collector, not
+an independently measured peak for each individual research process. Do not
+interpret small-model rows after larger-model preflight as small-model RSS.
+No paid jobs, credentials, GPU, automatic cloud fallback or8B run is involved.
+
+Evidence projection and reproducibility boundary
+Full sources, the exact unlabeled request, rendered prompt strings, complete
+input-token arrays, and original full responses remain outside the distributed
+project under tmp/source_stream_v09 and tmp/local_backend_v09/research_external.
+The packaged records omit those recoverable full-source representations.
+They retain exact SHA256s/counts, all returned probability values, request
+sampling parameters, single Yes/No IDs, runtime properties and execution logs.
+The full response's echoed prompt is replaced only by its hash. No probability
+is transformed by this projection. Authored smoke text is fully included.
+
+Default `python scripts/larger_scorer_v09.py` performs offline metadata replay.
+It audits frozen code/config/input hashes, exact item-condition coverage,
+probability and request policies, cold cache accounting, process/model pins,
+and derives every order comparison from saved scores without model calls.
+It cannot independently retokenize the omitted source text or reconstruct
+mutable original sources from this archive alone. Full rerunning requires the
+matching external source/request artifacts and matching public asset bytes.
+This is not a hermetic container or cross-hardware reproducibility claim.
+
+Asset recovery in a fresh workspace:
+  python scripts/larger_scorer_v09.py download
+  python scripts/larger_scorer_v09.py download-comparator
+  python scripts/larger_scorer_v09.py verify-assets
+All downloads are exact-size/hash bounded; existing corrupt assets fail,
+not overwrite. The model weights and binaries are not included in the ZIP.
+Collection refuses an existing research directory or receipt, so a reproduction
+must use a separate clean working copy preserving the reference artifacts.
+No execution result is asserted by this method description; measured outcomes
+and execution status are recorded in the results files once complete.
+
+Research numerical-validation amendment
+The first matched cold small-model response was saved, then rejected because
+the sum of exp(logprob) over256 returned ranks was1.0000011818752477, just
+above the original1+1e-6 check. The precise numerical cause was not isolated;
+the magnitude is consistent with finite-precision normalization/serialization.
+The original code/config/receipt and1 raw,0 accepted response are retained.
+After independent review, a fixed1e-4 engineering tolerance applies to both
+the returned-top-rank sum and literal-label sum. It is not a universal error
+bound, calibration, probability adjustment or change in decision threshold.
+All LPs remain exactly as returned. The complete16-call sequence restarts in
+research_attempt02; no original row is reused. This amendment followed one
+raw response and is explicitly not a zero-output preregistration.
+
+Optional matching-external-artifact audit
+  python scripts/verify_larger_scorer_external_v09.py --request PATH_TO_EXACT_REQUEST --external-dir PATH_TO_RESEARCH_EXTERNAL_ATTEMPT02 --assets PATH_TO_PINNED_ASSETS
+This separate script compares exact request bytes, full source inclusion,
+condition-only label-order changes, every prompt/token hash, original raw
+response hash and all preserved probability values against the projections.
+With --assets, the pinned llama-tokenize executable independently regenerates
+the full prefix and prefix+Yes/prefix+No token sequences for all16 inputs.
+Pinned source explicitly enables vocabulary-only loading; no model forward
+pass or score distribution is produced. This check runs only after all scoring
+servers exit. Full regenerated token arrays remain external; the report keeps
+hashes/counts only. It is optional and cannot run from the ZIP alone without
+matching externally retained source inputs and the pinned model/runtime files.
+
+Interpretation of cold execution and runtime
+Cold means a fresh server process with zero reused prompt/KV tokens. It does
+not mean the operating system file cache or CPU caches were cleared. Asset
+verification and process startup overhead are separate from reported prompt
+processing milliseconds. The fixed small-then-large order is disclosed; these
+measurements are operational feasibility evidence, not a controlled hardware
+throughput benchmark. Native runtime files are pinned, but host kernel/system
+libraries and scheduling are not captured by a hermetic execution image.
+
+Attempt accounting
+If the restarted matched run completes, this work has18 actual returned
+next-token distributions:16 accepted matched research records,1 excluded raw
+response from the first mass-check failure, and1 separate authored feasibility
+smoke. The first memory-watchdog stop produced no distribution. Two all-input
+preflight server processes precede each research attempt; they perform only
+rendering/tokenization. The optional48 vocabulary-only tokenization calls are
+separate validations and generate no model-score distributions. Status and
+actual counts must be read from completed receipts, not inferred from this plan.
+
+Completed final observations
+All16 matched distributions completed and passed offline validation. There
+were4/4 label-order sign flips for the small model and0/4 for the larger model.
+Small primary decisions were Yes for all4 statements; small diagnostic
+decisions were No for all4. Larger decisions were Yes,Yes,Yes,No in both
+orders. These are source-support decisions, not a reference-accuracy claim.
+The separate reference-label join belongs to the root analysis artifact.
+In particular, order stability must not be mistaken for factual correctness.
+
+Per-item log odds (small primary, small diagnostic; large primary, large diagnostic):
+  item01:  1.977133, -4.249890;  27.265511, 24.299959
+  item02:  1.298927, -4.557878;  25.201569, 21.041946
+  item03:  2.539272, -3.880638;  27.865513, 27.865946
+  item04:  1.585585, -4.622106; -26.855686,-26.871689
+Full unrounded LPs, literal-label mass and returned-top256 mass are saved in
+results/larger_scorer_v09.json. Some larger-model literal masses exceed1 by
+less than8e-10 in the recorded numeric output; no
+clamp or normalization was applied and this is not a factual certainty claim.
+
+The final run took1240.797s overall, including setup/preflight/checks. Summed
+prefill was243.969s small and917.002s large. All18 final-run server processes
+(2 preflight,16 scored) exited0. Peak owned-child RSS was4,586,064 KiB across
+the final collector, within the unchanged5.5 GiB address-space guard. The
+separate discarded response and authored smoke make18 actual returned
+distributions in this work, of which16 belong to the final matched design.
+
+External matching-artifact audit passed for16 records and8 source-only
+condition messages. Both models used identical matched rendered prompts and
+input-token sequences. All48 separate vocabulary-only tokenizations matched
+the saved exact prefixes and one-label continuations, with zero forward-pass
+completions. The default metadata replay reproduced its result byte-for-byte
+in two successive invocations. Full sources and token sequences remain
+external; the packaged report preserves their hashes/counts and audit result.

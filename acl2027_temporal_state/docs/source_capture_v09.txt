@@ -1,0 +1,123 @@
+v0.9 fresh current-source capture and frozen delivery
+
+The v0.8 checkpoint restored the project metadata and hashes but did not restore
+the externally stored raw source responses. We did not label newly downloaded
+responses as restored old bytes. A source ID plus the newly observed response
+SHA256 identifies each version below; actual retrieval timestamps are retained
+even when bytes happen to match the earlier capture.
+
+Before any new request, capture_selection_plan.json froze four histories, in
+this order: Disney CEO succession, Intel CEO succession, CVS Health CEO
+succession, and the Artemis II/III schedule notices. They are the first three
+previously complete yet unannotated leadership histories and the first complete
+unannotated plan after Docker/Chrome in the existing frame. All eight exact
+v0.7 frame URLs were retained. Blocked sources would remain blocked without
+outcome-based substitutions. The model pilot was assigned the first two fully
+ready histories in this order before any model outcomes existed.
+
+Eight new unauthenticated HTTPS transfers ran on 2026-10-03 from
+03:23:36.804000 to 03:23:39.365828 UTC. All eight returned HTTP 200 with curl
+exit 0 and passed the inherited provisional usability checks. No HTTP failure,
+automatic retry, substitute URL, sign-in or challenge bypass occurred. Total
+raw response size is 1,164,783 bytes; extracted text totals 86,929 UTF-8 bytes.
+This is four ready histories/eight prefixes, not eight independent histories
+or benchmark admission.
+
+The wrapper permits at most four parallel transfers, 30 seconds per transfer,
+10 seconds for connection establishment, 8 MiB per response, five redirects,
+HTTPS-only including redirects, and no authentication or automatic retry. It
+refuses existing manifests/source directories and keeps all external bytes
+outside the distributable project. The exact wrapper and reused extractor
+hashes are bound by the capture manifest. New runs require new explicit
+manifest and external-directory destinations; their bytes may differ.
+
+The repaired v0.8 extractor is reused without alteration. It retains visible
+form body text, including the CVS investor article, and excludes scripts,
+styles, noscript, SVG, navigation, footer and template tags. It preserves all
+remaining current body text; it is not an article-only extractor. Unicode is
+normalized to NFC, whitespace collapsed within nonempty block-separated
+lines, and text written as UTF-8/LF. PDF text uses the recorded pdftotext
+reading-order recipe. A retained form or navigation-like element may still
+contain site controls or unrelated content: these are flagged, not removed.
+
+Four raw-response hashes match v0.8: both Intel and both CVS sources. Both
+Disney raw responses differ but their extracted texts match v0.8. Both NASA
+raw responses and extracted texts differ. Thus six of eight extracted-text
+hashes match. The old full texts were unavailable, so we cannot make a
+byte-level old/new content-diff claim for NASA. Current NASA text contains
+extensive navigation and related-content cards with relative-age labels.
+These remain in requests and must not be mistaken for assertions dated to
+the 2024 release. Each NASA article begins on line 311 in its current
+extraction, after 310 lines of site content.
+
+The NASA January page displays March 20, 2024 as its update date. The December
+page displays January 30, 2025, whereas the frame's update field was null.
+The new observation is recorded in the separate content_review.json rather
+than rewriting the frozen discovery frame. This is source metadata, not
+authenticated first-public availability.
+
+The first Intel source is a five-page official archive PDF with a January 13,
+2021 article date. Its PDF metadata reports creation/modification in January
+2025, consistent with the archive path but not independent historical
+authentication. The first page was rendered and visually checked; the title,
+article date and effective-date paragraph are legible and consistent with
+extraction. This was a one-page visual spot check, not full visual validation
+of every page. Repeated PDF navigation strings and icons remain in the text.
+The default runtime pdfinfo wrapper could not load its libpoppler dependency;
+the installed /usr/bin/pdfinfo and /usr/bin/pdftoppm succeeded. No PDF was
+authored and no source bytes were altered.
+
+The separate content review only checks article presence, obvious capture
+failures, and site/version cues. It is agent review, not human gold annotation
+or an independent blind evaluation. The inherited content_usability field
+still describes provisional fetch checks; source-level review results reside
+in content_review.json. Full claim annotation and references belong to the
+subsequent root-owned workflow.
+
+At 03:26:43.798445 UTC on 2026-10-03, delivery_manifest.json froze two
+one-source batches per history in reported-publication order. Prefix 1
+contains the first current document; prefix 2 contains both current documents.
+These are author-defined controlled document streams. Delivery, retrieval,
+publication, update and event times remain distinct. No current document is
+presented as an unedited historical original or reconstructed past public
+knowledge. No annotations or reference questions had been created for this
+new batch when delivery was frozen.
+
+Disney and Intel are the two predeclared model-pilot histories because all
+four selected histories were ready. Their first source texts are respectively
+9,732 and 8,838 UTF-8 bytes. CVS has 7,346 first-source bytes and Artemis has
+12,103; these sizes do not justify substituting them after model outcomes.
+Strong-model selection and annotation are separate root-owned steps.
+
+After delivery was frozen, prepare_source_stream_v09.py constructed eight
+source-only requests using the exact v0.8 request schema and fields. Each
+request contains the cumulative frozen full text, source IDs, version/text
+hashes and parent hashes. It contains no questions, annotations, previous
+outputs or model-pilot items. Request bytes reside outside the project under
+tmp/source_stream_v09/working/requests; request_manifest.json retains their
+hashes, byte counts and source bindings. The builder refuses overwrite and
+validates every text hash and prefix binding before writing any request.
+Disney p1/p2 requests are 10,440/20,492 bytes; Intel p1/p2 are 9,689/23,700;
+CVS p1/p2 are 8,031/21,852; Artemis p1/p2 are 13,143/25,908. These are UTF-8
+bytes, not measured model tokens.
+
+Full responses, headers, extracted text and per-source receipts reside under
+/workspace/scratch/bdef663e3dfc/tmp/source_stream_v09/fulltext/{source_id}/.
+The project contains metadata, hashes and scripts, not redistributed complete
+external sources. Public access does not establish redistribution rights.
+Exact byte reconstruction requires the external capture; hashes alone are
+insufficient. No historical or complete source-availability claim follows
+from a successful current capture.
+
+Offline verification:
+  python scripts/verify_source_capture_v09.py
+
+When original current-capture external bytes are still present:
+  python scripts/verify_source_capture_v09.py --require-external
+
+The metadata-only command verifies selection, lineage, scope and prefix
+bindings without HTTP/model calls or reading full external texts. The second
+command additionally verifies all 24 raw/header/text file hashes and all
+eight exact request hashes and source-only content contracts. Both modes
+passed for this checkpoint. They are provenance checks, not model accuracy
+or source-completeness measurements.

@@ -1,0 +1,240 @@
+{
+  "schema_version": "correction_eligibility_corporate_v0.10",
+  "reviewed_at_utc": "2026-10-03T06:01:22.067765+00:00",
+  "reviewer_role": "independent_source_only_model_assisted_unversioned",
+  "independence": {
+    "discovery_artifacts_read": false,
+    "model_outputs_read": false,
+    "runner_outputs_read": false,
+    "blind_to_candidate_identifiers": false,
+    "parent_caveats_known": true,
+    "reference_questions_authored": 0
+  },
+  "inputs": {
+    "data/correction_gate_v10/admission_search_protocol.json": "9461df432d89fa68bacbe36b4b61262775b780dbc667b718d67dae08c4fedcff",
+    "data/correction_gate_v10/interpretation_clarification.json": "2ee12c2f12763fc14afc7c74e40c942863edd890dddb8a7756b0a0e2a2cd7ab0",
+    "data/correction_gate_v10/web_excerpt_manifest_v10.json": "927bf90ab11753094b1d64ba17ba1a25744137c928b0e01ff9f20eaa459d9c41"
+  },
+  "sources": [
+    {
+      "source_id": "plug_2019_10k_web_v10",
+      "url": "https://s29.q4cdn.com/600973483/files/doc_financials/2019/ar/4Q19-10K.pdf",
+      "projection_path": "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/web_excerpts/plug_2019_10k_web_v10/document.txt",
+      "projection_sha256": "6ae0995c60a64dc56453b8548cfe568fc9ee1259ba2136a3775cab04e28c7171",
+      "representation": "web_tool_selected_line_excerpts_with_synthetic_boundaries",
+      "full_document_bytes_captured": false,
+      "evidence": [
+        {
+          "role": "old_values_period_units_and_control",
+          "source_line_start": 2491,
+          "source_line_end": 2523,
+          "character_start": 43118,
+          "character_end_exclusive": 45138,
+          "span_sha256": "083d96cdff1b7d0797f3b06aa6676ed77cd1a5a78d60657a60bcfc940b4ca157"
+        },
+        {
+          "role": "source_specified_eps_computation",
+          "source_line_start": 3252,
+          "source_line_end": 3270,
+          "character_start": 52042,
+          "character_end_exclusive": 53921,
+          "span_sha256": "ac4034efedc4fbea3d93427f43c1678decb769a02c0a30f076a2c2dabffdd239"
+        }
+      ]
+    },
+    {
+      "source_id": "plug_2020_10k_web_v10",
+      "url": "https://s29.q4cdn.com/600973483/files/doc_financials/2020/ar/4Q20-10K.pdf",
+      "projection_path": "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/web_excerpts/plug_2020_10k_web_v10/document.txt",
+      "projection_sha256": "d7140dc6ff86cc086cbcafb0a97f320531b762e1ae46488b86889146b7dd92c5",
+      "representation": "web_tool_selected_line_excerpts_with_synthetic_boundaries",
+      "full_document_bytes_captured": false,
+      "evidence": [
+        {
+          "role": "restatement_table_units",
+          "source_line_start": 5456,
+          "source_line_end": 5457,
+          "character_start": 61851,
+          "character_end_exclusive": 62103,
+          "span_sha256": "16f499f8a13d990be47992945cfdea318677879a171b71b6f6c12c723d12ee92"
+        },
+        {
+          "role": "correction_and_control",
+          "source_line_start": 5496,
+          "source_line_end": 5508,
+          "character_start": 75923,
+          "character_end_exclusive": 77748,
+          "span_sha256": "bce3d530c82072e61444be3d2c77ad5f18647f369fab6e10f049526ce0c5aa0a"
+        }
+      ]
+    },
+    {
+      "source_id": "molson_2017_10k_web_v10",
+      "url": "https://s27.q4cdn.com/826627388/files/doc_financials/2017/ar/MC201710-K.pdf",
+      "projection_path": "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/web_excerpts/molson_2017_10k_web_v10/document.txt",
+      "projection_sha256": "d5fcead913a17f27370b1756e42b96fe02880799749f84bcd33b54d2ec8ba9fa",
+      "representation": "web_tool_selected_line_excerpts_with_synthetic_boundaries",
+      "full_document_bytes_captured": false,
+      "evidence": [
+        {
+          "role": "old_eps_inputs_formula_and_class_nuance",
+          "source_line_start": 4585,
+          "source_line_end": 4615,
+          "character_start": 70400,
+          "character_end_exclusive": 73399,
+          "span_sha256": "bf443cca1fbfd5deb2ffb68782ec3486f81b573b0de44aa6432410574c8e94f4"
+        },
+        {
+          "role": "old_operating_cashflow",
+          "source_line_start": 3155,
+          "source_line_end": 3188,
+          "character_start": 62697,
+          "character_end_exclusive": 64733,
+          "span_sha256": "3cd3a3afcd64d92ed42e478ce798a6a60edca920d3c137cacc462b2bd9ad58b8"
+        }
+      ]
+    },
+    {
+      "source_id": "molson_2018_10k_web_v10",
+      "url": "https://s27.q4cdn.com/826627388/files/doc_financials/2018/ar/molson-coors-10K.pdf",
+      "projection_path": "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v10/web_excerpts/molson_2018_10k_web_v10/document.txt",
+      "projection_sha256": "e1362092d147d15aadfb7a1c4ac504789526426b63258e1f48e897c54247c2e8",
+      "representation": "web_tool_selected_line_excerpts_with_synthetic_boundaries",
+      "full_document_bytes_captured": false,
+      "evidence": [
+        {
+          "role": "error_replacement_and_unaffected_subtotals",
+          "source_line_start": 3257,
+          "source_line_end": 3289,
+          "character_start": 77131,
+          "character_end_exclusive": 81543,
+          "span_sha256": "eaf1f89d0160fd9e4c552db78338490f6783ff227910ceba929c4e017cdb08aa"
+        },
+        {
+          "role": "restated_operating_cashflow",
+          "source_line_start": 3063,
+          "source_line_end": 3097,
+          "character_start": 64807,
+          "character_end_exclusive": 66817,
+          "span_sha256": "767e378b774dc73f031e9ad1944351cd134cce515af82b534017aa46e5983a68"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "history_id": "plug_2018_eps_restatement",
+      "source_ids": [
+        "plug_2019_10k_web_v10",
+        "plug_2020_10k_web_v10"
+      ],
+      "semantic_criteria": {
+        "explicit_old_assertion": true,
+        "explicit_same_authority_replacement": true,
+        "source_present_dependent_with_textual_or_computational_grounding": true,
+        "independently_supported_unaffected_control": true
+      },
+      "fiscal_scope": "2018",
+      "reviewed_facts": {
+        "common_holder_net_result_USD_millions": {
+          "before": -78.167,
+          "after": -85.66
+        },
+        "basic_and_diluted_EPS_USD_per_share": {
+          "before": -0.36,
+          "after": -0.39
+        },
+        "weighted_common_shares": 218882337,
+        "unaffected_services_revenue_USD_millions": 22.002
+      },
+      "dependency_basis": "The pre-restatement EPS note defines division of common-holder net loss by weighted common shares; the table supplies both inputs. Losses make basic and diluted EPS equal.",
+      "signed_units_review": "Parentheses mean losses; the correction table is in thousands except shares and per-share amounts.",
+      "direct_correction_of_dependent": true,
+      "propagation_role": "redundant_control",
+      "essential_edge_allowed_for_selected_derivation": true,
+      "alternative_support_note": "The EPS amount is explicitly reported and directly replaced; preserve that direct replacement in every correction arm. No independent unchanged derivation supporting the old amount was identified in reviewed excerpts.",
+      "replacement_scope": "Each signed scalar is a separate whole assertion at the same fiscal scope. No event interval assigned.",
+      "retention_control": "Service revenue is independently reported before and after, with no adjustment. Do not attach it as a dependent of the loss.",
+      "protocol_stratum": "discovery_only",
+      "semantic_eligibility": "supported_in_reviewed_source_excerpts",
+      "paired_prefix_ready": false,
+      "full_source_reader_QA_ready": false,
+      "allowable_use": "excerpt_conditioned_annotation_selected_support_materialization_illustration",
+      "incremental_propagation_identified": false,
+      "benchmark_gold": false
+    },
+    {
+      "history_id": "molson_2017_eps_restatement",
+      "source_ids": [
+        "molson_2017_10k_web_v10",
+        "molson_2018_10k_web_v10"
+      ],
+      "semantic_criteria": {
+        "explicit_old_assertion": true,
+        "explicit_same_authority_replacement": true,
+        "source_present_dependent_with_textual_or_computational_grounding": true,
+        "independently_supported_unaffected_control": true
+      },
+      "fiscal_scope": "2017",
+      "reviewed_facts": {
+        "attributable_total_net_income_USD_millions": {
+          "before": 1414.2,
+          "after": 1565.6
+        },
+        "basic_EPS_USD_per_share": {
+          "before": 6.57,
+          "after": 7.27
+        },
+        "diluted_EPS_USD_per_share": {
+          "before": 6.53,
+          "after": 7.23
+        },
+        "unaffected_operating_cashflow_USD_millions": 1866.3
+      },
+      "dependency_basis": "The old EPS section pairs attributable total income with weighted shares; the correction explicitly links the accounting errors to changed income and EPS.",
+      "allocation_nuance": "Use total attributable income, not continuing-only income or income before minority interests. All listed share classes share earnings equally; the old note reports no unvested awards with non-forfeitable dividend rights. Rounded denominators do not license exact reconstruction.",
+      "direct_correction_of_dependent": true,
+      "propagation_role": "redundant_control",
+      "essential_edge_allowed_for_selected_derivation": true,
+      "alternative_support_note": "The EPS amount is explicitly reported and directly replaced; preserve that direct replacement in every correction arm. No independent unchanged derivation supporting the old amount was identified in reviewed excerpts.",
+      "replacement_scope": "Each scalar is a separate whole assertion at fixed fiscal scope. The pre-2018-restatement document already incorporated earlier accounting-policy revisions; it is not certified as a first-ever version.",
+      "retention_control": "The correction states cashflow subtotals are unaffected, and both tables retain the operating subtotal.",
+      "protocol_stratum": "discovery_only",
+      "semantic_eligibility": "supported_in_reviewed_source_excerpts",
+      "paired_prefix_ready": false,
+      "full_source_reader_QA_ready": false,
+      "allowable_use": "excerpt_conditioned_annotation_selected_support_materialization_illustration",
+      "incremental_propagation_identified": false,
+      "benchmark_gold": false
+    }
+  ],
+  "visual_QA": {
+    "pixels_inspected": false,
+    "attempted_pdf_page_indexes": [
+      {
+        "source_id": "plug_2020_10k_web_v10",
+        "page_index": 149
+      },
+      {
+        "source_id": "plug_2019_10k_web_v10",
+        "page_index": 80
+      },
+      {
+        "source_id": "molson_2017_10k_web_v10",
+        "page_index": 125
+      },
+      {
+        "source_id": "molson_2018_10k_web_v10",
+        "page_index": 91
+      }
+    ],
+    "result": "Screenshot outputs contained only image placeholders, except the Plug original timeout. No accessible image blocks. Textual table alignment was reviewed, but visual table verification remains outstanding."
+  },
+  "limitations": [
+    "This review concerns four issuer PDFs through extracted web excerpts, not exact complete PDF bytes.",
+    "Excerpt selection may omit qualifications; source semantics supported here does not grant full-prefix admission.",
+    "Both dependent EPS quantities are directly corrected, so withholding those correction links would manufacture propagation value.",
+    "No model predictions, QA accuracy, search benefit or algorithmic novelty is established."
+  ],
+  "replay_schema_read": "Not present when review was conducted; no replay-case annotation was authored."
+}

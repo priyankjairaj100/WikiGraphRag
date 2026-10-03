@@ -1,0 +1,173 @@
+JOINT FACTUAL IDENTITY AND TEMPORAL LINK DECODER: NEXT-SPRINT SPECIFICATION
+
+Status: proposed implementation and experiments; no effectiveness result is claimed.
+
+1. Scope and inference contract
+
+Start with day-resolution, explicitly single-valued relations and current/as-of
+questions. A factual key includes entity, relation, and scope: a company CEO and
+its subsidiary CEO are different keys. Keep publication/availability separate
+from validity. Availability is an operational corpus cutoff with a recorded
+basis, not proof that a document was publicly available on that date. Defer
+general multi-hop queries, source-trust learning, unrestricted interval algebra,
+and calibrated risk guarantees.
+
+The current Assertion record represents one predicted interpretation. The next
+sprint should add a separate candidate layer rather than overload it: mention
+ID, verbatim source span, possible factual keys, value alternatives, temporal
+readings, correction-reference candidates, and supporting span offsets. Do not
+instantiate CORRECTS with a missing target: keep an unresolved correction in
+the candidate layer and materialize UNRESOLVED if no target is justified.
+Evaluation annotations must never be supplied to candidate generation, scoring,
+decoding, or question routing.
+
+2. Prefix-safe candidate generation
+
+For cutoff tau, first select source versions with available_at <= tau. Extract
+mentions and construct entity descriptions, alias candidates, document-reference
+links, and temporal neighborhoods exclusively from that prefix. Cache by prefix
+digest, extractor/scorer version, and configuration. A full-corpus alias index
+followed by date filtering is not equivalent. Frozen pretrained model knowledge
+is a separate limitation; the model must cite eligible spans for its predictions.
+
+Retrieve neighboring mentions through subject text, relation/scope words, value
+and predecessor names, and explicit references to earlier reports. Combine these
+channels before truncation. Always include a new-entity option, unknown-scope
+option, and no-resolved-link option. Unknown scope must not silently equal the
+parent organization. Distinguish a source observation from an asserted effective
+date: publication time supplies no default validity boundary.
+
+Create a finite set O_i of readings for mention i. Reading a specifies a candidate
+key k(a), value v(a), start/end readings (possibly unknown or bounded), and source
+span references. Build candidates from extracted alternatives, never gold keys.
+Dates with genuinely unknown boundaries remain unknown; do not enumerate an
+invented exact day. Limit combinations through ranked candidate construction.
+
+3. Frozen scores and exact optimization variables
+
+Let x_ia be binary: mention i selects reading a in O_i. Require sum_a x_ia = 1;
+include an unresolved reading. Let z_iajbr be binary: i, with reading a, selects
+mention j with reading b as its primary target under relation r, where r is
+RESTATES, CHANGES, or CORRECTS. Let n_i be binary for no resolved primary target.
+Require n_i + sum_(a,j,b,r) z_iajbr = 1. The single-primary-target restriction is
+an explicit first-sprint limitation; additional evidence stays in the ledger.
+Add auxiliary integer orders h_i and p_i in [0, number_of_mentions - 1]. Selected
+RESTATES implies h_i = h_j; CHANGES implies h_i > h_j; CORRECTS implies p_i > p_j.
+Use solver reification. These are graph orders, not invented calendar dates.
+Episode IDs are connected components of selected RESTATES links, not arbitrary
+equal-valued groups. The h constraints prohibit change cycles through those
+components, including a reversion incorrectly collapsed into a restatement.
+
+Compute unary score U_ia from the mention and eligible context. Compute conditional
+pair score L_iajbr from both source spans and the proposed readings, including
+scope and date interpretations. Normalize the target/relation alternatives
+together with the null alternative, or use development-calibrated logits with a
+documented null intercept. Uncalibrated probabilities from independently scored
+pairs are not directly comparable. All methods consume the identical cached
+U, L, null scores, candidates, and eligibility graph.
+
+Maximize
+
+  sum_(i,a) U_ia x_ia + beta sum_(i,a,j,b,r) L_iajbr z_iajbr
+  + sum_i N_i n_i - sum_m lambda_m s_m.
+
+Here s_m are nonnegative, explicitly defined violation indicators for uncertain
+preferences, such as incompatible inferred temporal ordering or unsupported
+scope alignment. List each penalty in configuration; avoid an opaque combined
+consistency score. beta and lambda are development parameters. Implement z <=
+x_ia and z <= x_jb. Canonical candidate keys shared across mentions make selected
+key equality transitive without adding a separate unconstrained pair partition.
+
+4. Hard semantics versus uncertain evidence
+
+Hard constraints govern representation, not the presumed truth of extraction:
+selected typed links require identical selected keys; RESTATES requires the
+same selected value and episode; CHANGES requires distinct selected values and
+distinct episodes; CORRECTS names a specific target assertion. Known selected
+intervals must have positive duration. Correction dependencies must be acyclic
+and point to eligible targets that are not later than the correcting source in
+recorded availability. Same-day targets require explicit reference/version
+evidence; availability alone cannot order them.
+
+If two selected exact date readings contradict the semantics of a typed link,
+that link/reading combination is infeasible, but alternative readings and null
+remain available. Vague ordering, alias similarity, implicit persistence, and
+parser confidence are soft evidence. Preserve uncertainty rather than treating
+a low-confidence date as a hard fact. A claim saying A at one observation date
+and another saying B later does not identify the intervening change day.
+
+Do not impose universal non-overlap on all same-key source assertions. Sources
+can disagree, and a valid interpretation may remain unresolved. Never force an
+entity or scope split simply to manufacture a non-conflicting timeline. A
+correction cue without an identifiable target cannot invalidate arbitrary
+earlier claims. A correction of a subsidiary assertion cannot modify its parent
+company merely because their names are similar.
+
+5. Episode materialization and answering
+
+Collapse only episode-level restatements, preserving every supporting mention.
+Repeated values separated by an accepted different-value episode remain separate:
+A, B, B, A gives three episodes, not two. For explicitly supported change links,
+use the selected effective boundary to close the earlier episode. A late
+restatement must not move that boundary. Retrospective statements attach to their
+stated period rather than the source publication date.
+
+Corrections revise support for their target assertion after they become eligible;
+they are not automatically new state transitions. Retain the superseded report
+in provenance. Unresolved correction references flag potentially affected answers
+instead of globally deleting evidence. Query routing uses textual matching to
+inferred key descriptions, never gold subject/relation IDs. Return a determinate
+value only when retained eligible support and plausible retained interpretations
+agree; otherwise return indeterminate. A development-tuned score margin may
+select alternatives, but is not a probabilistic confidence guarantee. Approximate
+search cannot certify agreement across interpretations it never explored.
+
+6. Comparisons that identify joint inference
+
+Independent pipeline: choose readings using U only, freeze key assignments, and
+optimize the same target/link objective within those assignments. Use identical
+episode construction and answer rules.
+
+Stronger independent pipeline: let the unary identity scorer see predecessor,
+correction, and scope features before clustering. Otherwise the joint method
+could win merely because its baseline was denied useful textual evidence.
+
+Iterative pipeline: initialize independently, alternate link optimization with
+single-mention reading reassignment under the same full objective, and stop at
+no improvement or a configured iteration limit. Keep the best incumbent and use
+deterministic sweep order. Also measure several seeded restarts. Joint decoding
+must justify itself against this cheaper repair procedure, not only irreversible
+clustering. Report matched wall-time budgets as well as unconstrained quality.
+
+Ablate conditional temporal/link terms, scope information, predecessor/correction
+features, and each consistency penalty. Retain corrected rule-based episodes,
+same-matcher newest-per-key, and a prompted listwise resolver as additional
+baselines. Separate candidate-generation recall from decoding quality.
+
+7. Engineering, tests, and decision gates
+
+Use CP-SAT or another integer optimizer over small candidate components. Candidate
+ceilings, component splitting, score scaling, solver timeout, beam width, and
+iteration limits are tunable development parameters, not scientific constants.
+Save objective values, optimality gaps, explored alternatives, timeouts, and
+fallback decisions. Timeouts are approximate results. Component splitting must
+report severed candidate links; incremental results require comparison with a
+fresh prefix rebuild. Never label unavailable oracle candidates deployable.
+
+Tests must cover restatements, reversions, contradictory reports, prospective
+appointments, retrospective text, unknown boundaries, missing correction targets,
+same-day references, subsidiary/parent scope confusion, and prefix leakage through
+aliases or derived dates. Include the ambiguous Orion example where a predecessor
+reference favors one entity, then adversarial versions with an irrelevant or
+misleading predecessor reference. Require clean unambiguous cases where joint
+reasoning should confer no benefit. Include shuffled ingestion with fixed metadata
+and equivalent prefix reconstruction.
+
+Evaluate identity merges/splits, typed-link errors, boundaries, wrong-time support,
+false suppression, strict answer accuracy, indeterminate coverage, and costs by
+independent history. Gold candidates/readings are diagnostic ceilings only. Stop
+expanding the joint method if gains disappear against the stronger independent
+or iterative baseline, rely on withheld baseline features, occur only on authored
+fixtures, or trade false certainty for superficial accuracy. First diagnose
+candidate recall and extraction errors; more optimization cannot recover missing
+evidence. Choose the manuscript contribution only after these comparisons.

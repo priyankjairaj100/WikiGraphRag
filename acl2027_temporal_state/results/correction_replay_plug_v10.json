@@ -1,0 +1,934 @@
+{
+  "annotation_sha256": "176757cc2bec7d122f5d82a107743462552c937f87df615831c0512a13881935",
+  "capture_dates_independently_verified": false,
+  "clock_policy": "Source available_at is the declared actual capture date; cutoff is max capture date. Neither is an event boundary or certified historical availability.",
+  "core_sha256": {
+    "src/temporal_state/__init__.py": "63b1f226a16dd461bad7e8ecdd3d262d8e7b6867d366b6f4ed609254e62f02f4",
+    "src/temporal_state/bounded.py": "9897a479f5300252da605c60f16daac990ac235534edfd1e01c25364837e1653",
+    "src/temporal_state/corrections.py": "218c20ce25030249760db3bda023cab7e351a7518e635751684c8b562c92c85f",
+    "src/temporal_state/coupled.py": "87067798f33b76810e0b39a46840dc33faef45df66d0e9eb2b237d4e6dcf632c",
+    "src/temporal_state/decoder.py": "5be5067d11b455aa9991ea07aa34afb3c95331bd0ca349ce46fbecf2eb077794",
+    "src/temporal_state/models.py": "f40919bf8b3239f0bea8cf9262d26a4eb7bbbd81dc9bd101b8d65a859b503a4e"
+  },
+  "correction_pairs": [
+    {
+      "link_id": "correction:0000",
+      "replacement_claim_id": "plug_2018_R",
+      "replacement_modality": "reported_actual",
+      "target_claim_id": "plug_2018_O",
+      "target_modality": "reported_actual"
+    },
+    {
+      "link_id": "correction:0001",
+      "replacement_claim_id": "plug_2018_E",
+      "replacement_modality": "reported_actual",
+      "target_claim_id": "plug_2018_D",
+      "target_modality": "reported_actual"
+    }
+  ],
+  "counts": {
+    "direct_corrections": 2,
+    "essential_dependencies": 1,
+    "selected_claims": 5,
+    "sources": 2,
+    "unaffected_controls": 1
+  },
+  "decoder_run": false,
+  "dependency_additional_inactive_claim_ids": [],
+  "dependency_pairs": [
+    {
+      "dependent_claim_id": "plug_2018_D",
+      "prerequisite_claim_id": "plug_2018_O"
+    }
+  ],
+  "evidence_quotes_in_output": false,
+  "full_source_text_in_output": false,
+  "history_id": "plug_2018_eps_restatement",
+  "interpretation": "A conditional annotation replay. Inactivity removes declared support; it does not establish falsity, compute replacement values, or predict QA answers. Empty extra withdrawal is reported without suppressing direct corrections.",
+  "method_advantage_claim": false,
+  "model_calls": 0,
+  "model_scores_created": false,
+  "natural_accuracy_claim": false,
+  "neutral_score_disclaimer": "All unary, link, and null numeric fields are neutral 0.0 schema placeholders. All claims and specified correction links are selected explicitly; no scores are optimized, learned, or interpreted as natural predictions.",
+  "operational_cutoff": "2026-10-03",
+  "policies": [
+    {
+      "active_claim_ids": [
+        "plug_2018_D",
+        "plug_2018_E",
+        "plug_2018_O",
+        "plug_2018_R",
+        "plug_2018_U"
+      ],
+      "ledger": {
+        "active_claim_ids": [
+          "plug_2018_D",
+          "plug_2018_E",
+          "plug_2018_O",
+          "plug_2018_R",
+          "plug_2018_U"
+        ],
+        "active_temporal_link_ids": [],
+        "certificate_status": "exact_spans_validated; authority_and_reference_entailment_not_certified",
+        "control_source_ids": [],
+        "directly_withdrawn_claim_ids": [],
+        "full_ledger_sha256": "5c37949781e75034cd9c2e3f7d248ebd2a52b1d97606a335d4a7bc4c6f4ee175",
+        "inactive_claim_control_source_ids": {},
+        "inactive_claim_ids": [],
+        "inactive_reasons": {},
+        "inactive_temporal_link_ids": [],
+        "operative_notices": [],
+        "policy_version": "0.5",
+        "projection": "Claim text omitted; exact source evidence represented by offsets and quote hashes.",
+        "reinstatement_policy": "explicit_new_replacement_only; no_ancestor_resurrection",
+        "restatement_dependency_semantics": "RESTATES_is_episode_identity_not_copying",
+        "selected_claims": [
+          {
+            "claim_id": "plug_2018_D",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 43279,
+                "quote_characters": 161,
+                "quote_sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8",
+                "start": 43118
+              },
+              {
+                "end": 45039,
+                "quote_characters": 86,
+                "quote_sha256": "55204487cb295dd82243ebd90586d1daee52201b0f27a2085580f5c26f84b5d6",
+                "start": 44953
+              }
+            ],
+            "full_claim_record_sha256": "a8e74b6dbb6e9060a103b45dd906de61d5ae3ef91d10a7937d1fe134729af10b",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2019_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_E",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 62103,
+                "quote_characters": 252,
+                "quote_sha256": "16f499f8a13d990be47992945cfdea318677879a171b71b6f6c12c723d12ee92",
+                "start": 61851
+              },
+              {
+                "end": 76245,
+                "quote_characters": 322,
+                "quote_sha256": "85daa7f2c4c32fc7c9b1daacbba1c514b835c09e7223abbc43cea79ba60d28c9",
+                "start": 75923
+              },
+              {
+                "end": 77660,
+                "quote_characters": 67,
+                "quote_sha256": "b49ca899bc6334e1aa30d4a9972e41df1a0e22b132d989bc24fef3f34bc3db69",
+                "start": 77593
+              }
+            ],
+            "full_claim_record_sha256": "65ce95e8c7b160368b201b231b76990f2058121da7518a8c34dc60cd70db1a03",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2020_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_O",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 43279,
+                "quote_characters": 161,
+                "quote_sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8",
+                "start": 43118
+              },
+              {
+                "end": 44952,
+                "quote_characters": 89,
+                "quote_sha256": "17c098a26ce268e9ec020ddf2c987343e9e36a12cc848ea58f8fd7607687af8c",
+                "start": 44863
+              }
+            ],
+            "full_claim_record_sha256": "852e906aeeb14e1d2fde907b92e7c3b54580eb4c4e48640f57c3253e2993bf4c",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2019_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_R",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 62103,
+                "quote_characters": 252,
+                "quote_sha256": "16f499f8a13d990be47992945cfdea318677879a171b71b6f6c12c723d12ee92",
+                "start": 61851
+              },
+              {
+                "end": 76245,
+                "quote_characters": 322,
+                "quote_sha256": "85daa7f2c4c32fc7c9b1daacbba1c514b835c09e7223abbc43cea79ba60d28c9",
+                "start": 75923
+              },
+              {
+                "end": 77592,
+                "quote_characters": 179,
+                "quote_sha256": "b0f62b7bb2a9bfc28d5e53ff0986aa585a3c338a76e1b11882d53f97bbed3833",
+                "start": 77413
+              }
+            ],
+            "full_claim_record_sha256": "30bb98218c309d3e34bfd50df1da41e4b9ea83201a0b818e9d68e7385d8db241",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2020_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_U",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 43279,
+                "quote_characters": 161,
+                "quote_sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8",
+                "start": 43118
+              },
+              {
+                "end": 43496,
+                "quote_characters": 98,
+                "quote_sha256": "dbcbb08315bf686c4e0164a10e2b4273be09da5b74e2710ba40e549dbe22bde8",
+                "start": 43398
+              }
+            ],
+            "full_claim_record_sha256": "b047b199a6a1dfff7c6ef01367cbf2c43846bd8281b20a985a552c2023e6dc45",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2019_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          }
+        ],
+        "selected_link_ids": {
+          "mention:plug_2018_D": null,
+          "mention:plug_2018_E": null,
+          "mention:plug_2018_O": null,
+          "mention:plug_2018_R": null,
+          "mention:plug_2018_U": null
+        },
+        "selected_reading_ids": {
+          "mention:plug_2018_D": "selected",
+          "mention:plug_2018_E": "selected",
+          "mention:plug_2018_O": "selected",
+          "mention:plug_2018_R": "selected",
+          "mention:plug_2018_U": "selected"
+        },
+        "support_dependency_semantics": "all_declared_prerequisites_are_essential",
+        "time_policy": "no_event_boundary_added_from_correction_or_availability_date"
+      },
+      "original_selected_records_preserved": true,
+      "policy": "no_withdrawal",
+      "policy_sha256": "56592cb1f6908e789ff3aeda6efc5eaaa62ad3633de4f0d5d895211abf4320d2",
+      "unaffected_claims_retained": {
+        "plug_2018_U": true
+      },
+      "unknown_endpoints_preserved": true
+    },
+    {
+      "active_claim_ids": [
+        "plug_2018_E",
+        "plug_2018_R",
+        "plug_2018_U"
+      ],
+      "ledger": {
+        "active_claim_ids": [
+          "plug_2018_E",
+          "plug_2018_R",
+          "plug_2018_U"
+        ],
+        "active_temporal_link_ids": [],
+        "certificate_status": "exact_spans_validated; authority_and_reference_entailment_not_certified",
+        "control_source_ids": [
+          "plug_2019_10k_web_v10",
+          "plug_2020_10k_web_v10"
+        ],
+        "directly_withdrawn_claim_ids": [
+          "plug_2018_D",
+          "plug_2018_O"
+        ],
+        "full_ledger_sha256": "6db5dea635893cd8bc1307eee03924c3c34c528aa829ecd34d1fa978e87608eb",
+        "inactive_claim_control_source_ids": {
+          "plug_2018_D": [
+            "plug_2019_10k_web_v10",
+            "plug_2020_10k_web_v10"
+          ],
+          "plug_2018_O": [
+            "plug_2019_10k_web_v10",
+            "plug_2020_10k_web_v10"
+          ]
+        },
+        "inactive_claim_ids": [
+          "plug_2018_D",
+          "plug_2018_O"
+        ],
+        "inactive_reasons": {
+          "plug_2018_D": [
+            "explicit_replacement"
+          ],
+          "plug_2018_O": [
+            "explicit_replacement"
+          ]
+        },
+        "inactive_temporal_link_ids": [],
+        "operative_notices": [
+          {
+            "action": "replace",
+            "authority_id": "Plug Power Inc.",
+            "control_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "coverage": "whole_assertion",
+            "link_id": "correction:0000",
+            "notice_effect_retained": true,
+            "notice_source_id": "plug_2020_10k_web_v10",
+            "replacement_claim_active": true,
+            "replacement_claim_id": "plug_2018_R",
+            "same_day_reference": true,
+            "target_claim_id": "plug_2018_O",
+            "target_source_id": "plug_2019_10k_web_v10"
+          },
+          {
+            "action": "replace",
+            "authority_id": "Plug Power Inc.",
+            "control_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "coverage": "whole_assertion",
+            "link_id": "correction:0001",
+            "notice_effect_retained": true,
+            "notice_source_id": "plug_2020_10k_web_v10",
+            "replacement_claim_active": true,
+            "replacement_claim_id": "plug_2018_E",
+            "same_day_reference": true,
+            "target_claim_id": "plug_2018_D",
+            "target_source_id": "plug_2019_10k_web_v10"
+          }
+        ],
+        "policy_version": "0.5",
+        "projection": "Claim text omitted; exact source evidence represented by offsets and quote hashes.",
+        "reinstatement_policy": "explicit_new_replacement_only; no_ancestor_resurrection",
+        "restatement_dependency_semantics": "RESTATES_is_episode_identity_not_copying",
+        "selected_claims": [
+          {
+            "claim_id": "plug_2018_D",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 43279,
+                "quote_characters": 161,
+                "quote_sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8",
+                "start": 43118
+              },
+              {
+                "end": 45039,
+                "quote_characters": 86,
+                "quote_sha256": "55204487cb295dd82243ebd90586d1daee52201b0f27a2085580f5c26f84b5d6",
+                "start": 44953
+              }
+            ],
+            "full_claim_record_sha256": "a8e74b6dbb6e9060a103b45dd906de61d5ae3ef91d10a7937d1fe134729af10b",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2019_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_E",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 62103,
+                "quote_characters": 252,
+                "quote_sha256": "16f499f8a13d990be47992945cfdea318677879a171b71b6f6c12c723d12ee92",
+                "start": 61851
+              },
+              {
+                "end": 76245,
+                "quote_characters": 322,
+                "quote_sha256": "85daa7f2c4c32fc7c9b1daacbba1c514b835c09e7223abbc43cea79ba60d28c9",
+                "start": 75923
+              },
+              {
+                "end": 77660,
+                "quote_characters": 67,
+                "quote_sha256": "b49ca899bc6334e1aa30d4a9972e41df1a0e22b132d989bc24fef3f34bc3db69",
+                "start": 77593
+              }
+            ],
+            "full_claim_record_sha256": "65ce95e8c7b160368b201b231b76990f2058121da7518a8c34dc60cd70db1a03",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2020_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_O",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 43279,
+                "quote_characters": 161,
+                "quote_sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8",
+                "start": 43118
+              },
+              {
+                "end": 44952,
+                "quote_characters": 89,
+                "quote_sha256": "17c098a26ce268e9ec020ddf2c987343e9e36a12cc848ea58f8fd7607687af8c",
+                "start": 44863
+              }
+            ],
+            "full_claim_record_sha256": "852e906aeeb14e1d2fde907b92e7c3b54580eb4c4e48640f57c3253e2993bf4c",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2019_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_R",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 62103,
+                "quote_characters": 252,
+                "quote_sha256": "16f499f8a13d990be47992945cfdea318677879a171b71b6f6c12c723d12ee92",
+                "start": 61851
+              },
+              {
+                "end": 76245,
+                "quote_characters": 322,
+                "quote_sha256": "85daa7f2c4c32fc7c9b1daacbba1c514b835c09e7223abbc43cea79ba60d28c9",
+                "start": 75923
+              },
+              {
+                "end": 77592,
+                "quote_characters": 179,
+                "quote_sha256": "b0f62b7bb2a9bfc28d5e53ff0986aa585a3c338a76e1b11882d53f97bbed3833",
+                "start": 77413
+              }
+            ],
+            "full_claim_record_sha256": "30bb98218c309d3e34bfd50df1da41e4b9ea83201a0b818e9d68e7385d8db241",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2020_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_U",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 43279,
+                "quote_characters": 161,
+                "quote_sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8",
+                "start": 43118
+              },
+              {
+                "end": 43496,
+                "quote_characters": 98,
+                "quote_sha256": "dbcbb08315bf686c4e0164a10e2b4273be09da5b74e2710ba40e549dbe22bde8",
+                "start": 43398
+              }
+            ],
+            "full_claim_record_sha256": "b047b199a6a1dfff7c6ef01367cbf2c43846bd8281b20a985a552c2023e6dc45",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2019_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          }
+        ],
+        "selected_link_ids": {
+          "mention:plug_2018_D": null,
+          "mention:plug_2018_E": "correction:0001",
+          "mention:plug_2018_O": null,
+          "mention:plug_2018_R": "correction:0000",
+          "mention:plug_2018_U": null
+        },
+        "selected_reading_ids": {
+          "mention:plug_2018_D": "selected",
+          "mention:plug_2018_E": "selected",
+          "mention:plug_2018_O": "selected",
+          "mention:plug_2018_R": "selected",
+          "mention:plug_2018_U": "selected"
+        },
+        "support_dependency_semantics": "all_declared_prerequisites_are_essential",
+        "time_policy": "no_event_boundary_added_from_correction_or_availability_date"
+      },
+      "original_selected_records_preserved": true,
+      "policy": "direct_withdrawal",
+      "policy_sha256": "e0df92f8b6b13724eb444a0779779c8942db70e3d6ec96a5bcb826e8447fec50",
+      "unaffected_claims_retained": {
+        "plug_2018_U": true
+      },
+      "unknown_endpoints_preserved": true
+    },
+    {
+      "active_claim_ids": [
+        "plug_2018_E",
+        "plug_2018_R",
+        "plug_2018_U"
+      ],
+      "ledger": {
+        "active_claim_ids": [
+          "plug_2018_E",
+          "plug_2018_R",
+          "plug_2018_U"
+        ],
+        "active_temporal_link_ids": [],
+        "certificate_status": "exact_spans_validated; authority_and_reference_entailment_not_certified",
+        "control_source_ids": [
+          "plug_2019_10k_web_v10",
+          "plug_2020_10k_web_v10"
+        ],
+        "directly_withdrawn_claim_ids": [
+          "plug_2018_D",
+          "plug_2018_O"
+        ],
+        "full_ledger_sha256": "866a9be953fb3539cb2875c329d612b723099cc903f47d73f3a81d0be9c968ff",
+        "inactive_claim_control_source_ids": {
+          "plug_2018_D": [
+            "plug_2019_10k_web_v10",
+            "plug_2020_10k_web_v10"
+          ],
+          "plug_2018_O": [
+            "plug_2019_10k_web_v10",
+            "plug_2020_10k_web_v10"
+          ]
+        },
+        "inactive_claim_ids": [
+          "plug_2018_D",
+          "plug_2018_O"
+        ],
+        "inactive_reasons": {
+          "plug_2018_D": [
+            "explicit_replacement",
+            "inactive_prerequisite:plug_2018_O"
+          ],
+          "plug_2018_O": [
+            "explicit_replacement"
+          ]
+        },
+        "inactive_temporal_link_ids": [],
+        "operative_notices": [
+          {
+            "action": "replace",
+            "authority_id": "Plug Power Inc.",
+            "control_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "coverage": "whole_assertion",
+            "link_id": "correction:0000",
+            "notice_effect_retained": true,
+            "notice_source_id": "plug_2020_10k_web_v10",
+            "replacement_claim_active": true,
+            "replacement_claim_id": "plug_2018_R",
+            "same_day_reference": true,
+            "target_claim_id": "plug_2018_O",
+            "target_source_id": "plug_2019_10k_web_v10"
+          },
+          {
+            "action": "replace",
+            "authority_id": "Plug Power Inc.",
+            "control_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "coverage": "whole_assertion",
+            "link_id": "correction:0001",
+            "notice_effect_retained": true,
+            "notice_source_id": "plug_2020_10k_web_v10",
+            "replacement_claim_active": true,
+            "replacement_claim_id": "plug_2018_E",
+            "same_day_reference": true,
+            "target_claim_id": "plug_2018_D",
+            "target_source_id": "plug_2019_10k_web_v10"
+          }
+        ],
+        "policy_version": "0.5",
+        "projection": "Claim text omitted; exact source evidence represented by offsets and quote hashes.",
+        "reinstatement_policy": "explicit_new_replacement_only; no_ancestor_resurrection",
+        "restatement_dependency_semantics": "RESTATES_is_episode_identity_not_copying",
+        "selected_claims": [
+          {
+            "claim_id": "plug_2018_D",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 43279,
+                "quote_characters": 161,
+                "quote_sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8",
+                "start": 43118
+              },
+              {
+                "end": 45039,
+                "quote_characters": 86,
+                "quote_sha256": "55204487cb295dd82243ebd90586d1daee52201b0f27a2085580f5c26f84b5d6",
+                "start": 44953
+              }
+            ],
+            "full_claim_record_sha256": "a8e74b6dbb6e9060a103b45dd906de61d5ae3ef91d10a7937d1fe134729af10b",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2019_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_E",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 62103,
+                "quote_characters": 252,
+                "quote_sha256": "16f499f8a13d990be47992945cfdea318677879a171b71b6f6c12c723d12ee92",
+                "start": 61851
+              },
+              {
+                "end": 76245,
+                "quote_characters": 322,
+                "quote_sha256": "85daa7f2c4c32fc7c9b1daacbba1c514b835c09e7223abbc43cea79ba60d28c9",
+                "start": 75923
+              },
+              {
+                "end": 77660,
+                "quote_characters": 67,
+                "quote_sha256": "b49ca899bc6334e1aa30d4a9972e41df1a0e22b132d989bc24fef3f34bc3db69",
+                "start": 77593
+              }
+            ],
+            "full_claim_record_sha256": "65ce95e8c7b160368b201b231b76990f2058121da7518a8c34dc60cd70db1a03",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2020_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_O",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 43279,
+                "quote_characters": 161,
+                "quote_sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8",
+                "start": 43118
+              },
+              {
+                "end": 44952,
+                "quote_characters": 89,
+                "quote_sha256": "17c098a26ce268e9ec020ddf2c987343e9e36a12cc848ea58f8fd7607687af8c",
+                "start": 44863
+              }
+            ],
+            "full_claim_record_sha256": "852e906aeeb14e1d2fde907b92e7c3b54580eb4c4e48640f57c3253e2993bf4c",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2019_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_R",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 62103,
+                "quote_characters": 252,
+                "quote_sha256": "16f499f8a13d990be47992945cfdea318677879a171b71b6f6c12c723d12ee92",
+                "start": 61851
+              },
+              {
+                "end": 76245,
+                "quote_characters": 322,
+                "quote_sha256": "85daa7f2c4c32fc7c9b1daacbba1c514b835c09e7223abbc43cea79ba60d28c9",
+                "start": 75923
+              },
+              {
+                "end": 77592,
+                "quote_characters": 179,
+                "quote_sha256": "b0f62b7bb2a9bfc28d5e53ff0986aa585a3c338a76e1b11882d53f97bbed3833",
+                "start": 77413
+              }
+            ],
+            "full_claim_record_sha256": "30bb98218c309d3e34bfd50df1da41e4b9ea83201a0b818e9d68e7385d8db241",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2020_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          },
+          {
+            "claim_id": "plug_2018_U",
+            "context_source_ids": [
+              "plug_2019_10k_web_v10",
+              "plug_2020_10k_web_v10"
+            ],
+            "end": {
+              "lower": null,
+              "upper": null
+            },
+            "evidence_spans": [
+              {
+                "end": 43279,
+                "quote_characters": 161,
+                "quote_sha256": "8f77fd5357fd4a381151c0c7664ab566802afd0453903ee36fbf0c833f9741e8",
+                "start": 43118
+              },
+              {
+                "end": 43496,
+                "quote_characters": 98,
+                "quote_sha256": "dbcbb08315bf686c4e0164a10e2b4273be09da5b74e2710ba40e549dbe22bde8",
+                "start": 43398
+              }
+            ],
+            "full_claim_record_sha256": "b047b199a6a1dfff7c6ef01367cbf2c43846bd8281b20a985a552c2023e6dc45",
+            "modality": "reported_actual",
+            "polarity": "positive",
+            "reported_at": null,
+            "source_id": "plug_2019_10k_web_v10",
+            "start": {
+              "lower": null,
+              "upper": null
+            },
+            "state_observed_at": []
+          }
+        ],
+        "selected_link_ids": {
+          "mention:plug_2018_D": null,
+          "mention:plug_2018_E": "correction:0001",
+          "mention:plug_2018_O": null,
+          "mention:plug_2018_R": "correction:0000",
+          "mention:plug_2018_U": null
+        },
+        "selected_reading_ids": {
+          "mention:plug_2018_D": "selected",
+          "mention:plug_2018_E": "selected",
+          "mention:plug_2018_O": "selected",
+          "mention:plug_2018_R": "selected",
+          "mention:plug_2018_U": "selected"
+        },
+        "support_dependency_semantics": "all_declared_prerequisites_are_essential",
+        "time_policy": "no_event_boundary_added_from_correction_or_availability_date"
+      },
+      "original_selected_records_preserved": true,
+      "policy": "dependency_withdrawal",
+      "policy_sha256": "d2347e831d350c84fd2dd3ccbf26d433beaa1828791f1cb6e687f6cfaadacb7c",
+      "unaffected_claims_retained": {
+        "plug_2018_U": true
+      },
+      "unknown_endpoints_preserved": true
+    }
+  ],
+  "qa_predictions": 0,
+  "schema_document_sha256": "7c92553a1d0534904f684ece1ebde294ea052e051b02d871ab5fd940c1855737",
+  "schema_version": "correction_gate_fixed_selection_replay_v0.10",
+  "script_sha256": "eaf8759a7e9b469a1182002490c2b7d3abb1ea088c8db901a8b07828959b67a9",
+  "selection_policy": "All supplied claims selected in every arm; all supplied direct CORRECTS links selected in both withdrawal arms, including directly corrected downstream assertions.",
+  "semantic_entailment_certified": false,
+  "source_bindings": [
+    {
+      "bytes": 64211,
+      "capture_date": "2026-10-03",
+      "characters": 57703,
+      "local_path": "plug_2019_10k_web_v10/document.txt",
+      "sha256": "6ae0995c60a64dc56453b8548cfe568fc9ee1259ba2136a3775cab04e28c7171",
+      "source_id": "plug_2019_10k_web_v10",
+      "uri": "https://s29.q4cdn.com/600973483/files/doc_financials/2019/ar/4Q19-10K.pdf"
+    },
+    {
+      "bytes": 86838,
+      "capture_date": "2026-10-03",
+      "characters": 85151,
+      "local_path": "plug_2020_10k_web_v10/document.txt",
+      "sha256": "d7140dc6ff86cc086cbcafb0a97f320531b762e1ae46488b86889146b7dd92c5",
+      "source_id": "plug_2020_10k_web_v10",
+      "uri": "https://s29.q4cdn.com/600973483/files/doc_financials/2020/ar/4Q20-10K.pdf"
+    }
+  ],
+  "source_delivery_order": [
+    "plug_2019_10k_web_v10",
+    "plug_2020_10k_web_v10"
+  ],
+  "source_representation": "web_tool_noncontiguous_excerpt_projection",
+  "source_scope_limit": "Replay is restricted to the supplied hash-bound text representation; it does not certify full-document access, a complete version, or paired historical prefixes.",
+  "status": "completed_annotation_conditioned_policy_materialization"
+}

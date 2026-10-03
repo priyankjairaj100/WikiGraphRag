@@ -1,0 +1,97 @@
+Official runtime commit: 7fe450e19305b828c199d602c23a8337aaa1f03b
+Source: https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/tools/server/server-common.cpp
+Full file SHA256: 7423d66fb1b6d8fe8d18812526cc73808017a7181df3e47c67f356cedd321113
+Extract: lines 1526-1576, MIT-licensed llama.cpp source
+
+std::vector<llama_token_data> get_token_probabilities(llama_context * ctx, int idx, size_t n_top) {
+    std::vector<llama_token_data> cur;
+
+    const auto * logits = llama_get_logits_ith(ctx, idx);
+    const llama_token * sampled_ids = llama_get_sampled_candidates_ith(ctx, idx);
+
+    const int n_logits = llama_get_sampled_logits_count_ith(ctx, idx);
+
+    cur.resize(n_logits);
+    if (sampled_ids) {
+        for (int i = 0; i < n_logits; i++) {
+            cur[i] = llama_token_data{sampled_ids[i], logits[i], 0.0f};
+        }
+    } else {
+        for (llama_token token_id = 0; token_id < n_logits; token_id++) {
+            cur[token_id] = llama_token_data{token_id, logits[token_id], 0.0f};
+        }
+    }
+
+    // sort tokens by logits (partial: only the leading `n_top` need ordering)
+    if (n_top > cur.size()) {
+        n_top = cur.size();
+    }
+    if (n_top > 0) {
+        std::partial_sort(cur.begin(), cur.begin() + n_top, cur.end(),
+            [](const llama_token_data & a, const llama_token_data & b) {
+                return a.logit > b.logit;
+            });
+    }
+
+    // apply softmax
+    float max_l = -std::numeric_limits<float>::infinity();
+    if (n_top > 0) {
+        max_l = cur[0].logit; // partial_sort guarantees the absolute maximum is at index 0
+    } else {
+        for (const auto & t : cur) {
+            max_l = std::max(max_l, t.logit);
+        }
+    }
+    float cum_sum = 0.0f;
+    for (auto & t : cur) {
+        float p = expf(t.logit - max_l);
+        t.p = p;
+        cum_sum += p;
+    }
+    for (auto & t : cur) {
+        t.p /= cum_sum;
+    }
+
+    return cur;
+}
+
+Caller source: tools/server/server-context.cpp, full SHA256: 5f751fef3744521b86295c073ecc55f5da4810d28508f7911aa99a71647a93ee
+Lines1790-1803: raw-logprob requests explicitly disable backend sampling.
+            const bool need_pre_sample_logits = task.params.sampling.n_probs > 0 && !task.params.post_sampling_probs;
+
+            bool use_backend_sampling = task.params.sampling.backend_sampling;
+
+            // TODO: getting pre sampling logits is not yet supported with backend sampling
+            use_backend_sampling &= !need_pre_sample_logits;
+
+            // TODO: tmp until backend sampling is fully implemented
+            if (use_backend_sampling) {
+                llama_set_sampler(ctx_tgt, slot.id, common_sampler_get(slot.smpl.get()));
+            } else {
+                llama_set_sampler(ctx_tgt, slot.id, nullptr);
+            }
+
+Lines1996-2018: full probabilities computed then top-N entries returned.
+            std::vector<llama_token_data> cur = get_token_probabilities(ctx_tgt, idx, n_probs_request);
+            const size_t max_probs = cur.size();
+            const size_t n_probs = std::min(max_probs, n_probs_request);
+
+            // set probability for sampled token
+            for (size_t i = 0; i < max_probs; i++) {
+                // set probability for sampled token
+                if (cur[i].id == result.tok) {
+                    result.prob = cur[i].p;
+                    break;
+                }
+            }
+
+            // set probability for top n_probs tokens
+            result.probs.reserve(n_probs);
+            for (size_t i = 0; i < n_probs; i++) {
+                result.probs.push_back({
+                    cur[i].id,
+                    common_token_to_piece(ctx_tgt, cur[i].id, special),
+                    cur[i].p
+                });
+            }
+        }

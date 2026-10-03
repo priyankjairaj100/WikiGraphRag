@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "ordinal_scorer_v0.6"
+    },
+    "scores": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "score": {
+            "type": "integer",
+            "minimum": -3,
+            "maximum": 3
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "source_id",
+                "quote"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 8
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "item_id",
+          "score",
+          "evidence",
+          "note"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "scores"
+  ],
+  "additionalProperties": false
+}

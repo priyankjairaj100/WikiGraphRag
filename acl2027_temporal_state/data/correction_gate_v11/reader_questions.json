@@ -1,0 +1,53 @@
+{
+  "schema_version": "source_consistency_questions_v0.11",
+  "frozen_at_utc": "2026-10-03T06:35:35.230901+00:00",
+  "history_id": "jama_2019_current_document",
+  "selection_basis": "After discovery and independent source review; before any native prediction. Evidence-selected development diagnostic, not held-out sampling.",
+  "questions": [
+    {
+      "question_id": "Q1",
+      "text": "Among marketing value, number of payments, and number of physicians receiving payments, which has the largest source-reported point estimate for opioid prescribing rates per 1-SD exposure increase? Report its exposure label and displayed value; do not infer significance of differences."
+    },
+    {
+      "question_id": "Q2",
+      "text": "Comparing the source-reported standardized point estimates, does the article sentence naming the greatest prescribing-rate effect agree with the corrected prescribing numbers? Answer agree, disagree, or uncertain."
+    },
+    {
+      "question_id": "Q3",
+      "text": "For the separate prescription-opioid overdose-death outcome, which of the same three exposures has the largest source-reported point estimate per 1-SD increase? Report its exposure label and displayed value."
+    }
+  ],
+  "response_contract": {
+    "top_level": "Object with exactly answers: a list of exactly three objects in Q1,Q2,Q3 order.",
+    "Q1_Q3_fields": [
+      "question_id",
+      "exposure",
+      "value",
+      "evidence_ids"
+    ],
+    "exposure_enum": [
+      "marketing_value",
+      "payments",
+      "physicians_receiving_payments",
+      "uncertain"
+    ],
+    "value": "finite numeric displayed point estimate, or null when uncertain",
+    "Q2_fields": [
+      "question_id",
+      "agreement",
+      "evidence_ids"
+    ],
+    "agreement_enum": [
+      "agree",
+      "disagree",
+      "uncertain"
+    ],
+    "evidence_ids": "Nonempty unique list drawn from P1,P2,P3,P4. No quotations or explanations."
+  },
+  "limitations": [
+    "One current-document case; not historical correction replay.",
+    "Publisher notice and author assertions are not silently equated for authority.",
+    "Source labels aRR despite Tobit-method wording; only source-reported values and prose consistency are queried.",
+    "No causal or statistical significance comparison is requested."
+  ]
+}

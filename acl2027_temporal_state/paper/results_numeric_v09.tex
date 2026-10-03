@@ -1,0 +1,52 @@
+\subsection{Observed results}
+\label{sec:results}
+The 0.6B model changed the sign of all four statement scores when the label
+order changed: every Yes-first decision was Yes and every No-first decision
+was No. Each order agreed with two of the four authored reference labels.
+The 4B model changed no decision, but agreed with only three references in
+both orders. It accepted the unsupported non-executive chairman statement,
+with log odds above $21$ in both conditions. Stability under this one prompt
+change therefore did not imply correct source interpretation. No condition
+was selected, averaged or calibrated after inspecting the results.
+\claim{V09-C06}
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{llrrrr}
+\toprule
+Statement & Ref. & \multicolumn{2}{c}{0.6B} & \multicolumn{2}{c}{4B} \\
+ & & Y/N & N/Y & Y/N & N/Y \\
+\midrule
+Disney: executive chair & Yes & +1.977 & -4.250 & +27.266 & +24.300 \\
+Disney: non-executive chair & No & +1.299 & -4.558 & +25.202 & +21.042 \\
+Intel: February effective date & Yes & +2.539 & -3.881 & +27.866 & +27.866 \\
+Intel: January effective date & No & +1.586 & -4.622 & -26.856 & -26.872 \\
+\bottomrule
+\end{tabular}
+\caption{All four frozen authored statements. Entries are unmodified
+$\log P(\mathrm{Yes})-\log P(\mathrm{No})$, rounded for display.
+Y/N and N/Y denote the order of label definitions, not different source input.
+Positive values predict Yes. Reference labels are model-assisted source judgments.}
+\end{table}
+
+The final matched run took 1,240.80 seconds (20.68 minutes). Median native
+prefill time was 30.42 seconds for 0.6B and 114.71 seconds for 4B. All sixteen
+scores had zero reused prompt tokens. Their literal label masses were
+0.999179--0.999899 for 0.6B and approximately one for 4B, with numerical
+overshoot of at most $7.3\times10^{-10}$ for the latter. These masses and score
+margins are not calibrated correctness probabilities.\claim{V09-C07}
+
+Execution also retained an initial pre-load watchdog stop with no distribution,
+one successful authored smoke distribution, and one discarded research
+response. The first watchdog treated reclaimable download cache as resident
+model pressure; a separately frozen amendment used a documented resident
+working-set proxy while preserving the address-space guard. The first research
+response then exceeded a $10^{-6}$ returned-mass accounting tolerance by about
+$1.82\times10^{-7}$. After independent numerical review, a disclosed $10^{-4}$
+tolerance was fixed for both mass checks and the complete sixteen-call design
+was restarted. Log probabilities, prompts and the decision threshold were not
+altered. This engineering tolerance is not a proved numerical error bound or
+an entirely pre-output protocol. Eighteen returned distributions are accounted
+for: sixteen retained, one discarded, and one separate smoke. The exact-artifact
+audit additionally checked forty-eight vocabulary-only prefix/label
+continuations with zero new forward-pass completions.\claim{V09-C07}

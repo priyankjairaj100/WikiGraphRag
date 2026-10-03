@@ -1,0 +1,126 @@
+{
+  "schema_version": "independent_passage_reader_references_v0.11",
+  "created_at_utc": "2026-10-03T06:39:51.951103+00:00",
+  "reviewer_role": "independent_source_only_model_assisted_adjudicator",
+  "task_type": "current_document_selected_passage_reading_not_correction_replay",
+  "input_binding": {
+    "question_path": "data/correction_gate_v11/reader_questions.json",
+    "question_sha256": "14f331652eeee4555afae48d11810dcb99ff0ddb7aaa0ce1e3975b337453b7f0",
+    "passage_pack_path": "/workspace/scratch/bdef663e3dfc/tmp/correction_gate_v11/jama_web/passage_pack.json",
+    "passage_pack_sha256": "9bcb2cc78bc875ac9eca4d0d1844799a35c108981466759c75c00727ac80869e",
+    "passage_sha256": {
+      "P1": "2a6f367c4a2addb8df9477b042949915dbe41eb9437a8b3419200098b0e8c9f0",
+      "P2": "8ece663d88bfffbd803e1917030c703570dc16aa3beff2602fd40f16d4910441",
+      "P3": "f3673b977099e9a43113e5bc88bcbaa7acd2e5aad87f1e0d840e6a0062fae8ae",
+      "P4": "32778207e069949b34105235f6ca1ed955350e02497d6cc21fb05b7ce3957087"
+    },
+    "source_document_sha256": {
+      "jama_notice": "850f055f2b6b6775f91e5a5085b1336004f922e70aded05e13a05e0ba0e01649",
+      "jama_article": "0719f61b56f0278236ef425d4158ec2ad21b82dbf118a1d3e85e7b0ecda57dea"
+    },
+    "source_hash_verification": "Source document hashes copied from the fixed pack, not independently recomputed; pack, question and passage hashes independently recomputed.",
+    "source_urls": {
+      "jama_article": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720914",
+      "jama_notice": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2728611"
+    }
+  },
+  "answers": [
+    {
+      "question_id": "Q1",
+      "exposure": "physicians_receiving_payments",
+      "value": 13.59,
+      "evidence_ids": [
+        "P4"
+      ]
+    },
+    {
+      "question_id": "Q2",
+      "agreement": "disagree",
+      "evidence_ids": [
+        "P1",
+        "P4"
+      ]
+    },
+    {
+      "question_id": "Q3",
+      "exposure": "payments",
+      "value": 1.18,
+      "evidence_ids": [
+        "P3"
+      ]
+    }
+  ],
+  "adjudications": [
+    {
+      "question_id": "Q1",
+      "well_posed": true,
+      "required_passage_ids": [
+        "P4"
+      ],
+      "minimal_sufficient_passage_sets": [
+        [
+          "P4"
+        ]
+      ],
+      "corroborating_passage_ids": [
+        "P1"
+      ],
+      "scope_context_passage_ids": [
+        "P2"
+      ],
+      "rationale": "P4 assigns 13.59 to the physicians exposure and smaller values to both alternatives. Its prose supplies the requested standardized interpretation.",
+      "uncertainty": "Methods terminology does not identify the true scientific effect scale unambiguously; the question explicitly requests only the displayed source-reported point estimate."
+    },
+    {
+      "question_id": "Q2",
+      "well_posed": true,
+      "required_passage_ids": [
+        "P4"
+      ],
+      "minimal_sufficient_passage_sets": [
+        [
+          "P4"
+        ]
+      ],
+      "correction_status_provenance_passage_ids": [
+        "P1"
+      ],
+      "scope_context_passage_ids": [
+        "P2"
+      ],
+      "rationale": "Within P4 the named winner differs from the exposure attached to the largest displayed number. P1 independently supplies correction provenance. P4 alone is sufficient for the requested numerical-versus-prose agreement check.",
+      "uncertainty": "This local check neither refutes the broad conclusions retained in P1 nor establishes significance, causality or a historical error trajectory."
+    },
+    {
+      "question_id": "Q3",
+      "well_posed": true,
+      "required_passage_ids": [
+        "P3"
+      ],
+      "minimal_sufficient_passage_sets": [
+        [
+          "P3"
+        ]
+      ],
+      "scope_context_passage_ids": [
+        "P2"
+      ],
+      "rationale": "P3 assigns 1.18 to payments, exceeding both other displayed estimates for the separately specified outcome.",
+      "uncertainty": "The answer is a reported numeric ordering, not a claim about comparative causal effects or significant pairwise differences."
+    }
+  ],
+  "evidence_policy": {
+    "required_means": "A passage carrying necessary answer content within this fixed pack, not every useful contextual or provenance passage.",
+    "additional_context": "Additional cited P1-P4 passages should not by themselves make a factually correct answer incorrect; distinguish evidence sufficiency from citation precision.",
+    "q2_provenance": "A response citing P4 alone can sufficiently support disagreement; P1 plus P4 is more explicit about correction provenance."
+  },
+  "limitations": [
+    "Development diagnostic selected after source discovery; one case and three related questions, not held-out evaluation.",
+    "Model-assisted reference judgments, not independent human gold.",
+    "No clinical recommendation, causal claim, or significance-of-difference judgment.",
+    "No reconstructed historical prefix, invented prior wording, same-authority certificate or correction-engine execution.",
+    "For this reference task only the fixed passage pack and question file were read. The reviewer had previously reviewed the two primary sources for eligibility, and that exposure is disclosed.",
+    "No native requests, predictions, other reference files or expected-label artifacts were inspected."
+  ],
+  "publication_quote_count": 0
+}

@@ -1,0 +1,82 @@
+NEXT CANDIDATE SCHEMA: REQUIREMENTS FROM THE FIRST NATURAL PILOT
+Status: design requirements for v0.3, not implemented or empirically validated.
+
+The v0.2 natural pilot contains five retrieved SEC filing representations and
+two selected histories. Independent early-prefix passes produced 13 and 14
+assertions. A separate later-prefix pass produced 10. Their raw outputs remain
+unchanged. This is model-assisted development, not a frozen benchmark.
+
+1. Separate polarity from modality.
+The existing enum reported/planned/negative/uncertain is not a partition: a
+future departure is both planned and negative. Pass B put such negation in its
+qualifier. The replay adapter explicitly excludes a qualifier beginning
+"Negative assertion:" from positive occupancy, logs the loss, and does not
+pretend that this phrase rule is a general negation parser.
+
+Use separate candidate dimensions:
+- polarity: positive, negative, unresolved;
+- modality: reported_actual, announced_future, conditional, uncertain;
+- observation_kind: effective_boundary, state_observation, report_only;
+- temporal_precision: exact_day, bounded_days, year_only, unknown.
+Status of an announced plan must survive answer generation. A future plan alone
+is not evidence that the event subsequently occurred. Pilot questions explicitly
+ask what the supplied records and their announced schedule support.
+
+2. Distinguish report observation from state observation.
+The current extraction field observed_on was used for the document/report date
+even when the assertion concerned a future appointment. Do not pass that field
+directly into decoder.Reading.observed_at: the latter means the factual state
+holds at that date, not that someone reported an assertion then.
+
+Use separate reported_at and state_observed_at. Both remain distinct from source
+publication and operational source availability. An observation that X is CFO
+on day t constrains an interval to contain t; it does not assert the appointment
+occurred on t. A year-only appointment permits a bounded onset, not January 1.
+Keep effective-start and effective-end bounds, exactness, inclusive/exclusive
+conventions, source spans and derivation provenance separately.
+
+3. Localize uncertainty.
+The v0.1 memory treats unknown starts as key-wide uncertainty before an optional
+end, and a later unknown-start observation can spoil an earlier answer. Preserve
+that baseline and implement a separate bounded interpretation materializer.
+Uncertainty over an October 13/14 retirement boundary should not create global
+uncertainty about every date or automatically invalidate a subsequent occupant.
+Do not infer a precise boundary just to eliminate uncertainty.
+
+4. Extract aliases from the eligible source prefix.
+The natural replay exposes sensitivity to NIKE, Inc. versus Nike. Alias and
+legal-name descriptions must be extracted/cached from the same eligible prefix,
+with source support. Questions are ordinary text and must never supply a gold
+entity/key ID. Keep the old lexical matcher as a transparent baseline.
+
+5. Preserve alternatives before scoring.
+Each source mention should retain multiple supported readings or an unresolved
+option, including first-day-out versus last-day-of-service where the text does
+not settle the convention. An assertion of cessation and an observation of the
+preceding occupancy are distinct mentions or readings, not an alignment error.
+Machine agreement does not resolve an ambiguity absent in the source evidence.
+
+6. Freeze and evaluate the complete pipeline.
+Pin a reproducible extractor backend and cache input/prompt/model/config hashes.
+Measure candidate recall and schema failures before training a scorer. Cache
+identical unary, pair and null scores for independent, iterative/restarted and
+joint decoding. The v0.2 exact decoder is an enumeration reference over small
+components; no scalable solver, trained scores or natural joint comparison is
+present. Its observed_at constraints already distinguish actual observations,
+but polarity/modality and bounded endpoints still need candidate-level support.
+
+Acceptance for the next bounded sprint:
+- Round-trip planned negation and year-only or observation-only timing without
+  invented days or changed polarity.
+- Keep later source text out of every early prefix alias/candidate cache.
+- Reproduce initial 37 raw extractions unchanged while retaining a versioned
+  derived candidate representation, with no gold fields in inference.
+- Query an observed state while retaining unknown appointment time; retain
+  uncertainty only where the permitted interpretations disagree.
+- Add source-supported product-lifecycle histories and explicit correction
+  pairs before treating the first two leadership histories as representative.
+
+Research decision remains open: these cases reveal representation and routing
+failures, not evidence that global joint inference is necessary. The principal
+ACL claim requires natural gains beyond contextual and restarted iterative
+baselines with identical candidate information and measured computation.

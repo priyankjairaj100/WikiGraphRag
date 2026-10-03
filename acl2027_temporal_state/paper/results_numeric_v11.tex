@@ -1,0 +1,16 @@
+The pinned Qwen3-4B Q8\_0 reader completed two greedy calls in separate processes, with 3,327 input tokens each, no cached prompt tokens and no input truncation. It returned 86 and 91 generated tokens, respectively, both ending at EOS within the 384-token reserve. Including preflight and process setup, the recorded attempt lasted 403.41 seconds.
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Notice position & Native execution & Response schema & Strict question outcomes\\
+\midrule
+Last & Complete & Invalid exposure labels & 3 failures\\
+First & Complete & Invalid exposure labels & 3 failures\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both responses were parseable JSON but violated the frozen exposure vocabulary. The strict scorer therefore retains all three questions as failed in each condition. No label normalization, partial-answer salvage or output repair is applied. These strict failures do not separate schema compliance from reading performance and are not reported as a population accuracy estimate. Because both response schemas fail, the prespecified scorer leaves answer-order comparisons unavailable; the raw strings remain inspectable. This single selected example and small local model neither establish a strong-reader ceiling nor demonstrate a correction-method gain.
+
+All 410 unit tests pass, including 33 new adapter, collector and evaluator checks. The first suite invocation omitted the source import path and failed collection for one module; its receipt is retained. Rerunning with the documented \texttt{PYTHONPATH=src} changes no tests or code. Metadata/source-input verification and stored-response rescoring are offline and perform no native inference.

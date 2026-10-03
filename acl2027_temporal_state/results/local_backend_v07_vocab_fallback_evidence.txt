@@ -1,0 +1,88 @@
+Independent reviewer source inspection, 2026-10-02.
+Official runtime commit: 7fe450e19305b828c199d602c23a8337aaa1f03b
+Source: https://raw.githubusercontent.com/ggml-org/llama.cpp/7fe450e19305b828c199d602c23a8337aaa1f03b/src/llama-context.cpp
+Full file SHA256: 21340d0540c6ca98b78b733906f026a7ded450b283e47c3d1c9a84a19de43132
+Downloaded via an approved public read after sandbox network access failed; no private data sent.
+MIT-licensed llama.cpp source excerpts.
+Interpretation: the no-backend-sampler path has no sampling.logits buffer; its count falls back to the full model vocabulary. Candidate IDs likewise fall back to the full identity list. The raw logits accessor returns a full-vocabulary row. Combined with the separately preserved server-context caller disabling backend sampling for pre-sampling probabilities and server-common full-vector softmax, this establishes full-vocabulary normalization before output top-256 slicing.
+
+Exact source lines 472--479:
+    {
+        const int n_vocab = model.vocab.n_tokens();
+
+        sampling.token_ids_full_vocab.resize(n_vocab);
+        for (int i = 0; i < n_vocab; ++i) {
+            sampling.token_ids_full_vocab[i] = i;
+        }
+    }
+
+Exact source lines 944--956:
+float * llama_context::get_logits_ith(int32_t i) {
+    output_reorder();
+
+    try {
+        if (logits.data == nullptr) {
+            throw std::runtime_error("no logits");
+        }
+
+        const int64_t j = output_resolve_row(i);
+        return logits.data + j*model.vocab.n_tokens();
+    } catch (const std::exception & err) {
+        LLAMA_LOG_ERROR("%s: invalid logits id %d, reason: %s\n", __func__, i, err.what());
+#ifndef NDEBUG
+
+Exact source lines 1103--1119:
+const llama_token * llama_context::get_sampled_candidates_ith(int32_t idx) {
+    output_reorder();
+
+    try {
+        const int64_t row = output_resolve_row(idx);
+        if (sampling.candidates.has_data() &&
+            (size_t) row < sampling.candidates_count.size() &&
+            sampling.candidates_count[row] > 0) {
+            return sampling.candidates.data + row*model.vocab.n_tokens();
+        }
+    } catch (const std::exception & err) {
+        // fallback to full vocab list
+        GGML_UNUSED(err);
+    }
+
+    return sampling.token_ids_full_vocab.data();
+}
+
+Exact source lines 1140--1157:
+size_t llama_context::get_sampled_logits_count(int32_t idx) {
+    output_reorder();
+
+    if (!sampling.logits.has_data()) {
+        return model.vocab.n_tokens();
+    }
+
+    try {
+        const int64_t row = output_resolve_row(idx);
+        if ((size_t) row >= sampling.logits_count.size()) {
+            return 0;
+        }
+        return sampling.logits_count[row];
+    } catch (const std::exception & err) {
+        LLAMA_LOG_ERROR("%s: invalid backend sampled logits count id %d, reason: %s\n", __func__, idx, err.what());
+        return 0;
+    }
+}
+
+Exact source lines 2144--2150:
+    // Allocate backend sampling output buffers if there are backend samplers configured.
+    const bool has_sampling = !sampling.samplers.empty();
+    if (has_sampling) {
+        backend_float_count = 2 * n_vocab * n_outputs_max;      // logits + probs
+        backend_token_count = (1 + n_vocab) * n_outputs_max;    // sampled + candidates
+    }
+
+
+Exact source lines 1275--1280:
+bool llama_context::set_sampler(llama_seq_id seq_id, llama_sampler * sampler) {
+    if (!sampler && sampling.samplers.count(seq_id) == 0) {
+        return true;
+    }
+
+    LLAMA_LOG_DEBUG("%s: seq_id = %d, sampler = %p\n", __func__, (int) seq_id, (void *) sampler);

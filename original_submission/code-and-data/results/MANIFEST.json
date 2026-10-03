@@ -1,0 +1,951 @@
+{
+  "project": "wikigraphrag-reproduction",
+  "datasets": {
+    "freshrag": {
+      "path": "data/freshrag/claims.jsonl",
+      "sha256": "c0a860047d5a24985e46bce5718b44a9ba231bf6e47446d2238e5e21ede8e653",
+      "n_claims": 304
+    },
+    "multihop_asof": {
+      "path": "data/multihop_asof/claims.jsonl",
+      "sha256": "bf0def9d63619950fcc2177ebdfd3f5d6ddff5e9901c8f2349789cdec8534559",
+      "n_claims": 277
+    },
+    "multihop_real": {
+      "path": "data/multihop_real/claims.jsonl",
+      "sha256": "0ebfa56437cb8b92f3fec5f4de6c97f322ad048fb015d5e3fee749ec634facb6",
+      "n_claims": 67
+    },
+    "realprose": {
+      "path": "data/realprose/claims.jsonl",
+      "sha256": "ca2c4a932036da2db9f0b9ee6098a751e7cb61f54484278e11e9af08c39e3205",
+      "n_claims": 132
+    },
+    "realwiki": {
+      "path": "data/realwiki/claims.jsonl",
+      "sha256": "92ef9c187f38b84b6e0cdede12018f9596caa7933dcf27508bafbe9a906b7945",
+      "n_claims": 26
+    },
+    "realworld": {
+      "path": "data/realworld/claims.jsonl",
+      "sha256": "4ff20069843877de238bdbad76d1073477001fc48f83566ff77c45fae0fdfd4b",
+      "n_claims": 56
+    },
+    "templama": {
+      "path": "data/templama/claims.jsonl",
+      "sha256": "6489bce610ae2677a454a06a1af1a07c0d376d638a1ce1ac6ca5eccc6c5ef354",
+      "n_claims": 747
+    },
+    "wikidata": {
+      "path": "data/wikidata/claims.jsonl",
+      "sha256": "0e48204aa6cfc6a00e800c07d8c498c12ccd099e8a8507dc10d13767e2b341c4",
+      "n_claims": 208
+    },
+    "wikidata_prose": {
+      "path": "data/wikidata_prose/claims.jsonl",
+      "sha256": "d87e64f18fb59c00ecc31e21ce91f7865e96227c787644a076fd76303e1275d4",
+      "n_claims": 208
+    },
+    "wikidata_prose_normalized": {
+      "path": "data/wikidata_prose_normalized/claims.jsonl",
+      "sha256": "61aa83fdf4d8d781b4046843bd39ec1a89249c7c0f3ae6d2f174b1eedddd5761",
+      "n_claims": 208
+    }
+  },
+  "result_files": {
+    "results/ablation_freshrag.json": "3b71c465dcc7477adcb18184480a415c6e4cfd7ec8eaef7974278561922994ed",
+    "results/ablation_realworld.json": "b1cf57cb644c9759fd6a0591c29d3052389c5bcbc108fc2116693e4f7479fe27",
+    "results/ablation_templama.json": "a56731f2a108a510ce55e42b64aac3cd98e8ae8ef870753050f4bb86c124f64d",
+    "results/ablation_wikidata.json": "c8ade85c3d3cbe4b5c73863bc96fde8124b5733b4640809a35fc098ad983daf2",
+    "results/ablation_wikidata_prose.json": "97ede8ffe5ad965da824cbe000530a5a848408143b94da015a66379ae594f444",
+    "results/asof_realworld.json": "38b42b27c3f7191d5e557039cbf53844c8aa558d6a073b08f8e8bbc433251c3d",
+    "results/asof_templama.json": "461c6479bf00705e897c5b076a61d11293d7dfc300b794580d3e67ae2c8e18f5",
+    "results/asof_wikidata.json": "41c41ead5aa82136aeee4dc795c1b7fc4dba810a948930ee7a064ac5f2849440",
+    "results/asof_wikidata_prose.json": "a01c11e22d80640bf8c8d28878c1da4169e42892397de47b790a190fa07f0502",
+    "results/calibration_realworld.json": "c9935e4286a44703bd7cac93a622ee2edf68da6b5156234b8f87d80dc10de048",
+    "results/calibration_templama.json": "0406b41da6d5d3d7b6668f3f2ec0728d7dd60a5785aa0c2cc913476a8a8f7bcc",
+    "results/detection_freshrag.json": "b7641b24c49391726dc35651c54e5606a4ea6cd2c4f50db20b2d44df6d6adb17",
+    "results/detection_realprose.json": "585f10c937b0cf53a77df05241f5c370e4569fe1a98e5f2ecbf31f13491c9267",
+    "results/detection_realwiki.json": "85831ad98282f2b6b4d16218336d45b7293ac348e478a1af62dc4ec196bf2f0b",
+    "results/detection_realworld.json": "a142beaa6f4c1d016b8365a774986cd5676b46135af39564341ad417cc6c4a14",
+    "results/detection_templama.json": "0342e38f3f92c36672a4abae99a751266fee690afb16fa401428f9c843691ded",
+    "results/detection_wikidata.json": "75a64d2cacbe0496fc382e260dad73bdeeb83c8736f5168598c50286fd263107",
+    "results/detection_wikidata_prose.json": "75a64d2cacbe0496fc382e260dad73bdeeb83c8736f5168598c50286fd263107",
+    "results/history_sweep.json": "76998cb0e78d1ad29c53e753946022d6add8dd5c200004f83a61068960ad2198",
+    "results/history_templama_extractive.json": "0fb1a749782ad1b9c5e0e779ecb1bf844edcb6fbaaad688ba4c2d6ad79abceaf",
+    "results/history_templama_qwen.json": "ba434cb28ef8e4202a6da95b2fbe24c0b55452eb6d57c28e5f207fa35f37aee2",
+    "results/hybrid.json": "113bf5b14305ae344dd2e83039f4cd78df0d9e7bf4bf0d986e6e6f0292bfb1df",
+    "results/judge_wikidata.json": "3870028d9f9c82fd9c2a360ab297cc2e22de390281474266e5adb11b747c8bcd",
+    "results/judge_wikidata_gpt-4.1-mini.json": "977d2c1894ea0f2882ac26cf32dada69f19c9100eaef393a03d1afc2b2a6d875",
+    "results/judge_wikidata_gpt-4o-mini.json": "fb6e7d83994f3da9dd2dc074ac77c1dbc6ce1a7b55a17a202f96276cb2542841",
+    "results/multihop.json": "9e84a2a5fef45d8b7740582acf3af5a828b3fb873afb8195938b9276d9756c57",
+    "results/multihop_asof.json": "e22e50a013ae6e181d0f553bb297b39376382a1ec17b7c0170147556e058d46c",
+    "results/multihop_full.json": "224306435d944b53e7bc5bd8965bb168e2e9ca60061c7cdb140adeb21cefc819",
+    "results/multihop_real.json": "3db1ec7095fac6a846767be0128bc087b3f1a2b7239f5e47ef7e10040f46fc6d",
+    "results/pooled_wikidata_freshrag_realworld.json": "1c5fcd82fe4d9c9eb7aa41c29bc26bcbf9a3542157bb82d092c34dbef001a096",
+    "results/pooled_wikidata_freshrag_realworld_templama.json": "19149b612ee557c3bbd133f7f5571de0139da54d8698e7767c9713bcffca1ef9",
+    "results/positional_compare.json": "3b6d717f180a0a3643c62bee478a5ad77ed0b419272b35e3030e1f2763a2cfa1",
+    "results/qa_realprose_extractive.json": "50757276926d79ec5dc56e17d360896448e5fa2f049886e11dece126bd4a467e",
+    "results/qa_realprose_qwen.json": "00515a574720e199fe7d4aa08fc3bfea4c2f62019567ba2c7e144a594d08297c",
+    "results/qa_templama_extractive.json": "3ffabd4e7138294d02c2d60c9d8f1bcb0e3bf9598543ddce43e17e9993acd4da",
+    "results/qa_templama_qwen.json": "088815c9dc94aa10d70ef12948337324f369e611ea3d6f2f4acabb0542b1cf43",
+    "results/qa_wikidata_extractive.json": "4bfcc76b4efff64e3139286df53c7895df91380271d0b6a53363ed725cc95d32",
+    "results/qa_wikidata_gpt-4o-mini.json": "9b15f77a8d13a45b9da831de69528723a97a04c28438035f7735e733f01afb4d",
+    "results/qa_wikidata_qwen.json": "af4282c307a858ae722fefc911229534f9d2adea9b8b4f86971bfd0b41b76114",
+    "results/ragtime_heldout_tuning.json": "9eec118db03868859d3db7244f428a69ac5a6d606f4307df4b88ca57ddfe93dd",
+    "results/retrieval_freshrag.json": "bd446c8958b92de6d25a2efb1b12662bc8ae84252f93d23fd9b281b71ede7920",
+    "results/retrieval_templama.json": "0a57582dc221bfefc1755a330f1cd56bbc20c2c2c9a3145571919989ea4c7a59",
+    "results/retrieval_wikidata.json": "144b41976defcdad4547ad51379f9b5245bffcb11934e4ff536f7cee368960e7",
+    "results/scaling.json": "829c7ce6fb1da598b64e2851eac8553333faaa6fec5f7c87bb028a223a86ef65",
+    "results/temporal_rag_baselines_extractive.json": "bd2cf02945640f0b3cad1836bb0afb17a981f22ffa39a87d1f3ac1917afae585",
+    "results/temporal_rag_baselines_qwen.json": "8c00eeb77e018c50be7572c5e2865b31e2794bb48128ba8d47cb3956b8d09ef0",
+    "results/tempralm_topicality_audit.json": "597821dc3eaca2fd1851bcb65cae7b745c821a07b7c07b8d5db945e764b01e22",
+    "results/timestamp_noise_freshrag.json": "53218305dbe3444aef5d408a264562dbfef436931fe96d78c579874613618a52",
+    "results/timestamp_noise_templama.json": "8e5649212557fa15f09af8f47ed58a6c70097db49ae2e7922a45c1071c53a489",
+    "results/timestamp_noise_wikidata.json": "acf26b3daed579fe7db139d0c4321c9cfe9bcea9b4ce28f5f7e9b5e48ce49110"
+  },
+  "headline_numbers": {
+    "detection": {
+      "freshrag": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "n_claims": 304,
+        "ci95": {
+          "f1": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0,
+          "n_cases": 100
+        }
+      },
+      "realprose": {
+        "precision": 0.9778,
+        "recall": 0.9072,
+        "f1": 0.9412,
+        "n_claims": 132,
+        "ci95": {}
+      },
+      "realwiki": {
+        "precision": 1.0,
+        "recall": 0.7857,
+        "f1": 0.88,
+        "n_claims": 26,
+        "ci95": {
+          "f1": 0.88,
+          "ci95_low": 0.6667,
+          "ci95_high": 1.0,
+          "n_cases": 12
+        }
+      },
+      "realworld": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "n_claims": 56,
+        "ci95": {
+          "f1": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0,
+          "n_cases": 20
+        }
+      },
+      "templama": {
+        "precision": 0.9819,
+        "recall": 0.9709,
+        "f1": 0.9764,
+        "n_claims": 747,
+        "ci95": {
+          "f1": 0.9764,
+          "ci95_low": 0.9637,
+          "ci95_high": 0.9864,
+          "n_cases": 300
+        }
+      },
+      "wikidata": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "n_claims": 208,
+        "ci95": {
+          "f1": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0,
+          "n_cases": 73
+        }
+      },
+      "wikidata_prose": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "n_claims": 208,
+        "ci95": {
+          "f1": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0,
+          "n_cases": 73
+        }
+      }
+    },
+    "retrieval_wikidata": {
+      "dataset": "wikidata",
+      "k": 5,
+      "n_queries": 33,
+      "conditions": {
+        "flat": {
+          "SER": 1.0,
+          "AEP": 0.297
+        },
+        "lifecycle": {
+          "SER": 0.0,
+          "AEP": 1.0
+        },
+        "gold": {
+          "SER": 0.0,
+          "AEP": 1.0
+        }
+      }
+    },
+    "retrieval_templama": {
+      "dataset": "templama",
+      "k": 5,
+      "n_queries": 300,
+      "conditions": {
+        "flat": {
+          "SER": 1.0,
+          "AEP": 0.438
+        },
+        "lifecycle": {
+          "SER": 0.06,
+          "AEP": 0.988
+        },
+        "gold": {
+          "SER": 0.0,
+          "AEP": 1.0
+        }
+      }
+    },
+    "qa_wikidata_extractive": {
+      "dataset": "wikidata",
+      "reader": "extractive",
+      "k": 5,
+      "n_questions": 33,
+      "current_answer_em": {
+        "flat": 0.1818,
+        "date_prompt": 0.1818,
+        "date_rerank": 0.1212,
+        "tempralm": 0.1212,
+        "ragtime_default": 0.1212,
+        "ragtime_tuned": 0.697,
+        "lifecycle": 0.9697,
+        "gold": 0.9697
+      },
+      "current_answer_em_strict": {
+        "flat": 0.1818,
+        "date_prompt": 0.1818,
+        "date_rerank": 0.1212,
+        "tempralm": 0.1212,
+        "ragtime_default": 0.1212,
+        "ragtime_tuned": 0.697,
+        "lifecycle": 0.9697,
+        "gold": 0.9697
+      },
+      "paired_tests": {
+        "lifecycle_vs_flat": {
+          "mean_diff": 0.7879,
+          "ci95_low": 0.6364,
+          "ci95_high": 0.9091,
+          "p_value": 0.0,
+          "n": 33
+        },
+        "lifecycle_vs_date_prompt": {
+          "mean_diff": 0.7879,
+          "ci95_low": 0.6364,
+          "ci95_high": 0.9091,
+          "p_value": 0.0,
+          "n": 33
+        },
+        "lifecycle_vs_date_rerank": {
+          "mean_diff": 0.8485,
+          "ci95_low": 0.7273,
+          "ci95_high": 0.9697,
+          "p_value": 0.0,
+          "n": 33
+        },
+        "lifecycle_vs_tempralm": {
+          "mean_diff": 0.8485,
+          "ci95_low": 0.7273,
+          "ci95_high": 0.9697,
+          "p_value": 0.0,
+          "n": 33
+        },
+        "lifecycle_vs_ragtime_default": {
+          "mean_diff": 0.8485,
+          "ci95_low": 0.7273,
+          "ci95_high": 0.9697,
+          "p_value": 0.0,
+          "n": 33
+        },
+        "lifecycle_vs_ragtime_tuned": {
+          "mean_diff": 0.2727,
+          "ci95_low": 0.1212,
+          "ci95_high": 0.4242,
+          "p_value": 0.0,
+          "n": 33
+        }
+      }
+    },
+    "qa_wikidata_qwen": {
+      "dataset": "wikidata",
+      "reader": "qwen",
+      "k": 5,
+      "n_questions": 33,
+      "current_answer_em": {
+        "flat": 0.4242,
+        "date_prompt": 0.5152,
+        "date_rerank": 0.3636,
+        "tempralm": 0.1515,
+        "ragtime_default": 0.303,
+        "ragtime_tuned": 0.5455,
+        "lifecycle": 0.9697,
+        "gold": 0.9697
+      },
+      "current_answer_em_strict": {
+        "flat": 0.4242,
+        "date_prompt": 0.5152,
+        "date_rerank": 0.3636,
+        "tempralm": 0.1515,
+        "ragtime_default": 0.303,
+        "ragtime_tuned": 0.5455,
+        "lifecycle": 0.9697,
+        "gold": 0.9697
+      },
+      "paired_tests": {
+        "lifecycle_vs_flat": {
+          "mean_diff": 0.5455,
+          "ci95_low": 0.3636,
+          "ci95_high": 0.697,
+          "p_value": 0.0,
+          "n": 33
+        },
+        "lifecycle_vs_date_prompt": {
+          "mean_diff": 0.4545,
+          "ci95_low": 0.303,
+          "ci95_high": 0.6364,
+          "p_value": 0.0,
+          "n": 33
+        },
+        "lifecycle_vs_date_rerank": {
+          "mean_diff": 0.6061,
+          "ci95_low": 0.4242,
+          "ci95_high": 0.7879,
+          "p_value": 0.0,
+          "n": 33
+        },
+        "lifecycle_vs_tempralm": {
+          "mean_diff": 0.8182,
+          "ci95_low": 0.6667,
+          "ci95_high": 0.9394,
+          "p_value": 0.0,
+          "n": 33
+        },
+        "lifecycle_vs_ragtime_default": {
+          "mean_diff": 0.6667,
+          "ci95_low": 0.4848,
+          "ci95_high": 0.8182,
+          "p_value": 0.0,
+          "n": 33
+        },
+        "lifecycle_vs_ragtime_tuned": {
+          "mean_diff": 0.4242,
+          "ci95_low": 0.2424,
+          "ci95_high": 0.6061,
+          "p_value": 0.0,
+          "n": 33
+        }
+      }
+    },
+    "qa_templama_extractive": {
+      "dataset": "templama",
+      "reader": "extractive",
+      "k": 5,
+      "n_questions": 300,
+      "current_answer_em": {
+        "flat": 0.4533,
+        "date_prompt": 0.4533,
+        "date_rerank": 0.1267,
+        "tempralm": 0.2133,
+        "ragtime_default": 0.14,
+        "ragtime_tuned": 0.6567,
+        "lifecycle": 0.9533,
+        "gold": 0.9967
+      },
+      "current_answer_em_strict": {
+        "flat": 0.4533,
+        "date_prompt": 0.4533,
+        "date_rerank": 0.1267,
+        "tempralm": 0.21,
+        "ragtime_default": 0.14,
+        "ragtime_tuned": 0.6567,
+        "lifecycle": 0.9533,
+        "gold": 0.9967
+      },
+      "paired_tests": {
+        "lifecycle_vs_flat": {
+          "mean_diff": 0.5,
+          "ci95_low": 0.44,
+          "ci95_high": 0.5567,
+          "p_value": 0.0,
+          "n": 300
+        },
+        "lifecycle_vs_date_prompt": {
+          "mean_diff": 0.5,
+          "ci95_low": 0.44,
+          "ci95_high": 0.5567,
+          "p_value": 0.0,
+          "n": 300
+        },
+        "lifecycle_vs_date_rerank": {
+          "mean_diff": 0.8267,
+          "ci95_low": 0.7833,
+          "ci95_high": 0.8667,
+          "p_value": 0.0,
+          "n": 300
+        },
+        "lifecycle_vs_tempralm": {
+          "mean_diff": 0.74,
+          "ci95_low": 0.69,
+          "ci95_high": 0.79,
+          "p_value": 0.0,
+          "n": 300
+        },
+        "lifecycle_vs_ragtime_default": {
+          "mean_diff": 0.8133,
+          "ci95_low": 0.7667,
+          "ci95_high": 0.8567,
+          "p_value": 0.0,
+          "n": 300
+        },
+        "lifecycle_vs_ragtime_tuned": {
+          "mean_diff": 0.2967,
+          "ci95_low": 0.2367,
+          "ci95_high": 0.3567,
+          "p_value": 0.0,
+          "n": 300
+        }
+      }
+    },
+    "qa_templama_qwen": {
+      "dataset": "templama",
+      "reader": "qwen",
+      "k": 5,
+      "n_questions": 300,
+      "current_answer_em": {
+        "flat": 0.5667,
+        "date_prompt": 0.6233,
+        "date_rerank": 0.13,
+        "tempralm": 0.26,
+        "ragtime_default": 0.1633,
+        "ragtime_tuned": 0.4733,
+        "lifecycle": 0.9367,
+        "gold": 0.97
+      },
+      "current_answer_em_strict": {
+        "flat": 0.5633,
+        "date_prompt": 0.62,
+        "date_rerank": 0.13,
+        "tempralm": 0.26,
+        "ragtime_default": 0.1633,
+        "ragtime_tuned": 0.4667,
+        "lifecycle": 0.9367,
+        "gold": 0.97
+      },
+      "paired_tests": {
+        "lifecycle_vs_flat": {
+          "mean_diff": 0.37,
+          "ci95_low": 0.3067,
+          "ci95_high": 0.43,
+          "p_value": 0.0,
+          "n": 300
+        },
+        "lifecycle_vs_date_prompt": {
+          "mean_diff": 0.3133,
+          "ci95_low": 0.2533,
+          "ci95_high": 0.3733,
+          "p_value": 0.0,
+          "n": 300
+        },
+        "lifecycle_vs_date_rerank": {
+          "mean_diff": 0.8067,
+          "ci95_low": 0.7633,
+          "ci95_high": 0.85,
+          "p_value": 0.0,
+          "n": 300
+        },
+        "lifecycle_vs_tempralm": {
+          "mean_diff": 0.6767,
+          "ci95_low": 0.6233,
+          "ci95_high": 0.7333,
+          "p_value": 0.0,
+          "n": 300
+        },
+        "lifecycle_vs_ragtime_default": {
+          "mean_diff": 0.7733,
+          "ci95_low": 0.7267,
+          "ci95_high": 0.82,
+          "p_value": 0.0,
+          "n": 300
+        },
+        "lifecycle_vs_ragtime_tuned": {
+          "mean_diff": 0.4633,
+          "ci95_low": 0.4067,
+          "ci95_high": 0.52,
+          "p_value": 0.0,
+          "n": 300
+        }
+      }
+    },
+    "temporal_rag_baselines_extractive": {
+      "methods": {
+        "tempralm": "Gade and Jetcheva (2024), full-pool dense-score implementation",
+        "ragtime_default": "Grofsky (2025), alpha=0.7, half-life=14 days",
+        "ragtime_real_best": "Grofsky (2025), alpha=0.3, half-life=14 days",
+        "ragtime_tuned": "Held-out selected alpha=0.7, half-life=1825 days"
+      },
+      "current_answer": {
+        "dataset": "wikidata",
+        "reader": "extractive",
+        "k": 5,
+        "n_questions": 33,
+        "current_answer_em": {
+          "flat": 0.1818,
+          "tempralm": 0.1212,
+          "ragtime_default": 0.1212,
+          "ragtime_real_best": 0.1212,
+          "ragtime_tuned": 0.697,
+          "lifecycle": 0.9697,
+          "gold": 0.9697
+        },
+        "current_answer_em_strict": {
+          "flat": 0.1818,
+          "tempralm": 0.1212,
+          "ragtime_default": 0.1212,
+          "ragtime_real_best": 0.1212,
+          "ragtime_tuned": 0.697,
+          "lifecycle": 0.9697,
+          "gold": 0.9697
+        },
+        "paired_tests": {
+          "lifecycle_vs_tempralm": {
+            "mean_diff": 0.8485,
+            "ci95_low": 0.7273,
+            "ci95_high": 0.9697,
+            "p_value": 0.0,
+            "n": 33
+          },
+          "lifecycle_vs_ragtime_default": {
+            "mean_diff": 0.8485,
+            "ci95_low": 0.7273,
+            "ci95_high": 0.9697,
+            "p_value": 0.0,
+            "n": 33
+          },
+          "lifecycle_vs_ragtime_real_best": {
+            "mean_diff": 0.8485,
+            "ci95_low": 0.7273,
+            "ci95_high": 0.9697,
+            "p_value": 0.0,
+            "n": 33
+          },
+          "lifecycle_vs_ragtime_tuned": {
+            "mean_diff": 0.2727,
+            "ci95_low": 0.1212,
+            "ci95_high": 0.4242,
+            "p_value": 0.0,
+            "n": 33
+          }
+        }
+      },
+      "as_of": {
+        "wikidata": {
+          "dataset": "wikidata",
+          "n_historical_probes": 134,
+          "n_current_probes": 33,
+          "historical_accuracy": {
+            "accuracy": {
+              "tempralm": 0.3881,
+              "ragtime_default": 0.2985,
+              "ragtime_real_best": 0.2836,
+              "ragtime_tuned": 0.8731,
+              "lifecycle_asof": 0.9403
+            },
+            "paired_tests": {
+              "lifecycle_asof_vs_tempralm": {
+                "mean_diff": 0.5522,
+                "ci95_low": 0.4552,
+                "ci95_high": 0.6493,
+                "p_value": 0.0,
+                "n": 134
+              },
+              "lifecycle_asof_vs_ragtime_default": {
+                "mean_diff": 0.6418,
+                "ci95_low": 0.5448,
+                "ci95_high": 0.7313,
+                "p_value": 0.0,
+                "n": 134
+              },
+              "lifecycle_asof_vs_ragtime_real_best": {
+                "mean_diff": 0.6567,
+                "ci95_low": 0.5597,
+                "ci95_high": 0.7537,
+                "p_value": 0.0,
+                "n": 134
+              },
+              "lifecycle_asof_vs_ragtime_tuned": {
+                "mean_diff": 0.0672,
+                "ci95_low": 0.0,
+                "ci95_high": 0.1343,
+                "p_value": 0.055,
+                "n": 134
+              }
+            }
+          },
+          "current_accuracy": {
+            "accuracy": {
+              "tempralm": 0.1818,
+              "ragtime_default": 0.1212,
+              "ragtime_real_best": 0.0909,
+              "ragtime_tuned": 0.9091,
+              "lifecycle_asof": 0.9394
+            },
+            "paired_tests": {
+              "lifecycle_asof_vs_tempralm": {
+                "mean_diff": 0.7576,
+                "ci95_low": 0.6061,
+                "ci95_high": 0.8788,
+                "p_value": 0.0,
+                "n": 33
+              },
+              "lifecycle_asof_vs_ragtime_default": {
+                "mean_diff": 0.8182,
+                "ci95_low": 0.697,
+                "ci95_high": 0.9394,
+                "p_value": 0.0,
+                "n": 33
+              },
+              "lifecycle_asof_vs_ragtime_real_best": {
+                "mean_diff": 0.8485,
+                "ci95_low": 0.7273,
+                "ci95_high": 0.9697,
+                "p_value": 0.0,
+                "n": 33
+              },
+              "lifecycle_asof_vs_ragtime_tuned": {
+                "mean_diff": 0.0303,
+                "ci95_low": -0.0606,
+                "ci95_high": 0.1212,
+                "p_value": 0.794,
+                "n": 33
+              }
+            }
+          }
+        },
+        "templama": {
+          "dataset": "templama",
+          "n_historical_probes": 447,
+          "n_current_probes": 300,
+          "historical_accuracy": {
+            "accuracy": {
+              "tempralm": 0.6711,
+              "ragtime_default": 0.4586,
+              "ragtime_real_best": 0.4497,
+              "ragtime_tuned": 0.9105,
+              "lifecycle_asof": 0.9732
+            },
+            "paired_tests": {
+              "lifecycle_asof_vs_tempralm": {
+                "mean_diff": 0.302,
+                "ci95_low": 0.255,
+                "ci95_high": 0.3512,
+                "p_value": 0.0,
+                "n": 447
+              },
+              "lifecycle_asof_vs_ragtime_default": {
+                "mean_diff": 0.5145,
+                "ci95_low": 0.4631,
+                "ci95_high": 0.566,
+                "p_value": 0.0,
+                "n": 447
+              },
+              "lifecycle_asof_vs_ragtime_real_best": {
+                "mean_diff": 0.5235,
+                "ci95_low": 0.472,
+                "ci95_high": 0.5749,
+                "p_value": 0.0,
+                "n": 447
+              },
+              "lifecycle_asof_vs_ragtime_tuned": {
+                "mean_diff": 0.0626,
+                "ci95_low": 0.0336,
+                "ci95_high": 0.0917,
+                "p_value": 0.0,
+                "n": 447
+              }
+            }
+          },
+          "current_accuracy": {
+            "accuracy": {
+              "tempralm": 0.3767,
+              "ragtime_default": 0.0433,
+              "ragtime_real_best": 0.04,
+              "ragtime_tuned": 0.94,
+              "lifecycle_asof": 0.95
+            },
+            "paired_tests": {
+              "lifecycle_asof_vs_tempralm": {
+                "mean_diff": 0.5733,
+                "ci95_low": 0.5133,
+                "ci95_high": 0.6333,
+                "p_value": 0.0,
+                "n": 300
+              },
+              "lifecycle_asof_vs_ragtime_default": {
+                "mean_diff": 0.9067,
+                "ci95_low": 0.87,
+                "ci95_high": 0.94,
+                "p_value": 0.0,
+                "n": 300
+              },
+              "lifecycle_asof_vs_ragtime_real_best": {
+                "mean_diff": 0.91,
+                "ci95_low": 0.8733,
+                "ci95_high": 0.9433,
+                "p_value": 0.0,
+                "n": 300
+              },
+              "lifecycle_asof_vs_ragtime_tuned": {
+                "mean_diff": 0.01,
+                "ci95_low": -0.0233,
+                "ci95_high": 0.0467,
+                "p_value": 0.666,
+                "n": 300
+              }
+            }
+          }
+        },
+        "realworld": {
+          "dataset": "realworld",
+          "n_historical_probes": 36,
+          "n_current_probes": 20,
+          "historical_accuracy": {
+            "accuracy": {
+              "tempralm": 0.75,
+              "ragtime_default": 0.75,
+              "ragtime_real_best": 0.6667,
+              "ragtime_tuned": 0.9722,
+              "lifecycle_asof": 1.0
+            },
+            "paired_tests": {
+              "lifecycle_asof_vs_tempralm": {
+                "mean_diff": 0.25,
+                "ci95_low": 0.1111,
+                "ci95_high": 0.4167,
+                "p_value": 0.0,
+                "n": 36
+              },
+              "lifecycle_asof_vs_ragtime_default": {
+                "mean_diff": 0.25,
+                "ci95_low": 0.1111,
+                "ci95_high": 0.3889,
+                "p_value": 0.0,
+                "n": 36
+              },
+              "lifecycle_asof_vs_ragtime_real_best": {
+                "mean_diff": 0.3333,
+                "ci95_low": 0.1667,
+                "ci95_high": 0.5,
+                "p_value": 0.0,
+                "n": 36
+              },
+              "lifecycle_asof_vs_ragtime_tuned": {
+                "mean_diff": 0.0278,
+                "ci95_low": 0.0,
+                "ci95_high": 0.0833,
+                "p_value": 0.739,
+                "n": 36
+              }
+            }
+          },
+          "current_accuracy": {
+            "accuracy": {
+              "tempralm": 0.55,
+              "ragtime_default": 0.35,
+              "ragtime_real_best": 0.15,
+              "ragtime_tuned": 0.9,
+              "lifecycle_asof": 1.0
+            },
+            "paired_tests": {
+              "lifecycle_asof_vs_tempralm": {
+                "mean_diff": 0.45,
+                "ci95_low": 0.2,
+                "ci95_high": 0.65,
+                "p_value": 0.0,
+                "n": 20
+              },
+              "lifecycle_asof_vs_ragtime_default": {
+                "mean_diff": 0.65,
+                "ci95_low": 0.45,
+                "ci95_high": 0.85,
+                "p_value": 0.0,
+                "n": 20
+              },
+              "lifecycle_asof_vs_ragtime_real_best": {
+                "mean_diff": 0.85,
+                "ci95_low": 0.7,
+                "ci95_high": 1.0,
+                "p_value": 0.0,
+                "n": 20
+              },
+              "lifecycle_asof_vs_ragtime_tuned": {
+                "mean_diff": 0.1,
+                "ci95_low": 0.0,
+                "ci95_high": 0.25,
+                "p_value": 0.251,
+                "n": 20
+              }
+            }
+          }
+        }
+      }
+    },
+    "positional_compare": {
+      "wikidata": {
+        "positional": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fp": 0,
+          "fn": 0
+        },
+        "non_positional": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fp": 0,
+          "fn": 0
+        },
+        "role_aware": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "freshrag": {
+        "positional": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fp": 0,
+          "fn": 0
+        },
+        "non_positional": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fp": 0,
+          "fn": 0
+        },
+        "role_aware": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "realworld": {
+        "positional": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fp": 0,
+          "fn": 0
+        },
+        "non_positional": {
+          "precision": 0.9429,
+          "recall": 0.9167,
+          "f1": 0.9296,
+          "fp": 2,
+          "fn": 3
+        },
+        "role_aware": {
+          "precision": 0.9429,
+          "recall": 0.9167,
+          "f1": 0.9296,
+          "fp": 2,
+          "fn": 3
+        }
+      },
+      "templama": {
+        "positional": {
+          "precision": 0.9435,
+          "recall": 0.5235,
+          "f1": 0.6734,
+          "fp": 14,
+          "fn": 213
+        },
+        "non_positional": {
+          "precision": 0.9589,
+          "recall": 0.9396,
+          "f1": 0.9492,
+          "fp": 18,
+          "fn": 27
+        },
+        "role_aware": {
+          "precision": 0.9745,
+          "recall": 0.9396,
+          "f1": 0.9567,
+          "fp": 11,
+          "fn": 27
+        }
+      }
+    },
+    "pooled_wikidata_freshrag_realworld_templama": {
+      "datasets": [
+        "wikidata",
+        "freshrag",
+        "realworld",
+        "templama"
+      ],
+      "n_claims": 1315,
+      "n_gold_superseded": 797,
+      "results": {
+        "heuristic": {
+          "isolated": {
+            "precision": 1.0,
+            "recall": 0.9812,
+            "f1": 0.9905
+          },
+          "pooled": {
+            "precision": 0.9862,
+            "recall": 0.9837,
+            "f1": 0.9849
+          }
+        },
+        "newest_doc_wins": {
+          "isolated": {
+            "precision": 0.9708,
+            "recall": 1.0,
+            "f1": 0.9852
+          },
+          "pooled": {
+            "precision": 0.6079,
+            "recall": 1.0,
+            "f1": 0.7562
+          }
+        }
+      }
+    }
+  }
+}
