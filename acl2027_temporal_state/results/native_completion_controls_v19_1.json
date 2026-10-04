@@ -1,0 +1,36 @@
+{
+  "schema_version": "native_completion_owner_controls_v19_1",
+  "status": "passed_authored_mock_controls_no_freeze_or_native_execution",
+  "tests_run": 18,
+  "tests_passed": 18,
+  "tests_failed": 0,
+  "test_command": "python -m unittest discover -s tests -p 'test_native_completion*v19_1.py' -v",
+  "test_files": [
+    "tests/test_native_completion_v19_1.py",
+    "tests/test_native_completion_runtime_v19_1.py"
+  ],
+  "native_processes": 0,
+  "native_http_calls": 0,
+  "live_cgroup_reads": 0,
+  "real_attempts_frozen": 0,
+  "natural_inputs_accessed": 0,
+  "recipe_sha256": {
+    "scripts/native_completion_worker_v19_1.py": "bc85a7b900042f331209d363e1921fec7476997a8cad76f4391c05ba84755a25",
+    "scripts/native_completion_runtime_v19_1.py": "2eb7142dea1b3ec7a852048d8c182a35aa607e217c9cf4295f6502a29920f1a5",
+    "scripts/freeze_native_completion_v19_1.py": "55fb2374c4a00ad53e71b777349b329860e6d1208a3da5f6e6fe7826bf65fee2",
+    "scripts/grade_native_completion_v19_1.py": "5a80565e8fd83b7fb47bf18cb140917469b2efb1de9b835833c877f6da173e23",
+    "configs/native_authored_completion_v19_1.json": "f76b16faa9a3cd741e214faa4f7f7c385411ae0bc8b183563b4f0052f9abd14d",
+    "docs/native_authored_completion_contract_v19_1.txt": "ffd6f7522eb39607b4a1a5c399d1361be55d973f1173c3050d358f8e22309077",
+    "tests/test_native_completion_v19_1.py": "8d0114a855697722e03933c586acd99b06dfa696cffae906cb89073b5e45bf2b",
+    "tests/test_native_completion_runtime_v19_1.py": "145e833d26a71d37c11389f59aa389c7b7d52a0e5a5d695003c87288d73f1e27"
+  },
+  "bounded_prior_real_socket_probe_sha256": "48a0d69af518a2850ebeabc515f847f0cf05653c9757957d1b56dfd70dab8247",
+  "parent_terminal_receipt_sha256": "7f46bb3dd1602ffd481e5560db25cb0afd262bf4b0c153214a00397caa6b1590",
+  "diagnosis_sha256": "6508adeaf46c9f1cc4e966ec5f86623d663e4683ca8e490d9b4e629cb25a011d",
+  "code_diff_sha256": "2ecfb4fe8fbbf27cffd4f364e29ef06218f3703b3a743ed0a8b17ae6428bf620",
+  "limitations": [
+    "Actual v19 OSError errno/stage remains unknown.",
+    "The socket failure mechanism is reproduced/prevented; mock controls do not establish full native batch success."
+  ],
+  "execution_authorized_by_controls": false
+}

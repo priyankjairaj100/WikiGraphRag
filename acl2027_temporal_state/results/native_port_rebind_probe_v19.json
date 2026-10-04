@@ -1,0 +1,51 @@
+{
+  "schema_version": "native_port_rebind_authored_probe_v19",
+  "native_processes": 0,
+  "model_calls": 0,
+  "shared_fixed_ports_touched": 0,
+  "loops": 1,
+  "address_selection": "kernel-assigned port on 127.0.0.1",
+  "limitations": [
+    "This reconstructs a possible failure mechanism, not the uncaptured errno of the actual v19 failure.",
+    "The authored listener uses SO_REUSEADDR; this fixture alone does not establish the native server socket option."
+  ],
+  "owned_ephemeral_port": 40089,
+  "live_listener_plain_probe": {
+    "bound": false,
+    "reuseaddr": false,
+    "errno": 98,
+    "error_class": "OSError"
+  },
+  "live_listener_reuse_probe": {
+    "bound": false,
+    "reuseaddr": true,
+    "errno": 98,
+    "error_class": "OSError"
+  },
+  "post_close_tcp_states": [
+    {
+      "state_hex": "06",
+      "inode": "0"
+    }
+  ],
+  "closed_listener_plain_probe": {
+    "bound": false,
+    "reuseaddr": false,
+    "errno": 98,
+    "error_class": "OSError"
+  },
+  "closed_listener_reuse_probe": {
+    "bound": true,
+    "reuseaddr": true
+  },
+  "checks": {
+    "live_listener_refused_plain": true,
+    "live_listener_refused_reuse": true,
+    "time_wait_observed_for_owned_port": true,
+    "plain_probe_fails_after_close": true,
+    "reuse_probe_binds_after_close": true
+  },
+  "status": "passed_authored_mechanism",
+  "all_owned_sockets_closed": true,
+  "script_sha256": "adc76943f880020f58a8375c43eb90cb3bcccb7e05a7565f544fb84e1d08e3b1"
+}

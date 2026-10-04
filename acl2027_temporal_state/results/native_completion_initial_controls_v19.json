@@ -1,0 +1,17 @@
+{
+  "schema_version": "native_completion_initial_authored_controls_v19",
+  "tests_run": 10,
+  "passed": 9,
+  "failures": 1,
+  "native_loads": 0,
+  "native_http_calls": 0,
+  "live_cgroup_reads": 0,
+  "test_sha256": "5df52a4a7fc659cef3ee2a7df4713da0d30b6902a0372d950b0a3cd8f6813231",
+  "failure": {
+    "test": "test_post_cleanup_oom_is_terminal",
+    "observed": "new_cgroup_oom_event",
+    "expected": "oom_event_increased",
+    "classification": "test expected the wrong inherited error label; fail-closed behavior occurred"
+  },
+  "review_found_test_gap": "between-process OOM sample also reset max; separate monotonic max from new OOM before final test"
+}

@@ -1,0 +1,67 @@
+V19 initial source-only annotation coordination schema
+Frozen plan: docs/source_occurrence_annotation_plan_v19.txt SHA a0aa078de05d7e6d163dee2f67fcc1630cd5f9527de39e369b88b418db08815d.
+This schema only coordinates serialization. It does not supply semantic answers.
+
+Write each assigned bundle as <bundle_handle>.initial.json in your assigned role directory.
+Top-level required keys:
+ schema_version: source_occurrence_initial_annotations_v19
+ bundle_handle, source_handle, source_sha256
+ plan_sha256, projection_sha256, reviewer_role
+ status: initial_review_frozen_pending_reconciliation
+ author_release_allowed: false
+ entries: list, exactly one per packet occurrence in packet order
+ witnesses: list of exact source witness records
+ view_inspections: list of actual raster-page inspection records
+
+Entry required keys:
+ key: {bundle_handle, occurrence_handle, entry_sha256}
+ disposition: reviewed | reviewed_with_unknowns | unreviewable
+ presentation: {status: visible | not_visibly_exposed | ambiguous | unresolved_locator,
+                literal: original decoded lexical string unchanged,
+                witness_ids: [...], rationale: ...}
+ attachments: list of relations below
+ unknown_reason_codes: list
+
+Required relation aspects: row_or_clause, column, reported_entity, population, period, unit.
+Add currency_identity and period_exactness when helpful to separate explicitly visible
+unit/period wording from an unknown national currency or exact period boundaries.
+Other optional aspects: classification, definition, temporal_role, qualifier.
+Each relation: {aspect, state, literal: exact source wording or null,
+               witness_ids: [...], rationale, alternatives: []}
+States: supported | ambiguous | not_stated_in_fixed_projection | not_applicable | unreviewable.
+All states require a rationale. Supported requires exact source witnesses. Unknown literal
+is null, not a guessed label. Not-applicable needs a source-grounded reason. For prose,
+column is not_applicable if the exact quantity is not in a table; bind local clause instead.
+Unit records literal displayed unit/scale only; currency_identity separately retains any
+unknown national currency. Period records reported wording/role; period_exactness may remain
+unknown without claiming a future declared-aspect pack is unanswerable.
+Do not add canonical values, signs, normalized currencies/dates, concept QNames, helpers or
+new financial labels. Do not invent total for unlabeled rows, group by equal values, inherit
+cover issuer as every reported entity, or transfer meanings across bundles.
+
+Witness record: {witness_id, source_sha256, block_handle, block_id, anchor, dom_path,
+ selector: {kind: whole_block | row | cell | text_span, row_index?, cell_index?,
+            text_start?, text_stop?}, exact_text, text_sha256,
+ raster_refs: [{path,bytes,sha256,page_index}], ...optional safe occurrence locator...}
+Whole block anchor/DOM and full unchanged context stay available through the packet. Text
+span offsets are in packet text, not HTML byte offsets. Row/cell witnesses may cite their
+parent whole-block anchor plus original row/cell indexes. Identity witnesses can separately
+reference only packet admitted-card path/hash and its literal source witnesses.
+
+Inspect all packet closed qualified pages for meaningful source context, reusing a previously
+personally inspected identical physical raster within your assignment only if logged exactly.
+Log each unique actual page/path/hash and which bundle/block links use it. Do not claim an
+image was inspected from a hash/readback alone. All literal cells/clauses and numbers must be
+checked against actual pages. Keep raw text/quantities and semantic annotations private.
+
+Per-role exposure.json: exact safe inputs/hashes, role, prior context, image pages actually
+inspected, no forbidden artifact reads, no questions/references/predictions/normalization,
+no registry mutation, scope limitations. Per-role receipt.json: only counts/status/hashes/
+locators. Freeze ledger before reconciliation, preserving unknowns. Reviewer coverage is all
+assigned entries disposed, not all bindings resolved. No admission or author release.
+
+Allowed inputs only: frozen plan; safe projection inventory/terminal; assigned new projection
+packets; direct closed PNG/PDF locators and separate admitted-card references inside packets;
+this schema. Do not navigate into referenced full inventories/receipts, combined bundles,
+typed records, producer joins, prior source-semantic annotations or native/baseline outputs.
+One packet/view at a time; no whole-source parsing, search or context expansion.

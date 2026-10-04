@@ -1,0 +1,72 @@
+V19.1 narrow authored transport amendment
+2026-10-04. Preparation only; no freeze or native run is authorized by this file.
+
+Preserve the immutable v19 batch, its seal and its failed full-eight gate. It
+completed one technical request (999 input tokens,128 output tokens,no limit),
+then stopped on an OSError before the second process. Six later requests were
+unattempted. The original exception retained no errno or exact stage. Do not
+label TIME_WAIT the proven original cause or reuse that first answer toward a
+new gate. The parent failure and diagnosis hashes are in the v19.1 profile.
+
+The bounded owned-loopback fixture (results/native_port_rebind_probe_v19.json)
+established the following failure mechanism: after an owned active close and
+observed TIME_WAIT, plain bind returns EADDRINUSE(98), while a SO_REUSEADDR probe
+binds successfully. Both probes reject an owned live competing listener. All
+fixture sockets were closed; no shared native port or model process was used.
+Pinned llama.cpp server-http.cpp at commit
+7fe450e19305b828c199d602c23a8337aaa1f03b configures SO_REUSEADDR=1. SO_REUSEPORT is
+conditional and defaults false; the frozen server argv does not enable it.
+Source hashes/locations and the bounded causal limitation are recorded in
+results/native_completion_transport_diagnosis_v19.json. The reproduced and
+prevented mechanism justifies alignment of the Python check with the existing
+native server, not a retroactive reconstruction of the missing original errno.
+
+Changes are limited to:
+1. On the temporary preflight socket, set SO_REUSEADDR=1 before the existing
+   localhost/fixed-port bind. Do not set SO_REUSEPORT, remove the check, change
+   the server command, share a live listener, or add retry/delay loops. A
+   preflight check still has a bind-to-launch race; native bind and subsequent
+   exact identity checks remain required.
+2. Retain the active prelaunch execution stage and numeric errno on an
+   exception, distinguishing assets, lock, socket creation/option/bind, audit
+   filesystem, log creation and native launch. This adds diagnostic metadata,
+   not exception recovery or correctness-based scheduling.
+3. New versioned code/profile/recipe/receipt/output paths and parent failure
+   bindings. The finite independent review map includes the immutable old
+   implementation/test/contract evidence used for normalized comparisons.
+
+All scientific inputs, limits and interpretation in
+native_authored_completion_contract_v19.txt remain binding. In particular:
+Eight identical fictional requests/messages and the exact successful v18.1
+rendered-prompt/token artifacts; same model/runtime/config/server argv;
+request temperature=-1, sampler temperature, seed0, output768; no generation
+repair; same four scenarios and fixed B1 then B2 order; one new process and one
+completion per request; no reuse of model/KV state; unchanged OS-cache policy;
+unchanged namespace-aware resource guard, mandatory observed n_rs_seq0, exact
+identity/token/cache accounting, immediate group stop and confirmed cleanup;
+continuous counter history across all eight calls including cleanup gaps;
+no references/parent recursive attestation opened by the prediction worker;
+raw-output seal before separate grading; invalid text or output-limit completion
+does not alter sequence; technical failures stop with every later row retained;
+output-limit responses fail authored adequacy regardless of otherwise correct
+text. Shared-cgroup risk, proxy overlap/no reservation, sampling limits and
+lack of a natural competence claim remain explicit. No cap or timeout change.
+
+Owner controls:18 authored/mock checks, comprising the inherited mocked native
+lifecycle, new SO_REUSEADDR-before-bind and stage/errno checks, reference-denied
+full-eight batch and after-seal limit/cleanup checks, and normalized worker/
+grader/profile comparisons. They launch no model, make no HTTP request and
+read no live cgroup. The earlier one-shot real socket fixture is reused as
+mechanism evidence rather than repeated by these tests.
+
+One prospective new full-eight attempt, never a continuation of the old gate:
+/workspace/scratch/bdef663e3dfc/wikigraph_v19_external/authored_completion_attempt02_rebind
+Worker receipt: results/native_authored_completion_v19_1.json
+Offline grade: results/native_authored_completion_grade_v19_1.json
+Freezer: scripts/freeze_native_completion_v19_1.py
+Worker: scripts/native_completion_worker_v19_1.py
+Grader: scripts/grade_native_completion_v19_1.py
+Close the independent finite-map review before one new freeze. Root must then
+approve the exact frozen SHA and assign the exclusive heavy-process window.
+No automatic retry, natural prompt, semantic tuning or new completion has been
+performed by this amendment's preparation.

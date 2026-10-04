@@ -1,0 +1,38 @@
+{
+  "single_quantity": {
+    "expected_action": "answered",
+    "expected_quantities": [
+      {
+        "fact_handle": "f01",
+        "value": "12"
+      }
+    ],
+    "expected_clarify_aspects": []
+  },
+  "multiple_versions": {
+    "expected_action": "answered",
+    "expected_quantities": [
+      {
+        "fact_handle": "f01",
+        "value": "18"
+      },
+      {
+        "fact_handle": "f02",
+        "value": "16"
+      }
+    ],
+    "expected_clarify_aspects": []
+  },
+  "ambiguous_version": {
+    "expected_action": "clarify",
+    "expected_quantities": [],
+    "expected_clarify_aspects": [
+      "source"
+    ]
+  },
+  "missing_binding": {
+    "expected_action": "insufficient",
+    "expected_quantities": [],
+    "expected_clarify_aspects": []
+  }
+}

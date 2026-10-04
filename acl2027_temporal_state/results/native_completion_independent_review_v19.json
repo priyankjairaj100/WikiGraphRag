@@ -1,0 +1,137 @@
+{
+  "schema_version": "native_completion_independent_review_v19",
+  "status": "passed_bounded_pre_freeze_review_root_execution_decision_required",
+  "reviewer": "binding_interface_v16",
+  "reviewed_at_utc": "2026-10-04T15:03:05.877077+00:00",
+  "open_blockers": [],
+  "reviewed_sha256": {
+    "scripts/native_completion_worker_v19.py": "7f77f9e6f08e85b4af1c6104bbe92895c4d39ff55b307084188d447073b6ac12",
+    "scripts/native_completion_runtime_v19.py": "59a1b15625a5ec1cd3982fa3f7e8449d77ea93416407fd26ef90cf28438d3e00",
+    "scripts/native_loader_v18_1.py": "ce895d726a1092ebf77c521eb7a7bd62b0af5477276fb3fc857736038b122810",
+    "scripts/native_loader_guard_v18.py": "b15ca982b937aba36b9d7385089d4135c29be1afb396c187284815fb947ab568",
+    "scripts/native_binding_reader_v16.py": "757d907edbb13e4b5749506362719cadfd6146000c1c140edfefa159cfbd8b19",
+    "scripts/cgroup_guard_v16_2.py": "acb91d344b8dc3add82e20effdff19e8b7790f3352015319299154b214d9a200",
+    "scripts/process_group_rss_v16.py": "e3063c8d340877189fc443fb54ae8bc5f7d3388ee37dc16891fda2b401131ee6",
+    "scripts/local_backend_v07.py": "c63acf150c86c09aca24a53ca9892170385de84e84d7d69308212d71a23260b7",
+    "scripts/larger_scorer_v09.py": "67b389f5fe8a87493e245f858607252cb72030f128215a3871db4882303e0dea",
+    "scripts/fetch_local_backend_v07.py": "b2105c02be04cde9d14e5ea126762d8fdb929b0ad525e453edb1bd60a4cf2f29",
+    "src/temporal_state/reader_binding_v16.py": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1",
+    "configs/native_authored_completion_v19.json": "57c5a2c5d618fe9aee69594355065090ec47c55e0566a5ba6de94ca4dbe22ef1",
+    "configs/binding_reader_v16.json": "0171d13fcc30f444380c5f6a8a1eed31cd709eb86713222c21198b197f808038",
+    "configs/model_backend_v09.json": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802",
+    "results/reader_acquisition_v16.json": "b257054935c52c29ee9c67c7d36e8da3d3ba7d887f260463f0ae537eb41b6e0d",
+    "results/reader_asset_relocation_v16.json": "52d3434b9cc4b6ade8792d14822b301c6f0d04188387c30e2ce488a311c33243",
+    "scripts/freeze_native_completion_v19.py": "6923c87c963a76a8b844723f20528d813788ea1fdc792bd81cc46828dcbb97ef",
+    "scripts/grade_native_completion_v19.py": "a82c7e38e2e8fbe541c6cca90771bf19c8a2c75f3828d13bc6f57668b09595dc",
+    "docs/native_authored_completion_contract_v19.txt": "f623e4a8f34c890550a337b5dbfe5e05c25c7662ebe29bf3d9651e095fa05492",
+    "tests/test_native_completion_v19.py": "fae83b3e29a6597fd7b722dc614f82d49930ca0f5f48fba32808eae96cd9f630",
+    "tests/test_native_completion_runtime_v19.py": "682680bf897e6a4105201816d758000949a2255e87bef08c35f5e427c02680aa",
+    "tests/test_native_completion_independent_v19.py": "14f5fd4655b777b468fcd140d70f2c0b351d3425597bf5196d89c53d2e24400b",
+    "data/reader_binding_v19/authored_requests_v19.json": "7122f2bf5533664ebf713c5a352d19db8353af69d91a619d91d47708b29cabce",
+    "data/reader_binding_v19/authored_references_v19.json": "ff7c1058e99f1184075cedad1ac76055da1d086a84de1827a3c4c8d0b09165f1",
+    "results/native_completion_controls_v19.json": "57f1231e276bd1b3b0c87756d846efb2218b4f6184cbb7f1a354124f1a772836"
+  },
+  "scope": "Source-free code/contract/data-flow review and authored/mock controls only. No natural source bodies, questions, references, predictions, live cgroup reads or native execution. Fictional authored fixtures and successful parent token artifacts are permitted review inputs.",
+  "execution_authorized_by_review": false,
+  "real_attempt_frozen_by_reviewer": false,
+  "native_processes_started_by_reviewer": 0,
+  "native_http_calls_by_reviewer": 0,
+  "live_cgroup_reads_by_reviewer": 0,
+  "review_discovered_issues": [
+    {
+      "issue": "Privileged freeze accepted an empty blocker list without exact passing status/current reviewed recipe.",
+      "discovery": "Code inspection; no failing test run was claimed.",
+      "resolution": "Finite25-key REVIEW_CODE must equal exact reviewed_sha256 map with passing status; privileged map is attested outside worker, never recursively revalidated there.",
+      "closed": true
+    },
+    {
+      "issue": "Grader could read a redirected public receipt or arbitrary sealed raw filename before the claimed reference boundary.",
+      "discovery": "Code inspection; no failing test run was claimed.",
+      "resolution": "Fixed profile/directory/public receipt guards and closed full artifact-name population run before their reads. Independent deny-read, alias, cleanup and valid-baseline controls pass.",
+      "closed": true
+    }
+  ],
+  "new_batch_monitoring_requirement": {
+    "description": "Continuous accepted event-counter lineage across all8 cold processes, explicit post-cleanup and next-preasset/prelaunch snapshots; no rebaseline between requests. Missing/regressing telemetry or new OOM/oom_kill stops even between processes.",
+    "not_previously_established_by_single_load_controls": true
+  },
+  "verified_boundaries": [
+    "Worker exact16 read pins and nine copied inference artifacts exclude reference-bearing controls, separate references, privileged attestation, freezer/grader and test files. Pure imported runtime helpers have no reference-file import side effects; unused legacy grading paths are not called.",
+    "Privileged freezer proves exact eight parent messages, prompt/token artifacts and authored reference equality before one fixed freeze. Worker holds only an opaque reference digest and directly checks copied inference bytes.",
+    "Fresh process/session, health/model/build/slot/context identity, observed-zero rollback, exact rerendered prompt/token dictionary and one completion POST per request are enforced. Seed-zero greedy PARAMETERS and inherited native response accounting are unchanged.",
+    "Inherited immediate watchdog kill and namespace-anchored cleanup remain function-identical; telemetry lock excludes HTTP. New event_history object spans the batch. Unconfirmed cleanup or technical failure blocks later launches.",
+    "Answer text is not parsed or scored in prediction. Malformed content and otherwise-valid stop_type=limit leave later requests scheduled; limit responses fail adequacy only in offline grading.",
+    "The prediction phase retains all eight fixed request states, activity counters, artifacts and cleanup status. A successful raw seal precedes reference-bearing offline reads; grader leaves worker receipt/seal unchanged.",
+    "Missing/changed seals, incomplete denominators, unconfirmed cleanup, redirected receipt aliases and forbidden raw filenames fail before reference access.",
+    "Exact owned-group RSS/reserve, shared pressure/kernel limits, AS/time/CPU/log/trace caps and sampled-event limitations are retained. Cold refers to model/KV state, not empty OS file cache."
+  ],
+  "independent_controls": {
+    "command": "PYTHONPATH=src:tests python -m unittest -v test_native_completion_independent_v19",
+    "tests_run": 4,
+    "passed": 4,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 0.125,
+    "test_names": [
+      "test_entire_artifact_name_set_checked_before_any_raw_file_read",
+      "test_reference_alias_in_public_receipt_is_rejected_before_open",
+      "test_unconfirmed_cleanup_prevents_reference_access_even_with_matching_seal",
+      "test_valid_complete_seal_can_be_verified_with_all_references_closed"
+    ],
+    "real_native_processes": 0,
+    "live_cgroup_reads": 0
+  },
+  "owner_controls": {
+    "path": "results/native_completion_controls_v19.json",
+    "sha256": "57f1231e276bd1b3b0c87756d846efb2218b4f6184cbb7f1a354124f1a772836",
+    "reported_passed": 23,
+    "reported_failures": 0,
+    "initial_receipt": "results/native_completion_initial_controls_v19.json",
+    "initial_sha256": "668e30b4363fe9806446e66887561c00d6d1e658aef4e74f81b5af3d885a150c",
+    "owner_recipe_bindings_verified": 10,
+    "combined_full_suite_rerun_by_reviewer": false
+  },
+  "parallel_read_only_review": {
+    "reviewer": "binding_interface_v16/completion_runtime_audit_v19",
+    "scope": "Process lifecycle, event lineage and cleanup/denominator orchestration",
+    "native_operations": 0,
+    "additional_tests": 0,
+    "open_blockers": []
+  },
+  "inherited_checkpoint": "ed120cbda450da0ab3f5c02140566a70b15bb55f",
+  "inherited_published_inputs_compared": [
+    "scripts/native_loader_v18_1.py",
+    "scripts/native_loader_guard_v18.py",
+    "scripts/native_binding_reader_v16.py",
+    "scripts/cgroup_guard_v16_2.py",
+    "scripts/process_group_rss_v16.py",
+    "scripts/local_backend_v07.py",
+    "scripts/larger_scorer_v09.py",
+    "scripts/fetch_local_backend_v07.py",
+    "src/temporal_state/reader_binding_v16.py",
+    "configs/binding_reader_v16.json",
+    "configs/model_backend_v09.json",
+    "results/reader_acquisition_v16.json",
+    "results/reader_asset_relocation_v16.json"
+  ],
+  "inherited_published_inputs_changed": 0,
+  "request_messages_sha256": "5440df6b81b9dcb070096d9702c11039b34c0f05b747e62813342095c2a27a34",
+  "parent_prompt_sha256": [
+    "c61d1e622c1d7d509969eac245bf926ad1675bdbe5c8de2e5d508fe47b4f6d48",
+    "7eb60a92bcc9e6adab97b485bd942320c7223b4a11f449f9d4ec83408e26dc7c",
+    "7cc8de4290c518d1aef3b0b1a942ea1ac3e4613c7bd0e4f05c0346a601a6a3af",
+    "9f77cc68a675b2c2c3d396bea3ff1d691fbcc8ac2d33c8d5f7eb7fe54a5d894a",
+    "c37423999beec299954d6815c9653fb61996d0aecf88f149188aaf5324423646",
+    "0b2b7ba2e4bb52391938c096fc56f97a9d883ed4f61396f98d9581fc26ac9193",
+    "535ec49e5b12545f96f0a444355dc35b305ad9e14a86137d000cda09d114aa2f",
+    "ac7ccd501acb383fafa1e7b5ab07313d1a857a8117fbaf0f227225a9564b47fc"
+  ],
+  "remaining_limits": [
+    "This is an audited program data-flow boundary, not an OS sandbox or hostile-filesystem guarantee.",
+    "Mocked lifecycle and inherited control evidence do not establish actual generation capacity, returned native behavior or answer correctness.",
+    "Wrong/unapproved protocol or changed pre-attempt inputs are refusals before attempt_started; they do not become a completed prediction attempt. Controlled post-start technical failures retain the eight-row denominator; unconfirmed cleanup prevents sealing and grading.",
+    "Shared-cgroup races, proxy overlap and sub-sampling peaks remain. Unchanged caps do not constitute peer isolation or a memory reservation.",
+    "An authored gate pass would be only a prerequisite; natural evidence admission, scope mapping, questions/references and native natural input fit remain separate."
+  ],
+  "next_authorized_step": "Root may inspect and authorize one exact freeze, verify its resulting protocol hash, then separately decide on the exclusive native execution window. This review itself does not authorize generation."
+}

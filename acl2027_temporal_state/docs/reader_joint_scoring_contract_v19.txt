@@ -1,0 +1,145 @@
+Offline natural-target joint scorer v19: source-free implementation draft
+
+Status and scope
+
+This is an authored-control implementation, not a natural grading run, reference
+admission, native execution authorization or research result. No natural source,
+annotation, question/reference or prediction was read to implement it. Existing
+v16/v18 interface, prompts and v17 study gates are unchanged. B1 beam/proposal
+diagnostics remain separate and are not computed as joint-answer credit here.
+
+Implementation: src/temporal_state/reader_joint_scoring_v19.py
+Controls: tests/test_reader_joint_scoring_v19.py
+Owner receipt: results/reader_joint_scoring_authored_review_v19.json
+
+Existing native_binding_reader_v16.assessment only checks authored handle/value
+lists and clarification aspects. reader_binding_v18 support helpers explicitly
+do not establish natural-question correctness. The new pure Python module reuses
+the frozen v18 EvidencePack, render_proposal, validate_direct_output,
+score_direct_quantities, exact scope/value merge and strict JSON/aspect validators.
+It performs no file reads/writes, source lookup, model calls or network access.
+Hidden references enter only this offline scoring API, never prediction code.
+
+Reference convention to freeze before natural outputs
+
+schema_version: reader_joint_reference_v19
+expected_action: answered or insufficient (stage A only)
+claims: one or two for answered; empty for insufficient
+
+Each claim contains exact canonical value, the complete six-aspect scope, and
+realizations. A realization contains one explicitly acceptable COMPLETE occurrence
+handle group, allowed_citations (six aspect-to-handle lists), and one or more
+sufficient_citation_sets (each a complete six-aspect set). The latter are
+correlated alternatives: an output may not take independently convenient aspects
+from different alternatives. Actual citations must stay inside the allowed sets
+and contain every witness of at least one whole sufficient alternative.
+
+All referenced handles must exist in the common pack. Every occurrence in an
+accepted alias group must have exactly the reference value and six-aspect scope;
+all allowed witnesses must belong to that aspect of a group member. Duplicate
+targets, unknown target aspects, empty citation requirements and unsupported
+reference pointers are errors. A reference error raises, not a model error row.
+This validates representation and correspondence only. It does not certify the
+question meaning, complete/sound alias group, financial relation or sufficient
+citations. Those judgments belong to the frozen independent reference workflow.
+
+No number tolerance, conversion, namespace alias, population default or date
+inference is added. Dictionary key order is immaterial; typed list order and all
+reported values remain exact as in the v18 finalizer. References never come from
+observed outputs. All admissibility and reconciliation remain external.
+
+Common final-output projection
+
+project_output accepts output_kind=proposal for B0/B1 or direct for B2. Both yield
+the SAME reader_joint_projection_v19 shape: action and quantities. Each quantity
+contains its unchanged stated value, expanded six-aspect scope, complete expanded
+compatible occurrence handles and citations with witness handle plus exact text.
+No arm name, raw arm schema, hypothesis, finalizer reason, unknown flag,
+clarification-aspect list, reference target or diagnostic score enters that view.
+Wrong direct values are preserved, never repaired from the pack.
+
+Exact scope-plus-value duplicates merge with the existing v18 _merge_quantities
+semantics for every arm; citations and physical occurrence handles are unioned.
+Equal values with different physical-source scopes never merge. Quantity order,
+alias-handle order and citation order are canonicalized; claim order is not an
+interpretation. The expanded whole group must match a reference realization.
+
+The separate audit preserves raw-output digest, raw final emitted quantity count,
+normalized count and duplicate-collapse count. For a proposal path, emitted
+quantities are the finalizer's user-facing quantities; raw hypothesis claims are
+not user-facing numeric answers and their counts belong to separate B1 diagnostics.
+For a direct path, every syntactically valid quantity is retained even inside a
+clarify or insufficient response. Such a refusal is not an empty/safe response.
+Provide raw text when byte-exact output hashing matters; a supplied JSON object
+is hashed as canonical JSON rather than as unknown original serialization.
+
+Joint scoring and distinct failure counts
+
+score_output computes exact stage-A joint correctness: a completed, non-capped,
+schema-valid output with the required action; every requested value/scope/whole
+alias group and sufficient citation set; no extra material quantity; and valid
+exposed support. Partial P matches never yield joint credit. Matched quantity
+claims are separately counted as a diagnostic even when action or output limit
+makes the whole answer incorrect; they are not a passed-question numerator.
+An answerable abstention is incorrect. M succeeds only as insufficient with no
+material quantity. Empty clarification is safe but incorrect for specified M.
+
+exposed_unsupported_quantity_count tests acquired-pack support, including stated
+value agreement, through the existing helper. It counts raw emitted direct
+quantities, before duplicate normalization. This is DISTINCT from requested-target
+correctness. A grounded wrong-source answer or extra grounded claim can have zero
+exposed-support failures while joint_correct=false and unmatched quantities>0.
+unsupported_material_answer is true for exposed-support failures or any material
+quantity in an M response. False is never a certificate of semantic correctness,
+joint accuracy or general safety. Wrong requested scope/value always fails joint
+matching and is separately visible in missing/unmatched claim counts.
+
+Malformed completed output is invalid_output, joint=false and
+material_answer_status=unresolved_requires_review. Its unsupported-material flag
+is null, never false. Arbitrary numeric prose cannot be mechanically classified
+as a financial answer without guessing. Preserve the raw output privately and
+its digest; any later material review is separate and immutable. No invalid
+output is credited as a safe abstention or used to establish zero unsupported
+answers. A valid capped response preserves its content but never passes joint.
+
+Execution states remain completed, failed, unattempted and blocked_after_stop.
+A failed cell retains execution_failed and its raw hash. If it has any observed
+partial or complete content, material status is unresolved_requires_review;
+cleanup/accounting failure cannot erase an otherwise observed numeric response.
+No failed cell earns joint credit or a safety claim. Truly unattempted/blocked
+cells require no observed output and retain not_executed, schema status null and
+unsupported-material flag null. Contradictory unattempted+output is a ledger input
+error. A failed cell without content has no observed material to inspect, but its
+unsupported flag still stays null and it is not an executed safe answer.
+
+This API scores one explicitly supplied cell. It does not invent references for
+unadmitted slots, drop them, aggregate a conditional risk, or build a scheduler.
+Later frozen execution integration must retain every planned 54 cell, all 12
+answerable and 6 control conditions, planned/admitted/executed denominators and
+all unavailable/failed rows. Invalid, unsupported, unresolved-material and
+unexecuted counts must remain separate. No zero risk follows from no answers.
+
+Deterministic grader ordering
+
+blind_permutation takes only validated common projections with private output
+IDs. Freeze its seed and ordered input-ID manifest before grading. Order is the
+SHA256 of canonical [seed, original output ID], with ID as deterministic tie-break;
+it never depends on outputs, correctness or reference content. Grader records use
+new fixed-length opaque IDs. Original IDs/mapping stay private; the manifest binds
+seed, ordered input IDs and mapping hashes. Duplicate IDs or injected arm/trace
+fields are rejected. This removes explicit arm markers, not all possible content
+or citation-pattern distinguishability; that limitation remains disclosed.
+
+Verification and remaining gates
+
+Run invented controls only:
+ PYTHONPATH=src python3 -m unittest discover -s tests \
+   -p 'test_reader_joint_scoring_v19.py' -v
+
+Controls cover all six wrong scopes despite equal numbers, exact values, extra/
+missing claims, whole alias groups, correlated citation alternatives, unsupported
+and insufficient citations, refusal quantities, invalid and failed partial output,
+limit failures, immutable inputs, claim/citation ordering and blinded permutation.
+Independent source-free review and exact code/contract/reference-schema hashes
+must be bound at the later execution freeze. Natural references, schedule,
+prompts, predictions and model-assisted semantic judgments are all still absent.

@@ -1,0 +1,92 @@
+{
+  "schema_version": "native_completion_transport_diagnosis_v19",
+  "status": "bounded_mechanism_reproduced_actual_errno_unobserved",
+  "terminal_review_sha256": "7f46bb3dd1602ffd481e5560db25cb0afd262bf4b0c153214a00397caa6b1590",
+  "probe_receipt_sha256": "48a0d69af518a2850ebeabc515f847f0cf05653c9757957d1b56dfd70dab8247",
+  "probe_code_sha256": "adc76943f880020f58a8375c43eb90cb3bcccb7e05a7565f544fb84e1d08e3b1",
+  "sources": [
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/wikigraph_v19_external/port_diagnosis_sources/tools__server__server-http.cpp",
+      "bytes": 36369,
+      "sha256": "b7a60c6bb3a6dc90a0e122b7467eba674922cae369295033a03adce3db4b5b05",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/tools/server/server-http.cpp"
+    },
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/wikigraph_v19_external/port_diagnosis_sources/vendor__cpp-httplib__httplib.h",
+      "bytes": 171245,
+      "sha256": "81e75f6ed590434cf150cd35b01952d335cae682dd8c365b302de97dc2e9373f",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/vendor/cpp-httplib/httplib.h"
+    },
+    {
+      "path": "/workspace/scratch/bdef663e3dfc/wikigraph_v17_external/native_capacity_sources/common__common.h",
+      "bytes": 51099,
+      "sha256": "1c1da208649f0f8955610d975d57b0a63cd35d60a23b3e2765e6ad19c392cc45",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/common/common.h"
+    }
+  ],
+  "newly_captured_source_bytes": 207614,
+  "actual_failure_observed": {
+    "error_class": "OSError",
+    "errno": null,
+    "second_process_started": false,
+    "assets_verified": true,
+    "prelaunch_resource_snapshot_retained": true,
+    "server_log_artifact_present": false,
+    "exact_failing_operation": null,
+    "later_passive_fixed_port_snapshot": "No local or remote port18162 entries in /proc/net/tcp or tcp6; after terminal, transient state may have expired."
+  },
+  "authored_probe_observed": {
+    "owned_ephemeral_listener_only": true,
+    "time_wait_state_hex": "06",
+    "plain_bind_errno_after_close": 98,
+    "reuseaddr_bind_after_close": true,
+    "both_probes_refuse_live_listener_errno": 98,
+    "all_owned_sockets_closed": true,
+    "native_processes": 0,
+    "model_calls": 0
+  },
+  "source_findings": [
+    {
+      "file": "tools/server/server-http.cpp",
+      "lines": [
+        218,
+        219,
+        220,
+        222
+      ],
+      "finding": "Pinned native server configures SO_REUSEADDR=1; SO_REUSEPORT is conditional."
+    },
+    {
+      "file": "common/common.h",
+      "lines": [
+        621
+      ],
+      "finding": "reuse_port defaults false; unchanged native argv does not enable it."
+    },
+    {
+      "file": "tools/server/server-http.cpp",
+      "lines": [
+        497,
+        499,
+        500
+      ],
+      "finding": "Native server retains its own bind_to_port failure check."
+    }
+  ],
+  "conclusion": "The Python preflight uses plain bind while the pinned native server configures SO_REUSEADDR. The authored fixture reproduces EADDRINUSE after an owned active-close/TIME_WAIT and succeeds with SO_REUSEADDR while still rejecting a live listener. This supports a narrow consistency repair; it does not prove that the actual v19 OSError was EADDRINUSE.",
+  "proposed_amendment": {
+    "version": "v19.1",
+    "transport_change": "Set SO_REUSEADDR=1 on the ephemeral Python preflight socket only, before the existing bind; do not set SO_REUSEPORT, remove collision checking, or change server argv.",
+    "diagnostic_change": "Record current execution stage and numeric errno on exceptions; retain no credentials or response content in error telemetry.",
+    "unchanged": [
+      "model/runtime hashes",
+      "eight exact messages and parent prompt/token artifacts",
+      "one fresh process per completion",
+      "one complete eight-row denominator",
+      "all resource/event guards and immediate cleanup",
+      "native command, decode parameters, timeout/call caps",
+      "worker/reference separation and post-seal grading"
+    ],
+    "approval": "New versioned files and independent review/root exact protocol approval required before one new full authored attempt; no native retry performed here."
+  }
+}

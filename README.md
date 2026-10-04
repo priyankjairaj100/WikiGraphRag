@@ -20,7 +20,17 @@ Research repository for **Reading the Latest, Not the Loudest: Lifecycle-Aware S
 
 The original package is retained unchanged as a historical submission. Its README and result claims describe that submission; later audits and limitations are recorded in the rework. The original paper and supplement were supplied as PDFs; their editable TeX sources were not available in this workspace. The rework's available LaTeX sources are included.
 
-## Current checkpoint: v0.18 — source identity and authored tokenizer readiness
+## Current checkpoint: v0.19 — authored reader failure and source annotations
+
+The 9B reader completed all **eight fictional controls**, after a separately reviewed transport amendment, but answered only **2/8 correctly** with no output-limit failures. The authored readiness gate failed. The first interrupted attempt remains preserved in separate result receipts.
+
+All **326 source occurrences across 21 bundles** now have initial source-only annotations: 47 reviewed and 279 reviewed with unknowns. The projection and annotation checks preserve exact occurrence coverage, 1,125 witnesses and 160 page links. Registry reconciliation, substantive semantic admission and author release remain pending. The offline joint scorer has passed authored and independent controls. **1,410 unit tests pass**; no natural QA has run.
+
+**Evidence availability:** original v19/v19.1 raw native outputs and traces disappeared after grading. The cause is unknown. Public result receipts, code and source annotations survive; independent v19.1 terminal verification and raw reanalysis remain unavailable. Surviving private source artifacts and prior recovery archives are saved separately.
+
+Read the [v19 handoff](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v19.txt), [working addendum](acl2027_temporal_state/paper/reader_readiness_update_v19.pdf), [reproduction limits](acl2027_temporal_state/docs/reproduce_v19.txt) and [availability incident](acl2027_temporal_state/results/workspace_artifact_loss_v19.json). No stronger-reader, retrieval, held-out or ACL-readiness claim follows from this checkpoint.
+
+## Previous checkpoint: v0.18 — source identity and authored tokenizer readiness
 
 All **40 additional dependency views** are now available across **39 original successes and one separately recorded caption recovery**. The prior101 table/neighbor views remain available. Separate recovery completes34 identity candidate views; **12 literal cover identity cards** are admitted from38 witnesses. These cards do not establish table-level entity or period scope.
 

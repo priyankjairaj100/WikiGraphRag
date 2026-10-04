@@ -1,0 +1,142 @@
+Source-only occurrence projection, v19: pre-author preparation contract
+
+Purpose and role boundary
+This is a mechanical source-locator/text projection for a question-free semantic
+review, not an evidence reader, numeric transformation, semantic annotation or
+new evaluation. Its author has previously accessed typed registries and cannot
+serve as a source-naive question/reference author. The semantic reviewer receives
+only the new external packet and separately admitted literal cover cards; never
+combined v18 bundles, original typed records, decoder diagnostics or this private
+join's working objects. All packets remain author_release_allowed=false.
+
+Fixed population and immutable parents
+The population is exactly all 21 v18 whole bundles in bound parent order, retaining
+all 326 registry entries in their original within-bundle order. Equal values,
+equal strings, repeated physical entries, entries shared across bundles, empty,
+nil and unsupported lexical presentations are never deduplicated or filtered.
+Nil/unsupported/binding status is NOT output or inferred from empty text. Entry
+membership is inherited from the privileged registry and therefore is explicitly
+a machine-selected occurrence inventory, not a source-naive discovery experiment.
+The complete source-only v17 author_staging object in every v18 parent must equal
+its independently exported v17 counterpart. That whole object, including all
+empty blocks/whitespace, original rows/cells and order, is copied without changes.
+No question-dependent source selection, search, dependency expansion, trimming,
+new caption, default scope or evidence admission is performed. The earlier v17
+10/21 shape outcome and 11 failures, v18 21/21 shape outcome and 19 blank exposures
+remain unchanged.
+
+Packet shape and exact allowlists
+Top-level packet: schema_version, bundle_handle, source_sha256,
+author_release_allowed=false, question_free=true, semantic_mapping_performed=false,
+whole_source_context (unchanged v17 projection), block_handles, separate_identity_
+card_reference, occurrences, whole_view_availability, whole_view_receipt_bindings.
+Context keys, every nested row/cell/span key and all primitive leaf types are
+checked against explicit allowlists. Recursive forbidden-key checks additionally
+reject decoder/helper keys. The builder reconstructs every occurrence rather than
+copying or sanitizing a typed dictionary. Visible literal words matching helper
+names are not censored; tests use hidden-only sentinels to assess leakage.
+
+Each occurrence has occurrence_handle, source_sha256, locator_status,
+unresolved_reason, locator, containing_block_handles, source_text, cell_binding,
+visibility and entry_sha256. Handles o0000... are neutral within-bundle positional
+IDs, not concept names, context IDs or original fact ordinals. The entry digest is
+SHA256 of canonical UTF-8 JSON (sorted keys, compact separators, trailing newline)
+before adding entry_sha256. The annotation key is bundle_handle + occurrence_handle
++ entry_sha256; the batch also binds the artifact SHA. No direct per-question
+mapping is present.
+
+A bound locator is {dom_path, anchor:{byte_start,byte_stop,span_sha256}}. It must
+match the exact ix:nonFraction node from the secure, bounded v15.1 byte parser,
+original source SHA, exact bytes, and frozen containing block IDs. Structural
+expanded element-name paths are provenance locators; they do not expose concept
+QNames or attributes. Missing/inconsistent source binding retains one unresolved
+entry with null trusted locator/text/cell and a fixed reason enum/string. There is
+no equal-text/value join, nearest-number guess, or change to the denominator.
+Whole-block source or parent-export identity failures instead stop the batch.
+
+Raw lexical source text
+source_text is {segments, decoded_text}; each segment contains kind=text|cdata,
+anchor, raw_text and decoded_text. raw_text is the exact UTF-8 text-node byte slice;
+CDATA delimiters, element markup, attributes, namespace declarations, comments
+and processing instructions are excluded. decoded_text performs XML-defined
+entity decoding and CRLF/CR normalization only. Numeric character references are
+resolved AFTER literal line-ending normalization. Predefined/numeric entities,
+CDATA, Unicode, nested markup/tails and quoted '>' are supported. Unknown/invalid
+entities and unsafe declarations fail closed. An independent Expat fragment parse
+must reproduce concatenated decoded text, then the secure whole-source tree must
+agree. No trimming, whitespace collapse, number/sign/scale normalization, zero
+inference, continuation resolution or interpretation of ix attributes is done.
+All text remains a lexical candidate with occurrence visibility unverified. It is
+not certified as the complete financial quantity or actual browser-visible text;
+punctuation outside the occurrence remains accessible in whole context.
+
+Cell/row association and handles
+The fact's nearest actual XHTML table, row and cell ancestors must match the
+frozen table view's unique exact fact link and row_cell_index. Parent layout
+containment cannot substitute for nearest-table ownership. Frozen table/row/cell
+anchors and structural paths must match original bytes and ancestry. The full
+cell must be inside at least one acquired whole block. Otherwise preserve an
+explicit unresolved cell association, never copy text from an unacquired cell.
+A source occurrence outside a table cell gets not_in_table_cell. Successful
+bindings carry table/row/cell locators, frozen row_cell_index and containing block
+handles. Table handles are t0000... by original table byte order, row/cell handles
+extend that handle with r0000/c0000 index positions. These identify geometry only,
+not headers, financial rows, entities or concepts. Block handles b000... follow
+the fixed whole-context order; mapping to original positional block IDs is kept.
+
+Visibility and separate identity
+Visibility status is always unverified; computed_css_evaluated and occurrence_
+visually_reviewed are false. Safe recognized cue kinds may flag ix:hidden,
+HTML hidden and inline display:none/visibility:hidden|collapse on the occurrence
+or ancestors. No raw style/class/id/hidden value is exposed; absent cues never
+mean visible. Prior whole-block qualified inspection views are separately checked
+by exact source/anchor/path and recorded as qualified_inspection_view_only. Each
+block receives a closed qualified-raster map: block_handle, status, two receipt
+references {path,sha256}, source_assembly_sha256, pdf {path,bytes,sha256}, and
+all pages [{page_index,path,bytes,sha256}]. The map is rebuilt from exact matching
+admission and execution blocks, requires every page previously inspected and
+matching admitted artifact bytes/hashes, and never copies role/candidate hints.
+Original/recovery receipt choice follows only the fixed final lineage. Actual
+PDF/PNG files are checked by bytes/hash during approved materialization. Source
+assembly is a digest only; raw HTML/fragment paths are not exposed. These views
+do not establish occurrence/cell visibility, semantic scope or header linkage.
+The 12 literal cover cards remain separate and immutable. Only the exact minimal
+reference {source_handle,path,bytes,sha256} is allowed; no optional helpers or card
+field values are merged. Cover issuer/report/end wording never automatically binds
+fact entity, population, period or cross-source equivalence.
+
+Provenance, budget and one-attempt policy
+The draft command hashes source-free parent metadata and code only; it does not
+read natural external files. It is explicitly draft_not_executable. Freeze requires
+a closed independent authored-only review matching the complete code binding map.
+Build recomputes the exact frozen recipe and all hash bindings before and after the
+single attempt. The private source, gzip compressed/uncompressed streams, parent
+combined bundles, v17 exports and separate card files are checked by exact bytes/
+hashes. Source captures are bounded to 25 MB each; expanded table streams to
+100 MB each, and NEW external output to 25 MB total. Fixed output directory must
+not exist and must be outside the repository; no overwrite, automatic retry or
+partial-output deletion. Failure yields a separate source-free failure receipt
+and preserves the partial directory. Public receipts contain counts, handles,
+paths/digests and fixed statuses, never source lexical strings or arbitrary error
+payloads. No browser/network/native model is called. Existing frozen parents are
+never changed. No natural materialization is authorized by a draft or tests.
+
+Authored controls
+Owner and independent invented fixtures cover UTF-8, entities, CDATA, CRLF,
+quoted '>', comments/PIs, invalid anchors/entities, nil/empty text, repeated/equal
+occurrences, nested nearest-cell ownership, missing/ambiguous links, acquired
+whole-cell bounds, hidden-helper canaries, recursive allowlists and primitive leaf
+checks, exact context preservation, entry digest replay, no visibility promotion,
+fixed protocol refusal and no-overwrite/output-budget guards. The initial
+independent audit's two concrete schema gaps are preserved in its separate
+receipt; both were corrected before freeze or any natural materialization.
+
+Pre-freeze metadata integration correction
+The first source-free public-receipt preflight retained 133/141 passing metadata
+joins and eight failures. All eight concerned final contrast recovery records,
+which use separate_contrast_receipt rather than the separate_recovery_receipt
+field used for telemetry recovery. The original preflight/script and exact
+producer snapshot are preserved. Receipt resolution now explicitly honors the
+final contrast overlay, then other separate recovery, then direct/original
+admission. A distinct v19.1 metadata-only replay verifies this correction; no
+source, raster or occurrence packet was opened/materialized by either preflight.

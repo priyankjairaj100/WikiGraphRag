@@ -1,0 +1,238 @@
+--- scripts/native_completion_runtime_v19.py
++++ scripts/native_completion_runtime_v19_1.py
+@@ -88,23 +88,33 @@
+     stopped = threading.Event()
+     sampling_lock = threading.Lock()
+     try:
++        trace['execution_stage'] = 'pre_asset_resource_snapshot'
+         baseline = pressure.read_snapshot()
+         trace['pre_asset_snapshot'] = baseline
+         trace['previous_attempt_snapshot'] = event_history.get('last')
+         reason = preflight_reason(baseline, event_history.get('last'), profile['worker_reserve_bytes'])
+         require(reason is None, reason or 'pre_asset_resource_refusal')
+         event_history['last'] = baseline
++        trace['execution_stage'] = 'asset_verification'
+         trace['verified_assets'] = native.verify_assets(c)
++        trace['execution_stage'] = 'prelaunch_resource_snapshot'
+         baseline_after = pressure.read_snapshot()
+         trace['prelaunch_snapshot'] = baseline_after
+         reason = preflight_reason(baseline_after, baseline, profile['worker_reserve_bytes'])
+         require(reason is None, reason or 'prelaunch_resource_refusal')
+         baseline = baseline_after
+         event_history['last'] = baseline
++        trace['execution_stage'] = 'model_lock_open'
+         lock = (Path(c['model']['path']).parent / 'native_binding_reader_v16.lock').open('a')
++        trace['execution_stage'] = 'model_lock_acquire'
+         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
++        trace['execution_stage'] = 'port_socket_create'
+         with socket.socket() as port:
++            trace['execution_stage'] = 'port_reuseaddr_option'
++            port.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
++            trace['execution_stage'] = 'port_bind_preflight'
+             port.bind(('127.0.0.1', c['port']))
++        trace['execution_stage'] = 'audit_space_statvfs'
+         fs = os.statvfs(folder)
+         require(fs.f_bavail * fs.f_frsize >= 256 * 2**20, 'audit_space_reserve')
+         def limits():
+@@ -112,11 +122,14 @@
+             resource.setrlimit(resource.RLIMIT_CPU, (c['cpu_seconds_limit'],) * 2)
+             resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+         started = time.monotonic()
++        trace['execution_stage'] = 'server_log_open'
+         log = (folder / 'server.log').open('xb')
++        trace['execution_stage'] = 'native_process_launch'
+         process = subprocess.Popen(command(c), stdout=log, stderr=subprocess.STDOUT,
+                   env=dict(os.environ, LD_LIBRARY_PATH=c['runtime']['directory'], OMP_NUM_THREADS=str(c['threads'])),
+                   start_new_session=True, preexec_fn=limits)
+         result['process_started'] = True
++        trace['execution_stage'] = 'native_execution'
+         notify('process_started', {})
+         trace['inner_process_id'] = process.pid
+         anchor = owned.bind_group(process.pid)
+@@ -203,7 +216,8 @@
+                       raw_response_sha256=digest(folder / 'response.json'))
+     except Exception as error:
+         result.update(status='failed', failure_code=str(error) if isinstance(error, ValueError) else 'native_completion_error',
+-                      error_type=type(error).__name__)
++                      error_type=type(error).__name__, failure_stage=trace.get('execution_stage'),
++                      error_errno=getattr(error, 'errno', None))
+         if process is not None:
+             signal_inner(process, signal.SIGKILL)
+             trace['exception_stop_signal'] = 'SIGKILL_original_inner_group'
+--- scripts/native_completion_worker_v19.py
++++ scripts/native_completion_worker_v19_1.py
+@@ -6,10 +6,10 @@
+ import re
+ import time
+ 
+-import native_completion_runtime_v19 as runtime
++import native_completion_runtime_v19_1 as runtime
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-PROFILE = ROOT / 'configs/native_authored_completion_v19.json'
++PROFILE = ROOT / 'configs/native_authored_completion_v19_1.json'
+ require = runtime.require
+ write = runtime.write
+ digest = runtime.digest
+@@ -19,12 +19,12 @@
+ # This is an exact nonrecursive allowlist. Parent freeze recipes, controls,
+ # references, freezer/grader code, and test fixtures must not be added here.
+ WORKER_READ_PINS = (
+-    'scripts/native_completion_worker_v19.py', 'scripts/native_completion_runtime_v19.py',
++    'scripts/native_completion_worker_v19_1.py', 'scripts/native_completion_runtime_v19_1.py',
+     'scripts/native_loader_v18_1.py', 'scripts/native_loader_guard_v18.py',
+     'scripts/native_binding_reader_v16.py', 'scripts/cgroup_guard_v16_2.py',
+     'scripts/process_group_rss_v16.py', 'scripts/local_backend_v07.py',
+     'scripts/larger_scorer_v09.py', 'scripts/fetch_local_backend_v07.py',
+-    'src/temporal_state/reader_binding_v16.py', 'configs/native_authored_completion_v19.json',
++    'src/temporal_state/reader_binding_v16.py', 'configs/native_authored_completion_v19_1.json',
+     'configs/binding_reader_v16.json', 'configs/model_backend_v09.json',
+     'results/reader_acquisition_v16.json', 'results/reader_asset_relocation_v16.json',
+ )
+@@ -36,7 +36,7 @@
+ 
+ def profile():
+     p = read_json(PROFILE)
+-    require(p['schema_version'] == 'native_authored_completion_profile_v19', 'profile_schema')
++    require(p['schema_version'] == 'native_authored_completion_profile_v19_1', 'profile_schema')
+     require(p['maximum_completions'] == p['maximum_native_processes'] == 8 and
+             p['maximum_completions_per_process'] == p['maximum_tokenizations_per_process'] == 1,
+             'execution_scope_changed')
+@@ -107,7 +107,7 @@
+         for path in sorted(folder.iterdir()):
+             require(path.name in allowed and path.is_file() and not path.is_symlink(), 'unexpected_raw_artifact')
+             artifacts[str(path.relative_to(directory))] = digest(path)
+-    seal = {'schema_version': 'native_completion_raw_seal_v19',
++    seal = {'schema_version': 'native_completion_raw_seal_v19_1',
+             'protocol_sha256': receipt['protocol_sha256'],
+             'request_ids': [x['request_id'] for x in receipt['request_states']],
+             'request_states': receipt['request_states'],
+@@ -127,7 +127,7 @@
+     directory = fixed_directory(directory, p)
+     require(digest(directory / 'frozen_protocol.json') == approved_protocol_sha256, 'root_approved_protocol_hash_required')
+     f = read_json(directory / 'frozen_protocol.json')
+-    require(f['schema_version'] == 'native_completion_frozen_v19' and f['profile'] == p and f['native_config'] == c,
++    require(f['schema_version'] == 'native_completion_frozen_v19_1' and f['profile'] == p and f['native_config'] == c,
+             'frozen_profile_changed')
+     public = (ROOT / p['public_receipt_path']).resolve()
+     require(str(public) == f['public_receipt'], 'public_receipt_path_changed')
+--- scripts/freeze_native_completion_v19.py
++++ scripts/freeze_native_completion_v19_1.py
+@@ -6,22 +6,31 @@
+ import json
+ from pathlib import Path
+ 
+-import native_completion_worker_v19 as worker
++import native_completion_worker_v19_1 as worker
+ 
+ ROOT = worker.ROOT
+ PARENT = Path('/workspace/scratch/bdef663e3dfc/wikigraph_v18_external/native_loader_attempt02_logging_observation')
+ REQUEST_ITEMS = ROOT / 'data/reader_binding_v19/authored_requests_v19.json'
+ REFERENCE_ITEMS = ROOT / 'data/reader_binding_v19/authored_references_v19.json'
+-OWNER_REVIEW = ROOT / 'results/native_completion_controls_v19.json'
+-INDEPENDENT_REVIEW = ROOT / 'results/native_completion_independent_review_v19.json'
++OWNER_REVIEW = ROOT / 'results/native_completion_controls_v19_1.json'
++INDEPENDENT_REVIEW = ROOT / 'results/native_completion_independent_review_v19_1.json'
+ REVIEW_CODE = worker.WORKER_READ_PINS + (
++    'scripts/freeze_native_completion_v19_1.py', 'scripts/grade_native_completion_v19_1.py',
++    'docs/native_authored_completion_contract_v19_1.txt',
++    'tests/test_native_completion_v19_1.py', 'tests/test_native_completion_runtime_v19_1.py',
++    'tests/test_native_completion_independent_v19_1.py',
++    'scripts/native_completion_runtime_v19.py', 'scripts/native_completion_worker_v19.py',
+     'scripts/freeze_native_completion_v19.py', 'scripts/grade_native_completion_v19.py',
++    'configs/native_authored_completion_v19.json',
+     'docs/native_authored_completion_contract_v19.txt',
+     'tests/test_native_completion_v19.py', 'tests/test_native_completion_runtime_v19.py',
+-    'tests/test_native_completion_independent_v19.py',
++    'results/native_authored_completion_v19.json',
++    'results/native_completion_terminal_review_v19.json',
++    'results/native_completion_transport_diagnosis_v19.json',
++    'results/native_port_rebind_probe_v19.json', 'scripts/probe_owned_port_rebind_v19.py',
+     'data/reader_binding_v19/authored_requests_v19.json',
+     'data/reader_binding_v19/authored_references_v19.json',
+-    'results/native_completion_controls_v19.json',
++    'results/native_completion_controls_v19_1.json',
+ )
+ 
+ 
+@@ -41,6 +50,15 @@
+     public = Path(public).resolve()
+     worker.require(public == (ROOT / p['public_receipt_path']).resolve(), 'fixed_public_receipt')
+     worker.require(not directory.exists() and not public.exists(), 'one_freeze_destination_exists')
++    failed_parent = worker.read_json(ROOT / 'results/native_authored_completion_v19.json')
++    worker.require(worker.digest(ROOT / 'results/native_authored_completion_v19.json') ==
++                   p['transport_parent_worker_receipt_sha256'] and
++                   failed_parent['raw_seal_sha256'] == p['transport_parent_raw_seal_sha256'] and
++                   failed_parent['raw_outputs_sealed'] is True and
++                   failed_parent['all_started_processes_cleanup_confirmed'] is True and
++                   p['prior_completions_count_toward_gate'] == 0, 'transport_parent_changed')
++    worker.require(worker.digest(ROOT / 'results/native_completion_transport_diagnosis_v19.json') ==
++                   p['transport_diagnosis_sha256'], 'transport_diagnosis_changed')
+     parent_result_path = ROOT / 'results/native_loader_attempt_v18_1.json'
+     worker.require(worker.digest(parent_result_path) == p['parent_loader_receipt_sha256'] and
+                    worker.digest(ROOT / 'results/native_loader_terminal_review_v18_1.json') == p['parent_loader_terminal_sha256'],
+@@ -80,7 +98,7 @@
+         target = directory / 'inputs' / ('prompt_%02d.json' % index)
+         target.write_bytes(source.read_bytes())
+         worker.runtime.native.validate_prompt(worker.read_json(target), c)
+-    f = {'schema_version': 'native_completion_frozen_v19', 'profile': p, 'native_config': c,
++    f = {'schema_version': 'native_completion_frozen_v19_1', 'profile': p, 'native_config': c,
+          'public_receipt': str(public), 'worker_read_pins': {name: worker.digest(ROOT / name) for name in worker.WORKER_READ_PINS},
+          'input_sha256': {name: worker.digest(directory / 'inputs' / name) for name in worker.INPUT_NAMES},
+          'opaque_reference_sha256': worker.digest(REFERENCE_ITEMS),
+@@ -89,7 +107,7 @@
+     worker.write(directory / 'frozen_protocol.json', f, exclusive=True)
+     # Keep this outside the worker directory/read allowlist. The worker never opens it.
+     worker.write(directory.parent / (directory.name + '_freezer_attestation.json'), attested, exclusive=True)
+-    r = {'schema_version': 'native_authored_completion_receipt_v19',
++    r = {'schema_version': 'native_authored_completion_receipt_v19_1',
+          'status': 'frozen_awaiting_root_execution_approval',
+          'protocol_sha256': worker.digest(directory / 'frozen_protocol.json'),
+          'expected_completions': 8, 'model_processes_started': 0,
+--- scripts/grade_native_completion_v19.py
++++ scripts/grade_native_completion_v19_1.py
+@@ -4,7 +4,7 @@
+ from pathlib import Path, PurePosixPath
+ import re
+ 
+-import native_completion_worker_v19 as worker
++import native_completion_worker_v19_1 as worker
+ 
+ ROOT = worker.ROOT
+ require = worker.require
+@@ -21,7 +21,7 @@
+     protocol_path = directory / 'frozen_protocol.json'
+     require(protocol_path.is_file() and not protocol_path.is_symlink(), 'protocol_not_regular')
+     f = read_json(protocol_path)
+-    require(f['schema_version'] == 'native_completion_frozen_v19' and
++    require(f['schema_version'] == 'native_completion_frozen_v19_1' and
+             f['profile'] == p and f['native_config'] == c and
+             set(f['input_sha256']) == set(worker.INPUT_NAMES), 'frozen_profile_changed')
+     public = ROOT / p['public_receipt_path']
+@@ -35,7 +35,7 @@
+     require(sealpath.is_file() and not sealpath.is_symlink() and
+             digest(sealpath) == receipt['raw_seal_sha256'], 'raw_seal_changed')
+     seal = read_json(sealpath)
+-    require(seal['schema_version'] == 'native_completion_raw_seal_v19' and
++    require(seal['schema_version'] == 'native_completion_raw_seal_v19_1' and
+             seal['protocol_sha256'] == receipt['protocol_sha256'] == protocol_sha and
+             seal['prediction_finished'] is True and seal['grading_performed'] is False and
+             seal['all_started_processes_cleanup_confirmed'] is True and
+@@ -104,7 +104,7 @@
+ def grade(directory, public):
+     directory = Path(directory).resolve()
+     public = Path(public).resolve()
+-    require(public == ROOT / 'results/native_authored_completion_grade_v19.json', 'fixed_grade_receipt')
++    require(public == ROOT / 'results/native_authored_completion_grade_v19_1.json', 'fixed_grade_receipt')
+     require(not public.exists() and not (directory / 'offline_grade.json').exists(), 'one_offline_grade_no_overwrite')
+     f, receipt, seal = verified_seal(directory)
+     # This is the first reference-bearing read in this entrypoint, after sealing.
+@@ -138,7 +138,7 @@
+             details.append({'request_id': item['request_id'], 'assessment': detail, 'summary': row})
+         rows.append(row)
+     passed = all(row['authored_control_correct'] for row in rows)
+-    result = {'schema_version': 'native_authored_completion_grade_v19',
++    result = {'schema_version': 'native_authored_completion_grade_v19_1',
+               'status': 'authored_gate_passed' if passed else 'authored_gate_failed',
+               'prediction_protocol_sha256': receipt['protocol_sha256'],
+               'raw_execution_seal_sha256': receipt['raw_seal_sha256'],

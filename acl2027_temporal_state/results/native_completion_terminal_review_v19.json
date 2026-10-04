@@ -1,0 +1,101 @@
+{
+  "schema_version": "native_completion_terminal_review_v19",
+  "status": "passed_terminal_accounting_batch_preserved_failed",
+  "checks": {
+    "full_eight_terminal_rows": true,
+    "fixed_order_retained": true,
+    "exact_terminal_states": true,
+    "one_process_call_response": true,
+    "prediction_ungraded": true,
+    "raw_seal_and_all_artifacts_verified": true,
+    "first_native_response_validated": true,
+    "first_input_output_budget": true,
+    "fresh_cache_zero": true,
+    "rollback_observed_zero": true,
+    "first_identity_checked": true,
+    "one_completion_endpoint": true,
+    "first_cleanup_confirmed": true,
+    "owned_group_absent": true,
+    "second_process_never_started": true,
+    "second_zero_endpoints": true,
+    "second_preserved_oserror": true,
+    "counter_history_crosses_process_boundary": true,
+    "no_retry_marker": true,
+    "all_cgroup_samples_valid": true,
+    "consecutive_telemetry_policy_passes": true,
+    "sample_chronology_monotonic": true,
+    "owned_telemetry_passes": true,
+    "terminal_no_active_owned_process": true
+  },
+  "checks_passed": 24,
+  "protocol_sha256": "12839473692f1bb3eb54f14078dfc4c1bc3ca77fb54630e2402793adcdc4f704",
+  "public_worker_receipt_sha256": "aecc0b8bec9f6a9dea926815e617876522a3a384aafc0ab3d47600ec77bcbd3e",
+  "raw_seal_sha256": "a743eff229891fa51f05f6e354bce0092cd6ac2b493cd36da240afdc4452578b",
+  "sealed_artifacts": 63,
+  "trace_sha256": [
+    "eb7d25abe8be6e5c57f26e51cce40d0814df03b5117aa115d317d058187874a1",
+    "81c0fcbb986c0fa7f2e1289a73a71998c4663353bad9125683a15495ee2cfe38"
+  ],
+  "technical_result_sha256": [
+    "574d891a63f59ff30140cee39f84cbd99f79e4f2912299fe5080435268cc8d33",
+    "f71d2c5bf197ffb9162999e55ff6fcab277593199b50747fe12d80dc8ff2554d"
+  ],
+  "expected_completions": 8,
+  "processes_started": 1,
+  "completion_calls_started": 1,
+  "completion_responses": 1,
+  "technical_passed": 1,
+  "prelaunch_failed": 1,
+  "unattempted": 6,
+  "metrics": {
+    "cgroup_samples_including_boundaries": 684,
+    "periodic_or_explicit_owned_samples": 678,
+    "peak_memory_current_bytes": 8376135680,
+    "peak_pressure_proxy_bytes": 6792691712,
+    "peak_owned_rss_bytes": 4456812544,
+    "observed_total_boundary_samples": 0,
+    "observed_event_deltas": {
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "first_completion_http_seconds": 65.92213726043701,
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 999,
+      "prompt_ms": 32917.432,
+      "prompt_per_token_ms": 32.95038238238239,
+      "prompt_per_second": 30.348661463020566,
+      "predicted_n": 128,
+      "predicted_ms": 32989.668,
+      "predicted_per_token_ms": 259.76116535433067,
+      "predicted_per_second": 3.849690151474092
+    },
+    "native_buffer_report_lines": [
+      "0.00.804.763 I load: special tokens cache size = 33",
+      "0.00.877.042 I load: token to piece cache size = 1.7581 MB",
+      "0.03.034.354 I load_tensors:   CPU_Mapped model buffer size =  3819.72 MiB",
+      "0.03.040.491 I llama_context:        CPU  output buffer size =     0.95 MiB",
+      "0.03.040.575 I llama_kv_cache:        CPU KV buffer size =   136.00 MiB",
+      "0.03.100.725 I llama_kv_cache: size =  136.00 MiB (  8192 cells,   8 layers,  1/1 seqs), K (q8_0):   68.00 MiB, V (q8_0):   68.00 MiB",
+      "0.03.119.167 I llama_memory_recurrent:        CPU RS buffer size =    50.25 MiB",
+      "0.03.119.196 I llama_memory_recurrent: size =   50.25 MiB (     1 cells,  32 layers,  1 seqs  0 rs_seq), R (f32):    2.25 MiB, S (f32):   48.00 MiB, P (f32):    0.00 MiB",
+      "0.03.123.400 I sched_reserve:        CPU compute buffer size =    26.27 MiB"
+    ]
+  },
+  "failure_stage_bounds": {
+    "last_retained_success": "prelaunch resource snapshot after complete asset verification",
+    "first_retained_absence": "no server.log / inner process ID / HTTP call",
+    "candidate_operations": [
+      "open model lock",
+      "nonblocking flock",
+      "socket creation/bind",
+      "statvfs audit space",
+      "open server.log",
+      "Popen preparation"
+    ],
+    "exact_errno_or_stage_recorded": false,
+    "inference": "Fixed-port TIME_WAIT is plausible, not proven by the retained OSError class."
+  },
+  "scope": "Source-free technical accounting; answer content not inspected and no competence claim."
+}

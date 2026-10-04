@@ -1,0 +1,66 @@
+Prospective independent review plan for the v19 authored completion host
+Source-free reviewer: binding_interface_v16; 2026-10-04.
+Design checklist only. No native execution, worker freeze or reference grading.
+Published v18 code, results and manuscripts remain immutable.
+
+Scope and decisive negative controls
+
+1. Reference separation must hold through worker startup, lineage/hash checks,
+request preparation, inference, cleanup and sealing. It is not enough to omit
+references from model messages if the worker still opens a combined reference-
+bearing fixture to validate its digest. Freezer access is separate. The worker
+receives strict request-only inputs plus opaque reference identity for later
+joining. Control: after an authored freeze, make reference and combined-fixture
+paths unavailable or trap their opens; the mocked worker still completes its
+fixed schedule. No worker entrypoint or indirect call may invoke reference
+loading or grading. The dedicated grader stays outside its call path. Pure
+inherited runtime definitions may be reused only without reference-file import
+side effects; unused definitions alone are not reference access.
+
+2. Request projection must retain the exact eight parent messages and successful
+v18.1 prompt/token artifacts, without serializing reference/rubric/expected-
+answer fields. Test strict request schema and contaminated fixture metadata;
+inspect nested request payloads, not just top-level key names. Hash equality to
+the independently bound parent requests is stronger than a reference keyword
+filter. Ordinary words such as expected inside source evidence are not proof
+of a leak. No natural fixture is needed.
+
+3. Every completion has a new owned native process and cold model/KV state.
+Re-rendering and tokenizing in that process must reproduce bound prompt bytes
+and token IDs before completion. Enforce the unchanged model/runtime identity,
+observed n_rs_seq=0, cache_prompt=false, response cache_n=0, prompt/returned-token
+identity, token accounting, seed-zero greedy request and output ceiling.
+Control: changed render, token ID, cache count or identity fails technically
+before an unsupported success status can be recorded.
+
+4. Resource stops retain the v18.1 telemetry, limits, direct-child ownership
+anchor, independent immediate group kill and confirmed cleanup. A single consecutive event-counter lineage must span all eight
+processes, including cleanup-to-next-prelaunch gaps; fresh per-process baselines
+must not hide an intervening new OOM or counter reset. A blocked API
+must not defer a watchdog stop. No next process may launch after unconfirmed
+cleanup. Do not restate unchanged caps as an isolation or generation-fit proof.
+Only add authored integration tests where inherited controls do not cover the
+new lifecycle/orchestration path.
+
+5. Completion-content correctness and format are not worker stop criteria.
+Control: syntactically invalid answer text in the first otherwise valid native
+response must not repair/retry the request or change the remaining schedule.
+Transport/resource/native accounting failures may abort technically, with all
+remaining planned rows explicitly unattempted. Terminal state population must
+always include all eight original request identities in their fixed order.
+
+6. Raw requests, responses, token identities, resource traces and all terminal
+rows are sealed before a separate offline evaluator can read references.
+Control: grading refuses an absent, changed or incomplete seal; the worker
+cannot observe grades. The receipt must distinguish transport/resource/native
+accounting, answer format, typed support and semantic answer outcomes. No output
+selection, replacement attempt or hidden retry is permitted.
+
+Review evidence to bind after concrete implementation
+
+Record exact worker/freezer/protocol/test/config/request hashes; exact parent
+request/token ancestry; the closed independent review; focused authored controls;
+and the preserved old checkpoint. Verify worker data flow by reading actual
+entrypoints and mocks rather than relying only on asserted design statements.
+Only concrete uncovered risks warrant additional tests. This plan itself is
+neither approval of future code nor authorization to run native generation.

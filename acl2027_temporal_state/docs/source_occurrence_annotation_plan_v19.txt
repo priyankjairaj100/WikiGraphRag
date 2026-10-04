@@ -1,0 +1,211 @@
+Question-free source-only occurrence annotation plan v19
+
+Status: DRAFT INSTRUCTIONS ONLY. This document creates no occurrence annotations,
+source-semantic decisions, questions, reference answers, normalized values or
+reader predictions. Annotation records created by this document: 0.
+The natural source-only projection has not been supplied to this reviewer.
+Bind this plan, the reviewed projection contract, exact input hashes and role
+instructions at the later projection freeze, before annotation begins. Root
+approval is required after independent source-free projection review. Preserve
+all v18 candidate reviews, admissions, failures and later reconciliation records.
+
+Purpose and accounting
+
+Review the planned fixed 326 retained bundle-occurrence entries without question
+conditioning. This is an entry count across bundles, not a claim that there are
+326 distinct physical facts. The frozen projection must provide the exact entry
+set and per-bundle counts. Every entry requires an explicit disposition, including
+entries whose locator, visibility or semantic attachment cannot be resolved.
+No entry may be dropped to improve completeness or apparent support.
+
+Review-complete coverage means that every frozen entry has been processed and
+accounted for. It does NOT mean that all aspects of all entries are known or
+verified. Unknown bindings remain null. Nil, unsupported, empty, dash and duplicate
+presentations must not disappear from the complete population. The producer may
+verify private category retention; the source-only reviewer must not receive or
+infer hidden decoder categories from a visible empty or dash presentation.
+
+Future question admission requires verification of the relevant requested
+bindings under its separate protocol. This plan imposes no universal requirement
+that every retained fact have every binding resolved. Source-visible currency or
+exact-period unknowns concern the fixed visible projection only; declared typed
+metadata is handled separately by the producer and reference workflow and is
+outside this reviewer's access. No conclusion about future machine-assisted pack
+answerability follows merely from a source-visible unknown.
+
+Input and access boundary
+
+Only after the projection freeze, receive the physically separated source-only
+projection: neutral bundle and source handles, opaque occurrence/block/row/cell
+handles, immutable entry and projection digests, original byte/DOM/cell anchors,
+raw source text-node lexical strings, unchanged whole retained source blocks,
+qualified source/raster locators, and separately hash-bound admitted literal
+identity cards. Safe visibility cues and prior whole-view status do not establish
+per-occurrence visibility; that remains a review task.
+
+Do not open combined privileged bundles, typed records, canonical values, concept
+QNames, decoder/context/unit/scale/sign helpers, hidden identity values, native
+code or outputs, baseline prompts/scores, reference files, or prediction files.
+Do not receive preassigned semantic row labels, question targets, rankings or
+answer-oriented hints. Do not follow proprietary references to hidden facts.
+Record actual role identity, input hashes and prior context exposure privately.
+The source-semantic model role is not a fresh question-author role, independent
+human annotation, or human gold. Do not claim blindness to prior public candidate
+metadata when it was available in the role's context.
+
+No new source search, dependency expansion, replacement table, question-specific
+evidence selection, or registry mutation is authorized by this plan. A missing
+required relation stays unresolved in the fixed context; it does not authorize
+retrieval of a more convenient source block. All original source blocks, competing
+observations, duplicate presentations and failed-attempt provenance remain intact.
+
+Compact annotation schema
+
+Batch header:
+  schema_version
+  plan_sha256
+  frozen_projection_sha256
+  frozen_entry_set_sha256
+  expected_entry_count
+  source_view_receipt_bindings
+  admitted_literal_identity_card_bindings
+  reviewer_role_and_private_exposure_record
+  processing_counts
+  semantic_support_counts
+  independent_reconciliation_status
+
+Shared witness record, scoped to one physical source and retained bundle context:
+  witness_id
+  physical_source_sha256
+  opaque_block_handle
+  original_whole_block_anchor
+  original_dom_locator
+  selector: whole block, original row, original cell, or exact local text span
+  selector_text_sha256
+  exact_source_literal
+  source_and_actual_raster_artifact_bindings
+  qualified_view_receipt_binding
+
+An optional local text span uses offsets in the immutable projection text with
+its digest and retains the original whole-block context. It is not represented
+as an original HTML byte span unless that mapping is actually supplied and
+verified. Shared witnesses reduce repetition; they do not imply shared meaning.
+
+One entry record for every frozen bundle-occurrence entry:
+  key:
+    opaque_bundle_handle
+    opaque_occurrence_handle
+    immutable_entry_sha256
+  disposition: reviewed, reviewed_with_unknowns, or unreviewable
+  presentation:
+    status: visible, not_visibly_exposed, ambiguous, or unresolved_locator
+    witness_ids
+    rationale
+  attachments:
+    aspect
+    state
+    literal_or_null
+    witness_ids
+    rationale
+    alternatives_if_ambiguous
+  unknown_reason_codes
+
+Attachment aspects distinguish source row label or local prose clause, column
+heading, reported entity, population and explicit qualifications, visible period
+wording and temporal role, visible unit wording, and applicable definitions.
+Do not collapse these into one blanket bundle scope. An entry can have several
+explicitly sourced population qualifications without inventing a normalized
+financial population or taxonomy dimension.
+
+Each attachment state is one of:
+  supported
+  ambiguous
+  not_stated_in_fixed_projection
+  not_applicable
+  unreviewable
+
+Every state needs a short rationale. Supported relations need exact witnesses
+for both the wording and its attachment to this entry. Ambiguous alternatives
+must describe source-compatible attachments, not fabricated source facts.
+Unknown values remain null. Not-applicable requires an explicit reason; it must
+not conceal missing evidence. An unresolved locator cannot receive invented
+source support. A visible word or nearby heading alone does not establish its
+scope relation to every occurrence in the block.
+
+Source interpretation rules
+
+1. Inspect the presentation in its actual qualified view and complete retained
+   source context. Preserve split punctuation, parentheses, dashes, empty strings
+   and continuations as observed. Cite all needed presentation components without
+   computing a sign, value, decimal normalization, scaling conversion or tolerance.
+
+2. Bind table rows and columns through actual source structure and inspected
+   alignment. Preserve original labels, column-heading spans, row/cell spans,
+   heading groups, definitions and qualifications. Leave an unlabeled row
+   unlabeled; do not manufacture a total or infer it through arithmetic.
+
+3. For prose, bind each occurrence to its own clause and explicit referents.
+   Ordered phrases such as respectively require the complete ordering witnesses.
+   A paragraph containing several entities, dates or quantity kinds cannot receive
+   one automatic scope for all occurrences. Split statements require all retained
+   continuation witnesses that support the relation.
+
+4. Separate the cover issuer from the reported subject. An admitted literal
+   identity card identifies the physical report; it is not a default entity or
+   population for its tables. Preserve explicitly stated subjects, business
+   subsets, hypothetical qualifications, ownership relationships and reporting
+   treatments. No empty-dimension-to-consolidation inference, legal-name alias
+   conversion, financial default, or cross-namespace concept inference is allowed.
+
+5. Separate temporal roles: observation duration or instant, report-end wording,
+   hypothetical assumption date, recognition lag, disclosure date and other
+   explicitly stated roles. A shared heading may require different readings for
+   different rows. Preserve literal dates and duration wording; do not calculate
+   new start dates, infer fiscal labels from calendar dates, shift an observation
+   period by a reporting lag, or infer chronology from filenames.
+
+6. Cite visible unit wording and its scope, including a symbol, named currency,
+   scale or per-unit exception only when explicitly supported. Do not treat an
+   accounting framework, cover jurisdiction, familiar issuer or dollar symbol as
+   proof of an otherwise unstated currency. Do not inspect private unit helpers.
+
+7. Preserve repeated occurrences and all bundle memberships. Physical identity
+   may be checked through frozen handles and exact anchors, never through equal
+   numbers or similar labels. Do not transfer meanings across bundles merely
+   because they contain the same occurrence. Each bundle must expose the required
+   witnesses for its own attachment. Cross-source concept correspondence is a
+   separate unperformed task unless explicitly assigned under another frozen plan.
+
+Workflow after freeze and root approval
+
+Verify the exact frozen entry set and all required input digests before starting.
+If the projection population differs from the planned frozen population, report
+the discrepancy without silently changing the denominator or dropping entries.
+For every entry, inspect its presentation, retained context and applicable
+witnesses; record supported relations or explicit unknowns. Preserve unresolved
+locator and visibility cases in the ledger. Reconcile exact physical duplicates
+mechanically while retaining every per-bundle disposition and context boundary.
+
+Freeze the initial annotation ledger before any independent reconciliation.
+Retain initial disagreements, corrections and unresolved relations as separate
+records; never silently overwrite an earlier favorable or unfavorable judgment.
+No question, reference answer, evaluated prediction or baseline performance may
+condition the initial review or reconciliation. A later author receives only the
+separately approved author projection, not an unreviewed semantic ledger or
+privileged occurrence projection through convenience or shared file access.
+
+Completion and reporting
+
+Check exact key-set equality: every expected entry appears once in the annotation
+ledger, with no extra, missing or substituted entry. Validate that every witness
+resolves inside the unchanged fixed context and matches its bound source/text
+digest. Report processed/expected entries and dispositions separately from the
+number of supported, ambiguous, missing, inapplicable and unreviewable relations.
+These counts do not by themselves admit any fact, bundle, evidence pack or task.
+
+Keep source text, lexical quantities, identity values, detailed scope annotations
+and reconciliation material external in newly versioned private review artifacts.
+Public receipts contain only source-free counts, statuses, hashes, locators and
+bounded methodological explanations. Preserve previous artifacts and report
+model-role dependence and available annotation cost separately. This draft
+authorizes no annotation execution before the reviewed projection is frozen.

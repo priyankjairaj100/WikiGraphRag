@@ -1,0 +1,67 @@
+{
+  "schema_version": "reader_joint_scoring_independent_review_v19",
+  "status": "passed_authored_review",
+  "open_blockers": [],
+  "execution_authorized_by_review": false,
+  "scope": "Source-free per-cell joint scorer/common-view and deterministic permutation review; no natural grading or freeze.",
+  "code_bindings": {
+    "src/temporal_state/reader_joint_scoring_v19.py": "f9a59c7ea8b4646d5c6db83df3c16374ed9b789c7766af8c951e03a56a17b0c5",
+    "tests/test_reader_joint_scoring_v19.py": "ecfac6631f21807df70ecb91fa72e5d02a84ecae7c01d2a061a2295f8550a355",
+    "docs/reader_joint_scoring_contract_v19.txt": "5ddc847302e9c8e80c5c2d6dbf6abee81ad40b4f39c69e08d850dad4b1436574",
+    "src/temporal_state/reader_binding_v18.py": "6d45e3b3515ec7d09cd43bd168b99b1943a787278b31cc931c2b990642f5b343",
+    "docs/reader_binding_question_workflow_v17.txt": "a1afbba593f286d1067bc810c1321d5081348aa7fec80bc17327621ea89ba246",
+    "docs/reader_binding_reference_review_instructions_v17.txt": "276add4cc39cc71e1ab6900dde3dca95cab760ec0ed6085db019d003f09e39b6",
+    "results/reader_joint_scoring_authored_review_v19.json": "35eb1cf293bc59e4359d8025579fb72275e7f34d1763693aa3f79e0e9098d703",
+    "tests/test_reader_joint_scoring_independent_v19.py": "c8601dcf26db8406cc8a4a0748bbab82a4308250967d34243bd2532ec2779596"
+  },
+  "independent_tests": {
+    "command": "PYTHONPATH=src python -m unittest discover -s tests -p 'test_reader_joint_scoring_independent_v19.py' -v",
+    "tests_run": 4,
+    "tests_passed": 4,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds_observed": 0.005,
+    "cases": [
+      "Failed observed material remains a blindable execution_failed row, retains raw digest and unknown material-risk flag, and never earns joint/safe credit, in either arm.",
+      "Exact aliases collapse while another physical source and requested/extra claim denominators remain distinct.",
+      "Correlated six-aspect citation alternatives reject the same mixed set in proposal and direct common views.",
+      "An invalid refusal with material quantities cannot count as zero unsupported material or correct insufficiency."
+    ]
+  },
+  "owner_evidence": {
+    "receipt": "results/reader_joint_scoring_authored_review_v19.json",
+    "tests_run": 36,
+    "failures": 0,
+    "errors": 0,
+    "independently_rerun": false
+  },
+  "review_findings": {
+    "exact_value_and_six_aspect_scope_required": true,
+    "complete_expanded_occurrence_groups_whitelisted": true,
+    "whole_sufficient_citation_option_required": true,
+    "same_scope_value_alias_merge_for_all_arms": true,
+    "wrong_source_does_not_merge": true,
+    "extra_material_quantity_fails_joint": true,
+    "limited_or_unexecuted_or_failed_or_invalid_never_joint_passes": true,
+    "failed_observed_material_not_dropped_or_safe": true,
+    "common_projection_omits_arm_and_finalizer_diagnostics": true,
+    "permutation_independent_of_output_content": true,
+    "reference_admission_external": true,
+    "no_file_or_model_access_in_scorer_module": true
+  },
+  "metric_boundaries": [
+    "Joint correctness is per supplied cell, requires every requested claim and no extra material claim, and is distinct from partial claim matches.",
+    "Pack-supported wrong-source or extra claims may have unsupported_material_answer=false while joint_correct=false. This flag is not semantic correctness or general safety.",
+    "Malformed/failed observed content requires separate immutable material review; null risk must not be coerced to zero risk.",
+    "No full54 planned-cell ledger, scheduler, denominator aggregation or conditional-risk computation is implemented. Later frozen integration must retain planned/admitted/executed/unavailable populations and prevent unresolved material from satisfying zero-risk gates.",
+    "Reference shape validation does not establish sound/complete aliases, question meaning or sufficient witnesses.",
+    "Common formatting removes explicit method labels; perfect arm indistinguishability is not established."
+  ],
+  "reviewed_change_note": "Root identified the failed-plus-partial exception/drop gap during development; final code now retains execution_failed and unresolved_requires_review. This reviewer did not execute a pre-fix failing test.",
+  "natural_source_artifacts_read": 0,
+  "natural_questions_read": 0,
+  "natural_references_read": 0,
+  "natural_predictions_read": 0,
+  "native_processes": 0,
+  "actual_grading_runs": 0
+}
