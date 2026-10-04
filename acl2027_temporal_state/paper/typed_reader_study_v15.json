@@ -1,0 +1,814 @@
+{
+  "schema_version": "typed_reader_manuscript_v15",
+  "title": "A Typed Source Baseline for Versioned Evidence",
+  "subtitle": "Exact numeric decoding, reported bindings and the limits of structured lookup",
+  "date": "4 October 2026",
+  "status": "completed_source_only_diagnostic",
+  "claims_scope": {
+    "novelty": false,
+    "natural_qa_gain": false,
+    "full_xbrl_conformance": false,
+    "generally_strong_reader": false
+  },
+  "abstract": "A conventional typed-source baseline can isolate numeric decoding and reported bindings from language-model reading. We evaluate every one of 23,651 Inline XBRL nonFraction occurrences in twelve previously inspected filing objects. The initial implementation rejected six ASCII-declared files, leaving 14,778 occurrences unprocessed; that failure is preserved. A separately frozen encoding amendment processes all twelve sources. Its 23,519 supported numeric conversions agree exactly with a separate adapter using pinned Arelle 2.46.0 transformation functions; 16 nil and 116 unsupported occurrences remain outside that comparison. Ten additional reported bindings are unresolved. Fixed structured-lookup probes verify internal integration only. This is a source-only baseline diagnostic, with no natural QA predictions, full-taxonomy validation, general reader-competence or novelty claim.",
+  "sections": [
+    {
+      "id": "rationale",
+      "title": "1. Why a typed baseline comes first",
+      "paragraphs": [
+        "The v14 study reused eight development questions. Joint content, scope and citation success was 1/8, 0/8, 1/8 and 1/8 for ordinary, paired, parent and closure retrieval. On the sixteen contexts shared with the prior reader comparison, the new checkpoint produced 1/16 joint successes versus 2/16 previously. The short authored controls passed, but did not establish reliable reading of natural contexts.",
+        "The source-only retrieval follow-up likewise did not justify promoting a new retriever: complete support was 2/8 for paired BM25 and 3/8 for BM25 closure, versus 1/8 for each tested dense or reciprocal-rank-fusion variant. These observations motivate diagnosing source-defined bindings before another model substitution.",
+        "The fixed population is twelve filing objects in six issuer histories, with 23,651 nonFraction occurrences inventoried in v14. All twelve sources were recovered with their original content hashes. Every occurrence remains in the denominator, including nil, hidden and nested occurrences. These sources are already inspected development material. The retained Berkshire filename/fiscal-year mismatch prevents treating filename years as reporting years."
+      ],
+      "tables": []
+    },
+    {
+      "id": "method",
+      "title": "2. Reader and comparison contract",
+      "page_break_before": true,
+      "paragraphs": [
+        "The reader separates three questions: can the declared lexical value be normalized exactly; can its reported aspects be linked locally; and what semantics remain unresolved without a taxonomy or rendered evidence? A successful result in one layer does not imply success in the others. The supported profile is fixed from standards and the earlier format inventory before this corpus run.",
+        "Numerical decoding resolves the expanded transformation QName, applies its supported lexical rule, then scale and sign using exact arithmetic. Nil carries no numeric value. Accuracy attributes are retained separately from magnitude. Engineering bounds and unsupported transformations produce explicit statuses, including the initially unsupported SEC word-number transform.",
+        "Reported bindings preserve the entity identifier and scheme, period kind and lexemes, dimensions and their placement, expanded unit measures with multiplicity, concept QName and physical source hash. Identical text under different namespaces or schemes is not collapsed. Empty explicit dimensions do not establish consolidated scope.",
+        "The separate numerical adapter invokes the pinned Arelle 2.46.0 transformation dispatcher through its own XML and normalization implementation. It does not load the discoverable taxonomy set (DTS) or run the full Arelle validator. Agreement concerns aligned supported numeric conversions only; shared specification mistakes and financial errors remain possible."
+      ],
+      "tables": [
+        "layers"
+      ],
+      "after_tables": [
+        "The standards provenance record identifies the exact versions of Inline XBRL 1.1, XBRL 2.1, Dimensions 1.0 and the transformation registries, plus the Arelle wheel and inspected implementation digests. The runtime receipt separately records the actual dependency environment."
+      ]
+    },
+    {
+      "id": "results",
+      "title": "3. Full-population execution results",
+      "page_break_before": true,
+      "paragraphs": [
+        "The initial frozen run rejected six ASCII-declared files. It retained all 23,651 occurrences in the denominator, including 14,778 missing reader observations. A separately frozen v15.1 amendment accepts ASCII or US-ASCII declarations only when all original bytes are ASCII. Original bytes, the numerical rules, sources, old implementation and failed results are preserved. This is a post-inspection engineering correction, not a pristine confirmatory run.",
+        "The amended run observes every expected occurrence. All 23,519 common supported numeric conversions agree exactly. The other 132 occurrences comprise 16 nil and 116 unsupported conversions, and are not counted as numerical successes."
+      ],
+      "tables": [
+        "population",
+        "statuses"
+      ],
+      "after_tables": [
+        "Both attempts have zero recorded exact numeric disagreements among their common normalized rows. The amended result has no missing occurrences, alignment failures or dependency-validation errors. These are local conversion checks, not financial correctness or answer accuracy. The status names differ for the same unsupported set: the reader uses unsupported and the reference uses unsupported_format.",
+        "A post-execution record comparison finds all 23,651 reference records unchanged and all 8,873 previously observed typed records unchanged; the amended run newly processes 14,778 records. This descriptive check is not a new prespecified endpoint or a proof of general equivalence."
+      ]
+    },
+    {
+      "id": "lookup",
+      "title": "4. Binding and structured-lookup outcomes",
+      "page_break_before": true,
+      "paragraphs": [
+        "Numerical normalization and local binding resolution are different outcomes. The amended run resolves reported aspects for 23,641 occurrences and leaves 10 unresolved. A usable numeric fact needs both a normalized value and resolved reported aspects: 23,509 occurrences meet that local contract. This is still not taxonomy validation or proof of source-defined financial scope.",
+        "A lookup request supplies a physical source version and explicit reported aspects. It does not interpret a natural-language question, choose a document, resolve aliases or map annual taxonomy namespaces. The sample uses the first eight distinct eligible reported-aspect keys in XML fact order per source. All 96 probes retain the originating occurrence and reject an incorrect physical source hash. The keys come from the records being queried, so this is self-consistency, not independent QA gold."
+      ],
+      "tables": [
+        "binding",
+        "lookup"
+      ],
+      "after_tables": [
+        "The 126 overall unresolved facts consist of 116 unsupported transformations and 10 numerically normalized facts with unresolved typed-dimension semantics. The 16 nil occurrences remain nonnumeric. Of the 96 lookup probes, 80 return a unique reported value and 16 retain multiple equal-valued occurrences. Their separate anchors are preserved; multiplicity is not summed. These issue and lookup categories are post-execution descriptive analysis."
+      ]
+    },
+    {
+      "id": "verification",
+      "title": "5. Verification and unresolved semantics",
+      "page_break_before": true,
+      "paragraphs": [
+        "The amended execution verifies a fact, context and unit anchor for each of the 23,651 occurrences. Including repeated dependency-anchor checks, it records 94,895 successful byte-span checks. This latter number counts checks, not distinct source spans. The runner shares an Expat anchoring family with the reader; lxml provides a separate DOM traversal. It is not an independent implementation of every anchoring step.",
+        "A separate-agent audit replays recorded counts, arithmetic, metadata and source bytes without importing or invoking the reader, runner, inventory helper or reference adapter. It completes 763,240 checks with no failures for v15.1; the original failure record likewise passes 343,357 consistency checks. An audit pass validates faithful failure accounting as well as successful records. It does not turn the failed first attempt into a successful reader.",
+        "The amended verification receipt records 610 passing tests in the full retained/authored suite, plus a separate replay of the 68 previous reader controls against the amended implementation. The 68 are repeated controls, not additional newly authored cases. These engineering tests cover numerical, scope, duplicate, resource and encoding contracts; they are not natural QA questions or independent financial annotations.",
+        "The reference comparison uses standard transformation functions, not full DTS validation. Concept types, period-type compatibility, default dimensions, domains, hypercubes and concept/unit restrictions remain unresolved. An empty explicit dimension list does not prove consolidated scope. Unsupported formats are retained rather than guessed.",
+        "Exact source tags and anchors do not prove browser-visible evidence, financial correctness, restatement meaning or question sufficiency. Hidden-marker checks are not visibility tests. Conflicting duplicate values block unique selection; accuracy-aware reconciliation remains a separate validated operation. The replay auditor also reads recorded DOM locators and aspect-resolution masks, so it does not independently certify the semantics of those records."
+      ],
+      "tables": [],
+      "after_tables": []
+    },
+    {
+      "id": "decision",
+      "title": "6. Research decision and reproducibility",
+      "page_break_before": true,
+      "paragraphs": [
+        "This study builds a conventional baseline component, not the proposed contribution. The longer-term hypothesis remains that evidence selection should distinguish answer-changing candidate bindings under a budget. The typed component can later supply explicit candidate aspects and auditable source witnesses, but automatic hypothesis proposal, semantic verification and their recall/error trade-off are still unimplemented research requirements.",
+        "The v16 proposal specifies automatic competing-binding proposals, an anchored supported/contradicted/unresolved verifier, and a two-bundle lookahead selector to address complementary witnesses. These are planned components. The decisive comparison holds the proposer, source pool, actions, verifier, reader and total costs fixed while changing the acquisition criterion. Generic sufficiency control, standard source-aspect filtering and a competent direct reader remain required baselines.",
+        "Before scaling, the proposal calls for independently reviewed complete-evidence reader competence and candidate-error pilots, followed by a separately frozen history-level evaluation. It keeps a machine-tag-assisted track distinct from reader-visible text/table evidence. The six known filing pairs and old QA histories remain development material. No v16 model execution, held-out QA result or novelty claim is supplied here.",
+        "The public artifact contains source and dependency pins, the fixed protocol, aggregate statuses, discrepancy locators, tests, audits and the manuscript source. Source-derived numeric records and original filing bytes remain external under the existing redistribution boundary. No new language-model calls or natural QA predictions belong to this diagnostic.",
+        "This addendum preserves the negative v14 outcomes and records only completed v15 checks. Its PDF is rendered with ReportLab; the editable TeX uses a generic article layout and is not an ACL-template compilation. A broad stronger-reader, natural QA gain, novelty or submission-readiness claim would require additional evidence."
+      ],
+      "tables": [
+        "sources"
+      ],
+      "after_tables": [
+        "Primary standards and maintained-source references are recorded with retrieval dates and hashes in data/provenance/typed_reader_standards_v15.json. They include Inline XBRL 1.1 (July 2026 errata), XBRL 2.1, Dimensions 1.0, transformation registries 3-5, and the pinned Arelle implementation. The prospective algorithmic discussion and its primary-paper citations are in docs/algorithmic_next_stage_v16_proposal.txt."
+      ]
+    }
+  ],
+  "tables": {
+    "layers": {
+      "header": [
+        "Layer",
+        "A successful local check establishes",
+        "Still unresolved"
+      ],
+      "widths": [
+        83,
+        193,
+        213
+      ],
+      "rows": [
+        [
+          "Numeric conversion",
+          "Declared supported transform, scale and sign yield an exact value",
+          "Taxonomy type and financial correctness"
+        ],
+        [
+          "Reported binding",
+          "Local context/unit aspects and source anchors are retained",
+          "Default dimensions, domain validity and semantic scope"
+        ],
+        [
+          "Structured lookup",
+          "Supplied source/aspect request retrieves matching observations",
+          "Question interpretation and answer sufficiency"
+        ]
+      ],
+      "caption": "Table 1. Component boundaries. These layers must not be collapsed into a single reader-accuracy claim."
+    },
+    "population": {
+      "header": [
+        "Population or execution check",
+        "Initial v15",
+        "Amended v15.1"
+      ],
+      "widths": [
+        279,
+        100,
+        110
+      ],
+      "rows": [
+        [
+          "Frozen sources",
+          "12",
+          "12"
+        ],
+        [
+          "Expected occurrences",
+          "23651",
+          "23651"
+        ],
+        [
+          "Files matching occurrence count",
+          "6",
+          "12"
+        ],
+        [
+          "Reader observations",
+          "8873",
+          "23651"
+        ],
+        [
+          "Reference observations",
+          "23651",
+          "23651"
+        ],
+        [
+          "Missing reader occurrences",
+          "14778",
+          "0"
+        ],
+        [
+          "Common normalized population",
+          "8838",
+          "23519"
+        ],
+        [
+          "Exact numeric agreements",
+          "8838",
+          "23519"
+        ],
+        [
+          "Nil pairs; excluded from comparison",
+          "8",
+          "16"
+        ],
+        [
+          "Other observed cases outside comparison",
+          "27",
+          "116"
+        ]
+      ],
+      "caption": "Table 2. Both complete execution records retain the same population. Zero-valued counters omitted by the result schema are displayed as zero."
+    },
+    "statuses": {
+      "header": [
+        "Numeric status",
+        "Reader v15.1",
+        "Reference v15.1"
+      ],
+      "widths": [
+        259,
+        115,
+        115
+      ],
+      "rows": [
+        [
+          "Normalized",
+          "23519",
+          "23519"
+        ],
+        [
+          "Nil",
+          "16",
+          "16"
+        ],
+        [
+          "Unsupported transform",
+          "116",
+          "116"
+        ]
+      ],
+      "caption": "Table 3. Full-population numeric status totals: 23,651 for each implementation. Unsupported status labels differ, but retain the same occurrences."
+    },
+    "lookup": {
+      "header": [
+        "Integration check",
+        "Initial v15",
+        "Amended v15.1"
+      ],
+      "widths": [
+        279,
+        100,
+        110
+      ],
+      "rows": [
+        [
+          "Distinct eligible keys tested",
+          "48",
+          "96"
+        ],
+        [
+          "Originating occurrence retained",
+          "48",
+          "96"
+        ],
+        [
+          "Wrong source hash rejected",
+          "48",
+          "96"
+        ]
+      ],
+      "caption": "Table 5. Fixed source-derived lookup probes. The initial attempt tested six processed sources; the amended attempt tests all twelve."
+    },
+    "sources": {
+      "header": [
+        "Record",
+        "Role"
+      ],
+      "widths": [
+        193,
+        296
+      ],
+      "rows": [
+        [
+          "docs/reproduce_v15.txt",
+          "Execution, audit and test commands; external-data requirements"
+        ],
+        [
+          "docs/typed_reader_encoding_amendment_v15_1.txt",
+          "Post-inspection correction and preserved initial failure"
+        ],
+        [
+          "data/typed_reader_v15/",
+          "Source recovery and both frozen execution protocols"
+        ],
+        [
+          "results/typed_reader_execution_v15*.json",
+          "Both immutable execution outcomes; companion audit records"
+        ],
+        [
+          "docs/algorithmic_next_stage_v16_proposal.txt",
+          "Prospective automatic proposal, verification and acquisition study"
+        ]
+      ],
+      "caption": "Table 6. Reproduction records are versioned in the repository; the claim ledger records exact paths and hashes."
+    },
+    "binding": {
+      "header": [
+        "Local status family",
+        "Count"
+      ],
+      "widths": [
+        350,
+        139
+      ],
+      "rows": [
+        [
+          "Binding: reported aspects resolved",
+          "23641"
+        ],
+        [
+          "Binding: unresolved",
+          "10"
+        ],
+        [
+          "Overall: normalized and binding resolved",
+          "23509"
+        ],
+        [
+          "Overall: nil",
+          "16"
+        ],
+        [
+          "Overall: unresolved",
+          "126"
+        ]
+      ],
+      "caption": "Table 4. Reported binding and overall fact status are separate partitions of all 23,651 occurrences. They must not be substituted for numeric agreement."
+    }
+  },
+  "evidence_bindings": {
+    "data/provenance/algorithmic_next_stage_v16_proposal.json": "4ac94032a96ec553a73673f0efb50ad49e6d4cd573c7623e01c3ba996f5e0ae5",
+    "data/provenance/typed_reader_standards_v15.json": "440204a87225c5aaa44501c4655b9584adf6126d0fa7c649fbc0763d5d5a092e",
+    "data/typed_reader_v15/execution_protocol.json": "ab9701b18ab1a57f883fa3cc7bb67f88b039fe6da610bf4e9d6cb24fc886f3e7",
+    "data/typed_reader_v15/execution_protocol_v15_1.json": "de96dc952e850ca8360e12b8d58b2daf1d515f06ab6de6460203e311cb4b9b24",
+    "docs/algorithmic_next_stage_v16_proposal.txt": "c1a1cfab7a393503bb1674f9f1a35e0fb191c9a98fc553c43b95e50c70573917",
+    "docs/reproduce_v15.txt": "8f72e89a4546528be02f0ae88d0542e0a0ef4e66d44b9f51c4898f297caca04b",
+    "docs/typed_reader_contract_v15.txt": "305aa0c76e5d3fad765687c7e0aa958f77412a488ff9966689e32aad7f34f395",
+    "docs/typed_reader_encoding_amendment_v15_1.txt": "b26027b06509708f0313987bcc81921360242fa511740232067aa083a1e1adb3",
+    "docs/typed_reader_standards_v15.txt": "e1c44cdcb33502884d605ea83eb5707fbc3fc8113422cd0dae99ac7263f8cc36",
+    "docs/typed_reader_study_design_v15.txt": "8acd982fede158cb409354a5fe99bdc9457e8b567a440907222211e7b2220dee",
+    "results/dense_source_support_summary_v14.json": "9f399efa87dab3d37592b35f48e671d5e9f486301d2ac6b063803edba5b3f316",
+    "results/reference_runtime_v15.json": "745953aa828b127e4f5dc16c10a8b726f5dc603f2930d9f9ea0862049991889b",
+    "results/source_recovery_v15.json": "6013d8b250c1d50d571f8f68d8ce86da120b09fa64d3f55a8158ce4c4f6705cd",
+    "results/structured_study_summary_v14.json": "545ad6ad66b0cda132b4a80890e84835cc5f95e143b62f09bdfb753016cdea78",
+    "results/typed_execution_audit_v15.json": "8edb027d30c6887166924dd7385830dfd0c5119c7a13580e573fb83db9d2cc42",
+    "results/typed_execution_audit_v15_1.json": "d2f01b0dc4178a7b8b36ffdbf48378ec6471ffb1311afc3b704292d1a4058b40",
+    "results/typed_reader_code_review_v15.json": "1d3efb33432819c29c86366add3c0412b0f4787560f5aa6499bd3cb5dd56089e",
+    "results/typed_reader_execution_v15.json": "ab5903e5c66b88ae9c2b1dd37af17923111320e922b4b1f395f85bd5c2b49503",
+    "results/typed_reader_execution_v15_1.json": "c918db02be9ccaba467caf93437a9a7efbd13f3717605693229c956a1c63bd25",
+    "results/unit_verification_v15_1.json": "57e1ca544fe3de9899358d0ebce4b9ff2ed64a4c55c77dbbbf1a3ce291d5b2ff",
+    "results/typed_reader_analysis_v15.json": "78c04d5b9a7e62912f37b851a7bdc6aae4c404d5a3943531ba9240f058414c83"
+  },
+  "cell_bindings": [
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "source_denominator"
+      ],
+      "table": "population",
+      "row": 0,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "source_denominator"
+      ],
+      "table": "population",
+      "row": 0,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "expected_nonfraction_denominator"
+      ],
+      "table": "population",
+      "row": 1,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "expected_nonfraction_denominator"
+      ],
+      "table": "population",
+      "row": 1,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "totals",
+        "counts",
+        "count_matches_expected"
+      ],
+      "table": "population",
+      "row": 2,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "counts",
+        "count_matches_expected"
+      ],
+      "table": "population",
+      "row": 2,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "totals",
+        "counts",
+        "reader_observed"
+      ],
+      "table": "population",
+      "row": 3,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "counts",
+        "reader_observed"
+      ],
+      "table": "population",
+      "row": 3,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "totals",
+        "counts",
+        "reference_observed"
+      ],
+      "table": "population",
+      "row": 4,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "counts",
+        "reference_observed"
+      ],
+      "table": "population",
+      "row": 4,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "totals",
+        "counts",
+        "missing_occurrence_pairs"
+      ],
+      "table": "population",
+      "row": 5,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "counts",
+        "missing_occurrence_pairs"
+      ],
+      "table": "population",
+      "row": 5,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "totals",
+        "counts",
+        "common_normalized_population"
+      ],
+      "table": "population",
+      "row": 6,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "counts",
+        "common_normalized_population"
+      ],
+      "table": "population",
+      "row": 6,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "totals",
+        "counts",
+        "exact_numeric_agreements"
+      ],
+      "table": "population",
+      "row": 7,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "counts",
+        "exact_numeric_agreements"
+      ],
+      "table": "population",
+      "row": 7,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "totals",
+        "counts",
+        "both_nil_no_numeric_comparison"
+      ],
+      "table": "population",
+      "row": 8,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "counts",
+        "both_nil_no_numeric_comparison"
+      ],
+      "table": "population",
+      "row": 8,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "totals",
+        "counts",
+        "outside_common_normalized_population"
+      ],
+      "table": "population",
+      "row": 9,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "counts",
+        "outside_common_normalized_population"
+      ],
+      "table": "population",
+      "row": 9,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "reader_status_counts",
+        "normalized"
+      ],
+      "table": "statuses",
+      "row": 0,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "reference_status_counts",
+        "normalized"
+      ],
+      "table": "statuses",
+      "row": 0,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "reader_status_counts",
+        "nil"
+      ],
+      "table": "statuses",
+      "row": 1,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "reference_status_counts",
+        "nil"
+      ],
+      "table": "statuses",
+      "row": 1,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "reader_status_counts",
+        "unsupported"
+      ],
+      "table": "statuses",
+      "row": 2,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "reference_status_counts",
+        "unsupported_format"
+      ],
+      "table": "statuses",
+      "row": 2,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "binding_status_counts",
+        "reported_aspects_resolved"
+      ],
+      "table": "binding",
+      "row": 0,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "binding_status_counts",
+        "unresolved"
+      ],
+      "table": "binding",
+      "row": 1,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "reader_fact_status_counts",
+        "normalized"
+      ],
+      "table": "binding",
+      "row": 2,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "reader_fact_status_counts",
+        "nil"
+      ],
+      "table": "binding",
+      "row": 3,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "reader_fact_status_counts",
+        "unresolved"
+      ],
+      "table": "binding",
+      "row": 4,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "totals",
+        "lookup_counts",
+        "selected_distinct_keys"
+      ],
+      "table": "lookup",
+      "row": 0,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "lookup_counts",
+        "selected_distinct_keys"
+      ],
+      "table": "lookup",
+      "row": 0,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "totals",
+        "lookup_counts",
+        "seed_candidate_included"
+      ],
+      "table": "lookup",
+      "row": 1,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "lookup_counts",
+        "seed_candidate_included"
+      ],
+      "table": "lookup",
+      "row": 1,
+      "column": 2,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "keys": [
+        "totals",
+        "lookup_counts",
+        "wrong_source_sha_blocked"
+      ],
+      "table": "lookup",
+      "row": 2,
+      "column": 1,
+      "zero_if_absent": true
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "keys": [
+        "totals",
+        "lookup_counts",
+        "wrong_source_sha_blocked"
+      ],
+      "table": "lookup",
+      "row": 2,
+      "column": 2,
+      "zero_if_absent": true
+    }
+  ],
+  "editorial_state": {
+    "final_public_summaries_integrated": true,
+    "audits_integrated": true,
+    "initial_failure_preserved": true,
+    "external_source_values_read_by_writer": false,
+    "expected_page_count_range": [
+      5,
+      6
+    ]
+  },
+  "execution_bindings": [
+    {
+      "source": "results/typed_reader_execution_v15.json",
+      "role": "preserved_initial_attempt",
+      "expected_status": "complete_with_technical_failures"
+    },
+    {
+      "source": "results/typed_reader_execution_v15_1.json",
+      "role": "separately_frozen_encoding_amendment",
+      "expected_status": "complete"
+    }
+  ]
+}

@@ -22,13 +22,13 @@ The original package is retained unchanged as a historical submission. Its READM
 
 ## Current research status
 
-Current checkpoint **v0.14** completes a structural retrieval and reader comparison: **40 native completions**, comprising eight authored controls and 32 answers over eight development questions from two histories. Joint content, scope and citation correctness is **1/8, 0/8, 1/8 and 1/8** for ordinary, paired, parent and closure contexts. Qwen3.5-4B Q5_K_M is a failed reader upgrade candidate in the matched-context comparison; two output-limit failures are retained.
+Current checkpoint **v0.15** adds a bounded typed reader for numeric facts and their reported entity, period, unit, dimensions and physical source version. After a separately frozen ASCII-support amendment, all **12 filing objects and 23,651 fact occurrences** are processed. **23,519 common supported numeric values agree exactly** with the pinned Arelle transformation adapter; **16 nil and 116 unsupported facts** remain separate. Ten typed-dimension bindings remain unresolved, leaving **23,509 facts** that pass both local numeric and reported-binding layers.
 
-The corpus covers 550 PDF pages and 2,306 chunks. A separate **48-context source-coverage diagnostic** finds no complete-evidence improvement from the pinned compact dense encoder or RRF: each covers 1/8 questions, versus 2/8 for paired BM25 and 3/8 with structural closure. No new QA calls are attributed to this diagnostic. **484 unit tests, 1,348 main-study checks and 983 dense-execution checks pass.** Mechanical checks do not establish semantic correctness.
+The original run rejected six ASCII-declared files and left 14,778 reader occurrences missing. Its code, protocol and full-denominator result are preserved beside the amendment. **610 unit tests**, a replay of 68 earlier controls against the amended reader, **96 source-derived lookup checks**, and independent record/byte audits are documented. These are engineering and source-only checks, with **zero new natural QA predictions**; they do not establish full taxonomy conformance or a stronger natural-language reader.
 
-Start with the [working paper PDF](acl2027_temporal_state/paper/retrieval_reader_upgrade_v14.pdf), [v0.14 research update](acl2027_temporal_state/docs/research_update_v14.txt), and [current project state](acl2027_temporal_state/PROJECT_STATE.json). Editable paper source, bibliography and a claim ledger are included. This is a development draft, not a submission-ready paper.
+Start with the [typed-reader addendum](acl2027_temporal_state/paper/typed_reader_study_v15.pdf), [research update](acl2027_temporal_state/docs/research_update_v15.txt), and [project state](acl2027_temporal_state/PROJECT_STATE.json). The [next algorithmic proposal](acl2027_temporal_state/docs/algorithmic_next_stage_v16_proposal.txt) tests retrieval of evidence that distinguishes competing year/unit/entity/version bindings against strong structured and generic sufficiency baselines. Automatic proposal, verification and natural benefit remain unestablished.
 
-The next gate is a typed source-binding reader that verifies the year, unit, entity and version attached to each value, followed by retrieval of witnesses that distinguish answer-changing alternatives. A selector scaffold passes 14 authored tests; automatic proposal, verification and natural benefit remain unestablished. Twelve fresh filing objects and their Inline XBRL links have been acquired and audited for source feasibility, without creating an admitted benchmark. The earlier nondirect-propagation route remains stopped.
+The [v0.14 reader and retrieval results](acl2027_temporal_state/paper/retrieval_reader_upgrade_v14.pdf) remain negative development findings. The earlier nondirect-propagation route stays stopped. Current PDFs are working research addenda, not a submission-ready ACL manuscript.
 
 ## Reproduce and verify
 
@@ -37,11 +37,12 @@ From the repository root:
 ```bash
 python3 scripts/verify_repository.py
 cd acl2027_temporal_state
-PYTHONPATH=src python3 -m unittest discover -s tests -q
-python3 scripts/verify_structured_study_v14.py
+mkdir -p ../../tmp
+PYTHONDONTWRITEBYTECODE=1 TMPDIR=../../tmp PYTHONPATH=EXTERNAL_ARELLE_RUNTIME:src python3 -m unittest discover -s tests -q
+python3 scripts/verify_structured_study_v14.py  # Retained v14 metadata audit
 ```
 
-The checkpoint's [reproduction guide](acl2027_temporal_state/docs/reproduce_v14.txt) distinguishes portable checks from checks requiring exact external working inputs. For the original implementation, use its [original README](original_submission/code-and-data/README.md); dependency installation and original experiment reruns are separate from the rework's unit tests.
+The checkpoint's [reproduction guide](acl2027_temporal_state/docs/reproduce_v15.txt) distinguishes portable checks from checks requiring exact external working inputs. For the original implementation, use its [original README](original_submission/code-and-data/README.md); dependency installation and original experiment reruns are separate from the rework's unit tests.
 
 Model weights, runtime binaries, temporary caches, unbundled third-party full-text captures and private review correspondence are outside this repository. Deliberately packaged replay caches and permitted SEC filing inputs are retained. Some historical provenance records contain the original execution paths; this import does not rewrite frozen evidence to pretend a different execution environment.
 

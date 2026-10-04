@@ -494,7 +494,7 @@
       "target_date": "2026-10-10",
       "status": "completed",
       "acceptance": "Checklocalresource feasibility oravailablecloudpath, pinassets/runtime, token/contextbudgets andbounded cost before execution. Tiny0.6B technicalcontrol is notstrongbaseline. ExistingcloudJobs/credit limitationremainsunresolved.",
-      "progress": "Official pinned Qwen3-4B Q8_0 ran locally under 5.5 GiB AS with full 2520–2546-token prompts. Sixteen matched scores plus one discarded response and one authored smoke are accounted for; exact external/tokenizer and independent native-artifact audits pass. This execution path does not establish a strong contextual baseline."
+      "progress": "Official pinned Qwen3-4B Q8_0 ran locally under 5.5 GiB AS with full 2520\u20132546-token prompts. Sixteen matched scores plus one discarded response and one authored smoke are accounted for; exact external/tokenizer and independent native-artifact audits pass. This execution path does not establish a strong contextual baseline."
     },
     {
       "id": "G02",
@@ -593,7 +593,7 @@
       "target_date": "2026-10-17",
       "acceptance": "Executable stronger reader with reviewed domain controls and frozen cost/resource bounds; matched structural and metadata baselines with all source attachments charged to budget. No promotion of conversational annotation to pinned model output.",
       "plan": "docs/acl2027_execution_plan_v13.txt",
-      "progress": "v14 completed structural baseline,8controls and32answers with Qwen3.5-4BQ5_K_M; reader failed upgrade gate (matched1/16 vs2/16). Dense/RRF48sourcecontexts also failed complete-coverage improvement. Adequate natural reader remains unmet."
+      "progress": "v14 completed structural baseline,8controls and32answers with Qwen3.5-4BQ5_K_M; reader failed upgrade gate (matched1/16 vs2/16). Dense/RRF48sourcecontexts also failed complete-coverage improvement. Adequate natural reader remains unmet. v15 establishes bounded exact numeric reading only; no new LM reader or natural QA evaluation. Adequacy gate remains unmet."
     },
     {
       "id": "D11",
@@ -631,9 +631,15 @@
       "depends_on": [
         "E07"
       ],
-      "status": "pending",
+      "status": "in_progress",
       "priority": "highest_research_priority",
-      "acceptance": "Source-exact year/unit/entity/version bindings; correct numeric normalization and unresolved cases; realistically long complete-context controls and fresh reviewed development references. XBRL pointer presence alone is insufficient."
+      "acceptance": "Source-exact year/unit/entity/version bindings; correct numeric normalization and unresolved cases; realistically long complete-context controls and fresh reviewed development references. XBRL pointer presence alone is insufficient.",
+      "progress": "v15/v15.1 processed all 12 filings and 23,651 facts: 23,519 exact numeric agreements, 16 nil, 116 unsupported and 10 unresolved typed-dimension bindings; 96 source-derived lookup probes passed. All 610 tests and 763,240 amended audit checks pass. The original six ASCII rejections are retained. Full-DTS/visual semantics, realistic complete-context natural-language controls and fresh independent references remain pending; the overall gate is not complete.",
+      "results": [
+        "results/typed_reader_execution_v15.json",
+        "results/typed_reader_execution_v15_1.json",
+        "results/typed_execution_audit_v15_1.json"
+      ]
     },
     {
       "id": "M13",
@@ -644,7 +650,9 @@
       ],
       "status": "pending",
       "priority": "high",
-      "acceptance": "Source-only proposals, answer-changing alternatives, explicit unknowns, gold-independent inference; report candidate recall and false elimination. Existing14 authored selector tests are only scaffold contracts."
+      "acceptance": "Source-only proposals, answer-changing alternatives, explicit unknowns, gold-independent inference; report candidate recall and false elimination. Existing14 authored selector tests are only scaffold contracts.",
+      "plan": "docs/algorithmic_next_stage_v16_proposal.txt",
+      "progress": "Literature-grounded automatic observed-binding proposal, charged three-valued verification and two-bundle acquisition design recorded; no automatic proposal/verification model run or measured recall yet."
     },
     {
       "id": "E08",
@@ -659,6 +667,6 @@
       "acceptance": "Same candidates/reader/source access and charged retrieval, proposal, verification and token budgets; preregister primary measures and failures; independent history/issuer evaluation with meaningful uncertainty."
     }
   ],
-  "updated": "2026-10-03",
-  "current_focus": "Failed reader and compact dense/RRF upgrade candidates are fully recorded. Establish a typed structured-source reader before testing budgeted discriminative source witnesses."
+  "updated": "2026-10-04",
+  "current_focus": "Bounded typed numeric/source-binding baseline completed with preserved failure and encoding amendment. Next establish complete-evidence reader competence and automatic proposal/verification before matched-cost evidence acquisition."
 }

@@ -1,0 +1,84 @@
+Typed numeric reader: standards boundary and reference processor v15
+Reviewed 2026-10-04. Specification and maintained-source review only. This note did not inspect filing values, QA references, model outputs, or reader results. Recommendations below are not a claim of implemented functionality or XBRL conformance.
+
+Decision
+
+Build a conventional, bounded decoder of declared Inline XBRL aspects first. Distinguish a decoded numeric assertion from a taxonomy-valid fact and from a correct answer. Use a pinned Arelle transformation implementation as an independent numerical comparison. Preserve unsupported occurrences and their exact anchors. Never turn an unsupported feature into a guessed value or scope. This is a baseline, with no novelty claim.
+
+Reference processor
+
+PyPI arelle-release 2.46.0 was published 2026-09-30. The wheel is 6,129,205 bytes; SHA256 c1105ea4dcd9e77dab5b4d59552a7ba571f481cc6cb61412bef9e2c4890be96b. It requires Python >=3.10. The corresponding FunctionIxt.py is SHA256 ecf6a1098a9ac072d7100864463b57f85a7742d349cafd86de54b5b5249b66aa. Runtime dependencies also need a recorded environment; the wheel pin alone is not an environment lock. [PYPI, ARELLE_SOURCE]
+
+The supported full application interface is arelle.api.Session plus RuntimeOptions. Use entrypointFile, internetConnectivity='offline', validate=True, keepOpen=True and explicit local taxonomy packages; obtain models and validation logs before closing the Session. Only one Session may run concurrently per process. Successful loading or a non-null xValue is not a clean validation report. Missing DTS resources must remain failures/unresolved. [API]
+
+For the narrower transformation comparison, the pinned internal dispatcher is FunctionIxt.ixtNamespaceFunctions[namespace_uri][local_name](text). It performs the declared string transform, not the full Inline conversion, aspect validation, taxonomy checking, or accuracy reasoning. Arelle ModelInlineValueObject.rawValue collapses XML whitespace before a formatted value reaches this dispatcher. The wrapper must account for this explicitly. Custom SEC transforms use a separate EDGAR/transforms plugin; unsupported namespaces must not fall back to a similarly named standard transform. [ARELLE_SOURCE, SEC]
+
+Numeric boundary
+
+- Dispatch format by expanded QName, not prefix or local name alone. Nonnegative source value is transformed, multiplied by 10**scale, then signed once. sign, when present, is exactly '-'; its xs:string restriction does not permit trimming padded values. An unformatted negative value must not become positive through double negation. [IX, ARELLE_SOURCE]
+- Support only explicit registry/function pairs. TRR3 numdotdecimal requires grouped three-digit integer chunks; TRR4/5 num-dot-decimal relaxes separators. Thus '1,23' and '.5' distinguish old/new registries. Never apply a generic strip-all-punctuation heuristic. [TRR3, TRR4]
+- TRR4/5 fixed-zero accepts any string and returns zero. This differs from older zerodash. Nil has no numeric value, even when its displayed text or transformation would otherwise indicate zero. [TRR5, IX]
+- Keep scale separate from accuracy. decimals accepts an integer or INF; precision accepts a nonnegative integer or INF. Non-nil nonFraction requires exactly one accuracy attribute. Nil excludes both. precision=0 is legal but conveys no usable accuracy. Preserve raw attributes; accuracy-sensitive comparison needs its own validated rules. [BASE]
+- Use exact Decimal construction and exponent shifting, with explicit length/scale bounds. Ordinary Decimal multiplication can round a long mantissa under the ambient precision. Limits are engineering choices and should yield unsupported/resource-limit status, not fabricated values. [Design recommendation]
+- A decimal-only unformatted profile can support optional '+', '.5', and '5.' after XML whitespace normalization. Without concept datatypes, exponent/float/nonfinite forms should be excluded explicitly; this exclusion does not prove those forms universally invalid in Inline XBRL. Avoid accepting Python Decimal's wider lexical language. [XSD, IX]
+
+Occurrence structure
+
+A non-nil nonFraction contains one text child or one nested nonFraction; arbitrary HTML and ix:exclude are not permitted there. Nested occurrences share format, scale property and unitRef with their ancestors, but can differ in concept, context, sign and accuracy. Each occurrence consumes the deepest raw lexical value; never scale/sign a previously converted child again. A nil nonFraction has no nonFraction ancestor. Source nil placeholder text is not automatically prohibited merely because the target nil fact has no text. [IX]
+
+Context and unit boundary
+
+Retain identifier scheme and content together. Identifier content has base type xs:token, so collapse XML whitespace; 'A  B' and 'A B' have the same token value. NBSP is not XML whitespace. Date-only startDate maps to the day's initial midnight; date-only instant/endDate maps to the following midnight. Preserve original date lexemes, period kind and normalized boundaries. Reject invalid ranges; separately exclude unsupported date/time forms. Concept periodType compatibility still needs the DTS. [BASE]
+
+Expand dimension/member QNames; detect repeated dimensions across the whole context, including segment and scenario. Preserve placement. Omitted dimensions may acquire taxonomy defaults; an empty explicit dimension list therefore does not prove consolidated or unrestricted scope. Typed dimensions require their declared schema, and arbitrary segment/scenario content cannot safely be flattened. A bounded reader can retain but exclude these cases. [DIM]
+
+Units are ordered-shape-independent multisets of expanded measure QNames with numerator and denominator kept separate. Keep repeated measures. A shared numerator/denominator measure is invalid unreduced structure, not an invitation to silently cancel. Currency symbol, unit ID and QName local name alone do not establish equivalence. Monetary/share/concept restrictions remain taxonomy-dependent. [BASE]
+
+Duplicate and evidence boundary
+
+Keep every occurrence and anchor, including hidden facts. The 2025 duplicate note distinguishes complete, consistent-rounded and inconsistent occurrences; formal OIM definitions take precedence. Equal aspect strings or equal displayed values alone do not resolve consistency. A closed-interval overlap shortcut must additionally handle equal-accuracy disagreements. The conservative first reader should retain conflicts rather than choose the first fact or sum repeated occurrences. Source tags are machine assertions; they do not by themselves prove browser-visible evidence, semantic truth, restatement, or question sufficiency. [DUP; last sentence is project design judgment]
+
+Authored adversarial checks recommended before source execution
+
+1. Same local format name in an unknown namespace: unsupported, no fallback.
+2. TRR3 '1,23' versus TRR4/5 '1,23': old rejects; newer yields 123. '.5' has the analogous version difference. XML internal tabs/newlines test the whitespace preprocessing layer.
+3. TRR4/5 fixed-zero with 'N/A': zero under that declared transform; the same text without it is not zero. Add nil=true and require null.
+4. Source '-12' plus sign='-': reject; source '12', scale=3, sign='-' gives -12000. Reject padded sign=' - '. Parentheses outside the tag are not another numeric sign.
+5. A mantissa longer than 28 digits with positive and negative scales: exact decimal value survives; no ambient-context rounding or float conversion.
+6. decimals=-3 versus scale=3: the first changes accuracy metadata, the second numeric magnitude. Both accuracy attributes together fail; precision=0 remains accuracy-unusable.
+7. Nested parent/child with equal format/scale/unit but differing signs: independently signed values, no double scaling. Change nested unitRef, format, scale or add ix:exclude: reject or explicitly unsupported.
+8. Same identifier text under different schemes; same dimension local names under different namespaces; same member in segment versus scenario: never collapse silently.
+9. Instant 2024-12-31 versus duration ending 2024-12-31: preserve distinct kinds; both ending boundaries are 2025-01-01T00:00:00 for date-only inputs.
+10. Repeated dimension across segment/scenario, missing or ambiguous resource IDs, empty explicit dimensions with unknown defaults: fail or mark unresolved, never infer scope.
+11. USD, shares and USD/shares remain different; numerator USD/denominator USD is invalid. Reordered same-side measures preserve the same multiset.
+12. Same-aspect facts at equal accuracy but unequal values must block unique selection. A rounded compatible pair must remain multiple occurrences unless a declared accuracy-aware rule is independently tested.
+13. DTD/entity expansion, malformed XML, oversized input/lexeme/scale, unsupported target partition, and unsupported typed dimension must terminate boundedly and retain explicit reasons.
+
+These are authored engineering checks, not benchmark questions or human annotation. Differential agreement on them establishes only the compared operations. A full-DTS offline Arelle run and source-defined scope assessment are separate gates before a stronger reader claim.
+
+Primary references
+
+[IX] Inline XBRL 1.1, corrected 2026-07-14, sections 3.1-3.3, 10.1-10.2, 16.1-16.4.
+https://www.xbrl.org/Specification/inlineXBRL-part1/REC-2013-11-18%2Berrata-2026-07-14/inlineXBRL-part1-REC-2013-11-18%2Bcorrected-errata-2026-07-14.html
+[BASE] XBRL 2.1, corrected 2013-02-20, sections 4.6.3-4.6.7, 4.7.2-4.7.4, 4.8, 4.10.
+https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html
+[DIM] Dimensions 1.0, corrected 2012-01-25, sections 2.7, 3.1.4 and 3.2.
+https://www.xbrl.org/specification/dimensions/rec-2012-01-25/dimensions-rec-2006-09-18%2Bcorrected-errata-2012-01-25-clean.html
+[TRR3] Transformation Registry 3, sections 2, 4.1, 4.29 and 4.33.
+https://www.xbrl.org/Specification/inlineXBRL-transformationRegistry/REC-2015-02-26/inlineXBRL-transformationRegistry-REC-2015-02-26.html
+[TRR4] Transformation Registry 4, function input types and num-dot-decimal.
+https://www.xbrl.org/Specification/inlineXBRL-transformationRegistry/REC-2020-02-12/inlineXBRL-transformationRegistry-REC-2020-02-12.html
+[TRR5] Transformation Registry 5, sections 4.1, 4.96, 4.98.
+https://www.xbrl.org/Specification/inlineXBRL-transformationRegistry/REC-2022-02-16/inlineXBRL-transformationRegistry-REC-2022-02-16.html
+[XSD] XML Schema Part 2: Datatypes, decimal and whiteSpace.
+https://www.w3.org/TR/xmlschema-2/
+[DUP] Handling Duplicate Facts in XBRL and Inline XBRL, non-normative note 2025-01-14, sections 3-5.
+https://www.xbrl.org/WGN/xbrl-duplicates/WGN-2025-01-14/xbrl-duplicates-2025-01-14.html
+[API] Arelle supported Python API (mutable documentation, captured 2026-10-04).
+https://arelle.readthedocs.io/en/latest/python_api/python_api.html
+[SEC] Arelle SEC Inline Transforms documentation (mutable documentation, captured 2026-10-04).
+https://arelle.readthedocs.io/en/latest/plugins/popular/transforms_sec.html
+[PYPI] Version-pinned release metadata and wheel URL.
+https://pypi.org/pypi/arelle-release/2.46.0/json
+https://files.pythonhosted.org/packages/89/ca/3e7c38f9f1269b2551217132f67c14e35882fe8bc41edb1410f940a6bdee/arelle_release-2.46.0-py3-none-any.whl
+[ARELLE_SOURCE] Files are read from that hash-verified wheel: arelle/FunctionIxt.py; arelle/ModelInstanceObject.py; arelle/XmlValidate.py; arelle/XmlUtil.py; bundled IX2008/IX2013 xhtml-inlinexbrl definitions schemas. Paths and SHA256 values are in data/provenance/typed_reader_standards_v15.json. The inspected master FunctionIxt.py matched the wheel at review time, but the wheel is the reproduction pin.

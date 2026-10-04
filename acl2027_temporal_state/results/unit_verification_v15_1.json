@@ -1,0 +1,52 @@
+{
+  "schema_version": "unit_verification_v15_1",
+  "verified_at_utc": "2026-10-04T06:42:32.523632+00:00",
+  "environment": {
+    "PYTHONPATH": "/dev/shm/wikigraph_v15/standards_v15/arelle_runtime:src",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dev/shm/wikigraph_v15/tmp"
+  },
+  "runs": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-q"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "----------------------------------------------------------------------\nRan 610 tests in 0.869s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "tests.test_typed_reader_encoding_v15_1",
+        "--legacy-controls"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "....................................................................\n----------------------------------------------------------------------\nRan 68 tests in 0.024s\n\nOK\n"
+    }
+  ],
+  "all_passed": true,
+  "elapsed_seconds": 1.3680133060006483,
+  "bindings": {
+    "tests/test_reference_numeric_v15.py": "42bdf8cbfa535817b85adc49c92de95c10472e998a76df7c43facee69e88a2e9",
+    "tests/test_typed_reader_adversarial_v15.py": "449fdb8e761e77e06cb642627ca3d96e5d8fd8700f2378341456cf70d983f9aa",
+    "tests/test_typed_reader_encoding_v15_1.py": "6b9bb55b52f03a7e0db8f1e0718538a4af2e8aef464b9094262c7ba5422a0b02",
+    "tests/test_typed_reader_v15.py": "4a0fe71d2c34c47ddb4c70e617a18eb760a341372ae6eb6a8731b1f875d46bb6",
+    "tests/test_typed_study_lineage_v15_1.py": "042c159cc76441feda8bcbc4913adcdde625cf1277ddd8afb78836537c0d3a8d",
+    "tests/test_typed_study_summary_v15.py": "b23e79f113fa8c91050bd13edba85f999cdfb80887801f39a1f201ebe6aaa769",
+    "src/temporal_state/typed_reader_v15_1.py": "6f43c57488b90178f2334284bd46d9903c4f3a29f23ab1e6fc39402a40fc0dae",
+    "src/temporal_state/typed_reader_v15.py": "b7a64c9655999524fa42ec9fa573bf350d7272d91f79f9cee8e0450276cdf0b5",
+    "scripts/reference_numeric_v15.py": "a238f101158a22128ce0d51333600e065419aac8092a4f129dff5956c2b92eea",
+    "scripts/run_typed_reader_v15.py": "caf3e44816b56b7b21a89557bac4ff2983e734963c4183959c0f608f1aceaab6",
+    "scripts/run_typed_reader_v15_1.py": "bcfdcc2162a4a95ef58bb803de748f687060dc2941c64fdb49063f2b8d1b4129"
+  },
+  "scope": "Full authored/retained unit suite plus unchanged 68-control replay against encoding amendment; no natural QA."
+}

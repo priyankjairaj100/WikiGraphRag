@@ -1,0 +1,176 @@
+{
+  "schema": "typed_reader_code_review_v15",
+  "reviewed_utc": "2026-10-04T06:34:36.818440+00:00",
+  "status": "passed_bounded_adversarial_review",
+  "reviewer_role": "Separate model-assisted audit agent; implementation written by another agent in the same shared research session. Not independent human certification.",
+  "scope": {
+    "authored_adversarial_tests": true,
+    "manual_code_and_contract_review": true,
+    "natural_filing_values_read": false,
+    "natural_qa_references_read": false,
+    "reader_answers_read": false,
+    "model_calls": 0,
+    "network_calls_from_tested_reader": 0,
+    "full_dts_validation": false
+  },
+  "bound_inputs": {
+    "src/temporal_state/typed_reader_v15.py": {
+      "sha256": "b7a64c9655999524fa42ec9fa573bf350d7272d91f79f9cee8e0450276cdf0b5",
+      "bytes": 37629
+    },
+    "tests/test_typed_reader_adversarial_v15.py": {
+      "sha256": "449fdb8e761e77e06cb642627ca3d96e5d8fd8700f2378341456cf70d983f9aa",
+      "bytes": 17563
+    },
+    "docs/typed_reader_contract_v15.txt": {
+      "sha256": "305aa0c76e5d3fad765687c7e0aa958f77412a488ff9966689e32aad7f34f395",
+      "bytes": 13785
+    },
+    "docs/typed_reader_standards_v15.txt": {
+      "sha256": "e1c44cdcb33502884d605ea83eb5707fbc3fc8113422cd0dae99ac7263f8cc36",
+      "bytes": 11800
+    },
+    "docs/inline_xbrl_semantics_review_v14.txt": {
+      "sha256": "c4613ba74d8f6cfd040f3a288a1d8e58fb9b0093cba7c6e6f7e08b1173d29768",
+      "bytes": 4794
+    }
+  },
+  "verification": {
+    "command": "PYTHONPATH=src python3 -m unittest discover -s tests -p test_typed_reader_adversarial_v15.py -v",
+    "working_directory": "acl2027_temporal_state",
+    "exit_code": 0,
+    "tests_run": 37,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "unittest_seconds": 0.014,
+    "process_wall_seconds": 0.0590978999989602,
+    "source_hash_unchanged_during_run": true,
+    "test_ids": [
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_accuracy_does_not_scale_numeric_value",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_ambiguous_values_and_rounded_candidates_are_never_selected_first",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_both_accuracy_attributes_do_not_yield_normalized_fact",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_cross_physical_version_query_is_rejected",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_dtd_entities_are_rejected_before_any_expansion",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_duplicate_context_id_cannot_select_the_first_entity",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_empty_unit_is_not_resolved",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_equal_numeric_values_do_not_collapse_entity_year_or_unit",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_equal_occurrences_preserve_both_anchors",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_every_source_anchor_matches_exact_utf8_bytes",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_format_local_name_does_not_override_unknown_namespace",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_invalid_sign_is_not_ignored",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_ix_exclude_cannot_hide_part_of_nonfraction_quantity",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_known_different_entity_excludes_fact_even_if_its_unit_is_unresolved",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_mixed_instant_and_duration_is_not_resolved",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_negative_lexical_cannot_be_double_negated_to_positive",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nested_mismatched_scale_cannot_produce_unique_parent_answer",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nested_occurrences_apply_sign_once_to_raw_value",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nil_never_becomes_numeric_zero",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nil_placeholder_never_becomes_zero_or_text_quantity",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nil_with_accuracy_is_not_a_normalized_fact",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_non_ascii_digits_and_internal_whitespace_are_not_decimal_lexemes",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nonwhitespace_context_container_text_is_not_ignored",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_oversize_input_fails_before_xml_parse",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_precision_zero_is_retained_without_inventing_accuracy",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_repeated_dimension_across_segment_and_scenario_is_not_resolved",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_reported_lookup_does_not_claim_taxonomy_or_financial_scope",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_same_concept_local_name_in_different_namespaces_remains_distinct",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_transformation_registry_version_changes_legal_grouping",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_two_identifiers_cannot_select_the_first_entity",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_unbound_concept_prefix_cannot_be_treated_as_literal_qname",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_underdefined_query_refuses_to_guess_missing_aspect",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_unit_product_and_divide_cannot_be_silently_combined",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_unreduced_unit_ratio_is_not_silently_cancelled",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_unresolved_unit_cannot_be_used_to_exclude_possible_match",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_unsigned_value_scaling_is_independent_of_decimal_context",
+      "test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_valid_decimal_lexical_variants_are_normalized"
+    ],
+    "output": "test_accuracy_does_not_scale_numeric_value (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_accuracy_does_not_scale_numeric_value) ... ok\ntest_ambiguous_values_and_rounded_candidates_are_never_selected_first (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_ambiguous_values_and_rounded_candidates_are_never_selected_first) ... ok\ntest_both_accuracy_attributes_do_not_yield_normalized_fact (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_both_accuracy_attributes_do_not_yield_normalized_fact) ... ok\ntest_cross_physical_version_query_is_rejected (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_cross_physical_version_query_is_rejected) ... ok\ntest_dtd_entities_are_rejected_before_any_expansion (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_dtd_entities_are_rejected_before_any_expansion) ... ok\ntest_duplicate_context_id_cannot_select_the_first_entity (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_duplicate_context_id_cannot_select_the_first_entity) ... ok\ntest_empty_unit_is_not_resolved (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_empty_unit_is_not_resolved) ... ok\ntest_equal_numeric_values_do_not_collapse_entity_year_or_unit (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_equal_numeric_values_do_not_collapse_entity_year_or_unit) ... ok\ntest_equal_occurrences_preserve_both_anchors (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_equal_occurrences_preserve_both_anchors) ... ok\ntest_every_source_anchor_matches_exact_utf8_bytes (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_every_source_anchor_matches_exact_utf8_bytes) ... ok\ntest_format_local_name_does_not_override_unknown_namespace (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_format_local_name_does_not_override_unknown_namespace) ... ok\ntest_invalid_sign_is_not_ignored (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_invalid_sign_is_not_ignored) ... ok\ntest_ix_exclude_cannot_hide_part_of_nonfraction_quantity (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_ix_exclude_cannot_hide_part_of_nonfraction_quantity) ... ok\ntest_known_different_entity_excludes_fact_even_if_its_unit_is_unresolved (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_known_different_entity_excludes_fact_even_if_its_unit_is_unresolved) ... ok\ntest_mixed_instant_and_duration_is_not_resolved (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_mixed_instant_and_duration_is_not_resolved) ... ok\ntest_negative_lexical_cannot_be_double_negated_to_positive (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_negative_lexical_cannot_be_double_negated_to_positive) ... ok\ntest_nested_mismatched_scale_cannot_produce_unique_parent_answer (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nested_mismatched_scale_cannot_produce_unique_parent_answer) ... ok\ntest_nested_occurrences_apply_sign_once_to_raw_value (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nested_occurrences_apply_sign_once_to_raw_value) ... ok\ntest_nil_never_becomes_numeric_zero (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nil_never_becomes_numeric_zero) ... ok\ntest_nil_placeholder_never_becomes_zero_or_text_quantity (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nil_placeholder_never_becomes_zero_or_text_quantity) ... ok\ntest_nil_with_accuracy_is_not_a_normalized_fact (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nil_with_accuracy_is_not_a_normalized_fact) ... ok\ntest_non_ascii_digits_and_internal_whitespace_are_not_decimal_lexemes (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_non_ascii_digits_and_internal_whitespace_are_not_decimal_lexemes) ... ok\ntest_nonwhitespace_context_container_text_is_not_ignored (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_nonwhitespace_context_container_text_is_not_ignored) ... ok\ntest_oversize_input_fails_before_xml_parse (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_oversize_input_fails_before_xml_parse) ... ok\ntest_precision_zero_is_retained_without_inventing_accuracy (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_precision_zero_is_retained_without_inventing_accuracy) ... ok\ntest_repeated_dimension_across_segment_and_scenario_is_not_resolved (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_repeated_dimension_across_segment_and_scenario_is_not_resolved) ... ok\ntest_reported_lookup_does_not_claim_taxonomy_or_financial_scope (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_reported_lookup_does_not_claim_taxonomy_or_financial_scope) ... ok\ntest_same_concept_local_name_in_different_namespaces_remains_distinct (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_same_concept_local_name_in_different_namespaces_remains_distinct) ... ok\ntest_transformation_registry_version_changes_legal_grouping (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_transformation_registry_version_changes_legal_grouping) ... ok\ntest_two_identifiers_cannot_select_the_first_entity (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_two_identifiers_cannot_select_the_first_entity) ... ok\ntest_unbound_concept_prefix_cannot_be_treated_as_literal_qname (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_unbound_concept_prefix_cannot_be_treated_as_literal_qname) ... ok\ntest_underdefined_query_refuses_to_guess_missing_aspect (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_underdefined_query_refuses_to_guess_missing_aspect) ... ok\ntest_unit_product_and_divide_cannot_be_silently_combined (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_unit_product_and_divide_cannot_be_silently_combined) ... ok\ntest_unreduced_unit_ratio_is_not_silently_cancelled (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_unreduced_unit_ratio_is_not_silently_cancelled) ... ok\ntest_unresolved_unit_cannot_be_used_to_exclude_possible_match (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_unresolved_unit_cannot_be_used_to_exclude_possible_match) ... ok\ntest_unsigned_value_scaling_is_independent_of_decimal_context (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_unsigned_value_scaling_is_independent_of_decimal_context) ... ok\ntest_valid_decimal_lexical_variants_are_normalized (test_typed_reader_adversarial_v15.TypedReaderAdversarial.test_valid_decimal_lexical_variants_are_normalized) ... ok\n\n----------------------------------------------------------------------\nRan 37 tests in 0.014s\n\nOK\n"
+  },
+  "checked_properties": [
+    "Exact 60-digit signed scaling under ambient Decimal precision 7; valid decimal lexical variants and invalid non-ASCII digits/internal whitespace.",
+    "Accuracy metadata does not rescale values; precision 0 remains a numeric assertion with no inferred accuracy; both accuracy attributes are refused.",
+    "Nil and nil placeholders remain null; nil plus accuracy is unusable; lexical negative plus sign cannot be double-negated.",
+    "Format namespace identity and registry-specific grouping; exact sign string including padded sign rejection.",
+    "Nested nonFraction sign/scale behavior, scale mismatch blocking and illegal ix:exclude content refusal.",
+    "Context and unit cardinality/shape, duplicate IDs, unexpected direct text, unbound concept prefix and repeated dimensions.",
+    "Unreduced numerator/denominator measure intersection refused; same numeric values retain distinct entity, period, unit and concept namespace bindings.",
+    "Unequal and rounded-compatible reported values remain ambiguous; equal repeated occurrences retain both anchors.",
+    "Malformed possible-match unit blocks uniqueness; independently known different entity excludes the unrelated occurrence.",
+    "Missing query aspects and physical-version mismatch refuse lookup; taxonomy/default/rendering uncertainty remains explicit.",
+    "Exact UTF-8 source and span hashes, including preceding multibyte comment; source size limit, DTD and external-entity refusal."
+  ],
+  "development_findings": [
+    {
+      "finding": "USD/USD divided unit was accepted despite common numerator/denominator measure.",
+      "origin": "Independent authored adversarial test in this audit",
+      "resolution": "Implementation now rejects unreduced-unit structure; fixed-case recheck passed."
+    },
+    {
+      "finding": "precision=0 was rejected by positive-only guard.",
+      "origin": "Standards review plus explicit authored adversarial test",
+      "resolution": "Implementation accepts legal zero precision, retains raw metadata and marks accuracy unusable; fixed-case recheck passed."
+    },
+    {
+      "finding": "Unknown/partial unit dictionaries could be used to exclude possible matches.",
+      "origin": "Root review raised this concern; this agent independently included regression and known-different-entity control.",
+      "resolution": "Per-aspect resolution masks present before final tests; both challenges passed."
+    },
+    {
+      "finding": "Inline nil placeholder text was initially rejected.",
+      "origin": "Standards clarification communicated before final implementation; initial audit test failed.",
+      "resolution": "Typed null with retained placeholder now passes."
+    },
+    {
+      "finding": "Initial exact-arithmetic test demanded a redundant trailing decimal zero.",
+      "origin": "Audit oracle defect, not reader numeric error",
+      "resolution": "Fixture changed to end in a nonzero digit; exact-arithmetic assertion retained. No natural source or result modified."
+    },
+    {
+      "finding": "Raw ID/IDREF and nested nil lexical whitespace initially bypassed XML datatype collapse.",
+      "origin": "Implementation author found this during final pre-freeze review; separate author-owned regression test added.",
+      "resolution": "Final source applies declared datatype normalization while retaining raw attributes. This audit reran all 37 independent challenges against the revised hash; no additional natural-source validation claimed."
+    }
+  ],
+  "development_run_history": [
+    {
+      "tests": 19,
+      "passed": 17,
+      "failed": 2,
+      "note": "Initial draft: nil placeholder failure plus audit canonical-string oracle defect. Binding-status assertions subsequently aligned to the actual reported_aspects_resolved API name."
+    },
+    {
+      "tests": 31,
+      "passed": 30,
+      "failed": 1,
+      "note": "Expanded authored pass identified unreduced-unit acceptance."
+    },
+    {
+      "tests": 37,
+      "passed": 36,
+      "failed": 1,
+      "note": "Expanded bounded pass identified precision-zero rejection."
+    },
+    {
+      "tests": 37,
+      "passed": 37,
+      "failed": 0,
+      "note": "Pre-ID-canonicalization hash-bound run against 0b5654a693b87334e5b9c3883109a58d7a0dffdf25737f39299ef0715d118346; 37 passed. Implementation then made one declared pre-freeze ID/IDREF and nil whitespace correction."
+    },
+    {
+      "tests": 37,
+      "passed": 37,
+      "failed": 0,
+      "note": "Final hash-bound regression after implementation-owned ID/IDREF and nil whitespace correction. No natural corpus execution in this audit."
+    }
+  ],
+  "remaining_concrete_failures": [],
+  "limitations": [
+    "These 37 authored engineering tests are not natural-source QA, a held-out benchmark, numerical extraction accuracy or a reader comparison.",
+    "Passing this bounded suite is not XBRL, Inline XBRL, schema, taxonomy or duplicate-consistency conformance certification.",
+    "No taxonomy defaults, concept-unit/periodType validation, rendered visibility, complete Inline Document Sets or cross-source semantic equivalence is established.",
+    "Lookup consumes fully supplied structured reported-aspect queries; this audit does not establish automatic question understanding or candidate proposal recall.",
+    "The parsed document remains a mutable JSON record by contract; caller mutation is not authenticated by source hashes.",
+    "No exhaustive fuzzing, adversarial workload performance benchmark or external security review was performed."
+  ]
+}

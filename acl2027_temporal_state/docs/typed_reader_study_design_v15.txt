@@ -1,0 +1,85 @@
+Typed source reader: v15 diagnostic design
+
+Decision and scope
+
+The v14 reader and dense/RRF upgrade candidates did not improve their development
+endpoints. The next component is a conventional typed reader of reported numeric
+facts, with exact source anchors. It is not a language-model replacement, a new
+XBRL processor, a natural QA benchmark, or a claim of algorithmic novelty.
+
+The population is fixed to all twelve v14 filing objects and every Inline XBRL
+nonFraction occurrence in them. No question, answer, reference or favorable
+source selection is introduced. The v14 inventory records 23,651 occurrences.
+Maintenance removed the external bytes; recovery is separately logged and must
+match all twelve original content hashes. The Berkshire filename/fiscal-year
+discrepancy is retained. This is already inspected development material.
+
+Implementation profile
+
+The new reader separately reports numeric conversion, reported binding, source
+identity and unresolved taxonomy/rendering semantics. A finite supported profile
+is chosen from standards and the already public v14 format inventory, before new
+value extraction. Registry dispatch uses the expanded format QName. The SEC word
+number transform is initially unsupported, not silently approximated. Unknown
+formats, unsupported structural cases and malformed input remain explicit.
+
+Exact arithmetic applies transformation, scale and sign without floating-point
+rounding. Nil has no numeric value. Decimals and precision are accuracy metadata,
+not scaling instructions. Contexts retain entity identifiers, period lexemes and
+reported dimensions; units retain expanded measure names and multiplicity. Missing
+dimensions do not establish consolidated scope. Taxonomy defaults, concept types,
+period-type compatibility and visual grounding remain unresolved.
+
+Reference and diagnostic
+
+The numerical comparator uses the pinned official Arelle transformation functions
+through a separate XML/normalization adapter. It does not load a taxonomy or claim
+full XBRL conformance. Both adapters' source, dependencies and authored controls
+must be fixed before inspecting the new corpus outputs. Agreeing implementations
+can share misunderstandings; standards review and separate adversarial fixtures
+remain necessary. Neither comparator supplies independent financial truth.
+
+Run every source in frozen order once after the input/code freeze. Retain every
+occurrence, including nil, hidden, nested and unsupported facts. Report the full
+population denominator, each reader status and each reference status, exact
+numeric agreement on their common supported population, mismatches, exceptions,
+and source-anchor checks. A large common-population agreement rate does not erase
+unsupported cases. Public results contain aggregate counts, failure locators and
+digests; detailed source-derived records remain external.
+
+Source-bound lookup is a separate component contract. It accepts an explicit
+structured query over a physical source version and reported aspects. It does
+not translate a natural-language question, infer a fiscal year from a filename,
+choose the latest document, resolve entity aliases or compare annual taxonomy
+namespaces. Authored tests must exercise wrong years, units, entities, source
+versions, unknown bindings, nil and conflicting duplicates. Identical-valued
+repeated occurrences remain multiple observations with their evidence anchors.
+Lookup self-consistency, if exercised on source-derived keys, is reported only
+as an integration check and never as natural QA accuracy or independent gold.
+The fixed integration sample is the first eight distinct eligible reported-aspect
+keys in XML fact order per source (or all if fewer). For each, test retention of
+the originating occurrence and rejection of a deliberately wrong physical source
+hash. This selection precedes the first numeric corpus run and is not a sample
+chosen for answer performance.
+
+Evidence and interpretation
+
+Every reported number is linked to its exact fact bytes, context and unit, plus
+physical source identity. Binding linkage is distinguished from financial or
+display correctness. No hidden-marker check is called browser-visibility proof.
+No unequal rounded values are reconciled without an explicitly implemented and
+validated rule. No quantities are added or recomputed to answer questions.
+
+Preserve an unfavorable run. A correction after source inspection needs a new
+version, reason and output path, retaining the first result. Do not retune toward
+the old eight QA questions or use their answers to repair the reader. Advance to
+an automatically proposed alternative-binding retrieval experiment only after
+this conventional baseline has an understood supported domain and error surface.
+
+Outputs
+
+New reader and reference-adapter code, meaningful authored controls, independent
+code review, pinned dependencies, source recovery receipt, frozen execution
+protocol, per-source external records and public descriptive summary. The working
+paper addendum must state which checks actually ran and what remains unvalidated.
+No paid computation or new generative model calls are part of this stage.

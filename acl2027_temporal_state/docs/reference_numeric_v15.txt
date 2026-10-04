@@ -1,0 +1,125 @@
+Independent numeric-transform reference, v15
+==========================================
+
+Scope
+-----
+This adapter checks decimal normalization of one Inline XBRL nonFraction.
+Its transformations call the unmodified FunctionIxt.ixtNamespaceFunctions
+registry from arelle-release 2.46.0. Both namespace URI and local name select
+the function: a familiar local name under another registry version or a SEC
+namespace is not silently accepted. No controller, model manager, taxonomy,
+schema, DTS, plugin, filing validation or network loader is instantiated.
+Agreement therefore means agreement with an independent transform adapter;
+it is not Arelle document validation, complete Inline XBRL conformance,
+financial truth, correct concept selection, or question-answer accuracy.
+
+Source parsing and scale/sign arithmetic use this file's implementation,
+not the proposed reader's helpers. lxml parses supplied XML bytes with entity
+resolution, DTD loading, recovery and network access disabled. Unresolved
+entity nodes cause a parse refusal. Recognized IX2008/IX2013 nonFraction
+elements are enumerated in XML preorder. The containing ElementTree.getpath
+provides a locator independently of the proposed reader.
+
+Supported source content is text and nested nonFraction elements. Comments
+and processing instructions do not contribute text; tails do. Other element
+children, including ix:exclude, remain unsupported. This is conservative:
+ix:exclude is not a permitted child of nonFraction in Inline XBRL 1.1.
+The adapter does not implement every structural constraint (for example the
+complete nesting/attribute rules). In particular, mixed text surrounding a
+nested nonFraction can yield a numeric transform even when its Inline XBRL
+structure is malformed. A normalized status is never a structural-validity
+label. Comparisons of the proposed reader's accepted outputs must first
+require that reader's independent local structural gate. The reference still
+retains every occurrence and its transform status for diagnostic accounting.
+It does not follow continuations.
+
+For a formatted fact, XML whitespace collapses before registry dispatch,
+following Arelle ModelInlineValueObject.rawValue. This transformation-only
+adapter reproduces that preprocessing independently. Transform errors remain
+errors, and unregistered transforms remain unsupported. In particular,
+SEC numwordsen stays unsupported. A nil fact has a null numeric value,
+regardless of displayed text; it is never converted to zero. Nil handling
+does not certify that its other attributes or source structure are valid.
+The reference does not validate decimals or precision metadata. Accuracy
+metadata, including legal-but-unknown precision='0', is not validated or
+certified by a successful numeric transform. That local metadata gate belongs
+to the proposed reader and remains separate from this reference's numeric scope.
+
+The bounded decimal path accepts xs:decimal-style forms, including +.5 and
+5., and checks nonnegativity before applying sign. Non-finite and exponent
+forms are unsupported, rather than universally invalid: no taxonomy is
+loaded to determine whether a different numeric type applies. Scale must be
+an integer and sign, when present, must be exactly '-': its xs:string
+restriction does not collapse whitespace. Decimal exponent shifting
+implements multiplication by ten to the scale exactly; no ambient Decimal
+precision can round a long source value. Negative zero canonicalizes to 0;
+only fractional trailing zeros are removed. The adapter caps source text at
+100,000 characters and absolute scale at 100,000. Exceeding either bound is
+an explicit unsupported_resource_bound status, not numeric success.
+
+API
+---
+parse_document(xml_bytes) -> lxml ElementTree
+iter_nonfractions(document) -> source nodes in XML preorder
+normalize_nonfraction(node, include_private=False) -> result dictionary
+dependency_receipt(arelle_wheel, additional_wheels=()) -> provenance dictionary
+
+The result contains status, canonical_value (string or null), format_namespace,
+format_local, reference_scope, and sometimes a short reason. Status normalized
+is the only numeric success. Nil, unsupported and invalid/error statuses must
+not be merged with agreement. include_private=True adds _external_raw_text
+and _external_transformed_text where available. All numeric and lexical
+outputs derived from source documents remain in external execution storage;
+publish only approved hashes, aggregate counts and source-free metadata.
+
+Dependency pinning
+-----------------
+The adapter requires arelle-release==2.46.0 and verifies FunctionIxt.py SHA256
+ecf6a1098a9ac072d7100864463b57f85a7742d349cafd86de54b5b5249b66aa.
+The official wheel SHA256 is
+c1105ea4dcd9e77dab5b4d59552a7ba571f481cc6cb61412bef9e2c4890be96b.
+The run uses a separate external installation with --no-deps --no-index.
+Missing import dependencies were supplied by pinned regex 2025.9.18 and
+isodate 0.7.2 wheels. Existing lxml 6.1.1, pyparsing 3.3.2 and
+typing-extensions 4.16.0 come from the runtime. Exact wheel and imported
+source/binary digests are in results/reference_runtime_v15.json. The receipt
+is an imported-module inventory, not a syscall-level file-read trace.
+It includes interpreter and lxml/libxml versions. Call dependency_receipt
+after a full diagnostic run to capture any additional lazy module imports.
+
+Installation is external to the repository. Given downloaded wheels whose
+hashes match the receipt:
+
+  python3 -m pip install --no-deps --no-index --target EXTERNAL_RUNTIME \
+    arelle_release-2.46.0-py3-none-any.whl \
+    regex-2025.9.18-CPYTHON_PLATFORM.whl isodate-0.7.2-py3-none-any.whl
+
+Use the exact platform wheel recorded in the receipt on the recorded platform.
+Other interpreter/platform builds require a separately recorded dependency
+environment; source/package version agreement alone does not establish byte
+identity.
+
+Verification
+------------
+From acl2027_temporal_state, with EXTERNAL_RUNTIME on PYTHONPATH:
+
+  PYTHONPATH=EXTERNAL_RUNTIME:src python3 -m unittest discover -s tests \
+    -p test_reference_numeric_v15.py -v
+
+The authored suite has 22 checks. Ten call the actual pinned Arelle package;
+they skip explicitly when the optional external package is absent. A run
+with these skips is not the reference-adapter validation gate. The recorded
+pre-corpus run passed all 22, with zero skips. Checks exercise registry
+namespace and version distinctions, XML whitespace, comma/dot transforms,
+scale then sign, nil, unsupported SEC formats, wrong QNames, transform errors,
+long exact decimals, invalid metadata, nested occurrences and entity refusal.
+Only authored fixture inputs were read during adapter development.
+
+Primary implementation source
+-----------------------------
+Official Arelle wheel metadata identifies https://github.com/Arelle/Arelle/
+and https://arelle.readthedocs.io/ as its upstream source/documentation.
+The adapter uses the downloaded pinned wheel's FunctionIxt.py as its executable
+reference, and inspected ModelInstanceObject.py for rawValue preprocessing.
+The standards review in docs/typed_reader_standards_v15.txt records
+the associated Inline XBRL standards evidence separately.

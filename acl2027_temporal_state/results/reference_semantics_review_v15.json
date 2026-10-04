@@ -1,0 +1,141 @@
+{
+  "schema_version": "reference_semantics_review_v15.1",
+  "reviewed_utc": "2026-10-04T06:24:25.905949+00:00",
+  "status": "closed_with_concrete_fix",
+  "review_kind": "model_assisted_independent_standards_and_code_review",
+  "reviewer_role": "xbrl_semantics_v15",
+  "inputs": {
+    "scripts/reference_numeric_v15.py": {
+      "sha256": "a238f101158a22128ce0d51333600e065419aac8092a4f129dff5956c2b92eea",
+      "bytes": 11030
+    },
+    "tests/test_reference_numeric_v15.py": {
+      "sha256": "42bdf8cbfa535817b85adc49c92de95c10472e998a76df7c43facee69e88a2e9",
+      "bytes": 7475
+    },
+    "docs/reference_numeric_v15.txt": {
+      "sha256": "abd94effbe42ee6728e60966c4595df38c7ade926c0c2ee539d1ed8d34b69806",
+      "bytes": 7176
+    },
+    "docs/typed_reader_standards_v15.txt": {
+      "sha256": "e1c44cdcb33502884d605ea83eb5707fbc3fc8113422cd0dae99ac7263f8cc36",
+      "bytes": 11800
+    },
+    "data/provenance/typed_reader_standards_v15.json": {
+      "sha256": "440204a87225c5aaa44501c4655b9584adf6126d0fa7c649fbc0763d5d5a092e",
+      "bytes": 11835
+    },
+    "results/reference_runtime_v15.json": {
+      "sha256": "745953aa828b127e4f5dc16c10a8b726f5dc603f2930d9f9ea0862049991889b",
+      "bytes": 37965
+    }
+  },
+  "checks": [
+    {
+      "id": "registry_qname",
+      "status": "acceptable_within_declared_scope",
+      "finding": "Expanded namespace+local dispatch; source digest and packageversion checked; unknown transforms remain unsupported."
+    },
+    {
+      "id": "formatted_whitespace",
+      "status": "acceptable_within_declared_scope",
+      "finding": "XML whitespace collapse precedes dispatcher; NBSP is preserved for transform-specific handling."
+    },
+    {
+      "id": "unformatted_decimal",
+      "status": "acceptable_within_declared_scope",
+      "finding": "Decimal-only bounded grammar; nonnegative pre-sign requirement; exponent/nonfinite unsupported rather than full-schema-invalid."
+    },
+    {
+      "id": "scale_exactness",
+      "status": "acceptable_within_declared_scope",
+      "finding": "Decimal tuple exponent shifting bypasses ambient precision; integer lexical validation and magnitude cap present."
+    },
+    {
+      "id": "sign_exactness",
+      "status": "acceptable_within_declared_scope",
+      "finding": "Exact minus string now required; padded minus refused in independently rerun authored fixture."
+    },
+    {
+      "id": "nil",
+      "status": "acceptable_within_declared_scope",
+      "finding": "Early null result never invokes zero transform; explicitly does not validate nil attributes/structure."
+    },
+    {
+      "id": "nesting",
+      "status": "acceptable_within_declared_scope",
+      "finding": "Independent raw-text recursion; unsupported child elements excluded. Mixed text/nested concatenation can normalize malformed IX and is explicitly documented."
+    },
+    {
+      "id": "entity_handling",
+      "status": "acceptable_within_declared_scope",
+      "finding": "lxml no-network/no-DTD-loading/no-entity-resolution; unresolved entity nodes refused. No full conformance claim."
+    },
+    {
+      "id": "privacy",
+      "status": "acceptable_within_declared_scope",
+      "finding": "Optional lexical fields declared external; numeric outputs also source-derived. No natural source was read by this reviewer."
+    },
+    {
+      "id": "reference_scope",
+      "status": "acceptable_within_declared_scope",
+      "finding": "Only actual FunctionIxt transforms are delegated to Arelle; own parser/arithmetic/status handling and absence of DTS validation disclosed."
+    },
+    {
+      "id": "documentation",
+      "status": "acceptable_within_declared_scope",
+      "finding": "Current standards link corrected; structural precondition for accepted-reader comparisons explicit."
+    }
+  ],
+  "initial_findings": [
+    {
+      "id": "padded_sign_string",
+      "severity": "numeric_metadata_acceptance_bug",
+      "initial_script_sha256": "75d6380f64c68118c2b3264a23d15cf4e21ab74ee5414054a2a04ce38a7ab214",
+      "authored_fixture": "nonFraction text12 sign=\" - \"",
+      "expected_status": "invalid_sign",
+      "observed_before": {
+        "status": "normalized",
+        "canonical_value": "-12"
+      },
+      "observed_after": {
+        "status": "invalid_sign",
+        "canonical_value": null,
+        "format_namespace": null,
+        "format_local": null,
+        "reference_scope": "numeric_transform_only"
+      },
+      "resolution": "author replaced XML whitespace-collapse comparison with exact string comparison; reviewer independently reran fixture"
+    },
+    {
+      "id": "mixed_nested_content_scope",
+      "severity": "documentation_clarity",
+      "resolution": "Author explicitly documented that transformation-only adapter can normalize malformed mixed nested content; compare accepted reader values only after local structural gate."
+    },
+    {
+      "id": "standards_link",
+      "severity": "documentation_path",
+      "resolution": "Corrected to docs/typed_reader_standards_v15.txt"
+    }
+  ],
+  "execution": {
+    "independently_rerun_targeted_fixture_count": 1,
+    "full_suite_not_rerun_by_reviewer": true,
+    "author_reported_final_suite": {
+      "tests": 22,
+      "skips": 0,
+      "errors": 0,
+      "failures": 0,
+      "elapsed_seconds": 0.109
+    },
+    "imported_reference_registry_during_targeted_check": false
+  },
+  "review_limits": [
+    "No natural filing bytes, question/reference datasets, prior grades or model outputs read.",
+    "No full-DTS Arelle processing, XBRL/Inline schema validation, calculation validation or conformance-suite run.",
+    "Source parsing/arithmetic are adapter code, not Arelle model decoding; equivalence limited to compared operations.",
+    "Nil status does not certify its attributes, nesting or source structure; reference-normalized status alone does not certify valid Inline XBRL.",
+    "Review is model-assisted and not independent human gold.",
+    "Numeric normalization does not validate decimals/precision metadata or legal-but-unknown precision=0 usability; final documentation states this explicitly."
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "schema_version": "claim_ledger_v15",
+  "manuscript_path": "paper/typed_reader_study_v15.json",
+  "manuscript_sha256": "98295ef32aeb455f7f36951e5b17eabec1ffb82aa44fc9b5b589ca9a7d7da7bb",
+  "pdf_path": "paper/typed_reader_study_v15.pdf",
+  "pdf_sha256": "9c73eb0de9f20cc39410a595a49a568f25b1c02ec0f693e7948d4d2b6973e532",
+  "tex_path": "paper/typed_reader_study_v15.tex",
+  "tex_sha256": "39080c69460b83f9875e4c3ae14b508fd22d5380c4a139c49f8de74cea2fd6be",
+  "claims": [
+    {
+      "id": "V15-C01",
+      "statement": "All twelve historical filing objects were recovered with their original hashes; the frozen population is 23,651 nonFraction occurrences.",
+      "evidence_level": "Historical byte identity and fixed development inventory",
+      "manuscript_locations": [
+        "Abstract",
+        "Section 1"
+      ],
+      "evidence": [
+        {
+          "path": "results/source_recovery_v15.json",
+          "sha256": "6013d8b250c1d50d571f8f68d8ce86da120b09fa64d3f55a8158ce4c4f6705cd"
+        },
+        {
+          "path": "data/typed_reader_v15/execution_protocol.json",
+          "sha256": "ab9701b18ab1a57f883fa3cc7bb67f88b039fe6da610bf4e9d6cb24fc886f3e7"
+        }
+      ],
+      "limits": [
+        "Already inspected development material; not a held-out benchmark.",
+        "Berkshire filename/fiscal-year mismatch is preserved."
+      ]
+    },
+    {
+      "id": "V15-C02",
+      "statement": "The original execution rejects six ASCII-declared files, producing 8,873 reader observations and retaining 14,778 missing observations in the full denominator.",
+      "evidence_level": "Preserved technical failure",
+      "manuscript_locations": [
+        "Abstract",
+        "Section 3",
+        "Table 2"
+      ],
+      "evidence": [
+        {
+          "path": "results/typed_reader_execution_v15.json",
+          "sha256": "ab5903e5c66b88ae9c2b1dd37af17923111320e922b4b1f395f85bd5c2b49503"
+        },
+        {
+          "path": "docs/typed_reader_encoding_amendment_v15_1.txt",
+          "sha256": "b26027b06509708f0313987bcc81921360242fa511740232067aa083a1e1adb3"
+        },
+        {
+          "path": "results/typed_execution_audit_v15.json",
+          "sha256": "8edb027d30c6887166924dd7385830dfd0c5119c7a13580e573fb83db9d2cc42"
+        }
+      ],
+      "limits": [
+        "The audit passes faithful accounting of a failed execution; it does not make the original reader successful."
+      ]
+    },
+    {
+      "id": "V15-C03",
+      "statement": "The separately frozen encoding amendment processes all twelve sources without changing numerical or binding rules; 23,519 common supported conversions agree exactly, 16 are nil and 116 remain unsupported.",
+      "evidence_level": "All-population source-only numerical diagnostic",
+      "manuscript_locations": [
+        "Abstract",
+        "Section 3",
+        "Tables 2-3"
+      ],
+      "evidence": [
+        {
+          "path": "results/typed_reader_execution_v15_1.json",
+          "sha256": "c918db02be9ccaba467caf93437a9a7efbd13f3717605693229c956a1c63bd25"
+        },
+        {
+          "path": "results/typed_execution_audit_v15_1.json",
+          "sha256": "d2f01b0dc4178a7b8b36ffdbf48378ec6471ffb1311afc3b704292d1a4058b40"
+        },
+        {
+          "path": "data/typed_reader_v15/execution_protocol_v15_1.json",
+          "sha256": "de96dc952e850ca8360e12b8d58b2daf1d515f06ab6de6460203e311cb4b9b24"
+        },
+        {
+          "path": "docs/typed_reader_encoding_amendment_v15_1.txt",
+          "sha256": "b26027b06509708f0313987bcc81921360242fa511740232067aa083a1e1adb3"
+        }
+      ],
+      "limits": [
+        "Post-inspection engineering amendment, not a pristine confirmatory protocol.",
+        "Reference uses pinned Arelle transform functions, not full DTS validation.",
+        "Unsupported and nil cases are excluded from agreement, not silently dropped."
+      ]
+    },
+    {
+      "id": "V15-C04",
+      "statement": "Reported bindings resolve for 23,641 occurrences and remain unresolved for ten. Overall status is 23,509 normalized with resolved bindings, 16 nil and 126 unresolved.",
+      "evidence_level": "Local reported-aspect and overall-status accounting",
+      "manuscript_locations": [
+        "Section 4",
+        "Table 4"
+      ],
+      "evidence": [
+        {
+          "path": "results/typed_reader_execution_v15_1.json",
+          "sha256": "c918db02be9ccaba467caf93437a9a7efbd13f3717605693229c956a1c63bd25"
+        },
+        {
+          "path": "results/typed_execution_audit_v15_1.json",
+          "sha256": "d2f01b0dc4178a7b8b36ffdbf48378ec6471ffb1311afc3b704292d1a4058b40"
+        },
+        {
+          "path": "docs/typed_reader_contract_v15.txt",
+          "sha256": "305aa0c76e5d3fad765687c7e0aa958f77412a488ff9966689e32aad7f34f395"
+        }
+      ],
+      "limits": [
+        "Resolved local aspects do not establish taxonomy-valid or financially correct scope."
+      ]
+    },
+    {
+      "id": "V15-C05",
+      "statement": "All 96 predetermined source-derived lookup probes retain the seed occurrence and reject an incorrect source hash; 80 return unique values and 16 retain multiple equal-valued occurrences.",
+      "evidence_level": "Structured integration self-consistency; descriptive status breakdown",
+      "manuscript_locations": [
+        "Section 4",
+        "Table 5"
+      ],
+      "evidence": [
+        {
+          "path": "results/typed_reader_execution_v15_1.json",
+          "sha256": "c918db02be9ccaba467caf93437a9a7efbd13f3717605693229c956a1c63bd25"
+        },
+        {
+          "path": "results/typed_reader_analysis_v15.json",
+          "sha256": "78c04d5b9a7e62912f37b851a7bdc6aae4c404d5a3943531ba9240f058414c83"
+        },
+        {
+          "path": "data/typed_reader_v15/execution_protocol_v15_1.json",
+          "sha256": "de96dc952e850ca8360e12b8d58b2daf1d515f06ab6de6460203e311cb4b9b24"
+        }
+      ],
+      "limits": [
+        "Keys are selected from the same records being queried; no independent QA gold.",
+        "Lookup status breakdown is post-execution descriptive analysis."
+      ]
+    },
+    {
+      "id": "V15-C06",
+      "statement": "All 23,651 reference records and 8,873 previously observed typed records are unchanged across attempts; 14,778 typed records are newly processed. All 116 unsupported numeric issues are unsupported transforms, and ten unresolved binding issues concern typed dimensions.",
+      "evidence_level": "Post-execution descriptive record comparison",
+      "manuscript_locations": [
+        "Sections 3-4"
+      ],
+      "evidence": [
+        {
+          "path": "results/typed_reader_analysis_v15.json",
+          "sha256": "78c04d5b9a7e62912f37b851a7bdc6aae4c404d5a3943531ba9240f058414c83"
+        }
+      ],
+      "limits": [
+        "Not a prespecified endpoint; no general semantic equivalence proof."
+      ]
+    },
+    {
+      "id": "V15-C07",
+      "statement": "The amended run verifies fact/context/unit anchors for every occurrence and records 94,895 evidence-byte checks. Separate-agent replay has 763,240 checks and zero failures; the original retained failure has 343,357 checks and zero audit failures.",
+      "evidence_level": "Mechanical record/byte replay",
+      "manuscript_locations": [
+        "Section 5"
+      ],
+      "evidence": [
+        {
+          "path": "results/typed_reader_execution_v15_1.json",
+          "sha256": "c918db02be9ccaba467caf93437a9a7efbd13f3717605693229c956a1c63bd25"
+        },
+        {
+          "path": "results/typed_execution_audit_v15_1.json",
+          "sha256": "d2f01b0dc4178a7b8b36ffdbf48378ec6471ffb1311afc3b704292d1a4058b40"
+        },
+        {
+          "path": "results/typed_execution_audit_v15.json",
+          "sha256": "8edb027d30c6887166924dd7385830dfd0c5119c7a13580e573fb83db9d2cc42"
+        }
+      ],
+      "limits": [
+        "Anchor checks include repeated dependency checks, not distinct spans.",
+        "Replay uses recorded DOM locators/aspect masks and does not establish parser correctness or semantics."
+      ]
+    },
+    {
+      "id": "V15-C08",
+      "statement": "The amended receipt records 610 passing tests plus separate replay of the 68 previous reader controls.",
+      "evidence_level": "Retained/authored engineering tests",
+      "manuscript_locations": [
+        "Section 5"
+      ],
+      "evidence": [
+        {
+          "path": "results/unit_verification_v15_1.json",
+          "sha256": "57e1ca544fe3de9899358d0ebce4b9ff2ed64a4c55c77dbbbf1a3ce291d5b2ff"
+        }
+      ],
+      "limits": [
+        "The 68 are repeated controls, not additional new tests or natural QA."
+      ]
+    },
+    {
+      "id": "V15-C09",
+      "statement": "The v14 quantized reader candidate failed to improve matched contexts (1/16 versus 2/16); complete source support was 2/8 paired BM25, 3/8 BM25 closure and 1/8 per tested dense/RRF variant.",
+      "evidence_level": "Preserved limited development results",
+      "manuscript_locations": [
+        "Section 1"
+      ],
+      "evidence": [
+        {
+          "path": "results/structured_study_summary_v14.json",
+          "sha256": "545ad6ad66b0cda132b4a80890e84835cc5f95e143b62f09bdfb753016cdea78"
+        },
+        {
+          "path": "results/dense_source_support_summary_v14.json",
+          "sha256": "9f399efa87dab3d37592b35f48e671d5e9f486301d2ac6b063803edba5b3f316"
+        }
+      ],
+      "limits": [
+        "Eight known development questions; no broad performance or causal model-size claim."
+      ]
+    },
+    {
+      "id": "V15-C10",
+      "statement": "The contribution under consideration is acquisition of evidence that distinguishes automatically proposed competing bindings; the v16 plan specifies proposer/verifier/selector studies and strong matched-cost baselines.",
+      "evidence_level": "Prospective research hypothesis",
+      "manuscript_locations": [
+        "Section 6"
+      ],
+      "evidence": [
+        {
+          "path": "docs/algorithmic_next_stage_v16_proposal.txt",
+          "sha256": "c1a1cfab7a393503bb1674f9f1a35e0fb191c9a98fc553c43b95e50c70573917"
+        },
+        {
+          "path": "data/provenance/algorithmic_next_stage_v16_proposal.json",
+          "sha256": "4ac94032a96ec553a73673f0efb50ad49e6d4cd573c7623e01c3ba996f5e0ae5"
+        }
+      ],
+      "limits": [
+        "No end-to-end implementation, natural QA gain or novelty established.",
+        "Reader competence, candidate recall, false elimination and independent review remain gates."
+      ]
+    },
+    {
+      "id": "V15-C11",
+      "statement": "Typed numeric agreement and structured lookup do not establish full XBRL conformance, financial truth, rendered grounding or general reader competence.",
+      "evidence_level": "Explicit supported-domain interpretation",
+      "manuscript_locations": [
+        "Abstract",
+        "Sections 2,4-6"
+      ],
+      "evidence": [
+        {
+          "path": "docs/typed_reader_contract_v15.txt",
+          "sha256": "305aa0c76e5d3fad765687c7e0aa958f77412a488ff9966689e32aad7f34f395"
+        },
+        {
+          "path": "docs/typed_reader_standards_v15.txt",
+          "sha256": "e1c44cdcb33502884d605ea83eb5707fbc3fc8113422cd0dae99ac7263f8cc36"
+        },
+        {
+          "path": "data/provenance/typed_reader_standards_v15.json",
+          "sha256": "440204a87225c5aaa44501c4655b9584adf6126d0fa7c649fbc0763d5d5a092e"
+        },
+        {
+          "path": "results/reference_runtime_v15.json",
+          "sha256": "745953aa828b127e4f5dc16c10a8b726f5dc603f2930d9f9ea0862049991889b"
+        }
+      ],
+      "limits": [
+        "DTS validation and independently reviewed natural-language evaluation remain separate work."
+      ]
+    }
+  ],
+  "overarching_limits": [
+    "Source-only conventional baseline on inspected development filings.",
+    "No natural QA predictions, stronger-reader finding, full-DTS conformance, novelty or ACL-readiness claim.",
+    "Generic ReportLab PDF and editable uncompiled generic TeX.",
+    "Raw source-derived values and captures remain external."
+  ]
+}

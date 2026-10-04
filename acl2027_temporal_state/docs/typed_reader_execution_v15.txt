@@ -1,0 +1,75 @@
+Typed-reader execution and aggregation contract (v15)
+
+The runner is scripts/run_typed_reader_v15.py. It is prepared for a root-frozen
+typed_reader_execution_protocol_v15 JSON protocol. Preparing this runner and
+passing authored controls do not establish a natural-source result. Execution
+must use a new external directory and a new public receipt; neither is replaced.
+
+CLI:
+  python3 scripts/run_typed_reader_v15.py --protocol PROTOCOL.json \
+    --sources EXTERNAL_SOURCE_DIRECTORY --external-output NEW_EXTERNAL_DIRECTORY \
+    --output NEW_PUBLIC_RECEIPT.json
+
+Before either reader is imported or any source values are parsed, preflight
+hashes all declared code, historical inputs, runtime dependencies and all twelve
+source objects. It joins ordered source names, hashes, byte counts and expected
+occurrence counts to the frozen v14 identity and inventory records. A last-file
+failure rejects the entire preflight. It additionally verifies each source again
+immediately before parsing. The expected population remains 23,651 occurrences.
+
+Protocol code_bindings and input_bindings map repository-relative paths to
+SHA256. design_sha256 binds docs/typed_reader_study_design_v15.txt. Sources are
+ordered records with source_path, external_filename, expected_sha256,
+expected_bytes and expected_nonfraction_count. reference_runtime contains path,
+version, relative files-to-SHA256 mapping, absolute additional_files-to-SHA256
+mapping, wheel_path and optional additional_wheels. Every wheel is prebound.
+Post-run imported dependency files must match these declared bindings.
+lookup_integration fixes max_distinct_keys_per_source to 8 and
+wrong_source_sha256_probe to true. natural_QA_predictions is zero.
+
+Every XML-order occurrence is retained, including nil, invalid and unsupported
+rows. Missing reader/reference occurrences produce explicit missing-occurrence
+statuses across the expected population, rather than reducing the denominator.
+Extra occurrences remain visible and cause a count failure. Numeric comparison
+requires matching expanded-name ordinal locators and canonical decimal text from
+both adapters. Reference-unsupported rows and nil pairs never count as numeric
+agreements. Reader numeric status, reported-binding status and overall fact
+status are reported separately; numeric conversion alone is not usability.
+
+The reader uses Expat. The numerical reference uses a separate lxml traversal
+and pinned official Arelle transformation functions. The runner independently
+constructs expanded-name ordinal paths from that lxml tree. Fact/context/unit
+spans are compared with the frozen v14 Expat source-span helper and their exact
+source-byte hashes. Thus the source-span checking algorithm is shared in part;
+this is not an independent anchoring implementation or rendering validation.
+Other dependency anchors are checked for byte/digest integrity only.
+The checker independently collapses XML whitespace in context/unit IDs and
+IDREFs; non-XML whitespace such as a nonbreaking space is not silently stripped.
+
+For source-bound lookup, the runner takes the first at most eight distinct keys
+whose seed occurrence has overall status normalized and reported aspects
+resolved. The query is derived directly from those reported aspects. Tests check
+that the seed remains a candidate and that a wrong physical source SHA is
+rejected. These are source-derived integration self-consistency probes, never
+natural QA, independent gold or source-group performance estimates. A failed
+probe prevents a fully complete status, even if no exception was raised.
+
+Detailed typed records, lexicals, transformed values, contexts and lookup results
+are external JSONL. Public records contain aggregates, discrepancy locators and
+reason codes, artifact hashes and dependency metadata. Technical source errors
+are recorded and execution continues through all twelve sources. Numeric
+disagreements yield complete_with_disagreements; technical, provenance, count,
+anchor or lookup-contract failures yield complete_with_technical_failures.
+Neither status proves XBRL/DTS conformance, visual grounding or financial truth.
+
+Authored validation:
+  PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests \
+    -p test_typed_study_summary_v15.py -q
+
+The 18 initial authored checks cover unsupported/nil denominator handling,
+locator mismatch, missing/extra occurrences, exact canonical-text contracts,
+public value omission, anchor relocation, source/code/dependency tampering,
+source-order substitution, lookup-failure classification, numeric-versus-usable
+fact separation, XML-whitespace ID/IDREF linkage and a two-fact authored XML integration. No natural source body
+is read by those checks. The runner remains subject to the final pre-execution
+code review and root protocol freeze.

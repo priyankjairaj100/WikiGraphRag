@@ -1,0 +1,224 @@
+Bounded source-exact Inline XBRL reported-aspect reader v15
+Authored implementation contract, 2026-10-04
+
+Purpose and evidence boundary
+
+This is a conventional, partial structured numeric reader. It implements no
+natural-language question parser, candidate proposer, model inference, evidence
+selector, calculation, or financial interpretation. It is not a conformant XBRL
+processor or a novelty claim. Implementation and unit fixtures were developed
+without reading any natural filing, question/reference, or QA output. Study
+scripts and natural-source results are separate artifacts owned by the study
+runner. Passing authored tests establishes tested behavior, not conformance,
+natural-source accuracy, answer sufficiency, or gains over another reader.
+
+API
+
+  read_inline_xbrl(source: bytes, *, source_version: str,
+                   max_source_bytes=25*1024*1024) -> document dict
+  make_reported_query(document, fact) -> fully specified structured query
+  lookup(document, query) -> candidate set and explicit status
+
+Read one physical UTF-8 XHTML object at a time. The caller supplies a nonempty
+physical-version label; the reader separately computes SHA-256 of the exact
+input bytes. Both fields are required in a lookup. Labels cannot substitute for
+the hash. There is no multi-file Inline Document Set or cross-version merge.
+Detailed return values include source lexicals, numeric values and identifiers;
+they belong in an authorized external location when source redistribution is
+not established. Public aggregate creation is outside this module.
+
+The return value is an ordinary JSON-serializable record. Callers must treat it
+as immutable evidence: changing dictionaries after parsing is not validated by
+the source hash. The query helper deep-copies aspects to prevent query editing
+from changing the document. A source hash is an integrity link, not a signature,
+authentication claim, or certification of financial truth.
+
+Parsing and provenance
+
+Python Expat supplies namespace-aware XML events and exact UTF-8 byte offsets.
+DTD declarations, entity declarations and external entity callbacks are rejected;
+there are no file/network/schema/taxonomy fetches. Built-in XML and character
+references are decoded normally. Malformed XML is rejected. UTF-16 and other
+declared encodings are outside this anchored profile. Limits are 25 MiB per
+object by default, depth 256, and one million elements. No source is truncated.
+Limit/encoding violations raise ReaderError before a usable document is returned.
+
+Each occurrence has a half-open [byte_start, byte_stop) anchor, exact span hash,
+full source hash and supplied version. Self-closing tags retain their exact
+opening span. Quotes containing '>' do not terminate the anchor scanner. The
+dom_path is an expanded-name sibling-ordinal locator, not an executable XPath.
+Evidence dependencies include the entire fact, its context and unit, relevant
+nested nonFraction ancestors, and inherited namespace declaration opening tags.
+Namespace declaration dependencies may conservatively include unused prefixes.
+Every dependency is charged/validated by the caller if used in a later evidence
+budget; this module performs no token accounting. Raw DOM provenance does not
+establish rendered visibility. Hidden/header markup is recorded; other facts
+remain rendering-unverified.
+
+QName and identity handling
+
+Expand concept, transformation, dimension, member and unit QNames using each
+element's in-scope namespaces. XML 1.0 Fifth Edition NCName character ranges are
+supported, including Unicode; unresolved prefixes and malformed QNames fail
+closed. Namespaces are part of identity, so identical local names from different
+namespaces cannot alias. Entity identifier and scheme use XML whitespace
+collapse (NBSP is distinct). Identifier scheme/content are retained separately.
+No entity linking or name-based equivalence is inferred. ID and IDREF attributes
+use their schema's XML whitespace collapse for matching and uniqueness, while
+the original fact attribute lexicals remain in the returned record. Whitespace
+inside a collapsed ID remains invalid; surrounding whitespace cannot create a
+different resource identity or hide a duplicate.
+
+Context and unit profile
+
+Require exactly entity then period, with an optional scenario; an entity contains
+one identifier followed by an optional segment. Reject unexpected direct text,
+duplicate/missing resources, malformed required references and invalid shapes.
+Duplicate IDs anywhere in the document conservatively block all fact usability;
+all occurrences remain in the returned records. No first-match resolution.
+
+Periods retain kind and original collapsed date lexemes. Support instant,
+duration (startDate, endDate), and empty forever. Gregorian calendar dates and
+dateTimes support years 0001..9999, optional legal XML timezone offsets and exact
+fractional seconds; leap-day, clock and ordering checks apply. Date-only start
+means midnight at that day's beginning; date-only endDate/instant means midnight
+following the stated day. A same-date duration therefore spans one day. 24:00:00
+is accepted only with zero minutes/seconds/fraction. Duration endpoints must
+increase after date-boundary/timezone interpretation. Mixed specified/unspecified
+timezones are unresolved; they are not ordered by assumption. Extended/BCE years
+and fractional seconds beyond 4096 digits are explicitly outside this profile.
+No fiscal-year label, report date, concept periodType or restatement relationship
+is inferred from a context date.
+
+Explicit dimensions retain expanded dimension/member QNames and placement in
+segment versus scenario. Repeating a dimension across either placement fails.
+Typed dimensions retain their content anchor but remain semantically unresolved.
+Extra non-dimensional segment/scenario content also remains unresolved. Neither
+can be discarded to manufacture a unique scope. Missing dimensions do not imply
+consolidation. DTS defaults, domain validity, hypercubes and concept applicability
+are always unknown; exact reported-aspect matching is narrower than semantic
+dimension equivalence.
+
+Units are simple nonempty measure products or one divide with nonempty numerator
+and denominator products. Expanded measure QNames and multiplicities are
+preserved; products are sorted only for order-independent identity. A shared
+measure between numerator and denominator is invalid under the standard; the
+reader does not cancel it. Invalid/extra unit children or text fail closed.
+Unit IDs, symbols, or familiar local names do not imply equivalence. Concept-unit
+type compatibility needs a taxonomy and remains unvalidated.
+
+Nondefault fact/resource targets and tuple membership are outside this single-
+document/default-target profile and block usability. Explicit empty target is
+the default target. No target-resource remapping or tuple inference is attempted.
+
+Numeric profile
+
+Retain raw lexical text, original attributes, expanded format QName, scale,
+accuracy metadata and nil declaration. Exactly one of decimals, precision or
+true nil is required. Decimals is an integer or INF; precision is a nonnegative
+integer or INF. Precision zero is legal and explicitly conveys no usable accuracy
+information. Accuracy metadata never rescales, rounds or chooses a value.
+Bounded metadata integers allow absolute scale <=10000 and absolute decimals/
+precision <=100000. Larger valid integers are unsupported, not alleged violations
+of the full standard. The numeric coefficient supports at most 4096 digits.
+
+Supported transformations are exact namespace/local-name pairs:
+  2015-02-26 registry: numdotdecimal
+  2020-02-12 registry: num-dot-decimal, fixed-zero
+  2022-02-16 registry: num-dot-decimal, fixed-zero
+
+Before a transformation, apply XML whitespace collapse, preserving NBSP. The
+2015 transform requires the registry's three-digit grouping pattern; newer
+num-dot-decimal relaxes grouping and allows forms such as '.5' and '1,23'. The
+fixed-zero transform accepts arbitrary display text and produces zero for a
+non-nil fact. Namespace collisions or a familiar name in an unknown registry do
+not select a transform. All other formats, including SEC numwordsen, remain
+explicitly unsupported; there is no lexical fallback for unknown transforms.
+
+Without a transformation, accept a nonnegative decimal lexical, optional '+',
+leading/trailing decimal point where decimal grammar allows, and surrounding XML
+whitespace. Negative source lexicals are rejected even when sign='-' would make
+the result positive. Scientific notation is outside the bounded decimal profile;
+it is not declared universally invalid for all taxonomy types. Exponents, commas,
+parentheses and display currency symbols are never silently coerced.
+
+Apply transformation, then scale by ten to the integer power, then optional
+sign='-'. Sign is checked exactly: padded ' - ' is invalid. Construct Decimal
+directly from coefficient/exponent tuples; no float or ambient Decimal context
+arithmetic participates. Emit a canonical fixed decimal string, remove redundant
+fractional trailing zeros, and canonicalize signed zero to '0' while retaining
+the original sign metadata. No nonfinite value is produced.
+
+Nil always has normalized_value=None and never becomes zero, even with a
+fixed-zero format or displayed placeholder. Display text on Inline nil is
+retained and permitted; child elements on nil are outside this profile. Nil
+cannot have a nonFraction ancestor and cannot declare decimals/precision.
+
+Non-nil nonFraction content is text or one nested nonFraction (surrounding XML
+whitespace permitted), not arbitrary markup. Descendant/ancestor nonFraction
+format QName, scale property and unitRef must agree; name, context, sign and
+accuracy may differ. Each nested occurrence is retained and normalized from its
+raw text using its own sign once. The parent's normalization never reuses a
+child's already scaled/signed number. Nested values are never summed. Known
+nesting violations block the participating occurrences.
+
+Status and exact reported lookup
+
+numeric_status distinguishes normalized, nil, unsupported and invalid.
+binding_status distinguishes reported_aspects_resolved, unresolved and invalid.
+The combined status is normalized only when both quantity and reported bindings
+are usable. A mathematically normalized string may remain attached to a fact
+whose context is invalid; such a fact is never a usable answer candidate. Errors
+and unsupported limits remain explicit in separate issue arrays. Every record
+also carries the permanent taxonomy/default/rendering uncertainty list.
+
+A query requires exactly source_sha256, source_version, scope_mode='reported_aspects',
+concept, entity, period, unit and an explicit dimensions list (including []).
+Concept and unit/dimension/member names must be expanded QNames. Entity requires
+scheme plus identifier. Period requires kind plus the complete period lexemes.
+Unit requires its full shape and all measure lists. No query field is a wildcard;
+unknown or omitted bindings are not silently relaxed. Only reported explicit
+dimension queries are supported. No natural-language parser supplies these
+bindings; the query helper is an occurrence-derived diagnostic convenience.
+
+Exact period lexical identity is intentionally conservative: differently written
+but semantically equal date/dateTime boundaries are not merged. Unit products
+and dimensions are sorted canonically, preserving multiplicity and placement.
+Known different aspects can exclude an occurrence. A malformed or unresolved
+aspect cannot exclude a possible match merely because its partial dictionary
+differs from the requested dictionary; per-aspect resolution masks enforce this.
+Unresolved possible matches block uniqueness. Nil and unsupported matching facts
+also block uniqueness rather than becoming zero or disappearing.
+
+Lookup returns every candidate with complete anchors and one of:
+  unique_reported_value: exactly one usable matching occurrence;
+  multiple_occurrences_same_value: repeated matching occurrences, all retained;
+  ambiguous: differing usable values, even if rounded accuracy intervals overlap;
+  blocked: one or more possible matching occurrences have unresolved/invalid/nil
+           quantity or bindings;
+  absent: no possible matching occurrence.
+
+There is no choose-first, confidence score, duplicate merge, accuracy-based
+value selection, interpolation, arithmetic or cross-source combination. Even
+unique_reported_value is a machine-reported value at explicitly supplied aspects,
+not a certified correct financial fact, consolidated amount, natural-language
+answer or evidence-sufficiency guarantee.
+
+Primary semantics consulted
+
+Inline XBRL 1.1, corrected through 2026-07-14, especially 10.1.1 and 10.2.3:
+https://www.xbrl.org/Specification/inlineXBRL-part1/REC-2013-11-18%2Berrata-2026-07-14/inlineXBRL-part1-REC-2013-11-18%2Bcorrected-errata-2026-07-14.html
+
+XBRL 2.1, corrected through 2013-02-20, especially 4.6.3-4.6.6, 4.7, 4.8.4:
+https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html
+
+Transformation Registry 5 (versioned registry semantics; dispatch is per namespace):
+https://www.xbrl.org/Specification/inlineXBRL-transformationRegistry/REC-2022-02-16/inlineXBRL-transformationRegistry-REC-2022-02-16.html
+
+XBRL Dimensions 1.0, corrected through 2012-01-25:
+https://www.xbrl.org/specification/dimensions/rec-2012-01-25/dimensions-rec-2006-09-18%2Bcorrected-errata-2012-01-25-clean.html
+
+The separately pinned Arelle 2.46.0 transform dispatch source was consulted to
+cross-check lexical patterns. A future differential check against that processor
+is implementation comparison on the tested inputs, not independent standards
+certification or natural QA evaluation.

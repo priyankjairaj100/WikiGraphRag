@@ -1,0 +1,69 @@
+Typed reader declared-ASCII amendment v15.1
+2026-10-04; explicit post-source-inspection technical amendment
+
+Reason and preserved failure
+
+The parent study reported that frozen attempt01 rejected six of twelve source
+objects solely because their XML declarations specified ASCII. This left 14,778
+nonFraction occurrences unprocessed in that attempt. The failed outcome, frozen
+v15 module, protocol, tests and result files are preserved. This amendment is not
+a replacement of the original outcome or a pristine pre-inspection protocol.
+The amended all-source run must receive its own freeze and attempt/result paths.
+
+The implementation agent received the failure category and counts from the
+parent. It did not read natural filing bodies, numeric values, questions,
+references, or QA outputs to develop this patch. There was no output-dependent
+transform, concept, entity, year, unit, query or candidate-selection change.
+
+Changed code and exact scope
+
+The new src/temporal_state/typed_reader_v15_1.py starts as a byte-for-byte copy of
+the frozen 37,629-byte src/temporal_state/typed_reader_v15.py, whose SHA-256 is:
+  b7a64c9655999524fa42ec9fa573bf350d7272d91f79f9cee8e0450276cdf0b5
+
+Only the declared-encoding gate and its descriptive messages/docstring/comment
+are amended. In addition to the existing UTF-8/default handling, accept explicit
+ASCII or US-ASCII declarations (case-insensitive) when every original source
+byte is ASCII. If any byte exceeds 0x7f under such a declaration, reject the
+object before producing usable records. Unsupported declared encodings and
+UTF-16/UTF-32 byte representations remain rejected. XML declarations themselves
+are neither removed nor rewritten; bytes are never transcoded or substituted.
+The full source hash, byte counts, half-open offsets, span hashes and namespace
+dependencies refer to the exact original source object.
+
+An ASCII document can legitimately contain numeric character references that
+decode to non-ASCII XML character data; those references contain only ASCII
+source bytes. Expat performs the same XML reference interpretation as before.
+The source anchors continue to point to the original reference spelling.
+No other parser, numeric, context, unit, dimension, lookup or uncertainty
+semantics are changed. The returned schema/API remain the same; the new module
+path/hash and separately frozen study protocol identify this amendment.
+
+Authored validation, separate from natural-source evaluation
+
+tests/test_typed_reader_encoding_v15_1.py contains eight authored encoding tests:
+ASCII/US-ASCII declarations; unchanged UTF-8 literal Unicode; rejection of
+non-ASCII bytes under an ASCII declaration; numeric character references;
+unsupported declared encodings; UTF-16 bytes; original source/dependency hashes
+and offsets; and default UTF-8 without an encoding declaration.
+
+Executed command:
+  PYTHONPATH=src python3 -m unittest tests.test_typed_reader_encoding_v15_1 -q
+Observed: 8 tests passed in 0.003 seconds.
+
+The same test module provides an explicit legacy-control loader. It loads fresh
+copies of the two frozen v15 test modules while temporarily binding their reader
+import to the amended module. It asserts that the test functions are bound to
+the amended reader and that the suite contains exactly the previous 68 controls.
+Neither frozen test file nor the original reader file is edited. The temporary
+import binding is restored before executing the returned suite.
+
+Executed command:
+  PYTHONPATH=src python3 -m tests.test_typed_reader_encoding_v15_1 --legacy-controls
+Observed: all 68 previous authored controls passed against v15.1 in 0.029 seconds.
+
+These are 8 encoding tests plus a replay of 68 existing authored controls, not
+76 new tests and not natural QA results. They do not establish standards
+conformance, financial correctness, novelty, generalization or answer quality.
+The independent source runner must separately record and verify the amended
+all-twelve-source attempt, preserving the original six-object technical failure.

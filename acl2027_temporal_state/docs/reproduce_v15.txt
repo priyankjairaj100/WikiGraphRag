@@ -1,0 +1,103 @@
+Reproducing v15 typed-source diagnostics
+
+This increment is conventional reported-aspect reading and numerical comparison,
+not a language-model or natural-QA experiment. Preserve both original and amended
+attempts. Sources, transformed values, runtime binaries and full typed records are
+external. The public receipts and paper do not substitute for those exact bytes.
+Run project commands from acl2027_temporal_state/ unless stated otherwise.
+
+Portable and authored checks
+
+From repository root, python3 scripts/verify_repository.py verifies both manifests
+and all 157 original archive members. This checks bytes, not scientific claims.
+The full unit suite needs the pinned reference runtime as well as repository src.
+Create the historical suite's temporary parent outside the repository:
+
+  mkdir -p ../../tmp
+  PYTHONDONTWRITEBYTECODE=1 TMPDIR=../../tmp \
+    PYTHONPATH=EXTERNAL_ARELLE_RUNTIME:src \
+    python3 -m unittest discover -s tests -q
+
+The original v15 attempt of this unit command failed seven older tests solely
+because their expected temporary parent was absent after workspace recovery.
+results/unit_verification_v15.json retains it. Creating that parent, without a
+code change, yielded 592 passing tests in unit_verification_final_v15.json.
+The later encoding-amendment verification is results/unit_verification_v15_1.json:
+610 full-suite tests pass, plus a separate replay of the previous 68 reader
+controls against the amended implementation. These 68 are not new tests.
+
+Reference installation and exact dependencies
+
+Read docs/reference_numeric_v15.txt and results/reference_runtime_v15.json.
+The bounded comparator uses Arelle 2.46.0 official transformation functions with
+an independent lxml traversal. It does not invoke a full Arelle DTS validation.
+Keep all downloaded wheels and installations outside the repository. Pin and
+check the three wheel hashes before installing with --no-deps:
+
+  arelle_release-2.46.0-py3-none-any.whl
+  regex-2025.9.18-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+  isodate-0.7.2-py3-none-any.whl
+
+The execution protocols additionally bind imported Arelle/dependency files,
+installed lxml/pyparsing/typing-extensions files and the interpreter. Runtime
+paths are machine-specific. A relocated installation requires a separately saved
+execution protocol with explicit path changes and hashes; it must not overwrite
+the frozen protocol or masquerade as the recorded execution. All source hashes,
+source order, expected counts and semantic settings must remain fixed for a
+reproduction. Different packages or bytes constitute a new realization.
+
+Source recovery
+
+scripts/recover_fresh_sources_v15.py implements freeze/recover/verify. Its frozen
+recovery protocol and result are under data/typed_reader_v15/ and results/.
+Twelve objects come from the immutable HF dataset revision recorded there. All
+12 recovered objects matched their historical content hashes and byte lengths.
+A filename is not a fiscal-year truth label; the Berkshire mismatch is retained.
+No new benchmark questions or reference answers were created.
+
+Both corpus attempts
+
+The original frozen protocol is data/typed_reader_v15/execution_protocol.json.
+Its runner is scripts/run_typed_reader_v15.py; its public result is
+results/typed_reader_execution_v15.json. It processes all twelve files and keeps
+all 23,651 expected occurrences, including missing-reader rows. Six ASCII-declared
+files were rejected by the original UTF-8-only profile. Do not replace that result.
+The encoding-only amendment, separate reader/runner, protocol and result carry
+suffix v15_1. They explicitly bind the original protocol/result and amendment.
+No numeric transforms, reported-aspect semantics or evaluation rules are changed.
+
+For an authorized fresh run using matching local paths, select NEW outputs:
+
+  PYTHONDONTWRITEBYTECODE=1 python3 scripts/run_typed_reader_v15.py \
+    --protocol data/typed_reader_v15/execution_protocol.json \
+    --sources EXTERNAL_SOURCES --external-output NEW_EXTERNAL_ATTEMPT \
+    --output NEW_PUBLIC_RECEIPT.json
+
+Use scripts/run_typed_reader_v15_1.py and execution_protocol_v15_1.json for the
+amended profile. Both runners reject existing output directories/receipts. They
+validate every declared dependency and all twelve source hashes before reading
+numeric values. Each public result records external JSONL hashes and byte counts.
+Source-derived lookup probes take the first eight distinct eligible keys/file;
+they test self-consistency and wrong-source refusal, not independent QA accuracy.
+
+Audits and paper
+
+scripts/audit_typed_execution_v15.py audits the original preserved records;
+scripts/audit_typed_execution_v15_1.py adds amendment-lineage checks. Neither
+generates new reader outputs. Both accept --protocol, --summary, --sources and
+--output; JSONL locations are read from the summary. Use a new output receipt.
+The original audit passed 343,357 checks and the amended audit passed 763,240;
+these are implementation-level consistency checks, not statistical observations.
+Matching source and JSONL bytes are required. Cross-attempt descriptive replay is:
+
+  python3 scripts/analyze_typed_reader_v15.py --check
+
+Numerical agreement excludes nil/unsupported rows and does not establish concept
+types, default dimensions, consolidated scope, financial truth or rendered tables.
+The paper renderer binds result/audit hashes and numerical cells before rendering.
+The PDF is a readable development addendum, not verified ACL-template compilation.
+
+The next algorithmic proposal is docs/algorithmic_next_stage_v16_proposal.txt.
+It requires complete-evidence reader competence, automatic proposal coverage,
+independent reference review and matched-cost comparisons before any method claim.
+No paid jobs, model completions or conference submission were made in v15.

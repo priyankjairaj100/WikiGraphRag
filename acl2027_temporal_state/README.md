@@ -1,6 +1,14 @@
 # ACL 2027 temporal state research
 
-## Current checkpoint (v0.14)
+## Current checkpoint (v0.15)
+
+The conventional typed reader now processes all **23,651 nonFraction occurrences in 12 fixed filing objects**, after a separately recorded ASCII-encoding amendment. The original six-source rejection remains preserved. Exact agreement with the numeric-only Arelle comparator covers **23,519 common supported values**; **16 nil cases and 116 unsupported transformations** are excluded from that comparison. **10 typed-dimension bindings** remain unresolved. Overall, **23,509 facts** pass both bounded numeric and reported-binding layers.
+
+**610 tests pass**, and 68 previous controls also pass against the amended reader. Independent audits verify both retained attempts; 96 source-derived lookup probes preserve their seed and reject a wrong source hash. These checks do not supply natural QA labels, taxonomy validation, rendered evidence, or a method-gain claim. No new model calls were made.
+
+Read the [paper addendum](paper/typed_reader_study_v15.pdf), [research update](docs/research_update_v15.txt), [reproduction guide](docs/reproduce_v15.txt), and [next algorithmic proposal](docs/algorithmic_next_stage_v16_proposal.txt). Natural-language reader competence and automatic alternative-binding proposal/verification are the next gates. The earlier negative results and stopped propagation route remain unchanged.
+
+## Previous checkpoint (v0.14)
 
 The completed structural retrieval and reader experiment adds **eight authored controls and 32 natural-document answers**. Qwen3.5-4B Q5_K_M passes the short controls but fails as an upgrade on matched contexts: **1/16 joint content, scope and citation passes versus 2/16 previously**. Across ordinary, paired, parent and closure contexts the new reader achieves **1/8, 0/8, 1/8 and 1/8**; two output-limit failures are preserved. This is a development result, not a general model ranking.
 

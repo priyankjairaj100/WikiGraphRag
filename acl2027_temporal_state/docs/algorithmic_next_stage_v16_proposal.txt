@@ -1,0 +1,91 @@
+Next algorithmic stage: acquire evidence that resolves competing source bindings
+Proposal dated 2026-10-04; no execution, preregistration, novelty claim or source-value inspection.
+
+Research question
+
+Can automatically identifying competing bindings of retrieved quantities, and retrieving the relation that distinguishes their scoped answers, improve supported-answer coverage over a strong generic evidence-sufficiency controller at the same total cost?
+
+The potentially useful contribution is a reliable acquisition policy for evidence-relative ambiguity: the question and complete source can be clear while retrieved fragments omit the binding needed to interpret a quantity. It is not a new definition of sufficiency, another graph index, or XBRL parsing. The v14 witness selector supplies a finite supplied-judgment scaffold; v15 supplies a conventional decoder of reported numeric aspects. Neither automatically interprets a question, proposes all relevant bindings, verifies prose relations, or establishes natural QA gains. This proposal adds those missing components and tests whether specialized acquisition is actually useful.
+
+Conventional baseline must come first
+
+Complete the bounded v15 diagnostic and understand every unsupported/error category. For a source domain used in QA, add a separately pinned offline full-DTS Arelle validation baseline where taxonomy packages can be recovered; preserve missing-package and validation failures. Normalized values alone do not prove valid concepts, default dimensions, consolidation, or financial truth. Give all methods the same typed facts, labels, structure, source identities and validated mappings. Never reserve correct XBRL metadata for the proposed system.
+
+For tagged filings, ordinary source-aspect filtering and a label-aware natural-language-to-query parser may already solve the task. Include this low-cost baseline. Annual taxonomy namespaces must not be joined by stripping their dates; a cross-version concept mapping needs taxonomy/source justification or stays unknown. Report a machine-assisted track separately from a reader-visible text/table track. Success only when machine tags expose the answer is not evidence of improved language understanding.
+
+Proposed pipeline
+
+1. Build an observed candidate set. A shared hybrid/reranked retriever returns source items; the typed decoder and table/section parser produce immutable fact occurrences and candidate structural links. A question parser proposes a small beam of requested concepts, entity identifiers, periods, units, populations and version relations, with explicit unknown fields. Candidate hypotheses are assignments to actual occurrences or plausible observed continuation/header links. Do not fabricate arbitrary wrong numbers or mutate source facts to manufacture alternatives. Do not silently relax an explicit question condition.
+
+2. Separate answer-changing alternatives. Each hypothesis maps to a structured answer action: quantity, source version, reported scope, and any proposed comparison relation. A value from another year or population is different even if the number matches. Harmless alternative parses need not be separated. Comparison actions distinguish reporting two scoped values from asserting a like-for-like change or a correction. The latter require positive relation evidence. The parser, action mapping and incompatibility classifier are fallible components with independent evaluation.
+
+3. Propose targeted evidence actions. For a pair of incompatible survivors, identify the differing relation and search for its source witness: column heading, caption/continuation, unit exception, definition, population rule, or explicit revision explanation. Generate candidate actions from source neighborhoods and corpus search, not gold page lists. Ordinary sufficiency and interpretation-enumeration baselines can issue the same actions. Missing evidence is unresolved, not contradiction.
+
+4. Select actions with dependency-aware lookahead. Start with uniform fixed hypothesis weights. The v14 objective counts incompatible surviving pairs; reuse it without renormalizing survivors. Estimate an action's ability to separate a pair from question, candidate bindings and permitted structural descriptors. A trained scorer, if used, learns only from training-history witness judgments. Compare against a deterministic relation-priority policy. Search singleton and two-bundle actions among a bounded shortlist, then pick the best estimated reduction per charged cost, retaining a positive-support tie-break. The two-bundle step directly targets the v14 counterexample where both separate marginal gains are zero. This is a heuristic, not a submodularity or approximation claim.
+
+5. Verify only after charged acquisition. A verifier outputs supported/contradicted/unresolved for a precise binding, with exact source pointers and all required premises. Validate numerical, identity and type constraints with tools; let a separately evaluated language model handle question-to-concept mapping and prose relations. Rejecting the correct hypothesis is more serious than leaving an alternative unresolved. Conflicting judgments block answer authorization. If a selector reads full candidates to estimate utility, charge those tokens and verifier calls; descriptors derived by an LLM are not free indexing.
+
+6. Use a constrained, competent reader. The reader produces typed claims and source pointers before prose. Values/signs/scales come from validated selected occurrences or explicit checked arithmetic, not free rewriting. The final renderer cannot introduce unsupported explanatory claims. A direct strong-LLM reader receives identical evidence as a comparator. Do not call a checkpoint stronger because it is newer/larger: select it on a separate complete-evidence competence set, then freeze weights/API version, prompts, arithmetic tools and decoding. The v14 failed checkpoint upgrade does not satisfy this gate.
+
+Finite proposals cannot certify absence of other interpretations. Beam pruning and a low selector loss must never clear the unknown flag. Calibrate a separate unresolved/coverage policy on development histories, retain unsupported source features as possible matches, and report candidate omissions explicitly. Ultimately answer only supported claims whose remaining modeled alternatives agree; withhold unresolved comparison claims. The resulting assurance is empirical, conditional on proposal/verifier coverage.
+
+Closest prior-art threats and required distinctions
+
+- S2G-RAG [1] already uses structured gaps, sufficiency decisions and pointer-selected sentences to control iterative retrieval. RINSE [2] judges question/evidence sufficiency through complementary coverage, answer-span and cross-passage signals. A general gap judge may already retrieve the necessary binding. Required contrast: identical candidate actions and downstream components, varying only the acquisition criterion.
+- Sufficient Context [3] explicitly discusses ambiguous queries/contexts and guided abstention. Thus excluding competing interpretations is not itself a new sufficiency principle. Compare coverage at matched unsupported-answer risk, not accuracy only on the subset the proposed system elects to answer.
+- HiREC [4] retrieves financial evidence hierarchically and asks for complementary information when needed. HC-RAG [5] builds structured financial evidence graphs and query-aware retrieval. They threaten novelty in financial comparison retrieval, table context and graph organization. Use strong structural/intent-aware adaptations with identical source access; label adaptations rather than implying faithful reproductions. HC-RAG's displayed date conflict remains unresolved; cite year only.
+- Tree of Clarifications [6] and REFUEL [7] already enumerate/disambiguate interpretations. MADAM-RAG [8] addresses ambiguity and conflicting evidence through agent debate and aggregation. The proposed distinction is acquiring new source relations to resolve competing attachments, rather than merely renaming enumeration or debate. Test it with the same initial alternatives and verifier budget.
+- Influence Guided Context Selection [9] values contexts by their contribution and learns a selection surrogate. An estimated witness utility is not new merely because it predicts marginal usefulness. The decisive contrast is pair-specific binding evidence versus generic context utility on matched candidate sets.
+
+These are method comparisons inferred from inspected primary papers, not claims that the prior methods cannot solve our task. No reported performance from these papers is imported into our results. The search is targeted and incomplete.
+
+Discriminating experiment
+
+Use a factorial comparison that first isolates components: fixed evidence with direct versus typed/tool-assisted reader; fixed reader with structural retrieval versus generic gap retrieval versus competing-binding acquisition. Hold proposer, source pool, available actions, verifier model, final input budget and total controller/verifier/generator calls constant for the policy comparison. Include a larger-context structural baseline on a cost-performance curve.
+
+Required ablations: top-one versus beam proposals; uniform versus learned proposal weights; relevance versus generic sufficiency versus pair separation; singleton versus two-bundle lookahead; free packing versus whole dependency bundles; typed tools on/off with the same reader; automatic versus oracle proposal/witness inputs. Oracle conditions are diagnostic upper bounds, never end-to-end results. Add count/cost-matched random evidence actions and candidate-order permutations. If improvement appears only with a different reader or more calls, attribute it accordingly.
+
+Primary endpoint: completely correct, scope-correct, cited answers over all eligible questions, with abstentions counted separately. Report unsupported material-claim rate and risk-coverage curves; abstaining everywhere cannot win. Intermediate measures: reference binding proposal recall, false elimination of the correct binding, witness retrieval recall, attachment correctness, unresolved rate, and answer accuracy conditioned on independently sufficient evidence. Charge native full prompts, metadata, namespace/context/unit dependencies, candidate generation, verification, indexing and latency. Do not optimize only final packed tokens while hiding earlier source reads.
+
+Population and annotation
+
+The two familiar v14 QA histories, eight old questions and six acquired filing pairs are development material. They cannot become an unseen test by renaming them. Start with a source-admission pilot from new, preselected histories; independently assess whether naturally occurring binding ambiguity remains after the strong structural baseline. Include straightforward, insufficient and conflicting cases, not only examples selected because this method wins. Freeze exclusions before predictions.
+
+Plan a confirmatory population of at least 30 independent histories and roughly 300 questions as an initial recruitment target, not a power guarantee. Fix final size from a disjoint pilot, a prespecified practically relevant effect, and history-level variance before test predictions. Split at issuer/document-family level; the same table template, amended filing and adjacent version must not straddle development and test. A second source family with naturally stated population/definition changes is needed for a broad claim beyond filings; otherwise keep the claim financial and structured-document-specific.
+
+Two independent annotators should review each question, complete source, required bindings, minimal supporting witnesses, acceptable scoped answers and unresolved alternatives; adjudicate disagreements before model outputs. Annotators should not be shown method identity or predictions. Record inter-annotator agreement and exclusion reasons. Model-assisted labels are usable for development but cannot be called independent human gold. When independent review is unavailable, stop at an explicitly limited diagnostic rather than claiming a confirmatory benchmark. Preserve source licenses and redistribution boundaries.
+
+Constructed attachment swaps or missing-header stress tests remain a separate mechanistic track. Balance numbers, names, length and lexical overlap, following the construction-cue concern in RINSE. Do not count mutations of one report as independent histories. Cluster confidence intervals/bootstrap by history and report per-history failures, not only pooled question averages.
+
+Go/no-go gates before scaling
+
+1. Baseline gate: a complete-evidence reader competence study must show reliable numerical/scoped reading and calibrated refusal on insufficient evidence. Proposed target: 100 complete and 100 insufficient independently reviewed cases; require a 95% lower confidence bound above 85% for joint correctness and an upper bound below 5% for unsupported answers. These targets must be finalized before collection; they are not achieved results.
+2. Candidate gate: independently measured reference-binding recall and false-elimination rate must be sufficient for the intended endpoint. A practical pilot target is >=95% proposal recall and <=2% false elimination, with confidence intervals and every omission disclosed. Failure routes work back to the proposer/verifier, not to a more flattering retrieval metric.
+3. Residual-need gate: stop the specialized method claim if complete structural evidence and generic sufficiency control remove the failure, or if independent annotators cannot reliably identify the allegedly distinguishing relations.
+4. Confirmatory gate: require a prespecified practically relevant supported-answer gain (initial proposal: five absolute points), a history-clustered confidence interval excluding zero, and no material increase in unsupported claims under matched costs. Failure is a no-go for the method claim; do not rescue it with a retrospectively selected slice. Stronger standards/data/tooling can still be released as separate engineering artifacts.
+
+Immediate next implementation increment, only after protocol freeze
+
+Implement and test the automatic question-to-reported-aspect proposer and anchored three-valued relation verifier on training histories. Add a two-bundle selector variant and record its extra scoring cost. Run the reader competence and proposal-error pilot before any confirmatory campaign or training expansion. No model, dataset, budget, annotation or remote-compute execution is authorized or launched by this document itself.
+
+Primary sources inspected 2026-10-04
+
+[1] S2G-RAG, ACL 2026; methodology3.1-3.4.
+https://aclanthology.org/2026.acl-long.1185/
+https://arxiv.org/html/2604.23783v1
+[2] Relevance Is Not Sufficient Evidence, arXiv2026; sections3-4.
+https://arxiv.org/html/2609.37469v1
+[3] Sufficient Context: A New Lens on Retrieval Augmented Generation Systems; sections3 and5.
+https://arxiv.org/html/2411.06037v1
+[4] Hierarchical Retrieval with Evidence Curation; section4.
+https://arxiv.org/html/2505.20368v3
+[5] HC-RAG; methodology3.2-3.6.
+https://arxiv.org/html/2608.12335v1
+[6] Tree of Clarifications, EMNLP2023; section3.
+https://aclanthology.org/2023.emnlp-main.63.pdf
+[7] Answering Ambiguous Questions through Generative Evidence Fusion and Round-Trip Prediction, ACL2021; section2.
+https://aclanthology.org/2021.acl-long.253.pdf
+[8] Retrieval-Augmented Generation with Conflicting Evidence,2025; MADAM-RAG method.
+https://arxiv.org/html/2504.13079v1
+[9] Influence Guided Context Selection for Effective Retrieval-Augmented Generation,2025; method/selection objective.
+https://arxiv.org/html/2509.21359v1
