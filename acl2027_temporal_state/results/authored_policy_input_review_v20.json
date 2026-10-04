@@ -1,0 +1,77 @@
+{
+  "schema_version": "authored_policy_input_review_v20",
+  "status": "passed_input_only_review_v20_1",
+  "open_blockers": [],
+  "execution_authorized_by_review": false,
+  "code_and_input_sha256": {
+    "data/reader_binding_v19/authored_requests_v19.json": "7122f2bf5533664ebf713c5a352d19db8353af69d91a619d91d47708b29cabce",
+    "scripts/prepare_authored_policy_comparison_v20_1.py": "a9ad2bd8437ce5310947fea3933fa73acd83c81daf58b07843186d01e2570fd0",
+    "scripts/native_binding_reader_v16.py": "757d907edbb13e4b5749506362719cadfd6146000c1c140edfefa159cfbd8b19",
+    "src/temporal_state/reader_binding_v16.py": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1",
+    "data/authored_policy_comparison_v20_1/requests.json": "759afd5a6446820f52ca343d8ea97405a6067b0268b8e4090213993de05ef11c",
+    "data/authored_policy_comparison_v20_1/administrative_mapping.json": "af7b574ca6b5cff448fe80d6827549bb0f058bbf25f9a4d0da7d50aa6686035a",
+    "data/authored_policy_comparison_v20_1/manifest.json": "936ae1850a31631b668a9ef41ae4762501114273089268c2b99fd43e6856d2e0",
+    "results/authored_policy_initial_order_review_v20.json": "e92f6472b6116d62ef212daae07b79514c90fbd3e95513b33d7b613b368d0556",
+    "scripts/prepare_authored_policy_comparison_v20.py": "9590cfe21e22103018413bdd665a4036144f0e3a33ab8fb62cc497b842a34176",
+    "data/authored_policy_comparison_v20/administrative_mapping.json": "7f82ffa6a2beb393d6fe8177a798036ba9ffaea8c978a351bc52d39128d50a6f",
+    "data/authored_policy_comparison_v20/manifest.json": "ff2eaa6c03351b48f11a8e0e1886dfd77c2ddd79ca632f6332de929c3c8b9990",
+    "data/authored_policy_comparison_v20/requests.json": "b61499baadda44686bfef6159402385e4de0df6eeda9e5e35b1db277de4f1eb2"
+  },
+  "checks": {
+    "parent_sha256_bound_and_unchanged": true,
+    "builder_and_prompt_writer_hashes_match": true,
+    "all_manifest_output_bytes_and_hashes_match": true,
+    "exact_sixteen_unique_opaque_requests": true,
+    "administrative_order_matches_request_order": true,
+    "every_parent_once_in_each_condition": true,
+    "exact_parent_question_evidence_and_contract_preserved_except_pack_id": true,
+    "no_scenario_ids_parent_ids_or_condition_labels_in_messages": true,
+    "paired_user_messages_identical_and_only_system_policy_addition_changes": true,
+    "adjacent_pair_0": true,
+    "adjacent_pair_1": true,
+    "adjacent_pair_2": true,
+    "adjacent_pair_3": true,
+    "adjacent_pair_4": true,
+    "adjacent_pair_5": true,
+    "adjacent_pair_6": true,
+    "adjacent_pair_7": true,
+    "first_condition_balanced_within_each_arm": true,
+    "amendment_changes_order_and_opaque_ids_only": true,
+    "original_flawed_unexecuted_preparation_retained": true,
+    "development_and_execution_limits_explicit": true
+  },
+  "checks_passed": 21,
+  "planned_development_cells": 16,
+  "parent_requests": 8,
+  "conditions": 2,
+  "first_condition_counts_by_arm": {
+    "B1": {
+      "original_policy": 2,
+      "clarified_policy": 2
+    },
+    "B2": {
+      "clarified_policy": 2,
+      "original_policy": 2
+    }
+  },
+  "scope": "Input-only readback and independent in-memory reconstruction; no builder execution, reference reads, tokenizer, model or remote call.",
+  "policy_coherence": [
+    "Explicitly requested versions remain separate claims in one B1 joint hypothesis and separate B2 quantities.",
+    "Unspecified answer-changing source requires clarify; absent evidence for a resolved request requires insufficient.",
+    "unknown=true describes unresolved interpretation, not a requirement to invent missing evidence; this is compatible with both frozen schemas.",
+    "Empty refusals and exact clarify_aspects remain consistent with the schema contracts."
+  ],
+  "retained_initial_issue": "Original unexecuted v20 schedule was balanced overall but perfectly confounded first condition with arm; preserved v20.1 fixes balance within each arm without changing prompts.",
+  "limitations": [
+    "Known development fixtures, not held-out or natural evidence.",
+    "Balanced finite order does not establish randomized inference or eliminate every runtime/order effect.",
+    "Equal future ceilings do not imply equal input token counts; actual tokenizer fit remains unverified.",
+    "No complete native/resource protocol, durable-capture integration or reference-bound post-seal grading has been executed or authorized.",
+    "The neutral-ID original-policy condition is not the historical labelled-pack prompt; old 2/8 cannot be reused as its measured baseline."
+  ],
+  "natural_inputs_read": 0,
+  "reference_files_read": 0,
+  "native_calls": 0,
+  "tokenizations": 0,
+  "remote_calls": 0
+}

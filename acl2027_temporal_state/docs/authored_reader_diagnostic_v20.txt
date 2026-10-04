@@ -1,0 +1,159 @@
+Authored reader diagnostic v20
+4 October 2026. Source-free local audit; proposal only, no native execution.
+
+Finding
+
+The surviving v19.1 grade reports eight technical completions, two correct
+single-quantity controls and a failed full-eight gate. The remaining failures
+are not justified by an impossible reference or a contradictory instruction in
+these fixtures. They are final-answer failures under the frozen task contract.
+Their internal cause is unestablished: original responses, proposal traces and
+runtime traces are unavailable. The prior v19 audit passed before artifact loss;
+the new v19.1 raw terminal audit is blocked. Do not infer a particular reasoning
+error, malformed key, missing citation or decoder limitation from the grade alone.
+
+What the frozen tasks require
+
+* multiple_versions explicitly asks for revenue in both named reports,
+  separately. Both facts have all six bindings and witnesses. They differ in
+  physical source, so the interface treats them as distinct scopes, not a
+  contradictory same-scope duplicate. B1 instructions explicitly place requested
+  versions as separate claims in ONE joint hypothesis; B2 requires all requested
+  quantities separately. Insufficient is incorrect. For B1 this is the finalizer's
+  observed action, not proof that the model itself selected decision=insufficient:
+  an answer proposal with missing citations can also be finalized as insufficient.
+
+* ambiguous_version asks for one reported revenue without selecting between two
+  source versions. The system instruction says to clarify a relevant unspecified
+  choice. The reference therefore requires clarify with source in clarify_aspects
+  and no quantities. Returning both quantities silently changes the requested
+  decision into an unsolicited multi-version answer. In unconstrained QA that
+  might be useful, but it is wrong under this explicit frozen policy. The B1 and
+  B2 support-valid flags do not override the action/reference mismatch.
+
+* missing_binding names USD in the question, but the supplied fact has unit=null
+  and no unit witness. The compact-contract text defines null as unavailable;
+  the system forbids inferring an unavailable binding and requires insufficient
+  when necessary evidence is absent. A requested currency is not evidence that
+  the fact uses that currency. The direct numeric answer is unsupported. B1's
+  invalid_output is also incorrect; its precise schema/access error is unknown.
+  The prompt permits empty witness lists where support is unavailable, so an
+  invented unit witness is neither required nor allowed.
+
+Bounded checks performed for this audit
+
+The surviving four fictional packs/questions are identical between B1 and B2
+within each scenario. Pure deterministic construction of a reference-conforming
+output passes the existing assessment for all eight requests: one joint two-claim
+proposal for requested versions, empty clarify/source for ambiguity, and empty
+insufficient for missing support. This is reference reachability, not prediction
+or evidence of reader competence. No new fixture, reference or raw model artifact
+was written. Rebuilding request-message bytes in memory with the original writer
+format matches the frozen SHA256 5440df6b81b9dcb070096d9702c11039b34c0f05b747e62813342095c2a27a34.
+This reconstructs inputs only; it does not recover missing outputs or traces.
+
+Demonstrable specification and presentation weaknesses
+
+1. Scenario labels reach the model. request_messages excludes fixture_id from its
+   message envelope, but prompt_view copies pack_id verbatim. Thus names such as
+   multiple_versions, ambiguous_version and missing_binding appear inside the
+   evidence. These are task-category cues, not opaque administrative IDs. There
+   is no evidence that the model used them; they do not excuse incorrect answers.
+   Remove this shortcut in new versions without editing the historical fixtures.
+
+2. unknown is described only as a boolean and shown as false in schema examples.
+   Its semantics are not explained. In B1, unknown=true with decision=answer
+   forces clarification; in B2, answered plus unknown=true is invalid. This is
+   a real underspecification, but the retained grade cannot attribute any failure
+   to it. A new shared policy should define it consistently, separating unresolved
+   question interpretation from unavailable evidence for a well-specified request.
+
+3. The compact view is lossless but requires joins from fact to binding to value,
+   and from witnesses to text IDs. This is measurable representation complexity,
+   not demonstrated information loss or demonstrated causal failure. Requested
+   and unspecified-version scenarios also use different entities, years and
+   values; they are not a same-evidence minimal pair. Their contrast does not by
+   itself identify a source-selection reasoning defect.
+
+The frozen instructions already state the correct high-level policy. Stronger
+wording is a testable intervention, not an explanation proven by these results.
+There were no output-limit events; increasing the output cap is not supported by
+this record. Schema-constrained decoding alone would not fix the schema-valid
+version-action failures. No model-size, training or retrieval change is justified
+as the first isolated correction by this small diagnostic.
+
+Smallest proposed next comparison
+
+First implement durable capture below. Then prepare, but do not yet execute, one
+two-condition development comparison over the same four fictional scenarios and
+both arms: original policy versus ONE shared, concise decision-policy clarification.
+Use neutral pack IDs in BOTH conditions, with a frozen reversible administrative
+mapping. Keep question text, evidence values/bindings/witnesses, compact layout,
+arm output schemas and grading references identical. Historical 2/8 is not the
+new neutral-ID baseline, and old answers cannot be reused. This would be sixteen
+planned fresh completions if separately approved, not an automatic retry loop.
+
+The single clarification should state, without naming any fixture or answer:
+  - Explicitly requested source versions are a joint requested set; provide each
+    separately rather than treating their differing values as a conflict.
+  - An unspecified answer-changing source choice requires source clarification;
+    do not silently replace that choice with an answer listing all alternatives.
+  - A required null binding or absent supporting witness means insufficient;
+    words in the question cannot supply evidence. Emit a valid empty refusal.
+Define unknown as unresolved interpretation: false for a resolved request,
+including a well-specified request with insufficient evidence; true when an
+unspecified choice remains. Keep clarify_aspects exact and empty outside clarify.
+For B1, multiple requested quantities stay in one hypothesis. Do not add rationale
+fields, hidden references, per-question mappings, repair calls or few-shot copies
+of the four answers.
+
+Both conditions retain the pinned model/quantization/runtime, greedy seed-zero
+settings, thinking disabled, cold process/cache per completion, fixed resource
+guards and the same 8192 context / 6144 full-input / 768 output ceilings. Measure
+actual token costs for each changed prompt; equal ceilings are not equal token
+counts. Refuse over-budget inputs without truncation. Freeze the complete schedule
+before outputs; semantic failures and valid capped outputs do not stop later
+cells, whereas technical/resource/capture failures retain all later unattempted
+rows. Preserve reference-free inference and separate post-seal grading.
+
+These now-inspected cases are development diagnostics, not held-out evidence or
+a natural-reader gate pass. Any later promotion needs separately frozen, freshly
+authored controls, including a requested-versus-unspecified source minimal pair
+over identical evidence. Do not claim gains before observing a new complete run;
+do not expand to representation/model changes until durable traces identify a
+remaining failure. No execution is authorized by this note.
+
+Per-completion durable capture requirement
+
+Persist the inference protocol, exact request/prompt/token bytes, raw response or
+error bytes, native log, resource history, technical outcome and confirmed cleanup
+for EVERY attempted completion, including failures. Seal their hashes locally,
+copy to the authorized durable store, and verify read-back content hashes before
+starting the next process. Local fsync or a hash-only public receipt is not durable
+raw capture. Keep source-bearing payloads private; publish only approved metadata.
+Capture failure is a technical stop with a retained full planned denominator,
+never permission to regenerate a response. Final raw sealing must bind the ordered
+per-completion manifests and unattempted states before offline references are read.
+Do not relabel regenerated material as a lost original. This rule changes capture
+timing, not the scheduler's independence from answer correctness.
+
+Audit inputs (all surviving local code, authored data or public receipts)
+
+data/reader_binding_v19/authored_requests_v19.json
+  7122f2bf5533664ebf713c5a352d19db8353af69d91a619d91d47708b29cabce
+data/reader_binding_v19/authored_references_v19.json
+  ff7c1058e99f1184075cedad1ac76055da1d086a84de1827a3c4c8d0b09165f1
+scripts/native_binding_reader_v16.py
+  757d907edbb13e4b5749506362719cadfd6146000c1c140edfefa159cfbd8b19
+src/temporal_state/reader_binding_v16.py
+  b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1
+configs/native_authored_completion_v19_1.json
+  f76b16faa9a3cd741e214faa4f7f7c385411ae0bc8b183563b4f0052f9abd14d
+results/native_authored_completion_grade_v19_1.json
+  cda2385a33b36285994112be94cc730d01e717612a27a1b4b33cc9a5a5de7010
+results/native_completion_terminal_blocked_v19_1.json
+  647ca64f677df5dafa197a4e89d8ec82a8f3c2d1c46327240ccd0aaad6f7c0be
+
+Only this new diagnostic note was authored. Frozen inputs/code/receipts/papers
+remain unchanged. Natural sources, questions, references and predictions were
+not accessed. Native processes, tokenizers and model endpoints were not invoked.

@@ -1,0 +1,163 @@
+Question-free registry bridge v20: authored implementation contract
+
+Status: source-free implementation with invented controls only. No natural/private
+projection, annotation ledger, typed registry, question/reference or model output
+was read to implement it. No natural execution, semantic admission, author release
+or reader advance is claimed. The frozen v19 minimal-bridge plan remains unchanged.
+
+Owned implementation: src/temporal_state/question_free_registry_bridge_v20.py
+Owned controls: tests/test_question_free_registry_bridge_v20.py
+Owner receipt: results/question_free_registry_bridge_authored_review_v20.json
+Independent review is separate. Do not execute an actual-data adapter merely
+because these controls pass; root binds and reviews the exact later inputs.
+
+Narrow boundary
+
+The module produces only a complete ordered registry overlay and its private
+provenance sidecar. It never emits a new EvidencePack, changes reader code or
+prompts, normalizes quantities, constructs author packets, fetches source data,
+loads files or calls a model. Original heuristic row-label candidates remain
+unchanged in declared typed provenance and are never relabeled source-certified.
+Every output's author_release_allowed, bundle_admitted, candidate_admitted and
+candidate_pack_emitted flags are false, even when supplied decisions are supported.
+Any later reviewed reader-pack projection is a separate increment.
+
+Pure APIs and input binding
+
+anchor_identity(anchor) accepts the original flat fields source_sha256, byte_start,
+byte_stop, span_sha256 and dom_path. It returns that exact five-component tuple.
+Digests are 64 lowercase hexadecimal characters; offsets are exact integers (not
+booleans), 0 <= start < stop; DOM path is nonempty. Other original provenance fields
+are not identity shortcuts. This verifies representation, not unseen source bytes.
+
+exact_anchor_join(typed_entries, occurrences, source_sha256=...) keeps one result
+for each inherited positional entry. A bound source occurrence must match a unique
+typed source-SHA/span/DOM tuple AND its original inherited position. No join uses
+value equality, labels, nearest location, a filename or a default source. Outcomes
+are exact_unique, unmatched, ambiguous, provenance_mismatch or unresolved_locator.
+All outcomes retain the original fact handle and occurrence key. Duplicate matches
+are not deduplicated. A population size mismatch is an error, not a reduced batch.
+
+reconcile_bundle(parent_pack, registry, projection, annotations, decisions,
+                 expected_digests=..., projection_artifact_sha256=...)
+
+parent_pack is the unchanged v18 EvidencePack. registry is its complete v17-schema
+candidate registry preserved by the v18 materializer. projection is the frozen v19
+source_occurrence_projection. annotations is the frozen v19 initial source-only
+annotation object under docs/source_occurrence_annotation_schema_v19.txt. decisions
+is a NEW list of explicit question-free correspondence reviews, possibly empty.
+No initial annotation or old registry is rewritten.
+
+expected_digests has exactly parent_pack, registry, projection, annotations and
+decisions. Values are canonical OBJECT digests computed by this module's digest():
+JSON ensure_ascii=false, sorted keys, compact separators, allow_nan=false, plus
+one trailing newline, UTF-8, then SHA256. Use parent_pack.snapshot() for its object
+digest; EvidencePack.sha256 uses a different serialization and is not substituted.
+The caller separately verifies frozen physical artifact byte hashes before loading.
+projection_artifact_sha256 is the physical FILE digest referenced by the initial
+annotation projection_sha256; it is explicitly separate from the projection object
+digest. Both are retained. This pure function cannot prove that a supplied object
+was actually loaded from a claimed file; the later frozen adapter supplies that
+byte-verification and no-overwrite boundary.
+
+Parent pack fact handles, canonical values and heuristic labels must agree with
+the original registry. Present concept/entity/period/unit bindings must equal its
+declared aspects; present source binding must equal the fixed bundle source SHA
+and neutral source ID. Original population bindings stay null. An absent parent
+binding is not promoted from a potentially unresolved typed value. Whole block
+text/order/handles, including empty and whitespace blocks, remain unchanged.
+Projection entry digests and ordered annotation entry keys must match exactly.
+
+Decision record (no implicit semantic inference)
+
+ key: {bundle_handle, occurrence_handle, entry_sha256}
+ aspect: concept | entity | period | unit | population | source
+ state: supported | unresolved | rejected
+ declared_value_sha256: digest of unchanged parent binding value, or null if absent
+ attachment_refs: [{attachment_index, attachment_sha256}, ...]
+ witness_ids: list of initial-ledger source witness IDs
+ value: reviewed accepted value, or null for unresolved/rejected
+ rationale: nonempty explanation
+ review_record_sha256: digest of a separately immutable actual review record
+
+Attachment indexes are zero-based positions in this entry's ORIGINAL frozen
+attachments list, each bound by digest(exact attachment). Multiple records with
+the SAME aspect are permitted and preserved; they are never flattened into one
+population/unit meaning. A selected attachment cannot silently change or be
+substituted by a matching aspect name. Duplicate decision entry/aspect or duplicate
+attachment index is an error. The review digest refers to a distinct frozen review
+or rationale artifact, not a circular self-hash of the decision file containing it.
+It records attribution; it is not authentication or independent approval.
+
+Missing decisions give pending_separate_review with accepted_value=null for all
+six aspects. Unresolved/rejected decisions retain null. Initial supported literal
+attachments alone never promote typed metadata. A supported decision requires an
+exact unique join, visibly exposed occurrence, nonempty selected supported source
+attachments and their complete witness union. Its recorded presentation literal
+must equal the frozen occurrence decoded text. Every selected attachment contributes
+its source witnesses; an unrelated row witness cannot substitute for population
+support. Every referenced witness must pass exact fixed-context literal/locator/
+raster-reference checks. This bookkeeping does not prove the semantic attachment.
+
+For concept/entity/period/unit/source, accepted value must equal the already
+present declared parent binding exactly. No date calculation, currency inference,
+entity alias, QName equivalence or source-version rewrite is permitted. A population
+value must use an explicit literal from a selected supported population attachment
+that occurs in that attachment's exact selected source witnesses, and the original
+reported dimensions unchanged. Literal containment is not semantic entailment.
+Empty dimensions are not evidence
+of consolidation. Additional source qualifications remain in their own attachment
+records and witnesses for substantive review; a simple shape check does not certify
+that a single population label represents them sufficiently.
+
+Source-witness checks and unresolved preservation
+
+Whole-block, row, cell and text-span selectors are checked against the unchanged
+whole source context. Original block anchor/DOM/source must match; literal text and
+its digest must match. Row/cell indexes and text offsets must be in bounds. A text
+span may instead use the schema's exact occurrence_locator plus source_text_segments:
+both must match one frozen occurrence, and offsets then refer to its decoded text.
+This permitted form is preserved, not converted into guessed block-text offsets.
+
+Witness raster references must be members of the same block's closed qualified
+page map. No image is opened or visually inspected by this module, and matching
+hashes never imply a new visual review. Unsupported selectors, missing/outside
+context, ambiguous occurrence identity or mismatched text/raster links produce an
+unresolved_witness check. Such records remain in the sidecar; they cannot support
+a mapping. Separately supplied identity-card references are not automatically
+treated as numeric scope witnesses or copied into every entry.
+
+All nil/unsupported/empty/dash/duplicate entries and unknown attachment states are
+retained. The overlay copies each original typed record and pack bindings without
+semantic reinterpretation. The sidecar preserves every initial annotation, all
+initial source witness records, view-inspection records and explicit new decisions.
+Caller inputs and the two returned objects are detached; changing one cannot
+silently change the other provenance record.
+
+Complete population versus admission
+
+verify_population(overlays, expected_key_order) requires exact ordered equality
+with the separately frozen key manifest, including exact bundle membership/order.
+No extra empty bundle, missing entry, duplicate bundle/key or reordered entry is
+accepted. For actual project use the caller must bind all 21 fixed bundles and
+326 bundle-occurrence keys before execution. Invented controls use both smaller
+manifests and an explicit invented 21/326 case; none is a natural-data result.
+
+Coverage completeness does not require all aspects known and does not admit a
+bundle, target, pack or author. Later source-bundle release and per-question six-
+binding/reference gates remain those of the frozen v17 workflow. Source readiness
+may proceed independently of failed authored reader execution; natural prediction
+gates remain blocked until their separately required native gate is passed.
+
+Meaningful verification
+
+ PYTHONPATH=src python3 -m unittest discover -s tests \
+   -p 'test_question_free_registry_bridge_v20.py' -v
+
+Controls cover exact source/span/DOM identity, equal-value distinct occurrences,
+ambiguous/reordered/unresolved joins, all-entry preservation, no automatic support
+promotion, untouched declared values/dimensions/labels, explicit partial decisions,
+repeated attachment aspects and complete selected witness coverage, physical versus
+object hashes, whole/row/cell/occurrence-local spans, stale or outside witness links,
+input/output detachment and complete population checks. No production adapter,
+actual-data reconciliation, source admission or model call is authorized here.

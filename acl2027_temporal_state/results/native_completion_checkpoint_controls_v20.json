@@ -1,0 +1,85 @@
+{
+  "all_bound_inputs_unchanged_during_controls": true,
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_native_completion_checkpoint_v20.py",
+    "-v"
+  ],
+  "created_utc": "2026-10-04T16:15:08.755074+00:00",
+  "draft_review_resolutions": [
+    "Current seal and current member identities bind every ACK and prefix confirmation.",
+    "Explicit produced/not_produced declarations reconcile each optional artifact; completeness attestation remains trusted to caller.",
+    "Exact contiguous attempted prefix and previous durable-ACK lineage are validated.",
+    "All journal mutation APIs refuse after finalization.",
+    "An incomplete scheduled or attempted capture requires an explicit stop reason, including the final cell.",
+    "Cleanup-unconfirmed attempts remain unsealed and cannot claim durable capture."
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dev/shm/wikigraph_v15/tmp"
+  },
+  "errors": 0,
+  "exit_code": 0,
+  "experiment_frozen": false,
+  "failures": 0,
+  "independent_review": "pending_separate_receipt",
+  "model_completions": 0,
+  "native_execution_authorized": false,
+  "native_processes_started": 0,
+  "post_control_contract_qualification": {
+    "change": "Qualify prior-ACK lineage checks as applying to sealed/acknowledged cells; an unsealed terminal directory is retained by scheduled position without certifying its incomplete begin metadata.",
+    "code_and_tests_unchanged": true,
+    "current_contract_sha256": "33735165db33f070a02c2123d4c2ef52c1660a26786f49df409ca8197690946e",
+    "previous_contract_sha256": "2a12c016bdc24a6a0c759ddff4e7abdc3d3276a5e86f9722b4b9acc88d823139",
+    "prior_owner_receipt_sha256": "96dbf07a852ad8bc9f11b9ad7ac3e979c946e10d350646dd468c4c83e0d32a93",
+    "reason": "Independent reviewer requested wording precision only; no executable change.",
+    "tests_repeated": false
+  },
+  "provider_calls": 0,
+  "recipe_sha256": {
+    "docs/native_completion_checkpoint_contract_v20.txt": "33735165db33f070a02c2123d4c2ef52c1660a26786f49df409ca8197690946e",
+    "scripts/native_completion_checkpoint_v20.py": "3f91407d87c467a50afe6e7bbc901a8e46b2bfa108792bc1e4180aa0ea805564",
+    "tests/test_native_completion_checkpoint_v20.py": "4fb97d75113c9e61e782c4fabd2bbdb7f83d641c97779adaa8080f6d380b48cd"
+  },
+  "references_opened": 0,
+  "remote_transfers": 0,
+  "schema_version": "native_completion_checkpoint_controls_v20",
+  "scope": "Capture component only; no native worker integration, experiment freeze, model execution or actual remote operation.",
+  "status": "passed_invented_component_controls",
+  "test_names": [
+    "test_bad_or_cross_cell_ack_cannot_advance",
+    "test_boolean_without_tool_object_version_evidence_rejected",
+    "test_cleanup_unconfirmed_and_missing_guard_stop_without_seal",
+    "test_expected_seal_hash_required_before_export",
+    "test_explicit_nonproduction_declaration_required",
+    "test_failure_partial_bytes_sealed_and_full_denominator_preserved",
+    "test_finalized_prefix_rejects_later_state_changes",
+    "test_full_attempted_but_unacknowledged_prefix_requires_explicit_stop",
+    "test_full_predeclared_schedule_advances_only_after_attested_readbacks",
+    "test_local_seal_and_archive_are_not_durable_ack",
+    "test_missing_external_prefix_digest_cannot_advance",
+    "test_mutated_raw_after_ack_blocks_next",
+    "test_produced_then_omitted_artifact_is_not_relabelled_absent",
+    "test_readback_mismatch_and_same_inode_rejected",
+    "test_rewritten_raw_and_seal_cannot_use_old_durable_ack",
+    "test_traversal_and_archive_link_are_rejected_without_extraction",
+    "test_unexpected_directory_gap_and_retry_are_rejected",
+    "test_unknown_reference_file_and_symlink_rejected_before_open"
+  ],
+  "test_output_path": "/dev/shm/wikigraph_v15/v20_checkpoint/native_completion_checkpoint_controls_v20.log",
+  "test_output_sha256": "8dbaf30b91bc18dcbb179a7b35052c6f09ed8c92bea051c8b537f1e582dfdf9f",
+  "tests_run": 18,
+  "trust_limits": [
+    "Invented ACKs and local readback copies test integrity checks only, not actual remote transfer.",
+    "The component trusts root to supply authentic tool-return evidence and immutable object/version identity.",
+    "Archive/readback byte equality does not prove provider retention or future availability.",
+    "The caller attests complete produced artifacts, technical outcome and confirmed cleanup; this component does not observe native execution.",
+    "This is a serial trusted-writer integrity component, not an OS sandbox."
+  ]
+}

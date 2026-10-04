@@ -1,0 +1,144 @@
+Native completion checkpoint component v20
+4 October 2026. Component preparation only; no native execution or remote save.
+
+Scope and trust boundary
+
+scripts/native_completion_checkpoint_v20.py provides a bounded capture journal
+for a separately approved cold-process reader experiment. It never starts a
+process, opens references, interprets answer content, grades, calls a provider,
+contains credentials or grants native execution authority. It does not itself
+implement the proposed v20/v20.1 experiment, worker, resource watchdog or freezer.
+The future orchestrator must preserve their independently reviewed requirements.
+
+The caller is trusted to provide the complete produced artifacts and truthful
+technical/cleanup metadata after the native process exits. The component cannot
+observe execution stages or infer whether a missing file was never produced.
+Explicit produced/not_produced declarations are reconciled to local filenames;
+they are attestations, not independent proof of native-stage completeness.
+The capture root has one trusted serial writer. This is an integrity check and
+closed artifact allowlist, not an OS sandbox against concurrent hostile writers.
+
+Remote transfer is performed by the trusted root orchestrator with authorized
+Library tools between cold native processes. The component validates the exact
+tool-return acknowledgment supplied by root, its externally approved SHA256,
+immutable object/version identity digests, and the separately downloaded archive
+bytes. It cannot authenticate provider provenance independently without provider
+access. Returned-byte equality does not prove retention or future availability.
+A locally fabricated ACK cannot establish a real remote save; the tests use such
+invented ACKs only to exercise checks, and real remote integration is untested.
+
+States and API
+
+1. create(root, protocol_bytes, schedule) creates a new directory and returns the
+   schedule digest. Each of 1..16 predeclared rows has exactly cell_id and
+   request_sha256. The caller retains the digest outside the mutable capture
+   directory and supplies it to Checkpoint(root, expected_schedule_sha256).
+   The protocol is stored as opaque exact bytes, not recursively opened/parsed.
+
+2. begin_cell(cell_id, approved_prefix_ack_sha256) reserves the next capture slot
+   in fixed order. For every earlier slot, root supplies its externally approved
+   tool-ACK digest. All earlier cells must remain byte-identical, technically
+   passed, guard-passed, cleanup-confirmed and durable-transfer-attested with
+   verified readback. Directory existence consumes the slot; no retry is offered.
+   The return value is a folder, never model execution approval. The immutable
+   begin record binds the previous durable-ACK record and full schedule digest.
+
+3. The future native worker writes only the fixed artifacts below. seal_cell(id)
+   hashes every artifact, checks request/protocol identities, validates the small
+   technical metadata, and records local_sealed_not_durable. It returns the seal
+   digest. Cleanup must be confirmed. Failure/error/partial response bytes are
+   retained, including guard failures, but no later cell can follow a technical
+   or guard failure. Missing telemetry cannot qualify as technical_passed.
+
+4. export_cell(id, expected_seal_sha256) revalidates the caller-pinned local seal
+   and writes one exclusive archive plus a member/hash handoff. Neither a local
+   seal, fsync nor archive authorizes continuation. The archive contains exact
+   seal.json, begin.json and artifacts/<fixed-name> members. Its compressed and
+   declared uncompressed totals are bounded at 128 MiB (with 1 MiB header reserve
+   for the latter). Members are ordinary files; links, traversal, extra names,
+   duplicates, altered sizes or digests are rejected without extraction.
+
+5. Root uploads that private archive, obtains the provider object/version
+   identity, downloads that same version to a separate file outside the capture
+   root, and constructs the exact tool ACK below from retained tool results.
+   acknowledge(id, ack_path, approved_ack_sha256, readback_archive) requires the
+   root-approved ACK digest, exact archive hash/length, exact current local seal
+   and member map, and readback equality. A same-inode/local-archive readback is
+   refused. It writes tool_ack.json and durable_ack.json exclusively, recording
+   durable_transfer_attested_readback_bytes_verified and its trust limitation.
+   Before any next slot, current raw/seal/archive bytes and root-approved ACK
+   lineage are rechecked; local loss or mutation stops advancement. No automatic
+   restore, regeneration, alternate response or retry is performed.
+
+6. finalize(stop_reason, approved_prefix_ack_sha256) records the full schedule
+   denominator and ordered seal/ACK hashes. Exact contiguous attempted folders
+   are required; unknown folders/gaps fail closed. Sealed/acknowledged cells also
+   require intact begin and prior-ACK lineage. An attempted_unsealed terminal
+   directory is retained by scheduled position without certifying its possibly
+   incomplete begin metadata or lineage.
+   Rows distinguish not_attempted, attempted_unsealed, local_sealed and
+   durable_attested. An explicit technical_failure, capture_failure,
+   guard_failure or operator_stop is required if any scheduled cell is absent
+   OR any attempted cell lacks durable attestation. Cleanup-unconfirmed cells
+   remain attempted_unsealed; their raw evidence is not claimed durably captured.
+   A complete capture can still contain a terminal technical failure. Finalization
+   is denominator/capture accounting, never an authored-adequacy or semantic gate.
+   It forbids later begin/seal/export/ack/finalize mutations through this API.
+   The future orchestration must seal its ordered raw prefix before any separate
+   offline grader opens references. This component performs no grading.
+
+Fixed artifact contract
+
+Always required: protocol.json, request.json, resources.json, guard.json,
+cleanup.json and outcome.json. Optional artifact names are prompt.json,
+tokens.json, response.bin, error.bin, response.partial.bin and native.log.
+Unknown names, directories and symlinks fail before artifact contents are read.
+Paths and their parents cannot be symlinks or contain traversal components.
+
+protocol/request/prompt/token artifacts are each capped at 1 MiB. Response,
+error, partial response and resource artifacts are each capped at 16 MiB.
+native.log is capped at 64 MiB. guard/cleanup/outcome metadata are each 4 KiB.
+These capture limits do not change any native generation/resource limits.
+
+outcome.json has exactly:
+  status: technical_passed or technical_failed
+  process_started: boolean
+  completion_started: boolean (implies process_started)
+  artifact_states: every optional artifact mapped to produced or not_produced
+guard.json has exactly telemetry_complete and guard_passed booleans.
+cleanup.json has exactly confirmed: boolean.
+
+Started processes require native.log. Started completions require prompt.json
+and tokens.json. A technical pass requires completion_started, complete/passed
+guard telemetry, response.bin and no error/partial file. A technical failure
+requires error.bin and can additionally preserve partial/full response bytes.
+Response/prompt/token/resource/log/error content stays opaque. A semantically
+wrong or malformed answer, or a technically valid output-limit stop, must not be
+relabeled technical_failed merely for answer quality by the future worker.
+
+Exact tool acknowledgment
+
+The ACK has only these fields:
+  schema_version = private_archive_tool_ack_v20
+  source = trusted_root_orchestrator
+  provider = chatgpt_library
+  schedule_sha256, cell_id, cell_index, seal_sha256
+  archive_sha256, archive_bytes
+  object_identity_sha256, object_version_sha256
+  upload_tool_result_sha256, readback_tool_result_sha256
+The six schedule/cell/seal/archive bindings equal the current handoff. Object,
+version and tool-result digests are 64 lowercase hexadecimal characters; upload
+and readback tool-result digests differ. The external approved ACK digest must
+match its exact bytes. No generic durable=true boolean is accepted. Root retains
+the real tool results and immutable provider locator privately; public reporting
+can remain source-free hashes/counts. The component neither embeds nor accesses
+credentials or provider locators.
+
+Validation status
+
+The owner controls use three invented cells, malformed opaque answer bytes,
+invented technical failures and local simulated readback copies. They exercise
+state/integrity checks only, not real remote persistence or model performance.
+The accompanying owner receipt pins this code, contract and test source. No
+native process, provider endpoint, actual experiment schedule, reference file,
+model tokenization, completion or grading is invoked by these controls.

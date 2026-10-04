@@ -1,0 +1,93 @@
+{
+  "created_utc": "2026-10-04T16:16:24.651590+00:00",
+  "draft_review_corrections_confirmed": [
+    "Bind current seal and artifact members to the handoff/ACK instead of validating independent local and archive identities.",
+    "Require externally approved prefix ACK digests, exact contiguous attempted folders and previous ACK lineage.",
+    "Require explicit produced/not_produced declarations and preserve cleanup-unconfirmed attempts as unsealed.",
+    "Reject incomplete capture without an explicit stop, including the fully attempted final-cell case.",
+    "Refuse mutation APIs after finalization."
+  ],
+  "experiment_frozen": false,
+  "independent_controls": {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_native_completion_checkpoint_independent_v20.py",
+      "-v"
+    ],
+    "errors": 0,
+    "exit_code": 0,
+    "failures": 0,
+    "fixture_origin": "Owner reusable CaptureFixture with invented three-cell schedule; local simulated readback bytes only.",
+    "observed_elapsed_seconds": 0.125,
+    "remote_or_model_calls": 0,
+    "test_names": [
+      "test_local_copy_acceptance_is_attestation_not_remote_proof",
+      "test_consistent_local_ack_rewrite_cannot_replace_external_pin",
+      "test_failed_partial_output_captured_exactly_but_never_advances",
+      "test_unconfirmed_cleanup_retains_unsealed_failure_and_final_denominator"
+    ],
+    "tests_run": 4
+  },
+  "model_completions": 0,
+  "native_execution_authorized": false,
+  "native_processes_started": 0,
+  "natural_inputs_opened": 0,
+  "open_blockers": [],
+  "owner_controls": {
+    "errors": 0,
+    "failures": 0,
+    "independently_rerun": false,
+    "receipt": "results/native_completion_checkpoint_controls_v20.json",
+    "tests_run": 18
+  },
+  "post_test_documentation_qualification": {
+    "change": "Precisely scope begin/previous-ACK lineage verification to sealed/acknowledged cells; unsealed terminal folders retain denominator only.",
+    "executable_code_changed": false,
+    "prior_contract_sha256": "2a12c016bdc24a6a0c759ddff4e7abdc3d3276a5e86f9722b4b9acc88d823139",
+    "prior_owner_receipt_sha256": "96dbf07a852ad8bc9f11b9ad7ac3e979c946e10d350646dd468c4c83e0d32a93",
+    "test_rerun_performed": false,
+    "test_source_changed": false
+  },
+  "pre_qualification_review_sha256": "0b39894bde0b3fc64cf4f2f71c369c846e966d2797f8343d11dc9a68c9a81641",
+  "prior_frozen_files_modified": false,
+  "provider_calls": 0,
+  "raw_native_outputs_opened": 0,
+  "references_opened": 0,
+  "remote_durability_tested": false,
+  "remote_transfers": 0,
+  "review_findings": [
+    "The externally pinned schedule and prefix tool-ACK digests bind fixed order and current sealed artifacts; rewriting local acknowledgment records cannot substitute a new root approval.",
+    "Every acknowledgment binds the current seal, artifact member map and archive hash; returned archive bytes are checked without extraction, with regular-file/name/hash/size constraints.",
+    "An outside hardlink to the archive is rejected. A distinct local copy plus invented trusted ACK can pass, explicitly demonstrating that this is byte verification plus attestation rather than independent proof of remote transfer.",
+    "Technical failures retain exact error and any declared partial/full response bytes. No later cell or retry follows a technical/guard failure even after its capture is attested.",
+    "Unconfirmed cleanup prevents sealing and continuation. Final accounting retains attempted_unsealed and every unattempted scheduled cell, with no durable-capture claim.",
+    "Missing scheduled cells or incomplete attempted capture require an explicit stop reason. Finalization is denominator/capture accounting, not an adequacy gate or native execution approval.",
+    "Exact optional artifact production declarations prevent silently relabeling an omitted declared artifact; truthfulness and completeness remain trusted caller obligations.",
+    "All journal mutation APIs refuse after finalization; actual native-resource enforcement, response grading and provider integration remain separate future work."
+  ],
+  "reviewed_sha256": {
+    "docs/native_completion_checkpoint_contract_v20.txt": "33735165db33f070a02c2123d4c2ef52c1660a26786f49df409ca8197690946e",
+    "results/native_completion_checkpoint_controls_v20.json": "1602bdb00d299cb2b47dd80345bda502aec97b8bd98ac13627fecc8b0df28e47",
+    "scripts/native_completion_checkpoint_v20.py": "3f91407d87c467a50afe6e7bbc901a8e46b2bfa108792bc1e4180aa0ea805564",
+    "tests/test_native_completion_checkpoint_independent_v20.py": "ee440493e9c00e9cc5a6613de76d08bc0311d1ca23bba21889956924d4f70452",
+    "tests/test_native_completion_checkpoint_v20.py": "4fb97d75113c9e61e782c4fabd2bbdb7f83d641c97779adaa8080f6d380b48cd"
+  },
+  "schema_version": "native_completion_checkpoint_independent_review_v20",
+  "scope": "Source-free independent review of the capture component only, using invented local fixtures. No native worker integration, experiment freeze, remote-transfer test or execution approval.",
+  "status": "passed_bounded_component_review",
+  "trust_limits": [
+    "Actual remote persistence was not tested. Provider operation provenance and immutable object/version identity are supplied by the trusted root orchestrator; digest shapes alone do not authenticate them.",
+    "Matching archive and separately read-back bytes does not establish future retention or availability.",
+    "The component trusts one serial writer and truthful artifact-production, technical-outcome and cleanup metadata; it is not an OS sandbox against concurrent hostile writers.",
+    "Opaque artifact content is neither interpreted nor graded. Caller-provided technical status must not be based on answer correctness.",
+    "A durable-attested technical failure may appear in a complete capture; that state never implies reader competence or semantic success.",
+    "No full experiment protocol, native worker, provider integration, model trial or natural evaluation is authorized by this review.",
+    "An attempted_unsealed terminal folder is accounted for by scheduled position without certifying potentially incomplete begin metadata or ACK lineage. Full begin/lineage checks apply to sealed/acknowledged cells; the unsealed cell has no verified/durable claim and cannot advance."
+  ]
+}

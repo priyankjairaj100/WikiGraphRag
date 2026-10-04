@@ -20,7 +20,15 @@ Research repository for **Reading the Latest, Not the Loudest: Lifecycle-Aware S
 
 The original package is retained unchanged as a historical submission. Its README and result claims describe that submission; later audits and limitations are recorded in the rework. The original paper and supplement were supplied as PDFs; their editable TeX sources were not available in this workspace. The rework's available LaTeX sources are included.
 
-## Current checkpoint: v0.19 — authored reader failure and source annotations
+## Current checkpoint: v0.20 — partial source reconciliation and prepared reader correction
+
+All **326 entries** now have exact source/record joins and preserved registry overlays. A fixed nine-entry pilot received separate model-role review: **27 supported and 27 unresolved field correspondences**. All nine entity and population bindings remain unresolved; no record has all six fields resolved. The remaining 317 entries have 1,902 pending fields. No evidence-pack admission or author release is claimed.
+
+The new consumer resolves 1,057 witness records and retains **68 unresolved selector variants**, a compatibility limit to fix separately. A per-completion capture component passes 22 invented controls; real provider durability and native integration remain untested. **16 matched development inputs** are prepared for a policy clarification comparison, with neutral IDs and balanced order. No new model run has occurred. **1,477 unit tests pass.**
+
+Read the [v20 update](acl2027_temporal_state/docs/research_update_v20.txt), [handoff](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v20.txt), [reproduction guide](acl2027_temporal_state/docs/reproduce_v20.txt) and [application receipt](acl2027_temporal_state/results/question_free_registry_application_v20.json). The reader remains at the receipt-backed v19.1 result of 2/8; the original raw-native availability gap below remains unresolved. No QA gain, retrieval novelty or ACL readiness is claimed.
+
+## Previous checkpoint: v0.19 — authored reader failure and source annotations
 
 The 9B reader completed all **eight fictional controls**, after a separately reviewed transport amendment, but answered only **2/8 correctly** with no output-limit failures. The authored readiness gate failed. The first interrupted attempt remains preserved in separate result receipts.
 
