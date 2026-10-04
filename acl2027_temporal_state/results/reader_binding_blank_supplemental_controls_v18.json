@@ -1,0 +1,47 @@
+{
+  "schema_version": "reader_binding_blank_supplemental_controls_v18",
+  "status": "passed_authored_supplemental_review",
+  "reviewer": "binding_interface_v16",
+  "authored_test_executor": "binding_interface_v16/blank_block_audit_v18",
+  "recorded_at_utc": "2026-10-04T13:58:15.584357+00:00",
+  "open_blockers": [],
+  "evidence_bindings": {
+    "src/temporal_state/reader_binding_v16.py": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1",
+    "src/temporal_state/reader_binding_v18.py": "6d45e3b3515ec7d09cd43bd168b99b1943a787278b31cc931c2b990642f5b343",
+    "tests/test_reader_binding_v18.py": "6c8f736881842867ba8e4536dbe7c738cfc9a2b782f8bea525e40ab96746d77b",
+    "docs/reader_binding_interface_amendment_v18.txt": "14929223d35f3e491da50b659d399aaa6d923853fed562f9e223df66fbb5c061",
+    "data/provenance/reader_binding_blank_amendment_v18.patch": "36650d7878a2c732b7fb5703fcf935c6f6c7cd3c6561cc4bfefe8fb01856cfa7",
+    "results/reader_binding_blank_authored_controls_v18.json": "3fdb0db38ef400d52c4c01f365f9519411c34bc46ab5edd8ff7707bafa68f173",
+    "results/reader_binding_blank_independent_review_v18.json": "2b1e1720548e6ddf7014086b66d9fc0cb4def4de7f0a00f89541c28cb5dae386"
+  },
+  "scope": "Supplement to root independent review, which remains unchanged. Narrow disclosed diff and contract inspected by binding_interface_v16; nine existing authored controls independently executed by delegated child. No new test loop or natural materialization.",
+  "controls": {
+    "tests_run": 9,
+    "passed": 9,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 0.041,
+    "test_names": [
+      "test_exact_empty_and_unicode_whitespace_roundtrip",
+      "test_whitespace_is_charged_to_exact_utf8_input_budget",
+      "test_prompt_duplicate_and_unused_registry_rows_rejected",
+      "test_prompt_blank_text_cannot_be_reused_as_witness",
+      "test_prompt_blank_text_cannot_be_reused_as_fact_label",
+      "test_blank_blocks_do_not_supply_missing_support",
+      "test_v16_still_rejects_blanks_and_cross_version_schemas",
+      "test_b0_b1_b2_outputs_match_for_authored_nonempty_cases",
+      "test_every_module_function_and_frozen_lexical_constant_is_unchanged"
+    ]
+  },
+  "findings": [
+    "Only four pack/prompt schema occurrences, the disclosed docstring and block_text empty=True differ from v16.",
+    "Blank text preserves exact characters, handles, order and byte accounting; it supplies no semantic support.",
+    "Witness, label and required aspect text remain nonempty. Canonical projection continues to reject unused or duplicate registry content.",
+    "B0, B1 and B2 functions and lexical constants are unchanged."
+  ],
+  "natural_source_bodies_or_values_read": 0,
+  "natural_questions_or_references_read": 0,
+  "model_processes_started": 0,
+  "natural_materialization_authorized": false,
+  "v17_files_modified": false
+}

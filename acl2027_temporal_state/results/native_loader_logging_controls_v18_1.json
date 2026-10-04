@@ -1,0 +1,46 @@
+{
+  "schema_version": "native_loader_logging_controls_v18_1",
+  "status": "passed_focused_authored_mock_controls",
+  "command": "python3 -m unittest discover -s tests -p test_native_loader_v18_1.py -v",
+  "tests_run": 7,
+  "tests_passed": 7,
+  "failures": 0,
+  "errors": 0,
+  "test_names": [
+    "test_command_adds_exactly_trace_verbosity_only",
+    "test_run_ast_changes_only_popen_command_builder",
+    "test_all_caps_and_authored_request_pin_are_unchanged",
+    "test_zero_observation_allows_only_eight_mocked_tokenizations",
+    "test_missing_and_nonzero_rollback_observations_still_stop",
+    "test_actual_attempt_destination_is_separate_and_fixed",
+    "test_inherited_watchdog_and_cleanup_controls"
+  ],
+  "elapsed_seconds": 0.064,
+  "evidence_recording": "Receipt captured from immediately completed targeted unittest output; no tests repeated for receipt creation.",
+  "recipe_sha256": {
+    "scripts/native_loader_v18_1.py": "ce895d726a1092ebf77c521eb7a7bd62b0af5477276fb3fc857736038b122810",
+    "configs/native_loader_v18_1.json": "6a5c3a7b53691cf5f1bf358a46af57ac072f1c84cf2c50741e5195071b946b72",
+    "tests/test_native_loader_v18_1.py": "4f72f618b6968c5f22fdc1107567c5453ddb13d3d17ba708d56caf639d3ce44d",
+    "docs/native_loader_logging_amendment_v18_1.txt": "2ea09e7c059dc5e296e80e1d403d232435d8e42cd1c3a9df3bc9a1785671f5af",
+    "results/native_rollback_observation_diagnosis_v18.json": "ff365c77f1b2a91c708a60442a688e2bf903b6b0995a2553600d3e9f6dabf6a9",
+    "docs/native_loader_logging_diff_v18_1.patch": "318e8c69b9b00421853403787ba00e5735c4c6a18e6882cf70ab2156f5334f6d"
+  },
+  "unchanged_parent_sha256": {
+    "scripts/native_loader_v18.py": "ec2cf9f347f1beded55d616840a42291d34571ed56fea55014524adf99c56e4d",
+    "configs/native_loader_v18.json": "cfb476deec179da0e0bb049abb188d7b52a19132cef53842a42623fcc2589221",
+    "results/native_loader_attempt_v18.json": "6d1de29959702efb74706f53e31c2811bc496225e5a24b30f58f464f13f04890",
+    "results/native_loader_terminal_review_v18.json": "8ec31d43c14911e366797b1c339d287c25b9cef78903ddd9e0f19b5575f8c929"
+  },
+  "behavioral_diff": "Execution run AST is identical to parent after normalizing its sole native.command(c) -> command(c) substitution. command(c) appends exactly --log-verbosity and 4. Guard/API/ownership/cleanup functions are source-identical.",
+  "inherited_guard_cleanup_cases_invoked": 4,
+  "missing_and_nonzero_cases_fail_before_tokenization": true,
+  "zero_observation_mock_tokenizes_exactly8": true,
+  "actual_native_processes": 0,
+  "actual_native_endpoint_calls": 0,
+  "actual_cgroup_polls": 0,
+  "generation_calls": 0,
+  "natural_inputs_read": 0,
+  "actual_attempt_frozen": false,
+  "independent_review_and_root_hash_approval_pending": true,
+  "recorded_unix_seconds": 1791123061.721007
+}

@@ -1,0 +1,47 @@
+Literal cover identity-card reconciliation v18
+
+The fixed candidate receipt is results/source_identity_card_candidates_v18.json,
+SHA256 14627b497d1f9431b2629128ee8a677a90bdaebaff6c06f197691c41ae8ef89c.
+It contains 12 candidates, 36 essential literal fields and 38 whole cover/heading
+witnesses. Source-view availability is bound to
+results/source_view_availability_summary_v18.json, SHA256
+7fac96825e0836130f862d3e083703f2d9b2a9729a4475e802e930a05c6e057c.
+
+scripts/reconcile_source_identity_cards_v18.py performs a separate mechanical
+reconciliation. It verifies candidate and artifact hashes/bytes, global source
+identity, original anchors and DOM locators, the bound per-block admission and
+all prior inspected page indices, source-fragment hashes, PNG hashes and exact
+original-assembly XML body itertext. XML parsing disables entity resolution,
+network access and DTD loading. The three fields must equal their whole primary
+witness text after outer-whitespace trimming only; no substring selection,
+internal whitespace/name/case/date/year/alias normalization is permitted.
+Only issuer name, report type and printed report-end wording are admitted.
+The two SLB adjacent charter-name captions remain supporting witnesses for the
+literal printed cover names; no hidden-DEI legal equivalence is inferred.
+
+The review layers are different: prior actual source/CSS/raster inspection is
+recorded in the bound view/candidate receipts; root separately reported reading
+all 36 literals and extracting all 38 original body texts; this script provides
+independent mechanical reconciliation. It does not inspect another 38 visual
+pages or constitute independent human annotation, IAA, or new semantic review.
+
+All checks must pass before separate admitted copies are written to:
+ /dev/shm/wikigraph_v15/external/source_identity_cards_admitted_v18
+Only schema, status, card_admitted and reconciliation metadata may change.
+All original candidate fields, witnesses, values, limitations and provenance
+remain exact; author_release remains false. Output bytes are capped at 1 MB.
+Exclusive creation prevents overwriting old candidates or repeated admission.
+Any issue yields a separate failed admission receipt, retains partial outputs
+if any, and stops without an automatic retry.
+
+The source-free proof is results/source_identity_card_reconciliation_v18.json.
+Admitted copies point to its exact digest, avoiding a circular card/receipt hash.
+The terminal source-free inventory is results/source_identity_card_admission_v18.json.
+Use its actual status and counts; existence of a candidate or partial directory
+is not an admission result.
+
+This limited admission describes literal cover identity for each physical source.
+It does not bind financial table entities, populations, currencies, units or fact
+periods; infer taxonomy/default dimensions; establish SEC-byte/legal equivalence;
+admit semantic evidence packs; update the numerical registry; or release packets
+to question authors. No question, reference, native process or model call occurs.

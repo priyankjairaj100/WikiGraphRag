@@ -1,0 +1,316 @@
+--- scripts/build_pre_author_bundles_v17.py
++++ scripts/build_pre_author_bundles_v18.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Question-free candidate bundles and all-occurrence registries, never author release."""
++"""v18 shape-only rebuild of the frozen v17 population; exact parent comparison."""
+ from __future__ import annotations
+ import argparse
+ from copy import deepcopy
+@@ -11,16 +11,25 @@
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+ sys.path.insert(0, str(ROOT / 'src'))
+-from temporal_state.reader_binding_v16 import EvidencePack, BindingError
+-
+-CODE = ('scripts/build_pre_author_bundles_v17.py', 'tests/test_pre_author_bundles_v17.py',
+-        'docs/pre_author_bundle_contract_v17.txt', 'src/temporal_state/reader_binding_v16.py')
++from temporal_state.reader_binding_v18 import EvidencePack, BindingError
++from temporal_state.reader_binding_v16 import EvidencePack as EvidencePackV16, BindingError as BindingErrorV16
++
++CODE = ('scripts/build_pre_author_bundles_v18.py', 'tests/test_pre_author_bundles_v18.py',
++        'docs/pre_author_bundle_contract_v18.txt', 'src/temporal_state/reader_binding_v18.py',
++        'src/temporal_state/reader_binding_v16.py')
+ INPUTS = ('data/reader_binding_v17/bundle_dependency_plan.json',
+           'data/reader_binding_v16/table_view_protocol_v16_1.json',
+           'results/table_view_inventory_v16_1.json', 'results/reader_pool_v16_1.json',
+           'results/source_render_admission_aggregate_v17.json',
+-          'results/identity_dependency_candidates_v17.json')
++          'results/identity_dependency_candidates_v17.json',
++          'data/reader_binding_v17/pre_author_bundle_protocol.json',
++          'results/pre_author_bundle_code_review_v17.json',
++          'results/pre_author_bundle_inventory_v17.json',
++          'results/pre_author_projection_export_v17.json',
++          'results/reader_binding_blank_independent_review_v18.json')
+ MAX_EXTERNAL = 25_000_000
++PLANNED_OUTPUT = 'results/pre_author_bundle_inventory_v18.json'
++PLANNED_EXTERNAL = '/dev/shm/wikigraph_v15/external/pre_author_bundles_attempt02_v18'
+ 
+ 
+ def digest(path):
+@@ -120,7 +129,7 @@
+                 'status': 'not_admitted_not_for_prediction', 'source_id': source_id,
+                 'reported_metadata_semantics': 'copied_declared_aspects_not_visible_semantic_certification',
+                 'population_policy': 'null_until_separate_question_free_source_review', 'facts': []}
+-    pack = {'schema_version': 'reader_evidence_pack_v16', 'pack_id': bundle_id,
++    pack = {'schema_version': 'reader_evidence_pack_v18', 'pack_id': bundle_id,
+             'blocks': [{'handle': 'b' + str(i).zfill(3), 'text': b['text']} for i,b in enumerate(blocks)],
+             'witnesses': [], 'facts': []}
+     for i, item in enumerate(selected_facts):
+@@ -165,43 +174,191 @@
+     return registry, pack, gate
+ 
+ 
+-def freeze(protocol_path, review_path):
++def protocol_value(review_path, *, draft=False):
+     code = {p:digest(ROOT/p) for p in CODE}
+-    review = json.loads(Path(review_path).read_text())
+-    if (review.get('status') != 'passed_authored_review' or review.get('open_blockers') != []
+-        or any(review.get('code_bindings',{}).get(p) != h for p,h in code.items())):
+-        raise ValueError('independent_review_not_closed_or_mismatched')
++    if not draft:
++        review = json.loads(Path(review_path).read_text())
++        if (review.get('status') != 'passed_authored_review' or review.get('open_blockers') != []
++            or review.get('code_bindings') != code):
++            raise ValueError('independent_review_not_closed_or_mismatched')
+     plan = json.loads((ROOT/INPUTS[0]).read_text())
+     pool = json.loads((ROOT/INPUTS[3]).read_text())
+     expected = [(s['source_path'], t['table_ordinal']) for s in pool['records'] for t in s['selected_table_summaries']]
+     if [(b['source_path'],b['table_ordinal']) for b in plan['bundles']] != expected or len(expected) != 21:
+         raise ValueError('all_twenty_one_bundle_population_required')
+-    value = {'schema_version':'preauthor_bundle_materialization_protocol_v17',
+-             'timing':'after_source_only_dependency_inspection_before_bundle_materialization_or_questions',
++    value = {'schema_version':'preauthor_bundle_materialization_protocol_v18',
++             'timing':'after_blank_interface_review_before_v18_materialization_or_questions',
+              'code_bindings':code,'input_bindings':{p:digest(ROOT/p) for p in INPUTS},
+-             'review_path':str(Path(review_path).resolve().relative_to(ROOT)), 'review_sha256':digest(review_path),
+-             'planned_bundles':21,'external_bytes_limit':MAX_EXTERNAL,'author_release_allowed':False}
+-    write_new(protocol_path,value)
+-
+-
+-def build(protocol_path, pool_root, view_root, typed_root, external_output, output):
++             'review_path':str(Path(review_path).resolve().relative_to(ROOT)),
++             'review_sha256':None if draft else digest(review_path),
++             'status':'draft_not_executable' if draft else 'frozen_after_independent_review',
++             'planned_bundles':21,'external_bytes_limit':MAX_EXTERNAL,'author_release_allowed':False,
++             'external_output':PLANNED_EXTERNAL,'output':PLANNED_OUTPUT,
++             'parent_shape_valid':10,'parent_block_text_failures':11,'parent_blank_exposures':19,
++             'comparison_policy':'exact_author_projection_registry_plan_and_v16_gate_replay',
++             'source_only_projection_schema_unchanged':'source_only_author_staging_v17',
++             'question_free_registry_schema_unchanged':'question_free_candidate_registry_v17'}
++    check_parent_lineage(value)
++    return value
++
++
++def freeze(protocol_path, review_path, *, draft=False):
++    write_new(protocol_path,protocol_value(review_path,draft=draft))
++
++
++def exact_equal(left, right):
++    return encoded(left) == encoded(right)
++
++
++def check_parent_lineage(protocol):
++    parent = json.loads((ROOT/INPUTS[6]).read_text())
++    if parent.get('schema_version') != 'preauthor_bundle_materialization_protocol_v17':
++        raise ValueError('parent_protocol_schema')
++    for group in ('code_bindings','input_bindings'):
++        if any(digest(ROOT/p) != h for p,h in parent[group].items()):
++            raise ValueError('parent_frozen_input_changed')
++    if parent['input_bindings'] != {p:protocol['input_bindings'][p] for p in INPUTS[:6]}:
++        raise ValueError('parent_source_inputs_changed')
++    if parent['review_path'] != INPUTS[7] or parent['review_sha256'] != digest(ROOT/INPUTS[7]):
++        raise ValueError('parent_review_changed')
++    inventory = json.loads((ROOT/INPUTS[8]).read_text())
++    export = json.loads((ROOT/INPUTS[9]).read_text())
++    if (inventory.get('schema_version') != 'preauthor_bundle_inventory_v17'
++        or inventory.get('protocol_sha256') != digest(ROOT/INPUTS[6])
++        or inventory.get('planned_bundles') != 21 or inventory.get('materialized_bundles') != 21
++        or len(inventory.get('records',[])) != 21 or inventory.get('author_release_allowed') is not False
++        or inventory.get('complete_evidence_admitted') != 0):
++        raise ValueError('parent_inventory_binding')
++    if (export.get('schema_version') != 'source_only_author_staging_export_v17'
++        or export.get('inventory_sha256') != digest(ROOT/INPUTS[8])
++        or export.get('producer_sha256') != parent['code_bindings']['scripts/build_pre_author_bundles_v17.py']
++        or export.get('bundles') != 21 or len(export.get('artifacts',[])) != 21
++        or export.get('author_release_allowed') is not False or export.get('identity_cards') != 0):
++        raise ValueError('parent_export_binding')
++    ids = [r['bundle_id'] for r in inventory['records']]
++    if len(set(ids)) != 21 or [r['bundle_id'] for r in export['artifacts']] != ids:
++        raise ValueError('parent_bundle_population')
++    gates = [r['interface_candidate_gates'] for r in inventory['records']]
++    if (sum(g['interface_shape_valid'] is True for g in gates) != 10
++        or sum(g['interface_shape_valid'] is False and g['reason']=='block_text' for g in gates) != 11):
++        raise ValueError('parent_shape_outcome_changed')
++    interface_review = json.loads((ROOT/INPUTS[10]).read_text())
++    if (interface_review.get('status') != 'passed_narrow_interface_review'
++        or interface_review.get('open_blockers') != []
++        or interface_review.get('code_bindings',{}).get('src/temporal_state/reader_binding_v18.py')
++           != protocol['code_bindings']['src/temporal_state/reader_binding_v18.py']):
++        raise ValueError('interface_review_not_bound')
++    return inventory,export
++
++
++def read_bound_parent(root, artifact):
++    name=artifact['filename']
++    if Path(name).name != name:raise ValueError('unsafe_parent_basename')
++    path=Path(root)/name
++    if (path.is_symlink() or not path.is_file() or path.stat().st_size!=artifact['bytes']
++        or digest(path)!=artifact['sha256']):raise ValueError('parent_external_input_binding')
++    return json.loads(path.read_text())
++
++
++def load_parent_payloads(inventory,export,parent_root,projection_root):
++    parents={}
++    for row,projection in zip(inventory['records'],export['artifacts']):
++        combined=read_bound_parent(parent_root,row['external_artifact'])
++        source_only=read_bound_parent(projection_root,projection)
++        if not exact_equal(combined['author_staging'],source_only):
++            raise ValueError('parent_export_projection_mismatch')
++        parents[row['bundle_id']] = (combined,source_only,row)
++    return parents
++
++
++def compare_parent_bundle(private,parent,source_only,parent_record):
++    expected_keys={'author_staging','question_free_registry','interface_shape_candidate',
++                   'gates','question_or_reference','source_only_dependency_plan'}
++    if set(private)!=expected_keys or set(parent)!=expected_keys:
++        raise ValueError('private_bundle_shape_changed')
++    for key in expected_keys-{'gates','interface_shape_candidate'}:
++        if not exact_equal(private[key],parent[key]):raise ValueError('parent_'+key+'_mismatch')
++    author=private['author_staging'];registry=private['question_free_registry']
++    if (not exact_equal(author,source_only) or author['author_release_allowed'] is not False
++        or author['identity_card'] is not None or private['question_or_reference'] is not None
++        or any(f['population_binding'] is not None or f['visible_period_unit_scope_verified'] is not False
++               for f in registry['facts'])):raise ValueError('unreleased_semantics_changed')
++    candidate=private['interface_shape_candidate']
++    if candidate is None:raise ValueError('unexpected_v18_shape_failure')
++    pack=EvidencePack(candidate)
++    if EvidencePack.from_prompt_view(pack.prompt_view()).as_json()!=pack.as_json():
++        raise ValueError('v18_prompt_not_lossless')
++    expected_blocks=[{'handle':'b'+str(i).zfill(3),'text':b['text']} for i,b in enumerate(author['blocks'])]
++    if not exact_equal(candidate['blocks'],expected_blocks):raise ValueError('block_text_order_changed')
++    if (len(candidate['facts'])!=len(registry['facts'])
++        or [f['handle'] for f in candidate['facts']] != [f['handle'] for f in registry['facts']]
++        or len(registry['facts'])!=parent_record['numeric_occurrences']
++        or any(f['bindings']['population'] is not None for f in candidate['facts'])):
++        raise ValueError('untruncated_registry_or_population_changed')
++    expected_witnesses=[]
++    for fact,entry in zip(candidate['facts'],registry['facts']):
++        if (not exact_equal(fact['value'],entry['normalized_value'])
++            or not exact_equal(fact['labels'],entry['visible_row_label_candidates'])):
++            raise ValueError('candidate_value_or_label_differs_from_registry')
++        values=dict(entry['declared_aspects'] or {})
++        values['source']={'sha256':author['source_sha256'],'version':author['source_id']}
++        for aspect in ('concept','entity','period','unit','source'):
++            binding=fact['bindings'][aspect]
++            if binding is None:continue
++            handle='w'+fact['handle'][1:]+'_'+aspect
++            if (not exact_equal(binding['value'],values.get(aspect)) or binding['witnesses']!=[handle]):
++                raise ValueError('candidate_binding_differs_from_declared_registry')
++            expected_witnesses.append({'handle':handle,'aspect':aspect,
++                'text':'Declared source metadata ('+aspect+'): '+json.dumps(values[aspect],ensure_ascii=False,sort_keys=True)})
++    if not exact_equal(candidate['witnesses'],expected_witnesses):
++        raise ValueError('candidate_witness_text_or_order_changed')
++    old_pack=deepcopy(candidate);old_pack['schema_version']='reader_evidence_pack_v16'
++    old_gate=deepcopy(private['gates']);old_gate['interface_shape_valid']=False;old_gate['reason']=None
++    old_gate['serialized_bytes']=len(encoded(old_pack))
++    try:
++        EvidencePackV16(old_pack)
++        old_gate['interface_shape_valid']=True
++        expected_old_pack=old_pack
++    except BindingErrorV16 as exc:
++        old_gate['reason']=str(exc);expected_old_pack=None
++    if (not exact_equal(old_gate,parent['gates'])
++        or not exact_equal(old_gate,parent_record['interface_candidate_gates'])
++        or not exact_equal(expected_old_pack,parent['interface_shape_candidate'])):
++        raise ValueError('original_v16_gate_or_pack_changed')
++    return {'author_projection_exact':True,'source_only_export_exact':True,
++            'question_free_registry_exact':True,'dependency_plan_exact':True,
++            'block_text_handles_order_count_exact':True,'all_occurrences_retained':True,
++            'v18_prompt_roundtrip_exact':True,'original_v16_gate_reproduced':True,
++            'original_shape_valid':old_gate['interface_shape_valid'],'original_reason':old_gate['reason'],
++            'blank_block_exposures':sum(not b['text'].strip() for b in author['blocks'])}
++
++
++def build(protocol_path, pool_root, view_root, typed_root, parent_root, projection_root, external_output, output):
+     protocol = json.loads(Path(protocol_path).read_text())
+-    if protocol.get('schema_version') != 'preauthor_bundle_materialization_protocol_v17':
++    if protocol.get('schema_version') != 'preauthor_bundle_materialization_protocol_v18':
+         raise ValueError('protocol_schema')
++    if protocol.get('status') != 'frozen_after_independent_review':raise ValueError('protocol_not_frozen')
+     if set(protocol.get('code_bindings',{})) != set(CODE) or set(protocol.get('input_bindings',{})) != set(INPUTS):
+         raise ValueError('binding_population')
+     for group in ('code_bindings','input_bindings'):
+         if any(digest(ROOT/p) != h for p,h in protocol[group].items()):raise ValueError('frozen_input_changed')
++    if (protocol.get('external_bytes_limit')!=MAX_EXTERNAL or protocol.get('author_release_allowed') is not False
++        or protocol.get('external_output')!=PLANNED_EXTERNAL or protocol.get('output')!=PLANNED_OUTPUT
++        or Path(external_output).resolve()!=Path(PLANNED_EXTERNAL).resolve()
++        or Path(output).resolve()!=(ROOT/PLANNED_OUTPUT).resolve()):raise ValueError('fixed_budget_or_destination_changed')
+     review_path = Path(protocol['review_path'])
+     if review_path.is_absolute() or '..' in review_path.parts:raise ValueError('review_path')
+     review = json.loads((ROOT/review_path).read_text())
+     if (digest(ROOT/review_path)!=protocol['review_sha256'] or review.get('status')!='passed_authored_review'
+-        or review.get('open_blockers')!=[] or any(review.get('code_bindings',{}).get(p)!=h for p,h in protocol['code_bindings'].items())):
++        or review.get('open_blockers')!=[] or review.get('code_bindings')!=protocol['code_bindings']):
+         raise ValueError('review_changed')
+-    plan, parent, inventory, pool, admission, identity = [json.loads((ROOT/p).read_text()) for p in INPUTS]
++    parent_inventory,parent_export=check_parent_lineage(protocol)
++    plan, parent, inventory, pool, admission, identity = [json.loads((ROOT/p).read_text()) for p in INPUTS[:6]]
+     expected = [(s['source_path'],t['table_ordinal']) for s in pool['records'] for t in s['selected_table_summaries']]
+     if [(b['source_path'],b['table_ordinal']) for b in plan['bundles']] != expected or len(expected)!=21 or protocol['planned_bundles']!=21:
+         raise ValueError('bundle_population_changed')
++    if [(r['source_path'],r['selected_table_ordinal']) for r in parent_inventory['records']]!=expected:
++        raise ValueError('parent_population_order_changed')
+     roots = [Path(p).resolve() for p in (pool_root,view_root,typed_root)]
+     view_by = {s['source_path']:s for s in inventory['records']}
+     pool_by = {s['source_path']:s for s in pool['records']}
+@@ -214,6 +371,7 @@
+             if Path(filename).name!=filename:raise ValueError('unsafe_basename')
+             p=root/filename
+             if p.is_symlink() or not p.is_file() or p.stat().st_size!=size or digest(p)!=checksum:raise ValueError('external_input_binding')
++    parent_payloads=load_parent_payloads(parent_inventory,parent_export,parent_root,projection_root)
+     external_output=Path(external_output)
+     if external_output.exists() or external_output.is_symlink() or Path(output).exists():raise FileExistsError('attempt_exists')
+     if external_output.resolve().is_relative_to(ROOT.parent):raise ValueError('private_output_in_git')
+@@ -268,6 +426,7 @@
+             private={'author_staging':author_projection(bundle_id,source_id,source['expected_sha256'],blocks),
+                      'question_free_registry':registry,'interface_shape_candidate':pack,'gates':gates,
+                      'question_or_reference':None,'source_only_dependency_plan':p}
++            comparisons=compare_parent_bundle(private,*parent_payloads[bundle_id])
+             payload=encoded(private)
+             if total_bytes+len(payload)>MAX_EXTERNAL-65_536:raise ValueError('external_cap_no_truncation')
+             filename=bundle_id+'.bundle.json'
+@@ -284,13 +443,23 @@
+                 'semantic_support_candidates':p.get('semantic_support_candidates',[]),
+                 'unsupported_until_review':p.get('unsupported_until_review',[]),
+                 'next_semantic_action':p.get('next_semantic_action'),
++                'parent_comparison':comparisons,
++                'parent_external_artifact':parent_payloads[bundle_id][2]['external_artifact'],
+                 'external_artifact':{'filename':filename,'bytes':len(payload),'sha256':hashlib.sha256(payload).hexdigest()}})
+-    result={'schema_version':'preauthor_bundle_inventory_v17','status':'materialized_candidates_not_admitted',
++    if (len(records)!=21 or [r['bundle_id'] for r in records]!=[r['bundle_id'] for r in parent_inventory['records']]
++        or not exact_equal(list(supplements.values()),parent_inventory['additional_dependency_blocks'])
++        or sum(r['parent_comparison']['blank_block_exposures'] for r in records)!=19):
++        raise ValueError('terminal_population_dependencies_or_blank_count_changed')
++    result={'schema_version':'preauthor_bundle_inventory_v18','status':'materialized_candidates_not_admitted',
+             'protocol_sha256':digest(protocol_path),'planned_bundles':21,'materialized_bundles':len(records),
+             'records':records,'additional_dependency_block_count':len(supplements),
+             'additional_dependency_blocks':list(supplements.values()),'external_directory':str(external_output.resolve()),
+             'external_bytes':total_bytes,'author_release_allowed':False,'questions_authored':0,'references_authored':0,
+             'natural_QA_predictions':0,'complete_evidence_admitted':0,
++            'parent_inventory_sha256':digest(ROOT/INPUTS[8]),
++            'parent_projection_export_sha256':digest(ROOT/INPUTS[9]),
++            'parent_outcome_preserved':{'shape_valid':10,'block_text_failures':11,'blank_block_exposures':19},
++            'all_parent_comparisons_passed':True,
+             'limits':'Shape-valid packs remain unadmitted; population null, no native tokenization, no identity-card release.'}
+     write_new(output,result)
+     return result
+@@ -298,11 +467,13 @@
+ 
+ if __name__=='__main__':
+     ap=argparse.ArgumentParser(description=__doc__);sub=ap.add_subparsers(dest='command',required=True)
+-    f=sub.add_parser('freeze');f.add_argument('--protocol',required=True);f.add_argument('--review',required=True)
++    for command in ('draft','freeze'):
++        f=sub.add_parser(command);f.add_argument('--protocol',required=True);f.add_argument('--review',required=True)
+     b=sub.add_parser('build')
+-    for arg in ('protocol','pool-root','view-root','typed-root','external-output','output'):b.add_argument('--'+arg,required=True)
++    for arg in ('protocol','pool-root','view-root','typed-root','parent-root','projection-root','external-output','output'):b.add_argument('--'+arg,required=True)
+     a=ap.parse_args()
+-    if a.command=='freeze':freeze(a.protocol,a.review);print('Frozen pre-author bundle materialization inputs; no source build.')
++    if a.command in ('draft','freeze'):
++        freeze(a.protocol,a.review,draft=a.command=='draft');print('Prepared protocol only; no source build.')
+     else:
+-        r=build(a.protocol,a.pool_root,a.view_root,a.typed_root,a.external_output,a.output)
++        r=build(a.protocol,a.pool_root,a.view_root,a.typed_root,a.parent_root,a.projection_root,a.external_output,a.output)
+         print(json.dumps({k:r[k] for k in ('status','planned_bundles','materialized_bundles','additional_dependency_block_count','external_bytes')}))

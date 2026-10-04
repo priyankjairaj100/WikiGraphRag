@@ -1,0 +1,285 @@
+{
+  "schema_version": "native_loader_terminal_review_v18_1",
+  "status": "passed_accounting_review_of_loader_tokenizer_success",
+  "public_receipt": {
+    "path": "results/native_loader_attempt_v18_1.json",
+    "sha256": "9c903be242d4d54c6cabe2db7cce30e7387e37118ba6cfcb8a275c70d3c109ea"
+  },
+  "approved_protocol_sha256": "74cc43fba89b1f62c4a7c47b329233c9ad46afb60f997302dd00c8f49af5b5c4",
+  "parent_failure_sha256": "6d1de29959702efb74706f53e31c2811bc496225e5a24b30f58f464f13f04890",
+  "independent_review_sha256": "c6907d76c93607cf07c477554143afc0b4e3ec81ef0a14633c7f4d41f74d76c6",
+  "execution_trace_sha256": "cb944e1d45ce4281c84f4e54832c20e07a13b798c0d46c9f8fc4fa831fdb05db",
+  "server_log_sha256": "4cafabd32a0ec16cf31f7ea413193387ed58941b0e116d5a6cd638ceafa79972",
+  "checks": {
+    "exact_approved_protocol": true,
+    "all35_recipe_bindings_match": true,
+    "exact_unchanged_eight_requests": true,
+    "one_native_process": true,
+    "assets_verified_before_load": true,
+    "both_prelaunch_reserve_gates_passed": true,
+    "all52_resource_samples_valid": true,
+    "kernel_limit_exact_and_unchanged": true,
+    "proxy_below_its_limit": true,
+    "owned_rss_below_its_limit": true,
+    "event_counters_nondecreasing": true,
+    "observed_oom_and_boundary_event_deltas_zero": true,
+    "logging_threshold_four_observed": true,
+    "health_success": true,
+    "pinned_identity_success": true,
+    "actual_zero_rollback_observed": true,
+    "all_eight_rows_tokenized": true,
+    "all_eight_prompt_token_artifacts_verified": true,
+    "all_input_counts_within_frozen_limits": true,
+    "only_allowed_endpoints_and_counts": true,
+    "all18_received_response_hashes_verified": true,
+    "all60_api_request_artifacts_present": true,
+    "zero_generation_natural": true,
+    "no_guard_exception_stop": true,
+    "normal_cleanup_confirmed": true,
+    "cleanup_bound_to_original_inner_group": true,
+    "trace_hash_matches": true,
+    "attempt_marker_retained": true,
+    "previous_v18_failure_unchanged": true,
+    "terminal_status_passed": true
+  },
+  "checks_passed": 30,
+  "checks_total": 30,
+  "pre_asset_snapshot": {
+    "sample_monotonic_ns": 38873257073493,
+    "telemetry_ok": true,
+    "memory_current_bytes": 7350509568,
+    "memory_max_bytes": 8589934592,
+    "components": {
+      "anon": 113295360,
+      "file_mapped": 36864,
+      "shmem": 724422656,
+      "kernel": 362291200,
+      "sock": 0,
+      "file_dirty": 946176,
+      "file_writeback": 0,
+      "unevictable": 0,
+      "swapcached": 0
+    },
+    "events": {
+      "max": 1550569,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "pressure_proxy_bytes": 1200992256,
+    "total_boundary_observed": false
+  },
+  "prelaunch_snapshot": {
+    "sample_monotonic_ns": 38881072273758,
+    "telemetry_ok": true,
+    "memory_current_bytes": 4732383232,
+    "memory_max_bytes": 8589934592,
+    "components": {
+      "anon": 119619584,
+      "file_mapped": 36864,
+      "shmem": 724422656,
+      "kernel": 356548608,
+      "sock": 0,
+      "file_dirty": 1089536,
+      "file_writeback": 0,
+      "unevictable": 0,
+      "swapcached": 0
+    },
+    "events": {
+      "max": 1550569,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "pressure_proxy_bytes": 1201717248,
+    "total_boundary_observed": false
+  },
+  "observed_maxima_bytes": {
+    "memory_current_bytes": 7896072192,
+    "pressure_proxy_bytes": 5525028864,
+    "owned_group_rss_bytes": 4321169408
+  },
+  "resource_sample_count": 52,
+  "resource_sample_span_seconds": 4.346345275,
+  "total_boundary_sample_count": 0,
+  "observed_event_deltas": {
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "event_delta_coverage": "First pre-asset snapshot through last resource sample; no post-cleanup event sample. Shared-cgroup counters and conditions are not attributed exclusively to this process.",
+  "actual_native_identity": {
+    "model_path": "/workspace/scratch/bdef663e3dfc/wikigraph_v16_external/assets/Qwen3.5-9B-UD-IQ3_XXS.gguf",
+    "build_info": "b11146-7fe450e19",
+    "total_slots": 1,
+    "n_ctx": 8192,
+    "health": {
+      "status": "ok"
+    },
+    "props_response_sha256": "ad7398cf40e8d53bd5820357932e9275e64974b1fc566ee439c598ef376e2368"
+  },
+  "actual_native_n_rs_seq_values": [
+    0
+  ],
+  "runtime_buffer_report_lines_observed": [
+    "0.00.971.322 I load: special tokens cache size = 33",
+    "0.01.045.461 I load: token to piece cache size = 1.7581 MB",
+    "0.03.216.756 I load_tensors:   CPU_Mapped model buffer size =  3819.72 MiB",
+    "0.03.226.521 I llama_context:        CPU  output buffer size =     0.95 MiB",
+    "0.03.226.607 I llama_kv_cache:        CPU KV buffer size =   136.00 MiB",
+    "0.03.312.687 I llama_kv_cache: size =  136.00 MiB (  8192 cells,   8 layers,  1/1 seqs), K (q8_0):   68.00 MiB, V (q8_0):   68.00 MiB",
+    "0.03.339.129 I llama_memory_recurrent:        CPU RS buffer size =    50.25 MiB",
+    "0.03.339.154 I llama_memory_recurrent: size =   50.25 MiB (     1 cells,  32 layers,  1 seqs  0 rs_seq), R (f32):    2.25 MiB, S (f32):   48.00 MiB, P (f32):    0.00 MiB",
+    "0.03.343.694 I sched_reserve:        CPU compute buffer size =    26.27 MiB"
+  ],
+  "rounded_native_buffer_sizes_MiB": {
+    "CPU_Mapped_model": 3819.72,
+    "CPU_output": 0.95,
+    "CPU_KV": 136.0,
+    "CPU_RS": 50.25,
+    "CPU_compute": 26.27
+  },
+  "rounded_recurrent_parts_MiB": {
+    "R_f32": 2.25,
+    "S_f32": 48.0,
+    "P_f32": 0.0
+  },
+  "buffer_size_precision_note": "Native printed values are rounded to two decimals in MiB. They are not exact allocator bytes or full working-set measurements. The recurrent log reports32 model layers while state tensors occupy the recurrent subset.",
+  "authored_prompt_artifacts": [
+    {
+      "request_id": "single_quantity_B1",
+      "input_tokens": 999,
+      "prompt_artifact_sha256": "c61d1e622c1d7d509969eac245bf926ad1675bdbe5c8de2e5d508fe47b4f6d48",
+      "rendered_prompt_sha256": "297ef1ae25de57c9912e26de5cf4a030fae4aa6d9d119786f309f4800f58f378",
+      "input_token_ids_sha256": "8da2a5081c1f3f164b760432a72be7063fd4a2c6f5b714a4cb84253300a12639"
+    },
+    {
+      "request_id": "single_quantity_B2",
+      "input_tokens": 987,
+      "prompt_artifact_sha256": "7eb60a92bcc9e6adab97b485bd942320c7223b4a11f449f9d4ec83408e26dc7c",
+      "rendered_prompt_sha256": "5666da56b433701b502e143ebb2c02f21fc3983314722c787f6697e64fb8409c",
+      "input_token_ids_sha256": "e0ba1bad12dccdd2789d76a78191453730158c3a13ba21b92a86f76e071bfa63"
+    },
+    {
+      "request_id": "multiple_versions_B1",
+      "input_tokens": 1315,
+      "prompt_artifact_sha256": "7cc8de4290c518d1aef3b0b1a942ea1ac3e4613c7bd0e4f05c0346a601a6a3af",
+      "rendered_prompt_sha256": "2d50d4cc5424383f7d8349285e887a42d4ac2a76b14444c59721947ec3888895",
+      "input_token_ids_sha256": "605e6614971305ff6d8f1b9a67882fcda83c373ee6e6509796f4d606be6349ba"
+    },
+    {
+      "request_id": "multiple_versions_B2",
+      "input_tokens": 1303,
+      "prompt_artifact_sha256": "9f77cc68a675b2c2c3d396bea3ff1d691fbcc8ac2d33c8d5f7eb7fe54a5d894a",
+      "rendered_prompt_sha256": "030fb675ce5fe98d6c1476f7bce43402fb74c8b762c36bc21e88fde2b4f0e2da",
+      "input_token_ids_sha256": "f72c53de57ff9377259f05c45b9739ab26a96e125c772b83c05d05bffca4391a"
+    },
+    {
+      "request_id": "ambiguous_version_B1",
+      "input_tokens": 1309,
+      "prompt_artifact_sha256": "c37423999beec299954d6815c9653fb61996d0aecf88f149188aaf5324423646",
+      "rendered_prompt_sha256": "0eebc9012c08712062b9f505e1c5a4470a667bf6ac6f46dd742361aef43cf523",
+      "input_token_ids_sha256": "96c186581c5698dd24a809dd6344a2e1bd906cc4efaa92a4daaff4bffb63290e"
+    },
+    {
+      "request_id": "ambiguous_version_B2",
+      "input_tokens": 1297,
+      "prompt_artifact_sha256": "0b2b7ba2e4bb52391938c096fc56f97a9d883ed4f61396f98d9581fc26ac9193",
+      "rendered_prompt_sha256": "ff13ec3949b23e94cc8ef1bd4b32950da30772b341dec43eaf108fa62484c22b",
+      "input_token_ids_sha256": "00fd3cf74aed66f5be329d24a054edc0b9cc0eab916473161026436e45e8b728"
+    },
+    {
+      "request_id": "missing_binding_B1",
+      "input_tokens": 919,
+      "prompt_artifact_sha256": "535ec49e5b12545f96f0a444355dc35b305ad9e14a86137d000cda09d114aa2f",
+      "rendered_prompt_sha256": "018bcf06d7c37e6fb0f6b17e7dc33d31442e99dfc70aae802fba025897588fab",
+      "input_token_ids_sha256": "0d5cf0e1c0b47b99ce61b8f2ae2714d17c49ec6ee78fd41994054dc8a5c71baa"
+    },
+    {
+      "request_id": "missing_binding_B2",
+      "input_tokens": 907,
+      "prompt_artifact_sha256": "ac7ccd501acb383fafa1e7b5ab07313d1a857a8117fbaf0f227225a9564b47fc",
+      "rendered_prompt_sha256": "65ff4bccc269ed3c477d911fad466e3596ef9c9982ed87fc735bc67fb53e8cbf",
+      "input_token_ids_sha256": "b20e7e3f3fc0cb251eae9b4de7548d06a55245e0352b63a2466ccfdc73a2c51a"
+    }
+  ],
+  "authored_rows_planned": 8,
+  "authored_rows_tokenized": 8,
+  "authored_rows_unattempted": 0,
+  "input_token_min": 907,
+  "input_token_max": 1315,
+  "input_tokens_sum": 9036,
+  "generation_calls": 0,
+  "natural_prompts": 0,
+  "endpoint_outcome_counts": [
+    {
+      "endpoint": "health",
+      "status": "failed",
+      "error_type": "URLError",
+      "count": 1
+    },
+    {
+      "endpoint": "health",
+      "status": "failed",
+      "error_type": "HTTPError",
+      "count": 41
+    },
+    {
+      "endpoint": "health",
+      "status": "received",
+      "error_type": null,
+      "count": 1
+    },
+    {
+      "endpoint": "props",
+      "status": "received",
+      "error_type": null,
+      "count": 1
+    },
+    {
+      "endpoint": "apply-template",
+      "status": "received",
+      "error_type": null,
+      "count": 8
+    },
+    {
+      "endpoint": "tokenize",
+      "status": "received",
+      "error_type": null,
+      "count": 8
+    }
+  ],
+  "generation_defaults_in_props": {
+    "seed": 4294967295,
+    "temperature": 0.800000011920929,
+    "interpretation": "Server defaults only. Configured future per-completion seed0/greedy settings were not exercised; zero generation calls."
+  },
+  "cleanup": {
+    "signal_target_inner_pgid": 5,
+    "confirmed": true,
+    "last_snapshot": {
+      "telemetry_ok": true,
+      "inner_pgid": 5,
+      "members": [],
+      "disappeared_entries": 0,
+      "ownership_anchor": {
+        "telemetry_ok": true,
+        "inner_pgid": 5,
+        "proc_root": "/proc",
+        "direct_child_binding_method": "exact_outer_ppid_scan_children_interface_absent",
+        "outer_pid": 258170,
+        "outer_ppid": 258111,
+        "outer_pgid": 258170,
+        "outer_sid": 258170,
+        "starttime": 3888107,
+        "caller_outer_pid": 258111,
+        "namespace_identity": "pid:[4026532277]",
+        "namespace_depth": 2
+      },
+      "rss_bytes": 0,
+      "group_members_observed": false
+    },
+    "process_returncode": 0
+  },
+  "additional_native_sessions_authorized": false,
+  "claim_limit": "One separately approved logging-only follow-up observed the exact pinned model/runtime, n_rs_seq0, native buffer reports, and all8 unchanged fictional prompt tokenizations within sampled guards. This is bounded loader/tokenizer feasibility only. There is no generation, full natural-pack fit, semantic competence, QA result or stronger-reader finding. Prior failures remain intact; changing shared conditions preclude causal memory or timing comparisons across attempts.",
+  "recorded_unix_seconds": 1791123536.664372
+}

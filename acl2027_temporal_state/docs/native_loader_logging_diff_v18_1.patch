@@ -1,0 +1,121 @@
+--- scripts/native_loader_v18.py
++++ scripts/native_loader_v18_1.py
+@@ -21,23 +21,29 @@
+ import process_group_rss_v16 as owned
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-PROFILE = ROOT / 'configs/native_loader_v18.json'
++PROFILE = ROOT / 'configs/native_loader_v18_1.json'
+ CONTROLS = ROOT / 'data/reader_binding_v16/interface_controls_v16.json'
+ PINNED_HELPER = 'e3063c8d340877189fc443fb54ae8bc5f7d3388ee37dc16891fda2b401131ee6'
+ ALLOWED = {('GET', 'health'), ('GET', 'props'), ('POST', 'apply-template'), ('POST', 'tokenize')}
+-RECIPE = ['scripts/native_loader_v18.py', 'scripts/native_loader_guard_v18.py', 'scripts/native_loader_v17.py', 'scripts/native_binding_reader_v16.py',
++RECIPE = ['scripts/native_loader_v18_1.py', 'scripts/native_loader_v18.py', 'scripts/native_loader_guard_v18.py', 'scripts/native_loader_v17.py', 'scripts/native_binding_reader_v16.py',
+           'scripts/cgroup_guard_v16_2.py', 'scripts/process_group_rss_v16.py',
+           'scripts/local_backend_v07.py', 'scripts/larger_scorer_v09.py',
+           'scripts/fetch_local_backend_v07.py', 'src/temporal_state/reader_binding_v16.py',
+-          'tests/test_native_loader_v18.py', 'tests/test_native_loader_v17.py',
+-          'configs/native_loader_v18.json', 'configs/native_loader_v17.json',
++          'tests/test_native_loader_v18_1.py', 'tests/test_native_loader_v18.py', 'tests/test_native_loader_v17.py',
++          'configs/native_loader_v18_1.json', 'configs/native_loader_v18.json', 'configs/native_loader_v17.json',
+           'configs/binding_reader_v16.json', 'data/reader_binding_v16/interface_controls_v16.json',
+           'results/owned_rss_audit_closure_v17.json', 'results/reader_native_capacity_estimate_v17.json',
+           'docs/native_reader_resource_proposal_v17.txt', 'docs/native_loader_guard_amendment_v18.txt',
+           'results/native_loader_attempt_v17.json', 'results/native_loader_attempt_v17_1.json',
+           'results/native_loader_terminal_review_v17_1.json',
+           'results/native_loader_guard_controls_v18.json',
+-          'results/native_loader_independent_review_v18.json']
++          'results/native_loader_independent_review_v18.json',
++          'results/native_loader_attempt_v18.json', 'results/native_loader_terminal_review_v18.json',
++          'results/native_rollback_observation_diagnosis_v18.json',
++          'docs/native_rollback_observation_diagnosis_v18.txt',
++          'docs/native_loader_logging_amendment_v18_1.txt',
++          'results/native_loader_logging_controls_v18_1.json',
++          'results/native_loader_independent_review_v18_1.json']
+ 
+ 
+ def digest(path):
+@@ -65,7 +71,7 @@
+ 
+ def profile():
+     p = load(PROFILE)
+-    require(p['schema_version'] == 'native_loader_profile_v18', 'profile_schema')
++    require(p['schema_version'] == 'native_loader_profile_v18_1', 'profile_schema')
+     require(p['owned_rss_stop_bytes'] == p['worker_reserve_bytes'] == 4563402752, 'rss_reserve_changed')
+     require(p['pressure_stop_bytes'] == 7516192768 and p['kernel_memory_max_bytes'] == 8589934592,
+             'shared_pressure_policy_changed')
+@@ -75,6 +81,7 @@
+     require(digest(ROOT / 'scripts/process_group_rss_v16.py') == PINNED_HELPER, 'rss_helper_changed')
+     require(p['total_boundary_action'] == p['max_event_increase_action'] == 'record_only', 'diagnostic_policy_changed')
+     require(p['required_events'] == list(pressure.EVENTS), 'required_events_changed')
++    require(p['native_log_verbosity'] == 4, 'logging_observation_recipe_changed')
+     require(p['event_counter_reset_action'] == 'stop' and p['one_attempt_no_retry'] is True, 'failure_policy_changed')
+     c = native.config(ROOT / 'configs/binding_reader_v16.json')
+     require(digest(ROOT / 'configs/binding_reader_v16.json') == p['native_config_sha256'], 'native_config_changed')
+@@ -111,7 +118,7 @@
+     directory.mkdir(parents=True)
+     write(directory / 'requests.json', requests, exclusive=True)
+     require(digest(directory / 'requests.json') == p['unchanged_authored_requests_sha256'], 'authored_requests_changed')
+-    frozen = {'schema_version': 'native_loader_frozen_v18', 'profile': p,
++    frozen = {'schema_version': 'native_loader_frozen_v18_1', 'profile': p,
+               'native_config': c, 'request_count': 8, 'public_receipt': str(receipt),
+               'requests_sha256': digest(directory / 'requests.json'),
+               'recipe_sha256': {x: digest(ROOT / x) for x in RECIPE},
+@@ -119,7 +126,7 @@
+               'references_copied': False, 'natural_requests_allowed': False,
+               'maximum_completions': 0, 'maximum_native_processes': 1}
+     write(directory / 'frozen_protocol.json', frozen, exclusive=True)
+-    r = {'schema_version': 'native_loader_receipt_v18', 'status': 'frozen_awaiting_root_execution_approval',
++    r = {'schema_version': 'native_loader_receipt_v18_1', 'status': 'frozen_awaiting_root_execution_approval',
+          'protocol_sha256': digest(directory / 'frozen_protocol.json'),
+          'model_sha256': c['model']['sha256'], 'model_processes_started': 0,
+          'completion_calls_started': 0, 'completion_responses': 0,
+@@ -206,6 +213,10 @@
+             time.sleep(0.1)
+     record['reason'] = 'owned_cleanup_unconfirmed'
+     return record
++
++
++def command(c):
++    return native.command(c) + ['--log-verbosity', '4']
+ 
+ 
+ def run(directory, approval_sha256):
+@@ -261,7 +272,7 @@
+             resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+         started = time.monotonic()
+         log = (directory / 'server.log').open('xb')
+-        process = subprocess.Popen(native.command(c), stdout=log, stderr=subprocess.STDOUT,
++        process = subprocess.Popen(command(c), stdout=log, stderr=subprocess.STDOUT,
+                   env=dict(os.environ, LD_LIBRARY_PATH=c['runtime']['directory'], OMP_NUM_THREADS=str(c['threads'])),
+                   start_new_session=True, preexec_fn=limits)
+         r['model_processes_started'] = 1
+--- configs/native_loader_v18.json
++++ configs/native_loader_v18_1.json
+@@ -1,5 +1,5 @@
+ {
+-  "schema_version": "native_loader_profile_v18",
++  "schema_version": "native_loader_profile_v18_1",
+   "native_config_sha256": "0171d13fcc30f444380c5f6a8a1eed31cd709eb86713222c21198b197f808038",
+   "owned_rss_stop_bytes": 4563402752,
+   "worker_reserve_bytes": 4563402752,
+@@ -33,11 +33,14 @@
+   "event_counter_reset_action": "stop",
+   "one_attempt_no_retry": true,
+   "resource_policy_relaxed_from_v17": true,
+-  "attempt_external_path": "/workspace/scratch/bdef663e3dfc/wikigraph_v18_external/native_loader_attempt01_guard_amendment",
+-  "public_receipt_path": "results/native_loader_attempt_v18.json",
++  "attempt_external_path": "/workspace/scratch/bdef663e3dfc/wikigraph_v18_external/native_loader_attempt02_logging_observation",
++  "public_receipt_path": "results/native_loader_attempt_v18_1.json",
+   "unchanged_authored_requests_sha256": "5440df6b81b9dcb070096d9702c11039b34c0f05b747e62813342095c2a27a34",
+-  "parent_failure_sha256": "1c1e27858bf4ff43e1e74483a88fcdeb8ee94a88b09a164bee0d0383a86ffb68",
+-  "parent_frozen_protocol_sha256": "03234cf3274376081e86897cfb4a1be4778ec6baa8343c40e921f212412c2746",
++  "parent_failure_sha256": "6d1de29959702efb74706f53e31c2811bc496225e5a24b30f58f464f13f04890",
++  "parent_frozen_protocol_sha256": "bf652a920caae007534653c5717bb5dd3c75c1aa69d4c15e47cc5caa1da97b91",
+   "durable_checkpoint_commit": "f77f70c51b12c935ccf897ba64bf19501d44c427",
+-  "durable_checkpoint_tree": "ca8f99956ff3faeb07c0c4bab423a9187daca985"
++  "durable_checkpoint_tree": "ca8f99956ff3faeb07c0c4bab423a9187daca985",
++  "native_log_verbosity": 4,
++  "logging_diagnosis_sha256": "ff365c77f1b2a91c708a60442a688e2bf903b6b0995a2553600d3e9f6dabf6a9",
++  "resource_policy_unchanged_from_v18": true
+ }

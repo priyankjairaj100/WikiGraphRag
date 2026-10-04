@@ -1,0 +1,60 @@
+--- src/temporal_state/reader_binding_v16.py
++++ src/temporal_state/reader_binding_v18.py
+@@ -1,7 +1,8 @@
+-"""Conventional evidence-limited binding interface; no hidden source access.
+-
+-Only authored fixtures informed implementation. Semantic question-to-evidence
+-mapping is fallible and must be scored externally; syntax is not entailment.
++"""v18 evidence interface: preserve blank source blocks; no hidden source access.
++
++Versioned from v16 after v17 exposed blank source blocks; tested with authored
++fixtures only. Semantic question mapping needs external grading; syntax is not
++entailment, and an accepted blank block supplies no binding witness.
+ """
+ from __future__ import annotations
+ 
+@@ -151,7 +152,7 @@
+     def __init__(self, payload):
+         pack = _load(payload)
+         _keys(pack, ("schema_version", "pack_id", "blocks", "witnesses", "facts"), "pack_shape")
+-        if pack["schema_version"] != "reader_evidence_pack_v16":
++        if pack["schema_version"] != "reader_evidence_pack_v18":
+             _fail("pack_schema")
+         _handle(pack["pack_id"])
+         _list(pack["blocks"], "blocks_limit", maximum=64)
+@@ -161,7 +162,7 @@
+         for block in pack["blocks"]:
+             _keys(block, ("handle", "text"), "block_shape")
+             _handle(block["handle"])
+-            _text(block["text"], "block_text")
++            _text(block["text"], "block_text", empty=True)
+             if block["handle"] in seen:
+                 _fail("duplicate_handle")
+             seen.add(block["handle"])
+@@ -239,7 +240,7 @@
+                           [intern("texts", label) for label in fact["labels"]], bindings])
+         blocks = [[b["handle"], intern("texts", b["text"])] for b in data["blocks"]]
+         witnesses = [[w["handle"], w["aspect"], intern("texts", w["text"])] for w in data["witnesses"]]
+-        return {"schema_version": "reader_evidence_prompt_v16", "pack_id": data["pack_id"],
++        return {"schema_version": "reader_evidence_prompt_v18", "pack_id": data["pack_id"],
+                 "aspect_order": list(ASPECTS), "blocks": blocks, "witnesses": witnesses,
+                 **rows, "facts": facts}
+ 
+@@ -249,7 +250,7 @@
+         view = _load(payload)
+         _keys(view, ("schema_version", "pack_id", "aspect_order", "blocks", "witnesses",
+                      "texts", "values", "bindings", "facts"), "prompt_shape")
+-        if view["schema_version"] != "reader_evidence_prompt_v16" or view["aspect_order"] != list(ASPECTS):
++        if view["schema_version"] != "reader_evidence_prompt_v18" or view["aspect_order"] != list(ASPECTS):
+             _fail("prompt_schema")
+         registries = {}
+         for name in ("texts", "values", "bindings"):
+@@ -299,7 +300,7 @@
+                     blocks.append({"handle": row[0], "text": get("texts", row[1])})
+                 else:
+                     witnesses.append({"handle": row[0], "aspect": row[1], "text": get("texts", row[2])})
+-        restored = cls({"schema_version": "reader_evidence_pack_v16", "pack_id": view["pack_id"],
++        restored = cls({"schema_version": "reader_evidence_pack_v18", "pack_id": view["pack_id"],
+                         "blocks": blocks, "witnesses": witnesses, "facts": facts})
+         # A digest of an expanded pack cannot attest to ignored model-visible
+         # registry rows. Require the canonical projection exactly, including its

@@ -1,0 +1,100 @@
+Explicit blank-source-block interface amendment v18
+Authored implementation contract; 2026-10-04; no natural materialization.
+
+Reason and preserved baseline
+
+This is an explicitly post-inspection representation amendment. The v17 whole
+bundle preparation retained 19 empty/whitespace source-block exposures across
+21 candidate bundles. The unchanged v16 EvidencePack accepted 10/21 candidate
+shapes and rejected 11/21 with block_text. Those outcomes, their exact inputs,
+the frozen v16 module and every v17 bundle remain unchanged. This amendment
+does not rewrite that result as a successful v17 run. Its motivation is the
+observed blank-block incompatibility, not a result from questions or predictions.
+
+The source-free provenance basis is:
+ results/pre_author_bundle_inventory_v17.json
+ docs/pre_author_bundle_handoff_v17.txt
+No natural bundle/source text is read by this implementation's authored controls.
+
+Narrow implementation boundary
+
+New module: src/temporal_state/reader_binding_v18.py
+Baseline: src/temporal_state/reader_binding_v16.py
+Baseline full contract: docs/reader_binding_interface_v16.txt
+
+The v18 module is a separate literal version of v16, with these changes only:
+ - the module docstring discloses the post-inspection amendment;
+ - reader_evidence_pack_v18 replaces reader_evidence_pack_v16 in the constructor
+   and the compact-view restoration constructor;
+ - reader_evidence_prompt_v18 replaces reader_evidence_prompt_v16 in compact
+   projection and compact-view admission;
+ - only blocks[*].text passes _text(..., empty=True).
+
+Block text must still be a string. It may now be exactly empty or any acquired
+whitespace string, including NBSP. All characters and original string boundaries
+are preserved. No stripping, Unicode normalization, stand-in text, marker,
+synthetic source wording, block omission or block merging is introduced.
+Duplicate block strings may share one compact text-registry entry, as before;
+each block's handle, order and count remain separately present and unchanged.
+
+Every module-level function, including B0 lexical_baseline, B1 validation and
+render_proposal, B2 validation and score_direct_quantities, is unchanged from
+v16. The lexical constants, evidence budgets and type checks are unchanged.
+The v18 class is a separate type; cross-version pack/prompt schemas are rejected
+rather than implicitly migrated. Later runners must deliberately bind the new
+module/schema. This amendment does not change the native guard-only attempt or
+its eight frozen authored v16 request bytes.
+
+Restrictions that remain strict
+
+Witness text, each fact-label string, entity strings, source version, population
+label and instant/duration period lexemes remain nonempty under the inherited
+Unicode whitespace check. QName/source hash/unit validation is unchanged. The
+preexisting period kind forever keeps its exact empty-string sentinel, which is
+an existing typed representation rule, not newly permitted blank aspect prose.
+
+A block handle is not a witness handle. A fact binding cannot cite a blank block
+as its witness, and a proposal/direct output cannot use a block handle as an
+aspect citation. Referring a blank text-registry entry from a witness or label
+still fails validation. Missing bindings remain null and cannot be supplied by
+blank blocks. No semantic support is inferred from an accepted blank block.
+These are interface/access checks; neither v16 nor v18 verifies that nonempty
+witness prose is actually entailed by original source content.
+
+Losslessness and unchanged accounting
+
+snapshot(), as_json() and prompt_view() preserve every block text exactly.
+from_prompt_view() expands and reprojects canonically, retaining the same pack
+digest for accepted round trips. Duplicate/unused/renamed noncanonical registries
+remain errors; exposed text cannot silently disappear during expansion.
+
+The 64-block, 512-witness and 64-fact caps remain unchanged. Each blank block
+still consumes one block slot, including repeated equal blank strings. All JSON
+structure, handles and text bytes count against the inherited 2,000,000-byte
+UTF-8 input cap. NBSP is charged as its actual encoded bytes. The same input cap
+applies separately to the compact input and its expanded pack; the amendment
+does not increase it or promise that every boundary-sized representation fits
+both forms. Exact native token costs, both arm instructions and full chat-template
+overhead remain external admission requirements. An interface shape pass is not
+evidence completeness, financial semantics, token feasibility or answerability.
+
+Validation and next gate
+
+New authored controls: tests/test_reader_binding_v18.py
+Run with the unchanged v16 controls:
+ PYTHONPATH=src python3 -m unittest discover -s tests \
+   -p 'test_reader_binding_v1[68].py' -v
+
+Controls cover exact empty/NBSP/Unicode-whitespace round trips; repeated blank
+text with distinct preserved handles; block count and UTF-8 byte boundaries;
+duplicate/colliding handles and prompt registries; blank witness/label/aspect
+rejection; invalid attempts to cite blank blocks; unchanged insufficient support;
+cross-version rejection; nonempty v16 behavior equivalence; and exact unchanged
+module-level functions and lexical constants. These are authored checks only.
+
+Root/independent review and a separately frozen materialization protocol must
+precede any use on the 21 natural candidate bundles. No pack is rematerialized,
+admitted or released here. The source-only author projection semantics remain
+unchanged. Questions, references and natural predictions remain zero. Source-view
+admission, identity cards, question-free semantic mapping, complete matched pack
+tokenization and independent reference review remain separate required gates.

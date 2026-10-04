@@ -1,0 +1,92 @@
+{
+  "schema_version": "reader_binding_blank_authored_controls_v18",
+  "status": "passed_owner_authored_controls_pending_independent_review",
+  "basis": "Post-inspection v17 blank-block incompatibility; authored-only implementation controls; no natural materialization.",
+  "bindings": [
+    {
+      "path": "src/temporal_state/reader_binding_v16.py",
+      "bytes": 28188,
+      "sha256": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1"
+    },
+    {
+      "path": "src/temporal_state/reader_binding_v18.py",
+      "bytes": 28277,
+      "sha256": "6d45e3b3515ec7d09cd43bd168b99b1943a787278b31cc931c2b990642f5b343"
+    },
+    {
+      "path": "tests/test_reader_binding_v18.py",
+      "bytes": 14408,
+      "sha256": "6c8f736881842867ba8e4536dbe7c738cfc9a2b782f8bea525e40ab96746d77b"
+    },
+    {
+      "path": "docs/reader_binding_interface_amendment_v18.txt",
+      "bytes": 5735,
+      "sha256": "14929223d35f3e491da50b659d399aaa6d923853fed562f9e223df66fbb5c061"
+    },
+    {
+      "path": "data/provenance/reader_binding_blank_amendment_v18.patch",
+      "bytes": 3383,
+      "sha256": "36650d7878a2c732b7fb5703fcf935c6f6c7cd3c6561cc4bfefe8fb01856cfa7"
+    }
+  ],
+  "preserved_published_files": [
+    {
+      "path": "src/temporal_state/reader_binding_v16.py",
+      "bytes": 28188,
+      "sha256": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1",
+      "equals_published_HEAD": true
+    },
+    {
+      "path": "tests/test_reader_binding_v16.py",
+      "bytes": 19154,
+      "sha256": "de4e813b4a7835da2040e0613a5ec3b2e89c38788b1d45648244e2aaf7f5a6c3",
+      "equals_published_HEAD": true
+    },
+    {
+      "path": "docs/reader_binding_interface_v16.txt",
+      "bytes": 14815,
+      "sha256": "9e4662be8c99998a648fb12f37e746ba5c497801f3b4c60ea5323e2842e816e4",
+      "equals_published_HEAD": true
+    },
+    {
+      "path": "data/reader_binding_v17/pre_author_bundle_protocol.json",
+      "bytes": 1656,
+      "sha256": "73986d19a11176a46e7807a657bb92d34ad21f771f61ffa4abb652e2111d2a1b",
+      "equals_published_HEAD": true
+    },
+    {
+      "path": "results/pre_author_bundle_inventory_v17.json",
+      "bytes": 136571,
+      "sha256": "b912a697a6ce1635fbd66ab7f7201fa69084f83b1e60a4ba585870d1ef02fe1b",
+      "equals_published_HEAD": true
+    },
+    {
+      "path": "results/pre_author_projection_export_v17.json",
+      "bytes": 5016,
+      "sha256": "c60ac09ab4d39e041bb167a7281d913d79374ab58ebcdeab60b8f64f79d735db",
+      "equals_published_HEAD": true
+    }
+  ],
+  "command": "PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_reader_binding_v1[68].py' -v",
+  "tests_total": 66,
+  "unchanged_v16_tests": 41,
+  "new_v18_tests": 25,
+  "failures": 0,
+  "errors": 0,
+  "allowed_semantic_change": "blocks[*].text may be any string, including exact empty/whitespace; v18 pack and prompt schema names are distinct.",
+  "module_level_functions_unchanged": 25,
+  "v17_outcome_preserved": {
+    "candidate_bundles": 21,
+    "shape_valid": 10,
+    "block_text_failures": 11,
+    "blank_block_exposures": 19
+  },
+  "natural_inputs_opened_by_this_amendment": 0,
+  "natural_bundles_materialized": 0,
+  "source_only_author_projection_semantics_changed": false,
+  "packs_admitted": 0,
+  "questions_authored": 0,
+  "references_authored": 0,
+  "natural_model_calls": 0,
+  "next_gate": "Independent/root review and separately frozen materialization protocol; no natural run authorized by this receipt."
+}

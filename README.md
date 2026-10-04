@@ -20,7 +20,17 @@ Research repository for **Reading the Latest, Not the Loudest: Lifecycle-Aware S
 
 The original package is retained unchanged as a historical submission. Its README and result claims describe that submission; later audits and limitations are recorded in the rework. The original paper and supplement were supplied as PDFs; their editable TeX sources were not available in this workspace. The rework's available LaTeX sources are included.
 
-## Current checkpoint: v0.17 — source evidence and reader feasibility
+## Current checkpoint: v0.18 — source identity and authored tokenizer readiness
+
+All **40 additional dependency views** are now available across **39 original successes and one separately recorded caption recovery**. The prior101 table/neighbor views remain available. Separate recovery completes34 identity candidate views; **12 literal cover identity cards** are admitted from38 witnesses. These cards do not establish table-level entity or period scope.
+
+All **21 bundles pass the amended interface shape checks**, preserving exact source blocks,19 blank exposures and every original registry. Replaying the old interface still gives10 passes and11 failures. Complete semantic evidence packs and author release remain pending.
+
+The pinned **9B model loaded and tokenized all eight fictional requests**, after a separately reviewed logging-only amendment exposed the required zero rollback state. The original observability failure is preserved. **No new generation or natural QA has run.** Reader adequacy and retrieval advantage remain unestablished. **1,278 tests pass.**
+
+Read the [v18 handoff](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v18.txt), [project state](acl2027_temporal_state/PROJECT_STATE.json), [three-page addendum](acl2027_temporal_state/paper/reader_readiness_update_v18.pdf), [reproduction guide](acl2027_temporal_state/docs/reproduce_v18.txt) and [next completion gate](acl2027_temporal_state/docs/reference_free_completion_gate_next_v18.txt). Exact source-bearing recovery files are saved separately; original submission and frozen prior results remain unchanged.
+
+## Previous checkpoint: v0.17 — source evidence and reader feasibility
 
 The fixed source pool now has qualified inspection views for **101/101 selected blocks (21 tables and 80 neighbors)**, across the original run and two separately recorded recoveries. The original result was **90/101 admitted**. Identity views cover **33/34 candidates**, with one telemetry failure retained, plus four separate SLB literal-cover views.
 

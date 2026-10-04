@@ -1,0 +1,192 @@
+{
+  "schema_version": "native_loader_terminal_review_v18",
+  "status": "passed_accounting_review_of_post_health_rollback_observability_failure",
+  "public_receipt": {
+    "path": "results/native_loader_attempt_v18.json",
+    "sha256": "6d1de29959702efb74706f53e31c2811bc496225e5a24b30f58f464f13f04890"
+  },
+  "approved_protocol_sha256": "bf652a920caae007534653c5717bb5dd3c75c1aa69d4c15e47cc5caa1da97b91",
+  "parent_failure_sha256": "1c1e27858bf4ff43e1e74483a88fcdeb8ee94a88b09a164bee0d0383a86ffb68",
+  "independent_review_sha256": "ace92086de1ac42f8734b5614b5372e4ed8891c2bf06f533c7208710688fbe8a",
+  "execution_trace_sha256": "7e0fb28b8866c418ffadb4a8b3f6cd1dc707488d2396cc9ad591d240ea2605c5",
+  "server_log_sha256": "24dbdaec34dc4fff12a7f9db5a7e3f2345f16dd746bce9ca95af05e2d965c97d",
+  "checks": {
+    "exact_approved_protocol": true,
+    "all25_frozen_recipe_bindings_match": true,
+    "unchanged_eight_authored_requests": true,
+    "one_native_process": true,
+    "exact_assets_verified": true,
+    "both_prelaunch_admission_gates_passed": true,
+    "all35_resource_samples_valid": true,
+    "exact_kernel_limit_unchanged": true,
+    "total_boundary_observed_without_becoming_stop": true,
+    "all_three_event_counters_nondecreasing": true,
+    "max_increase_recorded": true,
+    "observed_oom_deltas_zero": true,
+    "proxy_below_stop": true,
+    "owned_rss_below_stop": true,
+    "health_success": true,
+    "pinned_props_identity_success": true,
+    "model_loaded_reported": true,
+    "rollback_unobserved_preserved_as_failure": true,
+    "all_eight_unattempted": true,
+    "zero_tokenization_generation_natural": true,
+    "only_health_props_endpoints": true,
+    "received_responses_hash_verified": true,
+    "all36_api_request_artifacts_retained": true,
+    "immediate_original_inner_group_kill": true,
+    "cleanup_confirmed_no_live_owned_members": true,
+    "trace_hash_verified": true,
+    "sole_attempt_marker_retained": true
+  },
+  "checks_passed": 27,
+  "checks_total": 27,
+  "pre_asset_snapshot": {
+    "sample_monotonic_ns": 37636330748284,
+    "telemetry_ok": true,
+    "memory_current_bytes": 7969964032,
+    "memory_max_bytes": 8589934592,
+    "components": {
+      "anon": 946302976,
+      "file_mapped": 548532224,
+      "shmem": 717590528,
+      "kernel": 379985920,
+      "sock": 0,
+      "file_dirty": 1540096,
+      "file_writeback": 0,
+      "unevictable": 0,
+      "swapcached": 0
+    },
+    "events": {
+      "max": 1523315,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "pressure_proxy_bytes": 2593951744,
+    "total_boundary_observed": false
+  },
+  "prelaunch_snapshot": {
+    "sample_monotonic_ns": 37639079175119,
+    "telemetry_ok": true,
+    "memory_current_bytes": 8030355456,
+    "memory_max_bytes": 8589934592,
+    "components": {
+      "anon": 1004306432,
+      "file_mapped": 548532224,
+      "shmem": 717590528,
+      "kernel": 380821504,
+      "sock": 0,
+      "file_dirty": 1622016,
+      "file_writeback": 0,
+      "unevictable": 0,
+      "swapcached": 0
+    },
+    "events": {
+      "max": 1523315,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "pressure_proxy_bytes": 2652872704,
+    "total_boundary_observed": false
+  },
+  "observed_maxima_bytes": {
+    "memory_current_bytes": 8589934592,
+    "pressure_proxy_bytes": 6724767744,
+    "owned_group_rss_bytes": 4322750464
+  },
+  "resource_sample_count": 35,
+  "resource_sample_span_seconds": 3.484076218,
+  "total_boundary_sample_count": 1,
+  "observed_event_deltas": {
+    "max": 11614,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "event_delta_coverage": "First pre-asset snapshot through final periodic sample; no post-cleanup cgroup event sample exists. Shared-cgroup events are not attributed exclusively to this process.",
+  "actual_native_identity": {
+    "model_path": "/workspace/scratch/bdef663e3dfc/wikigraph_v16_external/assets/Qwen3.5-9B-UD-IQ3_XXS.gguf",
+    "build_info": "b11146-7fe450e19",
+    "total_slots": 1,
+    "n_ctx": 8192,
+    "health": {
+      "status": "ok"
+    },
+    "model_loaded_in_server_log": true,
+    "props_response_sha256": "777a4edfa2422c822b0061e8eb6e219c34723b5f564319f135dc61dae3dcdf04"
+  },
+  "runtime_buffer_report_lines_observed": [],
+  "rollback_state_observation": {
+    "n_rs_seq_log_values": [],
+    "status": "unobserved",
+    "not_evidence_of_nonzero_state": true,
+    "props_speculative_types": "none",
+    "props_speculative_types_not_accepted_as_a_rollback_state_measurement": true
+  },
+  "generation_defaults_in_props": {
+    "seed": 4294967295,
+    "temperature": 0.800000011920929,
+    "interpretation": "Server defaults only; no generation request was sent. Configured per-completion seed/greedy settings were not exercised."
+  },
+  "endpoint_outcome_counts": [
+    {
+      "endpoint": "health",
+      "status": "failed",
+      "error_type": "URLError",
+      "count": 1
+    },
+    {
+      "endpoint": "health",
+      "status": "failed",
+      "error_type": "HTTPError",
+      "count": 33
+    },
+    {
+      "endpoint": "health",
+      "status": "received",
+      "error_type": null,
+      "count": 1
+    },
+    {
+      "endpoint": "props",
+      "status": "received",
+      "error_type": null,
+      "count": 1
+    }
+  ],
+  "authored_rows_planned": 8,
+  "authored_rows_unattempted": 8,
+  "tokenizations": 0,
+  "generation_calls": 0,
+  "natural_prompts": 0,
+  "cleanup": {
+    "signal_target_inner_pgid": 5,
+    "confirmed": true,
+    "last_snapshot": {
+      "telemetry_ok": true,
+      "inner_pgid": 5,
+      "members": [],
+      "disappeared_entries": 0,
+      "ownership_anchor": {
+        "telemetry_ok": true,
+        "inner_pgid": 5,
+        "proc_root": "/proc",
+        "direct_child_binding_method": "exact_outer_ppid_scan_children_interface_absent",
+        "outer_pid": 248285,
+        "outer_ppid": 248243,
+        "outer_pgid": 248285,
+        "outer_sid": 248285,
+        "starttime": 3763908,
+        "caller_outer_pid": 248243,
+        "namespace_identity": "pid:[4026532348]",
+        "namespace_depth": 2
+      },
+      "rss_bytes": 0,
+      "group_members_observed": false
+    },
+    "process_returncode": -9
+  },
+  "no_more_attempts_authorized": true,
+  "claim_limit": "The exact pinned model and runtime reached successful health/props identity under the v18 policy during this observed load. The required rollback-state field was unobserved, causing preserved failure before any authored tokenization. This is not tokenizer fit, complete working-set or generation capacity, semantic competence, natural QA, or a stronger-reader result. No buffer-size telemetry was observed.",
+  "next_step_recommendation": "Inspect the already captured pinned runtime logging/initialization source and retained props/log read-only to determine an authoritative rollback-state observation. Any changed observation recipe requires a separate reviewed protocol; no retry or gate removal is authorized here.",
+  "recorded_unix_seconds": 1791122283.4763267
+}

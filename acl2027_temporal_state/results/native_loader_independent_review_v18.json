@@ -1,0 +1,93 @@
+{
+  "schema_version": "native_loader_independent_review_v18",
+  "status": "passed_bounded_pre_freeze_review_root_execution_decision_required",
+  "reviewer": "binding_interface_v16",
+  "open_blockers": [],
+  "evidence_bindings": {
+    "scripts/native_loader_v18.py": "ec2cf9f347f1beded55d616840a42291d34571ed56fea55014524adf99c56e4d",
+    "scripts/native_loader_guard_v18.py": "b15ca982b937aba36b9d7385089d4135c29be1afb396c187284815fb947ab568",
+    "configs/native_loader_v18.json": "cfb476deec179da0e0bb049abb188d7b52a19132cef53842a42623fcc2589221",
+    "tests/test_native_loader_v18.py": "88fb7d52515d39a8a584b7f363c654054d50e2cf04986962a0c6dece833f07d2",
+    "docs/native_loader_guard_amendment_v18.txt": "f8dfb6c2f76c88820caab1de79ed6bfb90d4fdd95b251aaa309991b65aae3658",
+    "docs/native_loader_guard_diff_v18.patch": "865b2989d1977e4ae70c9f811cd8580839ecf592577da8d04d33e84f776ca78c",
+    "results/native_loader_guard_controls_v18.json": "e10094a32ea87c2f7c87e2d78f6c3a8673c75278bb7b82766aa4bc7324899385",
+    "results/native_loader_guard_controls_initial_v18.json": "8a8873450a4d75263522672b1d7e82f5bf963fca07322612574d3bcbd7e71151",
+    "scripts/native_loader_v17.py": "30cc8fbf6ee70fce156c1b37362cb40b113598a9ddd8d5f42540a08f621c895e",
+    "scripts/cgroup_guard_v16_2.py": "acb91d344b8dc3add82e20effdff19e8b7790f3352015319299154b214d9a200",
+    "scripts/process_group_rss_v16.py": "e3063c8d340877189fc443fb54ae8bc5f7d3388ee37dc16891fda2b401131ee6",
+    "configs/binding_reader_v16.json": "0171d13fcc30f444380c5f6a8a1eed31cd709eb86713222c21198b197f808038",
+    "data/reader_binding_v16/interface_controls_v16.json": "66dc7d0e0cdb7c2843634a09b3052d07900c8039d947dd26c6f795b9fee01f01",
+    "results/native_loader_attempt_v17.json": "b7f279c8752fcac0a575f33d18fa69378ea0a5eb0ec529261cad6ec486ce3314",
+    "results/native_loader_attempt_v17_1.json": "1c1e27858bf4ff43e1e74483a88fcdeb8ee94a88b09a164bee0d0383a86ffb68"
+  },
+  "review_scope": "Source-free narrow code/profile diff, telemetry/kill/cleanup controls and unchanged asset/request recipes. No natural source bodies, values, questions, references or model answers inspected.",
+  "policy_assessment": "This is a real relaxation of the application watchdog. The kernel hard cap stays unchanged, but total-boundary observations and increasing max events become diagnostic. This does not prove reclaimability, full-model fit, per-project isolation or reader competence.",
+  "static_findings": {
+    "unchanged_v17_functions": [
+      "api",
+      "cleanup",
+      "digest",
+      "load",
+      "main",
+      "owned_reason",
+      "require",
+      "signal_inner",
+      "watchdog",
+      "write"
+    ],
+    "changed_v17_functions": [
+      "freeze",
+      "preflight_reason",
+      "profile",
+      "run"
+    ],
+    "inherited_profile_fields_identical_except_schema": 13,
+    "published_checkpoint": "f77f70c51b12c935ccf897ba64bf19501d44c427",
+    "published_files_independently_compared": 8,
+    "published_files_changed": 0
+  },
+  "review_checks": [
+    "Required max/oom/oom_kill counters reject missing, malformed, negative, duplicate and invalid typed values. Actual total/max and max counts remain recorded.",
+    "Total equality/temporary excess and increasing max alone do not stop; exact kernel memory.max remains 8 GiB and mismatch still stops.",
+    "All three counters are compared against the immediately preceding accepted snapshot, including pre-asset and prelaunch; a max fall after a rise fails even above the initial value.",
+    "Sampling is serialized around telemetry only. HTTP and asset reads do not hold the sampling lock; watchdog resource failure kills the original inner group independently of blocked HTTP.",
+    "Nine-component proxy, 4.25 GiB reserve and owned-group RSS, 7 GiB proxy threshold, 5.5 GiB AS, time/CPU/log limits and anchored ownership/cleanup remain unchanged.",
+    "The endpoint whitelist and completion prohibition are unchanged. Kernel/cgroup writes, global cache changes and peer process signals are absent.",
+    "Pinned model digest and runtime/config recipes are unchanged; the inherited exact asset verification remains before Popen. This review did not rehash model/runtime assets.",
+    "Fixed authored request count and exact serialized digest are enforced during freeze; the independent mocked run also exercises that freeze assertion.",
+    "One configured external attempt destination, exclusive attempt marker, preserved full eight-row denominator and root-approved frozen hash remain required.",
+    "Owner initial 23-control evidence and the path-only correction plus one follow-up test are explicitly preserved; this review independently ran six current targeted controls."
+  ],
+  "independent_authored_controls": {
+    "command": "python -m unittest -v tests.test_native_loader_v18.NativeLoaderControls.test_reader_requires_well_formed_max_and_retains_boundary tests.test_native_loader_v18.NativeLoaderControls.test_mocked_counter_drop_above_initial_baseline_stops_and_cleans tests.test_native_loader_v18.NativeLoaderControls.test_each_remaining_resource_failure_immediately_kills_owned_group tests.test_native_loader_v18.NativeLoaderControls.test_watchdog_kills_independently_while_api_is_blocked tests.test_native_loader_v18.NativeLoaderControls.test_generation_endpoint_never_reaches_network tests.test_native_loader_v18.NativeLoaderControls.test_cleanup_missing_telemetry_is_not_success",
+    "test_names": [
+      "test_reader_requires_well_formed_max_and_retains_boundary",
+      "test_mocked_counter_drop_above_initial_baseline_stops_and_cleans",
+      "test_each_remaining_resource_failure_immediately_kills_owned_group",
+      "test_watchdog_kills_independently_while_api_is_blocked",
+      "test_generation_endpoint_never_reaches_network",
+      "test_cleanup_missing_telemetry_is_not_success"
+    ],
+    "tests_run": 6,
+    "passed": 6,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 0.021,
+    "real_native_processes": 0,
+    "real_native_endpoints": 0,
+    "real_cgroup_polls": 0
+  },
+  "authored_request_sha256": "5440df6b81b9dcb070096d9702c11039b34c0f05b747e62813342095c2a27a34",
+  "model_sha256_in_unchanged_config": "40d0f32cd3030b04f0784139a589fb63e876cfbf8667d56311b79783c74fd149",
+  "remaining_limits": [
+    "The proxy overlaps categories, omits ordinary unmapped clean cache and is not a certified upper bound on unreclaimable memory.",
+    "Nonatomic sampled counters can miss reset-and-reincrease or fast allocation changes between observations. A shared-cgroup OOM may affect a peer before the reactive watcher responds.",
+    "Unchanged numerical limits do not make the application policy equivalent or guarantee safety/fit; root accepted the residual-risk distinction and must separately decide on the concrete frozen attempt.",
+    "Even successful authored tokenization would not establish generation capacity, natural-prompt fit, semantic competence or QA quality."
+  ],
+  "execution_authorized_by_this_review": false,
+  "actual_attempt_frozen_by_reviewer": false,
+  "model_processes_started_by_reviewer": 0,
+  "natural_inputs_read": 0,
+  "v17_paper_state_or_manifest_edits": false
+}

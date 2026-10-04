@@ -1,0 +1,174 @@
+--- scripts/native_loader_v17.py
++++ scripts/native_loader_v18.py
+@@ -17,22 +17,27 @@
+ import urllib.request
+ 
+ import native_binding_reader_v16 as native
+-import cgroup_guard_v16_2 as pressure
++import native_loader_guard_v18 as pressure
+ import process_group_rss_v16 as owned
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-PROFILE = ROOT / 'configs/native_loader_v17.json'
++PROFILE = ROOT / 'configs/native_loader_v18.json'
+ CONTROLS = ROOT / 'data/reader_binding_v16/interface_controls_v16.json'
+ PINNED_HELPER = 'e3063c8d340877189fc443fb54ae8bc5f7d3388ee37dc16891fda2b401131ee6'
+ ALLOWED = {('GET', 'health'), ('GET', 'props'), ('POST', 'apply-template'), ('POST', 'tokenize')}
+-RECIPE = ['scripts/native_loader_v17.py', 'scripts/native_binding_reader_v16.py',
++RECIPE = ['scripts/native_loader_v18.py', 'scripts/native_loader_guard_v18.py', 'scripts/native_loader_v17.py', 'scripts/native_binding_reader_v16.py',
+           'scripts/cgroup_guard_v16_2.py', 'scripts/process_group_rss_v16.py',
+           'scripts/local_backend_v07.py', 'scripts/larger_scorer_v09.py',
+           'scripts/fetch_local_backend_v07.py', 'src/temporal_state/reader_binding_v16.py',
+-          'tests/test_native_loader_v17.py', 'configs/native_loader_v17.json',
++          'tests/test_native_loader_v18.py', 'tests/test_native_loader_v17.py',
++          'configs/native_loader_v18.json', 'configs/native_loader_v17.json',
+           'configs/binding_reader_v16.json', 'data/reader_binding_v16/interface_controls_v16.json',
+           'results/owned_rss_audit_closure_v17.json', 'results/reader_native_capacity_estimate_v17.json',
+-          'docs/native_reader_resource_proposal_v17.txt']
++          'docs/native_reader_resource_proposal_v17.txt', 'docs/native_loader_guard_amendment_v18.txt',
++          'results/native_loader_attempt_v17.json', 'results/native_loader_attempt_v17_1.json',
++          'results/native_loader_terminal_review_v17_1.json',
++          'results/native_loader_guard_controls_v18.json',
++          'results/native_loader_independent_review_v18.json']
+ 
+ 
+ def digest(path):
+@@ -60,7 +65,7 @@
+ 
+ def profile():
+     p = load(PROFILE)
+-    require(p['schema_version'] == 'native_loader_profile_v17', 'profile_schema')
++    require(p['schema_version'] == 'native_loader_profile_v18', 'profile_schema')
+     require(p['owned_rss_stop_bytes'] == p['worker_reserve_bytes'] == 4563402752, 'rss_reserve_changed')
+     require(p['pressure_stop_bytes'] == 7516192768 and p['kernel_memory_max_bytes'] == 8589934592,
+             'shared_pressure_policy_changed')
+@@ -68,18 +73,16 @@
+             p['maximum_native_processes'] == 1, 'execution_scope_changed')
+     require(p['components'] == list(pressure.COMPONENTS), 'pressure_components_changed')
+     require(digest(ROOT / 'scripts/process_group_rss_v16.py') == PINNED_HELPER, 'rss_helper_changed')
++    require(p['total_boundary_action'] == p['max_event_increase_action'] == 'record_only', 'diagnostic_policy_changed')
++    require(p['required_events'] == list(pressure.EVENTS), 'required_events_changed')
++    require(p['event_counter_reset_action'] == 'stop' and p['one_attempt_no_retry'] is True, 'failure_policy_changed')
+     c = native.config(ROOT / 'configs/binding_reader_v16.json')
+     require(digest(ROOT / 'configs/binding_reader_v16.json') == p['native_config_sha256'], 'native_config_changed')
+     return p, c
+ 
+ 
+ def preflight_reason(snapshot, baseline=None, reserve=0):
+-    reason = pressure.policy_reason(snapshot, baseline, reserve)
+-    if reason:
+-        return reason
+-    if snapshot['memory_current_bytes'] >= snapshot['memory_max_bytes']:
+-        return 'kernel_total_limit'
+-    return None
++    return pressure.policy_reason(snapshot, baseline, reserve)
+ 
+ 
+ def owned_reason(snapshot, *, live, rss_limit):
+@@ -96,6 +99,8 @@
+     p, c = profile()
+     directory = native.external(directory)
+     receipt = Path(receipt).resolve()
++    require(directory == Path(p['attempt_external_path']) and
++            receipt == (ROOT / p['public_receipt_path']).resolve(), 'single_fixed_attempt_destination')
+     require(receipt.is_relative_to(ROOT / 'results'), 'public_receipt_location')
+     require(not directory.exists() and not receipt.exists(), 'freeze_destination_exists')
+     require(not Path(c['model']['path']).is_symlink() and
+@@ -105,7 +110,8 @@
+     require(len(requests) == 8, 'full_request_count_required')
+     directory.mkdir(parents=True)
+     write(directory / 'requests.json', requests, exclusive=True)
+-    frozen = {'schema_version': 'native_loader_frozen_v17', 'profile': p,
++    require(digest(directory / 'requests.json') == p['unchanged_authored_requests_sha256'], 'authored_requests_changed')
++    frozen = {'schema_version': 'native_loader_frozen_v18', 'profile': p,
+               'native_config': c, 'request_count': 8, 'public_receipt': str(receipt),
+               'requests_sha256': digest(directory / 'requests.json'),
+               'recipe_sha256': {x: digest(ROOT / x) for x in RECIPE},
+@@ -113,7 +119,7 @@
+               'references_copied': False, 'natural_requests_allowed': False,
+               'maximum_completions': 0, 'maximum_native_processes': 1}
+     write(directory / 'frozen_protocol.json', frozen, exclusive=True)
+-    r = {'schema_version': 'native_loader_receipt_v17', 'status': 'frozen_awaiting_root_execution_approval',
++    r = {'schema_version': 'native_loader_receipt_v18', 'status': 'frozen_awaiting_root_execution_approval',
+          'protocol_sha256': digest(directory / 'frozen_protocol.json'),
+          'model_sha256': c['model']['sha256'], 'model_processes_started': 0,
+          'completion_calls_started': 0, 'completion_responses': 0,
+@@ -212,13 +218,17 @@
+     require(digest(directory / 'requests.json') == f['requests_sha256'], 'frozen_requests_changed')
+     p, c = profile()
+     require(p == f['profile'] and c == f['native_config'], 'frozen_profile_changed')
++    require(directory == Path(p['attempt_external_path']) and
++            Path(f['public_receipt']).resolve() == (ROOT / p['public_receipt_path']).resolve(), 'single_fixed_attempt_destination')
+     requests = load(directory / 'requests.json')
+     r = load(f['public_receipt'])
+     require(len(requests) == len(r['request_states']) == f['request_count'] == 8, 'full_request_count_required')
+     require([x['request_id'] for x in requests] == [x['request_id'] for x in r['request_states']], 'request_identity_changed')
+     require(r['status'] == 'frozen_awaiting_root_execution_approval', 'attempt_state_changed')
+     write(directory / 'attempt_started.json', {'approved_protocol_sha256': approval_sha256, 'started': time.time()}, exclusive=True)
+-    trace = {'api_calls': [], 'resource_samples': [], 'completion_calls': 0}
++    trace = {'api_calls': [], 'resource_samples': [], 'completion_calls': 0,
++             'total_boundary_and_max_increases_are_diagnostic': True}
++    sampling_lock = threading.Lock()
+     process = None
+     anchor = None
+     watcher = None
+@@ -260,7 +270,8 @@
+         anchor = owned.bind_group(process.pid)
+         trace['ownership_anchor'] = anchor
+         require(anchor.get('telemetry_ok'), 'ownership_anchor_failed')
+-        def check():
++        def check_sample():
++            nonlocal baseline
+             snap = pressure.read_snapshot()
+             group = owned.read_group_rss(process.pid, anchor=anchor)
+             live = process.poll() is None
+@@ -268,11 +279,16 @@
+             require(len(trace['resource_samples']) <= 6000, 'trace_sample_cap')
+             reason = preflight_reason(snap, baseline)
+             require(reason is None, reason or 'resource_refusal')
++            baseline = snap  # Compare the next sample to this one, not just initial events.
+             reason = owned_reason(group, live=live, rss_limit=p['owned_rss_stop_bytes'])
+             require(reason is None, reason or 'owned_resource_refusal')
+             require(live, 'native_process_exited')
+             require(time.monotonic() - started < c['process_wall_seconds'], 'process_wall_limit')
+             require((directory / 'server.log').stat().st_size < 64 * 2**20, 'native_log_budget')
++        def check():
++            # Serialize event lineage only; no HTTP or asset work holds this lock.
++            with sampling_lock:
++                check_sample()
+         check()
+         watcher = threading.Thread(target=watchdog,
+                   args=(process, check, stopped, failure, c['monitor_interval_seconds']), daemon=True)
+--- configs/native_loader_v17.json
++++ configs/native_loader_v18.json
+@@ -1,5 +1,5 @@
+ {
+-  "schema_version": "native_loader_profile_v17",
++  "schema_version": "native_loader_profile_v18",
+   "native_config_sha256": "0171d13fcc30f444380c5f6a8a1eed31cd709eb86713222c21198b197f808038",
+   "owned_rss_stop_bytes": 4563402752,
+   "worker_reserve_bytes": 4563402752,
+@@ -22,5 +22,22 @@
+   "resource_policy_changed_from_v16_total_guard": true,
+   "original_failed_attempt_preserved": true,
+   "no_cgroup_settings_or_other_process_mutation": true,
+-  "root_execution_approval_required_for_frozen_hash": true
++  "root_execution_approval_required_for_frozen_hash": true,
++  "total_boundary_action": "record_only",
++  "max_event_increase_action": "record_only",
++  "required_events": [
++    "max",
++    "oom",
++    "oom_kill"
++  ],
++  "event_counter_reset_action": "stop",
++  "one_attempt_no_retry": true,
++  "resource_policy_relaxed_from_v17": true,
++  "attempt_external_path": "/workspace/scratch/bdef663e3dfc/wikigraph_v18_external/native_loader_attempt01_guard_amendment",
++  "public_receipt_path": "results/native_loader_attempt_v18.json",
++  "unchanged_authored_requests_sha256": "5440df6b81b9dcb070096d9702c11039b34c0f05b747e62813342095c2a27a34",
++  "parent_failure_sha256": "1c1e27858bf4ff43e1e74483a88fcdeb8ee94a88b09a164bee0d0383a86ffb68",
++  "parent_frozen_protocol_sha256": "03234cf3274376081e86897cfb4a1be4778ec6baa8343c40e921f212412c2746",
++  "durable_checkpoint_commit": "f77f70c51b12c935ccf897ba64bf19501d44c427",
++  "durable_checkpoint_tree": "ca8f99956ff3faeb07c0c4bab423a9187daca985"
+ }

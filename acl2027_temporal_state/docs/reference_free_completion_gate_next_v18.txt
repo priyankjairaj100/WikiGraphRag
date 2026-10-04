@@ -1,0 +1,58 @@
+Next authored generation gate after the v18 preparation checkpoint
+2026-10-04. Design only; no generation is authorized or claimed by this file.
+
+The successful v18.1 attempt establishes loading, observed zero rollback state,
+and tokenization of the eight unchanged fictional requests. It establishes no
+generation capacity, response correctness, natural-pack fit, or adequate reader.
+Preserve the failed v18 attempt and successful v18.1 attempt separately.
+
+Implement a new prediction host before the next native attempt. The old v16
+host is unsuitable without amendment: its server lifecycle uses the obsolete
+total-memory guard and lacks the current namespace-anchored immediate group
+cleanup. Its frozen-input validation and execution also read reference answers.
+Do not silently reuse that execution path for a reference-free experiment.
+
+Required separation
+
+1. A freezer binds fixed requests, exact messages, the eight successful v18.1
+   prompt/token artifacts, configuration, model/runtime hashes, code, control
+   inputs and protocol. Store an opaque reference digest for later joining.
+2. The prediction worker may open only the frozen inference inputs and assets.
+   It must not load reference answers or call the reference grader. Preserve
+   raw requests/responses, token IDs/hashes, resource traces, and a terminal row
+   for all eight planned requests, including unattempted rows after a stop.
+3. Seal the raw execution manifest before a separate offline evaluator opens
+   the references. Scores cannot change request order, stopping, repairs or
+   selection. Keep transport/resource/format/support and answer outcomes apart.
+
+Inherited native requirements
+
+Use the reviewed v18.1 guard, log verbosity, mandatory observed-zero rollback
+check, ownership anchoring, immediate kill and confirmed cleanup. Retain exact
+kernel/pressure/RSS/AS/CPU/time/log caps, model/runtime/cache/context settings,
+and sampled-event limitations. No cgroup setting or unrelated process changes.
+Loading success does not justify increasing a resource cap.
+
+Each completion uses a fresh owned process and one request only. Re-render and
+tokenize the frozen message inside that process and require exact equality to
+the bound successful v18.1 artifact. Retain cache_prompt=false, response cache_n
+equal to zero, exact returned prompt/token identity, prompt/generated accounting,
+the unchanged seed-zero greedy request, and the 768-token output ceiling. Here
+cold means model/KV state; it does not mean the operating-system file cache is
+empty. Do not evict other work or use an OS-cache reset.
+
+Review and execution order
+
+First exercise authored negative controls for reference access, changed inputs,
+wrong identity/cache/accounting, process-group cleanup and terminal denominator.
+Then obtain an independent code/protocol review, freeze one exact eight-request
+attempt, and assign the exclusive heavy-process window. No hidden retry, output
+repair, outcome-based request change or natural source prompt is permitted.
+Technical abort keeps remaining requests unattempted. Semantic grading occurs
+only after raw outputs are sealed. Failed controls remain visible.
+
+Afterward, adequate fictional controls are only a prerequisite. All-occurrence
+question-free scope mapping, admitted whole evidence packs, independent source-
+conditioned question/reference stages and natural native prompt fit must still
+be completed under reader_binding_question_workflow_v17.txt before the matched
+natural pilot. The proposed acquisition method remains untested.

@@ -1,0 +1,59 @@
+v18.1 logging-only loader/tokenizer amendment -- unfrozen draft
+
+Reason
+
+The preceding v18 attempt reached successful health/props identity, then failed
+because its startup log did not contain n_rs_seq. Its failed receipt remains
+unchanged: results/native_loader_attempt_v18.json, SHA256
+6d1de29959702efb74706f53e31c2811bc496225e5a24b30f58f464f13f04890.
+The parent protocol is bf652a920caae007534653c5717bb5dd3c75c1aa69d4c15e47cc5caa1da97b91.
+
+Read-only diagnosis results/native_rollback_observation_diagnosis_v18.json,
+SHA256 ff365c77f1b2a91c708a60442a688e2bf903b6b0995a2553600d3e9f6dabf6a9,
+pins the exact runtime sources and logging call chain. The library's INFO
+callback requires verbosity 4, while the retained native log reports threshold
+3. Missing state at that threshold does not mean nonzero rollback. Defaults and
+the metadata-only /props speculative field are not substituted for observation.
+
+Exact proposed change
+
+The separate scripts/native_loader_v18_1.py command appends only the two argv
+elements ['--log-verbosity', '4'] to the inherited native command. This changes
+logging visibility, not a model/context/cache allocation parameter. It does not
+establish runtime success before execution. The mandatory observed-zero gate
+remains exactly unchanged, as do parsing, API whitelist, guard and cleanup code.
+An absent or nonzero n_rs_seq is terminal. Actual buffer/report lines must be
+retained if observed; no guessed measurements may fill absent fields.
+
+configs/native_loader_v18_1.json changes only version/output/ancestry metadata
+and the explicit verbosity field relative to v18. The native configuration
+remains SHA256 0171d13fcc30f444380c5f6a8a1eed31cd709eb86713222c21198b197f808038.
+The model SHA, pinned runtime and helper, context 8192, input <=6144, batch/ubatch
+128, one slot, four threads, mmap, cache types and eight fictional request bytes
+are unchanged. Authored requests must keep SHA256
+5440df6b81b9dcb070096d9702c11039b34c0f05b747e62813342095c2a27a34.
+
+Kernel limit remains exactly 8 GiB; owned reserve/RSS 4.25 GiB; proxy 7 GiB;
+RLIMIT_AS 5.5 GiB. The 90-second startup, 300-second request, 450-second process,
+3600-second CPU, 0.1-second monitoring and 64 MiB native log limits remain.
+Total boundary and increasing max remain diagnostic under the already changed
+v18 policy. OOM/OOM-kill, event reset, missing telemetry, other guard failures
+or timeouts remain terminal with immediate owned-group kill and confirmed
+namespace-aware cleanup. The proxy is not a reservation; shared-cgroup peer OOM
+risk persists. Logging overhead is still subject to all existing limits.
+
+Review, freeze and execution boundary
+
+This file is a draft. No actual freeze or execution is authorized by its
+creation. The separate fixed destination would be
+/workspace/scratch/bdef663e3dfc/wikigraph_v18_external/native_loader_attempt02_logging_observation
+and public receipt results/native_loader_attempt_v18_1.json. Preserve every
+preceding attempt. Owner authored/mocked controls, independent review, one new
+freeze, root approval of the exact frozen hash, and an exclusive heavy window
+are required before one future execution. No automatic retry or cap change.
+
+If admitted, scope is one process, health/props plus at most eight unchanged
+authored apply-template/tokenize requests, ZERO generation, ZERO natural input.
+All eight request states must remain in the receipt after any stop. A pass is
+only a loader/tokenizer observation under its recorded conditions. It does not
+establish generation capacity, natural-pack fit, reader competence or QA gains.

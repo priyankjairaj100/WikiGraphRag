@@ -1,0 +1,99 @@
+v18 native loader total-boundary amendment: preparation only
+
+Scope and ancestry
+
+This is a separately recorded relaxation of the v17 application policy. It is
+not guard equivalence, recovered success, proof of model fit, or reader-quality
+evidence. All published v16/v17 files and failures remain unchanged. Checkpoint
+commit f77f70c51b12c935ccf897ba64bf19501d44c427, tree
+ca8f99956ff3faeb07c0c4bab423a9187daca985, durably preserves their state.
+
+The preceding v17.1 attempt is results/native_loader_attempt_v17_1.json, SHA256
+1c1e27858bf4ff43e1e74483a88fcdeb8ee94a88b09a164bee0d0383a86ffb68. Its protocol
+03234cf3274376081e86897cfb4a1be4778ec6baa8343c40e921f212412c2746 launched once,
+then stopped at sampled memory.current == memory.max == 8 GiB after about 2.04
+seconds. Sampled proxy peak was 5,057,638,400 bytes and owned RSS 2,326,736,896
+bytes. Observed OOM/OOM-kill deltas were zero. Health never succeeded, no prompt
+was tokenized, and cleanup confirmed no live owned process. This attempt did
+not retain memory.events:max, so actual boundary-event frequency is unknown.
+
+Kernel basis and limitation
+
+Primary source: https://docs.kernel.org/admin-guide/cgroup-v2.html
+Sections memory.max, memory.events, memory.current, memory.stat; accessed
+2026-10-04. memory.max invokes OOM handling if boundary usage cannot be reduced;
+temporary excess is possible. The max event counts impending boundary crossings
+and differs from oom and oom_kill. Some failed allocations do not produce an oom
+event. Therefore total-boundary observation alone does not establish exhausted
+reclaim or required reader memory. No current resource polling underlies this
+proposal. File-cache pressure is plausible in the historical partial load, not
+demonstrated to explain it completely.
+
+Exact changed behavior
+
+scripts/native_loader_v18.py retains the v17 execution implementation with a
+separate small guard adapter scripts/native_loader_guard_v18.py and profile
+configs/native_loader_v18.json. memory.current >= memory.max is recorded in each
+snapshot as total_boundary_observed; it alone no longer stops admission/loading.
+memory.events:max is required, parsed as a nonnegative integer and retained in
+the same snapshot. Its increase alone is diagnostic. Missing, malformed,
+negative, duplicate, or reset event counters fail closed. max, oom and oom_kill
+are compared against each immediately preceding accepted sample, including
+pre-asset and prelaunch observations. Sampling is serialized only around the
+resource check; an HTTP call never holds that lock. Any new oom/oom_kill still
+stops. Historical nonzero counters at the first sample are not new events.
+
+The snapshot files are consecutive reads, not an atomic kernel transaction.
+Counters could reset and surpass their prior values between samples without
+detection. A sampled watchdog is not kernel isolation. No memory.high/max writes,
+counter resets, peer-process signals, or unrelated cache manipulation are made.
+
+Unchanged bounds and procedure
+
+Kernel memory.max must remain exactly 8,589,934,592 bytes. The nine-component
+proxy remains anon + file_mapped + shmem + kernel + sock + file_dirty +
+file_writeback + unevictable + swapcached. Before asset hashing and again before
+launch, proxy plus 4,563,402,752 bytes must be strictly below 7,516,192,768 bytes.
+During loading, proxy must stay strictly below 7,516,192,768 bytes and summed
+owned-group RSS strictly below 4,563,402,752 bytes. Missing or invalid telemetry,
+event reset/increase as specified, identity, runtime, or timeout failure stops.
+The watchdog sends immediate SIGKILL only to the original inner process group,
+independently of blocked HTTP. The pinned namespace-aware anchor helper then
+confirms no live owned descendant. Failed/unconfirmed cleanup remains failure.
+
+The same model SHA256 40d0f32cd3030b04f0784139a589fb63e876cfbf8667d56311b79783c74fd149
+and exact runtime manifest are checked under the inherited streaming digest
+recipe. The fixed native configuration SHA256 is
+0171d13fcc30f444380c5f6a8a1eed31cd709eb86713222c21198b197f808038.
+It retains mmap, context 8192, input <=6144, batch/ubatch 128, one slot, four
+threads, q8_0 K/V, no warmup/mlock/context shift, seed 0 and thinking disabled.
+RLIMIT_AS remains 5,905,580,032 bytes; startup 90 seconds, request 300 seconds,
+process wall 450 seconds, CPU 3600 seconds, monitor interval 0.1 second.
+
+Only one fixed external attempt destination and one exclusive attempt-started
+marker are permitted. Actual freeze occurs once after review; root must approve
+the final protocol SHA before execution and provide the exclusive heavy window.
+No retry loop or cap adjustment follows a refusal/failure. Freeze hashes code,
+tests, reviews, ancestry, profile, fixed native configuration and exact requests.
+The eight authored message bundles must retain SHA256
+5440df6b81b9dcb070096d9702c11039b34c0f05b747e62813342095c2a27a34.
+They use fake companies/numbers only. No natural or reference artifact is copied.
+Allowed endpoints remain GET health/props and POST apply-template/tokenize.
+One native process, at most eight authored tokenizations, ZERO generation calls
+and ZERO natural prompts. All eight rows survive refusals/partial failures.
+
+Risk and interpretation
+
+The proxy deliberately overlaps categories and omits some charges. Neither its
+admission allowance nor owned RSS reserves kernel capacity. RSS does not cover
+every shared-cgroup charge, and peers may grow between observations. The shared
+8 GiB kernel limit is not per-project containment: an OOM can select a peer
+before our reactive event stop responds. Avoiding equality-triggered termination
+accepts that additional risk; unchanged numerical limits do not erase it.
+
+The historical partial load did not measure full residency, graph workspace,
+actual KV/recurrent allocation, or reclaim latency. Static named-cache estimates
+remain estimates. Even a successful new loader/tokenizer outcome establishes
+only that bounded operation under its recorded conditions, not generation fit,
+interface competence, natural QA improvement, a stronger reader, or publication
+readiness. Authored completion and natural evidence gates remain separate.

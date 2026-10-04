@@ -1,0 +1,102 @@
+{
+  "schema_version": "pre_author_bundle_shape_review_v18",
+  "status": "passed_authored_review",
+  "reviewer": "binding_interface_v16",
+  "reviewed_at_utc": "2026-10-04T14:05:19.203146+00:00",
+  "open_blockers": [],
+  "code_bindings": {
+    "scripts/build_pre_author_bundles_v18.py": "bc85a064c1863551c6877ecfdaa8d96cf52cdf11113de3b51f7e4196e24083da",
+    "tests/test_pre_author_bundles_v18.py": "94438bd26ef5e555e193b11b5760bd6609ce691b6721fd9b54264d5b6d28d55c",
+    "docs/pre_author_bundle_contract_v18.txt": "36dd94afb24e28e8671f87218b99e9102d769d5913501da145828fb636ce9797",
+    "src/temporal_state/reader_binding_v18.py": "6d45e3b3515ec7d09cd43bd168b99b1943a787278b31cc931c2b990642f5b343",
+    "src/temporal_state/reader_binding_v16.py": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1"
+  },
+  "evidence_bindings": {
+    "scripts/build_pre_author_bundles_v17.py": "559974866f5d507b1ced20557ee67e0782b27e6917f93d950f2abc094d4293a2",
+    "data/reader_binding_v18/pre_author_bundle_protocol_draft.json": "9bedc0bd4b58327bdfc27f6d02012aa9c2a9477597ae6f78b88cbada3f66fc26",
+    "results/pre_author_bundle_shape_authored_controls_v18.json": "6a55e29ff9ec66bb809680177f3f70e506c81a9c8e4493295455bdfcfb0817fe",
+    "data/provenance/pre_author_bundle_shape_amendment_v18.patch": "3137bec777226355630611b927346570171067ef1586cfb0e70db9affbd9eda8",
+    "results/reader_binding_blank_independent_review_v18.json": "2b1e1720548e6ddf7014086b66d9fc0cb4def4de7f0a00f89541c28cb5dae386"
+  },
+  "scope": "Source-free code, contract, non-executable protocol and authored-fixture review. No natural plan, source, typed facts, parent bundles, questions or references were opened. This receipt permits subsequent freeze under the contract, not execution or author release.",
+  "static_checks": {
+    "exact_disclosed_diff": true,
+    "unchanged_helper_functions": [
+      "digest",
+      "write_new",
+      "encoded",
+      "inside",
+      "block_from_view",
+      "clean_rows",
+      "author_projection",
+      "collect_facts",
+      "check_dependency",
+      "labels_for"
+    ],
+    "candidate_registry_schema_only_change": true,
+    "draft_and_owner_exact_code_bindings_match": true,
+    "exact_CODE_population": 5,
+    "parent_code_and_six_original_input_hash_recheck_before_build": true,
+    "all_ordered_twenty_one_parent_ids_and_source_table_pairs_required": true,
+    "parent_external_size_hash_basename_and_leaf_symlink_guards": true,
+    "separate_source_projection_must_equal_combined_parent_projection": true,
+    "author_projection_registry_dependency_plan_and_question_null_exact": true,
+    "v16_gate_replay_compares_private_and_public_parent": true,
+    "candidate_values_labels_present_bindings_and_witnesses_checked": true,
+    "roundtrip_block_order_and_full_fact_count_checked": true,
+    "null_identity_population_and_no_author_admission_retained": true,
+    "fixed_output_paths_byte_cap_exclusive_writes_and_partial_directory_retention": true,
+    "final_dependency_manifest_and_nineteen_blank_exposures_checked": true
+  },
+  "owner_controls": {
+    "reported_total": 47,
+    "v17_unchanged": 22,
+    "v18_new": 25,
+    "failures": 0,
+    "errors": 0,
+    "rerun_by_reviewer": false
+  },
+  "independent_controls": [
+    {
+      "executor": "binding_interface_v16",
+      "tests": 2,
+      "passed": 2,
+      "failures": 0,
+      "errors": 0,
+      "elapsed_seconds": 0.001,
+      "names": [
+        "test_draft_cannot_launch_or_create_output",
+        "test_missing_bindings_fail_before_source_reads"
+      ]
+    },
+    {
+      "executor": "binding_interface_v16/shape_parent_audit_v18",
+      "tests": 8,
+      "passed": 8,
+      "failures": 0,
+      "errors": 0,
+      "elapsed_seconds": 0.011,
+      "coverage": [
+        "blank and nonblank original v16 replay",
+        "value and label drift rejection",
+        "present binding drift rejection",
+        "witness wording rejection",
+        "nil and unsupported retention",
+        "parent hash byte count basename guards",
+        "parent leaf symlink rejection"
+      ]
+    }
+  ],
+  "limitations": [
+    "The registry omits resolved_aspects. Completeness of present versus null machine bindings is established by unchanged candidate_registry and exact hash-bound typed inputs, not by compare_parent_bundle as a general validator of arbitrary successor payloads.",
+    "The draft is non-executable. A new frozen protocol and separate root execution approval remain necessary; no natural comparison outcome is claimed.",
+    "A build exception retains a partial exclusive output directory and prevents destination reuse; it does not itself write a success inventory. The executor must retain the failure record if execution fails.",
+    "Exact source-only content and mechanical registry preservation do not establish visible semantic support, complete identity cards, population semantics, token feasibility or answerability."
+  ],
+  "natural_files_opened": 0,
+  "natural_materialization_runs": 0,
+  "model_or_tokenizer_calls": 0,
+  "freeze_performed_by_reviewer": false,
+  "execution_authorized_by_review": false,
+  "v17_files_modified": false
+}

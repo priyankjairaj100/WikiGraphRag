@@ -1,0 +1,76 @@
+Read-only diagnosis of the v18 rollback-observation failure
+
+Conclusion
+
+The failed v18 gate did not observe nonzero rollback state. It observed no
+n_rs_seq field. The pinned runtime's logging policy explains this absence:
+llama_context emits the actual cparams.n_rs_seq at LLAMA_LOG_INFO, while the
+common callback maps GGML INFO to TRACE verbosity 4. The server's default
+threshold is 3, exactly as recorded in the retained v18 server log. Library
+INFO messages, including context and cache allocation lines, are filtered before
+being queued. Server/common INFO messages remain visible at threshold 3.
+
+Evidence chain (all native sources at commit
+7fe450e19305b828c199d602c23a8337aaa1f03b)
+
+1. src/llama-context.cpp line 317 emits cparams.n_rs_seq through LLAMA_LOG_INFO.
+   src/llama-memory-recurrent.cpp lines 125 and 133 emit RS buffer size and
+   recurrent-state counts through the same level.
+2. common/log.cpp lines 529-546 map GGML_LOG_LEVEL_INFO to LOG_LEVEL_TRACE and
+   discard callback messages above the threshold. common/log.h lines 24-32
+   define TRACE=4, INFO=3, and the default threshold as INFO.
+3. common/common.cpp lines 385-394 register that callback. The server calls
+   common_init before parsing options in tools/server/server.cpp lines 97-107.
+4. common/arg.cpp lines 3935-3948 expose -lv/--verbosity/--log-verbosity and set
+   the threshold to the requested integer. The parser applies system config,
+   then environment options, then CLI overrides. The inherited command has no
+   explicit verbosity option; the actual v18 log reports verbosity = 3.
+
+Defaults and API limits
+
+The pinned context API default n_rs_seq is zero. Common initialization sets it
+from params.speculative.need_n_rs_seq(); this returns zero unless selected
+draft methods require rollback snapshots. That is a source-level derivation,
+not an observation of the terminated process. Config/environment/CLI can affect
+parameters, so the default alone should not replace the frozen observation gate.
+
+The pinned API has llama_n_rs_seq(ctx), which directly reads cparams.n_rs_seq,
+but no such context getter is exposed by the existing /props response. Its
+get_res_props implementation constructs task_params and copies sampling values;
+it intentionally avoids accessing the live server context. The returned
+speculative.types='none' therefore cannot serve as an authoritative measurement
+of actual allocated rollback state. No new endpoint or library injection is
+needed for the narrower logging remedy.
+
+Narrowly justified proposed amendment, NOT IMPLEMENTED OR AUTHORIZED
+
+Prepare a separately named follow-up that appends exactly:
+    --log-verbosity 4
+to the existing native command. Preserve the runtime/model/configuration pins,
+all v18 memory/AS/time/log caps, event monitoring, ownership and cleanup, the
+same eight authored requests, and zero generation/natural scope. Keep the
+existing mandatory n_rs_seq observation and reject missing or nonzero values.
+Retain actual context/cache/compute report lines and native prompt token IDs
+if the unchanged gate reaches tokenization. Do not substitute defaults or props
+for the observed field, change rollback allocation, remove the guard, or repair
+the existing failed receipt.
+
+Before any new execution: bound authored controls must show the command differs
+only by those two arguments, accepted log values are exactly zero, missing and
+nonzero observations still fail, and all existing guard/cleanup behavior remains.
+Independent review, separate ancestry-linked freeze, exact-hash root approval,
+and the exclusive heavy window are required. One future attempt maximum if
+approved; no automatic retry. Increased logging can change overhead and timing,
+so the existing log/time/resource limits remain applicable.
+
+No native executable, help command, model load, endpoint, generation, cgroup
+poll, weight hash, or cache operation was performed for this diagnosis. Six
+additional public source files (570,458 bytes total) were read at the exact
+runtime commit; prior captured source pins were verified. Terminal v18 protocol,
+driver/profile, public result, trace and accounting receipt remain unchanged.
+Even a future observed zero and tokenizer pass would establish only that bounded
+loader/tokenizer outcome, not generation capacity, natural QA or reader quality.
+
+Machine-readable source pins, line locations, preserved artifact hashes and
+the proposed two-argument change are in
+results/native_rollback_observation_diagnosis_v18.json.

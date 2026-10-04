@@ -1,0 +1,120 @@
+v18 shape-only rematerialization of the frozen v17 bundles
+Pre-execution authored contract, 2026-10-04.
+
+Purpose and preserved outcomes
+
+The v18 reader interface was separately reviewed in
+results/reader_binding_blank_independent_review_v18.json. It permits exact empty
+and whitespace strings only in source blocks, with unchanged evidence budgets,
+witness restrictions and B0/B1/B2 code. This new materializer applies that narrow
+representation to the same 21 frozen v17 candidates. No natural execution is
+authorized by this contract or by the draft protocol.
+
+The v17 inventory remains byte-exact: 10/21 shape-valid candidates, 11 block_text
+failures, 19 blank source-block exposures. Preserve every original file, failure
+and denominator. Do not replace that historical result with the new run. Shape
+validity is not semantic/source admission, complete evidence or reader quality.
+
+Implementation and fixed inputs
+
+scripts/build_pre_author_bundles_v18.py is a separate version of the v17 builder.
+The source assembly helpers, original source-only author projection, declared
+question-free registry and row-label logic remain unchanged. The registry builder
+changes only its evidence-pack schema to reader_evidence_pack_v18 and imports the
+reviewed v18 EvidencePack. Source-only author and question-free registry schema
+names remain v17 because their content/semantics do not change.
+
+The protocol binds the new builder/tests/contract, v18 interface and frozen v16
+interface. Input bindings retain all six original inputs unchanged: dependency
+plan, table-view protocol/inventory, selected pool, original source-view admission
+aggregate and original identity candidates. It additionally binds the v17 builder
+protocol/review, v17 bundle inventory, separate source-only export receipt and
+v18 interface review. Every original v17 code/input hash is rechecked; original
+input maps must match exactly. No newer source-view/identity decisions are copied
+into these shape-only outputs, even if other v18 work has produced them.
+
+The population must equal the original ordered 21 source/table pairs. All 12
+original typed/view inputs and all pool author files are hash/size checked before
+assembly. No new source search, table selection, dependency expansion or question
+conditioning is introduced. Source files themselves are not searched. Reusing
+the exact saved full table inventories and typed records regenerates all selected
+whole blocks and occurrences rather than truncating to an answer subset.
+
+Exact parent comparisons, before each new private write
+
+The 21 original combined bundle files and 21 separate author-staging files are
+checked against the bound public SHA256/byte manifests; symlinks and non-basename
+artifact paths are rejected. Every combined author's projection must equal its
+separate export. Newly regenerated candidates must preserve, with exact string
+and array equality under canonical JSON:
+ - author_staging, including every block's original text, order, anchors and rows;
+ - the complete question_free_registry and source_only_dependency_plan;
+ - null question/reference data and unreleased/null-card flags;
+ - the complete fact count/handle order and null population bindings;
+ - each generated value/label against its unchanged registry entry, and every
+   present binding/witness against copied declared metadata and its exact wording;
+ - the compact v18 prompt round trip and exact block-handle/text order.
+
+The new raw pack is then reconstructed with the original v16 schema and validated
+with the frozen v16 class. Its complete gate must match both the parent's private
+gate and public inventory gate. For the original ten successful packs, every pack
+field must also match after that schema substitution. The original eleven failed
+packs must again yield the same failure and null candidate. The public successor
+stores these comparisons alongside each new result; it does not edit the parent.
+
+The source-only projection is not reinterpreted or released. Identity cards stay
+null, author_release_allowed stays false, every population stays null, and visible
+period/unit/scope verification stays false. Declared typed aspects remain explicitly
+mechanical metadata rather than source-reviewed semantics. New shape success is
+not permission to author questions or call a reader.
+
+At completion the ordered 21 bundle IDs, exact 40-block dependency manifest and
+19 blank exposures must match the parent. A changed registry/projection/gate,
+unexpected v18 shape failure or population mismatch stops the run. No failed
+comparison is repaired or silently skipped; any partial new external directory
+is retained, and the same destination cannot be reused. The old sources, bundles
+and receipts are never modified.
+
+Budget, freeze and outputs
+
+The new external directory is fixed in the protocol:
+ /dev/shm/wikigraph_v15/external/pre_author_bundles_attempt02_v18
+The public result is fixed:
+ results/pre_author_bundle_inventory_v18.json
+The external byte cap remains 25,000,000, enforced before each write without
+truncation; the inherited 65,536-byte reserve also remains. All outputs use
+exclusive creation and the private output must be outside the Git repository.
+No model call, tokenizer call, card construction, reference grading or native
+request modification occurs. This task does not change the native guard-only
+attempt or its frozen eight authored v16 requests.
+
+Draft protocol command (no natural inputs are opened):
+ python3 scripts/build_pre_author_bundles_v18.py draft \
+   --protocol data/reader_binding_v18/pre_author_bundle_protocol_draft.json \
+   --review results/pre_author_bundle_shape_review_v18.json
+
+The draft binds exact current code/input hashes and is explicitly not executable.
+After root/independent review, create a NEW frozen protocol with freeze and the
+closed review receipt. The receipt must have status=passed_authored_review,
+open_blockers=[] and exactly matching code_bindings. Do not overwrite the draft
+or a previously frozen protocol. The build command rejects drafts, mismatched
+bindings, changed budgets/destinations and unclosed or changed reviews. Root must
+separately approve execution after seeing the frozen protocol.
+
+Future reviewed build requires these roots, all contents checked against hashes:
+ --pool-root /dev/shm/wikigraph_v15/external/reader_pool_attempt02
+ --view-root /dev/shm/wikigraph_v15/external/table_views_attempt02
+ --typed-root /dev/shm/wikigraph_v15/external/typed_reader_attempt02
+ --parent-root /dev/shm/wikigraph_v15/external/pre_author_bundles_attempt01
+ --projection-root /dev/shm/wikigraph_v15/external/pre_author_source_only_attempt01
+Restore roots may differ; the exact artifact hashes, not their locations, establish
+identity. New output paths remain fixed by the protocol.
+
+Authored controls:
+ PYTHONPATH=src python3 -m unittest discover -s tests \
+   -p 'test_pre_author_bundles_v1[78].py' -v
+They use invented source blocks/quantities only. The controls exercise original
+blank failure replay, new exact roundtrip, preserved nonblank packs, changed
+text/order/registry/plan rejection, retained nil/unsupported entries, fixed null
+identity/population, hash/path guards, draft refusal and unchanged producer
+algorithms. No natural result is claimed before the separately approved run.
