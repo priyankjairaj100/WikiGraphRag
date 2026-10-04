@@ -1,0 +1,50 @@
+{
+  "schema_version": "native_kernel_boundary_policy_assessment_v17",
+  "status": "proposed_policy_only_no_code_or_execution_change",
+  "reviewer": "binding_interface_v16",
+  "question": "Whether removal of the application memory.current >= memory.max stop can be defensible while the existing kernel cap and all other guards remain unchanged.",
+  "decision": "Defensible as a separately frozen bounded loader experiment if the residual shared-cgroup risk is accepted; not equivalent to the old policy, a safety proof, or evidence that the model fits. Root deferred any experiment until source preparation and checkpoint persistence.",
+  "observed_evidence": {
+    "scripts/native_loader_v17.py": "30cc8fbf6ee70fce156c1b37362cb40b113598a9ddd8d5f42540a08f621c895e",
+    "scripts/cgroup_guard_v16_2.py": "acb91d344b8dc3add82e20effdff19e8b7790f3352015319299154b214d9a200",
+    "configs/native_loader_v17.json": "cdb59a6cda2ed52075f3e7521621cbbdfa59748d94f7c7a95c8dec500d94e5a6",
+    "results/native_loader_terminal_review_v17_1.json": "4672c7a2752748c6eec0c29da108ffbc21300653032c9c937967f5e5b942ea22",
+    "results/native_loader_attempt_v17_1.json": "1c1e27858bf4ff43e1e74483a88fcdeb8ee94a88b09a164bee0d0383a86ffb68"
+  },
+  "observed_result": "The v17.1 application watchdog killed partial loading at sampled shared cgroup total equal to 8 GiB; owned-group RSS and pressure proxy were below their stops and observed OOM/OOM-kill counter deltas were zero. No health, tokenization or generation success was obtained.",
+  "primary_source": {
+    "url": "https://docs.kernel.org/admin-guide/cgroup-v2.html",
+    "sections": [
+      "memory.max",
+      "memory.events",
+      "memory.stat"
+    ],
+    "accessed_date": "2026-10-04",
+    "interpretation": "The hard-limit path tries reclaim and reaches OOM if usage cannot be reduced. Equality, temporary overrun, and a max event are not themselves proof of OOM. The documentation allows some allocation failures without OOM events. Cgroup OOM containment does not isolate peers inside that cgroup."
+  },
+  "proxy_uncertainty": [
+    "The nine-component sum deliberately excludes ordinary unmapped clean file cache and overlaps some categories. It is not a certified upper bound on unreclaimable working memory.",
+    "Counters are read nonatomically. Partial-loading RSS is not the completed reader working set.",
+    "File-cache contribution to the equality stop is plausible but unproven; no reclaimability attribution or fit guarantee follows."
+  ],
+  "concrete_risks": [
+    "Reclaim failure can kill a peer in the shared cgroup before a sampled watcher observes an OOM increment.",
+    "The gap between the 7 GiB proxy stop and 8 GiB kernel hard limit is heuristic headroom; fast allocations and uncoordinated peers can consume it.",
+    "Reclaim can stall or thrash; existing startup and wall limits bound duration but do not certify progress."
+  ],
+  "necessary_unchanged_conditions": [
+    "Exact 8 GiB kernel memory.max, with no cgroup setting mutation.",
+    "Prelaunch 4.25 GiB owned-process-group reserve plus proxy strictly below 7 GiB.",
+    "4.25 GiB owned-process-group RSS, 7 GiB proxy, 5.5 GiB address-space, startup/wall/CPU caps.",
+    "OOM increment/reset, missing telemetry, anchored ownership, independent kill and final cleanup checks.",
+    "One separately frozen zero-generation attempt in an exclusive heavy window after artifact checkpointing; preserve both earlier failures and actual total/max/event telemetry.",
+    "Independent review of the concrete guard-only code diff before any execution."
+  ],
+  "changes_performed": {
+    "code": false,
+    "model_process": false,
+    "native_endpoint": false,
+    "resource_setting": false
+  },
+  "root_checkpoint_decision": "Finish source preparation and persist v17 first; the policy remains a proposal in this checkpoint."
+}

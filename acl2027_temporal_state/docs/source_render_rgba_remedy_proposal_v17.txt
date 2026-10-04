@@ -1,0 +1,34 @@
+PROPOSAL ONLY — NOT A NATURAL RENDER AUTHORIZATION
+
+The original source09 BRK-B_2023 render remains failed for visual legibility.
+Both Poppler and MuPDF rasterize its PDF almost white because LibreOffice wrote
+alpha 0.01 on enclosing transparency groups for numeric rgba alpha 1. Inner
+text-trace color/opacity does not account for that enclosing group. The authored
+fixture reproduces this, and additionally numeric alpha 0 foreground incorrectly
+becomes opaque. Numeric 0.5 and percentage 50% behave as half opacity; percentage
+100% renders opaque. Source and old rendered artifacts must remain unchanged.
+
+Proposed narrow compatibility view:
+1. Preserve exact original source fragment and assembled HTML, with their hashes.
+2. On a separately labeled derived rendering input only, substitute the alpha
+   token exactly "1" with "100%" inside explicit literal inline rgba() values.
+   Keep every other byte unchanged and record each original byte range, old/new
+   literal and hash. Do not rewrite words, numbers, labels, structure or layout.
+3. Restrict admissible CSS syntax to a reviewed literal profile. Refuse color
+   alpha 0 or otherwise unverified visibility-changing colors. Do not broadly
+   simplify CSS or silently alter unsupported declarations.
+4. First test authored foreground/background cases, transparent backgrounds on
+   a contrasting backdrop, and merged-cell geometry. Verify original/non-target
+   bytes, PDF enclosing alpha and actual rendered pixels. No natural substitution
+   follows until this exact transformation and outcomes are reviewed and frozen.
+5. If accepted, use a separately declared recovery population retaining all ten
+   originally selected source09 blocks, including its blank blocks, and any
+   separately identified affected visible identity witnesses. Preserve original
+   outcomes and distinguish compatibility-view review from browser equivalence.
+
+CSS Color4 permits number/percentage alpha values; numeric1 and100% denote full
+opacity. Primary source checked2026-10-04:
+https://www.w3.org/TR/2026/CRD-css-color-4-20260930/#alpha-value
+This semantic equivalence does not imply complete LibreOffice CSS fidelity.
+
+No compatibility transform has yet been implemented or applied to natural data.

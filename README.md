@@ -20,15 +20,15 @@ Research repository for **Reading the Latest, Not the Loudest: Lifecycle-Aware S
 
 The original package is retained unchanged as a historical submission. Its README and result claims describe that submission; later audits and limitations are recorded in the rework. The original paper and supplement were supplied as PDFs; their editable TeX sources were not available in this workspace. The rework's available LaTeX sources are included.
 
-## Current checkpoint: v0.16 — paused
+## Current checkpoint: v0.17 — source evidence and reader feasibility
 
-Saved at the user's request on 4 October 2026. Start the next chat with [NEXT_CHAT_HANDOFF_v16.txt](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v16.txt) and [PROJECT_STATE.json](acl2027_temporal_state/PROJECT_STATE.json).
+The fixed source pool now has qualified inspection views for **101/101 selected blocks (21 tables and 80 neighbors)**, across the original run and two separately recorded recoveries. The original result was **90/101 admitted**. Identity views cover **33/34 candidates**, with one telemetry failure retained, plus four separate SLB literal-cover views.
 
-This increment adds complete structural views for **12 filings / 23,651 numeric occurrences**, an amended **21-of-24-table candidate pool covering all 12 files**, the acquired-evidence binding interface and native reader driver, taxonomy recovery, and a six-page **draft** preparation addendum. Original failures and amendments remain separate.
+Full-DTS validation produced **nine clean source attempts, one incomplete taxonomy closure and two telemetry failures**. All **21 candidate bundles** are saved, with **40 additional dependencies** still awaiting rendering and semantic review. Eleven bundles retain interface failures caused by blank source blocks. **1,181 tests pass.**
 
-**No new natural QA or retrieval result is claimed.** The new reader's authored attempt stopped before model loading; all eight requests remain unattempted. Full-DTS attempts retain 12 prelaunch refusals and a later 12-worker DOM failure. The repaired v16.3 runner and natural source rendering are unexecuted. A namespace-aware memory helper passed a real allocation control; final audit closure and protocol binding remain pending. The full v16 test suite and final paper visual review were deferred when the user paused the session.
+**No new natural QA gain is claimed.** The new reader reached partial loading, then its application memory watchdog stopped it before readiness; tokenizations and completions remain zero. Reader feasibility, complete evidence-pack admission and independently reviewed questions are the next gates.
 
-Public source, protocols, tests, results and draft paper are saved here. Exact source-bearing run artifacts are preserved separately in the private recovery archive described in the handoff; model weights are reproducible from their pinned acquisition record. No experiments continue in the background.
+Read the [v17 handoff](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v17.txt), [project state](acl2027_temporal_state/PROJECT_STATE.json), [working addendum](acl2027_temporal_state/paper/reader_preparation_study_v17.pdf) and [reproduction guide](acl2027_temporal_state/docs/reproduce_v17.txt). Original failures, previous checkpoints and the original submission remain preserved. Exact source-bearing artifacts are saved separately; full third-party captures and model weights are outside Git.
 
 ## Previous completed checkpoint: v0.15
 

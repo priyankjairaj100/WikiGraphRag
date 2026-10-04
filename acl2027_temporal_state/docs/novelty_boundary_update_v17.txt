@@ -1,0 +1,26 @@
+Novelty boundary update, 4 October 2026
+Targeted primary-source check; research interpretation, not an empirical result.
+This supplements the v16 proposal without changing its frozen history.
+
+1. Pair separation needs explicit attribution.
+Golovin, Krause and Ray (2010), sections3–4, already formulate identifying an answer-equivalence class through costly tests. EC2 cuts weighted edges between hypotheses assigned to different classes. Their framework also reduces suitable noisy decision problems to classes over complete outcomes; they discuss the potentially exponential representation. Therefore our answer-changing-pair objective is not, by itself, a novel acquisition principle. The paper's logarithmic guarantees concern its specified hypothesis/prior/test model. They do not automatically apply to our incomplete observed proposals, learned utility estimates or jointly required source premises.
+Primary source: https://arxiv.org/html/1010.3091v2
+Conference source: https://proceedings.neurips.cc/paper/2010/hash/1e6e0a04d20f50967c64dac2d639a577-Abstract.html
+
+2. Correlation alone is not a theoretical gap.
+Chen, Hassani and Krause (2017) study correlated, noisy tests and propose ECED, a surrogate-based policy with guarantees under their model. Merely adding correlated witness errors or saying that information gain can fail does not establish an advance over that literature.
+Primary sources: https://proceedings.mlr.press/v54/chen17b.html
+https://arxiv.org/html/1605.07334v2
+
+3. Budgeted adaptive evidence acquisition is already a RAG baseline.
+Wu et al. (2026), sections3.4 and5, compare static cost-aware selectors and a ReAct-style acquisition controller using a shared corpus/retriever. The controller chooses a tier or stops. Their limitations identify fixed candidates, original-query retrieval and no source verification. Thus the proposed work must isolate any benefit of source-relation actions and measured controller behavior; budget awareness or adaptive stopping alone is insufficient. Their simulated access prices are distinct from our measured token/runtime accounting; neither should substitute silently for the other.
+Primary source: https://arxiv.org/html/2606.02245v1
+
+Consequence for this project (our inference and prospective design)
+Keep the source-reader pilot first. The relevant unresolved empirical question is whether natural retrieved fragments leave answer-changing attachments that a competent generic structural/sufficiency baseline fails to resolve efficiently. No current result establishes that residual need.
+
+If that gate passes, compare three acquisition criteria on identical proposals, actions, verifier and reader: generic sufficiency, an explicitly EC2-inspired pair-separation adaptation, and dependency-aware lookahead. Charge proposal and scoring access, not only final evidence. Name the adaptation honestly and state where its probabilistic observation model is unavailable. A two-action lookahead is an engineering heuristic until a separate guarantee or decisive controlled result is established.
+
+Keep positive support and proposal-coverage uncertainty separate from pair reduction. A finite beam becoming unanimous is not evidence that it contains the correct interpretation. Evaluate true-binding omission and false elimination over the full admitted denominator. If the conventional complete-evidence baseline solves the task, retain the tooling/diagnostic findings and stop the specialized retrieval claim.
+
+No new algorithmic theorem, approximation bound, natural QA gain, independent human annotation or exhaustive novelty review is claimed by this update. The six existing issuer pairs remain development material.

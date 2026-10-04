@@ -1,0 +1,81 @@
+V17 source-render inspection admission
+=====================================
+
+Scope
+-----
+This review concerns the actual qualified LibreOffice inspection view of the
+frozen selected source blocks. It does not verify financial truth, XBRL
+conformance, semantic attachment, complete answer evidence, reference labels,
+browser equivalence or reader/QA performance. No questions are authored here.
+All published v16 code, protocols, outcomes and historical failures remain.
+
+Population and independent review split
+--------------------------------------
+The new immutable v17 render protocol supplies the complete source/block
+denominator: all 21 tables selected by reader_pool_v16_1, and its deduplicated
+existing paragraph neighbors. A failed, refused, missing or uncertain block
+cannot be replaced, silently dropped or repaired in this review. Source indices
+00--05 are reviewed by table_views_v16; 06--11 by root. The final aggregate must
+contain every frozen block exactly once and retain sources with zero blocks.
+Partial reviewer receipts declare their exact assigned source indices.
+
+Review steps
+------------
+1. Match protocol, execution receipt and private artifacts by source hash,
+   original DOM locator, original byte interval and span digest. Compare the
+   saved source fragment with that exact source interval. Verify the saved
+   source assembly and separately hashed UTF-8 render input identity.
+2. Inspect the actual original source styles and ancestor wrappers for the
+   block. Account for head style rules, inherited/inline styles, and any omitted
+   external stylesheet or other dependency. Resource-profile pass and a short
+   CSS-property flag list are not a full CSS review. A material omitted or
+   uncertain dependency prevents admission. Record counts, hashes and reason
+   codes publicly; keep raw CSS and source excerpts external.
+3. Inspect EVERY raster page of the block. Extracted PDF text can locate or
+   check content but cannot substitute for visual review. Check readable glyphs,
+   clipping, overlap, missing/reordered content, and page breaks. No clipped or
+   unknown page may be accepted because the remaining pages look plausible.
+4. For a table, compare original row/cell order and declared row/column spans
+   with the rendered geometry. Inspect header-to-column and each selected
+   numeric-occurrence-to-cell mapping, including blank/spacer cells, signs,
+   decimals and visible markers. This checks source presentation; it does not
+   infer which financial quantity or period a question should request.
+5. Check all source-provided captions, unit/year labels and footnote markers
+   inside the selected block remain visible in their source relationships.
+   Neighbors remain separate blocks with their original locators. Their
+   admission does not turn them into table captions or assert semantic support.
+6. Record all failures and uncertainties. Do not rewrite source markup, add
+   missing labels, choose replacement blocks or use typed normalized values to
+   repair a render. Any amended renderer requires a separately declared run.
+
+Decisions
+---------
+admitted_as_qualified_inspection_view: all applicable checks pass and every
+page was visually inspected. This permits use of this bounded source view in
+the next evidence-annotation stage, subject to its separate semantic review.
+It is not admission of a question, reference answer or complete evidence pack.
+
+excluded: rendering failed/refused, a required artifact/page is missing,
+source identity fails, or any applicable review check fails or remains unknown.
+The receipt preserves the block and reason codes. Exclusion does not mean the
+underlying filing is false or generally unusable.
+
+The table-to-neighbor relation is retained from the frozen protocol. A table's
+own view decision does not silently inherit its neighbors' decisions. The
+aggregate separately reports source/table/neighbor coverage and exclusions so
+later annotation can require whichever neighboring context it actually needs.
+
+Public/private boundary and receipt
+-----------------------------------
+Use data/reader_binding_v17/source_render_admission_schema.json. Public receipts
+contain source indices, existing source paths, block IDs/kinds, DOM locators,
+byte anchors, page counts/indices, checks, categorical reasons and artifact
+hashes only. Exact text, financial values, CSS, detailed cell comparisons and
+source/raster excerpts remain in a new external review directory. Public
+receipts bind that private evidence by filename, byte count and SHA256.
+
+Every public decision binds the exact render protocol, execution outcome,
+this contract/schema and reviewed artifacts. Reviewer receipts use distinct
+new filenames; an aggregate must check their disjoint indices and complete
+frozen denominator before reporting totals. No successful render or admission
+retroactively changes a preserved v16 failure.

@@ -1,0 +1,172 @@
+v17 reader resource assessment and amendment (EXECUTION NOT YET APPROVED)
+
+Status
+
+The frozen v16 attempt remains tokenization_failed before Popen, with zero model
+loads, zero prompts tokenized, and zero completions. Its total-memory refusal is
+not model-quality evidence. No v16 configuration, driver, fixture, or receipt is
+changed here. No new native process or completion was launched for this report.
+
+The read-only v17 snapshot is results/reader_memory_readonly_snapshot_v17.json,
+SHA256 a91b846a8e0e7d81a78e35da3e06ef7211c4bb80c06accea143de6275e9f8bfd.
+These are instantaneous shared-cgroup observations, not a reservation:
+
+  memory.max                         8,589,934,592 bytes
+  memory.current                     8,463,962,112 bytes
+  physical-limit headroom               125,972,480 bytes
+  original total stop                7,784,628,224 bytes
+  excess over original total stop      679,333,888 bytes
+  anon                               1,203,109,888 bytes
+  file                               6,847,336,448 bytes
+  kernel                               412,491,776 bytes
+  shmem                                640,970,752 bytes
+  file_mapped                          544,509,952 bytes
+  inactive_file                      1,630,601,216 bytes
+  active_file                        4,575,764,480 bytes
+  file_dirty                             6,881,280 bytes
+  file_writeback, swapcached, unevictable          0 bytes
+
+shmem and file_mapped are components/subsets, not quantities to add to file.
+The original active proxy (anon + file_mapped + kernel) was 2,160,111,616
+bytes. It omits unmapped tmpfs. A more conservative pressure proxy for a new
+protocol is anon + shmem + file_mapped + kernel + sock + file_dirty + file_writeback
++ swapcached + unevictable = 2,807,963,648 bytes at this snapshot. It can double
+count categories and is neither exact resident memory nor a kernel reservation.
+Subtracting inactive_file from total is not a guaranteed capacity estimate.
+
+The physical GGUF has the expected stat length of 4,016,235,744 bytes. A
+read-only file descriptor, PROT_NONE private mapping, and mincore inspected
+980,527 pages without reading their contents: zero pages were resident. The
+inspection unmapped immediately and performed no native load or cache eviction.
+Therefore evicting this project's model cache cannot explain or remove the
+refusal at that instant. Residency does not prove cgroup charge ownership or
+future reclaimability. The subsequent bounded metadata inspection read portions
+of the first 10,943,081 file bytes, so the earlier zero-residency observation is
+historical, not a current-cache assertion. No full weight digest was recomputed.
+
+The snapshot recorded 4,584,759,296 available bytes in tmpfs and 2,187,980,800
+available bytes on overlay storage. The model already has a single disk copy, so no download or
+duplicate copy is needed. Exact available-byte values are in the snapshot.
+
+Pins and unchanged task limits
+
+Candidate: unsloth/Qwen3.5-9B-GGUF, revision
+3885219b6810b007914f3a7950a8d1b469d598a5, Qwen3.5-9B-UD-IQ3_XXS.gguf,
+SHA256 40d0f32cd3030b04f0784139a589fb63e876cfbf8667d56311b79783c74fd149.
+Runtime: llama.cpp b11146, commit 7fe450e19305b828c199d602c23a8337aaa1f03b,
+the same 60-entry pinned runtime manifest. Acquisition and relocation receipts
+remain authoritative historical provenance; neither is a new compatibility test.
+
+Preserve context 8192, full input <=6144, output <=768, threads 4, one slot,
+batch/ubatch 128, Q8_0 K/V caches, flash attention, enable_thinking=false, greedy
+seed 0, no context shift, no model warmup, no mlock, and explicit --load-mode mmap.
+Preserve 5.5 GiB RLIMIT_AS, 90-second startup, 300-second request, 450-second
+process wall, and 3600 CPU-second limits. The address-space allowance beyond
+the entire file mapping is 1,889,344,288 bytes; this is not measured KV/state,
+workspace, or resident-memory headroom.
+
+Static native capacity calculation
+
+results/reader_native_capacity_estimate_v17.json binds the actual GGUF structural
+metadata and nine primary source files at the exact runtime commit. Eight full
+attention layers at 8192 slots, four KV heads and 256-dimensional K/V, using
+34 bytes per Q8_0 block of 32 elements, require 142,606,336 tensor bytes (136 MiB).
+The 24 recurrent layers use F32 R/S despite the attention-cache Q8_0 settings:
+their convolution states require 2,359,296 bytes and recurrent states 50,331,648
+bytes for one sequence and zero rollback snapshots. Named cache tensors total
+195,297,280 bytes (186.25 MiB), before alignment and bookkeeping. The zero-rollback
+assumption must be checked against the native startup log, not silently assumed.
+
+After the complete weight-file length and these cache tensors, the 4.25 GiB RSS
+ceiling leaves 351,869,728 bytes (335.569 MiB) for the compute graph, tokenizer,
+native libraries, CPU quantization/repacking workspace, stacks and other
+allocations. Exact compute workspace is not known without initialization: the
+pinned scheduler reserves prompt-processing and generation graphs with a
+128-token microbatch. The sole loader attempt must retain the actual reported
+buffer sizes and observed RSS. This residual is narrow; a guarded refusal or
+allocation failure is a legitimate result, not grounds to relax caps or retry.
+
+Proposed separate amendment for root review
+
+Do not bypass the frozen driver's total guard or reset its failed attempt.
+The separately named v17 driver/config are prepared for review and freezing.
+Root must approve the exact frozen protocol before execution. This is a different
+resource policy, not proof that the original limits passed or are equivalent.
+
+The smallest bounded initial authorization would be one tokenizer-only native
+session for the eight unchanged authored prompts, with zero completion calls:
+
+1. Require the heavy-worker window to be idle. Verify exact model SHA with the
+   existing 1 MiB streaming digest and DONTNEED every 32 MiB, and verify the exact
+   runtime manifest. Do not evict unrelated caches or change cgroup settings.
+   Record fresh memory components, events, current/max, and all proposed caps.
+2. Before launch, require the conservative pressure proxy plus a 4.25 GiB owned
+   group RSS reserve to be strictly below 7 GiB. At the recorded snapshot the
+   sum is 7,371,366,400 bytes, leaving 144,826,368 bytes below that stop. This
+   narrow margin can disappear before execution; a fresh failure must remain a
+   refusal, with no automatic limit increase. This gate does not guarantee that
+   the model fits. The 4.25 GiB RSS ceiling leaves only 547,167,008 bytes above
+   the weight-file length for resident libraries and model state/workspace.
+3. Launch in a new session and immediately capture the reviewed authoritative
+   inner/outer process-group anchor. Use the unchanged shared RSS helper and
+   results/owned_rss_audit_closure_v17.json. Enforce owned group RSS <4.25 GiB,
+   conservative pressure proxy <7 GiB, RLIMIT_AS 5.5 GiB, wall/CPU limits, and
+   fresh telemetry every 0.1 second. Missing live telemetry fails closed. Record
+   actual memory.current, memory.max, and event deltas at every check. A watchdog
+   guard failure sends SIGKILL immediately to the original inner process group,
+   independently of any blocked HTTP call; final cleanup still verifies that
+   no owned live process remains. Refuse
+   current >= memory.max and stop on any new oom/oom_kill event; never describe
+   the sampled watchdog as a hard kernel isolation guarantee. The original
+   7.25 GiB total-current stop would explicitly not govern this separate policy.
+4. Do not infer that all file cache is harmless. Kernel reclaim may be required
+   while the model faults in. Stop at any guard/identity/timeout failure and
+   retain it. Signal only the original inner process group; confirm no live
+   owned descendants before releasing the heavy window.
+5. If native health/identity succeeds, render and tokenize exactly the eight
+   authored requests, retain complete prompts/token IDs externally, and apply
+   the existing no-truncation limits. Stop after that one session. This result
+   would establish loader/tokenizer feasibility only, not generation fit or
+   reader competence. A later separately admitted authored eight-call gate
+   would measure generation and interface behavior, with all failures retained.
+
+No model session under this proposal has been authorized or executed by this
+assessment. scripts/native_loader_v17.py and configs/native_loader_v17.json
+implement the separate path. tests/test_native_loader_v17.py covers the pressure
+formula, complete group accounting, prelaunch refusal, telemetry loss, blocked
+HTTP watchdog enforcement, group cleanup, zero-generation endpoint whitelist,
+one-attempt marker, and full eight-row success/failure accounting with authored
+data and mocks. Its initial independent review found that a TERM-only watcher
+could defer enforcement during blocked HTTP; the code now kills the owned group
+immediately on watchdog failure and the regression is preserved in the suite.
+
+The freeze command accepts only the fixed authored control file and copies
+request messages only, never references, into an external attempt directory.
+It pins code, tests, model identity, native configuration and profile, resource
+evidence and request hashes before native execution. It does not hash the full
+model until the sole approved run, whose prelaunch reserve must first pass.
+The run command requires the root-approved frozen-protocol SHA256 and creates
+an exclusive attempt-started marker. Both successful and failed attempts consume
+that one attempt; repeated execution is refused. Public results retain all eight
+request states, actual process/tokenizer/API counts and the private trace hash.
+
+Cold-call recipe and research gates
+
+Cold means a fresh native process and empty prompt/KV cache for each completion,
+cache_prompt=false and cache_n=0; it is not a claim of globally cold disk cache.
+Exact bytes, prompt/token identity, decoding, trace hashes, and all generated
+token IDs stay pinned/retained. No completion repair, retry, or selective omission
+is introduced. The authored gate remains eight calls, if later admitted.
+
+An authored pass would still not admit natural questions automatically. Full
+paired natural packs need their own frozen tokenizer-fit check and separate
+semantic evidence admission. The v16 draft required issuer/slot parity order,
+whereas its native path fixes adjacent B1 then B2. Root accepted the protocol
+owner's explicit retention of fixed order with its latency/order confound
+disclosed in v17; this change must be frozen before any natural calls. Do not
+claim timing superiority from that schedule. Natural references must remain
+outside prediction-worker inputs; the existing mixed host reference-loading
+path needs separate review or separation before a natural protocol is admitted.
+
+No stronger-reader, natural QA, binding benefit, or ACL publication claim follows
+from this resource assessment or from a future loader/tokenizer pass.

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "V17 source-render inspection review receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "reviewer", "reviewed_at_utc", "assigned_source_indices", "input_bindings", "scope", "sources", "totals"],
+  "properties": {
+    "schema_version": {"const": "source_render_admission_v17"},
+    "reviewer": {"type": "string"},
+    "reviewed_at_utc": {"type": "string"},
+    "assigned_source_indices": {"type": "array", "uniqueItems": true, "items": {"type": "integer", "minimum": 0, "maximum": 11}},
+    "input_bindings": {"type": "object", "additionalProperties": {"$ref": "#/$defs/sha256"}},
+    "scope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["financial_truth_claimed", "browser_equivalence_claimed", "semantic_attachment_verified", "complete_evidence_verified", "questions_authored", "model_calls"],
+      "properties": {
+        "financial_truth_claimed": {"const": false}, "browser_equivalence_claimed": {"const": false},
+        "semantic_attachment_verified": {"const": false}, "complete_evidence_verified": {"const": false},
+        "questions_authored": {"const": 0}, "model_calls": {"const": 0}
+      }
+    },
+    "sources": {"type": "array", "items": {"$ref": "#/$defs/source"}},
+    "totals": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sources", "blocks", "tables", "neighbors", "admitted_blocks", "excluded_blocks", "raster_pages_inspected"],
+      "properties": {
+        "sources": {"type": "integer", "minimum": 0}, "blocks": {"type": "integer", "minimum": 0},
+        "tables": {"type": "integer", "minimum": 0}, "neighbors": {"type": "integer", "minimum": 0},
+        "admitted_blocks": {"type": "integer", "minimum": 0}, "excluded_blocks": {"type": "integer", "minimum": 0},
+        "raster_pages_inspected": {"type": "integer", "minimum": 0}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "check": {"enum": ["pass", "fail", "unknown", "not_applicable"]},
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["filename", "bytes", "sha256"],
+      "properties": {"filename": {"type": "string"}, "bytes": {"type": "integer", "minimum": 0}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_index", "source_path", "source_sha256", "requested_blocks", "blocks"],
+      "properties": {
+        "source_index": {"type": "integer", "minimum": 0, "maximum": 11}, "source_path": {"type": "string"},
+        "source_sha256": {"$ref": "#/$defs/sha256"}, "requested_blocks": {"type": "integer", "minimum": 0},
+        "blocks": {"type": "array", "items": {"$ref": "#/$defs/block"}}
+      }
+    },
+    "block": {
+      "type": "object", "additionalProperties": false,
+      "required": ["block_id", "kind", "dom_path", "anchor", "render_status", "decision", "reason_codes", "checks", "raster_pages_available", "raster_page_indices_inspected", "reviewed_artifacts", "private_review_evidence"],
+      "allOf": [
+        {
+          "if": {"properties": {"decision": {"const": "admitted_as_qualified_inspection_view"}}},
+          "then": {
+            "properties": {
+              "reason_codes": {"maxItems": 0}, "raster_pages_available": {"minimum": 1},
+              "checks": {"properties": {
+                "source_identity_and_fragment": {"const": "pass"}, "assembly_and_render_input": {"const": "pass"},
+                "source_css_dependencies": {"const": "pass"}, "all_pages_visually_inspected": {"const": "pass"},
+                "text_glyphs_and_clipping": {"const": "pass"},
+                "row_cell_span_and_numeric_mapping": {"enum": ["pass", "not_applicable"]},
+                "in_block_labels_and_markers": {"enum": ["pass", "not_applicable"]}
+              }}
+            }
+          },
+          "else": {"properties": {"reason_codes": {"minItems": 1}}}
+        },
+        {
+          "if": {"properties": {"decision": {"const": "admitted_as_qualified_inspection_view"}, "kind": {"const": "table"}}},
+          "then": {"properties": {"checks": {"properties": {"row_cell_span_and_numeric_mapping": {"const": "pass"}}}}}
+        }
+      ],
+      "properties": {
+        "block_id": {"type": "string"}, "kind": {"enum": ["table", "paragraph"]}, "dom_path": {"type": "string"},
+        "anchor": {
+          "type": "object", "required": ["byte_start", "byte_stop", "span_sha256"],
+          "properties": {"byte_start": {"type": "integer", "minimum": 0}, "byte_stop": {"type": "integer", "minimum": 0}, "span_sha256": {"$ref": "#/$defs/sha256"}}
+        },
+        "render_status": {"type": "string"},
+        "decision": {"enum": ["admitted_as_qualified_inspection_view", "excluded"]},
+        "reason_codes": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9_]+$"}},
+        "checks": {
+          "type": "object", "additionalProperties": false,
+          "required": ["source_identity_and_fragment", "assembly_and_render_input", "source_css_dependencies", "all_pages_visually_inspected", "text_glyphs_and_clipping", "row_cell_span_and_numeric_mapping", "in_block_labels_and_markers"],
+          "properties": {
+            "source_identity_and_fragment": {"$ref": "#/$defs/check"}, "assembly_and_render_input": {"$ref": "#/$defs/check"},
+            "source_css_dependencies": {"$ref": "#/$defs/check"}, "all_pages_visually_inspected": {"$ref": "#/$defs/check"},
+            "text_glyphs_and_clipping": {"$ref": "#/$defs/check"}, "row_cell_span_and_numeric_mapping": {"$ref": "#/$defs/check"},
+            "in_block_labels_and_markers": {"$ref": "#/$defs/check"}
+          }
+        },
+        "raster_pages_available": {"type": "integer", "minimum": 0},
+        "raster_page_indices_inspected": {"type": "array", "uniqueItems": true, "items": {"type": "integer", "minimum": 0}},
+        "reviewed_artifacts": {"type": "array", "items": {"$ref": "#/$defs/artifact"}},
+        "private_review_evidence": {"$ref": "#/$defs/artifact"}
+      }
+    }
+  }
+}

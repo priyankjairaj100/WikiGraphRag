@@ -1,0 +1,51 @@
+{
+  "schema_version": "reader_workflow_identity_review_v17",
+  "status": "passed_narrow_source_free_identity_amendment_review",
+  "prior_review": {
+    "path": "results/reader_workflow_review_v17.json",
+    "sha256": "833ff519621b5d1b366d98ade6c428c7d2a876d28e1c7b136b6de36eeca0bd40",
+    "unchanged": true
+  },
+  "prior_review_input_archive": {
+    "path": "data/provenance/reader_workflow_initial_review_v17/manifest.json",
+    "sha256": "130ac0d9e4df1f133cc8255ae84b0ad2b113e00950b1aa363eae1a1ac4ad467d"
+  },
+  "artifact_bindings": {
+    "docs/reader_binding_question_workflow_v17.txt": "a1afbba593f286d1067bc810c1321d5081348aa7fec80bc17327621ea89ba246",
+    "docs/reader_binding_source_author_instructions_v17.txt": "c8cca3c8489575db0e82d20bc6b1a91c04eb5c1cb692fe09f80252632af83e0f",
+    "docs/reader_binding_reference_review_instructions_v17.txt": "276add4cc39cc71e1ab6900dde3dca95cab760ec0ed6085db019d003f09e39b6",
+    "docs/reader_binding_workflow_changes_v17.txt": "271e0c1b2e3e606527456693682377fbe4751edd4dbb18d89816840492ed3541",
+    "data/reader_binding_v17/workflow_plan.json": "1082c7799c86266e52afba794b77455beff179beeb2fb2516b0058a231b787a8",
+    "scripts/audit_reader_source_card_provenance_v17.py": "ee80fd1e08242fb443ad1d2401d79c1ccde6e70206f4871196165ee9881f7fc8",
+    "results/reader_source_card_provenance_v17.json": "a9f94e6376a8c821d01f1f3c54035e7103b2a238107c60fdd12fc6844e7a09b6"
+  },
+  "checks": [
+    {
+      "id": "legacy_producer",
+      "status": "confirmed_by_code_read",
+      "finding": "source_card copies allowed DEI value strings and drops visibility flags; legacy fields are not visible-source author cards."
+    },
+    {
+      "id": "descriptive_audit",
+      "status": "consistent",
+      "finding": "The new script aggregates existing public field/status flags, inspects producer AST and emits no identity values or source bodies; its receipt is descriptive, not visual admission."
+    },
+    {
+      "id": "visible_card_gate",
+      "status": "consistent",
+      "finding": "All twelve physical sources need visibly supported issuer/name, report type and date/end wording before author release; hidden-only optional fields are omitted."
+    },
+    {
+      "id": "supplement_denominator",
+      "status": "consistent",
+      "finding": "Extra cover/heading witnesses require a separately frozen/rendered supplement; the original 101-block conversion denominator remains unchanged."
+    },
+    {
+      "id": "claim_scope",
+      "status": "consistent",
+      "finding": "Visible identity cards do not independently establish SEC source-byte identity or each quantity period/unit/population relation; absent essential identity leaves bundles unavailable."
+    }
+  ],
+  "scope": "Narrow review of the changes after the preserved initial 15-check design review. No natural source values, questions or references inspected; no source admission or actual author card certified.",
+  "remaining_gate": "Implement and review the twelve visible cards and any supplement before the authoring freeze."
+}

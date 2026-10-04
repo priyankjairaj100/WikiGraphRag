@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity_dependency_code_review_v17",
+  "status": "passed_authored_review",
+  "open_blockers": [],
+  "code_bindings": {
+    "scripts/select_identity_dependencies_v17.py": "c4be96b1f283f96def293d79d45b578407a1f7f84a722800230e38f0aa13f373",
+    "scripts/build_table_views_v16.py": "f38cc939ec1c5d08871f5f14c389eae898b297b7b7bbc16192bf80bcc100f9cc",
+    "src/temporal_state/typed_reader_v15_1.py": "6f43c57488b90178f2334284bd46d9903c4f3a29f23ab1e6fc39402a40fc0dae",
+    "tests/test_identity_dependencies_v17.py": "b69bddd16e1712f5efe33e2cd2cb9bd01180fdeaa9a782753b2f0a4cfcdfb828",
+    "docs/identity_dependency_selection_contract_v17.txt": "ab058fc8a3515d3d71ebcea2c66c567dcd52e6c255444d71c191b36b711f6d9e"
+  },
+  "independent_test_binding": {
+    "path": "tests/test_identity_dependencies_adversarial_v17.py",
+    "sha256": "7f2def5aaf1d0ca60bd02930a959ae78fa11fb457e6c414d4262725b8d0f84c9"
+  },
+  "independent_authored_run": {
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "actual_observation": "Ran against the corrected pre-freeze implementation; no initial failing execution is claimed."
+  },
+  "owner_authored_tests_reported": {
+    "tests": 28,
+    "failures": 0,
+    "scope": "Owner report; not represented as a separate reviewer rerun."
+  },
+  "source_access": {
+    "natural_source_bodies_opened": 0,
+    "natural_identity_values_inspected": 0,
+    "questions_references_or_reader_outputs_inspected": 0
+  },
+  "review_findings": [
+    {
+      "id": "protocol_population",
+      "initial_finding": "Execution accepted incomplete binding maps and never rechecked ordered sources against the bound parent; empty sources could still produce hardcoded twelve-source denominators.",
+      "discovery": "Code inspection before first selection.",
+      "resolution": "Exact CODE/INPUT key sets, closed matching review, confined review path, exact ordered parent source pins and twelve/thirty-six denominators are now required before source access.",
+      "status": "closed"
+    },
+    {
+      "id": "empty_declaration",
+      "initial_finding": "Discarding empty normalized declarations let a mixed empty/nonempty field appear consistent, contrary to contract.",
+      "discovery": "Code inspection before first selection.",
+      "resolution": "An empty declaration now makes the field unavailable; independent mixed-empty and equal-nonempty controls pass.",
+      "status": "closed"
+    }
+  ],
+  "review_checks": [
+    "Namespace-aware DEI field recognition and issuer-only exact normalized fallback, with no fuzzy aliases.",
+    "Nearest whole original block, fixed XML order and bounded counts/size/depth, no source rewriting or answer-directed question input.",
+    "Recognized hiding on targets, ancestors and descendants fails the syntactic candidate rule.",
+    "Public outputs contain identifiers/counts/anchors; actual identity strings remain in the external private payload.",
+    "No-overwrite source/output checks, frozen source/hash/runtime/review population and retained per-source field failures.",
+    "Candidate output is not rendered, visually admitted or a complete-evidence/reference result."
+  ],
+  "limitations": [
+    "Visibility is a conservative recognized-cue profile, not computed CSS.",
+    "The selector uses original subtree text and does not certify full nonNumeric semantics or sufficient visible identity context; actual cover/render/source review remains mandatory.",
+    "No natural candidate, identity card, question or reference was admitted by these authored tests."
+  ]
+}

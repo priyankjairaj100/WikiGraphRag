@@ -1,0 +1,40 @@
+{
+  "schema_version": "native_loader_followup_binding_review_v17_1",
+  "status": "passed_narrow_binding_review_root_execution_decision_required",
+  "scope": "Read-only ancestry, unchanged recipe, request-byte identity and initial-state review; zero tests, model processes or native endpoints invoked. No source values or natural questions read.",
+  "protocol": {
+    "path": "/workspace/scratch/bdef663e3dfc/wikigraph_v17_external/native_loader_attempt02_after_dedup/frozen_protocol.json",
+    "sha256": "03234cf3274376081e86897cfb4a1be4778ec6baa8343c40e921f212412c2746"
+  },
+  "initial_public_receipt": {
+    "path": "results/native_loader_attempt_v17_1.json",
+    "sha256": "ea36f0ebcfca2549a51d18985e499b12f50c968d7676dba9fd210822536fad9f"
+  },
+  "parent_frozen_protocol_sha256": "232e3fc47ac6f1b441aa882c308f2a0cf8015b05ecbd7a1296cd9fd3dc4948fe",
+  "recipe_files_verified": 19,
+  "review_checks": {
+    "parent_protocol_sha_unchanged": true,
+    "followup_protocol_sha_matches_request": true,
+    "profile_identical": true,
+    "native_model_runtime_settings_identical": true,
+    "request_bytes_and_count_identical": true,
+    "all_parent_recipe_bindings_identical": true,
+    "all_current_recipe_files_match": true,
+    "only_four_ancestry_recipe_additions": true,
+    "parent_failure_frozen_intact": true,
+    "completed_dedup_identity_frozen": true,
+    "one_process_zero_completions_no_natural": true,
+    "public_initial_awaiting_root_state": true,
+    "authored_request_file_matches_frozen_digest": true
+  },
+  "checks_passed": 13,
+  "checks_total": 13,
+  "open_blockers": [],
+  "code_review": "Freeze preparation calls the unchanged loader freeze, asserts parent model/profile/request identity, appends only ancestry bindings, and updates the new receipt. Execution remains the unchanged one-attempt loader with recipe rechecks and no completion endpoint.",
+  "limits": [
+    "This follow-up is separately authorized preparation, not part of the earlier consumed attempt.",
+    "No execution approval is supplied by this review; root must approve the final protocol digest.",
+    "The original prelaunch failure and any new refusal, allocation failure or tokenization failure must remain separately reported.",
+    "Even successful tokenization would not establish completion behavior, natural-context fit or reader quality."
+  ]
+}

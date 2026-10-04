@@ -1,0 +1,202 @@
+{
+  "schema_version": "native_loader_terminal_review_v17_1",
+  "status": "passed_accounting_review_of_loading_resource_stop",
+  "public_receipt": {
+    "path": "results/native_loader_attempt_v17_1.json",
+    "sha256": "1c1e27858bf4ff43e1e74483a88fcdeb8ee94a88b09a164bee0d0383a86ffb68"
+  },
+  "approved_protocol_sha256": "03234cf3274376081e86897cfb4a1be4778ec6baa8343c40e921f212412c2746",
+  "parent_failure_sha256": "b7f279c8752fcac0a575f33d18fa69378ea0a5eb0ec529261cad6ec486ce3314",
+  "deduplication_receipt_sha256": "e1fd6fa116eb628ad481099f9a5f9a70e5d58ba6a26ac11ed3b120389e75b455",
+  "execution_trace_sha256": "a742fab22f3a21353415279cfbe2874c411e29602222e4f20cd14d135ef7834d",
+  "native_server_log_sha256": "560017261bf7150c5f2cc21274a40fd5875be385ec32384f99c1ae4bafa63e8a",
+  "checks": {
+    "failed_on_frozen_kernel_total_gate": true,
+    "exact_approved_protocol": true,
+    "parent_and_storage_change_bound": true,
+    "one_native_process": true,
+    "exact_assets_verified": true,
+    "both_prelaunch_reserve_gates_passed": true,
+    "complete21_resource_samples": true,
+    "all_group_samples_valid": true,
+    "actual_total_threshold_sample_retained": true,
+    "owned_rss_below_its_stop": true,
+    "pressure_proxy_below_its_stop": true,
+    "zero_new_oom_events": true,
+    "no_health_identity_success": true,
+    "health_only_api_calls": true,
+    "all_eight_unattempted": true,
+    "no_tokenization_generation_or_natural": true,
+    "inner_group_signal_correct": true,
+    "owned_group_absence_confirmed": true,
+    "process_sigkill_exit": true,
+    "exact_execution_trace_hash": true,
+    "one_attempt_marker_retained": true
+  },
+  "checks_passed": 21,
+  "checks_total": 21,
+  "pre_asset_snapshot": {
+    "sample_monotonic_ns": 28783623954758,
+    "telemetry_ok": true,
+    "memory_current_bytes": 8466358272,
+    "memory_max_bytes": 8589934592,
+    "components": {
+      "anon": 1300455424,
+      "file_mapped": 561889280,
+      "shmem": 665706496,
+      "kernel": 398663680,
+      "sock": 0,
+      "file_dirty": 176128,
+      "file_writeback": 0,
+      "unevictable": 0,
+      "swapcached": 0
+    },
+    "events": {
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "pressure_proxy_bytes": 2926891008
+  },
+  "prelaunch_snapshot": {
+    "sample_monotonic_ns": 28786394354635,
+    "telemetry_ok": true,
+    "memory_current_bytes": 8177623040,
+    "memory_max_bytes": 8589934592,
+    "components": {
+      "anon": 1090486272,
+      "file_mapped": 561889280,
+      "shmem": 665706496,
+      "kernel": 394903552,
+      "sock": 0,
+      "file_dirty": 315392,
+      "file_writeback": 0,
+      "unevictable": 0,
+      "swapcached": 0
+    },
+    "events": {
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "pressure_proxy_bytes": 2713300992
+  },
+  "observed_maxima_bytes": {
+    "memory_current_bytes": 8589934592,
+    "pressure_proxy_bytes": 5057638400,
+    "owned_group_rss_bytes": 2326736896
+  },
+  "resource_sample_count": 21,
+  "first_to_last_sample_seconds": 2.037956265,
+  "total_limit_trigger_snapshots": [
+    {
+      "cgroup": {
+        "sample_monotonic_ns": 28788439075221,
+        "telemetry_ok": true,
+        "memory_current_bytes": 8589934592,
+        "memory_max_bytes": 8589934592,
+        "components": {
+          "anon": 1230557184,
+          "file_mapped": 2783109120,
+          "shmem": 665706496,
+          "kernel": 372678656,
+          "sock": 0,
+          "file_dirty": 5586944,
+          "file_writeback": 0,
+          "unevictable": 0,
+          "swapcached": 0
+        },
+        "events": {
+          "oom": 0,
+          "oom_kill": 0
+        },
+        "pressure_proxy_bytes": 5057638400
+      },
+      "owned_group": {
+        "telemetry_ok": true,
+        "inner_pgid": 5,
+        "members": [
+          {
+            "outer_pid": 178730,
+            "inner_pid": 5,
+            "inner_pgid": 5,
+            "rss_bytes": 2326736896,
+            "state": "D"
+          }
+        ],
+        "disappeared_entries": 0,
+        "ownership_anchor": {
+          "telemetry_ok": true,
+          "inner_pgid": 5,
+          "proc_root": "/proc",
+          "direct_child_binding_method": "exact_outer_ppid_scan_children_interface_absent",
+          "outer_pid": 178730,
+          "outer_ppid": 178712,
+          "outer_pgid": 178730,
+          "outer_sid": 178730,
+          "starttime": 2878639,
+          "caller_outer_pid": 178712,
+          "namespace_identity": "pid:[4026532697]",
+          "namespace_depth": 2
+        },
+        "rss_bytes": 2326736896,
+        "group_members_observed": true
+      },
+      "process_live_after_scan": true
+    }
+  ],
+  "oom_event_deltas": {
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "endpoint_outcomes": [
+    {
+      "endpoint": "health",
+      "status": "failed",
+      "error_type": "URLError",
+      "count": 1
+    },
+    {
+      "endpoint": "health",
+      "status": "failed",
+      "error_type": "HTTPError",
+      "count": 19
+    }
+  ],
+  "native_processes_started": 1,
+  "native_health_identity_passed": false,
+  "native_props_or_cache_measurement_observed": false,
+  "authored_prompts_tokenized": 0,
+  "planned_authored_rows": 8,
+  "all_authored_rows_unattempted": true,
+  "completion_calls": 0,
+  "natural_prompts": 0,
+  "cleanup": {
+    "signal_target_inner_pgid": 5,
+    "confirmed": true,
+    "last_snapshot": {
+      "telemetry_ok": true,
+      "inner_pgid": 5,
+      "members": [],
+      "disappeared_entries": 0,
+      "ownership_anchor": {
+        "telemetry_ok": true,
+        "inner_pgid": 5,
+        "proc_root": "/proc",
+        "direct_child_binding_method": "exact_outer_ppid_scan_children_interface_absent",
+        "outer_pid": 178730,
+        "outer_ppid": 178712,
+        "outer_pgid": 178730,
+        "outer_sid": 178730,
+        "starttime": 2878639,
+        "caller_outer_pid": 178712,
+        "namespace_identity": "pid:[4026532697]",
+        "namespace_depth": 2
+      },
+      "rss_bytes": 0,
+      "group_members_observed": false
+    },
+    "process_returncode": -9
+  },
+  "no_more_attempts_authorized": true,
+  "claim_limit": "This distinct storage-amended attempt launched the exact native executable and began loading the pinned model, but stopped at the unchanged kernel-total boundary before health/identity succeeded. It does not establish model compatibility, tokenizer fit, generation capacity, interface competence, natural QA or a stronger reader. The preceding v17 attempt remains a separate prelaunch refusal.",
+  "recorded_unix_seconds": 1791113373.1273541
+}

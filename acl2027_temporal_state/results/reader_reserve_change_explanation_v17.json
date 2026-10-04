@@ -1,0 +1,149 @@
+{
+  "schema_version": "reader_reserve_change_explanation_v17",
+  "status": "read_only_explanation_no_remediation",
+  "earlier_snapshot_receipt": "results/reader_memory_readonly_snapshot_v17.json",
+  "earlier_snapshot_sha256": "a91b846a8e0e7d81a78e35da3e06ef7211c4bb80c06accea143de6275e9f8bfd",
+  "terminal_loader_receipt": "results/native_loader_attempt_v17.json",
+  "terminal_loader_receipt_sha256": "b7f279c8752fcac0a575f33d18fa69378ea0a5eb0ec529261cad6ec486ce3314",
+  "same_nine_component_formula": [
+    "anon",
+    "file_mapped",
+    "shmem",
+    "kernel",
+    "sock",
+    "file_dirty",
+    "file_writeback",
+    "unevictable",
+    "swapcached"
+  ],
+  "component_changes": [
+    {
+      "component": "anon",
+      "earlier_bytes": 1203109888,
+      "attempt_bytes": 2302386176,
+      "change_bytes": 1099276288
+    },
+    {
+      "component": "file_mapped",
+      "earlier_bytes": 544509952,
+      "attempt_bytes": 556777472,
+      "change_bytes": 12267520
+    },
+    {
+      "component": "shmem",
+      "earlier_bytes": 640970752,
+      "attempt_bytes": 717377536,
+      "change_bytes": 76406784
+    },
+    {
+      "component": "kernel",
+      "earlier_bytes": 412491776,
+      "attempt_bytes": 372596736,
+      "change_bytes": -39895040
+    },
+    {
+      "component": "sock",
+      "earlier_bytes": 0,
+      "attempt_bytes": 0,
+      "change_bytes": 0
+    },
+    {
+      "component": "file_dirty",
+      "earlier_bytes": 6881280,
+      "attempt_bytes": 322224128,
+      "change_bytes": 315342848
+    },
+    {
+      "component": "file_writeback",
+      "earlier_bytes": 0,
+      "attempt_bytes": 0,
+      "change_bytes": 0
+    },
+    {
+      "component": "unevictable",
+      "earlier_bytes": 0,
+      "attempt_bytes": 0,
+      "change_bytes": 0
+    },
+    {
+      "component": "swapcached",
+      "earlier_bytes": 0,
+      "attempt_bytes": 0,
+      "change_bytes": 0
+    }
+  ],
+  "earlier_proxy_bytes": 2807963648,
+  "attempt_proxy_bytes": 4271362048,
+  "proxy_increase_bytes": 1463398400,
+  "attempt_reserve_shortfall_bytes": 1318572032,
+  "project_owned_tmpfs_inventory": {
+    "root": "/dev/shm/wikigraph_v15",
+    "allocated_bytes": 712945664,
+    "subtrees_allocated_bytes": {
+      "external": 465981440,
+      "WikiGraphRag": 130924544,
+      "reader_runtime_v16": 59944960,
+      "standards_v15": 52699136
+    },
+    "largest_external_subtrees_allocated_bytes": {
+      "typed_reader_attempt01": 72871936,
+      "typed_reader_attempt02": 160399360,
+      "full_dts_attempt01": 156123136,
+      "source_render_natural_v17": 41472000
+    },
+    "du_follows_symlinks": false,
+    "interpretation": "Allocated tmpfs bytes from metadata, not per-process RSS or a claim about every cgroup charge. Snapshot values were collected consecutively."
+  },
+  "even_all_project_tmpfs_relocation_would_leave_shortfall_bytes": 605626368,
+  "bounded_duplicate_identity_receipt": {
+    "path": "results/project_owned_artifact_identity_inventory_v17.json",
+    "sha256": "b3e1cde577408007ab8e334836896093e0e0c9dfec97bfb679a76d5b8902604d"
+  },
+  "exact_duplicate_pairs": 6,
+  "duplicate_one_copy_allocated_bytes": 60252160,
+  "separately_relocatable_pinned_runtime_archive_allocated_bytes": 16998400,
+  "safe_candidate_scope": "A future authorized byte-preserving relocation of immutable diagnostic archives or the pinned runtime archive, with full post-copy digest verification and original-path symlink, could release their tmpfs pages without discarding history. No move is performed. This cannot solve the measured shortfall by itself.",
+  "disk_assets_additional_incomplete_size_files": {
+    "count": 3,
+    "sum_stat_bytes": 2024013824,
+    "provenance_verified": false,
+    "full_digest_comparison_performed": false,
+    "recommended_mutation": null,
+    "note": "These disk files are smaller than the pinned full model; size alone does not establish a complete duplicate or prove safe removal. No file content was inspected."
+  },
+  "attribution_limits": [
+    "The dominant anon increase is not attributable to a particular process by this file-only audit. No unrelated process was inspected.",
+    "file_dirty is sampled writeback pressure, not a permanent occupied-space estimate; the responsible file paths were not identified.",
+    "Tmpfs inventory can explain only the persistent project file share. It cannot justify subtracting the anon increase or promise that pressure will subside.",
+    "The terminal attempt never reached model asset hashing or Popen, so its increase is not evidence of model loading."
+  ],
+  "one_fresh_readonly_snapshot": {
+    "sample_monotonic_ns": 28159870809114,
+    "telemetry_ok": true,
+    "memory_current_bytes": 8238022656,
+    "memory_max_bytes": 8589934592,
+    "components": {
+      "anon": 1295994880,
+      "file_mapped": 589602816,
+      "shmem": 720449536,
+      "kernel": 390012928,
+      "sock": 4096,
+      "file_dirty": 2678784,
+      "file_writeback": 0,
+      "unevictable": 0,
+      "swapcached": 0
+    },
+    "events": {
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "pressure_proxy_bytes": 2998743040
+  },
+  "model_loads": 0,
+  "cache_evictions": 0,
+  "deletions": 0,
+  "relocations": 0,
+  "signals": 0,
+  "new_attempts": 0,
+  "recorded_unix_seconds": 1791112647.23455
+}

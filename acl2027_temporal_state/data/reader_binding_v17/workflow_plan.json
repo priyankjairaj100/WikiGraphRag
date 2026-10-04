@@ -1,0 +1,543 @@
+{
+  "schema_version": "reader_binding_workflow_plan_v17",
+  "status": "reviewable_plan_not_authoring_or_execution_freeze",
+  "base_checkpoint": "d793b01d12d8e516a433bd659cccb3eb3ca9a25b",
+  "scope": "stage_A_only_model_assisted_development_complete_evidence_diagnostic",
+  "preparation_access": {
+    "natural_source_values_read": false,
+    "questions_authored": false,
+    "references_authored": false,
+    "natural_predictions": false,
+    "model_calls_executed": false
+  },
+  "parent_inputs": [
+    {
+      "path": "docs/reader_binding_protocol_draft_v16.txt",
+      "sha256": "145e0c268bbba5dd5339ff9c9f655f0bd727ac1e020227fac08f7e3a6dce3322"
+    },
+    {
+      "path": "docs/reader_binding_interface_v16.txt",
+      "sha256": "9e4662be8c99998a648fb12f37e746ba5c497801f3b4c60ea5323e2842e816e4"
+    },
+    {
+      "path": "src/temporal_state/reader_binding_v16.py",
+      "sha256": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1"
+    },
+    {
+      "path": "scripts/native_binding_reader_v16.py",
+      "sha256": "757d907edbb13e4b5749506362719cadfd6146000c1c140edfefa159cfbd8b19"
+    },
+    {
+      "path": "configs/binding_reader_v16.json",
+      "sha256": "0171d13fcc30f444380c5f6a8a1eed31cd709eb86713222c21198b197f808038"
+    },
+    {
+      "path": "results/reader_pool_v16.json",
+      "sha256": "f99558d6a1bcc553f50ea0611b587c7b5964a22688d38c1b4651a7f4a17556fb"
+    },
+    {
+      "path": "results/reader_pool_v16_1.json",
+      "sha256": "a700e40a2f5a39349d2f9db9550fd9f1dbecb3d298a5fee083cf309daec702ce"
+    },
+    {
+      "path": "data/reader_binding_v16/question_pool_protocol_v16_1.json",
+      "sha256": "93a9a669fa1c0014a410832e02dbbfba3384e181af7caec9f04bc35d975d436a"
+    }
+  ],
+  "instructions": {
+    "workflow": "docs/reader_binding_question_workflow_v17.txt",
+    "author": "docs/reader_binding_source_author_instructions_v17.txt",
+    "reference_review": "docs/reader_binding_reference_review_instructions_v17.txt",
+    "changes": "docs/reader_binding_workflow_changes_v17.txt"
+  },
+  "issuer_order": [
+    "PFE",
+    "NFLX",
+    "NVDA",
+    "LLY",
+    "BRK-B",
+    "SLB"
+  ],
+  "physical_source_order": "amended_v16_1_manifest_order_not_filename_or_chronology",
+  "question_slots": [
+    {
+      "slot_id": "PFE_S",
+      "issuer": "PFE",
+      "kind": "single_source_duration",
+      "required_claims": 1,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "PFE_S1",
+        "PFE_S2"
+      ],
+      "source_rule": "first_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    },
+    {
+      "slot_id": "PFE_P",
+      "issuer": "PFE",
+      "kind": "two_source_scoped_reports",
+      "required_claims": 2,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "PFE_P1",
+        "PFE_P2"
+      ],
+      "source_rule": "one_bundle_from_each_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    },
+    {
+      "slot_id": "NFLX_S",
+      "issuer": "NFLX",
+      "kind": "single_source_duration",
+      "required_claims": 1,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "NFLX_S1",
+        "NFLX_S2"
+      ],
+      "source_rule": "first_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    },
+    {
+      "slot_id": "NFLX_P",
+      "issuer": "NFLX",
+      "kind": "two_source_scoped_reports",
+      "required_claims": 2,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "NFLX_P1",
+        "NFLX_P2"
+      ],
+      "source_rule": "one_bundle_from_each_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    },
+    {
+      "slot_id": "NVDA_S",
+      "issuer": "NVDA",
+      "kind": "single_source_duration",
+      "required_claims": 1,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "NVDA_S1",
+        "NVDA_S2"
+      ],
+      "source_rule": "first_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    },
+    {
+      "slot_id": "NVDA_P",
+      "issuer": "NVDA",
+      "kind": "two_source_scoped_reports",
+      "required_claims": 2,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "NVDA_P1",
+        "NVDA_P2"
+      ],
+      "source_rule": "one_bundle_from_each_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    },
+    {
+      "slot_id": "LLY_S",
+      "issuer": "LLY",
+      "kind": "single_source_duration",
+      "required_claims": 1,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "LLY_S1",
+        "LLY_S2"
+      ],
+      "source_rule": "first_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    },
+    {
+      "slot_id": "LLY_P",
+      "issuer": "LLY",
+      "kind": "two_source_scoped_reports",
+      "required_claims": 2,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "LLY_P1",
+        "LLY_P2"
+      ],
+      "source_rule": "one_bundle_from_each_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    },
+    {
+      "slot_id": "BRK-B_S",
+      "issuer": "BRK-B",
+      "kind": "single_source_duration",
+      "required_claims": 1,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "BRK-B_S1",
+        "BRK-B_S2"
+      ],
+      "source_rule": "first_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    },
+    {
+      "slot_id": "BRK-B_P",
+      "issuer": "BRK-B",
+      "kind": "two_source_scoped_reports",
+      "required_claims": 2,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "BRK-B_P1",
+        "BRK-B_P2"
+      ],
+      "source_rule": "one_bundle_from_each_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    },
+    {
+      "slot_id": "SLB_S",
+      "issuer": "SLB",
+      "kind": "single_source_duration",
+      "required_claims": 1,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "SLB_S1",
+        "SLB_S2"
+      ],
+      "source_rule": "first_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    },
+    {
+      "slot_id": "SLB_P",
+      "issuer": "SLB",
+      "kind": "two_source_scoped_reports",
+      "required_claims": 2,
+      "maximum_candidates": 2,
+      "candidate_order": [
+        "SLB_P1",
+        "SLB_P2"
+      ],
+      "source_rule": "one_bundle_from_each_physical_source_in_parent_manifest",
+      "status": "not_authored"
+    }
+  ],
+  "condition_schedule": [
+    {
+      "condition_id": "PFE_S",
+      "issuer": "PFE",
+      "kind": "answerable",
+      "parent_slot": "PFE_S",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "PFE_P",
+      "issuer": "PFE",
+      "kind": "answerable",
+      "parent_slot": "PFE_P",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "PFE_M",
+      "issuer": "PFE",
+      "kind": "missing_binding",
+      "parent_slot": "PFE_S",
+      "question_rule": "identical_to_selected_S",
+      "status": "pending_parent_and_control_admission"
+    },
+    {
+      "condition_id": "NFLX_S",
+      "issuer": "NFLX",
+      "kind": "answerable",
+      "parent_slot": "NFLX_S",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "NFLX_P",
+      "issuer": "NFLX",
+      "kind": "answerable",
+      "parent_slot": "NFLX_P",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "NFLX_M",
+      "issuer": "NFLX",
+      "kind": "missing_binding",
+      "parent_slot": "NFLX_S",
+      "question_rule": "identical_to_selected_S",
+      "status": "pending_parent_and_control_admission"
+    },
+    {
+      "condition_id": "NVDA_S",
+      "issuer": "NVDA",
+      "kind": "answerable",
+      "parent_slot": "NVDA_S",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "NVDA_P",
+      "issuer": "NVDA",
+      "kind": "answerable",
+      "parent_slot": "NVDA_P",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "NVDA_M",
+      "issuer": "NVDA",
+      "kind": "missing_binding",
+      "parent_slot": "NVDA_S",
+      "question_rule": "identical_to_selected_S",
+      "status": "pending_parent_and_control_admission"
+    },
+    {
+      "condition_id": "LLY_S",
+      "issuer": "LLY",
+      "kind": "answerable",
+      "parent_slot": "LLY_S",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "LLY_P",
+      "issuer": "LLY",
+      "kind": "answerable",
+      "parent_slot": "LLY_P",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "LLY_M",
+      "issuer": "LLY",
+      "kind": "missing_binding",
+      "parent_slot": "LLY_S",
+      "question_rule": "identical_to_selected_S",
+      "status": "pending_parent_and_control_admission"
+    },
+    {
+      "condition_id": "BRK-B_S",
+      "issuer": "BRK-B",
+      "kind": "answerable",
+      "parent_slot": "BRK-B_S",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "BRK-B_P",
+      "issuer": "BRK-B",
+      "kind": "answerable",
+      "parent_slot": "BRK-B_P",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "BRK-B_M",
+      "issuer": "BRK-B",
+      "kind": "missing_binding",
+      "parent_slot": "BRK-B_S",
+      "question_rule": "identical_to_selected_S",
+      "status": "pending_parent_and_control_admission"
+    },
+    {
+      "condition_id": "SLB_S",
+      "issuer": "SLB",
+      "kind": "answerable",
+      "parent_slot": "SLB_S",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "SLB_P",
+      "issuer": "SLB",
+      "kind": "answerable",
+      "parent_slot": "SLB_P",
+      "status": "pending_source_admission"
+    },
+    {
+      "condition_id": "SLB_M",
+      "issuer": "SLB",
+      "kind": "missing_binding",
+      "parent_slot": "SLB_S",
+      "question_rule": "identical_to_selected_S",
+      "status": "pending_parent_and_control_admission"
+    }
+  ],
+  "planned_denominators": {
+    "issuers": 6,
+    "physical_sources": 12,
+    "original_table_slots": 24,
+    "original_selected_tables": 13,
+    "amended_selected_tables": 21,
+    "answerable_slots": 12,
+    "single_source_slots": 6,
+    "two_source_slots": 6,
+    "answerable_quantity_claims": 18,
+    "control_slots": 6,
+    "conditions": 18,
+    "systems": 3,
+    "system_condition_cells": 54,
+    "maximum_author_candidates": 24
+  },
+  "candidate_selection": {
+    "rule": "first_fully_admissible_in_fixed_pre_review_author_order",
+    "maximum_per_slot": 2,
+    "author_all_before_reference_review": true,
+    "reference_driven_rewriting": false,
+    "replacement_after_prediction": false,
+    "slot_empty_when_no_candidate_admitted": true
+  },
+  "evidence": {
+    "authoring_requires_all_21_source_attempts_closed": true,
+    "whole_bundles_only": true,
+    "bundle_manifest_and_question_free_registry_before_authoring": true,
+    "maximum_answer_tables_per_single": 1,
+    "maximum_answer_tables_per_pair": 2,
+    "include_all_existing_neighbors": true,
+    "dependency_closure_before_authoring": true,
+    "question_specific_new_dependencies": false,
+    "include_nil_unsupported_and_duplicate_facts": true,
+    "track": "oracle_selected_complete_context_with_common_machine_metadata",
+    "metadata_free_reading_claim": false,
+    "full_dts_claim_requires_actual_validation": true,
+    "legacy_v16_identity_cards_author_ready": false,
+    "required_visible_identity_cards": 12,
+    "required_visible_identity_fields": [
+      "issuer_or_registrant_name",
+      "report_type",
+      "reporting_end_or_date_wording"
+    ],
+    "hidden_only_optional_identity_fields_omitted": true,
+    "identity_extra_render_blocks": "separate_pre_author_supplement_preserve_101_parent_denominator",
+    "identity_provenance_audit": "results/reader_source_card_provenance_v17.json"
+  },
+  "roles": {
+    "author": "fresh_source_only_context",
+    "source_reviewers": [
+      "R1_fresh",
+      "R2_fresh"
+    ],
+    "adjudicator": "separate_after_both_reviews_commit",
+    "control_review": "two_independent_fresh_contexts_each_masked_first_then_full_audit",
+    "evaluated_reader": "stateless_local_request_no_reference_access",
+    "paper_native_reviewers": "protocol_only_no_actual_questions_or_references",
+    "label_status": "model_assisted_not_independent_human_gold"
+  },
+  "control": {
+    "aspect_priority": [
+      "source",
+      "period",
+      "unit",
+      "population"
+    ],
+    "maximum_attempts_per_issuer": 4,
+    "maximum_total_attempts": 24,
+    "selected_rule": "first_independently_admitted_attempt",
+    "identical_question": true,
+    "no_control_marker_in_model_prompt": true,
+    "required_action": "insufficient",
+    "clarify_is_correct": false,
+    "all_routes_and_question_leakage_audited": true,
+    "unconstructible_control_remains_unadmitted": true,
+    "preserve_all_occurrence_quantity_lexemes_values_handles": true,
+    "binding_only_date_year_tokens_may_be_removed_with_logged_role": true,
+    "dual_role_quantity_binding_token_must_be_retained_or_control_rejected": true
+  },
+  "systems": {
+    "B0": "unchanged_narrow_lexical_v16",
+    "B1": "one_same_model_aspect_proposal_plus_typed_finalizer",
+    "B2": "one_same_model_direct_output",
+    "same_question_and_pack": true,
+    "same_model_B1_B2": true,
+    "same_source_access": true,
+    "fixed_natural_arm_order": [
+      "B1",
+      "B2"
+    ],
+    "order_amendment": "supersedes_unimplemented_v16_draft_parity_no_latency_superiority_claim",
+    "per_condition_B0_calls": 1
+  },
+  "limits": {
+    "input_native_tokens_per_model_request": 6144,
+    "output_tokens_per_model_request": 768,
+    "context_tokens": 8192,
+    "numeric_occurrences_per_pack": 64,
+    "blocks_per_pack": 64,
+    "witnesses_per_pack": 512,
+    "interface_serialized_bytes": 2000000,
+    "hypotheses_maximum": 8,
+    "claims_per_hypothesis_maximum": 8,
+    "model_request_seconds": 300,
+    "natural_model_requests_maximum": 36,
+    "natural_input_tokens_maximum": 221184,
+    "natural_output_tokens_maximum": 27648,
+    "natural_request_seconds_maximum": 10800,
+    "separate_authored_preflight_requests_maximum": 8,
+    "natural_retries": 0,
+    "annotation_work_item_caps": {
+      "author_candidates": 24,
+      "independent_candidate_reviews": 48,
+      "candidate_adjudications": 24,
+      "control_constructions": 24,
+      "independent_two_phase_control_reviews": 48,
+      "control_adjudications": 24
+    },
+    "annotation_usage": "separately_record_actual_roles_turns_tokens_time_no_claim_zero_cost"
+  },
+  "admission_reporting": {
+    "retain_planned_and_admitted_denominators": true,
+    "tokenize_both_arm_prompts_without_truncation": true,
+    "incomplete_subset_must_be_predeclared": true,
+    "partial_subset_passes_adequacy": false,
+    "all_failures_and_unexecuted_cells_retained": true
+  },
+  "adequacy_gate": {
+    "all_12_answers_and_6_controls_admitted": true,
+    "qualifying_arms": [
+      "B1",
+      "B2"
+    ],
+    "joint_answers_minimum": 11,
+    "per_issuer_joint_answers_minimum": 1,
+    "correct_insufficient_controls_required": 6,
+    "unsupported_material_control_answers_maximum": 0,
+    "B1_joint_beam_recall_minimum": 11,
+    "B1_observed_false_eliminations_maximum": 0,
+    "B0_only_pass": "lexical_competence_residual_need_and_model_diagnosis_no_model_gate_pass",
+    "meaning": "engineering_triage_only_no_generalization_or_risk_bound"
+  },
+  "pending_before_authoring": [
+    "complete_render_and_actual_source_admission_for_all_selected_tables",
+    "twelve_visible_identity_cards_with_separately_rendered_cover_dependencies_if_needed",
+    "fixed_bundle_dependency_manifests",
+    "question_free_complete_metadata_registries",
+    "source_only_packet_builder_and_leakage_review",
+    "fresh_role_provenance_and_exposure_records",
+    "independent_workflow_review",
+    "pre_authoring_freeze_receipt"
+  ],
+  "pending_before_natural_predictions": [
+    "actual_candidate_ledger",
+    "two_independent_source_reviews_and_adjudication",
+    "control_masks_and_two_phase_independent_reviews",
+    "frozen_hidden_references_and_common_packs",
+    "paired_tokenization_admission",
+    "passed_separate_native_authored_gate",
+    "reviewed_reference_noninterference_or_reference_free_runner",
+    "authored_joint_scorer_validation",
+    "model_runtime_prompt_decode_resource_pins",
+    "full_planned_cell_schedule",
+    "independent_execution_freeze_review"
+  ],
+  "nonclaims": [
+    "held_out_evaluation",
+    "human_gold",
+    "retrieval_gain",
+    "raw_table_reading_accuracy",
+    "statistical_method_superiority",
+    "risk_below_five_percent",
+    "strong_general_reader",
+    "ACL_novelty"
+  ],
+  "freeze": {
+    "authoring_freeze_receipt": null,
+    "execution_freeze_receipt": null,
+    "note": "Null means genuinely pending; this plan does not fabricate a freeze timestamp or source/reference result."
+  },
+  "scoring": {
+    "semantic_grader_view": "same_canonical_final_action_quantities_expanded_scope_citations_for_all_arms",
+    "exclude_arm_names_raw_schema_hypothesis_finalizer_diagnostics": true,
+    "B1_proposal_diagnostics": "separate",
+    "remaining_structural_distinguishability": "disclosed",
+    "common_projection_authored_validation_before_natural_grading": true,
+    "references_changed_after_outputs": false
+  }
+}

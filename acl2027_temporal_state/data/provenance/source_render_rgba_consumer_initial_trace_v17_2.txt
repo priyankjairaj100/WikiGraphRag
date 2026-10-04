@@ -1,0 +1,28 @@
+test_additional_patch_ledger_bytes_are_bounded_before_derived_writes (test_source_render_rgba_consumer_v17_2.ConsumerTests.test_additional_patch_ledger_bytes_are_bounded_before_derived_writes) ... FAIL
+test_exact_originals_derived_and_ledger_are_retained_before_mocked_stop (test_source_render_rgba_consumer_v17_2.ConsumerTests.test_exact_originals_derived_and_ledger_are_retained_before_mocked_stop) ... ok
+test_transparent_foreground_refusal_keeps_originals_and_never_launches (test_source_render_rgba_consumer_v17_2.ConsumerTests.test_transparent_foreground_refusal_keeps_originals_and_never_launches) ... ok
+
+======================================================================
+FAIL: test_additional_patch_ledger_bytes_are_bounded_before_derived_writes (test_source_render_rgba_consumer_v17_2.ConsumerTests.test_additional_patch_ledger_bytes_are_bounded_before_derived_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_source_render_rgba_consumer_v17_2.py", line 65, in test_additional_patch_ledger_bytes_are_bounded_before_derived_writes
+    result = renderer.render_block(item, folder, attempt, 1)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/scripts/render_source_blocks_lo_v17_2.py", line 266, in render_block
+    entry['conversion'] = run_command(command, logs, attempt, timeout=300, env=env)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1198, in _execute_mock_call
+    raise effect
+AssertionError: Native execution forbidden
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.009s
+
+FAILED (failures=1)

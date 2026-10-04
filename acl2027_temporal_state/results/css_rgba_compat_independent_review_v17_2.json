@@ -1,0 +1,93 @@
+{
+  "audit_launcher_environment_failure": {
+    "exit_code": 1,
+    "new_native_processes": 0,
+    "output": "======================================================================\nERROR: test_css_rgba_compat_review_v17_2 (unittest.loader._FailedTest.test_css_rgba_compat_review_v17_2)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_css_rgba_compat_review_v17_2\nTraceback (most recent call last):\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py\", line 137, in loadTestsFromName\n    module = __import__(module_name)\n             ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_css_rgba_compat_review_v17_2.py\", line 3, in <module>\n    import css_rgba_compat_v17_2 as compat\nModuleNotFoundError: No module named 'css_rgba_compat_v17_2'\n\n\n======================================================================\nERROR: test_css_rgba_compat_v17_2 (unittest.loader._FailedTest.test_css_rgba_compat_v17_2)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_css_rgba_compat_v17_2\nTraceback (most recent call last):\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py\", line 137, in loadTestsFromName\n    module = __import__(module_name)\n             ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_css_rgba_compat_v17_2.py\", line 3, in <module>\n    import css_rgba_compat_v17_2 as compat\nModuleNotFoundError: No module named 'css_rgba_compat_v17_2'\n\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nFAILED (errors=2)\n",
+    "reason": "Audit subprocess invocation omitted PYTHONPATH on first final-hash wrapper call; both test imports failed before executing any test cases."
+  },
+  "blockers": [
+    {
+      "authored_failed_subtests": 2,
+      "finding": "Unicode decimal channel digits matched regex digit classes and were patched as though within the intended literal RGB profile.",
+      "reason_code": "non_ascii_decimal_channels_accepted"
+    },
+    {
+      "authored_failed_subtests": 3,
+      "finding": "Non-ASCII identifier code points and hash-token prefixes were mistaken for standalone rgba function boundaries.",
+      "reason_code": "identifier_and_hash_tails_patched_as_rgba"
+    },
+    {
+      "authored_failed_subtests": 1,
+      "finding": "A spaced rgba name followed by parentheses was patched despite lacking a CSS function-token boundary.",
+      "reason_code": "whitespace_separated_function_name_patched"
+    },
+    {
+      "authored_failed_subtests": null,
+      "finding": "Static review also found Unicode whitespace accepted by regex whitespace and stripped from property identifiers; reported to owner as same narrow grammar correction.",
+      "reason_code": "unicode_whitespace_profile_gap"
+    }
+  ],
+  "blockers_remaining": [],
+  "final_run": {
+    "command": "PYTHONPATH=src:scripts python3 -m unittest tests.test_css_rgba_compat_review_v17_2 tests.test_css_rgba_compat_v17_2 -q",
+    "exit_code": 0,
+    "file_sha256_before_and_after": {
+      "docs/source_render_rgba_compatibility_contract_v17_2.txt": "bdff7b4ae297686ba3b681bbdd9ff31e534682cfb24d1692789b5ade76db0773",
+      "scripts/css_rgba_compat_v17_2.py": "b74f5082669dd0564ec680fe7d830211469f78c54d19d5d8d25fe25608f4c09c",
+      "tests/test_css_rgba_compat_review_v17_2.py": "622ecb33e77637e3a3e5dae729c061f2c11cdcc904ff487ab43808e202196620",
+      "tests/test_css_rgba_compat_v17_2.py": "4b67a950be8469174882f056667fa0f8b15e3c3691363e6e9b4dfddaa91f5718"
+    },
+    "finished_at_utc": "2026-10-04T11:36:15.660065+00:00",
+    "hashes_stable_during_run": true,
+    "independent_methods": 8,
+    "output": "----------------------------------------------------------------------\nRan 16 tests in 0.045s\n\nOK\n",
+    "owner_methods": 8,
+    "test_methods": 16
+  },
+  "initial_run": {
+    "command": "PYTHONPATH=src:scripts python3 -m unittest tests.test_css_rgba_compat_review_v17_2 -q",
+    "failed_subtests": 6,
+    "failed_test_methods": 3,
+    "finished_at_utc": "2026-10-04T11:33:45.803239+00:00",
+    "helper_sha256_sampled_immediately_after_run": "ec6b38f885dfdcadfeb3ddca2028f919acf0a0a914d3c54b2351ecf1e49f21fa",
+    "independent_tests_sha256": "6f5a7f657aece53b337248a17432ddaf6a71b6932aeff82d4fe16291edf0f4f8",
+    "passed_test_methods": 5,
+    "test_methods": 8
+  },
+  "intermediate_run": {
+    "failed_subtests": 2,
+    "failed_test_methods": 1,
+    "finding": "Full-declaration validation initially removed CSS comments without separators and accepted token concatenation in dimension and important suffix; owner replaced each comment with a space.",
+    "helper_sha256_read_before_run": "ac32d08bd48eabffc54e457a7f484b03043b7f1cbb1d8195639c38d5d36729e7",
+    "passed_test_methods": 15,
+    "test_methods": 16
+  },
+  "model_calls": 0,
+  "natural_data_transforms": 0,
+  "natural_source_values_used": false,
+  "new_render_launches": 0,
+  "nonblocking_observations": [
+    "Leading comments containing a colon can trigger conservative refusal because declaration.find selects that colon; current review allows explicit refusal and requests no wider parser feature support."
+  ],
+  "passed_checks": [
+    "Comments, quoted strings and non-style attribute/source-text spans preserved.",
+    "Multibyte characters and XML entities preserve byte offsets; replaying ledger reproduces output exactly.",
+    "Encoded channels/function name/alpha tokens refused.",
+    "Zero-patch existing-percentage inputs still enforce the 2048-token cap."
+  ],
+  "resolved_findings": [
+    "ASCII-only literal channel and CSS whitespace grammar; non-ASCII identifier/hash prefixes do not become rgba functions.",
+    "Only exact adjacent rgba( function token accepted; encoded tokens and spaced name forms refuse.",
+    "Full literal color/background or supported border-prefix declaration required; comment gaps preserved rather than joined.",
+    "All alpha1 edits occur at exact original single-byte offsets, preserving every other input byte; decoded entities/multibyte text do not shift ledger incorrectly."
+  ],
+  "reviewer": "source_css_v17",
+  "schema_version": "css_rgba_compat_independent_review_v17_2",
+  "scope": "Independent pure-transform literal grammar, source/style-byte preservation and patch-ledger bounds. No natural transforms/renders or renderer integration review.",
+  "scope_limitations": [
+    "No natural input transformed, no native render/model launched; passing authored syntax checks does not establish visual output or source admission.",
+    "Leading commented property forms may conservatively refuse; general CSS parsing/cascade support is not claimed.",
+    "Pure transform reviewed only; parent reviews renderer/runner/protocol integration."
+  ],
+  "status": "passed_authored_literal_grammar_byte_preservation_and_ledger_review"
+}

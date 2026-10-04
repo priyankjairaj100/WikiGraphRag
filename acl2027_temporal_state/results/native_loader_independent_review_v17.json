@@ -1,0 +1,78 @@
+{
+  "schema_version": "native_loader_independent_review_v17",
+  "status": "passed_bounded_pre_freeze_review_root_execution_decision_required",
+  "review_role": "binding_interface_v16 separate model-agent code/protocol review",
+  "artifact_bindings": {
+    "scripts/native_loader_v17.py": "30cc8fbf6ee70fce156c1b37362cb40b113598a9ddd8d5f42540a08f621c895e",
+    "configs/native_loader_v17.json": "cdb59a6cda2ed52075f3e7521621cbbdfa59748d94f7c7a95c8dec500d94e5a6",
+    "tests/test_native_loader_v17.py": "efb35763cc80a6eb8dc6f7d44fa43e1bf564fbd91c33fb3803f1ee3efd4db91e",
+    "docs/native_reader_resource_proposal_v17.txt": "b4519e3eb2f0aa1c2649a6e38975f61290e6387e4365c89acbc3c6ec776186b3",
+    "results/native_loader_authored_controls_v17.json": "1e3a2904becfdfc9d5ef6d68a90ba0bf64d4423ab3c9578168e19d83a047c5de",
+    "results/reader_memory_readonly_snapshot_v17.json": "a91b846a8e0e7d81a78e35da3e06ef7211c4bb80c06accea143de6275e9f8bfd",
+    "results/reader_gguf_architecture_readonly_v17.json": "f1cdf6f404ad0f692ff4c5a75f8e9d588d4cd916ee462fc94ec25d790ab5559f",
+    "results/reader_native_capacity_estimate_v17.json": "8b3f16fd9e1ab7025934508d90b17864486a99b9c61fb287ea07686465fad2d4",
+    "results/owned_rss_audit_closure_v17.json": "a0fb44d9d1a0e4e319c5e3009dbde9a04ea50e69404aa0a26019894cf2180237",
+    "scripts/process_group_rss_v16.py": "e3063c8d340877189fc443fb54ae8bc5f7d3388ee37dc16891fda2b401131ee6"
+  },
+  "scope": {
+    "native_processes_launched_by_reviewer": 0,
+    "generation_calls": 0,
+    "natural_sources_questions_references_read": false,
+    "targeted_authored_tests_independently_run": 1,
+    "targeted_test_failures": 0,
+    "owner_suite_tests_reported": 15,
+    "owner_suite_failures_reported": 0
+  },
+  "checks": [
+    {
+      "id": "execution_scope",
+      "finding": "One attempt marker, at most one native process, exactly eight planned unchanged authored tokenizer rows, no natural requests; API whitelist excludes generation/embedding endpoints."
+    },
+    {
+      "id": "unchanged_recipe",
+      "finding": "Weight/config/runtime identities, 8192 context, 5.5 GiB address-space limit, cache types and original non-resource settings remain pinned; full weight digest recheck precedes Popen."
+    },
+    {
+      "id": "changed_resource_policy",
+      "finding": "Nine-component shared pressure proxy including sock, strict 4.25 GiB reserve/RSS ceiling, 7 GiB proxy and unchanged 8 GiB kernel max; missing telemetry and new OOM fail closed. This differs from the original total-current guard."
+    },
+    {
+      "id": "ownership_cleanup",
+      "finding": "The reviewed e3063 helper binds the original owned inner group to authoritative outer accounting; signals target the inner group only, cleanup requires no live owned descendants."
+    },
+    {
+      "id": "watchdog_enforcement",
+      "finding": "Guard failures independently SIGKILL the owned group even while HTTP is blocked; main-thread errors after launch also kill before cleanup. The targeted mocked thread regression passed independently."
+    },
+    {
+      "id": "failure_accounting",
+      "finding": "All eight planned request states remain in success/failure receipts, asset/prelaunch refusal consumes the sole attempt, no reference files are copied, no retry/generation is introduced."
+    },
+    {
+      "id": "static_capacity",
+      "finding": "All nine captured native-source hashes match the capacity receipt. Spot-checks confirm Q8_0 K/V tensors, F32 recurrent tensors, state dimensions and one-sequence zero-rollback arithmetic: 142606336 + 2359296 + 50331648 = 195297280 named tensor bytes."
+    },
+    {
+      "id": "interpretation",
+      "finding": "Static capacity excludes graph/workspace/metadata/runtime overhead. Prior zero-residency is historical, not current. A future pass is loader/tokenizer feasibility only; no generation, natural competence or model superiority follows."
+    }
+  ],
+  "resolved_pre_freeze_issue": {
+    "finding": "Original draft watcher used TERM only, allowing a blocked 300-second HTTP request to delay enforced process termination.",
+    "discovery": "Code inspection before freeze; no failing native trial claimed.",
+    "resolution": "Immediate original-inner-group SIGKILL on guard failure and a targeted blocked-HTTP regression.",
+    "test": "tests.test_native_loader_v17.NativeLoaderControls.test_watchdog_kills_independently_while_api_is_blocked",
+    "independent_observation": "1 test passed in 0.002 seconds; mocked processes only."
+  },
+  "remaining_requirements": [
+    "Root must approve the exact immutable frozen protocol hash before the one attempt.",
+    "Heavy-worker window must be idle and a fresh reserve gate must pass; historical memory snapshots are not reservations.",
+    "Retain actual native allocation lines, zero rollback confirmation, sampled RSS/pressure, every API call and cleanup outcome.",
+    "Any future generation gate or natural pilot remains separately admitted and frozen."
+  ],
+  "limitations": [
+    "Polling and overlapping cgroup components do not create hard per-process memory isolation or an exact capacity bound.",
+    "A resource refusal or allocation failure is a valid terminal outcome and does not authorize relaxed caps or retry.",
+    "Review is bounded code/protocol assurance, not a formal proof or an executed model-quality result."
+  ]
+}

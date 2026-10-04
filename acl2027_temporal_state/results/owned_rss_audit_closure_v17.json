@@ -1,0 +1,106 @@
+{
+  "schema_version": "owned_rss_audit_closure_v17",
+  "status": "passed",
+  "base_commit": "d793b01d12d8e516a433bd659cccb3eb3ca9a25b",
+  "helper": {
+    "path": "scripts/process_group_rss_v16.py",
+    "sha256": "e3063c8d340877189fc443fb54ae8bc5f7d3388ee37dc16891fda2b401131ee6"
+  },
+  "authored_test_evidence": {
+    "path": "tests/test_owned_rss_audit_v16.py",
+    "sha256": "cd85c7caa469ca1191d4eced1067e2900fae783d55afb36a614fa364f00c3901",
+    "passed": 14,
+    "total": 14,
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_owned_rss_audit_v16.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "output": "test_anchor_requires_actual_direct_child_parent (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_anchor_requires_actual_direct_child_parent) ... ok\ntest_anchor_retains_descendants_after_leader_disappears (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_anchor_retains_descendants_after_leader_disappears) ... ok\ntest_denied_children_interface_does_not_fall_back (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_denied_children_interface_does_not_fall_back) ... ok\ntest_different_namespace_with_same_inner_group_is_excluded (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_different_namespace_with_same_inner_group_is_excluded) ... ok\ntest_known_zombie_can_have_zero_rss (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_known_zombie_can_have_zero_rss) ... ok\ntest_leader_pid_reuse_fails_closed (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_leader_pid_reuse_fails_closed) ... ok\ntest_malformed_live_rss_fails_closed (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_malformed_live_rss_fails_closed) ... ok\ntest_malformed_namespace_map_fails_closed (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_malformed_namespace_map_fails_closed) ... ok\ntest_missing_children_interface_uses_exact_outer_parent (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_missing_children_interface_uses_exact_outer_parent) ... ok\ntest_missing_live_rss_fails_closed (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_missing_live_rss_fails_closed) ... ok\ntest_outer_parent_scan_excludes_unrelated_inner_pid_collision (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_outer_parent_scan_excludes_unrelated_inner_pid_collision) ... ok\ntest_outer_pid_does_not_select_inner_group (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_outer_pid_does_not_select_inner_group) ... ok\ntest_unreadable_namespace_with_malformed_group_is_not_excluded (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_unreadable_namespace_with_malformed_group_is_not_excluded) ... ok\ntest_unreadable_owned_member_cannot_yield_partial_success (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_unreadable_owned_member_cannot_yield_partial_success) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.029s\n\nOK\n",
+    "started_unix_seconds": 1791111044.5727508,
+    "finished_unix_seconds": 1791111044.7840095,
+    "reason_for_targeted_recheck": "Prior 14/14 result existed in the session, but the separate machine-readable combined receipt had not been written before the user stop. Only this same small authored suite was rerun to capture its exact final revision and output; no real subprocess probe was repeated."
+  },
+  "saved_real_probe": {
+    "path": "results/owned_rss_outer_ppid_real_subprocess_probe_v16.json",
+    "sha256": "64738530ccf46651b44b6069bc58dc3f2415145a7d3c66bf3e9841225ae6ee74",
+    "probe_path": "scripts/probe_owned_rss_anchor_v16.py",
+    "probe_sha256": "0dd4d0519994b18746f687486f672fc27f713157ca3ac8ec6aaa45b7de671e62",
+    "status": "passed",
+    "allocation_bytes": 41943040,
+    "positive_samples": 3,
+    "rss_bytes_each_sample": [
+      50827264,
+      50827264,
+      50827264
+    ],
+    "legacy_incorrect_rss_bytes_each_sample": [
+      311296,
+      311296,
+      311296
+    ],
+    "binding_method": "exact_outer_ppid_scan_children_interface_absent",
+    "reused_without_new_probe": true
+  },
+  "receipt_consistency_checks": {
+    "positive_probe_status": true,
+    "probe_exact_current_helper": true,
+    "authored_allocation_40_mib": true,
+    "exactly_three_samples": true,
+    "inner_outer_namespace_difference": true,
+    "inner_pgid_only_signal": true,
+    "owned_child_terminated": true,
+    "no_model_or_natural_execution": true,
+    "exact_probe_source": true,
+    "sample_0_exact_positive_owned_rss": true,
+    "sample_1_exact_positive_owned_rss": true,
+    "sample_2_exact_positive_owned_rss": true
+  },
+  "preserved_prior_receipts": [
+    {
+      "path": "results/owned_rss_authored_audit_initial_v16.json",
+      "sha256": "ee7da85970d72767a10dcb3b90f743485af4ac434eba1c379f84bd2dfddef71d"
+    },
+    {
+      "path": "results/owned_rss_authored_audit_final_v16.json",
+      "sha256": "12480d92ac1103db5a3fd0f2befae806323878ccc4b09f8cfcf8040fccef2ecb"
+    },
+    {
+      "path": "results/owned_rss_real_subprocess_probe_v16.json",
+      "sha256": "3f9b0fffb9cb93c48100ac02f0d31f51fde9870509ee971f95b7c921d8d4656d"
+    },
+    {
+      "path": "results/owned_rss_anchor_real_subprocess_probe_v16.json",
+      "sha256": "331cf76b9e5ab5e3768dfbcfb38329073c2312b7bfad8c356d82bfd31bce2f90"
+    },
+    {
+      "path": "results/owned_rss_anchor_candidate_audit_v16.json",
+      "sha256": "06aa1cc481dfd68d9bc7bf9bee8b16f728d16f060d56b3a9ef6e8342dab5353a"
+    }
+  ],
+  "consumer_requirements": [
+    "Create the owned worker with start_new_session=True and bind its original inner Popen.pid immediately.",
+    "Retain the authoritative outer-group anchor and pass it on every read_group_rss call, including after leader exit.",
+    "Unreadable/malformed owned telemetry fails closed; no-members requires a fresh Popen.poll and is not zero RSS for a live worker.",
+    "Enforce limits on the summed owned-group RSS, not launcher RSS only.",
+    "Signal only the original inner process-group ID; scanned outer IDs are accounting metadata only.",
+    "Confirm own-group cleanup before allowing the next worker."
+  ],
+  "gate_scope": "Closes the shared helper dependency for independently reviewed renderer/Arelle consumers. It does not itself authorize source execution or substitute for their protocol, content, or cleanup admission gates.",
+  "claim_limits": [
+    "No prior failed or qualified resource-monitoring attempt becomes valid retroactively.",
+    "No model was loaded and no natural document was read for this closure.",
+    "This validates the observed namespace binding and authored accounting controls, not general platform portability, XBRL conformance, natural QA, or model quality."
+  ],
+  "new_real_probe_executions": 0,
+  "new_model_loads": 0,
+  "new_natural_source_reads": 0,
+  "frozen_v16_files_modified": false
+}

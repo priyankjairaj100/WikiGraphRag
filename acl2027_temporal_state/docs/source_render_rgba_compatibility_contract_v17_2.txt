@@ -1,0 +1,47 @@
+V17.2 qualified inline-RGBA compatibility view
+
+This separately versioned amendment changes only a derived rendering input.
+Original source bytes, original selected fragment and original assembled HTML
+are retained unchanged and hashed. Literal alpha byte1 inside supported inline
+rgba() CSS values becomes100%; every nonpatch byte stays identical. A per-block
+ledger records original assembly offsets, old/new literals, property and DOM
+locator, plus original/derived lengths and hashes. The ordinary generated UTF8
+metadata follows this transformation and has its own final HTML hash.
+
+The narrow accepted RGBA syntax is comma-separated literal integer RGB channels
+0..255 and these property/alpha pairs only:
+color:1 or100%; background-color:0,1 or100%; border-bottom:0.01,1 or100%.
+Only exact alpha literal1 is changed. RGB channels and numerical spacing use ASCII digits/CSS whitespace only;
+rgba must be a standalone function token with no name-parenthesis gap. Color
+and background values must consist of that literal function with optional
+!important; border-bottom additionally requires a numeric pt/px width and solid
+style. Ambiguous/comment-prefixed property syntax may fail closed; full CSS
+comment/declaration syntax support is not claimed. Existing100%, transparent backgrounds0
+and the one-percent border0.01 stay byte-identical. Transparent foreground0,
+other fractional foregrounds, encoded/nonliteral RGBA tokens, nested functions,
+head-stylesheet alpha, HSLA, namespaced style attributes and unsupported pairs
+are refused explicitly. Nothing is replaced with opaque black. CSS strings,
+comments, non-style attributes and source text are never normalized. There is a
+512-patch/2048-RGBA-token block cap. The preexisting passive-resource refusal
+profile still applies, including refusal of active/external resources/escapes.
+
+All resource limits, RSS ownership binding, OOM baseline, verified cleanup,
+output bounds and failure retention remain the v17 implementation unchanged.
+Before derived writes, exact transformed HTML lengths plus serialized ledger
+bytes must fit remaining block/attempt budgets; original artifacts remain on
+refusal. The preliminary output estimate includes the additional assembly copy. This
+is an inspection compatibility view, not browser-equivalent rendering.
+
+Run the authored fixture first: opaque RGBA foreground, transparent background
+on a blue backdrop, white text on an opaque RGBA black backdrop, unchanged100%
+and0.01 border, and merged year/value columns. Require independent byte-boundary
+review and actual visual evidence before natural protocols are approved.
+
+The old ten-block proposal is superseded for execution: the natural recovery
+population is exactly the eight original nonblank source09 visual failures,
+original block indices0,1,2,3,4,7,8,9. Two originally empty blocks are not retried.
+A separate identity population contains all34 frozen candidate blocks across
+all12 sources. Missing SLB issuer witnesses remain unavailable. Do not merge
+these denominators, change the original101 outcomes or auto-admit any render.
+Root approves each exact natural protocol hash before its one-time execution.
+No automatic retry is permitted.

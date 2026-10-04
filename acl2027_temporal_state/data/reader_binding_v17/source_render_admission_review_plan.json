@@ -1,0 +1,58 @@
+{
+  "assignments": [
+    {
+      "reviewer": "table_views_v16",
+      "source_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "reviewer": "root",
+      "source_indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  ],
+  "coverage_requirements": [
+    "Each frozen source/block appears exactly once across reviewer subsets, including failed/refused blocks.",
+    "Every raster page of any admitted block is visually reviewed.",
+    "Table-to-neighbor associations are retained; block decisions are separate."
+  ],
+  "decision_scope": "Qualified source inspection views only; no semantic question/evidence-pack/reference admission.",
+  "expected_population": {
+    "sources": 12,
+    "tables": 21,
+    "total_blocks": 101,
+    "unique_existing_neighbor_blocks": 80
+  },
+  "frozen_at_utc": "2026-10-04T10:57:37.923292+00:00",
+  "input_bindings": {
+    "data/reader_binding_v16/question_pool_protocol_v16_1.json": "93a9a669fa1c0014a410832e02dbbfba3384e181af7caec9f04bc35d975d436a",
+    "data/reader_binding_v17/source_render_admission_schema.json": "17bf3f93be14c53ee2282e242c294edee6f4c39515922aeb8cafac1b53a7eadd",
+    "docs/source_render_admission_contract_v17.txt": "bed3757fb6cda3544f4fb7dbb0a64fc19abc67aae51100f6dd015c7d64eb9926",
+    "results/owned_rss_audit_closure_v17.json": "a0fb44d9d1a0e4e319c5e3009dbde9a04ea50e69404aa0a26019894cf2180237",
+    "results/reader_pool_v16_1.json": "a700e40a2f5a39349d2f9db9550fd9f1dbecb3d298a5fee083cf309daec702ce",
+    "results/source_render_code_review_v17.json": "bbe85c24e80a6e702e8840ffe3916af1aa51832bb29eec1e96d4d16d02347253"
+  },
+  "model_calls": 0,
+  "public_boundary": "Counts, source identities, DOM locators, byte anchors, categorical checks/reasons and hashes only. Values, source/CSS excerpts and detailed mappings remain external.",
+  "questions_authored": 0,
+  "review_before_this_freeze": {
+    "natural_rasters_inspected": 0,
+    "natural_source_block_values_inspected_for_admission": 0
+  },
+  "role_statement": "Separate reviewers inspect disjoint source subsets. No independent duplicate annotation or inter-annotator agreement is claimed.",
+  "schema_version": "source_render_admission_review_plan_v17",
+  "source_index_authority": "Order in the separately frozen v17 natural-render protocol; each reviewer receipt must bind that protocol and exact execution result before reviewing artifacts.",
+  "status": "frozen_before_first_natural_source_render_review"
+}

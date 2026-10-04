@@ -1,0 +1,94 @@
+{
+  "schema_version": "reader_native_capacity_estimate_v17",
+  "status": "static_estimate_not_a_load_measurement",
+  "metadata_receipt": "results/reader_gguf_architecture_readonly_v17.json",
+  "metadata_receipt_sha256": "f1cdf6f404ad0f692ff4c5a75f8e9d588d4cd916ee462fc94ec25d790ab5559f",
+  "runtime_commit": "7fe450e19305b828c199d602c23a8337aaa1f03b",
+  "primary_native_sources": [
+    {
+      "path": "src/llama-memory-recurrent.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/src/llama-memory-recurrent.cpp",
+      "bytes": 44839,
+      "sha256": "35903c832ba321aad3fca8b2adf2d481f6ba41196478c6c8f248ffe2bd7d9d51"
+    },
+    {
+      "path": "src/llama-kv-cache.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/src/llama-kv-cache.cpp",
+      "bytes": 93802,
+      "sha256": "c74c66ab3b53635476089155505b7e73c35b31fd3127ab3da137cde2491d95d5"
+    },
+    {
+      "path": "src/models/qwen35.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/src/models/qwen35.cpp",
+      "bytes": 28105,
+      "sha256": "ef973e9c789eb52ef27a77e0b1f36c6f41a378733a994d41b5924e3be012f671"
+    },
+    {
+      "path": "src/llama-hparams.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/src/llama-hparams.cpp",
+      "bytes": 9429,
+      "sha256": "ef6fbef7d12a23441b42cfac8e3a3a3045c7d3123402351ba98e69702e193301"
+    },
+    {
+      "path": "ggml/src/ggml-common.h",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/ggml/src/ggml-common.h",
+      "bytes": 135161,
+      "sha256": "0061131b615c5721fc88a78feeb22c1f8c450f1c2646a317d80796a653bf595c"
+    },
+    {
+      "path": "src/llama-memory-hybrid.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/src/llama-memory-hybrid.cpp",
+      "bytes": 9539,
+      "sha256": "b2b193c4a412a91b1fe15a3c239d3b2664b5208ff49d6dba244ff8fec0880f92"
+    },
+    {
+      "path": "src/llama-context.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/src/llama-context.cpp",
+      "bytes": 157512,
+      "sha256": "21340d0540c6ca98b78b733906f026a7ded450b283e47c3d1c9a84a19de43132"
+    },
+    {
+      "path": "src/llama-model.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/src/llama-model.cpp",
+      "bytes": 155924,
+      "sha256": "530dff0cd544382346cc18520cbdb7d7a6f6743c35f7af52aae0bec11d18992a"
+    },
+    {
+      "path": "common/common.h",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/7fe450e19305b828c199d602c23a8337aaa1f03b/common/common.h",
+      "bytes": 51099,
+      "sha256": "1c1da208649f0f8955610d975d57b0a63cd35d60a23b3e2765e6ad19c392cc45"
+    }
+  ],
+  "full_attention_layers": 8,
+  "linear_attention_layers": 24,
+  "context_tokens": 8192,
+  "sequence_count": 1,
+  "rollback_snapshots_assumed": 0,
+  "rollback_assumption_must_be_verified_from_native_startup_log": true,
+  "attention_key_value_types": "q8_0",
+  "q8_0_bytes_per_32_elements": 34,
+  "attention_kv_tensor_bytes": 142606336,
+  "attention_kv_formula": "8 layers * 8192 slots * 4 KV heads * 256 head dimensions * (K+V=2) * (34/32) bytes",
+  "recurrent_types": "F32 for both R and S; Q8_0 CLI applies only to attention caches",
+  "convolution_state_tensor_bytes": 2359296,
+  "convolution_state_formula": "24 layers * (4-1) * (4096 + 2*16*128) * 4 bytes * 1 sequence * (1+0 rollback snapshots)",
+  "recurrent_state_tensor_bytes": 50331648,
+  "recurrent_state_formula": "24 layers * 128 * 4096 * 4 bytes * 1 sequence * (1+0 rollback snapshots)",
+  "total_named_cache_tensor_bytes": 195297280,
+  "weight_file_bytes": 4016235744,
+  "owned_rss_cap_bytes": 4563402752,
+  "rss_cap_minus_weight_and_named_cache_bytes": 351869728,
+  "remaining_capacity_must_cover": [
+    "backend graph/compute buffer",
+    "CPU quantization/repacking workspace",
+    "tokenizer and model metadata allocations",
+    "native executable/libraries, stacks, allocator overhead and page alignment",
+    "server/runtime bookkeeping"
+  ],
+  "compute_buffer_bytes_measured": null,
+  "compute_buffer_estimate_limit": "The exact CPU scheduler graph buffer cannot be bounded reliably by model dimensions alone. The pinned runtime reserves prompt-processing and token-generation graphs at initialization (n_tokens=min(n_ctx,n_ubatch)=128); its reported actual allocation, all native buffers, and observed owned RSS must be retained during the sole loader attempt. Residual capacity is not a claim that computation fits.",
+  "model_loads": 0,
+  "completion_calls": 0,
+  "no_tensor_payload_read": true
+}

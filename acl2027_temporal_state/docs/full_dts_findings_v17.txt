@@ -1,0 +1,101 @@
+Full-DTS v17 terminal findings
+
+The once-only frozen all-12 offline run terminated with nine filings completed
+without validation errors, one incomplete recovered DTS, and two retained RSS
+telemetry failures. All 12 workers wrote complete fact inventories before exit.
+These are separate observations: saved comparison artifacts do not convert a
+guard failure or incomplete DTS into successful source validation.
+
+Preserved source categories
+
+Category                         Sources  Numeric occurrences  Common comparisons
+Completed without errors               9               16,064              15,984
+Incomplete DTS                         1                2,905               2,900
+RSS telemetry failure                  2                4,682               4,635
+All saved inventories                 12               23,651              23,519
+
+Every common comparison agreed exactly with its hash-bound v15 normalized
+record at the same source SHA and expanded-name physical DOM locator. This is
+23,519/23,519 observed agreements across the complete saved inventories, not a
+claim that all 12 source runs satisfied their technical/validation gates.
+No discrepancy locator was reported. The 116 previously unsupported SEC
+numwordsen occurrences normalized under the pinned conventional SEC plugin;
+all 16 nil occurrences agreed. Arelle normalized 23,635 non-nil occurrences.
+Effective English labels were returned for all 23,651 numeric occurrences,
+including nils, with zero unresolved numeric concepts. Label strings and fact
+values remain external.
+
+The nine clean sources are PFE_2023, NFLX_2022, NFLX_2023, NVDA_2022, NVDA_2023,
+LLY_2023, LLY_2024, BRK-B_2023 and SLB_2022. BRK-B_2022 retains one IOerror and an
+incomplete DTS because the SIC 2021 schema timed out during the frozen
+one-attempt dependency recovery. There was no retry or URL substitution.
+
+The two technical failures remain unchanged in the public result:
+
+- PFE_2024: child exit code 0, Session true, one model, complete 2,977-occurrence
+  inventory; 2,937 exact common agreements, 38 newly normalized SEC occurrences
+  and 2 nil agreements. The monitor reported live_process_rss_missing at
+  7.986 seconds. Cleanup was confirmed.
+- SLB_2023: child exit code 0, Session true, one model, complete 1,705-occurrence
+  inventory; 1,698 exact common agreements and 7 newly normalized SEC
+  occurrences. The monitor reported live_process_rss_missing at 6.838 seconds.
+  Cleanup was confirmed.
+
+Both cases had zero model errors, readable structured logs and no dependency
+pin failures. Their files have retained byte counts and SHA256 bindings in the
+result/summary. The missing RSS samples occurred near exit, but the frozen
+watchdog failed closed. The statuses have not been relaxed or recoded. No rerun
+was used to obtain a cleaner source denominator.
+
+Resources and integrity
+
+The sum of per-worker elapsed time was 79.529 seconds. Maximum sampled owned-
+group RSS was 411,660,288 bytes; maximum proxy was 3,246,247,936 bytes. Actual
+total cgroup memory peaked at 8,589,922,304 bytes, so this attempt must not be
+described as meeting the old 7.25 GiB total-current soft cap. No new oom or
+oom_kill event was recorded. All owned-group cleanup checks succeeded. The two
+RSS telemetry gaps remain limitations on full monitoring coverage.
+
+The metadata/hash audit passed 227/227 checks. It verified original and staged
+source bytes, bound v15 records, recovered cache resources, external output
+hashes, source order/denominators and completion metadata. It did not parse
+source bodies or fact values and is not an independent semantic validator.
+All earlier v16 resource refusals, processor failures and helper-probe outcomes
+remain preserved.
+
+Interpretation for the research paper
+
+A conventional taxonomy-aware processor now provides observed normalized-fact
+and English-label outputs for this fixed 12-source sample. Basic inline-number
+normalization and label lookup should therefore be treated as baseline
+capabilities. The prospective contribution must be demonstrated through
+evidence selection, context/period disambiguation, verified reader behavior or
+other measured improvements over that baseline. None of this run establishes
+natural QA gains, held-out accuracy or method novelty.
+
+Clean completion applies only to the pinned Arelle 2.46.0 options: core/Inline/
+DTS validation is requested, with SEC filing rules, calculation checking, UTR
+checking and formulas disabled as declared. The original HF source bytes are
+preserved; exact identity with original SEC filing bodies remains unverified.
+Processor agreement is not financial truth or official filing compliance.
+
+Public artifacts
+
+data/taxonomy_v17/full_dts_protocol_v17.json
+  SHA256 53467fc286ea1dd8b6a81b0b6f305258491233fdb311c8bea2c3cb81212547c3
+results/full_dts_v17.json
+  SHA256 87b39ef34f47e63a9f97d646d2f96aaa686cba7c6ee6a5dfaf2414b7fc7e0845
+results/full_dts_summary_v17.json
+  SHA256 a3b140a9406072c21a3a98ac901489b0cce2b666782c50cd150e8de15c2daf1f
+results/full_dts_integrity_audit_v17.json
+
+External source-bearing outputs and telemetry:
+  /dev/shm/wikigraph_v15/external/full_dts_attempt01/validation_v17/
+External driver log:
+  /dev/shm/wikigraph_v15/external/full_dts_validate_v17.log
+
+Execution was scripts/run_full_dts_v17.py validate with the frozen protocol,
+original dependency graph and new result path. Reproduction utilities are
+scripts/audit_full_dts_v17.py and scripts/summarize_full_dts_v17.py. Existing
+output directories/results are never overwritten; a further attempt requires
+its own explicit version and receipt.

@@ -1,0 +1,51 @@
+{
+  "schema_version": "preauthor_bundle_code_review_v17",
+  "status": "passed_authored_review",
+  "open_blockers": [],
+  "code_bindings": {
+    "scripts/build_pre_author_bundles_v17.py": "559974866f5d507b1ced20557ee67e0782b27e6917f93d950f2abc094d4293a2",
+    "tests/test_pre_author_bundles_v17.py": "3f998d7ec3361ba74bd2434e9b779036324a7a060b00f29b5e5dc2a15f651673",
+    "docs/pre_author_bundle_contract_v17.txt": "7573c8d6a0e18e3357ae4bf6f18df821b0e46d342c294ec3fa660fafea5d11eb",
+    "src/temporal_state/reader_binding_v16.py": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1"
+  },
+  "review_scope": "Source-free code/contract and authored-fixture review. The manual dependency plan, source bodies, real quantity records, natural questions and references were not opened. This does not certify semantic dependency completeness.",
+  "independent_tests": {
+    "path": "tests/test_pre_author_bundles_adversarial_v17.py",
+    "sha256": "2c800a1a966b0b80908a035469873834c039f105ebb1d4921f3635320c27dfc0",
+    "command": "python -m unittest tests.test_pre_author_bundles_adversarial_v17 -v",
+    "tests_run": 6,
+    "failures": 0,
+    "errors": 0,
+    "observed_seconds": 0.001
+  },
+  "owner_reported_controls": {
+    "path": "tests/test_pre_author_bundles_v17.py",
+    "tests": 22,
+    "state": "Owner-reported passing on revised implementation; not redundantly rerun by this reviewer."
+  },
+  "review_checks": [
+    "Fixed ordered selected-table population and exact code/input digest sets checked at freeze and execution.",
+    "Frozen public metadata and external full-view/typed/author streams hash and byte-count checked before materialization.",
+    "Source-only staging projection has nested allowlists and explicit no-author-release/identity-null status.",
+    "Declared typed aspects remain machine-origin metadata; visible support is not certified and population always remains null.",
+    "All distinct acquired numeric occurrences remain in the private registry, with overlap block links; unsupported/nil records remain present.",
+    "Interface validation failure retains the full registry and nulls only the optional shape candidate; no fact truncation.",
+    "Additional whole table and heading-row dependencies now reject every contained occurrence unconditionally, including nil and unsupported.",
+    "Original base admission decisions remain visible; extra source-conditioned dependency candidates form a separate unresolved population."
+  ],
+  "pre_freeze_blocker_history": [
+    {
+      "finding": "The special zero-numeric dependency invariant originally depended on an optional plan flag, so a missing or false flag bypassed it.",
+      "discovery": "Read-only code inspection; no initial failing natural or authored execution claimed.",
+      "resolution": "Unconditional check_dependency for all additional table and table_row blocks, owner regressions and independent nil/unsupported controls.",
+      "state": "closed_before_freeze"
+    }
+  ],
+  "boundaries": [
+    "The external bundle co-packages author_staging with privileged registry and shape data. A future author-release step must export only the allowlisted staging view; passing this review does not authorize handing the full bundle to an author.",
+    "Source-conditioned dependency choices and semantic_support_candidates remain model-authored suggestions requiring actual source/render and independent semantic review.",
+    "No complete evidence admission, question/reference release, reader invocation, tokenizer-fit result or novelty is certified."
+  ],
+  "natural_materializations_observed": 0,
+  "model_calls": 0
+}

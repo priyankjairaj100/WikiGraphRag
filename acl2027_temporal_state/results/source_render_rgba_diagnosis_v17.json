@@ -1,0 +1,125 @@
+{
+  "authored_control_outcomes": [
+    {
+      "case": "rgb_opaque",
+      "visual": "opaque_black_pass"
+    },
+    {
+      "case": "rgba_numeric_1_foreground",
+      "exported_enclosing_alpha": 0.01,
+      "visual": "almost_white_fail"
+    },
+    {
+      "case": "rgba_percent_100_foreground",
+      "visual": "opaque_black_pass"
+    },
+    {
+      "case": "rgba_numeric_0_5_foreground",
+      "exported_enclosing_alpha": 0.5,
+      "visual": "half_opacity_pass"
+    },
+    {
+      "case": "rgba_percent_50_foreground",
+      "exported_enclosing_alpha": 0.5,
+      "visual": "half_opacity_pass"
+    },
+    {
+      "case": "rgba_numeric_0_foreground",
+      "exported_enclosing_alpha": 1.0,
+      "visual": "opaque_black_fail"
+    },
+    {
+      "case": "rgba_numeric_0_background",
+      "visual": "matches_white_backdrop_but_contrasting_backdrop_test_required"
+    },
+    {
+      "case": "rgba_numeric_1_background_white_foreground",
+      "visual": "white_text_not_visible_fail"
+    }
+  ],
+  "authored_pdf": {
+    "bytes": 16853,
+    "path": "/dev/shm/wikigraph_v15/external/source_render_rgba_authored_v17/attempt01/source_00/block_00/rendered/source-block.pdf",
+    "sha256": "26f4748171abad431eca1dbbb7dab6726aebd5c26bf6d76ac69afdb16f1dbca6"
+  },
+  "authored_pdf_alpha_values": [
+    0.01,
+    0.5,
+    0.5,
+    1.0
+  ],
+  "authored_png": {
+    "bytes": 66887,
+    "path": "/dev/shm/wikigraph_v15/external/source_render_rgba_authored_v17/attempt01/source_00/block_00/raster/page-1.png",
+    "sha256": "b9f7b96698ec4ba6538bae320789ec0873fbf2585fb58accbe7b6aafe1b4216e"
+  },
+  "css_semantics_primary_source": "https://www.w3.org/TR/2026/CRD-css-color-4-20260930/#alpha-value",
+  "diagnosed_at_utc": "2026-10-04T11:22:47.186410+00:00",
+  "diagnosis": "The generated PDF contains incorrect enclosing alpha; the problem is not confined to Poppler rasterization. Inner glyph metadata omits enclosing attenuation and is insufficient evidence of visible contrast.",
+  "input_bindings": {
+    "data/reader_binding_v17/source_render_rgba_authored_protocol_v17.json": "9decfc477faec60e6b73d190c5fa89fb50ae7f85efa70dd6710a1ca436133a62",
+    "results/source_render_natural_execution_v17.json": "14b97956be21d0e91a2d6f299bc2f13ab4f08c104caf2e0bc164dabd1ed38a54",
+    "results/source_render_rgba_authored_execution_v17.json": "281364a0271b0f3ba9bb62329f4a9ccdf9e8315bb3fc2e13d25495384cb3fe40"
+  },
+  "model_calls": 0,
+  "natural_assembled_rgba_token_counts": [
+    {
+      "assembled_occurrences": [
+        {
+          "alpha_literal": "0",
+          "count": 63,
+          "property": "background-color"
+        },
+        {
+          "alpha_literal": "1",
+          "count": 58,
+          "property": "background-color"
+        },
+        {
+          "alpha_literal": "0.01",
+          "count": 4,
+          "property": "border-bottom"
+        },
+        {
+          "alpha_literal": "1",
+          "count": 4,
+          "property": "border-bottom"
+        },
+        {
+          "alpha_literal": "1",
+          "count": 66,
+          "property": "color"
+        }
+      ],
+      "original_source_index": 9
+    }
+  ],
+  "natural_rerender_performed": false,
+  "owned_commands_cleanup_confirmed": true,
+  "preserved_natural_example": {
+    "block_index": 0,
+    "direct_mupdf_minimum_channel": 253,
+    "enclosing_form_alpha_values": [
+      0.01,
+      0.01,
+      0.01
+    ],
+    "external_direct_raster": {
+      "bytes": 11259,
+      "path": "/dev/shm/wikigraph_v15/external/source_render_rgba_diagnosis_v17/attempt01/direct_mupdf_page-1.png",
+      "sha256": "529399f3d2d31f9a8edc90133d0031b4d19459c579100df3de3b31cc12cd06b5"
+    },
+    "inner_texttrace_opacity": 1.0,
+    "inner_texttrace_rgb": [
+      0,
+      0,
+      0
+    ],
+    "original_source_index": 9,
+    "pdf_sha256": "66f59a54c959122d3af78cf652e071533292a8e858af55422c5225f404aff661",
+    "poppler_minimum_channel": 252
+  },
+  "proposed_remedy_not_executed": "A separately declared compatibility render may substitute numeric alpha exactly 1 with equivalent 100% only inside literal inline rgba CSS tokens, retaining exact original source/assembly and a byte-level patch ledger. Require authored foreground/background/merged-table proof, fail closed on unsupported/transparent foreground, then separate reviewed natural population.",
+  "schema_version": "source_render_rgba_diagnosis_v17",
+  "source_rewrite_performed": false
+}

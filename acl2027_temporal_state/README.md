@@ -1,8 +1,17 @@
-> Current checkpoint: **v0.16, paused at the user’s request (2026-10-04)**. Read [docs/NEXT_CHAT_HANDOFF_v16.txt](docs/NEXT_CHAT_HANDOFF_v16.txt) and [PROJECT_STATE.json](PROJECT_STATE.json) before continuing. New preparation files and failed attempts are preserved; natural rendering, v16.3 full-DTS execution, new natural questions and new reader completions remain unexecuted. The v16 paper is a draft and the integrated v16 test suite is deferred. The older progress text below remains historical.
-
 # ACL 2027 temporal state research
 
-## Current checkpoint (v0.15)
+## Current checkpoint: v0.17 — source evidence and reader feasibility
+
+The fixed source pool now has qualified inspection views for **101/101 selected blocks (21 tables and 80 neighbors)**, across the original run and two separately recorded recoveries. The original result was **90/101 admitted**. Identity views cover **33/34 candidates**, with one telemetry failure retained, plus four separate SLB literal-cover views.
+
+Full-DTS validation produced **nine clean source attempts, one incomplete taxonomy closure and two telemetry failures**. All **21 candidate bundles** are saved, with **40 additional dependencies** still awaiting rendering and semantic review. Eleven bundles retain interface failures caused by blank source blocks. **1,181 tests pass.**
+
+**No new natural QA gain is claimed.** The new reader reached partial loading, then its application memory watchdog stopped it before readiness; tokenizations and completions remain zero. Reader feasibility, complete evidence-pack admission and independently reviewed questions are the next gates.
+
+Read the [v17 handoff](docs/NEXT_CHAT_HANDOFF_v17.txt), [project state](PROJECT_STATE.json), [working addendum](paper/reader_preparation_study_v17.pdf) and [reproduction guide](docs/reproduce_v17.txt). Original failures, previous checkpoints and the original submission remain preserved. Exact source-bearing artifacts are saved separately; full third-party captures and model weights are outside Git.
+
+
+## Previous checkpoint (v0.15)
 
 The conventional typed reader now processes all **23,651 nonFraction occurrences in 12 fixed filing objects**, after a separately recorded ASCII-encoding amendment. The original six-source rejection remains preserved. Exact agreement with the numeric-only Arelle comparator covers **23,519 common supported values**; **16 nil cases and 116 unsupported transformations** are excluded from that comparison. **10 typed-dimension bindings** remain unresolved. Overall, **23,509 facts** pass both bounded numeric and reported-binding layers.
 

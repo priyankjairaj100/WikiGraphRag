@@ -1,0 +1,41 @@
+V17 source/CSS worksheet reproduction recipes
+
+The two scripts/source_render_css_worksheet_*_v17.py files are byte-identical
+archives of the private mechanical worksheet builders used for the original
+source00–05 and source06–11 review. They contain generic code, fixed paths,
+source identities/digests and schema fields; no literal filing excerpts,
+financial values, credentials or manual visual observations are embedded.
+The original private files are retained. See the preservation receipt for hashes.
+
+These are archival recipes, not in-place repository commands. Both use
+Path(__file__).resolve().parent as their private output directory. Running a
+repository copy from scripts/ would put source-bearing worksheets in Git.
+Do not run them there. No builder was rerun for this preservation operation.
+
+Fixed input roots in the unchanged code:
+  /dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state
+  /dev/shm/wikigraph_v15/external
+The source00–05 recipe binds the original v17 protocol/result/render index and
+all six source/author packets. Source06–11 additionally binds the distinct
+v17.1 telemetry-recovery protocol/result/index, preserving original failures.
+The fixed source files, author packets, original rendered artifacts and pinned
+Python/lxml environment must exist before reproduction. These code archives
+do not contain those third-party source artifacts.
+
+To reproduce mechanically, create fresh directories outside the repository
+under /dev/shm/wikigraph_v15/external, copy the00–05 archive into its fresh
+directory as build_worksheet.py, and copy the06–11 archive into a separate
+fresh directory as build_worksheet_per_source.py. Verify the copied code
+SHA256 against results/source_render_css_worksheet_code_preservation_v17.json.
+Run the00–05 copied script with no arguments. Run the06–11 copied script once
+for each source index6,7,8,9,10,11; it creates one source_XX child directory
+per invocation and refuses an existing child. Use normal Python execution,
+not python -O, because the original recipes use assertions for binding checks.
+Do not reuse the preserved original private output directories.
+
+Fresh output timestamps, output paths and self-path metadata differ from the
+retained historic worksheets. Mechanical checks can be rerun; that does not
+reproduce or replace manual raster observations/admission decisions. No new
+rendering, semantic evidence admission, question authoring or numeric
+normalization occurs in these builders. All generated source-bearing JSON/TXT
+worksheets, raw CSS, values and manual observations stay outside the repository.
