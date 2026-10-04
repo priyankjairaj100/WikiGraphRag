@@ -1,0 +1,120 @@
+{
+  "bound_inputs": {
+    "configs/binding_reader_v16.json": {
+      "bytes": 1648,
+      "sha256": "0171d13fcc30f444380c5f6a8a1eed31cd709eb86713222c21198b197f808038"
+    },
+    "data/reader_binding_v16/interface_controls_v16.json": {
+      "bytes": 18083,
+      "sha256": "66dc7d0e0cdb7c2843634a09b3052d07900c8039d947dd26c6f795b9fee01f01"
+    },
+    "scripts/fetch_local_backend_v07.py": {
+      "bytes": 14451,
+      "sha256": "b2105c02be04cde9d14e5ea126762d8fdb929b0ad525e453edb1bd60a4cf2f29"
+    },
+    "scripts/larger_scorer_v09.py": {
+      "bytes": 34410,
+      "sha256": "67b389f5fe8a87493e245f858607252cb72030f128215a3871db4882303e0dea"
+    },
+    "scripts/local_backend_v07.py": {
+      "bytes": 22665,
+      "sha256": "c63acf150c86c09aca24a53ca9892170385de84e84d7d69308212d71a23260b7"
+    },
+    "scripts/native_binding_reader_v16.py": {
+      "bytes": 37708,
+      "sha256": "757d907edbb13e4b5749506362719cadfd6146000c1c140edfefa159cfbd8b19"
+    },
+    "src/temporal_state/reader_binding_v16.py": {
+      "bytes": 28188,
+      "sha256": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1"
+    },
+    "tests/test_native_binding_reader_adversarial_v16.py": {
+      "bytes": 10719,
+      "sha256": "732f09ee409e7d7bc31daa3904540e83443364a594cdd95320f4bfbe11566993"
+    },
+    "tests/test_native_binding_reader_v16.py": {
+      "bytes": 11408,
+      "sha256": "adbc8286fc1c3ad8659cd55c1a232f32a6a84aa2e2d57771f7f3c14cc05204e6"
+    }
+  },
+  "checked_properties": [
+    "Exact pinned config limits and model/acquisition/relocation metadata binding without loading weights.",
+    "Native input token budget reserves output capacity and never truncates.",
+    "Response prompt/model identity, no input truncation, cold-cache counters, generated-token count and decoding settings are checked.",
+    "Eight authored completions and at most36 paired natural completions; matched question/evidence per arm.",
+    "References remain outside messages/completion body, and unrecognized reference fields are rejected.",
+    "Separate public request-state denominator survives first transport failure and prelaunch guard failure; no retries occur.",
+    "Private raw errors stay external; public records retain only error types, IDs, counts and statuses.",
+    "Raw model-file symlinks and external-output paths resolving into the repository are refused.",
+    "Successful authored qualification is tied to current reader-code recipe before natural request freeze."
+  ],
+  "development_outcomes": [
+    {
+      "detail": "Initial new audit module had a Python line-continuation SyntaxError; corrected before its first test execution. This was audit code, not a driver execution failure.",
+      "kind": "audit_test_draft_error"
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "kind": "first_independent_execution",
+      "tests_run": 8
+    },
+    {
+      "detail": "Added one prelaunch-memory-failure denominator control because current shared-memory pressure makes this a concrete execution risk.",
+      "kind": "final_bounded_addition"
+    }
+  ],
+  "initial_observations": [
+    {
+      "closure": "Owner pinned exact-count contract to current native server; independent fixtures reject every deficit or excess. Actual live conformity remains for the native gate.",
+      "id": "unbounded_returned_token_deficit",
+      "observation": "Initial read accepted any returned-token count <= tokens_predicted although the explanation covered only an end-token convention."
+    },
+    {
+      "closure": "Public request_states preserve every frozen ID; independent mocked transport failure retains one failed/seven unattempted, and prelaunch failure retains eight unattempted/zero calls.",
+      "id": "failed_request_denominator",
+      "observation": "Initial public receipt retained only successful assessment rows plus expected total, omitting explicit failed/unattempted request IDs."
+    },
+    {
+      "closure": "Raw path symlink is rejected before resolving/hashing; independent mock confirms model digest is never called.",
+      "id": "resolved_path_symlink_guard",
+      "observation": "Initial asset symlink test ran after resolving the path, making the intended guard ineffective."
+    },
+    {
+      "closure": "Authored gate now binds reader_recipe_sha256 and natural admission rejects a stale recipe before freeze or native launch.",
+      "id": "authored_gate_reader_code_binding",
+      "observation": "Initial natural admission checked model/config but not the current driver/interface/backend recipe."
+    }
+  ],
+  "limitations": [
+    "This is authored and mocked code validation; no native server was launched and no model, tokenizer or natural QA performance was measured.",
+    "The pinned live response accounting convention, memory viability, process guard behavior and model support still require the single authorized authored gate.",
+    "The offline tests do not authenticate arbitrary researcher edits to receipts or implement a same-process security boundary.",
+    "Independent natural source/reference construction, matched information admission and full joint QA scoring remain separate gates."
+  ],
+  "reader_recipe_sha256": "c8bf5a20b769c9812f610bf263759ebd58d7e5f9d270de8590a43aaf9402cc41",
+  "remaining_concrete_failures": [],
+  "reviewed_at_utc": "2026-10-04T09:48:51.365315+00:00",
+  "reviewer_role": "Independent table-view and interface-audit agent",
+  "schema_version": "native_binding_reader_code_review_v16",
+  "scope": {
+    "actual_asset_hash_rechecked": false,
+    "completion_calls": 0,
+    "model_loads": 0,
+    "natural_filings_inspected": false,
+    "natural_questions_inspected": false,
+    "natural_references_inspected": false
+  },
+  "status": "passed_bounded_authored_review",
+  "verification": {
+    "command": "PYTHONPATH=src python3 -m unittest tests.test_native_binding_reader_v16 tests.test_native_binding_reader_adversarial_v16 -q",
+    "errors": 0,
+    "failures": 0,
+    "independent_tests": 9,
+    "inputs_unchanged_during_run": true,
+    "output_sha256": "60095f7c25106a0b4fbf00250b7e0e6a89fee21ed77b2d25ec14ee2c6a940f19",
+    "owner_tests": 20,
+    "skips": 0,
+    "tests_run": 29
+  }
+}

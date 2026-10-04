@@ -1,0 +1,76 @@
+Full-DTS v16.3 interoperability amendment, 2026-10-04
+
+Preserved history
+
+The original results/full_dts_v16.json retains all 12 prelaunch refusals under
+the total-current memory guard. results/full_dts_v16_2.json retains all 12
+processor failures under the separately reviewed pressure-proxy policy.
+results/full_dts_v16_2_diagnostics.json records the failed occurrence inventory
+and invalid RSS monitoring explicitly. Neither prior result is replaced.
+
+Every v16.2 worker reached an Arelle Session and wrote structured logs, then
+failed in dom_paths before writing any fact records. Empty fact outputs and
+technical failure are retained; diagnostic log severity alone does not make
+that attempt a completed validation or numerical agreement result.
+
+Two measured interoperability corrections
+
+1. Physical XML versus logical Inline XBRL children
+
+Installed Arelle ModelInlineFact.__iter__ yields logical tuple facts, rather
+than all physical XML children of an inline element. The previous path builder
+mixed physical root.iter traversal with Python iteration over child objects.
+A nested HTML element inside a nonNumeric wrapper could therefore be visited
+before a path for its physical parent had been assigned.
+
+The amended path builder explicitly uses lxml etree._Element.iter and
+etree._Element.iterchildren for the original Arelle XML objects. Numeric facts
+are also selected through the physical iterator. Expanded namespace names and
+same-name physical sibling indices retain the frozen v15 locator convention.
+No fact is matched by ordinal, inferred value, question reference or loose
+text similarity. Source SHA, unique locators and exact occurrence counts remain
+required; a missing or different locator remains an observed discrepancy.
+
+tests/test_full_dts_dom_v16_3.py executes a real authored Arelle Session with a
+fictional nonNumeric wrapper, nested HTML/comment/sibling markup and two numeric
+facts. It reproduces the former KeyError, checks the two explicit expanded-name
+paths against ordinary lxml source parsing, and confirms that the original
+Arelle fact objects and authored values 21 and 3 are preserved. No filing or QA
+data is used.
+
+2. Inner PID namespace versus the mounted /proc namespace
+
+A real small subprocess showed os.getpid/Popen.pid in the inner namespace while
+/proc/self and /proc/*/status exposed outer PIDs. The old RSS reader therefore
+looked up unrelated or absent outer processes. The regular expression was not
+the diagnosed defect. v16.2 RSS peaks are unreliable, and its advertised 2 GiB
+RSS limit cannot be claimed as enforced. Its cgroup proxy/OOM telemetry remains
+separate and is preserved.
+
+The amended driver consumes the separately reviewed shared namespace-aware
+owned-process-group RSS helper. Outer PIDs are telemetry metadata only; signals
+use the original caller-created inner group ID. Summed member RSS can double
+count shared pages, a conservative property of this group watchdog.
+
+Missing or malformed owned live-process telemetry fails closed. An absent group
+or a zero RSS value is accepted only after a fresh Popen.poll confirms parent
+exit; live descendants trigger cleanup. After termination the driver verifies
+that no owned live group member remains. Unconfirmed cleanup blocks all
+remaining source launches while preserving their denominator. Actual group
+snapshots accompany every external monitoring sample.
+
+Unchanged experiment and resource scope
+
+The exact 12 source hashes, 23,651 occurrence population, v15 comparison records,
+SEC plugin, dependency graph/cache and Arelle options remain unchanged. The
+single unavailable SIC schema is not retried or silently substituted. No
+network access is allowed during validation. All previous source-byte identity,
+SEC filing-rule, financial-truth and QA limitations remain.
+
+The v16.2 conservative cgroup policy remains: unchanged kernel 8 GiB max,
+strictly less than 7 GiB overlapping pressure proxy, 2 GiB prelaunch reserve,
+run-global OOM event baseline, 300 seconds per source, 2 GiB owned-group RSS and
+256 MiB free shared memory. Sampling is non-atomic and can miss transient peaks;
+the old 7.25 GiB total-current limit is not asserted. All sources execute
+sequentially. Authored tests and independent review precede a new immutable
+results/full_dts_v16_3.json and external validation_v16_3 output directory.

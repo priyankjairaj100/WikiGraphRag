@@ -1,0 +1,257 @@
+Bounded evidence-access and query-binding interface v16
+Authored implementation contract, 2026-10-04
+
+Scope and evidence boundary
+
+This is a conventional prototype for the machine-assisted complete-evidence
+pilot. It is not an evidence retriever, complete XBRL processor, semantic
+entailment verifier, confidence estimator, or algorithmic novelty claim.
+Implementation and its unit fixtures were prepared without natural filing
+values, question candidates, references, or evaluated predictions. No change
+to the frozen v15 reader is made. The adapter accepts only a caller-provided
+acquired evidence pack and has no full-source, typed-document, filesystem,
+network, callback, or hidden-reference lookup interface.
+
+EvidencePack serializes a validated JSON snapshot into an immutable frozen
+dataclass. Constructor inputs, snapshot() returns and prompt projections cannot
+mutate the stored snapshot through shared objects. as_json() is canonical UTF-8
+JSON text; sha256 is its content digest. This protects ordinary API use, not
+malicious code in the same Python process using object.__setattr__, debugger
+access or arbitrary memory inspection. The evaluated process/prompt must receive
+only the exposed pack; process isolation and file-access rules belong to the
+runner. A digest is an integrity identity, not authentication or access permission.
+
+The pack producer is trusted to copy source-exact exposed metadata and to certify
+withholding. Syntax checking cannot detect a hidden year repeated in a visible
+row label or block text. Every duplicate disclosure of a withheld relation must
+be removed in pack construction and independently reviewed before predictions.
+Opaque handles are positional IDs independent of answer labels; a syntactically
+valid handle is not proof the producer avoided encoding a hidden relation in it.
+
+Full evidence-pack schema
+
+All fields below are required; undeclared fields are rejected. JSON duplicate
+keys, nonfinite numbers, malformed references and duplicate global handles fail.
+Unpaired Unicode surrogates and recursive/non-serializable inputs fail through
+the controlled BindingError path; canonical output must be valid UTF-8.
+The implementation caps the complete serialized input at 2,000,000 UTF-8 bytes;
+the separate, much tighter native-token admission budget is mandatory.
+
+  {
+    "schema_version": "reader_evidence_pack_v16",
+    "pack_id": "p01",
+    "blocks": [{"handle": "b01", "text": "complete acquired block text"}],
+    "witnesses": [{"handle": "w01", "aspect": "period", "text": "Year 2024"}],
+    "facts": [{
+      "handle": "f01", "value": "12.5", "labels": ["Revenue"],
+      "bindings": {
+        "concept": null, "entity": null, "period": null,
+        "unit": null, "population": null, "source": null
+      }
+    }]
+  }
+
+At most 64 facts, 64 blocks and 512 witnesses are accepted; no truncation occurs.
+Handles match [A-Za-z][A-Za-z0-9_-]{0,31}. Numeric value is an exact canonical
+fixed-point decimal string or null. Canonical numbers omit plus signs, negative
+zero, exponent notation, redundant integer leading zeros and fractional trailing
+zeros. A null value stays unavailable, never zero. Numeric interpretation and
+normalization must already have passed the frozen decoder/admission profile.
+
+Each of the six binding entries is null (unacquired/unavailable) or:
+
+  {"value": <aspect value>, "witnesses": ["w01", ...]}
+
+A present entry needs at least one observed witness of the correct aspect.
+The aspect values are:
+
+  concept: expanded QName string, preserving the namespace.
+  entity: {"scheme": <string>, "identifier": <string>}.
+  period: complete v15 {"kind", "lexemes"}; instant, duration or forever.
+          Forever retains {"forever":""}, as in the v15 representation.
+  unit: complete v15 {"shape", "measures", "numerator_measures",
+                      "denominator_measures"}; simple_product or divide.
+        Measure QNames and multiplicities are retained; no unit conversion.
+  population: {"label": <explicit visible scope label>,
+               "dimensions": <copied explicit reported dimensions list>}.
+  source: {"sha256": <64 lowercase hexadecimal characters>,
+           "version": <physical-version label>}.
+
+Source hashes, version names, entity identifiers, concept namespaces and period
+lexemes are never inferred from a filename or a question. Empty dimensions do
+not establish consolidation. The population label needs positive visible-source
+support and separate review. The interface checks dictionary shape, not calendar
+semantics, taxonomy dimensional validity, legal issuer identity, source provenance
+or concept equivalence. Admission and the frozen v15 reader supply those bounded
+preconditions. The entire underlying document is never passed to this adapter.
+
+Compact model projection
+
+EvidencePack.prompt_view() produces one deterministic lossless projection for
+both B1 and B2. EvidencePack.from_prompt_view(projection) reverses it; the restored
+pack must have exactly the original canonical digest. Nothing is silently omitted.
+Expansion also requires the supplied compact view to equal the canonical
+reprojection. Extra unused text/value/binding rows, duplicate-value aliases or
+reordered/renamed noncanonical registries are rejected rather than ignored. A
+pack digest alone cannot certify model-visible text that expansion discarded.
+Identical strings and binding values are serialized once, even when multiple
+facts have different witness handles. Registry IDs are generated in input order.
+
+  schema_version: "reader_evidence_prompt_v16"
+  pack_id: unchanged
+  aspect_order: ["concept","entity","period","unit","population","source"]
+  texts: [[text_id, exact_string], ...]
+  values: [[value_id, [aspect_name, exact_aspect_value]], ...]
+  bindings: [[binding_id, [value_id, [witness_handles...]]], ...]
+  blocks: [[block_handle, text_id], ...]
+  witnesses: [[witness_handle, aspect_name, text_id], ...]
+  facts: [[fact_handle, exact_value_or_null, [label_text_ids...],
+           [six_binding_ids_or_null_in_aspect_order]], ...]
+
+The prompt must describe those columns. Neither projection size nor authored
+round-trip tests replace token counting with the pinned native tokenizer and
+rendered chat template. Both systems receive identical exposed information;
+their different instructions/schema overhead is fully charged and reported.
+
+B1 proposer and deterministic finalizer
+
+validate_proposal(pack, proposal) accepts a JSON string or JSON-compatible object.
+The strict required schema is:
+
+  {
+    "decision": "answer" | "clarify" | "insufficient",
+    "unknown": true | false,
+    "clarify_aspects": [],
+    "hypotheses": [{"claims": [{
+      "fact_handle": "f01",
+      "binding_witnesses": {
+        "concept": ["..."], "entity": ["..."], "period": ["..."],
+        "unit": ["..."], "population": ["..."], "source": ["..."]
+      }
+    }]}]
+  }
+
+There are at most eight joint hypotheses and at most eight claims per hypothesis.
+A hypothesis is nonempty and cannot repeat a fact handle. clarify_aspects is a
+required list: it contains one or more distinct names from the six aspect enums
+for a clarify decision and is empty for every other decision. It expresses a
+bounded request such as which period/source, with no free prose claim exemption. In a C request, one
+hypothesis jointly assigns both requested claims. The fact handle selects only
+the exposed exact bindings; the model cannot fabricate an aspect dictionary or
+relax one by supplying a wildcard. Every cited witness must belong to that fact's
+corresponding acquired aspect. An empty citation list is retained as insufficient
+evidence. An invented or wrong-aspect witness is invalid output. Extra fields,
+extra prose, fenced JSON, duplicate JSON keys and beam overflow are invalid.
+
+render_proposal(pack, proposal) yields action answered, clarify, insufficient or
+invalid_output, plus quantities, reason_codes, unknown, clarify_aspects and a full expanded
+hypothesis trace. Invalid output is retained as a failure; no repair completion
+or silent best-hypothesis selection exists. Output-limit/transport status must
+be handled by the runner, which must not pass a truncated but accidentally valid
+JSON prefix as a successful completion.
+
+For each claimed fact, the finalizer scans every exposed fact for a compatible
+scope. All known aspects must agree exactly; an unknown aspect cannot exclude a
+possible match. Every compatible handle is retained. Same-scope equal duplicates
+produce one scoped quantity with every occurrence handle. Different values or
+unavailable possible matches produce insufficient evidence, even when the proposer
+listed only one occurrence. Known different aspects can exclude a candidate.
+The comparison does not examine hidden facts or promise absence outside the pack.
+
+A resolved quantity includes exact value, all six expanded scope values, every
+compatible occurrence handle and the selected claims' binding citations. Repeated
+claims naming equal-scope/equal-value occurrence aliases collapse to one scoped
+quantity; cited witnesses and occurrence handles are unioned in stable order.
+The original claims remain in the hypothesis trace. Equivalent hypotheses also
+retain the union of their citations and cannot create false clarification merely
+because one listed more duplicate occurrence aliases. Distinct
+joint assignments across hypotheses cause clarification; equal numbers with
+different periods, units, entities or sources remain different assignments.
+An explicit unknown flag always blocks unconditional answering. If the proposer
+requests an answer while declaring unknown=true, the finalizer asks for all six
+aspects; that broad request is not automatically a correct precise clarification.
+Alternative scoped assignments request their differing aspects. A conflict in
+quantities at an otherwise identical scope produces insufficient, because asking
+for a different year/unit/source cannot by itself resolve that conflict. Proposer refusal
+is respected and does not emit a user-facing quantity. Candidate traces remain
+diagnostic data, not supported answer claims.
+
+The finalizer does not accept the natural-language question as an argument and
+cannot certify that the selected facts answer it. A syntactically valid selection
+of the wrong year will render that wrong-year scoped value and must fail external
+reference grading. The explicit unknown flag is a model declaration, not proof
+that its beam covers every possible interpretation. This limitation is intentional
+and must remain visible in reported results.
+
+B0 fixed lexical baseline
+
+lexical_baseline(pack, question) returns the same strict B1 proposal schema. Its
+rules were fixed using authored fixtures before natural reference access:
+
+1. NFKC-normalize and case-fold text; tokenize Unicode alphanumeric runs excluding
+   underscores. Do not stem, embed, learn aliases, infer synonyms, match answers,
+   split taxonomy local names automatically, or use a per-question map.
+2. Rank visible fact labels by the number of distinct overlapping question
+   tokens after the exact STOP_WORDS constant. Retain every best positive tie.
+3. Explicit year tokens match 1900..2099. Unit cues are the exact UNIT_WORDS
+   constant. Entity/source/population constraints are informative question tokens
+   found in their visible witnesses, excluding label tokens, year tokens, unit
+   cues and stop words. Known mismatches exclude a candidate; missing bindings
+   remain unknown rather than disappearing.
+4. An explicit single-value request requires all stated years in the period
+   witness and all stated unit cues in the unit witness. The fixed plural cues
+   are both, each, two and respectively. For a plural request, candidate periods
+   may match any requested year, but every requested year must be represented
+   and at least two different scopes must survive. Plural candidates form one
+   joint hypothesis. Single-request ties become separate hypotheses.
+5. Any content token absent from every exposed label/binding witness, no explicit
+   year, no candidate, or an unrepresented requested year marks interpretation
+   unknown. More than eight distinct scopes produces clarification without an
+   arbitrary top-eight truncation. Equal-scope rows can seed one hypothesis;
+   finalization still scans and retains every exposed duplicate.
+
+STOP_WORDS, UNIT_WORDS and MULTI_WORDS are literal frozen constants in the module.
+The rules are deliberately narrow. They cannot reliably distinguish a report
+year from its contained reporting period, resolve financial synonyms or enforce
+arbitrary natural-language constraints. Such mistakes remain measurable mapping
+errors; the baseline is not claimed semantically sound because it is deterministic.
+It may abstain heavily. Any later change after reference/prediction access needs
+a separate development version; no question-specific patches are allowed.
+
+B2 direct reader and support checking
+
+The direct reader sees the same compact pack. validate_direct_output accepts:
+
+  {
+    "action": "answered" | "clarify" | "insufficient",
+    "unknown": true | false,
+    "clarify_aspects": [],
+    "quantities": [{"value": <canonical decimal string>,
+                    "fact_handle": "f01", "binding_witnesses": <six lists>}]
+  }
+
+At most eight quantities are allowed. The clarify_aspects rule is identical to B1. The action answered requires a nonempty
+quantity list and unknown=false. The selected handle expands the stated scope
+and citations in the same way as B1; B2 supplies the number itself. An incorrect
+canonical number remains in the output and is scored, never replaced with the
+decoder's number. The validator checks pointer access and shape, not truth.
+
+score_direct_quantities checks exact exposed-value agreement, complete binding
+citations and unresolved/conflicting possible duplicates. It explicitly returns
+semantic_question_correctness='not_checked'. A refusal with a material quantity
+still has that quantity checked; unsupported claims are not excused by a refusal
+prefix. External scoring must also compare scope, action, semantic mapping and
+citations against frozen references and count missing requested claims. These
+helpers alone are not the pilot's joint-correctness scorer.
+
+Validation and use
+
+  PYTHONPATH=src python3 -m unittest discover -s tests \
+    -p 'test_reader_binding_v16.py' -v
+
+The authored controls cover source/year/entity/unit/namespace/population collisions,
+quantity conflicts, unavailable bindings, null quantities, citation mistakes,
+JSON/beam limits, immutable access, compact projection, fixed lexical rules and
+direct-reader error retention. Passing them establishes only tested interface
+behavior. Natural questions, human gold, held-out evaluation, model performance,
+retrieval improvement and publication-level novelty remain separate work.

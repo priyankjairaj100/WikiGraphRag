@@ -1,0 +1,39 @@
+{
+  "schema_version": "reader_acquisition_protocol_v16",
+  "frozen_at_utc": "2026-10-04T09:14:37.639213+00:00",
+  "asset": {
+    "filename": "Qwen3.5-9B-UD-IQ3_XXS.gguf",
+    "repository": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "url": "https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/3885219b6810b007914f3a7950a8d1b469d598a5/Qwen3.5-9B-UD-IQ3_XXS.gguf",
+    "bytes": 4016235744,
+    "sha256": "40d0f32cd3030b04f0784139a589fb63e876cfbf8667d56311b79783c74fd149"
+  },
+  "acquirer_sha256": "11329b320a6bd7730b7291c7ba525fdc8738f58274c34e1882326ef728d5a5b4",
+  "feasibility_path": "results/reader_runtime_feasibility_v16.json",
+  "feasibility_sha256": "c557d032e6afdf5feac52d7503bcb2a251ea11770a1704f7f7bfae2e2b281be6",
+  "external_directory": "/dev/shm/wikigraph_v15/reader_runtime_v16/assets",
+  "weight_download_attempt": 1,
+  "resume_allowed": false,
+  "expected_cgroup_limit_bytes": 8589934592,
+  "guards": {
+    "minimum_filesystem_reserve_bytes": 536870912,
+    "memory_current_stop_bytes": 7784628224,
+    "block_bytes": 1048576,
+    "monitor_interval_seconds": 0.1,
+    "socket_timeout_seconds": 30,
+    "maximum_wall_seconds": 1800
+  },
+  "runtime": {
+    "directory": "/dev/shm/wikigraph_v15/reader_runtime_v16/assets/runtime/llama-b11146",
+    "base_config": "configs/model_backend_v09.json",
+    "base_config_sha256": "029554e357a3ad553e419db3e38d23c359260b873d1f13332f29e3d665323802"
+  },
+  "authorization_scope": "Exact candidate weight acquisition only; no model loading or completions. Root authorized this bounded acquisition after feasibility review.",
+  "storage_strategy": "One .partial weight, incremental SHA256 and independent full-file digest, atomic rename on verified success. No automatic retry, fallback or resume. Failure retains receipt and partial.",
+  "counts_before_acquisition": {
+    "weight_downloads": 0,
+    "model_loads": 0,
+    "completion_calls": 0
+  }
+}

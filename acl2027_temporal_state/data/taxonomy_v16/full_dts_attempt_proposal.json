@@ -1,0 +1,209 @@
+{
+  "schema_version": "full_dts_attempt_proposal_v16",
+  "status": "proposal_not_frozen_not_executed",
+  "created_utc": "2026-10-04T09:17:27.613532+00:00",
+  "purpose": "Conventional processor baseline and effective taxonomy labels for all 12 fixed source objects. No natural QA, financial truth or SEC original-byte identity claim.",
+  "population": {
+    "source_objects": 12,
+    "expected_nonfraction_occurrences": 23651,
+    "ordered_source_files": [
+      "PFE_2023.html",
+      "PFE_2024.html",
+      "NFLX_2022.html",
+      "NFLX_2023.html",
+      "NVDA_2022.html",
+      "NVDA_2023.html",
+      "LLY_2023.html",
+      "LLY_2024.html",
+      "BRK-B_2022.html",
+      "BRK-B_2023.html",
+      "SLB_2022.html",
+      "SLB_2023.html"
+    ]
+  },
+  "processor": {
+    "arelle_version": "2.46.0",
+    "wheel_sha256": "c1105ea4dcd9e77dab5b4d59552a7ba571f481cc6cb61412bef9e2c4890be96b",
+    "session_api_import": "passed",
+    "sec_transform_commit": "4891c4c9889c77af247428ceff4fa7cc52d534ea",
+    "sec_transform_files": [
+      "data/taxonomy_v16/sec_transform_plugin_probe.json",
+      "data/taxonomy_v16/sec_transform_dependency_probe.json"
+    ],
+    "note": "EDGAR transform-only plugin, not EDGAR validator/renderer/XULE. Official latest docs use stale plural transforms path; pinned repository uses singular transform."
+  },
+  "staging": {
+    "source_rule": "Hard-link or copy exact original HF bytes into source-specific directory under their candidate original filing filename; verify SHA before and after. No XML or encoding edits.",
+    "source_base_uri": "local staging directory URI, recorded separately from candidate official SEC accession; relative extension XSD/linkbases are staged beside the HF object.",
+    "candidate_taxonomy_relation": "matching declared namespace and schemaRef; does not prove SEC byte identity",
+    "shared_cache": "Arelle WebCache.urlToCacheFilepath mapping; exact requested URL keys retained; downloaded bodies reused by hash without unrecorded HTTP/HTTPS alias assumptions"
+  },
+  "dependency_capture": {
+    "reuse_phase1_phase2_bytes": 16271459,
+    "direct_import_urls": [
+      "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd",
+      "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd",
+      "http://www.xbrl.org/2003/xlink-2003-12-31.xsd",
+      "http://www.xbrl.org/2005/xbrldt-2005.xsd",
+      "http://www.xbrl.org/lrr/arcrole/factExplanatory-2009-12-16.xsd",
+      "http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd",
+      "http://www.xbrl.org/lrr/role/net-2009-12-16.xsd",
+      "https://www.xbrl.org/2020/extensible-enumerations-2.0.xsd",
+      "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd",
+      "https://www.xbrl.org/dtr/type/2022-03-31/types.xsd",
+      "https://xbrl.fasb.org/srt/2021/elts/srt-2021-01-31.xsd",
+      "https://xbrl.fasb.org/srt/2021/elts/srt-roles-2021-01-31.xsd",
+      "https://xbrl.fasb.org/srt/2021/elts/srt-types-2021-01-31.xsd",
+      "https://xbrl.fasb.org/srt/2022/elts/srt-2022.xsd",
+      "https://xbrl.fasb.org/srt/2022/elts/srt-roles-2022.xsd",
+      "https://xbrl.fasb.org/srt/2022/elts/srt-types-2022.xsd",
+      "https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd",
+      "https://xbrl.fasb.org/srt/2024/elts/srt-2024.xsd",
+      "https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-2021-01-31.xsd",
+      "https://xbrl.fasb.org/us-gaap/2021/elts/us-roles-2021-01-31.xsd",
+      "https://xbrl.fasb.org/us-gaap/2021/elts/us-types-2021-01-31.xsd",
+      "https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd",
+      "https://xbrl.fasb.org/us-gaap/2022/elts/us-roles-2022.xsd",
+      "https://xbrl.fasb.org/us-gaap/2022/elts/us-types-2022.xsd",
+      "https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd",
+      "https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd",
+      "https://xbrl.sec.gov/country/2021/country-2021.xsd",
+      "https://xbrl.sec.gov/country/2022/country-2022.xsd",
+      "https://xbrl.sec.gov/country/2023/country-2023.xsd",
+      "https://xbrl.sec.gov/country/2024/country-2024.xsd",
+      "https://xbrl.sec.gov/currency/2021/currency-2021.xsd",
+      "https://xbrl.sec.gov/currency/2022/currency-2022.xsd",
+      "https://xbrl.sec.gov/cyd/2024/cyd-af-sub-2024.xsd",
+      "https://xbrl.sec.gov/dei/2021q4/dei-2021q4.xsd",
+      "https://xbrl.sec.gov/dei/2022/dei-2022.xsd",
+      "https://xbrl.sec.gov/dei/2023/dei-2023.xsd",
+      "https://xbrl.sec.gov/dei/2024/dei-2024.xsd",
+      "https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd",
+      "https://xbrl.sec.gov/ecd/2023/ecd-sub-2023.xsd",
+      "https://xbrl.sec.gov/ecd/2024/ecd-2024.xsd",
+      "https://xbrl.sec.gov/exch/2021/exch-2021.xsd",
+      "https://xbrl.sec.gov/exch/2022/exch-2022.xsd",
+      "https://xbrl.sec.gov/naics/2021/naics-2021.xsd",
+      "https://xbrl.sec.gov/naics/2022/naics-2022.xsd",
+      "https://xbrl.sec.gov/sic/2021/sic-2021.xsd",
+      "https://xbrl.sec.gov/sic/2022/sic-2022.xsd",
+      "https://xbrl.sec.gov/stpr/2021/stpr-2021.xsd",
+      "https://xbrl.sec.gov/stpr/2022/stpr-2022.xsd"
+    ],
+    "unfetched_relative_nonlabel_linkbase_count": 33,
+    "additional_network_body_cap_bytes": 134217728,
+    "per_response_cap_bytes": 8388608,
+    "max_unique_URLs": 2000,
+    "timeout_seconds": 30,
+    "logical_attempts_per_URL": 1,
+    "allowed_hosts": [
+      "www.sec.gov",
+      "xbrl.sec.gov",
+      "xbrl.fasb.org",
+      "www.xbrl.org",
+      "xbrl.org",
+      "www.w3.org"
+    ],
+    "ordering": "ordered source seed list, then deterministic breadth-first traversal with outgoing absolute resolved URIs sorted; deduplicate full defragmented requested URLs",
+    "edge_kinds": [
+      "xs:import/@schemaLocation",
+      "xs:include/@schemaLocation",
+      "xs:redefine/@schemaLocation",
+      "link:schemaRef/@xlink:href",
+      "link:linkbaseRef/@xlink:href",
+      "link:roleRef/@xlink:href",
+      "link:arcroleRef/@xlink:href",
+      "link:loc/@xlink:href"
+    ],
+    "xml_base": "Resolve with the actual resource URL and inherited xml:base, preserve both lexical and resolved URIs.",
+    "completion": "Freeze URL/body/hash graph including all failed or refused edges; never call incomplete closure full DTS validation. Missing built-in core documents may be supplied only from the pinned Arelle wheel and individually hashed.",
+    "html_assets": "No images, CSS, JavaScript, full submissions or PDF bodies fetched."
+  },
+  "runtime_options": {
+    "entrypointFile": "one exact staged HF file per process",
+    "validate": true,
+    "internetConnectivity": "offline",
+    "cacheDirectory": "shared frozen explicit directory",
+    "disablePersistentConfig": true,
+    "keepOpen": true,
+    "logFile": "logToBuffer",
+    "plugins": "absolute directory of pinned SEC transform-only plugin",
+    "validateEFM": false,
+    "disclosureSystemName": null,
+    "packages": null,
+    "calcs": "none",
+    "utrValidate": false,
+    "formulaAction": "none",
+    "baseTaxonomyValidationMode": "all",
+    "abortOnMajorError": false
+  },
+  "execution_limits": {
+    "sequential_sources": true,
+    "wall_seconds_per_source": 300,
+    "proposed_RSS_kill_limit_bytes": 2147483648,
+    "estimated_RSS_per_source_bytes": [
+      268435456,
+      805306368
+    ],
+    "estimate_status": "planning estimate only; unmeasured before first model load",
+    "model_weights_not_loaded_concurrently": true,
+    "all12_attempted_even_if_resource_failures": true
+  },
+  "status_axes": {
+    "technical": [
+      "completed",
+      "timeout",
+      "memory_limit",
+      "exception",
+      "missing_dependency",
+      "processor_load_failure"
+    ],
+    "validation": [
+      "not_executed",
+      "incomplete_DTS",
+      "completed_with_errors",
+      "completed_without_errors"
+    ],
+    "separate_counts": [
+      "ERROR/CRITICAL taxonomy/instance validation codes",
+      "WARNING codes",
+      "dependency/access errors",
+      "unresolved concepts",
+      "observed nonFraction occurrence count",
+      "valid numeric xValue count",
+      "nil and invalid facts",
+      "effective English labels with QName fallback disabled",
+      "reported contexts/units/explicit and typed dimensions/defaults"
+    ],
+    "prohibition": "Arelle Session.run boolean and zero process exit do not imply zero validation errors; no generic validated=true collapsing these axes."
+  },
+  "comparison": {
+    "join": "source SHA plus exact expanded-name DOM occurrence locator; retain missing/duplicate unmatched occurrences",
+    "common_numeric": "Compare canonical Decimal strings only for both-readable nonnil occurrences; separate every value/status/locator mismatch.",
+    "sec_only_numeric": "Report 116 v15 unsupported SEC numwordsen occurrences separately from the original common 23,519 numerical population.",
+    "labels": "concept.label(lang=(en-US,en), fallbackToQname=False), preserving all alternative effective roles/languages in external outputs; labels do not prove question-concept equivalence.",
+    "semantic_scope": "concept type/periodType, context aspects, unit structure and dimensions; reported empty dimensions still do not certify consolidation.",
+    "source_and_value_outputs": "external only; public counts, hashes, code and locators/reason codes"
+  },
+  "before_execution_required": [
+    "Pin code implementing deterministic capture and offline runner",
+    "Verify current source, runtime and SEC transform file hashes",
+    "Run authored plugin and cache-resolution controls",
+    "Freeze options/limits/status interpretation and ordered denominator",
+    "Capture and freeze dependency graph before first source validation run"
+  ],
+  "resource_estimate": {
+    "US_GAAP_archive_directory_sizes": [
+      "2021: 6.2M",
+      "2022: 6.2M",
+      "2023: 6.3M",
+      "2024: 6.8M"
+    ],
+    "US_GAAP_archive_sum_display_units": "25.5M compressed, approximate server display units",
+    "recursive_raw_body_planning_bytes": [
+      41943040,
+      125829120
+    ],
+    "planning_note": "Estimate only, not measured dependency closure. Fetch only reachable raw XML resources to avoid storing archive plus extracted copies. 128 MiB is a hard additional-response cap, not a completeness guarantee."
+  }
+}

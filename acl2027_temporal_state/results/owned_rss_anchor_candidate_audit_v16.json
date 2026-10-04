@@ -1,0 +1,16 @@
+{
+  "schema_version": "owned_rss_anchor_candidate_audit_v16",
+  "status": "authored_tests_passed_real_probe_failed",
+  "helper_sha256": "e3063c8d340877189fc443fb54ae8bc5f7d3388ee37dc16891fda2b401131ee6",
+  "helper_unchanged": true,
+  "test_sha256": "5200513aa67120c10f222cb8e975314fae112ac7b8dd5c5adc3f877db88eeb5f",
+  "authored_test_returncode": 0,
+  "authored_test_count": 11,
+  "test_output": "test_anchor_requires_actual_direct_child_parent (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_anchor_requires_actual_direct_child_parent) ... ok\ntest_anchor_retains_descendants_after_leader_disappears (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_anchor_retains_descendants_after_leader_disappears) ... ok\ntest_different_namespace_with_same_inner_group_is_excluded (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_different_namespace_with_same_inner_group_is_excluded) ... ok\ntest_known_zombie_can_have_zero_rss (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_known_zombie_can_have_zero_rss) ... ok\ntest_leader_pid_reuse_fails_closed (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_leader_pid_reuse_fails_closed) ... ok\ntest_malformed_live_rss_fails_closed (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_malformed_live_rss_fails_closed) ... ok\ntest_malformed_namespace_map_fails_closed (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_malformed_namespace_map_fails_closed) ... ok\ntest_missing_live_rss_fails_closed (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_missing_live_rss_fails_closed) ... ok\ntest_outer_pid_does_not_select_inner_group (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_outer_pid_does_not_select_inner_group) ... ok\ntest_unreadable_namespace_with_malformed_group_is_not_excluded (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_unreadable_namespace_with_malformed_group_is_not_excluded) ... ok\ntest_unreadable_owned_member_cannot_yield_partial_success (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_unreadable_owned_member_cannot_yield_partial_success) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.012s\n\nOK\n",
+  "real_probe_receipt": "results/owned_rss_anchor_real_subprocess_probe_v16.json",
+  "real_probe_sha256": "331cf76b9e5ab5e3768dfbcfb38329073c2312b7bfad8c356d82bfd31bce2f90",
+  "real_probe_status": "failed",
+  "diagnosis": "The Linux proc children interface /proc/<own outer pid>/task/<own outer pid>/children is unavailable; binding fails closed before any RSS sample. A separate owned-process check confirmed FileNotFoundError while the outer task directory and status remained readable.",
+  "no_natural_rerun_admitted": true,
+  "created_unix_seconds": 1791109211.446151
+}

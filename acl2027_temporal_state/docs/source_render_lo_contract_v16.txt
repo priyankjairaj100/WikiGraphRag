@@ -1,0 +1,54 @@
+V16 separate LibreOffice authored-rendering feasibility candidate
+===============================================================
+
+This probe is a separately versioned candidate following the failed PyMuPDF
+Story visual fixture. It does not modify or replace the Story implementation,
+fixture, original outputs, receipt, or failed visual review. Its purpose is to
+test whether the supported local LibreOffice HTML importer preserves the same
+authored rowspan/colspan table geometry. An Office HTML importer is not a browser
+CSS engine; even a fixture pass does not establish general browser fidelity.
+
+The probe script accepts only an external destination. It cannot accept natural
+filing paths, arbitrary HTML, questions, or references. The unchanged authored
+fixture SHA256 is
+633dee7e51748f704700ac27299b1266ef615b69051724d7b163e65717fd390c.
+Its assembled HTML SHA256 is
+f6f409bc271a2b4120a46fe9b31ab921c2c1a93aafbd6f6f3aa7a769594a7b82.
+Both are checked before creating an attempt. Assembly uses the same exact source
+bytes, head style blocks, original ancestor opening tags, and selected table span
+as the failed Story attempt. No merged cell, source style, inline fact, number,
+or label is simplified, flattened, replaced, or reconstructed. This exact
+authored assembled HTML contains no script or loadable subresource references.
+Natural-source resource isolation is explicitly not yet validated.
+
+The supported soffice wrapper creates an isolated profile passed through
+-env:UserInstallation. No existing user document profile or application session
+is used. The installed version observed before execution is LibreOfficeDev
+26.8.0.0.alpha0, revision 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5.
+The wrapper and script are bound by file SHA256 in the external attempt receipt.
+Temporary files, the profile, input HTML/XML, logs, PDF, extracted text and PNGs
+remain outside Git. Existing destination directories and files are refused.
+Failures and partial outputs are retained.
+
+The new conversion process is bounded to 300 seconds. It is refused before
+launch if cgroup memory.current is at least 7.25 GiB, and its own new process
+group is terminated if sampled cgroup usage crosses that threshold. Sampling is
+every 0.25 seconds; this is an observed safety cutoff, not a kernel-enforced memory
+limit and not a promise that a transient spike cannot occur between samples.
+No shared or unrelated process is stopped. Rasterization has a separate 60-second
+cap and the same memory check. No browser binary is downloaded or security
+sandbox disabled for this candidate.
+
+The PDF is rendered to PNG with Poppler at 110 dpi. Text and numeric-label geometry
+checks are diagnostics, and every authored output page must also be inspected
+visually against the unchanged fixture. Known CSS/layout failures remain failures;
+successful conversion or token extraction cannot override visual evidence. Any
+later natural-source renderer requires a separate protocol and the approved
+resource-isolation/bounded-output design; this probe is not that implementation.
+
+Execution:
+  PYTHONPATH=src python3 scripts/probe_source_render_lo_v16.py \
+    --external-output /external/new_authored_lo_attempt
+
+Authored checks:
+  PYTHONPATH=src python3 -m unittest tests.test_source_render_lo_v16 -q

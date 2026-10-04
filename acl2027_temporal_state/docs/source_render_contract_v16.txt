@@ -1,0 +1,139 @@
+V16 bounded source-block inspection rendering
+===========================================
+
+Authored visual outcome: failed candidate
+----------------------------------------
+The first authored fixture passed all 19 code tests but failed visual inspection.
+Story 1.26.6 did not preserve rowspan/colspan column geometry; year headings were
+placed over incorrect data columns. Caption placement also differed materially.
+The exact original fixture, generated HTML/PDF/PNG, receipt, and failed visual
+review are preserved externally under source_render_authored_v16/attempt01.
+No natural filing, question, or reference has been rendered with this candidate.
+This implementation is retained as the tested failed candidate and MUST NOT be
+used to admit source references. A separate renderer amendment is required for
+browser-level table layout. The implementation and the test suite are unchanged
+from this failed visual attempt; passing token/pagination checks did not establish
+layout correctness. The remainder documents the failed candidate's operation.
+
+Purpose
+-------
+This is a conventional local inspection view for reviewing selected filing
+blocks. It renders original XHTML markup, not a table transcribed from typed
+values, a model answer, or a reference annotation. A successful render does not
+establish browser visibility, entity scope, year scope, units, numerical truth,
+or answer correctness. No natural filing, question, or reference was inspected
+during implementation and authored-fixture validation.
+
+Input and source identity
+-------------------------
+The API takes an original source path and a selection object containing
+source_sha256, source_bytes, and blocks. Each block contains block_id, dom_path,
+and anchor with exactly byte_start, byte_stop, and span_sha256. The expanded-name
+ordinal locator and source anchor come from the source table inventory; blocks
+may also identify an original paragraph or inline XHTML span. Source bytes are
+not reformatted. SHA256, byte length, locator, element type, both byte boundaries,
+and span SHA256 are verified before any output directory is created. CLI calls
+add exact source-file and selection-file SHA256 arguments. The receipt includes
+the canonical-JSON selection digest, which is deliberately distinct from the
+CLI's original selection-file digest when formatting differs.
+
+The frozen v15.1 byte parser is shared with the table-view pipeline. This is not
+an independent byte-anchor implementation. Its strict XML parse, namespace
+locators, UTF-8/ASCII-only declaration support, DTD/entity refusal, and node/depth
+bounds apply. Other encodings, prefixed XHTML element names, unsafe or repeated
+block IDs, non-body blocks, and unsupported block element types are refused.
+Inline XBRL prefixed tags are retained byte-for-byte within the selected block.
+Their treatment by Story is subject to the rendering limitations below.
+
+Assembly
+--------
+Each requested block gets an independent HTML and PDF. The HTML contains the
+exact source html opening tag, an assembly head containing exact original style
+elements inside the source head, every original opening ancestor tag down from
+the html element, the exact selected block bytes, and generated matching closing
+tags for the ancestor wrappers. The selected fragment is also saved independently
+without any transformation. Ancestor opening tags and head styles have source
+byte anchors and hashes in the receipt. Source siblings are omitted. Source head
+style ordering is retained; external stylesheet links are counted but not loaded.
+Out-of-head style blocks are not additionally copied into the assembly head;
+ones already inside the selected block remain in that exact fragment.
+
+No labels, table headers, units, years, financial scope, or missing text are added
+to the source content. A visually separated machine-generated header is added
+to the PDF after source rendering, with a source hash prefix, selection block ID,
+page number, and an inspection limitation notice. This header is independent of
+source CSS. Source table spans, inline markup, character references, and explicit
+source styles are retained. Layout and source text ordering can nevertheless
+differ because this is a fragment rendered by an HTML engine with a CSS subset.
+
+Renderer, resources and limits
+------------------------------
+PyMuPDF Story 1.26.6 was used for the authored fixture. Story receives archive=None,
+user_css=None, and default em=12. No Archive, file-resource resolver, browser,
+network fetch layer, script executor, typed reader output, or constructed table
+is passed to it. PyMuPDF's documented archive=None behavior omits image/font
+resource lookup. External CSS, image, and font assets are not acquired. Built-in
+fonts may be substituted; images, unsupported CSS, and other browser features
+may be absent. This is not a system-call audit or a browser-faithful rendering.
+
+Pages are fixed A4 landscape. Each source block is capped at 8 pages by default
+(configurable 1..12), placed inside 28-point side/bottom margins and below a
+76-point header region. Pagination that still reports content after the cap is
+marked page_bound_reached and is never treated as complete. Each block runs in a
+fresh Python worker with a 120-second wall-time cap by default (1..180 seconds).
+Timeout/error outputs are retained. Input is capped at 25 MiB, each assembled HTML
+at 5 MiB, and each request at 16 blocks. No source scaling or shrinking is added
+to force content to fit. The output byte budget is checked after each completed
+block; exceeding 100,000,000 bytes stops further blocks and records a failed,
+partial attempt. A single block can exceed that soft budget before the check.
+
+With --png, Poppler pdftoppm rasterizes all produced pages at 110 dpi with the same
+wall-time cap per block. Raster failure is retained and marks the attempt failed.
+Public project code/tests contain only authored fixtures. Source-bearing HTML,
+XML fragments, PDFs, extracted text, PNGs, renderer diagnostics, and receipts are
+written only outside the resolved Git repository. An existing output directory
+is refused, and individual files are opened exclusively. No prior attempt is
+overwritten. Processing faults and partial PDFs are not deleted or silently
+re-rendered. Raw resource diagnostics remain external because they can contain
+source strings.
+
+Inspection requirements
+-----------------------
+Successful pagination produces rendered_inspection_views_pending_visual_review,
+not a validated reference or rendering certificate. Text extraction is saved for
+diagnostics and does not replace visual inspection. Page positions and extracted
+words outside page bounds are diagnostic only: clipping, omitted glyphs, hidden
+content, and unsupported markup can evade them. Inspect every page as a PNG with
+Poppler before using the view for annotation. Reviewers must compare the original
+source block, row/column layout, labels, and relevant narrative context. Neighbors
+are only included when separately selected; their semantic attachment is not
+inferred. The original filing bytes remain the source of record.
+
+Authored validation
+-------------------
+tests/test_source_render_v16.py exercises exact source/inline markup retention,
+source CSS and ancestor anchors, source/span/locator errors, UTF-8 and ASCII,
+unsupported encoding and prefixed XHTML, entity refusal, block IDs, external
+output/no-overwrite refusal, original displayed-token retention, and pagination
+failure retention. Its fixture is intentionally fabricated and contains no
+natural filing values. Passing the tests is not a natural-source rendering score.
+
+CLI
+---
+  PYTHONPATH=src python3 scripts/render_source_blocks_v16.py \
+    --source /external/filing.html --source-sha256 FULL_SOURCE_SHA256 \
+    --blocks /external/selection.json --blocks-sha256 FULL_SELECTION_FILE_SHA256 \
+    --external-output /external/new_inspection_attempt --max-pages 8 --png
+
+Example selection schema (replace all sample fields with verified anchors):
+  {"source_sha256":"...", "source_bytes":1234,
+   "blocks":[{"block_id":"source_table_0", "dom_path":"/...",
+              "anchor":{"byte_start":100,"byte_stop":900,"span_sha256":"..."}}]}
+
+Primary API reference
+---------------------
+https://pymupdf.readthedocs.io/en/latest/story-class.html
+Accessed 2026-10-04. The live documentation covers versions through 1.28.2; the
+installed execution runtime is 1.26.6. Constructor/archive behavior, explicit
+place/draw pagination, and the returned more flag were checked against the
+installed signatures and authored execution, not assumed from version identity.

@@ -1,0 +1,339 @@
+{
+  "schema_version": "claim_ledger_v16",
+  "status": "draft_paused_before_remaining_execution",
+  "manuscript_path": "paper/reader_preparation_study_v16.json",
+  "manuscript_sha256": "87314e37ef38a57cd4a28fe927b185e7c6a1f144c4a438beee98202dc65cb7eb",
+  "claims": [
+    {
+      "id": "V16-C01",
+      "statement": "This checkpoint prepares a reader study on the twelve existing development filings, with no natural QA execution.",
+      "evidence_level": "Project preparation scope",
+      "evidence": [
+        {
+          "path": "results/reader_pool_v16.json",
+          "sha256": "f99558d6a1bcc553f50ea0611b587c7b5964a22688d38c1b4651a7f4a17556fb"
+        },
+        {
+          "path": "docs/reader_binding_protocol_draft_v16.txt",
+          "sha256": "145e0c268bbba5dd5339ff9c9f655f0bd727ac1e020227fac08f7e3a6dce3322"
+        }
+      ],
+      "limits": [
+        "No held-out/generalization or algorithmic novelty claim."
+      ],
+      "manuscript_locations": [
+        "Abstract",
+        "Section 1"
+      ]
+    },
+    {
+      "id": "V16-C02",
+      "statement": "The original table extraction retained a storage-cap failure; the separately frozen gzip amendment completes all twelve sources without changing extraction logic.",
+      "evidence_level": "Preserved technical failure and storage-only amendment",
+      "evidence": [
+        {
+          "path": "results/table_view_inventory_v16.json",
+          "sha256": "9c41d6c0b48363afd3d75e61bd6d0a6d4a37272acdcb6ca928619de3e7531a3d"
+        },
+        {
+          "path": "results/table_view_inventory_v16_1.json",
+          "sha256": "ae8a9aed70706956512b2dcb11c97dcf8241f01ab27026d6cfd04d0133625ad4"
+        }
+      ],
+      "limits": [
+        "Original partial outputs are not reclassified as successful.",
+        "DOM extraction is not browser rendering or semantic evidence verification."
+      ],
+      "manuscript_locations": [
+        "Section 2",
+        "Table 2"
+      ]
+    },
+    {
+      "id": "V16-C03",
+      "statement": "The complete structural views contain 23,651 numeric occurrences, 1,765 tables and 16,861 rows; the independent streaming storage audit passes after its own retained field-location mistake is corrected.",
+      "evidence_level": "Aggregate inventory and container provenance audit",
+      "evidence": [
+        {
+          "path": "results/table_view_inventory_v16_1.json",
+          "sha256": "ae8a9aed70706956512b2dcb11c97dcf8241f01ab27026d6cfd04d0133625ad4"
+        },
+        {
+          "path": "results/table_storage_independent_audit_v16_attempt01.json",
+          "sha256": "c459f9745c2cbbe1d6bb10e79182cdaeddea75151af686fef03161fc13f94ead"
+        },
+        {
+          "path": "results/table_storage_independent_audit_v16.json",
+          "sha256": "e7751a57c447f43e97b37e1051779f0b3c4dd83c6cb4237e1956f9ae42b3db34"
+        }
+      ],
+      "limits": [
+        "Shared extractor/v15 lineage; not independent parser conformance."
+      ],
+      "manuscript_locations": [
+        "Section 2",
+        "Table 2"
+      ]
+    },
+    {
+      "id": "V16-C04",
+      "statement": "The original fixed revenue-table selection fills 13 of 24 planned table slots; four physical filings have no selected table. That outcome remains unchanged.",
+      "evidence_level": "Frozen purpose-selected source pool",
+      "evidence": [
+        {
+          "path": "results/reader_pool_v16.json",
+          "sha256": "f99558d6a1bcc553f50ea0611b587c7b5964a22688d38c1b4651a7f4a17556fb"
+        },
+        {
+          "path": "data/reader_binding_v16/question_pool_protocol.json",
+          "sha256": "b27d62f0e31c2c6f113bd579a22c36adedf2c0a61fd36b7d30b2ef26e5848451"
+        }
+      ],
+      "limits": [
+        "Original execution is preserved separately from the later post-inspection visibility amendment.",
+        "Complete execution does not mean complete source coverage or admitted questions."
+      ],
+      "manuscript_locations": [
+        "Abstract",
+        "Sections 1 and 3",
+        "Table 3"
+      ]
+    },
+    {
+      "id": "V16-C05",
+      "statement": "The selector applies the revenue/net-sales predicate independently within each row after a pre-freeze review found an across-row false match.",
+      "evidence_level": "Authored-code review and correction",
+      "evidence": [
+        {
+          "path": "results/reader_pool_code_review_v16.json",
+          "sha256": "b9c32ee233a84029951080598d2cd5709c198ff50574203acffea597d8901e9b"
+        },
+        {
+          "path": "docs/reader_pool_contract_v16.txt",
+          "sha256": "4fa35cd0f31f04d175bb01910b6907016aeebbfe10eefd71efa1b15faa76d6da"
+        }
+      ],
+      "limits": [
+        "Review of rule implementation does not establish semantic completeness."
+      ],
+      "manuscript_locations": [
+        "Section 3"
+      ]
+    },
+    {
+      "id": "V16-C06",
+      "statement": "The binding interface uses acquired-only immutable packs with explicit aspect witnesses and no hidden full-source lookup.",
+      "evidence_level": "Conventional interface contract",
+      "evidence": [
+        {
+          "path": "src/temporal_state/reader_binding_v16.py",
+          "sha256": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1"
+        },
+        {
+          "path": "docs/reader_binding_interface_v16.txt",
+          "sha256": "9e4662be8c99998a648fb12f37e746ba5c497801f3b4c60ea5323e2842e816e4"
+        }
+      ],
+      "limits": [
+        "Same-process malicious introspection is outside the API boundary.",
+        "Producer must independently remove every duplicate disclosure of withheld relations."
+      ],
+      "manuscript_locations": [
+        "Section 4"
+      ]
+    },
+    {
+      "id": "V16-C07",
+      "statement": "Independent interface review preserves an initial 28-test run with 6 failures and 1 error; the corrected implementation passes 71 combined authored tests.",
+      "evidence_level": "Authored tests and preserved engineering defects",
+      "evidence": [
+        {
+          "path": "results/reader_binding_code_review_v16.json",
+          "sha256": "d9a5b1fa94d9507efc7c8e8f75cd2c194d207d4103f535c63e4da9d68f32236d"
+        }
+      ],
+      "limits": [
+        "Tests do not validate question meaning, natural QA accuracy or model superiority."
+      ],
+      "manuscript_locations": [
+        "Abstract",
+        "Section 4",
+        "Table 4"
+      ]
+    },
+    {
+      "id": "V16-C08",
+      "statement": "Exact supported scoped values and citations remain separate from semantic question correctness; direct-reader wrong values are preserved for grading.",
+      "evidence_level": "Schema and deterministic support behavior",
+      "evidence": [
+        {
+          "path": "src/temporal_state/reader_binding_v16.py",
+          "sha256": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1"
+        },
+        {
+          "path": "docs/reader_binding_interface_v16.txt",
+          "sha256": "9e4662be8c99998a648fb12f37e746ba5c497801f3b4c60ea5323e2842e816e4"
+        },
+        {
+          "path": "results/reader_binding_code_review_v16.json",
+          "sha256": "d9a5b1fa94d9507efc7c8e8f75cd2c194d207d4103f535c63e4da9d68f32236d"
+        }
+      ],
+      "limits": [
+        "An incorrect question-to-handle mapping can remain schema-valid and must fail external reference grading."
+      ],
+      "manuscript_locations": [
+        "Section 4"
+      ]
+    },
+    {
+      "id": "V16-C09",
+      "statement": "The separately frozen visibility-only amendment fills 21 of 24 table slots and covers all twelve sources, with 29 newly eligible tables, seven original selections retained and six displaced by earlier eligible tables.",
+      "evidence_level": "Post-inspection development amendment",
+      "evidence": [
+        {
+          "path": "results/reader_pool_v16_1.json",
+          "sha256": "a700e40a2f5a39349d2f9db9550fd9f1dbecb3d298a5fee083cf309daec702ce"
+        },
+        {
+          "path": "data/reader_binding_v16/question_pool_protocol_v16_1.json",
+          "sha256": "93a9a669fa1c0014a410832e02dbbfba3384e181af7caec9f04bc35d975d436a"
+        },
+        {
+          "path": "docs/reader_pool_visibility_amendment_v16_1.txt",
+          "sha256": "b941d2b1a0697153ab8ad13a94d091bf68ca25310036e1a4de49550eab010db3"
+        }
+      ],
+      "limits": [
+        "All nonvisibility predicates replay unchanged.",
+        "The rule permits only conservatively empty layout subtrees; it is not computed CSS visibility.",
+        "Table coverage does not establish admitted questions or complete evidence."
+      ],
+      "manuscript_locations": [
+        "Abstract",
+        "Sections 1 and 3",
+        "Tables 1 and 3"
+      ]
+    },
+    {
+      "id": "V16-C10",
+      "statement": "The acquired native candidate stops at the original prelaunch memory guard: zero model processes, zero tokenized prompts and zero completion calls out of eight planned authored calls.",
+      "evidence_level": "Terminal resource-feasibility failure",
+      "evidence": [
+        {
+          "path": "results/native_binding_controls_v16.json",
+          "sha256": "e7704edc736b19c4dfe05079c1d9865beb86f834682a5b0be4d0644ffcbbc739"
+        },
+        {
+          "path": "results/native_binding_preflight_failure_review_v16.json",
+          "sha256": "4a2dba96e9b1a90f78d7bdbacb36d3d251b6518b6b1c36dfcbf7da933e23cc6d"
+        },
+        {
+          "path": "results/reader_acquisition_v16.json",
+          "sha256": "b257054935c52c29ee9c67c7d36e8da3d3ba7d887f260463f0ae537eb41b6e0d"
+        }
+      ],
+      "limits": [
+        "No model-performance measurement was obtained.",
+        "No native retry or transfer to the small-process resource amendment occurred."
+      ],
+      "manuscript_locations": [
+        "Abstract",
+        "Section 5",
+        "Table 5"
+      ]
+    },
+    {
+      "id": "V16-C11",
+      "statement": "The authored Story rendering fails merged-column geometry despite passing its code tests. LibreOffice retains the tested year/value geometry but does not retain the declared borders and width.",
+      "evidence_level": "Authored visual inspection",
+      "evidence": [
+        {
+          "path": "results/source_render_authored_visual_qa_v16.json",
+          "sha256": "37587e4fbedcb11c8f2884d5a76e2e8db5113bf4caf6eb2f9567328f057226d2"
+        },
+        {
+          "path": "results/source_render_feasibility_v16.json",
+          "sha256": "9604d8b6e5c1fff14f18b9930d941f9c9477ba587934f59c91e4a2c623f9435e"
+        }
+      ],
+      "limits": [
+        "Qualified office inspection aid only; no browser fidelity.",
+        "Authored success does not admit any natural question or reference."
+      ],
+      "manuscript_locations": [
+        "Section 2"
+      ]
+    },
+    {
+      "id": "V16-C12",
+      "statement": "Dependency capture records 117 resources including one transport timeout; eleven source closures are complete. The original twelve-source validation attempt is refused before worker launch.",
+      "evidence_level": "Captured metadata and preserved resource failure",
+      "evidence": [
+        {
+          "path": "data/taxonomy_v16/full_dts_dependency_graph.json",
+          "sha256": "23d7666e4fd81097a84fdea8bca59f36b11b9a362f349c275a956e2f942b524f"
+        },
+        {
+          "path": "results/full_dts_v16.json",
+          "sha256": "06ff190815bc204d556b06088d65e718340f116a132879d91b1dccb08a5b5f4c"
+        }
+      ],
+      "limits": [
+        "Candidate metadata does not establish original SEC byte identity.",
+        "No completed comparison follows from dependency acquisition."
+      ],
+      "manuscript_locations": [
+        "Section 5"
+      ]
+    },
+    {
+      "id": "V16-C13",
+      "statement": "The v16.2 small-process resource amendment produces twelve processor failures and no completed inventory or comparison. The later diagnosis finds mixed physical/logical DOM traversal and unreliable process RSS lookup.",
+      "evidence_level": "Preserved technical attempt",
+      "evidence": [
+        {
+          "path": "results/full_dts_v16_2.json",
+          "sha256": "f5c06eda9e8fa85f07b23de2f35e157d660abc86dfb669c80f44687819cc48c7"
+        },
+        {
+          "path": "docs/full_dts_resource_amendment_v16_2.txt",
+          "sha256": "6509fc81927a3909d54d79b45bb3c858c8a6bd52e4581f9469d6070493f78bc1"
+        }
+      ],
+      "limits": [
+        "No claim of 2 GiB RSS enforcement for this attempt.",
+        "The pressure-proxy policy differs from the old total-current soft cap.",
+        "No processor-failure result is reclassified by a later repair."
+      ],
+      "manuscript_locations": [
+        "Section 5"
+      ]
+    }
+  ],
+  "unfinished_evidence": [
+    "full_DTS_v16_3_not_executed_at_pause",
+    "natural_source_rendering_not_executed_at_pause"
+  ],
+  "not_claimed": [
+    "Natural QA gains",
+    "Generally stronger reader",
+    "New retrieval algorithm",
+    "Full XBRL conformance",
+    "Verified browser fidelity",
+    "Independent human annotation",
+    "Held-out performance"
+  ],
+  "format_disclosure": "ReportLab working PDF plus generic editable TeX; ACL template/TeX compilation not verified.",
+  "draft_pdf": {
+    "path": "paper/reader_preparation_study_v16.pdf",
+    "sha256": "a4f8a32ca57b9e8f512e4671082c2d84ae8f485a802b2d1e7ca3730e9b226ba0"
+  },
+  "draft_tex": {
+    "path": "paper/reader_preparation_study_v16.tex",
+    "sha256": "f4216d2a02b71f6fe03a79f6783556187444395b88d3ccc886a99c0f2cffca57",
+    "compiled": false,
+    "acl_template_verified": false
+  },
+  "pause_note": "User requested stop/save. This is a preparation draft, not a completed experiment or final paper. No new PDF generation or test run was performed at pause."
+}

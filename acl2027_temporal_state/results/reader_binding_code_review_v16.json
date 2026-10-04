@@ -1,0 +1,129 @@
+{
+  "bound_inputs": {
+    "docs/reader_binding_interface_v16.txt": {
+      "bytes": 14815,
+      "sha256": "9e4662be8c99998a648fb12f37e746ba5c497801f3b4c60ea5323e2842e816e4"
+    },
+    "src/temporal_state/reader_binding_v16.py": {
+      "bytes": 28188,
+      "sha256": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1"
+    },
+    "tests/test_reader_binding_adversarial_v16.py": {
+      "bytes": 12805,
+      "sha256": "c0ea99f769e27960de360f0e526e90155d4c3814bd2bb97b44bbff01537c38e0"
+    },
+    "tests/test_reader_binding_v16.py": {
+      "bytes": 19154,
+      "sha256": "de4e813b4a7835da2040e0613a5ec3b2e89c38788b1d45648244e2aaf7f5a6c3"
+    }
+  },
+  "checked_properties": [
+    "Acquired-only pack and proposal shapes; no hidden reference/full-document fields.",
+    "Every unavailable aspect or missing citation blocks supported answering, even with narrative cues present.",
+    "Unknown candidate aspects cannot exclude potentially conflicting quantities; known mismatches can.",
+    "Exact scoped identity retains namespace/source distinctions and nulls; wrong direct values are scored, not repaired.",
+    "Refusal prefixes do not exempt material direct claims from support checks.",
+    "Duplicate occurrences collapse only at identical exact scope/value while preserving citation provenance.",
+    "Compact prompt projection is lossless/canonical and detached; unused registry content is rejected.",
+    "Clarification aspects remain explicit; same-scope numeric conflicts are insufficient rather than false relational clarification.",
+    "Large decimal strings remain exact; malformed JSON, Unicode, unknown booleans and invalid pointers are controlled errors."
+  ],
+  "final_outcome": {
+    "bound_inputs_unchanged_during_run": true,
+    "command": "PYTHONPATH=src python3 -m unittest tests.test_reader_binding_v16 tests.test_reader_binding_adversarial_v16 -q",
+    "errors": 0,
+    "failures": 0,
+    "independent_adversarial_tests": 30,
+    "output_sha256": "3b6c050255787be2f37fa39c55ea40424539f58f28c501628784c2a45b9aea31",
+    "owner_tests": 41,
+    "skips": 0,
+    "tests_run": 71
+  },
+  "findings": [
+    {
+      "final_status": "closed_by_authored_regressions",
+      "fix": "Coalesce each exact scope/value inside joint assignments and across equivalent hypotheses; union occurrence and citation provenance; keep diagnostic claims.",
+      "id": "duplicate_alias_assignments",
+      "initial_status": "confirmed"
+    },
+    {
+      "final_status": "closed_by_authored_regressions",
+      "fix": "Require exact canonical reprojection of the expanded pack; reject unused, extra, reordered or noncanonical registry content.",
+      "id": "ignored_compact_registry_content",
+      "initial_status": "confirmed"
+    },
+    {
+      "final_status": "closed_by_python_object_and_escaped_JSON_regressions",
+      "fix": "Validate canonical serialization is UTF-8 and turn Unicode/serialization recursion failures into controlled BindingError.",
+      "id": "unpaired_unicode_exception",
+      "initial_status": "confirmed"
+    }
+  ],
+  "initial_outcome": {
+    "at_utc": "2026-10-04T09:36:06.112637+00:00",
+    "code_sha256": "101ac5741ab4c6d3d979ae7c6cae2bfe1127c8cf1fc20d85bdfe7263756e879c",
+    "details": [
+      {
+        "test": "tests.test_reader_binding_adversarial_v16.BindingAdversarialTests.test_alias_only_hypothesis_difference_is_not_ambiguity",
+        "traceback": "Traceback (most recent call last):\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_reader_binding_adversarial_v16.py\", line 32, in test_alias_only_hypothesis_difference_is_not_ambiguity\n    self.assertEqual(result['action'], 'answered')\nAssertionError: 'clarify' != 'answered'\n- clarify\n+ answered\n\n"
+      },
+      {
+        "test": "tests.test_reader_binding_adversarial_v16.BindingAdversarialTests.test_joint_duplicate_citations_are_unioned_without_dropping_provenance",
+        "traceback": "Traceback (most recent call last):\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_reader_binding_adversarial_v16.py\", line 39, in test_joint_duplicate_citations_are_unioned_without_dropping_provenance\n    self.assertEqual(len(result['quantities']), 1)\nAssertionError: 2 != 1\n"
+      },
+      {
+        "test": "tests.test_reader_binding_adversarial_v16.BindingAdversarialTests.test_joint_equal_duplicate_handles_emit_one_scoped_quantity",
+        "traceback": "Traceback (most recent call last):\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_reader_binding_adversarial_v16.py\", line 24, in test_joint_equal_duplicate_handles_emit_one_scoped_quantity\n    self.assertEqual(len(result['quantities']), 1)\nAssertionError: 2 != 1\n"
+      },
+      {
+        "test": "tests.test_reader_binding_adversarial_v16.BindingAdversarialTests.test_unused_compact_binding_cannot_be_silently_ignored",
+        "traceback": "Traceback (most recent call last):\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_reader_binding_adversarial_v16.py\", line 149, in test_unused_compact_binding_cannot_be_silently_ignored\n    with self.assertRaises(BindingError):EvidencePack.from_prompt_view(compact)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: BindingError not raised\n"
+      },
+      {
+        "test": "tests.test_reader_binding_adversarial_v16.BindingAdversarialTests.test_unused_compact_text_cannot_smuggle_content",
+        "traceback": "Traceback (most recent call last):\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_reader_binding_adversarial_v16.py\", line 139, in test_unused_compact_text_cannot_smuggle_content\n    with self.assertRaises(BindingError):EvidencePack.from_prompt_view(compact)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: BindingError not raised\n"
+      },
+      {
+        "test": "tests.test_reader_binding_adversarial_v16.BindingAdversarialTests.test_unused_compact_value_cannot_smuggle_metadata",
+        "traceback": "Traceback (most recent call last):\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_reader_binding_adversarial_v16.py\", line 144, in test_unused_compact_value_cannot_smuggle_metadata\n    with self.assertRaises(BindingError):EvidencePack.from_prompt_view(compact)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: BindingError not raised\n"
+      },
+      {
+        "test": "tests.test_reader_binding_adversarial_v16.BindingAdversarialTests.test_unpaired_unicode_surrogate_fails_as_controlled_input_error",
+        "traceback": "Traceback (most recent call last):\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_reader_binding_adversarial_v16.py\", line 196, in test_unpaired_unicode_surrogate_fails_as_controlled_input_error\n    with self.assertRaises(BindingError):EvidencePack(raw)\n                                         ^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/src/temporal_state/reader_binding_v16.py\", line 144, in __init__\n    pack = _load(payload)\n           ^^^^^^^^^^^^^^\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/src/temporal_state/reader_binding_v16.py\", line 76, in _load\n    return _load(_dump(value))\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/src/temporal_state/reader_binding_v16.py\", line 68, in _load\n    if len(value.encode(\"utf-8\")) > 2_000_000:\n           ^^^^^^^^^^^^^^^^^^^^^\nUnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 35: surrogates not allowed\n"
+      }
+    ],
+    "errors": 1,
+    "failures": 6,
+    "output_sha256": "557ada74f8de807290ddc757e955923d3b267657215fe68ea3fcee300bae666d",
+    "skips": 0,
+    "test_sha256": "68c5f58c35f3ad89ba936a7658908f810de1a454ba6a677415cabc6d819ca62c",
+    "tests_run": 28
+  },
+  "limitations": [
+    "Authored-only interface review; no natural filing values, questions, references or model outputs were read.",
+    "The trusted pack producer must verify source provenance, semantic witness support, acquired-only disclosure and complete withholding; syntax cannot establish those facts.",
+    "Same-process immutable objects are not a sandbox or an access-control system.",
+    "Semantic question correctness, missing/extra requested claims and the full pilot scoring require external frozen references; these helpers are not end-to-end QA validation.",
+    "Scope comparison is the bounded reported-aspect representation; no taxonomy/period/unit equivalence, financial interpretation or natural-language entailment was added."
+  ],
+  "remaining_concrete_failures": [],
+  "reviewed_at_utc": "2026-10-04T09:39:51.277926+00:00",
+  "reviewer_role": "independent table-view agent; authored-only review",
+  "schema_version": "reader_binding_code_review_v16",
+  "scope": {
+    "model_calls": 0,
+    "natural_filings_inspected": false,
+    "questions_inspected": false,
+    "references_inspected": false
+  },
+  "status": "passed_bounded_authored_review",
+  "supplementary_followup_probe": {
+    "at_utc": "2026-10-04T09:37:43.458646+00:00",
+    "code_sha256": "b7c3de226db2d9c86151e05aad2706825ad39677d40f7be6ae2ba13338b7c2a1",
+    "details": [],
+    "errors": 0,
+    "failures": 0,
+    "test_sha256": "8eaccf678b57f51a11aecab7492019c7acbd88bd746785fb5af8f9dda219038a",
+    "tests_run": 1
+  }
+}

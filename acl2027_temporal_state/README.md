@@ -1,3 +1,5 @@
+> Current checkpoint: **v0.16, paused at the user’s request (2026-10-04)**. Read [docs/NEXT_CHAT_HANDOFF_v16.txt](docs/NEXT_CHAT_HANDOFF_v16.txt) and [PROJECT_STATE.json](PROJECT_STATE.json) before continuing. New preparation files and failed attempts are preserved; natural rendering, v16.3 full-DTS execution, new natural questions and new reader completions remain unexecuted. The v16 paper is a draft and the integrated v16 test suite is deferred. The older progress text below remains historical.
+
 # ACL 2027 temporal state research
 
 ## Current checkpoint (v0.15)

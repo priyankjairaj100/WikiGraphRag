@@ -1,0 +1,14 @@
+{
+  "schema_version": "owned_rss_authored_audit_initial_v16",
+  "observed_unix_seconds": 1791108562.279804,
+  "input_hashes": {
+    "scripts/process_group_rss_v16.py": "6c38652f0c4db3e334a54cdb80d1e12d73d34ddfb534848680ef68e175359ffe",
+    "tests/test_owned_rss_audit_v16.py": "9c05226d0072d5afaac0d617bae31db1632e1f20f93de51e84d0aa942434dd02"
+  },
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "test_different_namespace_with_same_inner_group_is_excluded (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_different_namespace_with_same_inner_group_is_excluded) ... ok\ntest_known_zombie_can_have_zero_rss (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_known_zombie_can_have_zero_rss) ... ok\ntest_malformed_live_rss_fails_closed (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_malformed_live_rss_fails_closed) ... ok\ntest_malformed_namespace_map_fails_closed (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_malformed_namespace_map_fails_closed) ... ok\ntest_missing_live_rss_fails_closed (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_missing_live_rss_fails_closed) ... ok\ntest_outer_pid_does_not_select_inner_group (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_outer_pid_does_not_select_inner_group) ... ok\ntest_unreadable_owned_member_cannot_yield_partial_success (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_unreadable_owned_member_cannot_yield_partial_success) ... FAIL\n\n======================================================================\nFAIL: test_unreadable_owned_member_cannot_yield_partial_success (test_owned_rss_audit_v16.OwnedRSSAuditTests.test_unreadable_owned_member_cannot_yield_partial_success)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_owned_rss_audit_v16.py\", line 74, in test_unreadable_owned_member_cannot_yield_partial_success\n    self.assertFalse(rss.read_group_rss(71, proc_root=base)[\"telemetry_ok\"])\nAssertionError: True is not false\n\n----------------------------------------------------------------------\nRan 7 tests in 0.020s\n\nFAILED (failures=1)\n",
+  "natural_source_reads": 0,
+  "model_loads": 0,
+  "inputs_unchanged": true
+}

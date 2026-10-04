@@ -1,0 +1,2016 @@
+{
+  "code_sha256": "d05dbb47291a5cb1b43494e581a1f2e61ff9bf134a4ef4f8ffa1d693d34aaf86",
+  "created_utc": "2026-10-04T09:10:29.404759+00:00",
+  "input_bindings": {
+    "acl2027_temporal_state/data/fresh_source_audit_v14/source_identity_structure.json": "59064443d7e0520da4afa838ef0ee3de2c00db0cb093d271a2fd296c4fd052ed",
+    "acl2027_temporal_state/data/taxonomy_v16/resource_protocol.json": "5c56beac2645cb8e9feb6d8b198f631d5e5b89a5e957f763cbae02650bb0a713"
+  },
+  "limitations": [
+    "Candidate accession inferred from official index metadata, not byte-identical source recapture.",
+    "No recursive taxonomy discovery, Arelle model loading, XBRL validation or label-aware reader evaluation performed.",
+    "HTTP success, schema parse and embedded labels are resource checks only. All raw response bodies are external."
+  ],
+  "records": [
+    {
+      "candidate": {
+        "candidate_accession": "0000078003-24-000039",
+        "candidate_cik": "78003",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/pfe-20231231.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/0000078003-24-000039-index.htm",
+        "source_file": "PFE_2023.html",
+        "web_index_document_bytes": 5349184
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/us-gaap/2023": 2677,
+        "http://www.pfizer.com/20231231": 362,
+        "http://xbrl.sec.gov/dei/2023": 2
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "country": "http://xbrl.sec.gov/country/2023",
+        "dei": "http://xbrl.sec.gov/dei/2023",
+        "ecd": "http://xbrl.sec.gov/ecd/2023",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "pfe": "http://www.pfizer.com/20231231",
+        "srt": "http://fasb.org/srt/2023",
+        "us-gaap": "http://fasb.org/us-gaap/2023",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "18092",
+        "content_type": "text/html",
+        "elapsed_seconds": 8.7,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/001_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/0000078003-24-000039-index.htm",
+        "finished_utc": "2026-10-04T09:07:19.546864+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 18092,
+        "response_sha256": "76c6384825aced45040edada6c26efb700cfca95193664e21324b3795c593979",
+        "started_utc": "2026-10-04T09:07:10.846693+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/0000078003-24-000039-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 3041,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": null,
+            "content_type": "text/xml",
+            "elapsed_seconds": 7.967,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/002_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/pfe-20231231.xsd",
+            "finished_utc": "2026-10-04T09:07:27.513722+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 181439,
+            "response_sha256": "ea89c9fa3fb7037e441e73bd6bb79667513ddbf2e9faf2e3ffc0840c0faded62",
+            "started_utc": "2026-10-04T09:07:19.547115+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/pfe-20231231.xsd"
+          },
+          "href": "pfe-20231231.xsd",
+          "schema_metadata": {
+            "declared_elements": 394,
+            "embedded_label_arcs": 0,
+            "embedded_label_resources": 0,
+            "imports": [
+              {
+                "namespace": "http://fasb.org/srt/2023",
+                "schema_location": "https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2023",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd"
+              },
+              {
+                "namespace": "http://www.w3.org/1999/xlink",
+                "schema_location": "http://www.xbrl.org/2003/xlink-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2020-01-21",
+                "schema_location": "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2022-03-31",
+                "schema_location": "https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2005/xbrldt",
+                "schema_location": "http://www.xbrl.org/2005/xbrldt-2005.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2023",
+                "schema_location": "https://xbrl.sec.gov/country/2023/country-2023.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2023",
+                "schema_location": "https://xbrl.sec.gov/dei/2023/dei-2023.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/ecd/2023",
+                "schema_location": "https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [
+              {
+                "href": "pfe-20231231_pre.xml",
+                "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
+              },
+              {
+                "href": "pfe-20231231_def.xml",
+                "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+              },
+              {
+                "href": "pfe-20231231_lab.xml",
+                "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef"
+              },
+              {
+                "href": "pfe-20231231_cal.xml",
+                "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef"
+              }
+            ],
+            "target_namespace": "http://www.pfizer.com/20231231"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "pfe-20231231.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 5349189,
+      "source_file": "PFE_2023.html",
+      "source_identity_verified": false,
+      "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+      "unique_nonfraction_concepts": 652
+    },
+    {
+      "candidate": {
+        "candidate_accession": "0000078003-25-000054",
+        "candidate_cik": "78003",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/pfe-20241231.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/0000078003-25-000054-index.htm",
+        "source_file": "PFE_2024.html",
+        "web_index_document_bytes": null
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/srt/2024": 1,
+        "http://fasb.org/us-gaap/2024": 2624,
+        "http://www.pfizer.com/20241231": 350,
+        "http://xbrl.sec.gov/dei/2024": 2
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "country": "http://xbrl.sec.gov/country/2024",
+        "cyd": "http://xbrl.sec.gov/cyd/2024",
+        "dei": "http://xbrl.sec.gov/dei/2024",
+        "ecd": "http://xbrl.sec.gov/ecd/2024",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "pfe": "http://www.pfizer.com/20241231",
+        "srt": "http://fasb.org/srt/2024",
+        "us-gaap": "http://fasb.org/us-gaap/2024",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "17403",
+        "content_type": "text/html",
+        "elapsed_seconds": 8.206,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/003_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/0000078003-25-000054-index.htm",
+        "finished_utc": "2026-10-04T09:07:35.805712+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 17403,
+        "response_sha256": "d25a84ee3b2f01abd9d5be6410e3a6d4c9b3650f2ff85a96d2f4378117c1e84f",
+        "started_utc": "2026-10-04T09:07:27.599582+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/0000078003-25-000054-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 2977,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": null,
+            "content_type": "text/xml",
+            "elapsed_seconds": 8.113,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/004_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/pfe-20241231.xsd",
+            "finished_utc": "2026-10-04T09:07:43.919092+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 175431,
+            "response_sha256": "459cca240f073d98e515f1f3037ec9720efba8d3a972e47bd408e52a522824c8",
+            "started_utc": "2026-10-04T09:07:35.806149+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/pfe-20241231.xsd"
+          },
+          "href": "pfe-20241231.xsd",
+          "schema_metadata": {
+            "declared_elements": 364,
+            "embedded_label_arcs": 0,
+            "embedded_label_resources": 0,
+            "imports": [
+              {
+                "namespace": "http://fasb.org/srt/2024",
+                "schema_location": "https://xbrl.fasb.org/srt/2024/elts/srt-2024.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2024",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2020-01-21",
+                "schema_location": "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2022-03-31",
+                "schema_location": "https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2005/xbrldt",
+                "schema_location": "http://www.xbrl.org/2005/xbrldt-2005.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2024",
+                "schema_location": "https://xbrl.sec.gov/country/2024/country-2024.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/cyd-af-sub/2024",
+                "schema_location": "https://xbrl.sec.gov/cyd/2024/cyd-af-sub-2024.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2024",
+                "schema_location": "https://xbrl.sec.gov/dei/2024/dei-2024.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/ecd/2024",
+                "schema_location": "https://xbrl.sec.gov/ecd/2024/ecd-2024.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [
+              {
+                "href": "pfe-20241231_pre.xml",
+                "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
+              },
+              {
+                "href": "pfe-20241231_def.xml",
+                "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+              },
+              {
+                "href": "pfe-20241231_lab.xml",
+                "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef"
+              },
+              {
+                "href": "pfe-20241231_cal.xml",
+                "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef"
+              }
+            ],
+            "target_namespace": "http://www.pfizer.com/20241231"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "pfe-20241231.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 5338969,
+      "source_file": "PFE_2024.html",
+      "source_identity_verified": false,
+      "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+      "unique_nonfraction_concepts": 639
+    },
+    {
+      "candidate": {
+        "candidate_accession": "0001065280-23-000035",
+        "candidate_cik": "1065280",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/nflx-20221231.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/0001065280-23-000035-index.htm",
+        "source_file": "NFLX_2022.html",
+        "web_index_document_bytes": 1965558
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/us-gaap/2022": 767,
+        "http://www.netflix.com/20221231": 88,
+        "http://xbrl.sec.gov/dei/2022": 2
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "country": "http://xbrl.sec.gov/country/2022",
+        "dei": "http://xbrl.sec.gov/dei/2022",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "nflx": "http://www.netflix.com/20221231",
+        "srt": "http://fasb.org/srt/2022",
+        "us-gaap": "http://fasb.org/us-gaap/2022",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "13085",
+        "content_type": "text/html",
+        "elapsed_seconds": 7.961,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/005_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/0001065280-23-000035-index.htm",
+        "finished_utc": "2026-10-04T09:07:51.899488+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 13085,
+        "response_sha256": "01d0780ac6540decac162d0aee02429036636886ea075db1dd581fd86bb3e9fa",
+        "started_utc": "2026-10-04T09:07:43.938374+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/0001065280-23-000035-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 857,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": "47936",
+            "content_type": "text/xml",
+            "elapsed_seconds": 7.97,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/006_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/nflx-20221231.xsd",
+            "finished_utc": "2026-10-04T09:07:59.869891+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 47936,
+            "response_sha256": "ad843fb9b9abef8fabd02b315e87ec1964d341cb7c5d5b4fdf212eda9c287f91",
+            "started_utc": "2026-10-04T09:07:51.899770+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/nflx-20221231.xsd"
+          },
+          "href": "nflx-20221231.xsd",
+          "schema_metadata": {
+            "declared_elements": 67,
+            "embedded_label_arcs": 0,
+            "embedded_label_resources": 0,
+            "imports": [
+              {
+                "namespace": "http://fasb.org/srt/2022",
+                "schema_location": "https://xbrl.fasb.org/srt/2022/elts/srt-2022.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2022",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd"
+              },
+              {
+                "namespace": "http://www.w3.org/1999/xlink",
+                "schema_location": "http://www.xbrl.org/2003/xlink-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2020-01-21",
+                "schema_location": "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2005/xbrldt",
+                "schema_location": "http://www.xbrl.org/2005/xbrldt-2005.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2022",
+                "schema_location": "https://xbrl.sec.gov/country/2022/country-2022.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2022",
+                "schema_location": "https://xbrl.sec.gov/dei/2022/dei-2022.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [
+              {
+                "href": "nflx-20221231_lab.xml",
+                "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef"
+              },
+              {
+                "href": "nflx-20221231_pre.xml",
+                "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
+              },
+              {
+                "href": "nflx-20221231_cal.xml",
+                "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef"
+              },
+              {
+                "href": "nflx-20221231_def.xml",
+                "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+              }
+            ],
+            "target_namespace": "http://www.netflix.com/20221231"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "nflx-20221231.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 1965562,
+      "source_file": "NFLX_2022.html",
+      "source_identity_verified": false,
+      "source_sha256": "5bb5f38b1cd1d20d9ef7b3d54eb2ff8884bc77e2deea98672163c9417b6e122f",
+      "unique_nonfraction_concepts": 227
+    },
+    {
+      "candidate": {
+        "candidate_accession": "0001065280-24-000030",
+        "candidate_cik": "1065280",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/1065280/000106528024000030/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528024000030/nflx-20231231.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528024000030/0001065280-24-000030-index.htm",
+        "source_file": "NFLX_2023.html",
+        "web_index_document_bytes": 1793608
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/us-gaap/2023": 860,
+        "http://www.netflix.com/20231231": 91,
+        "http://xbrl.sec.gov/dei/2023": 2,
+        "http://xbrl.sec.gov/ecd/2023": 2
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "country": "http://xbrl.sec.gov/country/2023",
+        "dei": "http://xbrl.sec.gov/dei/2023",
+        "ecd": "http://xbrl.sec.gov/ecd/2023",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "nflx": "http://www.netflix.com/20231231",
+        "srt": "http://fasb.org/srt/2023",
+        "us-gaap": "http://fasb.org/us-gaap/2023",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "12752",
+        "content_type": "text/html",
+        "elapsed_seconds": 8.333,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/007_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528024000030/0001065280-24-000030-index.htm",
+        "finished_utc": "2026-10-04T09:08:08.220300+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 12752,
+        "response_sha256": "37453a166f850833381dcc652aa5d64b28c33bf763449ea7f60a5d927a783a2d",
+        "started_utc": "2026-10-04T09:07:59.887385+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528024000030/0001065280-24-000030-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 955,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": null,
+            "content_type": "text/xml",
+            "elapsed_seconds": 8.375,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/008_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528024000030/nflx-20231231.xsd",
+            "finished_utc": "2026-10-04T09:08:16.595791+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 55617,
+            "response_sha256": "a2bff17c53a04882f09889a212f9bd5484adb16855aecb936991d25c3edb2412",
+            "started_utc": "2026-10-04T09:08:08.220667+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528024000030/nflx-20231231.xsd"
+          },
+          "href": "nflx-20231231.xsd",
+          "schema_metadata": {
+            "declared_elements": 74,
+            "embedded_label_arcs": 0,
+            "embedded_label_resources": 0,
+            "imports": [
+              {
+                "namespace": "http://fasb.org/srt/2023",
+                "schema_location": "https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2023",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd"
+              },
+              {
+                "namespace": "http://www.w3.org/1999/xlink",
+                "schema_location": "http://www.xbrl.org/2003/xlink-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2020-01-21",
+                "schema_location": "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2022-03-31",
+                "schema_location": "https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2005/xbrldt",
+                "schema_location": "http://www.xbrl.org/2005/xbrldt-2005.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2023",
+                "schema_location": "https://xbrl.sec.gov/country/2023/country-2023.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2023",
+                "schema_location": "https://xbrl.sec.gov/dei/2023/dei-2023.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/ecd/2023",
+                "schema_location": "https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [
+              {
+                "href": "nflx-20231231_lab.xml",
+                "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef"
+              },
+              {
+                "href": "nflx-20231231_pre.xml",
+                "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
+              },
+              {
+                "href": "nflx-20231231_cal.xml",
+                "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef"
+              },
+              {
+                "href": "nflx-20231231_def.xml",
+                "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+              }
+            ],
+            "target_namespace": "http://www.netflix.com/20231231"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "nflx-20231231.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 1793612,
+      "source_file": "NFLX_2023.html",
+      "source_identity_verified": false,
+      "source_sha256": "b558cb9ef8f54bf18afb85b580dfe67d23b8776bb6f5c3f08db6704a39d3cf4e",
+      "unique_nonfraction_concepts": 260
+    },
+    {
+      "candidate": {
+        "candidate_accession": "0001045810-22-000036",
+        "candidate_cik": "1045810",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/nvda-20220130.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/0001045810-22-000036-index.htm",
+        "source_file": "NVDA_2022.html",
+        "web_index_document_bytes": 2548428
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/us-gaap/2021-01-31": 1064,
+        "http://www.nvidia.com/20220130": 87,
+        "http://xbrl.sec.gov/dei/2021q4": 2
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "country": "http://xbrl.sec.gov/country/2021",
+        "dei": "http://xbrl.sec.gov/dei/2021q4",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "nvda": "http://www.nvidia.com/20220130",
+        "srt": "http://fasb.org/srt/2021-01-31",
+        "stpr": "http://xbrl.sec.gov/stpr/2021",
+        "us-gaap": "http://fasb.org/us-gaap/2021-01-31",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "14059",
+        "content_type": "text/html",
+        "elapsed_seconds": 8.15,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/009_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/0001045810-22-000036-index.htm",
+        "finished_utc": "2026-10-04T09:08:24.763477+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 14059,
+        "response_sha256": "9a4b39385df2ce478468099974680b34e1432fa9d3e9da370013091f2c42b359",
+        "started_utc": "2026-10-04T09:08:16.613980+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/0001045810-22-000036-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 1153,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": null,
+            "content_type": "text/xml",
+            "elapsed_seconds": 7.923,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/010_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/nvda-20220130.xsd",
+            "finished_utc": "2026-10-04T09:08:32.686655+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 67615,
+            "response_sha256": "fa82e1e3a56b9b71b977bc78a9ee4874b466b605d708490ad3e91a5cd76c01d0",
+            "started_utc": "2026-10-04T09:08:24.763790+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/nvda-20220130.xsd"
+          },
+          "href": "nvda-20220130.xsd",
+          "schema_metadata": {
+            "declared_elements": 96,
+            "embedded_label_arcs": 0,
+            "embedded_label_resources": 0,
+            "imports": [
+              {
+                "namespace": "http://fasb.org/srt/2021-01-31",
+                "schema_location": "https://xbrl.fasb.org/srt/2021/elts/srt-2021-01-31.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2021-01-31",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-2021-01-31.xsd"
+              },
+              {
+                "namespace": "http://www.w3.org/1999/xlink",
+                "schema_location": "http://www.xbrl.org/2003/xlink-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2020-01-21",
+                "schema_location": "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2021",
+                "schema_location": "https://xbrl.sec.gov/country/2021/country-2021.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2021q4",
+                "schema_location": "https://xbrl.sec.gov/dei/2021q4/dei-2021q4.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/stpr/2021",
+                "schema_location": "https://xbrl.sec.gov/stpr/2021/stpr-2021.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [
+              {
+                "href": "nvda-20220130_lab.xml",
+                "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef"
+              },
+              {
+                "href": "nvda-20220130_pre.xml",
+                "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
+              },
+              {
+                "href": "nvda-20220130_cal.xml",
+                "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef"
+              },
+              {
+                "href": "nvda-20220130_def.xml",
+                "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+              }
+            ],
+            "target_namespace": "http://www.nvidia.com/20220130"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "nvda-20220130.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 2548432,
+      "source_file": "NVDA_2022.html",
+      "source_identity_verified": false,
+      "source_sha256": "7e3c19c27675079dc36571d692b74732c7afb85497249ccc1518c2238d54d47e",
+      "unique_nonfraction_concepts": 333
+    },
+    {
+      "candidate": {
+        "candidate_accession": "0001045810-23-000017",
+        "candidate_cik": "1045810",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/nvda-20230129.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/0001045810-23-000017-index.htm",
+        "source_file": "NVDA_2023.html",
+        "web_index_document_bytes": 2669239
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/us-gaap/2022": 1127,
+        "http://www.nvidia.com/20230129": 106,
+        "http://xbrl.sec.gov/dei/2022": 2
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "country": "http://xbrl.sec.gov/country/2022",
+        "dei": "http://xbrl.sec.gov/dei/2022",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "nvda": "http://www.nvidia.com/20230129",
+        "srt": "http://fasb.org/srt/2022",
+        "stpr": "http://xbrl.sec.gov/stpr/2022",
+        "us-gaap": "http://fasb.org/us-gaap/2022",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "14060",
+        "content_type": "text/html",
+        "elapsed_seconds": 8.459,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/011_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/0001045810-23-000017-index.htm",
+        "finished_utc": "2026-10-04T09:08:41.167832+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 14060,
+        "response_sha256": "192aebcd5d432792e72fd05f3de2150c75cc1f6ccdf32992324898eca244f220",
+        "started_utc": "2026-10-04T09:08:32.708705+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/0001045810-23-000017-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 1235,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": null,
+            "content_type": "text/xml",
+            "elapsed_seconds": 8.12,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/012_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/nvda-20230129.xsd",
+            "finished_utc": "2026-10-04T09:08:49.288009+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 68252,
+            "response_sha256": "f35e7cbf68f356731ca20c93365bf5c612e894e5e61bbb8f6a9e47908d3d6ebe",
+            "started_utc": "2026-10-04T09:08:41.168137+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/nvda-20230129.xsd"
+          },
+          "href": "nvda-20230129.xsd",
+          "schema_metadata": {
+            "declared_elements": 99,
+            "embedded_label_arcs": 0,
+            "embedded_label_resources": 0,
+            "imports": [
+              {
+                "namespace": "http://fasb.org/srt/2022",
+                "schema_location": "https://xbrl.fasb.org/srt/2022/elts/srt-2022.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2022",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd"
+              },
+              {
+                "namespace": "http://www.w3.org/1999/xlink",
+                "schema_location": "http://www.xbrl.org/2003/xlink-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2020-01-21",
+                "schema_location": "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2022",
+                "schema_location": "https://xbrl.sec.gov/country/2022/country-2022.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2022",
+                "schema_location": "https://xbrl.sec.gov/dei/2022/dei-2022.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/stpr/2022",
+                "schema_location": "https://xbrl.sec.gov/stpr/2022/stpr-2022.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [
+              {
+                "href": "nvda-20230129_lab.xml",
+                "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef"
+              },
+              {
+                "href": "nvda-20230129_pre.xml",
+                "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
+              },
+              {
+                "href": "nvda-20230129_cal.xml",
+                "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef"
+              },
+              {
+                "href": "nvda-20230129_def.xml",
+                "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+              }
+            ],
+            "target_namespace": "http://www.nvidia.com/20230129"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "nvda-20230129.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 2669243,
+      "source_file": "NVDA_2023.html",
+      "source_identity_verified": false,
+      "source_sha256": "5195c592ab1649c7afdb5ea707d99b895a60eade66396e2f8fc47471221ac56e",
+      "unique_nonfraction_concepts": 348
+    },
+    {
+      "candidate": {
+        "candidate_accession": "0000059478-24-000065",
+        "candidate_cik": "59478",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000065/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000065/lly-20231231.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000065/0000059478-24-000065-index.htm",
+        "source_file": "LLY_2023.html",
+        "web_index_document_bytes": 3213503
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/us-gaap/2023": 1969,
+        "http://www.lilly.com/20231231": 91,
+        "http://xbrl.sec.gov/dei/2023": 2,
+        "http://xbrl.sec.gov/ecd/2023": 1
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "country": "http://xbrl.sec.gov/country/2023",
+        "dei": "http://xbrl.sec.gov/dei/2023",
+        "ecd": "http://xbrl.sec.gov/ecd/2023",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "lly": "http://www.lilly.com/20231231",
+        "srt": "http://fasb.org/srt/2023",
+        "us-gaap": "http://fasb.org/us-gaap/2023",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "14417",
+        "content_type": "text/html",
+        "elapsed_seconds": 8.298,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/013_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000065/0000059478-24-000065-index.htm",
+        "finished_utc": "2026-10-04T09:08:57.620331+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 14417,
+        "response_sha256": "3f8aea44b9ac3c4645b920b50036b807618521eb3acbb90edaee9bcab1c3126b",
+        "started_utc": "2026-10-04T09:08:49.322472+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000065/0000059478-24-000065-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 2063,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": null,
+            "content_type": "text/xml",
+            "elapsed_seconds": 8.172,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/014_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000065/lly-20231231.xsd",
+            "finished_utc": "2026-10-04T09:09:05.792417+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 93603,
+            "response_sha256": "2b0e0b68438f4ba85e8f4ab275a0533b07eb7143224ba3b5cba258f87be98422",
+            "started_utc": "2026-10-04T09:08:57.620648+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000065/lly-20231231.xsd"
+          },
+          "href": "lly-20231231.xsd",
+          "schema_metadata": {
+            "declared_elements": 186,
+            "embedded_label_arcs": 0,
+            "embedded_label_resources": 0,
+            "imports": [
+              {
+                "namespace": "http://fasb.org/srt/2023",
+                "schema_location": "https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2023",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd"
+              },
+              {
+                "namespace": "http://www.w3.org/1999/xlink",
+                "schema_location": "http://www.xbrl.org/2003/xlink-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2020-01-21",
+                "schema_location": "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2022-03-31",
+                "schema_location": "https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2023",
+                "schema_location": "https://xbrl.sec.gov/country/2023/country-2023.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2023",
+                "schema_location": "https://xbrl.sec.gov/dei/2023/dei-2023.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/ecd/2023",
+                "schema_location": "https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [
+              {
+                "href": "lly-20231231_pre.xml",
+                "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
+              },
+              {
+                "href": "lly-20231231_def.xml",
+                "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+              },
+              {
+                "href": "lly-20231231_lab.xml",
+                "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef"
+              },
+              {
+                "href": "lly-20231231_cal.xml",
+                "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef"
+              }
+            ],
+            "target_namespace": "http://www.lilly.com/20231231"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "lly-20231231.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 3213508,
+      "source_file": "LLY_2023.html",
+      "source_identity_verified": false,
+      "source_sha256": "c21e3b4925260cafc944f3ff580860b741ad92e46f6b959d99f6dab193b5fc4a",
+      "unique_nonfraction_concepts": 379
+    },
+    {
+      "candidate": {
+        "candidate_accession": "0000059478-25-000067",
+        "candidate_cik": "59478",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000067/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000067/lly-20241231.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000067/0000059478-25-000067-index.htm",
+        "source_file": "LLY_2024.html",
+        "web_index_document_bytes": 3200073
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/srt/2024": 2,
+        "http://fasb.org/us-gaap/2024": 2019,
+        "http://www.lilly.com/20241231": 68,
+        "http://xbrl.sec.gov/dei/2024": 2,
+        "http://xbrl.sec.gov/ecd/2024": 1
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "country": "http://xbrl.sec.gov/country/2024",
+        "cyd": "http://xbrl.sec.gov/cyd/2024",
+        "dei": "http://xbrl.sec.gov/dei/2024",
+        "ecd": "http://xbrl.sec.gov/ecd/2024",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "lly": "http://www.lilly.com/20241231",
+        "srt": "http://fasb.org/srt/2024",
+        "us-gaap": "http://fasb.org/us-gaap/2024",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "14420",
+        "content_type": "text/html",
+        "elapsed_seconds": 8.48,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/015_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000067/0000059478-25-000067-index.htm",
+        "finished_utc": "2026-10-04T09:09:14.309190+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 14420,
+        "response_sha256": "29ff66b6a227ca977bf09e744d75c211f0482a88209335c8a4500cf72dfa0754",
+        "started_utc": "2026-10-04T09:09:05.828862+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000067/0000059478-25-000067-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 2092,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": null,
+            "content_type": "text/xml",
+            "elapsed_seconds": 7.937,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/016_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000067/lly-20241231.xsd",
+            "finished_utc": "2026-10-04T09:09:22.246884+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 93086,
+            "response_sha256": "c45366e25c62ce8d2febdcc93699236dd45e0bd0e996254a76c771cb3b376008",
+            "started_utc": "2026-10-04T09:09:14.309574+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000067/lly-20241231.xsd"
+          },
+          "href": "lly-20241231.xsd",
+          "schema_metadata": {
+            "declared_elements": 191,
+            "embedded_label_arcs": 0,
+            "embedded_label_resources": 0,
+            "imports": [
+              {
+                "namespace": "http://fasb.org/srt/2024",
+                "schema_location": "https://xbrl.fasb.org/srt/2024/elts/srt-2024.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2024",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2020-01-21",
+                "schema_location": "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2022-03-31",
+                "schema_location": "https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2024",
+                "schema_location": "https://xbrl.sec.gov/country/2024/country-2024.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/cyd-af-sub/2024",
+                "schema_location": "https://xbrl.sec.gov/cyd/2024/cyd-af-sub-2024.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2024",
+                "schema_location": "https://xbrl.sec.gov/dei/2024/dei-2024.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/ecd/2024",
+                "schema_location": "https://xbrl.sec.gov/ecd/2024/ecd-2024.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [
+              {
+                "href": "lly-20241231_pre.xml",
+                "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
+              },
+              {
+                "href": "lly-20241231_def.xml",
+                "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+              },
+              {
+                "href": "lly-20241231_lab.xml",
+                "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef"
+              },
+              {
+                "href": "lly-20241231_cal.xml",
+                "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef"
+              }
+            ],
+            "target_namespace": "http://www.lilly.com/20241231"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "lly-20241231.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 3200081,
+      "source_file": "LLY_2024.html",
+      "source_identity_verified": false,
+      "source_sha256": "1b0b903bffac393577aa68004a2cbd947e0a3a5c3264caa87e3c6f06463fe351",
+      "unique_nonfraction_concepts": 374
+    },
+    {
+      "candidate": {
+        "candidate_accession": "0001564590-22-007322",
+        "candidate_cik": "1067983",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/1067983/000156459022007322/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/1067983/000156459022007322/brka-10k_20211231.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1067983/000156459022007322/0001564590-22-007322-index.htm",
+        "source_file": "BRK-B_2022.html",
+        "web_index_document_bytes": 12201751
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/us-gaap/2021-01-31": 2634,
+        "http://www.berkshirehathaway.com/20211231": 268,
+        "http://xbrl.sec.gov/dei/2021q4": 3
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "brka": "http://www.berkshirehathaway.com/20211231",
+        "country": "http://xbrl.sec.gov/country/2021",
+        "currency": "http://xbrl.sec.gov/currency/2021",
+        "dei": "http://xbrl.sec.gov/dei/2021q4",
+        "dtr-types": "http://www.xbrl.org/dtr/type/2020-01-21",
+        "enum2": "http://xbrl.org/2020/extensible-enumerations-2.0",
+        "exch": "http://xbrl.sec.gov/exch/2021",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2015-02-26",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "naics": "http://xbrl.sec.gov/naics/2021",
+        "nonnum": "http://www.xbrl.org/dtr/type/non-numeric",
+        "num": "http://www.xbrl.org/dtr/type/numeric",
+        "sic": "http://xbrl.sec.gov/sic/2021",
+        "srt": "http://fasb.org/srt/2021-01-31",
+        "srt-types": "http://fasb.org/srt-types/2021-01-31",
+        "stpr": "http://xbrl.sec.gov/stpr/2021",
+        "us-gaap": "http://fasb.org/us-gaap/2021-01-31",
+        "us-types": "http://fasb.org/us-types/2021-01-31",
+        "utr": "http://www.xbrl.org/2009/utr",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "12719",
+        "content_type": "text/html",
+        "elapsed_seconds": 8.212,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/017_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/1067983/000156459022007322/0001564590-22-007322-index.htm",
+        "finished_utc": "2026-10-04T09:09:30.587928+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 12719,
+        "response_sha256": "d7a61554f9fc7d62804d1d00ed4a1f6010bfb03f6b45f03660dcb5f1f75a67f2",
+        "started_utc": "2026-10-04T09:09:22.375980+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/1067983/000156459022007322/0001564590-22-007322-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 2905,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": null,
+            "content_type": "text/xml",
+            "elapsed_seconds": 9.266,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/018_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/1067983/000156459022007322/brka-20211231.xsd",
+            "finished_utc": "2026-10-04T09:09:39.854747+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 144509,
+            "response_sha256": "5b4073daf8a9c970d153999eadb2c23872ac9c227f74b25513c39c4a395f8121",
+            "started_utc": "2026-10-04T09:09:30.588349+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/1067983/000156459022007322/brka-20211231.xsd"
+          },
+          "href": "brka-20211231.xsd",
+          "schema_metadata": {
+            "declared_elements": 254,
+            "embedded_label_arcs": 0,
+            "embedded_label_resources": 0,
+            "imports": [
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2005/xbrldt",
+                "schema_location": "http://www.xbrl.org/2005/xbrldt-2005.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2020/extensible-enumerations-2.0",
+                "schema_location": "https://www.xbrl.org/2020/extensible-enumerations-2.0.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2021",
+                "schema_location": "https://xbrl.sec.gov/country/2021/country-2021.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/currency/2021",
+                "schema_location": "https://xbrl.sec.gov/currency/2021/currency-2021.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2021q4",
+                "schema_location": "https://xbrl.sec.gov/dei/2021q4/dei-2021q4.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2020-01-21",
+                "schema_location": "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/exch/2021",
+                "schema_location": "https://xbrl.sec.gov/exch/2021/exch-2021.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2009/arcrole/fact-explanatoryFact",
+                "schema_location": "http://www.xbrl.org/lrr/arcrole/factExplanatory-2009-12-16.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2009/role/negated",
+                "schema_location": "http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2009/role/net",
+                "schema_location": "http://www.xbrl.org/lrr/role/net-2009-12-16.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/naics/2021",
+                "schema_location": "https://xbrl.sec.gov/naics/2021/naics-2021.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/sic/2021",
+                "schema_location": "https://xbrl.sec.gov/sic/2021/sic-2021.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/srt/2021-01-31",
+                "schema_location": "https://xbrl.fasb.org/srt/2021/elts/srt-2021-01-31.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/srt-roles/2021-01-31",
+                "schema_location": "https://xbrl.fasb.org/srt/2021/elts/srt-roles-2021-01-31.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/srt-types/2021-01-31",
+                "schema_location": "https://xbrl.fasb.org/srt/2021/elts/srt-types-2021-01-31.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/stpr/2021",
+                "schema_location": "https://xbrl.sec.gov/stpr/2021/stpr-2021.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2021-01-31",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-2021-01-31.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-roles/2021-01-31",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2021/elts/us-roles-2021-01-31.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-types/2021-01-31",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2021/elts/us-types-2021-01-31.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [
+              {
+                "href": "brka-20211231_cal.xml",
+                "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef"
+              },
+              {
+                "href": "brka-20211231_def.xml",
+                "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+              },
+              {
+                "href": "brka-20211231_lab.xml",
+                "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef"
+              },
+              {
+                "href": "brka-20211231_pre.xml",
+                "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
+              }
+            ],
+            "target_namespace": "http://www.berkshirehathaway.com/20211231"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "brka-20211231.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 12267724,
+      "source_file": "BRK-B_2022.html",
+      "source_identity_verified": false,
+      "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+      "unique_nonfraction_concepts": 443
+    },
+    {
+      "candidate": {
+        "candidate_accession": "0000950170-23-004451",
+        "candidate_cik": "1067983",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/1067983/000095017023004451/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017023004451/brka-20221231.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017023004451/0000950170-23-004451-index.htm",
+        "source_file": "BRK-B_2023.html",
+        "web_index_document_bytes": 12630004
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/us-gaap/2022": 2652,
+        "http://www.berkshirehathaway.com/20221231": 245,
+        "http://xbrl.sec.gov/dei/2022": 3
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "brka": "http://www.berkshirehathaway.com/20221231",
+        "country": "http://xbrl.sec.gov/country/2022",
+        "currency": "http://xbrl.sec.gov/currency/2022",
+        "dei": "http://xbrl.sec.gov/dei/2022",
+        "dtr-types": "http://www.xbrl.org/dtr/type/2020-01-21",
+        "enum2": "http://xbrl.org/2020/extensible-enumerations-2.0",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2015-02-26",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "nonNumeric": "http://www.xbrl.org/dtr/type/non-numeric",
+        "srt": "http://fasb.org/srt/2022",
+        "us-gaap": "http://fasb.org/us-gaap/2022",
+        "utr": "http://www.xbrl.org/2009/utr",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrldt": "http://xbrl.org/2005/xbrldt",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "12705",
+        "content_type": "text/html",
+        "elapsed_seconds": 8.27,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/019_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017023004451/0000950170-23-004451-index.htm",
+        "finished_utc": "2026-10-04T09:09:48.277495+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 12705,
+        "response_sha256": "63c12174df27c1144c4274c46f4e2f5dfb9cf56e58c96e8c744fbe32624357df",
+        "started_utc": "2026-10-04T09:09:40.007293+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017023004451/0000950170-23-004451-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 2900,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": null,
+            "content_type": "text/xml",
+            "elapsed_seconds": 8.242,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/020_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017023004451/brka-20221231.xsd",
+            "finished_utc": "2026-10-04T09:09:56.519890+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 140858,
+            "response_sha256": "6ec360b6b7edb21a3fbb768a50c75d0d07911821c5b8176ec871b5a64bf6bbf3",
+            "started_utc": "2026-10-04T09:09:48.278085+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017023004451/brka-20221231.xsd"
+          },
+          "href": "brka-20221231.xsd",
+          "schema_metadata": {
+            "declared_elements": 245,
+            "embedded_label_arcs": 0,
+            "embedded_label_resources": 0,
+            "imports": [
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2005/xbrldt",
+                "schema_location": "http://www.xbrl.org/2005/xbrldt-2005.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2020/extensible-enumerations-2.0",
+                "schema_location": "https://www.xbrl.org/2020/extensible-enumerations-2.0.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2022",
+                "schema_location": "https://xbrl.sec.gov/dei/2022/dei-2022.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2022",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2022",
+                "schema_location": "https://xbrl.sec.gov/country/2022/country-2022.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/currency/2022",
+                "schema_location": "https://xbrl.sec.gov/currency/2022/currency-2022.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2020-01-21",
+                "schema_location": "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/srt/2022",
+                "schema_location": "https://xbrl.fasb.org/srt/2022/elts/srt-2022.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [
+              {
+                "href": "brka-20221231_lab.xml",
+                "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef"
+              },
+              {
+                "href": "brka-20221231_pre.xml",
+                "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
+              },
+              {
+                "href": "brka-20221231_def.xml",
+                "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+              },
+              {
+                "href": "brka-20221231_cal.xml",
+                "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef"
+              }
+            ],
+            "target_namespace": "http://www.berkshirehathaway.com/20221231"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "brka-20221231.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 12658122,
+      "source_file": "BRK-B_2023.html",
+      "source_identity_verified": false,
+      "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+      "unique_nonfraction_concepts": 438
+    },
+    {
+      "candidate": {
+        "candidate_accession": "0001564590-23-000762",
+        "candidate_cik": "87347",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/87347/000156459023000762/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/87347/000156459023000762/slb-10k_20221231.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/87347/000156459023000762/0001564590-23-000762-index.htm",
+        "source_file": "SLB_2022.html",
+        "web_index_document_bytes": null
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/us-gaap/2022": 1534,
+        "http://www.slb.com/20221231": 232,
+        "http://xbrl.sec.gov/dei/2022": 2
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "country": "http://xbrl.sec.gov/country/2022",
+        "currency": "http://xbrl.sec.gov/currency/2022",
+        "dei": "http://xbrl.sec.gov/dei/2022",
+        "dtr-types": "http://www.xbrl.org/dtr/type/2020-01-21",
+        "enum2": "http://xbrl.org/2020/extensible-enumerations-2.0",
+        "exch": "http://xbrl.sec.gov/exch/2022",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2015-02-26",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "naics": "http://xbrl.sec.gov/naics/2022",
+        "nonnum": "http://www.xbrl.org/dtr/type/non-numeric",
+        "num": "http://www.xbrl.org/dtr/type/numeric",
+        "sic": "http://xbrl.sec.gov/sic/2022",
+        "slb": "http://www.slb.com/20221231",
+        "srt": "http://fasb.org/srt/2022",
+        "srt-types": "http://fasb.org/srt-types/2022",
+        "stpr": "http://xbrl.sec.gov/stpr/2022",
+        "us-gaap": "http://fasb.org/us-gaap/2022",
+        "us-types": "http://fasb.org/us-types/2022",
+        "utr": "http://www.xbrl.org/2009/utr",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "14369",
+        "content_type": "text/html",
+        "elapsed_seconds": 8.418,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/021_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/87347/000156459023000762/0001564590-23-000762-index.htm",
+        "finished_utc": "2026-10-04T09:10:04.994473+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 14369,
+        "response_sha256": "bad3c836f7c9cbe91751cae85a7b65ea2bc623474cab40143c9663fe13959e8a",
+        "started_utc": "2026-10-04T09:09:56.576676+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/87347/000156459023000762/0001564590-23-000762-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 1768,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": null,
+            "content_type": "text/xml",
+            "elapsed_seconds": 8.184,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/022_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/87347/000156459023000762/slb-20221231.xsd",
+            "finished_utc": "2026-10-04T09:10:13.178923+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 102211,
+            "response_sha256": "4b3aba810759a09b58ea3d606c2a40706ba0da95200531c2df3ab99440ba76fa",
+            "started_utc": "2026-10-04T09:10:04.994853+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/87347/000156459023000762/slb-20221231.xsd"
+          },
+          "href": "slb-20221231.xsd",
+          "schema_metadata": {
+            "declared_elements": 167,
+            "embedded_label_arcs": 0,
+            "embedded_label_resources": 0,
+            "imports": [
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2005/xbrldt",
+                "schema_location": "http://www.xbrl.org/2005/xbrldt-2005.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2020/extensible-enumerations-2.0",
+                "schema_location": "https://www.xbrl.org/2020/extensible-enumerations-2.0.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2022",
+                "schema_location": "https://xbrl.sec.gov/country/2022/country-2022.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/currency/2022",
+                "schema_location": "https://xbrl.sec.gov/currency/2022/currency-2022.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2022",
+                "schema_location": "https://xbrl.sec.gov/dei/2022/dei-2022.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2020-01-21",
+                "schema_location": "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/exch/2022",
+                "schema_location": "https://xbrl.sec.gov/exch/2022/exch-2022.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2009/arcrole/fact-explanatoryFact",
+                "schema_location": "http://www.xbrl.org/lrr/arcrole/factExplanatory-2009-12-16.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2009/role/negated",
+                "schema_location": "http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2009/role/net",
+                "schema_location": "http://www.xbrl.org/lrr/role/net-2009-12-16.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/naics/2022",
+                "schema_location": "https://xbrl.sec.gov/naics/2022/naics-2022.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/sic/2022",
+                "schema_location": "https://xbrl.sec.gov/sic/2022/sic-2022.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/srt/2022",
+                "schema_location": "https://xbrl.fasb.org/srt/2022/elts/srt-2022.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/srt-roles/2022",
+                "schema_location": "https://xbrl.fasb.org/srt/2022/elts/srt-roles-2022.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/srt-types/2022",
+                "schema_location": "https://xbrl.fasb.org/srt/2022/elts/srt-types-2022.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/stpr/2022",
+                "schema_location": "https://xbrl.sec.gov/stpr/2022/stpr-2022.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2022",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-roles/2022",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2022/elts/us-roles-2022.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-types/2022",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2022/elts/us-types-2022.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [
+              {
+                "href": "slb-20221231_cal.xml",
+                "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef"
+              },
+              {
+                "href": "slb-20221231_def.xml",
+                "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+              },
+              {
+                "href": "slb-20221231_lab.xml",
+                "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef"
+              },
+              {
+                "href": "slb-20221231_pre.xml",
+                "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
+              }
+            ],
+            "target_namespace": "http://www.slb.com/20221231"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "slb-20221231.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 6713947,
+      "source_file": "SLB_2022.html",
+      "source_identity_verified": false,
+      "source_sha256": "5ab77e70634d3b871d1d9260f806b4c7384791dd50562a74bc40690027be2f1e",
+      "unique_nonfraction_concepts": 356
+    },
+    {
+      "candidate": {
+        "candidate_accession": "0000950170-24-006884",
+        "candidate_cik": "87347",
+        "candidate_directory": "https://www.sec.gov/Archives/edgar/data/87347/000095017024006884/",
+        "candidate_filing_url": "https://www.sec.gov/Archives/edgar/data/87347/000095017024006884/slb-20231231.htm",
+        "identity_status": "candidate matched by internal period, issuer, schema filename and official 10-K listing; exact byte correspondence unverified",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/87347/000095017024006884/0000950170-24-006884-index.htm",
+        "source_file": "SLB_2023.html",
+        "web_index_document_bytes": null
+      },
+      "concept_occurrences_by_namespace": {
+        "http://fasb.org/us-gaap/2023": 1521,
+        "http://www.slb.com/20231231": 182,
+        "http://xbrl.sec.gov/dei/2023": 2
+      },
+      "declared_namespaces": {
+        "None": "http://www.w3.org/1999/xhtml",
+        "country": "http://xbrl.sec.gov/country/2023",
+        "dei": "http://xbrl.sec.gov/dei/2023",
+        "dtr-types": "http://www.xbrl.org/dtr/type/2022-03-31",
+        "ecd": "http://xbrl.sec.gov/ecd/2023",
+        "ecd-sub": "http://xbrl.sec.gov/ecd-sub/2023",
+        "enum2": "http://xbrl.org/2020/extensible-enumerations-2.0",
+        "iso4217": "http://www.xbrl.org/2003/iso4217",
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "ixt": "http://www.xbrl.org/inlineXBRL/transformation/2022-02-16",
+        "ixt-sec": "http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "nonNumeric": "http://www.xbrl.org/dtr/type/non-numeric",
+        "slb": "http://www.slb.com/20231231",
+        "srt": "http://fasb.org/srt/2023",
+        "us-gaap": "http://fasb.org/us-gaap/2023",
+        "utr": "http://www.xbrl.org/2009/utr",
+        "xbrldi": "http://xbrl.org/2006/xbrldi",
+        "xbrldt": "http://xbrl.org/2005/xbrldt",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
+      },
+      "index_capture": {
+        "attempt": 1,
+        "content_length_header": "13851",
+        "content_type": "text/html; charset=UTF-8",
+        "elapsed_seconds": 8.057,
+        "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/023_filing_index.body",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/87347/000095017024006884/0000950170-24-006884-index.htm",
+        "finished_utc": "2026-10-04T09:10:21.286884+00:00",
+        "http_status": 200,
+        "kind": "filing_index",
+        "response_bytes": 13851,
+        "response_sha256": "3cae26927413fc3d5176a5b27893279881e67b62a67211de6778c13ef5eb8689",
+        "started_utc": "2026-10-04T09:10:13.229823+00:00",
+        "status": "captured",
+        "truncated": false,
+        "url": "https://www.sec.gov/Archives/edgar/data/87347/000095017024006884/0000950170-24-006884-index.htm"
+      },
+      "inline_label_resources": 0,
+      "nonfraction_occurrences": 1705,
+      "schema_captures": [
+        {
+          "capture": {
+            "attempt": 1,
+            "content_length_header": null,
+            "content_type": "text/xml",
+            "elapsed_seconds": 8.101,
+            "external_file": "/dev/shm/wikigraph_v15/external/taxonomy_attempt01/024_extension_schema.body",
+            "final_url": "https://www.sec.gov/Archives/edgar/data/87347/000095017024006884/slb-20231231.xsd",
+            "finished_utc": "2026-10-04T09:10:29.388791+00:00",
+            "http_status": 200,
+            "kind": "extension_schema",
+            "response_bytes": 2318956,
+            "response_sha256": "cd6c61f09aad5efe76c5fc150b703df1b3fad89ae0bd886747a748a67e9c99ac",
+            "started_utc": "2026-10-04T09:10:21.287327+00:00",
+            "status": "captured",
+            "truncated": false,
+            "url": "https://www.sec.gov/Archives/edgar/data/87347/000095017024006884/slb-20231231.xsd"
+          },
+          "href": "slb-20231231.xsd",
+          "schema_metadata": {
+            "declared_elements": 193,
+            "embedded_label_arcs": 868,
+            "embedded_label_resources": 2056,
+            "imports": [
+              {
+                "namespace": "http://www.xbrl.org/2003/instance",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/2003/linkbase",
+                "schema_location": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2005/xbrldt",
+                "schema_location": "http://www.xbrl.org/2005/xbrldt-2005.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/dei/2023",
+                "schema_location": "https://xbrl.sec.gov/dei/2023/dei-2023.xsd"
+              },
+              {
+                "namespace": "http://xbrl.org/2020/extensible-enumerations-2.0",
+                "schema_location": "https://www.xbrl.org/2020/extensible-enumerations-2.0.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/ecd-sub/2023",
+                "schema_location": "https://xbrl.sec.gov/ecd/2023/ecd-sub-2023.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/us-gaap/2023",
+                "schema_location": "https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/country/2023",
+                "schema_location": "https://xbrl.sec.gov/country/2023/country-2023.xsd"
+              },
+              {
+                "namespace": "http://www.xbrl.org/dtr/type/2022-03-31",
+                "schema_location": "https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"
+              },
+              {
+                "namespace": "http://xbrl.sec.gov/ecd/2023",
+                "schema_location": "https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd"
+              },
+              {
+                "namespace": "http://fasb.org/srt/2023",
+                "schema_location": "https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd"
+              }
+            ],
+            "includes": [],
+            "linkbase_refs": [],
+            "target_namespace": "http://www.slb.com/20231231"
+          },
+          "schema_parse_status": "parsed"
+        }
+      ],
+      "schema_refs": [
+        {
+          "href": "slb-20231231.xsd",
+          "locator": "/*/*[2]/*[1]/ix:header/ix:references/link:schemaRef",
+          "xml_base": null
+        }
+      ],
+      "source_bytes": 5012488,
+      "source_file": "SLB_2023.html",
+      "source_identity_verified": false,
+      "source_sha256": "c94028b2c0f25b6946700d5dfc39174bc331b097b79f83715cb06ab06f36612a",
+      "unique_nonfraction_concepts": 362
+    }
+  ],
+  "schema_version": "taxonomy_feasibility_v16",
+  "summary": {
+    "extension_schemas_captured": 12,
+    "full_dts_validated": 0,
+    "http_status_counts": {
+      "200": 24
+    },
+    "natural_QA_predictions": 0,
+    "nonfraction_occurrences": 23651,
+    "relative_schema_references": 12,
+    "source_identity_verified": 0,
+    "source_objects": 12,
+    "sources_with_inline_label_resources": 0,
+    "total_response_bytes": 3661445
+  }
+}

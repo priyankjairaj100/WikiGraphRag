@@ -1,0 +1,395 @@
+Reader binding and complete-evidence competence pilot: draft v16
+Prepared 2026-10-04. Design only; no question/reference creation, source-value
+inspection, model execution, result, protocol freeze or novelty claim.
+
+1. Decision this pilot can support
+
+Determine whether a conventional automatic question-to-reported-aspect baseline
+can reliably answer a small set of realistic financial reading requests when
+the required evidence is already supplied. Compare it with a direct reader
+using the same model and evidence. Diagnose question mapping, quantity handling,
+source/version binding and refusal before spending effort on a new retrieval
+policy. This pilot does not evaluate retrieval and cannot establish ACL-level
+novelty, independent financial truth or generalization.
+
+Use all six existing issuer pairs: PFE, NFLX, NVDA, LLY, BRK-B and SLB. Preserve
+the twelve physical objects and their published SHA-256 identities and original
+order. These histories are development material. The Berkshire filename versus
+internal fiscal-year discrepancy is a mandatory source-identity check, not a
+reason to replace that issuer. Questions must use the source's reviewed internal
+periods and physical versions, never years inferred from filenames.
+
+The previous v16 proposal's 100 complete/100 insufficient cases and statistical
+competence targets remain a later proposed gate. This smaller pilot is an
+engineering triage step and cannot be represented as passing that larger gate.
+
+2. Population and fixed size
+
+Reserve four question slots per issuer, 24 base slots total:
+
+  A. A single reported duration quantity in the earlier physical object.
+  B. A single reported instant quantity or other explicitly scoped numeric
+     quantity in the later physical object.
+  C. Report two source-specific values of the same source-justified financial
+     concept, one from each physical object. Request the two scoped reports;
+     do not ask for a restatement judgment or a like-for-like growth claim.
+  D. A source-grounded, intentionally underspecified request for which the
+     admitted evidence supports at least two answer-changing bindings. The
+     correct action is a precise clarification, or an explicitly scoped set
+     of alternatives if the question permits that. A fabricated wrong number
+     is never one of those alternatives.
+
+Slots A-C give 18 intended complete-evidence answerable cases. Slot D gives six
+constructed question-disambiguation controls. It does not estimate prevalence
+of ambiguity in naturally occurring user traffic.
+
+Create one missing-binding-evidence condition from A and one from C for each
+issuer: 12 additional conditions. The full design has 36 planned evidence conditions
+over 24 base questions and six issuer clusters, not 36 independent questions.
+The missing-evidence cases are separately labeled mechanistic controls.
+
+Execute in two bounded stages. Stage A contains A and C for every issuer plus
+the six A missing-evidence controls: 12 answerable questions, six controls and
+18 conditions. Stage B contains B and D for every issuer plus the six C controls:
+six answerable questions, six ambiguity questions and six controls. Stage B is
+conditional on the predeclared stage A engineering gate below; a stopped second
+stage remains explicitly not executed. Stage A alone does not establish a
+question-disambiguation result because it contains no D controls.
+
+Each of the 24 slots may receive at most two question candidates before reference
+review, in a fixed authored order. Select the first candidate that satisfies the
+published source/support criteria. Keep the other candidate and every rejection
+reason in the development ledger. No third replacement and no replacement after
+any reader prediction. A slot with no admissible candidate remains unfilled in
+the 24-slot accounting. An unavailable control remains unavailable in the
+36-condition accounting. Distinguish not-yet-reviewed stage B slots from rejected
+slots and from gate-stopped executions. A launched stage is incomplete if its
+planned categories cannot be filled; do not silently shrink the denominator or rename a failed
+slot as a new question type.
+
+3. Questions must exist before predictions
+
+This document supplies no actual question text or numerical reference. Those
+cannot honestly be frozen before source reading. Before the first stage, create
+and save the actual 12 stage A questions, their source-reviewed references and
+18 evidence packs before any evaluated prediction. Prefer freezing all 24 base
+questions and 36 packs at that point if review resources permit. Otherwise the
+second stage has a separate freeze and is explicitly post-stage-A development;
+it cannot be presented as one prospectively frozen 36-condition experiment.
+
+A question author receives the rendered filing sections and source identity
+cards, but not the typed lookup output, raw concept/context IDs, a reader answer,
+or a script that turns a fact into a query. The author writes free-prose requests
+motivated by the contents of the report, using ordinary financial language and
+explicit source/version framing where the slot requires it. Reject questions
+that merely spell out every machine aspect, reproduce a context ID, or paste an
+answer-bearing source line into the question. Do not force identical sentence
+templates across issuers. Record the requested analytical intent and why a user
+could reasonably ask it. Preserve both proposed questions per slot even when one
+is infeasible. Author all candidates for a stage before revealing any reader
+outputs from that stage; record any earlier-stage outcomes already known to authors.
+
+These are model-authored, source-grounded natural-language questions. They are
+not independently collected user questions, human-authored gold or evidence of
+a natural distribution. The meaningful distinction from v15 is that a system
+must interpret a separately written request: no question is created by calling
+make_reported_query on the occurrence that is later scored as its answer.
+
+Two fresh source-review roles independently inspect the question and complete
+rendered source and attempt the reference without seeing each other's reference
+or any evaluated prediction. They record answerability, all acceptable reported
+bindings, exact supporting spans and any genuinely unresolved aspect. A lead
+review reconciles disagreements before the evaluation freeze. If unresolved,
+mark the slot not admitted. Record initial annotations, disagreements, revisions
+and adjudication rather than retaining only agreement.
+
+All these roles are models unless a human actually participates. Fresh contexts,
+masked role instructions and separate outputs reduce operational leakage, but
+do not create independent human annotation or independent training. Report their
+agreement as model-role agreement only. The evaluated local/API model must run
+in a separate process/request with no reference, adjudication or author rationale
+in its prompt, cache or retrieval corpus. A conversational author/reviewer that
+already saw labels must not also be counted as a blinded evaluated reader.
+
+4. Admission and reference contents
+
+Admit a reported-value case only after all of the following are recorded:
+
+  - Exact physical-source hash, issuer identity and internally stated reporting
+    dates are checked against the source; source identity is not an answer.
+  - A visible fact, its row/column labels, units, caption, relevant footnotes and
+    surrounding prose are checked in an actual rendering. A DOM path or hidden
+    marker alone is not rendered-source verification.
+  - The v15.1 fact/context/unit records are linked to those visible objects;
+    every requested period/entity/unit/population/version has source support.
+  - Numeric normalization is inside the supported v15.1 profile. A nil, an
+    unsupported transformation or unresolved typed dimension remains a logged
+    source limitation, not a fabricated zero or an excluded model failure.
+  - A question requiring consolidation, a taxonomy default, semantic concept
+    equivalence across annual namespaces, or financial interpretation is admitted
+    only if the necessary evidence/check is present. Do not infer these from
+    absent dimensions, familiar local names or matching numbers.
+  - The complete evidence pack fits the common input limit without deleting
+    relevant rows or cherry-picking a true occurrence from its competing rows.
+
+A pinned offline full-DTS validation attempt remains a prerequisite to calling
+the admitted domain a semantically validated XBRL domain. Record taxonomy
+packages, validation options, results and failures. If it is unavailable, this
+pilot may proceed only under the narrower label 'visible source-reported values
+with unvalidated taxonomy semantics', with questions whose needed relations
+have explicit source support. No extension of that narrow claim is implied.
+If such a narrower source-supported question cannot be admitted, leave the slot
+unfilled. A failed DTS download must never be reported as successful validation.
+
+Each reference stores: question ID/text, author/reviewer provenance, answerability
+class, acceptable answer actions, required bindings per requested claim, source
+hashes, concept namespace/local name, entity identifier plus scheme, exact period
+semantics, unit, explicit source-defined population, physical version, all
+acceptable occurrence groups, required citation spans, and stated uncertainties.
+For C, retain each source's namespace and separate scope. Cross-version concept
+equivalence requires a reviewed source/taxonomy mapping, not namespace stripping.
+For D, retain at least two actual supported bindings and the specific clarification
+needed. Question ambiguity and absent evidence are different reference classes.
+
+Freeze an exact canonical numeric value in base units and a set of acceptable
+display expressions justified by the source. Explicit source-supported scale
+conversion may be checked by exact decimal arithmetic. No post-output numerical
+tolerance, rounding relaxation or 'close enough' adjudication is added. Arithmetic
+change/growth, causal explanations and claims about corrections are out of scope.
+
+5. Complete evidence and controls
+
+An evidence pack includes the entire relevant table or paragraph block, its
+heading/caption/unit/footnote dependencies, the reviewed identity/period context,
+and any necessary cross-version mapping evidence. Include all rows/facts in the
+chosen complete blocks, not only the answer. Selection uses the source-reviewed
+reference to supply complete evidence, so this is explicitly an oracle-evidence
+competence diagnostic and never a retrieval success. It is still an automatic
+question interpretation task; reference bindings and acceptable answer IDs are
+hidden from every method.
+
+The machine-assisted track supplies a common source-exact metadata view to all
+methods, including the direct reader. It includes the reported aspects available
+in acquired evidence, source-local visible labels and opaque occurrence handles.
+No gold mapping from question words to concepts is supplied. Schema-derived
+labels may be used only when the same recovered label resources are supplied to
+all methods and their status is disclosed. Concept local-name splitting is a
+lexical hint, not a validated synonym or cross-version equivalence.
+
+Do not claim reader-visible text/table competence from this track. A later
+metadata-free comparison requires a separate frozen track and denominator.
+
+For each missing-evidence control, remove one essential binding witness selected
+before predictions from a fixed priority order: source version, period/column,
+unit, then population/definition. Preserve the numerical strings. Remove every
+duplicate disclosure of that same relation from the supplied pack, including
+machine aspects, context IDs that encode it, captions and source metadata. Use
+opaque IDs independent of answer labels. A reviewer must certify that the answer
+cannot now be authorized from the supplied evidence. The omitted witness is
+recorded only in the hidden control reference.
+
+The underlying source/fact is never rewritten. An evidence-access adapter marks
+unacquired dependencies unavailable and blocks tool access to them. A full typed
+document must not remain accessible behind the control's lookup tool. A source
+hash used for integrity is not permission to read hidden facts or context fields.
+If metadata alone still resolves the allegedly missing binding, that is a failed
+control construction, not a reader error; preserve it and mark that control
+unavailable before predictions. These controls test evidence-relative refusal,
+not whether the answer exists anywhere in the original report.
+
+6. Conventional automatic baselines
+
+Use the frozen v15.1 decoder unchanged through the first pilot. Implement three
+systems before reference access; use authored fixtures for implementation work.
+
+B0: deterministic label-aware reported-aspect filtering. Extract explicit source,
+entity, period and unit constraints from the natural-language question using
+fixed rules. Rank available source-local concept labels/visible row labels by a
+fixed lexical score; keep at most eight complete observed binding hypotheses.
+Apply exact namespace-aware constraints and retain unknown fields as unknown.
+Return a value only when the question is fully resolved and all surviving usable
+bindings agree on the scoped answer action. Ties, unresolved constraints and
+unacquired required witnesses cause a scoped refusal/clarification. This simple
+baseline must not receive per-question hand mappings. Freeze its normalization,
+lexical score, tie policy and stop list in code before references are reviewed.
+
+B1: one-call model question-to-aspect proposer plus deterministic typed reader.
+The model receives the same question/evidence/metadata as B0/B2 and emits at most
+eight hypotheses in a strict schema. A hypothesis names observed handles and
+explicit requested bindings, cites the source-visible mapping witnesses and
+marks unknown fields. Use compact opaque handles rather than repeating long
+namespace strings: the adapter expands only the acquired metadata associated
+with a handle. For a two-value C request, one hypothesis is the joint assignment
+of both requested claims, not two disconnected top-one choices. It may not invent an occurrence, relax an explicit
+question condition, strip namespace versions or infer hidden dimensions.
+Strict schema validation and the typed lookup produce every compatible result;
+the deterministic finalizer renders only source-supported scoped quantities or
+a refusal/clarification. A beam is not proof that no unproposed interpretation
+exists. An explicit unresolved flag blocks unconditional answering. Output that
+exceeds the beam, is malformed, fabricates pointers or hits the output limit is
+a retained failure, with no repair completion in this pilot.
+
+B2: one-call direct reader using the identical pinned model, identical acquired
+evidence and metadata, and the same output schema for final answer actions and
+citations. It supplies quantities directly instead of using typed lookup. Its
+answer/refusal limits and failure handling match B1. This tests whether a typed
+interface is useful with a fixed reader; it does not claim B1 beats a stronger
+reader model selected on these same questions.
+
+Common answer actions: answered, clarify, insufficient, or invalid_output. Every
+quantity action includes value, unit, source/version, period, scope and evidence
+handles. Supported scoped alternatives may count as correct on a D question
+only when the frozen reference permits that behavior. No extra free-prose claims
+are silently exempted from grading.
+
+7. Exact execution budget and freeze annex
+
+Stage A gives its 18 conditions one primary prediction per system: 54 planned
+outputs, comprising 36 model completions and 18 deterministic executions. Stage B
+adds the same counts only after the frozen stage A gate. If both stages execute,
+the totals are 108 outputs, 72 model completions and 36 deterministic executions.
+An unadmitted condition is recorded as not executed, never replaced. Evaluate all
+admitted conditions within a launched stage even after an early failure. The
+only early stop is the prespecified between-stage engineering gate; no best-of
+resampling or favorable stopping is allowed.
+
+Common maximum serialized input, including question, instructions, evidence,
+metadata and chat/template overhead: 6,144 native model tokens. Maximum generated
+output: 768 tokens. The runtime must support an 8,192-token context without
+truncation; use the exact native tokenizer and rendered chat template for checks.
+Each pack may contain at most 64 numeric occurrence handles and the proposer at
+most eight hypotheses. A complete selected table with more than 64 occurrences
+is an admission failure under this bounded pilot, not an invitation to delete
+competitors. Prompt differences between B1/B2 remain charged and reported.
+
+Freeze greedy decoding (temperature zero, top-p 1 where relevant), one fixed
+seed if supported, and a 300-second wall-clock cap per completion. Record actual
+input/output tokens, elapsed time, exit reason and peak resource use. Total
+stage A generation caps are 36 completions, 221,184 input tokens, 27,648 output
+tokens and three serial model-hours. At one to two minutes per call this stage
+would take roughly 36 to 72 minutes of generation, before source review and
+auditing; measured speed may differ. Both stages together cap at 72 completions,
+442,368 input tokens, 55,296 output tokens and six serial model-hours. These are
+ceilings and planning scenarios, not measured runtime or promised completion time.
+Deterministic baseline, parsing, indexing and tool costs are recorded separately
+and included in system cost comparisons. Paid/API spending requires an explicit
+available budget; this draft does not invent one.
+
+Before natural predictions allow at most eight authored-interface calibration
+completions, with the same caps: four fixtures times B1/B2. These fixtures contain
+no natural pilot source, question or reference. If all four interface fixtures
+do not pass, revise code/prompt before the execution freeze and retain attempts.
+After freeze, no correction or additional fixture completion may rescue a
+natural failure within this attempt. The stage A ceiling including preflight is
+44 completions, 270,336 input tokens, 33,792 output tokens and 3 hours 40 minutes
+of serial generation caps. The full two-stage ceiling including that one preflight
+is 80 completions, 491,520 input tokens, 61,440 output tokens and 6 hours
+40 minutes. There are no order-permutation or extra-model calls in this minimal pilot; those need a separate amendment.
+
+Do not freeze a model name without checking that it is executable here. The final
+annex must bind model repository and immutable revision, weight hashes and
+quantization, runtime source/build hashes, tokenizer, template, prompts, decoding,
+hardware/resource limits, dependency hashes, exact code commit, source manifests,
+selected questions and references, evidence packs, annotation receipts, grading
+rubric and planned job order. Use one model chosen for resource feasibility and
+authored-interface performance before inspecting pilot predictions. A second
+model evaluated later is a separately recorded development attempt, not a blind
+winner selection. Deterministic-only execution can proceed when no model is
+available, but must be reported as an incomplete reader comparison.
+
+Alternate B1/B2 execution order by fixed issuer/slot parity. B0 executes on the
+same frozen packs. Failures retain their planned cells. A crash before generation
+may receive one separately logged transport retry only when zero output tokens
+and zero successful response are established; a timeout or partial response is
+an evaluated failure and is not retried in this attempt.
+
+8. Scoring and adequacy
+
+Score references and outputs without method names. Numeric, unit, source hash,
+period and exact typed/aspect checks are deterministic wherever possible. A
+separate model reviewer, blind to system identity, grades any remaining semantic
+mapping or clarification against the frozen rubric. Preserve its raw decisions
+and adjudication. Shared-model grading bias remains a limitation; calling this
+independent human evaluation would be false.
+
+Primary competence result: joint numeric + unit + source/version + period/scope
++ citation correctness across the 12 stage A answerable slots, and separately
+across all 18 intended answerable slots if stage B runs. An abstention
+does not count as a correct answer there. Report admitted and planned denominators,
+per-issuer results and all failures; do not combine missing slots with successes.
+
+Report separately: all-required-binding proposal recall at beam 1 and beam 8;
+per-required-binding recall; candidate count; unresolved rate; correct reference
+bindings incorrectly eliminated by constraint verification; unsupported material
+claim counts; six ambiguity-control outcomes; and twelve missing-evidence control
+outcomes. Equal numbers with wrong years/entities/versions are wrong scoped
+answers. A citation that merely points at the number without its necessary
+binding evidence is incomplete. A refusal followed by an unsupported proposed
+quantity still counts as an unsupported claim.
+
+Report coverage and unsupported-answer risk for the single frozen decision rule.
+Do not tune thresholds on these outputs and publish a best-looking risk-coverage
+curve. There is no calibrated confidence claim in this small deterministic/greedy
+pilot. Six reused issuer clusters and model-assisted labels do not support a
+population success bound or statistical method-superiority claim. Report raw
+counts and paired per-issuer differences, without treating the 36 conditions as
+independent samples.
+
+Predeclared triage targets, not statistical certification:
+
+  - Stage A is complete only if its 12 questions and six controls are admitted.
+    Advance to stage B only if at least one automatic reader reaches 11/12 joint
+    correctness, with at least 1/2 correct for every issuer and no unsupported
+    material answer on the six controls. To advance specifically with B1 as the
+    typed reader, require its full required binding set in at least 11/12 beams
+    and zero false eliminations. Otherwise finish the launched stage, preserve
+    it, and make any revised system a new development version. Six safe controls
+    cannot establish the later proposal's <5% unsupported-answer risk target.
+  - All 24 base slots and 12 controls must be admitted to call the full two-stage
+    pilot complete; otherwise first repair source/annotation coverage in a new
+    version.
+  - An automatic reader should correctly answer at least 17/18 answerable cases,
+    with at least 2/3 correct in each issuer, and produce no unsupported material
+    answer on the 18 ambiguity/missing-evidence controls.
+  - For B1, the complete required reference binding set should be present in at
+    least 17/18 answerable beams, with no false elimination of a correct binding.
+    On each ambiguity control, retain the reviewed alternatives or an explicit
+    unresolved ambiguity; confidently outputting one unsupported choice fails.
+  - A model is not called a strong general reader from clearing these targets.
+    They only justify preparing a larger disjoint competence evaluation.
+
+If B0 already clears the triage targets, first test whether ordinary source-aspect
+filtering leaves any meaningful retrieval problem. If B2 clears them but B1 does
+not, repair the proposer/interface rather than claiming a typed reader advantage.
+If both fail on complete evidence, stop retrieval policy experimentation and
+diagnose reading/mapping errors. If an apparent B1 gain requires leaked gold
+mappings, privileged metadata or larger evidence access, invalidate that comparison.
+No failure is repaired by reducing the question denominator after predictions.
+If stage A passes only for B0, next establish residual need instead of treating
+the conditional stage B expansion as automatic evidence for a new method.
+
+9. Implementation and release sequence
+
+First finish the evidence-access contract, conventional baseline and meaningful
+authored tests without seeing these natural references. Independently review
+unknown-field handling, wrong-source refusal, duplicate conflicts, beam overflow,
+missing control dependencies and denominator accounting. Verify source/runtime
+availability and the full-DTS/visual prerequisites. Then author and review the
+questions, build packs and hidden references, and freeze the annex. Run the
+predeclared predictions once, audit all planned cells, perform masked grading,
+and publish every aggregate outcome and the versioned error analysis.
+
+Keep source bodies, detailed source-derived typed records and source-bearing
+model prompts/outputs external when redistribution is not established. Release
+authored questions where permitted, code, schemas, protocols, source locations,
+hashes, compact paraphrased reviews and aggregate results. Record the exact
+external requirements needed to reproduce grading. Push completed project work
+to the standing GitHub repository; do not manufacture a durable result by
+publishing an unverifiable aggregate alone.
+
+The next retrieval-method experiment needs independently reviewed witness
+relations and an automatically produced hypothesis/verifier population that
+passes this competence work. It must share source access, candidate actions,
+reader and full cost accounting across structural, generic sufficiency and
+pair-specific acquisition policies. This draft does not turn a conventional
+parser, model-assisted development labels or oracle evidence into that result.

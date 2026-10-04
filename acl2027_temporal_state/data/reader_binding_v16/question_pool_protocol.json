@@ -1,0 +1,243 @@
+{
+  "code_bindings": {
+    "scripts/build_table_views_v16.py": "f38cc939ec1c5d08871f5f14c389eae898b297b7b7bbc16192bf80bcc100f9cc",
+    "scripts/select_reader_pool_v16.py": "9ef498adecae9755256b2fe1e4972782ff58f34354205fdf49087bc90d8453d8",
+    "src/temporal_state/__init__.py": "63b1f226a16dd461bad7e8ecdd3d262d8e7b6867d366b6f4ed609254e62f02f4",
+    "src/temporal_state/typed_reader_v15_1.py": "6f43c57488b90178f2334284bd46d9903c4f3a29f23ab1e6fc39402a40fc0dae",
+    "tests/test_reader_pool_adversarial_v16.py": "f9a2070a88cfc003e910061175d1ade08abeddcbb1598d392ef5a443945cdd14",
+    "tests/test_reader_pool_v16.py": "ef70e61b600c4c2216720b8e07dc2c2f14f945a5b1dba54b64e094fbac02c958"
+  },
+  "declaration_timing": "Code/rules/authored controls frozen before first pool selection; source values and QA references not used for selection design.",
+  "external_output_limit_bytes": 25000000,
+  "frozen_at_utc": "2026-10-04T09:38:38.134898+00:00",
+  "input_bindings": {
+    "data/fresh_source_audit_v14/source_identity_structure.json": "59064443d7e0520da4afa838ef0ee3de2c00db0cb093d271a2fd296c4fd052ed",
+    "data/reader_binding_v16/table_view_protocol.json": "3801abb0320cc5d5539948e4007ede3d811e0c672ad228ac5b4851a7472ee253",
+    "data/reader_binding_v16/table_view_protocol_v16_1.json": "360160b8db323b373ab56f412e912ae53bdc9bcc1974a0a4277ee609f0145dfb",
+    "data/typed_reader_v15/execution_protocol_v15_1.json": "de96dc952e850ca8360e12b8d58b2daf1d515f06ab6de6460203e311cb4b9b24",
+    "docs/reader_pool_contract_v16.txt": "4fa35cd0f31f04d175bb01910b6907016aeebbfe10eefd71efa1b15faa76d6da",
+    "results/reader_pool_code_review_v16.json": "b9c32ee233a84029951080598d2cd5709c198ff50574203acffea597d8901e9b",
+    "results/table_storage_independent_audit_v16.json": "e7751a57c447f43e97b37e1051779f0b3c4dd83c6cb4237e1956f9ae42b3db34",
+    "results/table_view_inventory_v16.json": "9c41d6c0b48363afd3d75e61bd6d0a6d4a37272acdcb6ca928619de3e7531a3d",
+    "results/table_view_inventory_v16_1.json": "ae8a9aed70706956512b2dcb11c97dcf8241f01ab27026d6cfd04d0133625ad4",
+    "results/typed_reader_execution_v15_1.json": "c918db02be9ccaba467caf93437a9a7efbd13f3717605693229c956a1c63bd25"
+  },
+  "inventory_path": "results/table_view_inventory_v16_1.json",
+  "model_calls": 0,
+  "natural_QA_predictions": 0,
+  "planned_table_slots": 24,
+  "pre_freeze_authored_tests": {
+    "command": "PYTHONPATH=src python3 -m unittest discover -s tests -p test_reader_pool*v16.py -q",
+    "errors": 0,
+    "failures": 0,
+    "scope": "Authored fixtures only; rerun inside protocol preparation before first selection.",
+    "skipped": 0,
+    "tests_run": 42,
+    "transcript_sha256": "5eed34b63f66fc967aa6d1f2daa9e088672cde9a256572b7d684f0057f435021"
+  },
+  "pre_freeze_corrections": [
+    "Independent authored review caught cross-row net/sales regex match; fixed to test each row separately and added regression before source selection."
+  ],
+  "private_metadata_reserve_bytes": 65536,
+  "question_authoring_performed": false,
+  "rule": {
+    "complete_dom_text_max_characters": 12000,
+    "complete_evidence_claim": false,
+    "complete_row_cell_ownership": true,
+    "layout_parent_tables_permitted": true,
+    "leaf_tables_only": true,
+    "minimum_distinct_resolved_duration_periods": 2,
+    "minimum_resolved_normalized_duration_facts": 4,
+    "numeric_occurrence_max": 32,
+    "numeric_occurrence_min": 4,
+    "period_identity": "exact_reported_period_object_among_binding_resolved_duration_facts_including_nil_or_unsupported",
+    "raw_dom_text_definition": "frozen_table_view_own_text_with_xml_whitespace_collapse_nbsp_retained",
+    "recognized_hiding_cues_allowed": false,
+    "regex_flags": "IGNORECASE_UNICODE",
+    "row_text_regex": "\\b(?:revenues?|net\\s+sales)\\b",
+    "selected_tables_per_source": 2,
+    "selection_order": "table_ordinal_xml_document_order"
+  },
+  "runtime_bindings": {
+    "binary_files": {
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/lxml/etree.cpython-312-x86_64-linux-gnu.so": "d7597a0fec22576416028238ff20a65f90d97ab6f96f65fe3a620780855add48"
+    },
+    "expat_version": "expat_2.8.3",
+    "libxml_version": [
+      2,
+      14,
+      6
+    ],
+    "lxml_version": [
+      6,
+      1,
+      1,
+      0
+    ],
+    "pyexpat_implementation": "built_into_pinned_interpreter",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "schema_version": "reader_question_pool_protocol_v16",
+  "scope": "Purpose-selected revenue-labeled reported-financial development tables; not random, held-out or verified complete QA evidence.",
+  "source_denominator": 12,
+  "sources": [
+    {
+      "expected_bytes": 5349189,
+      "expected_nonfraction_count": 3041,
+      "expected_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+      "external_filename": "PFE_2023.html",
+      "source_path": "original_doc/PFE_2023.html",
+      "typed_bytes": 20249832,
+      "typed_filename": "PFE_2023.diagnostic.jsonl",
+      "typed_sha256": "cda5c27ced6359e9cb1f82177828f24f29f432267b5bef1bbf4a052d1ebafbcb",
+      "views_bytes": 1377666,
+      "views_filename": "PFE_2023.tables.jsonl.gz",
+      "views_sha256": "e604b5dbe5b8154841abcce2a46f17c8c1d076dd4cc8cb78828fae318549fb1a"
+    },
+    {
+      "expected_bytes": 5338969,
+      "expected_nonfraction_count": 2977,
+      "expected_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+      "external_filename": "PFE_2024.html",
+      "source_path": "original_doc/PFE_2024.html",
+      "typed_bytes": 19728067,
+      "typed_filename": "PFE_2024.diagnostic.jsonl",
+      "typed_sha256": "feb721abdb4bbfeb1dda37a6d2303501a68bb22885166b326f700d77d69c2d6f",
+      "views_bytes": 1405430,
+      "views_filename": "PFE_2024.tables.jsonl.gz",
+      "views_sha256": "03b3185010aa163ee3274e11bb4e01ef359ebe21a97adca07810578299e479de"
+    },
+    {
+      "expected_bytes": 1965562,
+      "expected_nonfraction_count": 857,
+      "expected_sha256": "5bb5f38b1cd1d20d9ef7b3d54eb2ff8884bc77e2deea98672163c9417b6e122f",
+      "external_filename": "NFLX_2022.html",
+      "source_path": "original_doc/NFLX_2022.html",
+      "typed_bytes": 5720354,
+      "typed_filename": "NFLX_2022.diagnostic.jsonl",
+      "typed_sha256": "6f41c8c0ab659e93f8183082b59fd71c3037e2ad8c3715de0157f4ad45d0b89b",
+      "views_bytes": 460910,
+      "views_filename": "NFLX_2022.tables.jsonl.gz",
+      "views_sha256": "60bc646d9a71cc20dfcca74e6642d8b24cc5d44da832c8d5df7a480fe1e9692d"
+    },
+    {
+      "expected_bytes": 1793612,
+      "expected_nonfraction_count": 955,
+      "expected_sha256": "b558cb9ef8f54bf18afb85b580dfe67d23b8776bb6f5c3f08db6704a39d3cf4e",
+      "external_filename": "NFLX_2023.html",
+      "source_path": "original_doc/NFLX_2023.html",
+      "typed_bytes": 6005766,
+      "typed_filename": "NFLX_2023.diagnostic.jsonl",
+      "typed_sha256": "90a9c3ee4baaedf4431087ac12e6ae254c0f6dcc845319139634c1d7b181f4b5",
+      "views_bytes": 518742,
+      "views_filename": "NFLX_2023.tables.jsonl.gz",
+      "views_sha256": "3bb9ae76f018e1b62d0f962de66012170148f38b65ebc08a8ce15bdebeba42f9"
+    },
+    {
+      "expected_bytes": 2548432,
+      "expected_nonfraction_count": 1153,
+      "expected_sha256": "7e3c19c27675079dc36571d692b74732c7afb85497249ccc1518c2238d54d47e",
+      "external_filename": "NVDA_2022.html",
+      "source_path": "original_doc/NVDA_2022.html",
+      "typed_bytes": 7618820,
+      "typed_filename": "NVDA_2022.diagnostic.jsonl",
+      "typed_sha256": "f1f2f27a544f0b16a74df4f5ef3053b73ca58138d6417fb318b69c50b7a6f716",
+      "views_bytes": 569386,
+      "views_filename": "NVDA_2022.tables.jsonl.gz",
+      "views_sha256": "9bdf571473f8adc4f9bb39c117da1fde044ea3120eb785b5350533e364c1c4a5"
+    },
+    {
+      "expected_bytes": 2669243,
+      "expected_nonfraction_count": 1235,
+      "expected_sha256": "5195c592ab1649c7afdb5ea707d99b895a60eade66396e2f8fc47471221ac56e",
+      "external_filename": "NVDA_2023.html",
+      "source_path": "original_doc/NVDA_2023.html",
+      "typed_bytes": 8172769,
+      "typed_filename": "NVDA_2023.diagnostic.jsonl",
+      "typed_sha256": "40293326b45aaf2ea4e8a1a2444724f9834021ba7c05dfe15b1ec861ff2a134d",
+      "views_bytes": 611040,
+      "views_filename": "NVDA_2023.tables.jsonl.gz",
+      "views_sha256": "933dd3f704939cdc905e600d67ce16fba1c3e4426dcbe88ef5eb313211facee4"
+    },
+    {
+      "expected_bytes": 3213508,
+      "expected_nonfraction_count": 2063,
+      "expected_sha256": "c21e3b4925260cafc944f3ff580860b741ad92e46f6b959d99f6dab193b5fc4a",
+      "external_filename": "LLY_2023.html",
+      "source_path": "original_doc/LLY_2023.html",
+      "typed_bytes": 13918237,
+      "typed_filename": "LLY_2023.diagnostic.jsonl",
+      "typed_sha256": "c4bdb0df03bece5c76a06fbe58a87dd0dc013967cc28fa64434682d676687af3",
+      "views_bytes": 836430,
+      "views_filename": "LLY_2023.tables.jsonl.gz",
+      "views_sha256": "4156071eda0c03b4cb93138f984c761375270b4c376626620346a5a1990fa1cf"
+    },
+    {
+      "expected_bytes": 3200081,
+      "expected_nonfraction_count": 2092,
+      "expected_sha256": "1b0b903bffac393577aa68004a2cbd947e0a3a5c3264caa87e3c6f06463fe351",
+      "external_filename": "LLY_2024.html",
+      "source_path": "original_doc/LLY_2024.html",
+      "typed_bytes": 14105216,
+      "typed_filename": "LLY_2024.diagnostic.jsonl",
+      "typed_sha256": "794704fabac48af4849fb56424356f7e21034b2bbce9d945614b7f263dfe23dc",
+      "views_bytes": 837919,
+      "views_filename": "LLY_2024.tables.jsonl.gz",
+      "views_sha256": "d996f778b344ef705e69d963df905723d8294cc589b41ffeaad1656ab7604b5a"
+    },
+    {
+      "expected_bytes": 12267724,
+      "expected_nonfraction_count": 2905,
+      "expected_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+      "external_filename": "BRK-B_2022.html",
+      "source_path": "original_doc/BRK-B_2022.html",
+      "typed_bytes": 20921585,
+      "typed_filename": "BRK-B_2022.diagnostic.jsonl",
+      "typed_sha256": "54a0983b90793dcf604e4b51032d01c731ee54c695c11bd9dd3ddbc423a3aea6",
+      "views_bytes": 1276845,
+      "views_filename": "BRK-B_2022.tables.jsonl.gz",
+      "views_sha256": "c0d713754d42a2ada587d72543b857768d763deabb30e7e9fcb9356e8badea08"
+    },
+    {
+      "expected_bytes": 12658122,
+      "expected_nonfraction_count": 2900,
+      "expected_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+      "external_filename": "BRK-B_2023.html",
+      "source_path": "original_doc/BRK-B_2023.html",
+      "typed_bytes": 20615720,
+      "typed_filename": "BRK-B_2023.diagnostic.jsonl",
+      "typed_sha256": "3b6324bf0bc31cbce14d548d1444c860fe9d49b4cd6938468d731f6344b4d0dd",
+      "views_bytes": 1290495,
+      "views_filename": "BRK-B_2023.tables.jsonl.gz",
+      "views_sha256": "3e6791b5ea69ab88a36d06299432930f4be2233599c71c6da930afd8b11ded7a"
+    },
+    {
+      "expected_bytes": 6713947,
+      "expected_nonfraction_count": 1768,
+      "expected_sha256": "5ab77e70634d3b871d1d9260f806b4c7384791dd50562a74bc40690027be2f1e",
+      "external_filename": "SLB_2022.html",
+      "source_path": "original_doc/SLB_2022.html",
+      "typed_bytes": 11797149,
+      "typed_filename": "SLB_2022.diagnostic.jsonl",
+      "typed_sha256": "848a9ad958db8a7a2f26f0e38ce5a214fb35f31b2b2247afce8522b283af8248",
+      "views_bytes": 829703,
+      "views_filename": "SLB_2022.tables.jsonl.gz",
+      "views_sha256": "ce96d4fdfc18dbeafb3298c51309bb5cbfe48bb2b99ee9e2d70db5ac09dc06d9"
+    },
+    {
+      "expected_bytes": 5012488,
+      "expected_nonfraction_count": 1705,
+      "expected_sha256": "c94028b2c0f25b6946700d5dfc39174bc331b097b79f83715cb06ab06f36612a",
+      "external_filename": "SLB_2023.html",
+      "source_path": "original_doc/SLB_2023.html",
+      "typed_bytes": 11508157,
+      "typed_filename": "SLB_2023.diagnostic.jsonl",
+      "typed_sha256": "b9b79321ed602e80e2a31f7ae9417ad2bb6da97f2d500fcdc7a3bbeb6b5abedd",
+      "views_bytes": 753350,
+      "views_filename": "SLB_2023.tables.jsonl.gz",
+      "views_sha256": "a09b542d765ec93f3522885bc7298124293bed666cc0b8afa9cf91138929d143"
+    }
+  ],
+  "view_protocol_path": "data/reader_binding_v16/table_view_protocol_v16_1.json"
+}

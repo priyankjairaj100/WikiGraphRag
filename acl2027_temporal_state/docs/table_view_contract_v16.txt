@@ -1,0 +1,154 @@
+V16 source-only table-view contract
+==================================
+
+Purpose and claim boundary
+--------------------------
+This conventional preprocessing stage creates source-bound table views for a
+later reader-competence pilot. It contains no questions, reference answers,
+model calls, learned retrieval, financial scope inference, or performance
+claim. It is executed on all twelve previously fixed filing objects before
+any question selection. Existing v15/v15.1 artifacts remain unchanged.
+
+Inputs and preflight
+--------------------
+The cohort, order, complete source byte lengths and SHA256 digests, and expected
+23,651 nonFraction occurrences are copied from the frozen v15.1 execution
+protocol. Previously emitted v15.1 diagnostic JSONL artifacts are pinned to the
+published execution result's byte lengths and SHA256 digests. All source and
+typed artifact hashes are checked before any parsing; the source population
+must equal the parent population, rather than merely have the same size.
+The new script, authored tests, this contract, and frozen private byte-parser
+source are bound by the v16 protocol. Interpreter, lxml/linked-libxml version,
+Expat version, and the interpreter/lxml.etree physical binaries are also pinned. A separate
+pyexpat extension binary is pinned when present; statically built-in pyexpat is
+explicitly marked and bound through the interpreter binary instead. This is an explicit local dependency receipt, not a system-call
+trace or an independently provisioned environment reproduction.
+
+The protocol is frozen after authored fixtures pass and before the first
+filing extraction. Any change following corpus inspection requires a new
+attempt/protocol amendment; failed attempts and public failure locators remain.
+
+Parsing, offsets, and locators
+-----------------------------
+The frozen temporal_state.typed_reader_v15_1._parse private helper supplies
+Expat source-byte offsets and expanded-name paths. This dependency deliberately
+shares lineage with v15.1; it is not an independent reimplementation of its
+byte-offset algorithm. Its UTF-8/ASCII-only declarations, DTD/entity/network
+refusal, depth/node limits, and exact quoted-attribute tag scan apply. The new
+entry point adds a 25 MiB source-size bound. Real input hashes must match before
+parsing. Source mutation, reformatting, decoding/re-encoding, or HTML recovery
+is prohibited.
+
+A separate strict lxml XML parse independently traverses all element nodes and
+constructs expanded-name sibling-ordinal locators. The complete element-locator
+set and all expanded element/attribute names and attribute values must agree
+with Expat before views are returned. This check is not independent numeric
+validation. Every table, row, cell, caption, paragraph, and linked numeric fact
+has a byte_start inclusive, byte_stop exclusive, and SHA256 of those original
+bytes. Root source identity is inherited by nested records; no source text is
+needed in the public inventory. Locators are deterministic expanded-name
+ordinal paths, not directly executable XPath strings. Cell locators reconstruct
+as table.dom_path + row.path_from_table + cell.path_from_row. Orphan-cell and
+fact locators reconstruct from the table plus path_from_table. Source arrays
+and all node arrays retain XML document order, using zero-based ordinals.
+
+Table ownership and text
+------------------------
+Every XHTML table is retained, including empty, nested, and markup-hidden tables.
+Each XHTML tr and td/th is owned by its nearest ancestor table. Cells belong to
+their nearest ancestor tr only when that row belongs to the same table; other
+cells are explicitly retained as orphan_cells. Each nonFraction occurrence is
+linked exactly once to its nearest ancestor table, or retained in the outside-
+table population. Nested nonFraction occurrences remain distinct. The exact
+v15.1 ordinal, source digest, expanded locator, byte boundaries, and span digest
+must all agree before the link is accepted. No normalized number, supported-
+status, context, or financial criterion filters the population.
+
+Nested tables are emitted as their own records with parent/child references.
+Their text is excluded from parent cell text and their numeric occurrences are
+excluded from parent ownership. Parent cells retain direct nested-table
+references. A table's full original byte span necessarily includes its nested
+tables; source-byte overlap is explicit and must not be interpreted as disjoint
+evidence. Row text is the tab-joined sequence of its owned cell texts; it is not
+a browser-rendered row. Captions and orphan cells have their own text records.
+The views preserve declared table cell content, not arbitrary malformed text
+outside the row/cell/caption structure. The full original table span is still
+available as the source of record.
+
+Cell/caption/paragraph text concatenates XML text and child-tail content in
+order. A br adds a newline before normalization; p/div/h1..h6 child blocks
+have newline separators before and after their content to prevent word fusion.
+These are syntactic separators, not computed CSS or browser layout. Nested
+table, script, and
+style content is excluded from parent text. XML whitespace (space/tab/CR/LF)
+is collapsed to one ASCII space and trimmed at the ends; NBSP and other Unicode
+characters are retained. Adjacent inline nodes are concatenated without
+inventing spaces, preserving split numeric strings. XML character references
+are resolved by the parser while byte anchors preserve their original spelling.
+No visual layout, continuation-text rewrite, hidden-text removal, or column
+inference is performed.
+
+Declared spans and scope
+-----------------------
+rowspan and colspan preserve their exact declared attribute strings. Missing
+values have a conventional default-one marker. Bounded nonnegative ASCII-digit
+strings are parsed; positive values 1..65535 are retained. rowspan=0 is marked
+as remaining-row-group, unexpanded. Invalid, out-of-range, or over-six-digit
+strings are unresolved rather than silently changed to one. This bounded
+syntactic treatment is not HTML browser conformance (including browser clamps).
+No merged-cell grid expansion, header association, or alignment repair occurs.
+The declared headers and scope attributes are retained without inference.
+
+Paragraph references and visibility
+----------------------------------
+A paragraph block is an XHTML p/div/h1..h6 outside every table, containing no
+descendant paragraph-block element and no descendant table. This leaf-block
+rule is syntax only. All such blocks are retained once as external records.
+Each table separately references at most two preceding and two following blocks
+whose byte spans do not overlap the table, chosen by document order. They are
+neighbors, not inferred captions or supporting evidence, and are never silently
+included in table text. References can cross intervening layout elements or
+other tables; proximity does not certify semantic attachment.
+
+Each table, cell, and paragraph reports recognized ancestor/self hiding cues:
+ix:hidden, HTML hidden attributes, and simple inline display:none or
+visibility:hidden/collapse declarations (including an optional !important).
+Stylesheets, classes, cascade, inheritance overrides, clipping, media queries,
+CSS escapes/comments, and rendering are not evaluated. Recognized cues do not
+certify invisibility; their absence does not certify visibility. Every view
+explicitly records rendering_verified=false and computed_css_evaluated=false.
+
+Public/private boundary and failure handling
+-------------------------------------------
+External JSONL contains source text and links to the source-bearing v15.1 records;
+those files are not committed or redistributed. The runner refuses an external
+output directory inside the resolved Git repository and refuses a public
+inventory path inside the private attempt directory. Typed values are joined through
+exact fact ordinals in pinned v15.1 records and are not redundantly copied.
+The public inventory contains only source hashes/lengths, table locators and
+anchors, counts, statuses, timing, and external artifact hashes/lengths. Public
+output contains no paragraph/cell/caption text, model outputs, or numeric fact
+values. Authored fixture strings are intentionally public.
+
+The complete external attempt is capped at 100,000,000 bytes, with 65,536 bytes
+reserved for start/finish records. The writer checks each whole JSONL record
+before writing; exceeding the cap fails the source/attempt instead of treating
+a truncated view as complete. Any partial file is retained with complete=false.
+All twelve source entries remain in the result, including failures. Existing
+result paths and attempt directories are never overwritten. Source successes
+must satisfy table-owned + outside-table facts = complete source population.
+
+Reproduction
+------------
+Run from acl2027_temporal_state with the pinned Python/lxml runtime:
+  PYTHONPATH=src python3 -m unittest tests.test_table_views_v16 -q
+  PYTHONPATH=src python3 scripts/build_table_views_v16.py \
+    --protocol data/reader_binding_v16/table_view_protocol.json \
+    --sources /path/to/fresh_sources \
+    --typed-records /path/to/typed_reader_attempt02 \
+    --external-output /path/to/new_empty_table_attempt \
+    --output /path/to/new_table_inventory.json
+
+Actual runtime binary paths are frozen in the protocol. Reprovisioning into a
+different location/version requires a separately documented environment receipt
+and amendment rather than bypassing preflight or silently editing the freeze.

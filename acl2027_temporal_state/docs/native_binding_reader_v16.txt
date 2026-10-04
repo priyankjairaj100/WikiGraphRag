@@ -1,0 +1,127 @@
+v16 native binding reader: frozen authored interface gate
+
+This driver prepares B1 typed binding proposals and B2 direct quantity outputs
+from the same question and compact evidence pack. It does not certify the
+correctness of natural question-to-fact mapping. The four cases are wholly
+authored: single quantity, joint claims across two physical versions, ambiguity
+about a version, and an unavailable unit binding. Every case has B1 then B2,
+for eight fixed calls. Passing this interface gate is not a natural QA gain or
+evidence that this checkpoint is a stronger reader.
+
+The compact view comes only from EvidencePack.prompt_view(), with an explicit
+registry explanation in the common prompt. B1 and B2 have identical common
+system text, question and serialized evidence; their output contracts differ.
+B1 proposes handles and witnessed bindings, after which the interface expands
+their exact quantities. B2 emits quantities and witnessed bindings itself.
+The ordinary interface checks exposed support; semantic correctness is assessed
+only against the separate authored reference in this small gate.
+
+No reference field is accepted in a request. The four authored references live
+in a separate field of interface_controls_v16.json and are copied to a separate
+external references.json. Only selected request fields are passed to the prompt
+builder. The natural-request path never accepts, reads or loads natural answer
+references; it hashes an external protocol without interpreting its contents.
+
+Exact model and runtime
+
+The model is Unsloth Qwen3.5-9B UD-IQ3_XXS, exact SHA256
+40d0f32cd3030b04f0784139a589fb63e876cfbf8667d56311b79783c74fd149,
+4,016,235,744 bytes at revision 3885219b6810b007914f3a7950a8d1b469d598a5.
+The configuration binds the successful acquisition and subsequent exact-byte
+relocation receipts. The physical model now resides at:
+/workspace/scratch/bdef663e3dfc/wikigraph_v16_external/assets/Qwen3.5-9B-UD-IQ3_XXS.gguf
+The old tmpfs path is a compatibility symlink. The driver requires the regular
+physical target path and checks the full SHA before a native process. Digest
+verification reads 1 MiB blocks and requests cache release every 32 MiB, avoiding
+an additional full cached copy before native loading. It does not alter bytes.
+
+The native runtime is the already verified llama.cpp b11146 release at commit
+7fe450e19305b828c199d602c23a8337aaa1f03b. All 60 runtime entries must still
+match the unchanged historical runtime manifest. The new module reuses pinned
+v07 template/tokenization and hashing helpers, v09 cgroup telemetry, and the
+new binding interface; it does not modify frozen v14 code.
+
+Fixed execution limits
+
+* Native context: 8192 tokens; full templated input: at most 6144 tokens;
+  generated output: at most 768 tokens. Over-budget inputs fail; none is trimmed.
+* Greedy decoding, seed 0, native enable_thinking=false, no grammar repair,
+  no outside retrieval, no extra tools and no completion retry.
+* One process and one active slot. Each completion uses a fresh process with
+  cache_prompt=false, so prompt token accounting must show cache_n=0.
+* mmap loading, four CPU threads, batch/ubatch 128, Q8_0 key/value caches,
+  flash attention on, no model warmup, no context shift and no mlock.
+* 5.5 GiB address-space ceiling, 7 GiB active-memory stop, 7.25 GiB total
+  cgroup-memory stop; 0.1-second monitoring. No guard is raised automatically.
+* Startup 90 seconds, request 300 seconds, process wall 450 seconds and CPU
+  time 3600 seconds. A lock prevents concurrent instances of this driver.
+
+The total-memory guard includes unrelated cgroup activity. A resource failure
+is retained and blocks that frozen attempt. A metadata or tokenizer pass alone
+does not show that full-context generation fits. Actual peak observations are
+recorded, including the sample that triggers a guard.
+
+Freeze and execution stages
+
+From acl2027_temporal_state:
+
+  python3 scripts/native_binding_reader_v16.py freeze \
+    --config configs/binding_reader_v16.json \
+    --controls data/reader_binding_v16/interface_controls_v16.json \
+    --external NEW_EXTERNAL_ATTEMPT_DIRECTORY \
+    --receipt results/native_binding_controls_v16.json
+
+  python3 scripts/native_binding_reader_v16.py tokenize \
+    --external SAME_EXTERNAL_ATTEMPT_DIRECTORY
+
+  python3 scripts/native_binding_reader_v16.py execute \
+    --external SAME_EXTERNAL_ATTEMPT_DIRECTORY
+
+  python3 scripts/native_binding_reader_v16.py verify \
+    --external SAME_EXTERNAL_ATTEMPT_DIRECTORY
+
+Freeze performs exact asset checks and binds the driver, interface, helper code,
+native-driver tests, fixture input, configuration, acquisition/relocation receipts,
+runtime manifest, pre-template messages, questions and packs before execution.
+The tokenizer stage loads one guarded native process, stores all rendered
+prompts and token IDs externally, and freezes their hashes with zero completion
+calls. Even an over-budget rendered prompt is retained externally. Execution
+renders each request again in a fresh process and requires equality with its
+tokenizer-stage prompt and token IDs before starting the one permitted call.
+
+Each public receipt retains all frozen request IDs and states, including failed
+and unattempted cases. Raw responses, full token arrays, source-bearing prompts,
+native logs and assessments remain external. Public rows contain source-free
+counts, output/schema/support statuses, response/trace hashes and authored gate
+results. Invalid JSON and output-limit responses are assessed as failures; they
+are never repaired, retried or dropped. A technical/provenance failure stops
+the attempt and marks remaining rows unattempted.
+
+The native non-streaming, non-speculative path is checked against pinned
+tools/server/server-context.cpp: each sampled token increments n_gen and is
+appended to generated_tokens, including EOG. Therefore returned token-list
+length must equal tokens_predicted; both are retained separately. The previous
+v14 checks on echoed decoding parameters, prompt identity, native model identity,
+stop state and cold prompt accounting are preserved and adapted to the new caps.
+
+Authored acceptance requires all eight cases to have the expected action,
+correct complete quantities where an answer is justified, and the specified
+source clarification for ambiguity. An output-limit response fails the gate.
+These references are authored controls, not independent natural gold labels.
+
+Future natural request admission
+
+freeze-requests accepts an external JSON list containing request_id, case_id,
+arm, question and pack. Each case appears as adjacent B1 then B2 rows with an
+identical question and pack. There may be at most 18 cases / 36 calls. The CLI
+requires --config, --requests, --external, --receipt, --gate, --protocol and
+--protocol-sha256. Admission requires a successful eight-call authored receipt
+bound to the same model, configuration and driver/interface/helper code recipe,
+plus the exact external protocol hash. Reference answers cannot be supplied to
+this path. Additional benchmark/source admission requirements remain the root
+protocol's responsibility; the CLI gate does not make natural data admissible.
+
+Offline tests cover exact budgets, response token accounting, incorrect asset
+bindings, changed memory/decoding limits, common evidence visibility, reference
+sentinels, hidden-field rejection, full denominator lengths, and guarded memory
+checks. They use authored data and mocks, with zero model loads or completions.

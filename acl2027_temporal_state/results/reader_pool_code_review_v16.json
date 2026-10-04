@@ -1,0 +1,122 @@
+{
+  "final_provenance_refresh": "Read-only review of final code adding storage-audit/review/adversarial-test bindings, rerunning all42 controls, and refusing stale review hashes; selection predicates unchanged. Prior review receipt and hashes preserved here. No pool selection or natural-source values read.",
+  "findings": [
+    {
+      "discovery": "Code inspection: newline-joining row text permitted net\\s+sales to span two distinct rows, contrary to per-row rule.",
+      "id": "POOL-R1",
+      "initial_failing_execution_claimed": false,
+      "resolution": "Owner changed to independent row regex matching and added regression; separate cross-row and within-row controls pass.",
+      "severity": "blocking_before_freeze",
+      "status": "closed"
+    }
+  ],
+  "input_bindings": {
+    "docs/reader_pool_contract_v16.txt": "4fa35cd0f31f04d175bb01910b6907016aeebbfe10eefd71efa1b15faa76d6da",
+    "scripts/build_table_views_v16.py": "f38cc939ec1c5d08871f5f14c389eae898b297b7b7bbc16192bf80bcc100f9cc",
+    "scripts/select_reader_pool_v16.py": "9ef498adecae9755256b2fe1e4972782ff58f34354205fdf49087bc90d8453d8",
+    "tests/test_reader_pool_adversarial_v16.py": "f9a2070a88cfc003e910061175d1ade08abeddcbb1598d392ef5a443945cdd14",
+    "tests/test_reader_pool_v16.py": "ef70e61b600c4c2216720b8e07dc2c2f14f945a5b1dba54b64e094fbac02c958"
+  },
+  "model_prediction_calls": 0,
+  "natural_question_reference_reads": 0,
+  "natural_source_value_reads": 0,
+  "open_blocking_findings": 0,
+  "prior_review_receipts": [
+    {
+      "receipt": {
+        "findings": [
+          {
+            "discovery": "Code inspection: newline-joining row text permitted net\\s+sales to span two distinct rows, contrary to per-row rule.",
+            "id": "POOL-R1",
+            "initial_failing_execution_claimed": false,
+            "resolution": "Owner changed to independent row regex matching and added regression; separate cross-row and within-row controls pass.",
+            "severity": "blocking_before_freeze",
+            "status": "closed"
+          }
+        ],
+        "input_bindings": {
+          "docs/reader_pool_contract_v16.txt": "a67803262720f01ff07b68c58dccaa654b206362e4306de52611adfb8b064fcd",
+          "scripts/build_table_views_v16.py": "f38cc939ec1c5d08871f5f14c389eae898b297b7b7bbc16192bf80bcc100f9cc",
+          "scripts/select_reader_pool_v16.py": "6bb6926a84f58cb6a970d62f9a17214e1698749691a5358e60f08f03f65630cd",
+          "tests/test_reader_pool_adversarial_v16.py": "f9a2070a88cfc003e910061175d1ade08abeddcbb1598d392ef5a443945cdd14",
+          "tests/test_reader_pool_v16.py": "ef70e61b600c4c2216720b8e07dc2c2f14f945a5b1dba54b64e094fbac02c958"
+        },
+        "model_prediction_calls": 0,
+        "natural_question_reference_reads": 0,
+        "natural_source_value_reads": 0,
+        "open_blocking_findings": 0,
+        "remaining_limitations": [
+          "No browser rendering, computed CSS, semantic evidence completeness or source financial correctness is established.",
+          "Same frozen table-view and v15.1 helper lineage is reused; this is not independent parser conformance.",
+          "Population is purpose-selected development material; no natural QA or generalization claim."
+        ],
+        "review_dimensions": {
+          "all_source_table_order_inventory": "code_review",
+          "all_status_occurrence_denominator": "passed_authored_controls",
+          "author_packet_machine_reference_separation": "code_review_and_authored_controls",
+          "duration_resolved_and_numeric_usable_counts": "passed_authored_controls",
+          "fixed_first_two_document_order_and_unfilled_slots": "passed_author_controls_and_code_review",
+          "no_source_rows_or_values_in_public_aggregates": "code_review",
+          "output_budget_exclusive_creation_and_failed_source_retention": "code_review_and_author_controls",
+          "parent_artifact_paths_bound": "independent_authored_control",
+          "recognized_visibility_only_claim": "code_review_and_authored_controls",
+          "row_local_domain_filter": "passed_authored_controls",
+          "source_typed_and_table_hash_locator_linkage": "code_review_and_authored_controls"
+        },
+        "reviewed_at_utc": "2026-10-04T09:36:31.164587+00:00",
+        "reviewer_role": "separate_model_agent_authored_fixtures_only",
+        "schema_version": "reader_pool_code_review_v16",
+        "scope": "Read-only selector review plus separately authored controls; no natural filing/table contents, questions, references or predictions inspected. Not human annotation or semantic source validation.",
+        "status": "passed_bounded_code_review_before_selection",
+        "test_receipt": {
+          "author_controls": 35,
+          "command": "PYTHONPATH=src python3 -m unittest discover -s tests -p test_reader_pool*v16.py -q",
+          "elapsed_seconds": 0.142,
+          "errors": 0,
+          "exit_code": 0,
+          "failures": 0,
+          "independent_controls": 7,
+          "skipped": 0,
+          "tests_run": 42,
+          "transcript_sha256": "4f22cec7b87a0458103bcac1fbad47dab73f7dd940b1a2662064dfa7103ea9e2"
+        }
+      },
+      "sha256": "21e7e8dc704618aa0b03c3138195d7327aef44d4495ab8b2ea271e53093bc4ba"
+    }
+  ],
+  "remaining_limitations": [
+    "No browser rendering, computed CSS, semantic evidence completeness or source financial correctness is established.",
+    "Same frozen table-view and v15.1 helper lineage is reused; this is not independent parser conformance.",
+    "Population is purpose-selected development material; no natural QA or generalization claim."
+  ],
+  "review_dimensions": {
+    "all_source_table_order_inventory": "code_review",
+    "all_status_occurrence_denominator": "passed_authored_controls",
+    "author_packet_machine_reference_separation": "code_review_and_authored_controls",
+    "duration_resolved_and_numeric_usable_counts": "passed_authored_controls",
+    "fixed_first_two_document_order_and_unfilled_slots": "passed_author_controls_and_code_review",
+    "no_source_rows_or_values_in_public_aggregates": "code_review",
+    "output_budget_exclusive_creation_and_failed_source_retention": "code_review_and_author_controls",
+    "parent_artifact_paths_bound": "independent_authored_control",
+    "recognized_visibility_only_claim": "code_review_and_authored_controls",
+    "row_local_domain_filter": "passed_authored_controls",
+    "source_typed_and_table_hash_locator_linkage": "code_review_and_authored_controls"
+  },
+  "reviewed_at_utc": "2026-10-04T09:38:16.065859+00:00",
+  "reviewer_role": "separate_model_agent_authored_fixtures_only",
+  "schema_version": "reader_pool_code_review_v16",
+  "scope": "Read-only selector review plus separately authored controls; no natural filing/table contents, questions, references or predictions inspected. Not human annotation or semantic source validation.",
+  "status": "passed_bounded_code_review_before_selection",
+  "test_receipt": {
+    "author_controls": 35,
+    "command": "PYTHONPATH=src python3 -m unittest discover -s tests -p test_reader_pool*v16.py -q",
+    "elapsed_seconds": 0.127,
+    "errors": 0,
+    "exit_code": 0,
+    "failures": 0,
+    "independent_controls": 7,
+    "skipped": 0,
+    "tests_run": 42,
+    "transcript_sha256": "455be4f1b9f612471063e0aa51a8cdf348ae605f6b1c2198b98ff3b282b104b7"
+  }
+}

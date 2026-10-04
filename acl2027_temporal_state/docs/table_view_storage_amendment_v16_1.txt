@@ -1,0 +1,80 @@
+V16.1 lossless storage amendment; extraction unchanged
+====================================================
+
+Observed failure and retained outcome
+------------------------------------
+The first frozen v16 table-view attempt ran all twelve fixed sources. Nine
+sources produced complete plain JSONL files; the final three hit the declared
+100,000,000-byte output limit and remain failed, with partial-file flags. The
+complete first-attempt footprint was 99,934,266 bytes, so the bound itself held.
+The original protocol, script, tests, contract, and public inventory are kept
+unchanged. Original public result SHA256:
+9c41d6c0b48363afd3d75e61bd6d0a6d4a37272acdcb6ca928619de3e7531a3d.
+This is a storage failure, not an omitted-source success or a QA result.
+No question selection, reference construction, source-value inspection, or
+model call informed this amendment.
+
+Lossless archive of attempt 01
+------------------------------
+The original attempt's own JSONL files are gzip-compressed in place, using an
+empty gzip filename, mtime=0, compression level 9. Every original raw file's
+size and SHA256 is checked against its recorded receipt before mutation. Each
+compressed file is fully decompressed and its byte count and SHA256 checked
+against the original before that original raw file is unlinked. A public archive
+receipt records both forms, the original complete/partial flag, the compression
+runtime, and the successful restore checks. No unrelated files are removed.
+The original attempt metadata and public result remain unchanged. A lossless
+container change cannot convert a partial first-attempt file into a complete
+source view.
+
+Exact restoration of any archived first-attempt file, into a new external
+location rather than overwriting anything:
+
+  import gzip, hashlib, json
+  from pathlib import Path
+  receipt = json.loads(Path('results/table_view_archive_v16_1.json').read_text())
+  archive_dir = Path('/path/to/table_views_attempt01')
+  restore_dir = Path('/path/to/new_restore_directory')
+  restore_dir.mkdir(exist_ok=False)
+  for row in receipt['files']:
+      archived = archive_dir / row['archive_filename']
+      assert hashlib.sha256(archived.read_bytes()).hexdigest() == row['archive_sha256']
+      raw = gzip.decompress(archived.read_bytes())
+      assert len(raw) == row['original_bytes']
+      assert hashlib.sha256(raw).hexdigest() == row['original_sha256']
+      (restore_dir / row['original_filename']).write_bytes(raw)
+
+Do not reconstruct an original uncompressed file from a newer table extraction;
+restore the archived bytes when reproducing the original attempt.
+
+Amended complete attempt
+------------------------
+scripts/build_table_views_v16_1.py imports the exact frozen v16 extractor,
+including its parsing, whitespace, table/row/cell ownership, paragraph neighbor,
+anchor, ordinal-link, visibility, and public/private policies. No extraction
+function or source-selection rule is edited. It serializes the identical JSONL
+record stream into deterministic gzip instead of plain JSONL. Each file reports
+both compressed and uncompressed byte counts and SHA256. Its compressed output
+is decompressed completely after writing to verify the uncompressed digest and
+length. Each amended uncompressed byte stream is also checked against the original
+first-attempt receipt: the nine complete streams must match exactly, and the
+three partial original streams must be exact prefixes. This directly verifies
+that the container amendment did not change previously emitted view content.
+Public counts and per-table anchors remain the same schema as v16.
+
+All twelve sources are rerun under a separate frozen protocol, using the exact
+same source and typed artifact identities and the same 100,000,000-byte overall
+table-artifact disk budget. Archived attempt-01 bytes count against the amended
+budget. Overflow remains an explicit source/attempt failure; no truncation is
+represented as a success. The gzip/zlib runtime and amendment code/tests are
+bound before the amended source run. Existing paths are never overwritten.
+The final archive plus new-attempt total is recorded publicly.
+
+Consumer change is storage-only:
+  with gzip.open('/external/SOURCE.tables.jsonl.gz', 'rt', encoding='utf-8') as f:
+      records = [json.loads(line) for line in f]
+
+Source texts stay external. Browser-rendered visibility, inferred table headers,
+financial scope, full taxonomy conformance, reader quality, and QA correctness
+remain unestablished by these table views. The source-only corpus preparation
+continues to contain zero model calls and zero selected questions.

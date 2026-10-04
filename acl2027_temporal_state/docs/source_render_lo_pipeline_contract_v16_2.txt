@@ -1,0 +1,122 @@
+V16.2 LibreOffice source-block inspection with declared resource amendment
+==========================================================
+
+Evidence and scope
+------------------
+The prior Story candidate remains frozen as a failed visual candidate: authored
+merged headers did not align to their numeric columns. A separate authored LO
+run on identical source HTML preserved merged-cell/year-column geometry, but
+lost declared borders and table width. Source rendering is therefore a narrowly
+qualified inspection aid, not a browser-fidelity or financial-scope certificate.
+The public authored receipts remain unchanged and separate from natural output.
+
+Population and source binding
+-----------------------------
+prepare_render_pool_v16_2.py freezes every table selected by reader_pool_v16_1 and
+all of its existing two-before/two-after paragraph neighbors. Identical neighbor
+blocks are deduplicated by bound source identity and anchor; no question, answer,
+normalized value or rendering outcome selects the population. Empty source slots
+remain explicit. All twelve source hashes and byte lengths, pool author-packet
+hashes, selected original block locators, byte boundaries and span digests are
+bound. Natural render failures cannot trigger replacement or silent removal.
+
+Original markup and source styles are retained exactly through the existing
+source assembly helper: a selected original block, original ancestor opening
+tags, original head style elements, and matching synthetic closing tags only.
+Each original fragment is saved independently. The whole selected table and all
+its rows are retained. Neighbors are separate source blocks, not invented table
+captions or inferred supporting facts. No typed-output table or missing label is
+constructed. The original filing remains the source of record.
+The exact source assembly is saved separately from the LO render input. A fixed
+UTF-8 Content-Type meta declaration is added to the generated head of the latter
+to prevent an HTML importer guessing another encoding after the original XML
+declaration was omitted. Both hashes are recorded. This adds no displayed source
+content and changes no block bytes; its authored Unicode rendering must pass before natural execution.
+
+Fail-closed resource profile
+---------------------------
+An explicit passive XHTML/Inline XBRL element allowlist is enforced on assembled
+markup. Script/event handlers, active/resource attributes, image/object/frame
+elements, foreign embedded content, and non-fragment hyperlinks are refused.
+CSS URLs, escapes, at-rules and known active-CSS forms are refused rather than
+removed. No source content is rewritten to make a block pass. Source-level head
+external stylesheets remain omitted and counted by the assembly helper; their
+absence is a material review limitation, not evidence that their effects are
+irrelevant. Full original CSS must be inspected before admission.
+CSS functions also have a small allowlist: rgb/rgba/hsl/hsla/calc/min/max/clamp/var.
+Other functions, including image-set and image with bare resource strings, are
+refused. Source meta elements stay outside the passive profile; the fixed UTF-8
+declaration is added only after the original assembly passes resource checks.
+V16.2 also closes XML/HTML resource-guard gaps identified before any natural use:
+processing instructions are refused, and CDATA containing markup is refused to
+avoid XML/HTML parser differences introducing uninspected elements. Plain CSS
+CDATA is retained unchanged. This is an additional conservative input refusal,
+not a transformation of unsupported source content.
+
+This is an input refusal profile with no resource-fetch layer, not a kernel-level
+network audit. Source styles can still hide, reorder or clip content. Property
+flags are diagnostic only; they do not exhaust CSS semantics. Every block stays
+not_admitted_pending_full_visual_and_css_review after a successful conversion.
+Admission requires comparison of the actual source and rendered pages confirming
+required headers, units, captions, footnotes and every selected numeric-column
+mapping, and checking source CSS for material hiding/order changes. Missing or
+uncertain dependencies prevent a confident admission; print success never overrides
+that uncertainty. No browser-fidelity or natural-QA performance claim follows.
+
+Runtime and bounds
+------------------
+The supported soffice wrapper is used with a new isolated profile per block. No
+user browser, existing application profile, downloaded Chromium, or disabled
+security sandbox is used. The immutable protocol pins renderer code, source/input
+hashes, interpreter, PyMuPDF module/extension, Poppler executable, and LO program
+files. This is not a complete operating-system/font dependency closure.
+
+Each LO conversion gets 300 seconds and each Poppler rasterization 60 seconds.
+The declared cache-aware resource amendment uses scripts/cgroup_guard_v16_2.py,
+with an unchanged 8 GiB kernel memory.max and a 7 GiB conservative sum of anon,
+file_mapped, shmem, kernel, sock, dirty/writeback, unevictable and swapcached.
+Overlapping fields deliberately double-count; this is not an exact resident-memory
+estimate. Actual memory.current and every proxy component remain recorded.
+A 512 MiB reserve is required before each small LO/Poppler process, and summed
+owned-process-group RSS has a separate 512 MiB cap. Telemetry is sampled every
+0.25 seconds, fails closed if unavailable, and compares OOM counters against a
+run-global baseline so events between blocks cannot disappear. There are no
+cgroup writes, unrelated-process changes, or native-reader policy amendments.
+This policy does not retain the old 7.25 GiB actual-total soft ceiling. The
+original v16.1 Unicode/overflow prelaunch refusals remain unchanged.
+Only the new owned process group is stopped if limits trip. Cleanup signals the
+whole group even if its leader has already exited, then uses a bounded TERM/KILL
+sequence; this closes the independently observed historical cleanup bug. Source byte parsing occurs before
+the conversion and has its inherited 25 MiB source and 5 MiB fragment profile.
+The original 1..16-block-per-source bound applies, with an explicit zero-block
+case for empty pool sources. Profiles, logs and all source-bearing outputs remain
+outside Git. Outputs and immutable protocols are created exclusively; no prior
+attempt is overwritten.
+
+The PDF filter exports pages 1 through cap+1 (default cap 8). A ninth page is an
+overflow sentinel and causes failure with partial PDF retained; it is not shown
+as a complete eight-page result. The exporter may layout more pages internally,
+so time/memory guards still apply. Eight or fewer pages undergo all-page Poppler
+rasterization. Output checks stop further work at 150 MB per attempt and 20 MB
+per block. Four MB is reserved before source writes for receipts. These limits
+are sampled/before-write checks, not a promise that a native file write cannot
+briefly overshoot. All failed/unrenderable entries remain in public denominators.
+
+Source-bearing fragment HTML/XML, PDFs, PNGs, extracted text, native logs and raw
+exception messages remain external. Public output records source anchors, hashes,
+resource refusal codes, aggregate status, timings and artifact metadata only.
+
+Execution
+---------
+  PYTHONPATH=src python3 scripts/prepare_render_pool_v16_2.py \
+    --pool-records /external/reader_pool_attempt01 \
+    --output data/reader_binding_v16/source_render_protocol_v16_2.json
+  PYTHONPATH=src python3 scripts/render_source_blocks_lo_v16_2.py \
+    --protocol data/reader_binding_v16/source_render_protocol_v16_2.json \
+    --sources /external/fresh_sources --external-output /external/new_render_attempt \
+    --output results/source_render_execution_v16_2.json
+
+Primary filter reference checked 2026-10-04:
+https://help.libreoffice.org/latest/en-US/text/shared/guide/pdf_params.html
+The PageRange option specifies exported pages. The actual supported runtime and
+sentinel behavior must also be exercised on authored fixtures before natural use.

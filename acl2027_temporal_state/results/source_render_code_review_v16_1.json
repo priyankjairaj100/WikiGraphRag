@@ -1,0 +1,70 @@
+{
+  "bound_inputs": {
+    "scripts/probe_source_render_lo_v16.py": {
+      "bytes": 9570,
+      "sha256": "5fbf89f672f7cd5ef40eb07a3f2145200cb8ccd354b4ba094b2793925d90f34f"
+    },
+    "scripts/render_source_blocks_lo_v16_1.py": {
+      "bytes": 15634,
+      "sha256": "16dcef7b6a0f09adcd96dea5f4746de44880c2a2ba1d48bc77f9d4fe36318eb9"
+    },
+    "scripts/render_source_blocks_v16.py": {
+      "bytes": 15017,
+      "sha256": "adb202f5dcde21d76b3d6b5e87f0b89a8cdcb02607d1b9962d1b6de7019f384f"
+    },
+    "tests/test_source_render_lo_adversarial_v16_1.py": {
+      "bytes": 7573,
+      "sha256": "c38bd63c9b3517b915f6270460ad8449bd6df8a57306db2a8a67f1f7794b6afd"
+    }
+  },
+  "findings": [
+    {
+      "detail": "Initial image-set/string-resource functions bypassed url-only check. Current conservative function allowlist refuses them; authored check passes.",
+      "id": "css_string_resources",
+      "status": "fixed_before_this_test_run"
+    },
+    {
+      "detail": "Original fragment and assembly remain byte-exact; static UTF-8 metadata appears only in separately hashed render input after source resource guard.",
+      "id": "charset_metadata",
+      "status": "owner_identified_and_fixed_before_this_test_run"
+    },
+    {
+      "detail": "Imported stop_group returns after a leader has exited, even if descendants remain in that owned process group. Mocked control confirms no signal is sent.",
+      "id": "owned_group_cleanup",
+      "status": "confirmed_blocker"
+    }
+  ],
+  "limitations": [
+    "Source views remain unadmitted until full visual/CSS review.",
+    "Authored/mocked checks cannot prove live import fidelity, glyph coverage, resource isolation or rendering equivalence."
+  ],
+  "next_action": "Preserve this v16.1 code/outcome and review a separately versioned resource-only v16.2 amendment before any natural render.",
+  "passed_properties": [
+    "Exact source fragment and assembly retained separately from generated charset input.",
+    "Page cap plus one is requested; an over-cap result retains PDF and fails before rasterization.",
+    "All selected blocks remain in public denominator on preparation refusal.",
+    "Repository paths and existing destinations refused.",
+    "Prelaunch memory/output caps refuse native subprocess."
+  ],
+  "reviewed_at_utc": "2026-10-04T09:56:41.623344+00:00",
+  "schema_version": "source_render_code_review_v16_1",
+  "scope": {
+    "native_rendering_processes_launched": 0,
+    "natural_source_values_inspected": false,
+    "questions_inspected": false,
+    "references_inspected": false
+  },
+  "status": "blocked_owned_process_group_cleanup",
+  "verification": {
+    "details": [
+      {
+        "test": "tests.test_source_render_lo_adversarial_v16_1.SourceRenderAdversarialTests.test_owned_group_cleanup_runs_even_after_leader_exits",
+        "traceback": "Traceback (most recent call last):\n  File \"/dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state/tests/test_source_render_lo_adversarial_v16_1.py\", line 101, in test_owned_group_cleanup_runs_even_after_leader_exits\n    self.assertTrue(killpg.called,'owned children can survive an exited process-group leader')\nAssertionError: False is not true : owned children can survive an exited process-group leader\n"
+      }
+    ],
+    "errors": 0,
+    "failures": 1,
+    "output_sha256": "4b668c09631ccbfe282e02a38819ec786f30d895ad63b5ac4535b85892b1beed",
+    "tests_run": 7
+  }
+}

@@ -1,0 +1,180 @@
+Taxonomy and label feasibility for the fixed filing cohort, v16
+2026-10-04. Source-resource study; no natural QA or method-gain result.
+
+Decision
+
+The extension-taxonomy/label resources are recoverable for all 12 fixed filing
+objects. The next conventional baseline can use source-specific taxonomy labels
+and a full-DTS processor. This study has not run that processor on the filings.
+Exact official-filing byte identity remains unresolved and is a separate issue
+from interpreting the fixed HF bytes against a compatible declared taxonomy.
+
+Completed, all 12 retained
+
+The fixed objects contain 23,651 nonFraction occurrences and one relative
+schemaRef each. They contain no embedded link:label resources. All 12 matching
+candidate issuer-extension XSDs and their 12 SEC filing indexes returned HTTP
+200. Eleven extension XSDs link separate label linkbases; all eleven were
+captured with HTTP 200. SLB_2023 instead embeds its labels inside the XSD.
+
+The recovered resource set contains 26,105 label resources and 11,462 label arcs.
+Every inspected label arc has the concept-label arcrole. Syntactic schema-ID /
+locator / labelArc linkage covers all 2,170 issuer-extension numeric occurrences.
+This is NOT effective-label selection: link priority/prohibition, role/language
+choice, schema validity, and dimensional semantics have not been processed.
+All labels and bodies remain external; public records contain counts and hashes.
+
+Phase 1 and 2 response bodies total 16,271,459 bytes, below the shared 25 MiB cap.
+A subsequent pinned SEC transform source and its one local dependency total
+45,572 bytes, bringing the captured-body total to 16,317,031 bytes. There were no
+HTTP/transport failures in these 37 direct resource captures. Two web-document
+lookups failed and are retained separately in primary_sources.json: a versioned
+Arelle API page was unavailable, and its current plugin documentation linked to
+a stale plural transforms/ path that returned 404. No retry erased either event.
+
+The metadata replay checks pass 132/132, including unchanged source hashes,
+response hashes and sizes, namespace compatibility, source filename membership
+in the candidate filing index, label arcroles, coverage and download cap. These
+are mechanical resource checks, not a conformance suite or independent human
+financial validation.
+
+Source identity and candidate accessions
+
+All candidate SEC index document sizes differ from the fixed HF objects:
+
+Source             Candidate accession       HF minus listed SEC bytes
+PFE_2023           0000078003-24-000039               5
+PFE_2024           0000078003-25-000054               8
+NFLX_2022          0001065280-23-000035               4
+NFLX_2023          0001065280-24-000030               4
+NVDA_2022          0001045810-22-000036               4
+NVDA_2023          0001045810-23-000017               4
+LLY_2023           0000059478-24-000065               5
+LLY_2024           0000059478-25-000067               8
+BRK-B_2022         0001564590-22-007322          65,973
+BRK-B_2023         0000950170-23-004451          28,118
+SLB_2022           0001564590-23-000762          40,157
+SLB_2023           0000950170-24-006884          17,011
+
+Sizes alone neither establish byte identity nor explain the differences. No
+normalization was applied to remove them. The candidate links use issuer,
+internal period, schema filename and official 10-K metadata. A schema filename
+can recur in another submission (including a proxy), so the explicit accession
+is essential. BRK-B filename years retain the already-disclosed actual FY2021 /
+FY2022 mismatch. No question/reference files were accessed or selected.
+
+Concrete full-DTS attempt proposal (not frozen and not executed)
+
+The machine-readable proposal is data/taxonomy_v16/full_dts_attempt_proposal.json.
+It proposes a deterministic discovery phase, followed by a fully offline
+validation phase. Existing source and taxonomy captures are reused by hash.
+
+1. Verify all 12 source hashes, Arelle 2.46.0 wheel/runtime bindings and the SEC
+   transform files. Stage exact HF bytes, by hard link or copy, in 12 distinct
+   local directories with their candidate filing filenames. Place the recovered
+   relative schema/linkbase files beside each source. Record the local effective
+   base URI and candidate SEC accession separately. Do not change XML, encoding,
+   file contents, concept names, periods or numeric lexicals.
+2. Traverse reachable schema import/include/redefine and XBRL schema/linkbase/
+   role/arcrole/locator dependencies. Resolve inherited xml:base, retain original
+   and resolved URIs, and process outgoing URIs in sorted order after a fixed
+   source-order seed list. The current extensions reference 48 distinct direct
+   standard/core schema URLs and 33 not-yet-fetched presentation/definition/
+   calculation linkbases. Download only reachable XML; no whole submissions,
+   images, CSS, JavaScript or PDFs. Reuse pinned Arelle built-in core resources
+   only when recorded individually. Preserve each response/error and SHA.
+3. Impose the proposed additional 128 MiB response-body cap, 8 MiB per response,
+   2,000 unique URLs, one logical attempt per URL and 30-second network timeout.
+   Freeze the full URL/body/hash graph, including failed edges, before the first
+   source-validation execution. An incomplete closure remains incomplete; a
+   missing dependency must never become a claim that the filing is invalid.
+4. Run one Arelle Session per subprocess, sequentially for all 12 sources, with
+   validate=True, internetConnectivity='offline', an explicit frozen cache,
+   disablePersistentConfig=True, keepOpen=True, baseTaxonomyValidationMode='all',
+   and the pinned SEC transform-only plugin. Keep EFM/disclosure-system checks,
+   optional calculation/UTR checks and formula execution disabled explicitly.
+   This is XBRL/Inline/DTS validation under these options, not SEC filing-rule
+   compliance, arithmetic audit, rendered-layout verification or financial truth.
+5. Preserve Session return value, logs, severity/code counts, unresolved concepts,
+   DTS completeness, exact fact occurrence counts and process failures separately.
+   A process exit of zero or Session.run(True) does not mean zero validation
+   errors. Propose a 300-second per-source wall cap and a 2 GiB RSS kill threshold;
+   always retain the full 12-source denominator.
+6. Match Arelle nonFraction records to v15 by source SHA and expanded-name DOM
+   occurrence locator. Compare exact canonical Decimal values only on the common
+   readable non-nil population, with missing/duplicate/status/value mismatches
+   retained. Report the 116 previously unsupported SEC numwordsen cases as a
+   separate coverage stratum. Obtain effective English labels with QName fallback
+   disabled; label availability does not establish question-concept correctness.
+   Keep full values/labels/log bodies external and publish aggregate provenance.
+
+Resource estimate, not a measurement
+
+Official FASB directories list four complete US-GAAP archives as 6.2M, 6.2M,
+6.3M and 6.8M (2021-2024), approximately 25.5M compressed in server display units.
+Archive contents and extraction expansion were not downloaded or measured.
+A selective reachable-XML cache is preferable to holding full archives and
+extracted duplicates. Planning range: 40-120 MiB additional raw dependencies,
+with 128 MiB as a hard cap rather than a completeness guarantee. Planning RSS:
+256-768 MiB for one loaded filing, with a proposed 2 GiB hard process threshold;
+this has not yet been measured. Execute before reader weights are loaded, then
+retain source/cache files within the storage budget and close each process.
+
+Processor/plugin readiness
+
+Arelle 2.46.0 Session and RuntimeOptions import successfully in the pinned v15
+runtime. No Session model load or validation was executed. The pinned wheel has
+no EDGAR plugin files. The current official plugin repository uses transform/
+(singular), whereas latest Arelle documentation still shows EDGAR/transforms.
+The exact upstream commit is 4891c4c9889c77af247428ceff4fa7cc52d534ea. Captured
+transform/__init__.py and transform/text2num.py are hash-pinned in metadata.
+The plugin registers SEC numwordsen and other SEC transforms and imports only
+Arelle, datetime, regex and its local text2num module. The transform-only module
+avoids the EDGAR renderer/validator/XULE stack; its actual compatibility still
+requires authored import/transform and cache-resolution controls before freezing
+and running the proposed source validation. Do not treat the repository README's
+broader EDGAR stack or supported SEC Arelle version as this study's configuration.
+
+Primary resources
+
+- SEC operating-company taxonomy release index:
+  https://www.sec.gov/data-research/structured-data/taxonomies-schemas/standard-taxonomies/operating-companies
+- FASB directory listings:
+  https://xbrl.fasb.org/us-gaap/2021/
+  https://xbrl.fasb.org/us-gaap/2022/
+  https://xbrl.fasb.org/us-gaap/2023/
+  https://xbrl.fasb.org/us-gaap/2024/
+- Arelle Session API and SEC transform guidance:
+  https://arelle.readthedocs.io/en/latest/python_api/python_api.html
+  https://arelle.readthedocs.io/en/latest/plugins/popular/transforms_sec.html
+- Official upstream plugin:
+  https://github.com/Arelle/EDGAR/tree/4891c4c9889c77af247428ceff4fa7cc52d534ea/transform
+- All 12 exact SEC index and extension URLs, capture dates, hashes and errors:
+  results/taxonomy_feasibility_v16.json
+  results/taxonomy_labels_feasibility_v16.json
+
+Reproduction from the research directory
+
+python3 scripts/inspect_taxonomy_v16.py \
+  --protocol data/taxonomy_v16/resource_protocol.json \
+  --identity data/fresh_source_audit_v14/source_identity_structure.json \
+  --sources /ABS/fresh_sources --external-output /ABS/new_taxonomy_attempt \
+  --output /ABS/new_taxonomy_feasibility.json
+
+python3 scripts/recover_taxonomy_labels_v16.py \
+  --feasibility /ABS/new_taxonomy_feasibility.json \
+  --first-protocol data/taxonomy_v16/resource_protocol.json \
+  --sources /ABS/fresh_sources --external-output /ABS/new_label_attempt \
+  --protocol /ABS/new_label_protocol.json --output /ABS/new_label_feasibility.json
+
+python3 scripts/audit_taxonomy_v16.py \
+  --feasibility /ABS/new_taxonomy_feasibility.json \
+  --labels /ABS/new_label_feasibility.json --sources /ABS/fresh_sources \
+  --output /ABS/new_taxonomy_audit.json
+
+These acquisition scripts refuse to overwrite prior attempt outputs. A fresh
+network capture can differ from the present pinned body; retain both receipts.
+The label-recovery run assumes the first-phase source paths remain unchanged;
+the subsequent replay audit explicitly rechecks all 12 source hashes. No source
+file changed in this execution. Full-DTS proposal options/limits/code still need
+to be frozen as a separate execution protocol before the proposed run.

@@ -1,0 +1,156 @@
+Source-purpose reader-question pool v16
+Prepared 2026-10-04 before first table selection. No questions, references,
+reader predictions, model completions or evaluated outcomes are used here.
+
+Purpose
+
+Prepare bounded candidate source material from all twelve fixed development
+filings for later free-prose question authors and separate source reviewers.
+The domain is purpose-selected revenue-labeled reported-financial tables, not
+random sampling, an independent benchmark, verified complete evidence or a
+natural user-question distribution. Table selection does not produce questions
+or a natural-language-to-aspect mapping. The six issuer histories remain known
+development material regardless of whether individual selected rows are new.
+
+Parent inputs and storage amendment
+
+Use only the complete, separately frozen gzip table-view amendment and its
+original failed-at-cap parent receipt. All twelve amended source views must
+complete before preparing this pool protocol. The original failed table-view
+result remains unchanged. Bind the amended view inventory/protocol, original
+inventory/protocol, the independent storage-audit receipt, v15.1 typed execution/
+protocol, frozen source-identity receipt,
+selector/helper/control code, the independent authored code-review receipt, and
+interpreter/lxml runtime. Verify all twelve
+source, typed-record and compressed-view file sizes and SHA-256 digests before
+parsing any source for this selection attempt. Never substitute another filing.
+The view receipt's source identities, source order and typed artifacts define
+the population; the selector cannot independently choose a smaller subset.
+
+Exact fixed rule
+
+Evaluate every table in XML order against all of these predicates:
+
+1. It is a leaf table with no child table. A leaf inside a layout parent is
+   permitted. Preserve the parent-table ordinal and ancestor source wrappers;
+   a parent does not by itself imply incomplete semantic evidence.
+2. Every cell and numeric occurrence is owned by an actual row/cell. Orphan
+   cells or facts outside row cells reject this candidate. Retain all rows and
+   cells; do not select answer rows or truncate to fit the remaining predicates.
+3. There is no recognized hiding cue on the table, any descendant or ancestor.
+   Use the frozen table-view cue detector (ix:hidden, HTML hidden, inline display
+   none or visibility hidden/collapse). Missing such a cue does not establish
+   computed CSS visibility or verified browser rendering.
+4. The table owns at least four and at most 32 nonFraction occurrences, counting
+   normalized, nil, unsupported and invalid statuses in that total.
+5. At least four occurrences have normalized numeric status, resolved reported
+   bindings and duration periods. Neither a nil nor an unresolved binding meets
+   this minimum, but those records remain in a selected table.
+6. At least two distinct resolved duration-period objects occur. Identity is
+   exact canonical JSON of the declared period object. Any binding-resolved
+   duration fact can establish the presence of a period, including nil or an
+   unsupported numeric transform; it does not thereby establish an answerable
+   value for that period. Semantic period equivalence is not inferred.
+7. At least one complete row text matches the case-insensitive Unicode regex
+   \b(?:revenues?|net\s+sales)\b. A caption or neighboring paragraph alone does
+   not satisfy this condition. The regex is a purpose-domain choice, not a
+   semantic guarantee that all quantities in that table are revenue.
+8. Complete DOM table text has at most 12,000 Unicode characters. Its frozen
+   text profile is build_table_views_v16.own_text: XML whitespace collapse,
+   NBSP retained, syntactic block separators, inline text concatenation and
+   script/style/nested-table omission. Eligible tables cannot contain nested
+   tables. This is extracted DOM text, not source markup byte length or rendered
+   reading order. The full original table byte span/hash remains available.
+
+Select the first two eligible tables per physical source in XML order. Retain
+all predicates' rejection counts (overlapping), the first-failing-predicate
+partition, all eligible counts and the number of eligible-but-not-selected
+candidates. A source with zero or one eligible table leaves its slots unfilled.
+The full planned denominator is twelve sources and 24 table slots. Failed source
+processing is retained, with separate unfilled-slot accounting. No threshold,
+ordering, regex, source or requested count may change after the first run without
+an explicit new amendment and preservation of this outcome. Ask the project
+lead before changing this rule.
+
+Outputs and role separation
+
+Private per-source .author.jsonl files contain only complete row/cell DOM text,
+whole table text, captions, neighboring paragraph blocks, source/table/paragraph
+anchors, the table/parent ordinals, and a source identity card. They contain no
+fact_links, typed fact objects, concept/context/unit IDs, canonical normalized
+values, gold query helper outputs or question-to-concept labels. Source-visible
+numerical strings are expected: the author needs to read the actual source.
+Neighbor paragraphs are the two preceding/two following blocks already selected
+by the parent extractor, not verified semantic dependencies. Their presence does
+not prove that an external header, caption or footnote is complete.
+
+Private per-source .review.jsonl files separately retain the complete selected
+table view, every joined typed occurrence including nil/unsupported cases,
+selection assessment, author-record digest and ancestor source wrappers/anchors.
+Raw opening tags are preserved there to support later rendering inspection; they
+are not sent to question authors as an alternative route to machine bindings.
+Actual source rendering must still be checked before question/evidence admission.
+These views must never be called browser screenshots or rendered evidence.
+
+The source card obtains internal fiscal-year values and document identity fields
+from data/fresh_source_audit_v14/source_identity_structure.json, bound to the
+same physical source hash. It never derives the reporting year from a filename.
+Retain the Berkshire discrepancy explicitly. The source card is not independent
+financial verification or a substitution for later identity review.
+
+Public results include source identities, statuses, counts, selection ordinals,
+reason codes and external artifact hashes/byte lengths only. They contain no
+source rows, paragraphs, numerical quantities, typed period lexemes or question
+references. Every source/table/value-bearing packet stays outside the repository.
+
+Safety and execution behavior
+
+The external attempt directory and public result must not already exist. Reject
+symlinks/existing paths rather than overwriting. Private paths must resolve outside
+the Git repository. Inputs require plain basenames confined beneath their declared
+roots. The aggregate private attempt budget is 25,000,000 bytes, including a
+65,536-byte metadata reserve. Refuse a record before writing if it would exceed
+the payload budget; retain complete prior records and the failure. No record is
+truncated. Per-source files identify complete versus incomplete attempts. The
+protocol and result are created exclusively and never silently replaced.
+
+The freeze subcommand reads completed public parent metadata and computes pins;
+it does not select tables or parse source values. It reruns the authored selector
+control suite and embeds the actual test counts/transcript digest. Only after
+that immutable protocol exists does the run subcommand inspect actual table text
+and typed periods for the approved predicates. There are zero question-author,
+reader or verifier model calls in this program.
+
+The source parse shares the frozen table-view helper and v15.1 Expat anchoring
+lineage. Hash and locator rechecks do not constitute independent semantic or
+parser certification. Rendering, complete evidence, financial correctness,
+taxonomy defaults, semantic concept identity and natural question feasibility
+remain tasks for later source review.
+
+Commands, after the complete gzip parent receipt exists
+
+PYTHONPATH=src python3 -m unittest discover -s tests -p "test_reader_pool*v16.py" -q
+python3 scripts/select_reader_pool_v16.py freeze \
+  --protocol data/reader_binding_v16/question_pool_protocol.json \
+  --table-inventory results/table_view_inventory_v16_1.json \
+  --table-protocol data/reader_binding_v16/table_view_protocol_v16_1.json
+python3 scripts/select_reader_pool_v16.py run \
+  --protocol data/reader_binding_v16/question_pool_protocol.json \
+  --sources /dev/shm/wikigraph_v15/external/fresh_sources \
+  --typed-records /dev/shm/wikigraph_v15/external/typed_reader_attempt02 \
+  --table-views /dev/shm/wikigraph_v15/external/table_views_attempt02 \
+  --external-output /dev/shm/wikigraph_v15/external/reader_pool_attempt01 \
+  --output results/reader_pool_v16.json
+
+The external roots may be relocated after recovery, provided every frozen hash,
+size, source population and code/runtime binding still verifies. A successful
+selection result is preparation for source-authored natural-language questions;
+it is never itself QA accuracy, a reference set or a reader result.
+
+Pre-freeze review note
+
+An independent authored probe found that joining row texts could match Net in
+one row and Sales in another. The selector now tests each row separately; a
+regression retains that distinction. No natural table selection occurred before
+this correction. The frozen protocol records the actual final authored-suite
+count and code hashes after this correction.

@@ -1,0 +1,60 @@
+{
+  "schema_version": "owned_rss_real_subprocess_probe_v16",
+  "status": "failed",
+  "probe_sha256": "ee5d62e6e2e368b7824a571043a39570c902c5b40fa986fefa6f664a34de6a44",
+  "helper_path": "scripts/process_group_rss_v16.py",
+  "helper_sha256": "bddcc9369c790e7156f4338a5b413882d3ecacee03f68b379fff7eab76371658",
+  "helper_function": "read_group_rss",
+  "legacy_driver_sha256": "c9bd0436af4115dd0f8c943d9da5fc6b234f4d9f2fa7cba11b61c8ed2160e93f",
+  "started_unix_seconds": 1791108632.7144365,
+  "authored_child_allocation_bytes": 41943040,
+  "model_loads": 0,
+  "natural_source_reads": 0,
+  "samples": [
+    {
+      "direct_outer_pid_RSS_bytes": 50823168,
+      "legacy_inner_pid_RSS_bytes": 2125824,
+      "namespace_aware_snapshot": {
+        "telemetry_ok": false,
+        "inner_pgid": 5,
+        "members": [],
+        "unreadable_unclassified_entries": 49,
+        "disappeared_entries": 0,
+        "namespace_identity": "pid:[4026532350]",
+        "namespace_depth": 2,
+        "error_type": "ValueError",
+        "error_code": "candidate_namespace_identity_unreadable"
+      }
+    }
+  ],
+  "parent": {
+    "inner_pid": 2,
+    "outer_pid": 115708,
+    "pid_namespace": "pid:[4026532350]",
+    "direct_self_RSS_bytes": 14475264,
+    "legacy_inner_pid_RSS_bytes": 0
+  },
+  "popen_inner_pid": 5,
+  "child": {
+    "inner_pid": 5,
+    "inner_pgid": 5,
+    "outer_pid": 115711,
+    "pid_namespace": "pid:[4026532350]",
+    "NSpid": [
+      115711,
+      5
+    ],
+    "NSpgid": [
+      115711,
+      5
+    ],
+    "self_RSS_bytes": 50761728,
+    "allocation_bytes": 41943040
+  },
+  "error_type": "AssertionError",
+  "failure_code": "probe_assertion_or_runtime_failure",
+  "termination_signal_target_inner_pgid": 5,
+  "child_returncode": -15,
+  "finished_unix_seconds": 1791108632.875635,
+  "helper_unchanged": true
+}

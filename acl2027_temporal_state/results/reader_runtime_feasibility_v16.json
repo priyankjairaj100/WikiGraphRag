@@ -1,0 +1,323 @@
+{
+  "schema_version": "reader_runtime_feasibility_v16",
+  "inspected_at_utc": "2026-10-04T09:09:52.353464+00:00",
+  "scope": "Metadata selection and small native-runtime executable probe only; no natural QA answers, references, weights or model completions read.",
+  "prior_reader_result": "The v14 4B Q5_K_M recipe failed the natural reader-upgrade comparison; v16 does not revise that outcome.",
+  "recommended_candidate": {
+    "filename": "Qwen3.5-9B-UD-IQ3_XXS.gguf",
+    "bytes": 4016235744,
+    "sha256": "40d0f32cd3030b04f0784139a589fb63e876cfbf8667d56311b79783c74fd149",
+    "repository": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "url": "https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/3885219b6810b007914f3a7950a8d1b469d598a5/Qwen3.5-9B-UD-IQ3_XXS.gguf",
+    "gib": 3.740411,
+    "status": "recommended_for_bounded_acquisition_and_competence_trial_not_selected_as_stronger_reader"
+  },
+  "selection_basis": "9B text checkpoint provides a distinct capacity/quantization tradeoff within 3.8 GiB. IQ3_XXS is lower precision than prior Q5_K_M; parameter count, recency and card benchmarks do not prove improved document reading. Prefer testing one bounded candidate to outcome-driven model shopping.",
+  "candidate_metadata": [
+    {
+      "repository": "unsloth/Qwen3.5-9B-GGUF",
+      "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+      "metadata_url": "https://huggingface.co/api/models/unsloth/Qwen3.5-9B-GGUF?blobs=true",
+      "metadata_sha256": "262fac86b61d65f862f33f780c62050f078c2adcc27cd1c69a350a00708880e3",
+      "metadata_bytes": 15886,
+      "license": "apache-2.0",
+      "advertised_base_model": [
+        "Qwen/Qwen3.5-9B"
+      ],
+      "files": [
+        {
+          "filename": "Qwen3.5-9B-Q4_K_M.gguf",
+          "bytes": 5680522464,
+          "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+          "within_weight_cap": false,
+          "gib": 5.290399
+        },
+        {
+          "filename": "Qwen3.5-9B-UD-IQ2_M.gguf",
+          "bytes": 3649365216,
+          "sha256": "a31b6b4c603ddd66b5496ee065c9dd13b2b6de77dce9e5d59609aef8d39868e7",
+          "within_weight_cap": true,
+          "gib": 3.398736
+        },
+        {
+          "filename": "Qwen3.5-9B-UD-IQ3_XXS.gguf",
+          "bytes": 4016235744,
+          "sha256": "40d0f32cd3030b04f0784139a589fb63e876cfbf8667d56311b79783c74fd149",
+          "within_weight_cap": true,
+          "gib": 3.740411
+        }
+      ]
+    },
+    {
+      "repository": "unsloth/Qwen3-8B-GGUF",
+      "revision": "a6adef130ffb23ddaf1a62fec9dced968c9bc482",
+      "metadata_url": "https://huggingface.co/api/models/unsloth/Qwen3-8B-GGUF?blobs=true",
+      "metadata_sha256": "5d6317fa7507c1942df3fea24a7c4b6d2d4d09bca1a3de53bffae3300fc6596b",
+      "metadata_bytes": 13077,
+      "license": "apache-2.0",
+      "advertised_base_model": "Qwen/Qwen3-8B",
+      "files": [
+        {
+          "filename": "Qwen3-8B-Q3_K_S.gguf",
+          "bytes": 3769612096,
+          "sha256": "d9ba948815c357eb7c2c6013ddc22085fb0b2d7802a4fab138ac155c14827f15",
+          "within_weight_cap": true,
+          "gib": 3.510725
+        },
+        {
+          "filename": "Qwen3-8B-Q4_K_M.gguf",
+          "bytes": 5027784512,
+          "sha256": "120307ba529eb2439d6c430d94104dabd578497bc7bfe7e322b5d9933b449bd4",
+          "within_weight_cap": false,
+          "gib": 4.682489
+        }
+      ]
+    },
+    {
+      "repository": "unsloth/Qwen3.5-4B-GGUF",
+      "revision": "e87f176479d0855a907a41277aca2f8ee7a09523",
+      "metadata_url": "https://huggingface.co/api/models/unsloth/Qwen3.5-4B-GGUF?blobs=true",
+      "metadata_sha256": "ab7b962a4872dd91f8d2524a9e83109865420198d9e49dcef0619cf247447f73",
+      "metadata_bytes": 15952,
+      "license": "apache-2.0",
+      "advertised_base_model": [
+        "Qwen/Qwen3.5-4B"
+      ],
+      "files": [
+        {
+          "filename": "Qwen3.5-4B-Q5_K_M.gguf",
+          "bytes": 3143656608,
+          "sha256": "8814232b85594dcd46c50e5b8b29324a7efe9e746edbe8a3d1df3d3fce7aad39",
+          "within_weight_cap": true,
+          "gib": 2.927758
+        },
+        {
+          "filename": "Qwen3.5-4B-Q6_K.gguf",
+          "bytes": 3525956768,
+          "sha256": "fdedd781c9ce676ab66b018ca247ff78e8a33c98098a822c1e2d5075e7718f66",
+          "within_weight_cap": true,
+          "gib": 3.283803
+        }
+      ]
+    },
+    {
+      "repository": "Qwen/Qwen3-8B-GGUF",
+      "revision": "7c41481f57cb95916b40956ab2f0b139b296d974",
+      "metadata_url": "https://huggingface.co/api/models/Qwen/Qwen3-8B-GGUF?blobs=true",
+      "metadata_sha256": "e46bbd88cb1ccf67d4ac57709d45d998736dd607acafdf4bdb591d9348e09c30",
+      "metadata_bytes": 7419,
+      "license": "apache-2.0",
+      "advertised_base_model": "Qwen/Qwen3-8B",
+      "files": [
+        {
+          "filename": "Qwen3-8B-Q4_K_M.gguf",
+          "bytes": 5027783488,
+          "sha256": "d98cdcbd03e17ce47681435b5150e34c1417f50b5c0019dd560e4882c5745785",
+          "within_weight_cap": false,
+          "gib": 4.682488
+        }
+      ]
+    }
+  ],
+  "primary_sources": [
+    {
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11146/llama-b11146-bin-ubuntu-x64.tar.gz",
+      "bytes": 16998357,
+      "sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+      "error": null
+    },
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3.5-9B/resolve/c202236235762e1c871ad0ccb60c8ee5ba337b9a/config.json",
+      "bytes": 3126,
+      "sha256": "d0883072e01861ed0b2d47be3c16c36a8e81c224c7ffaa310c6558fb3f932b05",
+      "error": null
+    },
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3.5-9B/resolve/c202236235762e1c871ad0ccb60c8ee5ba337b9a/README.md",
+      "bytes": 77643,
+      "sha256": "c5f5a8c2dddab69cfbf05279235aa5fddb137939a06539c4c7637aa900fef6d0",
+      "error": null
+    },
+    {
+      "url": "https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/3885219b6810b007914f3a7950a8d1b469d598a5/README.md",
+      "bytes": 78888,
+      "sha256": "e50f8066e39c38cbc2da5dd94b9a9a2712b64c4921f107a5adb4b3ca5b6bbac0",
+      "error": null
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ggml-org/llama.cpp/7fe450e19305b828c199d602c23a8337aaa1f03b/src/models/qwen35.cpp",
+      "bytes": 28105,
+      "sha256": "ef973e9c789eb52ef27a77e0b1f36c6f41a378733a994d41b5924e3be012f671",
+      "error": null
+    },
+    {
+      "url": "https://huggingface.co/api/models/Qwen/Qwen3.5-9B?expand=inferenceProviderMapping",
+      "bytes": 512,
+      "sha256": "e045fe6aa2759a1932a23b00535f90c52b64c2eea01bef46313edde4b63dacf1",
+      "error": null
+    }
+  ],
+  "model_architecture": {
+    "upstream_repository": "Qwen/Qwen3.5-9B",
+    "upstream_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+    "advertised_parameters": "9B",
+    "text_hidden_size": 4096,
+    "text_layers": 32,
+    "full_attention_layers": 8,
+    "linear_attention_layers": 24,
+    "inspected_config_sha256": "d0883072e01861ed0b2d47be3c16c36a8e81c224c7ffaa310c6558fb3f932b05",
+    "lineage_limit": "Exact GGUF bytes are pinned; advertised base model does not establish quantization from the exact inspected upstream revision."
+  },
+  "runtime": {
+    "schema_version": "small_runtime_probe_v16",
+    "timestamp_utc": "2026-10-04T09:08:13.786750+00:00",
+    "archive": {
+      "relative_path": "llama-b11146-bin-ubuntu-x64.tar.gz",
+      "bytes": 16998357,
+      "sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11146/llama-b11146-bin-ubuntu-x64.tar.gz"
+    },
+    "runtime_directory": "/dev/shm/wikigraph_v15/reader_runtime_v16/assets/runtime/llama-b11146",
+    "verified_files": 60,
+    "logical_file_bytes": 70413966,
+    "physical_file_bytes": 42810590,
+    "version_probe_returncode": 0,
+    "version_stdout": "",
+    "version_stderr": "0.00.000.366 I srv  llama_server: initializing ...\nversion: 0.5.0-dev (build 11146, commit 7fe450e19)\nbuilt with GNU 11.4.0 for Linux x86_64\n",
+    "model_loads": 0,
+    "completion_calls": 0,
+    "memory_current_bytes": 2464219136,
+    "memory_max_bytes": 8589934592,
+    "shm_free_bytes": 4707643392,
+    "commit": "7fe450e19305b828c199d602c23a8337aaa1f03b",
+    "files_manifest_source": "configs/model_backend_v09.json",
+    "files_manifest_sha256": "677ee4aa7ac9a70d0d664474f589ba2f35ee2716ea0244d076ab103c3e5304c7",
+    "archive_downloads": 2,
+    "archive_download_note": "The first bounded fetch verified archive and inspected members in memory without retaining the archive; the second installed the same verified bytes for executable version/help probes. No weight bytes downloaded.",
+    "help_probe": {
+      "returncode": 0,
+      "sha256": "c89c0c32d339eab5dd79df98874ab025d5122bc14284a5ca8b9f453a00ae102c",
+      "matching_lines": [
+        "-c,    --ctx-size N                     size of the prompt context (default: 0, 0 = loaded from model)",
+        "-b,    --batch-size N                   logical maximum batch size (default: 2048)",
+        "-ub,   --ubatch-size N                  physical maximum batch size (default: 512)",
+        "-fa,   --flash-attn [on|off|auto]       set Flash Attention use ('on', 'off', or 'auto', default: 'auto')",
+        "-ctk,  --cache-type-k TYPE              KV cache data type for K",
+        "-ctv,  --cache-type-v TYPE              KV cache data type for V",
+        "                                        - auto: mmap, unless a device does not support it",
+        "                                        - mmap: memory-map model (if mmap disabled, slower load but may reduce",
+        "                                        pageouts if not using mlock)",
+        "                                        - mlock: force system to keep model in RAM rather than swapping or",
+        "                                        - mmap+mlock: mmap + force system to keep model in RAM rather than",
+        "                                        keeping them resident (requires mmap)",
+        "--spec-draft-type-k, -ctkd, --cache-type-k-draft TYPE",
+        "--spec-draft-type-v, -ctvd, --cache-type-v-draft TYPE",
+        "                                        when set without -c/--ctx-size, the shared KV pool is sized to",
+        "--chat-template-kwargs STRING           sets additional params for the json template parser, must be a valid",
+        "--reasoning-format FORMAT               controls whether thought tags are allowed and/or extracted from the",
+        "                                        - deepseek: puts thoughts in `message.reasoning_content`",
+        "                                        also populating `message.reasoning_content`",
+        "-rea,  --reasoning [on|off|auto]        Use reasoning/thinking in the chat ('on', 'off', or 'auto', default:",
+        "--reasoning-effort LEVEL                reasoning effort level given to the chat template: 'default' to keep",
+        "--reasoning-budget N                    token budget for thinking: -1 for unrestricted, 0 for immediate end,",
+        "--reasoning-budget-message MESSAGE      message injected before the end-of-thinking tag when reasoning budget",
+        "--reasoning-preserve, --no-reasoning-preserve",
+        "                                        preserve reasoning trace in the full history, not just the last",
+        "                                        compatible with certain templates having 'supports_preserve_reasoning'",
+        "                                        reasoning and/or tool calls (default: disabled)"
+      ]
+    },
+    "qwen35_9b_static_support": true,
+    "gguf_native_load_passed": false,
+    "model_compatibility_status": "Native runtime executable and static 9B architecture support verified; loading this GGUF is pending."
+  },
+  "resource_snapshot": {
+    "memory_max_bytes": 8589934592,
+    "memory_current_bytes": 2527268864,
+    "shm_available_bytes": 4706959360,
+    "weight_cap_bytes": 4080218931,
+    "runtime_cap_bytes": 157286400,
+    "weight_hard_address_space_headroom_bytes": 1889344288,
+    "shm_after_weight_bytes": 690723616,
+    "memory_current_plus_weight_bytes": 6543504608,
+    "not_a_peak_memory_estimate": true
+  },
+  "acquisition_plan": {
+    "root_approval_required_before_weights": true,
+    "destination_directory": "/dev/shm/wikigraph_v15/reader_runtime_v16/assets",
+    "one_temporary_file_then_atomic_rename": true,
+    "no_duplicate_weight_cache": true,
+    "block_bytes": 1048576,
+    "maximum_wall_seconds": 1800,
+    "socket_timeout_seconds": 30,
+    "require_https_and_exact_length_sha256": true,
+    "minimum_shm_reserve_after_download_bytes": 536870912,
+    "memory_current_download_stop_bytes": 7516192768,
+    "retain_failed_attempt_receipt": true,
+    "failed_partial_weight_can_be_removed_after_hash_size_failure_recorded": true,
+    "no_automatic_candidate_fallback": true
+  },
+  "proposed_inference_guardrails": {
+    "must_freeze_protocol_before_any_completion": true,
+    "load_mode": "mmap",
+    "no_mlock": true,
+    "no_no_mmap_or_load_mode_none": true,
+    "text_only_no_mmproj": true,
+    "single_process_single_slot": true,
+    "threads": 4,
+    "context_tokens": 4096,
+    "hard_address_space_bytes": 5905580032,
+    "active_memory_stop_bytes": 7516192768,
+    "memory_current_stop_bytes": 7784628224,
+    "cpu_seconds": 3600,
+    "wall_seconds": 1050,
+    "startup_seconds": 90,
+    "request_seconds": 900,
+    "monitor_interval_seconds": 0.1,
+    "cache_type_k": "q8_0",
+    "cache_type_v": "q8_0",
+    "batch_size": 128,
+    "ubatch_size": 128,
+    "freeze_prompt_native_template_and_thinking_mode": true,
+    "full_prompt_plus_output_must_fit_context": true,
+    "refuse_input_truncation": true,
+    "keep_output_limit_as_failure": true,
+    "cold_cache_per_completion": true,
+    "full_context_memory_peak_not_yet_measured": true,
+    "not_selected_without_independent_complete_evidence_competence_gate": true
+  },
+  "remote_inference_readonly_check": {
+    "hf_provider_metadata_url": "https://huggingface.co/api/models/Qwen/Qwen3.5-9B?expand=inferenceProviderMapping",
+    "providers_advertised_live": [
+      "together",
+      "featherless-ai",
+      "ovhcloud",
+      "deepinfra"
+    ],
+    "available_tools_include_jobs_not_direct_completion": true,
+    "current_hf_credential_advertises_inference_scope": false,
+    "authentication_scope_observation": [
+      "jobs",
+      "openid",
+      "profile",
+      "read-mcp",
+      "read-repos"
+    ],
+    "account_pro": false,
+    "account_credit_or_quota_verified": false,
+    "provider_access_or_cost_verified": false,
+    "remote_calls": 0,
+    "jobs_started": 0,
+    "conclusion": "Provider listings are availability metadata only. No executable authorized inference endpoint or free quota was established; do not treat remote inference as ready."
+  },
+  "execution_counts": {
+    "weight_downloads": 0,
+    "model_loads": 0,
+    "completion_calls": 0,
+    "natural_QA_predictions": 0,
+    "native_executable_version_probes": 1,
+    "native_executable_help_probes": 2
+  },
+  "next_gate": "Root freezes evidence/requests, completion budget, decode settings and independent competence review; bounded acquisition verifies exact weights; tokenizer/full-context memory probe precedes first completion. Keep failures and do not infer strength from passing a loader."
+}

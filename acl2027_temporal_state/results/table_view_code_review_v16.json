@@ -1,0 +1,95 @@
+{
+  "schema_version": "table_view_code_review_v16",
+  "status": "passed_bounded_authored_review",
+  "reviewed_at_utc": "2026-10-04T09:22:08.991047+00:00",
+  "reviewer_role": "Separate model-assisted audit agent with code-edit ownership separated from extractor author; not independent human certification.",
+  "bound_inputs": {
+    "scripts/build_table_views_v16.py": {
+      "sha256": "f38cc939ec1c5d08871f5f14c389eae898b297b7b7bbc16192bf80bcc100f9cc",
+      "bytes": 23910
+    },
+    "tests/test_table_views_adversarial_v16.py": {
+      "sha256": "31905514433bd2b39d9516c13b6ffa688b2589e6eb7ea4dc51f85314fc814c62",
+      "bytes": 10474
+    },
+    "docs/table_view_contract_v16.txt": {
+      "sha256": "e68e4e3370801b731d2ecf72bc20bbada806dafa4c1191ba02d282745541c7f2",
+      "bytes": 9538
+    },
+    "src/temporal_state/typed_reader_v15_1.py": {
+      "sha256": "6f43c57488b90178f2334284bd46d9903c4f3a29f23ab1e6fc39402a40fc0dae",
+      "bytes": 37919
+    }
+  },
+  "scope": {
+    "natural_source_values_read": false,
+    "natural_questions_read": false,
+    "natural_qa_references_read": false,
+    "natural_source_extraction_executed": false,
+    "authored_fixtures_only": true
+  },
+  "verification": {
+    "command": "PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_table_views_adversarial_v16.py' -q",
+    "working_directory": "acl2027_temporal_state",
+    "tests_run": 18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "reported_seconds": 0.007,
+    "exit_code": 0,
+    "output": "Ran 18 tests in 0.007s\nOK\n",
+    "module_hash_unchanged_during_run": true,
+    "runtime_binding_call_checked": true,
+    "runtime_binding_executable_verified": true,
+    "pyexpat_implementation": "built_into_pinned_interpreter"
+  },
+  "checked_properties": [
+    "Three-level nested tables partition every fact ordinal exactly once; outside-table facts, invalid numeric lexicals, and equal/nested occurrences are retained.",
+    "A fact in an inner table cannot inherit an outer table cell index; nearest-table caption ownership is retained.",
+    "XHTML namespace identity is prefix-independent, while foreign table local names do not become XHTML tables.",
+    "Nested-table content is excluded from parent text through inline wrappers; skipped comment/PI/script/style nodes preserve surrounding tails.",
+    "XML whitespace collapse preserves NBSP and em spaces; block separators preserve inline numeric-fragment concatenation.",
+    "Declared spans remain raw metadata; invalid spans do not become one; no grid expansion is inferred.",
+    "Every emitted authored anchor hashes exact original UTF-8 bytes, including self-closing nested tables.",
+    "Swapped same-value typed fact records and tampered anchor hashes are refused.",
+    "Private labels, captions, paragraphs, headers and quantities are absent from public inventory.",
+    "Direct and symlinked repository-contained private destinations are refused; public output cannot be mixed into the private directory."
+  ],
+  "findings": [
+    {
+      "finding": "execute() initially allowed private table JSONL inside the Git repository.",
+      "resolution": "Owner added resolved-path guards before protocol loading/extraction; direct and symlink regressions pass."
+    },
+    {
+      "finding": "Three draft audit guard assertions guessed different error-message words.",
+      "resolution": "Assertions now check the documented ViewError type. Correct guards were already firing; this was an audit oracle issue."
+    },
+    {
+      "finding": "Author proposed explicit block-child separators to prevent adjacent block text concatenation.",
+      "resolution": "Bounded syntactic rule documented before freeze and independently tested; no rendering or semantic claim follows."
+    },
+    {
+      "finding": "Author added full-cohort expected denominator and per-source expected count before extraction.",
+      "resolution": "Final source hash includes this public-metadata safeguard; source is unchanged during the final 18-test run."
+    },
+    {
+      "finding": "Author discovered built-in pyexpat can lack __file__ while constructing protocol before freeze.",
+      "resolution": "Runtime manifest now explicitly distinguishes built-in implementation backed by pinned interpreter from separately pinned extension. Independent review inspected the change, called runtime_bindings successfully, checked executable digest and reran all 18 adversarial tests."
+    }
+  ],
+  "remaining_concrete_failures": [],
+  "limitations": [
+    "Authored XML fixtures are not natural-source extraction, benchmark QA or financial accuracy evaluation.",
+    "Anchors reuse the frozen Expat helper; lxml supplies another DOM traversal. Not every anchoring step is independently implemented.",
+    "Source DOM order is not browser-validated layout, expanded grid, header interpretation or verified visibility.",
+    "Public/private tests exercise defined schemas and sentinel content; they are not a general third-party-content disclosure scanner.",
+    "No exhaustive fuzzing, HTML conformance validation, large-corpus performance test or financial-scope inference was performed."
+  ],
+  "pre_freeze_review_history": [
+    {
+      "script_sha256": "d92eaa3e030955bbf756d79ed18930bd8de772a38d000569c814772a5f4226a3",
+      "tests_passed": 18,
+      "note": "Prior review before author discovered built-in pyexpat runtime binding issue; no table extraction or protocol freeze had occurred."
+    }
+  ]
+}

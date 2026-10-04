@@ -1,0 +1,143 @@
+v16 local reader feasibility and acquisition recommendation
+2026-10-04; metadata and small-runtime checks only
+
+Recommendation
+
+Run one predeclared competence trial of Qwen3.5-9B distributed by Unsloth as
+UD-IQ3_XXS, subject to the evidence/protocol gate and successful bounded native
+load. The exact artifact is Qwen3.5-9B-UD-IQ3_XXS.gguf at repository revision
+3885219b6810b007914f3a7950a8d1b469d598a5. It has 4,016,235,744 bytes
+(3.740411 GiB) and SHA256
+40d0f32cd3030b04f0784139a589fb63e876cfbf8667d56311b79783c74fd149.
+
+Pinned download URL:
+https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/3885219b6810b007914f3a7950a8d1b469d598a5/Qwen3.5-9B-UD-IQ3_XXS.gguf
+
+This is a candidate, not a stronger-reader result. The larger nominal parameter
+count comes with substantially lower precision than the failed v14 4B Q5_K_M
+recipe. Neither change guarantees improved evidence reading. Exact executable
+bytes are pinned; the quantizer's advertised upstream lineage does not establish
+which precise upstream revision produced those bytes. No weight download,
+model load, completion or natural QA answer/reference inspection occurred in
+this feasibility pass.
+
+Bounded comparison of options
+
+The machine imposes a 3.8 GiB weight-file allowance and a 150 MiB runtime
+allowance. Exact current metadata for the following files and alternatives is
+in results/reader_runtime_feasibility_v16.json.
+
+* Qwen3.5-9B UD-IQ3_XXS fits and is recommended for one trial. It uses most of
+  the available weight allowance, so simultaneous models are excluded.
+* Qwen3.5-9B UD-IQ2_M has 3,649,365,216 bytes. It leaves more room but lowers
+  precision further. It is not an outcome-triggered fallback.
+* Qwen3-8B Q3_K_S has 3,769,612,096 bytes. It is a distinct older checkpoint
+  with a different attention architecture; fitting does not establish better
+  reading. It was not selected for this proposed single-candidate trial.
+* Qwen3.5-4B Q6_K has 3,525,956,768 bytes. It increases quantization precision
+  relative to v14 but retains the same nominal model capacity. The evidence
+  does not show quantization caused the v14 failures.
+* Official Qwen3-8B Q4_K_M and Unsloth Qwen3.5-9B Q4_K_M exceed the weight
+  allowance. They are not feasible downloads in this workspace allocation.
+
+These are engineering choices, not an exhaustive model leaderboard. The v14
+negative reader result stays intact; this proposal begins a new reader recipe.
+
+Verified runtime, and what remains unverified
+
+The original llama.cpp b11146 release archive was reacquired from its primary
+release URL, verified against the historical SHA256, and safely inspected and
+extracted with the unchanged repository fetcher. The archive has 16,998,357
+bytes and SHA256
+c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410.
+All 60 runtime file entries match configs/model_backend_v09.json. They occupy
+42,810,590 physical file bytes, or 70,413,966 logical bytes when symlink targets
+are counted repeatedly. The archive plus physical runtime totals 59,808,947
+bytes, below the runtime allowance. Two small archive fetches are disclosed in
+the receipt: the first was inspected in memory; the second was retained for
+the executable probes. No duplicate weight object exists.
+
+Runtime path:
+/dev/shm/wikigraph_v15/reader_runtime_v16/assets/runtime/llama-b11146
+
+llama-server --version succeeds and identifies build 11146, commit 7fe450e19.
+The --help probe also succeeds. At the full pinned commit
+7fe450e19305b828c199d602c23a8337aaa1f03b, src/models/qwen35.cpp explicitly
+supports the 32-layer, 4096-hidden-dimension 9B architecture in the inspected
+official Qwen configuration. This checks executable and static architecture
+support, not successful loading of this particular IQ3 GGUF.
+
+The runtime uses --load-mode mmap; its help describes auto as mmap when
+supported. Use the explicit mmap mode. Do not use load-mode none or mlock.
+No image projector is needed for this text-only trial. Keep one model process,
+one slot, and four CPU threads. Retain 4096 context tokens initially, explicitly
+bounded batch/ubatch sizes, and the previous Q8_0 cache settings. The complete
+native prompt and the output allowance must fit that context without truncation.
+The root protocol must separately freeze generation settings and its competence
+criterion before any completion. Model-card settings are not experimental scores
+for this quantized CPU recipe.
+
+Resource accounting matters on this machine
+
+The host reports about 9.7 GiB of RAM, but the actual process cgroup remains
+8,589,934,592 bytes. At the executable probe, memory.current was 2,464,219,136
+bytes and /dev/shm had 4,707,643,392 bytes available. After storing the selected
+weight, that snapshot leaves 691,407,648 bytes of /dev/shm space. This is enough
+for a 512 MiB record reserve, but the checks must run again immediately before
+acquisition because concurrent work changes both figures.
+
+The 5.5 GiB per-process address-space limit leaves 1,889,344,288 bytes beyond
+the selected weight for libraries, tokenizer, KV/state and computation buffers.
+This arithmetic is not a prediction of peak memory or an OOM guarantee. A
+full-context native preflight must measure the actual peak before natural runs.
+
+Use a single streaming temporary weight file and atomic rename after checking
+the exact count and SHA256. No Hugging Face cache copy, duplicate final copy,
+or simultaneous alternate model should be created. Stream bounded blocks;
+require HTTPS, exact length, finite socket/wall time and sufficient free space.
+The proposal reserves at least 512 MiB of /dev/shm after the download and stops
+acquisition at 7 GiB memory.current. Preserve a failed-attempt metadata receipt
+before reclaiming an incomplete, unusable partial file.
+
+For inference, preserve the 5.5 GiB address-space cap, 7 GiB active-memory
+watchdog, 3600 CPU-second and 1050 wall-second process limits, 90-second startup
+deadline, and 900-second request limit. Add a memory.current stop at 7.25 GiB,
+polled independently every 0.1 seconds. The old active metric alone can miss
+unmapped tmpfs contents during acquisition; tmpfs weights consume cgroup memory
+even before the model maps them. Do not raise a guard automatically when a load
+fails. Retain failures, measured peaks, timing and attempted recipe identities.
+
+Remote inference is not ready evidence
+
+The Hugging Face primary metadata endpoint lists Together, Featherless,
+OVHcloud and DeepInfra as live providers for the upstream Qwen3.5-9B model.
+That establishes advertised service availability only. The currently exposed
+Hugging Face tools include Jobs and metadata access, but no direct completion
+tool. The current credential advertises Jobs/read scopes rather than inference
+permission. No account credits, free quota, provider access, endpoint version or
+cost was verified. No remote completion or paid job was launched. Remote
+inference therefore cannot be represented as an available executed baseline.
+
+Required next steps
+
+1. Freeze the evidence construction, requests, competence gate, decode budget,
+   native template and thinking mode before predictions. An independent review
+   must separate correct numeric extraction from entity/year/unit/source scope.
+2. Recheck live resource reserves, then acquire the one pinned weight with the
+   bounded streaming plan. Do not use a failed competence result to swap models.
+3. Verify native load, template rendering and full-context memory under guards.
+   These technical checks must make zero completion calls until the protocol is
+   frozen. Record incompatibilities without changing the selected artifact.
+4. Execute the independent complete-evidence competence trial. Keep output-limit,
+   scope, citation and arithmetic failures in the denominator. A pass permits
+   the specified bounded trial; it does not establish a general strong reader.
+5. Only then interpret matched-cost retrieval comparisons with that reader.
+
+Primary-source audit trail
+
+Exact URL, response byte count and SHA256 records are in the paired JSON receipt.
+The principal sources are the pinned official Qwen model card/config, the exact
+Unsloth repository blob metadata, the official llama.cpp release archive and
+pinned qwen35.cpp implementation. The inspected upstream revision is
+c202236235762e1c871ad0ccb60c8ee5ba337b9a. Current provider metadata is explicitly
+time-sensitive and is not a permanent availability guarantee.

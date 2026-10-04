@@ -1,0 +1,217 @@
+V16 preparation and execution records
+====================================
+
+This checkpoint extends the conventional source and reader baselines. It does
+not establish retrieval gains, natural-language reader competence, independent
+human references, or a submission-ready ACL paper. The v15 files and their
+failed first attempt remain unchanged. Read the final research update and claim
+ledger together with the original and amended results; an audit can pass the
+faithful accounting of a failed execution.
+
+Repository and external inputs
+------------------------------
+Run commands from acl2027_temporal_state unless stated otherwise. The historical
+working layout is /dev/shm/wikigraph_v15/WikiGraphRag, with third-party sources,
+taxonomy bodies, native binaries and full source-bearing records outside Git.
+Some frozen protocols pin these absolute paths. They are exact execution
+records, not promises that changing a path leaves every runtime pin unchanged.
+Use the matching protocol and a fresh attempt directory when reconstructing an
+environment. Never edit a frozen result to make a new run appear historical.
+
+Required source objects are the same twelve byte-identical files as v15, under
+/dev/shm/wikigraph_v15/external/fresh_sources. The amended typed records are under
+external/typed_reader_attempt02. Recover and verify them with the v15 guide and
+source hashes before running the new preparation. The Berkshire physical file
+names still differ from their internally stated fiscal years.
+
+The pinned Python and Arelle runtime are recorded in the protocols; the local
+Arelle path is /dev/shm/wikigraph_v15/standards_v15/arelle_runtime. The public
+repository contains counts, hashes, locators, code and authored controls.
+Original source text, full fact records, effective label strings and raw
+source-bearing processor logs remain external. Their absence from Git is
+intentional; they must be recovered or regenerated before execution.
+
+Table extraction and storage amendment
+-------------------------------------
+The original extractor and protocol are scripts/build_table_views_v16.py and
+data/reader_binding_v16/table_view_protocol.json. Its result is
+results/table_view_inventory_v16.json: nine complete files and three retained
+output-cap failures across all twelve sources. Do not substitute the amended
+success for this result.
+
+The storage-only wrapper is scripts/build_table_views_v16_1.py; its separate
+protocol is data/reader_binding_v16/table_view_protocol_v16_1.json. It imports
+the unchanged original extraction logic and writes deterministic gzip JSONL.
+The original failed JSONL files were losslessly archived before their raw
+copies were released. Exact restoration instructions and compressed/raw hashes
+are in docs/table_view_storage_amendment_v16_1.txt and
+results/table_view_archive_v16_1.json.
+
+The successful amended run uses the same twelve inputs:
+
+  PYTHONDONTWRITEBYTECODE=1 python3 scripts/build_table_views_v16_1.py \
+    --protocol data/reader_binding_v16/table_view_protocol_v16_1.json \
+    --sources /dev/shm/wikigraph_v15/external/fresh_sources \
+    --typed-records /dev/shm/wikigraph_v15/external/typed_reader_attempt02 \
+    --external-output /external/NEW_table_attempt \
+    --output /external/NEW_table_result.json
+
+The original archive receipt and directory bindings are also required. The
+100,000,000-byte bound includes archived and new table artifacts together.
+Private outputs must stay outside the repository; existing attempts are refused.
+
+An independent streaming audit imports neither extractor. Replay into a new
+receipt rather than overwriting the released audit:
+
+  python3 scripts/audit_table_storage_v16.py \
+    --old-dir /dev/shm/wikigraph_v15/external/table_views_attempt01 \
+    --new-dir /dev/shm/wikigraph_v15/external/table_views_attempt02 \
+    --output /external/NEW_storage_audit.json
+
+The auditor's own first schema-reading error is retained as attempt01; the
+corrected audit counts outside-table occurrences from the actual source record.
+The correction changes the audit, not source data or extraction.
+
+Source-pool selection
+--------------------
+scripts/select_reader_pool_v16.py and its frozen question_pool_protocol.json
+select complete candidate tables, not question answers. Original selection
+produced thirteen of twenty-four table slots; four physical files had no
+candidate. Its source-free failure analyses are reproducible with
+scripts/analyze_reader_pool_v16.py and
+scripts/characterize_reader_pool_visibility_v16.py. Their --help interfaces
+identify the matching protocol, source, typed-record and gzip-view inputs.
+
+These analyses are explicitly post-selection diagnostics. They do not change
+the original rule or claim a rendered source is sufficient evidence. Separate
+author and reviewer packets prevent typed fact joins from being supplied to a
+question author; this separation is operational, not independent human gold.
+Any separately versioned visibility amendment must be read alongside the
+original result. Empty hidden layout nodes do not, by themselves, prove browser
+visibility, complete evidence, or scope correctness.
+
+Taxonomy capture and validation
+-------------------------------
+The resource/label inventories and audits are in data/taxonomy_v16 and
+results/taxonomy_*_v16.json. Issuer schema/label recovery is distinct from full
+DTS validation. Candidate SEC accession linkage does not certify that the
+historical Hugging Face object has identical bytes to the SEC object.
+
+The original full-DTS preparation freezes every dependency edge before offline
+validation. It captures at most128MiB of new bodies and2048 resources. The
+released dependency graph has eleven complete source closures and one retained
+transport failure. The exact SEC transformation plugin and Arelle runtime are
+pinned; the isolated authored session control is not a natural-filing result.
+
+  PYTHONDONTWRITEBYTECODE=1 \
+  PYTHONPATH=/dev/shm/wikigraph_v15/standards_v15/arelle_runtime \
+  python3 scripts/run_full_dts_v16.py prepare \
+    --protocol data/taxonomy_v16/full_dts_protocol.json \
+    --graph /external/NEW_dependency_graph.json
+
+Preparation refuses existing attempts. The corrected reporting implementation
+scripts/run_full_dts_v16_1.py was separately frozen before any source validation:
+
+  PYTHONDONTWRITEBYTECODE=1 \
+  PYTHONPATH=/dev/shm/wikigraph_v15/standards_v15/arelle_runtime \
+  python3 scripts/run_full_dts_v16_1.py validate \
+    --protocol data/taxonomy_v16/full_dts_protocol_v16_1.json \
+    --graph data/taxonomy_v16/full_dts_dependency_graph.json \
+    --output /external/NEW_DTS_result.json
+
+The released original all-source validation receipt is results/full_dts_v16.json.
+It records twelve prelaunch total-memory stops, zero workers and no natural fact
+inventory. A later resource-only amendment uses a new implementation, protocol
+and result; it must never replace this original outcome or claim its old
+total-memory ceiling still applied. Missing dependencies and validation errors
+remain explicit even if a worker otherwise runs successfully.
+
+Source rendering
+----------------
+The original PyMuPDF Story candidate passes code controls but fails the authored
+merged-header visual check. Do not use it for reference admission. LibreOffice
+preserves the tested merged-cell geometry but differs in CSS borders, width and
+font/layout. The public authored visual and feasibility receipts state those
+limits. Passing a text-extraction or pagination check cannot certify column
+attachment. No browser sandbox has been disabled.
+
+A separately frozen LibreOffice pipeline keeps source-exact fragments, source
+ancestor wrappers and CSS. Its passive-resource guard rejects unsupported
+active/resource markup rather than rewriting source content. It retains all
+selected candidate outcomes and requires block-level visual/CSS review before
+question/reference admission. Render success alone is not admission. Refer to
+the versioned renderer contract/protocol/result for the actual batch population
+and resource policy; the original and amended source pools are different stages.
+
+Reader acquisition, relocation and native controls
+-------------------------------------------------
+The model is Qwen3.5-9B-UD-IQ3_XXS.gguf from the exact repository/revision pinned
+in data/reader_binding_v16/reader_acquisition_protocol.json. It is a candidate,
+not a demonstrated stronger reader. Both model size and precision differ from
+the failed v14 checkpoint, so a future contrast cannot isolate parameter count.
+
+results/reader_acquisition_v16.json records the verified download. The weight
+was subsequently copied and independently hash-verified on disk to release
+tmpfs memory. results/reader_asset_relocation_v16.json preserves both paths,
+exact bytes and digests; the original acquisition receipt is unchanged. The
+current config uses the verified regular destination file. Neither acquisition
+nor relocation loads a model or generates text.
+
+The conventional acquired-only binding interface is
+src/temporal_state/reader_binding_v16.py. Its compact prompt projection is
+lossless; B1 and B2 receive identical exposed evidence. The interface checks
+available bindings and quantity support, not semantic question correctness or
+whether a finite hypothesis beam includes every interpretation.
+
+The native driver has distinct freeze, tokenize, execute and verify commands:
+
+  python3 scripts/native_binding_reader_v16.py freeze \
+    --config configs/binding_reader_v16.json \
+    --controls data/reader_binding_v16/interface_controls_v16.json \
+    --external /external/NEW_native_attempt \
+    --receipt results/NEW_native_receipt.json
+  python3 scripts/native_binding_reader_v16.py tokenize \
+    --external /external/NEW_native_attempt
+  python3 scripts/native_binding_reader_v16.py execute \
+    --external /external/NEW_native_attempt
+  python3 scripts/native_binding_reader_v16.py verify \
+    --external /external/NEW_native_attempt
+
+Run later commands only if the earlier stage passed. Do not reset a failed
+receipt or repeat a completion under the same attempt. Eight authored requests
+are planned, with a maximum6144 native input tokens,768 output tokens,8192
+context,300s per request, greedy seed0 and thinking disabled. Native chat
+template/token identities and returned counts are checked, and all malformed,
+limited, failed or unattempted requests stay in the denominator.
+
+The released first attempt stopped before Popen at the total-memory guard:
+results/native_binding_controls_v16.json. Its accompanying failure review
+checks zero model launches, tokenizations and completions, with all eight rows
+unattempted. This is a resource feasibility outcome, not model quality. The
+freeze-requests path for later natural requests requires a passed authored
+gate and a separately frozen protocol; no natural references enter its prompts.
+Preparing that path does not mean a natural pilot was executed.
+
+Verification and interpretation
+-------------------------------
+Use the final unit-verification receipt for the exact suite command and count.
+The native, table, pool, rendering and taxonomy tests use authored/mock inputs
+unless explicitly described otherwise. Frozen-file identity and original archive
+preservation are checked from the repository root with:
+
+  python3 scripts/verify_repository.py
+
+Resource failures depend on other activity in the shared execution environment.
+Reproducing source hashes and code does not reproduce identical memory pressure,
+latency or a prelaunch refusal. Record the observed resource traces in every new
+attempt. No result here establishes natural QA gains, a stronger reader, a
+validated financial-truth benchmark or the proposed acquisition-policy advantage.
+
+
+PAUSED CHECKPOINT, 4 OCTOBER 2026
+This guide and the six-page paper are preparation drafts. Read NEXT_CHAT_HANDOFF_v16.txt before running commands. User requested stopping experiments and saving; no full v16 unit suite or source/native rerun was launched at pause.
+The visibility-only pool v16.1 result is 21/24 tables, covering all12 sources; original 13/24 is retained.
+Full-DTS v16.2: all12 workers reached execution but failed at physical-DOM traversal; no complete fact comparison. Its inner-PID RSS measurements were invalid. v16.3 fixes remain draft/unexecuted. The final shared RSS helper now passes a real40MiB allocation probe, but combined audit closure/protocol rebinding is pending.
+The source-rendering v16.2 small-process controls and all21 selected tables plus unique neighbors remain unexecuted. Every successful conversion still needs actual source/CSS/geometry inspection.
+Native LM attempt01 has zero model loads, tokenizations and completions. Small-process resource amendments do not amend its native guard or authorize an automatic retry.
+Exact external run records and pinned small runtimes are preserved in WikiGraphRag-v16-private-recovery.tar.gz. Its internal manifest specifies original relative paths and SHA256 hashes. Recover under a deliberate external working root, verify hashes, and adjust paths explicitly. It excludes Git-backed files, model weights, bytecode and already-unavailable older artifacts. The model acquisition protocol pins the excluded weight for redownload.

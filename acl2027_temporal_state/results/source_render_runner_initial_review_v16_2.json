@@ -1,0 +1,32 @@
+{
+  "audit_execution_correction": {
+    "description": "The initial mixed-public/private-output regression omitted a render mock. Because the missing path guard did not refuse execution, it proceeded into the runner on two copies of the authored fixture. A native LO launch and pdftoppm launch were possible for each control; actual launch count is unknown because TemporaryDirectory cleanup removed run receipts. Other controls used explicit native mocks.",
+    "evidence_claim": "This accidental run is not accepted as a successful rendering control or native-resource validation.",
+    "model_calls": 0,
+    "native_launch_count": "unknown; at most 2 LO plus 2 pdftoppm invocations in this one test",
+    "natural_source_inputs": 0,
+    "remediation": "Add an explicit render_block mock to the mixed-output test before any rerun. Preserve this original test snapshot outside active discovery. Notify root and renderer owner.",
+    "source_render_outcomes_available": false
+  },
+  "findings": [
+    "Unexpected baseline exception escaped before two-control denominator receipt.",
+    "Unexpected first rendering exception escaped before failed/remaining control receipts.",
+    "Public output inside private attempt was accepted."
+  ],
+  "observed_code_sha256": {
+    "scripts/render_source_blocks_lo_v16_2.py": "8cd9d0b39ea61cb1984f593df722bb2579a43350b2111bb5989ffa92fabf3281",
+    "scripts/run_source_render_controls_v16_2.py": "c4db9b40c68df699f78297c5fb5e34777ffda826646647948ead658419dcfb37"
+  },
+  "original_test_path": "tests/test_source_render_lo_adversarial_v16_2.py",
+  "reviewed_at_utc": "2026-10-04T10:08:19.172275+00:00",
+  "schema_version": "source_render_runner_initial_review_v16_2",
+  "status": "three_confirmed_prefreeze_runner_failures",
+  "verbatim_test_snapshot_path": "data/provenance/source_render_adversarial_runner_initial_v16_2.py",
+  "verbatim_test_snapshot_sha256": "a1e316780b4603adfcfd4f34f10620c0e152a5010332cd22ed0703365ae6f4cd",
+  "verification": {
+    "errors": 2,
+    "failures": 1,
+    "passed": 10,
+    "tests_run": 13
+  }
+}

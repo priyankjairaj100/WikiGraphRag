@@ -1,0 +1,41 @@
+Observed unittest failure excerpts, transcribed from the first 13-control run.
+This is an excerpt, not the byte-for-byte complete console transcript.
+Receipt: results/source_render_runner_initial_review_v16_2.json
+Receipt SHA256: 060e61f73f952d6f13fbddf5dac0ee86a1feb000d31cffc4b64fddf7d2205674
+
+ERROR: test_authored_runner_unexpected_baseline_error_preserves_denominator_before_launch
+  tests/test_source_render_lo_adversarial_v16_2.py, line 176
+    result=controls.execute(protocol,p,p/'attempt',p/'public.json')
+  scripts/run_source_render_controls_v16_2.py, line 45
+    lo.RUN_OOM_BASELINE = lo.guard.read_snapshot()
+RuntimeError: private-authored-sentinel
+
+ERROR: test_authored_runner_unexpected_render_error_preserves_denominator_and_private_error
+  tests/test_source_render_lo_adversarial_v16_2.py, line 165
+    result=controls.execute(protocol,p,p/'attempt',p/'public.json')
+  scripts/run_source_render_controls_v16_2.py, line 54
+    entry = lo.render_block(block, out / control['name'], out, control['max_pages'])
+RuntimeError: private-authored-sentinel
+
+FAIL: test_authored_runner_public_output_cannot_mix_with_private_attempt
+  tests/test_source_render_lo_adversarial_v16_2.py, line 185
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+Ran 13 tests in 3.023s
+FAILED (failures=1, errors=2)
+
+The third test lacked a render mock. It may have launched native LO and
+pdftoppm for the two authored controls. The launch count is unknown and the
+TemporaryDirectory removed its authored output files. This run supplies no
+accepted rendering outcome. There were no natural inputs or model calls.
+
+Subsequent targeted readback subcase, after the three initial owner fixes:
+FAIL: test_authored_runner_unexpected_render_error_preserves_denominator_and_private_error (stage='readback')
+  tests/test_source_render_lo_adversarial_v16_2.py, line 174
+    self.assertFalse(result['controls'][0]['control_passed'])
+AssertionError: True is not false
+Ran 13 tests in 0.082s
+FAILED (failures=1)
+This rerun used rendering mocks throughout. The owner subsequently reset
+passed=False in the exception handler; the targeted controls then passed.

@@ -1,0 +1,62 @@
+Full-DTS v16.1 validation amendment, 2026-10-04
+
+Timing and preservation
+
+The original scripts/run_full_dts_v16.py and frozen
+ data/taxonomy_v16/full_dts_protocol.json are retained unchanged. They govern
+initial dependency acquisition. No natural-source Arelle model validation had
+run when this amendment was developed. The amended validator consumes the same
+captured dependency graph after its separate hash freeze; acquisition is not
+replayed or silently replaced. There is no original natural-source validation
+result to overwrite.
+
+Independent read-only code review found four false-success hazards. The original
+reporter could call an execution clean after a false Session return, no loaded
+model, incomplete occurrence inventory, or model errors absent from parsed logs;
+log JSON parse failure could silently become an empty error list; v15 source SHA
+and duplicate locators were not checked before comparison; and postrun imported
+files were recorded but not checked against the frozen dependency bindings.
+
+The v16.1 code fixes these hazards before the first source-validation execution:
+
+- Clean completion requires exactly one model, Session.run is True, the expected
+  source occurrence count, readable structured logs, no model errors, complete
+  captured dependencies, no validation errors and no runtime pin failures.
+- Missing/invalid structured logs explicitly produce log_parse_failure. They are
+  never interpreted as zero validation errors.
+- The external v15 records must have the expected source SHA, unique DOM locators
+  and exact expected occurrence count. A wrong source cannot become a comparison
+  reference just because another externally bound JSONL was supplied.
+- Every imported nonstdlib physical module reported by the worker is compared
+  with the frozen runtime/control/input bindings. Unbound or changed modules
+  produce a dependency_pin_failure and cannot yield clean completion.
+- A prelaunch cgroup check precedes each process; postlaunch monitors enforce
+  300-second wall, 2 GiB worker RSS, 7.25 GiB total cgroup and 256 MiB shared-memory
+  reserve thresholds, sampled every 0.1 seconds. These are monitored stop rules,
+  not an OS-enforced hard memory sandbox. All stopped sources retain their place
+  in the 12-source denominator.
+- Exact numerical comparison excludes float/bool and nonfinite xValue types,
+  retaining those statuses separately rather than inventing decimal precision.
+
+The existing source, taxonomy, plugin, budget and validation-option choices do
+not change. XML/source bytes remain unchanged. Exact HF-to-SEC byte identity,
+SEC EFM compliance, optional calculation/UTR validation, financial truth and
+natural QA are outside the claim.
+
+Authored controls
+
+The amended suite replays the 11 safety/exactness controls and adds 11 tests for
+false completion, unreadable logs, wrong-source references, duplicate locators,
+incomplete counts, runtime pin failures, incomplete closures and float refusal.
+All 22 tests pass before freeze. The original five positive SEC numwordsen cases,
+one negative lexical case and two Arelle cache-path differential controls remain
+bound; no filing values or question answers were used for these controls.
+
+Amended files:
+  scripts/run_full_dts_v16_1.py
+  tests/test_full_dts_v16_1.py
+  data/taxonomy_v16/full_dts_protocol_v16_1.json
+
+The final code/protocol hashes are sent to the root agent before execution and
+are recorded in the amended protocol and result. The original dependency graph
+hash is pinned separately before source validation.

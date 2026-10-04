@@ -1,0 +1,113 @@
+{
+  "checks": 188,
+  "counts": {
+    "cells": 177540,
+    "facts_outside_tables": 2677,
+    "facts_owned_by_tables": 20974,
+    "rows": 16861,
+    "tables": 1765
+  },
+  "created_at_utc": "2026-10-04T09:35:45.583130+00:00",
+  "failures": [],
+  "inputs": {
+    "data/reader_binding_v16/table_view_protocol_v16_1.json": "360160b8db323b373ab56f412e912ae53bdc9bcc1974a0a4277ee609f0145dfb",
+    "results/table_view_archive_v16_1.json": "7a6dcbf90c6bb1ead215e7d441e83320657b0c846975c22c58e87ce6046db373",
+    "results/table_view_inventory_v16.json": "9c41d6c0b48363afd3d75e61bd6d0a6d4a37272acdcb6ca928619de3e7531a3d",
+    "results/table_view_inventory_v16_1.json": "ae8a9aed70706956512b2dcb11c97dcf8241f01ab27026d6cfd04d0133625ad4"
+  },
+  "prior_attempt": {
+    "correction": "Auditor initially looked for an outside_table_facts record instead of the actual source.outside_table_fact_ordinals field. It falsely flagged incomplete coverage for all twelve. Data and extraction are unchanged.",
+    "result": "results/table_storage_independent_audit_v16_attempt01.json",
+    "script": "scripts/audit_table_storage_v16_attempt01.py"
+  },
+  "records": [
+    {
+      "original_complete": true,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 17467314,
+      "raw_original_bytes": 17467314,
+      "source_path": "original_doc/PFE_2023.html"
+    },
+    {
+      "original_complete": true,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 18085300,
+      "raw_original_bytes": 18085300,
+      "source_path": "original_doc/PFE_2024.html"
+    },
+    {
+      "original_complete": true,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 5379708,
+      "raw_original_bytes": 5379708,
+      "source_path": "original_doc/NFLX_2022.html"
+    },
+    {
+      "original_complete": true,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 6181320,
+      "raw_original_bytes": 6181320,
+      "source_path": "original_doc/NFLX_2023.html"
+    },
+    {
+      "original_complete": true,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 6780441,
+      "raw_original_bytes": 6780441,
+      "source_path": "original_doc/NVDA_2022.html"
+    },
+    {
+      "original_complete": true,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 7336925,
+      "raw_original_bytes": 7336925,
+      "source_path": "original_doc/NVDA_2023.html"
+    },
+    {
+      "original_complete": true,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 9874659,
+      "raw_original_bytes": 9874659,
+      "source_path": "original_doc/LLY_2023.html"
+    },
+    {
+      "original_complete": true,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 9948401,
+      "raw_original_bytes": 9948401,
+      "source_path": "original_doc/LLY_2024.html"
+    },
+    {
+      "original_complete": true,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 16581287,
+      "raw_original_bytes": 16581287,
+      "source_path": "original_doc/BRK-B_2022.html"
+    },
+    {
+      "original_complete": false,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 17277952,
+      "raw_original_bytes": 2243303,
+      "source_path": "original_doc/BRK-B_2023.html"
+    },
+    {
+      "original_complete": false,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 10142767,
+      "raw_original_bytes": 1028,
+      "source_path": "original_doc/SLB_2022.html"
+    },
+    {
+      "original_complete": false,
+      "original_prefix_exact": true,
+      "raw_amended_bytes": 9994787,
+      "raw_original_bytes": 54329,
+      "source_path": "original_doc/SLB_2023.html"
+    }
+  ],
+  "schema_version": "table_storage_independent_audit_v16",
+  "scope": "Post-execution independent streaming provenance/container audit; no semantic, rendering, financial or QA correctness claim.",
+  "script_sha256": "e160ed60bc150addee89d20260162d984ffff2b27f7c39548fbd95e576befcb6",
+  "status": "passed"
+}

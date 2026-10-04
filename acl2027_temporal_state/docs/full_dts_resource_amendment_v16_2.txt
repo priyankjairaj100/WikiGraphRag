@@ -1,0 +1,78 @@
+Full-DTS v16.2 resource-only amendment, 2026-10-04
+
+Original outcome retained
+
+results/full_dts_v16.json is the immutable first all-12 accounting under the
+v16.1 total-memory policy. All 12 sources were refused before worker launch
+because total cgroup memory.current exceeded 7.25 GiB. No Arelle source models
+were loaded, and no numerical comparison occurred. This is a resource failure,
+not a taxonomy-validation result or a favorable exclusion of sources.
+
+The dependency graph remains frozen at SHA256
+23d7666e4fd81097a84fdea8bca59f36b11b9a362f349c275a956e2f942b524f.
+Its 117 resources comprise 81 captured, 35 reused and one transport timeout;
+40,385,226 additional response bytes were captured. Eleven source closures are
+complete. BRK-B_2022 retains the unavailable SEC SIC 2021 schema. No retry,
+source alteration, taxonomy substitution or numeric/Arelle-option change is
+part of this amendment.
+
+Reason for a separate resource policy
+
+The shared cgroup's memory.current includes unmapped file cache. During the
+original refusal, several GB of file cache coexisted with a much smaller mapped
+footprint. Total-current accounting therefore refused even small local workers.
+The policy below is an explicit changed resource condition, not evidence that
+the original memory requirement was met. It applies to sequential Arelle
+workers, not a native language-model reader.
+
+The kernel cgroup documentation consulted by the root agent is
+https://docs.kernel.org/admin-guide/cgroup-v2.html (memory.current, memory.stat,
+memory.max and memory.events). This amendment does not alter kernel controls.
+
+Frozen policy
+
+- Require memory.max to remain exactly 8 GiB (8,589,934,592 bytes).
+- Define a conservative pressure proxy as the sum of anon, file_mapped, shmem,
+  kernel, sock, file_dirty, file_writeback, unevictable and swapcached from
+  memory.stat. Overlapping fields are deliberately counted more than once.
+- Before every source launch, require proxy + 2 GiB worker reserve < 7 GiB.
+- Monitor one worker at a time at 0.1-second intervals. Stop its process group
+  when the proxy reaches 7 GiB, worker RSS exceeds 2 GiB, wall time exceeds
+  300 seconds, or free shared memory falls below 256 MiB.
+- Record one run-global OOM/OOM-kill baseline before the source loop. Refuse or
+  stop on any new oom or oom_kill event, including between source attempts, or
+  if a counter decreases. Preserve the all-12 denominator.
+- Missing or malformed required telemetry, a changed/unlimited kernel max, or
+  an unreadable baseline fails closed. No cgroup setting is written, no cache
+  is evicted, and no unrelated process is signaled.
+- Record actual memory.current, each of the nine components, proxy, OOM
+  counters, worker RSS, prelaunch/final snapshots and sampled peaks. Every
+  monitoring sample remains in an external, hash-bound JSONL receipt.
+
+This is a polled watchdog, not a hard per-process memory sandbox. Consecutive
+kernel reads are not atomic. Sampling can miss transient peaks. The proxy is
+neither exact resident memory nor a formal bound on every unreclaimable
+allocation. Actual total memory may exceed the old 7.25 GiB soft threshold;
+the amended result must not claim otherwise.
+
+Implementation and provenance
+
+scripts/cgroup_guard_v16_2.py is a read-only helper shared with the separately
+versioned renderer, whose own reserve/RSS policy must be stated independently.
+scripts/run_full_dts_v16_2.py reuses unchanged sources, taxonomy cache, SEC
+transforms, source-locator comparison and Arelle options. New validation outputs
+are written to external full_dts_attempt01/validation_v16_2 and public
+results/full_dts_v16_2.json. Existing code, protocols and results remain intact.
+
+The authored suite has 35 passing tests: 22 inherited safety/comparison/reporting
+controls and 13 new filesystem-telemetry controls. These cover complete and
+missing fields, malformed/unbounded/negative values, changed kernel max,
+strict reserve/threshold boundaries, new and historical OOM events, counter
+resets, unreadable baseline and the explicit distinction from total-current
+accounting. The original authored actual Arelle Session/SEC-transform control
+remains bound. No source values or question answers were used by these tests.
+
+Independent review and final hashes are frozen before amended all-12 execution.
+Results remain conventional processor compatibility observations under stated
+options. SEC original-byte identity, SEC filing-rule compliance, financial
+truth and natural QA accuracy are not established.

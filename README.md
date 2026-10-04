@@ -20,7 +20,17 @@ Research repository for **Reading the Latest, Not the Loudest: Lifecycle-Aware S
 
 The original package is retained unchanged as a historical submission. Its README and result claims describe that submission; later audits and limitations are recorded in the rework. The original paper and supplement were supplied as PDFs; their editable TeX sources were not available in this workspace. The rework's available LaTeX sources are included.
 
-## Current research status
+## Current checkpoint: v0.16 — paused
+
+Saved at the user's request on 4 October 2026. Start the next chat with [NEXT_CHAT_HANDOFF_v16.txt](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v16.txt) and [PROJECT_STATE.json](acl2027_temporal_state/PROJECT_STATE.json).
+
+This increment adds complete structural views for **12 filings / 23,651 numeric occurrences**, an amended **21-of-24-table candidate pool covering all 12 files**, the acquired-evidence binding interface and native reader driver, taxonomy recovery, and a six-page **draft** preparation addendum. Original failures and amendments remain separate.
+
+**No new natural QA or retrieval result is claimed.** The new reader's authored attempt stopped before model loading; all eight requests remain unattempted. Full-DTS attempts retain 12 prelaunch refusals and a later 12-worker DOM failure. The repaired v16.3 runner and natural source rendering are unexecuted. A namespace-aware memory helper passed a real allocation control; final audit closure and protocol binding remain pending. The full v16 test suite and final paper visual review were deferred when the user paused the session.
+
+Public source, protocols, tests, results and draft paper are saved here. Exact source-bearing run artifacts are preserved separately in the private recovery archive described in the handoff; model weights are reproducible from their pinned acquisition record. No experiments continue in the background.
+
+## Previous completed checkpoint: v0.15
 
 Current checkpoint **v0.15** adds a bounded typed reader for numeric facts and their reported entity, period, unit, dimensions and physical source version. After a separately frozen ASCII-support amendment, all **12 filing objects and 23,651 fact occurrences** are processed. **23,519 common supported numeric values agree exactly** with the pinned Arelle transformation adapter; **16 nil and 116 unsupported facts** remain separate. Ten typed-dimension bindings remain unresolved, leaving **23,509 facts** that pass both local numeric and reported-binding layers.
 

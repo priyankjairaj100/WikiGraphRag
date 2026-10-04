@@ -1,0 +1,501 @@
+WikiGraphRAG / ACL 2027 — next-chat handoff, 4 October 2026
+PAUSED AT THE USER'S REQUEST. Checkpoint documentation only.
+
+1. Read this first
+
+The user explicitly stopped experiments and asked to save the project for a new
+chat. No further experiments, tests, model loads, renderer/DTS workers or new
+questions are authorized in the paused turn. Do not describe work as continuing
+in the background. Resume experimental work only when the next user instruction
+clearly requests continuation. Ordinary checkpoint documentation and GitHub sync
+remain within the user's standing authorization.
+
+Canonical repository:
+https://github.com/priyankjairaj100/WikiGraphRag
+Research subdirectory: acl2027_temporal_state/
+Use GitHub main's latest published checkpoint, including this handoff, as the
+starting point. Do not resume from an older chat summary or assume a local
+scratch checkout survived. At the moment this handoff was written, the local
+parent commit was 0972804f2e4ed19b7b07bec56a69c2029917b00c (v15); root is preparing
+the v16 checkpoint commit after this file is saved. That parent hash is NOT the
+new checkpoint hash. The final checkpoint message/remote main ref supplies the
+new commit; this document cannot contain its own final commit hash.
+
+Read AGENTS.md, this handoff, PROJECT_STATE.json, docs/reproduce_v16.txt and
+paper/checkpoint_pending_v16.json. Some earlier planning/state documents precede
+the last fixes. Actual versioned results and their matching hashes take priority.
+In particular, the positive RSS probe described below is newer than the paper
+pause record that still says that positive real-child gate was incomplete.
+
+Standing project rules:
+- Source, paper, supplements, protocols, code, public metadata/results and
+  reproducibility records belong in this GitHub repository; ordinary commits
+  and non-force pushes are already authorized.
+- Keep original_submission unchanged. Preserve every failed or unfavorable
+  frozen execution. Corrections need separate versions/attempts and lineage.
+- Do not publish third-party source bodies, source-bearing raw outputs, full
+  rendered source pages, model weights, runtime binaries or credentials.
+  Public hashes/counts/locators and authored controls are appropriate.
+- Git-backed project items are not duplicated into Library. Do not search
+  unrelated conversations/files to reconstruct this already specified project.
+- Report actual evidence, not hypothetical success. No current ACL submission
+  readiness, stronger-reader result, held-out natural QA gain or novel retrieval
+  advantage has been established.
+
+2. Research position
+
+The prospective route is budgeted retrieval of evidence that discriminates
+competing source bindings (year, unit, entity, population, physical version),
+with automatically proposed alternatives and a competent reader. See
+ docs/algorithmic_next_stage_v16_proposal.txt
+ docs/reader_binding_protocol_draft_v16.txt
+The witness-selector scaffold still receives supplied hypotheses/judgments; its
+old authored tests are not an automatic end-to-end result. The prior incremental
+propagation route remains stopped. Conventional source-aspect filtering and a
+strong generic sufficiency controller must precede any specialized method claim.
+
+Keep the v14 negative findings: on eight familiar development questions, the
+Qwen3.5-4B Q5_K_M candidate did not improve the natural-reader endpoint, and the
+small dense/RRF source-coverage variants did not beat the stronger BM25 controls.
+A newer/larger model or successful numeric parser is not, by itself, a stronger
+natural-language reader.
+
+V15/V15.1 established a bounded conventional Inline XBRL reader. All twelve
+filings contain 23,651 nonFraction occurrences. After the separately preserved
+ASCII-profile amendment, reader/reference agree exactly on 23,519 common
+normalized values; 16 nil and 116 unsupported cases stay separate. Ten normalized
+facts have unresolved typed-dimension bindings, leaving 23,509 locally usable
+normalized facts. The 96 occurrence-derived lookups are integration consistency
+checks, not natural QA. The failed first encoding attempt remains preserved.
+
+All six issuer pairs (PFE, NFLX, NVDA, LLY, BRK-B, SLB) are already inspected
+DEVELOPMENT material. Berkshire filenames disagree with internal fiscal years;
+use the frozen internal source identity, never filename year inference. Only
+five pairs are actually inside the originally stated FY2022-24 window. There
+are no independent human reference annotations or held-out histories here.
+
+3. V16 table extraction — completed, original failure preserved
+
+Original plain-JSONL extraction hit the 100,000,000-byte cap: nine complete files
+and three failures across the fixed twelve-source denominator. Original code,
+protocol, receipt and partial data remain unchanged. The original JSONLs were
+losslessly archived before raw duplicate storage was released.
+
+The storage-only deterministic-gzip amendment completed all twelve source views:
+- 1,765 tables; 16,861 rows; 177,540 cells.
+- 20,974 table-owned numeric occurrences plus 2,677 outside tables = 23,651.
+- Amended external table artifacts total 10,768,154 bytes.
+- Independent storage audit: 188 passing checks. It verifies exact restoration
+  of all twelve originals, equality of nine complete streams and exact prefixes
+  for three original partial streams. The auditor's initial schema-reading
+  mistake and corrected audit are separately retained; extraction did not change.
+
+Files:
+ scripts/build_table_views_v16.py
+ scripts/build_table_views_v16_1.py
+ data/reader_binding_v16/table_view_protocol.json
+ data/reader_binding_v16/table_view_protocol_v16_1.json
+ results/table_view_inventory_v16.json
+ results/table_view_inventory_v16_1.json
+ results/table_view_archive_v16_1.json
+ results/table_storage_independent_audit_v16_attempt01.json
+ results/table_storage_independent_audit_v16.json
+ docs/table_view_contract_v16.txt
+ docs/table_view_storage_amendment_v16_1.txt
+
+Amended inventory SHA-256:
+ae8a9aed70706956512b2dcb11c97dcf8241f01ab27026d6cfd04d0133625ad4
+These are DOM/source views, not browser-visibility or semantic evidence admission.
+
+4. V16 source pool — completed through the explicit visibility amendment
+
+Original frozen selection rule: all twelve source files; first two eligible leaf
+tables per file in XML order; complete row/cell ownership; 4-32 numeric occurrences;
+at least four usable duration facts and two resolved duration periods; a complete
+row matching revenues?/net sales; complete DOM text <=12,000 characters; no
+recognized hiding cue. All rows/cells and nil/unsupported facts remain in a
+selected table. Leaf tables inside layout parents are permitted.
+
+Original result: 16 eligible tables, 13/24 selected slots, eight of twelve files
+covered. Both NFLX files, BRK-B_2023 and SLB_2023 had no candidate. Preserve that
+outcome. The rule was not silently relaxed.
+
+Separate source-free descriptive analyses then found:
+- 184 revenue-row leaf tables; 12 candidates fail only the size cap and 29 fail
+  only the hiding predicate. Increasing the size cap alone cannot cover all files.
+- In the 29 hiding-only candidates, all 573 recognized cue subtrees were empty
+  under the conservative DOM/attribute profile: 569 no-text display:none cells
+  and four Unicode-whitespace visibility:hidden/collapse rows.
+- No non-whitespace text, numeric facts, media/alt, label attributes, unknown
+  nonempty attributes, nonlayout elements or inline content/url constructs were
+  found in those cue subtrees. This is not a browser-visibility guarantee.
+
+The root explicitly authorized a separately frozen visibility-only v16.1 pool
+amendment. It permits ONLY strict descendant cues whose EVERY subtree passes
+that empty-layout profile. An id/class attribute, even empty, blocks permission.
+Table/ancestor cues, nonempty/uncertain cues and unknown view visibility statuses
+still reject. All other predicates, source order, first-two policy and the 25 MB
+external budget remain unchanged. Source rows, cells, text and visibility metadata
+are not removed or rewritten. Forty-two authored controls (30 owner + 12 separate
+reviewer controls) pass before freeze.
+
+Amended terminal outcome:
+- All twelve sources processed and have at least one candidate.
+- 45 eligible tables; 21/24 selected slots; three slots still unfilled.
+- Exactly 29 tables became eligible through the approved visibility exception.
+- The unchanged first-two ordering keeps seven original selections and replaces
+  six with earlier newly eligible tables. All original packets remain available.
+- Selected tables retain 228 numeric occurrences in reviewer-only joins.
+- Owner packet-integrity recheck passed 213 checks; all seven shared author
+  packets are identical across attempts. These checks are not semantic validation.
+- External amended packets total 3,789,725 bytes.
+
+Selected amended table ordinals:
+ PFE_2023:   142, 153       PFE_2024:   144, 153
+ NFLX_2022:   32,  33       NFLX_2023:   37,  38
+ NVDA_2022:   22,  25       NVDA_2023:   28,  45
+ LLY_2023:    28,  31       LLY_2024:    29,  32
+ BRK-B_2022: 145           BRK-B_2023:  40,  50
+ SLB_2022:   161           SLB_2023:    40
+The three unfilled slots are BRK-B_2022, SLB_2022 and SLB_2023.
+
+Key immutable records:
+ data/reader_binding_v16/question_pool_protocol.json
+   b27d62f0e31c2c6f113bd579a22c36adedf2c0a61fd36b7d30b2ef26e5848451
+ results/reader_pool_v16.json
+   f99558d6a1bcc553f50ea0611b587c7b5964a22688d38c1b4651a7f4a17556fb
+ results/reader_pool_failure_analysis_v16.json
+   2c8c929169b0ae83d861f5e5b20c7d6fa3d6cf10d1c7c3f1467c59e3a59cc609
+ results/reader_pool_visibility_characterization_v16.json
+   cb1a407cc204eb71805c298484f3a553e58a49295667eb1992025f7f8ca0d7fc
+ data/reader_binding_v16/question_pool_protocol_v16_1.json
+   93a9a669fa1c0014a410832e02dbbfba3384e181af7caec9f04bc35d975d436a
+ results/reader_pool_v16_1.json
+   a700e40a2f5a39349d2f9db9550fd9f1dbecb3d298a5fee083cf309daec702ce
+
+Implementation/contract:
+ scripts/select_reader_pool_v16.py
+ scripts/select_reader_pool_v16_1.py
+ scripts/analyze_reader_pool_v16.py
+ scripts/characterize_reader_pool_visibility_v16.py
+ docs/reader_pool_contract_v16.txt
+ docs/reader_pool_visibility_amendment_v16_1.txt
+ results/reader_pool_code_review_v16.json
+ results/reader_pool_visibility_amendment_review_v16_1.json
+
+Author packets contain visible DOM table text, source cards, captions, neighbors
+and anchors, without typed facts/context IDs/canonical normalized values or gold
+mappings. Separate reviewer packets contain those machine joins and wrappers.
+No natural question, reference or prediction has yet been authored from this pool.
+The renderer was instructed to use all 21 amended tables and existing neighbors
+for its next freeze; the original thirteen have zero natural renders/questions.
+
+5. Binding interface and native reader — code ready; model not tested
+
+src/temporal_state/reader_binding_v16.py implements conventional acquired-only
+B0 lexical filtering, B1 proposed bindings + deterministic typed checking, and B2
+direct-answer support checks. It does not read hidden full-document facts. Unknown
+bindings block false certainty; exact scope/value aliases preserve citation
+provenance. Compact evidence is lossless and identical for B1/B2. Semantic
+question-concept correctness and proposal coverage still require external review.
+
+The final bounded interface review records 71 passing authored tests (41 owner,
+30 independent). Preserve its initial findings and fixes. See
+ results/reader_binding_code_review_v16.json
+ docs/reader_binding_interface_v16.txt
+
+Pinned reader candidate acquired and relocated successfully:
+ Model: Qwen3.5-9B-UD-IQ3_XXS.gguf
+ Repository: unsloth/Qwen3.5-9B-GGUF
+ Revision: 3885219b6810b007914f3a7950a8d1b469d598a5
+ Bytes: 4,016,235,744
+ SHA-256: 40d0f32cd3030b04f0784139a589fb63e876cfbf8667d56311b79783c74fd149
+ Current regular-file path:
+ /workspace/scratch/bdef663e3dfc/wikigraph_v16_external/assets/Qwen3.5-9B-UD-IQ3_XXS.gguf
+ Earlier /dev/shm acquisition path is a recorded symlink after relocation.
+ llama.cpp b11146 runtime matches the historical pinned files; architecture and
+ version probes succeeded. Acquisition/relocation did not load the model.
+
+Native driver/config:
+ scripts/native_binding_reader_v16.py
+ configs/binding_reader_v16.json
+ data/reader_binding_v16/interface_controls_v16.json
+ results/reader_acquisition_v16.json
+ results/reader_asset_relocation_v16.json
+ results/native_binding_reader_code_review_v16.json
+
+The native driver has 29 passing authored controls (20 owner + nine independent).
+The first actual authored-control attempt stopped at the original total-memory
+prelaunch guard: results/native_binding_controls_v16.json has status
+"tokenization_failed". All eight planned requests remain unattempted. There were
+ZERO native model processes, successful native tokenizations or completions.
+The receipt's tokenizer_sessions=1 counts the attempted stage, not a successful
+native session. The independent failure review confirms this distinction:
+ results/native_binding_preflight_failure_review_v16.json
+Observed memory.current was 8,471,801,856 bytes against the frozen total guard
+of 7,784,628,224. No guard relaxation or retry was performed.
+
+Current generation plan remains 8,192 context / 6,144 input / 768 output tokens,
+eight authored control requests, four CPU threads, greedy seed 0, thinking off,
+300 seconds per request. The configured process has a 5.5 GiB address-space cap,
+7 GiB active-memory guard and 7.25 GiB total-current guard. The new small-process
+DTS/rendering policies DO NOT authorize changing this native-model policy.
+A 9B low-precision candidate is not a demonstrated stronger reader than v14.
+
+6. Taxonomy/DTS — captured resources, unsuccessful validation attempts
+
+Twelve extension schemas were recovered. Eleven external label linkbases plus
+one inline-label source cover all 2,170 observed extension numeric occurrences
+syntactically. Labels do not establish question-concept correctness. Candidate
+SEC accession linkage does not establish byte identity between the HF objects
+and SEC originals; source identity remains limited.
+
+The frozen reachable-dependency graph contains 81 captured resources, 35 reused
+resources and one transport failure; additional network bodies total 40,385,226
+bytes. Eleven source closures are complete, one retains the unavailable SIC
+schema. Do not silently retry or substitute that resource inside a frozen run.
+
+Preserved natural validation outcomes:
+ results/full_dts_v16.json:
+   All twelve sources stopped before worker launch at the total-memory guard.
+ results/full_dts_v16_2.json:
+   All twelve workers reached Arelle Sessions and structured logs, then failed
+   during DOM occurrence-path construction. No completed fact inventories or
+   numerical comparisons were produced. Totals are empty, not zero-error success.
+ results/full_dts_v16_2_diagnostics.json:
+   Diagnoses the physical/logical DOM iterator mismatch and unreliable RSS.
+
+Arelle ModelInlineFact.__iter__ exposes logical tuple children. The previous
+mixed iteration missed physical XML parents and raised KeyError. Draft v16.3
+uses explicit lxml physical iter/iterchildren, retaining exact source hashes,
+expanded-name locators and occurrence matching. An authored real-Arelle fixture
+reproduces the old issue and validates the intended correction.
+
+Separately, the mounted /proc namespace uses outer PIDs while Popen/os.getpid
+return inner PIDs. The old RSS reader inspected absent or unrelated processes.
+The advertised v16.2 2 GiB RSS cap therefore cannot be claimed as enforced.
+Its separate cgroup/OOM telemetry remains preserved.
+
+Draft files (NOT an executed or finally frozen v16.3 result):
+ scripts/run_full_dts_v16_3.py
+ docs/full_dts_interoperability_amendment_v16_3.txt
+ data/taxonomy_v16/full_dts_protocol_v16_3.json
+ tests/test_full_dts_dom_v16_3.py
+The draft protocol contains an inherited earlier frozen_at_utc field; that field
+must not be mistaken for a completed, valid v16.3 freeze. Final bindings and
+independent review are pending. There is NO results/full_dts_v16_3.json execution
+at this pause, and no successful full-DTS validation result is established.
+
+7. Shared RSS helper — latest positive probe, final combined gate pending
+
+Current helper:
+ scripts/process_group_rss_v16.py
+ SHA-256: e3063c8d340877189fc443fb54ae8bc5f7d3388ee37dc16891fda2b401131ee6
+
+Latest real small-child probe:
+ results/owned_rss_outer_ppid_real_subprocess_probe_v16.json
+ SHA-256: 64738530ccf46651b44b6069bc58dc3f2415145a7d3c66bf3e9841225ae6ee74
+ It allocated 40 MiB in one owned authored subprocess. All three samples matched
+ direct outer-PID RSS exactly at 50,827,264 bytes; helper ownership used an exact
+ outer-PPID scan because the proc children interface was absent. The legacy inner
+ PID read differed. No model load or natural source read occurred.
+
+Do not confuse this with earlier probe candidates or older authored receipts.
+Keep initial failures, zero/wrong PID observations and subsequent refinements.
+The helper binds owned child/group identity and uses the original inner group ID
+for signals; outer identifiers are telemetry only. Live missing/malformed/zero
+RSS must fail closed, and confirmed cleanup is required before another launch.
+Summed process RSS can conservatively double-count shared pages.
+
+At the user stop, the final combined independent audit receipt for the exact
+current helper and renderer/DTS integrations was still PENDING. A positive
+40 MiB probe alone does not clear those integration gates. Do not start v16.3
+DTS or natural rendering on the basis of an older receipt that binds another
+helper hash. Close and bind the combined review only after continuation is
+explicitly requested in the next chat.
+
+8. Source rendering — authored alternatives only, no natural render executed
+
+PyMuPDF Story failed the authored merged-header/column geometry check; preserve
+that rejected candidate. A separate LibreOffice authored render preserved the
+tested merged-cell geometry but differed in borders/width/font/layout. It is a
+qualified inspection aid, not browser-fidelity certification.
+
+The first pipeline's Unicode and overflow controls both stopped before launch at
+the original total-memory guard. Its cleanup review found owned descendants
+could survive an exited group leader; preserve that failed review. Later v16.2
+preparation fixes cleanup, UTF-8 input declaration, passive-resource/XML/HTML
+refusal gaps, page overflow sentinel and cache-aware small-process policy. The
+latest unresolved integration step is the combined namespace-aware RSS audit.
+
+Relevant files:
+ docs/source_render_lo_pipeline_contract_v16_2.txt
+ scripts/prepare_render_pool_v16_2.py
+ scripts/render_source_blocks_lo_v16_2.py
+ scripts/run_source_render_controls_v16_2.py
+ results/source_render_pipeline_preflight_v16_1.json
+ results/source_render_code_review_v16_1.json
+ results/source_render_runner_initial_review_v16_2.json
+ results/source_render_review_test_archive_v16_2.json
+
+Before natural use, the exact current helper and runner must pass reviewed owned
+process/cleanup controls and the unchanged authored Unicode and PageRange
+controls. Then freeze the AMENDED 21-table pool and all existing neighbors, not
+the original thirteen. Retain every failed/refused block. Source-exact original
+fragments, ancestor wrappers and source styles remain external; unsupported
+resources are rejected rather than edited out to force admission.
+
+There is NO natural source-render execution at this pause. No source block is
+admitted merely by pool selection or future converter success. Each future block
+requires actual review of headers, unit labels, captions, footnotes, selected
+numeric-column associations and material CSS hiding/order behavior. Empty hidden
+layout nodes do not waive that review.
+
+9. Paper/checkpoint status
+
+paper/reader_preparation_study_v16.{json,pdf,tex}, claim_ledger_v16.json and
+render_manifest_v16.json exist as a six-page PAUSED DRAFT. The paper pause receipt
+is paper/checkpoint_pending_v16.json. Earlier draft pages 1-4 were inspected;
+the current six-page version has not had final all-page visual QA. No final visual
+receipt, ACL-template compilation or submission-ready manuscript is claimed.
+The prior authored paper renderer had eleven passing controls; they were not
+rerun at pause. Root updated paper/checkpoint_pending_v16.json to record the
+latest positive real-child RSS probe; the combined integration review remains
+pending.
+
+Root is saving/publishing this paused checkpoint, not running more work to make
+the draft look complete. Read the final pushed commit and updated checkpoint
+files if root's save step adds clearer metadata after this handoff was authored.
+
+10. External recovery locations and reproducibility limits
+
+Historical working checkout:
+ /dev/shm/wikigraph_v15/WikiGraphRag
+Historical research directory:
+ /dev/shm/wikigraph_v15/WikiGraphRag/acl2027_temporal_state
+
+External directories (not guaranteed to survive chat/environment maintenance):
+ /dev/shm/wikigraph_v15/external/fresh_sources
+ /dev/shm/wikigraph_v15/external/typed_reader_attempt02
+ /dev/shm/wikigraph_v15/external/table_views_attempt01  [archived original streams]
+ /dev/shm/wikigraph_v15/external/table_views_attempt02  [complete gzip views]
+ /dev/shm/wikigraph_v15/external/reader_pool_attempt01  [original 13 tables]
+ /dev/shm/wikigraph_v15/external/reader_pool_attempt02  [amended 21 tables]
+ /dev/shm/wikigraph_v15/external/taxonomy_attempt01
+ /dev/shm/wikigraph_v15/external/taxonomy_labels_attempt01
+ /dev/shm/wikigraph_v15/external/full_dts_attempt01
+ /dev/shm/wikigraph_v15/external/full_dts_attempt01/validation_v16_2
+ /dev/shm/wikigraph_v15/external/edgar_transform_metadata
+ /dev/shm/wikigraph_v15/standards_v15/arelle_runtime
+ /dev/shm/wikigraph_v15/reader_runtime_v16/assets/runtime/llama-b11146
+Model regular-file path is listed in section 5.
+
+Two private recovery archives were saved successfully. If the historical paths
+are gone, search the user's Library by these exact filenames. Public recovery
+metadata and restore roots are in results/external_checkpoint_recovery_v16.json;
+do not publish private Library identifiers.
+
+ WikiGraphRag-v16-private-recovery.tar.gz
+   Bytes: 95,908,432
+   SHA-256: cdb790ec1bf87a8553d6cf3b9e29ffe939780c1d5fdba69a9e42abdc628011f2
+   1,517 files; 648,904,044 logical bytes. Includes external complete records and
+   captures, standards_v15, the small native runtime and visual PNGs. Excludes
+   Git project files, the .gguf model weight, .pyc files and symlinks. The internal
+   manifest restores paths relative to /dev/shm/wikigraph_v15 with exact hashes.
+   The tar contains hardlinks; preserve their intended archive-relative targets.
+
+ WikiGraphRag-v16-native-attempt-recovery.tar.gz
+   Bytes: 6,840
+   SHA-256: 83de88296eb43b2d372870901d4466b4d79160fb9aa65282c8f284145e672b80
+   Five files containing the exact frozen native inputs, failed-attempt, request
+   and reference receipts that lived outside the first archive. Restore relative
+   to /workspace/scratch/bdef663e3dfc/wikigraph_v16_external.
+
+Use GitHub main's latest published checkpoint for project files; the private
+archives complement that checkout. The model weight must be recovered separately
+from its pinned identity in section 5 if its local file no longer exists.
+
+Restore sources from the pinned acquisition metadata; verify exact bytes/SHA
+before regenerating derived private artifacts. Frozen protocols can contain
+absolute execution paths and dependency hashes: relocation needs an explicit
+new execution record, not editing history. Never assume memory pressure or old
+latency reproduces after recovery. Do not delete unrelated files or relax kernel
+limits to make the environment fit. The last known kernel memory.max was 8 GiB.
+
+11. Exact pending sequence after the next user authorizes resumption
+
+A. Recover GitHub main and identify the published v16 checkpoint. Read the paused
+   state and verify which receipts are terminal versus drafts. Recover needed
+   external inputs/runtime/assets by their pins; preserve every existing attempt.
+   Do not automatically redownload or rerun everything if intact hashes suffice.
+
+B. Close the final combined independent RSS/ownership/cleanup review for helper
+   e3063c8... and its actual consumers. Preserve prior failed probes/reviews. The
+   latest real 40 MiB positive probe is evidence to bind, not permission to skip
+   integration review. Recheck live resource conditions without changing kernel
+   settings or touching unrelated processes.
+
+C. Finish the renderer's unchanged authored Unicode and overflow/PageRange
+   controls and focused final review with that helper. Separately finalize and
+   freeze full-DTS v16.3 and the renderer's current protocol. Do not treat the
+   draft v16.3 timestamp or old renderer example command as a valid new freeze.
+   Bind the amended 21-table pool in the rendering population. The small-process
+   resource amendments do not change native-model limits.
+
+D. Execute the frozen full-DTS all-twelve-source validation once, offline, with
+   all prior sources/options/plugin/dependency graph unchanged. Keep the missing
+   SIC dependency and all worker/validation/locator/value failures. Separate
+   process completion, DTS completeness, validation logs and numeric comparison.
+   Never call exit 0 or Session success financial truth or zero validation errors.
+
+E. Execute the frozen renderer across every amended selected table and existing
+   neighbor block, retaining refusals/failures. Review actual pages and original
+   source/CSS for each candidate before admitting evidence. If dependencies,
+   layouts or semantics are uncertain, retain that uncertainty; do not quietly
+   select attractive replacement tables.
+
+F. Only then author actual free-prose stage-A questions and independently
+   source-review references in separate model roles, with no reader predictions
+   visible. Planned stage A is twelve answerable questions (one single-source and
+   one two-source request per issuer) plus six missing-binding controls. The
+   author sees visible source/render/source cards, not reviewer-only typed joins
+   or an occurrence-derived gold-query helper. Save actual questions, complete
+   evidence, admissibility/exclusion decisions and reconciled references BEFORE
+   any evaluated reader output. These remain model-assisted development labels,
+   not independent human gold or held-out examples. Do not promise all slots will
+   be admitted merely because every file now has a candidate table.
+
+G. Address native execution as a separate gate. Preserve its zero-launch failure.
+   Recheck whether its ORIGINAL guard permits a bounded authored attempt. Any
+   native resource-policy change needs its own reviewed, explicit version; it is
+   not inherited from renderer/DTS changes. Freeze and run the eight authored
+   B1/B2 interface requests before any natural completion. Keep all failures and
+   output limits; do not swap models because a competence result is unfavorable.
+
+H. With admitted frozen questions/references AND a passed native authored gate,
+   freeze the natural stage-A execution. The proposed comparison has eighteen
+   conditions, eighteen deterministic B0 outputs and 36 single-call model outputs
+   (typed B1/direct B2), with identical evidence/metadata access and full token/cost
+   accounting. Gates, exclusions and any amendments must precede predictions.
+   Do not claim the larger 100+100 competence gate or statistical generalization
+   from this twelve-question development pilot. Later stage B is conditional and
+   separately recorded, not a way to rescue stage-A failures.
+
+I. Diagnose complete-evidence reader/proposer errors before a retrieval-policy
+   comparison. Only after those gates should structural retrieval, generic
+   sufficiency control and pair-specific witness acquisition be compared under
+   the same reader, actions and total costs. If conventional baselines remove
+   the residual problem, stop the specialized-method claim rather than rename
+   ordinary source-aspect filtering as novelty.
+
+J. Update source, results, manuscript/claim ledger, reproducibility guide and
+   continuation state from actual executed outcomes. Render/inspect all paper
+   pages before calling its PDF final. Run only necessary validations after work
+   resumes, refresh manifests while preserving historical ones, and publish an
+   ordinary non-force GitHub checkpoint. CLI push previously lacked credentials;
+   the authenticated GitHub connector was the supported publication route. A
+   local commit alone is not a successful push; verify remote parent/tree/ref.
+
+Nothing in this handoff authorizes new work during the current pause. It records
+what was completed, what failed and the ordered gates needed for a truthful
+continuation in the next chat.

@@ -1,0 +1,34 @@
+{
+  "schema_version": "external_checkpoint_recovery_v16",
+  "status": "saved_privately",
+  "git_project_included": false,
+  "archives": [
+    {
+      "filename": "WikiGraphRag-v16-private-recovery.tar.gz",
+      "bytes": 95908432,
+      "sha256": "cdb790ec1bf87a8553d6cf3b9e29ffe939780c1d5fdba69a9e42abdc628011f2",
+      "members": 1517,
+      "logical_bytes": 648904044,
+      "hardlinks": 184,
+      "integrity": "all archived content hashes and sizes verified; hardlink members resolved to verified earlier members",
+      "restore_root": "/dev/shm/wikigraph_v15",
+      "scope": "External full source captures, typed and table records, source-pool packets, small runtime assets, dependency captures and source/render logs and visual evidence."
+    },
+    {
+      "filename": "WikiGraphRag-v16-native-attempt-recovery.tar.gz",
+      "bytes": 6840,
+      "sha256": "83de88296eb43b2d372870901d4466b4d79160fb9aa65282c8f284145e672b80",
+      "members": 5,
+      "restore_root": "/workspace/scratch/bdef663e3dfc/wikigraph_v16_external",
+      "scope": "Frozen fictional authored native-control attempt, requests/reference and prelaunch failure records."
+    }
+  ],
+  "excluded": [
+    "Git-backed files (saved to repository)",
+    "Model weights and partial weight copies (exact acquisition pin in data/reader_binding_v16/reader_acquisition_protocol.json)",
+    "Bytecode and symlinks",
+    "Already unavailable older v14 external records; not recovered by these archives"
+  ],
+  "restore": "Locate exact archive names in the user private files; verify archive SHA256, inspect internal manifest, restore only to an intended external working root and verify member hashes. Paths in frozen historical configs remain historical; any path amendment must be explicit.",
+  "private_storage_ids": "Intentionally not included in public Git metadata."
+}
