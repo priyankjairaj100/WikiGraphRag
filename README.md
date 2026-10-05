@@ -26,7 +26,9 @@ The [theory manuscript](acl2027_temporal_state/paper/theory_v21.pdf) now contain
 
 The new supplied-map reference solver passes **36 targeted tests and 9 authored controls**. A separate model-role adversarial review is recorded. **No new model or natural-QA experiment ran.** Semantic assumptions, methodological novelty and empirical improvement remain unestablished.
 
-The user will run the empirical program locally. Start with the [local contract](acl2027_temporal_state/docs/local_empirical_contract_v21.txt), [implementation map](acl2027_temporal_state/docs/theory_implementation_map_v21.txt), [reproduction commands](acl2027_temporal_state/docs/reproduce_theory_v21.txt) and [handoff](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v21.txt). The exact checker is implemented; automatic proposal, semantic verification, coverage and online-controller integration still require work.
+The empirical program has started from that handoff. Its win condition, track order, and stop rules are in the [v22 plan](acl2027_temporal_state/docs/empirical_program_v22.txt). The [non-anticipating controller](acl2027_temporal_state/src/temporal_state/certificate_controller_v22.py) is the shared acquisition harness; its tests use invented fixtures. Automatic proposal, semantic verification, coverage estimation, baseline planners, and the confirmatory runner are still required. No new model or natural-QA result is claimed.
+
+Start with the [local contract](acl2027_temporal_state/docs/local_empirical_contract_v21.txt), [implementation map](acl2027_temporal_state/docs/theory_implementation_map_v21.txt), [reproduction commands](acl2027_temporal_state/docs/reproduce_theory_v21.txt) and [handoff](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v21.txt).
 
 ## Previous checkpoint: v0.20 — partial source reconciliation and prepared reader correction
 
