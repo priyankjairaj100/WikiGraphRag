@@ -185,7 +185,26 @@ Code status at the start of this program
   frozen reader. The map is docs/theory_implementation_map_v21.txt.
   The contract is docs/local_empirical_contract_v21.txt.
 
-Check the harness
+Stage 2 status, 2026-10-05
+
+  src/temporal_state/typed_binding_v22.py builds candidates only from resolved
+  normalized facts. Sufficiency emits one class while rivals remain. Aspect
+  filtering and the certificate abstain. Seven authored fixture tests pass.
+
+  The twelve previously inspected filings were hashed and read outside Git.
+  results/typed_binding_census_v22.json stores counts only. Across 23,414
+  eligible facts and 4,731 concepts, 3,808 concepts have more than one scoped
+  value. On a concept-only probe, sufficiency emits one and the other two
+  policies abstain in all 3,808. When the probe names one observed fact's
+  complete binding, the three policies agree on 3,767 of 3,808 checks. The
+  other 41 are same-binding value conflicts, where aspect filtering also
+  abstains. Forty-seven concepts contain at least one such conflict.
+
+  This is a structural census of development filings, not a natural-question
+  result. Cross-filing comparisons were not run. The filings are not held out.
+
+Check the harness and the typed census
 
   cd acl2027_temporal_state
   PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_certificate_controller_v22.py' -q
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_typed_binding_v22.py' -q
