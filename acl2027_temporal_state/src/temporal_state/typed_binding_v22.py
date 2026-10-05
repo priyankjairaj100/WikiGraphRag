@@ -17,6 +17,7 @@ from dataclasses import dataclass
 from decimal import Decimal
 import hashlib
 import json
+import re
 from typing import Dict, Optional, Tuple
 
 from temporal_state.certificate_controller_v22 import (
@@ -356,5 +357,88 @@ def compare_filings(first, second, mode):
         "not_same_value": len(shared) - same,
         "only_first": len(set(left) - set(right)),
         "only_second": len(set(right) - set(left)),
+        "values_recorded": False,
+    }
+
+
+def open_scope_profile(document):
+    """Count groups that stay ambiguous when one reported aspect is left unnamed.
+
+    A value-changing group has more than one normalized value. A scope-only
+    group has one value under more than one setting of the omitted aspect.
+    Neither count is a natural-question score.
+    """
+    facts, _, _ = eligible_facts(document)
+    opened = {}
+    for omitted in ASPECTS:
+        if omitted == "concept":
+            continue
+        groups: Dict[str, list] = {}
+        for fact in facts:
+            aspects = fact["reported_aspects"]
+            key = _canonical({name: aspects[name] for name in ASPECTS if name != omitted})
+            groups.setdefault(key, []).append(fact)
+        value_changing = scope_only = unique = 0
+        for members in groups.values():
+            values = {fact["normalized_value"] for fact in members}
+            scopes = {_canonical(fact["reported_aspects"][omitted]) for fact in members}
+            if len(values) > 1:
+                value_changing += 1
+            elif len(scopes) > 1:
+                scope_only += 1
+            else:
+                unique += 1
+        opened[omitted] = {
+            "groups": len(groups),
+            "unique_groups": unique,
+            "value_changing_groups": value_changing,
+            "same_value_different_scope_groups": scope_only,
+        }
+    return {"omitted_aspect": opened, "values_recorded": False}
+
+
+_YEAR = re.compile(r"(?:19|20)\d{2}")
+_CALENDAR = re.compile(r"(?:19|20)\d{2}(?:-\d{2}-\d{2}|\d{4})?")
+
+
+def _namespace(qname):
+    if not isinstance(qname, str) or not qname.startswith("{") or "}" not in qname:
+        return ""
+    return qname[1:].split("}", 1)[0]
+
+
+def namespace_year_profile(first, second):
+    """Classify local-name overlaps by concept namespace. This admits no join."""
+    def grouped(document):
+        facts, _, _ = eligible_facts(document)
+        groups: Dict[str, list] = {}
+        for fact in facts:
+            key = _binding_key(fact["reported_aspects"], "local_name_diagnostic")
+            groups.setdefault(key, []).append(fact)
+        return groups
+
+    left, right = grouped(first), grouped(second)
+    counts = {"identical_namespace": 0, "year_token_only": 0, "calendar_token_only": 0, "other_namespace": 0}
+    disagree = {"year_token_only": 0, "calendar_token_only": 0, "other_namespace": 0}
+    for key in set(left) & set(right):
+        raw = {_namespace(fact["reported_aspects"]["concept"]) for fact in left[key] + right[key]}
+        if len(raw) <= 1:
+            kind = "identical_namespace"
+        elif len({_YEAR.sub("YYYY", item) for item in raw}) == 1:
+            kind = "year_token_only"
+        elif len({_CALENDAR.sub("YYYY", item) for item in raw}) == 1:
+            kind = "calendar_token_only"
+        else:
+            kind = "other_namespace"
+        counts[kind] += 1
+        left_values = {fact["normalized_value"] for fact in left[key]}
+        right_values = {fact["normalized_value"] for fact in right[key]}
+        if kind in disagree and not (left_values == right_values and len(left_values) == 1):
+            disagree[kind] += 1
+    return {
+        "admitted_join": False,
+        "shared_local_name_bindings": sum(counts.values()),
+        "namespace_class": counts,
+        "not_same_value": disagree,
         "values_recorded": False,
     }

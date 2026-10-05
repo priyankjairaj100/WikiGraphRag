@@ -4,7 +4,8 @@ import unittest
 
 from temporal_state.typed_binding_v22 import (
     ASPECTS, COVERAGE_PROVENANCE, BindingError, build_world, compare_filings,
-    compare_policies, conflict_profile, summarize_document,
+    compare_policies, conflict_profile, namespace_year_profile, open_scope_profile,
+    summarize_document,
 )
 from temporal_state.typed_reader_v15_1 import read_inline_xbrl
 
@@ -160,3 +161,69 @@ class SourceCheck(unittest.TestCase):
         self.assertEqual(loose["shared"], 1)
         self.assertEqual(loose["not_same_value"], 1)
         self.assertFalse(loose["admitted_join"])
+
+
+def scoped_fact(ordinal, concept, value, period, member):
+    return {
+        "fact_ordinal": ordinal,
+        "binding_status": "reported_aspects_resolved",
+        "status": "normalized",
+        "resolved_aspects": {key: True for key in ASPECTS},
+        "visibility": "rendering_unverified",
+        "normalized_value": value,
+        "scale_property": 0,
+        "reported_aspects": {
+            "concept": concept,
+            "entity": {"scheme": "urn:authored:entity", "identifier": "A"},
+            "period": {"kind": "instant", "lexemes": {"instant": period}},
+            "unit": {"shape": "simple_product", "measures": ["{urn:authored:unit}USD"],
+                     "numerator_measures": [], "denominator_measures": []},
+            "dimensions": [{"kind": "explicitMember", "dimension": "{urn:authored:dimension}Population",
+                            "member": member, "placement": "segment"}],
+        },
+    }
+
+
+class OpenScopeProbe(unittest.TestCase):
+    def test_an_unnamed_period_is_value_changing_and_an_unnamed_dimension_is_not(self):
+        document = {"facts": [
+            scoped_fact(0, "{urn:tax/2024}Revenue", "100", "2024-12-31", "{urn:tax/2024}Consolidated"),
+            scoped_fact(1, "{urn:tax/2024}Revenue", "90", "2023-12-31", "{urn:tax/2024}Consolidated"),
+        ]}
+        opened = open_scope_profile(document)["omitted_aspect"]
+        self.assertEqual(opened["period"]["value_changing_groups"], 1)
+        self.assertEqual(opened["dimensions"]["value_changing_groups"], 0)
+        self.assertEqual(opened["dimensions"]["unique_groups"], 2)
+
+    def test_an_unnamed_dimension_changes_the_value(self):
+        document = {"facts": [
+            scoped_fact(0, "{urn:tax/2024}Revenue", "100", "2024-12-31", "{urn:tax/2024}Consolidated"),
+            scoped_fact(1, "{urn:tax/2024}Revenue", "40", "2024-12-31", "{urn:tax/2024}Segment"),
+        ]}
+        opened = open_scope_profile(document)["omitted_aspect"]
+        self.assertEqual(opened["dimensions"]["value_changing_groups"], 1)
+        self.assertEqual(opened["period"]["value_changing_groups"], 0)
+
+    def test_the_same_value_under_two_periods_is_scope_only(self):
+        document = {"facts": [
+            scoped_fact(0, "{urn:tax/2024}Revenue", "100", "2024-12-31", "{urn:tax/2024}Consolidated"),
+            scoped_fact(1, "{urn:tax/2024}Revenue", "100", "2023-12-31", "{urn:tax/2024}Consolidated"),
+        ]}
+        opened = open_scope_profile(document)["omitted_aspect"]
+        self.assertEqual(opened["period"]["same_value_different_scope_groups"], 1)
+        self.assertEqual(opened["period"]["value_changing_groups"], 0)
+
+    def test_a_year_token_namespace_is_classified_and_not_admitted(self):
+        older = {"facts": [scoped_fact(0, "{http://fasb.org/us-gaap/2023}Revenue", "100", "2023-12-31", "{urn:d}All")]}
+        newer = {"facts": [scoped_fact(0, "{http://fasb.org/us-gaap/2024}Revenue", "80", "2023-12-31", "{urn:d}All")]}
+        profile = namespace_year_profile(older, newer)
+        self.assertFalse(profile["admitted_join"])
+        self.assertEqual(profile["namespace_class"]["year_token_only"], 1)
+        self.assertEqual(profile["not_same_value"]["year_token_only"], 1)
+        dated = {"facts": [scoped_fact(0, "{http://fasb.org/us-gaap/2024-01-31}Revenue", "80", "2023-12-31", "{urn:d}All")]}
+        calendar = namespace_year_profile(older, dated)
+        self.assertEqual(calendar["namespace_class"]["calendar_token_only"], 1)
+        self.assertFalse(calendar["admitted_join"])
+        other = {"facts": [scoped_fact(0, "{http://fasb.org/srt/2024}Revenue", "80", "2023-12-31", "{urn:d}All")]}
+        mixed = namespace_year_profile(older, other)
+        self.assertEqual(mixed["namespace_class"]["other_namespace"], 1)
