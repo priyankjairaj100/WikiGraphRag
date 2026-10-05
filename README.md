@@ -20,7 +20,17 @@ Research repository for **Reading the Latest, Not the Loudest: Lifecycle-Aware S
 
 The original package is retained unchanged as a historical submission. Its README and result claims describe that submission; later audits and limitations are recorded in the rework. The original paper and supplement were supplied as PDFs; their editable TeX sources were not available in this workspace. The rework's available LaTeX sources are included.
 
-## Current checkpoint: v0.21 — certificate theory and local empirical handoff
+## Current checkpoint: v0.23 — source audits and gated empirical preparation
+
+Codex has resumed project work; large-model execution will be handed off later. The five v22 commits were reverted without rewriting history and remain on [archive/v22-local-development-6618442](https://github.com/priyankjairaj100/WikiGraphRag/tree/archive/v22-local-development-6618442). Their negative results remain part of the record.
+
+All **12 exact development filings** were recovered. Source checking reconstructed **41 flagged cases and 87 broader binding conflicts**; all are compatible with reported rounding precision. Six cross-filing reporting questions resolve with source-assisted typed and statement-structure review. Of two explanatory probes, one resolves by an ordinary footnote route and one remains unsupported in the bounded review. **No retrieval advantage is established.**
+
+Prepared **100 complete and 100 designed-insufficient typed-record controls**, a strict reader scorer, natural-question proposal/verifier contracts, an external human coverage audit contract, and a prospective **200-history confirmatory design**. The typed controls cannot establish natural text/table reader competence. Natural references, actual model predictions, automatic coverage and the confirmatory cohort remain pending. **42 targeted software tests pass**; no new model or held-out outcome is reported.
+
+Start with the [v23 update](acl2027_temporal_state/docs/research_update_v23.txt), [handoff](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v23.txt), [source audit](acl2027_temporal_state/docs/source_audit_v23.txt), [reader preparation](acl2027_temporal_state/docs/reader_gate_v23.txt), [semantic gates](acl2027_temporal_state/docs/semantic_gate_v23.txt), and [confirmatory protocol](acl2027_temporal_state/docs/confirmatory_protocol_v23.txt). A [new prior-art note](acl2027_temporal_state/docs/prior_art_update_v23.txt) further limits financial-statement mapping novelty. The v21 conditional theory is preserved below.
+
+## Previous checkpoint: v0.21 — certificate theory and local empirical handoff
 
 The [theory manuscript](acl2027_temporal_state/paper/theory_v21.pdf) now contains full proofs for complete scoped answer certificates, conditional soundness/completeness, selective-risk bounds, exact finite selection, counterexamples and a restricted classical cover guarantee. [Editable TeX](acl2027_temporal_state/paper/theory_v21.tex), [prior-art audit](acl2027_temporal_state/docs/theory_prior_art_audit_v21.txt) and [claim ledger](acl2027_temporal_state/paper/claim_ledger_v21.json) distinguish the domain-specific integration from established theory.
 

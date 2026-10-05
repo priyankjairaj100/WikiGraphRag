@@ -1,0 +1,1059 @@
+{
+  "schema_version": "confirmatory_protocol_v23",
+  "prepared_date": "2026-10-05",
+  "status": "prepared_blocked_not_registered_not_executed",
+  "scope": "financial disclosure QA within a frozen, explicitly admitted source universe; no general document-domain claim",
+  "frozen_design": {
+    "independent_issuer_histories": 200,
+    "items_per_history": 6,
+    "scheduled_items": 1200,
+    "item_mix": {
+      "answerable_single_filing": 2,
+      "answerable_cross_filing_joint": 2,
+      "well_specified_insufficient": 2
+    },
+    "minimum_observed_supported_yield_gain": 0.05,
+    "primary_effect_test": "one-sided paired issuer-history Student t, alpha 0.05; lower confidence bound > 0",
+    "risk_endpoint": "probability an issuer history has at least one unsupported substantive emission among six scheduled items",
+    "maximum_history_risk": 0.05,
+    "risk_test": "one-sided 95% exact Clopper-Pearson binomial upper bound <= 0.05 for both primary arms",
+    "bootstrap_sensitivity": {
+      "replicates": 10000,
+      "seed": 230519,
+      "resampling_unit": "paired issuer history",
+      "percentile_rule": "sorted bootstrap means[ceil(0.05*10000)-1]",
+      "changes_primary_decision": false
+    },
+    "zero_empirical_variance": "inferential superiority blocked; report descriptive result; do not choose another test",
+    "multiplicity": "one primary comparator and operating point; all primary conditions required (intersection-union); additional method comparisons exploratory",
+    "independence_unit": "canonical issuer or connected corporate history component, not ticker, filing, question, or paraphrase",
+    "optional_stopping": false
+  },
+  "primary_budget": {
+    "cumulative_model_input_tokens": 65536,
+    "cumulative_model_output_tokens": 8192,
+    "model_calls": 8,
+    "maximum_single_model_context_tokens": 32768,
+    "token_counting": "same frozen tokenizer including templates; proposal, acquisition scorer, coverage, verifier, reader and retries charged; reused visible text still contributes every actual model-input token",
+    "other_ledgers": [
+      "source accesses and source bytes",
+      "parser/index/proposal preprocessing wall time",
+      "full end-to-end wall time and peak memory",
+      "human/reference/coverage review time",
+      "cache reuse and index amortization"
+    ],
+    "shared_initial_access": "identical source inventory, parser/DTS outputs and documented preprocessing access for all arms; initial access is recorded, not free only for proposed method",
+    "overrun": "retain scheduled item; zero supported-yield credit; audit all exposed claims for risk; report violation; confirmatory admission fails"
+  },
+  "cohort": {
+    "frame_status": "not_enumerated",
+    "selected_issuer_ids": [],
+    "source_frame_sha256": null,
+    "cohort_manifest_sha256": null,
+    "selection_seed": "WikiGraphRag-confirmation-v23-20261005",
+    "selection_rule": "freeze complete metadata frame, canonical issuer/corporate components and eligibility first; rank components by SHA256(seed + | + canonical_id); source-only independent reference team evaluates in order; retain all reasons; first 200 reference-admissible components before any predictions",
+    "candidate_frame": "new SEC annual 10-K histories; two consecutive fiscal-year original filings with acceptance dates 2023-01-01 through 2025-12-31 UTC; associated admitted amendments/exhibits/cutoff and permitted retrieval links enumerated before questions; immutable accession bytes and document hashes required",
+    "eligibility": "English sources, identifiable canonical issuer, source rights/access/provenance admitted, all six independently referenceable question slots; no model-based difficulty or failure filter",
+    "pool_limit": "existing Multi-doc-2025 listing has 89 distinct ticker prefixes and cannot supply 200 new issuers; no cohort feasibility established",
+    "replacement": "only pre-prediction objective ineligibility in frozen rank order; no replacement after first prediction for any arm",
+    "shortfall": "stop before predictions and record infeasibility; do not lower n or fill with repeated issuers",
+    "cross_group_dependence": "common controlled entities, shared target transactions and overlapping source-derived histories form one component; background market dependence remains an inference assumption",
+    "previous_exposure_inventory_status": "documented repository screen, not exhaustive absence-of-contamination certification",
+    "exposure_sources_sha256": {
+      "data/fresh_source_audit_v14/exclusion_ledger.json": "10811840d345d0d1e11563275d970404af48c305e524bebc688be54dcfe98a8b",
+      "data/fresh_source_audit_v14/acquisition_protocol.json": "db7a4d1421af65ef8f05edb678a6615a3925972910b21f279e27d673fce1548d",
+      "data/source_register/seed_sources.json": "96d4eb3838f19bb44fa08ec44bfe68928d3fb1143aba802b9a8f5c78dfb14ae2",
+      "data/source_register/expansion_v04.json": "d45f553236506f53c8294153c750c44bfb64f68531bbc2662c1ce95ffcbef135",
+      "data/source_stream_v07/development_frame.json": "92a41392f1557fe5113cc867a45c580152f154c67769936f90bde8d80a6b2d2e",
+      "data/correction_gate_v10/discovery_corporate.json": "e84a25585cf0772fcf205b9e54bb87baedeb0a79e8735a75ae434a02dc016b38",
+      "data/correction_gate_v11/discovery_corporate.json": "f8d6c040681040bac39090980b72a0acbf3001ded3a2cb83f8e53d116fafa782"
+    },
+    "excluded_issuer_or_entity_records": [
+      {
+        "id": "AAL",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "AAPL",
+        "aliases": [
+          "Apple"
+        ],
+        "reasons": [
+          "prior project source/development inventory: Apple",
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "ABT",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "ADBE",
+        "aliases": [
+          "Adobe",
+          "Flash"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/source_stream_v07/development_frame.json"
+      },
+      {
+        "id": "ADIDAS",
+        "aliases": [
+          "adidas"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/source_stream_v07/development_frame.json"
+      },
+      {
+        "id": "ALB",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "AMT",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "AMZN",
+        "aliases": [
+          "Amazon",
+          "AWS"
+        ],
+        "reasons": [
+          "prior project source/development inventory: Amazon, AWS",
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "APD",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "AVGO",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "AXP",
+        "aliases": [
+          "American Express"
+        ],
+        "reasons": [
+          "prior project source/development inventory: American Express"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "BA",
+        "aliases": [
+          "Boeing",
+          "Boeing Commercial Airplanes"
+        ],
+        "reasons": [
+          "prior project source/development inventory: Boeing, Boeing Commercial Airplanes",
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "BAC",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "BMY",
+        "aliases": [
+          "Bristol Myers Squibb"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "BOTJ",
+        "aliases": [
+          "Bank of the James Financial"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "BRK-B",
+        "aliases": [
+          "Berkshire Hathaway",
+          "Berkshire",
+          "GEICO",
+          "BNSF"
+        ],
+        "reasons": [
+          "v14-v23 six-history development filings, all versions and derivatives"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/acquisition_protocol.json"
+      },
+      {
+        "id": "C",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "CCI",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "CE",
+        "aliases": [
+          "Celanese"
+        ],
+        "reasons": [
+          "counterparty alias exposure"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "CIK1129633",
+        "aliases": [
+          "PNX exact issuer identity unresolved"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "CL",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "COP",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "COST",
+        "aliases": [
+          "Costco"
+        ],
+        "reasons": [
+          "prior project source/development inventory: Costco"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "CPRT",
+        "aliases": [
+          "Copart"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "CRM",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "CVS",
+        "aliases": [
+          "CVS Health"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/source_stream_v07/development_frame.json"
+      },
+      {
+        "id": "CVX",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "CYDY",
+        "aliases": [
+          "CytoDyn"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "DD",
+        "aliases": [
+          "EID",
+          "DowDuPont"
+        ],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review",
+          "conservative supporting-entity/alias exposure: EID, DowDuPont"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "DE",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "DIS",
+        "aliases": [
+          "Disney"
+        ],
+        "reasons": [
+          "prior project source/development inventory: Disney",
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "DOCKER",
+        "aliases": [
+          "Docker"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/source_register/expansion_v04.json"
+      },
+      {
+        "id": "DOW",
+        "aliases": [
+          "TDCC",
+          "Dow"
+        ],
+        "reasons": [
+          "counterparty alias exposure"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "ECL",
+        "aliases": [
+          "Purolite"
+        ],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review",
+          "conservative supporting-entity/alias exposure: Purolite"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "ED",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "FAETH",
+        "aliases": [
+          "Faeth Therapeutics"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "FIDELITY",
+        "aliases": [
+          "Fidelity Center for Applied Technology"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "GOOGL",
+        "aliases": [
+          "Google",
+          "Alphabet",
+          "Chrome"
+        ],
+        "reasons": [
+          "prior project source/development inventory: Google, Alphabet, Chrome",
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "GS",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "HD",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "HSBC",
+        "aliases": [
+          "HSBC"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/source_stream_v07/development_frame.json"
+      },
+      {
+        "id": "IBM",
+        "aliases": [
+          "IBM",
+          "Red Hat"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/source_stream_v07/development_frame.json"
+      },
+      {
+        "id": "IKT",
+        "aliases": [
+          "Inhibikase"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "INTC",
+        "aliases": [
+          "Intel"
+        ],
+        "reasons": [
+          "prior project source/development inventory: Intel"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "IONQ",
+        "aliases": [
+          "IonQ"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "JPM",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "K",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "KO",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "LEE",
+        "aliases": [
+          "Lee Enterprises"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "LIMFLOW",
+        "aliases": [
+          "LimFlow"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "LLY",
+        "aliases": [
+          "Eli Lilly",
+          "Lilly"
+        ],
+        "reasons": [
+          "v14-v23 six-history development filings, all versions and derivatives"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/acquisition_protocol.json"
+      },
+      {
+        "id": "LOW",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "LYFT",
+        "aliases": [
+          "Lyft"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/source_register/expansion_v04.json"
+      },
+      {
+        "id": "META",
+        "aliases": [
+          "Facebook",
+          "Meta"
+        ],
+        "reasons": [
+          "prior project source/development inventory: Facebook, Meta"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "MO",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "MODIO",
+        "aliases": [
+          "Modio Health"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "MOZILLA",
+        "aliases": [
+          "Mozilla",
+          "Firefox"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/source_stream_v07/development_frame.json"
+      },
+      {
+        "id": "MPC",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "MSFT",
+        "aliases": [
+          "Microsoft",
+          "Internet Explorer"
+        ],
+        "reasons": [
+          "prior project source/development inventory: Microsoft, Internet Explorer",
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "NEE",
+        "aliases": [
+          "FPL"
+        ],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review",
+          "conservative supporting-entity/alias exposure: FPL"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "NFLX",
+        "aliases": [
+          "Netflix"
+        ],
+        "reasons": [
+          "v14-v23 six-history development filings, all versions and derivatives"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/acquisition_protocol.json"
+      },
+      {
+        "id": "NKE",
+        "aliases": [
+          "Nike"
+        ],
+        "reasons": [
+          "prior project source/development inventory: Nike"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "NOXXON",
+        "aliases": [
+          "Noxxon"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "NVDA",
+        "aliases": [
+          "NVIDIA"
+        ],
+        "reasons": [
+          "v14-v23 six-history development filings, all versions and derivatives"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/acquisition_protocol.json"
+      },
+      {
+        "id": "ORCL",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "PEP",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "PFE",
+        "aliases": [
+          "Pfizer"
+        ],
+        "reasons": [
+          "v14-v23 six-history development filings, all versions and derivatives"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/acquisition_protocol.json"
+      },
+      {
+        "id": "PHOENIX_MARKETING",
+        "aliases": [
+          "Phoenix Marketing International"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "PLUG",
+        "aliases": [
+          "Plug Power"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v10/discovery_corporate.json"
+      },
+      {
+        "id": "PM",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "PSX",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "RTX",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "SBUX",
+        "aliases": [
+          "Starbucks"
+        ],
+        "reasons": [
+          "prior project source/development inventory: Starbucks"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "SESSIONM",
+        "aliases": [
+          "SessionM"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "SLB",
+        "aliases": [
+          "Schlumberger",
+          "SLB"
+        ],
+        "reasons": [
+          "v14-v23 six-history development filings, all versions and derivatives"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/acquisition_protocol.json"
+      },
+      {
+        "id": "SONY",
+        "aliases": [
+          "Sony",
+          "PlayStation"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/source_register/expansion_v04.json"
+      },
+      {
+        "id": "T",
+        "aliases": [
+          "AT&T"
+        ],
+        "reasons": [
+          "conservative supporting-entity/alias exposure: AT&T"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "TAP",
+        "aliases": [
+          "Molson Coors"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v10/discovery_corporate.json"
+      },
+      {
+        "id": "TGT",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "TMO",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "TMUS",
+        "aliases": [
+          "T-Mobile"
+        ],
+        "reasons": [
+          "counterparty alias exposure"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "TSLA",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "U",
+        "aliases": [
+          "Unity",
+          "Unity Software"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/source_stream_v07/development_frame.json"
+      },
+      {
+        "id": "UNH",
+        "aliases": [
+          "Optum",
+          "UnitedHealthcare"
+        ],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review",
+          "conservative supporting-entity/alias exposure: Optum, UnitedHealthcare"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "UPS",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "VZ",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "WMT",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      },
+      {
+        "id": "XCHEM",
+        "aliases": [
+          "X-Chem"
+        ],
+        "reasons": [
+          "prior source history or conservative named discovery-lead exposure; exclude before cohort enumeration"
+        ],
+        "inventory_source": "data/correction_gate_v11/discovery_corporate.json"
+      },
+      {
+        "id": "XOM",
+        "aliases": [],
+        "reasons": [
+          "identifiable public QA/reference preview exposure during dataset metadata review"
+        ],
+        "inventory_source": "data/fresh_source_audit_v14/exclusion_ledger.json"
+      }
+    ],
+    "other_exposed_names_to_resolve_before_selection": [
+      "TJC",
+      "Delrin",
+      "Schweppes",
+      "PricewaterhouseCoopers",
+      "Kensho"
+    ],
+    "noncorporate_exposed_groups": [
+      "Docker",
+      "NASA Artemis",
+      "ESA/Roscosmos ExoMars",
+      "HS2",
+      "Mozilla Firefox",
+      "Python",
+      "OPERA",
+      "JAMA opioid marketing",
+      "Resplandy ocean heat",
+      "Chan/Albarracin meta-analysis",
+      "AstroSat",
+      "GERDA",
+      "GRACE",
+      "Libreswan",
+      "OpenSSL",
+      "Rust",
+      "xz",
+      "PBL/IPCC",
+      "curl/NVD"
+    ],
+    "unresolved_prior_exposure": "DocFinQA previews exposed truncated programs/answers with unidentified issuers. Absolute absence of content overlap cannot be certified; no cross-conversation search was made. Public model-pretraining contamination is uncontrolled.",
+    "future_exposure_rule": "union this inventory with every later development/source-probe exposure before confirmation; ambiguous aliases are blocked until resolved; metadata-only frame listing is not content exposure"
+  },
+  "reference_policy": {
+    "authors": "two independent human annotators plus adjudicator, blinded to systems and outputs",
+    "freeze_before_any_prediction": true,
+    "include": [
+      "natural question and immutable source universe/cutoff",
+      "complete equivalent jointly scoped answers or declared refusal",
+      "all observed feasible answer-changing classes including conflicts",
+      "material support/refutation relations and complete conjunctive witness alternatives",
+      "source identities, locators and hashes",
+      "provenance, disagreements and adjudication decisions"
+    ],
+    "source_exhaustiveness": "operational finite-source audit, not proof of universal semantic completeness",
+    "prediction_access": "reference-only files excluded from inference process; seal reference digest before all arms",
+    "post_prediction_reference_error": "blind adjudication under frozen rubric, preserve original and corrected grade as sensitivity; material change invalidates confirmation rather than quietly repairing the primary result"
+  },
+  "required_baselines": [
+    "typed aspect filter with frozen natural-question parser and full admitted DTS/label mappings",
+    "hybrid/reranked retrieval with structural/table closure",
+    "strong generic complementary evidence and sufficiency controller",
+    "strong same-reader larger-context structural baseline within same total budget"
+  ],
+  "primary_comparator": {
+    "id": null,
+    "selection": "highest development history-level supported yield among competent baselines meeting the same risk/cost gates; resolve exact ties by smaller full input-token cost then lexicographic baseline ID; freeze implementation and threshold before cohort predictions",
+    "status": "blocked_pending_development"
+  },
+  "shared_interfaces": [
+    "source universe and access policy",
+    "parser metadata/DTS inputs",
+    "natural question and output schema",
+    "candidate proposal pool, available actions and verifier for controlled acquisition comparison",
+    "external coverage/answer acceptance gate and reader",
+    "budget accounting and independently frozen references"
+  ],
+  "required_gates_before_confirmation": [
+    "v23 source probe demonstrates referenceable residual after competent typed/DTS/structural filtering",
+    "preliminary v23 typed-control screen passed, then separately versioned natural task-matched ~100 complete plus100 insufficient reader gate passed under fully frozen source references/model/prompt/arithmetic/runtime; typed controls never authorize comparison",
+    "proposal class recall and false-elimination pilot passed on qualified natural development items under numerical rules fixed before pilot predictions; current typed controls do not qualify",
+    "external coverage decision provenance and fail-closed adapter validated",
+    "all baseline implementations and primary comparator frozen",
+    "200 eligible new issuer components and 1200 adjudicated references sealed before any predictions",
+    "source/candidate/question/reference/model/runtime/code/tokenizer/prompt/budget/seeds/grading hashes sealed",
+    "raw requests responses usage errors and source-access traces recoverably stored",
+    "run provenance and budget admission independently checked before statistical claim"
+  ],
+  "reader_gate_cross_reference": {
+    "complete_items": 100,
+    "insufficient_items": 100,
+    "complete_joint_correct_minimum": 90,
+    "per_50_item_extraction_or_difference_stratum_minimum": 45,
+    "insufficient_substantive_emissions_maximum": 0,
+    "all_200_schema_valid": true,
+    "historical_2_of_8_is_current_gate": false,
+    "interpretation": "development adequacy only; related six-history items do not justify iid uncertainty or population risk guarantee",
+    "role": "preliminary typed-control screen only; passing cannot authorize natural QA comparison",
+    "comparison_authorized_by_typed_score": false,
+    "natural_gate_status": "unfilled; requires residual-task admission then new source-rendered complete/insufficient items, reviewed references and pre-prediction numerical/method freeze"
+  },
+  "unfrozen_before_run_fields": [
+    "cohort and question/reference manifest",
+    "adjudicators and reference audit",
+    "working proposed policy and comparator identity",
+    "runtime and hardware receipt",
+    "exact model/prompt/tokenizer/code artifacts and byte digests",
+    "external coverage policy source audit receipt",
+    "separately versioned natural-reader gate dataset, references and numerical pass rules; preliminary typed controls are insufficient"
+  ],
+  "development_adaptation": "instant development fixes are allowed as new versions; preserve all failures, prompts, outputs, source schedule and prior results; revalidate changed components; no confirmatory-item feedback for tuning",
+  "confirmation_adaptation": "stop or complete frozen schedule without outcome-driven changes; failed confirmation remains failed; altered policy requires new protocol and entirely fresh issuer cohort; never rerun tuned model on the same cohort as new confirmation",
+  "statistical_implementation": "src/temporal_state/study_analysis_v23.py",
+  "analysis_dependency": "scipy==1.17.0 (portable implementation tested with this runtime; future runtime changes require before-run validation/receipt)",
+  "sources": [
+    {
+      "work": "Clopper and Pearson (1934)",
+      "doi": "10.1093/biomet/26.4.404",
+      "url": "https://academic.oup.com/biomet/article-abstract/26/4/404/291538"
+    },
+    {
+      "work": "SciPy Student t distribution documentation",
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.t.html"
+    },
+    {
+      "work": "SciPy beta distribution documentation",
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.beta.html"
+    }
+  ],
+  "grading_semantics": {
+    "unsupported": "unsupported as answer to requested question: wrong value, sign, scale, entity, period, unit, population, dimensions, version or material comparison relation; a correct cited fact for another scope does not make the requested answer supported",
+    "joint_correct": "all requested answer slots correct, fully supported, faithfully rendered and cited; no unsupported material claims",
+    "incomplete_but_nonfalse": "may be joint_correct=false and unsupported=false if every emitted claim is valid and correctly scoped but requested slots are explicitly left unanswered; independently adjudicate",
+    "unattempted": "cannot emit; output_audited=true only with a preserved no-call/no-output receipt",
+    "technical_failure": "zero supported yield, remains scheduled; all exposed partial claims audited; lost/unknown outputs count unsafe for gate"
+  },
+  "semantic_pilot_cross_reference": {
+    "protocol": "data/semantic_pilot_v23/protocol.json",
+    "scope": "prospective natural-development engineering criteria, not calibrated population error bounds; current typed200 do not qualify",
+    "qualified_independent_reviews_required": 200,
+    "nonempty_reference_items_minimum": 100,
+    "micro_class_recall_minimum": 0.95,
+    "nonempty_item_full_class_coverage_minimum": 0.95,
+    "reviewed_false_candidate_eliminations_maximum": 0,
+    "all_refutations_reviewed_required": true,
+    "zero_refutations": "verification error opportunities insufficient; does not establish verifier success",
+    "readiness_does_not_authorize_automatic_coverage_or_comparison": true,
+    "status": "criteria specified prospectively; qualified natural items/predictions/outcomes unavailable"
+  }
+}

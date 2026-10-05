@@ -1,0 +1,218 @@
+V23 semantic proposer/verifier and external coverage pilot
+2026-10-05; executable preparation, not a model experiment or a coverage proof.
+
+Status and relationship to the 200-item reader set
+
+The new module accepts a natural question and observed source text, then validates
+model-proposed complete answer interpretations and verifier judgments. It does
+not group an already parsed truth table into its only candidates. No model has
+been called by this module, and no class-recall or false-elimination result on
+real questions is reported.
+
+The reader agent prepares 100 complete typed-evidence controls and 100 matched,
+designed insufficient controls. Their IDs are the coordination roster for this
+pilot. They are source-backed, authored control candidates, not 200 independently
+reviewed natural-text questions. The semantic item queue preserves the same IDs
+and existing request/reference hashes; it marks the missing natural-text and
+class-reference work explicitly. Do not silently treat their parsed records as
+natural source text, rename the controls as human gold, or fabricate class recall
+from the generator's known target. A text/table comparison remains conditional
+on a real residual question after a competent typed baseline. Otherwise this
+pilot's natural-text arm does not open.
+
+Files and commands
+
+  src/temporal_state/semantic_gate_v23.py
+  scripts/analyze_semantic_pilot_v23.py
+  tests/test_semantic_gate_v23.py
+  data/semantic_pilot_v23/protocol.json
+  data/semantic_pilot_v23/proposer_prompt.txt
+  data/semantic_pilot_v23/verifier_prompt.txt
+  data/semantic_pilot_v23/item_queue.json
+
+From acl2027_temporal_state:
+  PYTHONPATH=src python3 -m unittest discover -s tests -p test_semantic_gate_v23.py -q
+  python3 scripts/analyze_semantic_pilot_v23.py /external/frozen_bundle.json --output /external/new_receipt.json
+
+The analyzer refuses to overwrite a receipt. It records the input-bundle, module
+and analyzer hashes. It does not fetch data, invoke a model, authorize an online
+source acquisition, price a run, or conduct hypothesis tests. External callers
+must preserve every raw response before schema parsing and record failed runs.
+Malformed semantic envelopes are validation errors, not successful abstentions.
+Fix their transport separately with the original raw response retained. The risk
+review must count any substantive material exposed by malformed reader text.
+
+Input, role and freezing contracts
+
+An item has exactly schema, item_id, question, answer_slots, normalization_spec,
+normalization_sha256, corpus_policy and observed_evidence. The complete frozen
+normalization instructions are supplied to the model and checked against their
+UTF-8 hash; a digest alone is insufficient to tell a model how to normalize.
+The model-facing
+whitelist excludes item_id and all private reference fields. corpus_policy fixes
+an immutable source inventory with hashes, included and excluded regions,
+cutoff, and the bounded interpretation scope. observed_evidence contains only
+observed text, text hashes, source hashes, source IDs, locators and neutral
+per-item evidence IDs. This module checks text hashes against the supplied text
+and source hashes against the declared inventory. The ingestion step must
+independently check original source bytes, offsets and exact extraction; an
+inventory hash copied into a record is not proof of authentic source extraction.
+
+Normalizing an answer is itself a frozen, audited representation decision.
+Every candidate contains all requested answer slots, and every claim includes
+value, concept, entity, period, unit, dimensions, source_identity and
+comparison_relation. Empty dimensions are explicit; other aspects cannot be
+missing. source_identity names a declared source. A joint two-period answer is
+one candidate, not two independent answers. The mechanical class key hashes the
+entire slot-sorted normalized answer, retaining scope even when values match.
+The key is exact structured equality, not a learned semantic-equivalence oracle.
+The frozen normalizer and independent match review must audit over-splitting or
+incorrect equivalences. Claimed proposal citations must already be observed.
+
+Separate proposer and verifier prompts are provided. They are preparation
+artifacts, not a completed inference freeze. Before any prediction, freeze each
+model/revision, tokenizer/runtime, prompt, decoding, output limit, retries,
+arithmetic policy, normalization, exact input roster and private references in
+an immutable run record. No default model is guessed here. The runner attaches
+input/configuration hash envelopes to raw model output. The verifier hash binds
+the precise proposal and source input it saw, not just an item ID. References
+never enter proposer, verifier or authorization inputs. The reference author,
+proposal/verifier operator and external coverage reviewer have separate roles;
+using the same model with different prompts is not independent human review.
+
+Support, elimination and authorization
+
+A support judgment must cite observed evidence for every value and scope aspect.
+No future action or unacquired text can serve as a premise. A factual refutation
+must cite at least one contradictory aspect; absent evidence is unresolved.
+The code validates binding completeness, not semantic entailment of citations.
+It rejects an amount-and-dimensions shortcut that omits entity, period, unit or
+other required premises. Any observed support/refutation conflict blocks the
+whole authorization ledger, merging signs for identical canonical propositions
+even when a duplicate uses different candidate/claim IDs or requested slots.
+An answer requires every winning claim supported
+and every candidate in every different class refuted. A source-consistent valid
+representative of an equivalent class is not eliminated merely because another
+representative is invalid. Coverage is checked independently after these local
+conditions; a single candidate and a perfect local certificate do not clear it.
+
+This code has no planner, dynamic budget callback or persistent unaffordable
+cache. It cannot inherit the v22 nonmonotone-cost cache defect. An eventual
+controller must charge source access/proposal/verifier/audit/reader work and keep
+acquisition cost separate from final rendered prompt length. A shrinking final
+prompt is not a refund for previous calls. No new acquisition-optimality claim
+follows from this module.
+
+External coverage: scoped human-gated diagnostic
+
+No audit means unresolved. A boolean, a status string, beam saturation, a high
+score, candidate count or a local optimization result cannot serve as an audit.
+The audit is bound to exact question/evidence input, corpus policy, proposal and
+coverage protocol hashes. It requires a separately declared reviewer, inspected
+source records with hashes and regions, written findings for six obligations,
+and no unresolved classes. All included regions and all declared sources must
+be reviewed. Mandatory obligations cannot be waived; cross-source identity can
+be marked inapplicable only for a one-source universe. The obligations are:
+source inventory; question scope; regions/continuations; cross-source identity;
+material conflicts; and answer-class search. A model- or program-authored audit
+remains diagnostic and never clears this implementation's authorization gate.
+
+These fields are an auditable external attestation, not proof of semantic
+completeness, source entailment, honest disclosure or human identity. In
+particular, writing "human" in JSON is not authentication. Review identity and
+independence must be checked outside this code. A false or fabricated attestation
+can be schema-valid. The module deliberately makes no stronger claim.
+
+The implemented arm is human-gated and bounded by the declared source policy.
+It is not an autonomous scalable coverage method. If operationally used, all
+review/source-inspection costs must be charged. Reference class inventories used
+for scoring are NOT runtime coverage inputs. An oracle arm supplied with gold
+reference coverage must be separately named and excluded from automatic claims.
+The reference and coverage reviewer roles are distinct and both declarations of
+independence are required. An automatic coverage predictor remains unimplemented:
+it would need an explicitly frozen policy, on-policy evaluation of false clears
+against independent labels, and its own risk analysis. A typed/DTS inventory can
+close a narrowly specified structural universe; it cannot establish that a
+natural question has no answer-changing interpretation outside that universe.
+
+Evaluation bundle
+
+The input bundle has schema, manifest, items, runs and reviews. Its frozen
+manifest binds its declared population, the prospectively fixed engineering
+criteria hash, proposer/verifier/coverage protocol hashes, exact public input
+hashes for every scheduled item, private reference hashes for those available,
+and the independent review protocol hash. A null reference hash means no frozen
+reference; a later claim of reviewed performance cannot supply one retroactively.
+Actual chronology depends on externally timestamped immutable commits or a
+preserved preprediction freeze; this software cannot authenticate timestamps.
+
+Each run retains proposal, verification, coverage audit (possibly null),
+requested winner ID (possibly null), and raw reader output. A separate review
+binds the exact input and run hashes and the original issuer/history ID. Its
+private reference record contains the preprediction class inventory, complete
+scoped answer descriptions, source review records and scope-completeness status.
+The reference hash must match the manifest before its labels qualify. Separate
+postprediction match judgments identify which proposed candidates are genuinely
+source-consistent representatives of each reference class. Listing a correct
+answer label on an invalid candidate earns no class recall. Every proposed
+candidate and every verifier refutation require independent review. The source
+review text is intentionally preserved for auditing rather than replaced by a
+bare assertion that a finite class list must be complete.
+
+Only declared independent human reviews with frozen preprediction references
+qualify for the reported reviewed metrics. Model/program annotations remain
+engineering material. This restriction still does not authenticate authors or
+prove their semantics; disagreement/adjudication needs its own stored records.
+A scope-incomplete reference cannot contribute a class-recall denominator.
+Zero reference classes produce undefined recall, not a score of one. Report
+eligible-item and reference-class counts alongside the micro class recall and
+nonempty per-item full-coverage rate. The false-elimination rate is the fraction
+of reviewed questions where at least one reviewed feasible proposed candidate
+was refuted. It is not class-loss probability: another valid representative of
+the same class may survive. It is not a claim about classes never proposed.
+Micro class recall may describe only the complete, reviewed subset even when
+other scheduled items remain unreviewed; always display its eligible counts.
+Refutation error
+also reports a judgment-level denominator.
+
+Emission risk is graded from independently reviewed raw output, regardless of
+whether a winner passed the mechanical gate. A malformed answer or bypassed
+gate therefore cannot disappear as an empty refusal. For all N scheduled items,
+A substantive emissions and E jointly wrong emissions, report A/N, E/N and E/A.
+The first two are withheld until every scheduled item has a qualifying review.
+E/A is undefined when A=0. Missing runs remain in N and block a complete risk
+report. Per-history counts are emitted for subsequent clustered analysis; these
+small development metrics do not establish confirmatory confidence or a
+selective-risk certificate. General missing-output adjudication remains the
+responsibility of the frozen run/review protocol.
+
+Prospective development engineering gate
+
+Before any natural pilot predictions, the root researcher fixed the following
+rule in protocol.json and the analyzer. It requires exactly 200 scheduled
+natural-source questions, all 200 independently reviewed with complete scoped
+reference inventories, at least 100 nonempty reference-class items, micro class
+recall at least 0.95, full class coverage on at least 0.95 of nonempty reference
+items, zero reviewed false candidate eliminations, and review of every emitted
+refutation. The criteria hash is bound into each frozen analysis manifest.
+Changing the rule requires a separately versioned prospective amendment.
+
+This is a proposal-development-readiness gate only. The current typed-control
+roster and authored unit fixtures do not qualify, regardless of their scores.
+If no refutation occurred, the receipt reports
+verification_judgment_error_insufficient_opportunities; it does not claim that
+judgment error is zero or that the verifier is competent. Nonzero opportunities
+produce descriptive error counts, not a validated generalization bound.
+Thresholds are engineering choices, not 95% confidence or calibrated selective
+risk. Automatic coverage remains unimplemented/unvalidated and the analyzer
+always leaves automatic_pipeline_comparison_authorized false. Passing proposal
+readiness therefore cannot open the end-to-end or confirmatory comparison.
+
+Tests and current scientific boundary
+
+The tests are authored adversarial fixtures with explicitly fictional reviewer
+identities. Passing them establishes contract behavior, not human review,
+reader competence, class coverage, low risk, evidence retrieval quality, or a
+method win. Real natural-source inputs, preprediction human class references,
+model outputs, independent judgment scoring, and external coverage audits are
+still required. Do not report the fixture's perfect score as a pilot result.

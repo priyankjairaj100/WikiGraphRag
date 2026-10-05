@@ -1,0 +1,143 @@
+V23 reader competence preparation
+================================
+
+Decision and boundary
+---------------------
+This new gate does not reuse the old 2/8 score. It first provides 100 complete
+and 100 deliberately insufficient source-backed reported-aspect control
+candidates. These are new authored questions with program-derived references,
+not 200 human-authored natural financial questions. They test exact scoped
+reading of structured records and arithmetic. They cannot establish competence
+on natural prose/table input or authorize the retrieval comparison. Both the
+generator and scorer explicitly keep that natural-reader gate closed.
+
+The text/table or cross-filing task itself needs a source-audited residual after
+a strong typed baseline. Once that residual exists, create the actual reader
+gate with source-rendered evidence and reviewed references for that task, using
+a new version. Do not quietly relabel these typed controls as natural evidence.
+
+Frozen choices before candidates/predictions
+--------------------------------------------
+data/reader_gate_v23/protocol.json and protocol_freeze.json contain the exact
+prompt, arithmetic, sampling design and development thresholds. The selected
+large reader is Qwen/Qwen3-235B-A22B-Instruct-2507, immutable Hugging Face revision
+ac9c66cc9b46af7306746a9250f23d47083d689e. The primary model API exposed this SHA;
+the pinned config, tokenizer config and generation config were retrieved and
+hashed. No weights were downloaded and no model was run. Primary provenance:
+https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507/tree/ac9c66cc9b46af7306746a9250f23d47083d689e
+https://huggingface.co/api/models/Qwen/Qwen3-235B-A22B-Instruct-2507
+
+The target is BF16, no quantization, native non-thinking, greedy decoding,
+temperature zero, seed 230017, one completion, 4,096 output tokens within a
+32,768-token total context. Tokenizer and chat template come from that pinned
+revision. No truncation, retry chosen by correctness, extra tools or conversation
+memory is allowed. The local handoff must resolve and freeze runtime/container,
+hardware, source review and exact tokenized requests BEFORE the first prediction.
+Those execution preflight fields are intentionally pending, so this is not yet
+an executable model run freeze. Large inference is deferred to the user's local
+execution environment; no capability or available hardware is assumed here.
+
+Thresholds are pragmatic development screening requirements: all 200 valid
+outputs, >=90/100 complete joint answers, >=45/50 in each complete stratum,
+and 100/100 valid abstentions on insufficient inputs. Thus any substantive
+answer on an insufficient item fails this deliberately conservative gate.
+Invalid JSON, wrong scope, missing/wrong citation, wrong unit, wrong operation
+or incorrect exact arithmetic does not count as a correct joint answer.
+These thresholds are not estimates of a general 5% risk guarantee. Six issuer
+histories and paired items are clustered; no item-IID confidence bound is claimed.
+
+What the 200 candidates contain
+-------------------------------
+The generator verifies all twelve previously exposed development filing bytes
+against data/typed_reader_v15/source_recovery_protocol.json. The conventional
+v15.1 bounded parser supplies observed reported aspects. Any visible binding
+with a non-normalized occurrence or competing normalized amounts is excluded.
+Duplicates with numerically identical values contribute at most one target.
+The source audit separately investigates the 41/87 conflict groups; this control
+generator does not reinterpret them as tasks or assert contradictory truth.
+
+Selection is deterministic and fixed before predictions. Across the twelve
+filings, a round robin selects 50 singleton questions and 50 same-filing exact
+differences. Differences have identical concept/entity/unit/dimension settings
+and explicitly different periods; the question requests arithmetic only, with
+no claim of economic comparability. No target binding is reused across families.
+The question names all reported aspects, and [] dimensions are expressly not
+called a financial total. The operation is exact finite-decimal subtraction,
+with no rounding or tolerance and signed/zero values preserved.
+
+Each complete question has one matched insufficient counterpart: remove one
+necessary amount record. Five source-derived records appear in every input,
+using distractor replacement so evidence count cannot expose condition. All
+remaining records are checked to exclude the omitted exact binding. This is
+insufficiency within the supplied record set and the explicitly restricted
+reported-aspect reading task, not a claim that the full filing lacks the number.
+No aggregation or unprovided equation is authorized. Natural insufficient-source
+items require separate alternative-evidence review and are not created here.
+
+Requests contain only the frozen system prompt plus question/evidence records.
+Opaque item IDs are an executor envelope only. The renderer excludes reference
+answers, family IDs, conditions, target selectors, review labels and source
+file locations. Every request is stateless. Evidence IDs are local E1...E5,
+permuted independently; they do not carry target/class membership. The reference
+file must never be loaded into a reader model's prompt or agent conversation.
+
+No raw filing bodies or detailed extracted fact collections are redistributed.
+The public manifest stores 200 selector/hash records. The reproducible detailed
+items, source-derived values, references and rendered requests stay in an
+external directory. The generator reconstructs them from the pinned sources.
+Program-derived correctness and absence checks still require independent source
+review; "human_validation" is false. The public manifest records that status.
+
+Reproduction
+------------
+From acl2027_temporal_state, with the twelve exact pinned bodies available:
+
+python3 scripts/prepare_reader_gate_v23.py \
+  --source-dir /path/to/external/sources \
+  --external-output /path/to/external/reader_gate_v23 \
+  --manifest /path/to/new_item_manifest.json
+
+The output directory and manifest must not already exist. The detailed output
+must be outside this repository. This command never invokes an LLM.
+
+Before any large reader call, create a preflight receipt with:
+- protocol_sha256, items_content_sha256, requests_content_sha256;
+- model object containing repository, revision, dtype and quantization exactly;
+- immutable runtime_artifact_sha256 and hardware_description;
+- exact frozen decoding object;
+- independent review_record_sha256 and every reviewed_item_id;
+- request_token_counts for all items after the actual pinned chat template;
+- frozen_before_prediction_at_utc and predictions_at_freeze=0.
+
+The reviewed_item_ids field is the sorted list of all item IDs. These assertions
+must be supported by retained logs/review artifacts; passing a JSON validator
+does not prove their truth. For this typed control gate, source review validates
+the reported-aspect records only; it must not be described as human natural-QA
+gold. An independent reviewer should not see model outputs before adjudication.
+
+Prediction JSON is a list of {item_id, request_sha256, raw_response}; raw_response
+preserves the model's entire unedited completion. Retain execution logs, errors,
+model/runtime identity and timestamps separately. Do not repair malformed model
+outputs or fill missing responses with references. Then run:
+
+python3 scripts/analyze_reader_gate_v23.py \
+  --items /path/to/external/reader_gate_v23/items.json \
+  --predictions /path/to/external/predictions.json \
+  --preflight /path/to/external/preflight.json \
+  --manifest data/reader_gate_v23/item_manifest.json \
+  --output /path/to/new_analysis.json
+
+Missing/duplicate predictions, mismatched hashes or unresolved preflight cause a
+hard failure. A full scored attempt records per-item, stratum and history counts.
+Even a perfect typed-control score returns natural_reader_gate_open=false and
+comparison_authorized=false. A failed control gate stops reader-dependent
+comparison. Diagnose and fix development issues in a new version, preserve the
+failed attempt, and freeze before new predictions. Confirmation never permits
+these instant fixes on its sealed final outcomes.
+
+Validation evidence
+-------------------
+tests/test_reader_gate_v23.py contains authored regressions for signed/zero and
+large decimal arithmetic, exclusion of conflicting bindings, input leakage,
+missing required evidence, scoped citation checks, malformed outputs, incomplete
+attempts and preflight rejection. Those are software checks, not model accuracy.

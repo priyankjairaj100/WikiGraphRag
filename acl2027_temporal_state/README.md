@@ -1,6 +1,14 @@
 # ACL 2027 temporal state research
 
-## Current checkpoint: v0.21 — certificate theory and local empirical handoff
+## Current checkpoint: v0.23 — source audits and empirical preparation
+
+Codex has resumed project ownership; large-model execution remains a later handoff. The five v22 commits and their negative findings are archived without rewriting history. The new source audit recovered twelve exact filings and found all 41 selected conflicts compatible with reported rounding precision. Six reporting and two explanatory cross-filing probes establish no retrieval advantage.
+
+Two hundred source-backed typed controls, semantic proposal/verification/coverage contracts, and a prospective confirmatory protocol are prepared. Natural text/table reader competence, actual proposal/verification performance, automatic coverage and held-out benefit remain unestablished. The typed controls cannot open the natural comparison gate.
+
+Read the [v23 update](docs/research_update_v23.txt), [handoff](docs/NEXT_CHAT_HANDOFF_v23.txt), [current verification](results/v23_verification.json), and [project state](PROJECT_STATE.json). The v21 theory checkpoint below remains unchanged.
+
+## Previous checkpoint: v0.21 — certificate theory and local empirical handoff
 
 The [theory manuscript](paper/theory_v21.pdf) now contains full proofs for complete scoped answer certificates, conditional soundness/completeness, selective-risk bounds, exact finite selection, counterexamples and a restricted classical cover guarantee. [Editable TeX](paper/theory_v21.tex), [prior-art audit](docs/theory_prior_art_audit_v21.txt) and [claim ledger](paper/claim_ledger_v21.json) distinguish the domain-specific integration from established theory.
 

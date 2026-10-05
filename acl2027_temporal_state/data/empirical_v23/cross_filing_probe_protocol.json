@@ -1,0 +1,135 @@
+{
+  "baseline": "Typed extraction plus all reported entity/period/unit/dimension bindings, primary-statement row labels, table heading and comparative-column structure. Inspect official DTS mappings if already available; absent mappings are recorded, never inferred by stripping taxonomy dates.",
+  "closure": "Inspect the whole selected primary statement and all same-concept/same-period fully resolved candidates in each document. Every candidate and exclusion remains externally reproducible. A literal two-source reporting question can preserve distinct qualified concepts without asserting cross-taxonomy semantic identity. Any stronger semantic-equivalence claim remains unresolved without additional evidence.",
+  "development_only": true,
+  "fallback": "If the primary statement has no unambiguous total-revenue row, retain the question and mark unresolved; do not substitute another measure or history.",
+  "frozen_at_utc": "2026-10-05T11:01:05.673087+00:00",
+  "histories": {
+    "BRK-B": [
+      {
+        "actual_document_fiscal_year_values": [
+          "2021"
+        ],
+        "expected_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+        "external_filename": "BRK-B_2022.html",
+        "filename_matches_document_fiscal_year": false
+      },
+      {
+        "actual_document_fiscal_year_values": [
+          "2022"
+        ],
+        "expected_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+        "external_filename": "BRK-B_2023.html",
+        "filename_matches_document_fiscal_year": false
+      }
+    ],
+    "LLY": [
+      {
+        "actual_document_fiscal_year_values": [
+          "2023"
+        ],
+        "expected_sha256": "c21e3b4925260cafc944f3ff580860b741ad92e46f6b959d99f6dab193b5fc4a",
+        "external_filename": "LLY_2023.html",
+        "filename_matches_document_fiscal_year": true
+      },
+      {
+        "actual_document_fiscal_year_values": [
+          "2024"
+        ],
+        "expected_sha256": "1b0b903bffac393577aa68004a2cbd947e0a3a5c3264caa87e3c6f06463fe351",
+        "external_filename": "LLY_2024.html",
+        "filename_matches_document_fiscal_year": true
+      }
+    ],
+    "NFLX": [
+      {
+        "actual_document_fiscal_year_values": [
+          "2022"
+        ],
+        "expected_sha256": "5bb5f38b1cd1d20d9ef7b3d54eb2ff8884bc77e2deea98672163c9417b6e122f",
+        "external_filename": "NFLX_2022.html",
+        "filename_matches_document_fiscal_year": true
+      },
+      {
+        "actual_document_fiscal_year_values": [
+          "2023"
+        ],
+        "expected_sha256": "b558cb9ef8f54bf18afb85b580dfe67d23b8776bb6f5c3f08db6704a39d3cf4e",
+        "external_filename": "NFLX_2023.html",
+        "filename_matches_document_fiscal_year": true
+      }
+    ],
+    "NVDA": [
+      {
+        "actual_document_fiscal_year_values": [
+          "2022"
+        ],
+        "expected_sha256": "7e3c19c27675079dc36571d692b74732c7afb85497249ccc1518c2238d54d47e",
+        "external_filename": "NVDA_2022.html",
+        "filename_matches_document_fiscal_year": true
+      },
+      {
+        "actual_document_fiscal_year_values": [
+          "2023"
+        ],
+        "expected_sha256": "5195c592ab1649c7afdb5ea707d99b895a60eade66396e2f8fc47471221ac56e",
+        "external_filename": "NVDA_2023.html",
+        "filename_matches_document_fiscal_year": true
+      }
+    ],
+    "PFE": [
+      {
+        "actual_document_fiscal_year_values": [
+          "2023"
+        ],
+        "expected_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+        "external_filename": "PFE_2023.html",
+        "filename_matches_document_fiscal_year": true
+      },
+      {
+        "actual_document_fiscal_year_values": [
+          "2024"
+        ],
+        "expected_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+        "external_filename": "PFE_2024.html",
+        "filename_matches_document_fiscal_year": true
+      }
+    ],
+    "SLB": [
+      {
+        "actual_document_fiscal_year_values": [
+          "2022"
+        ],
+        "expected_sha256": "5ab77e70634d3b871d1d9260f806b4c7384791dd50562a74bc40690027be2f1e",
+        "external_filename": "SLB_2022.html",
+        "filename_matches_document_fiscal_year": true
+      },
+      {
+        "actual_document_fiscal_year_values": [
+          "2023"
+        ],
+        "expected_sha256": "c94028b2c0f25b6946700d5dfc39174bc331b097b79f83715cb06ab06f36612a",
+        "external_filename": "SLB_2023.html",
+        "filename_matches_document_fiscal_year": true
+      }
+    ]
+  },
+  "history_order": [
+    "PFE",
+    "NFLX",
+    "NVDA",
+    "LLY",
+    "BRK-B",
+    "SLB"
+  ],
+  "next_decision": "Only a genuine unresolved natural question after the competent baseline can motivate a text/table residual track. If these questions resolve, report no observed residual rather than manufacture difficulty.",
+  "primary_measure": "consolidated total revenue in the primary income/operations statement",
+  "question_template": "For fiscal year {earlier_document_fiscal_year}, what consolidated total revenue is displayed in the primary income/operations statement in each of these two annual filings? Preserve both source versions, source row labels, reported units and period. Are these two displayed amounts identical? Do not infer a restatement, correction or an economically equivalent measure from a difference.",
+  "raw_source_policy": "Raw source and full extraction caches outside Git. Public artifacts only metadata, derived numeric facts, bounded short labels, digests and byte locators.",
+  "reference_provenance": "Questions are protocol/template authored; references are program-extracted and agent source-reviewed development references, not independent human gold. No model prediction or QA inference call.",
+  "schema_version": "cross_filing_probe_protocol_v23",
+  "scope": "The twelve previously exposed filings remain development. This six-history audit is not a prevalence estimate, reader test, held-out result, or retrieval comparison.",
+  "selection": "Exactly one primary question per history. The earlier document fiscal year fixes the shared reporting period. Never substitute a period based on observed differences. Candidate generation may use revenue-like concept local names and row labels; local-name equality is not an admitted namespace bridge.",
+  "source_protocol_sha256": "540b294e4b913c7542a419f44a4aa9b3a17a69d4ee6f93b49c500a7d3a9130b6",
+  "status": "frozen_before_probe_source_values_inspected"
+}

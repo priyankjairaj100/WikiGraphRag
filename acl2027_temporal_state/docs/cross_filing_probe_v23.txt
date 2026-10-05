@@ -1,0 +1,132 @@
+Cross-filing source probe v23
+============================
+
+Decision
+--------
+This bounded probe does not open a comparative text/table retrieval study.
+All six literal two-filing reporting questions resolve with typed values and
+primary-statement structure. Of two separately frozen explanation follow-ups,
+Pfizer is explained by the ordinary statement-footnote baseline; Berkshire's
+specific cause remains unproven within the review budget. There is no observed
+advantage for a new retrieval policy and no completed reader-competence gate.
+
+Both protocols were frozen before inspecting their respective outcomes. The
+second probe was adaptively selected from the two differences found in the
+first; this selection is disclosed and remains development work. The original
+twelve exposed filings remain development. No questions, histories or measures
+were replaced to obtain a favorable outcome. No QA-model calls were made.
+
+Six reporting questions
+-----------------------
+Question: what consolidated total revenue for the earlier fiscal year is
+displayed in each of the two primary income/operations statements, preserving
+the source version, row label, period, unit and scope; are the amounts identical?
+
+Amounts below are normalized USD, expressed here in millions:
+
+History  Period       Earlier source    Later source     Identical
+PFE      FY 2023           58,496             59,553        no
+NFLX     FY 2022           31,615.550         31,615.550    yes
+NVDA     FY 2022           26,914             26,914        yes
+LLY      FY 2023           34,124.1           34,124.1      yes
+BRK-B    FY 2021          276,094            276,203        no
+SLB      FY 2022           28,091             28,091        yes
+
+NVDA's matched period is 2021-02-01 through 2022-01-30. Berkshire's source
+filenames BRK-B_2022.html and BRK-B_2023.html are actually fiscal 2021 and
+2022 filings. Their historical filenames and source hashes are preserved.
+
+The complete primary statements, relevant comparative headings, row labels and
+typed binding dependencies were inspected. All eligible occurrences of each
+selected complete binding agree within each source. Selection of the primary
+row was agent assisted; the replay uses disclosed occurrence ordinals. This is
+not automatic natural-language question understanding or a retrieval score.
+
+The qualified concept names differ across source versions. No official DTS
+package was present in this recovered four/twelve-file source set, and no
+external DTS was fetched or validated. Source-local labels and statement scopes
+support the literal source-scoped reporting answer. They do not establish a
+general cross-taxonomy equivalence map or an economically comparable measure.
+No amount difference is called a restatement or correction by this probe.
+
+Two explanation questions
+-------------------------
+The separate protocol asks why the PFE and BRK-B amounts differ and requires an
+explicit source premise for any causal explanation. All source bindings, both
+full filings, primary tables, immediately attached footnotes, Note 1 accounting
+and presentation policy and direct references were available to the baseline.
+
+PFE: the 2024 royalty-row footnote points directly to Note 1A. The note states
+that royalty income was moved from other income/deductions into total revenue,
+with prior periods conformed to the new presentation. A separate MD&A paragraph
+corroborates the recast. The baseline already reaches the required explanation.
+The displayed total increases by USD 1,057 million, while the displayed royalty
+component is USD 1,058 million. Keep the USD 1 million residual: the filing's
+rounding caveat makes the numbers compatible with rounded presentation, but
+does not recover exact unrounded reconciliation. Typed other net income falls
+by USD 1,057 million and pretax continuing income is unchanged. Preserve signed
+typed values; the visible expense-oriented row reverses the income sign.
+
+BRK-B: total revenue and the service/other-income row each increase by USD 109
+million; equity-method earnings decrease by USD 109 million; pretax earnings
+are unchanged. The later Note 1 includes generic prior-year reclassification
+wording. The reviewed passages do not explicitly connect the USD 109 million
+to a particular causal transfer or explain its reason. The arithmetic pattern
+is not a causal warrant. A defensible answer gives the source-scoped amounts
+and the limited observed pattern, then abstains from the specific cause.
+
+After the baseline, supplementary source search was capped at twelve passages
+per history. The result records the exact inspected byte ranges, ranking terms
+and selection reasons; raw passages remain outside Git. Twelve supplementary
+PFE passages and ten BRK-B reclassification/conformity passages were inspected.
+The two remaining BRK-B slots inspected equity-method passages. Search then
+stopped. Unreviewed regions of the pair remain possible evidence; the result
+does not claim that no explanation exists in either filing. Search scores and
+the exhausted review budget cannot clear external coverage.
+
+Source-pack and reader-gate readiness
+------------------------------------
+These are six program-extracted, agent-reviewed reporting controls plus two
+agent-reviewed explanatory development cases. They are not independent human
+references, naturally collected user questions, held-out cases, model outputs,
+or the requested 100 complete/100 insufficient natural-language competence set.
+
+The PFE case has a source-anchored candidate evidence set for an explanation
+with an explicit precision limit. It still needs independent adjudication and
+a frozen reader-input rendering before use as a scored competence item. The
+BRK-B case has an unresolved cause under a bounded review; it is not yet a
+verified globally insufficient item. In particular, review failure must not
+be relabeled as proof that a complete source pair cannot answer the question.
+
+The reader gate stays closed. Class recall and false elimination were not
+measured. The six reporting controls do not count as evidence that an automatic
+question proposer can recover the correct classes. No finite-source semantic
+coverage assertion is admitted for the explanatory BRK-B question.
+
+Reproduction
+------------
+Use the exact sources recovered by data/empirical_v23/source_recovery_protocol.json.
+Run from acl2027_temporal_state with EXTERNAL set to the external source folder:
+
+python3 scripts/probe_cross_filing_v23.py --external-dir EXTERNAL --output NEW_REPORTING_RESULT.json
+python3 scripts/reconstruct_cross_filing_review_v23.py --external-dir EXTERNAL
+python3 scripts/probe_cross_filing_explanatory_v23.py --external-dir EXTERNAL --output NEW_EXPLANATORY_RESULT.json
+
+The reconstruction verifies source/span hashes and recreates three external-only
+inspection files exactly from the public receipt's locators. It neither fetches
+data nor publishes narrative excerpts. The probe scripts refuse to overwrite
+an existing result. They reproduce numeric extraction and disclosed annotations;
+they do not independently validate those annotations' semantic correctness.
+
+Receipts bind protocol, scripts, typed reader, runtime, source hashes, values,
+context/unit/dimension dependencies and statement/row/narrative byte locators.
+Both protocols and both original result files are retained separately.
+
+Next bounded action
+-------------------
+Do not launch a text/table comparison from these outcomes. Retain the PFE case
+as a baseline-solvable explanation and BRK-B as an unresolved attribution audit.
+Any further BRK-B source search needs a separately logged development amendment,
+with its extra search cost and a fresh coverage decision. A new positive track
+requires a genuine question that remains unresolved after a competent baseline,
+an independently supported answer, and a reader that passes the frozen gate.

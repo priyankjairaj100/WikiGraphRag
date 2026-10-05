@@ -1,0 +1,68 @@
+{
+  "baseline": "Full admitted source pair available. Start with typed facts, primary statement structure, immediately attached footnotes, Note 1 accounting/presentation policy, and direct footnote cross-references. No fields, contexts or statements are hidden. Then search the complete pair for reclassification, prior-period presentation, revenue category and named standards if baseline leaves the explanation unresolved.",
+  "bounded_source_set": {
+    "BRK-B": [
+      {
+        "filename": "BRK-B_2022.html",
+        "sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257"
+      },
+      {
+        "filename": "BRK-B_2023.html",
+        "sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58"
+      }
+    ],
+    "PFE": [
+      {
+        "filename": "PFE_2023.html",
+        "sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df"
+      },
+      {
+        "filename": "PFE_2024.html",
+        "sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480"
+      }
+    ]
+  },
+  "candidate_search_terms": [
+    "reclass",
+    "conform",
+    "presentation",
+    "royalt",
+    "equity method",
+    "revenue",
+    "accounting standard"
+  ],
+  "frozen_at_utc": "2026-10-05T11:05:56.549712+00:00",
+  "history_order": [
+    "PFE",
+    "BRK-B"
+  ],
+  "outcomes": [
+    "baseline_resolves_source_explanation",
+    "expanded_source_inspection_resolves_but_automatic_acquisition_untested",
+    "partially_explained_residual",
+    "unresolved_no_source_cause_warrant"
+  ],
+  "premise_requirements": [
+    "Both total amounts, full period/entity/unit/source bindings",
+    "Explicit source statement naming classification, definition, or presentation change for relevant periods",
+    "Source-linked component amount for reconciliation, if available",
+    "Rounding or unreconciled residual retained explicitly; arithmetic alone never supplies cause"
+  ],
+  "prior_result_sha256": "3302ed588922740e1bb87233fe386aec986a873c1d488eafe586c398845a9c90",
+  "prohibitions": [
+    "No taxonomy-date stripping as semantic evidence",
+    "No inferred restatement or error correction from changed values",
+    "No new model calls, benchmark score, natural-user provenance, or human-gold claim",
+    "No unstated exact reconciliation when displayed rounded numbers differ"
+  ],
+  "public_release": "Derived facts and assertions with byte/hash locators; at most a few short labels, no copied narrative passages. Raw passages retained outside Git.",
+  "questions": {
+    "BRK-B": "Why does Berkshire Hathaway report total revenue for 2021 as USD 276,094 million in its fiscal 2021 annual filing and USD 276,203 million in its fiscal 2022 annual filing? Identify only a cause explicitly supported by these filings, retain the two source scopes, and reconcile the displayed difference to the extent the filings permit.",
+    "PFE": "Why does Pfizer report total revenue for 2023 as USD 58,496 million in its 2023 annual filing and USD 59,553 million in its 2024 annual filing? Identify only a cause explicitly supported by these filings, retain the two source scopes, and reconcile the displayed difference to the extent the filings permit."
+  },
+  "reader_gate": "Still closed; explanatory audit does not pass competence, proposal recall or false-elimination gates.",
+  "review_budget": "Two fixed histories, no replacement. Review full primary statements and their immediate footnotes plus at most 12 highest-relevance source passages per history (selection and reason recorded); full pair text searchable. Do not add a third history.",
+  "schema_version": "cross_filing_explanatory_probe_protocol_v23",
+  "selection_basis": "The two and only two observed amount differences from the fixed six-history reporting probe. This is adaptive development follow-up; not confirmatory selection.",
+  "status": "frozen_after_six_reporting_controls_before_explanatory_note_inspection"
+}

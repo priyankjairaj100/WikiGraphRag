@@ -1,0 +1,2726 @@
+{
+  "counts": {
+    "baseline_resolved_explanations": 1,
+    "development_histories": 2,
+    "held_out_items": 0,
+    "positive_retrieval_wins": 0,
+    "qa_model_calls": 0,
+    "specific_cause_unresolved_after_bounded_review": 1
+  },
+  "external_inspection_input_hashes": {
+    "cross_filing_explanatory_followup_v23.json": "56990d1e896fdaaf205d03679fae38c564c406019c995badc97fe16e6b02303b",
+    "cross_filing_explanatory_immediate_v23.json": "4834383632dbbc1b1ab4f206d19a5d42ac16f9bc261b2c2ca4b9b69aade54631",
+    "cross_filing_explanatory_passages_v23.json": "0a56d545bc4602ca3220f6c5a8997d92bc51bc70dd2a0df2fd35d3851ec9054e"
+  },
+  "finished_at_utc": "2026-10-05T11:10:10.487306+00:00",
+  "protocol_sha256": "7e737657f0a43a3165103fb097dcaab9defbba92b70af922e9d30bf5f9b0f47f",
+  "provenance": "Protocol-authored questions; program-extracted numeric references and agent-authored semantic annotations. No independent human gold, model predictions or held-out evaluation.",
+  "reader_gate": "closed",
+  "reader_sha256": "6f43c57488b90178f2334284bd46d9903c4f3a29f23ab1e6fc39402a40fc0dae",
+  "records": [
+    {
+      "baseline_path": "Primary royalty row -> its Note1A footnote -> presentation-policy paragraph. The corroborating MD&A passage is unnecessary for the minimal baseline answer.",
+      "causal_evidence": [
+        "PFE_2024.html:prior_period_presentation_intro",
+        "PFE_2024.html:royalty_reclassification",
+        "PFE_2024.html:mda_independent_explicit_recast_statement"
+      ],
+      "cause_supported": "The later filing explicitly states that royalty income was moved from other income/deductions into total revenue and earlier periods were recast to the new presentation.",
+      "history_id": "PFE",
+      "novel_method_advantage": false,
+      "outcome": "baseline_resolves_source_explanation",
+      "precision_limit": "Displayed revenue increase is1,057 million; displayed royalty component is1,058 million. Retain the1 million residual. The filing's explicit rounding caveat makes this compatible with rounded presentation; exact unrounded attribution is not recovered.",
+      "question": "Why does Pfizer report total revenue for 2023 as USD 58,496 million in its 2023 annual filing and USD 59,553 million in its 2024 annual filing? Identify only a cause explicitly supported by these filings, retain the two source scopes, and reconcile the displayed difference to the extent the filings permit.",
+      "reconciliation_USD": {
+        "delta_minus_royalty": "-1000000",
+        "displayed_royalty_component": "1058000000",
+        "other_net_income_delta": "-1057000000",
+        "pretax_continuing_income_delta": "0",
+        "total_revenue_delta": "1057000000"
+      }
+    },
+    {
+      "causal_evidence": [
+        "BRK-B_2023.html:generic_prior_year_reclassification"
+      ],
+      "cause_supported": "Only a generic statement that immaterial prior-year balances were reclassified to conform to the current presentation was found in the bounded review. It does not identify this109 million transfer or its reason.",
+      "coverage": "open: the bounded source review did not prove that no explanation exists elsewhere in the full pair",
+      "history_id": "BRK-B",
+      "inference_not_authorized": "The numeric pattern is consistent with a reclassification between the service/other-income and equity-method lines, but arithmetic and generic boilerplate do not establish that exact causal bridge.",
+      "novel_method_advantage": false,
+      "outcome": "partially_explained_residual",
+      "question": "Why does Berkshire Hathaway report total revenue for 2021 as USD 276,094 million in its fiscal 2021 annual filing and USD 276,203 million in its fiscal 2022 annual filing? Identify only a cause explicitly supported by these filings, retain the two source scopes, and reconcile the displayed difference to the extent the filings permit.",
+      "reconciliation_USD": {
+        "equity_method_earnings_delta": "-109000000",
+        "pretax_earnings_delta": "0",
+        "service_revenue_and_other_income_delta": "109000000",
+        "total_revenue_delta": "109000000"
+      },
+      "required_answer_behavior": "Report the source-scoped amounts and numeric pattern; abstain from the specific causal explanation until an explicit source premise is acquired."
+    }
+  ],
+  "review_search_disclosure": {
+    "brk_remaining_two": "Only10 reclass/conform candidates existed. Two remaining passages selected from short nonnested blocks with equity method, prioritizing revenue(8), include(3), 2021(2), energy(2). They did not establish the cause.",
+    "coverage_limit": "Ranking and search budget do not establish complete semantic coverage; a negative source-existence claim is not authorized.",
+    "primary": "Complete primary statements, immediately following footnotes and directly linked Note 1 presentation policy.",
+    "supplementary": "Div/p blocks, length 40..4499 characters, containing reclass or conform; scored by occurrences of revenue(5), reclass(3), conform(3), presentation(2), prior(1), and royalty for PFE or equity method for BRK(6; other topic1). Text-identical nested blocks deduplicated to shortest byte range. Up to12 per history sorted score descending then filename/start."
+  },
+  "reviewed_passage_locators": [
+    {
+      "byte_start": 2196139,
+      "byte_stop": 2197066,
+      "filename": "PFE_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "4cee91256cebeb28ec212e4a63df79496c3f14f03d94de2c72ec9bbc8ad9e1ad"
+    },
+    {
+      "byte_start": 2197066,
+      "byte_stop": 2197561,
+      "filename": "PFE_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "21f9370428c22d9c2fe1ef0b0e7624ac3bb46938ace0a05fcebf990b4ad6bc26"
+    },
+    {
+      "byte_start": 2197561,
+      "byte_stop": 2198984,
+      "filename": "PFE_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "4472f77f38a35dedd4d47220e365cb1dcb232156d7773d337a249911ca3588bd"
+    },
+    {
+      "byte_start": 2198984,
+      "byte_stop": 2199195,
+      "filename": "PFE_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "b24113f181ca20bb60fe8d88ec52ffc8e004dbaaf95b1be38271496a9e195af7"
+    },
+    {
+      "byte_start": 2199332,
+      "byte_stop": 2200531,
+      "filename": "PFE_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "2f0a8d1d427fcfcac6ff8b5420187c4719860f141d4233ecc5f3072a3fbf2558"
+    },
+    {
+      "byte_start": 2200073,
+      "byte_stop": 2200237,
+      "filename": "PFE_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "93262a34c56c39a3be9690d13a96bd7bab47a5d12bdbdfe59ea9d7d3828d824f"
+    },
+    {
+      "byte_start": 2200381,
+      "byte_stop": 2200507,
+      "filename": "PFE_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "a4b371bd0773cea19811876b37a1b99753650390093658e0e3a4e1596ef9b2d3"
+    },
+    {
+      "byte_start": 2200705,
+      "byte_stop": 2200877,
+      "filename": "PFE_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "3739927235b0c0f24872e833ef9080429fceffaa50905a706815e936a936587b"
+    },
+    {
+      "byte_start": 2200877,
+      "byte_stop": 2201037,
+      "filename": "PFE_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "a415bcf75f9ad914c0b2c03592f63d68142d01d5446515dbe36a34859bb866e4"
+    },
+    {
+      "byte_start": 2211315,
+      "byte_stop": 2211680,
+      "filename": "PFE_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "5f44f6061b745494c157ce6faf6223eba825f98797f49182e09302e5f6b03770"
+    },
+    {
+      "byte_start": 2129607,
+      "byte_stop": 2130534,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "157120a42eb2ff0ad270539384c8b34cd056ac7c5ee8527c03e1c2b9ddeda806"
+    },
+    {
+      "byte_start": 2130534,
+      "byte_stop": 2131029,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "21f9370428c22d9c2fe1ef0b0e7624ac3bb46938ace0a05fcebf990b4ad6bc26"
+    },
+    {
+      "byte_start": 2131029,
+      "byte_stop": 2132649,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "71eeec4050213dcdaaf2e94828b6b982b6e2d78aa85be200bda9184579dda513"
+    },
+    {
+      "byte_start": 2132649,
+      "byte_stop": 2132860,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "b24113f181ca20bb60fe8d88ec52ffc8e004dbaaf95b1be38271496a9e195af7"
+    },
+    {
+      "byte_start": 2132997,
+      "byte_stop": 2134196,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "ce7e93c0fa98af210f086f3df1dad033f76d0461ad411c7fa4e39d74864bf2c6"
+    },
+    {
+      "byte_start": 2133738,
+      "byte_stop": 2133902,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "955168f7b250a4adfbf5a0dfc55ad860928c39fc35c007968f159a07a565fa18"
+    },
+    {
+      "byte_start": 2134046,
+      "byte_stop": 2134172,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "2292fb6124533a0b10354da80218aee0efa39dea0aba4a9988da9c0927b05306"
+    },
+    {
+      "byte_start": 2134370,
+      "byte_stop": 2134542,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "3739927235b0c0f24872e833ef9080429fceffaa50905a706815e936a936587b"
+    },
+    {
+      "byte_start": 2134542,
+      "byte_stop": 2134702,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "a415bcf75f9ad914c0b2c03592f63d68142d01d5446515dbe36a34859bb866e4"
+    },
+    {
+      "byte_start": 2144976,
+      "byte_stop": 2145341,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "7641ecee6a98dc87f2a25d4eb53e18bf9d0fc64ab825b5476bd2e1482a07c2a1"
+    },
+    {
+      "byte_start": 4088872,
+      "byte_stop": 4089994,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "df8a4b60265877439c13a6f266f694df4600b8434b9bf3d123bf04ef74b62a89"
+    },
+    {
+      "byte_start": 4089058,
+      "byte_stop": 4089391,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "93c3b63d5091ccbf8d99e2fb672543567c0aa1ab378a25c1a1825bff2e469d31"
+    },
+    {
+      "byte_start": 4089417,
+      "byte_stop": 4089970,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "d7309c7317df9629645ab3deec3cb9d5d17860d5d0ce5ee3276eda67e3f8490d"
+    },
+    {
+      "byte_start": 4089996,
+      "byte_stop": 4090258,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "32c593f6ae77ab231d275e49dc559a1a3e7cafbbc6af4df5a70af5227213e7e6"
+    },
+    {
+      "byte_start": 4090260,
+      "byte_stop": 4090468,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "5a9bb212679b0edeb3810fc4be5b47edfaa4bbeeff919cd04693a694b2a28248"
+    },
+    {
+      "byte_start": 4090625,
+      "byte_stop": 4090849,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "9bf50766e23afce7033557645e6b20a88b9c558c14d1e90e3e40fb90c627c73f"
+    },
+    {
+      "byte_start": 4090851,
+      "byte_stop": 4091068,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "f93f97a3e11b001808935a00e8f1c8e447b025f0328f785e8f628d2bde15046c"
+    },
+    {
+      "byte_start": 4091070,
+      "byte_stop": 4091364,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "7c5e577082da814bfdee684ec02f9c505f286dd187944e1a9a7af920647f6658"
+    },
+    {
+      "byte_start": 4091366,
+      "byte_stop": 4091590,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "c0515977fc9cf3f201a775d81f1673259331140750516faf5e71ae20adbdcda4"
+    },
+    {
+      "byte_start": 4092808,
+      "byte_stop": 4093064,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "18a5889c0fc9b51a7af6473aab5787bef8bf0450ec6d7a3da171571606ced9d7"
+    },
+    {
+      "byte_start": 4094483,
+      "byte_stop": 4094720,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "9ed2e43449d541f9eb0ee9856e242141a01ffa4804b5ad3036bbdb11be801997"
+    },
+    {
+      "byte_start": 4095747,
+      "byte_stop": 4095984,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "167a21aaec170f1c9d780c35b43ecdc34af2ea202d1fdd9ded1c41bd34ee85c7"
+    },
+    {
+      "byte_start": 4096971,
+      "byte_stop": 4097208,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "5114948da84306b3144ebeff208a489f7139eaf59c2e8b2214f525a05134f7c4"
+    },
+    {
+      "byte_start": 4097800,
+      "byte_stop": 4098030,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "847d776a8453c5b19ca41995ebeb0180b91581afc3d47a70996b369cdd505229"
+    },
+    {
+      "byte_start": 4098662,
+      "byte_stop": 4098881,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "915d00de029bb13f396b0dd5a16aead600d189b140f1fc4efd82ebf61e4f9a91"
+    },
+    {
+      "byte_start": 4099120,
+      "byte_stop": 4099552,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "14fd1326de0cbfe11ce25ca38d291b3e372df8d1239933e11c3708d508cf6a06"
+    },
+    {
+      "byte_start": 4100596,
+      "byte_stop": 4100815,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "915d00de029bb13f396b0dd5a16aead600d189b140f1fc4efd82ebf61e4f9a91"
+    },
+    {
+      "byte_start": 4101054,
+      "byte_stop": 4101486,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "b5fbf5229877077bc1a56f933597263433592243e495c61c3f15dc19acb89a29"
+    },
+    {
+      "byte_start": 4102530,
+      "byte_stop": 4102749,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "915d00de029bb13f396b0dd5a16aead600d189b140f1fc4efd82ebf61e4f9a91"
+    },
+    {
+      "byte_start": 4102988,
+      "byte_stop": 4103420,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "3221c55cc5ebe95b6ad68f0aa5c717bdec9e751b9cda5447a55a1cfe01b5f290"
+    },
+    {
+      "byte_start": 4103994,
+      "byte_stop": 4104239,
+      "filename": "BRK-B_2022.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "d67a8dd9e1da6de2504c02c0783e1da52c1049d6215e0ae93bb2ce8786b780bf"
+    },
+    {
+      "byte_start": 4035352,
+      "byte_stop": 4037038,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "6e548a1bdb1e178fe6ffaad739f5a71d152d5140acbb5253d8c61c171efa4159"
+    },
+    {
+      "byte_start": 4037042,
+      "byte_stop": 4037451,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "e5d12b426563d83d97bca943051fd3419a205ad1777c08c4de636bffef02f528"
+    },
+    {
+      "byte_start": 4037455,
+      "byte_stop": 4037990,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "0db9c5a5be0a6a4737d05378c76f973bef75b5e82936f56ecbffd167145b28c5"
+    },
+    {
+      "byte_start": 4038307,
+      "byte_stop": 4038660,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "c7b29aeb1541f755497cc642a0f09fe8f09bc755198018411add9279b8c3be35"
+    },
+    {
+      "byte_start": 4038664,
+      "byte_stop": 4039010,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "64bda0ae3b42b6f14dbe598ac09c2670c9083c780c45c81667016eb0028106b8"
+    },
+    {
+      "byte_start": 4039014,
+      "byte_stop": 4039634,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "75a84748bfd997991f93e55320066cf0b36dce6ef46ac38b2f39d89e8514c1f1"
+    },
+    {
+      "byte_start": 4039638,
+      "byte_stop": 4040009,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "80e638667cab38c74ca9871076b7264ac85ff26406b1a2e96e459d02647e95f6"
+    },
+    {
+      "byte_start": 4041946,
+      "byte_stop": 4042298,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "2bf366a0a1b3e8037213cbf682a90be363700efd873963026b1e127bd6e82e75"
+    },
+    {
+      "byte_start": 4043791,
+      "byte_stop": 4044124,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "94df82ed247346b5120e87770256792d8b64d8725f68f0edbbf74b3665c4b119"
+    },
+    {
+      "byte_start": 4045167,
+      "byte_stop": 4045500,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "e7c51dbb2a80ac8faff03d213768c8e286a6a2c5639c3c3cac5e0ba0408b2f5c"
+    },
+    {
+      "byte_start": 4046543,
+      "byte_stop": 4046876,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "b1250606797de23e3f739d7ab6b06695cfc375211bed7350b004d47b3e32e674"
+    },
+    {
+      "byte_start": 4047499,
+      "byte_stop": 4047849,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "1c8e6f2f15e0f9b3456b47512491d33269debffba93e9e850db77214f8d8b010"
+    },
+    {
+      "byte_start": 4048406,
+      "byte_stop": 4048717,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "45c8e24d8f9da13731ce6f8e5337440b3a40a8914c3dbe857e7330f800ae3f14"
+    },
+    {
+      "byte_start": 4048901,
+      "byte_stop": 4049734,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "64bc0e6fa615a8869cdd191b932c4897cd9f3ef84a2860f5a7d0e06d6109f053"
+    },
+    {
+      "byte_start": 4049907,
+      "byte_stop": 4050218,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_immediate_v23.json",
+      "selection_reason": "immediate_footnote_or_following_block",
+      "span_sha256": "ab61b74fee7c021a99a70d692200136a358fc1c7c3986704c5fc2c528d97a60d"
+    },
+    {
+      "byte_start": 2487495,
+      "byte_stop": 2489510,
+      "filename": "PFE_2024.html",
+      "heuristic_search_score_not_coverage": 34,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "29ee14f906a7ff940570e6004979a37c3ff10d76affdc892abd31b24988003ed"
+    },
+    {
+      "byte_start": 1290950,
+      "byte_stop": 1292213,
+      "filename": "PFE_2024.html",
+      "heuristic_search_score_not_coverage": 31,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "4a29dfc76eb0ae9825faa963ec52253ad131b7ff84c492bc76cf453d02dac708"
+    },
+    {
+      "byte_start": 2585414,
+      "byte_stop": 2586304,
+      "filename": "PFE_2023.html",
+      "heuristic_search_score_not_coverage": 19,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "db479496ed0c20b4489fa5df35494e207746daa33c0069574b31786dc65b095b"
+    },
+    {
+      "byte_start": 2201072,
+      "byte_stop": 2245413,
+      "filename": "PFE_2023.html",
+      "heuristic_search_score_not_coverage": 15,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "8b0803201bcd9f852021c3b13e6f01c313ec767e14c988ec9c93e9c70ff60f98"
+    },
+    {
+      "byte_start": 3315888,
+      "byte_stop": 3349408,
+      "filename": "PFE_2023.html",
+      "heuristic_search_score_not_coverage": 15,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "20e28e4bd7f0074a1c5b074a8079f25c7f6563c947521835b9bd98c61a22019f"
+    },
+    {
+      "byte_start": 2134737,
+      "byte_stop": 2179679,
+      "filename": "PFE_2024.html",
+      "heuristic_search_score_not_coverage": 15,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "86d3a0385181501a8c64a1afdf420e8335293140b6bf822ea4ca7dacb72f09bc"
+    },
+    {
+      "byte_start": 3225284,
+      "byte_stop": 3259502,
+      "filename": "PFE_2024.html",
+      "heuristic_search_score_not_coverage": 15,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "e95c0b0ddd6ea0907df5f325f6f4e312f533603a070d955e9447d2c4f8212e37"
+    },
+    {
+      "byte_start": 4760626,
+      "byte_stop": 4761372,
+      "filename": "PFE_2024.html",
+      "heuristic_search_score_not_coverage": 10,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "2e396150a0b2a3517c5c9064fae053e4950a1143c0602c42934914eaa4dec4ec"
+    },
+    {
+      "byte_start": 2562446,
+      "byte_stop": 2562872,
+      "filename": "PFE_2023.html",
+      "heuristic_search_score_not_coverage": 9,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "a8d997a4281cb6d9be3ee92305549c358096f9dc21ca121cd6823968caa01215"
+    },
+    {
+      "byte_start": 3799651,
+      "byte_stop": 3801664,
+      "filename": "PFE_2023.html",
+      "heuristic_search_score_not_coverage": 9,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "00db6b3dbc91401a758f130e4af91edf0420025a2440d5fd4f897a8446c7c805"
+    },
+    {
+      "byte_start": 2487234,
+      "byte_stop": 2487495,
+      "filename": "PFE_2024.html",
+      "heuristic_search_score_not_coverage": 9,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "33b41ac72fcd23d62af55ad2e05d016a648d7831c4e23e87874a7179e897b401"
+    },
+    {
+      "byte_start": 3694345,
+      "byte_stop": 3696272,
+      "filename": "PFE_2024.html",
+      "heuristic_search_score_not_coverage": 9,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "ef570979fa1578dcad799f7dbc44a20baf3aff135ebd655fced04d9b68ba88dc"
+    },
+    {
+      "byte_start": 10781100,
+      "byte_stop": 10889303,
+      "filename": "BRK-B_2022.html",
+      "heuristic_search_score_not_coverage": 9,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "8b4e8ded5b9af0ff370fb9d4968d8db32e864595a90784ce6100cca1dd0665be"
+    },
+    {
+      "byte_start": 4654874,
+      "byte_stop": 4658632,
+      "filename": "BRK-B_2023.html",
+      "heuristic_search_score_not_coverage": 9,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "501e9e782cfdeff9cef1c84724b6351b6ba6dc08a0d1ae0a56c0ec10ab4edb9b"
+    },
+    {
+      "byte_start": 4657346,
+      "byte_stop": 4658610,
+      "filename": "BRK-B_2023.html",
+      "heuristic_search_score_not_coverage": 9,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "ee07c153c36a95c2b7ea51fd61b741d0e7ff08626027be6b5f2dafffd0251587"
+    },
+    {
+      "byte_start": 10958325,
+      "byte_stop": 11081848,
+      "filename": "BRK-B_2023.html",
+      "heuristic_search_score_not_coverage": 9,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "c76d44a15a927366bc0a655e07da940a9192cd91464a8714e46fa027e5329830"
+    },
+    {
+      "byte_start": 10959342,
+      "byte_stop": 11081826,
+      "filename": "BRK-B_2023.html",
+      "heuristic_search_score_not_coverage": 9,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "cdaddfbf5879c6cdbd7065727df72b1ae74069bc572eef5fa23284e5fa0f96bc"
+    },
+    {
+      "byte_start": 4658226,
+      "byte_stop": 4659383,
+      "filename": "BRK-B_2022.html",
+      "heuristic_search_score_not_coverage": 8,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "17bdd19f31938a38618ada7ef5764c499cd6c208a05694698cb2c9ac55cbc025"
+    },
+    {
+      "byte_start": 4658632,
+      "byte_stop": 4662863,
+      "filename": "BRK-B_2023.html",
+      "heuristic_search_score_not_coverage": 8,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "32df45e0c06195189885a1f0b77cecba4edd7ad006ee58835c11e9c3a6e9a498"
+    },
+    {
+      "byte_start": 4659719,
+      "byte_stop": 4661181,
+      "filename": "BRK-B_2023.html",
+      "heuristic_search_score_not_coverage": 8,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "da8eecbe0f20ea2e53b5543fc58ec89a6b4095afa13e54d24fa7fef7c42f8fbe"
+    },
+    {
+      "byte_start": 3535110,
+      "byte_stop": 3535990,
+      "filename": "BRK-B_2022.html",
+      "heuristic_search_score_not_coverage": 3,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "fd3aa8d4691ccc09572f671bd65ac16cc8120e6ff5aac75e6b2fa10ad26dae49"
+    },
+    {
+      "byte_start": 3453740,
+      "byte_stop": 3454879,
+      "filename": "BRK-B_2023.html",
+      "heuristic_search_score_not_coverage": 3,
+      "inspection_file": "cross_filing_explanatory_passages_v23.json",
+      "selection_reason": "reclassification/conformity passage ranked by explicit revenue, royalty/equity-method, presentation and prior-period terms",
+      "span_sha256": "38f76546a9ea66e34119a279a4d5821ef6e755c2fc332fc9f78fbea4141a20a8"
+    },
+    {
+      "byte_start": 2480719,
+      "byte_stop": 2480892,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "8adc89b4d74c649e411238c43ac8c965b7ce937128e77a2cf357bbbe7e5099c8"
+    },
+    {
+      "byte_start": 2481029,
+      "byte_stop": 2482228,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "f4c32e2aa6e4b09ce518cbb8b1dcf6e822fa352898c6a95cdee7687150609cdc"
+    },
+    {
+      "byte_start": 2481770,
+      "byte_stop": 2481934,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "955168f7b250a4adfbf5a0dfc55ad860928c39fc35c007968f159a07a565fa18"
+    },
+    {
+      "byte_start": 2482078,
+      "byte_stop": 2482204,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "54c9a275eb2f2c6d8b95d9fcaf956b6dba9b54cb1fd0d2931c7559220e4875da"
+    },
+    {
+      "byte_start": 2482429,
+      "byte_stop": 2482596,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "da374d20c3951f2b06ad589aa59a7f92f25a0412dba1ea8e30c49b23e2be1ace"
+    },
+    {
+      "byte_start": 2482596,
+      "byte_stop": 2482782,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "bd28f133897291e8c55e081b777c4f254ca804d39b61059c7b9685ec7486a29a"
+    },
+    {
+      "byte_start": 2483369,
+      "byte_stop": 2483729,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "307909c1029dfdc5528fb0fc0aae1bf76f014f7a7c4c4a50bd0c0ffa7f6bbfec"
+    },
+    {
+      "byte_start": 2483781,
+      "byte_stop": 2483996,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "9998f9e4d7d13c749e07875efe49adf7c5559f47b4fa36e164d0147e36a42ea5"
+    },
+    {
+      "byte_start": 2483996,
+      "byte_stop": 2485152,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "2b1dfc7d20561812adbd01858b5ab7549517a8cc45e96eaf25f3a402c738e8dc"
+    },
+    {
+      "byte_start": 2485152,
+      "byte_stop": 2486254,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "7a1c25829e25b8fad9018f9a59901f201f09cc383b5be3f1beeef346216aba5c"
+    },
+    {
+      "byte_start": 2486254,
+      "byte_stop": 2487113,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "aa0859a08b21ddc16adb2ec05886b02c6ebe50f76cd250f976cb78cbc0274392"
+    },
+    {
+      "byte_start": 2487234,
+      "byte_stop": 2487495,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "33b41ac72fcd23d62af55ad2e05d016a648d7831c4e23e87874a7179e897b401"
+    },
+    {
+      "byte_start": 2487495,
+      "byte_stop": 2489510,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "29ee14f906a7ff940570e6004979a37c3ff10d76affdc892abd31b24988003ed"
+    },
+    {
+      "byte_start": 2489510,
+      "byte_stop": 2491248,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "dbea7287bb8e7a92244d48dfb2871af5907050bfdc930f8e9b022b8989d8edf5"
+    },
+    {
+      "byte_start": 2491248,
+      "byte_stop": 2491563,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "e930683710b7a322c1835ee2ccd7e015b2083e0692d06e12e6ad1cddd29928ee"
+    },
+    {
+      "byte_start": 2491579,
+      "byte_stop": 2492286,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "80fbc59f008bc3c728f1d37452cd40bb87bbbc797b15ccc06da87ec58e4e9506"
+    },
+    {
+      "byte_start": 2492316,
+      "byte_stop": 2492780,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "822fee1c727c1fbe7f237032679ec9a47e5dad7d2f6239fc4e63b4a32ed3aac1"
+    },
+    {
+      "byte_start": 2492780,
+      "byte_stop": 2493703,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "f6685db331386a3cb4c9e02a205fa5f2b2df68a5f8863f8b549acf27b6d65bcb"
+    },
+    {
+      "byte_start": 2493721,
+      "byte_stop": 2494065,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "63ad3ec2554158c23e5c2f8b64d21256e3b4f08c9930e0c86dd800ade41e7aef"
+    },
+    {
+      "byte_start": 2494095,
+      "byte_stop": 2495513,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "d06ed28362d8db3f734a5bcfbea1ad62bc4194e276856df6071b891eeaf5d74f"
+    },
+    {
+      "byte_start": 2495513,
+      "byte_stop": 2496702,
+      "filename": "PFE_2024.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Note 1A directly linked by royalty-row footnote",
+      "span_sha256": "91fda26a7c5abc585c86a5dac5d8d96fb36c7891a22e439d15f8fe42729756d2"
+    },
+    {
+      "byte_start": 3077858,
+      "byte_stop": 3078797,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Remaining 2/12 supplementary passages: equity method with revenue/inclusion/prior-period terms",
+      "span_sha256": "fd422784ced81ddb8abc7d84c6f1a34c9ec300a57f770c7e38ae5bb70903c56e"
+    },
+    {
+      "byte_start": 3078801,
+      "byte_stop": 3079955,
+      "filename": "BRK-B_2023.html",
+      "inspection_file": "cross_filing_explanatory_followup_v23.json",
+      "selection_reason": "Remaining 2/12 supplementary passages: equity method with revenue/inclusion/prior-period terms",
+      "span_sha256": "eaf03bfab8da347c2a17d134ef28fee9ff0dcdaf30b74d884ab3a96bf62a2442"
+    }
+  ],
+  "runtime": {
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "schema_version": "cross_filing_explanatory_probe_v23",
+  "script_sha256": "26b39b2937e237c90908e91ca0d98601c3f23de3c0c13b69ec44e7c665274ce4",
+  "source_records": {
+    "BRK-B_2022.html": {
+      "facts": {
+        "equity_method": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 4029944,
+            "byte_stop": 4030138,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[71]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[38]/{http://www.w3.org/1999/xhtml}td[4]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+            "source_version": "BRK-B_2022.html",
+            "span_sha256": "b9cb82d1f352eb4f604ddd2dbb61a1424e1a6ba0d7529f09f50349b2544fcd76"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 386,
+              "byte_stop": 1740,
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "6b4e544d920f3e25012859cffdcce67472b3a7046c3c0271a4197d500c646593"
+            },
+            {
+              "byte_start": 10411,
+              "byte_stop": 10751,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[1]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "93cac2f12df8413b2c08e01591b59e182383768c2c380e438ab28b392b874e8b"
+            },
+            {
+              "byte_start": 11889,
+              "byte_stop": 11985,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[2]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "fdc02e1888fe4c722af62db367b334b21b1634ec8493180eca4987498d1ef2da"
+            },
+            {
+              "byte_start": 4029944,
+              "byte_stop": 4030138,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[71]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[38]/{http://www.w3.org/1999/xhtml}td[4]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "b9cb82d1f352eb4f604ddd2dbb61a1424e1a6ba0d7529f09f50349b2544fcd76"
+            }
+          ],
+          "fact_ordinal": 191,
+          "lexical_text": "995",
+          "normalized_value": "995000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2021-01-31}IncomeLossFromEquityMethodInvestments",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0001067983",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2021-12-31",
+                "startDate": "2021-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 4028271,
+            "byte_stop": 4034337,
+            "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+            "source_version": "BRK-B_2022.html",
+            "span_sha256": "0b25de3fcedd5430bdf3a41da8569f104051cf83f381f8a2f54639e29430cf60"
+          },
+          "row_label": "Equity method earnings"
+        },
+        "pretax": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 4035963,
+            "byte_stop": 4036242,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[71]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[39]/{http://www.w3.org/1999/xhtml}td[4]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+            "source_version": "BRK-B_2022.html",
+            "span_sha256": "60e289338567ad98a2a271ce2a8ebbc40da5826b86ed9b23e31abd519c88dd11"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 386,
+              "byte_stop": 1740,
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "6b4e544d920f3e25012859cffdcce67472b3a7046c3c0271a4197d500c646593"
+            },
+            {
+              "byte_start": 10411,
+              "byte_stop": 10751,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[1]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "93cac2f12df8413b2c08e01591b59e182383768c2c380e438ab28b392b874e8b"
+            },
+            {
+              "byte_start": 11889,
+              "byte_stop": 11985,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[2]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "fdc02e1888fe4c722af62db367b334b21b1634ec8493180eca4987498d1ef2da"
+            },
+            {
+              "byte_start": 4035963,
+              "byte_stop": 4036242,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[71]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[39]/{http://www.w3.org/1999/xhtml}td[4]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "60e289338567ad98a2a271ce2a8ebbc40da5826b86ed9b23e31abd519c88dd11"
+            }
+          ],
+          "fact_ordinal": 194,
+          "lexical_text": "111,686",
+          "normalized_value": "111686000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2021-01-31}IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0001067983",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2021-12-31",
+                "startDate": "2021-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 4034339,
+            "byte_stop": 4040464,
+            "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+            "source_version": "BRK-B_2022.html",
+            "span_sha256": "29dd65f49c1f8960319211833adbe98d667f3fa11fae7f62f212362ecd7a1be2"
+          },
+          "row_label": "Earnings before income taxes"
+        },
+        "pretax_before_equity": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 4023720,
+            "byte_stop": 4024015,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[71]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[37]/{http://www.w3.org/1999/xhtml}td[4]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+            "source_version": "BRK-B_2022.html",
+            "span_sha256": "9efeb1fb9e15fdd9add12341954098e6aec634938866cf14bbdf3cdaf58cbe24"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 386,
+              "byte_stop": 1740,
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "6b4e544d920f3e25012859cffdcce67472b3a7046c3c0271a4197d500c646593"
+            },
+            {
+              "byte_start": 10411,
+              "byte_stop": 10751,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[1]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "93cac2f12df8413b2c08e01591b59e182383768c2c380e438ab28b392b874e8b"
+            },
+            {
+              "byte_start": 11889,
+              "byte_stop": 11985,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[2]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "fdc02e1888fe4c722af62db367b334b21b1634ec8493180eca4987498d1ef2da"
+            },
+            {
+              "byte_start": 4023720,
+              "byte_stop": 4024015,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[71]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[37]/{http://www.w3.org/1999/xhtml}td[4]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "9efeb1fb9e15fdd9add12341954098e6aec634938866cf14bbdf3cdaf58cbe24"
+            }
+          ],
+          "fact_ordinal": 188,
+          "lexical_text": "110,691",
+          "normalized_value": "110691000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2021-01-31}IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0001067983",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2021-12-31",
+                "startDate": "2021-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 4022069,
+            "byte_stop": 4028269,
+            "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+            "source_version": "BRK-B_2022.html",
+            "span_sha256": "e75c295bef6d015785f31cd67aaead865da5a693fa81351009bf14ed193c6465"
+          },
+          "row_label": "Earnings before income taxes and equity method earnings"
+        },
+        "service_and_other": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 3881460,
+            "byte_stop": 3881733,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[71]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[13]/{http://www.w3.org/1999/xhtml}td[4]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+            "source_version": "BRK-B_2022.html",
+            "span_sha256": "e2ab43ec2b0d726669bc5fc92485bb3c8f5fa645b17771c618bc169af24c16b9"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 386,
+              "byte_stop": 1740,
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "6b4e544d920f3e25012859cffdcce67472b3a7046c3c0271a4197d500c646593"
+            },
+            {
+              "byte_start": 11889,
+              "byte_stop": 11985,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[2]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "fdc02e1888fe4c722af62db367b334b21b1634ec8493180eca4987498d1ef2da"
+            },
+            {
+              "byte_start": 25350,
+              "byte_stop": 25925,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[28]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "908ecbad272e3ebf87fa77ce2b74baba666d288cbe61eeeeae34035f18bb1d06"
+            },
+            {
+              "byte_start": 3881460,
+              "byte_stop": 3881733,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[71]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[13]/{http://www.w3.org/1999/xhtml}td[4]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "e2ab43ec2b0d726669bc5fc92485bb3c8f5fa645b17771c618bc169af24c16b9"
+            }
+          ],
+          "fact_ordinal": 132,
+          "lexical_text": "6,052",
+          "normalized_value": "6052000000",
+          "reported_aspects": {
+            "concept": "{http://www.berkshirehathaway.com/20211231}ServiceRevenuesAndOtherIncome",
+            "dimensions": [
+              {
+                "dimension": "{http://fasb.org/srt/2021-01-31}ProductOrServiceAxis",
+                "kind": "explicitMember",
+                "member": "{http://www.berkshirehathaway.com/20211231}RailroadUtilitiesAndEnergyMember",
+                "placement": "segment"
+              }
+            ],
+            "entity": {
+              "identifier": "0001067983",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2021-12-31",
+                "startDate": "2021-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 3879776,
+            "byte_stop": 3886061,
+            "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+            "source_version": "BRK-B_2022.html",
+            "span_sha256": "829bf1f7253202cf6a95cff6465981d85fd80d86c3f43b5e05a661247e6f387c"
+          },
+          "row_label": "Service revenues and other income"
+        },
+        "total": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 3894191,
+            "byte_stop": 3894387,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[71]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[15]/{http://www.w3.org/1999/xhtml}td[4]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+            "source_version": "BRK-B_2022.html",
+            "span_sha256": "f57b6b451de649120906e0e56c14f7ec30fa0ddd553a689cc159c5f3b072dc3b"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 386,
+              "byte_stop": 1740,
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "6b4e544d920f3e25012859cffdcce67472b3a7046c3c0271a4197d500c646593"
+            },
+            {
+              "byte_start": 10411,
+              "byte_stop": 10751,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[1]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "93cac2f12df8413b2c08e01591b59e182383768c2c380e438ab28b392b874e8b"
+            },
+            {
+              "byte_start": 11889,
+              "byte_stop": 11985,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[2]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "fdc02e1888fe4c722af62db367b334b21b1634ec8493180eca4987498d1ef2da"
+            },
+            {
+              "byte_start": 3894191,
+              "byte_stop": 3894387,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[71]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[15]/{http://www.w3.org/1999/xhtml}td[4]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+              "source_version": "BRK-B_2022.html",
+              "span_sha256": "f57b6b451de649120906e0e56c14f7ec30fa0ddd553a689cc159c5f3b072dc3b"
+            }
+          ],
+          "fact_ordinal": 138,
+          "lexical_text": "276,094",
+          "normalized_value": "276094000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2021-01-31}Revenues",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0001067983",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2021-12-31",
+                "startDate": "2021-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 3892467,
+            "byte_stop": 3898693,
+            "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+            "source_version": "BRK-B_2022.html",
+            "span_sha256": "acfc56987798efa41e9924dbceeb86cf954836389a903f4d3ab3726f0f0c045c"
+          },
+          "row_label": "Total revenues"
+        }
+      },
+      "narrative_anchors": {},
+      "source_sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257"
+    },
+    "BRK-B_2023.html": {
+      "facts": {
+        "equity_method": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 3971911,
+            "byte_stop": 3972136,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}table[36]/{http://www.w3.org/1999/xhtml}tr[39]/{http://www.w3.org/1999/xhtml}td[8]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+            "source_version": "BRK-B_2023.html",
+            "span_sha256": "8459bf70dd71b045f7dcbd93b616a4418ba5aa7b5aec0a1a8d73f81248b43038"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 269,
+              "byte_stop": 1327,
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "3e8d89d3f466978d5511cc4c2afbd41ee26cf48330aa00dad6192d152005d886"
+            },
+            {
+              "byte_start": 207226,
+              "byte_stop": 207524,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[298]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "a6f3bd963a9ff8c5622f259d5ef8f446e91fac3b2159581c4bf4d35543ba3dc2"
+            },
+            {
+              "byte_start": 664524,
+              "byte_stop": 664602,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[10]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "687926c9ab44f61ecfb080d312dfb31b66499ed8eb16fc2b21c502a7342e38a7"
+            },
+            {
+              "byte_start": 3971911,
+              "byte_stop": 3972136,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}table[36]/{http://www.w3.org/1999/xhtml}tr[39]/{http://www.w3.org/1999/xhtml}td[8]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "8459bf70dd71b045f7dcbd93b616a4418ba5aa7b5aec0a1a8d73f81248b43038"
+            }
+          ],
+          "fact_ordinal": 185,
+          "lexical_text": "886",
+          "normalized_value": "886000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2022}IncomeLossFromEquityMethodInvestments",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0001067983",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2021-12-31",
+                "startDate": "2021-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 3967947,
+            "byte_stop": 3974608,
+            "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+            "source_version": "BRK-B_2023.html",
+            "span_sha256": "ed2a6bb4f2df1f0fe2470fac16d44ad8949bbe55a2762ecda5677343dce18382"
+          },
+          "row_label": "Equity method earnings"
+        },
+        "pretax": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 3978670,
+            "byte_stop": 3978980,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}table[36]/{http://www.w3.org/1999/xhtml}tr[40]/{http://www.w3.org/1999/xhtml}td[8]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+            "source_version": "BRK-B_2023.html",
+            "span_sha256": "4ff880b141b2b89b33b9b7767dd5715d68044aa3f60e23b81af6f410ac21618c"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 269,
+              "byte_stop": 1327,
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "3e8d89d3f466978d5511cc4c2afbd41ee26cf48330aa00dad6192d152005d886"
+            },
+            {
+              "byte_start": 207226,
+              "byte_stop": 207524,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[298]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "a6f3bd963a9ff8c5622f259d5ef8f446e91fac3b2159581c4bf4d35543ba3dc2"
+            },
+            {
+              "byte_start": 664524,
+              "byte_stop": 664602,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[10]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "687926c9ab44f61ecfb080d312dfb31b66499ed8eb16fc2b21c502a7342e38a7"
+            },
+            {
+              "byte_start": 3978670,
+              "byte_stop": 3978980,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}table[36]/{http://www.w3.org/1999/xhtml}tr[40]/{http://www.w3.org/1999/xhtml}td[8]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "4ff880b141b2b89b33b9b7767dd5715d68044aa3f60e23b81af6f410ac21618c"
+            }
+          ],
+          "fact_ordinal": 188,
+          "lexical_text": "111,686",
+          "normalized_value": "111686000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2022}IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0001067983",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2021-12-31",
+                "startDate": "2021-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 3974613,
+            "byte_stop": 3981358,
+            "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+            "source_version": "BRK-B_2023.html",
+            "span_sha256": "b6de94cfa4c620fc612c634ac30777b6dacf589f8161480f0acf79bb4d727dc1"
+          },
+          "row_label": "Earnings (loss) before income taxes"
+        },
+        "pretax_before_equity": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 3965222,
+            "byte_stop": 3965548,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}table[36]/{http://www.w3.org/1999/xhtml}tr[38]/{http://www.w3.org/1999/xhtml}td[8]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+            "source_version": "BRK-B_2023.html",
+            "span_sha256": "0c898f42b438da50d7e77f2b418ebf6246be33faecdfcda2a79c27a190bfef42"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 269,
+              "byte_stop": 1327,
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "3e8d89d3f466978d5511cc4c2afbd41ee26cf48330aa00dad6192d152005d886"
+            },
+            {
+              "byte_start": 207226,
+              "byte_stop": 207524,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[298]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "a6f3bd963a9ff8c5622f259d5ef8f446e91fac3b2159581c4bf4d35543ba3dc2"
+            },
+            {
+              "byte_start": 664524,
+              "byte_stop": 664602,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[10]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "687926c9ab44f61ecfb080d312dfb31b66499ed8eb16fc2b21c502a7342e38a7"
+            },
+            {
+              "byte_start": 3965222,
+              "byte_stop": 3965548,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}table[36]/{http://www.w3.org/1999/xhtml}tr[38]/{http://www.w3.org/1999/xhtml}td[8]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "0c898f42b438da50d7e77f2b418ebf6246be33faecdfcda2a79c27a190bfef42"
+            }
+          ],
+          "fact_ordinal": 182,
+          "lexical_text": "110,800",
+          "normalized_value": "110800000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2022}IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0001067983",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2021-12-31",
+                "startDate": "2021-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 3961122,
+            "byte_stop": 3967942,
+            "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+            "source_version": "BRK-B_2023.html",
+            "span_sha256": "2df1b9b7ef46e5a39a3a4cf1e397fac2ca3725eaded2d7a948c30b7ffd0f9b86"
+          },
+          "row_label": "Earnings (loss) before income taxes and equity method earnings"
+        },
+        "service_and_other": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 3821092,
+            "byte_stop": 3821335,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}table[36]/{http://www.w3.org/1999/xhtml}tr[14]/{http://www.w3.org/1999/xhtml}td[8]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+            "source_version": "BRK-B_2023.html",
+            "span_sha256": "efc0ad5f3280632f197e28267d547d70c81a8062cd1ef588ecf85785d2977a3e"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 269,
+              "byte_stop": 1327,
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "3e8d89d3f466978d5511cc4c2afbd41ee26cf48330aa00dad6192d152005d886"
+            },
+            {
+              "byte_start": 225052,
+              "byte_stop": 225502,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[327]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "29fef6c6b6cb599d230fae96ce840daae6cd485f1d53ff0192689b66b4f56c60"
+            },
+            {
+              "byte_start": 664524,
+              "byte_stop": 664602,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[10]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "687926c9ab44f61ecfb080d312dfb31b66499ed8eb16fc2b21c502a7342e38a7"
+            },
+            {
+              "byte_start": 3821092,
+              "byte_stop": 3821335,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}table[36]/{http://www.w3.org/1999/xhtml}tr[14]/{http://www.w3.org/1999/xhtml}td[8]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "efc0ad5f3280632f197e28267d547d70c81a8062cd1ef588ecf85785d2977a3e"
+            }
+          ],
+          "fact_ordinal": 127,
+          "lexical_text": "6,161",
+          "normalized_value": "6161000000",
+          "reported_aspects": {
+            "concept": "{http://www.berkshirehathaway.com/20221231}ServiceRevenuesAndOtherIncome",
+            "dimensions": [
+              {
+                "dimension": "{http://fasb.org/srt/2022}ProductOrServiceAxis",
+                "kind": "explicitMember",
+                "member": "{http://www.berkshirehathaway.com/20221231}RailroadUtilitiesAndEnergyMember",
+                "placement": "segment"
+              }
+            ],
+            "entity": {
+              "identifier": "0001067983",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2021-12-31",
+                "startDate": "2021-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 3817128,
+            "byte_stop": 3823825,
+            "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+            "source_version": "BRK-B_2023.html",
+            "span_sha256": "93a295ab57b427f6fd913171608fe751ff2cac35a0c1dc72975b46f1d650f83f"
+          },
+          "row_label": "Service revenues and other income"
+        },
+        "total": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 3834276,
+            "byte_stop": 3834503,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}table[36]/{http://www.w3.org/1999/xhtml}tr[16]/{http://www.w3.org/1999/xhtml}td[8]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+            "source_version": "BRK-B_2023.html",
+            "span_sha256": "6b65c8a740269d7d79bc6135d4dfc89ac6d78b64d417802ab212e940ad785a13"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 269,
+              "byte_stop": 1327,
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "3e8d89d3f466978d5511cc4c2afbd41ee26cf48330aa00dad6192d152005d886"
+            },
+            {
+              "byte_start": 207226,
+              "byte_stop": 207524,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[298]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "a6f3bd963a9ff8c5622f259d5ef8f446e91fac3b2159581c4bf4d35543ba3dc2"
+            },
+            {
+              "byte_start": 664524,
+              "byte_stop": 664602,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[10]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "687926c9ab44f61ecfb080d312dfb31b66499ed8eb16fc2b21c502a7342e38a7"
+            },
+            {
+              "byte_start": 3834276,
+              "byte_stop": 3834503,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}table[36]/{http://www.w3.org/1999/xhtml}tr[16]/{http://www.w3.org/1999/xhtml}td[8]/{http://www.w3.org/1999/xhtml}p[1]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+              "source_version": "BRK-B_2023.html",
+              "span_sha256": "6b65c8a740269d7d79bc6135d4dfc89ac6d78b64d417802ab212e940ad785a13"
+            }
+          ],
+          "fact_ordinal": 133,
+          "lexical_text": "276,203",
+          "normalized_value": "276203000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2022}Revenues",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0001067983",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2021-12-31",
+                "startDate": "2021-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 3830387,
+            "byte_stop": 3836977,
+            "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+            "source_version": "BRK-B_2023.html",
+            "span_sha256": "9e256e30153fffd19a7af3f7a1a67b120eba999f7ffb8730091678e5d5a06915"
+          },
+          "row_label": "Total revenues"
+        }
+      },
+      "narrative_anchors": {
+        "generic_prior_year_reclassification": {
+          "byte_start": 4657346,
+          "byte_stop": 4658610,
+          "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+          "source_version": "BRK-B_2023.html",
+          "span_sha256": "ee07c153c36a95c2b7ea51fd61b741d0e7ff08626027be6b5f2dafffd0251587"
+        }
+      },
+      "source_sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58"
+    },
+    "PFE_2023.html": {
+      "facts": {
+        "alliance": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 2136289,
+            "byte_stop": 2136512,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[920]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[6]/{http://www.w3.org/1999/xhtml}td[6]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+            "source_version": "PFE_2023.html",
+            "span_sha256": "fd084a172213c9d0d6d6150fa1a5e547b7262598313461d7a1a3a757125487f2"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 40,
+              "byte_stop": 828,
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "3c0b2feff9f436dc79c60c9e00ae853a375fdf3ba3dabc35619f478b986e7252"
+            },
+            {
+              "byte_start": 12275,
+              "byte_stop": 12538,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "280d24c1cb9eaf8d559bff5ec81710b56328818e99c804946c4e880aeb023006"
+            },
+            {
+              "byte_start": 13582,
+              "byte_stop": 13658,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "85566c0471d66a6a65161f62bd35a84da937efe9bc5974ff2a452eed5669f125"
+            },
+            {
+              "byte_start": 2136289,
+              "byte_stop": 2136512,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[920]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[6]/{http://www.w3.org/1999/xhtml}td[6]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "fd084a172213c9d0d6d6150fa1a5e547b7262598313461d7a1a3a757125487f2"
+            }
+          ],
+          "fact_ordinal": 28,
+          "lexical_text": "7,582",
+          "normalized_value": "7582000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2023}RevenueFromCollaborativeArrangementExcludingRevenueFromContractWithCustomer",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0000078003",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2023-12-31",
+                "startDate": "2023-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 2135492,
+            "byte_stop": 2137837,
+            "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+            "source_version": "PFE_2023.html",
+            "span_sha256": "ed9d333eb07f8aabcb5bbef8f73e590eef78467a64084e2c10f9297e036fe7b4"
+          },
+          "row_label": "Alliance revenues(a)"
+        },
+        "other_net_income": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 2155068,
+            "byte_stop": 2155215,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[920]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[16]/{http://www.w3.org/1999/xhtml}td[6]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+            "source_version": "PFE_2023.html",
+            "span_sha256": "0949c9f56a6b7c3658fe77346fe5d22c5b64ee7631f389060318957061e88461"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 40,
+              "byte_stop": 828,
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "3c0b2feff9f436dc79c60c9e00ae853a375fdf3ba3dabc35619f478b986e7252"
+            },
+            {
+              "byte_start": 12275,
+              "byte_stop": 12538,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "280d24c1cb9eaf8d559bff5ec81710b56328818e99c804946c4e880aeb023006"
+            },
+            {
+              "byte_start": 13582,
+              "byte_stop": 13658,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "85566c0471d66a6a65161f62bd35a84da937efe9bc5974ff2a452eed5669f125"
+            },
+            {
+              "byte_start": 2155068,
+              "byte_stop": 2155215,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[920]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[16]/{http://www.w3.org/1999/xhtml}td[6]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "0949c9f56a6b7c3658fe77346fe5d22c5b64ee7631f389060318957061e88461"
+            }
+          ],
+          "fact_ordinal": 52,
+          "lexical_text": "835",
+          "normalized_value": "835000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2023}OtherNonoperatingIncomeExpense",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0000078003",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2023-12-31",
+                "startDate": "2023-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 2154444,
+            "byte_stop": 2156306,
+            "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+            "source_version": "PFE_2023.html",
+            "span_sha256": "723ffbc612fd824f33446c1b901fa7228925dbcbf8b313cfeb68ba609f7e415d"
+          },
+          "row_label": "Other (income)/deductions\u2013\u2013net"
+        },
+        "pretax_continuing": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 2156986,
+            "byte_stop": 2157225,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[920]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[17]/{http://www.w3.org/1999/xhtml}td[6]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+            "source_version": "PFE_2023.html",
+            "span_sha256": "e291cb0e7bf78e6d58493ecd28ec9e85c99d04079739e31e4fc9ae619731bc19"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 40,
+              "byte_stop": 828,
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "3c0b2feff9f436dc79c60c9e00ae853a375fdf3ba3dabc35619f478b986e7252"
+            },
+            {
+              "byte_start": 12275,
+              "byte_stop": 12538,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "280d24c1cb9eaf8d559bff5ec81710b56328818e99c804946c4e880aeb023006"
+            },
+            {
+              "byte_start": 13582,
+              "byte_stop": 13658,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "85566c0471d66a6a65161f62bd35a84da937efe9bc5974ff2a452eed5669f125"
+            },
+            {
+              "byte_start": 2156986,
+              "byte_stop": 2157225,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[920]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[17]/{http://www.w3.org/1999/xhtml}td[6]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "e291cb0e7bf78e6d58493ecd28ec9e85c99d04079739e31e4fc9ae619731bc19"
+            }
+          ],
+          "fact_ordinal": 55,
+          "lexical_text": "1,058",
+          "normalized_value": "1058000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2023}IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0000078003",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2023-12-31",
+                "startDate": "2023-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 2156306,
+            "byte_stop": 2158739,
+            "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+            "source_version": "PFE_2023.html",
+            "span_sha256": "f979236f165943f7702ee920e73d3cbc12ec2eaf2d18d80425b12fb78c0fda49"
+          },
+          "row_label": "Income from continuing operations before provision/(benefit) for taxes on income"
+        },
+        "product": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 2133671,
+            "byte_stop": 2133871,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[920]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[5]/{http://www.w3.org/1999/xhtml}td[7]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+            "source_version": "PFE_2023.html",
+            "span_sha256": "4a7d6136fedae1e3ec7537a2db8ad55ab19e6522d373eb3e2c886f8c1aa5f996"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 40,
+              "byte_stop": 828,
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "3c0b2feff9f436dc79c60c9e00ae853a375fdf3ba3dabc35619f478b986e7252"
+            },
+            {
+              "byte_start": 12275,
+              "byte_stop": 12538,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "280d24c1cb9eaf8d559bff5ec81710b56328818e99c804946c4e880aeb023006"
+            },
+            {
+              "byte_start": 13582,
+              "byte_stop": 13658,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "85566c0471d66a6a65161f62bd35a84da937efe9bc5974ff2a452eed5669f125"
+            },
+            {
+              "byte_start": 2133671,
+              "byte_stop": 2133871,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[920]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[5]/{http://www.w3.org/1999/xhtml}td[7]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "4a7d6136fedae1e3ec7537a2db8ad55ab19e6522d373eb3e2c886f8c1aa5f996"
+            }
+          ],
+          "fact_ordinal": 25,
+          "lexical_text": "50,914",
+          "normalized_value": "50914000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2023}RevenueFromContractWithCustomerExcludingAssessedTax",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0000078003",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2023-12-31",
+                "startDate": "2023-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 2132679,
+            "byte_stop": 2135492,
+            "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+            "source_version": "PFE_2023.html",
+            "span_sha256": "32dde3f95e30c19059b42a49bf9429f7d97336c0052d89eae74ca4550c969f85"
+          },
+          "row_label": "Product revenues(a)"
+        },
+        "total": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 2138462,
+            "byte_stop": 2138619,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[920]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[7]/{http://www.w3.org/1999/xhtml}td[6]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+            "source_version": "PFE_2023.html",
+            "span_sha256": "094acd2d62559798450ac89180f05d78051003d86634f3b135052dffc1488e5a"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 40,
+              "byte_stop": 828,
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "3c0b2feff9f436dc79c60c9e00ae853a375fdf3ba3dabc35619f478b986e7252"
+            },
+            {
+              "byte_start": 12275,
+              "byte_stop": 12538,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "280d24c1cb9eaf8d559bff5ec81710b56328818e99c804946c4e880aeb023006"
+            },
+            {
+              "byte_start": 13582,
+              "byte_stop": 13658,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "85566c0471d66a6a65161f62bd35a84da937efe9bc5974ff2a452eed5669f125"
+            },
+            {
+              "byte_start": 2138462,
+              "byte_stop": 2138619,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[920]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[7]/{http://www.w3.org/1999/xhtml}td[6]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+              "source_version": "PFE_2023.html",
+              "span_sha256": "094acd2d62559798450ac89180f05d78051003d86634f3b135052dffc1488e5a"
+            }
+          ],
+          "fact_ordinal": 31,
+          "lexical_text": "58,496",
+          "normalized_value": "58496000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2023}Revenues",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0000078003",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2023-12-31",
+                "startDate": "2023-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 2137837,
+            "byte_stop": 2139968,
+            "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df",
+            "source_version": "PFE_2023.html",
+            "span_sha256": "ff121041e8c721385ffe90bf3581fd9a52e6e1b8da40016c39274f4b0299a1b3"
+          },
+          "row_label": "Total revenues"
+        }
+      },
+      "narrative_anchors": {},
+      "source_sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df"
+    },
+    "PFE_2024.html": {
+      "facts": {
+        "alliance": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 2068042,
+            "byte_stop": 2068265,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[6]/{http://www.w3.org/1999/xhtml}td[9]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "3fe5ee72ba400b7aa77d335f0cbc9ab5dc968e29b439592dfc8a6aca6b95fc11"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 248,
+              "byte_stop": 1077,
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "95113e7bd5f02ad3ac66a593eea1cae23fd4f9a73a7ab36e098b5937fefa2ef6"
+            },
+            {
+              "byte_start": 13265,
+              "byte_stop": 13341,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "85566c0471d66a6a65161f62bd35a84da937efe9bc5974ff2a452eed5669f125"
+            },
+            {
+              "byte_start": 17820,
+              "byte_stop": 18083,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[9]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "0593736c2561203e877fa4837a70b0d3f654581ee5680df647a49511e6aa4a22"
+            },
+            {
+              "byte_start": 2068042,
+              "byte_stop": 2068265,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[6]/{http://www.w3.org/1999/xhtml}td[9]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "3fe5ee72ba400b7aa77d335f0cbc9ab5dc968e29b439592dfc8a6aca6b95fc11"
+            }
+          ],
+          "fact_ordinal": 29,
+          "lexical_text": "7,582",
+          "normalized_value": "7582000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2024}RevenueFromCollaborativeArrangementExcludingRevenueFromContractWithCustomer",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0000078003",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2023-12-31",
+                "startDate": "2023-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 2066733,
+            "byte_stop": 2068908,
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "1da23bfffd80f9530606bb2c406ee3fae365a1929ab9ad4d770c328e4c05ee72"
+          },
+          "row_label": "Alliance revenues"
+        },
+        "other_net_income": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 2089036,
+            "byte_stop": 2089192,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[17]/{http://www.w3.org/1999/xhtml}td[9]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "3f05ff9ba667be3e034daf0cb728bd82ede886044ed01e495a87c8cab9b39716"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 248,
+              "byte_stop": 1077,
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "95113e7bd5f02ad3ac66a593eea1cae23fd4f9a73a7ab36e098b5937fefa2ef6"
+            },
+            {
+              "byte_start": 13265,
+              "byte_stop": 13341,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "85566c0471d66a6a65161f62bd35a84da937efe9bc5974ff2a452eed5669f125"
+            },
+            {
+              "byte_start": 17820,
+              "byte_stop": 18083,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[9]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "0593736c2561203e877fa4837a70b0d3f654581ee5680df647a49511e6aa4a22"
+            },
+            {
+              "byte_start": 2089036,
+              "byte_stop": 2089192,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[17]/{http://www.w3.org/1999/xhtml}td[9]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "3f05ff9ba667be3e034daf0cb728bd82ede886044ed01e495a87c8cab9b39716"
+            }
+          ],
+          "fact_ordinal": 56,
+          "lexical_text": "222",
+          "normalized_value": "-222000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2024}OtherNonoperatingIncomeExpense",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0000078003",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2023-12-31",
+                "startDate": "2023-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 2087766,
+            "byte_stop": 2089799,
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "c451c4fddf376b87b92aeb06573a14ac6975d53eac6d9ce6b4b36c2790cefcfb"
+          },
+          "row_label": "Other (income)/deductions\u2013\u2013net"
+        },
+        "pretax_continuing": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 2091240,
+            "byte_stop": 2091479,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[18]/{http://www.w3.org/1999/xhtml}td[9]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "fe93fd203eaaf2cc06192fcf5b00df12747015d4912990a45bb18af42375f78a"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 248,
+              "byte_stop": 1077,
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "95113e7bd5f02ad3ac66a593eea1cae23fd4f9a73a7ab36e098b5937fefa2ef6"
+            },
+            {
+              "byte_start": 13265,
+              "byte_stop": 13341,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "85566c0471d66a6a65161f62bd35a84da937efe9bc5974ff2a452eed5669f125"
+            },
+            {
+              "byte_start": 17820,
+              "byte_stop": 18083,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[9]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "0593736c2561203e877fa4837a70b0d3f654581ee5680df647a49511e6aa4a22"
+            },
+            {
+              "byte_start": 2091240,
+              "byte_stop": 2091479,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[18]/{http://www.w3.org/1999/xhtml}td[9]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "fe93fd203eaaf2cc06192fcf5b00df12747015d4912990a45bb18af42375f78a"
+            }
+          ],
+          "fact_ordinal": 59,
+          "lexical_text": "1,058",
+          "normalized_value": "1058000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2024}IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0000078003",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2023-12-31",
+                "startDate": "2023-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 2089799,
+            "byte_stop": 2092232,
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "13089ea77034de92d46f56476628c558a53fe9dcc75359098340692edf4d35f1"
+          },
+          "row_label": "Income from continuing operations before provision/(benefit) for taxes on income"
+        },
+        "product": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 2065743,
+            "byte_stop": 2065943,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[5]/{http://www.w3.org/1999/xhtml}td[11]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "632bb784fd703570347d7a36f4b49ecebc676ba45582d36c5e3cb18cb4d7c2f5"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 248,
+              "byte_stop": 1077,
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "95113e7bd5f02ad3ac66a593eea1cae23fd4f9a73a7ab36e098b5937fefa2ef6"
+            },
+            {
+              "byte_start": 13265,
+              "byte_stop": 13341,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "85566c0471d66a6a65161f62bd35a84da937efe9bc5974ff2a452eed5669f125"
+            },
+            {
+              "byte_start": 17022,
+              "byte_stop": 17421,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[7]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "6ea839f6b676e60103432c0dc716b0bd6d192ba923dc71347885aefa15fd932f"
+            },
+            {
+              "byte_start": 2065743,
+              "byte_stop": 2065943,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[5]/{http://www.w3.org/1999/xhtml}td[11]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "632bb784fd703570347d7a36f4b49ecebc676ba45582d36c5e3cb18cb4d7c2f5"
+            }
+          ],
+          "fact_ordinal": 26,
+          "lexical_text": "50,914",
+          "normalized_value": "50914000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2024}RevenueFromContractWithCustomerExcludingAssessedTax",
+            "dimensions": [
+              {
+                "dimension": "{http://fasb.org/srt/2024}ProductOrServiceAxis",
+                "kind": "explicitMember",
+                "member": "{http://fasb.org/us-gaap/2024}ProductMember",
+                "placement": "segment"
+              }
+            ],
+            "entity": {
+              "identifier": "0000078003",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2023-12-31",
+                "startDate": "2023-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 2064091,
+            "byte_stop": 2066733,
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "59665675aae841487c8fe04027662b004fdb1dc14a1b3e5d3cafcdc3783d7ea7"
+          },
+          "row_label": "Product revenues"
+        },
+        "royalty": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 2070364,
+            "byte_stop": 2070564,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[7]/{http://www.w3.org/1999/xhtml}td[9]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "761b040f6a1ef19c5504b7da7d3395bb61da6a4d126495e56704f81c545588b5"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 248,
+              "byte_stop": 1077,
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "95113e7bd5f02ad3ac66a593eea1cae23fd4f9a73a7ab36e098b5937fefa2ef6"
+            },
+            {
+              "byte_start": 13265,
+              "byte_stop": 13341,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "85566c0471d66a6a65161f62bd35a84da937efe9bc5974ff2a452eed5669f125"
+            },
+            {
+              "byte_start": 18747,
+              "byte_stop": 19147,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[12]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "8bce0184aa7932cd14188af7fa24272754201811695ef0aa929711bbc30845e4"
+            },
+            {
+              "byte_start": 2070364,
+              "byte_stop": 2070564,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[7]/{http://www.w3.org/1999/xhtml}td[9]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "761b040f6a1ef19c5504b7da7d3395bb61da6a4d126495e56704f81c545588b5"
+            }
+          ],
+          "fact_ordinal": 32,
+          "lexical_text": "1,058",
+          "normalized_value": "1058000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2024}RevenueFromContractWithCustomerExcludingAssessedTax",
+            "dimensions": [
+              {
+                "dimension": "{http://fasb.org/srt/2024}ProductOrServiceAxis",
+                "kind": "explicitMember",
+                "member": "{http://fasb.org/us-gaap/2024}RoyaltyMember",
+                "placement": "segment"
+              }
+            ],
+            "entity": {
+              "identifier": "0000078003",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2023-12-31",
+                "startDate": "2023-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 2068908,
+            "byte_stop": 2071152,
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "dea6bd50e8d32b39e187ca293500ecc534a9f1ec9049ccbf51badfebb524fb86"
+          },
+          "row_label": "Royalty revenues(a)"
+        },
+        "total": {
+          "accuracy": {
+            "decimals": "-6",
+            "interpretation": "metadata_only_not_rounding_or_scaling",
+            "precision": null
+          },
+          "anchor": {
+            "byte_start": 2072456,
+            "byte_stop": 2072613,
+            "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[8]/{http://www.w3.org/1999/xhtml}td[9]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "547a2e043c5ed162bbcffd4113aa99df6a9858017422546b128473b4238c4960"
+          },
+          "binding_evidence_anchors": [
+            {
+              "byte_start": 248,
+              "byte_stop": 1077,
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "95113e7bd5f02ad3ac66a593eea1cae23fd4f9a73a7ab36e098b5937fefa2ef6"
+            },
+            {
+              "byte_start": 13265,
+              "byte_stop": 13341,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}unit[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "85566c0471d66a6a65161f62bd35a84da937efe9bc5974ff2a452eed5669f125"
+            },
+            {
+              "byte_start": 17820,
+              "byte_stop": 18083,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[1]/{http://www.xbrl.org/2013/inlineXBRL}header[1]/{http://www.xbrl.org/2013/inlineXBRL}resources[1]/{http://www.xbrl.org/2003/instance}context[9]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "0593736c2561203e877fa4837a70b0d3f654581ee5680df647a49511e6aa4a22"
+            },
+            {
+              "byte_start": 2072456,
+              "byte_stop": 2072613,
+              "dom_path": "/{http://www.w3.org/1999/xhtml}html[1]/{http://www.w3.org/1999/xhtml}body[1]/{http://www.w3.org/1999/xhtml}div[852]/{http://www.w3.org/1999/xhtml}table[1]/{http://www.w3.org/1999/xhtml}tr[8]/{http://www.w3.org/1999/xhtml}td[9]/{http://www.w3.org/1999/xhtml}span[1]/{http://www.xbrl.org/2013/inlineXBRL}nonFraction[1]",
+              "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+              "source_version": "PFE_2024.html",
+              "span_sha256": "547a2e043c5ed162bbcffd4113aa99df6a9858017422546b128473b4238c4960"
+            }
+          ],
+          "fact_ordinal": 35,
+          "lexical_text": "59,553",
+          "normalized_value": "59553000000",
+          "reported_aspects": {
+            "concept": "{http://fasb.org/us-gaap/2024}Revenues",
+            "dimensions": [],
+            "entity": {
+              "identifier": "0000078003",
+              "scheme": "http://www.sec.gov/CIK"
+            },
+            "period": {
+              "kind": "duration",
+              "lexemes": {
+                "endDate": "2023-12-31",
+                "startDate": "2023-01-01"
+              }
+            },
+            "unit": {
+              "denominator_measures": [],
+              "measures": [
+                "{http://www.xbrl.org/2003/iso4217}USD"
+              ],
+              "numerator_measures": [],
+              "shape": "simple_product"
+            }
+          },
+          "row_anchor": {
+            "byte_start": 2071152,
+            "byte_stop": 2073284,
+            "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+            "source_version": "PFE_2024.html",
+            "span_sha256": "ba39eb87e5eb38cb13b9da3fa199b2dac0a38542e439d5f4a43558593fdf1937"
+          },
+          "row_label": "Total revenues"
+        }
+      },
+      "narrative_anchors": {
+        "mda_independent_explicit_recast_statement": {
+          "byte_start": 1290950,
+          "byte_stop": 1292213,
+          "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+          "source_version": "PFE_2024.html",
+          "span_sha256": "4a29dfc76eb0ae9825faa963ec52253ad131b7ff84c492bc76cf453d02dac708"
+        },
+        "prior_period_presentation_intro": {
+          "byte_start": 2487234,
+          "byte_stop": 2487495,
+          "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+          "source_version": "PFE_2024.html",
+          "span_sha256": "33b41ac72fcd23d62af55ad2e05d016a648d7831c4e23e87874a7179e897b401"
+        },
+        "rounding_caveat": {
+          "byte_start": 2491248,
+          "byte_stop": 2491563,
+          "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+          "source_version": "PFE_2024.html",
+          "span_sha256": "e930683710b7a322c1835ee2ccd7e015b2083e0692d06e12e6ad1cddd29928ee"
+        },
+        "royalty_reclassification": {
+          "byte_start": 2487495,
+          "byte_stop": 2489510,
+          "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+          "source_version": "PFE_2024.html",
+          "span_sha256": "29ee14f906a7ff940570e6004979a37c3ff10d76affdc892abd31b24988003ed"
+        },
+        "royalty_row_footnote_to_note1a": {
+          "byte_start": 2129607,
+          "byte_stop": 2130534,
+          "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480",
+          "source_version": "PFE_2024.html",
+          "span_sha256": "157120a42eb2ff0ad270539384c8b34cd056ac7c5ee8527c03e1c2b9ddeda806"
+        }
+      },
+      "source_sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480"
+    }
+  }
+}
