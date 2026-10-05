@@ -14,6 +14,7 @@ is a natural-question score.
 """
 
 from dataclasses import dataclass
+from decimal import Decimal
 import hashlib
 import json
 from typing import Dict, Optional, Tuple
@@ -253,4 +254,107 @@ def summarize_document(document, *, source_version):
         "fully_specified_all_policies_agree": specified_agreement,
         "cross_filing_comparisons": 0,
         "natural_questions": 0,
+    }
+
+
+def _qname_local(value):
+    if not isinstance(value, str) or not value.startswith("{") or "}" not in value:
+        return value
+    return value[1:].split("}", 1)[1]
+
+
+def _binding_key(aspects, mode):
+    if mode == "exact":
+        return _canonical({key: aspects[key] for key in ASPECTS})
+    if mode != "local_name_diagnostic":
+        raise BindingError("binding mode must be exact or local_name_diagnostic")
+    unit = aspects["unit"] if isinstance(aspects["unit"], dict) else {}
+    dimensions = []
+    for item in aspects["dimensions"]:
+        dimensions.append((_qname_local(item.get("dimension")), _qname_local(item.get("member")),
+                           item.get("kind"), item.get("placement")))
+    return _canonical({
+        "concept": _qname_local(aspects["concept"]),
+        "entity": aspects["entity"],
+        "period": aspects["period"],
+        "unit_shape": unit.get("shape"),
+        "unit_locals": [_qname_local(item) for item in unit.get("measures", [])],
+        "unit_numerator_locals": [_qname_local(item) for item in unit.get("numerator_measures", [])],
+        "unit_denominator_locals": [_qname_local(item) for item in unit.get("denominator_measures", [])],
+        "dimensions": dimensions,
+    })
+
+
+def _value_index(document, mode):
+    facts, _, _ = eligible_facts(document)
+    index: Dict[str, set] = {}
+    concepts = set()
+    for fact in facts:
+        key = _binding_key(fact["reported_aspects"], mode)
+        index.setdefault(key, set()).add(fact["normalized_value"])
+        concepts.add(_canonical(fact["reported_aspects"]["concept"]))
+    return index, concepts
+
+
+def conflict_profile(document):
+    """Classify same-binding numeric disagreements. Values are not returned."""
+    index, concepts = _value_index(document, "exact")
+    buckets = {"within_0.1pct": 0, "within_1pct": 0, "within_5pct": 0, "larger": 0, "zero_involved": 0}
+    scale_differs = 0
+    conflict_concepts = set()
+    facts, _, _ = eligible_facts(document)
+    grouped: Dict[str, list] = {}
+    for fact in facts:
+        grouped.setdefault(_binding_key(fact["reported_aspects"], "exact"), []).append(fact)
+    for key, members in grouped.items():
+        values = {fact["normalized_value"] for fact in members}
+        if len(values) < 2:
+            continue
+        conflict_concepts.add(_canonical(members[0]["reported_aspects"]["concept"]))
+        if len({fact.get("scale_property") for fact in members}) > 1:
+            scale_differs += 1
+        magnitudes = sorted(abs(Decimal(value)) for value in values if Decimal(value) != 0)
+        if len(magnitudes) < 2:
+            buckets["zero_involved"] += 1
+            continue
+        gap = magnitudes[-1] / magnitudes[0] - 1
+        if gap <= Decimal("0.001"):
+            buckets["within_0.1pct"] += 1
+        elif gap <= Decimal("0.01"):
+            buckets["within_1pct"] += 1
+        elif gap <= Decimal("0.05"):
+            buckets["within_5pct"] += 1
+        else:
+            buckets["larger"] += 1
+    return {
+        "bindings": len(index),
+        "concepts": len(concepts),
+        "conflict_bindings": sum(buckets.values()),
+        "conflict_concepts": len(conflict_concepts),
+        "scale_attribute_differs": scale_differs,
+        "ratio_buckets": buckets,
+        "values_recorded": False,
+    }
+
+
+def compare_filings(first, second, mode):
+    """Count shared bindings. local_name_diagnostic is not an admitted join."""
+    left, _ = _value_index(first, mode)
+    right, _ = _value_index(second, mode)
+    shared = set(left) & set(right)
+    same = 0
+    for key in shared:
+        if left[key] == right[key] and len(left[key]) == 1:
+            same += 1
+    return {
+        "mode": mode,
+        "admitted_join": mode == "exact",
+        "bindings_first": len(left),
+        "bindings_second": len(right),
+        "shared": len(shared),
+        "same_singleton_value": same,
+        "not_same_value": len(shared) - same,
+        "only_first": len(set(left) - set(right)),
+        "only_second": len(set(right) - set(left)),
+        "values_recorded": False,
     }

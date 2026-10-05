@@ -3,7 +3,8 @@
 import unittest
 
 from temporal_state.typed_binding_v22 import (
-    COVERAGE_PROVENANCE, BindingError, build_world, compare_policies, summarize_document,
+    ASPECTS, COVERAGE_PROVENANCE, BindingError, build_world, compare_filings,
+    compare_policies, conflict_profile, summarize_document,
 )
 from temporal_state.typed_reader_v15_1 import read_inline_xbrl
 
@@ -105,3 +106,57 @@ class TypedBindingWorld(unittest.TestCase):
 def json_blob(summary):
     import json
     return json.dumps(summary)
+
+
+def synthetic(rows):
+    facts = []
+    for ordinal, (concept, value, scale) in enumerate(rows):
+        facts.append({
+            "fact_ordinal": ordinal,
+            "binding_status": "reported_aspects_resolved",
+            "status": "normalized",
+            "resolved_aspects": {key: True for key in ASPECTS},
+            "visibility": "rendering_unverified",
+            "normalized_value": value,
+            "scale_property": scale,
+            "reported_aspects": {
+                "concept": concept,
+                "entity": {"scheme": "urn:authored:entity", "identifier": "A"},
+                "period": {"kind": "instant", "lexemes": {"instant": "2024-12-31"}},
+                "unit": {"shape": "simple_product", "measures": ["{urn:authored:unit}USD"],
+                         "numerator_measures": [], "denominator_measures": []},
+                "dimensions": [],
+            },
+        })
+    return {"facts": facts}
+
+
+class SourceCheck(unittest.TestCase):
+    def test_close_duplicate_is_bucketed_without_keeping_the_value(self):
+        profile = conflict_profile(synthetic([
+            ("{urn:tax/2024}Revenue", "100", 0),
+            ("{urn:tax/2024}Revenue", "100.05", 3),
+        ]))
+        self.assertEqual(profile["conflict_bindings"], 1)
+        self.assertEqual(profile["ratio_buckets"]["within_0.1pct"], 1)
+        self.assertEqual(profile["scale_attribute_differs"], 1)
+        self.assertFalse(profile["values_recorded"])
+        self.assertNotIn("100", json_blob(profile))
+
+    def test_large_gap_is_not_called_a_near_duplicate(self):
+        profile = conflict_profile(synthetic([
+            ("{urn:tax/2024}Revenue", "100", 0),
+            ("{urn:tax/2024}Revenue", "250", 0),
+        ]))
+        self.assertEqual(profile["ratio_buckets"]["larger"], 1)
+
+    def test_taxonomy_year_is_not_an_exact_join(self):
+        older = synthetic([("{urn:tax/2023}Revenue", "100", 0)])
+        newer = synthetic([("{urn:tax/2024}Revenue", "90", 0)])
+        exact = compare_filings(older, newer, "exact")
+        loose = compare_filings(older, newer, "local_name_diagnostic")
+        self.assertEqual(exact["shared"], 0)
+        self.assertTrue(exact["admitted_join"])
+        self.assertEqual(loose["shared"], 1)
+        self.assertEqual(loose["not_same_value"], 1)
+        self.assertFalse(loose["admitted_join"])
