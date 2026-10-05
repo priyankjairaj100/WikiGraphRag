@@ -4,7 +4,8 @@ import unittest
 
 from temporal_state.certificate_controller_v22 import (
     AUTHORIZED, BUDGET_EXCEEDED, CONFLICT, COVERAGE_UNRESOLVED, EXHAUSTED_ACTIONS,
-    PLANNER_STOP, ControllerError, Judgment, Obligation, VisibleState, run_acquisition,
+    PLANNER_STOP, ControllerError, Judgment, Obligation, VisibleState, external_coverage,
+    run_acquisition,
 )
 from temporal_state.certificate_v21 import (
     Action, Candidate, Cost, CoverageAssertion, Problem, Witness,
@@ -168,3 +169,13 @@ class AcquisitionContract(unittest.TestCase):
         self.assertEqual(opened.stop_reason, AUTHORIZED)
         self.assertEqual(opened.evaluation.coverage_cleared, True)
         self.assertEqual(opened.evaluation.blockers, ())
+
+    def test_beam_score_and_local_optimum_cannot_clear_coverage(self):
+        with self.assertRaises(ControllerError):
+            external_coverage(True, "beam saturated after the top score")
+        with self.assertRaises(ControllerError):
+            external_coverage(True, "local-optimum")
+        open_gate = external_coverage(False, "beam_saturated")
+        self.assertFalse(open_gate.cleared)
+        cleared = external_coverage(True, "Closed over the typed fact list supplied by the caller.")
+        self.assertTrue(cleared.cleared)

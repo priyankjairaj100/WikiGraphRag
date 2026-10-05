@@ -18,9 +18,29 @@ from temporal_state.certificate_v21 import (
     Cost, CoverageAssertion, Evaluation, Problem, Witness, evaluate,
 )
 
+REFUSED_COVERAGE_REASONS = (
+    "beam_saturated", "top_score", "zero_pair_loss", "local_optimum", "candidate_count",
+)
+
 
 class ControllerError(ValueError):
     """The caller broke the acquisition contract. No run result is produced."""
+
+
+def external_coverage(cleared, provenance):
+    """A coverage assertion the controller did not infer from its own search.
+
+    Beam saturation, a high top score, zero pair loss, a local optimum, and a
+    candidate count cannot clear the sentinel. They may be recorded only while
+    the sentinel stays open.
+    """
+    assertion = CoverageAssertion(cleared, provenance)
+    if cleared:
+        folded = assertion.provenance.lower().replace("-", "_").replace(" ", "_")
+        refused = [reason for reason in REFUSED_COVERAGE_REASONS if reason in folded]
+        if refused:
+            raise ControllerError("coverage cannot be cleared by " + refused[0])
+    return assertion
 
 
 Planner = Callable[["VisibleState"], Tuple[str, ...]]

@@ -4,8 +4,8 @@ import unittest
 
 from temporal_state.typed_binding_v22 import (
     ASPECTS, COVERAGE_PROVENANCE, BindingError, build_world, compare_filings,
-    compare_policies, conflict_profile, namespace_year_profile, open_scope_profile,
-    summarize_document,
+    compare_policies, conflict_profile, dimension_residual_profile, namespace_year_profile,
+    open_scope_profile, summarize_document,
 )
 from temporal_state.typed_reader_v15_1 import read_inline_xbrl
 
@@ -227,3 +227,41 @@ class OpenScopeProbe(unittest.TestCase):
         other = {"facts": [scoped_fact(0, "{http://fasb.org/srt/2024}Revenue", "80", "2023-12-31", "{urn:d}All")]}
         mixed = namespace_year_profile(older, other)
         self.assertEqual(mixed["namespace_class"]["other_namespace"], 1)
+
+
+class DimensionResidual(unittest.TestCase):
+    def test_the_amount_alone_does_not_authorize_a_scoped_answer(self):
+        document = {"facts": [
+            scoped_fact(0, "{urn:tax/2024}Revenue", "100", "2024-12-31", "{urn:tax/2024}Consolidated"),
+        ]}
+        world = build_world(document, {"concept": "{urn:tax/2024}Revenue"}, split_scope=True)
+        self.assertEqual([item.action_id for item in world.problem.actions], ["fact-0/amount", "fact-0/scope"])
+        amount_only = compare_policies(world, certificate_limit=1)[2]
+        both = compare_policies(world, certificate_limit=2)[2]
+        self.assertEqual(amount_only.outcome, "abstained")
+        self.assertEqual(amount_only.acquired_facts, 1)
+        self.assertEqual(both.outcome, "emitted")
+        self.assertEqual(both.acquired_facts, 2)
+
+    def test_one_complete_fact_does_not_clear_a_second_dimension(self):
+        document = {"facts": [
+            scoped_fact(0, "{urn:tax/2024}Revenue", "100", "2024-12-31", "{urn:tax/2024}Consolidated"),
+            scoped_fact(1, "{urn:tax/2024}Revenue", "40", "2024-12-31", "{urn:tax/2024}Segment"),
+        ]}
+        world = build_world(document, {"concept": "{urn:tax/2024}Revenue"}, split_scope=True)
+        decision = compare_policies(world, certificate_limit=2)[2]
+        self.assertEqual(decision.outcome, "abstained")
+        profile = dimension_residual_profile(document)
+        self.assertEqual(profile["dimension_value_changing_groups"], 1)
+        self.assertEqual(profile["same_dimension_value_conflicts"], 0)
+        self.assertEqual(profile["policy_outcomes"], {"abstained/emitted/abstained": 1})
+        self.assertFalse(profile["values_recorded"])
+
+    def test_same_dimension_numbers_are_not_counted_as_a_dimension_split(self):
+        document = {"facts": [
+            scoped_fact(0, "{urn:tax/2024}Revenue", "100", "2024-12-31", "{urn:tax/2024}Consolidated"),
+            scoped_fact(1, "{urn:tax/2024}Revenue", "101", "2024-12-31", "{urn:tax/2024}Consolidated"),
+        ]}
+        profile = dimension_residual_profile(document)
+        self.assertEqual(profile["same_dimension_value_conflicts"], 1)
+        self.assertEqual(profile["dimension_value_changing_groups"], 0)

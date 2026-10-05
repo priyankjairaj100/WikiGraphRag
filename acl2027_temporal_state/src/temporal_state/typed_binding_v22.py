@@ -110,7 +110,8 @@ def _matches(fact, specified):
     return all(aspects[key] == required for key, required in specified.items())
 
 
-def build_world(document, specified, *, coverage_cleared=True, include_hidden=False) -> BindingWorld:
+def build_world(document, specified, *, coverage_cleared=True, include_hidden=False,
+                split_scope=False) -> BindingWorld:
     """Build one filing's observed candidates. Zero matches produce no problem."""
     if not isinstance(coverage_cleared, bool):
         raise BindingError("coverage_cleared must be a bool")
@@ -137,11 +138,18 @@ def build_world(document, specified, *, coverage_cleared=True, include_hidden=Fa
         candidates.append(Candidate(candidate_id, candidate_id, ("scoped-answer",)))
         for fact in members:
             ordinal = fact["fact_ordinal"]
-            fact_atoms = tuple(f"f{ordinal}/{name}" for name in ("value", *ASPECTS))
+            if split_scope:
+                fact_atoms = (f"f{ordinal}/value", f"f{ordinal}/dimensions")
+                amount, scope = Action(f"fact-{ordinal}/amount", (fact_atoms[0],)), Action(
+                    f"fact-{ordinal}/scope", (fact_atoms[1],))
+                actions.extend((amount, scope))
+                action_ids.extend((amount.action_id, scope.action_id))
+            else:
+                fact_atoms = tuple(f"f{ordinal}/{name}" for name in ("value", *ASPECTS))
+                action = Action(f"fact-{ordinal}", fact_atoms)
+                actions.append(action)
+                action_ids.append(action.action_id)
             atoms.extend(fact_atoms)
-            action_id = f"fact-{ordinal}"
-            actions.append(Action(action_id, fact_atoms))
-            action_ids.append(action_id)
             obligations.append(Obligation(f"support-{ordinal}", candidate_id, "scoped-answer", fact_atoms))
     if not classes:
         raise BindingError("no observed fact matches the specified aspects")
@@ -441,4 +449,74 @@ def namespace_year_profile(first, second):
         "namespace_class": counts,
         "not_same_value": disagree,
         "values_recorded": False,
+    }
+
+
+def _axis_members(fact):
+    return {_qname_local(item.get("dimension")) or "": _qname_local(item.get("member")) or ""
+            for item in fact["reported_aspects"]["dimensions"]}
+
+
+def dimension_residual_profile(document, *, source_version=""):
+    """Separate near-duplicate numbers from groups whose dimension settings differ.
+
+    Policy outcomes are measured with the certificate controller. Sufficiency
+    emits one class. The certificate at one acquired fact abstains while another
+    class remains. No natural question is scored.
+    """
+    facts, _, _ = eligible_facts(document)
+    grouped: Dict[str, list] = {}
+    for fact in facts:
+        aspects = fact["reported_aspects"]
+        key = _canonical({name: aspects[name] for name in ASPECTS if name != "dimensions"})
+        grouped.setdefault(key, []).append(fact)
+    same_setting = multi_setting = empty_and_explicit = 0
+    setting_buckets = {"2": 0, "3-5": 0, "6-10": 0, "11+": 0}
+    axes: Dict[str, int] = {}
+    policies: Dict[str, int] = {}
+    probes = []
+    for key, members in grouped.items():
+        values = {fact["normalized_value"] for fact in members}
+        settings = {_canonical(fact["reported_aspects"]["dimensions"]) for fact in members}
+        if len(values) < 2:
+            continue
+        if len(settings) == 1:
+            same_setting += 1
+            continue
+        multi_setting += 1
+        present = [len(fact["reported_aspects"]["dimensions"]) > 0 for fact in members]
+        if any(present) and not all(present):
+            empty_and_explicit += 1
+        width = len(settings)
+        bucket = "2" if width == 2 else "3-5" if width <= 5 else "6-10" if width <= 10 else "11+"
+        setting_buckets[bucket] += 1
+        maps = [_axis_members(fact) for fact in members]
+        seen_axes = set().union(*maps) if maps else set()
+        by_axis = {axis: {item.get(axis, "<absent>") for item in maps} for axis in seen_axes}
+        differing = " | ".join(sorted(axis for axis, seen in by_axis.items() if len(seen) > 1)) or "<none>"
+        axes[differing] = axes.get(differing, 0) + 1
+        world = build_world({"facts": members}, {"concept": members[0]["reported_aspects"]["concept"]})
+        aspect, sufficiency, certificate = compare_policies(world, certificate_limit=1)
+        label = aspect.outcome + "/" + sufficiency.outcome + "/" + certificate.outcome
+        policies[label] = policies.get(label, 0) + 1
+        probe_key = source_version + "\n" + key
+        probes.append({
+            "probe_id": hashlib.sha256(probe_key.encode("utf-8")).hexdigest()[:20],
+            "source_version": source_version,
+            "dimension_settings": width,
+            "empty_and_explicit": bool(any(present) and not all(present)),
+            "differing_axes": differing,
+        })
+    ranked = sorted(axes.items(), key=lambda item: (-item[1], item[0]))
+    return {
+        "same_dimension_value_conflicts": same_setting,
+        "dimension_value_changing_groups": multi_setting,
+        "empty_and_explicit_dimension_groups": empty_and_explicit,
+        "dimension_setting_buckets": setting_buckets,
+        "policy_outcomes": policies,
+        "differing_axes": [{"axes": name, "groups": count} for name, count in ranked[:20]],
+        "differing_axis_patterns": len(axes),
+        "probes": probes,
+        "values_recorded": False,
+        "held_out": False,
     }
