@@ -1,0 +1,85 @@
+\paragraph{Decision classes and adaptive tests.}
+EC$^2$ already selects costly tests to distinguish equivalence classes, rather
+than every latent hypothesis \citep{golovin2010ec2}. Its formulation can represent
+correlated noise through expanded realizations. ECED uses a root-cause model
+with specified test likelihoods \citep{chen2017eced}. A learned score over
+source-binding proposals does not by itself supply these probability models.
+Our joint answer map specializes the class definition; it is not a new
+equivalence-class objective.
+
+The expected-cover proof underlying the original adaptive-submodularity
+analysis was corrected in the authors' version 5, with a weaker bound under
+additional assumptions \citep{golovin2011adaptive}. Later cover results have
+their own models and parameters
+\citep{esfandiari2021adaptivity,hellerstein2021tight}. We do not transfer the
+original EC$^2$ constant to this problem or assert that EC$^2$ itself has been
+disproved. More fundamentally, conjunctive source rules need not have the
+diminishing returns required by the relevant guarantees.
+
+\paragraph{Logical certificates and finite optimization.}
+Test cover reduces relevant distinctions to a pair universe
+\citep{debontridder2003testcover}. Abduction-based explanations combine
+consistency and entailment and can be computed with exact hitting-set methods
+\citep{ignatiev2019abduction}; explanation/counterexample duality is also
+established \citep{ignatiev2019duality}. Boolean-function evaluation separates
+a certificate's cost from the adaptive cost of finding it
+\citep{deshpande2014sbfe}. These precedents rule out claims that minimum
+certificates, positive evidence plus exclusion, or offline/online distinctions
+are new general principles. Our finite encoding specifies how source anchors,
+complete joint answers, conjunctive premises and conflicts enter that contract.
+
+\paragraph{Sufficiency and complementary evidence.}
+Sufficient Context considers ambiguity and selective answering
+\citep{joren2025sufficient}. S2G-RAG's structured gaps include relations and
+evidence spans; its sentence-pointer mechanism retains disambiguating context
+\citep{li2026s2g}. RINSE evaluates evidence adequacy before answer generation
+\citep{chen2026rinse}. Therefore a generic sufficiency baseline can request the
+same table, definition or scope witness as our proposed controller.
+
+The Missing Complement explicitly represents alternatives within evidence
+requirements and conjunction across requirements, and distinguishes selection
+from source discovery \citep{feng2026missing}. Its coding-agent setting differs
+from source-scoped factual answers, but conjunctive evidence recovery and
+set-level complement acquisition are direct prior mechanisms. The intended
+empirical distinction here is whether explicit competing joint answers and
+verified rival exclusion improve the allocation of the same evidence and
+controller budget.
+
+\paragraph{Ambiguous and conflicting answers.}
+Tree of Clarifications, REFUEL and MADAM-RAG already explore interpretations
+or resolve conflicting evidence
+\citep{kim2023clarifications,gao2021refuel,wang2025madam}. Candidate generation,
+pruning and disagreement alone cannot carry our novelty claim. Their
+mechanisms should inform matched ambiguity-aware baselines, including cases
+where clarification is the appropriate action.
+
+\paragraph{Unresolved related-work scope.}
+The indexed primary abstract of ROSE-RAG describes robust sequential evidence
+acquisition under source-model ambiguity \citep{mokhtari2026roserag}. Its full
+theorem assumptions and proofs were unavailable in this audit. We therefore
+record a potential direct overlap rather than claim a verified distinction.
+The audit is current to 5 October 2026 and is targeted, not an exhaustive
+novelty certification. It must be refreshed before submission.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabularx}{\linewidth}{@{}p{0.27\linewidth}X@{}}
+\toprule
+Result in this manuscript & Contribution status \\
+\midrule
+Joint scoped certificate & Domain-specific integration and explicit semantic
+assurance contract; novelty of the integration remains to be defended. \\
+Soundness and error bounds & Elementary consequences of stated premises and
+event containment; not new concentration or calibration theory. \\
+Exact finite optimization & Boolean/MILP encoding and reference enumeration;
+not a new general solver. \\
+Hardness and cover bound & Set-cover reduction and attributed conditional
+adaptation; no unrestricted greedy guarantee. \\
+Lookahead counterexample & A precise limitation of the specified policy class;
+no lower bound against all acquisition algorithms. \\
+Retrieval improvement & Prospective empirical claim; no supporting held-out
+result in this checkpoint. \\
+\bottomrule
+\end{tabularx}
+\caption{Claim boundaries that the empirical paper must preserve.}
+\end{table}

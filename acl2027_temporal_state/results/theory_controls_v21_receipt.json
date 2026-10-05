@@ -1,0 +1,136 @@
+{
+  "all_passed": true,
+  "artifact_sha256": {
+    "data/theory_controls_v21.json": "a6d6a35187bebb554a3dca8e2c6288a723d7d03236a4c73cb71510de5cf91ad5",
+    "scripts/check_theory_v21.py": "474398582f82ffe0171651caf90fa5d43c0d5d35ae364796d21b68b5d3c735fd",
+    "src/temporal_state/certificate_v21.py": "4d49e293ee9e404029515333023fb05c6dca9196066a3e3752807087e9a0ae99"
+  },
+  "checks": [
+    {
+      "activated_witness_ids": [],
+      "authorized": false,
+      "blockers": [
+        "NO_COMPLETE_POSITIVE_SUPPORT",
+        "UNREFUTED_RIVAL_ACTION"
+      ],
+      "local_certificate": false,
+      "name": "empty-is-unresolved",
+      "passed": true
+    },
+    {
+      "activated_witness_ids": [
+        "a-value"
+      ],
+      "authorized": false,
+      "blockers": [
+        "NO_COMPLETE_POSITIVE_SUPPORT",
+        "UNREFUTED_RIVAL_ACTION"
+      ],
+      "local_certificate": false,
+      "name": "value-alone-is-insufficient",
+      "passed": true
+    },
+    {
+      "activated_witness_ids": [
+        "a-value",
+        "not-b-one"
+      ],
+      "authorized": false,
+      "blockers": [
+        "NO_COMPLETE_POSITIVE_SUPPORT",
+        "UNREFUTED_RIVAL_ACTION"
+      ],
+      "local_certificate": false,
+      "name": "one-rival-representative-is-not-enough",
+      "passed": true
+    },
+    {
+      "activated_witness_ids": [
+        "a-binding",
+        "not-b-one",
+        "not-b-two"
+      ],
+      "authorized": false,
+      "blockers": [
+        "NO_COMPLETE_POSITIVE_SUPPORT"
+      ],
+      "local_certificate": false,
+      "name": "conjunctive-support-without-value-is-insufficient",
+      "passed": true
+    },
+    {
+      "activated_witness_ids": [
+        "a-binding",
+        "a-value",
+        "not-b-one",
+        "not-b-two"
+      ],
+      "authorized": true,
+      "blockers": [],
+      "local_certificate": true,
+      "name": "complete-support-plus-all-rivals",
+      "passed": true
+    },
+    {
+      "activated_witness_ids": [
+        "a-binding",
+        "a-value",
+        "conflicting-b-one",
+        "not-b-one",
+        "not-b-two"
+      ],
+      "authorized": false,
+      "blockers": [
+        "CONFLICT",
+        "UNREFUTED_RIVAL_ACTION"
+      ],
+      "local_certificate": false,
+      "name": "conflict-on-unchosen-candidate-blocks",
+      "passed": true
+    },
+    {
+      "cost": "3",
+      "cost_unit": "authored_cost_units",
+      "evaluated_subsets": 32,
+      "name": "additive-union",
+      "objective": "authorized_certificate",
+      "passed": true,
+      "scope": "offline finite supplied-map optimum; no online-policy guarantee",
+      "selected_action_ids": [
+        "footnote",
+        "header",
+        "row"
+      ],
+      "status": "OPTIMAL"
+    },
+    {
+      "cost": "2",
+      "cost_unit": "authored_cost_units",
+      "evaluated_subsets": 32,
+      "name": "nonmonotone-extension-can-be-cheaper",
+      "objective": "authorized_certificate",
+      "passed": true,
+      "scope": "offline finite supplied-map optimum; no online-policy guarantee",
+      "selected_action_ids": [
+        "bridge",
+        "footnote",
+        "header",
+        "row"
+      ],
+      "status": "OPTIMAL"
+    },
+    {
+      "authorized_objective_status": "INFEASIBLE",
+      "local_objective_status": "OPTIMAL",
+      "local_optimum_authorized": false,
+      "name": "local-optimum-cannot-clear-unknown",
+      "passed": true
+    }
+  ],
+  "checks_passed": 9,
+  "checks_total": 9,
+  "evidence_status": "Entirely authored finite controls; no natural-source, model, or benchmark results.",
+  "generated_at_utc": "2026-10-05T07:04:35.397044+00:00",
+  "schema_version": 21,
+  "scope": "Finite supplied-map algebra checks; not source authentication, semantic validation, model QA, or retrieval evaluation."
+}

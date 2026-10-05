@@ -1,0 +1,293 @@
+Local empirical contract for the v21 theory
+Versioned handoff; prepared 2026-10-05. No model or benchmark run is reported here.
+
+Purpose and status
+
+Test whether acquiring conjunctive source witnesses for competing complete answer
+interpretations improves fully supported answer coverage at matched total cost
+and unsupported-answer risk. The theory is conditional on candidate coverage,
+sound judgments and faithful rendering. It does not establish those properties
+for an automatic system or predict a performance gain.
+
+The user will execute the empirical program locally. This document specifies the
+required study and the usable repository components; it is not a claim that the
+automatic end-to-end pipeline is implemented. The implementation map is
+docs/theory_implementation_map_v21.txt. Keep the v16 proposal and frozen v17-v20
+protocols as historical records. A new local protocol may replace their proposed
+future settings explicitly; it must not overwrite their inputs or observations.
+
+1. Freeze the target before collecting confirmatory outcomes
+
+Each question has a declared source universe and evidence cutoff, permitted
+source access, a complete requested answer schema and a rule for equivalent
+answers. An answer is joint: if the question requests two versions, both scoped
+claims belong to one answer. Reporting both values does not establish a
+like-for-like change, correction or causal explanation. Such relations need
+their own supported claims. Equal numbers with different requested scopes are
+not automatically equivalent.
+
+Separate three populations in the protocol:
+  (a) resolvable questions with sufficient source evidence;
+  (b) well-specified questions with insufficient accessible evidence;
+  (c) genuinely unresolved user/source interpretations, including conflicts.
+The allowed outputs and reference action for each population must be explicit.
+An optional user-clarification experiment needs a separate interaction budget;
+it must not mix hidden user answers into a source-retrieval-only comparison.
+
+Preregister one primary supported-answer endpoint, one unsupported-answer
+tolerance, the practical effect size, cost accounting, exclusions, split unit,
+sample-size rule, model-selection procedure, budget grid and analysis plan.
+Choose these on disjoint development data. A source or model cannot be selected
+because its confirmatory outcomes favor the method.
+
+Use issuer/document-family/history-level splits. Adjacent versions, shared
+tables, derived questions and constructed perturbations from one history must
+stay together. The old questions, eight authored reader controls and previously
+inspected filing pairs are development material. A new identifier does not make
+them held out. For a broad document claim, include a second independently
+sampled source family; otherwise state the financial/structured-document scope.
+
+The earlier proposal of at least 30 histories and about 300 questions is a
+recruitment starting point, not a power calculation. Use a separate pilot and
+history-level variance to set the final size before test predictions. Preserve
+all sampled histories and reasons for unavailable, ineligible or rejected cases.
+
+2. Build independent references for the assumptions
+
+Two independent human annotators inspect the question and complete admitted
+source context. Record acceptable complete scoped answers, feasible rival
+interpretations, required support and refutation relations, alternative valid
+witness sets, and unresolved cases. Adjudicate before predictions. Annotation
+must not be constructed from the proposed method's survivors or retrieved
+items. Keep predictions and method identity hidden from annotators/grading.
+
+Human agreement and adjudication uncertainty must be reported. Existing
+model-assisted development correspondence review is useful engineering input;
+it is not independent human gold. A finite human reference is itself a scoped,
+fallible operationalization of coverage. Do not claim that empirical recall
+proves universal completeness in an unrestricted corpus.
+
+Give every evidence atom an immutable source identity, locator and digest.
+Record each conjunctive witness as a set of required premises, including
+headings, continuations, unit exceptions and cross-version mappings. Missing
+premises mean unresolved. They do not refute a candidate. Distinguish a factual
+refutation from a scope mismatch and from conflicting source statements.
+Annotate multiple valid witness realizations when available, so retrieval is
+not penalized merely for finding a correct alternative to one annotated span.
+
+3. Match theory assumptions to measurements
+
+Candidate coverage:
+  Measure per-question coverage of all reference answer-changing classes, joint
+  completeness of each requested answer, and omission of a feasible class. A
+  class counts as covered only if it has a source-consistent representative;
+  listing its answer label on an invalid hypothesis is insufficient. Recall of
+  one valid reference target supports the weaker target-preservation theorem,
+  not the stronger unique-resolution theorem over all admissible classes.
+  Report these over all questions and among answered questions, by source
+  family and ambiguity type. Also report beam size, pruning and unknown/coverage
+  gate decisions. Candidate count and top-1 accuracy do not measure coverage.
+  An oracle candidate arm is diagnostic only. Low pair loss or beam pruning
+  cannot serve as the reference label for clearing the unknown gate.
+  While the sentinel is OPEN, structural certificate optimization is planning
+  or diagnosis only. It cannot authorize an answer or manufacture a coverage
+  assessment from a favorable finite-map optimum.
+
+Judgment soundness:
+  Measure support precision and false contradiction/refutation on independently
+  reviewed relations. Give both judgment-level denominators and the fraction
+  of questions on which at least one feasible interpretation is eliminated.
+  The latter catches accumulated or correlated errors across many calls.
+  Condition separately on acquired evidence and all declared premises being
+  present. Record unresolved and conflicting judgments rather than dropping
+  them. V21 abstains on any observed positive/negative conflict. Adding another
+  judgment cannot clear an existing signed-ledger conflict. Any later
+  adjudication or supersession needs a separately versioned, justified protocol
+  preserving the originals; that extension lies outside the present theorem.
+
+Positive support and rendering:
+  Score the complete answer jointly for value, sign/scale, all requested scope,
+  material relations and valid citations. Audit whether every material output
+  claim is present in the authorized structured answer and supported by the
+  acquired premises. A source hash proves identity, not entailment. A schema-
+  valid output can still be semantically wrong. Report reader correctness with
+  independently sufficient evidence separately from retrieval failures.
+
+Conjunctive acquisition:
+  Report witness-set completion, missing-premise rate, retrieval of a valid
+  minimal or alternative certificate, number of acquired atoms, and cost to the
+  first valid certificate. Include examples requiring three or more premises;
+  a two-step lookahead does not solve arbitrary conjunctions. Source-constructed
+  missing-heading/attachment swaps remain a separate mechanistic track.
+  For small supplied-judgment instances, compare solver cost with an exact
+  certificate optimum. This is an offline oracle diagnostic and not an online
+  policy regret guarantee. A verifier may not inspect unacquired source text to
+  produce free selection labels.
+
+Risk and coverage:
+  Let N be all eligible scheduled questions, A the number with a substantive
+  answer, and E the number of those answers that are wrong under the declared
+  joint-answer reference. Report answer rate A/N, joint error mass E/N and
+  selective risk E/A. The last is undefined when A=0; do not report zero risk
+  for an abstain-all system. Report correct-answer yield over all questions,
+  plus correct refusal/clarification on their declared populations. Keep strict
+  joint-answer error and unsupported-material-claim risk as separate metrics.
+  Define substantive-answer detection before evaluation, including material
+  claims in malformed or schema-invalid outputs. A parser failure must not
+  hide an exposed unsupported answer by relabeling it as an empty refusal.
+
+  A sum of unconditional component error probabilities controls unconditional
+  error mass under the theorem's assumptions. It does not directly bound E/A.
+  Selective bounds require the answer-rate denominator or independently valid
+  answer-conditional assumptions. Do not substitute empirical component point
+  estimates for calibrated guarantees. Report uncertainty for both the error
+  numerator and answer denominator; any claimed risk certificate needs its own
+  stated calibration procedure and validation assumptions.
+
+  In an adaptive run, a verifier's average accuracy on a static set does not
+  supply a uniform error bound conditional on every reachable acquisition
+  history. Report on-policy errors and question-level accumulated errors.
+  Any per-call bound lifted through the theorem must explicitly justify its
+  uniform conditional premise and finite or otherwise controlled call budget.
+
+Cost and non-anticipation:
+  Record initial retrieval/index construction, candidate proposal, descriptors,
+  controller/scorer, every source access, verifier and final reader call. Give
+  prompt/output tokens for all calls, wall time, cache reuse, and any monetary
+  estimate with its model/price basis. State index amortization separately.
+  The theorem's additive atomic acquisition cost and the actual rendered-prompt
+  capacity are separate quantities. Measure exact tokenizer/template tokens;
+  labels and merged span headers can change cost, so character counts and sums
+  of separately tokenized snippets are insufficient.
+
+  Each action log must show what was known before selection, what new atoms
+  were acquired and charged, what judgments were emitted afterward, and why
+  the system answered or stopped. Predicted utility may rank actions; unseen
+  true support/refutation labels cannot guide an online action. If full source
+  text is read to predict utility, that access and its model cost are charged.
+
+4. Baselines and diagnostic ablations
+
+First establish a competent complete-evidence reader. Select and freeze its
+model/version, prompts, decoding, arithmetic tools and complete-evidence
+competence thresholds on independent development cases. The historical 2/8
+authored result is a failed gate; it is not a strong-reader baseline.
+
+The primary acquisition comparison shares source pool, initial evidence,
+candidate proposer, available actions, verifier, reader, source metadata and
+cost definition. Compare:
+  - ordinary structural/aspect filtering and a label-aware query parser;
+  - hybrid/reranked retrieval and strong generic evidence-sufficiency control;
+  - competing-interpretation acquisition with dependency-aware selection;
+  - a larger-context structural reader along a measured cost curve;
+  - count/cost-matched random actions as a diagnostic, not the main competitor.
+
+Give all methods the same typed XBRL facts, validated mappings and structure in
+the machine-assisted track. Report a text/table track separately. Do not hide
+correct source metadata from a baseline. Distinguish faithful reproductions
+from adaptations of cited methods and report each adaptation's information.
+
+At minimum ablate top-one versus multiple hypotheses, generic utility versus
+rival-specific utility, singleton versus bounded lookahead, conjunction-aware
+versus independent-snippet packing, and typed constrained versus direct reader.
+Use fixed-evidence comparisons to isolate the reader and fixed-reader
+comparisons to isolate acquisition. Oracle candidates and oracle witness
+judgments diagnose bottlenecks; they cannot be pooled into automatic results.
+Candidate/action order permutations expose tie-order artifacts.
+
+At matched total cost, report supported-answer gain and unsupported risk. For
+a claim at matched risk, choose policy thresholds on development data and
+evaluate the frozen operating points on test. Do not tune thresholds using
+test risk. Plot risk-coverage and cost-performance curves with all prespecified
+budget points, including failed or budget-exhausted runs.
+
+5. Local sequence and stop/go decisions
+
+Stage 0: preserve the starting commit and run the portable checks below. Make
+new run directories and bind hashes of code, configurations, sources, model,
+tokenizer, references, complete schedule and seeds. Keep reference files out of
+prediction processes. Reacquired bytes are a new source realization unless
+they match the recorded hashes. Lost historical native outputs cannot be
+recreated by rerunning the model.
+
+Stage 1: obtain independent source/answer admission and a complete-evidence
+reader competence pilot. Freeze numerical targets before collection. The v16
+proposal (100 complete plus 100 insufficient cases; one-sided 95% bounds above
+85% joint correctness and below 5% unsupported answers) is a proposed starting
+gate, not an achieved result or proof of adequacy in the final population.
+
+Stage 2: implement and separately evaluate automatic proposal, three-valued
+verification, coverage gate and the non-anticipating acquisition adapter.
+The v16 targets of at least 95% proposal recall and at most 2% false elimination
+are provisional engineering targets. Specify their exact denominator and
+confidence procedure before collection. Use history-clustered uncertainty
+where judgments/questions share sources. Failure returns work to the relevant
+component; it cannot be repaired by omitting the difficult test cases.
+
+Stage 3: establish residual need on the disjoint pilot: do real sources retain
+binding failures after the structural and generic-sufficiency baselines? Can
+independent annotators identify distinguishing source relations reliably? If
+not, stop the specialized-method claim and report the narrower finding.
+
+Stage 4: freeze and execute the confirmatory matched comparison. The previous
+five-point supported-answer gain target is provisional, to be finalized before
+test predictions with the unsupported-risk tolerance. Use paired analysis with
+resampling or inference at history/document-family level, not independent
+question bootstraps. Report per-history results, confidence intervals, declared
+multiple-comparison handling and all exclusion/technical-failure counts.
+
+Retain every scheduled cell: completed, failed, unattempted or blocked after a
+stop. Technical failures have their own rate and remain in the intention-to-run
+correctness denominator; they cannot be silently treated as safe refusals.
+Seal raw requests, responses, usage, errors and source-access traces before
+grading. Keep a verified second local copy of each completion; test cold-process
+read-back before a long campaign. Exact third-party captures and credentials
+remain outside public Git. Commit public code, allowed data, manifests,
+protocols, statistical scripts, aggregate results and manuscript updates.
+
+6. Commands that are usable now
+
+From the repository root, with Python 3.11 or later:
+
+  python3 scripts/verify_repository.py
+  cd acl2027_temporal_state
+
+Portable authored implementation checks, without model/API calls or a corpus:
+
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_witness_selection_v14.py' -v
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_reader_binding_v18.py' -v
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_reader_joint_scoring*' -v
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_native_completion_checkpoint*' -v
+
+The v21 finite-certificate reference checks and authored mechanism examples:
+
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_certificate_v21.py' -v
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 scripts/check_theory_v21.py
+
+The second command prints its result. To save a fresh local receipt, pass
+--output /absolute/local/run-root/theory_controls_new.json. These commands do
+not retrieve sources, verify natural-language judgments or run a model.
+
+Optional preparation of the sixteen existing development messages, using a NEW
+directory outside the repository (replace the example path):
+
+  python3 scripts/prepare_authored_policy_comparison_v20_1.py --output-directory /absolute/local/run-root/policy_inputs_new
+
+That command prepares messages and a manifest only. It does not tokenize them,
+load a reader, create natural questions or run the planned comparison. Inspect
+the produced manifest's outstanding requirements before writing a native
+adapter. Do not run the frozen v19.1 execute/freezer entrypoints as a new local
+campaign: they bind historical paths, hashes, counters and output destinations.
+
+The full historical suite additionally needs its pinned Arelle/lxml runtime and
+an external temporary directory; see docs/reproduce_v15.txt and
+results/reference_runtime_v15.json. Once those are installed and their local
+paths recorded, run from the research directory:
+
+  PYTHONDONTWRITEBYTECODE=1 TMPDIR=/absolute/local/tmp PYTHONPATH=/absolute/local/arelle_runtime:src python3 -m unittest discover -s tests -q
+
+This is an implementation check, not an empirical replication. Full-source
+reanalysis requires exact admitted private bytes, and historical v19/v19.1 raw
+native outputs remain unavailable. No end-to-end automatic benchmark command
+is supplied because its local model/corpus adapters and references are not yet
+implemented or admitted. The missing interfaces are enumerated in the map.

@@ -1,0 +1,248 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array,enumitem,microtype}
+\usepackage[round,authoryear]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{pdftitle={Certificates for Scoped Answers: Support, Alternative Exclusion, and Evidence Selection},pdfauthor={WikiGraphRAG research project}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small WikiGraphRAG: certificate theory}
+\fancyhead[R]{\small v0.21 / 5 October 2026}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{2em}
+\setlist{itemsep=2pt,topsep=4pt}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\title{Certificates for Scoped Answers:\\Support, Alternative Exclusion, and Evidence Selection}
+\author{WikiGraphRAG research project\\Theory working manuscript for the ACL 2027 research direction}
+\date{5 October 2026 \quad Version 0.21}
+\begin{document}
+\maketitle
+\begin{abstract}
+Evidence can contain the right numbers and metadata while failing to establish
+which scope belongs to which result. We formalize a certificate for a complete
+joint answer: every required claim has positive source support, every modeled
+answer-changing rival is refuted, no active judgment conflicts, and an external
+coverage assessment accounts for admissible alternatives outside the proposal
+set. We prove source-relative soundness and conditional completeness, separate
+joint error from selective risk, and show precisely where missing candidates
+and fallible verification invalidate assurance. A finite optimization model
+represents conjunctive witnesses, shared source spans and adverse judgments.
+We give exact formulations, a classical set-cover reduction, a counterexample
+to fixed-lookahead guarantees, and a restricted cover approximation with
+explicit assumptions. A reference checker and exhaustive solver accompany the
+theory. These are conditional results and authored implementation checks;
+no natural-data improvement or general semantic-verification guarantee is
+established. The intended contribution is a testable certificate-based method
+for scoped retrieval, whose empirical advantage remains to be measured.
+\end{abstract}
+
+\section{Problem and contribution boundary}
+\label{sec:position}
+A source may report one quantity for a segment in thousands and another for a
+consolidated population in millions. A continued table row, a unit header and a
+population phrase can all be present without the relations that connect them.
+For a question comparing two document versions, both requested versions belong
+to the same joint answer. The retrieval task is to obtain the evidence needed
+to warrant that joint answer and distinguish relevant alternative bindings.
+The source corpus, interpretation rules and output contract must be fixed;
+``the newest document wins'' is not a general resolution rule.
+
+The starting point is established work. Distinguishing decision-equivalent
+hypotheses is the purpose of equivalence-class determination. Sufficient-context,
+gap-judging and complementary-evidence methods already address important parts
+of evidence adequacy. Conjunctive sufficient evidence and set-level retrieval
+also appear in recent work. Therefore neither hypothesis partitioning nor the
+statement that evidence must be jointly sufficient is claimed as new here.
+Section~\ref{sec:related} specifies the overlap and the remaining empirical test.
+
+This manuscript closes the mathematical contract for the proposed route. Its
+contributions are a precise integration of source support, rival exclusion,
+candidate coverage and complete joint scope; proofs of the resulting
+conditional guarantees; and an optimization and implementation contract that
+does not confuse known-map packing with online acquisition. The elementary
+reductions and cover bounds are attributed adaptations of standard machinery.
+The source-semantic assumptions are exposed rather than supplied by the
+finite checker. No claim of a fundamentally new optimization family or an
+ACL-ready empirical paper is made.
+
+\input{theory_core_v21}
+\input{theory_algorithm_v21}
+
+\section{An operational acquisition policy}
+\label{sec:online}
+The exact certificate problem is directly useful after the signed witness map
+is available. It is not, by itself, an online retriever: obtaining that map may
+already require reading and verifying all candidate evidence. We specify the
+following implementable research policy, called \emph{certificate-directed
+acquisition}, to make the intended empirical method concrete. Its planning
+predictions have no authority to certify an answer.
+
+\begin{enumerate}[label=\arabic*.]
+\item \textbf{Declare the task.} Parse all required slots, versions and relation
+types; retain alternative material query readings. Build typed complete joint
+proposals from observed source occurrences and permitted structural
+descriptors. Initialize the coverage sentinel to open. A changed question,
+candidate pruning, or an expanded source domain requires reassessing the
+coverage assertion rather than reusing it silently.
+\item \textbf{Expose candidate actions.} Offer whole source neighborhoods such
+as a row with its possible caption, a continuation identity, or a definition
+footnote. Record their source identifiers, preview access, estimated cost and
+actual acquisition cost. Reading a preview is information access and is
+charged. Reference annotations are inaccessible to this stage.
+\item \textbf{Construct prospective obligations.} For each possible target,
+list missing positive claims and each rival requiring refutation. A planner
+may predict which complete witness premises could discharge them. Use a
+bounded exact solution of this \emph{predicted} map, or a declared heuristic,
+to propose a complete acquisition plan. Prefer plans for which all required
+dependencies can fit; this allows an initially zero-gain action that completes
+a later conjunction. Predictions and their uncertainty remain separate from
+the observed judgment ledger.
+While the sentinel is open, this is diagnostic optimization of the structural
+support and exclusion obligations only; a hypothetical plan does not clear
+the sentinel or authorize an answer.
+\item \textbf{Acquire, then verify.} Acquire a whole action from the chosen
+plan and charge it immediately. Validate received anchors. Only after all
+required premises are present may a source-conditioned verifier add support
+or contradiction to the observed ledger. An unresolved judgment adds neither.
+Retain adverse results and conflicts; replan when a predicted witness fails.
+If no predicted plan is available, apply a frozen exploration rule or stop.
+This choice, tie breaking, shortlist size and compute limit are fixed on
+development data, not selected after held-out outcomes.
+\item \textbf{Check and render.} Apply the certificate gate to observed
+judgments and the current coverage assessment, with an exact final rendered
+cost check. If it passes, render the complete typed answer and its source
+derivations. Otherwise return insufficient evidence, a request to clarify
+the unresolved query distinction, or an explicitly scored partial answer.
+Stop at the declared acquisition or compute limit.
+\end{enumerate}
+
+There are two ledgers. The acquisition ledger retains every source read,
+proposal and verifier call, including failed plans and evidence later omitted
+from the reader input. The bounded reader pack carries every premise used by
+the returned certificate. Shared spans are charged once within a union but
+are never free. Source acquisition, final prompt tokens and latency are
+reported in their own units; a scalar objective requires an explicit conversion.
+Known active contradictions cannot be hidden by dropping their spans from a
+later pack. A conservative implementation checks the full observed ledger for
+conflicts in addition to the selected pack. The v21 signed ledger therefore
+abstains on an observed conflict: adding another judgment cannot erase two
+already active signs. Adjudication or rule supersession would need a separately
+versioned, justified protocol that preserves the original judgments, outside
+the present guarantee.
+
+\begin{proposition}[Policy-independent conditional acceptance]
+If every emitted answer satisfies the sound certificate contract, adaptive
+planning, predicted-witness ranking and stopping do not change deterministic
+source-relative soundness. They may change answer coverage and cost.
+\end{proposition}
+\begin{proof}
+Apply the source-relative soundness theorem to the final observed certificate
+on each emitted run. Its premises concern the final evidence, actual judgments,
+coverage assertion and renderer, not the path that proposed an action. A
+prediction affects the path only. It cannot replace a premise of that theorem.
+For a stochastic learned verifier, satisfying its error assumptions after
+adaptive selection remains necessary; the selective-risk analysis already
+accounts for that distinction.
+\end{proof}
+
+This policy is a specified research method, not a completed automatic pipeline
+in the current repository. There is no cost-competitive online theorem for
+it. In particular, a surrogate plan may be wrong, a source may not contain a
+needed witness, and a finite proposal beam may miss a valid answer class.
+The exact reference solver diagnoses finite packing; it cannot remove these
+semantic and discovery errors.
+
+\section{Relationship to prior work}
+\label{sec:related}
+\input{theory_related_v21}
+
+\section{Empirical contract and falsifiable claims}
+\label{sec:empirical}
+The local study must test the semantic premises and practical value separately.
+Use immutable source snapshots and source-family-disjoint development and test
+splits. Create references before method outputs with independent source review
+and adjudication. Familiar histories and authored mathematical controls remain
+development material. Multiple variants of one history are dependent samples.
+
+The primary endpoint should be the rate of complete, jointly correct and
+source-supported answers under a prespecified final-input budget and charged
+controller budget. Also report answer coverage, conditional error among emitted
+answers, wrong emitted answers per all questions, clarification and abstention,
+and every timeout or schema failure. For a question with genuinely multiple
+admissible readings, the reference must permit clarification or a complete
+scoped multi-answer contract; an arbitrary single reference cannot establish
+unique resolution.
+
+Measure candidate coverage on valid representatives, false support, false
+elimination of valid rivals, premise completeness, output faithfulness and
+actual cost. Mere action-label recall does not validate candidate coverage.
+Claimwise verifier accuracy does not replace runwise or adaptively selected
+error analysis. The theoretical error terms are population quantities; no
+numerical bound follows until those quantities are estimated on appropriate
+independent data.
+
+The baseline ladder is: a strong reader with structure-preserving closure;
+typed scope/version filtering; relation-aware coverage selection; a strong
+reranker; a gap/sufficiency controller; and an ambiguity-aware controller.
+Give every method the same candidate source pool, available structure, reader,
+abstention policy and charged access budget. Add compute-matched semantic
+reranking and set-level complementary selection. Separate a supplied-pool
+packing diagnostic from source-only discovery. Compare the proposed policy to
+the closest available mechanisms, not only to a word-slot coverage strawman.
+
+Fix the primary comparison, practically meaningful effect, sample size method
+and decision rule before held-out predictions. Use a separate pilot to estimate
+history-level variation and justify power; a recruitment target alone is not
+a power calculation. Use history/source-family clustered uncertainty for paired
+method differences. Report the tradeoff across budgets and answer coverage,
+not a selected best operating point. Preserve failed runs and all amendments.
+
+The paper's positive method claim requires a useful improvement over the
+strongest matched baseline with uncertainty that supports the prespecified
+effect, without concealing unsupported answers or extra compute. If structural
+closure or generic sufficiency solves the same cases at the same cost, the
+specialized method claim must be narrowed or abandoned. A formal certificate
+and successful authored controls alone do not meet this gate.
+
+\section{Artifact scope and limitations}
+The released versioned module \texttt{certificate\_v21.py} evaluates a supplied
+atomic witness circuit and searches its finite action subsets. It is not a
+source extractor, natural-language entailment model, candidate-coverage oracle,
+or completed local model host. Atomic coverage must be derived and validated
+upstream; identifiers do not authenticate source meaning. The MILP and restricted
+approximation are mathematical specifications; their implementation status is
+listed separately from the executable exhaustive solver.
+
+The accompanying \texttt{local\_empirical\_contract\_v21.txt} lists commands,
+required adapters, metrics and launch gates. The proof review is a separate
+model-role review, not independent human peer review. Automated checks use
+authored finite cases and establish implementation behavior only. No native
+reader or natural QA experiment is run for this theory checkpoint. Earlier
+negative reader and retrieval results remain in the repository unchanged.
+
+The main mathematical limitation is semantic: a finite checker cannot prove
+that unrestricted natural-language proposals cover every admissible class,
+that source assertions entail a supplied judgment, or that a source is true
+in the world. The exact optimizer is exponential. The restricted approximation
+requires a complete macro representation, conflict freedom and a declared
+additive resource model. Exact tokenizer cost does not generally satisfy that
+model. The online policy has no general approximation guarantee. These
+limitations define measurable failure modes for the local study rather than
+unreported exceptions to a broad guarantee.
+
+{\raggedright
+\bibliographystyle{plainnat}
+\bibliography{theory_references_v21}}
+\end{document}

@@ -1,0 +1,246 @@
+Independent model-role technical review of theory v21
+Review date: 2026-10-05
+Reviewer role: theory_adversary_v21 (separate from the theory authors)
+
+Status: working-note, synthesized manuscript-source and reference-code review
+complete at the exact revisions recorded below; no unresolved blocker found.
+This is an independent task-role check by a model, not independent human review,
+formal proof-assistant verification, an empirical result, or an ACL acceptance
+assessment. The reviewer inspected the local project instructions and frozen
+v14 grounding/selector contracts before reviewing the two new theory notes.
+
+Scope examined
+
+1. docs/theory_core_working_v21.txt: source-consistent interpretation semantics,
+   complete joint answer classes, valid-class coverage, conjunctive premises,
+   conflict handling, certificate soundness, conditional completeness, selective
+   error bounds, adaptive stopping, and nine counterexamples.
+2. docs/theory_algorithm_working_v21.txt: exact Boolean/MILP formulation,
+   nonmonotone rendering-cost search, inherited set-cover hardness, complementarity
+   and bounded-lookahead counterexamples, unique-minimal-witness condition, and
+   conditional macro-cover approximation.
+3. The frozen v14 contract and v16 proposal as compatibility context only.
+
+Current finding
+
+No unresolved mathematical blocker was found in the working-note contracts and
+proofs. This conclusion is conditional on the stated assumptions. The difficult
+semantic premises are exposed rather than established: faithful full-task
+representation, source-semantic support and contradiction, and coverage of every
+admissible action by a SOURCE-CONSISTENT proposed representative. The theorem
+does not turn a finite hypothesis beam, a provenance string, or a zero ambiguity
+score into open-domain certainty.
+
+Soundness and risk checks
+
+* The source semantics uses a nonempty coherent model class. A sound negative
+  conclusion on a necessary claim cannot refute a source-consistent hypothesis.
+* Positive support proves the winner's required source claims. Unique admissible
+  query resolution is a separate conclusion and needs valid-class coverage plus
+  elimination of every proposed rival, not merely one representative per class.
+* A proposed two-version answer is joint. Treating the requested versions as
+  mutually exclusive candidate answers violates the stated task contract.
+* All automatically activated positive and negative rules must be included.
+  Conflict blocking is global under the existing contract, and may make
+  answerability and survivor elimination nonmonotone for fallible supplied maps.
+* The error decomposition bounds error among all tasks. The selective bound
+  correctly divides by the answer probability. An always-abstain policy does
+  not acquire a meaningful zero selective error rate.
+* The adaptive union bound requires an error bound at EVERY reachable history
+  for the next issued judgment; average static benchmark accuracy is insufficient.
+  The expected-call-count version needs the stated bounded predictable issuance.
+* Conditional completeness explicitly requires expressible witnesses, their
+  jointly affordable union, and complete search. Semantic uniqueness alone does
+  not supply any of these.
+
+Algorithm checks
+
+* Both directions of every activation/OR linearization are necessary. Otherwise
+  an optimizer could hide adverse activated judgments. The note includes both.
+* For a general incompatibility graph, excluding only neighbors of the chosen
+  winner is insufficient; two other surviving vertices can conflict. The graph
+  variant correctly applies pair constraints to all survivors.
+* Exact native rendered cost need not be additive or monotone. The oracle search
+  uses only logically safe conflict/obligation pruning and proved cost bounds;
+  it does not prune a partial set merely because its current rendered cost is
+  over budget. Descendants of a feasible set may still be cheaper.
+* The set-cover hardness reduction is cost-preserving for incremental costs and
+  is correctly identified as inheritance of a classical result.
+* Two-premise complementarity invalidates a blanket submodularity claim.
+  Fixed k-lookahead's no-ratio example needs k+1 conjunctive actions and applies
+  to the precisely restricted positive-improvement policy class, not every
+  policy that happens to acquire one action at a time.
+* The conditional approximation requires a globally conflict-free action pool,
+  complete unique-minimal activation sets, a nonnegative union-resource cost,
+  and a fixed available map. These sufficient conditions are deliberately
+  stronger than checking the final selected set.
+* The macro-cover proof compares FULL macro costs with primitive UNION costs.
+  A resource is charged at most rho times in a constructed cover of the primitive
+  optimum. The harmonic greedy argument and the independent m-bound then follow.
+  Changing the greedy density to overlap-discounted marginal costs would require
+  a different proof.
+* A cost approximation is not a budget-preserving feasibility guarantee: even
+  if OPT <= B, the approximate result may exceed B and must be rejected by the
+  authorization gate. Additional capacity constraints are outside that proof.
+* A fully observed-map optimum is a packing optimum or an oracle diagnostic.
+  It is not an online acquisition policy with free access to unread outcomes.
+
+Precision corrections requested during review
+
+1. Core indistinguishability example: state explicitly that the decision uses
+   only the identical transcript. A procedure with an additional source/query
+   inspection channel need not be observationally identical.
+2. Core failure-localization theorem: retain the coherent nonempty semantic
+   model assumption explicitly, rather than only by the earlier setup.
+3. Algorithm rho: give a convention for no positive-cost resources. The author
+   adopted rho=1; every incremental cost is then zero.
+4. Algorithm fixed-lookahead proof: the broad policy definition only ensures
+   the chosen move CONTAINS costly d, not that it chooses d alone. The author
+   changed the cost conclusion to at least M; the unbounded ratio remains.
+5. Global approximation scope: applying the procedure to only targets passing
+   its conditions gives a bound against that target subset. A bound against
+   the global optimum needs the assumptions on its feasible target runs.
+6. Side budgets: the author explicitly excludes additional hard side constraints
+   from the classical cover bound. Final native-token capacity still needs a
+   checked feasible certificate, whatever the acquisition-cost objective.
+7. Risk theorem protocol premise: every emitted answer must pass the finite
+   MECHANICAL gate and retain its chosen support/refutation proofs. Exact
+   representations alone do not force an arbitrary emitter to apply that gate.
+   This premise is now explicit in the theorem/setup; it does not assume that
+   the semantic judgments or coverage assertion are true.
+8. Initial evidence in the unique-activation lemma: the sole-provider union
+   need cover only the remaining uncovered premise atoms, equivalently the
+   union with E0 must cover the full premise. Both notes now say so explicitly.
+9. Approximation versus authorization: the returned set meets the structural
+   constraints. Coverage and actual budget still need to pass; even the primary
+   cost approximation need not fit B when OPT fits B.
+10. Online conflict handling: adding a new signed judgment cannot remove an
+    existing positive/negative conflict from a monotone signed ledger. The
+    policy now abstains; any supersession/adjudication needs a separate justified
+    versioned protocol preserving original judgments, outside this guarantee.
+11. Solver diagnostic mismatch: the first code draft excluded a candidate on
+    any negative sign even when that claim also had a positive sign. The frozen
+    contract makes that claim unresolved and can restore the survivor. This
+    was corrected to refutation only by an uncontested negative and covered by
+    a targeted test. Global conflict blocking was present before and after;
+    this defect did not authorize a conflicting answer.
+12. Control-runner robustness: external fixture receipt paths and rejection of
+    unknown cost modes were corrected and independently checked.
+
+All requested corrections above were verified in the final inspected sources.
+
+Authored finite mathematical check
+
+The reviewer independently exhaustively checked the unique-minimal-activation
+criterion on 4,056 finite incidence maps with 1--4 independent actions, 1--3
+required uncovered atoms, and every atom having at least one provider. For each
+map, all action subsets were enumerated and inclusion-minimal activating sets
+were compared with the union of sole providers. There were zero discrepancies:
+one unique minimal activating set existed exactly when the sole-provider union
+covered every required atom, and that set equaled the union. This finite check
+supports implementation of the condition; the mathematical argument in the
+note remains the proof. It is not natural-data validation, a model evaluation,
+or evidence that real source actions satisfy this restrictive condition.
+
+Reproduction of this small mathematical check (Python standard library):
+
+  from itertools import product
+  cases = 0
+  for n in range(1, 5):
+      for m in range(1, 4):
+          for providers in product(range(1, 1 << n), repeat=m):
+              feasible = [x for x in range(1 << n)
+                          if all(x & p for p in providers)]
+              minimal = [x for x in feasible
+                         if not any(y != x and (y & x) == y for y in feasible)]
+              mandatory = 0
+              for p in providers:
+                  if p & (p - 1) == 0:
+                      mandatory |= p
+              criterion = all(mandatory & p for p in providers)
+              assert criterion == (len(minimal) == 1)
+              if criterion:
+                  assert minimal[0] == mandatory
+              cases += 1
+  assert cases == 4056
+
+Publication and novelty boundary
+
+These results are a rigorous formulation and a conditional analysis of an
+evidence-certificate method. Boolean encoding, exhaustive checking, union bounds,
+weighted set cover, and its logarithmic limits are standard machinery. This
+review does not certify a fundamentally new mathematical theorem or superiority
+over previous RAG methods. Any claimed methodological contribution still needs
+an accurate prior-art audit and controlled local empirical evidence with strong
+structure-aware and sufficiency-driven comparators.
+
+Final artifact review
+
+The reviewer read root's full paper/theory_v21.tex, both final mathematical TeX
+fragments, the related-work prose and bibliography, the complete finite solver,
+its targeted tests and control runner/fixture, and the local empirical contract
+and implementation map. The acquisition section is explicitly prospective and
+does not use predicted judgments for authorization. It separates all observed
+access costs from final packing and retains observed adverse information. The
+handoff does not claim to supply an implemented automatic local benchmark.
+
+After the code correction, the reviewer independently ran:
+
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_certificate_v21.py' -q
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 scripts/check_theory_v21.py
+
+Results: 36/36 targeted tests passed; 9/9 authored mechanism checks passed.
+Two additional temporary-file CLI checks passed: an external fixture could be
+read and hashed in its receipt, and an unknown cost mode was rejected. No model,
+natural-source or benchmark experiment was run. The pre-existing large historical
+test suite was not rerun by this reviewer; no frozen module was modified here.
+
+The source hashes below identify exactly the inspected revisions. Relative
+paths are within acl2027_temporal_state/. Bibliographic prose and cautionary
+boundaries were read, but primary-source literature metadata was not independently
+re-retrieved by this reviewer; that belongs to the separate prior-art audit.
+PDF compilation/layout review and repository-level release checks are root's
+separate scope. Later source changes require a diff review before treating this
+record as review of those later revisions.
+
+Final formatting-only diff review: root added PDF title/author metadata and
+ragged-right bibliography alignment to the main TeX file. Reversing only those
+two edits reproduced its previously inspected SHA-256
+01a98a6e2868b032da8f7c982d05c98d4192271369218e855b78cfe46fd18661
+exactly. The mathematical and methodological prose was unchanged. Every other
+recorded artifact hash was rechecked and matched; the main hash below identifies
+the formatting-updated source.
+
+SHA-256 22fa581a688bb9cff48a40124c66619d38e9f2c07d4f35d36cbddd56e752bcfd
+  docs/theory_core_working_v21.txt
+SHA-256 71824d9f54e445caa3c5c2bb7fef8c4b9a7c511afc4af670e3a01cec7277d2f7
+  docs/theory_algorithm_working_v21.txt
+SHA-256 24bb0039ee13d368533ec38f97bdcdbb25bd728fde36f66ed17d1c15613413a3
+  paper/theory_v21.tex
+SHA-256 cddf42a60c227d3e02b820552d04d73a30e3df4a17628af6d3b234520c9ac17f
+  paper/theory_core_v21.tex
+SHA-256 bd4781e73a753e6f90a54ae936db855cd85b486f7d900079267bd5c886e45ecd
+  paper/theory_algorithm_v21.tex
+SHA-256 0c98652e5ee07b21a13bf5469631972201b37cb92f3338592a048fa1c381ecff
+  paper/theory_related_v21.tex
+SHA-256 9d6124aad0e61b0c6f371142ab156d8d7337aaead6d20f6bae21cee34edcd681
+  paper/theory_references_v21.bib
+SHA-256 4d49e293ee9e404029515333023fb05c6dca9196066a3e3752807087e9a0ae99
+  src/temporal_state/certificate_v21.py
+SHA-256 190d69fa8031c301efb4e37f162eb1dd8095ef46e2d1df023b8fe520fa278a6c
+  tests/test_certificate_v21.py
+SHA-256 474398582f82ffe0171651caf90fa5d43c0d5d35ae364796d21b68b5d3c735fd
+  scripts/check_theory_v21.py
+SHA-256 a6d6a35187bebb554a3dca8e2c6288a723d7d03236a4c73cb71510de5cf91ad5
+  data/theory_controls_v21.json
+SHA-256 afd09086d99194437827631aa24b576aad276f9a77f8d35798a9ba4559407110
+  docs/local_empirical_contract_v21.txt
+SHA-256 97e959830046f60c0dd49b0daba34d55d1debbc4a720c3b2711dc50fab8c240f
+  docs/theory_implementation_map_v21.txt
+
+Final review conclusion
+
+No unresolved mathematical or code-contract blocker was found in these inspected
+revisions. This is a bounded separate-model-role review, not a proof that the
+automatic semantic premises hold or that the proposed method is novel and
+empirically effective. Those limitations are preserved throughout the artifacts.

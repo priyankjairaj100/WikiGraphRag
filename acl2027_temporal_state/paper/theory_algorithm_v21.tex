@@ -1,0 +1,367 @@
+\section{Finite certificate optimization}
+\label{sec:algorithm}
+
+This section concerns a fixed, supplied witness map. Its exact optimum is a
+packing diagnostic once judgments are available; it is not the acquisition
+cost of discovering those judgments. The constructions are standard Boolean
+optimization and cover arguments integrated with the grounding contract.
+Their guarantees do not validate source semantics, candidate coverage, or
+unobserved verifier outcomes.
+
+\subsection{Actions, witnesses, and the optimization target}
+
+Let $A$ be finitely many indivisible actions, $E_0$ the initially received
+evidence, and $E(X)$ the union of anchored intervals received from $E_0$ and
+actions $X\subseteq A$. Distinct immutable source versions never share an
+interval. Each hypothesis $h\in H$ has a nonempty required-claim set $R_h$
+and a complete joint answer action $a_q(h)$. Both versions of a requested
+comparison belong to this same hypothesis. Answer classes here are equality
+classes of normalized scoped actions; differing classes are incompatible.
+
+A signed witness $w$ concludes $(h,c,+)$ or $(h,c,-)$ from a nonempty set
+$P_w$ of anchored source premises. Write
+\[
+ z_w(X)=\mathbf 1\{P_w\text{ is covered by }E(X)\},\qquad
+ p_{hc}(X)=\bigvee_{w:(h,c,+)}z_w(X),\quad
+ n_{hc}(X)=\bigvee_{w:(h,c,-)}z_w(X).
+\]
+All premises must be received; names of selected actions have no evidential
+meaning. Explicit unresolved judgments add neither sign. An active positive
+and negative judgment on the same claim is a conflict, wherever it occurs.
+For a chosen target $h$, the finite certificate constraints are
+\begin{align}
+ p_{hc}(X)&=1 &&(c\in R_h), \label{eq:alg-support}\\
+ \sum_{c\in R_g}n_{gc}(X)&\geq1
+       &&(g\in H:\ a_q(g)\neq a_q(h)), \label{eq:alg-rivals}\\
+ p_{gc}(X)+n_{gc}(X)&\leq1 &&(g\in H,\ c\in R_g).
+       \label{eq:alg-conflicts}
+\end{align}
+An independent cleared-coverage assessment is also necessary for
+authorization. Refutation in \eqref{eq:alg-rivals} concerns \emph{every}
+hypothesis in each rival class, not one class representative. Same-action
+parses need not all have positive support. Zero-weight rivals are included.
+
+For declared charged cost $C(X)$, minimize it over selections satisfying
+\eqref{eq:alg-support}--\eqref{eq:alg-conflicts} for some $h$; the minimum is
+$+\infty$ if none exists. Typed side constraints may separately limit
+acquisition cost and actual rendered input. Unknown coverage permits a
+\emph{conditional} packing optimum, with authorization false. It cannot be
+cleared by optimization. A partial answer requires a separately declared
+projected task, rather than deleting an inconvenient claim of the joint task.
+
+\begin{proposition}[Equivalence to the finite answerability gate]
+Under the answer-class contract, constraints
+\eqref{eq:alg-support}--\eqref{eq:alg-conflicts}, cleared coverage, and the
+budget constraints are equivalent to complete positive support for some
+survivor, a nonempty survivor set, no incompatible surviving pair, and no
+conflict or unresolved coverage blocker.
+\end{proposition}
+\begin{proof}
+The target is supported and cannot be contradicted because of
+\eqref{eq:alg-conflicts}; it therefore survives. Equation
+\eqref{eq:alg-rivals} excludes every different-action hypothesis, leaving
+compatible survivors. Conversely, choose a completely supported survivor
+from an authorized selection. Every different-action hypothesis must have
+been excluded by a negative required claim; the other constraints are the
+remaining gates. These are finite algebraic statements, not proofs that the
+supplied judgments or coverage assessment are correct.
+\end{proof}
+
+Pair loss may prioritize search but cannot replace these constraints: it can
+vanish after eliminating everyone, before positive support, or in the
+presence of zero-weight rivals.
+
+\subsection{An exact Boolean formulation with shared cost}
+
+Split each source at every action, initial-evidence, and premise endpoint,
+obtaining nonempty elementary intervals $e\in V$. Let $A_e$ be actions
+providing atom $e$, $b_e$ indicate initial coverage, and $V_w$ be the premise
+atoms of witness $w$. Include unprovided gaps: an atom with $A_e=\varnothing$
+cannot accidentally become received. This partition concerns coverage,
+\emph{not} additive native token cost.
+
+For binaries $x_a,u_e,z_w,p_{hc},n_{hc},t_h$, impose
+\begin{align}
+ u_e&=b_e\ \vee\!\bigvee_{a\in A_e}x_a,
+ &z_w&=\bigwedge_{e\in V_w}u_e, \label{eq:alg-circuit}\\
+ p_{hc}&=\bigvee_{w:(h,c,+)}z_w,
+ &n_{hc}&=\bigvee_{w:(h,c,-)}z_w. \nonumber
+\end{align}
+An empty OR equals zero. Implement $y=\bigvee_{i\in I}v_i$ by
+$y\geq v_i$ and $y\leq\sum_i v_i$; implement
+$y=\bigwedge_{i\in I}v_i$ by $y\leq v_i$ and
+$y\geq\sum_i v_i-|I|+1$. Then add
+\begin{align}
+ \sum_h t_h&=1,& p_{hc}&\geq t_h &&(h,c),\nonumber\\
+ p_{hc}+n_{hc}&\leq1 &&&&(h,c),\label{eq:alg-milp}\\
+ \sum_{c\in R_g}n_{gc}&\geq t_h
+ &&&&(h,g:\ a_q(g)\neq a_q(h)).\nonumber
+\end{align}
+Both directions of each Boolean equivalence are essential: a solver must
+not hide an adverse activated witness by choosing $z_w=0$.
+
+For a nonnegative additive union-cost model, action $a$ uses charge resources
+$Q_a$. Set $v_r=\bigvee_{a:r\in Q_a}x_a$, fixing already paid resources as
+appropriate, and minimize
+\begin{equation}
+ C_0+\sum_r c_r v_r+\sum_a k_a x_a,
+ \qquad c_r,k_a\geq0.\label{eq:alg-unioncost}
+\end{equation}
+A shared header resource is charged once; per-action cost $k_a$ is separately
+charged. Resources and evidence atoms need not coincide. Different cost
+units require separate constraints or an explicit scalar conversion.
+
+\begin{proposition}[Exact finite formulation]
+The binary program has exactly the evidence selections satisfying
+\eqref{eq:alg-support}--\eqref{eq:alg-conflicts}. With the declared additive
+resource contract, its objective is their exact charged cost.
+\end{proposition}
+\begin{proof}
+For an action selection, the first equivalence forces the actual source
+union; the ANDs force every witness's actual activation; the remaining ORs
+force all positive and negative signs. Thus adverse judgments cannot be
+suppressed. A binary target $t_h=1$ is possible precisely when all its claims
+are supported, every different-action rival is contradicted, and all claims
+are conflict-free. Conversely these conditions supply a feasible target and
+all forced variables. Resource ORs charge precisely the resource union, while
+the last term charges actions individually. The correspondence preserves
+the objective. Coverage remains an external gate.
+\end{proof}
+
+If incompatibility is a general symmetric graph $I$, rather than the
+complement of an equivalence relation, introduce survivor binaries
+$s_h\leq1-n_{hc}$ for all $c$ and
+$s_h\geq1-\sum_c n_{hc}$. Replace the rival constraints with
+$s_h+s_g\leq1$ for $(h,g)\in I$ and $t_h\leq s_h$. Refuting only neighbors
+of the chosen target could otherwise leave an incompatible pair among
+\emph{other} survivors.
+
+\subsection{Exact rendering and safe search}
+
+The existing renderer merges adjacent intervals, potentially removing source
+labels. Adding evidence can therefore reduce rendered cost; native
+tokenization also need not be additive across fragments. Equation
+\eqref{eq:alg-unioncost} represents actual prompt tokens only with a proved
+renderer/tokenizer contract. Checking one incumbent does not establish that
+contract globally.
+
+A generic exact alternative uses the renderer and tokenizer as a deterministic
+cost oracle. For each target, branch on action inclusion, maintaining selected
+$S$, excluded actions, and undecided $U$. Prune a branch if $S$ already has a
+conflict or contradicts the target, or if even $S\cup U$ lacks a required
+target support or rival refutation. A conflict in $S\cup U$ alone is not a
+reason to prune. A cost prune requires a valid lower bound on \emph{every}
+completion. Under arbitrary rendering, $C(S)$ need not be such a bound;
+zero is valid for a nonnegative oracle. Additive union costs permit $C(S)$
+and linear-program relaxations as lower bounds. The same rule applies to
+each hard side budget.
+
+Whenever $S$ is a certificate, compare its exact cost with the incumbent.
+With nonmonotone cost, continue exploring descendants: a larger certificate
+may render more cheaply. Enumerate all unpruned leaves.
+
+\begin{proposition}[Exact oracle search]
+Complete search with these pruning rules returns a minimum finite
+certificate for any deterministic nonnegative cost oracle.
+\end{proposition}
+\begin{proof}
+Every action subset is a leaf. Signed witness activation is monotone, so an
+existing conflict persists. An existing target contradiction either persists
+or becomes a prohibited conflict. If an obligation is absent from the union
+of all allowed remaining actions, no completion satisfies it. These prunes
+remove only infeasible completions. A valid cost lower bound removes only
+completions unable to improve the incumbent. Every other feasible leaf is
+compared with the exact objective; an optimum is retained or matched. The
+argument does not assume monotone claim states in the presence of conflicts.
+\end{proof}
+
+Worst-case complexity is exponential. A time limit without an incumbent is
+unknown feasibility, not infeasibility. With an incumbent, report its exact
+cost and a valid global bound from unresolved branches or the exact MILP.
+A surrogate-cost gap is not a native-token gap after post-hoc retokenization.
+An arbitrary finite oracle can also be encoded by one variable per complete
+action-set configuration and a precomputed cost table, but that exact MILP
+has exponentially many configurations.
+
+\section{Limits of myopic selection}
+\label{sec:alg-limits}
+
+\begin{proposition}[Classical set-cover embedding]
+Minimum finite certificate cost is NP-hard even with singleton premises,
+nonoverlapping additive action costs, no conflicts, and supplied cleared
+coverage. The budget decision problem is NP-complete when costs are
+polynomially evaluable.
+\end{proposition}
+\begin{proof}
+Given weighted Set Cover with universe $U$, sets $S_i$, and costs $c_i$,
+create target $h^*$ with one claim supported by anchored initial evidence,
+and a rival $g_u$ for each $u\in U$. Rivals have different actions from
+$h^*$ and no positive witnesses. Action $i$ costs $c_i$ and provides a unique
+span whose singleton witnesses contradict exactly the rivals $g_u$ with
+$u\in S_i$. There are no negative witnesses for $h^*$ or conflicts. Only
+$h^*$ can be supported, so a selection is a certificate exactly when its
+sets cover $U$, at identical incremental cost. A fixed initial charge can be
+added to the decision budget. A proposed certificate is polynomially checked
+by coverage, sign evaluation, and the stated cost algorithm, proving membership
+in NP.
+\end{proof}
+
+This cost-preserving reduction inherits the classical Set Cover
+approximation barrier \citep{dinur2014parallel}; it is not a new hardness
+theorem. A fixed base charge can be made negligible by scaling action
+costs. We do not identify the number of hypotheses, evidence atoms, and
+total input size when importing a logarithmic hardness parameter.
+
+\begin{proposition}[Conjunctive witnesses violate diminishing returns]
+Refuted-rival count, obligation coverage, and fixed-weight pair-loss reduction
+need not be submodular, even with two-premise witnesses and no conflicts.
+\end{proposition}
+\begin{proof}
+Let $h^*$ be initially supported and $g$ an incompatible rival. Neither of
+two actions $a,b$ produces a judgment alone, but together they activate a
+negative witness for $g$. For the refutation indicator $f$,
+\[
+ f(\{b\})-f(\varnothing)=0
+ \quad<\quad f(\{a,b\})-f(\{a\})=1.
+\]
+The same instance has one refutation obligation and one positive-weight
+incompatible edge, giving the identical violation for the other objectives.
+\end{proof}
+
+The deterministic single-realization case already violates the required
+marginal inequality, so adaptive submodularity is not automatic. EC2 analyzes
+a specified Bayesian test-outcome model \citep{golovin2010ec2}; arbitrary
+conjunctive source rules are not that model. Grouping complete premises into
+tests changes the ground set and its cost. Moreover, corrected Theorem~13
+and its historical note in \citet{golovin2011adaptive}, arXiv version~5,
+replace a flawed earlier general expected-cover argument. We import no EC2
+constant and do not claim that EC2 itself has been disproved.
+
+Define a $k$-lookahead improvement policy to admit only moves adding at most
+$k$ primitive actions that immediately reduce pair loss, increase supported
+claims, or first enable answerability. Positive pair-loss density outranks
+zero density. This includes the proposed improvement-only singleton and
+two-bundle rules, but excludes deliberate zero-gain planning moves.
+
+\begin{proposition}[No finite ratio for fixed improvement lookahead]
+For every fixed $k\geq1$, this policy class has unbounded certificate-cost
+ratio with premises of arity $k+1$, and can fail under a budget admitting a
+certificate.
+\end{proposition}
+\begin{proof}
+Initially $h^*$ is completely supported and one incompatible rival remains.
+Actions $a_1,\ldots,a_{k+1}$ cost one each; a negative witness for the rival
+requires all their spans. An alternative action $d$ costs $M>k+1$ and alone
+refutes it. No additional positive-support progress is possible. Every move
+of at most $k$ cheap actions has zero gain; every improving move contains
+$d$ and costs at least $M$. A maximum-density policy chooses $d$ alone.
+The optimal certificate costs $k+1$, so the ratio is at least $M/(k+1)$,
+which diverges with $M$. A positive common initial charge preserves divergence.
+With budget $B=k+1<M$, there is no admitted improving move although all cheap
+actions form a feasible certificate. For two-bundle lookahead, three premises
+suffice.
+\end{proof}
+
+This does not prohibit singleton actions in a globally planned algorithm.
+Such a planner can intentionally buy a zero-gain premise. It also does not
+deny that two-bundle lookahead repairs a particular two-part example.
+
+\section{A restricted classical cover guarantee}
+\label{sec:alg-cover}
+
+Fix a complete target $h$. Obligations $O_h$ are its required positive claims
+and one refutation for \emph{each} different-action hypothesis. Remove those
+already satisfied by $E_0$ and let $m=|O_h|$. Assume the following explicitly
+checkable finite-map conditions:
+\begin{enumerate}[label=(\Alph*)]
+\item All eligible actions together activate no positive/negative conflict.
+\item Each reachable useful witness has a unique inclusion-minimal activating
+action set $D_w$, so $z_w(X)=1$ exactly when $D_w\subseteq X$ after conditioning
+on $E_0$.
+\item Incremental cost is the nonnegative union-resource cost
+$c(X)=\sum_{r\in\cup_{a\in X}Q_a}c_r$, excluding previously paid resources.
+\item The action pool and signed map are fixed and known. Their construction
+and information-access costs are separately disclosed.
+\end{enumerate}
+Condition (A) is sufficient and deliberately strong. Under independently
+selectable actions, (B) also has a direct polynomial check.
+
+\begin{lemma}[Checking unique activation]
+For a reachable witness, let $M_w$ be the set of actions that are sole
+providers of some uncovered required atom. Its unique minimal activating
+set exists exactly when $M_w$ covers all remaining uncovered required atoms;
+then $D_w=M_w$.
+\end{lemma}
+\begin{proof}
+Each sole provider belongs to every activating set. Conversely, if an action
+is not a sole provider, selecting all other actions still covers every required
+atom not already in $E_0$, so that action is not mandatory. If the finite family
+of activating sets
+has a unique inclusion-minimal member, every activating set contains it:
+repeated deletion reaches a minimal member. That member therefore consists
+exactly of the mandatory actions and must cover all remaining premises.
+Conversely, if $M_w$ covers those premises, together with $E_0$ it activates
+the witness and is contained in
+every activating set, making it uniquely minimal.
+\end{proof}
+
+For every distinct nonempty useful $D_w$, create a macro $j$ with primitive
+actions $D_w$, cost $c_j=c(D_w)$, and obligation coverage $Q_j$ obtained by
+evaluating that union. Remove empty-coverage macros and duplicates. Let
+$\rho$ be the maximum number of retained macros containing a positive-cost
+resource; set $\rho=1$ if there are no positive-cost resources. These macros
+are plans to purchase complete premises, not free summaries.
+
+Apply weighted greedy set cover to the fixed $(Q_j,c_j)$: take useful
+zero-cost macros first, otherwise minimize cost per newly covered obligation.
+For this analysis use the \emph{full} macro cost, not an overlap-discounted
+marginal cost. Finally purchase the union of the chosen primitive actions.
+
+\begin{proposition}[Conditional cover bound]
+Under (A)--(D), for a feasible target with $m\geq1$, greedy returns a
+selection satisfying the support, refutation, and conflict constraints,
+of incremental cost at most $\rho H_m\mathrm{OPT}_h$, where
+$H_m=\sum_{i=1}^m1/i$. Returning the cheaper of this result and the union of
+the cheapest macro for each obligation gives
+\[
+ c(X)\leq\min\{m,\rho H_m\}\,\mathrm{OPT}_h.
+\]
+For $m=0$, return the initial evidence without additional actions.
+\end{proposition}
+\begin{proof}
+Every obligation satisfied by an optimal primitive selection $X^*$ has an
+active witness; (B) gives a macro $D_w\subseteq X^*$. These macros cover
+$O_h$, and each resource of $X^*$ is charged in at most $\rho$ macros.
+Thus an additive macro cover costs at most $\rho c(X^*)$.
+
+For completeness, the standard weighted greedy argument
+\citep{chvatal1979greedy} is as follows. With $r$ obligations uncovered, an
+optimal additive cover of cost $T$ has total residual coverage at least $r$;
+some set has cost per newly covered obligation at most $T/r$. Charge each
+newly covered obligation the chosen ratio. The $j$th obligation covered
+receives charge at most $T/(m-j+1)$, so total cost is at most $H_mT$.
+The actual resource union costs no more than this sum of macro costs.
+
+Alternatively, for each obligation its witness macro inside $X^*$ costs at
+most $c(X^*)$; the cheapest eligible macro costs no more. Summing over $m$
+obligations proves the $m$ bound. Either union covers every obligation and
+is conflict-free by (A), hence satisfies the stated structural constraints.
+\end{proof}
+
+This is a classical cover corollary with explicit union-cost comparison,
+not a new approximation theorem. Disjoint macro charge resources give
+$\rho=1$. If (A)--(D) hold for every feasible target, choosing the cheapest
+verified result gives the corresponding uniform bound against the global
+optimum. Otherwise its comparator is restricted to eligible targets.
+
+The coverage gate and actual budget must still pass. This approximation is
+not budget-preserving: its output may exceed $B$ even when the optimum fits.
+The guarantee is single-objective and has no extra hard side constraints.
+For example, minimizing acquisition cost with a separate exact rendered-token
+capacity is not covered: check that capacity and use the exact constrained
+solver where needed. Failure of (A) can make a macro union conflict. Failure
+of (B) requires enumerating all minimal premise-covering action sets, possibly
+exponentially many; a shortlist supports only a shortlist-optimum guarantee.
+Failure of (C) prevents calling the bound a native-token bound. Bounded
+premise arity alone does not restore submodularity. Every bound remains
+conditional on the supplied signed map and independent coverage assessment.

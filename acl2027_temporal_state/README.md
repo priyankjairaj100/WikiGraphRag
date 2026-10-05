@@ -1,6 +1,14 @@
 # ACL 2027 temporal state research
 
-## Current checkpoint: v0.18 — source identity and authored tokenizer readiness
+## Current checkpoint: v0.21 — certificate theory and local empirical handoff
+
+The [theory manuscript](paper/theory_v21.pdf) now contains full proofs for complete scoped answer certificates, conditional soundness/completeness, selective-risk bounds, exact finite selection, counterexamples and a restricted classical cover guarantee. [Editable TeX](paper/theory_v21.tex), [prior-art audit](docs/theory_prior_art_audit_v21.txt) and [claim ledger](paper/claim_ledger_v21.json) distinguish the domain-specific integration from established theory.
+
+The new supplied-map reference solver passes **36 targeted tests and 9 authored controls**. A separate model-role adversarial review is recorded. **No new model or natural-QA experiment ran.** Semantic assumptions, methodological novelty and empirical improvement remain unestablished.
+
+The user will run the empirical program locally. Start with the [local contract](docs/local_empirical_contract_v21.txt), [implementation map](docs/theory_implementation_map_v21.txt), [reproduction commands](docs/reproduce_theory_v21.txt) and [handoff](docs/NEXT_CHAT_HANDOFF_v21.txt). The exact checker is implemented; automatic proposal, semantic verification, coverage and online-controller integration still require work.
+
+## Previous checkpoint: v0.18 — source identity and authored tokenizer readiness
 
 All **40 additional dependency views** are now available across **39 original successes and one separately recorded caption recovery**. The prior101 table/neighbor views remain available. Separate recovery completes34 identity candidate views; **12 literal cover identity cards** are admitted from38 witnesses. These cards do not establish table-level entity or period scope.
 

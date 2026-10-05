@@ -1,0 +1,448 @@
+% Original source-relative certificate definitions and proofs, 2026-10-05.
+% Fragment only. Requires amsmath, amssymb, amsthm and the theorem, lemma,
+% proposition, corollary, definition environments in the parent document.
+% No empirical performance, novelty, or calibrated-risk claims.
+
+\section{A finite certificate for complete scoped answers}
+\label{sec:certificate-theory}
+
+The following results specify a certificate contract. They assume source
+semantics, query interpretation and coverage properties that the supplied-map
+selector does not itself establish. In particular, exact checking of a finite
+certificate is not a proof that a learned verifier is sound or that the
+candidate set is complete.
+
+\paragraph{Joint actions.}
+Fix a question $q$, an immutable admitted corpus $D$, and a declared policy
+$P$ for query readings, source authority, version identity, normalization and
+permitted inference. Let $R_q$ be the finite ordered set of required output
+slots. A result slot contains its value, concept, entity, period, unit/scale,
+population, analysis definition and source-version identity. A comparison slot
+also identifies its endpoint slots, relation type and material qualifiers.
+Reporting two values, computing their difference, asserting a comparable
+change and asserting an explicit correction are distinct actions. Comparison
+claims require their own source premises or a registered checked derivation.
+
+A hypothesis $h$ proposes a \emph{complete joint answer} for $R_q$, together
+with a nonempty finite set of necessary source claims $C(h)$ and their binding
+or derivation structure. Every material output claim and attachment must occur
+in $C(h)$ or be derived explicitly from it. Let $K_q(h)$ state structural
+completeness and faithful eligibility under the explicit question constraints.
+The universe $\mathcal U$ contains eligible anchored joint interpretations;
+the proposal set $H\subseteq\mathcal U$ is finite and nonempty. The universe
+need not be finite or mechanically enumerable.
+
+The canonical answer map $a_q(h)$ preserves every requested version and
+comparison relation. Define
+\begin{equation}
+ h\sim_q g\quad\Longleftrightarrow\quad a_q(h)=a_q(g).
+ \label{eq:answer-equivalence}
+\end{equation}
+This is an equivalence relation by equality of canonical records. Different
+parse trees or supporting citations may be equivalent if they induce the same
+scoped action. Equal numbers do not erase different entities, populations,
+periods or source versions. For example, a question requesting original and
+amended values has a two-version joint answer even when the values agree;
+those versions are not rival hypotheses to be eliminated. A supplied symmetric
+incompatibility graph is insufficient unless it faithfully separates distinct
+actions. In particular, a nontransitive ``compatible enough'' relation does
+not define the quotient in~\eqref{eq:answer-equivalence}.
+
+\paragraph{Source consistency and warrant.}
+Let $\mathcal M(D)$ be a nonempty class of models satisfying the admitted source
+assertions under $P$. Provenance-scoped assertions such as ``version one reports
+12'' and ``version two reports 15'' can both hold. Genuine source conflict must
+be represented explicitly or excluded from this coherent-model theorem;
+classical inconsistency cannot be used to entail arbitrary answers. For
+$\phi_h=\bigwedge_{c\in C(h)}c$, define
+\begin{align}
+ T&=\{h\in\mathcal U:\exists m\in\mathcal M(D),\ m\models\phi_h\},
+ \label{eq:consistent-hypotheses}\\
+ W&=\{h\in\mathcal U:D\models\phi_h\}.
+ \label{eq:warranted-hypotheses}
+\end{align}
+We consider resolution tasks with $T\ne\varnothing$. Since
+$\mathcal M(D)\ne\varnothing$, $W\subseteq T$. Thus $T$ contains eligible
+source-consistent joint interpretations, while $W$ contains proposals whose
+required claims are all positively warranted. There may be multiple admissible
+actions in $T$, including different readings of an underspecified question.
+
+Source warrant and unique query resolution are deliberately separate. If
+``positive support'' were defined to mean that an output is already the
+uniquely correct full answer under every admissible reading, support alone
+would establish correctness and the coverage theorem would be redundant. Our
+support relation warrants the claims of a complete eligible proposal; the
+certificate additionally establishes uniqueness over $T$. Assurance is
+relative to $D,q,P$, not to undeclared sources, source authenticity, real-world
+truth, or first-public availability.
+
+\subsection{Conjunctive witness semantics}
+
+A source span identifies an immutable source, exact offsets or coordinates,
+and text identity. A witness rule $w$ names a candidate $h$, a necessary claim
+$c\in C(h)$, a sign $\sigma\in\{+,-\}$, a nonempty finite dependency set
+$D_w$ of source spans, and a derivation/provenance record. If $\operatorname{cov}(E)$
+is the union of actually delivered spans, activation requires
+\begin{equation}
+ w\text{ active in }E
+ \quad\Longleftrightarrow\quad
+ \text{every span in }D_w\text{ is covered by }\operatorname{cov}(E).
+ \label{eq:conjunctive-activation}
+\end{equation}
+All leaf dependencies of a multi-step derivation must be included. Bundle names,
+nearby tokens, and generated explanations do not replace missing premises.
+
+A rule is semantically sound when its anchored assertions jointly entail $c$
+for sign $+$, or $\neg c$ for sign $-$, under $P$. Faithful extraction then gives
+$D\models c$ or $D\models\neg c$, respectively. Presence of valid offsets and
+hashes checks source identity and coverage, not that entailment.
+
+Write $P_E(h,c)$ and $N_E(h,c)$ for the existence of an active positive and
+negative rule. The claim is supported when $P_E\land\neg N_E$, contradicted
+when $N_E\land\neg P_E$, and unresolved otherwise. Record a separate conflict
+flag for $P_E\land N_E$. Missing evidence, retrieval failure and lack of proof
+remain unresolved; they never imply contradiction. Define
+\begin{align}
+ \operatorname{Pos}_E(h)
+ &\Longleftrightarrow \text{all }c\in C(h)\text{ are supported},\\
+ \operatorname{Ref}_E(h)
+ &\Longleftrightarrow \text{some }c\in C(h)\text{ is contradicted},\\
+ V_E&=\{h\in H:\neg\operatorname{Ref}_E(h)\}.
+\end{align}
+The conservative certificate rejects any active claim conflict, including one
+on a rival candidate. Harmless same-action survivors need not all be supported.
+
+\begin{lemma}[Local semantic soundness]
+\label{lem:local-soundness}
+If all active rules are sound and $\mathcal M(D)$ is nonempty, no active claim
+has a positive/negative conflict. Further,
+$\operatorname{Pos}_E(h)$ implies $h\in W$, and
+$\operatorname{Ref}_E(h)$ implies $h\notin T$.
+\end{lemma}
+\begin{proof}
+A conflict would entail both $c$ and $\neg c$ in every member of a nonempty
+$\mathcal M(D)$, which is impossible. If each necessary claim is supported,
+every model satisfies every conjunct of $\phi_h$, so $D\models\phi_h$. If one
+necessary claim $c$ is contradicted, every model satisfies $\neg c$ and none
+can satisfy $\phi_h$, which contains $c$.
+\end{proof}
+
+\subsection{Coverage and certificate soundness}
+
+\begin{definition}[Valid answer-class coverage]
+\label{def:coverage}
+The candidate set has coverage, denoted $\operatorname{COV}(H;D,q)$, when
+\begin{equation}
+ \forall t\in T\ \exists h\in H\cap T:
+ a_q(h)=a_q(t).
+ \label{eq:coverage}
+\end{equation}
+\end{definition}
+This requires a \emph{source-consistent} representative for every admissible
+answer class. Merely placing every action label in $a_q(H)$ is insufficient:
+an invalid representative can be soundly refuted while a valid omitted
+interpretation with the same action remains. Coverage of one reference
+interpretation is also weaker than~\eqref{eq:coverage} for an ambiguous task.
+
+An explicit unknown sentinel begins \textsc{open}. An operational decision
+$\widehat{\operatorname{COV}}$ sets it to \textsc{covered} only through a declared
+coverage assessment. Soundness of this assessment means
+$\widehat{\operatorname{COV}}\Rightarrow\operatorname{COV}$. Beam exhaustion,
+low pair loss, confidence, or removal of all proposed rivals is not a coverage
+proof. A finite formal grammar may permit exhaustive domain-relative
+enumeration; a natural-language audit or estimator remains fallible and must
+be evaluated. The unknown sentinel is not an ordinary candidate that a finite
+negative witness can eliminate. Its justification is logically separate, not
+assumed statistically independent of other components.
+
+\begin{definition}[Supported unique-answer certificate]
+\label{def:certificate}
+For exact declared evidence cost $\operatorname{cost}(E)$ and budget $B$, a
+certificate chooses $E$ and a winner $h^*\in H$ satisfying:
+\begin{enumerate}
+ \item $\operatorname{cost}(E)\le B$;
+ \item there is no active positive/negative claim conflict;
+ \item $\operatorname{Pos}_E(h^*)$;
+ \item every $g\in H$ with $a_q(g)\ne a_q(h^*)$ satisfies
+       $\operatorname{Ref}_E(g)$;
+ \item $\widehat{\operatorname{COV}}$ holds.
+\end{enumerate}
+The certificate records one complete support proof for $h^*$, an explicit
+refutation for every rival candidate, and coverage-assessment provenance.
+\end{definition}
+Every member of each rival class must be refuted, unless a sound universal
+class-level argument covers them all. Refuting one representative does not
+refute a class. Positive support implies a nonempty survivor set; the gate is
+equivalently a fully supported survivor plus agreement of all survivors, with
+conflict, coverage and cost conditions retained. A zero weighted objective
+does not replace this logical condition, particularly with zero-weight rivals
+or an empty survivor set.
+
+\begin{theorem}[Source-relative certificate soundness]
+\label{thm:soundness}
+Assume faithful query/schema and answer mapping, faithful source extraction
+and output rendering, a nonempty coherent $\mathcal M(D)$, sound active witness
+rules, and a sound coverage sentinel. A certificate as in
+Definition~\ref{def:certificate} establishes $h^*\in W$ and
+\begin{equation}
+ \{a_q(t):t\in T\}=\{a_q(h^*)\}.
+ \label{eq:unique-action}
+\end{equation}
+It therefore authorizes a complete positively warranted joint answer with a
+unique action in the admitted source/query domain.
+\end{theorem}
+\begin{proof}
+Positive support and Lemma~\ref{lem:local-soundness} imply $h^*\in W\subseteq T$;
+the left side of~\eqref{eq:unique-action} thus contains the winning action.
+For any $t\in T$, sound coverage supplies $h\in H\cap T$ with
+$a_q(h)=a_q(t)$. If this differed from $a_q(h^*)$, the rival-refutation gate
+would imply $\operatorname{Ref}_E(h)$; Lemma~\ref{lem:local-soundness} would then
+give $h\notin T$, a contradiction. Every admissible interpretation therefore
+has the winning action. Its complete support derivation warrants each required
+claim, faithful schema checking includes every requested slot, and faithful
+rendering adds no assertion. The budget condition establishes only the
+declared evidence-cost bound and plays no role in semantic entailment.
+\end{proof}
+
+\begin{corollary}[Reference-target preservation]
+\label{cor:target-preservation}
+Fix $t^*\in T$. Replace full coverage in Theorem~\ref{thm:soundness} by the
+existence of $h\in H\cap T$ with $a_q(h)=a_q(t^*)$. An accepted output remains
+positively warranted and equals $a_q(t^*)$, but the premise does not establish
+uniqueness over all of $T$.
+\end{corollary}
+\begin{proof}
+If the output differed from the valid representative of $t^*$, that candidate
+would be refuted, contradicting local soundness. Positive warrant follows as
+before. No premise supplies a representative for any other admissible class,
+so no conclusion about those classes follows.
+\end{proof}
+
+\subsection{Finite checking and conditional completeness}
+
+Let $\mathcal A$ be a finite set of admissible source-span bundles and let the
+rule list be finite. A selection $E\subseteq\mathcal A$ delivers the union of
+its spans, which can activate a rule across multiple bundles. Let
+$\mathcal F_B$ be the selections satisfying Definition~\ref{def:certificate}
+for some winner, with all supplied objects and the cost renderer fixed.
+
+\begin{proposition}[Exact finite-map checking]
+\label{prop:finite-checking}
+Exhaustive evaluation of all $E\subseteq\mathcal A$ returns a certificate if
+and only if $\mathcal F_B\ne\varnothing$. If
+\begin{equation}
+ B^*=\min\{\operatorname{cost}(E):E\text{ satisfies gates 2--5}\},
+\end{equation}
+with $B^*=\infty$ for an empty set, a finite-budget certificate exists exactly
+when $B\ge B^*$.
+\end{proposition}
+\begin{proof}
+The finite power-set enumeration includes every permitted selection. Each
+selection is checked against the defining predicates of $\mathcal F_B$, so a
+returned member is feasible and every feasible member is eventually checked.
+When the set defining $B^*$ is nonempty, finiteness ensures the minimum is
+attained. The budget equivalence follows from this definition, without any
+assumption that cost is monotone under adding bundles.
+\end{proof}
+This establishes exactness on supplied maps, not semantic truth. A heuristic
+failure does not prove infeasibility. Minimizing pair loss while allowing
+abstention does not solve the certificate-existence problem.
+
+\begin{theorem}[Conditional semantic completeness]
+\label{thm:complete}
+Assume the soundness premises of Theorem~\ref{thm:soundness}, and suppose
+$T/{\sim_q}$ has one class with action $a^*$. Further suppose:
+\begin{enumerate}
+ \item the justified coverage sentinel is \textnormal{\textsc{covered}};
+ \item some $h^*\in H$ with action $a^*$ has an expressible sound positive
+       witness for every claim in $C(h^*)$;
+ \item every $g\in H$ with action different from $a^*$ has an expressible
+       sound negative witness for a necessary claim;
+ \item a single admitted selection $E_0$ includes all these witness
+       dependencies and satisfies $\operatorname{cost}(E_0)\le B$;
+ \item search is complete over the admitted finite selections.
+\end{enumerate}
+Then the procedure returns a certificate with action $a^*$.
+\end{theorem}
+\begin{proof}
+The joint dependency condition activates the selected positive and negative
+witnesses. Coherent global rule soundness excludes opposing active judgments
+by Lemma~\ref{lem:local-soundness}. Thus $E_0$ supports all claims of $h^*$,
+refutes every different-action candidate, is conflict-free and fits the
+budget. The covered sentinel supplies the remaining gate. Hence
+$\mathcal F_B\ne\varnothing$; complete search and
+Proposition~\ref{prop:finite-checking} return a certificate.
+Theorem~\ref{thm:soundness} gives its unique action $a^*$.
+\end{proof}
+
+Semantic uniqueness alone implies none of the witness-expressibility,
+retrieval, verifier-recognition, joint-budget, coverage-assessment or
+search-completeness premises. Individually affordable witnesses need not fit
+together. This theorem therefore provides no completeness guarantee for an
+unrestricted language model or the greedy supplied-map selector.
+
+A predeclared projection $\pi$ onto a subset of requested slots gives an
+analogous theorem with answer map $\pi\circ a_q$ and complete support for the
+emitted projected claims. Alternatives differing only on withheld slots need
+not be separated. The resulting certificate is a partial answer and does not
+establish the omitted version or comparison relation.
+
+\subsection{Failure localization and selective risk}
+
+Consider a distribution over tasks and full adaptive runs. Let $A$ denote
+emission of a complete answer and let $\mathrm{Bad}$ denote failure of the
+grounded unique-resolution conclusion. Retain the nonempty coherent source-model
+and eligible-domain setup. Initially assume exact query/action representation,
+source extraction, schema and rendering. Require every emitted run to pass the
+finite mechanical gate of Definition~\ref{def:certificate} and retain the
+selected support and refutation proofs. This protocol premise does not assume
+that the supplied semantic judgments or coverage assertion are true; their
+failures are the error events below. On emitted runs,
+let $E_C$ be a cleared but false coverage assertion, $E_+$ a false positive
+judgment in the selected complete support proof, and $E_-$ a false negative
+judgment used to eliminate a source-consistent rival. Here ``false negative''
+means erroneous contradiction, not failure to recognize support; reporting
+should use the clearer terms \emph{false support} and \emph{false elimination}.
+
+\begin{theorem}[Error localization and risk bound]
+\label{thm:risk}
+Under those exact-component and mechanically gated emission assumptions,
+without assuming correctness of the supplied semantic judgments or coverage
+assertion,
+\begin{equation}
+ A\cap\mathrm{Bad}\subseteq E_C\cup E_+\cup E_-.
+ \label{eq:failure-localization}
+\end{equation}
+With $E_V=E_+\cup E_-$,
+\begin{align}
+ \Pr(A\cap\mathrm{Bad})
+ &\le \Pr(A\cap E_C)
+     +\Pr(A\cap E_C^c\cap E_V)\nonumber\\
+ &\le \Pr(E_C)+\Pr(E_+)+\Pr(E_-).
+ \label{eq:marginal-risk}
+\end{align}
+If $p=\Pr(A)>0$, selective risk satisfies
+\begin{equation}
+ \Pr(\mathrm{Bad}\mid A)
+ \le \min\left\{1,
+ \frac{\Pr(E_C)+\Pr(E_+)+\Pr(E_-)}{p}\right\}.
+ \label{eq:selective-risk}
+\end{equation}
+No independence assumptions are required.
+\end{theorem}
+\begin{proof}
+Take an emitted run outside $E_C\cup E_+\cup E_-$. Its selected complete
+positive proof is sound, so the winner is warranted. Correct coverage
+represents every source-consistent action by a source-consistent candidate.
+If any such action differed from the winner, the gate would have eliminated
+its valid representative, requiring a false elimination and contradicting
+the complement of $E_-$. Thus the answer is grounded and uniquely resolved,
+proving~\eqref{eq:failure-localization}. Partition $A\cap\mathrm{Bad}$ into
+the disjoint part in $E_C$ and the part in $E_C^c$. By localization the latter
+lies in $E_V$. Taking probabilities and applying the union bound yields
+\eqref{eq:marginal-risk}. Dividing the joint error by $\Pr(A)=p$ yields
+\eqref{eq:selective-risk}.
+\end{proof}
+
+When $p=0$, selective risk is undefined; zero joint error from always
+abstaining does not establish answer quality. Marginal omission/verifier
+rates cannot be reported as answered-risk bounds without the denominator or
+conditional calibration: answering on one percent of tasks and being wrong
+every time gives joint error $0.01$ and selective risk $1$.
+
+If directly justified conditional quantities are available, put
+$\delta_C=\Pr(E_C\mid A)$ and
+$\delta_V=\Pr(E_V\mid A\cap E_C^c)$. A partition gives
+\begin{equation}
+ \Pr(\mathrm{Bad}\mid A)
+ \le\delta_C+(1-\delta_C)\delta_V.
+\end{equation}
+When the second conditioning event has zero probability its contribution is
+zero and no conditional value is needed. The theorem estimates none of these
+quantities; sampling, confidence and transfer assumptions remain empirical.
+
+If query parsing, necessary-claim completeness, answer equivalence, extraction,
+concept normalization or final rendering can fail, introduce $E_R$ for these
+errors. Localization becomes
+\begin{equation}
+ A\cap\mathrm{Bad}\subseteq E_R\cup E_C\cup E_+\cup E_-.
+\end{equation}
+The risk bound must gain the corresponding term. A two-term candidate/verifier
+bound is legitimate only after stating which other components are exact or
+included in the verifier event. For a fixed reference endpoint,
+Corollary~\ref{cor:target-preservation} permits target-class coverage in place
+of full coverage, but does not certify absence of other admissible actions.
+
+\paragraph{Adaptive calls.}
+If at most $K$ judgments are issued and, for every reachable prior history,
+the conditional probability that the next issued judgment is semantically
+wrong is at most $\eta$, then the probability of any erroneous call is at most
+$\min(1,K\eta)$. To see this, condition each issued-error indicator on its
+prior history, bound its expectation by $\eta$, and apply the union bound.
+With a bounded predictable stopping rule the same argument gives
+$\eta\,\mathbb E[N]$ for the number $N$ of issued calls. Static average
+per-call accuracy does not imply the required uniform conditional bound;
+adaptive acquisition can concentrate on high-error cases. Counting all issued
+calls is conservative and avoids conditioning only on favorable selected
+judgments.
+
+\subsection{Counterexamples and limits}
+
+\begin{proposition}[Coverage cannot be inferred from a finite survivor set]
+\label{prop:coverage-impossibility}
+Without a sound coverage or equivalent uniqueness premise, a procedure
+restricted to a finite candidate/judgment transcript cannot guarantee unique
+resolution over all source-consistent completions of that transcript.
+\end{proposition}
+\begin{proof}
+Take the transcript $H=\{h_a\}$ with a fully supported $h_a$ and no modeled
+rival. In one admissible completion, $T=\{h_a\}$. In a second,
+$T=\{h_a,h_b\}$ with $a_q(h_b)\ne a_q(h_a)$; all supporting claims of $h_a$
+remain true. The unrepresented possibility was not examined, so the visible
+transcripts coincide. A deterministic procedure emits the same unique action
+in both, making a false uniqueness claim in the second. Condition a randomized
+procedure on its randomness and the same argument applies. If it emits with
+probability $r$ on this transcript, its uniqueness claim fails with probability
+$r$ in the second completion. Universal soundness requires abstention here or
+an additional premise that distinguishes the completions.
+\end{proof}
+This does not make the supported facts of $h_a$ false. A perfect oracle for
+full task correctness already solves factual correctness; the impossibility
+concerns additional uniqueness with source-claim support. If support omits a
+necessary binding, a missing correct candidate can produce a wrong answer,
+but that construction also violates the complete-support contract.
+
+\paragraph{Semantic judgments are essential.}
+Let the source report 7 and let $H$ contain full candidates for 7 and 9.
+Coverage is complete. False signed rules supporting 9 and refuting 7 can carry
+valid offsets and hashes, activate under every syntactic requirement and make
+the gate accept 9. Thus source identity cannot replace semantic soundness.
+Alternatively, a false elimination can remove one genuinely grounded query
+reading and produce false uniqueness while the selected winner's source
+facts remain correct. Evaluating positive support alone cannot validate
+refutation behavior.
+
+\paragraph{Why the remaining gates are required.}
+A singleton survivor without evidence for its unit or population has no
+complete grounded support. Refuting every candidate also yields zero pair
+loss but no answer. A refuted member of a rival class leaves an unrefuted
+same-action member alive. A continuation-plus-header rule activated from the
+header alone has lost a necessary dependency. Two separately requested source
+versions cannot be collapsed into one action because their values agree.
+Each construction violates a different explicit gate or representation
+condition; none is repaired by increasing an objective weight.
+
+\paragraph{Conflicts and monotonicity.}
+With fallible supplied rules, adding evidence may activate positive support on
+a previously contradicted claim. Its state becomes unresolved with a conflict,
+the candidate reappears and authorization is blocked. Pair loss can increase;
+answerability is not unconditionally monotone. Under globally sound rules and
+coherent semantics, Lemma~\ref{lem:local-soundness} excludes conflicts and
+negative conclusions persist as evidence is added, although budget feasibility
+need not persist.
+
+The unproved components remain automatic query-faithful candidate generation,
+semantic source verification, natural-language coverage assessment, practical
+search, calibrated selective error and utility beyond strong structural and
+sufficiency controls at matched total costs. The certificate theory does not
+establish any of these empirical premises.

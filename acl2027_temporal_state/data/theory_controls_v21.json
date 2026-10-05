@@ -1,0 +1,46 @@
+{
+  "schema_version": 21,
+  "evidence_status": "Entirely authored finite controls; no natural-source, model, or benchmark results.",
+  "problem": {
+    "atoms": ["value", "heading", "note", "bridge", "poison"],
+    "initial_atoms": [],
+    "atom_provenance": "Invented indivisible coverage atoms; no source interval normalizer or source authenticator is exercised.",
+    "input_provenance": "Authored complete signed witness map for testing the finite algebra only.",
+    "coverage": {
+      "cleared": true,
+      "provenance": "Exhaustive by construction within this invented finite control only. This is not evidence of natural candidate coverage."
+    },
+    "candidates": [
+      {"candidate_id": "a", "action_class": "joint-answer-A", "required_claims": ["value", "binding"]},
+      {"candidate_id": "a-alias", "action_class": "joint-answer-A", "required_claims": ["binding"]},
+      {"candidate_id": "b-one", "action_class": "joint-answer-B", "required_claims": ["binding"]},
+      {"candidate_id": "b-two", "action_class": "joint-answer-B", "required_claims": ["binding"]}
+    ],
+    "actions": [
+      {"action_id": "row", "atoms": ["value"]},
+      {"action_id": "header", "atoms": ["heading"]},
+      {"action_id": "footnote", "atoms": ["note"]},
+      {"action_id": "bridge", "atoms": ["bridge"]},
+      {"action_id": "poison", "atoms": ["poison"]}
+    ],
+    "witnesses": [
+      {"witness_id": "a-value", "candidate_id": "a", "claim_id": "value", "sign": "+", "premise_atoms": ["value"], "provenance": "Invented value support."},
+      {"witness_id": "a-binding", "candidate_id": "a", "claim_id": "binding", "sign": "+", "premise_atoms": ["heading", "note"], "provenance": "Invented conjunctive scope support."},
+      {"witness_id": "not-b-one", "candidate_id": "b-one", "claim_id": "binding", "sign": "-", "premise_atoms": ["heading"], "provenance": "Invented first rival refutation."},
+      {"witness_id": "not-b-two", "candidate_id": "b-two", "claim_id": "binding", "sign": "-", "premise_atoms": ["note"], "provenance": "Invented second rival refutation."},
+      {"witness_id": "conflicting-b-one", "candidate_id": "b-one", "claim_id": "binding", "sign": "+", "premise_atoms": ["poison"], "provenance": "Invented conflict on an unchosen hypothesis."}
+    ]
+  },
+  "evaluations": [
+    {"name": "empty-is-unresolved", "selected": [], "authorized": false, "local_certificate": false, "active": [], "blocker": "UNREFUTED_RIVAL_ACTION"},
+    {"name": "value-alone-is-insufficient", "selected": ["row"], "authorized": false, "local_certificate": false, "active": ["a-value"], "blocker": "NO_COMPLETE_POSITIVE_SUPPORT"},
+    {"name": "one-rival-representative-is-not-enough", "selected": ["header", "row"], "authorized": false, "local_certificate": false, "active": ["a-value", "not-b-one"], "blocker": "UNREFUTED_RIVAL_ACTION"},
+    {"name": "conjunctive-support-without-value-is-insufficient", "selected": ["header", "footnote"], "authorized": false, "local_certificate": false, "active": ["a-binding", "not-b-one", "not-b-two"], "blocker": "NO_COMPLETE_POSITIVE_SUPPORT"},
+    {"name": "complete-support-plus-all-rivals", "selected": ["header", "footnote", "row"], "authorized": true, "local_certificate": true, "active": ["a-binding", "a-value", "not-b-one", "not-b-two"]},
+    {"name": "conflict-on-unchosen-candidate-blocks", "selected": ["header", "footnote", "row", "poison"], "authorized": false, "local_certificate": false, "active": ["a-binding", "a-value", "conflicting-b-one", "not-b-one", "not-b-two"], "blocker": "CONFLICT"}
+  ],
+  "solutions": [
+    {"name": "additive-union", "cost_mode": "additive", "cost": "3", "selected": ["footnote", "header", "row"]},
+    {"name": "nonmonotone-extension-can-be-cheaper", "cost_mode": "nonmonotone-authored", "cost": "2", "selected": ["bridge", "footnote", "header", "row"], "budget": 2}
+  ]
+}

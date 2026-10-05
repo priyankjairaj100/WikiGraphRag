@@ -1,0 +1,71 @@
+Reproduce the v21 theory artifacts
+2026-10-05
+
+All commands below start in acl2027_temporal_state/ unless stated otherwise.
+The checker and tests use the Python standard library. They make no model or
+network calls. Authored fixtures are not natural-data results.
+
+1. Reference semantics and exact finite solver
+
+  PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_certificate_v21.py' -q
+
+Expected current check: 36 tests pass. The tests cover full joint claim support,
+all-rival exclusion, shared and conjunctive premises, coverage and conflicts,
+cost nonmonotonicity, exact rational costs and refusal semantics.
+
+2. Authored mechanism receipt
+
+  PYTHONPATH=src python3 scripts/check_theory_v21.py
+
+Default output is JSON on stdout. To retain a NEW receipt:
+
+  PYTHONPATH=src python3 scripts/check_theory_v21.py --output /tmp/wikigraph_theory_controls_v21_local.json
+
+Expected current check: 9/9 authored controls pass. An existing output path is
+rejected. The frozen project receipt is results/theory_controls_v21_receipt.json.
+External fixture input may be selected with --fixture; the receipt hashes that
+input. The fixture is a supplied signed map, not an inference-only retrieval
+benchmark. A caller assertion of coverage is not proof that candidates are
+semantically complete.
+
+3. Build the full theory manuscript
+
+Requires a TeX installation with pdflatex, latexmk, bibtex, article, amsmath,
+amsthm, lmodern, geometry, natbib, hyperref, microtype, enumitem, tabularx,
+booktabs and fancyhdr.
+
+  python3 scripts/build_theory_v21.py --output-dir /tmp/wikigraph_theory_v21_local
+
+The new output directory receives theory_v21.pdf and a source-hashed build
+receipt. Existing output PDF/receipt paths are rejected. Compilation runs in a
+temporary directory; source and prior PDFs are unchanged. TeX timestamps are
+pinned; byte-identical PDFs additionally require the same TeX/font environment.
+This is actual LaTeX compilation, not a separate re-typeset facsimile.
+
+Render for inspection, if Poppler is available:
+
+  pdftoppm -scale-to 1400 -png /tmp/wikigraph_theory_v21_local/theory_v21.pdf /tmp/wikigraph_theory_v21_page
+
+Inspect all pages, especially equations, the claim table and bibliography.
+Compilation alone does not verify layout or mathematical truth. The public
+build and final page-review receipts are paper/theory_render_manifest_v21.json
+and paper/theory_visual_review_v21.json.
+
+4. Repository integrity
+
+From the repository ROOT:
+
+  python3 scripts/verify_repository.py
+
+This checks current root/research manifests and unchanged original archive
+members. It does not recreate unavailable private source captures or historical
+raw native outputs. Prior v20 manifests are preserved as provenance records.
+
+5. Local empirical handoff
+
+Read docs/local_empirical_contract_v21.txt and
+docs/theory_implementation_map_v21.txt. The reference checker is ready; the
+automatic natural-language proposal/verifier/coverage/controller integration
+must still be built and validated under a new local protocol. The source
+semantics, model choice, hardware and budget cannot be inferred from the
+successful authored finite checks. No experiment is running after this save.

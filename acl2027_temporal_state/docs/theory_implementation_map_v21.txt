@@ -1,0 +1,218 @@
+Theory-to-implementation map, v21
+Prepared 2026-10-05; no empirical claim or new model execution.
+
+Purpose
+
+Separate what the theory assumes, what the existing repository enforces and
+what a local empirical runner must supply. The code cannot turn an asserted
+coverage flag or a source-backed judgment into a proof of semantic correctness.
+The active empirical contract is docs/local_empirical_contract_v21.txt.
+
+New v21 finite-certificate reference
+
+src/temporal_state/certificate_v21.py defines an explicit finite supplied-map
+certificate and an exact subset solver for at most twenty evidence actions.
+Answer-class labels, complete claim requirements, signs, premises, costs and
+coverage assessments are caller inputs; the module cannot establish their
+semantic truth. It requires complete positive support for a chosen joint
+hypothesis, refutation of every candidate in every different answer class,
+absence of any active sign conflict, and a separately supplied coverage gate.
+Shared premise atoms activate rules by union coverage, not action identity.
+Atom IDs and their normalization are supplied. This module does not compile
+raw intervals into elementary atoms or authenticate source text; the source
+adapter must establish those identities and preserve every premise boundary.
+
+The exact solver evaluates the admitted finite subsets with a deterministic
+nonnegative integer/Fraction cost callback. It does not prune an over-budget
+partial set on the assumption that the cost will only increase. Its optimality
+claim is for this bounded supplied map and declared cost, including nonmonotone
+rendered costs. It is not a scalable MILP backend, an online retrieval policy,
+an oracle for unseen judgments or an automatic source entailment checker.
+
+With the coverage sentinel OPEN, require_coverage=False computes only a local
+structural optimum for planning/diagnosis. Even if its status is OPTIMAL,
+best.authorized remains false. The result neither clears the sentinel nor
+provides a semantic coverage assessment.
+
+data/theory_controls_v21.json and scripts/check_theory_v21.py expose authored
+mechanism cases; tests/test_certificate_v21.py checks implementation behavior.
+The script prints a receipt, or writes one with --output to a new local path.
+These results are not natural QA accuracy or evidence of method superiority.
+The abstract Boolean/MILP formulation and restricted classical set-cover
+corollary are mathematical results; they must not be described as an executed
+large-scale optimization experiment or as a general greedy guarantee.
+
+Existing finite witness scaffold
+
+src/temporal_state/witness_selection_v14.py supplies Source, Span, Hypothesis,
+Bundle, SourceJudgment and Problem. Sources bind text hashes and locators;
+spans are half-open Unicode character intervals. Judgments have supported,
+contradicted or unresolved values and activate only when all required spans
+are received. Source span unions preserve gaps and distinct source identities.
+
+evaluate() derives claim states, survivors, conflicts, supported hypotheses,
+incompatible survivor pairs, fixed-weight pair loss, admissibility and
+answerability. Unknown alternatives, missing positive support, conflict,
+incompatible survivors, empty survivors or budget failure block an answer.
+Zero-weight alternatives still block answerability; weights only affect the
+selection objective. unknown_assessment_provenance records a supplied reason
+for a coverage decision; it does not authenticate that reason.
+
+Important theory boundary: v14 accepts an arbitrary symmetric pair relation.
+The v21 answer-class formulation requires a valid equivalence relation induced
+by complete query-relative answers. An adapter must construct that partition
+and use cross-class pairs, rather than assuming every arbitrary v14 pair graph
+has a coherent class interpretation. Multiple requested versions belong to one
+joint hypothesis. The caller currently supplies hypotheses and their claims.
+
+greedy_select() is a heuristic over supplied judgments; it has no general
+approximation guarantee. exhaustive_tiny_optimum() compares the finite map on
+at most sixteen bundles; it is not an automatic retriever or scalable online
+oracle. Its objective/tie-break is the frozen v14 contract, so do not identify
+it silently with a new minimum-certificate objective. The Cost callback charges
+a rendered union string, whose amount need not be monotone when headers merge.
+This differs from the additive nonnegative atomic cost used by restricted
+certificate optimization theory. Native prompt tokens require the actual
+tokenizer and chat template; authored character counters are not token counts.
+
+Existing source and reader components
+
+src/temporal_state/typed_reader_v15_1.py and
+scripts/run_typed_reader_v15_1.py implement conventional bounded numeric and
+reported-aspect decoding, with preserved unsupported transformations and
+unresolved dimensions. Full-DTS checks are separately implemented in the
+versioned run_full_dts scripts. None is an automatic natural-language concept
+mapper, table-scope validator or proof of a cross-version correction relation.
+
+src/temporal_state/reader_binding_v18.py provides EvidencePack,
+validate_proposal(), render_proposal(), lexical_baseline() and direct-output
+validation. Six bindings are concept, entity, period, unit, population and
+physical source. Structured proposals contain complete hypotheses with multiple
+claims. The deterministic renderer preserves typed quantities and required
+bindings; it does not independently verify the semantics of supplied witness
+text, candidate completeness or prose entailment.
+
+The v21 theory also tracks required analysis definitions and material comparison
+relations. The legacy six-aspect record has no dedicated general representation
+for all of them. A broader task must add a versioned schema/claim extension and
+positive relation witnesses; naming an analysis definition in a prompt does
+not supply that implementation.
+
+The frozen interface caps packs at 64 facts, 64 blocks and 512 witnesses, with
+at most eight hypotheses and eight claims per hypothesis. Extending those
+caps requires a new version and exact prompt/token/cost measurements. In
+particular, the historical PFE paired pool has 85 facts and cannot be silently
+truncated to fit. Coverage cannot be preserved merely by dropping records.
+
+The same file's compatibility test permits unspecified/null dimensions while
+comparing individual scopes. It is not by itself the complete query-relative
+answer-equivalence partition in the v21 theory. Translation from a v21 answer
+class into the legacy rendering interface must be explicit and tested.
+
+src/temporal_state/reader_joint_scoring_v19.py validates separately supplied
+reference targets, projects structured/direct outputs and scores joint scope,
+value and citation matches. It preserves invalid/failed outputs. Its frozen
+Stage-A reference schema accepts one or two requested quantity claims for an
+answer, or an insufficient action; it is not a universal evaluator for arbitrary
+multi-claim explanations, comparison relations or clarification dialogues.
+validate_reference() checks structure and declared aliases, not whether human
+admission was sound/complete. A broader theory evaluation needs a separately
+versioned reference/scoring extension and new independent reference review.
+
+Existing native and data plumbing
+
+scripts/native_binding_reader_v16.py implements guarded freeze/tokenize/execute
+stages for fixed structured and direct reader arms. The v19/v19.1 freezer,
+worker, runtime and grader record a bounded authored experiment. These bind
+historical configuration, exact code/source/runtime hashes and paths. They are
+not an off-the-shelf general v21 benchmark CLI. Preserve their negative results
+and unavailable-raw-evidence incident. Relocation or model replacement needs a
+new protocol and adapter; it is not a historical rerun with identical identity.
+
+scripts/prepare_authored_policy_comparison_v20_1.py creates sixteen inspected
+development messages with balanced policy order. These are input preparation,
+not a native protocol, a fresh competence set or a complete empirical program.
+scripts/native_completion_checkpoint_v20.py is a library for sealing per-cell
+artifacts and checking acknowledged persistence; it has no provider-integrated
+campaign CLI. Its controls use invented local artifacts. Real model invocation,
+durable transfer/read-back and orchestration still require local integration.
+
+The v19 source-occurrence projection and v20 question-free registry bridge
+retain immutable source anchors and unresolved witness forms. The public
+receipts cannot replace full source inspection. The last source review admitted
+no complete six-aspect pilot entry and no semantic EvidencePack/author release.
+The 68 unsupported offset-free consumer selector forms are a compatibility gap,
+not proof that source claims are false. A new domain/local corpus can use a new
+admission protocol; existing partially reviewed files cannot silently become
+gold benchmark data.
+
+Required local automatic interfaces (not implemented end to end)
+
+1. Corpus adapter: admit sources, stable atom identities and neighborhoods;
+   expose the same searchable source/action pool to every comparison method;
+   log source reads and descriptor/index costs. Prove no held-out reference
+   access by the prediction runner, rather than relying only on naming.
+
+2. Question-to-joint-hypotheses adapter: return observed occurrence assignments,
+   complete requested answer actions, an explicit equivalence partition,
+   unknown fields, proposal provenance and charged usage. Do not generate
+   arbitrary wrong values to manufacture alternatives. Log every pruned
+   hypothesis and any uncertainty retained by the coverage gate.
+
+3. Acquired-evidence verifier: return exact support/refutation targets, S/C/U,
+   all source premise IDs, source hashes and provenance. Refutation identifies
+   which precise requirement fails; absence or irrelevant evidence stays U.
+   V21 abstains on any observed positive/negative conflict; adding another
+   judgment cannot clear that signed-ledger conflict. Adjudication or
+   supersession requires a separately versioned, justified protocol preserving
+   all original records, outside the present theorem. Tool-based numeric checks
+   and model-based semantic judgments retain distinct origins.
+
+4. Non-anticipating controller: receive only acquired evidence, legal action
+   descriptors and predicted utilities before choosing an action; acquire and
+   charge its source atoms; then call the verifier and update the certificate
+   state. An offline supplied-judgment solver must not leak unseen outcomes
+   into this loop. Stop reasons include certified answer, unknown coverage,
+   unresolved/contradictory evidence, exhausted actions and budget exhaustion.
+
+5. Coverage/unknown adapter: supply an independently evaluated gate with an
+   explicit corpus/question scope and calibrated threshold, where claimed.
+   Beam saturation, zero pair loss and a high top-candidate score do not prove
+   that all answer-changing classes have been represented. Do not mistake the
+   legacy reader's boolean unknown field for an implemented coverage estimator.
+
+6. Reader/rendering adapter: produce the authorized complete scoped claims,
+   exact occurrence/witness IDs, typed arithmetic and faithful final output.
+   The theory's support-only guarantee and unique-resolution guarantee must be
+   separately labeled. Enforce all material explanation/relation claims too;
+   a quantity-only checker cannot certify arbitrary generated prose.
+
+7. Local runner and grader: bind model/tokenizer/template revisions, decoding,
+   hardware/resource limits, schedule, protocol, raw prompts/responses, usage,
+   retrieval/verifier state changes and termination. Keep references separate
+   until sealing. Record technical failures in the full planned denominator.
+   Implement paired history-clustered evaluation and frozen operating points;
+   the existing unit suite does not perform this statistical analysis.
+
+Minimum proposed per-question output contract
+
+This is a design contract, not an existing JSON schema. A local implementation
+should version the actual schema and validate it before running a campaign.
+Required records are run/question/history IDs; split and source cutoff; source,
+code/model/template hashes; candidate snapshot and answer-class membership;
+coverage decision and rationale; action order with pre-action visible state;
+newly acquired atom IDs and costs; anchored judgment records and conflicts;
+certificate/stop decision; structured answer and rendered output; all usage,
+timing and technical status; raw-artifact hashes; and a separately sealed
+reference/grading record. References must not enter predicted candidate,
+selection or verifier records except in explicitly labeled oracle conditions.
+
+What local results would license
+
+Authored proof counterexamples and solver tests validate mathematical examples
+and implementation behavior. Source-anchored annotations establish reviewed
+development correspondences. Automatic pilot outcomes support design choices.
+Only a frozen, independently referenced, matched-cost held-out comparison can
+support a natural QA improvement claim. Conditional theory plus positive
+pilot results alone do not establish general coverage, calibrated selective
+risk, or ACL-level novelty. Keep these evidence levels separate in the paper.

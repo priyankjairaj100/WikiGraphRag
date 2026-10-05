@@ -1,3 +1,17 @@
+V0.21 COMPLETE CONDITIONAL THEORY
+
+Main source: theory_v21.tex; compiled PDF: theory_v21.pdf.
+Fragments: theory_core_v21.tex, theory_algorithm_v21.tex, theory_related_v21.tex.
+Bibliography: theory_references_v21.bib (19 primary references).
+Claim ledger: claim_ledger_v21.json.
+Build/page review: theory_render_manifest_v21.json, theory_visual_review_v21.json.
+This PDF is compiled from the actual LaTeX sources with complete original
+proofs; it is a working theory manuscript, not a verified ACL template.
+Reproduce: python3 scripts/build_theory_v21.py --output-dir NEW_DIRECTORY,
+from acl2027_temporal_state/. See docs/reproduce_theory_v21.txt.
+No new model or natural-QA result is claimed. Prior artifacts below are frozen
+historical manuscripts; their compilation limitations describe those versions.
+
 V0.13 FULL WORKING STUDY
 
 Canonical manuscript: paired_reading_study_v13.json.

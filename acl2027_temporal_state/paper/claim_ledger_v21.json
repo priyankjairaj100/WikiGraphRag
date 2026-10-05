@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "checkpoint": "v0.21",
+  "claims": [
+    {
+      "id": "T01",
+      "claim": "Complete joint answer equivalence preserves all required scope/version/comparison slots",
+      "evidence_type": "definition",
+      "artifact": "paper/theory_core_v21.tex",
+      "locator_or_companion": "eq:answer-equivalence",
+      "limit": "Typed representation and faithful query contract are assumptions; no automatic validator supplied."
+    },
+    {
+      "id": "T02",
+      "claim": "Certificates give positive warrant and unique source-relative resolution",
+      "evidence_type": "conditional_theorem",
+      "artifact": "paper/theory_core_v21.tex",
+      "locator_or_companion": "thm:soundness",
+      "limit": "Requires coherent source semantics, sound active rules, faithful representations/rendering and valid-class coverage."
+    },
+    {
+      "id": "T03",
+      "claim": "Finite exhaustive checking is complete for the supplied map",
+      "evidence_type": "finite_exactness",
+      "artifact": "paper/theory_core_v21.tex",
+      "locator_or_companion": "prop:finite-checking",
+      "limit": "Not semantic completeness of natural language or corpus retrieval."
+    },
+    {
+      "id": "T04",
+      "claim": "Semantic completeness requires expressible witnesses, joint budget and complete search",
+      "evidence_type": "conditional_theorem",
+      "artifact": "paper/theory_core_v21.tex",
+      "locator_or_companion": "thm:complete",
+      "limit": "These conditions are not empirically established."
+    },
+    {
+      "id": "T05",
+      "claim": "Error localizes to coverage, used verification and representation failures",
+      "evidence_type": "elementary_bound",
+      "artifact": "paper/theory_core_v21.tex",
+      "locator_or_companion": "thm:risk",
+      "limit": "Requires mechanically gated emission; selective risk divides by nonzero answer coverage; no calibrated numerical bound."
+    },
+    {
+      "id": "T06",
+      "claim": "Finite transcripts cannot alone establish unique resolution beyond modeled classes",
+      "evidence_type": "conditional_indistinguishability",
+      "artifact": "paper/theory_core_v21.tex",
+      "locator_or_companion": "prop:coverage-impossibility",
+      "limit": "Transcript-restricted information model; does not make positively supported facts false."
+    },
+    {
+      "id": "T07",
+      "claim": "Boolean/MILP encoding and exhaustive oracle search are exact under declared costs",
+      "evidence_type": "standard_encoding_adaptation",
+      "artifact": "paper/theory_algorithm_v21.tex",
+      "locator_or_companion": "section 3",
+      "limit": "Compact MILP requires additive resources; exact oracle enumeration permits arbitrary deterministic nonnegative costs."
+    },
+    {
+      "id": "T08",
+      "claim": "Classical set-cover hardness embeds in the certificate problem",
+      "evidence_type": "classical_reduction",
+      "artifact": "paper/theory_algorithm_v21.tex",
+      "locator_or_companion": "section 4",
+      "limit": "Not a new general hardness theorem."
+    },
+    {
+      "id": "T09",
+      "claim": "Conjunctions break diminishing returns and fixed improving lookahead can have unbounded ratio",
+      "evidence_type": "specific_counterexample",
+      "artifact": "paper/theory_algorithm_v21.tex",
+      "locator_or_companion": "section 4",
+      "limit": "Applies to the defined improving k-lookahead policy, not every policy making singleton moves."
+    },
+    {
+      "id": "T10",
+      "claim": "Restricted cover bound min(m,rho H_m)",
+      "evidence_type": "classical_corollary",
+      "artifact": "paper/theory_algorithm_v21.tex",
+      "locator_or_companion": "section 5",
+      "limit": "Complete unique activation sets, conflict freedom and additive union costs required; no hard-budget preservation or side-budget guarantee."
+    },
+    {
+      "id": "T11",
+      "claim": "Certificate-directed acquisition is specified without unseen-judgment authorization",
+      "evidence_type": "method_specification",
+      "artifact": "paper/theory_v21.tex",
+      "locator_or_companion": "sec:online",
+      "limit": "Automatic pipeline and online performance/approximation are not implemented or proven."
+    },
+    {
+      "id": "I01",
+      "claim": "Exact supplied-map evaluator and <=20-action exhaustive solver implemented",
+      "evidence_type": "implementation",
+      "artifact": "src/temporal_state/certificate_v21.py",
+      "locator_or_companion": "solve_exact",
+      "limit": "Caller supplies semantic labels, normalized atoms, classes, completeness assertion and pure cost oracle."
+    },
+    {
+      "id": "V01",
+      "claim": "36 targeted unit checks and nine authored controls pass",
+      "evidence_type": "authored_validation",
+      "artifact": "results/theory_controls_v21_receipt.json",
+      "locator_or_companion": "results/theory_unit_verification_v21.json",
+      "limit": "Not natural QA or a rerun of the historical integrated suite."
+    },
+    {
+      "id": "V02",
+      "claim": "Separate model-role proof/code review found no unresolved blocker in recorded revisions",
+      "evidence_type": "bounded_review",
+      "artifact": "docs/theory_independent_review_v21.txt",
+      "locator_or_companion": "final source hashes",
+      "limit": "Not human peer review, novelty certification or empirical premise validation."
+    },
+    {
+      "id": "P01",
+      "claim": "18-page theory PDF compiled from actual LaTeX and visually reviewed",
+      "evidence_type": "artifact_validation",
+      "artifact": "paper/theory_render_manifest_v21.json",
+      "locator_or_companion": "paper/theory_visual_review_v21.json",
+      "limit": "Working manuscript; ACL template and submission readiness not claimed."
+    },
+    {
+      "id": "N01",
+      "claim": "Close prior art limits generic novelty claims",
+      "evidence_type": "targeted_literature_audit",
+      "artifact": "docs/theory_prior_art_audit_v21.txt",
+      "locator_or_companion": "paper/theory_references_v21.bib",
+      "limit": "Not exhaustive; ROSE-RAG full theorem overlap unresolved."
+    },
+    {
+      "id": "E01",
+      "claim": "No new native/model or natural QA execution in v21; empirical benefit remains open",
+      "evidence_type": "checkpoint_scope",
+      "artifact": "docs/theory_completion_v21.txt",
+      "locator_or_companion": "docs/local_empirical_contract_v21.txt",
+      "limit": "Local empirical adapters and independent matched-cost evaluation remain necessary."
+    }
+  ],
+  "artifact_hashes": {
+    "docs/theory_completion_v21.txt": "d8bd934f280b17fde596b9a0d6c2d6063742ed92df97adc5fbf7e944097c04b8",
+    "docs/theory_independent_review_v21.txt": "afbf06afb19e179b1002572bef0c2a0e591c84d763c60a22f3af45fddd3c9f23",
+    "docs/theory_prior_art_audit_v21.txt": "6f35b553d34e7f32de8aad6878c7eb51a26f117cc906502a2a58445e9bb13210",
+    "paper/theory_algorithm_v21.tex": "bd4781e73a753e6f90a54ae936db855cd85b486f7d900079267bd5c886e45ecd",
+    "paper/theory_core_v21.tex": "cddf42a60c227d3e02b820552d04d73a30e3df4a17628af6d3b234520c9ac17f",
+    "paper/theory_render_manifest_v21.json": "3b897b91509f5969702542b91e7e3c44b6f2bd1801481f1839d3299f434186a5",
+    "paper/theory_v21.tex": "24bb0039ee13d368533ec38f97bdcdbb25bd728fde36f66ed17d1c15613413a3",
+    "results/theory_controls_v21_receipt.json": "8a06db2cc828a50dfe7d0d9d7f27ce27945a74d10b4aad424d1b454897d6caf9",
+    "src/temporal_state/certificate_v21.py": "4d49e293ee9e404029515333023fb05c6dca9196066a3e3752807087e9a0ae99"
+  },
+  "unsupported_claims": [
+    "new general optimization theory",
+    "unconditional semantic correctness",
+    "complete natural-language candidate coverage",
+    "online near-optimal retrieval",
+    "held-out QA gains",
+    "ACL 2027 acceptance readiness"
+  ]
+}

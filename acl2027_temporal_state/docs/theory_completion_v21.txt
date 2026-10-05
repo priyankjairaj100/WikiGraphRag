@@ -1,0 +1,93 @@
+Theory completion checkpoint v0.21
+2026-10-05
+
+User direction
+
+Complete the theory in this session; the user will run the empirical program
+on a local machine. Continue publishing project materials to WikiGraphRag.
+No native/model or natural-QA run was launched for this checkpoint.
+
+Deliverables
+
+paper/theory_v21.tex is the integrated, original theory working manuscript.
+It includes paper/theory_core_v21.tex, theory_algorithm_v21.tex and
+theory_related_v21.tex and uses theory_references_v21.bib. The compiled PDF
+is paper/theory_v21.pdf. This is a theory manuscript with full proofs, not an
+ACL-template or submission-ready empirical paper. Prior manuscripts remain
+unchanged.
+
+The formal contract fixes complete joint answers, with every requested source
+version, material scope binding and comparison relation. Positive source
+support and unique query resolution are separate guarantees. A certificate
+needs complete positive support, explicit refutation of every different-action
+candidate, conflict freedom, a justified valid-class coverage assertion and
+the declared budget. Missing evidence is unresolved, not refutation.
+
+Completed results
+
+1. Source-relative soundness and a weaker target-preservation corollary.
+2. Exhaustive finite-map decision completeness and conditional semantic
+   completeness under witness expressibility, joint budget and complete search.
+3. Error localization into representation, candidate-coverage, false-support
+   and false-elimination events, with the correct answer-rate denominator for
+   selective risk and an explicit adaptive-call qualification.
+4. Transcript-restricted coverage impossibility and concrete failure cases
+   for missing support, class representatives, source semantics, conjunctions,
+   version collapse, zero-weight rivals and conflicting judgments.
+5. Exact Boolean/MILP formulation, exact oracle-cost search, classical set-cover
+   embedding and a fixed-lookahead counterexample with unbounded cost ratio.
+6. Restricted classical cover bound min(m, rho H_m) under complete unique
+   premise-action sets, conflict freedom and additive union-resource costs.
+   This is an attributed conditional adaptation, not a new general cover
+   theorem, and it does not preserve an arbitrary hard budget.
+7. A non-anticipating certificate-directed acquisition specification: predicted
+   witness plans rank actions; acquired, verified premises alone authorize.
+   It has no claimed online approximation guarantee.
+
+Implementation and checks
+
+src/temporal_state/certificate_v21.py is a strict reference checker and exact
+subset solver over at most 20 supplied evidence actions. It handles conjunctive
+premises, shared atoms, every rival candidate, global conflicts, same-class
+survivors, an explicit coverage assertion and arbitrary deterministic nonnegative
+integer/Fraction cost. It never prunes on an unjustified monotone-cost premise.
+Search-cap refusal is not infeasibility; a local optimum with open coverage is
+not answer authorization. Atomic normalization and semantic labels are inputs.
+
+36 targeted unit tests and 9 authored finite controls pass. A separate model-role
+review also checks the math and code and records its corrections. These are
+theory/implementation checks, not human peer review, natural QA measurements or
+empirical evidence that the semantic premises hold. The historical 1,477-test
+integrated checkpoint is retained; it was not relabeled as a newly executed
+full suite. The new module does not alter frozen v14/v18 behavior.
+
+Novelty assessment
+
+The closest verified work already covers equivalence classes, logical
+certificates, sufficiency gaps, ambiguity and conjunctive evidence sets.
+The 2026 Missing Complement and S2G-RAG mechanisms are particularly relevant
+baselines. The contribution is currently a precise domain-specific certificate
+contract and testable method design, not established new general theory.
+The prior-art audit also records an adaptive-cover correction and an unresolved
+abstract-only ROSE-RAG overlap. No absence-of-prior-art claim is made.
+
+What local empirical work must establish
+
+Natural-language candidate recall/valid-class coverage, verifier soundness,
+strong reader adequacy, source discovery and matched-cost method advantage are
+still unestablished. The previous reader's receipt-backed 2/8 authored outcome
+and raw-output availability gap remain historical limitations. No held-out
+method gain or ACL acceptance claim follows from completing the theory.
+
+Read docs/local_empirical_contract_v21.txt first. It sets out independent source
+references, disjoint splits, complete and selective endpoints, strong baselines,
+charged costs, staged local execution and falsifiable go/no-go rules.
+docs/theory_implementation_map_v21.txt identifies the exact missing adapters:
+source-to-atoms, joint proposal, semantic verification, coverage assessment,
+non-anticipating controller, expanded scoring and durable native execution.
+The program is not a one-command end-to-end local benchmark yet. The abstract
+MILP and conditional cover method are specified but not implemented backends.
+
+The theory package is complete as a conditional foundation. Its mathematical
+novelty and empirical usefulness must still be established for the intended
+ACL 2027 paper. No conference date or formatting requirement is assumed.

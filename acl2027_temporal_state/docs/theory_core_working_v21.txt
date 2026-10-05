@@ -1,0 +1,615 @@
+Core certificate theory working note v0.21
+Authored 2026-10-05; mathematical development, not an empirical result.
+
+Scope and status
+
+This note supplies definitions and proofs for a finite candidate/witness
+certificate. It does not implement a natural-language proposer, semantic
+verifier, coverage oracle or source-authenticity checker. The claims below are
+conditional mathematical statements. No novelty, prevalence, effectiveness,
+natural-data improvement, calibration or publishability claim follows. No
+model/native execution or private-source restoration was performed for this
+note. Existing v14/v16 statements and failed experiments remain unchanged.
+
+The proofs are given here in full rather than attributed to a new algorithmic
+discovery. Related-work attribution and optimization guarantees belong in the
+separate synthesis. The inspected local contracts are
+docs/method_hypothesis_v14.txt, docs/witness_selection_v14.txt,
+docs/algorithmic_next_stage_v16_proposal.txt and
+src/temporal_state/witness_selection_v14.py. The existing code checks supplied
+maps; it does not establish the semantic assumptions of these theorems.
+
+1. Task contract, full joint answers and answer equivalence
+
+Fix a question q, immutable source corpus D and declared interpretation policy
+P. P fixes the admissible query readings, source authority rules, document
+identity/version rules, permissible concept mappings, inference rules and
+normalizations. These cannot be changed after seeing a desired answer. D means
+the admitted source corpus at the declared cut-off, not all information that
+could exist. The assurance is source-relative; it does not prove the sources
+factually correct, authentic, or first publicly available at their stated dates.
+
+Let R_q be the finite ordered set of required output slots. A slot can request a
+reported result from a specified source version, or an explicit comparison.
+A complete answer contains every required slot. A reported-result slot is the
+record
+
+ (slot, value, concept, entity, period, unit/scale, population,
+  analysis definition, source-version identity).
+
+The period distinguishes an instant from an interval and distinguishes reporting
+from observation periods where relevant. Population includes inclusion,
+consolidation or dimensional restrictions demanded by q. Version identity is
+the declared immutable document/source identity, not merely a displayed date.
+An exact value representation and any allowed normalization are fixed by P.
+An unknown material binding is not a completed factual slot.
+
+A comparison slot records its two endpoint slots, relation type and all material
+qualifiers. For example, reporting two scoped values, reporting their arithmetic
+difference, asserting a comparable change, asserting an explicit correction and
+asserting a changed-scope reanalysis are different actions. Equal numbers,
+recency, silence in a newer source, or a shared row label prove none of these
+relations. Arithmetic is licensed only by a registered checked derivation from
+supported operands; a semantic relation additionally needs its own premises.
+
+A hypothesis h is a complete JOINT proposal for all slots, plus a nonempty finite
+set C(h) of necessary source claims and a proposed binding/derivation structure.
+Every output assertion and necessary entity/concept/period/unit/population/
+definition/version attachment must occur in C(h) or have an explicit finite
+derivation from it. Necessary comparison premises cannot be omitted. An ordinary
+record extracted from one version is a component of h, not a competing whole
+answer to a question requesting two versions. Explicit question conditions are
+hard eligibility constraints; proposing a relaxed condition does not satisfy q.
+
+Let K_q(h) assert that h is structurally complete and eligible under q and P.
+K_q includes faithful query parsing and derivation/output type checking; these
+are substantive assumptions, not services supplied by a document hash. The
+abstract universe U contains every eligible anchored joint interpretation in
+the declared task domain. It need not be enumerable or finite. The actual
+proposal set H is a nonempty finite subset of U. Requiring H subset U means a
+structural validator has rejected malformed proposals. If that validator is
+fallible, its error is separately accounted for in Section 7.
+
+The answer map a_q(h) is the canonical joint record emitted by h. It preserves
+every requested source-version slot and comparison relation. Harmless parsing
+differences or alternative supporting citations may map to the same record;
+source identity is never discarded just because values agree. Define
+
+ h ~_q g  iff  a_q(h) = a_q(g),
+ I_q(h,g) = 1 iff h is not ~_q g.
+
+Equality of these canonical records is an equivalence relation: reflexivity,
+symmetry and transitivity follow from equality. The quotient H/~_q partitions
+candidates into answer-changing classes. A declared equivalence mapping must
+preserve q-relevant distinctions; a model-supplied symmetric incompatibility
+graph alone need not be the complement of such an equivalence relation. In
+particular, nontransitive pairwise 'compatible enough' judgments do not define
+this quotient. An arbitrary graph can still be used as a heuristic objective,
+but the theorem below requires an exact answer map, or the stronger direct
+condition that no distinct scoped actions are ever marked compatible.
+
+Example. A question requests revenue in original version V1 and amended version
+V2. The full answer ((V1,12,...),(V2,12,...)) has two slots. It is not equivalent
+to ((V2,12,...)) or to an unversioned '12'. If the population in V1 is a segment
+and that in V2 is consolidated, equal values still do not support a comparable
+change. A candidate proposing 'explicit correction' and a candidate merely
+reporting the two results are different joint actions.
+
+2. Source semantics and what positive support means
+
+Use a fixed, coherent semantic interpretation of the source assertions. One
+precise realization is a nonempty class M(D) of models satisfying D under P.
+Source assertions are provenance-scoped: 'V1 reports 12' and 'V2 reports 15' do
+not create a logical contradiction. If assertions actually conflict, P must
+represent that conflict without classical explosion; alternatively the affected
+task is outside the coherent-model theorem until the conflict is resolved.
+It is not legitimate to delete one source implicitly to recover consistency.
+
+Each c in C(h) denotes a precise proposition. Write D |= c when every model in
+M(D) satisfies c. Define phi_h = conjunction of c in C(h), and define
+
+ T = {h in U : some m in M(D) satisfies phi_h},
+ W = {h in U : D |= phi_h}.
+
+T is the set of source-consistent eligible joint interpretations. W is the set
+of positively warranted complete joint proposals. Since M(D) is nonempty,
+W subset T. The resolution theorems concern tasks with nonempty T. If no
+eligible interpretation exists, faithful sound positive support cannot exist
+and the system must abstain or report the task inconsistency. A task can have
+more than one source-consistent answer class; this
+includes ambiguity in an admitted query reading and unresolved source bindings.
+The certificate will guarantee both positive warrant and a unique action over
+T. It does not merely pick one plausible member of T.
+
+This distinction matters logically. If 'positive support' were DEFINED to mean
+'the complete correct and unique answer to q in every admissible interpretation',
+positive support alone would already establish the desired conclusion. A
+coverage/elimination theorem would then be redundant. Here support warrants the
+claims of a complete eligible proposal. Uniqueness across all admissible query
+resolutions is a separate claim. For a task whose exact formal semantics already
+makes any fully supported eligible action uniquely correct, coverage is not
+necessary for factual correctness. We do not claim an impossibility that
+contradicts that stronger assumption.
+
+An action can also be correct relative to one externally fixed reference
+interpretation t*. Section 5 gives the weaker target-preservation theorem. This
+must not be confused with certifying the absence of all other admissible actions.
+
+3. Anchors, conjunctive witnesses and three-valued judgments
+
+A source span consists of immutable source identity, exact offset/coordinates and
+text identity. Let cov(E) be the union of spans actually delivered in evidence
+selection E. A rule w is
+
+ (rule ID, h, c, sign, D_w, derivation/provenance),
+
+where c is in C(h), sign is + or -, and D_w is a nonempty finite set of required
+source spans. The rule activates iff EVERY span in D_w is fully covered by
+cov(E). Bundle names do not activate rules. Shared spans can be supplied by
+different bundles. If a derivation has intermediate premises, its flattened
+leaf dependencies include every required source span and every non-source
+axiom is declared in P. A generated explanation is not an additional axiom.
+
+Rule soundness means that the anchored source assertions jointly entail c for
+sign +, or entail not-c for sign -, under P. Faithful source extraction makes
+those assertions consequences of D. Consequently a sound active + rule implies
+D |= c, and a sound active - rule implies D |= not-c. Checking span presence or
+hashes proves neither entailment. An apparent structural mismatch refutes a
+candidate only when the relevant exclusivity/type/attachment premise is itself
+justified. A row cannot be declared to have exactly one parent merely because
+that assumption makes an alternative easy to reject.
+
+Let P_E(h,c) mean at least one active + rule exists and N_E(h,c) mean at least one
+active - rule exists. Define the three-valued state
+
+ supported     if P_E and not N_E;
+ contradicted  if N_E and not P_E;
+ unresolved    otherwise.
+
+Additionally record a conflict flag when P_E and N_E both hold. Thus unresolved
+is not silently identified with conflict: the public inference has three truth
+statuses and a separate diagnostic flag. This matches v14. An explicit
+'unresolved' record adds no positive or negative conclusion. Source absence,
+retrieval failure, incomplete anchors and verifier uncertainty do not create a
+negative rule. A rule with two dependencies does not activate from either one.
+
+Define
+
+ Ref_E(h) iff some c in C(h) has state contradicted;
+ Pos_E(h) iff every c in C(h) has state supported;
+ V_E = {h in H : not Ref_E(h)}.
+
+Positive support is conjunctive across the required claims; a contradiction of
+one necessary claim is sufficient to refute the whole candidate. Pos_E(h)
+implies h in V_E. A conflict anywhere in the active supplied map blocks a v14
+certificate. This global rule is conservative even when the conflict concerns
+a rival already refuted on another claim.
+
+Lemma 1 (local soundness). If all active rules are semantically sound and M(D)
+is nonempty, then (i) no active claim has a + / - conflict, (ii) Pos_E(h) implies
+h in W, and (iii) Ref_E(h) implies h not in T.
+
+Proof. A conflict would yield both D |= c and D |= not-c, impossible in any
+nonempty M(D). If every required claim is supported, every model satisfies
+every conjunct, so D |= phi_h. If a necessary c is contradicted, every model
+satisfies not-c; none can satisfy phi_h, which includes c. QED.
+
+The rule premise is only sufficient for this local lemma. For certificate
+soundness it is enough that the support rules actually used for the selected
+winner are sound and that the negative rules used to eliminate relevant valid
+rivals do not falsely refute them. Blanket accuracy of every possible judgment
+is stronger than necessary. Section 7 localizes the error event accordingly.
+
+4. The unknown sentinel and valid class coverage
+
+The semantic candidate-coverage property is
+
+ COV(H;D,q) : for every t in T there exists h in H intersect T
+              such that a_q(h) = a_q(t).
+
+This requires at least one SOURCE-CONSISTENT representative of every admissible
+answer class. It does not require every harmless parse. It is weaker than
+enumerating all of T but stronger than merely seeing each action label in H.
+An invalid representative can be soundly refuted, so action-label coverage by
+invalid representatives is insufficient. Coverage of one reference answer is
+also weaker than coverage of all admissible classes when the task is ambiguous.
+
+The operational unknown sentinel has state OPEN or COVERED. It starts OPEN.
+COVERED requires a coverage assessment/proof with a declared domain and
+provenance. No selected source witness, low pair loss, beam exhaustion, duplicate
+removal, confidence score, or lack of another proposed answer clears it by
+itself. In a formally finite source grammar, exhaustive enumeration plus sound
+grammar-completeness assumptions may establish COV. On unrestricted natural
+language, an audit or calibrated estimator may supply fallible assurance; that
+is an empirical coverage policy, not an unconditional proof.
+
+Write hat-COV for the operational decision to set COVERED. Coverage-sentinel
+soundness is the implication hat-COV => COV. Independent justification means
+the assertion is not inferred circularly from the certificate it enables; it
+does not require statistical independence between the proposer and verifier.
+The v14 provenance string documents an assessment but does not prove this
+implication. OPEN is not an ordinary low-weight hypothesis that can be removed
+by contradicting one finite candidate. Assigning it zero weight changes no
+logical requirement.
+
+5. Certificate definition and soundness
+
+Let B be the declared final evidence budget and cost(E) the exact declared
+rendering cost, including required source labels and prompt overhead. A
+certificate consists of E, a winner h*, one active support derivation for each
+c in C(h*), an active contradiction derivation for every rival candidate, and a
+coverage assessment. Its gate is
+
+ (G1) cost(E) <= B;
+ (G2) there is no active claim conflict;
+ (G3) Pos_E(h*);
+ (G4) for every g in H with a_q(g) != a_q(h*), Ref_E(g);
+ (G5) hat-COV is true.
+
+G4 quantifies over EVERY candidate in EVERY rival class. Refuting one
+representative of a class does not refute the class. A class-level witness is
+allowed only if it has a sound universal argument covering all its members.
+Equivalent candidates need not all be supported or refuted. Their harmless
+remaining ambiguity does not change the requested output.
+
+G3 implies that at least one survivor remains. Under the exact equivalence map,
+G3 and G4 are equivalent to: at least one fully supported survivor and every
+survivor has the same action as that supported survivor. There is no need to
+prove every surviving harmless parse. This is the precise positive-support AND
+all-rival-refutation condition; a zero numerical objective is not the gate.
+
+Theorem 1 (source-relative certificate soundness). Suppose K_q and a_q are
+faithful, source extraction/identity and the output renderer are faithful,
+M(D) is nonempty, all active rules are semantically sound, and the coverage
+sentinel is sound. If G1--G5 hold, then h* in W and
+
+ {a_q(t) : t in T} = {a_q(h*)}.
+
+Therefore the emitted action is a complete, positively warranted, uniquely
+resolved joint answer in the declared source/query domain. Every requested
+version and required comparison is retained. This statement says nothing about
+undeclared sources or the real-world truth of reported assertions.
+
+Proof. By G3 and Lemma 1, h* lies in W and hence T, so the action set on the
+left is nonempty and contains a_q(h*). Let t be any member of T. G5 and sentinel
+soundness provide h in H intersect T with a_q(h)=a_q(t). If this action differed
+from a_q(h*), G4 would give Ref_E(h), and Lemma 1 would give h not in T, a
+contradiction. Thus every t has the winner's action. The positive derivations
+establish each required claim of h*, faithful K_q supplies all required slots,
+and faithful rendering cannot introduce new claims. G1 establishes only the
+declared input-cost condition, independently of the semantic argument. QED.
+
+Theorem 2 (target-preservation version). Fix a reference t* in T. Replace full
+COV in Theorem 1 by the weaker requirement that some h in H intersect T has
+a_q(h)=a_q(t*). Under the other assumptions, an accepted action equals
+a_q(t*), and its required claims are positively warranted. This does not prove
+there are no other admissible actions in T.
+
+Proof. The same contradiction argument applies only to the given valid
+representative of t*. Positive warrant still follows from Lemma 1. Nothing in
+this weaker premise provides a representative for other classes, so no
+uniqueness conclusion follows. QED.
+
+Necessary distinction. Under a predeclared uniquely correct target and a
+positive oracle that already proves full task correctness, Theorem 2's coverage
+condition is sufficient but may not be necessary. A theorem need not have
+logically minimal assumptions. Claims of necessity below concern the stronger
+unique-resolution guarantee with only source-claim support, not an omniscient
+full-answer oracle.
+
+6. Exact finite checking and conditional completeness
+
+Let A be a finite set of allowed evidence bundles and J a finite rule list. A
+selection E is a subset of A; its actual received spans are the union of bundle
+spans. The union may satisfy a rule whose dependencies cross multiple bundles.
+No rule can be partially activated. Let F_B be the finite set of selections
+satisfying G1--G5 for some winner. An exhaustive decision procedure enumerates
+all subsets of A, computes exact received-span coverage and rule states, and
+checks the gates using the exact answer map.
+
+Theorem 3 (finite-map decision completeness). For fixed supplied H, A, J,
+hat-COV, rendering and exact cost, exhaustive checking returns a certificate iff
+F_B is nonempty. It returns none iff no certificate expressible by those supplied
+objects fits B.
+
+Proof. Every possible E is enumerated exactly as an element of the finite power
+set of A. The checker implements the defining predicates of F_B. If it returns
+one, that member satisfies the predicates. If F_B is nonempty, its members
+occur in the enumeration and at least one passes. QED.
+
+This theorem concerns supplied maps, not truth. The v14 tiny exhaustive routine
+with require_answerable=True provides this guarantee only for its admitted
+bundle cap, supplied incompatibility map, supplied counter and its own gates.
+A heuristic's failure does not establish F_B empty. Minimizing pair loss
+without requiring answerability is not this decision problem.
+
+Define B* = min{cost(E): E satisfies G2--G5 for some h*}, with B*=infinity if
+the set is empty. Because A is finite, every finite minimum is attained. With
+the other supplied objects fixed, a certificate exists at budget B iff B>=B*.
+This remains true even if merging source labels makes the exact cost
+nonmonotone. It does not imply that minimum-cost search is computationally easy.
+
+Theorem 4 (conditional semantic completeness). Assume the soundness premises
+of Theorem 1 and that the source-consistent action set T/~_q has exactly one
+class C*. Further assume:
+
+ (C1) the operational coverage sentinel is COVERED and is justified;
+ (C2) some h* in H with action C* has a sound positive witness for every
+      necessary claim, expressible in the admitted rule/bundle vocabulary;
+ (C3) for every g in H with action outside C*, at least one necessary claim
+      has a sound negative witness in that vocabulary;
+ (C4) there is one admitted selection E0 containing the dependencies of all
+      chosen witnesses, with cost(E0)<=B; all additional active judgments
+      are conflict-free (automatic under global coherent rule soundness);
+ (C5) selection/search is complete over the admitted finite selections.
+
+Then the procedure returns a certificate and its answer has action C*.
+
+Proof. C4 activates all support witnesses from C2 and all contradiction
+witnesses from C3. Soundness and coherence prevent an opposing active rule from
+turning one of these verdicts into a conflict. Thus E0 satisfies G1--G4; C1
+supplies G5. F_B is nonempty. C5 and Theorem 3 return a member; Theorem 1 proves
+the returned action is the unique class C*. QED.
+
+Each extra condition is substantive. Semantic uniqueness alone does not imply
+that the verifier vocabulary can express the required proof, that retrieval
+offers its dependencies, that the budget fits their union, that a learned
+verifier will recognize it, or that a greedy search will find it. C2/C3 can be
+called finite witness completeness only in a declared source/query calculus;
+there is no completeness theorem here for an unrestricted language model.
+C4 is a JOINT budget condition. Individually affordable witnesses need not
+coexist within B. Witness overlap can reduce cost but cannot erase dependencies.
+Unknown coverage can correctly force abstention even when a true answer exists.
+
+Projected partial answers. A fixed projection pi onto a declared subset of
+requested slots admits the same theorem using a'_q=pi composed with a_q and
+complete support for the emitted projected claims. Alternatives differing on
+unreported slots then need not be separated. Such a certificate is explicitly
+a partial answer; it does not establish the withheld comparison or silently
+remove a requested source version from the full-answer endpoint. The target
+of the theorem must be stated before interpreting an evaluation metric.
+
+7. Error decomposition and selective risk
+
+The preceding statements are deterministic. For probabilistic analysis, draw
+a task/run X from a declared population; include proposer/verifier randomness,
+adaptive retrieval and rendering in the run. Let A_emit be the event the system
+emits a complete answer, and let Bad be failure of the complete grounded unique-
+resolution conclusion of Theorem 1. For a unique-reference metric one may use
+Theorem 2's target-coverage event instead, but must label the changed endpoint.
+
+First retain the nonempty coherent M(D) and eligible-domain setup, and assume
+faithful query/action/schema representation, source extraction, budget
+accounting and rendering. Require every emitted run to pass the finite
+mechanical certificate gate G1--G5 and to retain its selected support and
+refutation proofs. This is a protocol assumption, not an assumption that its
+semantic judgments or coverage assertion are correct. Their truth may fail
+and is captured by the following error events. An ungated arbitrary emitter
+does not satisfy the risk theorem. On emitted runs define:
+
+ E_C : the sentinel was cleared although COV is false;
+ E_+ : at least one positive judgment used in the chosen complete support proof
+       is semantically false;
+ E_- : at least one negative judgment used to eliminate a source-consistent
+       rival candidate is semantically false.
+
+The semantic failure events concern the actual selected proof. A false
+negative in this naming is an erroneous contradiction/elimination, not a
+failure to recognize support. A failure to recognize a true support may cause
+abstention but does not itself violate accepted-answer soundness. To avoid
+terminological ambiguity, reports should say 'false support' and 'false
+elimination' rather than rely only on positive/negative labels.
+
+Theorem 5 (failure localization). With the assumed exact representations and
+mechanically gated emission protocol, but without assuming semantic correctness
+of the supplied judgments or coverage assertion,
+
+ A_emit intersect Bad subset E_C union E_+ union E_-.
+
+Proof. Consider an emitted run outside this union. The selected positive proof
+is sound, so its complete eligible winner is warranted. Coverage holds. If
+there were a source-consistent action different from the winner, coverage
+would supply a source-consistent candidate in its class. The certificate gate
+requires this candidate to be refuted. Its used negative judgment would then
+be false, yielding E_-, a contradiction. Hence the emitted output is grounded
+and unique. QED.
+
+Put E_V=E_+ union E_-. An exact partition followed by upper bounds gives
+
+ P(A_emit and Bad)
+   = P(A_emit and Bad and E_C)
+     + P(A_emit and Bad and not E_C and E_V)
+   <= P(A_emit and E_C) + P(A_emit and not E_C and E_V)
+   <= P(E_C) + P(E_+) + P(E_-).
+
+The equality uses Theorem 5: the residual part outside E_C union E_V is zero.
+No independence assumption is used. This is a decomposition/bound on JOINT
+error probability (unsupported or unresolved emitted answers per all tasks).
+
+Let p=P(A_emit)>0. Selective risk, the error rate AMONG emitted answers, is
+
+ R_sel = P(Bad | A_emit)
+       = P(A_emit and Bad)/p
+       <= min(1, [P(E_C)+P(E_+)+P(E_-)]/p).
+
+If p=0 selective risk is undefined, not zero accuracy loss. An always-abstain
+system has zero joint error and zero answer coverage; it has not solved QA.
+Bounds on marginal proposal omissions or marginal verifier errors cannot be
+reported directly as bounds on R_sel without this denominator or conditional
+calibration. For example, p=0.01 with every emitted answer wrong yields joint
+error 0.01 and selective risk 1. All failures can concentrate on selected runs.
+
+If directly measured conditional bounds are available, let
+
+ delta_C = P(E_C | A_emit),
+ delta_V = P(E_V | A_emit and not E_C).
+
+When both conditioning events have positive probability,
+
+ R_sel <= delta_C + (1-delta_C)*delta_V.
+
+If the second event has probability zero its contribution is zero and no
+conditional value need be defined. This formula is again a partition identity
+plus an inequality, not an independence model. Estimates of these population
+quantities need their own sampling assumptions and confidence intervals;
+the deterministic theorem supplies no estimates.
+
+Representation and rendering are not silently absorbed into a favorable
+verifier metric. Let E_R cover a wrong query parse, omitted required claim,
+incorrect answer-equivalence mapping, unsupported concept normalization,
+source/extraction/anchor semantics error, or renderer adding/changing a claim.
+With these components fallible the bound becomes
+
+ A_emit and Bad subset E_R union E_C union E_+ union E_-,
+
+and the corresponding marginal or selective bound gains the E_R term. Source
+authenticity/external real-world truth is outside Bad unless explicitly added
+to the target; expanding the target requires new assumptions and error terms.
+This is why a two-term candidate/verifier bound is valid only after declaring
+which other components are exact or included in the verifier event.
+
+Claimwise accuracy is not runwise verifier soundness. A run may use many
+judgments. If at most K adaptive calls are made, and for EVERY reachable prior
+history the next issued judgment has conditional semantic-error probability
+at most eta, then the probability of any erroneous call is at most K*eta
+(capped at 1). Proof: condition on each history, bound each issued error
+indicator's expectation by eta, and apply the union bound. A predictable
+bounded stopping rule likewise gives eta*E[number of issued calls] under the
+same uniform conditional assumption. It is not enough to know the average
+error on a static easy call set; adaptive selection may target a high-error
+subset. Using all issued calls for this bound is conservative but avoids
+post-selection conditioning on favorable judgments. No independence of calls
+is needed for the union bound.
+
+8. Counterexamples and impossibility boundaries
+
+8.1 Missing valid-class coverage defeats unique-resolution certification.
+
+Use the same observable finite transcript H={h_a}, a fully supported h_a,
+no rival candidates and an unjustified cleared sentinel. In source/query
+completion W0, T={h_a}. In completion W1, T={h_a,h_b}, where h_b has a different
+eligible scoped action, all claims supporting h_a remain true, and the
+additional source/query possibility was not represented or examined. The
+finite transcript and every judgment on H are identical. Any deterministic
+procedure whose decision uses only this transcript emits the same unique
+answer in both; its uniqueness conclusion is
+false in W1. A randomized procedure cannot eliminate the indistinguishability:
+conditioned on the same internal randomness it takes the same action. If it
+emits with probability r on this transcript, it makes a false uniqueness claim
+with probability r in W1. Universal soundness requires abstention on that
+transcript or an additional sound coverage/uniqueness premise.
+
+This example does not make h_a's positively warranted facts false. It proves
+necessity of additional information for the unique-resolution claim. If a
+fixed single-target task and a perfect full-correctness positive oracle are
+assumed instead, claiming that coverage is necessary for correctness would be
+wrong. If support checks only bare numerical facts and omits a necessary scope
+binding, a missing correct candidate can also cause an actually wrong answer,
+but that example additionally violates the full positive-support contract and
+must be labeled as such.
+
+8.2 Covering action labels with invalid representatives is insufficient.
+
+Let T contain valid t_a and t_b with distinct actions a and b. H contains valid
+h_a with action a and invalid g_b with action b. A source-sound contradiction
+refutes g_b; h_a is supported. The set of action labels a(H) contains both true
+labels, yet the certificate would falsely claim uniqueness of a if this weak
+label-only condition cleared the sentinel. Proper COV fails because no valid
+representative of b is in H. This is not verifier error.
+
+8.3 A syntactic anchor check cannot substitute for semantic verifier soundness.
+
+Take a coherent source whose single relevant reported result is 7. H contains
+complete h_7 and h_9, coverage is complete, and their actions differ. Attach
+valid source offsets/hashes to false rules '+ h_9 value=9' and '- h_7 value=7'.
+The finite gate accepts h_9 with every syntactic span requirement satisfied.
+The output is wrong. A checker that only sees source identity, span coverage
+and supplied labels has no guarantee against this construction. Checking the
+source meaning would be a semantic verifier and would restore the missing
+assumption. Correct byte identity never implies semantic correctness.
+
+For a narrower false-elimination-only example, let two different query readings
+both have genuine supported facts. Falsely refuting one supported rival makes
+a falsely unique answer possible while the selected winner's support remains
+true. Thus evaluating only positive claim support cannot validate elimination.
+
+8.4 Elimination alone is insufficient.
+
+H={h_a,h_b}; h_b is soundly contradicted, h_a has no positive support for a
+necessary unit or population binding. There is a singleton survivor and zero
+incompatible-pair loss, but no complete grounded answer. Alternatively both
+candidates are refuted, producing zero loss with no survivor. G3 rejects both
+cases. Even positive fixed weights do not repair missing positive support.
+
+8.5 Refuting one representative does not refute an answer class.
+
+H={h_a,g_b1,g_b2}, with a(g_b1)=a(g_b2)=b different from a. The source refutes
+g_b1's proposed continuation link but g_b2 uses another still-valid link and
+has the same final scoped action. A supported h_a plus refutation of g_b1
+does not establish uniqueness; g_b2 survives. G4 therefore quantifies over all
+rival candidates or requires a genuinely class-universal rule.
+
+8.6 Conjunctive dependency truncation creates false certificates.
+
+A support rule for 'the value is in millions' requires both a continuation
+identity linking the row to table T and T's unit header. The row fragment can
+instead be attached to a thousands table when the continuation identity is
+missing. If the rule is activated from the unit header alone, the same delivered
+snippet is consistent with different bindings. The rule's nominal correctness
+on its FULL dependency set does not save activation on a strict subset. A
+certificate must include all premises, or leave that claim unresolved.
+
+8.7 Joint versions cannot be represented as rivals to be eliminated.
+
+The source validly reports 12 in V1 and 15 in V2, and q requests both. A
+candidate set {h_V1,h_V2} with one single-version answer per candidate is
+structurally incomplete. Eliminating either is inappropriate even if the later
+document is authoritative for a different task. The proper hypotheses contain
+both requested records; alternatives differ in bindings/comparison relations
+within that joint object. Treating the versions as rivals violates K_q and
+cannot be repaired by a perfectly accurate selector.
+
+8.8 Zero weighted ambiguity is not logical agreement.
+
+If incompatible surviving candidates have weights w_a>0 and w_b=0, their
+fixed pair product is zero. A pair-loss objective therefore reports zero while
+the logical ambiguity remains. Even strictly positive weights yield zero loss
+when all candidates are eliminated. The logical gate is independent of weights.
+
+8.9 Conflicts defeat unconditional monotonicity.
+
+With predicted rules, a small E can activate a negative judgment on h. Adding
+evidence can activate a positive judgment on the same claim. The v14 conflict
+policy changes the claim from contradicted to unresolved, resurrects h, and
+blocks an answer. Pair loss can increase. Therefore unconditional monotone
+survivor elimination or monotone answerability is false for the supplied-map
+scaffold. Under globally sound rules and coherent semantics, Lemma 1 excludes
+conflicts; activated negative conclusions then persist, so survivors can only
+shrink as spans are added. Budget feasibility still need not be preserved.
+
+9. Precisely what remains unproved or unimplemented
+
+The rigorous result is a certificate contract plus conditional soundness,
+conditional witness/search completeness and an error-event decomposition. It
+does not supply a tractable or reliable solution to the hard semantic parts:
+
+* constructing full query-faithful joint hypotheses without omitting a material
+  source version, binding, concept reading, population or comparison relation;
+* proving natural-language source entailment or contradiction from exact spans;
+* certifying coverage of all admissible answer classes in open natural language;
+* establishing the source policy's authority, authenticity or completeness;
+* finding a budget-feasible witness union with a practical search procedure;
+* calibrating any error probability, especially after adaptive acquisition and
+  selective answering, on the intended independent task population;
+* demonstrating utility beyond strong structure-aware and evidence-sufficiency
+  methods at matched full costs.
+
+The v14 scaffold has supplied required_claims and supplied incompatibility
+pairs, but no typed full-joint action validator or equivalence construction.
+Its unknown-assessment provenance is not COV proof. It correctly makes source
+dependency activation conjunctive and blocks conflicts/empty support/unknown,
+but those structural safeguards alone do not establish Theorem 1's premises.
+The v16 proposal explicitly identifies the missing proposer/verifier/coverage
+components. Completing this mathematical note does not complete or validate
+those components, and future local experiments must not cite the theorems as
+evidence that their premises hold.

@@ -1,0 +1,317 @@
+Source-grounded answer certificates: prior-art and theorem-transfer audit v21
+Checked 2026-10-05. Targeted primary-source audit; not an exhaustive novelty certification.
+
+Decision
+
+The current combination is not enough, by itself, to establish a novel theory
+paper. Cost-sensitive discrimination, answer equivalence classes, consistent
+minimal explanations, conjunctions of evidence requirements, gap-driven retrieval,
+and selective answering all have close precedents. A defensible narrower result
+is a precise source-grounded joint-answer certificate contract, its explicit
+coverage and error boundary, and an exact optimization formulation whose inputs,
+costs and limited assurance are auditable. Those results can be useful without
+being new general combinatorial or statistical theory. The manuscript must say
+which propositions are elementary consequences, which are reductions to known
+problems, and which additional result, if any, remains technically novel.
+
+The possible empirical contribution is separate: automatically discovering and
+acquiring relational source evidence that resolves residual scoped-answer
+ambiguity under matched total costs. Neither a finite supplied-judgment solver
+nor a constructed counterexample establishes that empirical contribution.
+
+Claim-by-claim novelty table
+
+Claim | Closest verified prior art | Permissible narrower statement
+Cost-sensitive elimination of answer-changing rivals | EC2; ECED | Application to a defined source judgment model; not a new active discrimination objective.
+Ignore harmless parses that yield the same answer | EC2 equivalence classes | Define equivalence on complete scoped joint answers; answer-string equality is insufficient.
+Require support and rule out incompatible completions | Abduction-Based Explanations; explanation/counterexample duality | Source-grounded certificate semantics and explicit verifier/coverage assumptions; not a new logical principle.
+Find a minimum evidence certificate | Set cover; test cover; implicit hitting-set explanations; Boolean certificates | Exact optimum for the declared finite input/cost model, with discovery charged separately; not a new generic optimizer.
+Conjunctive evidence with alternatives within requirements | The Missing Complement; Boolean-function evaluation | Joint scope and rival-exclusion obligations may be specialized; AND/OR evidence sufficiency alone is prior art.
+Find gaps before answering and retrieve them | S2G-RAG; RINSE; Sufficient Context | Isolate the specialized acquisition criterion against a strong generic sufficiency controller.
+Generate competing interpretations and verify/prune them | Tree of Clarifications; REFUEL; MADAM-RAG | Acquire new source relations under a fixed clear question; enumeration/debate itself is established.
+Withhold unsupported or ambiguous claims | Sufficient Context | Claim-level source-relative authorization under stated assumptions; abstention alone is not novelty or evidence of gain.
+Account for source uncertainty and acquisition/abstention cost | ROSE-RAG, abstract inspected only | Potential direct theory overlap remains unresolved until its full theorem assumptions are read.
+Unknown candidate coverage prevents unconditional certification | Finite-model limitation; ordinary indistinguishability reasoning | State and prove the boundary clearly; do not advertise this elementary impossibility as a new universal RAG lower bound.
+Decompose error into coverage, verifier and reader failures | Elementary event containment/union bound | Useful assurance bookkeeping; not a new concentration inequality or calibrated deployment guarantee.
+
+Theorem transfer: precise conditions and prohibited shortcuts
+
+1. Fixed-answer set cover is not automatically full test cover.
+   If each supplied evidence item individually excludes a known subset of rivals
+   to a fixed target answer, covering all rivals is ordinary weighted set cover.
+   If tests must separate every relevant pair, the pair-universe formulation is
+   test cover. If the target answer is also selected, there is an additional
+   choice among target-specific feasible certificates. This classification does
+   not establish an approximation for the full proposed problem.
+
+2. Conjunctions invalidate the obvious singleton coverage guarantee.
+   Let one rival be contradicted only by the joint evidence {a,b}. Its exclusion
+   score is 0 on the empty set and both singletons, and 1 on {a,b}. The marginal
+   gain of b increases after seeing a, violating ordinary submodularity. This is
+   a counterexample for that score, not a proof that no alternative surrogate or
+   richer adaptive model can work. Two-step lookahead remains a heuristic unless
+   a separate approximation proof is supplied.
+
+3. Compiling bundles does not make their cost additive.
+   Fixed, fully specified bundles can create an ordinary coverage objective if
+   any one complete selected bundle independently settles an obligation. With
+   shared spans, however, union-token cost differs from the sum of bundle costs.
+   Any claimed guarantee must use the actual cost constraint. Construction of
+   bundles, all source reads, proposal generation, and verifier invocations are
+   not free preprocessing for an end-to-end claim.
+
+4. EC2 is stronger prior art than a simplistic independence description suggests.
+   It fixes finite hypotheses/tests/outcomes, a known joint prior, and test costs.
+   Complete outcome realizations make tests deterministic; latent expansion can
+   encode correlated noise. Thus unknown outcomes or correlated observations
+   alone do not defeat its applicability. The needed missing assumptions here
+   are a justified complete modeled universe, correct likelihood/prior or exact
+   outcome semantics, and the requisite objective properties. An arbitrary
+   symmetric incompatibility graph is not automatically an equivalence-class
+   partition: compatibility must be transitive for that direct reduction.
+
+5. Do not import the published EC2 constant without checking the later correction.
+   The 2010 paper's Theorem 3 states (2 ln(1/p_min)+1) times optimal expected
+   cost for rational priors and invokes the original adaptive-cover theorem.
+   Golovin--Krause arXiv:1003.3967v5 (2017), Theorem 13 and its historical note,
+   correct the earlier general expected-cover proof; the corrected statement
+   uses stronger assumptions and a squared logarithm. The EC2 constant is
+   recorded here as a published claim, not independently revalidated. This audit
+   does not claim that EC2 itself has been disproved. Later general and
+   independent-item cover results have different assumptions/parameters; no
+   identical-constant repair is asserted here. The current proposal should use
+   no transferred EC2 approximation factor.
+
+6. ECED does not cover arbitrary correlated source/verifier errors.
+   Its model has finite root causes with known prior/likelihoods, a target map,
+   conditionally independent tests given the root cause, persistent outcomes,
+   and unit test costs. Its theorem further uses binary tests and per-test noise
+   rates independent of the root cause. It compares against an optimal policy
+   attaining a smaller expected error, measured by that policy's worst-case
+   number of tests. This is not a same-error expected-cost approximation. With
+   positive flip probabilities, likelihood discounting is not logical falsity.
+
+7. Adaptive maximization and adaptive minimum-cost cover are different theorems.
+   Adaptive submodularity concerns conditional expected marginal benefit; it
+   cannot be inferred from a static set score or from a greedy implementation.
+   Budgeted maximization's familiar 1-1/e factor requires its own monotonicity,
+   diminishing-return and budget assumptions. Cover additionally needs a goal,
+   attainability and a gap below the goal. Self-certification is only over all
+   consistent modeled realizations; it cannot certify that the real source
+   universe or hypothesis list has been exhausted.
+
+8. A source certificate requires assumptions beyond a logical solver.
+   State the finite world/answer universe, the complete joint answer map, and
+   the source-relative judgment semantics. Contradicted must mean positively
+   refuted by acquired source premises; absent/not found/unverified is unknown.
+   A supported answer needs its own complete source witness. Conflicting
+   judgments must block authorization or be represented by an explicitly proved
+   conflict semantics. A true hypothesis must not be deleted by an unsound
+   verifier. Proofs conditional on correct supplied judgments do not validate a
+   learned verifier, parser, candidate generator, or the truth of the source.
+
+9. Joint answers need joint consistency.
+   Independently supported slot values do not establish the compatibility of
+   their joint scope/version/comparison relation. If each marginal was supported
+   in a different possible interpretation, a product of those marginals can
+   fabricate an impossible complete answer. Certificates and exclusion tests
+   must range over consistent joint interpretations and the question's actual
+   claims, including the relation asserted between quantities.
+
+10. Candidate discovery and certificate optimization have different information.
+    Cheapest evidence after all outcomes are known is an offline certificate
+    problem. A policy paying to discover outcomes is an online/adaptive problem.
+    Comparing the latter with an offline optimum is a lower-bound diagnostic,
+    not a proof of optimal acquisition. Exact optimization over a supplied
+    evidence/judgment table must be labeled annotation-conditioned. An unseen
+    rival consistent with everything acquired can change the authorized answer;
+    an unknown flag or finite beam cannot by itself assign that event a small
+    probability. A calibrated coverage assumption needs independent evidence.
+
+11. Selective-risk statements must condition correctly.
+    If the probability of candidate omission is at most delta and the union of
+    other assurance failures has probability at most epsilon, a conditional
+    correctness proof implies P(wrong AND answer) <= delta+epsilon. It does not
+    imply P(wrong | answer) <= delta+epsilon. If answer coverage is alpha>0, the
+    immediate bound is min(1,(delta+epsilon)/alpha). Alternatively estimate the
+    failure rates conditional on answering directly. Adaptive repeated verifier
+    use requires simultaneous validity, a justified conditional guarantee, or
+    an explicit error budget; a single-call validation rate is not a uniform
+    run-level bound. No independence assumption is needed for the union bound.
+
+12. Use minimal and minimum accurately.
+    An inclusion-minimal certificate has no removable item. A minimum-cost
+    certificate is globally cheapest in the defined search space. Neither is
+    necessarily cheapest to discover. Exact solver success establishes only
+    the optimum and feasibility of its actual finite encoding. State timeout,
+    candidate truncation and infeasibility honestly; absence of a certificate
+    in a restricted representation does not imply real source insufficiency.
+
+Verified source notes and inspection trail
+
+[EC2] Golovin, Krause and Ray (2010). Near-Optimal Bayesian Active Learning with
+Noisy Observations. NIPS23, 766--774. Read problem definition, latent-noise
+reduction and Theorem3. Tests remove prior-weighted cross-class edges; the
+decision-theoretic reduction can target the Bayes-optimal decision associated
+with a complete test vector. This does not provide positive textual support.
+https://proceedings.neurips.cc/paper/2010/hash/1e6e0a04d20f50967c64dac2d639a577-Abstract.html
+https://www.cs.cmu.edu/~dgolovin/papers/nips10.pdf
+https://arxiv.org/abs/1010.3091
+
+[ECED] Chen, Hassani and Krause (2017). Near-optimal Bayesian Active Learning
+with Correlated and Noisy Tests. AISTATS/PMLR54, 223--231. Read model and
+Theorem1. Its root-cause construction is the meaning of correlated tests here.
+https://proceedings.mlr.press/v54/chen17b.html
+https://proceedings.mlr.press/v54/chen17b/chen17b.pdf
+
+[AS] Golovin and Krause (2011). Adaptive Submodularity: Theory and Applications
+in Active Learning and Stochastic Optimization. JAIR42, 427--486.
+DOI 10.1613/jair.3278. Inspected corrected arXiv v5, especially Theorem13 and
+historical note, rather than relying on the original abstract's cover claim.
+https://arxiv.org/pdf/1003.3967v5
+
+[AS-LATER] Esfandiari, Karbasi and Mirrokni (2021), Adaptivity in Adaptive
+Submodularity, COLT/PMLR134, 1823--1846, Theorem2: general adaptive coverage
+bound depends on item count, goal and gap. Hellerstein, Kletenik and Parthasarathy
+(2021), A Tight Bound for Stochastic Submodular Cover, proves the tighter
+logarithmic factor for independent item states. Neither is imported wholesale.
+https://proceedings.mlr.press/v134/esfandiari21a/esfandiari21a.pdf
+https://arxiv.org/pdf/2102.01149
+
+[TEST] de Bontridder et al. (2003), Approximation algorithms for the test cover
+problem, Mathematical Programming98, 477--491, DOI10.1007/s10107-003-0414-6.
+Read the pair-universe set-cover reduction. Journal first page ends at491;
+repository metadata's492 is not used. All-pairs separation and target-specific
+exclusion must not be conflated.
+https://ir.cwi.nl/pub/18037/18037A.pdf
+
+[SET] Chvatal (1979), A Greedy Heuristic for the Set-Covering Problem,
+Mathematics of Operations Research4(3),233--235, DOI10.1287/moor.4.3.233.
+Official metadata/abstract inspected: positive-cost set cover and logarithmic
+greedy bound in the largest column sum. Dinur and Steurer (2014), Analytical
+Approach to Parallel Repetition, arXiv1305.1979v3, Corollary1.5/Section6.2,
+proves near-logarithmic set-cover inapproximability. Any transfer must preserve
+the reduction's parameter and approximation gap; a fixed additive support cost
+cannot silently be ignored in such a reduction.
+https://pubsonline.informs.org/doi/10.1287/moor.4.3.233
+https://arxiv.org/pdf/1305.1979
+
+[ABDUCTION] Ignatiev, Narodytska and Marques-Silva (2019), Abduction-Based
+Explanations for Machine Learning Models, AAAI33(1),1511--1519,
+DOI10.1609/aaai.v33i01.33011511. Definition1 requires consistency and entailment.
+Algorithm2 computes a minimum explanation using implicit hitting sets and an
+exact entailment/counterexample oracle. Thus support plus exclusion and an
+exact finite certificate formulation have substantial logical precedent.
+https://alexeyignatiev.github.io/assets/pdf/inms-aaai19-preprint.pdf
+https://ojs.aaai.org/index.php/AAAI/article/view/3964
+
+[DUALITY] The same authors (2019), On Relating Explanations and Adversarial
+Examples, NeurIPS32. Read Theorem1 and the unique-prediction assumption: minimal
+explanations and counterexamples have a generalized hitting-set relationship.
+This concerns a specified logical classifier, not semantic truth of documents.
+https://papers.neurips.cc/paper/9717-on-relating-explanations-and-adversarial-examples.pdf
+
+[SBFE] Deshpande, Hellerstein and Kletenik (2014), Approximation Algorithms for
+Stochastic Boolean Function Evaluation and Stochastic Submodular Set Cover,
+SODA, DOI10.1137/1.9781611973402.107. Read certificate definition and comparison
+of certificate cost with adaptive evaluation cost. Partial assignments certify
+a value over all completions. The paper explicitly distinguishes function
+evaluation from a requirement to exhibit a term even when the function is
+identically true. The proposal's positive source-witness obligation therefore
+must be defined rather than assumed from determination alone.
+https://arxiv.org/pdf/1303.0726
+
+[S2G] Li et al. (2026), S2G-RAG, ACL, DOI10.18653/v1/2026.acl-long.1185,
+arXiv2604.23783v1. Primary ACL metadata and Sections3.1--3.4 inspected. The
+controller makes context-only sufficiency judgments; structured gaps include
+relations and evidence spans, and pointer-only sentence extraction preserves
+disambiguating context. A generic gap judge can already request binding evidence.
+Our claimed distinction must be isolated against that capability, not against
+only topical relevance or token-presence coverage.
+https://aclanthology.org/2026.acl-long.1185/
+https://arxiv.org/html/2604.23783v1
+
+[RINSE] Chen, Hua and Xiao (2026), Relevance Is Not Sufficient Evidence:
+Detecting Evidence Gaps Before Generation in RAG, arXiv2609.37469v1,
+27 September. Sections3--4 inspected. It scores question/evidence sufficiency
+without generating an answer, combining coverage, answer-span and cross-passage
+signals. It is a scorer, not itself the full acquisition policy proposed here.
+Its cue audits caution against negatives identifiable by count, lexical overlap
+or answer-string presence. No reported result is imported into this project.
+https://arxiv.org/html/2609.37469v1
+
+[SUFF] Joren et al. (2025), Sufficient Context, ICLR; arXiv2411.06037.
+Official proceedings metadata and arXiv Section3.1 inspected. Remarks2--3
+already discuss query/context ambiguity and disambiguating evidence, while
+selective generation uses sufficiency for abstention. Its definition concerns
+the existence of a plausible answer and does not require factual correctness;
+its multi-hop remark prohibits inventing missing contextual connections. The
+exact semantics differ from our complete scoped-answer contract, but this is
+not proof that a general sufficiency judge cannot address source binding.
+https://proceedings.iclr.cc/paper_files/paper/2025/hash/33dffa2e3d2ab74a783d1a8c292f66d9-Abstract-Conference.html
+https://arxiv.org/html/2411.06037v1
+
+[AMBIG] Tree of Clarifications (Kim et al., EMNLP2023), Section3, recursively
+retrieves/reranks and prunes disambiguated questions. REFUEL (Gao et al., ACL2021)
+fuses evidence and performs round-trip interpretation discovery. MADAM-RAG
+(Wang et al., arXiv2504.13079v1,2025), Sections1 and4, uses document agents,
+debate and aggregation to handle ambiguity, misinformation and noise. These
+mechanisms block claims that enumeration, evidence-sensitive pruning or
+disambiguating multiple answers are new. Their tasks differ from clear-question
+attachment ambiguity, but cannot be dismissed without matched adaptations.
+https://aclanthology.org/2023.emnlp-main.63.pdf
+https://aclanthology.org/2021.acl-long.253.pdf
+https://arxiv.org/html/2504.13079v1
+
+[MSS] Feng, Zhang, Yang and Xie (2026), The Missing Complement:
+State-Conditioned Minimal Sufficient Evidence for Coding Agents,
+arXiv2609.20050v1,17 September. Sections3--5 inspected. Certificates allow
+alternative sources within requirements and require all groups jointly;
+complete branches are indivisible. The paper separates supplied-pool selection
+from source discovery and accounts for controller versus delivered evidence.
+It directly precedes generic claims about conjunctive sufficient sets. Its
+reported minimality concerns decision-specific certificate requirements, not
+global minimum-cost retrieval. Joint scoped-answer rival exclusion is a
+different specialization, whose utility and novelty still need demonstration.
+https://arxiv.org/html/2609.20050v1
+
+[ROSE: ABSTRACT ONLY] Mokhtari and Davoodi (2026), ROSE-RAG: Robust Sequential
+Evidence Acquisition for Agentic Retrieval-augmented Generation under
+Source-model Ambiguity. SSRN7172681, DOI10.2139/ssrn.7172681. The primary indexed
+SSRN page states written23July2026, posted5August2026. Its abstract describes
+history-consistent source models, robust value of evidence, acquisition and
+risk certificates, stopping and abstention. Direct abstract-page, DOI and PDF
+opens failed. The abstract is verified as an author claim; full theorem
+assumptions/proofs are unverified. It must remain an unresolved close theory
+threat, not be dismissed or treated as reproduced. No numerical result reused.
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7172681
+
+Search boundaries and reproducibility
+
+Started from method_hypothesis_v14, algorithmic_next_stage_v16_proposal, and
+related_work_v14. Used current engine1 queries for supplied 2026 leads and
+followed primary links; routine exact-title engine2 lookups found the classic
+papers and logical explanations. Contents, not merely result titles, were
+inspected for the accepted method claims above. ROSE is explicitly abstract-only.
+NEST (ACL2026 industry.35) and Evidence Tree Search (ACL2025 long.1175) appeared
+in a primary bibliography and their official records were opened, but their
+full algorithms were not audited in this pass; they are not used to infer
+unverified properties here. No claim of exhaustive search or absence of an
+identical theory follows. No third-party full texts are redistributed. This
+document contains paraphrases rather than copied passages.
+
+Recommended manuscript language
+
+We formalize source-relative authorization of complete scoped answers from
+positive support and exclusion of modeled incompatible interpretations. Our
+finite solver is exact for supplied judgments and declared costs. Completeness
+of the candidate set, soundness of source judgments, and source-to-world truth
+are separate assumptions, not consequences of optimization. The resulting
+framework specializes established certificate and active-discrimination ideas;
+its empirical value depends on automatic witness discovery beyond matched
+structural and generic sufficiency baselines.
+
+Do not claim: first evidence certificate; first ambiguity-aware RAG; new
+submodular objective for conjunctions; optimal end-to-end retrieval from an
+offline evidence optimum; a calibrated risk guarantee from a finite beam; or
+ACL-level theory novelty established solely by combining these ingredients.
