@@ -20,7 +20,15 @@ Research repository for **Reading the Latest, Not the Loudest: Lifecycle-Aware S
 
 The original package is retained unchanged as a historical submission. Its README and result claims describe that submission; later audits and limitations are recorded in the rework. The original paper and supplement were supplied as PDFs; their editable TeX sources were not available in this workspace. The rework's available LaTeX sources are included.
 
-## Current checkpoint: v0.24 — bounded retrieval probe
+## Current checkpoint: v0.25 — original-paper and novelty reassessment
+
+The financial certificate route is parked as the main-paper direction. The original evaluation has substantial limits. Recent primary literature overlaps with generic temporal graphs, stale-fact filtering, certificates, safe caching, and chain repair. **No verified breakthrough or held-out method advantage is established.**
+
+One conditional hypothesis remains: revise entity, scope, and time interpretations after retrieving additional evidence. Ordinary re-extraction and standard joint prediction are decisive controls. TEMPO is a feasibility source, not an accepted main benchmark. Its six inspected records are exposed development material. The next discovery stage is capped at 60 new natural questions before any larger campaign.
+
+Read the [canonical decision](acl2027_temporal_state/docs/research_decision_v25.txt), [original assessment](acl2027_temporal_state/docs/original_reassessment_v25.txt), [method audit](acl2027_temporal_state/docs/method_route_audit_v25.txt), [temporal literature audit](acl2027_temporal_state/docs/dynamic_route_audit_v25.txt), [benchmark audit](acl2027_temporal_state/docs/benchmark_route_audit_v25.txt), and [handoff](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v25.txt). No new model inference, training, or QA comparison ran.
+
+## Previous checkpoint: v0.24 — bounded retrieval probe
 
 A prospectively frozen **24-question development probe** produced **9 complete, 10 partial and 5 unresolved** source references. Four conventional retrieval policies ran at three budgets, completing **288 cells**. A fixed-seed repeat selected identical evidence in every cell; **20 focused software tests pass**.
 

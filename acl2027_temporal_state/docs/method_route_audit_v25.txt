@@ -1,0 +1,345 @@
+V25 method search: a hard boundary on the next research claim
+Date: 2026-10-06
+Status: research recommendation; no new experiment or novelty certification.
+
+Decision
+
+Stop treating the financial certificate route as the main paper.
+V24 found one confirmed residual history against its conventional retrieval policies.
+That result does not justify another large certificate campaign.
+The existing theory also has substantial overlap with established certificate and active-discrimination methods.
+
+I found further overlap that narrows the original lifecycle direction.
+Temporal indexing, source provenance, selective cache reuse, and chain repair already have direct precedents.
+The project should not rename their combination and present it as a breakthrough.
+
+One conditional route remains worth a short diagnostic: learn how evidence chains change across real source revisions.
+The central object would be a transition between grounded chains, rather than one graph or one answer.
+This could support a method paper if learned transitions beat strong repair baselines at equal total cost.
+The present search does not establish that result or prove that nobody has proposed the same objective.
+
+What the candidate problem changes
+
+An ordinary retriever maps a question and one corpus into evidence.
+The proposed transition model receives a previous evidence chain and an actual source revision.
+It must retain valid premises, replace affected premises, and retrieve newly required dependencies.
+It must also identify when the revision removes the available support.
+An answer can remain unchanged even when its supporting chain must change.
+An answer can change through an intermediate entity that never occurs in the question.
+These two conditions defeat evaluation based only on changed answer strings.
+
+Use only benchmark sources with actual revisions or documented real changes.
+Do not create fictional names, numbers, dates, or conflicts for the main result.
+Existing benchmark questions may have machine authorship; report that provenance accurately.
+MQuAKE-T records real changes, but its questions are machine-generated and its edit representation is structured.
+It can provide a secondary control, not direct evidence of natural document revision performance.
+HoH provides real revision-derived material; a separate inspection must establish suitable multi-hop cases.
+No suitable corpus has been admitted by this audit.
+
+Formal target
+
+Let D_t be the available corpus before a recorded revision Delta_t.
+Let D_(t+1) be the corpus after that revision.
+Let q be a question with a fixed interpretation.
+Let P_t be a source-grounded directed acyclic evidence graph for q.
+Each graph edge records the premises needed for its conclusion.
+Let Y_t and Y_(t+1) be independently referenced answers.
+Let W_t and W_(t+1) be the corresponding acceptable evidence families.
+These families may contain alternative witnesses.
+
+Learn T_theta(q, P_t, Delta_t, D_(t+1)) -> (P_(t+1), answer, abstention).
+Retrieval accesses D_(t+1) through the same interface used by every baseline.
+No gold changed-hop identifier or gold evidence selector reaches the model.
+Charge the previous trace, revision inspection, retrieval, validation, repair, and generation.
+State whether workload repetition permits amortization of the previous trace.
+
+The primary loss is paired grounded error:
+
+L_pair = 1 - I[answer_t = Y_t and answer_(t+1) = Y_(t+1)
+               and P_t in W_t and P_(t+1) in W_(t+1)].
+
+Also report unsupported retention, unnecessary answer change, and update cost separately.
+Do not hide these quantities inside one weighted score.
+Compare the full frontier between cost and paired grounded correctness.
+Use a fixed cost point for the confirmatory comparison.
+Use histories, rather than individual paraphrases, as the independent analysis units.
+
+Technical obstacle
+
+A text change does not identify its semantic effect on a reasoning chain.
+A new sentence can replace a premise without changing its vocabulary substantially.
+An irrelevant paragraph can change every document hash without changing any needed premise.
+Deleting one cited source can leave another valid witness available.
+Changing one intermediate entity can invalidate every dependent hop.
+Current versions alone do not resolve these cases.
+Treat source withdrawal separately from a fact becoming false.
+Treat source publication time separately from the time described by its facts.
+
+Concrete candidate algorithm
+
+1. Align source spans across the recorded revision using deterministic text alignment.
+   Preserve unmatched spans explicitly.
+   Extract the previous chain with source locators and dependency edges.
+   An uncertain extraction must remain uncertain.
+
+2. Train a transition localizer on paired, reviewed chains.
+   For each previous premise, predict unchanged, replaced, or unsupported.
+   Condition this prediction on the question, local premises, and aligned source changes.
+   Add a separate class for unresolved transitions.
+   A deleted source does not automatically imply an unsupported premise.
+
+3. Form a repair frontier from predicted changed premises.
+   Include dependent premises when their input entities or relations change.
+   Retrieve replacements using the changed relation and the unresolved dependency.
+   Reuse a suffix only after checking its new input bindings.
+
+4. Score candidate repairs jointly with the retained premises.
+   Optimize complete-chain support and a penalty for unnecessary changes.
+   Train on both changed-answer and unchanged-answer histories.
+   Use complete revised chains as positives.
+   Use stale continuations and unnecessary replacements as hard negatives.
+   Derive negatives from recorded source versions rather than fabricated facts.
+
+5. Check the resulting chain against current source spans.
+   If bounded repair fails, run the same fresh retrieval used by the strong baseline.
+   Charge that fallback fully.
+   Report abstention when the available references justify it.
+
+Potential contribution
+
+The candidate contribution is a learned transition operator with paired evidence supervision.
+It would learn both necessary propagation and justified invariance from real revisions.
+This differs from training only a static relevance score or verifying one completed chain.
+Dependency propagation, source hashes, sparse repair, and chain verification are established ingredients.
+Their combination does not establish novelty.
+The paper needs a demonstrated benefit from transition supervision beyond those ingredients.
+
+No general semantic certificate is proposed.
+No finite beam proves that all possible answers or sources were considered.
+No theorem about a supplied evidence graph validates a learned graph extractor.
+Any exact repair guarantee would apply only to a fixed, correct dependency representation.
+Such a guarantee would likely reuse established incremental computation arguments.
+It should not be the main novelty claim.
+
+Competing temporal interpretations: additional rejection check
+
+Enumerating temporal interpretations and retrieving distinguishing evidence is not sufficient novelty.
+The acquisition objective naturally becomes expected answer-risk reduction per unit cost.
+That is a value-of-information objective with close active-discrimination precedents.
+Replacing hypotheses with complete answer classes directly invites comparison with EC2 and ECED.
+Requiring joint source premises adds conjunctions but does not create a new learning principle.
+The existing v21 audit already documents these limits.
+
+EvoTrustRAG already scores competing evolution and intervention explanations from grounded evidence.
+Its inspected method leaves unavailable tests unknown and preserves unresolved conflicts.
+It operates on retrieved passages without further evidence acquisition.
+Adding acquisition could change the system, but that difference alone does not establish algorithmic novelty.
+S2G-RAG already acquires evidence for explicit gaps.
+IA-RAG already retrieves through interval constraints and tightens uncertain temporal boundaries.
+A convincing new acquisition method must beat these mechanisms under identical access and cost rules.
+
+One possible training target is the observed change in answer loss after acquiring a discriminating passage.
+Counterfactual utility estimation and critic distillation already have close precedents.
+A temporal application of this target needs distinct empirical evidence and a distinct technical mechanism.
+No such mechanism or residual dataset has been established here.
+Do not commit to that direction based on terminology alone.
+
+Strongest existing solutions to beat
+
+Use fresh hybrid retrieval with a strong query planner and a fixed reader.
+Use an adapted CARE controller with whole-chain verification and bounded backtracking.
+Use EditCoT with the same current evidence and inference budget.
+Use GroundedCache for repeated questions, with support checks and fresh retrieval fallback.
+Use a simple source-provenance baseline that invalidates affected chains and reruns them.
+Use the same baseline with deterministic dependency propagation.
+Use TG-RAG for temporal corpus updates when its data assumptions fit.
+Use Re3 for competing factual versions when its recency assumption fits.
+Use oracle transition locations only as a diagnostic upper bound.
+
+Do not claim superiority over naive caches or append-only indexes alone.
+Do not compare an amortized method with a baseline that unnecessarily repeats cached extraction.
+Do not charge only final reader tokens.
+Do not call retrieval accuracy an answer accuracy result.
+
+First cheap test
+
+Freeze a source inventory and inspect 32 real revision histories before training anything.
+Use a deterministic ordering over available benchmark identifiers.
+Retain every exclusion and its reason.
+Require before-and-after source text with verifiable identities.
+Require existing natural-language questions or clearly disclosed benchmark question provenance.
+Require independent references for both states.
+
+Label four strata: changed answer, unchanged answer with changed evidence, irrelevant revision, and lost support.
+Do not force equal strata by fabricating changes.
+Do not label lost support from one missing citation alone.
+Search admitted alternatives under a documented, bounded reference procedure.
+Mark unresolved cases separately.
+
+Before any learned model, compare two oracle diagnostics.
+The first supplies the correct revised evidence to the reader.
+The second supplies the correct affected premises to a fixed repair controller.
+The second diagnostic measures the potential value of learning accurate transition locations.
+It does not count as a method result.
+
+The early decision uses explicit practical thresholds, not a significance claim.
+Require at least twelve usable histories with a changed intermediate dependency.
+Require both changed answers and unchanged answers within those histories.
+Require at least a ten-point grounded-correctness gap between ordinary repair and oracle-location repair.
+Alternatively, require at least a twofold total cost gap at matched grounded correctness.
+Freeze these thresholds before inspecting model outcomes.
+If the inventory fails, stop this route before making a new dataset or training campaign.
+If the oracle has no advantage, improving the transition localizer cannot deliver the proposed gain.
+
+Next test, only after that decision
+
+Fit a small transition localizer on development histories.
+Compare it with the same controller using direct prompting and deterministic invalidation.
+Separate source histories across training, development, and testing.
+Freeze the reader, prompting, arithmetic, cost accounting, and outcome definitions before predictions.
+Use sufficient-evidence controls before evaluating partial evidence.
+Do not reuse the financial filings as a confirmatory set.
+Start with a modest paired pilot, rather than an expensive full benchmark sweep.
+
+Fatal checks
+
+Reject the route if most admitted examples reduce to timestamp filtering or exact subject matching.
+Reject it if CARE or EditCoT already captures the same gains at comparable cost.
+Reject it if a deterministic provenance baseline matches the learned localizer.
+Reject it if correct transition locations rarely help.
+Reject it if quality gains require gold chain annotations during inference.
+Reject it if source revisions lack enough complete multi-hop references.
+Reject it if unchanged-answer performance collapses as changed-answer performance improves.
+Reject it if the gain disappears after counting repair failures and full retrieval fallbacks.
+Reject it if a closer primary method already trains the same paired transition objective.
+
+Primary-source overlap audit
+
+[1] PAGE-RAG, 2026-08-30, arXiv:2608.29753v1.
+https://arxiv.org/html/2608.29753v1
+Refs: turn444view0; turn460view1.
+Inspection: problem definition, method, and Appendix A.5.
+It builds a query-local evidence graph with source metadata.
+It scores paths and selects sufficient support within a fixed reader budget.
+This blocks generic claims about provenance-aware path selection or minimal evidence promotion.
+
+[2] LineageRAG, 2026-08-17, arXiv:2608.16004v1.
+https://arxiv.org/abs/2608.16004
+Refs: turn433search0; turn444academia10.
+Inspection: primary indexed abstract only; direct full-text requests failed.
+It assigns evidence lineages to query demands and grounds completed demands in source spans.
+This blocks claiming demand-conditioned source lineage as a new concept.
+Its full algorithm remains a required close reading before method commitment.
+
+[3] Temporal GraphRAG, 2025-10-15, arXiv:2510.13590v1.
+https://arxiv.org/html/2510.13590v1
+Refs: turn437view2; turn464view3.
+Inspection: introduction, representation, incremental update subsection, and evaluation overview.
+It uses timestamped relations and a hierarchy of time reports.
+Updates regenerate affected reports while preserving unaffected reports.
+Its evaluation includes old and new queries after corpus expansion.
+Incremental temporal indexing and historical-query stability therefore are not new claims.
+
+[4] GroundedCache, 2026-05-26, arXiv:2605.27494v1.
+https://arxiv.org/html/2605.27494v1
+Refs: turn458view0; turn458view1.
+Inspection: Sections 3 and 4, including routing algorithm and workload construction.
+It checks query similarity, evidence overlap, source versions, and cached-answer support before reuse.
+Its drift regime changes numeric tokens in source documents.
+Real revision histories would differ from that construction, but they would not make safe cache reuse novel.
+
+[5] CARE, Findings of ACL 2026, paper 853.
+https://aclanthology.org/2026.findings-acl.853.pdf
+Refs: turn458view4; turn464view4.
+Inspection: Sections 3.2 through 3.4, analysis, and implementation appendix.
+It builds a post-edit graph and filters candidate facts.
+A critic checks whole-chain consistency and locates failed hops.
+Bounded backtracking then replaces failed facts and rebuilds dependent reasoning.
+This is the strongest direct threat to a generic repair controller.
+The inspected implementation uses DeepSeek-V3 for its selector and critic.
+Cost comparisons must therefore report all model calls and model identities.
+
+[6] EAIR, Findings of ACL 2026, paper 873.
+https://aclanthology.org/2026.findings-acl.873.pdf
+Refs: turn458view3; turn459view1.
+Inspection: method overview, Section 3.4, contrastive decoding, and relevant ablation passages.
+It uses entity-aware retrieval, evidence-conditioned contrastive decoding, and refusal-based routing.
+Bridge-entity routing and suppression of parametric answers therefore are not new ingredients.
+
+[7] EditCoT, EMNLP 2025, paper 540.
+https://aclanthology.org/2025.emnlp-main.540.pdf
+https://github.com/bebr2/EditCoT
+Refs: turn460search4; turn460search5; turn460search0; turn464view0.
+Inspection: abstract, introduction, method overview, and official repository training description.
+It trains a chain editor and iteratively revises reasoning using updated knowledge.
+Learning a chain editor alone is therefore not a new contribution.
+The full training objective needs comparison before implementing the proposed transition supervision.
+
+[8] Re3, ACL 2026, paper 1180.
+https://aclanthology.org/2026.acl-long.1180.pdf
+Refs: turn459view0; turn460view0; turn464view5.
+Inspection: Sections 3.3 and 3.4 plus limitation passages.
+It combines temporal embeddings with conflict-aware recency filtering.
+Its filter favors the latest factual version under an explicit corpus assumption.
+Temporal contrastive training and version arbitration therefore are not new claims.
+Historical temporal intent limits the recency assumption.
+
+[9] EvoTrustRAG, 2026-08-08, arXiv:2608.07933v1.
+https://arxiv.org/html/2608.07933v1
+Refs: turn452view2; turn458view5; turn459view3; turn473view0.
+Inspection: problem definition, graph extraction, hypothesis scores, decision rule, ablation interpretation, and limitations.
+It compares explanations of conflicts through source-grounded facts and global consistency.
+Generic evolution-versus-conflict attribution therefore has direct overlap.
+The paper itself distinguishes controlled conflict construction from natural conflict distributions.
+
+[10] CoRM-RAG, 2026-05-02, arXiv:2605.01302v1.
+https://arxiv.org/html/2605.01302v1
+Refs: turn458view2; turn459view4.
+Inspection: critic objective and inference section.
+It trains an evidence critic from responses to query perturbations.
+The critic uses ranking and confidence objectives.
+Counterfactual evidence utility and critic distillation therefore are not new by themselves.
+
+[11] MQuAKE official repository.
+https://github.com/princeton-nlp/MQuAKE
+Ref: turn452search5.
+Inspection: dataset descriptions and example fields.
+MQuAKE-T covers real temporal changes.
+The benchmark generates multi-hop questions with a language model.
+Its supplied edit triples differ from extracting changes from revised documents.
+
+[12] FalkorDB GraphRAG-SDK documentation.
+https://github.com/FalkorDB/GraphRAG-SDK/blob/main/docs/incremental-updates.md
+Refs: turn433search4; turn444search1.
+Inspection: official indexed document deletion and update descriptions.
+Deletion removes unsupported graph elements and preserves elements with surviving source references.
+Reference-counted source deletion is available engineering practice.
+No benchmark result follows from this documentation.
+
+[13] IA-RAG, arXiv:2606.06044.
+https://arxiv.org/abs/2606.06044
+https://github.com/xiaoAugenstern/IA-RAG
+Refs: turn473academia6; turn473search0; turn473search4.
+Inspection: primary indexed record and official repository overview.
+It represents interval events and uses interval algebra for constrained traversal.
+It also tightens uncertain temporal boundaries.
+The repository currently states that code and reproduction materials are being prepared.
+Its full method requires further review before claiming a distinct temporal acquisition mechanism.
+
+Search limitations
+
+This audit used current primary search results and targeted method readings.
+It did not reproduce any reported result.
+It did not prove absence of closer work.
+A recent metamorphic RAG testing paper appeared in secondary search results.
+Its identifier is arXiv:2607.26843.
+Primary retrieval failed, so its claimed contents are not treated as verified here.
+That paper needs review before claiming a new revision-consistency evaluation.
+
+Recommendation to the project lead
+
+Do not spend the next increment polishing the existing certificate manuscript.
+Spend one bounded increment on source admission and an oracle transition diagnostic.
+If that diagnostic fails, stop this candidate rather than add more architecture.
+If it succeeds, compare paired transition supervision directly with CARE and EditCoT.
+The current evidence supports this research decision, not an ACL acceptance prediction.

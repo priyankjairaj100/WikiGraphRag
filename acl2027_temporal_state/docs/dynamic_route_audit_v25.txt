@@ -1,0 +1,273 @@
+Dynamic research route audit, v25
+Audit date: 2026-10-06
+Role: literature review and prospective design only.
+No new model experiment was run.
+No new dataset was collected.
+
+Decision
+
+Do not restart the project as another temporal graph system.
+Current work already covers time-aware retrieval, graph updates, interval reasoning, and temporal preference training.
+These components cannot support our novelty claim by themselves.
+The strongest remaining hypothesis concerns retrieval decisions under unresolved temporal evidence.
+This hypothesis needs a small failure audit before implementation.
+The current financial probe does not establish this failure.
+
+Candidate question
+
+Can retrieval resolve the temporal relation that changes an answer, instead of retrieving more facts from familiar periods?
+The candidate method would maintain alternative interpretations of a temporal relation.
+It would request evidence that distinguishes those interpretations.
+It would preserve alternatives until source evidence removes them.
+For example, a document can describe publication time, event time, or the validity of a continuing state.
+These times can differ.
+A missing relation can determine whether two individually relevant facts support the same answer.
+This is a research hypothesis, not a verified gap.
+Query decomposition, temporal filtering, and uncertainty alone are established ideas.
+
+Closest competitors
+
+1. Chronos, Liu, Cao, and Li, ACL 2026 Findings.
+URL: https://aclanthology.org/2026.findings-acl.546/
+Full text: https://arxiv.org/html/2604.05096v1
+Code: https://github.com/zzlang-c/chronos
+Inspected: benchmark sections 2.1–2.2, method sections 3.1–3.5, and experiment tables.
+Chronos extracts entities and a query interval.
+It combines semantic similarity with temporal distance.
+It constructs an Event Evolution Graph and adds relevant events through further retrieval or model generation.
+It produces temporal and entity views for the reader.
+Its benchmark uses real Wikipedia changes from 2024–2025.
+Questions are model-generated and manually verified.
+The supplied knowledge consists of timestamped quadruples.
+Inference: this benchmark cannot alone establish reliable temporal extraction from raw documents.
+Our method must beat its adaptive retrieval, not just a static graph baseline.
+Browser references: turn429view0, turn435view0, turn435view1, turn446view4, turn446view5.
+
+2. IA-RAG, Wang and colleagues, June 2026 preprint.
+URL: https://arxiv.org/abs/2606.06044
+Repository: https://github.com/xiaoAugenstern/IA-RAG
+Inspected: primary abstract and official repository description.
+The full paper fetch failed.
+IA-RAG uses interval events, Allen algebra, constrained traversal, and uncertain-bound refinement.
+The repository reports acceptance at EMNLP 2026 Findings.
+The inspected repository contained a README and stated that code would follow.
+Do not claim interval constraints or uncertain-bound refinement as our new contribution.
+Detailed overlap remains unresolved until the full method can be read.
+Browser references: turn439academia9, turn448view2.
+
+3. Zep and Graphiti, Rasmussen and colleagues, 2025.
+URL: https://arxiv.org/html/2501.13956v1
+Inspected: sections 2.1–2.3 and retrieval section 3.
+Graphiti stores event time and ingestion time separately.
+It uses four timestamps for creation, expiration, validity, and invalidity.
+It checks new facts against related facts and invalidates temporal contradictions.
+It gives newer information priority when it invalidates an edge.
+It retains source links and historical records.
+It also updates communities, with periodic reconstruction still required.
+Bitemporal storage, source lineage, and edge invalidation are established competitors.
+Its reported experiments concern conversational memory.
+A new document experiment would establish a new evaluation setting, not automatically a new algorithm.
+Browser references: turn427view2, turn429view4, turn429view5.
+
+4. DyG-RAG, Sun and colleagues, 2025.
+URL: https://arxiv.org/html/2507.13396v1
+Inspected: sections 3.1–3.5 and dataset descriptions in section 4.1.
+DyG-RAG extracts event units and links them through entities and time.
+It uses temporal embeddings, semantic filtering, graph traversal, and timeline construction.
+Its index anchors a stated interval at its first time point.
+It evaluates adapted TimeQA, TempReason, and ComplexTR data.
+IA-RAG already addresses richer interval constraints.
+Thus, interval preservation alone is not a safe distinction from current work.
+Browser references: turn429view1, turn432view7, turn435view7.
+
+5. MRAG, Findings of EMNLP 2025.
+URL: https://aclanthology.org/2025.findings-emnlp.167/
+Inspected: primary abstract and benchmark description.
+MRAG separates question content from temporal constraints.
+It retrieves and summarizes evidence, then combines semantic and temporal relevance scores.
+TempRAGEval includes temporal perturbations and evidence labels.
+This method is a required decomposition baseline.
+Perturbed examples cannot be our main natural-data evidence.
+Browser references: turn439search0, turn446view2.
+
+6. Temporal Preference Optimization for Unsupervised Retrieval, ICML 2026.
+URL: https://proceedings.mlr.press/v306/kim26bm.html
+Inspected: primary abstract.
+The linked PDF fetch failed.
+TPOUR trains temporal preferences into a dense retriever.
+Temporal negative examples and temporal preference learning cannot establish novelty by themselves.
+Detailed comparison requires the full method.
+Browser references: turn439search4, turn446view1.
+
+7. HippoRAG 2, Gutierrez and colleagues, ICML 2025.
+URL: https://proceedings.mlr.press/v267/gutierrez25a.html
+Inspected: primary proceedings abstract.
+HippoRAG 2 improves passage integration and online graph retrieval.
+It evaluates factual, associative, and narrative memory tasks.
+It is a relevant strong graph baseline.
+Its abstract does not establish handling of corrections or temporal uncertainty.
+Do not infer missing support from the abstract alone.
+Browser reference: turn425search5.
+
+8. MemStrata, Yadav, June 2026 preprint.
+URL: https://arxiv.org/html/2606.26511v1
+Inspected: discussion, limitations, and benchmark descriptions.
+MemStrata uses deterministic supersession of structured facts.
+Its evolving tests use templates with one mutable value per fact.
+Its limitations report much weaker extraction on a difficult contradiction set.
+The paper also states that ingestion order supplies the time signal in its tests.
+These limits motivate natural-data evaluation.
+They do not prove that our method improves extraction or retrieval.
+Use its supersession rule as a simple control when the task permits one value.
+Browser references: turn429view3, turn435view3, turn435view5.
+
+Public data assessment
+
+DynaQuest
+URL: https://aclanthology.org/2025.findings-acl.1380.pdf
+Inspected: dataset sections 2.1–2.3 and construction-cost appendix.
+DynaQuest compares real Wikipedia infobox versions.
+It covers 88 infobox types and periodically generates questions from changed attributes.
+Its corpus is natural, but its questions are generated.
+It suits update detection and current-value controls.
+It does not establish frequent relational uncertainty or natural multi-step questions.
+Do not rebuild its collection pipeline before checking its released data.
+Browser references: turn429view2, turn432view4, turn435view2.
+
+TEMPO
+URL: https://arxiv.org/pdf/2601.09523
+Data: https://huggingface.co/datasets/tempo26/Tempo
+Code: https://github.com/tempo-bench/Tempo
+Inspected: dataset construction, annotation, metrics, results, and limitations.
+TEMPO contains 1,730 natural Stack Exchange questions and 1,654,055 documents across 13 domains.
+Annotators select questions and extract evidence from real linked or searched web pages.
+The data include temporal negatives and step-specific evidence labels.
+Temporal annotations use models, with human review on a sample.
+The temporal coverage metric checks required periods.
+It does not directly measure whether evidence proves each relation between those periods.
+The best reported average NDCG@10 is 32.0 for DiVeR.
+Low ranking quality does not prove our proposed mechanism will help.
+TEMPO is the strongest inspected source for an initial natural-question audit.
+It is a static retrieval benchmark, not a replay of document corrections.
+Browser references: turn435view4, turn446view3, turn439view1, turn439view3.
+
+DRAGOn
+URL: https://aclanthology.org/2026.eacl-srw.48/
+Inspected: primary abstract and benchmark description.
+DRAGOn periodically creates questions from Russian news.
+Its documents are natural; its questions are generated.
+It could support later generalization, but language adds another variable to the first experiment.
+Browser references: turn427search2, turn427search7.
+
+Discriminating experiment
+
+Freeze 60 TEMPO development questions before comparing methods.
+Select them by existing task labels and domain, not by baseline failure.
+Keep all selected questions in the report.
+First inspect whether source evidence supports a temporal relation that document dates cannot determine.
+Record questions with no such relation as controls.
+Do not infer global absence from an unsuccessful source search.
+
+Give all methods the same initial candidate passages, reader, token budget, and maximum retrieval calls.
+Compare a strong dense retriever, MRAG, ordinary iterative decomposition, Chronos, and an IA-RAG implementation.
+Label any IA-RAG reconstruction as a reconstruction until authors' code becomes available.
+Include a control that resolves all dates and relations from reviewed references.
+This control separates extraction failure from retrieval policy failure.
+Do not give reference relations to only our method.
+
+The proposed method must select evidence that resolves alternative temporal interpretations.
+Compare it with ordinary decomposition using the same relation extractor.
+Measure complete evidence coverage, answer accuracy, unsupported answers, and total cost.
+Review cases where document recall disagrees with semantic evidence coverage.
+Published labels may omit valid alternative evidence.
+Do not count these alternatives as retrieval errors.
+
+The main test concerns the interaction between unresolved relations and the proposed acquisition rule.
+A generic accuracy gain is insufficient to identify this mechanism.
+An advantage caused only by larger context or extra reader calls does not qualify.
+Use untouched domains for confirmation after the development method is frozen.
+Do not represent this proposed split as an existing held-out result.
+
+Local feasibility
+
+A small embedding model and a quantized 7B–8B reader provide a plausible initial path on 20 GB.
+This is an engineering estimate, not a measured runtime result.
+Run embedding and reader stages separately.
+Use disk-backed indexes and cached candidates.
+Start with fixed domain corpora, then report the full benchmark if the mechanism survives.
+Do not present a reduced corpus as a full benchmark result.
+Freeze the reader and verify complete-evidence competence before interpreting downstream gains.
+
+Fatal overlap and stop tests
+
+Stop this route if IA-RAG already acquires evidence to resolve competing interval interpretations under the same objective.
+Stop if ordinary decomposition with identical extraction removes the advantage.
+Stop if reviewed natural questions rarely require the proposed relation decision.
+Stop if gains occur only on generated perturbations or oracle relations.
+Stop if the method suppresses correct alternatives and thereby increases unsupported answers.
+Stop if full-source evidence cannot establish reliable reference relations.
+Do not continue from a few selected success cases.
+
+Recommendation to the project lead
+
+This audit does not identify a verified breakthrough for dynamic lifecycle management.
+It identifies a narrow, falsifiable acquisition hypothesis on real questions.
+Treat it as a competing candidate, not the default next implementation.
+A route with clearer source evidence and less recent overlap should receive priority.
+
+Focused addendum: learning which evidence changes an interpretation
+
+Decision: reject the current formulation as an algorithmic contribution.
+The formulation identifies a useful problem, but it currently combines known operations.
+It does not yet supply a mechanism that distinguishes the paper from those operations.
+
+Re3 is a closer competitor than a generic temporal retriever.
+URL: https://aclanthology.org/2026.acl-long.1180.pdf
+Inspected: sections 3.1–3.4 and benchmark construction in section 4.1.
+Re3 groups extracted facts by entity and relation.
+It selects the newest conflicting value through publication time, then removes documents supporting other values.
+Its stated setting assumes authoritative sources where the newest version supplies current truth.
+This gives a precise distinction: apparent conflicts can concern different scopes, so neither value necessarily replaces the other.
+However, adding scope fields and applying the same rule is an ordinary correction to the representation.
+It does not establish a new acquisition algorithm.
+Re2 Bench also generates documents and questions from tuples, including perturbed negatives.
+Thus, it cannot supply our main natural-language evidence without separate source validation.
+Browser references: turn467view0, turn469view0.
+
+IA-RAG already includes uncertain intervals and refinement through logical constraints.
+A method that retrieves a missing temporal boundary and tightens intervals risks direct overlap.
+The full paper remains inaccessible through the attempted fetches.
+Its abstract and official description support this overlap concern.
+They do not establish whether its acquisition policy handles competing scope assignments.
+That detail remains unknown.
+
+MRAG already decomposes temporal questions and combines semantic and temporal evidence scores.
+I additionally inspected its full method and retrieval analysis.
+Source: https://aclanthology.org/2025.findings-emnlp.167.pdf
+An extra query asking for a missing scope definition is a decomposition step.
+Calling that step interpretation repair does not change the algorithm.
+Browser references: turn469view1, turn470view2, turn470view3.
+
+EC2 already selects costly tests that distinguish answer-equivalent hypotheses.
+Source: https://www.cs.cmu.edu/~dgolovin/papers/nips10.pdf
+Inspected: sections 2–4, including the objective and approximation theorem.
+Its input includes hypotheses, tests, outcomes, costs, and a probabilistic model.
+Mapping temporal interpretations to hypotheses and source requests to tests directly instantiates this established problem.
+Replacing exact test probabilities with learned estimates does not create a new objective or transfer its guarantee.
+Our present challenge is constructing reliable interpretations and test outcomes from source text.
+The current project has not solved that challenge.
+Browser references: turn470view0, turn472view0, turn472view2.
+
+What would change this decision
+
+A distinct candidate would jointly learn scope assignments and the effects of acquiring evidence on those assignments.
+Its training target would concern valid changes between interpretations, not merely passage relevance or reader confidence.
+It would need natural examples where the same passage has different value under different unresolved interpretations.
+It would also need examples where new evidence preserves both values because their scopes differ.
+These labels must come from source-supported relations, not from whichever answer the reader prefers.
+This describes a missing research object, not a completed method or a verified novel mechanism.
+
+The decisive control is the same learned representation with ordinary decomposition and EC2-style selection.
+If those controls match the candidate, the claimed acquisition contribution disappears.
+A scope extraction improvement could still support a paper, but that requires its own method and substantial transfer results.
+Do not spend the next implementation budget on a renamed combination of these components.

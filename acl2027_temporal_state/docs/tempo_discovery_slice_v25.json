@@ -1,0 +1,255 @@
+{
+  "created_utc": "2026-10-06T06:05:31.129662+00:00",
+  "dataset": "tempo26/Tempo",
+  "observed_hub_revision": "1dba7027d0afa628993c6dd794e9b68c657a6fac",
+  "api_requests_revision_pinned": false,
+  "api_base": "https://datasets-server.huggingface.co",
+  "selection_rule": "First two original examples from bitcoin, law, and history. This rule preceded these six example fetches.",
+  "data_role": "development discovery; convenience sample; not representative",
+  "source_access": "Read all six query records and their released reference answers. One exact gold corpus passage was retrieved.",
+  "question_and_reference_records_inspected": 6,
+  "exact_gold_corpus_documents_inspected": 1,
+  "retrieval_baselines_run": false,
+  "reader_predictions": 0,
+  "temporal_interpretation_residuals_confirmed": 0,
+  "main_benchmark_admitted": false,
+  "decision": "This sample does not establish uncertainty that survives competent extraction and decomposition. The exact source audit remains incomplete.",
+  "retrieval_failures": [
+    "Batched gold-ID filters returned HTTP 500 or timed out.",
+    "Five final individual gold-ID filters timed out after forty seconds.",
+    "Row offsets did not follow numeric suffixes in document IDs. Offset responses were excluded from evidence claims.",
+    "History row requests returned HTTP 500.",
+    "Parquet sizes were approximately 215MB, 53MB, and 641MB. These files were not downloaded."
+  ],
+  "method_limitations": [
+    "No performance comparison occurred.",
+    "One model role performed this source review.",
+    "Zero confirmed residuals does not establish zero residuals in TEMPO.",
+    "The original examples schema lacks a query date.",
+    "The documents schema lacks separate URLs, publication dates, and revision identifiers.",
+    "All paraphrases and classifications are analytical notes, not benchmark gold."
+  ],
+  "records": [
+    {
+      "split": "bitcoin",
+      "row_index": 0,
+      "id": "126111_0",
+      "query_sha256": "cc5b9024fb37a0a46682bfbde7500695fd64d2226e5db6b08fd797fdc814eca1",
+      "gold_answer_sha256": [
+        "023888924eb0623c48b74bf54318dc707fb3fc99b5967972e3ab17342aecd98d"
+      ],
+      "gold_ids": [
+        "bitcoin/2d5676d6_0001.txt",
+        "bitcoin/d90887dc_0002.txt",
+        "bitcoin/8b88a470_0003.txt"
+      ],
+      "negative_count": 0,
+      "negative_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "example_fields": [
+        "id",
+        "query",
+        "gold_ids",
+        "gold_answers",
+        "negative_ids"
+      ],
+      "example_response_sha256": "7b8b7b5955d0c6425c1dd8f79ce9db3b6ab54c967a93eb0d6506147381432754",
+      "question_paraphrase": "How long do an Aqua Lightning invoice and a Liquid address remain usable?",
+      "reference_summary": "The reference separates provider-specific invoice expiry from address reuse.",
+      "interpretation_assessment": "The question explicitly names two object types. Decomposition should preserve these distinctions.",
+      "failure_type": "Explicit scope distinction; no demonstrated interpretation ambiguity.",
+      "ordinary_baseline_to_test": "Separate invoice expiry, provider relation, and Liquid address validity.",
+      "residual_after_strong_baseline": "unknown; no baseline was run",
+      "exact_gold_documents_inspected": [],
+      "all_gold_documents_inspected": false
+    },
+    {
+      "split": "bitcoin",
+      "row_index": 1,
+      "id": "126019_1",
+      "query_sha256": "cb850106bc9970adcddafe791290f923e1ef848a2025a0c4535489bd9bd43d25",
+      "gold_answer_sha256": [
+        "29eab051f0b9828bd18f6206dc74bf905c69dd5cfb41df0afab57dad4cd227c0"
+      ],
+      "gold_ids": [
+        "bitcoin/b84abb6a_0004.txt",
+        "bitcoin/e5bc3853_0005.txt",
+        "bitcoin/db1c0129_0006.txt"
+      ],
+      "negative_count": 268,
+      "negative_ids_sha256": "62c40da1d232ae3867bef76ac74b699d0a31a0c70119551a174d46af5517c0bf",
+      "example_fields": [
+        "id",
+        "query",
+        "gold_ids",
+        "gold_answers",
+        "negative_ids"
+      ],
+      "example_response_sha256": "7b8b7b5955d0c6425c1dd8f79ce9db3b6ab54c967a93eb0d6506147381432754",
+      "question_paraphrase": "How frequent are recent Bitcoin reorganizations of depths two, three, and four?",
+      "reference_summary": "The reference reports known events and a partial dataset. It distinguishes fork width from depth.",
+      "interpretation_assessment": "The query uses a relative present date. The released row has no query date.",
+      "failure_type": "Missing temporal anchor and incomplete observation coverage.",
+      "ordinary_baseline_to_test": "Recover the question date. Separate reorganization depth from fork width. Report observation limits.",
+      "residual_after_strong_baseline": "unknown; missing metadata is not a demonstrated algorithmic gap",
+      "exact_gold_documents_inspected": [],
+      "all_gold_documents_inspected": false
+    },
+    {
+      "split": "law",
+      "row_index": 0,
+      "id": "112346_808",
+      "query_sha256": "b8da00946823020ef8edefe3b092f241f375330f00737afa3968389700a07e11",
+      "gold_answer_sha256": [
+        "02fc89e2c9f45f23e3fd52ec41dd7cc32a424c12607325206320bed02e070d94"
+      ],
+      "gold_ids": [
+        "law/051ef0b9_0001.txt",
+        "law/1d6d3fd5_0002.txt",
+        "law/fcb88a57_0003.txt",
+        "law/906a7cc5_0004.txt",
+        "law/ef1b430e_0005.txt"
+      ],
+      "negative_count": 287,
+      "negative_ids_sha256": "1543f7cfe7672fdd38c688c8de76577faad5ce6c594e11644c2b001643d10b7e",
+      "example_fields": [
+        "id",
+        "query",
+        "gold_ids",
+        "gold_answers",
+        "negative_ids"
+      ],
+      "example_response_sha256": "fae3c220eee8f26e36ecb85be2e60754957565622b8122fe280d0d7380a523b4",
+      "question_paraphrase": "When do changed rental regulations take effect, including changes during existing tenancies?",
+      "reference_summary": "The reference lists several possible commencement mechanisms. It directs the reader to each instrument.",
+      "interpretation_assessment": "The question asks for conditional rules. It does not require one universal commencement date.",
+      "failure_type": "Explicit legal scope conditions.",
+      "ordinary_baseline_to_test": "Retrieve commencement provisions and conditions for existing tenancies. Preserve jurisdiction and sector.",
+      "source_inspection": "The inspected gold passage distinguishes private-sector tenancies from later commencement for specified social housing.",
+      "residual_after_strong_baseline": "not established; the inspected distinction is explicit",
+      "exact_gold_documents_inspected": [
+        {
+          "id": "law/051ef0b9_0001.txt",
+          "content_sha256": "8c4df9b0bfdcd76d39432d6d184cdabbf39b5b323a555a400afbf27438e9ec43",
+          "response_sha256": "710eb345d3ab180e597b0afa693878eeb21f9fe9562824f368beeab7489f313e",
+          "document_fields": [
+            "id",
+            "content"
+          ],
+          "row_index": 7031
+        }
+      ],
+      "all_gold_documents_inspected": false
+    },
+    {
+      "split": "law",
+      "row_index": 1,
+      "id": "111149_809",
+      "query_sha256": "cd176eb014589b3acd30ae857f83eee5067dada95e5dcc2b090e4064a716106a",
+      "gold_answer_sha256": [
+        "e7f6a063244f9be3633f82a2bf8fd7b76e694168dae3b1e0cc78200f8d933126"
+      ],
+      "gold_ids": [
+        "law/ce50c442_0293.txt",
+        "law/44bea86b_0294.txt",
+        "law/5f790685_0295.txt",
+        "law/b00e7d14_0296.txt",
+        "law/d4f5f116_0297.txt"
+      ],
+      "negative_count": 86,
+      "negative_ids_sha256": "7ad72a4172e3c798173550e5c865d429368152031e81540b02552f058e0fea27",
+      "example_fields": [
+        "id",
+        "query",
+        "gold_ids",
+        "gold_answers",
+        "negative_ids"
+      ],
+      "example_response_sha256": "fae3c220eee8f26e36ecb85be2e60754957565622b8122fe280d0d7380a523b4",
+      "question_paraphrase": "Can later copyright rules restore protection for works that previously lacked registration?",
+      "reference_summary": "The supplied reference discusses the 1976 Act and works already outside copyright protection.",
+      "interpretation_assessment": "The natural query is broader than the short reference. Its examples imply a jurisdiction.",
+      "failure_type": "Potential question/reference scope mismatch; not adjudicated.",
+      "ordinary_baseline_to_test": "Extract jurisdiction, applicable instrument, relevant dates, and the reason protection ended.",
+      "residual_after_strong_baseline": "unknown; exact gold passages could not be fetched",
+      "exact_gold_documents_inspected": [],
+      "all_gold_documents_inspected": false
+    },
+    {
+      "split": "history",
+      "row_index": 0,
+      "id": "79544_0",
+      "query_sha256": "e6c774a55356317c53303b6b263d5ce67887fef8a3ad7cfb594f3c446f6e29d8",
+      "gold_answer_sha256": [
+        "cb047764d3f20cc4714696dbd3af6de5981a93772f9a61851ebfb793042b2bed"
+      ],
+      "gold_ids": [
+        "history/071d1d9a_0001.txt",
+        "history/6a0c2802_0002.txt"
+      ],
+      "negative_count": 138,
+      "negative_ids_sha256": "a6ef60020459e8c1e08e28f1acc722622bbd068301dfb831a45391b6b3e6cb08",
+      "example_fields": [
+        "id",
+        "query",
+        "gold_ids",
+        "gold_answers",
+        "negative_ids"
+      ],
+      "example_response_sha256": "d1e10c292fa31d92c6b24a740cf3e2d8bf6fe3ce63c91df9978b7142f15d5ee3",
+      "question_paraphrase": "Why does archaeology favor a linear account over a proposed cyclic history?",
+      "reference_summary": "The reference discusses evidence standards and challenges several premises.",
+      "interpretation_assessment": "This is a broad explanatory question. Its answer does not identify one temporal binding.",
+      "failure_type": "Premise checking and explanatory scope.",
+      "ordinary_baseline_to_test": "Decompose factual premises and distinguish source claims from archaeological evidence.",
+      "residual_after_strong_baseline": "unknown; no competing temporal interpretations were established",
+      "exact_gold_documents_inspected": [],
+      "all_gold_documents_inspected": false
+    },
+    {
+      "split": "history",
+      "row_index": 1,
+      "id": "79533_1",
+      "query_sha256": "4556d1168f93b97dcb960e15f6231f4eda8be24851eae483df89cac83fd9bd6d",
+      "gold_answer_sha256": [
+        "006647fd86815d57b240cd2798fc6151f67dbb6a6189b7d031d81cdceac8b3c3"
+      ],
+      "gold_ids": [
+        "history/f1d7ec88_0141.txt",
+        "history/6bb8ae67_0142.txt",
+        "history/d1a56691_0143.txt",
+        "history/66eab6f1_0144.txt",
+        "history/11885dc8_0145.txt",
+        "history/883ee3b1_0146.txt",
+        "history/33b78f28_0147.txt",
+        "history/0d39da03_0148.txt",
+        "history/756e4329_0149.txt",
+        "history/6f6aa228_0150.txt",
+        "history/213e613e_0151.txt",
+        "history/2950478f_0152.txt",
+        "history/d8b6aa0d_0153.txt",
+        "history/eb20dda2_0154.txt",
+        "history/b560ba9c_0155.txt",
+        "history/dc75f24e_0156.txt",
+        "history/1546689e_0157.txt"
+      ],
+      "negative_count": 278,
+      "negative_ids_sha256": "f8d6e15d300e9957f474fa2a19eb29aa0e6afd2a4840d38c1724d2b5c54223b4",
+      "example_fields": [
+        "id",
+        "query",
+        "gold_ids",
+        "gold_answers",
+        "negative_ids"
+      ],
+      "example_response_sha256": "d1e10c292fa31d92c6b24a740cf3e2d8bf6fe3ce63c91df9978b7142f15d5ee3",
+      "question_paraphrase": "Which knife could serve a loosely medieval story involving cattle butchery?",
+      "reference_summary": "The reference discusses general cutting capability and examples from several periods.",
+      "interpretation_assessment": "The query leaves its historical setting approximate. The reference permits many suitable tools.",
+      "failure_type": "Underspecified user intent and broad relevance.",
+      "ordinary_baseline_to_test": "Preserve the approximate period and practical constraint. Ask for clarification if historical specificity is required.",
+      "residual_after_strong_baseline": "unknown; no unique temporal answer class exists in the released reference",
+      "exact_gold_documents_inspected": [],
+      "all_gold_documents_inspected": false
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "version": "v0.21",
+  "version": "v0.25",
   "created": "2026-10-01",
   "date_basis": "planning targets; not scheduled background jobs",
   "tasks": [
@@ -748,13 +748,41 @@
       "acceptance": "Strong reader and semantic premise gates, independent references/splits, charged total costs and prespecified comparison against strong structural/sufficiency/ambiguity baselines.",
       "plan": "docs/local_empirical_contract_v21.txt",
       "progress": "Contract and implementation map delivered; no end-to-end local empirical campaign or held-out result yet."
+    },
+    {
+      "id": "V25AUDIT",
+      "phase": "Reassessment",
+      "task": "Reassess original submission and current primary literature",
+      "depends_on": [],
+      "status": "completed",
+      "acceptance": "Four specialist audits and canonical research decision; no novelty or empirical win claimed."
+    },
+    {
+      "id": "V25FEASIBILITY",
+      "phase": "Conditional discovery",
+      "task": "Freeze bounded natural interpretation diagnostic only after source feasibility",
+      "depends_on": [
+        "V25AUDIT"
+      ],
+      "status": "not_started",
+      "acceptance": "At most60new questions; source references and ordinary re-extraction controls frozen; stop rules in research_decision_v25.txt."
     }
   ],
-  "updated": "2026-10-05",
-  "current_focus": "Theory completed; user owns local empirical execution. See docs/NEXT_CHAT_HANDOFF_v21.txt.",
-  "session_status": "theory_completed_empirical_execution_handed_to_user",
+  "updated": "2026-10-06",
+  "current_focus": "Novelty reassessment complete. Financial certificate route parked. Conditional natural interpretation feasibility only.",
+  "session_status": "reassessment_complete_no_verified_breakthrough",
   "current_execution_order": [
-    "V21THEORY",
-    "V21LOCAL"
-  ]
+    "V25AUDIT",
+    "V25FEASIBILITY"
+  ],
+  "prior_v21_execution": {
+    "version": "v0.21",
+    "updated": "2026-10-05",
+    "current_focus": "Theory completed; user owns local empirical execution. See docs/NEXT_CHAT_HANDOFF_v21.txt.",
+    "session_status": "theory_completed_empirical_execution_handed_to_user",
+    "current_execution_order": [
+      "V21THEORY",
+      "V21LOCAL"
+    ]
+  }
 }

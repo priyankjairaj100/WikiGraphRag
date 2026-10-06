@@ -1,0 +1,394 @@
+Original submission reassessment, v25
+6 October 2026
+
+Decision
+
+The current financial retrieval track does not establish the original paper's central claim.
+It mainly tests whether standard structure can supply enough evidence.
+Further infrastructure work cannot establish a new method contribution by itself.
+Return to changes in evidence over time.
+Select a precise failure that current temporal retrieval methods do not already address.
+Keep the original paper as a baseline and historical record.
+Do not present repaired implementation errors as a new research contribution.
+
+This review inspected the original paper, supplement, released code, result cards, and earlier route decisions.
+It also checked current primary search results for close temporal methods.
+The three proposals below remain hypotheses.
+This review does not certify their novelty or predict acceptance.
+
+What the original paper actually contributes
+
+Original title:
+Reading the Latest, Not the Loudest: Lifecycle-Aware Structured Memory for Retrieval-Augmented Generation.
+
+The useful idea is to resolve obsolete evidence before the reader receives its context.
+A later claim can remove an earlier claim from retrieval eligibility.
+The method compares subjects, relations, values, and timestamps through fixed text rules.
+It creates directed supersession edges.
+The retriever applies a hard mask before selecting its first five claims.
+The interval extension groups connected claims and sorts their timestamps.
+
+This is a clear problem statement and a useful baseline.
+The graph representation is not the essential innovation.
+The essential intervention changes which evidence can enter the context.
+Keep this intervention as the link between the original and revised papers.
+
+Original source locations:
+original_submission/paper.pdf
+original_submission/supplement.pdf
+original_submission/code-and-data/wikigraphrag/detect/supersession.py
+original_submission/code-and-data/wikigraphrag/retrieve/lifecycle.py
+original_submission/code-and-data/wikigraphrag/lifecycle/intervals.py
+
+The present evidence cannot support a broad ACL method claim
+
+1. Much of the original corpus already encodes the desired change structure.
+
+FreshRAG contains 304 generated claims across 100 keys.
+Its policy values increase through generated histories.
+It sometimes repeats the final value.
+Real-world contains 56 rendered claims across 20 curated keys.
+Wikidata contains 208 rendered claims across 73 keys.
+Wikidata-prose rewrites those same 208 claims.
+These datasets are not independent natural document collections.
+
+TempLAMA contains 747 rendered claims across 300 changing keys.
+The builder reads the first answer from each original answer list.
+It collapses consecutive years with the same answer.
+It excludes groups without two different values.
+It selects the first 300 qualifying keys in sorted order.
+It fills the original query template with the selected answer.
+Thus, its source labels are external, but its retrieval task is constructed.
+Collapsing repeats removes cases that challenge the submitted interval algorithm.
+Selecting one answer does not establish that each original relation is functional.
+
+Evidence:
+original_submission/code-and-data/wikigraphrag/data/freshrag.py
+original_submission/code-and-data/wikigraphrag/data/templama.py
+original_submission/code-and-data/data/*/claims.jsonl
+original_submission/supplement.pdf, sections C and D
+
+2. Genuine prose does not establish a large natural QA result.
+
+RealWiki contains 26 lead extracts across 12 company histories.
+RealProse contains 132 lead extracts across 35 subjects and five relation families.
+Their dates come from curated tenure starts, not observed publication timestamps.
+These collections test text matching under supplied chronology.
+They do not test extraction of event dates from a changing document collection.
+
+RealProse reports 35 Qwen questions.
+Lifecycle accuracy is 0.8571, compared with 0.7143 for flat retrieval.
+The released paired estimate has a 95% interval from 0.0000 to 0.2857.
+Its reported p-value is 0.076.
+This is a promising small observation, not established empirical superiority.
+
+Evidence:
+original_submission/code-and-data/wikigraphrag/data/realwiki.py
+original_submission/code-and-data/wikigraphrag/data/realprose.py
+original_submission/code-and-data/results/qa_realprose_qwen.json
+
+3. Several reported results are diagnostics rather than natural QA.
+
+ExtractiveReader returns the retrieved claim's supplied value field.
+It does not extract an answer from text.
+The historical experiment selects a component through the first gold claim identifier.
+The interval function also reads Claim.value.
+These results measure routing and interval behavior with supplied fields.
+They cannot establish an end-to-end historical question answering result.
+
+The original regression audit demonstrates a concrete interval error.
+Its sequence is A, then B, then another statement of B.
+The newest replacement edge connects the final B to A.
+The first B remains in a separate component.
+The audited historical query consequently returns A during the B period.
+Fixing this error is necessary engineering work.
+It does not supply a paper contribution by itself.
+
+Evidence:
+original_submission/code-and-data/wikigraphrag/readers/base.py
+original_submission/code-and-data/experiments/run_asof.py
+original_submission/code-and-data/wikigraphrag/lifecycle/intervals.py
+acl2027_temporal_state/results/original_restatement_audit.json
+acl2027_temporal_state/scripts/audit_original.py
+
+4. The strongest comparisons require replacement.
+
+The original reader is Qwen2.5-3B-Instruct.
+All ordinary LLM prompts already include dates.
+The date-prompt baseline adds an explicit instruction to prefer the newest date.
+Do not claim that the baseline lacked dates.
+
+RAG-Time tuning uses nine Wikidata development keys.
+The main Wikidata aggregate includes those development keys.
+The supplement discloses this overlap.
+TempRALM often loses topical relevance in the released full-corpus scoring implementation.
+That failure does not establish superiority over a competent temporal retriever.
+
+The local HippoRAG module describes itself as an approximate implementation.
+It extracts named entities and uses a bipartite graph.
+It is not sufficient evidence of parity with the complete reference system.
+
+Evidence:
+original_submission/code-and-data/wikigraphrag/readers/base.py
+original_submission/code-and-data/results/ragtime_heldout_tuning.json
+original_submission/code-and-data/results/tempralm_topicality_audit.json
+original_submission/code-and-data/wikigraphrag/graphrag/hipporag.py
+
+5. The original theory does not guarantee learned temporal understanding.
+
+The exactness proposition assumes correct matching, correct value comparison, and correct temporal order.
+Under these assumptions, the algorithm directly implements the target definition.
+This usefully states the contract.
+It does not establish a new learning result or an unconditional correctness guarantee.
+The fixed-context lemma explains why a reader cannot recover omitted evidence.
+Its value-agnostic ranking assumption does not establish natural failure prevalence.
+
+What is documented review criticism?
+
+The coordinating agent recovered and read the original review privately during this reassessment.
+The public repository does not contain that private report.
+This document publishes no review text or ratings.
+Its public assessment rests on the cited paper, code, and result files.
+It does not present private review claims as independently verified findings.
+
+The original limitations section explicitly discusses small datasets, supplied timestamps, functional relations, and uncertain source authority.
+The supplement explicitly discloses development overlap and the construction of rendered claims.
+The code supports the additional implementation findings above.
+These are distinct forms of evidence.
+
+Earlier routes that must remain closed
+
+The v10 correction replay found no advantage beyond direct correction.
+The v12 source gate recovered pairs but found no certified indirect consequence.
+Plug explicitly revises both loss and dependent earnings per share.
+OPERA changes the event population and explicitly revises its conclusions.
+Neither supports a hidden propagation advantage.
+
+The v13 experiment used eight questions from two familiar histories.
+Each condition achieved only one joint success.
+The v14 reader upgrade did not improve that comparison.
+Dense retrieval and hybrid retrieval also did not improve complete source support.
+These results expose extraction and reader limits.
+They do not justify new temporal reasoning claims.
+
+The v23 and v24 filing work mainly tests conventional typed and structural retrieval.
+Do not rename this work as an improved lifecycle method.
+Do not restart source collection merely to find a rare favorable example.
+
+Evidence:
+acl2027_temporal_state/docs/research_update_v10.txt
+acl2027_temporal_state/docs/route_decision_v12.txt
+acl2027_temporal_state/docs/research_update_v13.txt
+acl2027_temporal_state/docs/research_update_v14.txt
+acl2027_temporal_state/docs/research_update_v24.txt
+
+Three possible pivots
+
+Pivot 1: Answer reuse after observed evidence changes.
+
+Research question: Which cached answers require another retrieval and reading pass after a real document update?
+Keep the previous answer's cited evidence and retrieval record.
+Compare changed source passages with those dependencies.
+Use a conservative detector to identify changes that can alter answer support.
+Recompute the affected answers.
+Measure both missed changes and needless recomputation.
+Include additions that supply previously missing answers.
+Otherwise, dependency tracking can miss new evidence outside the previous context.
+
+This changes the target from raw accuracy to the cost of preserving accuracy during updates.
+The potential contribution requires a new rule for semantic changes and missing dependencies.
+Simple citation tracking, timestamps, or cache expiration are insufficient novelty.
+This route retains the original concern about stale evidence.
+It also gives a concrete use for repeated observations and preserved provenance.
+
+It differs from the failed propagation route.
+The dependencies belong to the system's actual answers.
+The sources need not contain an independently published downstream assertion.
+However, we must evaluate real questions and observed source updates.
+We must not invent dependency chains or source histories.
+
+Kill this route if full reruns are cheap or ordinary dependency tracking achieves the same cost-quality result.
+Also kill it if improvements depend on missing answer-changing additions or weaker readers.
+FreshCache already studies freshness risk, so generic risk-aware cache reuse is not a sufficient contribution.
+
+Pivot 2: Selective replacement under uncertain temporal scope.
+
+Research question: Can a system remove stale evidence without deleting evidence that still answers a different temporal question?
+Predict a replacement relation conditional on the question's time and scope.
+Distinguish replacement, historical retelling, planned change, concurrent values, and unsupported disagreement.
+Keep uncertainty when source evidence cannot support deletion.
+Evaluate both corrected answers and damage to previously correct answers.
+
+This addresses the original hard mask's main risk.
+It requires genuine source ambiguity and strong temporal baselines.
+The earlier bounded temporal semantics can supply implementation components.
+They cannot supply a fresh novelty claim.
+
+Kill this route if Re3 or standard temporal entailment yields the same improvement.
+Kill it if a simple relevance filter removes the apparent advantage.
+Kill it if the source collection supplies time intervals that decide every label.
+Do not describe typed filtering or calibrated abstention alone as a breakthrough.
+
+Pivot 3: A natural benchmark for harmful temporal deletion.
+
+Research question: When does a newer document make a retriever wrongly discard useful older evidence?
+Use existing natural questions and accessible document histories.
+Measure lost support for historical questions, retained facts, and newly answered questions.
+Compare complete readers, temporal filters, graph methods, and simple version selection.
+Keep negative and unchanged cases in the denominator.
+Measure errors at the history level.
+
+This could support a focused empirical paper if the failure is large, reproducible, and poorly measured elsewhere.
+It does not require a new optimizer.
+It does require substantially better evidence than the current curated probes.
+The user seeks method novelty and superiority, so this is a fallback route.
+
+Kill this route if existing benchmarks already measure the same error with adequate sources and labels.
+Kill it if the findings disappear with a strong reader or competent temporal retrieval.
+Kill it if most histories require reconstructed source text or unverifiable chronology.
+
+Current overlap found during this review
+
+Re3, ACL 2026, already combines temporal encoding with listwise suppression of obsolete facts.
+Its abstract identifies a direct competitor to the original core claim.
+https://aclanthology.org/2026.acl-long.1180/
+
+Chronos already organizes evolving evidence into an Event Evolution Graph.
+Its benchmark uses chronological evidence about real events.
+https://aclanthology.org/2026.findings-acl.546/
+
+FreshCache already estimates staleness risk to control answer reuse.
+Its benchmark uses actual web snapshots and also includes generated paraphrases.
+Its abstract does not establish that source-level dependency tracking is equivalent to its method.
+https://arxiv.org/abs/2607.04281
+
+MRAG already separates semantic relevance from temporal relevance.
+Its benchmark uses temporal perturbations of existing datasets.
+https://aclanthology.org/2025.findings-emnlp.167/
+
+These observations come from primary search results and abstracts.
+They require full method comparison before selecting any pivot.
+No source establishes that the proposed pivots are novel.
+
+Recommendation to the coordinating agent
+
+The initial preference for cache reuse is superseded by the wider literature audit.
+FreshCache and GroundedCache substantially weaken that route.
+Do not build a generic cache controller.
+The next section identifies a more relevant learning hypothesis for the original project.
+It remains subject to rejection after a small natural discovery pass.
+
+Do not build another large framework before selecting that mechanism.
+Do not reuse the original high rendered-data scores as evidence for the new mechanism.
+Preserve the earlier work as reusable code, controls, and honest negative evidence.
+
+Correction to the earlier ambiguity gate
+
+The v07 gate required competing readings to remain defensible after inspecting all source context.
+That gate addresses unresolved ambiguity in the source itself.
+It is suitable for testing uncertainty that available evidence cannot resolve.
+It is not a necessary condition for learning to correct extraction errors.
+
+A model can prefer the wrong entity, time, or scope after reading one passage.
+Another real passage can resolve that error.
+The wrong candidate need not remain defensible after both passages are read.
+Its presence measures uncertainty in the model, not ambiguity in the complete source.
+Requiring both readings to remain valid can exclude the very cases that joint interpretation should correct.
+
+The revised discovery gate must separate three cases.
+First, the source itself remains ambiguous after all eligible evidence.
+Second, a local model makes an error that additional eligible evidence resolves.
+Third, the candidate inventory omits the correct interpretation entirely.
+The first case requires uncertainty preservation.
+The second case can test joint interpretation learning.
+The third case requires proposal repair and cannot establish a decoding gain.
+
+This correction does not invalidate the old recorded results.
+The earlier selected histories did not demonstrate useful joint inference.
+It changes what a new, explicitly different experiment should seek.
+Preserve the v07 protocol and its outcomes.
+Do not retroactively count rejected candidates as successful experiments.
+
+Evidence:
+acl2027_temporal_state/docs/candidate_design_v07.txt, Key distinctions 5 and Consequence for the ACL research route
+acl2027_temporal_state/docs/related_work_update_v07.txt, research implication and references R7-R8
+acl2027_temporal_state/docs/next_method_gate_v09.txt
+
+Narrow candidate: learn to revise temporal interpretations using retrieved evidence
+
+Start with natural passages and real questions from an existing benchmark.
+Retain a small candidate set for entity, scope, and time interpretations.
+Generate candidates without reference answers.
+Record the initial interpretation before retrieving additional evidence.
+Retrieve passages that address the unresolved field or conflict.
+Use those passages to revise the interpretation and its associated temporal links together.
+The reader then receives the resulting source evidence and explicit uncertainty.
+
+For example, a later document can describe an earlier event.
+The model can initially mistake the document date for the event date.
+Another passage can identify the event and its effective date.
+Joint revision can change both the temporal interpretation and the proposed replacement relation.
+This example states a mechanism, not an observed result in a new benchmark.
+
+A fixed extraction pipeline cannot make this correction through filtering alone.
+Once it assigns the wrong scope or time, a filter acts on the wrong fact representation.
+A joint model can change that representation after receiving relevant evidence.
+This potential difference is more substantial than adding another retrieval score.
+It still requires evidence of better answers or equal accuracy at lower cost.
+
+Use a shared encoder or small adapter to score candidate interpretations and their compatibility with retrieved passages.
+Train with reference interpretations only where the training split supplies reliable labels.
+Keep latent assignments where several supported interpretations yield the same reference answer.
+Answer supervision alone can reward incorrect reasoning that accidentally reaches the correct value.
+Therefore, retain evidence and interpretation checks alongside answer loss.
+
+Compare independent training, independent decoding, iterative revision, and joint training under the same candidates and evidence.
+Include a strong reader that directly sees all retrieved passages.
+Include standard constrained prediction with the same compatibility rules.
+Compare a second extraction pass after retrieval.
+Otherwise, an ordinary retry could explain the improvement.
+Measure candidate recall before measuring the benefit from joint selection.
+Report errors that move from correct to incorrect after revision.
+
+What this candidate does not establish
+
+Joint temporal extraction is established prior work.
+Han and colleagues already combine event extraction and temporal links through structured prediction.
+IA-RAG already uses interval constraints and tightens uncertain times.
+CoRM-RAG already learns an evidence critic from query perturbations.
+Latent answer supervision also has established precedents.
+Thus, joint learning, temporal constraints, and critic training are not sufficient novelty claims.
+
+The unresolved contribution would require a precise learning mechanism for evidence-driven revision across entity, scope, and time.
+It must improve on ordinary re-extraction and standard joint prediction.
+The present code has no evidence that such a mechanism wins.
+
+Primary comparison sources:
+https://aclanthology.org/D19-1041/
+https://arxiv.org/abs/2606.06044
+https://arxiv.org/html/2605.01302v1
+https://aclanthology.org/D19-1284/
+
+The companion method audit supplies the detailed CoRM-RAG comparison.
+acl2027_temporal_state/docs/method_route_audit_v25.txt
+
+A capped discovery pass
+
+Freeze at most 24 natural questions across at most six document histories.
+Use existing natural source collections, not the financial certificate collection.
+Choose the sampling rule before inspecting model errors.
+Preserve ordinary cases as well as difficult cases.
+Do not require publisher corrections or independently published downstream assertions.
+Do not write artificial source contradictions.
+
+Save initial model interpretations before additional retrieval.
+Check candidate recall and source support separately.
+Then determine whether real additional passages resolve observed extraction errors.
+Record whether an ordinary second extraction pass already fixes each error.
+Treat this pass as development evidence, not a held-out benchmark.
+
+Stop if few natural errors require interpretation revision.
+Stop if reference-free proposals usually omit the correct interpretation.
+Stop if ordinary re-extraction resolves the same errors at comparable cost.
+Stop if the proposed training rule only restates an existing structured learning method.
+Only surviving evidence should justify model training or a larger empirical program.

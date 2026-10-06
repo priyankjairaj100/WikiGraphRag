@@ -1,0 +1,219 @@
+Research decision v25: rebuild the claim before rebuilding the paper
+6 October 2026
+
+Decision
+
+The current project has no demonstrated novel method with a natural, held-out advantage.
+It is not ready for an ACL submission.
+Stop expanding the financial certificate route as the intended main contribution.
+Keep its theory, software, negative results, and source audits as a preserved research record.
+
+The search found no verified breakthrough in generic temporal graphs, evidence certificates, safe caching, or reasoning-chain repair.
+This is a finding about the inspected candidates, not proof that the entire research area is exhausted.
+Do not begin another large model campaign or rewrite the manuscript around an untested name.
+
+One conditional hypothesis deserves a bounded feasibility check:
+Learn to revise temporal interpretations when retrieved passages change their evidential support.
+This remains a research hypothesis, not a selected, novel algorithm.
+The canonical next-step limit appears below.
+It supersedes the alternative 24-question and 32-history suggestions in the companion audits.
+
+Why the present direction is insufficient
+
+The original mechanism removes predicted obsolete claims before context selection.
+That remains a useful baseline and a clear practical motivation.
+However, the original high scores largely concern constructed claim collections and supplied fields.
+The historical evaluator selects a component through a gold claim identifier.
+Its interval answers use stored claim values.
+Those experiments cannot establish natural historical question answering.
+
+The strongest original genuine-prose QA result covers 35 questions.
+Its released comparison reports 0.8571 against 0.7143, with p=.076.
+The paired confidence interval includes zero.
+This result motivates further work but does not establish reliable superiority.
+The original A-B-B interval defect also remains a necessary repair, rather than a research contribution.
+
+V24 does not rescue the method claim.
+Conventional structural retrieval supplies question-sufficient evidence for seven of nine complete development questions.
+One remaining history has a confirmed gap across the tested policies.
+Another remains uncertain.
+These are assistant evidence judgments, not reader predictions.
+Dense retrieval, strong semantic planning, and natural reader competence remain untested in that probe.
+
+The project accumulated validation machinery before establishing a difficult, distinct research target.
+More validation alone cannot close that gap.
+
+Primary evidence:
+docs/original_reassessment_v25.txt
+docs/research_update_v24.txt
+results/semantic_probe_summary_v24.json
+../original_submission/code-and-data/results/qa_realprose_qwen.json
+
+What the literature rules out
+
+Re3 already extracts facts jointly, groups matching entities and relations, and suppresses older conflicting versions.
+Its publication-time assumption leaves important limitations.
+Those limitations do not make another recency filter novel.
+https://aclanthology.org/2026.acl-long.1180.pdf, section 3.4
+
+IA-RAG already represents intervals and refines uncertain temporal bounds.
+Its primary abstract and official repository were inspected.
+Full-method access remained incomplete.
+https://arxiv.org/abs/2606.06044
+https://github.com/xiaoAugenstern/IA-RAG
+
+Q-TIE already learns query intervals and combines semantic and temporal scores.
+Adding a trained temporal parser therefore cannot support our main novelty claim.
+https://arxiv.org/html/2609.23880v1, section 3
+
+EvoTrustRAG already compares grounded explanations of temporal conflicts and preserves unresolved outcomes.
+Its inspected formulation starts from extracted facts within a retrieved context.
+Simply adding retrieval to that design does not establish a new learning principle.
+https://arxiv.org/html/2608.07933v1, problem formulation and method
+
+Joint event extraction and temporal relation learning also predate this project.
+Joint prediction by itself is not our contribution.
+https://aclanthology.org/D19-1041/
+
+The companion method audit covers CARE, EditCoT, GroundedCache, PAGE-RAG, LineageRAG, and other close work.
+It records which full methods were inspected and which checks remain incomplete.
+docs/method_route_audit_v25.txt
+docs/dynamic_route_audit_v25.txt
+
+These overlaps narrow the claim but do not prove that every combination lacks scientific value.
+A useful combination still needs a specific technical difference and evidence that the difference matters.
+The present project has neither for this new hypothesis.
+
+The useful correction to our earlier reasoning
+
+Source ambiguity differs from uncertainty in a model.
+An initial interpretation can be wrong even when the complete source clearly supports one answer.
+Another passage may resolve the event date, entity, population, or meaning of a comparison.
+The original v07 gate sometimes required competing readings to remain defensible after reading complete context.
+That requirement can exclude ordinary errors which joint interpretation could correct.
+
+The new hypothesis concerns such correctable errors.
+It does not require genuine sources to remain ambiguous.
+It does not require a publisher to issue a correction.
+It does not revive the failed financial task under a different label.
+The v07 record remains unchanged.
+
+Three outcomes must stay separate:
+1. Additional source evidence resolves a model's wrong interpretation.
+2. Even the full admitted evidence leaves the answer unresolved.
+3. The candidate generator never proposes the correct interpretation.
+
+Only the first outcome supports the proposed revision mechanism.
+The second requires uncertainty handling.
+The third requires better proposals before comparing selectors.
+
+Potential paper claim
+
+Working question: Can evidence-driven interpretation revision prevent harmful supersession in temporal retrieval?
+
+Retain candidate entity, scope, and time assignments before additional retrieval.
+Record which exact passages support each assignment.
+After retrieving another passage, revise the assignments and their replacement relations together.
+Preserve valid historical evidence when a supposed replacement concerns another period or scope.
+Measure both corrected errors and previously correct interpretations that become wrong.
+
+A possible learned component scores which assignments should change after each new passage.
+Training would use source-supported interpretation changes and unchanged controls from training data only.
+It would compare alternative assignments jointly, rather than permanently trusting an initial extraction.
+This describes a candidate mechanism, not an implemented contribution.
+Ordinary structured learning, latent QA learning, and evidence utility learning remain close precedents.
+No new theorem follows from this description.
+
+The decisive controls
+
+Use the same candidate passages, extractor, reader, context budget, and total inference accounting.
+Compare a full-context reader, ordinary query decomposition, and a second extraction pass over the expanded context.
+Compare standard constrained prediction using the same candidates and compatibility rules.
+Include suitable temporal baselines, particularly Re3, Q-TIE, and an accessible interval-based method.
+Use their reference implementations where practical.
+Label adaptations and missing implementations explicitly.
+
+If ordinary re-extraction matches the proposed revision, reject the method claim.
+If the same representation with a standard decoder matches it, reject the specialized decoder claim.
+If gains come only from more evidence or a stronger reader, report that cause.
+Do not call a generic active-discrimination objective a new temporal algorithm.
+
+Bounded next step
+
+Allow at most 60 newly inspected natural questions for the initial feasibility stage.
+This is a spending limit, not a powered confirmatory study.
+Do not replace excluded questions until a desired difficult subset appears.
+Keep all exclusions and all ordinary questions in the accounting.
+
+TEMPO is a candidate source because it contains existing Stack Exchange questions and real documents.
+It is not yet accepted as the main benchmark.
+Its reported oracle answer score is 80.5, against 77.3 without retrieval.
+Those scores measure graded reference coverage, not exact-match accuracy.
+The small reported gap makes an answer-level headroom check essential.
+https://arxiv.org/html/2601.09523v1, section 5 and Table 6
+
+The six inspected records in the companion feasibility audit are already exposed development material.
+Only one exact gold passage was retrieved; other source lookups failed or timed out.
+No retrieval baseline ran on those six records.
+Exclude them from the new 60-question roster.
+Freeze the dataset revision, roster, sampling rule, and evidence access policy before model predictions.
+Use original questions without generated reformulations as the task input.
+Generated reformulations remain valid baseline outputs when their cost is charged.
+Retain query-specific negative documents in our main corpus.
+Report the published exclusion protocol separately when reproducing its scores.
+
+Stage A checks whether exact source evidence can support interpretation references.
+Missing question dates must remain unknown unless a source supplies them.
+The inspected TEMPO document schema lacks source URLs, revision identifiers, and publication dates.
+Recover required provenance before using it to claim lifecycle or historical-source performance.
+Without this recovery, restrict the task to source-relative interpretation within the released text.
+Retrieval failure alone does not establish insufficient evidence.
+Do not train or select a method using reference fields at inference time.
+
+Stage B compares frozen baseline interpretations with source-assisted oracle corrections.
+Oracle corrections must use the same delivered evidence pack and budget as ordinary re-extraction.
+Evidence outside that pack cannot support an oracle correction in this diagnostic.
+Oracle corrections measure potential improvement, not method performance.
+Seek at least 12 source-resolvable interpretation errors among the fixed 60 questions.
+Require at least six additional correct interpretations beyond ordinary re-extraction under the fixed budget.
+This is an interpretation diagnostic, not an answer-level comparison.
+These thresholds are prospective practical choices, not statistical significance requirements.
+Freeze their exact scoring implementation before the run.
+If the task or reader cannot support this diagnostic, stop before training.
+
+If feasibility survives, the requested natural reader gate remains necessary before an answer-level method comparison.
+Prepare about 100 complete-evidence items and 100 explicitly scoped insufficient-evidence items.
+Freeze model revision, prompt, decoding, arithmetic, and scoring first.
+The old 2/8 result and the typed-record controls cannot satisfy this gate.
+No large-model handoff is ready at this checkpoint.
+
+Only after these checks should we define a distinct training rule and run a pilot.
+Before training, write a one-page mechanism comparison against the closest methods.
+If it only renames existing operations, stop this candidate.
+If the pilot fails, preserve it and permit changes only on development data.
+Never tune against the confirmatory set, including after a development win.
+
+A later confirmation needs disjoint source families, pre-prediction references, and a frozen effect size and risk limit.
+Group analysis by source history or connected source family, rather than treating related questions as independent.
+The twelve financial filings remain development material.
+The financial confirmatory design is parked; it does not transfer automatically to this task.
+
+Positioning for ARR
+
+ARR accepts methods, resources, and analyses with appropriately supported claims.
+A completely new primitive is not mandatory.
+However, our intended method paper still needs a clear contribution and an honest empirical advantage.
+https://aclrollingreview.org/reviewerguidelines
+
+The intended revised paper would retain the original motivation and use WikiGraphRAG as a baseline.
+Its core would concern revisable temporal interpretation, supported by natural evidence and decisive component controls.
+Its theory would state only necessary assumptions or nontrivial consequences.
+Its evaluation would measure grounded answers, harmful changes, and total cost.
+An analysis paper remains a separate option if a substantial general finding emerges.
+It is not an automatic fallback for another small unsuccessful pilot.
+
+Checkpoint claims
+
+Completed: original-code reassessment, private review reading, recent literature audit, and bounded benchmark feasibility inspection.
+Not completed: a novel algorithm, model training, natural reader gate, new QA comparison, or held-out empirical win.
+The next action is a bounded hypothesis test, not manuscript polishing.

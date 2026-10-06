@@ -1,0 +1,242 @@
+Public benchmark audit for the v25 research decision
+Date: 2026-10-06
+Status: source review only; no new experiment was run.
+
+Decision
+
+Do not start another collection of questions from the twelve filings.
+No reviewed benchmark gives us natural questions, complete document histories, and certified answer coverage together.
+TEMPO offers the strongest natural-question test for evidence selection.
+VersionQA offers the cheapest real-document test for version handling.
+Neither dataset establishes a new method by itself.
+Plain version graphs, change nodes, and query routing already appear in VersionRAG.
+
+1. TEMPO: preferred test for evidence selection, conditional on the mechanism
+
+The paper contains 1,730 Stack Exchange questions across thirteen domains.
+People selected existing posts and retained their titles and bodies.
+Evidence contains real documents, with assisted discovery and annotation.
+The corpus contains 1,654,055 documents.
+The released data separates original examples, generated reformulations, and annotated retrieval steps.
+Use original examples for the main task.
+Do not give a method gold steps, gold document IDs, or annotated temporal guidance.
+The dataset card declares CC-BY-4.0.
+The code repository did not display a separate license during this audit.
+Keep third-party source rights separate from the dataset card.
+
+The released code assigns negative_ids to excluded_ids before retrieval.
+The current dataset card explicitly describes this exclusion.
+Retain these documents for the main full-corpus experiment.
+Report the published protocol separately if a reproduction needs it.
+Pin the dataset revision and code revision before implementation.
+The public configurations use domains as splits.
+We did not establish an independent official training split.
+Reserve entire domains and shared document groups before development.
+The corpus does not expose a complete revision stream in its documented schema.
+Thus, TEMPO cannot independently validate claims about update histories.
+
+The strongest reported retrieval configurations exceed the headline baseline.
+DiVeR reaches 32.0 NDCG@10 on original queries.
+ReasonIR with generated reformulation reaches 41.0.
+Include query decomposition, temporal normalization, and strong reranking as ordinary baselines.
+Temporal coverage is already an explicit metric in this benchmark.
+Do not claim that metric as our contribution.
+The paper reports 77.3 answer correctness without retrieval and 80.5 with oracle evidence.
+That narrow reported gap makes answer gains a poor initial target.
+Test evidence completeness and harmful evidence directly before expensive reader runs.
+
+Read: paper sections 3, 5, and 6; dataset schema; repository usage; run.py exclusion logic.
+Primary sources:
+https://arxiv.org/pdf/2601.09523
+https://huggingface.co/datasets/tempo26/Tempo
+https://github.com/tempo-bench/Tempo
+https://github.com/tempo-bench/Tempo/blob/main/run.py
+
+2. VersionQA: useful development test, insufficient main evidence
+
+VersionQA contains 100 manually curated questions over 34 real documentation files.
+The sources cover Spark, Bootstrap, and two Node.js modules.
+Questions include content, version selection, and explicit or implicit changes.
+Only ten questions test implicit changes.
+These questions were written for evaluation, rather than collected from user logs.
+The repository releases data and a prototype.
+Its root listing did not display a license during this audit.
+Resolve reuse terms before redistributing data or code.
+
+VersionRAG builds document, version, content, and change nodes.
+It compares adjacent versions and creates semantic change descriptions.
+It routes questions through version filtering or graph traversal.
+It also supports incremental additions.
+This is a required baseline for any proposed lifecycle method.
+The paper reports 90% overall accuracy with its strongest model.
+It reports 60% accuracy on implicit changes.
+There is little broad headroom and substantial risk from the small sample.
+Use this dataset to reject a weak method quickly.
+Do not claim general superiority from a selected subset of ten changes.
+Keep all versions of each document family in one evaluation group.
+
+A source check found a material reference problem.
+Appendix F assigns CallTracker's introduction to Node.js 14.21.3.
+Official Node.js 23.11.0 documentation instead lists 14.2.0 and 12.19.0 as introduction versions.
+The paper also motivates removal of assert.deepEqual.
+The same official documentation still defines that method.
+These checks do not audit all one hundred released references.
+They require us to audit transition references before using this benchmark.
+A sampled document sequence cannot establish a global first occurrence.
+Explicit history tables can resolve these examples without a new retrieval method.
+
+Read: paper sections 3 through 6; repository overview and root listing.
+Primary sources:
+https://arxiv.org/html/2510.08109v1
+https://github.com/danielhuwiler/versionrag
+https://nodejs.org/download/release/v23.11.0/docs/api/assert.html
+
+3. FreshQA: useful for answer revisions, with a source-history gap
+
+Researchers and freelancers wrote the questions.
+The original collection has 500 test questions and 100 development questions.
+These are human-authored questions, not organic search logs.
+The official repository lists many dated answer snapshots.
+The displayed latest snapshot was April 21, 2026, during this audit.
+Do not describe it as an October 2026 gold reference.
+The repository has an Apache-2.0 license.
+External evidence pages retain their own rights.
+
+FreshPrompt uses live search, dated evidence, and demonstrations.
+It is a minimum baseline, along with current search and decomposition.
+The snapshots offer natural answer changes without invented replacement facts.
+However, snapshot answers do not provide complete archived evidence at every date.
+An answer revision does not prove a source correction or a world-state change.
+Do not combine later pages with earlier references.
+Group repeated questions across dates before development and testing.
+A lifecycle experiment needs captured evidence, stable identifiers, and a distinction between changed answers and editorial repairs.
+That extra work makes this a secondary test, not the cheapest first experiment.
+
+Read: paper collection, split, evaluation, and FreshPrompt sections; repository snapshot list and license.
+Primary sources:
+https://arxiv.org/pdf/2310.03214
+https://github.com/freshllms/freshqa/blob/main/README.md
+https://github.com/freshllms/freshqa/blob/main/LICENSE
+
+4. StreamingQA: natural news with a separable human question subset
+
+StreamingQA contains dated news questions and fourteen years of news sources.
+Its metadata explicitly separates human-written questions from generated questions.
+Use only the written subset if synthetic questions are excluded.
+Official files contain 99,402 training, 9,939 validation, and 36,378 evaluation records.
+Those counts include both question origins.
+The released schema includes question dates, evidence dates, and stable evidence identifiers.
+The code recreates the deduplicated corpus from WMT news downloads.
+Software uses Apache-2.0; other released materials use CC-BY-4.0.
+The full source collection contains approximately 11.4 million articles.
+
+This benchmark supports causal access: each query sees only documents available by its date.
+It mainly measures new information, rather than explicit withdrawal or revision of earlier sources.
+Older public evaluation questions can occur in current model training data.
+A closed-book control and cited-evidence scoring are therefore necessary.
+Corpus reconstruction also costs more than a small retrieval pilot.
+A tiny evidence-only corpus would remove the retrieval problem.
+Keep this dataset as a later temporal generalization test.
+
+Read: original abstract; official repository metadata, extraction protocol, download table, and license.
+Primary sources:
+https://proceedings.mlr.press/v162/liska22a.html
+https://github.com/google-deepmind/streamingqa
+
+Excluded as the primary natural dataset
+
+DynaQuest uses genuine Wikipedia revisions, but fills manually designed templates to generate its questions.
+Its released dataset uses CC-BY-SA-4.0.
+It could test genuine updates as an auxiliary experiment.
+It does not satisfy a strict requirement for natural questions.
+Read: paper section 2 and official repository.
+https://aclanthology.org/2025.findings-acl.1380.pdf
+https://github.com/nusnlp/DynaQuest
+
+TIDE uses 644 real customs instruments and 3,050 expert-verified question pairs.
+Its construction generates questions and fictional scenarios.
+Its MIT repository includes parsing and evaluation pipelines.
+Its dates and amendments closely match lifecycle questions.
+However, its generated questions prevent selection under the user's strict natural-data requirement.
+Code-mixed legal text and council scoring also complicate a cheap pilot.
+Read: official repository construction, evaluation, and license sections.
+https://github.com/icsetepa44/TIDE
+
+LongMemEval uses controlled histories, simulated sessions, and mixed filler sources.
+Its knowledge-update task is relevant, but its histories are not naturally observed longitudinal user records.
+Do not use it as the primary natural benchmark.
+Read: official repository construction and history compilation sections.
+https://github.com/xiaowu0162/LongMemEval/blob/main/README.md
+
+Bounded go/no-go test
+
+This is a proposed decision rule, not a registered experiment.
+Choose one mechanism before choosing the final benchmark.
+For evidence selection, use TEMPO with unchanged natural questions and all corpus documents.
+For version handling, use VersionQA only as an early rejection test.
+Do not call these tasks equivalent.
+
+Reserve the test partition before inspecting any predictions.
+Use at most sixty development questions for the first empirical decision.
+Choose them by a recorded random rule, before baseline runs.
+Keep related questions, sources, and document families together.
+Charge all query generation, reranking, indexing, and reading costs.
+Use the same candidate pool when testing only the selection algorithm.
+Compare against strong retrieval, query decomposition, diversity selection, and full re-retrieval after updates.
+Include gold-evidence and closed-book controls when testing answer generation.
+
+Stop if gold evidence cannot support correct answers reliably.
+Stop if the method needs gold temporal guidance to show gains.
+Stop if ordinary decomposition or version filtering removes the observed failure.
+Continue only after a clear gain survives a new, untouched development partition.
+Require a practical gain at fixed cost, plus no increase in unsupported answers.
+Select numerical thresholds before the first prediction.
+Keep final test labels closed through method selection.
+
+Resource assessment
+
+CPU indexing and a small embedding model can support the first retrieval audit.
+A quantized small reader can support a later development gate.
+Exact memory use depends on its model, context length, and inference engine.
+Do not assume two GPUs until the local runtime confirms them.
+Do not prescribe a 70B reader as a local requirement.
+Large-model confirmation can use the later handoff.
+
+Novelty boundary
+
+Natural data removes one weakness; it does not create an algorithmic contribution.
+Temporal metadata, version graphs, query decomposition, and coverage metrics already have close prior work.
+A method needs a new, measurable decision about evidence that these baselines do not already make.
+This audit does not establish that such a method currently exists in this project.
+
+Small discovery addendum
+
+The six-record receipt is docs/tempo_discovery_slice_v25.json.
+We read the first two original examples from bitcoin, law, and history.
+This convenience sample is development material.
+We read all six questions and their released reference answers.
+We retrieved one exact gold corpus passage.
+Other exact lookups returned server errors or timed out.
+We did not download the large corpus files to bypass this bounded inspection.
+Thus, this is an incomplete source audit, not a six-question retrieval experiment.
+
+The six IDs are 126111_0, 126019_1, 112346_808, 111149_809, 79544_0, and 79533_1.
+They concern invoice validity, recent reorganizations, legal commencement, copyright restoration, historical premises, and loosely medieval tools.
+The observed example fields are id, query, gold_ids, gold_answers, and negative_ids.
+The observed document fields are id and content.
+The API rows have no separate query date, source URL, publication date, or revision identifier.
+The Hub reported revision 1dba7027d0afa628993c6dd794e9b68c657a6fac.
+The viewer requests were not pinned to that revision.
+Response hashes preserve what this review actually read.
+
+The legal commencement passage separates private-sector tenancies from later commencement for specified social housing.
+This distinction is explicit in the text.
+A competent reader can preserve it without maintaining several uncertain interpretations.
+The reorganization question lacks a resolved present date and describes incomplete observations.
+Those are metadata and coverage problems until a comparison establishes otherwise.
+The remaining questions mainly expose object distinctions, broad scope, premise checking, or approximate user intent.
+
+This sample confirms no residual after competent extraction and decomposition.
+No baseline ran, so it cannot establish that those baselines succeed either.
+TEMPO remains a feasibility source.
+It is not yet an admitted main benchmark for learned interpretation revision.

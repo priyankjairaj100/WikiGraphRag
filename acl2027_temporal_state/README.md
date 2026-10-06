@@ -1,6 +1,14 @@
 # ACL 2027 temporal state research
 
-## Current checkpoint: v0.24 — bounded retrieval probe
+## Current checkpoint: v0.25 — original-paper and novelty reassessment
+
+The financial certificate route is parked as the main-paper direction. The original evaluation has substantial limits. Recent primary literature overlaps with generic temporal graphs, stale-fact filtering, certificates, safe caching, and chain repair. **No verified breakthrough or held-out method advantage is established.**
+
+One conditional hypothesis remains: revise entity, scope, and time interpretations after retrieving additional evidence. Ordinary re-extraction and standard joint prediction are decisive controls. TEMPO is a feasibility source, not an accepted main benchmark. Its six inspected records are exposed development material. The next discovery stage is capped at 60 new natural questions before any larger campaign.
+
+Read the [canonical decision](docs/research_decision_v25.txt), [original assessment](docs/original_reassessment_v25.txt), [method audit](docs/method_route_audit_v25.txt), [temporal literature audit](docs/dynamic_route_audit_v25.txt), [benchmark audit](docs/benchmark_route_audit_v25.txt), and [handoff](docs/NEXT_CHAT_HANDOFF_v25.txt). No new model inference, training, or QA comparison ran.
+
+## Previous checkpoint: v0.24 — bounded retrieval probe
 
 A prospectively frozen **24-question development probe** produced **9 complete, 10 partial and 5 unresolved** source references. Four conventional retrieval policies ran at three budgets, completing **288 cells**. A fixed-seed repeat selected identical evidence in every cell; **20 focused software tests pass**.
 
