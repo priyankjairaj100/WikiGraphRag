@@ -1,0 +1,84 @@
+V24 reproduction
+2026-10-06
+
+Run from acl2027_temporal_state with Python 3.12.14 (the observed runtime).
+No model weights or GPU are required for the released metadata replay.
+
+Portable checks
+---------------
+python3 scripts/unpack_retrieval_results_v24.py
+python3 scripts/replay_task_probe_v24.py
+PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_*v24.py' -v
+
+The unpacker verifies two committed gzip files and restores their exact original
+JSON bytes. Expanded files are ignored by Git because their lossless archives
+are the release artifacts. A different existing output is never overwritten.
+The replay verifies the blind source-review projection, input hashes, every
+selected-block cost and interval union, the complete 24x4x3 roster, and the exact
+witness diagnostic. It does not reread full sources, rerun models or validate
+semantic judgment quality. Twenty authored tests target the changed components.
+
+The assistant semantic summary is reproduced by running
+python3 scripts/summarize_semantic_probe_v24.py --output /EXTERNAL/new_summary.json
+and comparing the JSON with results/semantic_probe_summary_v24.json. This
+checks reviewed-pack identities and aggregates recorded judgments; it does not
+turn assistant review into human gold.
+
+Exact source/pack reconstruction
+-------------------------------
+Recover the twelve source files using the source inventory/recovery recipe in
+data/empirical_v23/source_recovery_protocol.json and scripts/recover_sources_v23.py.
+Each byte count and SHA256 must match data/task_probe_v24/protocol.json. Current
+downloads are not substitutes if their bytes differ. Full external source text
+and exact rendered packs are not bundled in the repository.
+
+Use a fresh external source/index/output directory. Existing frozen files use
+exclusive-create writes and must not be replaced. From the research directory:
+
+PYTHONHASHSEED=0 python3 scripts/run_retrieval_probe_v24.py --phase index \
+  --source-dir /EXTERNAL/html --external-dir /EXTERNAL/new_v24
+PYTHONHASHSEED=0 python3 scripts/run_retrieval_probe_v24.py --phase freeze \
+  --source-dir /EXTERNAL/html --external-dir /EXTERNAL/new_v24 \
+  --freeze-path /EXTERNAL/new_v24_freeze.json
+PYTHONHASHSEED=0 python3 scripts/run_retrieval_probe_v24.py --phase run \
+  --source-dir /EXTERNAL/html --external-dir /EXTERNAL/new_v24 \
+  --freeze-path /EXTERNAL/new_v24_freeze.json \
+  --result-path /EXTERNAL/new_v24_result.json
+
+Creation times and observed timings differ. Compare selected IDs, rendered
+hashes, source intervals and word counts, not whole result-file hashes.
+The original run and the fixed-seed control selected identical packs in all288
+cells. Other platforms/versions/seeds have not been certified equivalent.
+
+Exact source-span and pack checks for the released original run:
+python3 scripts/evaluate_task_probe_v24.py \
+  --references results/source_references_reviewed_v24.json \
+  --retrieval results/retrieval_probe_v24.json \
+  --source-dir /EXTERNAL/html --pack-dir /EXTERNAL/new_v24/packs \
+  --output /EXTERNAL/new_witness_diagnostic.json
+
+This command verifies original pack hashes. A fresh replay that differs must
+retain its own result/freeze and be compared separately, rather than relabeled
+as the original run. To score a distinct run, explicitly pass its result and
+--retrieval-freeze paths. Never overwrite a failed or unfavorable outcome.
+
+Relevant artifacts
+------------------
+data/task_probe_v24/protocol.json and freeze.json: prospective source questions.
+data/task_probe_v24/retrieval_freeze.json: amended full-run implementation freeze.
+data/task_probe_v24/retrieval_seed0_environment_freeze.json: controlled replay.
+data/task_probe_v24/result_archives.json: exact compressed/uncompressed identities.
+results/source_questions_*_v24.json: unchanged original source references.
+results/source_review_*_v24.json: separate blind source reviews and proposed repairs.
+results/source_references_reviewed_v24.json: separate reproducible projection.
+results/task_probe_witness_diagnostic_v24.json: all288 exact-span diagnostics.
+results/semantic_retrieval_review_*_v24.json: all36 primary semantic pack reviews.
+results/semantic_probe_summary_v24.json: distinct strict/question judgments and gate.
+results/retrieval_replay_comparison_v24.json: all576 actual pack validations.
+provenance/retrieval_v24_interrupted0/: interrupted first attempt, unchanged.
+docs/research_update_v24.txt: results, interpretation, limits and next decision.
+
+After deliberate manifest refresh, the repository-wide integrity command is:
+python3 scripts/verify_repository.py
+Run it from the repository root. It verifies released files and the unchanged
+original submission archive; it does not establish scientific correctness.

@@ -1,0 +1,86 @@
+BRK-B / SLB source-only question review, v24
+=========================================
+
+Scope and provenance
+--------------------
+All eight prospectively frozen questions were retained. Protocol SHA256:
+214d0be8ba347c59a77a0a5b3c1f983d822ce9998999c7aae0ecfda654f21ae2
+Source hashes and exact UTF-8 byte anchors are in
+results/source_questions_brk_slb_v24.json. No retrieval rankings, selected
+retrieval packs, or predictions were inspected during reference authorship.
+The references are assistant-authored development annotations, not human gold.
+
+The BRK-B filenames are historically misleading: BRK-B_2022.html is the FY2021
+report and BRK-B_2023.html is the FY2022 report. All answers preserve that mapping.
+Source identity and actual fiscal year are shared inventory metadata. Values,
+units, comparative year headers, row labels, and issuer definitions have explicit
+source anchors where a positive claim is made.
+
+Results
+-------
+Eight records: 1 supported, 5 partial, 2 unresolved, 0 not applicable.
+
+BRK-B currency growth: partial. The FY2022 statement gives $302,089 million for
+2022 and comparative $276,203 million for 2021. The derived increase is $25,886
+million, approximately 9.3721%. This is arithmetic on displayed values, not a
+quoted issuer growth rate. No consolidated constant-currency or operational
+counterpart was located. Individual businesses' currency effects do not fill it.
+
+BRK-B segment presentation: partial. Both notes list GEICO, Berkshire Hathaway
+Primary Group, Berkshire Hathaway Reinsurance Group, BNSF, BHE, Manufacturing,
+McLane, and Service and retailing. A generic prior-year financial-statement
+reclassification statement does not identify a segment recast. Matching labels
+do not prove every accounting population or allocation stayed unchanged.
+
+BRK-B free cash flow: unresolved. Operating cash flow and capital expenditure
+information is available, but no issuer-defined FCF measure/reconciliation was
+located. No reviewer-created subtraction is presented as the issuer's measure.
+
+BRK-B stock compensation: unresolved. No unrecognized SBC balance and recognition
+period were located. The unrecognized tax-benefit disclosure is a different item.
+No zero balance or absence of award programs is inferred.
+
+SLB currency growth: partial. FY2023 reported revenue grew 18%, to about $33.1
+billion. No constant-currency/operational counterpart was located. The percentage
+of revenue denominated in US dollars and foreign-currency expense effects cannot
+be substituted for a constant-currency growth calculation.
+
+SLB segment presentation: partial. Both years describe Digital & Integration,
+Reservoir Performance, Well Construction, and Production Systems, with matching
+functional descriptions. No explicit comparative segment-recast statement was
+located. No source-completeness or unchanged-allocation certificate is implied.
+
+SLB free cash flow: supported. Its issuer definition deducts capital expenditures,
+APS investments, and capitalized exploration-data costs from operating cash flow.
+FY2023 amounts in millions: 6,637 - 1,939 - 507 - 153 = 4,038. The displayed bridge
+has zero arithmetic residual. That says nothing about undisclosed unrounded
+amounts. SLB labels this non-GAAP liquidity measure and distinguishes it from
+residual discretionary cash. The definition is necessary: cash flow minus only
+capital expenditure would produce a different number.
+
+SLB stock compensation: partial. The note discloses $278 million of aggregate
+unrecognized cost at December 31, 2023, scheduled as $164 million in 2024,
+$89 million in 2025, $21 million in 2026, and $4 million in 2027. It does not supply
+a weighted-average recognition period in the reviewed passage, and none was
+located elsewhere by the bounded searches. Year buckets do not establish precise
+within-year recognition timing or an issuer-reported weighted average.
+
+Interpretation
+--------------
+SLB FCF is one source-supported definition/reconciliation candidate. This review
+does not show that automatic retrieval misses it or that any proposed method
+beats ordinary footnote/structural retrieval. All negatives remain in the probe.
+Partial/unresolved labels describe this bounded annotation effort; they are not
+ground-truth labels of global unanswerability or natural insufficient-evidence
+reader items. Source-supported partial claims remain separately available.
+
+Reproduction
+------------
+From acl2027_temporal_state:
+python scripts/inspect_questions_brk_slb_v24.py --external /path/to/source/files
+
+The script checks all four source hashes against the frozen protocol, checks each
+selected node boundary, constructs span hashes, and records lexical occurrence
+counts and reviewed spans. The script recreates disclosed assistant selections;
+it is not an independent semantic adjudicator. The downloaded source HTML and
+inspection text are external and are not added to the public repository.

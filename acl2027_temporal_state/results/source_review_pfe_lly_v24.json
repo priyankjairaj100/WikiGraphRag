@@ -1,0 +1,454 @@
+{
+  "advisories": [
+    {
+      "affected_claims": [
+        "PFE/segment_recast/earlier_segment_basis",
+        "PFE/segment_recast/later_segment_basis",
+        "PFE/segment_recast/earnings_basis_and_comparative_reclassification"
+      ],
+      "detail": "Some original witnesses include outer wrappers or link text beyond the required semantics. Additional inner spans and distinct organization/MD&A realizations are supplied so retrieval must not be penalized solely for omitting irrelevant wrappers. Existing witnesses are semantically valid.",
+      "kind": "reference_span_granularity",
+      "severity": "optional_witness_improvement"
+    },
+    {
+      "affected_claims": [
+        "PFE/stock_compensation"
+      ],
+      "detail": "Award group,2024 subcolumn, nonvested-cost row and recognition-period row bindings were checked against source colspan layout. Preserve those bindings in rendered evidence; a bag of detached values and headers is not a sufficient representation.",
+      "kind": "table_rendering",
+      "severity": "implementation_requirement"
+    },
+    {
+      "detail": "FCF unresolved and LLY currency partial statuses remain bounded search outcomes, not proof of global semantic absence.",
+      "kind": "scope_of_negative_findings",
+      "severity": "retained_limit"
+    }
+  ],
+  "automatic_retrieval_outputs_viewed": false,
+  "held_out_items": 0,
+  "human_gold": false,
+  "large_model_predictions": 0,
+  "model_assisted_review": true,
+  "protocol_sha256": "214d0be8ba347c59a77a0a5b3c1f983d822ce9998999c7aae0ecfda654f21ae2",
+  "records": [
+    {
+      "claim_reviews": [
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "reported_and_operational_growth",
+          "notes": "The exact source sentence provides periods, scope, rounded growth percentages and rounded dollar changes. Do not recompute the reported USD4.1bn difference from rounded USD63.6bn and USD59.6bn endpoints.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "operational_definition",
+          "notes": "The explicit definition excludes FX only. The caution against conflating operational with organic is warranted; no extra acquisition exclusion is introduced.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "currency_effect",
+          "notes": "The USD349m and approximately1% effect are explicit. Equal rounded 7% figures do not imply a zero currency contribution.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "comparative_revenue_scope",
+          "notes": "The source explicitly identifies royalty reclassification and comparative-period recasting; this is not inferred from a numeric bridge.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        }
+      ],
+      "family": "currency_growth",
+      "history_id": "PFE",
+      "item_id": "19c51120114d139e98d9",
+      "original_status": "supported",
+      "reviewed_status": "supported",
+      "status_notes": "Retain supported for the scoped source answer, subject to the stated limitations; no stronger global coverage or empirical method claim follows.",
+      "status_verdict": "pass"
+    },
+    {
+      "claim_reviews": [
+        {
+          "additional_witness_sets": [
+            [
+              {
+                "byte_start": 2560242,
+                "byte_stop": 2560852,
+                "source_file": "PFE_2023.html",
+                "span_sha256": "82fc0c471ab1feed5d74eeb471ddaddab8b51076d87286b7cc4704436e2e2fac"
+              }
+            ],
+            [
+              {
+                "byte_start": 1411028,
+                "byte_stop": 1411334,
+                "source_file": "PFE_2023.html",
+                "span_sha256": "42e9db62ba104ac403baa61c6eb63adb011bb0bcc406761f3dd51379b133d6a5"
+              }
+            ],
+            [
+              {
+                "byte_start": 930474,
+                "byte_stop": 931387,
+                "source_file": "PFE_2023.html",
+                "span_sha256": "b6abaf47eada7f51f011319f1e0dac8db4083305dfd8db743a15ae1d8b5e5b37"
+              }
+            ]
+          ],
+          "anchor_hashes": "pass",
+          "claim_id": "earlier_segment_basis",
+          "notes": "Both supplied passages support the two-operating-segment/one-reportable-segment distinction. Smaller inner spans and a third distinct business-section realization are also available.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [
+            [
+              {
+                "byte_start": 1303742,
+                "byte_stop": 1304049,
+                "source_file": "PFE_2024.html",
+                "span_sha256": "fb2720b1eca046af1c10151fee93098a6a758fe57002ff41d29c9e69822d9373"
+              },
+              {
+                "byte_start": 4754100,
+                "byte_stop": 4754286,
+                "source_file": "PFE_2024.html",
+                "span_sha256": "429dc32a65f6099c4f7d2103c3010bc21c59867345f904f22cef895e9c1711b0"
+              }
+            ],
+            [
+              {
+                "byte_start": 2485180,
+                "byte_stop": 2485772,
+                "source_file": "PFE_2024.html",
+                "span_sha256": "f02617ca4f15b97420ea9f510520f3ec3f14e4d0c3afb42a3e6ac65983a72c07"
+              },
+              {
+                "byte_start": 4754100,
+                "byte_stop": 4754286,
+                "source_file": "PFE_2024.html",
+                "span_sha256": "429dc32a65f6099c4f7d2103c3010bc21c59867345f904f22cef895e9c1711b0"
+              }
+            ]
+          ],
+          "anchor_hashes": "pass",
+          "claim_id": "later_segment_basis",
+          "notes": "The two supplied spans jointly establish three operating segments, the sole reportable segment and the pre-June2024 Business Innovation grouping. Additional organization/MD&A alternatives preserve the June timing premise.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [
+            [
+              {
+                "byte_start": 4760657,
+                "byte_stop": 4761366,
+                "source_file": "PFE_2024.html",
+                "span_sha256": "f9ab02cf48d7b0836998f7d9d9e628037248f665754cdd1bad7ae608ee62ae6b"
+              }
+            ]
+          ],
+          "anchor_hashes": "pass",
+          "claim_id": "earnings_basis_and_comparative_reclassification",
+          "notes": "The passage explicitly states the January1,2024 basis change, affected costs, earlier Other business activities allocation, and reclassification of prior-period segment information. This answers the actual segment question separately from royalty revenue recasting.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        }
+      ],
+      "family": "segment_recast",
+      "history_id": "PFE",
+      "item_id": "051fe7c696300d6d4818",
+      "original_status": "supported",
+      "reviewed_status": "supported",
+      "status_notes": "Retain supported for the scoped source answer, subject to the stated limitations; no stronger global coverage or empirical method claim follows.",
+      "status_verdict": "pass"
+    },
+    {
+      "claim_reviews": [],
+      "family": "free_cash_flow",
+      "history_id": "PFE",
+      "item_id": "8b33820c6de0ea92a4f5",
+      "original_status": "unresolved",
+      "reviewed_status": "unresolved",
+      "status_notes": "Retain unresolved. Independent inspection of the disclosed liquidity/cash-flow sections and repeated exact-name searches found no issuer-defined FCF reconciliation. This does not prove source-wide absence or authorize an insufficiency gold label.",
+      "status_verdict": "pass"
+    },
+    {
+      "claim_reviews": [
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "TSRU_unrecognized",
+          "notes": "Checked complete source table column groups, individual2024 subcolumns, cost/recognition-period row labels, million-dollar units and years. Award, value and recognition period align; do not replace award-specific periods with an aggregate.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "RSU_unrecognized",
+          "notes": "Checked complete source table column groups, individual2024 subcolumns, cost/recognition-period row labels, million-dollar units and years. Award, value and recognition period align; do not replace award-specific periods with an aggregate.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "PPS_unrecognized",
+          "notes": "Checked complete source table column groups, individual2024 subcolumns, cost/recognition-period row labels, million-dollar units and years. Award, value and recognition period align; do not replace award-specific periods with an aggregate.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "PSA_unrecognized",
+          "notes": "Checked complete source table column groups, individual2024 subcolumns, cost/recognition-period row labels, million-dollar units and years. Award, value and recognition period align; do not replace award-specific periods with an aggregate.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "options_unrecognized",
+          "notes": "Checked complete source table column groups, individual2024 subcolumns, cost/recognition-period row labels, million-dollar units and years. Award, value and recognition period align; do not replace award-specific periods with an aggregate.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "BPA_absence",
+          "notes": "An explicit source statement establishes that no BPAs were outstanding at December31,2024; this is not an inference from omitted table columns.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        }
+      ],
+      "family": "stock_compensation",
+      "history_id": "PFE",
+      "item_id": "e32a57877db45cf4ce7c",
+      "original_status": "supported",
+      "reviewed_status": "supported",
+      "status_notes": "Retain supported for the scoped source answer, subject to the stated limitations; no stronger global coverage or empirical method claim follows.",
+      "status_verdict": "pass"
+    },
+    {
+      "claim_reviews": [
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "reported_growth",
+          "notes": "Both witness sets identify the 2024-versus-2023 consolidated32% growth. The first witness needs no money-unit header for this percentage-only claim.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "reported_decomposition_and_precision",
+          "notes": "The revenue-change table gives consolidated27% volume,5% price and FX dash; rounding caveat is supplied. The reference correctly avoids a formal constant-currency definition and an exact-zero FX interpretation.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        }
+      ],
+      "family": "currency_growth",
+      "history_id": "LLY",
+      "item_id": "dfaf2ee8d24c82b77174",
+      "original_status": "partial",
+      "reviewed_status": "partial",
+      "status_notes": "Retain partial. The reported growth/decomposition is supported but no separately issuer-defined constant-currency or operational growth measure is established.",
+      "status_verdict": "pass"
+    },
+    {
+      "claim_reviews": [
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "earlier_single_segment",
+          "notes": "The source explicitly describes a single worldwide pharmaceutical operating segment.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "later_single_segment",
+          "notes": "Note19 explicitly describes a single worldwide pharmaceutical reportable segment. The reference asserts consistency of the described scope, not identical unobserved legal/entity boundaries.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "disclosure_change_and_prior_period_rule",
+          "notes": "The2024 adoption statement and2023 retrospective-application description jointly support the carefully scoped disclosure-expansion answer. They do not establish a reorganization or substantive remeasurement. The2024 Note19 table independently presents2024,2023,2022 columns.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        }
+      ],
+      "family": "segment_recast",
+      "history_id": "LLY",
+      "item_id": "a991b5f93db6f33690e5",
+      "original_status": "supported",
+      "reviewed_status": "supported",
+      "status_notes": "Retain supported for the scoped source answer, subject to the stated limitations; no stronger global coverage or empirical method claim follows.",
+      "status_verdict": "pass"
+    },
+    {
+      "claim_reviews": [],
+      "family": "free_cash_flow",
+      "history_id": "LLY",
+      "item_id": "883b945d78a721dd2f43",
+      "original_status": "unresolved",
+      "reviewed_status": "unresolved",
+      "status_notes": "Retain unresolved. Independent inspection of the disclosed liquidity/cash-flow sections and repeated exact-name searches found no issuer-defined FCF reconciliation. This does not prove source-wide absence or authorize an insufficiency gold label.",
+      "status_verdict": "pass"
+    },
+    {
+      "claim_reviews": [
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "RSU_unrecognized",
+          "notes": "The source sentence explicitly binds December31,2024, the named nonvested award, million-dollar unrecognized cost, and remaining service-period months. Months are preserved rather than converted or combined.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "SVA_unrecognized",
+          "notes": "The source sentence explicitly binds December31,2024, the named nonvested award, million-dollar unrecognized cost, and remaining service-period months. Months are preserved rather than converted or combined.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "RVA_unrecognized",
+          "notes": "The source sentence explicitly binds December31,2024, the named nonvested award, million-dollar unrecognized cost, and remaining service-period months. Months are preserved rather than converted or combined.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        },
+        {
+          "additional_witness_sets": [],
+          "anchor_hashes": "pass",
+          "claim_id": "PA_zero_remaining",
+          "notes": "The source explicitly ties zero remaining unrecognized PA compensation at December31,2024 to program discontinuation. Do not reinterpret this as no PA shares remaining to be issued.",
+          "source_entailment": "pass",
+          "units_period_scope": "pass",
+          "verdict": "pass"
+        }
+      ],
+      "family": "stock_compensation",
+      "history_id": "LLY",
+      "item_id": "0ff2e8900955aeeed0da",
+      "original_status": "supported",
+      "reviewed_status": "supported",
+      "status_notes": "Retain supported for the scoped source answer, subject to the stated limitations; no stronger global coverage or empirical method claim follows.",
+      "status_verdict": "pass"
+    }
+  ],
+  "review_scope": {
+    "author_independence": "Different assistant task from original source author; not independent human annotation.",
+    "extra_reviewed_anchors": [
+      {
+        "byte_start": 4408069,
+        "byte_stop": 4414817,
+        "source_file": "PFE_2024.html",
+        "span_sha256": "536856079f734709aa3591a3485e2dc3702db50292c72e1ea89c0a4875e17705"
+      },
+      {
+        "byte_start": 4441671,
+        "byte_stop": 4457423,
+        "source_file": "PFE_2024.html",
+        "span_sha256": "4d741a5a7d190062e3963426ae1f1668ad30e459928caf87c40460695509579b"
+      },
+      {
+        "byte_start": 1962167,
+        "byte_stop": 1976072,
+        "source_file": "PFE_2024.html",
+        "span_sha256": "54e7c84f2c0c32f115ff02bf23bb778ab90d8d9495e10c170702f3d055fe4387"
+      },
+      {
+        "byte_start": 1133059,
+        "byte_stop": 1142525,
+        "source_file": "LLY_2024.html",
+        "span_sha256": "cf6ad5162492532ec5f2998dfd807b50212122ca5cee721710677b19c7d91329"
+      },
+      {
+        "byte_start": 3034007,
+        "byte_stop": 3034222,
+        "source_file": "LLY_2024.html",
+        "span_sha256": "afa80d50d39caa7d451dc6023e6610ccece9310fb0eb44ff4550dbe8250fa661"
+      },
+      {
+        "byte_start": 3034833,
+        "byte_stop": 3035565,
+        "source_file": "LLY_2024.html",
+        "span_sha256": "33ad2706bc1200e108d305337712d22924139f6f23ae222681f2d795650ddfd7"
+      }
+    ],
+    "method": "Separate assistant role inspected every supplied witness against exact source bytes, checked surrounding source sections and PFE column spans, and conducted source-only keyword followups. No automatic retrieval outcomes or rankings were read."
+  },
+  "reviewed_reference_file": "acl2027_temporal_state/results/source_questions_pfe_lly_v24.json",
+  "reviewed_reference_sha256": "ecd56afd572a6c87230cb2e1e12ccf286f53934eb054c90d318c1e8211d4a4ea",
+  "schema": "independent_model_role_source_review_v24",
+  "sources": [
+    {
+      "filename": "PFE_2023.html",
+      "sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df"
+    },
+    {
+      "filename": "PFE_2024.html",
+      "sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480"
+    },
+    {
+      "filename": "LLY_2023.html",
+      "sha256": "c21e3b4925260cafc944f3ff580860b741ad92e46f6b959d99f6dab193b5fc4a"
+    },
+    {
+      "filename": "LLY_2024.html",
+      "sha256": "1b0b903bffac393577aa68004a2cbd947e0a3a5c3264caa87e3c6f06463fe351"
+    }
+  ],
+  "verification": {
+    "additional_witness_sets": 6,
+    "claim_records": 22,
+    "factual_claim_fixes": 0,
+    "question_records": 8,
+    "source_files_hash_checked": 4,
+    "status_changes": 0,
+    "validated_witness_anchor_occurrences": 71
+  }
+}

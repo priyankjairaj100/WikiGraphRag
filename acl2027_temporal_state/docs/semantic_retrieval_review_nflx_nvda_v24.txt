@@ -1,0 +1,42 @@
+Semantic evidence review: NFLX/NVDA, v24 primary 4,096-word packs
+
+This separate assistant review inspected all 12 supplied packs for three supported development questions: NFLX free cash flow, NFLX unrecognized stock compensation, and NVDA unrecognized stock compensation. Eight packs supply sufficient evidence and four miss at least one premise directly requested by the question. These are evidence-presence judgments, not reader predictions, human gold, held-out performance, or external coverage certificates.
+
+The frozen references are results/source_references_reviewed_v24.json, SHA256 6243ec648cf9533d3b75299dd19b6b671d023052b06ba28a24d3a7356453573f. The protocol SHA256 is 214d0be8ba347c59a77a0a5b3c1f983d822ce9998999c7aae0ecfda654f21ae2. This review does not modify either artifact, the original source references, the original source review, or any retrieval pack.
+
+Question-level sufficiency / strict reference coverage
+
+Question                       typed       lexical     structural  decomposition
+NFLX free cash flow             missing     missing     sufficient  sufficient
+NFLX stock compensation         missing     sufficient  sufficient  sufficient
+NVDA stock compensation         missing     sufficient  sufficient  sufficient
+
+Each cell has the same question-level and strict-reference verdict. Claim necessity was adjudicated explicitly after retrieval and is recorded as post-retrieval adjudication. All nine distinct reference claims in this subset are required by an explicit part of the question; none is extra reference detail. In particular, the FCF question asks for the definition, adjustment amounts and units, and exact-versus-rounding reconciliation. The SBC questions ask for the amount, weighted-average recognition period, and award-type distinctions. These requirements cannot be dropped merely because one retrieval policy does not supply them.
+
+NFLX free cash flow
+
+The issuer definition subtracts property/equipment purchases and the change in other assets from operating cash flow. At displayed thousand-dollar precision the FY2023 bridge is 7,274,301 - 348,552 - 0 = 6,925,749. The typed pack supplies the correctly bound operating cash-flow amount, but not the definition, adjustment inputs, or FCF value. The lexical pack also supplies the issuer definition and a free-cash-flow row, but does not supply the adjustment amounts required for the bridge. The FCF row is additionally uncertain in isolation: its comparative-column year and magnitude headers are absent. Filing-year metadata does not automatically identify a comparative table's column or scale. This row ambiguity is recorded separately from the missing adjustment premises.
+
+Structural and decomposition each supply the definition, relevant table headers, reconciliation label, starting cash-flow amount, both adjustment rows and the FCF row. They suffice for the exact displayed arithmetic. The selected evidence block IDs are recorded claim by claim; equivalent correctly bound typed evidence was accepted for the operating cash-flow amount. No exact-match requirement to a particular original reference span was imposed.
+
+NFLX stock compensation
+
+The typed pack contains the USD26 million fact at 2023-12-31 under a generic nonvested-awards concept, but lacks the 0.45-year weighted-average recognition period and the explicit nonvested-stock-option scope. The lexical, structural and decomposition packs each contain NFLX_2023.html:1458172:text, which supplies the date, amount, award type and period in one paragraph. Other weighted-average exercise prices, option contractual terms and fair values were not mistaken for remaining recognition periods.
+
+NVDA stock compensation
+
+The typed pack contains a sufficient equivalent numeric witness for USD6.56 billion aggregate unearned compensation at 2023-01-29. It lacks the remaining recognition periods. All three text-capable policies contain NVDA_2023.html:1458632:text, which supplies the date, aggregate amount, 2.6 years for RSUs/PSUs/market-based PSUs and 1.0 year for ESPP. No split of the aggregate dollar amount or invented common recognition period is required or licensed.
+
+Inspection and validation
+
+Every block in every assigned pack was inspected. For display only, repeated source headers were shown once and typed cards used reversible namespace/entity dictionaries. Text/row bodies were displayed in full. Typed displays retained concept, entity, period, unit, dimensions, all reported value/precision variants, duplicate precision status and occurrence count. No pack, ranking, or budget was changed by this display. The recorded word count is the whitespace count of the original complete UTF-8 pack, including repeated headers.
+
+The companion JSON records 12 unique item/policy/budget combinations and 36 claim-level verdicts: 25 sufficient, 10 missing, 1 uncertain. Its automatic integrity checks compared all 12 pack hashes with those recorded during inspection, confirmed every selected or partial-evidence block ID occurs in that exact pack, checked all original pack word counts remain within 4,096, and retained the exact frozen claim statements and roles. A sufficient judgment means the supplied pack contains the needed evidence; it does not mean an untested model will answer correctly. A missing judgment is limited to the inspected pack, not the entire source filing.
+
+Implication for the development decision
+
+This subset leaves no question that defeats both structural and decomposition retrieval at the primary budget. Ordinary text retrieval supplies both stock-compensation disclosures. The typed deficits therefore do not establish a novel certificate advantage. The lexical FCF gap is a real premise/binding problem for that pack, already resolved by the richer conventional policies. The sample consists of only three development questions on two issuer histories and does not clear reader competence, external coverage, or confirmatory study gates.
+
+Clarification of the earlier source-review anchor count
+
+The frozen results/source_review_nflx_nvda_v24.json reported 133 verified anchor instances. That count includes 74 occurrences in claim witness sets plus 59 reviewed-passage inventory locators; it is not 133 claim-witness occurrences. Claim witnesses contain 45 unique spans, the passage inventory contains 59 unique spans, and their combined union contains 59 unique spans. This clarification adds no new source finding and leaves the frozen source-review JSON and reviewed-reference projection unchanged.

@@ -1,0 +1,156 @@
+V24 prospective task-discovery design review
+==========================================
+2026-10-06
+
+Review role and timing
+----------------------
+This is an independent assistant-role design review, not human adjudication.
+It was written after reading AGENTS.md and the v23 research update, cross-filing
+probe, reader-gate description and prior-art update. No v24 source outcomes,
+rankings, references or model predictions were inspected for this review.
+Recommendations are prospective. The root investigator subsequently specified
+the four families and budgets below, before this reviewer inspected any source
+outcomes. The executed protocol is authoritative about final details.
+
+Question roster
+---------------
+Freeze four question families across each of the six exposed issuer histories:
+24 questions total. Preserve every planned question and its outcome, including
+nonapplicability, non-disclosure, invalid premise, source-audit uncertainty and
+baseline success. No replacement questions or extra issuers after observing
+results. All twelve existing filings remain development material.
+
+The four selected families are:
+
+1. Reported versus company-reported currency-adjusted revenue growth. Ask for
+   the latest year's reported growth, the company's disclosed constant-currency
+   or operational growth if any, and the actual adjustment definition. Do not
+   infer that operational growth removes only currency, or compute a missing
+   adjusted figure from an unsupported formula. The question must distinguish
+   a published adjustment from an analyst's constructed counterfactual.
+
+2. Comparative segment presentation. Ask whether the reported segment
+   presentation changed between the two filings, retaining explicit old/new
+   definitions and source versions, and ask how comparative figures were recast
+   only if the source supports that premise. No change is a valid result.
+   Differing labels or arithmetic patterns alone do not establish a recast,
+   business transfer or causal reason. If a numerical segment exemplar is added,
+   fix its selection rule prospectively; never select the largest discrepancy
+   after inspecting values.
+
+3. Company-reported free cash flow and its reconciliation to operating cash
+   flow for the latest fiscal year. The measure is fixed as free cash flow;
+   do not switch to adjusted earnings or another better-behaved measure after
+   inspection. Preserve the issuer's actual definition and every disclosed
+   reconciliation component; do not assume a universal cash-flow-minus-capex
+   formula. If the source does not report the measure, retain nonapplicability
+   rather than constructing a reference from a generic analyst formula.
+
+4. Unrecognized stock-compensation cost and the weighted recognition period
+   at fiscal year end, preserving award type. This is a numerical typed positive
+   control. Retain each disclosed award category, amount unit, time unit and
+   the exact meaning of the reported average; do not combine distinct award
+   types or treat a missing aggregate as zero. Baseline success is expected to
+   be informative. An automatic baseline failure is initially a parser/query
+   implementation diagnostic, not evidence of a new text/table mechanism.
+
+These are authored natural-language research questions, not naturally collected
+user questions. General financial plausibility does not establish applicability
+to any particular issuer, answerability, difficulty or novelty.
+
+What must be measured
+---------------------
+The v23 source-assisted statement and footnote review is an annotation-assisted
+upper-bound diagnostic. An annotator finding an ordinary footnote neither proves
+that automatic retrieval succeeds nor proves a new method is required.
+
+Run an automatic baseline from the frozen question, source pair and permitted
+metadata only. The selected comparison is BM25 with full tables, headings and
+one-hop explicit links, versus a stronger query-decomposition variant with the
+same evidence representation and budget. Competent typed filtering/precision
+handling remains a necessary control, particularly for family 4. Disclosed query
+expansion may cover financial synonyms and company-specific labels learned
+without reference selectors. Report variants separately and retain their exact
+returned evidence. Query decomposition alone is a standard baseline refinement,
+not a claimed novel acquisition method.
+
+The baseline must receive the same document access, preprocessing, runtime tools
+and acquisition/rendering budget as the candidate policy. Charge expansions and
+table/footnote closure; do not supply free answer-selected footnotes to one arm.
+Use a shared atomic evidence representation and record both raw acquisition cost
+and final rendered size. The selected primary budget is 4,096 rendered
+whitespace-separated words, with 1,024 and 16,384 as frozen sensitivities.
+These are engineering word budgets, not model tokens or full operational cost.
+Do not select a favorable sensitivity after outcomes and call it the primary
+result. Fix treatment of oversized tables and deduplication before execution;
+any table splitting or header propagation must be available to both arms.
+
+The primary screen measures required-premise coverage in retrieved evidence,
+not model QA accuracy. A residual needs all of the following:
+
+  - a valid, unambiguous question within the prespecified family;
+  - a source-supported reference answer with exact source version and scope;
+  - explicit, source-anchored premises sufficient for that answer;
+  - an independently role-reviewed judgment that the baseline evidence misses
+    at least one necessary premise and contains no adequate alternative;
+  - an observed automatic retrieval failure under the frozen budget, not merely
+    failure of a typed-only parser or a manually selected baseline excerpt.
+
+Sufficiency and necessity judgments can be wrong. Preserve dissent and label
+them assistant-reviewed, never human gold. Alternative valid evidence must count
+as success even if it does not match the preferred reference span. A support set
+is not automatically a unique minimum set or a proof that every span is needed.
+
+Reference reviewers should receive full permitted source material and question,
+but not method identity, rankings or model outputs while writing the reference.
+A separate alignment review may subsequently examine retrieved evidence. The
+source annotation itself has a fixed search/review budget and logs all passages
+inspected. An exhausted annotation budget yields unresolved reference status;
+it cannot establish globally insufficient sources or certify semantic coverage.
+
+Stop/go interpretation
+----------------------
+Publish all 24 outcomes. The roster is a bounded discovery census, not a powered
+comparison or an estimate of the prevalence of difficult financial questions.
+If no answerable residual survives the competent baseline and reference review,
+stop this track. Preserve baseline successes and unresolved cases; do not keep
+searching within the same nominal probe until a favorable case appears.
+
+A single reviewed residual establishes a concrete development target, not a
+general retrieval advantage. Repetition across independent histories and a
+shared failure mechanism would strengthen the case for a method. Any numerical
+go threshold must be frozen before observing outcomes. A candidate acquisition
+policy may be developed on these cases, with every earlier attempt retained;
+gold span locators, reference answers and review labels cannot be policy inputs.
+
+Before a large comparison, the candidate must recover required premises on
+fresh development cases from natural questions, at matched total cost, and the
+reader must pass a task-matched frozen competence gate. An annotation-conditioned
+oracle can diagnose achievable performance but is not the candidate method.
+
+Reader, coverage and novelty boundaries
+--------------------------------------
+The v23 100 complete/100 insufficient typed controls are useful software/reader
+controls but cannot become the natural-evidence gate by changing their label.
+An actual natural gate must use the admitted task, source-rendered text/tables,
+reviewed joint answers and reviewed alternative-evidence checks. A deliberately
+withheld premise can create a packet-insufficiency control if the removal and
+remaining alternatives are disclosed and audited; it cannot establish that the
+full source lacks the answer. References and input hashes must precede reader
+predictions, with model, prompt, decoding, arithmetic and rendering frozen.
+
+Candidate-class recall and false elimination must be measured against these
+reviewed natural items; pre-parsed typed fact grouping does not test a natural
+question proposer. Coverage remains an external source-scope decision. Scores,
+beam exhaustion, a finite candidate list and failure to find another answer
+cannot authorize emission. A bounded human/assistant audit must be described
+as such and its operational cost charged; it is not automatic coverage.
+
+The existing prior-art ledger already constrains novelty in cross-filing mapping,
+complementary evidence sets and certificate-style stopping. Finding a residual
+would motivate an acquisition problem, not establish a new algorithmic result.
+A plausible contribution would need an explicit algorithm that discovers missing
+source premises from observed evidence, an appropriately strong implementable
+baseline, and supported-answer yield/cost/risk improvements after the reader
+gate. No new theorem, automatic coverage guarantee or ACL readiness is asserted
+by this design review.

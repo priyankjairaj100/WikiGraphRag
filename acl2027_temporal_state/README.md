@@ -1,6 +1,14 @@
 # ACL 2027 temporal state research
 
-## Current checkpoint: v0.23 — source audits and empirical preparation
+## Current checkpoint: v0.24 — bounded retrieval probe
+
+A prospectively frozen **24-question development probe** produced **9 complete, 10 partial and 5 unresolved** source references. Four conventional retrieval policies ran at three budgets, completing **288 cells**. A fixed-seed repeat selected identical evidence in every cell; **20 focused software tests pass**.
+
+Separate assistant review found that structural retrieval and query decomposition each supply question-sufficient evidence for **7 of the 9 complete questions**. These are evidence judgments, not model accuracy. One segment question has a confirmed gap across the four implementations; another is uncertain. The conservative two-history expansion gate is **not passed**. No proposed-method advantage, natural reader competence, automatic coverage or held-out result is established.
+
+Read the [v24 update](docs/research_update_v24.txt), [reproduction guide](docs/reproduce_v24.txt), [semantic results](results/semantic_probe_summary_v24.json), [handoff](docs/NEXT_CHAT_HANDOFF_v24.txt), and [paper addendum source](paper/task_probe_v24.tex). Large result files are released as lossless archives with an included unpacker. Original annotations, the interrupted attempt and all unfavorable findings are preserved.
+
+## Previous checkpoint: v0.23 — source audits and empirical preparation
 
 Codex has resumed project ownership; large-model execution remains a later handoff. The five v22 commits and their negative findings are archived without rewriting history. The new source audit recovered twelve exact filings and found all 41 selected conflicts compatible with reported rounding precision. Six reporting and two explanatory cross-filing probes establish no retrieval advantage.
 

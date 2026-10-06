@@ -1,0 +1,70 @@
+Separate assistant source review: NFLX / NVDA v24
+================================================
+
+The reviewer inspected the other source author's eight records against the exact
+four frozen filing files without reading automatic retrieval outputs or rankings.
+This is a separate assistant role, not independent human gold or external coverage
+certification. The reviewed artifact's SHA256 is recorded in
+results/source_review_nflx_nvda_v24.json. Original references were not edited.
+
+Checks and conclusions
+----------------------
+All four source hashes match. All 133 anchor instances, covering 59 unique spans,
+have valid SHA256 hashes and exact parsed-node boundaries. Twenty-five claims were
+reviewed: 23 pass, one needs a small wording correction, and one has a repair to a
+redundant alternative witness. All eight question statuses are retained:
+3 supported, 4 partial, 1 unresolved.
+
+The three supported questions remain supported:
+
+* NFLX FY2023 issuer-defined FCF deducts purchases of property/equipment and change
+  in other assets from operating cash flow. The thousand-dollar bridge is
+  7,274,301 - 348,552 - 0 = 6,925,749. Zero is the displayed dash convention in the
+  other-assets row. There is no arithmetic residual at displayed precision.
+* NFLX December 31, 2023 nonvested options have $26 million of unrecognized cost
+  and a weighted-average recognition period of 0.45 years. The scoped answer does
+  not invent an all-award balance. Relevant note and compensation searches did
+  not expose a conflicting additional balance; no source-completeness guarantee
+  is asserted.
+* NVDA January 29, 2023 aggregate unearned compensation is $6.56 billion. Its
+  recognition periods must stay separate: 2.6 years for RSUs, PSUs and market-based
+  PSUs; 1.0 year for ESPP. No aggregate period or award-specific dollar split is
+  supported by this sentence.
+
+Concrete corrections
+--------------------
+1. nvda_components_2023 describes 'updated RTX/Omniverse wording'. The RTX wording
+   is unchanged between the cited descriptions. Omniverse wording differs, as do
+   portions of Compute & Networking, but the witness contains only the later
+   spans and cannot by itself support a comparison. The review JSON provides a
+   precise noncomparative replacement statement and an optional four-span
+   earlier/later comparative witness. No segment reclassification is inferred.
+
+2. nflx_cfo has three observed witnesses. Witness 1 (zero-based indexing) includes
+   the year and thousands headers, but its selected second CFO row has no dollar
+   marker. Add the first dollar cell from the same table (byte 575783) or omit this
+   redundant alternative. The other two complete witnesses remain valid, so this
+   does not change the supported-question status.
+
+3. The NFLX currency-growth summary already labels its calculated rates as
+   approximate and derived. Its numerical calculation is correct: approximately
+   8.5551% currency-adjusted growth, 6.6668% growth from displayed GAAP amounts,
+   and a 1.8883 percentage-point difference. The review JSON provides an explicit
+   derived claim with the total-revenue and currency-definition witnesses, so a
+   complete-answer claim ledger need not leave these summary calculations implicit.
+   Do not subtract the issuer's rounded 7% from the calculated 8.5551% and call
+   that difference a consistent unrounded currency effect.
+
+Boundaries
+----------
+Partial currency/segment questions remain partial. Generic reclassification,
+matching segment names, or USD pricing do not establish a specific recast or a
+zero currency-growth effect. NVDA FCF remains unresolved; a missing phrase is not
+proof that no answer exists in all publications. None of these labels are a
+natural insufficient-evidence dataset.
+
+The reference spans contain table row structure. Reader rendering must preserve
+cell separators and column order; concatenated strings such as 202320222021 are
+not a faithful useful table rendering. Small rows and paragraphs are used rather
+than complete large tables. No model QA, held-out result, or retrieval advantage
+has been measured by this review.

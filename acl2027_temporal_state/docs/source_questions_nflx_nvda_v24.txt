@@ -1,0 +1,60 @@
+V24 blind source review: NFLX and NVDA
+
+Protocol SHA256:
+214d0be8ba347c59a77a0a5b3c1f983d822ce9998999c7aae0ecfda654f21ae2
+
+All eight frozen development questions were retained. The source author did
+not inspect automatic retrieval outputs or rankings. The four immutable source
+files were checked against the protocol's SHA256 hashes and byte counts.
+Annotations are model-assisted source review, not independent human gold.
+
+Outcomes: three supported, four partial, one unresolved.
+
+Supported: NFLX's FY2023 free-cash-flow definition and reconciliation;
+NFLX's nonvested-option unrecognized compensation and recognition period;
+NVDA's aggregate unearned compensation with two distinct award-group periods.
+
+NFLX reports USD6,925,749 thousand FCF, exactly reconciled at displayed
+precision as USD7,274,301 thousand operating cash flow less USD348,552
+thousand property/equipment purchases and zero change-in-other-assets
+adjustment. The definition includes BOTH adjustments; ordinary CFO-minus-PPE
+is insufficient to establish the full issuer-defined measure even though
+the second adjustment happens to be zero in FY2023.
+
+NFLX reports USD26 million for nonvested options over 0.45 years. NVDA
+reports USD6.56 billion aggregate unearned compensation, with 2.6 years for
+RSUs/PSUs/market-based PSUs and 1.0 year for ESPP. Neither an NVDA aggregate
+period nor an invented award-group allocation of dollars is admissible.
+
+Partial: NFLX currency growth, both segment-presentation questions, and
+NVDA currency growth. NFLX reports 7% total-revenue growth and approximately
+USD597 million of currency-neutral revenue uplift. Derived growth of about
+8.56% and the approximately 1.89-point difference are arithmetic from the
+disclosed amounts, not company-reported percentages. The regional constant-
+currency percentages describe average monthly revenue per paying member;
+they must not be substituted for total revenue growth. NVDA describes
+FY2023 revenue as flat, but no constant-currency growth measure was found.
+Both companies' pairs report the same number/names of operating segments;
+this does not prove that every underlying presentation is unchanged.
+NVDA's generic reclassification statements do not establish a segment recast.
+
+Unresolved: NVDA issuer-defined FCF. Searches of the complete decoded text
+of both filings find no "free cash flow" string. This does not prove semantic
+absence or justify imposing a definition from outside the frozen source pair.
+
+The result records exact byte spans, their hashes, reviewed source scopes,
+search counts, paraphrased claims, and observed alternative witnesses. Each
+amount includes unit/period premises where needed. The NFLX CFO and PPE
+claims include both MD&A and primary cash-flow-statement witnesses.
+
+Reproduce (from repository root, with separately recovered source HTML):
+python3 acl2027_temporal_state/scripts/inspect_questions_nflx_nvda_v24.py \
+  --external-dir /path/to/source-html \
+  --output /path/to/new-review.json
+
+The script refuses output overwrites. It replays the fixed annotations,
+checks source identity and displayed arithmetic, and emits no source text.
+It is not an automatic semantic verifier or a source-coverage certificate.
+Independent source-only model-role review and review of retrieved alternative
+evidence remain separate steps. No QA/model predictions, held-out results,
+retrieval wins or prevalence estimates are asserted by this artifact.

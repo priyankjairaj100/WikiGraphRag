@@ -1,0 +1,41 @@
+{
+  "schema": "v24_targeted_verification",
+  "created_at_utc": "2026-10-06T05:13:00.231660+00:00",
+  "python": "3.12.14",
+  "status": "passed",
+  "targeted_unit_tests": 20,
+  "external_sources_verified": 12,
+  "source_bytes": 62730877,
+  "reference_witness_occurrences_verified": 265,
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*v24.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output": "test_all_rendered_headers_charged (test_evidence_retrieval_v24.RetrievalTests.test_all_rendered_headers_charged) ... ok\ntest_bm25_relevance (test_evidence_retrieval_v24.RetrievalTests.test_bm25_relevance) ... ok\ntest_empty_link_anchor_with_long_whitespace (test_evidence_retrieval_v24.RetrievalTests.test_empty_link_anchor_with_long_whitespace) ... ok\ntest_generic_decomposition_ignores_family (test_evidence_retrieval_v24.RetrievalTests.test_generic_decomposition_ignores_family) ... ok\ntest_interval_union (test_evidence_retrieval_v24.RetrievalTests.test_interval_union) ... ok\ntest_markup_visibility_cdata_and_header (test_evidence_retrieval_v24.RetrievalTests.test_markup_visibility_cdata_and_header) ... ok\ntest_no_nested_visible_text_duplication_utf8 (test_evidence_retrieval_v24.RetrievalTests.test_no_nested_visible_text_duplication_utf8) ... ok\ntest_no_visible_block_safe (test_evidence_retrieval_v24.RetrievalTests.test_no_visible_block_safe) ... ok\ntest_semantic_header_fallback (test_evidence_retrieval_v24.RetrievalTests.test_semantic_header_fallback) ... ok\ntest_signed_precision_and_unknown (test_evidence_retrieval_v24.RetrievalTests.test_signed_precision_and_unknown) ... ok\ntest_source_block_deduplication (test_evidence_retrieval_v24.RetrievalTests.test_source_block_deduplication) ... ok\ntest_source_date_rule_uses_actual_fy (test_evidence_retrieval_v24.RetrievalTests.test_source_date_rule_uses_actual_fy) ... ok\ntest_table_fallback_has_header_and_row (test_evidence_retrieval_v24.RetrievalTests.test_table_fallback_has_header_and_row) ... ok\ntest_typed_only_policy (test_evidence_retrieval_v24.RetrievalTests.test_typed_only_policy) ... ok\ntest_typed_seed_follows_other_table_row_link (test_evidence_retrieval_v24.RetrievalTests.test_typed_seed_follows_other_table_row_link) ... ok\ntest_alternative_witness_counts_and_no_semantic_promotion (test_task_probe_v24.SourceIntervalTests.test_alternative_witness_counts_and_no_semantic_promotion) ... ok\ntest_entire_missing_policy_budget_is_rejected (test_task_probe_v24.SourceIntervalTests.test_entire_missing_policy_budget_is_rejected) ... ok\ntest_selection_accounting_rejects_unrendered_coverage_and_cost (test_task_probe_v24.SourceIntervalTests.test_selection_accounting_rejects_unrendered_coverage_and_cost) ... ok\ntest_union_requires_no_missing_gap (test_task_probe_v24.SourceIntervalTests.test_union_requires_no_missing_gap) ... ok\ntest_unresolved_reference_never_counts_as_complete (test_task_probe_v24.SourceIntervalTests.test_unresolved_reference_never_counts_as_complete) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 0.013s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/replay_task_probe_v24.py"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"status\": \"passed\",\n  \"questions\": 24,\n  \"retrieval_records\": 288,\n  \"source_claims\": 67,\n  \"scope\": \"metadata/review projection and arithmetic replay; no external source or semantic re-adjudication\",\n  \"automatic_coverage_authorized\": false,\n  \"new_model_predictions\": 0\n}\n"
+    },
+    {
+      "command": "summarize_semantic_probe_v24.build() compared with preserved JSON",
+      "status": "passed"
+    }
+  ],
+  "scope": "v24 only; metadata/source integrity and authored software controls; not model accuracy, source semantic gold or historical full suite",
+  "new_model_predictions": 0
+}

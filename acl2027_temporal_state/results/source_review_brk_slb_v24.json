@@ -1,0 +1,518 @@
+{
+  "schema": "source_review_brk_slb_v24",
+  "protocol_sha256": "214d0be8ba347c59a77a0a5b3c1f983d822ce9998999c7aae0ecfda654f21ae2",
+  "reviewed_reference_path": "results/source_questions_brk_slb_v24.json",
+  "reviewed_reference_sha256": "b98324776268115148f117a9b1ffc85d1f4ae293c4f11771e4083fe5fe6372c0",
+  "review_role": "separate assistant source reviewer; author of the PFE/LLY references, not the BRK/SLB references",
+  "model_assisted_review": true,
+  "human_gold": false,
+  "blind_to_retrieval_outcomes": true,
+  "source_hashes_verified": [
+    {
+      "filename": "BRK-B_2022.html",
+      "sha256": "d6745a46f2716a06a70d3ec0300718521d701c3fd0710a5577a5e20dc26e4257",
+      "actual_fiscal_year": "2021"
+    },
+    {
+      "filename": "BRK-B_2023.html",
+      "sha256": "48499ff4b7b4599e1fca65140e43db3788e356bf1806587aa8e3d3e6dbce3a58",
+      "actual_fiscal_year": "2022"
+    },
+    {
+      "filename": "SLB_2022.html",
+      "sha256": "5ab77e70634d3b871d1d9260f806b4c7384791dd50562a74bc40690027be2f1e",
+      "actual_fiscal_year": "2022"
+    },
+    {
+      "filename": "SLB_2023.html",
+      "sha256": "c94028b2c0f25b6946700d5dfc39174bc331b097b79f83715cb06ab06f36612a",
+      "actual_fiscal_year": "2023"
+    }
+  ],
+  "records": [
+    {
+      "item_id": "5e7d11921ab71461f649",
+      "history_id": "BRK-B",
+      "family": "currency_growth",
+      "original_status": "partial",
+      "status_review": "agree",
+      "recommended_status": "partial",
+      "complete_question_supported": false,
+      "claim_reviews": [
+        {
+          "claim_id": "brk_revenue_pair",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "The statement title, unit, comparative-year headers, total-revenue label and respective cells establish the pair. Filename 2023 correctly treated as actual fiscal 2022.",
+          "additional_witness_sets": []
+        },
+        {
+          "claim_id": "brk_revenue_derived_growth",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "Independent Decimal calculation verifies a difference of 25,886 million and growth of approximately 9.3721%; explicitly identified as derived, not issuer-disclosed.",
+          "additional_witness_sets": []
+        }
+      ],
+      "status_rationale": "Retain missing requested component as unresolved; keyword failure does not establish corpus-wide insufficiency. Supported partial claims remain useful but are not a complete-question answer."
+    },
+    {
+      "item_id": "521a51337815d0232b72",
+      "history_id": "BRK-B",
+      "family": "segment_recast",
+      "original_status": "partial",
+      "status_review": "agree",
+      "recommended_status": "partial",
+      "complete_question_supported": false,
+      "claim_reviews": [
+        {
+          "claim_id": "brk_earlier_segments",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "All eight names and business descriptions checked in the fiscal 2021 source. This alone cannot establish unchanged accounting scope.",
+          "additional_witness_sets": []
+        },
+        {
+          "claim_id": "brk_later_segments",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "All eight later names and descriptions checked against the earlier list; no substantive same-population inference made.",
+          "additional_witness_sets": []
+        },
+        {
+          "claim_id": "brk_generic_reclassification",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "Exact final sentence supports generic financial-statement reclassification; no segment-specific cause or recast is inferred. Smaller equivalent sentence avoids irrelevant consolidation/VIE text.",
+          "additional_witness_sets": [
+            [
+              {
+                "source_file": "BRK-B_2023.html",
+                "byte_start": 4658451,
+                "byte_stop": 4658599,
+                "span_sha256": "ce76f1e0a9886c99b7f707b113474e86f261208af689ce39c1cd4f30feac35ef"
+              }
+            ]
+          ]
+        }
+      ],
+      "status_rationale": "Retain missing requested component as unresolved; keyword failure does not establish corpus-wide insufficiency. Supported partial claims remain useful but are not a complete-question answer."
+    },
+    {
+      "item_id": "d8a843facb219fdca661",
+      "history_id": "BRK-B",
+      "family": "free_cash_flow",
+      "original_status": "unresolved",
+      "status_review": "agree",
+      "recommended_status": "unresolved",
+      "complete_question_supported": false,
+      "claim_reviews": [],
+      "status_rationale": "Retain missing requested component as unresolved; keyword failure does not establish corpus-wide insufficiency. Supported partial claims remain useful but are not a complete-question answer."
+    },
+    {
+      "item_id": "7fd729b1b8139a595b8a",
+      "history_id": "BRK-B",
+      "family": "stock_compensation",
+      "original_status": "unresolved",
+      "status_review": "agree",
+      "recommended_status": "unresolved",
+      "complete_question_supported": false,
+      "claim_reviews": [],
+      "status_rationale": "Retain missing requested component as unresolved; keyword failure does not establish corpus-wide insufficiency. Supported partial claims remain useful but are not a complete-question answer."
+    },
+    {
+      "item_id": "fb3a2d52c844bf74e1c2",
+      "history_id": "SLB",
+      "family": "currency_growth",
+      "original_status": "partial",
+      "status_review": "agree",
+      "recommended_status": "partial",
+      "complete_question_supported": false,
+      "claim_reviews": [
+        {
+          "claim_id": "slb_reported_revenue_growth",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "The first sentence gives full-year 2023 and 18%growth. Both original passages support the rate; the whole geographic discussion is unnecessary.",
+          "additional_witness_sets": [
+            [
+              {
+                "source_file": "SLB_2023.html",
+                "byte_start": 819704,
+                "byte_stop": 819819,
+                "span_sha256": "6e72e100084fdcea092950c08ffb1ba840e8360ec5e902c2e07b0eb1c946b456"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "slb_reported_revenue_level",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "The same first sentence explicitly provides 33.1 billion; its displayed rounding is retained.",
+          "additional_witness_sets": [
+            [
+              {
+                "source_file": "SLB_2023.html",
+                "byte_start": 819704,
+                "byte_stop": 819819,
+                "span_sha256": "6e72e100084fdcea092950c08ffb1ba840e8360ec5e902c2e07b0eb1c946b456"
+              }
+            ]
+          ]
+        }
+      ],
+      "status_rationale": "Retain missing requested component as unresolved; keyword failure does not establish corpus-wide insufficiency. Supported partial claims remain useful but are not a complete-question answer."
+    },
+    {
+      "item_id": "40d5f174e1329ff14076",
+      "history_id": "SLB",
+      "family": "segment_recast",
+      "original_status": "partial",
+      "status_review": "agree",
+      "recommended_status": "partial",
+      "complete_question_supported": false,
+      "claim_reviews": [
+        {
+          "claim_id": "slb_earlier_segments",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "Four-divisions introductory statement and all four descriptions checked in actualFY2022 source.",
+          "additional_witness_sets": []
+        },
+        {
+          "claim_id": "slb_later_segments",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "Four-divisions introductory statement and descriptions checked in actualFY2023 source; descriptions match without proving invariant constituent populations.",
+          "additional_witness_sets": []
+        }
+      ],
+      "status_rationale": "Retain missing requested component as unresolved; keyword failure does not establish corpus-wide insufficiency. Supported partial claims remain useful but are not a complete-question answer."
+    },
+    {
+      "item_id": "c98c4dde27737aecce29",
+      "history_id": "SLB",
+      "family": "free_cash_flow",
+      "original_status": "supported",
+      "status_review": "agree",
+      "recommended_status": "supported",
+      "complete_question_supported": true,
+      "claim_reviews": [
+        {
+          "claim_id": "slb_fcf_definition",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "Footnote explicitly includes the two less conventional adjustments (APS and exploration-data capitalization), describes non-GAAP status, and rejects residual discretionary cash interpretation. Minimal first and last sentences suffice.",
+          "additional_witness_sets": [
+            [
+              {
+                "source_file": "SLB_2023.html",
+                "byte_start": 1043252,
+                "byte_stop": 1043402,
+                "span_sha256": "86ca5679ae9298b75da5eed79dd103b4edb7053f7089741389d1011bbc3d9b47"
+              },
+              {
+                "source_file": "SLB_2023.html",
+                "byte_start": 1043778,
+                "byte_stop": 1044032,
+                "span_sha256": "7b80283156e759b036ec5a7738b41412d54a6114125618cde73e06f4842d4317"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "slb_fcf_operations",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "2023 column, million-dollar unit and operations row establish 6637. The dollar sign anchor is inherited from this table rather than fabricated.",
+          "additional_witness_sets": []
+        },
+        {
+          "claim_id": "slb_fcf_capex",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "The 2023 cell is 1939 in parentheses; both parenthesis fragments are included. It is a deduction under the separately supported FCF definition.",
+          "additional_witness_sets": []
+        },
+        {
+          "claim_id": "slb_fcf_aps",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "The 2023 cell is 507 in parentheses. The definition and row label establish its role; no substitution with conventional capex-only FCF.",
+          "additional_witness_sets": []
+        },
+        {
+          "claim_id": "slb_fcf_exploration",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "The 2023 cell is 153 in parentheses with the capitalized-exploration-data row label.",
+          "additional_witness_sets": []
+        },
+        {
+          "claim_id": "slb_fcf_fcf",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "The 2023 FCFcell is 4038 with footnote reference; year and stated-million unit present.",
+          "additional_witness_sets": []
+        },
+        {
+          "claim_id": "slb_fcf_reconciliation",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "Independent integer arithmetic 6637-1939-507-153=4038 verifies zero displayed residual. No unrounded exactness asserted.",
+          "additional_witness_sets": []
+        }
+      ],
+      "status_rationale": "Full definition,period,units,all adjustments and arithmetic are source-supported."
+    },
+    {
+      "item_id": "89a31cc4fbd46870cb66",
+      "history_id": "SLB",
+      "family": "stock_compensation",
+      "original_status": "partial",
+      "status_review": "agree",
+      "recommended_status": "partial",
+      "complete_question_supported": false,
+      "claim_reviews": [
+        {
+          "claim_id": "slb_unrecognized_sbc",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "The first clause gives date, 278 million, total/nonvested scope. Removing the subsequent schedule yields a smaller equivalent witness for this claim.",
+          "additional_witness_sets": [
+            [
+              {
+                "source_file": "SLB_2023.html",
+                "byte_start": 3027071,
+                "byte_stop": 3027739,
+                "span_sha256": "5e749289e177aa3f2ce30e4a9d9b8256368c65fb222b9ba24a519bc36710d1e0"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "slb_sbc_schedule",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "All four year/amount pairs checked and 164+89+21+4=278. Annual buckets do not identify within-year timing or an issuer-reported weighted-average period.",
+          "additional_witness_sets": []
+        },
+        {
+          "claim_id": "slb_sbc_program_scope",
+          "semantic_verdict": "pass",
+          "original_witness_hashes_valid": true,
+          "notes": "Program list supports RSU/PSU, DSPP, and options; total unrecognized-cost wording supports aggregate status without inventing an award split.",
+          "additional_witness_sets": []
+        }
+      ],
+      "status_rationale": "Retain missing requested component as unresolved; keyword failure does not establish corpus-wide insufficiency. Supported partial claims remain useful but are not a complete-question answer."
+    }
+  ],
+  "independent_search_log": [
+    {
+      "source_file": "BRK-B_2022.html",
+      "query_regex": "free[ -]cash[ -]flow",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2022.html",
+      "query_regex": "constant[ -]currency",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2022.html",
+      "query_regex": "currency[ -]neutral",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2022.html",
+      "query_regex": "\\brecast",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2022.html",
+      "query_regex": "\\breclassif",
+      "matches": 3,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2022.html",
+      "query_regex": "unrecognized.{0,100}compensation",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2022.html",
+      "query_regex": "weighted.average.{0,50}(period|years)",
+      "matches": 2,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2023.html",
+      "query_regex": "free[ -]cash[ -]flow",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2023.html",
+      "query_regex": "constant[ -]currency",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2023.html",
+      "query_regex": "currency[ -]neutral",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2023.html",
+      "query_regex": "\\brecast",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2023.html",
+      "query_regex": "\\breclassif",
+      "matches": 4,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2023.html",
+      "query_regex": "unrecognized.{0,100}compensation",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "BRK-B_2023.html",
+      "query_regex": "weighted.average.{0,50}(period|years)",
+      "matches": 2,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2022.html",
+      "query_regex": "free[ -]cash[ -]flow",
+      "matches": 6,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2022.html",
+      "query_regex": "constant[ -]currency",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2022.html",
+      "query_regex": "currency[ -]neutral",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2022.html",
+      "query_regex": "\\brecast",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2022.html",
+      "query_regex": "\\breclassif",
+      "matches": 2,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2022.html",
+      "query_regex": "unrecognized.{0,100}compensation",
+      "matches": 1,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2022.html",
+      "query_regex": "weighted.average.{0,50}(period|years)",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2023.html",
+      "query_regex": "free[ -]cash[ -]flow",
+      "matches": 8,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2023.html",
+      "query_regex": "constant[ -]currency",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2023.html",
+      "query_regex": "currency[ -]neutral",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2023.html",
+      "query_regex": "\\brecast",
+      "matches": 0,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2023.html",
+      "query_regex": "\\breclassif",
+      "matches": 3,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2023.html",
+      "query_regex": "unrecognized.{0,100}compensation",
+      "matches": 1,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    },
+    {
+      "source_file": "SLB_2023.html",
+      "query_regex": "weighted.average.{0,50}(period|years)",
+      "matches": 1,
+      "scope": "normalized whole XML character data excluding inline-XBRL header/hidden subtrees; follow-up paragraphs inspected source-locally"
+    }
+  ],
+  "arithmetic_checks": [
+    {
+      "expression": "(302089-276203)/276203*100",
+      "decimal_result": "9.372092265471410520522948701",
+      "interpretation": "derived growth using displayed rounded totals"
+    },
+    {
+      "expression": "6637-1939-507-153-4038",
+      "integer_result": 0,
+      "interpretation": "displayed SLBFCF reconciliation residual"
+    },
+    {
+      "expression": "164+89+21+4-278",
+      "integer_result": 0,
+      "interpretation": "displayed SBC schedule residual; not a weighted-average duration"
+    }
+  ],
+  "summary": {
+    "records_reviewed": 8,
+    "claims_reviewed": 19,
+    "claims_passed": 19,
+    "claims_requiring_semantic_fix": 0,
+    "witness_anchor_occurrences_verified": 100,
+    "original_search_and_witness_anchor_occurrences_verified": 166,
+    "additional_minimal_witness_sets": 5,
+    "status_changes_recommended": 0,
+    "supported": 1,
+    "partial": 5,
+    "unresolved": 2
+  },
+  "limitations": [
+    "Review verifies the bounded observed evidence and arithmetic, not exhaustive answer-class coverage.",
+    "Search failures remain unresolved; no automatic coverage gate is cleared.",
+    "Additional smaller witnesses prevent unnecessary paragraph-span requirements; original records are preserved.",
+    "No independent human adjudication, large-model predictions, held-out data, or retrieval/QA improvement established."
+  ]
+}

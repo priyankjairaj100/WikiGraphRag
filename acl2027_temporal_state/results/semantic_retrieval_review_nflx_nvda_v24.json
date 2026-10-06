@@ -1,0 +1,839 @@
+{
+  "schema_version": "v24_semantic_retrieval_review_1",
+  "reviewer_role": "separate assistant source reviewer; not the reference author or retrieval builder",
+  "protocol_sha256": "214d0be8ba347c59a77a0a5b3c1f983d822ce9998999c7aae0ecfda654f21ae2",
+  "reference_file": "results/source_references_reviewed_v24.json",
+  "reference_sha256": "6243ec648cf9533d3b75299dd19b6b671d023052b06ba28a24d3a7356453573f",
+  "model_assisted_review": true,
+  "human_gold": false,
+  "post_retrieval_adjudication": true,
+  "reference_claims_modified": false,
+  "qa_performance_claim": false,
+  "external_coverage_certificate": false,
+  "review_scope": {
+    "items": 3,
+    "histories": 2,
+    "policies": [
+      "typed",
+      "lexical",
+      "structural",
+      "decomposition"
+    ],
+    "primary_budget_words": 4096,
+    "packs": 12,
+    "method": "Entire packs inspected against frozen reference claims. Text/row bodies were viewed in full; typed cards were displayed with reversible namespace/entity dictionaries and explicit concept, period, units, dimensions, variants, precision status and occurrence counts. Repeated source headers were shown once for inspection only; all original words remain charged. Equivalent typed or row witnesses were accepted. The display did not change any retrieval pack.",
+    "question_sufficiency": "Question-level claim necessity was adjudicated transparently after retrieval without modifying frozen reference claims. Every claim in this assigned subset answers an explicit part of its question, so all nine distinct claims are required_for_question and strict/question judgments coincide.",
+    "negative_verdict_scope": "Missing means absent from this reviewed supplied pack, not absent from the full filing or the world. Sufficient describes evidence availability, not demonstrated reader competence or external coverage."
+  },
+  "counts": {
+    "pack_overall": {
+      "missing": 4,
+      "sufficient": 8
+    },
+    "question_level_overall": {
+      "missing": 4,
+      "sufficient": 8
+    },
+    "claim_verdicts": {
+      "missing": 10,
+      "sufficient": 25,
+      "uncertain": 1
+    },
+    "by_policy": {
+      "typed": {
+        "missing": 3
+      },
+      "lexical": {
+        "missing": 1,
+        "sufficient": 2
+      },
+      "structural": {
+        "sufficient": 3
+      },
+      "decomposition": {
+        "sufficient": 3
+      }
+    }
+  },
+  "interpretation": [
+    "Structural and decomposition provide sufficient evidence for all three questions in this subset; no residual against those conventional baselines is observed here.",
+    "Both SBC questions are supplied completely by lexical, structural and decomposition packs; typed misses are ordinary evidence-representation/query-retrieval limitations and do not establish a novel certificate advantage.",
+    "The NFLX lexical FCF pack has a genuine adjustment-premise gap plus a separate FCF-row binding ambiguity; the richer conventional packs already resolve both.",
+    "This is small, model-assisted development adjudication on two issuer histories, not held-out QA, a reader gate pass, or an external coverage decision."
+  ],
+  "prior_source_review_count_clarification": {
+    "file": "results/source_review_nflx_nvda_v24.json",
+    "frozen_file_unchanged": true,
+    "anchor_instances_verified": 133,
+    "claim_witness_occurrences": 74,
+    "claim_witness_unique": 45,
+    "reviewed_passage_inventory_occurrences": 59,
+    "reviewed_passage_inventory_unique": 59,
+    "combined_unique": 59,
+    "note": "The 133 count combines 74 claim-witness anchor occurrences with 59 reviewed-passage inventory locators. It is not a count of 133 claim witnesses; the union contains 59 unique source spans."
+  },
+  "records": [
+    {
+      "item_id": "90376910c375cfd915c9",
+      "history_id": "NFLX",
+      "family": "free_cash_flow",
+      "question": "For NFLX fiscal 2023, what free cash flow did the company disclose, and how did it reconcile that measure to net cash from operating activities? State the company's definition, the amounts and units of its adjustments, and whether the reconciliation is exact or affected by rounding. Do not invent a free-cash-flow definition if none is disclosed.",
+      "policy": "typed",
+      "budget": 4096,
+      "pack_filename": "90376910c375cfd915c9_typed_4096.txt",
+      "pack_sha256": "3b81a07710f30086451800db55643d0cd2c3c15b6b82ffa9c9624b0fb83d2f33",
+      "pack_words": 4060,
+      "pack_blocks": 58,
+      "entire_pack_inspected": true,
+      "overall": "missing",
+      "strict_reference_overall": "missing",
+      "question_level_overall": "missing",
+      "question_level_rationale": "At least one premise directly requested by this question is missing from the supplied evidence; this is not a failure manufactured by requiring extra reference detail.",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_fcf_definition",
+          "reference_statement": "The issuer-defined non-GAAP measure deducts property/equipment purchases and the change in other assets from cash provided by operating activities.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly requests the company definition.",
+          "verdict": "missing",
+          "reason_category": "missing_premise",
+          "reason": "The reviewed typed-only pack contains no issuer FCF definition or equivalent scoped formula.",
+          "selected_block_ids": [],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_cfo",
+          "reference_statement": "FY2023 operating cash flow is USD7,274,301 thousand.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly asks to reconcile FCF to net cash from operating activities; the starting amount and units are needed.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The typed card names operating cash flow, binds it to the 2023-01-01 to 2023-12-31 duration and consolidated undimensioned entity, and supplies normalized USD7,274,301,000, equivalent to USD7,274,301 thousand.",
+          "selected_block_ids": [
+            "NFLX_2023.html:777401:typed"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_ppe",
+          "reference_statement": "FY2023 purchases of property and equipment are a USD348,552 thousand deduction.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly requests the amounts and units of adjustments.",
+          "verdict": "missing",
+          "reason_category": "missing_premise",
+          "reason": "The reviewed pack does not provide the FY2023 property/equipment adjustment of USD348,552 thousand or an equivalent correctly bound amount.",
+          "selected_block_ids": [],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_other_assets",
+          "reference_statement": "FY2023's FCF reconciliation shows a zero adjustment for the change in other assets (dash convention).",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The disclosed definition includes this adjustment, and the question requests adjustment amounts; a zero adjustment cannot be silently omitted from the evidentiary bridge.",
+          "verdict": "missing",
+          "reason_category": "missing_premise",
+          "reason": "The reviewed pack does not provide the FY2023 change-in-other-assets FCF adjustment. Unrelated zero-valued typed facts cannot establish this zero adjustment.",
+          "selected_block_ids": [],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_fcf_value",
+          "reference_statement": "FY2023 free cash flow is USD6,925,749 thousand.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for the disclosed FCF value.",
+          "verdict": "missing",
+          "reason_category": "missing_premise",
+          "reason": "The reviewed typed-only pack contains no FCF amount or complete inputs from which its value could be derived.",
+          "selected_block_ids": [],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_fcf_arithmetic",
+          "reference_statement": "At displayed thousand-dollar precision, 7,274,301 −348,552 −0 =6,925,749 with no rounding residual.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly asks whether the reconciliation is exact or affected by rounding.",
+          "verdict": "missing",
+          "reason_category": "missing_premise",
+          "reason": "The property/equipment and change-in-other-assets adjustment inputs are missing from the reviewed pack, so its evidence cannot establish the requested exact-versus-rounding reconciliation.",
+          "selected_block_ids": [],
+          "partial_evidence_block_ids": []
+        }
+      ]
+    },
+    {
+      "item_id": "90376910c375cfd915c9",
+      "history_id": "NFLX",
+      "family": "free_cash_flow",
+      "question": "For NFLX fiscal 2023, what free cash flow did the company disclose, and how did it reconcile that measure to net cash from operating activities? State the company's definition, the amounts and units of its adjustments, and whether the reconciliation is exact or affected by rounding. Do not invent a free-cash-flow definition if none is disclosed.",
+      "policy": "lexical",
+      "budget": 4096,
+      "pack_filename": "90376910c375cfd915c9_lexical_4096.txt",
+      "pack_sha256": "8357e20c429b157daec32f6e216a709c72e72b5838e01c6ace8e97c37386f80f",
+      "pack_words": 4095,
+      "pack_blocks": 84,
+      "entire_pack_inspected": true,
+      "overall": "missing",
+      "strict_reference_overall": "missing",
+      "question_level_overall": "missing",
+      "question_level_rationale": "At least one premise directly requested by this question is missing from the supplied evidence; this is not a failure manufactured by requiring extra reference detail.",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_fcf_definition",
+          "reference_statement": "The issuer-defined non-GAAP measure deducts property/equipment purchases and the change in other assets from cash provided by operating activities.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly requests the company definition.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected issuer paragraph explicitly defines FCF as operating cash flow less property/equipment purchases and the change in other assets.",
+          "selected_block_ids": [
+            "NFLX_2023.html:570125:text"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_cfo",
+          "reference_statement": "FY2023 operating cash flow is USD7,274,301 thousand.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly asks to reconcile FCF to net cash from operating activities; the starting amount and units are needed.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The typed card names operating cash flow, binds it to the 2023-01-01 to 2023-12-31 duration and consolidated undimensioned entity, and supplies normalized USD7,274,301,000, equivalent to USD7,274,301 thousand.",
+          "selected_block_ids": [
+            "NFLX_2023.html:777401:typed"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_ppe",
+          "reference_statement": "FY2023 purchases of property and equipment are a USD348,552 thousand deduction.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly requests the amounts and units of adjustments.",
+          "verdict": "missing",
+          "reason_category": "missing_premise",
+          "reason": "The reviewed pack does not provide the FY2023 property/equipment adjustment of USD348,552 thousand or an equivalent correctly bound amount.",
+          "selected_block_ids": [],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_other_assets",
+          "reference_statement": "FY2023's FCF reconciliation shows a zero adjustment for the change in other assets (dash convention).",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The disclosed definition includes this adjustment, and the question requests adjustment amounts; a zero adjustment cannot be silently omitted from the evidentiary bridge.",
+          "verdict": "missing",
+          "reason_category": "missing_premise",
+          "reason": "The reviewed pack does not provide the FY2023 change-in-other-assets FCF adjustment. Unrelated zero-valued typed facts cannot establish this zero adjustment.",
+          "selected_block_ids": [],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_fcf_value",
+          "reference_statement": "FY2023 free cash flow is USD6,925,749 thousand.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for the disclosed FCF value.",
+          "verdict": "uncertain",
+          "reason_category": "binding_ambiguity",
+          "reason": "The FCF label and 6,925,749 appear in a multi-year row, but its table year and magnitude headers are not in this pack. Filing fiscal-year metadata alone does not resolve the comparative-column and magnitude binding. This uncertainty does not by itself decide the question: adjustment amounts are also missing.",
+          "selected_block_ids": [],
+          "partial_evidence_block_ids": [
+            "NFLX_2023.html:592346:row"
+          ]
+        },
+        {
+          "claim_id": "nflx_fcf_arithmetic",
+          "reference_statement": "At displayed thousand-dollar precision, 7,274,301 −348,552 −0 =6,925,749 with no rounding residual.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly asks whether the reconciliation is exact or affected by rounding.",
+          "verdict": "missing",
+          "reason_category": "missing_premise",
+          "reason": "The property/equipment and change-in-other-assets adjustment inputs are missing from the reviewed pack, so its evidence cannot establish the requested exact-versus-rounding reconciliation.",
+          "selected_block_ids": [],
+          "partial_evidence_block_ids": []
+        }
+      ]
+    },
+    {
+      "item_id": "90376910c375cfd915c9",
+      "history_id": "NFLX",
+      "family": "free_cash_flow",
+      "question": "For NFLX fiscal 2023, what free cash flow did the company disclose, and how did it reconcile that measure to net cash from operating activities? State the company's definition, the amounts and units of its adjustments, and whether the reconciliation is exact or affected by rounding. Do not invent a free-cash-flow definition if none is disclosed.",
+      "policy": "structural",
+      "budget": 4096,
+      "pack_filename": "90376910c375cfd915c9_structural_4096.txt",
+      "pack_sha256": "4b82bcd88d03cda9125640ebca5478399623bbea96c0eb3edb2cbecbb2a9b79a",
+      "pack_words": 4094,
+      "pack_blocks": 144,
+      "entire_pack_inspected": true,
+      "overall": "sufficient",
+      "strict_reference_overall": "sufficient",
+      "question_level_overall": "sufficient",
+      "question_level_rationale": "All directly requested amounts, definitions, bindings and arithmetic premises are present in selected evidence; no external reference text needs to be supplied to the reader.",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_fcf_definition",
+          "reference_statement": "The issuer-defined non-GAAP measure deducts property/equipment purchases and the change in other assets from cash provided by operating activities.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly requests the company definition.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected issuer paragraph explicitly defines FCF as operating cash flow less property/equipment purchases and the change in other assets.",
+          "selected_block_ids": [
+            "NFLX_2023.html:570125:text"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_cfo",
+          "reference_statement": "FY2023 operating cash flow is USD7,274,301 thousand.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly asks to reconcile FCF to net cash from operating activities; the starting amount and units are needed.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The cash-flow table gives FY2023 operating cash flow of USD7,274,301 thousand, with year, magnitude and currency context present.",
+          "selected_block_ids": [
+            "NFLX_2023.html:572782:row",
+            "NFLX_2023.html:573526:row",
+            "NFLX_2023.html:574968:row",
+            "NFLX_2023.html:575453:row"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_ppe",
+          "reference_statement": "FY2023 purchases of property and equipment are a USD348,552 thousand deduction.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly requests the amounts and units of adjustments.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The FY2023 reconciliation deducts USD348,552 thousand for property/equipment purchases; the common headers, currency marker and reconciliation label are selected.",
+          "selected_block_ids": [
+            "NFLX_2023.html:572782:row",
+            "NFLX_2023.html:573526:row",
+            "NFLX_2023.html:574968:row",
+            "NFLX_2023.html:575453:row",
+            "NFLX_2023.html:584231:row",
+            "NFLX_2023.html:587552:row"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_other_assets",
+          "reference_statement": "FY2023's FCF reconciliation shows a zero adjustment for the change in other assets (dash convention).",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The disclosed definition includes this adjustment, and the question requests adjustment amounts; a zero adjustment cannot be silently omitted from the evidentiary bridge.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected FY2023 reconciliation row shows the change-in-other-assets adjustment as a dash, i.e. zero, with the relevant year, units and reconciliation scope.",
+          "selected_block_ids": [
+            "NFLX_2023.html:572782:row",
+            "NFLX_2023.html:573526:row",
+            "NFLX_2023.html:574968:row",
+            "NFLX_2023.html:575453:row",
+            "NFLX_2023.html:584231:row",
+            "NFLX_2023.html:589931:row"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_fcf_value",
+          "reference_statement": "FY2023 free cash flow is USD6,925,749 thousand.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for the disclosed FCF value.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected FCF row explicitly reports USD6,925,749 thousand in the FY2023 column with its year and magnitude headers.",
+          "selected_block_ids": [
+            "NFLX_2023.html:572782:row",
+            "NFLX_2023.html:573526:row",
+            "NFLX_2023.html:574968:row",
+            "NFLX_2023.html:592346:row"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_fcf_arithmetic",
+          "reference_statement": "At displayed thousand-dollar precision, 7,274,301 −348,552 −0 =6,925,749 with no rounding residual.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly asks whether the reconciliation is exact or affected by rounding.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The retrieved definition and fully bound reconciliation give 7,274,301 - 348,552 - 0 = 6,925,749 at displayed thousand-dollar precision. This is an evidence check, not a reader-model prediction.",
+          "selected_block_ids": [
+            "NFLX_2023.html:572782:row",
+            "NFLX_2023.html:573526:row",
+            "NFLX_2023.html:574968:row",
+            "NFLX_2023.html:570125:text",
+            "NFLX_2023.html:575453:row",
+            "NFLX_2023.html:584231:row",
+            "NFLX_2023.html:587552:row",
+            "NFLX_2023.html:589931:row",
+            "NFLX_2023.html:592346:row"
+          ],
+          "partial_evidence_block_ids": []
+        }
+      ]
+    },
+    {
+      "item_id": "90376910c375cfd915c9",
+      "history_id": "NFLX",
+      "family": "free_cash_flow",
+      "question": "For NFLX fiscal 2023, what free cash flow did the company disclose, and how did it reconcile that measure to net cash from operating activities? State the company's definition, the amounts and units of its adjustments, and whether the reconciliation is exact or affected by rounding. Do not invent a free-cash-flow definition if none is disclosed.",
+      "policy": "decomposition",
+      "budget": 4096,
+      "pack_filename": "90376910c375cfd915c9_decomposition_4096.txt",
+      "pack_sha256": "e8564448847ffdada2c8c7728f3bc0dcd51846c3aac6122a2589fd134af11e2e",
+      "pack_words": 4085,
+      "pack_blocks": 174,
+      "entire_pack_inspected": true,
+      "overall": "sufficient",
+      "strict_reference_overall": "sufficient",
+      "question_level_overall": "sufficient",
+      "question_level_rationale": "All directly requested amounts, definitions, bindings and arithmetic premises are present in selected evidence; no external reference text needs to be supplied to the reader.",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_fcf_definition",
+          "reference_statement": "The issuer-defined non-GAAP measure deducts property/equipment purchases and the change in other assets from cash provided by operating activities.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly requests the company definition.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected issuer paragraph explicitly defines FCF as operating cash flow less property/equipment purchases and the change in other assets.",
+          "selected_block_ids": [
+            "NFLX_2023.html:570125:text"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_cfo",
+          "reference_statement": "FY2023 operating cash flow is USD7,274,301 thousand.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly asks to reconcile FCF to net cash from operating activities; the starting amount and units are needed.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The cash-flow table gives FY2023 operating cash flow of USD7,274,301 thousand, with year, magnitude and currency context present.",
+          "selected_block_ids": [
+            "NFLX_2023.html:572782:row",
+            "NFLX_2023.html:573526:row",
+            "NFLX_2023.html:574968:row",
+            "NFLX_2023.html:575453:row"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_ppe",
+          "reference_statement": "FY2023 purchases of property and equipment are a USD348,552 thousand deduction.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly requests the amounts and units of adjustments.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The FY2023 reconciliation deducts USD348,552 thousand for property/equipment purchases; the common headers, currency marker and reconciliation label are selected.",
+          "selected_block_ids": [
+            "NFLX_2023.html:572782:row",
+            "NFLX_2023.html:573526:row",
+            "NFLX_2023.html:574968:row",
+            "NFLX_2023.html:575453:row",
+            "NFLX_2023.html:584231:row",
+            "NFLX_2023.html:587552:row"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_other_assets",
+          "reference_statement": "FY2023's FCF reconciliation shows a zero adjustment for the change in other assets (dash convention).",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The disclosed definition includes this adjustment, and the question requests adjustment amounts; a zero adjustment cannot be silently omitted from the evidentiary bridge.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected FY2023 reconciliation row shows the change-in-other-assets adjustment as a dash, i.e. zero, with the relevant year, units and reconciliation scope.",
+          "selected_block_ids": [
+            "NFLX_2023.html:572782:row",
+            "NFLX_2023.html:573526:row",
+            "NFLX_2023.html:574968:row",
+            "NFLX_2023.html:575453:row",
+            "NFLX_2023.html:584231:row",
+            "NFLX_2023.html:589931:row"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_fcf_value",
+          "reference_statement": "FY2023 free cash flow is USD6,925,749 thousand.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for the disclosed FCF value.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected FCF row explicitly reports USD6,925,749 thousand in the FY2023 column with its year and magnitude headers.",
+          "selected_block_ids": [
+            "NFLX_2023.html:572782:row",
+            "NFLX_2023.html:573526:row",
+            "NFLX_2023.html:574968:row",
+            "NFLX_2023.html:592346:row"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nflx_fcf_arithmetic",
+          "reference_statement": "At displayed thousand-dollar precision, 7,274,301 −348,552 −0 =6,925,749 with no rounding residual.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question explicitly asks whether the reconciliation is exact or affected by rounding.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The retrieved definition and fully bound reconciliation give 7,274,301 - 348,552 - 0 = 6,925,749 at displayed thousand-dollar precision. This is an evidence check, not a reader-model prediction.",
+          "selected_block_ids": [
+            "NFLX_2023.html:572782:row",
+            "NFLX_2023.html:573526:row",
+            "NFLX_2023.html:574968:row",
+            "NFLX_2023.html:570125:text",
+            "NFLX_2023.html:575453:row",
+            "NFLX_2023.html:584231:row",
+            "NFLX_2023.html:587552:row",
+            "NFLX_2023.html:589931:row",
+            "NFLX_2023.html:592346:row"
+          ],
+          "partial_evidence_block_ids": []
+        }
+      ]
+    },
+    {
+      "item_id": "3d9c9461adbe81a50cd1",
+      "history_id": "NFLX",
+      "family": "stock_compensation",
+      "question": "At NFLX's fiscal 2023 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "policy": "typed",
+      "budget": 4096,
+      "pack_filename": "3d9c9461adbe81a50cd1_typed_4096.txt",
+      "pack_sha256": "fc8650821d3367e6de0e83561f98093b37c8685b1eedd851062339a6455e1150",
+      "pack_words": 4077,
+      "pack_blocks": 61,
+      "entire_pack_inspected": true,
+      "overall": "missing",
+      "strict_reference_overall": "missing",
+      "question_level_overall": "missing",
+      "question_level_rationale": "At least one premise directly requested by this question is missing from the supplied evidence; this is not a failure manufactured by requiring extra reference detail.",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_nonvested_options",
+          "reference_statement": "At December31,2023, unrecognized compensation for nonvested stock options is USD26 million with a weighted-average remaining recognition period of0.45 years.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for unrecognized cost and weighted-average recognition period and explicitly requires award-type distinctions and units.",
+          "verdict": "missing",
+          "reason_category": "missing_premise",
+          "reason": "The typed card supplies USD26 million at 2023-12-31 under a generic nonvested-awards concept. The reviewed pack does not supply the 0.45-year weighted-average recognition period or explicit binding of this amount to nonvested stock options. Exercise prices, contractual terms and grant fair values are different quantities.",
+          "selected_block_ids": [],
+          "partial_evidence_block_ids": [
+            "NFLX_2023.html:1458846:typed"
+          ]
+        }
+      ]
+    },
+    {
+      "item_id": "3d9c9461adbe81a50cd1",
+      "history_id": "NFLX",
+      "family": "stock_compensation",
+      "question": "At NFLX's fiscal 2023 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "policy": "lexical",
+      "budget": 4096,
+      "pack_filename": "3d9c9461adbe81a50cd1_lexical_4096.txt",
+      "pack_sha256": "6a4eed64e3e44980236db562d3ab2a80f2b2d7b98f4adaf07c30bf58cbebfd95",
+      "pack_words": 4093,
+      "pack_blocks": 87,
+      "entire_pack_inspected": true,
+      "overall": "sufficient",
+      "strict_reference_overall": "sufficient",
+      "question_level_overall": "sufficient",
+      "question_level_rationale": "All directly requested amounts, definitions, bindings and arithmetic premises are present in selected evidence; no external reference text needs to be supplied to the reader.",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_nonvested_options",
+          "reference_statement": "At December31,2023, unrecognized compensation for nonvested stock options is USD26 million with a weighted-average remaining recognition period of0.45 years.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for unrecognized cost and weighted-average recognition period and explicitly requires award-type distinctions and units.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected paragraph explicitly supplies the 2023-12-31 date, USD26 million, nonvested stock-option scope and 0.45-year weighted-average recognition period in one disclosure.",
+          "selected_block_ids": [
+            "NFLX_2023.html:1458172:text"
+          ],
+          "partial_evidence_block_ids": []
+        }
+      ]
+    },
+    {
+      "item_id": "3d9c9461adbe81a50cd1",
+      "history_id": "NFLX",
+      "family": "stock_compensation",
+      "question": "At NFLX's fiscal 2023 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "policy": "structural",
+      "budget": 4096,
+      "pack_filename": "3d9c9461adbe81a50cd1_structural_4096.txt",
+      "pack_sha256": "a6a2d1bb519c821dd9e27167e4d9db7ee068dec21816ba8281c5823cab92b28d",
+      "pack_words": 4086,
+      "pack_blocks": 131,
+      "entire_pack_inspected": true,
+      "overall": "sufficient",
+      "strict_reference_overall": "sufficient",
+      "question_level_overall": "sufficient",
+      "question_level_rationale": "All directly requested amounts, definitions, bindings and arithmetic premises are present in selected evidence; no external reference text needs to be supplied to the reader.",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_nonvested_options",
+          "reference_statement": "At December31,2023, unrecognized compensation for nonvested stock options is USD26 million with a weighted-average remaining recognition period of0.45 years.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for unrecognized cost and weighted-average recognition period and explicitly requires award-type distinctions and units.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected paragraph explicitly supplies the 2023-12-31 date, USD26 million, nonvested stock-option scope and 0.45-year weighted-average recognition period in one disclosure.",
+          "selected_block_ids": [
+            "NFLX_2023.html:1458172:text"
+          ],
+          "partial_evidence_block_ids": []
+        }
+      ]
+    },
+    {
+      "item_id": "3d9c9461adbe81a50cd1",
+      "history_id": "NFLX",
+      "family": "stock_compensation",
+      "question": "At NFLX's fiscal 2023 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "policy": "decomposition",
+      "budget": 4096,
+      "pack_filename": "3d9c9461adbe81a50cd1_decomposition_4096.txt",
+      "pack_sha256": "cf557af7b7516dfeb5e1ef57ef6b367682bfd2b880b68c063522e04ac73958be",
+      "pack_words": 4087,
+      "pack_blocks": 115,
+      "entire_pack_inspected": true,
+      "overall": "sufficient",
+      "strict_reference_overall": "sufficient",
+      "question_level_overall": "sufficient",
+      "question_level_rationale": "All directly requested amounts, definitions, bindings and arithmetic premises are present in selected evidence; no external reference text needs to be supplied to the reader.",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_nonvested_options",
+          "reference_statement": "At December31,2023, unrecognized compensation for nonvested stock options is USD26 million with a weighted-average remaining recognition period of0.45 years.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for unrecognized cost and weighted-average recognition period and explicitly requires award-type distinctions and units.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected paragraph explicitly supplies the 2023-12-31 date, USD26 million, nonvested stock-option scope and 0.45-year weighted-average recognition period in one disclosure.",
+          "selected_block_ids": [
+            "NFLX_2023.html:1458172:text"
+          ],
+          "partial_evidence_block_ids": []
+        }
+      ]
+    },
+    {
+      "item_id": "aa26b3e472b571af62b9",
+      "history_id": "NVDA",
+      "family": "stock_compensation",
+      "question": "At NVDA's fiscal 2023 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "policy": "typed",
+      "budget": 4096,
+      "pack_filename": "aa26b3e472b571af62b9_typed_4096.txt",
+      "pack_sha256": "1b59603741135929b6c8b87a53c88d292f02ec2ed7114a591e12ce8c2183da75",
+      "pack_words": 4089,
+      "pack_blocks": 55,
+      "entire_pack_inspected": true,
+      "overall": "missing",
+      "strict_reference_overall": "missing",
+      "question_level_overall": "missing",
+      "question_level_rationale": "At least one premise directly requested by this question is missing from the supplied evidence; this is not a failure manufactured by requiring extra reference detail.",
+      "claim_reviews": [
+        {
+          "claim_id": "nvda_unearned_sbc",
+          "reference_statement": "At January29,2023, aggregate unearned stock-based compensation expense is USD6.56 billion.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for unrecognized stock-compensation cost and units.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The typed nonvested-awards compensation-cost card binds normalized USD6,560,000,000 to the undimensioned issuer total at 2023-01-29; this is an equivalent amount/period/unit witness for the aggregate unearned-cost claim. A prose witness is not required for this numeric claim.",
+          "selected_block_ids": [
+            "NVDA_2023.html:1458851:typed"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nvda_periods_by_award",
+          "reference_statement": "Expected weighted-average recognition periods are2.6 years for RSUs/PSUs/market-based PSUs and1.0 year for ESPP, on the stated January29,2023 aggregate unearned-compensation disclosure.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for weighted-average recognition period and explicitly preserves separate award-type periods.",
+          "verdict": "missing",
+          "reason_category": "missing_premise",
+          "reason": "The reviewed typed pack supplies neither the 2.6-year remaining recognition period for RSUs/PSUs/market-based PSUs nor the 1.0-year ESPP period. Fair-value assumptions, exercise prices and grant quantities cannot substitute for these periods.",
+          "selected_block_ids": [],
+          "partial_evidence_block_ids": []
+        }
+      ]
+    },
+    {
+      "item_id": "aa26b3e472b571af62b9",
+      "history_id": "NVDA",
+      "family": "stock_compensation",
+      "question": "At NVDA's fiscal 2023 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "policy": "lexical",
+      "budget": 4096,
+      "pack_filename": "aa26b3e472b571af62b9_lexical_4096.txt",
+      "pack_sha256": "4e61f5e39c93a16d4e5ce53fc5666b6f9f6289dcf0a7a1b737306901c6fb7b2d",
+      "pack_words": 4095,
+      "pack_blocks": 77,
+      "entire_pack_inspected": true,
+      "overall": "sufficient",
+      "strict_reference_overall": "sufficient",
+      "question_level_overall": "sufficient",
+      "question_level_rationale": "All directly requested amounts, definitions, bindings and arithmetic premises are present in selected evidence; no external reference text needs to be supplied to the reader.",
+      "claim_reviews": [
+        {
+          "claim_id": "nvda_unearned_sbc",
+          "reference_statement": "At January29,2023, aggregate unearned stock-based compensation expense is USD6.56 billion.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for unrecognized stock-compensation cost and units.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected disclosure explicitly supplies the 2023-01-29 date, aggregate unearned stock-compensation scope and USD6.56 billion amount.",
+          "selected_block_ids": [
+            "NVDA_2023.html:1458632:text"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nvda_periods_by_award",
+          "reference_statement": "Expected weighted-average recognition periods are2.6 years for RSUs/PSUs/market-based PSUs and1.0 year for ESPP, on the stated January29,2023 aggregate unearned-compensation disclosure.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for weighted-average recognition period and explicitly preserves separate award-type periods.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The same dated aggregate disclosure explicitly supplies 2.6 years for RSUs/PSUs/market-based PSUs and 1.0 year for ESPP. It neither splits the aggregate dollars nor asserts a common recognition period.",
+          "selected_block_ids": [
+            "NVDA_2023.html:1458632:text"
+          ],
+          "partial_evidence_block_ids": []
+        }
+      ]
+    },
+    {
+      "item_id": "aa26b3e472b571af62b9",
+      "history_id": "NVDA",
+      "family": "stock_compensation",
+      "question": "At NVDA's fiscal 2023 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "policy": "structural",
+      "budget": 4096,
+      "pack_filename": "aa26b3e472b571af62b9_structural_4096.txt",
+      "pack_sha256": "dfef89f35740c2d7a47fb5bd157916b5b90a310cbdaeaa15aacb8d2d92982151",
+      "pack_words": 4095,
+      "pack_blocks": 122,
+      "entire_pack_inspected": true,
+      "overall": "sufficient",
+      "strict_reference_overall": "sufficient",
+      "question_level_overall": "sufficient",
+      "question_level_rationale": "All directly requested amounts, definitions, bindings and arithmetic premises are present in selected evidence; no external reference text needs to be supplied to the reader.",
+      "claim_reviews": [
+        {
+          "claim_id": "nvda_unearned_sbc",
+          "reference_statement": "At January29,2023, aggregate unearned stock-based compensation expense is USD6.56 billion.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for unrecognized stock-compensation cost and units.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected disclosure explicitly supplies the 2023-01-29 date, aggregate unearned stock-compensation scope and USD6.56 billion amount.",
+          "selected_block_ids": [
+            "NVDA_2023.html:1458632:text"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nvda_periods_by_award",
+          "reference_statement": "Expected weighted-average recognition periods are2.6 years for RSUs/PSUs/market-based PSUs and1.0 year for ESPP, on the stated January29,2023 aggregate unearned-compensation disclosure.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for weighted-average recognition period and explicitly preserves separate award-type periods.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The same dated aggregate disclosure explicitly supplies 2.6 years for RSUs/PSUs/market-based PSUs and 1.0 year for ESPP. It neither splits the aggregate dollars nor asserts a common recognition period.",
+          "selected_block_ids": [
+            "NVDA_2023.html:1458632:text"
+          ],
+          "partial_evidence_block_ids": []
+        }
+      ]
+    },
+    {
+      "item_id": "aa26b3e472b571af62b9",
+      "history_id": "NVDA",
+      "family": "stock_compensation",
+      "question": "At NVDA's fiscal 2023 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "policy": "decomposition",
+      "budget": 4096,
+      "pack_filename": "aa26b3e472b571af62b9_decomposition_4096.txt",
+      "pack_sha256": "d28c1070fee69c044e0206172099d8da17e5150c98e72acc4ca32a2dc3667403",
+      "pack_words": 4090,
+      "pack_blocks": 121,
+      "entire_pack_inspected": true,
+      "overall": "sufficient",
+      "strict_reference_overall": "sufficient",
+      "question_level_overall": "sufficient",
+      "question_level_rationale": "All directly requested amounts, definitions, bindings and arithmetic premises are present in selected evidence; no external reference text needs to be supplied to the reader.",
+      "claim_reviews": [
+        {
+          "claim_id": "nvda_unearned_sbc",
+          "reference_statement": "At January29,2023, aggregate unearned stock-based compensation expense is USD6.56 billion.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for unrecognized stock-compensation cost and units.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The selected disclosure explicitly supplies the 2023-01-29 date, aggregate unearned stock-compensation scope and USD6.56 billion amount.",
+          "selected_block_ids": [
+            "NVDA_2023.html:1458632:text"
+          ],
+          "partial_evidence_block_ids": []
+        },
+        {
+          "claim_id": "nvda_periods_by_award",
+          "reference_statement": "Expected weighted-average recognition periods are2.6 years for RSUs/PSUs/market-based PSUs and1.0 year for ESPP, on the stated January29,2023 aggregate unearned-compensation disclosure.",
+          "reference_role": "required",
+          "claimnecessity": "required_for_question",
+          "claimnecessity_rationale": "The question directly asks for weighted-average recognition period and explicitly preserves separate award-type periods.",
+          "verdict": "sufficient",
+          "reason_category": "complete_evidence",
+          "reason": "The same dated aggregate disclosure explicitly supplies 2.6 years for RSUs/PSUs/market-based PSUs and 1.0 year for ESPP. It neither splits the aggregate dollars nor asserts a common recognition period.",
+          "selected_block_ids": [
+            "NVDA_2023.html:1458632:text"
+          ],
+          "partial_evidence_block_ids": []
+        }
+      ]
+    }
+  ]
+}

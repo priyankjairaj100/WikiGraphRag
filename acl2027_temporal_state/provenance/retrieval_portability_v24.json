@@ -1,0 +1,148 @@
+{
+  "schema": "authored_retrieval_portability_check_v24",
+  "created_at_utc": "2026-10-06T04:57:22.425728+00:00",
+  "data_role": "authored three-block numeric reproducibility fixture; no natural source question/result/reference input",
+  "implementation_sha256": "8123f66e91676443989b57c5c6d269b1b24d0922d88529fddc9386ec46889b40",
+  "fixture_python": "import json\nfrom temporal_state.evidence_retrieval_v24 import Block,BM25\nblocks=[]\nfor i,s in enumerate(['alpha '*19+'beta '*2+'gamma','alpha '*2+'beta '*19+'gamma','gamma '*100]):\n blocks.append(Block(str(i),'s','x','text',s,s,i,i+1,[[i,i+1]]))\nprint(json.dumps(BM25(blocks).rank('alpha beta gamma')))\n",
+  "records": [
+    {
+      "python_hash_seed": 0,
+      "ranking": [
+        [
+          0,
+          1.9305803810556712
+        ],
+        [
+          1,
+          1.9305803810556712
+        ],
+        [
+          2,
+          0.28751559948514777
+        ]
+      ]
+    },
+    {
+      "python_hash_seed": 1,
+      "ranking": [
+        [
+          0,
+          1.9305803810556714
+        ],
+        [
+          1,
+          1.9305803810556714
+        ],
+        [
+          2,
+          0.28751559948514777
+        ]
+      ]
+    },
+    {
+      "python_hash_seed": 2,
+      "ranking": [
+        [
+          0,
+          1.9305803810556714
+        ],
+        [
+          1,
+          1.9305803810556714
+        ],
+        [
+          2,
+          0.28751559948514777
+        ]
+      ]
+    },
+    {
+      "python_hash_seed": 3,
+      "ranking": [
+        [
+          0,
+          1.9305803810556714
+        ],
+        [
+          1,
+          1.9305803810556714
+        ],
+        [
+          2,
+          0.28751559948514777
+        ]
+      ]
+    },
+    {
+      "python_hash_seed": 4,
+      "ranking": [
+        [
+          0,
+          1.9305803810556714
+        ],
+        [
+          1,
+          1.9305803810556714
+        ],
+        [
+          2,
+          0.28751559948514777
+        ]
+      ]
+    },
+    {
+      "python_hash_seed": 5,
+      "ranking": [
+        [
+          0,
+          1.9305803810556714
+        ],
+        [
+          1,
+          1.9305803810556714
+        ],
+        [
+          2,
+          0.28751559948514777
+        ]
+      ]
+    },
+    {
+      "python_hash_seed": 6,
+      "ranking": [
+        [
+          0,
+          1.9305803810556712
+        ],
+        [
+          1,
+          1.9305803810556712
+        ],
+        [
+          2,
+          0.28751559948514777
+        ]
+      ]
+    },
+    {
+      "python_hash_seed": 7,
+      "ranking": [
+        [
+          0,
+          1.9305803810556714
+        ],
+        [
+          1,
+          1.9305803810556714
+        ],
+        [
+          2,
+          0.28751559948514777
+        ]
+      ]
+    }
+  ],
+  "scores_bitwise_equal": false,
+  "selected_order_identical": true,
+  "action": "preserve frozen corpus run; document limitation; no code change or claim that corpus selections changed"
+}

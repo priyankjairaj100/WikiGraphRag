@@ -1,0 +1,1456 @@
+{
+  "arithmetic_checks": {
+    "nflx_approx_cc_difference_derived_pp": "1.888311289855782992862689404",
+    "nflx_approx_cc_growth_derived_pct": "8.555116074210317391283719600",
+    "nflx_fcf_residual_USD_thousands": "0",
+    "nflx_growth_from_displayed_amounts_pct": "6.666804784354534398421030200"
+  },
+  "automatic_retrieval_outputs_viewed": false,
+  "counts": {
+    "partial": 4,
+    "supported": 3,
+    "unresolved": 1
+  },
+  "held_out_items": 0,
+  "human_gold": false,
+  "large_model_predictions": 0,
+  "limitations": [
+    "All eight prospectively templated development questions are retained.",
+    "Witness alternatives are observed, not exhaustive. A second source-only review and retrieved-alternative adjudication remain separate steps.",
+    "Partial/unresolved records do not constitute a benchmark of source insufficiency."
+  ],
+  "model_assisted_review": true,
+  "protocol_sha256": "214d0be8ba347c59a77a0a5b3c1f983d822ce9998999c7aae0ecfda654f21ae2",
+  "records": [
+    {
+      "answer_summary": "NFLX reports 7% consolidated revenue growth for the year ended December 31, 2023 versus 2022. It discloses an approximately USD597 million revenue uplift if the prior year's corresponding monthly exchange rates were held fixed. That is a constant-currency counterfactual, not organic/operational growth. The regional constant-currency percentages shown in the tables describe average monthly revenue per paying membership, not aggregate revenue growth. No separately stated consolidated constant-currency growth percentage was found in this bounded review. Using the disclosed total revenues and approximate currency uplift gives derived (not company-reported) growth of about 8.56%, versus 6.67% from displayed GAAP amounts, an approximately 1.89 percentage-point difference.",
+      "claims": [
+        {
+          "claim_id": "nflx_reported_growth",
+          "role": "required",
+          "statement": "Consolidated revenue for calendar FY2023 grew 7% versus FY2022, as reported.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 366476,
+                "byte_stop": 367089,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "25f2471b2f2ff2d72f72324c8915733004787bd6a17b639c8949bf605fa020b5"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nflx_total_revenues",
+          "role": "required",
+          "statement": "Consolidated total revenues were USD33,723,297 thousand in 2023 and USD31,615,550 thousand in 2022.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 338857,
+                "byte_stop": 339447,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "1f433fdefc624d74140d5cdd6a42d411dcbacf73758f4399b27694e5108a826b"
+              },
+              {
+                "byte_start": 339447,
+                "byte_stop": 340967,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "f778c8be1f4bfb2700bf82369b54c68131cb7dd69359f8ba06511c14cfbe486c"
+              },
+              {
+                "byte_start": 340967,
+                "byte_stop": 341530,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "ea73f741d4926e02d7d99632d8a675915b502515b895d988687369bf5aa737af"
+              },
+              {
+                "byte_start": 347101,
+                "byte_stop": 350177,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "e0ee0933c00cce3654c2dac0b39b71e69900ffdca347ef9335a05cb7f43f807d"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nflx_cc_definition_and_uplift",
+          "role": "required",
+          "statement": "Holding foreign exchange rates at the corresponding prior-year monthly rates raises the 2023 revenue counterfactual by approximately USD597 million; the disclosed non-GAAP currency measure is used to analyze average monthly revenue per paying membership.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 462805,
+                "byte_stop": 463833,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "62d9ac8de7f760bec449a9099198fa75c263da8d3182b9737cf69f323dee6af7"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nflx_cc_uplift_alternative",
+          "role": "corroborating",
+          "statement": "For 2023, the filing's market-risk discussion independently reports approximately USD597 million higher revenues at the 2022-period exchange rates.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 616487,
+                "byte_stop": 617219,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "cdf3077f0a53163f8603ead8ba10b1f0f66be671673ec056ca8cb898516d09fc"
+              }
+            ]
+          ]
+        }
+      ],
+      "family": "currency_growth",
+      "history_id": "NFLX",
+      "item_id": "1fdea52be906c75fa7f3",
+      "limitations": [
+        "The 8.56%, 6.67% and 1.89-point quantities are disclosed-input arithmetic, not reported growth percentages; the USD597 million input is approximate.",
+        "A separate company-reported aggregate constant-currency growth percentage remains unlocated; regional ARPU changes must not be substituted for it."
+      ],
+      "question": "For NFLX fiscal 2023, what total revenue growth did the company report, and what constant-currency or operational revenue growth did it disclose for the same period? State each definition and scope. Quantify the currency difference only where the disclosed bases permit it; do not equate organic, operational and constant-currency growth without source support.",
+      "review_scope": {
+        "coverage": "bounded model-assisted source review; not an independent external coverage certificate",
+        "method": "Short span/paragraph and table-row keyword inspection, followed by direct inspection of the relevant MD&A, segment, cash-flow or share-compensation note and local headers; no automatic retrieval ranking inspected.",
+        "reviewed_passage_anchors": [
+          {
+            "byte_start": 366476,
+            "byte_stop": 367089,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "25f2471b2f2ff2d72f72324c8915733004787bd6a17b639c8949bf605fa020b5"
+          },
+          {
+            "byte_start": 338857,
+            "byte_stop": 339447,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "1f433fdefc624d74140d5cdd6a42d411dcbacf73758f4399b27694e5108a826b"
+          },
+          {
+            "byte_start": 339447,
+            "byte_stop": 340967,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "f778c8be1f4bfb2700bf82369b54c68131cb7dd69359f8ba06511c14cfbe486c"
+          },
+          {
+            "byte_start": 340967,
+            "byte_stop": 341530,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "ea73f741d4926e02d7d99632d8a675915b502515b895d988687369bf5aa737af"
+          },
+          {
+            "byte_start": 347101,
+            "byte_stop": 350177,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "e0ee0933c00cce3654c2dac0b39b71e69900ffdca347ef9335a05cb7f43f807d"
+          },
+          {
+            "byte_start": 378451,
+            "byte_stop": 378735,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "67bb4c340ed687f9038d43f1285d7340e8404f1e16aa0a9a4cab8ff93ae7bfd9"
+          },
+          {
+            "byte_start": 462805,
+            "byte_stop": 463833,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "62d9ac8de7f760bec449a9099198fa75c263da8d3182b9737cf69f323dee6af7"
+          },
+          {
+            "byte_start": 616487,
+            "byte_stop": 617219,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "cdf3077f0a53163f8603ead8ba10b1f0f66be671673ec056ca8cb898516d09fc"
+          }
+        ],
+        "source_files": [
+          "NFLX_2022.html",
+          "NFLX_2023.html"
+        ]
+      },
+      "search_log": [
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NFLX_2022.html",
+          "term_counts": {
+            "United States dollars": 0,
+            "constant.currency": 5,
+            "foreign (currency|exchange)": 27,
+            "operational.{0,20}(growth|revenue)": 0,
+            "revenues?.{0,40}(increas|flat)": 5
+          }
+        },
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NFLX_2023.html",
+          "term_counts": {
+            "United States dollars": 0,
+            "constant.currency": 6,
+            "foreign (currency|exchange)": 54,
+            "operational.{0,20}(growth|revenue)": 0,
+            "revenues?.{0,40}(increas|flat)": 6
+          }
+        }
+      ],
+      "status": "partial"
+    },
+    {
+      "answer_summary": "Both annual reports describe one operating segment, with the co-chief executive officers reviewing consolidated financial information. Thus the observed one-segment decision basis is the same in both source statements. The 2023 filing says it is evaluating ASU2023-07; that statement is not evidence of an already completed segment recast. No explicit comparative-period segment recast statement was located in the bounded review, so a stronger claim that no presentation changes occurred is not authorized.",
+      "claims": [
+        {
+          "claim_id": "nflx_segment_2022",
+          "role": "required",
+          "statement": "The 2022 annual report describes one operating segment and CODM review on a consolidated basis.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 1804510,
+                "byte_stop": 1805433,
+                "source_file": "NFLX_2022.html",
+                "span_sha256": "cd16cd803e429735fc7990f4f06f02f113a36a1bc11fc5348374b7a4701c519e"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nflx_segment_2023",
+          "role": "required",
+          "statement": "The 2023 annual report describes one operating segment and CODM review on a consolidated basis.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 1625991,
+                "byte_stop": 1626597,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "f1e40ea06b6ce88a6e517a1ca44b0f77eeb74d62681d5d9ac2a99b3dcb34cd52"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nflx_segment_asu",
+          "role": "required",
+          "statement": "The 2023 filing describes ASU2023-07 as under evaluation, with its stated effective fiscal years beginning after December15,2023.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 956023,
+                "byte_stop": 957353,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "3e5d54053f50e181286c35e4df8b889621ce1e970f5243509d979aabd18a825d"
+              }
+            ]
+          ]
+        }
+      ],
+      "family": "segment_recast",
+      "history_id": "NFLX",
+      "item_id": "17bf16ca0005b65da41b",
+      "limitations": [
+        "Positive source statements establish the one-segment/consolidated review basis. Bounded keyword and segment-note inspection does not prove the absence of every recast or presentation change."
+      ],
+      "question": "Did NFLX change its reportable-segment presentation between its fiscal 2022 and fiscal 2023 annual reports? Identify the earlier and later segment basis and what the sources explicitly say about recasting comparative periods. Do not infer a recast merely from different amounts or similar labels.",
+      "review_scope": {
+        "coverage": "bounded model-assisted source review; not an independent external coverage certificate",
+        "method": "Short span/paragraph and table-row keyword inspection, followed by direct inspection of the relevant MD&A, segment, cash-flow or share-compensation note and local headers; no automatic retrieval ranking inspected.",
+        "reviewed_passage_anchors": [
+          {
+            "byte_start": 171415,
+            "byte_stop": 172155,
+            "source_file": "NFLX_2022.html",
+            "span_sha256": "ccfff83d9fd54bb19772be5572e17ccde89134446eb0e4462bcef8e3cc79a21d"
+          },
+          {
+            "byte_start": 1804510,
+            "byte_stop": 1805433,
+            "source_file": "NFLX_2022.html",
+            "span_sha256": "cd16cd803e429735fc7990f4f06f02f113a36a1bc11fc5348374b7a4701c519e"
+          },
+          {
+            "byte_start": 171813,
+            "byte_stop": 172553,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "ccfff83d9fd54bb19772be5572e17ccde89134446eb0e4462bcef8e3cc79a21d"
+          },
+          {
+            "byte_start": 956023,
+            "byte_stop": 957353,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "3e5d54053f50e181286c35e4df8b889621ce1e970f5243509d979aabd18a825d"
+          },
+          {
+            "byte_start": 1625991,
+            "byte_stop": 1626597,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "f1e40ea06b6ce88a6e517a1ca44b0f77eeb74d62681d5d9ac2a99b3dcb34cd52"
+          }
+        ],
+        "source_files": [
+          "NFLX_2022.html",
+          "NFLX_2023.html"
+        ]
+      },
+      "search_log": [
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NFLX_2022.html",
+          "term_counts": {
+            "\\brecast\\w*": 0,
+            "\\breclassif\\w*": 0,
+            "chief operating decision maker": 1,
+            "operating segments?": 2,
+            "reportable segments?": 0
+          }
+        },
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NFLX_2023.html",
+          "term_counts": {
+            "\\brecast\\w*": 0,
+            "\\breclassif\\w*": 9,
+            "chief operating decision maker": 1,
+            "operating segments?": 2,
+            "reportable segments?": 3
+          }
+        }
+      ],
+      "status": "partial"
+    },
+    {
+      "answer_summary": "For FY2023, NFLX defines non-GAAP free cash flow as operating cash flow less purchases of property/equipment and the change in other assets. Its reconciliation is USD7,274,301 thousand minus USD348,552 thousand minus zero = USD6,925,749 thousand. The displayed thousand-dollar values reconcile exactly; that does not recover unrounded transaction values.",
+      "claims": [
+        {
+          "claim_id": "nflx_fcf_definition",
+          "role": "required",
+          "statement": "The issuer-defined non-GAAP measure deducts property/equipment purchases and the change in other assets from cash provided by operating activities.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 570172,
+                "byte_stop": 571015,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "6a2af470e937296fc09e1c9d21ec41ac085bb2be237b2b9fe058821cebac0e53"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nflx_cfo",
+          "role": "required",
+          "statement": "FY2023 operating cash flow is USD7,274,301 thousand.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 572782,
+                "byte_stop": 573526,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "9e1c7cf578792fb36c4efbef0d48dcdbbca067b630052f27ec083d385c998d7f"
+              },
+              {
+                "byte_start": 573526,
+                "byte_stop": 574968,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "274e1c7e719d55f261d66563677417d7f4505cc774e24d0badb6b851b53afe53"
+              },
+              {
+                "byte_start": 574968,
+                "byte_stop": 575453,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "c420c9bdd600c778eb3448bab8ec49bb1230ef78bd8336630497b12d2061e16b"
+              },
+              {
+                "byte_start": 575453,
+                "byte_stop": 578722,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "ad99d92111c3997a5e8f7a493894fafa09594ae5a94a2d2f8efe0f4bbc15295c"
+              }
+            ],
+            [
+              {
+                "byte_start": 572782,
+                "byte_stop": 573526,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "9e1c7cf578792fb36c4efbef0d48dcdbbca067b630052f27ec083d385c998d7f"
+              },
+              {
+                "byte_start": 573526,
+                "byte_stop": 574968,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "274e1c7e719d55f261d66563677417d7f4505cc774e24d0badb6b851b53afe53"
+              },
+              {
+                "byte_start": 574968,
+                "byte_stop": 575453,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "c420c9bdd600c778eb3448bab8ec49bb1230ef78bd8336630497b12d2061e16b"
+              },
+              {
+                "byte_start": 585111,
+                "byte_stop": 587552,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "189e39e7219a192319344d2c344c701b54831034a5eaaa639f43b1c431561aac"
+              }
+            ],
+            [
+              {
+                "byte_start": 741784,
+                "byte_stop": 741922,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "257fb9414cb82a52e8a40869b687651f582f338e35068b8ab7837159794dc2c9"
+              },
+              {
+                "byte_start": 742691,
+                "byte_stop": 743333,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "7dd5a0bf3a592c8842bfd0cd0ee08faab2582c119c7bbb0b5ba217330c577c53"
+              },
+              {
+                "byte_start": 743333,
+                "byte_stop": 744701,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "f83eca61e5ea4536d5edbbb435ef627b7386a71eb68350b568e5cfb384d1980b"
+              },
+              {
+                "byte_start": 745471,
+                "byte_stop": 748086,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "e6f3ae2ee3c9cdfbabf1432a55d170483c36dd5350154f0f4051b490cf2e5552"
+              },
+              {
+                "byte_start": 776791,
+                "byte_stop": 779087,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "a215ed382c79b831c181d0bd7aa6142db1ca75bf29d898140c4c06baefedf734"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nflx_ppe",
+          "role": "required",
+          "statement": "FY2023 purchases of property and equipment are a USD348,552 thousand deduction.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 572782,
+                "byte_stop": 573526,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "9e1c7cf578792fb36c4efbef0d48dcdbbca067b630052f27ec083d385c998d7f"
+              },
+              {
+                "byte_start": 573526,
+                "byte_stop": 574968,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "274e1c7e719d55f261d66563677417d7f4505cc774e24d0badb6b851b53afe53"
+              },
+              {
+                "byte_start": 574968,
+                "byte_stop": 575453,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "c420c9bdd600c778eb3448bab8ec49bb1230ef78bd8336630497b12d2061e16b"
+              },
+              {
+                "byte_start": 575453,
+                "byte_stop": 578722,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "ad99d92111c3997a5e8f7a493894fafa09594ae5a94a2d2f8efe0f4bbc15295c"
+              },
+              {
+                "byte_start": 587552,
+                "byte_stop": 589931,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "b484bfe2cc1a391ad4f4ff00c24526c6fbfdeb83ce984a1875ab5138879c1b24"
+              }
+            ],
+            [
+              {
+                "byte_start": 741784,
+                "byte_stop": 741922,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "257fb9414cb82a52e8a40869b687651f582f338e35068b8ab7837159794dc2c9"
+              },
+              {
+                "byte_start": 742691,
+                "byte_stop": 743333,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "7dd5a0bf3a592c8842bfd0cd0ee08faab2582c119c7bbb0b5ba217330c577c53"
+              },
+              {
+                "byte_start": 743333,
+                "byte_stop": 744701,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "f83eca61e5ea4536d5edbbb435ef627b7386a71eb68350b568e5cfb384d1980b"
+              },
+              {
+                "byte_start": 745471,
+                "byte_stop": 748086,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "e6f3ae2ee3c9cdfbabf1432a55d170483c36dd5350154f0f4051b490cf2e5552"
+              },
+              {
+                "byte_start": 779857,
+                "byte_stop": 781945,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "b6431998ade1307457a87528d43128cf50649bcdfa53902fcc0946426e981c8e"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nflx_other_assets",
+          "role": "required",
+          "statement": "FY2023's FCF reconciliation shows a zero adjustment for the change in other assets (dash convention).",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 572782,
+                "byte_stop": 573526,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "9e1c7cf578792fb36c4efbef0d48dcdbbca067b630052f27ec083d385c998d7f"
+              },
+              {
+                "byte_start": 573526,
+                "byte_stop": 574968,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "274e1c7e719d55f261d66563677417d7f4505cc774e24d0badb6b851b53afe53"
+              },
+              {
+                "byte_start": 574968,
+                "byte_stop": 575453,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "c420c9bdd600c778eb3448bab8ec49bb1230ef78bd8336630497b12d2061e16b"
+              },
+              {
+                "byte_start": 589931,
+                "byte_stop": 592346,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "f6e674eb663a2f763f7501df92425c6cb951d2273ea1a8d8cdf356b28c72896b"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nflx_fcf_value",
+          "role": "required",
+          "statement": "FY2023 free cash flow is USD6,925,749 thousand.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 572782,
+                "byte_stop": 573526,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "9e1c7cf578792fb36c4efbef0d48dcdbbca067b630052f27ec083d385c998d7f"
+              },
+              {
+                "byte_start": 573526,
+                "byte_stop": 574968,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "274e1c7e719d55f261d66563677417d7f4505cc774e24d0badb6b851b53afe53"
+              },
+              {
+                "byte_start": 574968,
+                "byte_stop": 575453,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "c420c9bdd600c778eb3448bab8ec49bb1230ef78bd8336630497b12d2061e16b"
+              },
+              {
+                "byte_start": 592346,
+                "byte_stop": 596395,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "04ccc22d8a3a265049f1e87f9f62b238a0cce0a10a9bfb7c8223eedff40e4800"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nflx_fcf_arithmetic",
+          "role": "required",
+          "statement": "At displayed thousand-dollar precision, 7,274,301 \u2212348,552 \u22120 =6,925,749 with no rounding residual.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 572782,
+                "byte_stop": 573526,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "9e1c7cf578792fb36c4efbef0d48dcdbbca067b630052f27ec083d385c998d7f"
+              },
+              {
+                "byte_start": 573526,
+                "byte_stop": 574968,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "274e1c7e719d55f261d66563677417d7f4505cc774e24d0badb6b851b53afe53"
+              },
+              {
+                "byte_start": 574968,
+                "byte_stop": 575453,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "c420c9bdd600c778eb3448bab8ec49bb1230ef78bd8336630497b12d2061e16b"
+              },
+              {
+                "byte_start": 575453,
+                "byte_stop": 578722,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "ad99d92111c3997a5e8f7a493894fafa09594ae5a94a2d2f8efe0f4bbc15295c"
+              },
+              {
+                "byte_start": 587552,
+                "byte_stop": 589931,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "b484bfe2cc1a391ad4f4ff00c24526c6fbfdeb83ce984a1875ab5138879c1b24"
+              },
+              {
+                "byte_start": 589931,
+                "byte_stop": 592346,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "f6e674eb663a2f763f7501df92425c6cb951d2273ea1a8d8cdf356b28c72896b"
+              },
+              {
+                "byte_start": 592346,
+                "byte_stop": 596395,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "04ccc22d8a3a265049f1e87f9f62b238a0cce0a10a9bfb7c8223eedff40e4800"
+              }
+            ]
+          ]
+        }
+      ],
+      "family": "free_cash_flow",
+      "history_id": "NFLX",
+      "item_id": "90376910c375cfd915c9",
+      "limitations": [
+        "Exactness is limited to displayed precision, not unrounded source accounting data."
+      ],
+      "question": "For NFLX fiscal 2023, what free cash flow did the company disclose, and how did it reconcile that measure to net cash from operating activities? State the company's definition, the amounts and units of its adjustments, and whether the reconciliation is exact or affected by rounding. Do not invent a free-cash-flow definition if none is disclosed.",
+      "review_scope": {
+        "coverage": "bounded model-assisted source review; not an independent external coverage certificate",
+        "method": "Short span/paragraph and table-row keyword inspection, followed by direct inspection of the relevant MD&A, segment, cash-flow or share-compensation note and local headers; no automatic retrieval ranking inspected.",
+        "reviewed_passage_anchors": [
+          {
+            "byte_start": 570172,
+            "byte_stop": 571015,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "6a2af470e937296fc09e1c9d21ec41ac085bb2be237b2b9fe058821cebac0e53"
+          },
+          {
+            "byte_start": 572782,
+            "byte_stop": 573526,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "9e1c7cf578792fb36c4efbef0d48dcdbbca067b630052f27ec083d385c998d7f"
+          },
+          {
+            "byte_start": 573526,
+            "byte_stop": 574968,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "274e1c7e719d55f261d66563677417d7f4505cc774e24d0badb6b851b53afe53"
+          },
+          {
+            "byte_start": 574968,
+            "byte_stop": 575453,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "c420c9bdd600c778eb3448bab8ec49bb1230ef78bd8336630497b12d2061e16b"
+          },
+          {
+            "byte_start": 575453,
+            "byte_stop": 578722,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "ad99d92111c3997a5e8f7a493894fafa09594ae5a94a2d2f8efe0f4bbc15295c"
+          },
+          {
+            "byte_start": 585111,
+            "byte_stop": 587552,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "189e39e7219a192319344d2c344c701b54831034a5eaaa639f43b1c431561aac"
+          },
+          {
+            "byte_start": 587552,
+            "byte_stop": 589931,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "b484bfe2cc1a391ad4f4ff00c24526c6fbfdeb83ce984a1875ab5138879c1b24"
+          },
+          {
+            "byte_start": 589931,
+            "byte_stop": 592346,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "f6e674eb663a2f763f7501df92425c6cb951d2273ea1a8d8cdf356b28c72896b"
+          },
+          {
+            "byte_start": 592346,
+            "byte_stop": 596395,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "04ccc22d8a3a265049f1e87f9f62b238a0cce0a10a9bfb7c8223eedff40e4800"
+          },
+          {
+            "byte_start": 741784,
+            "byte_stop": 741922,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "257fb9414cb82a52e8a40869b687651f582f338e35068b8ab7837159794dc2c9"
+          },
+          {
+            "byte_start": 742691,
+            "byte_stop": 743333,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "7dd5a0bf3a592c8842bfd0cd0ee08faab2582c119c7bbb0b5ba217330c577c53"
+          },
+          {
+            "byte_start": 743333,
+            "byte_stop": 744701,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "f83eca61e5ea4536d5edbbb435ef627b7386a71eb68350b568e5cfb384d1980b"
+          },
+          {
+            "byte_start": 745471,
+            "byte_stop": 748086,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "e6f3ae2ee3c9cdfbabf1432a55d170483c36dd5350154f0f4051b490cf2e5552"
+          },
+          {
+            "byte_start": 776791,
+            "byte_stop": 779087,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "a215ed382c79b831c181d0bd7aa6142db1ca75bf29d898140c4c06baefedf734"
+          },
+          {
+            "byte_start": 779857,
+            "byte_stop": 781945,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "b6431998ade1307457a87528d43128cf50649bcdfa53902fcc0946426e981c8e"
+          }
+        ],
+        "source_files": [
+          "NFLX_2022.html",
+          "NFLX_2023.html"
+        ]
+      },
+      "search_log": [
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NFLX_2022.html",
+          "term_counts": {
+            "cash.{0,25}operating activities": 12,
+            "change in other assets": 3,
+            "free cash flows?": 11,
+            "non.GAAP": 2,
+            "purchases of property": 4
+          }
+        },
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NFLX_2023.html",
+          "term_counts": {
+            "cash.{0,25}operating activities": 14,
+            "change in other assets": 3,
+            "free cash flows?": 10,
+            "non.GAAP": 5,
+            "purchases of property": 3
+          }
+        }
+      ],
+      "status": "supported"
+    },
+    {
+      "answer_summary": "At December31,2023, NFLX reports USD26 million of unrecognized compensation cost related to nonvested stock options, expected over a weighted-average 0.45 years. This is the nonvested-option amount and period; no broader all-award aggregate is inferred.",
+      "claims": [
+        {
+          "claim_id": "nflx_nonvested_options",
+          "role": "required",
+          "statement": "At December31,2023, unrecognized compensation for nonvested stock options is USD26 million with a weighted-average remaining recognition period of0.45 years.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 1458222,
+                "byte_stop": 1459461,
+                "source_file": "NFLX_2023.html",
+                "span_sha256": "9bbe15bdf228e95ac1bdbe8dfb2f1336210dd844625cc43491ef28823b772aec"
+              }
+            ]
+          ]
+        }
+      ],
+      "family": "stock_compensation",
+      "history_id": "NFLX",
+      "item_id": "3d9c9461adbe81a50cd1",
+      "limitations": [
+        "The amount is specifically for nonvested options; it must not be converted into an aggregate for any undisclosed award population."
+      ],
+      "question": "At NFLX's fiscal 2023 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "review_scope": {
+        "coverage": "bounded model-assisted source review; not an independent external coverage certificate",
+        "method": "Short span/paragraph and table-row keyword inspection, followed by direct inspection of the relevant MD&A, segment, cash-flow or share-compensation note and local headers; no automatic retrieval ranking inspected.",
+        "reviewed_passage_anchors": [
+          {
+            "byte_start": 1434083,
+            "byte_stop": 1435249,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "8edae4ebbdea5b117f52e83a7e5d9b79ff0ea96f894086ff16db625af782424f"
+          },
+          {
+            "byte_start": 1457291,
+            "byte_stop": 1458166,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "8833d706586842387d9bb420120d17041a76707f3335a090db2420572d5e6734"
+          },
+          {
+            "byte_start": 1458222,
+            "byte_stop": 1459461,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "9bbe15bdf228e95ac1bdbe8dfb2f1336210dd844625cc43491ef28823b772aec"
+          }
+        ],
+        "source_files": [
+          "NFLX_2022.html",
+          "NFLX_2023.html"
+        ]
+      },
+      "search_log": [
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NFLX_2022.html",
+          "term_counts": {
+            "ESPP": 0,
+            "nonvested": 0,
+            "unearned.{0,40}compensation": 0,
+            "unrecognized.{0,40}compensation": 0,
+            "weighted.average": 10
+          }
+        },
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NFLX_2023.html",
+          "term_counts": {
+            "ESPP": 0,
+            "nonvested": 1,
+            "unearned.{0,40}compensation": 0,
+            "unrecognized.{0,40}compensation": 1,
+            "weighted.average": 10
+          }
+        }
+      ],
+      "status": "supported"
+    },
+    {
+      "answer_summary": "NVDA describes FY2023 revenue of approximately USD26.97 billion as flat against FY2022. The segment revenue table reports USD26,974 million versus USD26,914 million and a dash at whole-percentage growth precision. The filing says its sales and third-party manufacturing arrangements are priced and paid in US dollars. A constant-currency or operational revenue growth measure was not located; the USD pricing statement does not authorize setting a separate currency-growth effect to zero.",
+      "claims": [
+        {
+          "claim_id": "nvda_reported_growth",
+          "role": "required",
+          "statement": "FY2023 revenue was approximately USD26.97 billion, described by the issuer as flat year over year.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 546030,
+                "byte_stop": 546237,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "8ac687ec3ad1f165b3333f1f88c2ed1de8f3fbadb686d08302592bd1d81b6d0d"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nvda_total_revenues",
+          "role": "required",
+          "statement": "Revenue totals for years ended January29,2023 and January30,2022 are USD26,974 million and USD26,914 million, with displayed difference USD60 million and dash percentage.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 594154,
+                "byte_stop": 594422,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "5992b597266f097a9a67da4bada88c30019ce665efb9a5612187331a75c8c7de"
+              },
+              {
+                "byte_start": 594422,
+                "byte_stop": 595690,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "c1323c785e96a891ba3bef917fd89618f09dd0617d50b00528c73b23fcbaad53"
+              },
+              {
+                "byte_start": 596172,
+                "byte_stop": 596463,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "600cfcfdc557951cc0eb38797295077aa1a800e824342d88c1685d255f993ab7"
+              },
+              {
+                "byte_start": 601010,
+                "byte_stop": 604114,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "3d8047a15e818522d66d1a5d843b98b91c433184b9f9156fd17a951711584b1d"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nvda_usd_pricing",
+          "role": "required",
+          "statement": "The filing describes sales and third-party manufacturing arrangements as providing for US-dollar pricing and payment.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 689189,
+                "byte_stop": 690119,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "7e68b27703e1b384132932f684e51b2a6e80f015aa566011d4223d600ff8902b"
+              }
+            ]
+          ]
+        }
+      ],
+      "family": "currency_growth",
+      "history_id": "NVDA",
+      "item_id": "c459fe830bd9e4e458bd",
+      "limitations": [
+        "No company-disclosed constant-currency or operational growth value was located in the bounded review. No global source-absence claim or zero-currency-effect inference is made."
+      ],
+      "question": "For NVDA fiscal 2023, what total revenue growth did the company report, and what constant-currency or operational revenue growth did it disclose for the same period? State each definition and scope. Quantify the currency difference only where the disclosed bases permit it; do not equate organic, operational and constant-currency growth without source support.",
+      "review_scope": {
+        "coverage": "bounded model-assisted source review; not an independent external coverage certificate",
+        "method": "Short span/paragraph and table-row keyword inspection, followed by direct inspection of the relevant MD&A, segment, cash-flow or share-compensation note and local headers; no automatic retrieval ranking inspected.",
+        "reviewed_passage_anchors": [
+          {
+            "byte_start": 546030,
+            "byte_stop": 546237,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "8ac687ec3ad1f165b3333f1f88c2ed1de8f3fbadb686d08302592bd1d81b6d0d"
+          },
+          {
+            "byte_start": 594154,
+            "byte_stop": 594422,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "5992b597266f097a9a67da4bada88c30019ce665efb9a5612187331a75c8c7de"
+          },
+          {
+            "byte_start": 594422,
+            "byte_stop": 595690,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "c1323c785e96a891ba3bef917fd89618f09dd0617d50b00528c73b23fcbaad53"
+          },
+          {
+            "byte_start": 596172,
+            "byte_stop": 596463,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "600cfcfdc557951cc0eb38797295077aa1a800e824342d88c1685d255f993ab7"
+          },
+          {
+            "byte_start": 601010,
+            "byte_stop": 604114,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "3d8047a15e818522d66d1a5d843b98b91c433184b9f9156fd17a951711584b1d"
+          },
+          {
+            "byte_start": 688534,
+            "byte_stop": 689133,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "9bbfeb93cc8b30d80790fcd4fed0b0aa7aae6ae1ccc8a8021f66eeca65db2cca"
+          },
+          {
+            "byte_start": 689189,
+            "byte_stop": 690119,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "7e68b27703e1b384132932f684e51b2a6e80f015aa566011d4223d600ff8902b"
+          },
+          {
+            "byte_start": 690175,
+            "byte_stop": 690796,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "a3bd80f9e9b45db23bd60ba1c9bb93ee66a5247d268b2784e0818fde05461996"
+          }
+        ],
+        "source_files": [
+          "NVDA_2022.html",
+          "NVDA_2023.html"
+        ]
+      },
+      "search_log": [
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NVDA_2022.html",
+          "term_counts": {
+            "United States dollars": 2,
+            "constant.currency": 0,
+            "foreign (currency|exchange)": 28,
+            "operational.{0,20}(growth|revenue)": 0,
+            "revenues?.{0,40}(increas|flat)": 5
+          }
+        },
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NVDA_2023.html",
+          "term_counts": {
+            "United States dollars": 3,
+            "constant.currency": 0,
+            "foreign (currency|exchange)": 30,
+            "operational.{0,20}(growth|revenue)": 0,
+            "revenues?.{0,40}(increas|flat)": 7
+          }
+        }
+      ],
+      "status": "partial"
+    },
+    {
+      "answer_summary": "Both reports identify two operating segments, Graphics and Compute & Networking, and describe an All Other category of unallocated enterprise expenses. The fiscal2023 report updates the component descriptions and lists additional categories of All Other costs, but that wording alone does not establish a transfer or recast. Both accounting-policy notes state only that some prior fiscal-year balances were reclassified to the current presentation. Neither generic statement identifies a segment-specific comparative recast in the reviewed passages, so that relation remains unresolved.",
+      "claims": [
+        {
+          "claim_id": "nvda_segments_2022",
+          "role": "required",
+          "statement": "The FY2022 report identifies two segments: Graphics and Compute & Networking.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 485334,
+                "byte_stop": 485691,
+                "source_file": "NVDA_2022.html",
+                "span_sha256": "b95ba800e43eb02da41b3016a26f49f2d21572a1face27b83955b41ac75daeb3"
+              }
+            ],
+            [
+              {
+                "byte_start": 2215420,
+                "byte_stop": 2215950,
+                "source_file": "NVDA_2022.html",
+                "span_sha256": "2009127cd65be10621037948e47f0d0d402dfb566a0dcc6f645044902bbcce21"
+              },
+              {
+                "byte_start": 2216006,
+                "byte_stop": 2216503,
+                "source_file": "NVDA_2022.html",
+                "span_sha256": "70613605fd1e8f132a3c598350c28ea67608ba79a608be6b34cfb64cbdf0eba1"
+              },
+              {
+                "byte_start": 2216559,
+                "byte_stop": 2217409,
+                "source_file": "NVDA_2022.html",
+                "span_sha256": "930a93da5f887fc11b9fa0f8db5ec30a002769f3dad5ae7731cecd4264c14d07"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nvda_segments_2023",
+          "role": "required",
+          "statement": "The FY2023 report identifies two segments: Compute & Networking and Graphics.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 521618,
+                "byte_stop": 521965,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "a691c31acb5bf2ae5f4e27088d81d85b590bb3dd039a18db460187ed6907a164"
+              }
+            ],
+            [
+              {
+                "byte_start": 2349209,
+                "byte_stop": 2349676,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "cde43407cca78ef9c7c39361b1b01574958e87dd93d5a37f00d26d0ddce00a28"
+              },
+              {
+                "byte_start": 2349732,
+                "byte_stop": 2350286,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "72ff38dc3c26b478a19426f185d1860baa8819035f519efddee785e87bb7bb8d"
+              },
+              {
+                "byte_start": 2350342,
+                "byte_stop": 2351182,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "ef61066b79f3362194bdf3cf265dc560f7000287d30b4fc6c2a8d93c13b39ff8"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nvda_components_2022",
+          "role": "required",
+          "statement": "The earlier Graphics description covers GeForce/GeForceNOW, workstation/vGPU and automotive infotainment/Omniverse; Compute & Networking covers Data Center, Mellanox networking, automotive AI, CMP, Jetson and enterprise software.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 2215420,
+                "byte_stop": 2215950,
+                "source_file": "NVDA_2022.html",
+                "span_sha256": "2009127cd65be10621037948e47f0d0d402dfb566a0dcc6f645044902bbcce21"
+              },
+              {
+                "byte_start": 2216006,
+                "byte_stop": 2216503,
+                "source_file": "NVDA_2022.html",
+                "span_sha256": "70613605fd1e8f132a3c598350c28ea67608ba79a608be6b34cfb64cbdf0eba1"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nvda_components_2023",
+          "role": "required",
+          "statement": "The later Graphics description retains those broad areas with updated RTX/Omniverse wording; Compute & Networking includes Data Center, networking, automotive AI and electric-vehicle platforms, Jetson, enterprise software and CMP. This is a description comparison, not an equivalence or causal-reclassification finding.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 2349209,
+                "byte_stop": 2349676,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "cde43407cca78ef9c7c39361b1b01574958e87dd93d5a37f00d26d0ddce00a28"
+              },
+              {
+                "byte_start": 2349732,
+                "byte_stop": 2350286,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "72ff38dc3c26b478a19426f185d1860baa8819035f519efddee785e87bb7bb8d"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nvda_all_other",
+          "role": "required",
+          "statement": "Both reports identify All Other as enterprise costs not assigned by the CODM to the two segments; the lists of disclosed costs differ.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 2217465,
+                "byte_stop": 2218047,
+                "source_file": "NVDA_2022.html",
+                "span_sha256": "470c4c9c33d939795a7f8dad3f3ae6de68fecc112d7638532ac01865b1efd96c"
+              },
+              {
+                "byte_start": 2351238,
+                "byte_stop": 2351907,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "8bba4d0ebf614da779da3e72cf9ed049bc67f701a12a80cf060cad19df252b7f"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nvda_generic_reclassification",
+          "role": "required",
+          "statement": "Both reports say some prior fiscal-year balances were reclassified to conform to current presentation, without identifying a segment-specific recast in those statements.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 1182926,
+                "byte_stop": 1183165,
+                "source_file": "NVDA_2022.html",
+                "span_sha256": "59a9558a6d3d29b2f11ef67779bc09ce2966559262fd837dbba51df1e4d546be"
+              },
+              {
+                "byte_start": 1246023,
+                "byte_stop": 1246252,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "33b53eebde659e1a1f444a2a331ebeb8932ffda54660602ec5ab88aba5e9b807"
+              }
+            ]
+          ]
+        }
+      ],
+      "family": "segment_recast",
+      "history_id": "NVDA",
+      "item_id": "f57d4771b31d295f297a",
+      "limitations": [
+        "Shared segment names do not prove all underlying boundaries are invariant. Generic reclassification boilerplate does not establish which segment amounts were recast or why."
+      ],
+      "question": "Did NVDA change its reportable-segment presentation between its fiscal 2022 and fiscal 2023 annual reports? Identify the earlier and later segment basis and what the sources explicitly say about recasting comparative periods. Do not infer a recast merely from different amounts or similar labels.",
+      "review_scope": {
+        "coverage": "bounded model-assisted source review; not an independent external coverage certificate",
+        "method": "Short span/paragraph and table-row keyword inspection, followed by direct inspection of the relevant MD&A, segment, cash-flow or share-compensation note and local headers; no automatic retrieval ranking inspected.",
+        "reviewed_passage_anchors": [
+          {
+            "byte_start": 485334,
+            "byte_stop": 485691,
+            "source_file": "NVDA_2022.html",
+            "span_sha256": "b95ba800e43eb02da41b3016a26f49f2d21572a1face27b83955b41ac75daeb3"
+          },
+          {
+            "byte_start": 1182926,
+            "byte_stop": 1183165,
+            "source_file": "NVDA_2022.html",
+            "span_sha256": "59a9558a6d3d29b2f11ef67779bc09ce2966559262fd837dbba51df1e4d546be"
+          },
+          {
+            "byte_start": 2214997,
+            "byte_stop": 2215364,
+            "source_file": "NVDA_2022.html",
+            "span_sha256": "6504c4a0791fb63dcf44302c266eb7aa4274d8541f551fda4669992f9682b49e"
+          },
+          {
+            "byte_start": 2215420,
+            "byte_stop": 2215950,
+            "source_file": "NVDA_2022.html",
+            "span_sha256": "2009127cd65be10621037948e47f0d0d402dfb566a0dcc6f645044902bbcce21"
+          },
+          {
+            "byte_start": 2216006,
+            "byte_stop": 2216503,
+            "source_file": "NVDA_2022.html",
+            "span_sha256": "70613605fd1e8f132a3c598350c28ea67608ba79a608be6b34cfb64cbdf0eba1"
+          },
+          {
+            "byte_start": 2216559,
+            "byte_stop": 2217409,
+            "source_file": "NVDA_2022.html",
+            "span_sha256": "930a93da5f887fc11b9fa0f8db5ec30a002769f3dad5ae7731cecd4264c14d07"
+          },
+          {
+            "byte_start": 2217465,
+            "byte_stop": 2218047,
+            "source_file": "NVDA_2022.html",
+            "span_sha256": "470c4c9c33d939795a7f8dad3f3ae6de68fecc112d7638532ac01865b1efd96c"
+          },
+          {
+            "byte_start": 521618,
+            "byte_stop": 521965,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "a691c31acb5bf2ae5f4e27088d81d85b590bb3dd039a18db460187ed6907a164"
+          },
+          {
+            "byte_start": 1246023,
+            "byte_stop": 1246252,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "33b53eebde659e1a1f444a2a331ebeb8932ffda54660602ec5ab88aba5e9b807"
+          },
+          {
+            "byte_start": 2348796,
+            "byte_stop": 2349153,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "3385e70e160152092e60e2b7e4ebd17328fda2cd6baa98cd327692cbee143deb"
+          },
+          {
+            "byte_start": 2349209,
+            "byte_stop": 2349676,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "cde43407cca78ef9c7c39361b1b01574958e87dd93d5a37f00d26d0ddce00a28"
+          },
+          {
+            "byte_start": 2349732,
+            "byte_stop": 2350286,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "72ff38dc3c26b478a19426f185d1860baa8819035f519efddee785e87bb7bb8d"
+          },
+          {
+            "byte_start": 2350342,
+            "byte_stop": 2351182,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "ef61066b79f3362194bdf3cf265dc560f7000287d30b4fc6c2a8d93c13b39ff8"
+          },
+          {
+            "byte_start": 2351238,
+            "byte_stop": 2351907,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "8bba4d0ebf614da779da3e72cf9ed049bc67f701a12a80cf060cad19df252b7f"
+          },
+          {
+            "byte_start": 2351963,
+            "byte_stop": 2352699,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "21058e367690323200b2af35c58665d830f6a12d3ca73fbb0655e1bc83c321f8"
+          }
+        ],
+        "source_files": [
+          "NVDA_2022.html",
+          "NVDA_2023.html"
+        ]
+      },
+      "search_log": [
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NVDA_2022.html",
+          "term_counts": {
+            "\\brecast\\w*": 0,
+            "\\breclassif\\w*": 7,
+            "chief operating decision maker": 1,
+            "operating segments?": 4,
+            "reportable segments?": 4
+          }
+        },
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NVDA_2023.html",
+          "term_counts": {
+            "\\brecast\\w*": 0,
+            "\\breclassif\\w*": 7,
+            "chief operating decision maker": 1,
+            "operating segments?": 4,
+            "reportable segments?": 4
+          }
+        }
+      ],
+      "status": "partial"
+    },
+    {
+      "answer_summary": "An issuer-defined free-cash-flow measure and reconciliation were not located in the two reviewed annual reports. The FY2023 MD&A reports operating cash flow, but this alone is insufficient to define the company's free cash flow. No free-cash-flow value is constructed from CFO and capital expenditures.",
+      "claims": [],
+      "family": "free_cash_flow",
+      "history_id": "NVDA",
+      "item_id": "47c46cf836ce94b02953",
+      "limitations": [
+        "Full decoded-text searches for free cash flow returned zero matches in both reports. This is a search result, not a semantic proof of nonexistence or a statement about earnings releases outside the frozen corpus.",
+        "The question is retained unresolved; it is not treated as an automatic method failure, globally insufficient example, or zero-valued FCF observation."
+      ],
+      "question": "For NVDA fiscal 2023, what free cash flow did the company disclose, and how did it reconcile that measure to net cash from operating activities? State the company's definition, the amounts and units of its adjustments, and whether the reconciliation is exact or affected by rounding. Do not invent a free-cash-flow definition if none is disclosed.",
+      "review_scope": {
+        "coverage": "bounded model-assisted source review; not an independent external coverage certificate",
+        "method": "Short span/paragraph and table-row keyword inspection, followed by direct inspection of the relevant MD&A, segment, cash-flow or share-compensation note and local headers; no automatic retrieval ranking inspected.",
+        "reviewed_passage_anchors": [
+          {
+            "byte_start": 658801,
+            "byte_stop": 659234,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "4e580061de99352694335a115663c11164668be9dda9b4bd32bb58ddeb1fe187"
+          },
+          {
+            "byte_start": 659234,
+            "byte_stop": 659857,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "dac999d3a02fa039022e02a3b51ecaa7aa8c5aae92395eb0a8b7837643b68b2f"
+          },
+          {
+            "byte_start": 660115,
+            "byte_stop": 660569,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "1688a105aed3ee3777a42ea6513f1f26af2bf7911dfdc9b140a4fad399723d95"
+          },
+          {
+            "byte_start": 660569,
+            "byte_stop": 662022,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "d154de3be5bff2d14209baef22f27ac626bda245d6622e7553f5355e5c3d9a30"
+          }
+        ],
+        "source_files": [
+          "NVDA_2022.html",
+          "NVDA_2023.html"
+        ]
+      },
+      "search_log": [
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NVDA_2022.html",
+          "term_counts": {
+            "cash.{0,25}operating activities": 5,
+            "change in other assets": 0,
+            "free cash flows?": 0,
+            "non.GAAP": 0,
+            "purchases of property": 0
+          }
+        },
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NVDA_2023.html",
+          "term_counts": {
+            "cash.{0,25}operating activities": 5,
+            "change in other assets": 0,
+            "free cash flows?": 0,
+            "non.GAAP": 0,
+            "purchases of property": 0
+          }
+        }
+      ],
+      "status": "unresolved"
+    },
+    {
+      "answer_summary": "At January29,2023, NVDA reports USD6.56 billion of aggregate unearned stock-based compensation expense. The expected weighted-average recognition period is2.6 years for RSUs, PSUs and market-based PSUs, and1.0 year for ESPP. The source does not apportion the aggregate dollar amount between those groups; no common aggregate recognition period is inferred.",
+      "claims": [
+        {
+          "claim_id": "nvda_unearned_sbc",
+          "role": "required",
+          "statement": "At January29,2023, aggregate unearned stock-based compensation expense is USD6.56 billion.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 1458698,
+                "byte_stop": 1460677,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "e177664e0ef0aa804bf7494402c4e66f614231403903fff9879b3dca9934964e"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "nvda_periods_by_award",
+          "role": "required",
+          "statement": "Expected weighted-average recognition periods are2.6 years for RSUs/PSUs/market-based PSUs and1.0 year for ESPP, on the stated January29,2023 aggregate unearned-compensation disclosure.",
+          "witness_sets": [
+            [
+              {
+                "byte_start": 1458698,
+                "byte_stop": 1460677,
+                "source_file": "NVDA_2023.html",
+                "span_sha256": "e177664e0ef0aa804bf7494402c4e66f614231403903fff9879b3dca9934964e"
+              }
+            ]
+          ]
+        }
+      ],
+      "family": "stock_compensation",
+      "history_id": "NVDA",
+      "item_id": "aa26b3e472b571af62b9",
+      "limitations": [
+        "Separate award-group periods must be preserved; the source's aggregate dollar amount is not silently split, and no aggregate recognition period is invented."
+      ],
+      "question": "At NVDA's fiscal 2023 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "review_scope": {
+        "coverage": "bounded model-assisted source review; not an independent external coverage certificate",
+        "method": "Short span/paragraph and table-row keyword inspection, followed by direct inspection of the relevant MD&A, segment, cash-flow or share-compensation note and local headers; no automatic retrieval ranking inspected.",
+        "reviewed_passage_anchors": [
+          {
+            "byte_start": 1458698,
+            "byte_stop": 1460677,
+            "source_file": "NVDA_2023.html",
+            "span_sha256": "e177664e0ef0aa804bf7494402c4e66f614231403903fff9879b3dca9934964e"
+          }
+        ],
+        "source_files": [
+          "NVDA_2022.html",
+          "NVDA_2023.html"
+        ]
+      },
+      "search_log": [
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NVDA_2022.html",
+          "term_counts": {
+            "ESPP": 10,
+            "nonvested": 0,
+            "unearned.{0,40}compensation": 1,
+            "unrecognized.{0,40}compensation": 0,
+            "weighted.average": 17
+          }
+        },
+        {
+          "operation": "regex search over normalized complete XML text",
+          "source_file": "NVDA_2023.html",
+          "term_counts": {
+            "ESPP": 10,
+            "nonvested": 0,
+            "unearned.{0,40}compensation": 1,
+            "unrecognized.{0,40}compensation": 0,
+            "weighted.average": 17
+          }
+        }
+      ],
+      "status": "supported"
+    }
+  ],
+  "schema": "source_question_review_v24",
+  "script_sha256": "62a43929292de4f7174993f73d2b7ee74376d4b5ad391df8fd5120ca69b78741",
+  "sources": [
+    {
+      "filename": "NFLX_2022.html",
+      "sha256": "5bb5f38b1cd1d20d9ef7b3d54eb2ff8884bc77e2deea98672163c9417b6e122f"
+    },
+    {
+      "filename": "NFLX_2023.html",
+      "sha256": "b558cb9ef8f54bf18afb85b580dfe67d23b8776bb6f5c3f08db6704a39d3cf4e"
+    },
+    {
+      "filename": "NVDA_2022.html",
+      "sha256": "7e3c19c27675079dc36571d692b74732c7afb85497249ccc1518c2238d54d47e"
+    },
+    {
+      "filename": "NVDA_2023.html",
+      "sha256": "5195c592ab1649c7afdb5ea707d99b895a60eade66396e2f8fc47471221ac56e"
+    }
+  ]
+}

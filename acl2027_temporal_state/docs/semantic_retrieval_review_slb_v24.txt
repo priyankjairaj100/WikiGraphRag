@@ -1,0 +1,19 @@
+SLB FCF semantic evidence review, v24
+
+Scope: one supported development question, c98c4dde27737aecce29, four original final retrieval policies at 4096 rendered whitespace words. Every block was inspected. This is assistant/model-assisted evidence review, not independent human gold, generated QA, a held-out result, or coverage certification. Frozen source references and retrieval outputs remain unchanged.
+
+Policy        Words  Blocks  All-reference   Question-level
+typed          4070      58  missing         missing
+lexical        4093      77  missing         missing
+structural     4090     174  sufficient      sufficient
+decomposition  4093     190  sufficient      sufficient
+
+The typed pack supplies correctly bound 2023 operating cash flow of USD 6,637 million but lacks the issuer FCF definition and all three adjustment amounts. The lexical pack adds the full definition, the exact FCF row numerals, and an approximate $4.0 billion narrative, but lacks the three adjustment amounts. Its exact FCF row also lacks a rendered year header and unit header; that binding is uncertain rather than a missing numeral. The adjustment omissions alone make both packs insufficient for the explicit question.
+
+Both structural packs include the company/title/year/million-unit/currency headings and all components in the consolidated cash-flow statement, the disclosed FCF definition, and the year-bound FCF row in MD&A. The original MD&A millions anchor is absent, but the alternate statement supplies all formula inputs with proper bindings. The disclosed formula yields 6,637 - 1,939 - 507 - 153 = 4,038 million USD, equal to the FCF row; the narrative independently corroborates its approximate scale. This supplies a complete semantic witness without inventing the issuer definition or assuming a unit from a matching numeral alone. Zero residual is asserted only at displayed million-dollar precision; undisclosed unrounded amounts remain unknown.
+
+Post-retrieval necessity adjudication is explicit: the definition formula is required by the question. The non-GAAP label and discretionary-cash caveat are extra details within the frozen compound definition claim; their absence alone would not fail question sufficiency. All three text-capable packs already contain them, so this distinction changes no SLB verdict. Original claims and strict all-reference outcomes are preserved.
+
+Consequences: this item is not a confirmed residual against the ordinary structural/decomposition baselines. A mechanical exact-anchor miss cannot be treated as a retrieval or research-method win. The two weaker-policy misses do not demonstrate novel-method gains. Reader, proposer/verifier, external-coverage, and confirmatory gates remain separate.
+
+The JSON records pack/source/input hashes, all inspected block IDs, claim-level judgments, necessity reasons, and alternative source anchors. Validation checks hashes and word counts against final retrieval records, verifies source-span hashes and cited-block membership, and retains all seven reference claims for every policy.

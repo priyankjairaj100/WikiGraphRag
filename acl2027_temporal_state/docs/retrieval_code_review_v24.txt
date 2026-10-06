@@ -1,0 +1,182 @@
+V24 retrieval implementation review
+===================================
+2026-10-06
+
+Role, blindness and timing
+--------------------------
+Independent assistant-role code review. The reviewer read retrieval/indexing
+code, its runner, the exact-interval evaluator, authored tests, the prospective
+question protocol and implementation documentation. The reviewer did not open
+source-reference annotations, filing bodies, retrieval rankings, rendered source
+packs, result metrics or source-question outcomes. Tiny XHTML examples below
+were authored solely to test software behavior.
+
+The review was requested before retrieval execution. A coordination race allowed
+an initial freeze and a retrieval process launch while this review was underway.
+The root investigator and retrieval author report that the process was promptly
+interrupted (exit 130), with no completed-item console output or public result,
+and no outcomes inspected. Thus this is an early implementation audit following
+an interrupted attempt, not a claim that every review recommendation preceded
+all execution. Preserve the interrupted attempt and its freeze separately; fixes
+require an amended freeze and a fresh external index/run directory.
+
+Initial interrupted freeze SHA256 reported to this reviewer:
+6225d81079535294114fc10fbc110c26bf3aa56265d460d1a95f11b50f0bac57
+
+Findings sent to the implementation owners
+------------------------------------------
+1. Non-visible XML content entered the text index.
+   build_index sliced raw bytes between element children. Comments, processing
+   instructions and CDATA are not child elements in the existing node parser,
+   so their markup was rendered as evidence. An authored example rendered:
+     Revenue<!-- HIDDEN_COMMENT --> 5<?pi HIDDEN_PI?><![CDATA[<reported>]]>
+   Correct handling excludes comment/PI content and retains only CDATA character
+   content. CDATA text must not undergo HTML entity unescaping. Source intervals
+   must reflect the corrected rendering. No claim is made about how frequently
+   this defect affected the twelve real sources.
+
+2. Namespace-insensitive hidden-tag matching removed visible XHTML headers.
+   The generic local-name exclusion 'header' hid an ordinary <header> element,
+   as confirmed in the same authored example. Inline XBRL header/resource
+   exclusions must use their proper namespace or an equivalent exact rule.
+
+3. Structural closure under-followed table links.
+   A typed-card seed has no links of its own. Although the whole-table bundle
+   included visible rows, it followed only the seed's links. The same problem
+   occurred for a row seed when another selected table row contained the note
+   link. This weakens the declared whole-table plus one-hop-link baseline.
+   One-hop targets should be collected from the first-stage visible closure
+   under a common, charged budget, without recursively growing unlimited hops.
+
+4. Table fallback omitted semantic column headings.
+   Its leading-five-row date/unit regex omitted headings such as award types
+   that contain neither date nor unit tokens. This was a disclosed heuristic,
+   not covert leakage, but is weak for the planned numeric positive controls.
+   A prospectively declared common fallback should retain genuine header rows
+   or all leading rows under the same charged budget for both structural arms.
+
+5. A valid typed-only document could crash structural retrieval.
+   An authored source containing a visible self-closing nil numeric fact created
+   a resolved typed card but zero visible text blocks. Structural retrieval then
+   raised KeyError for the source's absent visible-block list. A safe card-only
+   fallback is needed. Nil is not numeric zero. Existing corpus impact was not
+   inspected or asserted.
+
+6. The typed arm initially lacked the promised precision preprocessing.
+   It ranked individual parsed cards and routed by question fiscal year; it did
+   not group duplicate bindings or screen signed rounding compatibility. The
+   protocol's precision-aware baseline claim therefore exceeded implementation.
+   Conventional preprocessing may group only the same source and exact complete
+   reported aspects, retain observed values and provenance, and conservatively
+   classify signed accuracy intervals. Equal-accuracy disagreements, disjoint
+   intervals and unclassified accuracy cannot be silently consolidated. Finite
+   precision metadata must remain unclassified unless correctly implemented.
+   This remains bounded preprocessing, not XBRL/DTS conformance or an automatic
+   natural-question-to-aspect semantic interpreter.
+
+7. The initial evaluator accepted incomplete experiment grids.
+   An empty records list or omission of entire policy/budget arms could pass.
+   Its CLI also lacked retrieval/protocol/freeze provenance and interval-universe
+   validation. The root investigator added an exact frozen factorial schedule,
+   hash checks, reference question identity checks, item source-universe checks,
+   and byte-interval bounds. The updated four authored evaluator tests passed
+   during this review. Pure evaluate() calls without an expected roster remain
+   limited unit-level calls; the experiment CLI supplies the frozen roster.
+
+8. Derived output consistency needs verification.
+   The reviewer recommended recomputing per-record interval unions and rendered
+   word costs from unique selected block IDs and the shared block catalog,
+   validating catalog source hashes and (where available) external pack hashes.
+   This catches stale/incorrect derived records. Matching hashes or intervals
+   still do not establish semantic answer correctness.
+
+9. A byte-distance heuristic dropped valid internal link targets.
+   The link resolver accepted a target only when a visible block contained its
+   offset or began within 128 bytes. An authored empty named anchor followed by
+   500 whitespace bytes and its paragraph was not resolved. With three unrelated
+   paragraphs between the query seed and target, neighbor expansion did not mask
+   the defect. The target was absent despite ample remaining budget. Resolve the
+   declared DOM target or its following visible block without this arbitrary
+   formatting-distance cutoff, and preserve source/budget boundaries.
+
+10. First precision amendment required two additional arithmetic fixes.
+    Authored checks found that 100 and 101 at decimals=0 were grouped through a
+    touching closed endpoint despite equal-accuracy disagreement. They also found
+    that two distinct exact values, 10^30 and 10^30+1 with decimals=INF, collapsed
+    under default 28-digit Decimal interval arithmetic. The implementation needs
+    an explicit equal-accuracy disagreement rule and exact bounded arithmetic;
+    unsupported precision must remain unresolved. Both findings were sent before
+    an amended retrieval run and without inspecting corpus outcomes.
+
+What the code already makes explicit
+------------------------------------
+The retrieval function receives the question and source index, not reference
+answers, witness selectors, family labels or annotated outcomes. The source
+index is built from fixed source bytes and conventional parsed concept names.
+The runner freezes source/code/index hashes and uses exclusive creation for
+public result and pack files. No large-model inference occurs in this code.
+
+All rendered block metadata, repeated prose and typed cards are included in the
+whitespace-word cost. Runtime assertions compare the final rendered word count
+with the accumulated count and budget. This is an engineering rendering budget;
+long no-whitespace strings and SHA/identifier headers show why it cannot be
+described as model tokens or full computational/acquisition cost.
+
+Typed cards expose parsed bindings but correctly contribute no raw source-text
+intervals. Full visible-node intervals can contain markup attributes or hidden
+metadata syntax that were not rendered; the documented interval interpretation
+is coverage of visible character content, not verbatim raw HTML reproduction.
+The evaluator explicitly leaves semantic premise recall and QA accuracy unset.
+Missing a preferred exact span is not a missing-premise conclusion; alternative
+text, equivalent typed cards and table fragments require independent review.
+
+Conventional BM25 and clause decomposition are baseline implementations, not a
+new method. General source-date routing and concept ranking do not establish
+that an intended natural query has been mapped correctly to typed aspects.
+Any family-4 failure must first be checked for ordinary baseline inadequacy.
+The lexical policy retains both filings while structural/decomposition also
+apply source-date routing. Their difference from lexical therefore combines
+routing and closure, and is not a structural-only ablation.
+
+Follow-up status
+----------------
+The implementation owners addressed the findings in a separately recorded
+amendment. The reviewer inspected the amended code and reran all 20 targeted
+v24 tests: 15 retrieval checks and 5 evaluator checks passed. No source retrieval
+outputs or reference outcomes were inspected during the follow-up.
+
+The updated text rendering uses parsed XML character parts; byte locators exclude
+non-visible comments/processing instructions, and CDATA content remains literal.
+Visible XHTML headers are retained. Table expansion follows one-hop links from
+the included visible closure; empty-anchor resolution uses a following visible
+block without a 128-byte cutoff. Fallback headings include explicit th rows and
+semantic text-only headings in the leading five rows. Typed-only closure is safe,
+and unsupported/nil values do not become normalized numeric cards.
+
+Duplicate grouping preserves every distinct reported variant within a compatible
+exact binding and retains occurrence provenance. Signed interval arithmetic uses
+exact Fraction values converted from Decimal, with an explicit finite bound;
+equal-accuracy disagreements remain separate. Finite decimals lexemes such as
+'0', '+0' and '00' share the same integer accuracy key. This does not establish
+taxonomy equivalence, full XBRL conformance or semantic query binding.
+
+The evaluator now validates the complete frozen experiment grid, source/freeze
+provenance, catalog source hashes, selected-block uniqueness, derived interval
+union and rendering cost. Its optional pack-directory check verifies external
+pack SHA256 and word counts. The study execution should use that check.
+
+Reviewed implementation identities (SHA256, relative to research directory):
+8123f66e91676443989b57c5c6d269b1b24d0922d88529fddc9386ec46889b40
+  src/temporal_state/evidence_retrieval_v24.py
+46a9f5192912f93aadb66614d926e8aeabf34a9e4cde0ee2b0f8f65377a58e06
+  scripts/run_retrieval_probe_v24.py
+62ad75085f8f7b7b76485b387c2ea3047daafc1fd379379e0692a01cacec0e39
+  scripts/evaluate_task_probe_v24.py
+af67530607838198e185e59d93feec806523cea6f8e2be6ce99915e063fd8858
+  tests/test_evidence_retrieval_v24.py
+c7e1e3250f5039f42903de703bf35811aad1ab52ec6201bf290c9426e571a267
+  tests/test_task_probe_v24.py
+
+These checks support proceeding with the amended conventional retrieval
+diagnostic. They do not establish semantic task admission, model performance,
+automatic source coverage or a new method's empirical advantage.

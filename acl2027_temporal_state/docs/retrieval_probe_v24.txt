@@ -1,0 +1,221 @@
+v24 conventional evidence retrieval diagnostic
+=============================================
+
+Purpose and separation
+----------------------
+This is an automatic baseline diagnostic over the 24 prospectively frozen
+questions and six development histories in data/task_probe_v24/protocol.json.
+It is not the certificate method, a model prediction, a reader-competence result,
+a semantic coverage certificate, a held-out study, or evidence of a method win.
+No reference annotations, expected answers, witness selectors or family labels
+are inputs to the implementation. Only question text and the two admitted source
+files for each item are used. Source references are authored separately.
+
+Source acquisition and index
+----------------------------
+All 12 source files are verified against immutable SHA256 and byte-size entries
+before indexing. The existing bounded XHTML/iXBRL parser supplies byte positions.
+Hidden/style/script/resource material and XML comments/processing instructions
+are excluded. CDATA character data remains literal. Visibility is a bounded DOM
+and inline-style profile, not browser layout or full external CSS evaluation.
+Each direct visible character-data fragment has one block owner: its nearest
+row, or otherwise its nearest prose/heading element. Table cells are separated
+with spaces; HTML entities are decoded; whitespace is normalized. This avoids
+indexing a document, its nested divs and its paragraphs as duplicate passages.
+
+A full-node interval is exposed only when every visible character fragment in
+that node belongs to the block and the node has no hidden descendants. Otherwise
+only the exact direct-character intervals are exposed. Source selectors preserve
+UTF-8 byte positions. Intervals denote source regions whose visible character
+data was included, not a claim that HTML attributes or XML namespace declarations
+were shown to the reader. The source index and complete rendered packs remain
+outside the repository. Public artifacts contain hashes, selectors, IDs, query
+strings, counts and timing, not third-party text captures.
+
+Resolved normalized visible typed facts become indented-JSON cards retaining
+qualified concepts, observed normalized values, and all reported aspect fields.
+Within a single source and exact complete binding, identical values are grouped;
+nonidentical values are grouped only when declared signed rounding intervals
+share a point and no equal-accuracy distinct values would be collapsed. Every
+observed value and declared accuracy remains in the card. Missing/finite-precision
+accuracy is unresolved; incompatible or unclassified different values remain
+separate cards. Interval arithmetic uses exact rational numbers, including
+zero, negative and large values; finite accuracy lexemes are normalized. This
+is bounded retrieval preprocessing, not XBRL/DTS conformance or adjudication.
+All grouped source occurrence anchors and dependencies remain in provenance. Standard
+CamelCase concept words augment the owning text block's lexical search field.
+No namespace stripping asserts semantic equivalence. A card's raw XML binding
+anchors are separately identified as provenance: they are NOT counted as raw
+source text rendered in the evidence pack. Aspect cards do not by themselves
+establish the natural question's intended concept or semantic coverage.
+
+All headers identify source filename, actual filing fiscal year, source SHA256,
+block ID and kind. Filename years are not silently substituted for actual filing
+years (the two Berkshire filenames differ from their actual filing years).
+
+Ranking and fixed conventional policies
+---------------------------------------
+1. typed: rank parsed-aspect cards by the natural question.
+2. lexical: rank all cards and visible blocks by the natural question.
+3. structural: same lexical ranking with generic structural closure.
+4. decomposition: the question, punctuation-separated clauses, and clauses
+   separated at and/whether/while with at least two content tokens; also one
+   content-token-only variant. Fuse rankings with sum 1/(60 + rank), using equal
+   weights. It uses the same structural closure and no family-specific weights,
+   expansion dictionary or answer-dependent tuning.
+
+The standalone BM25 score sums, over distinct query terms:
+ log(1+(N-df+0.5)/(df+0.5)) * tf*(k1+1)
+ / (tf + k1*(1-b+b*document_length/mean_document_length)),
+with k1=1.2 and b=0.75. Tokenization splits CamelCase and non-alphanumeric
+boundaries, lowercases, removes one fixed generic stop list, and applies a
+simple final-s plural normalization for words longer than four characters,
+excluding words ending in ss. Ranking ties use source filename, byte start,
+and block kind. These are conventional retrieval rules, not novelty claims.
+
+The structural policies try a whole-table bundle with two preceding short
+non-row blocks, two post-table blocks, and direct internal one-hop link targets.
+For prose seeds they include neighboring blocks. A too-large table falls back
+to the seed row/card plus leading column/units header rows (among its first five
+rows: explicit th, rows without digits, or generic date/unit header patterns). The selected row and its
+headers must fit together; rows are not truncated. All visible nested-table
+blocks within the source table extent participate in whole-table closure.
+Internal links are followed from all included table/row blocks for one hop.
+An empty target anchor resolves to its next visible source block, without a
+fixed byte-distance cutoff. No ranked score, beam saturation or table closure
+clears semantic coverage.
+
+Typed/structural/decomposition use a conventional source date restriction:
+if exactly one distinct phrase fiscal YYYY occurs in the question, and a source
+with that actual filing fiscal year exists, use that source. If there are two
+fiscal years, or no matching source, keep both. Lexical retains both sources.
+This is source-time routing, not a complete natural-question-to-aspect parser
+and not an assumption that every fact in the report belongs to the filing year. Card periods and visible comparative columns remain.
+
+Budget and cost
+---------------
+The primary cap is 4,096 rendered whitespace-delimited words; sensitivity caps
+are 1,024 and 16,384. All repeated text, typed cards and rendered headers are
+charged. Blocks are deduplicated by ID, not by dropping headers or source scope.
+Packs are built from complete blocks/bundles. This cap is explicitly not a model
+token budget. Indexing reads every admitted byte once per build; total source
+bytes, index timing and retrieval timing are reported separately. No efficiency
+claim hides that full source access behind the small output pack.
+
+Freeze, replay and interpretation
+--------------------------------
+Use three sequential phases, from acl2027_temporal_state:
+ python3 scripts/run_retrieval_probe_v24.py --phase index \
+   --source-dir /EXTERNAL/html --external-dir /EXTERNAL/v24_retrieval
+ python3 scripts/run_retrieval_probe_v24.py --phase freeze \
+   --source-dir /EXTERNAL/html --external-dir /EXTERNAL/v24_retrieval
+ python3 scripts/run_retrieval_probe_v24.py --phase run \
+   --source-dir /EXTERNAL/html --external-dir /EXTERNAL/v24_retrieval
+The original freeze/result paths are exclusive-create. To conduct a replay,
+use a fresh external directory and provide --freeze-path /EXTERNAL/new_freeze.json
+and --result-path /EXTERNAL/new_result.json to the freeze/run phases. Preserve
+originals. Index-manifest times, run times and creation timestamps will differ;
+source extraction, selectors, selected IDs and rendered-pack hashes should agree.
+Never replace a frozen unfavorable result. The runner checks protocol/code/index digests before
+execution. The final freeze happens after source indexing and before the complete amended
+288 question/policy/budget roster (24 x 4 x 3). It links the earlier interrupted
+attempt, whose eight partial pack/decision artifacts remain outside the repo.
+
+The source date rule, parser, ranker, decomposition and closure are frozen before
+the final full-roster retrieval run. Index-only integrity checks and authored unit tests precede that
+freeze. A changed/truncated intermediate external index was detected by hash
+checking; it was not used for retrieval and the complete index was rebuilt in
+a separate directory. Earlier index-only directories are not experiment runs. The subsequent first
+frozen run was interrupted immediately when root requested a blind implementation
+audit; four pack/decision pairs had been written. Their contents were not examined
+by this implementation agent. The freeze, code, tests and artifact hashes of that
+attempt are preserved under provenance/retrieval_v24_interrupted0/ and
+data/task_probe_v24/retrieval_freeze_interrupted0.json. Independent authored
+fixtures exposed comment/PI/CDATA, header, link and precision bugs; these were
+fixed before the amended full run, without reference- or outcome-based tuning.
+
+The public result has a shared block_catalog and 288 records. Each record gives
+its actual queries, selected block IDs, merged rendered-source intervals,
+exact rendered word cost, output hash and elapsed time. A subsequent independent
+source-reference comparison can mechanically match witness intervals. An
+unmatched broad DOM anchor must not automatically be treated as a missing
+semantic premise: table-row fragments or alternative passages may carry it.
+Typed-card dependencies likewise require semantic/field comparison, not a raw
+source-interval shortcut. Positive retrieval inclusion is not answer correctness;
+a search miss is not proof that the source lacks an answer.
+
+Primary background references (checked 2026-10-06)
+------------------------------------------------
+Robertson, S., and Zaragoza, H. (2009). The Probabilistic Relevance Framework:
+BM25 and Beyond. Foundations and Trends in Information Retrieval, 3(4), 333–389.
+https://doi.org/10.1561/1500000019
+Author-hosted source:
+https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf
+
+The positive-IDF variant and k1/b values match the documented conventional
+choices in Apache Lucene's BM25Similarity. This implementation does not claim
+byte-for-byte or analyzer equivalence to Lucene:
+https://lucene.apache.org/core/9_9_1/core/org/apache/lucene/search/similarities/BM25Similarity.html
+
+Portability limitation identified during the frozen run
+-----------------------------------------------------
+A code-only authored three-block check under eight PYTHONHASHSEED settings found
+last-bit BM25 score variation (about 2e-16) because query terms are accumulated
+from a Python set. The authored example's ranking did not change. The current
+frozen implementation is preserved; no corpus run was changed in response.
+Cross-process exact ranking/pack equivalence has not been established, especially
+for near ties. Source/index/observed-pack hashes support replay auditing of this
+run, but are not proof of bitwise determinism. A versioned future implementation
+should sort query terms and retain an explicit comparison with these results.
+
+Controlled environment replay
+-----------------------------
+The complete original result and packs are preserved. Before a second complete
+run, data/task_probe_v24/retrieval_seed0_environment_freeze.json fixed
+PYTHONHASHSEED=0, the unchanged implementation and original retrieval freeze,
+and byte-identical copies of all original source-index files. This addresses
+the observed authored numerical portability risk; it is not a tuned second
+method and does not alter any question, source, policy, budget or relevance rule.
+The replay writes results/retrieval_probe_seed0_v24.json and separate external
+packs. scripts/compare_retrieval_replays_v24.py verifies the fixed 288-cell roster,
+actual original and replay pack bytes, exact costs, block IDs and source interval
+dictionaries. Changed cells require separate semantic review. Source indexing
+is reused byte-for-byte; the replay is not a source re-extraction replication.
+
+Example portable replay (after copying index files and manifest byte-for-byte
+into a fresh /EXTERNAL/seed0 directory):
+ PYTHONHASHSEED=0 python3 scripts/run_retrieval_probe_v24.py --phase run \
+   --source-dir /EXTERNAL/html --external-dir /EXTERNAL/seed0 \
+   --freeze-path data/task_probe_v24/retrieval_freeze.json \
+   --result-path /EXTERNAL/retrieval_seed0.json
+A separately rebuilt source index has a new timestamped index-manifest hash;
+create a separate freeze for that case rather than bypassing hash validation.
+
+Completed retrieval and controlled replay
+-----------------------------------------
+All 288 original question/policy/budget cells completed. The fixed-seed control
+also completed all 288. All 576 actual rendered packs passed hash, cost, unique-ID
+and frozen-roster validation. Ordered selected IDs, selected-ID sets, pack hashes,
+rendered-source intervals and word counts matched in all 288 paired cells; zero
+cells changed. This establishes equality for these two observed runs, not a
+general guarantee over all Python hash seeds or future sources. The independent
+15-test retrieval suite passes.
+
+The immutable source universe contains 62,730,877 bytes across 12 files. The final
+index contains 26,249 visible blocks and 21,906 precision-aware typed cards. Index
+build took 32.877 seconds; original retrieval took 293.951
+seconds and fixed-seed retrieval took 287.033 seconds on this
+workspace. These are diagnostic timings, not a controlled efficiency comparison.
+One source read/index build uses both the explicit DOM parser and the typed
+reader's own parsing pass; both costs are included. The result metadata phrase
+'parsed once' refers to one index build per file, not one parser invocation.
+
+Result SHA256:
+ original: 52cf8be7a7dca5168548be5d306a4882d1ca1efaebc6ce829e712cbf2fd46b0b
+ seed0:    17b41052cec2a53791692fe0563debafbd65a9bb33f15622761f921360e3fca9
+Comparison: results/retrieval_replay_comparison_v24.json
+
+No reference annotations or expected answer/witness selectors were inspected by
+the retrieval implementation agent. Semantic reference evaluation is a separate
+root-stage artifact. No model predictions or retrieval-method superiority are
+claimed by this diagnostic.

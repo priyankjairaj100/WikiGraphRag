@@ -1,0 +1,76 @@
+Blind source reference pass: PFE and LLY, v24
+==========================================
+
+Role and boundary
+The author inspected only the four immutable source reports and the frozen v24
+question protocol. No automatic retrieval rankings, selected packs, prediction
+outputs, or model scores were inspected. This is assistant-authored source
+review, not independent human gold. A separate source reviewer must check the
+references before task admission. All eight assigned questions were retained.
+
+Outcome: five supported; one partial; two unresolved; zero replacements.
+
+PFE currency growth: supported. The 2024 report says total revenue and
+operational revenue each grew 7%, at rounded precision. It separately gives a
+$349 million unfavorable currency effect, approximately 1%. Operational means
+excluding foreign exchange. This exposes a real definition/rounding requirement:
+the equal rounded growth figures cannot justify a zero FX effect. The current
+comparative revenue basis includes the explicitly recast royalty presentation.
+
+PFE segment presentation: supported. Biopharma remains the only reportable
+segment in both reports. Three operating segments in 2024 replace two in 2023,
+and PC1/Pfizer Ignite had previously been managed together. More substantively,
+Note 17A says Biopharma's earnings basis changed from January 2024 by including
+manufacturing overhead and the described global ORD/PRD R&D and medical/safety
+costs formerly in Other business activities. It explicitly says prior-period
+segment information was reclassified to the current presentation. This source
+statement, rather than differences between amounts, supports the relation.
+
+PFE free cash flow: unresolved. Searches and cash-flow/liquidity/non-GAAP review
+did not locate a company-defined FCF measure in the bounded report pair.
+Disclosed operating cash and capital purchases do not authorize inventing one.
+This search outcome is not a globally insufficient label or coverage clearance.
+
+PFE stock compensation: supported. The table separately supplies unrecognized
+pre-tax cost and expected recognition years for TSRUs ($270m, 2.1), RSUs ($214m,
+1.8), PPSs ($107m, 1.9), PSAs ($40m, 1.7), and options ($4m, 1.7). No BPAs were
+outstanding. The references use the 2024 cell for each award with the specific
+award/year headers, row labels and unit label; the whole table is not required.
+
+LLY currency growth: partial. Consolidated revenue grew 32% in 2024. The revenue
+change table decomposes this into volume 27%, price 5% and an FX dash at displayed
+precision; the source notes rounding. No explicitly defined constant-currency
+or operational-growth metric was located. A volume-plus-price calculation must
+not be presented as a separately disclosed issuer metric or exactly zero FX.
+
+LLY segment presentation: supported, with a qualified negative. Both reports
+retain a single worldwide pharmaceutical segment. The 2024 report adopts the
+expanded ASU 2023-07 disclosures; its 2023 report described the prospective
+standard's requirement for retrospective application. These statements do not
+establish a segment reorganization or a substantive remeasurement of comparatives.
+
+LLY free cash flow: unresolved. The report pair search and ordinary liquidity
+discussion did not supply an issuer-defined FCF reconciliation. No FCF amount is
+admitted. This does not prove that the company never disclosed FCF elsewhere.
+
+LLY stock compensation: supported. The final sentences in the award discussions
+give RSUs $485.1m over 23 months, SVAs $61.4m over 21 months, and RVAs $27.5m over
+22 months; no remaining cost for the discontinued PA program. References retain
+the date, award type, amount, units and recognition period in each sentence.
+
+Both stock-compensation questions are typed controls: their amounts and periods
+are Inline XBRL facts. A failed query parser would not constitute new research.
+The supported definition/presentation relations may justify source-evidence
+questions, but this file makes no claim against any retrieval baseline.
+
+Reproduction
+From acl2027_temporal_state:
+python3 scripts/inspect_questions_pfe_lly_v24.py --external-dir EXTERNAL_DIR
+
+The script requires the four original source files named in the frozen protocol,
+checks each full-file byte count/SHA256, uses exact UTF-8 byte ranges, and hashes
+all selected spans. It reads no retrieval output. It writes only derived facts,
+paraphrases, locators, search counts and explicit review limitations. Full raw
+filings and transient inspection excerpts remain outside the Git repository.
+The result contains 71 witness-anchor occurrences; alternatives are recorded
+where actually observed, without claiming exhaustive semantic enumeration.

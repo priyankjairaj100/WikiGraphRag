@@ -1,0 +1,1299 @@
+{
+  "schema": "source_questions_pfe_lly_v24",
+  "protocol_sha256": "214d0be8ba347c59a77a0a5b3c1f983d822ce9998999c7aae0ecfda654f21ae2",
+  "sources": [
+    {
+      "filename": "PFE_2023.html",
+      "sha256": "d610db8532dd665bd360132c088daefefde463583af7db7d7869456efa31c6df"
+    },
+    {
+      "filename": "PFE_2024.html",
+      "sha256": "08e1393566e0cbdc0adf27b96881d2c822c46e3dc71bbc3e6a64f3dc3f7f3480"
+    },
+    {
+      "filename": "LLY_2023.html",
+      "sha256": "c21e3b4925260cafc944f3ff580860b741ad92e46f6b959d99f6dab193b5fc4a"
+    },
+    {
+      "filename": "LLY_2024.html",
+      "sha256": "1b0b903bffac393577aa68004a2cbd947e0a3a5c3264caa87e3c6f06463fe351"
+    }
+  ],
+  "records": [
+    {
+      "item_id": "19c51120114d139e98d9",
+      "history_id": "PFE",
+      "family": "currency_growth",
+      "question": "For PFE fiscal 2024, what total revenue growth did the company report, and what constant-currency or operational revenue growth did it disclose for the same period? State each definition and scope. Quantify the currency difference only where the disclosed bases permit it; do not equate organic, operational and constant-currency growth without source support.",
+      "status": "supported",
+      "answer_summary": "Reported and operational revenue growth are both rounded to 7%, but the source separately identifies a $349 million unfavorable FX effect. Operational means excluding FX; the 2024 report uses recast royalty-inclusive comparative revenues.",
+      "claims": [
+        {
+          "claim_id": "reported_and_operational_growth",
+          "statement": "On the 2024 report comparative basis, Pfizer reports total revenue increasing 7% ($4.1 billion), from $59.6 billion in 2023 to $63.6 billion in 2024; operational growth is also reported as 7% ($4.4 billion).",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 1315148,
+                "byte_stop": 1315518,
+                "span_sha256": "dd3895ea33568f165932662b47376f332cd936af9603860ea5cd40e896449840"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "operational_definition",
+          "statement": "Operational variances are period-to-period changes excluding foreign-exchange-rate effects; this definition does not remove acquisitions or make the measure organic growth.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 1290507,
+                "byte_stop": 1290631,
+                "span_sha256": "bc9be471728567475221832454fe3007a0b854fe275f5f6f035b9c29f55ce36f"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "currency_effect",
+          "statement": "The company explicitly reports an unfavorable foreign-exchange effect of $349 million, approximately 1%; subtracting the two rounded 7% growth figures would incorrectly imply no currency effect.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 1315148,
+                "byte_stop": 1315518,
+                "span_sha256": "dd3895ea33568f165932662b47376f332cd936af9603860ea5cd40e896449840"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "comparative_revenue_scope",
+          "statement": "In first-quarter 2024 royalty income was moved from Other income/deductions into a separate Royalty revenues line within Total revenues, and comparative periods were recast to that presentation.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 1290950,
+                "byte_stop": 1292213,
+                "span_sha256": "4a29dfc76eb0ae9825faa963ec52253ad131b7ff84c492bc76cf453d02dac708"
+              }
+            ]
+          ]
+        }
+      ],
+      "review_scope": "2024 MD&A definitions, total-revenue overview, royalty-reclassification paragraph, and 2024-versus-2023 worldwide operational/FX bridge.",
+      "search_log": [
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "constant[ -]currency",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "operational",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 39
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "foreign exchange",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 47
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "change in revenue",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "Total revenues",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 34
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "constant[ -]currency",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "operational",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 48
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "foreign exchange",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 46
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "change in revenue",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "Total revenues",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 42
+        }
+      ],
+      "limitations": [
+        "Assistant-authored source inspection; not independent human gold, model prediction, held-out evidence, or a retrieval advantage.",
+        "Observed alternative witness sets are recorded where found, but are not an exhaustive semantic enumeration."
+      ]
+    },
+    {
+      "item_id": "051fe7c696300d6d4818",
+      "history_id": "PFE",
+      "family": "segment_recast",
+      "question": "Did PFE change its reportable-segment presentation between its fiscal 2023 and fiscal 2024 annual reports? Identify the earlier and later segment basis and what the sources explicitly say about recasting comparative periods. Do not infer a recast merely from different amounts or similar labels.",
+      "status": "supported",
+      "answer_summary": "Biopharma remains the only reportable segment, but its segment-earnings cost allocation changed in 2024 and prior-period segment information was explicitly reclassified. Separately, PC1 and Pfizer Ignite became separate operating segments.",
+      "claims": [
+        {
+          "claim_id": "earlier_segment_basis",
+          "statement": "The 2023 report identifies Biopharma and Business Innovation as two operating segments, with Biopharma the only reportable segment.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2023.html",
+                "byte_start": 2560214,
+                "byte_stop": 2561333,
+                "span_sha256": "08a10ae4657ae5bee7a0be4da823f48f814e4f21150ed8001ff9b72b4ea63844"
+              }
+            ],
+            [
+              {
+                "source_file": "PFE_2023.html",
+                "byte_start": 1410997,
+                "byte_stop": 1412611,
+                "span_sha256": "81b00d988c1772a0a6f58813f7ef90517cbb783ddc5692be604dfaddfe6852ed"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "later_segment_basis",
+          "statement": "The 2024 report identifies Biopharma, PC1, and Pfizer Ignite as three operating segments while retaining Biopharma as the only reportable segment. PC1 and Pfizer Ignite had been managed together within Business Innovation before June 2024.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4753074,
+                "byte_stop": 4753641,
+                "span_sha256": "86cbce32f7947952fa73f09622ab34611e677cd35042725a4a9c498e023bf40b"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4754100,
+                "byte_stop": 4754286,
+                "span_sha256": "429dc32a65f6099c4f7d2103c3010bc21c59867345f904f22cef895e9c1711b0"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "earnings_basis_and_comparative_reclassification",
+          "statement": "The segment earnings basis changed from January 1, 2024: Biopharma earnings include manufacturing/supply, sales/marketing, R&D, and medical/safety costs associated with its products. Manufacturing overhead and the described global ORD/PRD R&D and medical/safety costs were previously in Other business activities. Pfizer explicitly reclassified prior-period segment information to conform to the current presentation.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4760626,
+                "byte_stop": 4761372,
+                "span_sha256": "2e396150a0b2a3517c5c9064fae053e4950a1143c0602c42934914eaa4dec4ec"
+              }
+            ]
+          ]
+        }
+      ],
+      "review_scope": "Both reports: business and organization summary, Note 1 organization, Note 17 operating segments, earnings-cost allocations, and comparative presentation statements.",
+      "search_log": [
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "reportable segment",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 10
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "operating segment",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 22
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "\\brecast",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "\\breclassif",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 24
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "retrospect",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "2023-07",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 2
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "reportable segment",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 15
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "operating segment",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 20
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "\\brecast",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 1
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "\\breclassif",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 34
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "retrospect",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "2023-07",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 1
+        }
+      ],
+      "limitations": [
+        "Assistant-authored source inspection; not independent human gold, model prediction, held-out evidence, or a retrieval advantage.",
+        "Observed alternative witness sets are recorded where found, but are not an exhaustive semantic enumeration."
+      ]
+    },
+    {
+      "item_id": "8b33820c6de0ea92a4f5",
+      "history_id": "PFE",
+      "family": "free_cash_flow",
+      "question": "For PFE fiscal 2024, what free cash flow did the company disclose, and how did it reconcile that measure to net cash from operating activities? State the company's definition, the amounts and units of its adjustments, and whether the reconciliation is exact or affected by rounding. Do not invent a free-cash-flow definition if none is disclosed.",
+      "status": "unresolved",
+      "answer_summary": "No issuer-defined 2024 free-cash-flow measure or reconciliation was located in the bounded report pair. Operating cash flow and property/equipment purchases are disclosed, but subtracting them would invent an issuer definition. This search outcome is not proof of global absence.",
+      "claims": [],
+      "review_scope": "Both reports full XML-character-data keyword search; 2024 MD&A non-GAAP definitions, cash-flow analysis (1962167:1976072), liquidity discussion and consolidated cash-flow statement reviewed.",
+      "search_log": [
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "free[ -]cash[ -]flow",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "\\bFCF\\b",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "net cash provided",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 10
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "capital expenditures",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 6
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "cash flow",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 62
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "free[ -]cash[ -]flow",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "\\bFCF\\b",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "net cash provided",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 6
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "capital expenditures",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 4
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "cash flow",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 61
+        }
+      ],
+      "limitations": [
+        "Assistant-authored source inspection; not independent human gold, model prediction, held-out evidence, or a retrieval advantage.",
+        "Observed alternative witness sets are recorded where found, but are not an exhaustive semantic enumeration.",
+        "Search failure does not authorize an insufficient-evidence gold label or an external coverage-clearance decision; no FCF answer claim admitted."
+      ]
+    },
+    {
+      "item_id": "e32a57877db45cf4ce7c",
+      "history_id": "PFE",
+      "family": "stock_compensation",
+      "question": "At PFE's fiscal 2024 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "status": "supported",
+      "answer_summary": "Unrecognized pre-tax costs/recognition years: TSRUs $270m/2.1; RSUs $214m/1.8; PPSs $107m/1.9; PSAs $40m/1.7; options $4m/1.7. No BPAs outstanding. Preserve award distinctions; no aggregate computed.",
+      "claims": [
+        {
+          "claim_id": "TSRU_unrecognized",
+          "statement": "At 2024 year end, unrecognized pre-tax compensation cost for nonvested TSRUs is $270 million, with an expected weighted-average recognition period of 2.1 years.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4408419,
+                "byte_stop": 4408761,
+                "span_sha256": "a2413ffe98b94d4f073d21587b7abbf7a44f427091e476c2f478cbfd0475b04a"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4410250,
+                "byte_stop": 4410497,
+                "span_sha256": "e965245922b58702f4408e4872917f987e794d1285a5523626a7f837c04c26e5"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4441675,
+                "byte_stop": 4441979,
+                "span_sha256": "654a1af00c68593e7247c8bc7b6aa5d4042bbb8c0d6edb73c221a95558968805"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4449237,
+                "byte_stop": 4449568,
+                "span_sha256": "22bedb6c49b12e40bf91f3b67552b19a7cad815ea9d6ddef4d9e2742bb3438e3"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4408826,
+                "byte_stop": 4409056,
+                "span_sha256": "533a01600148ff5187ac179ef6983fda30513a196e03cbdf629583592f34c2e2"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4410536,
+                "byte_stop": 4410766,
+                "span_sha256": "a75fff438dbe3c343ef3d30cac2fc752920c3f2be4ce026881c7ef48c2f0a2c3"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4442018,
+                "byte_stop": 4442486,
+                "span_sha256": "2c5f9202437cb915d2baac7a5d08d3ff47ce65441dfce7df515672b1821672dc"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4449637,
+                "byte_stop": 4450108,
+                "span_sha256": "6a7490dbf65b9d4f2e84b64236c654ae23a301d1c2366538ca9bc9463ae56cc5"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "RSU_unrecognized",
+          "statement": "At 2024 year end, unrecognized pre-tax compensation cost for nonvested RSUs is $214 million, with an expected weighted-average recognition period of 1.8 years.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4408419,
+                "byte_stop": 4408761,
+                "span_sha256": "a2413ffe98b94d4f073d21587b7abbf7a44f427091e476c2f478cbfd0475b04a"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4410250,
+                "byte_stop": 4410497,
+                "span_sha256": "e965245922b58702f4408e4872917f987e794d1285a5523626a7f837c04c26e5"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4441675,
+                "byte_stop": 4441979,
+                "span_sha256": "654a1af00c68593e7247c8bc7b6aa5d4042bbb8c0d6edb73c221a95558968805"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4449237,
+                "byte_stop": 4449568,
+                "span_sha256": "22bedb6c49b12e40bf91f3b67552b19a7cad815ea9d6ddef4d9e2742bb3438e3"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4409121,
+                "byte_stop": 4409350,
+                "span_sha256": "06e90b2cfca61d4d4a9231db5446fff971467b0f8b396811da2c5302c9fdd6d0"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4411399,
+                "byte_stop": 4411629,
+                "span_sha256": "a75fff438dbe3c343ef3d30cac2fc752920c3f2be4ce026881c7ef48c2f0a2c3"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4443489,
+                "byte_stop": 4443957,
+                "span_sha256": "b58b0dccb1307ae8976770f8c551a4f189cc0e1972dd0b92353e67ff6f58c647"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4451207,
+                "byte_stop": 4451678,
+                "span_sha256": "d11005bb7cc08873c7d46f2e419f8586a736d27d1f4936832206c819ac1814ac"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "PPS_unrecognized",
+          "statement": "At 2024 year end, unrecognized pre-tax compensation cost for nonvested PPSs is $107 million, with an expected weighted-average recognition period of 1.9 years.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4408419,
+                "byte_stop": 4408761,
+                "span_sha256": "a2413ffe98b94d4f073d21587b7abbf7a44f427091e476c2f478cbfd0475b04a"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4410250,
+                "byte_stop": 4410497,
+                "span_sha256": "e965245922b58702f4408e4872917f987e794d1285a5523626a7f837c04c26e5"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4441675,
+                "byte_stop": 4441979,
+                "span_sha256": "654a1af00c68593e7247c8bc7b6aa5d4042bbb8c0d6edb73c221a95558968805"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4449237,
+                "byte_stop": 4449568,
+                "span_sha256": "22bedb6c49b12e40bf91f3b67552b19a7cad815ea9d6ddef4d9e2742bb3438e3"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4409415,
+                "byte_stop": 4409644,
+                "span_sha256": "b7a14d4243c73312213794de19b63f81b05d9d66889df0262f5ecba0ff71c0f4"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4412262,
+                "byte_stop": 4412492,
+                "span_sha256": "a75fff438dbe3c343ef3d30cac2fc752920c3f2be4ce026881c7ef48c2f0a2c3"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4444960,
+                "byte_stop": 4445428,
+                "span_sha256": "d3d40337c430042d19b7f378b76c51202eacc97aa5b9a32d97a87379209f6c5d"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4452777,
+                "byte_stop": 4453248,
+                "span_sha256": "9ad45f03697a95a4436044b758a8001de8b24e1577999c9962ec7098a07c4122"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "PSA_unrecognized",
+          "statement": "At 2024 year end, unrecognized pre-tax compensation cost for nonvested PSAs is $40 million, with an expected weighted-average recognition period of 1.7 years.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4408419,
+                "byte_stop": 4408761,
+                "span_sha256": "a2413ffe98b94d4f073d21587b7abbf7a44f427091e476c2f478cbfd0475b04a"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4410250,
+                "byte_stop": 4410497,
+                "span_sha256": "e965245922b58702f4408e4872917f987e794d1285a5523626a7f837c04c26e5"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4441675,
+                "byte_stop": 4441979,
+                "span_sha256": "654a1af00c68593e7247c8bc7b6aa5d4042bbb8c0d6edb73c221a95558968805"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4449237,
+                "byte_stop": 4449568,
+                "span_sha256": "22bedb6c49b12e40bf91f3b67552b19a7cad815ea9d6ddef4d9e2742bb3438e3"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4409709,
+                "byte_stop": 4409938,
+                "span_sha256": "411431846bdf6c82da1ad176a37be0929c18bd01234211dbbac5ffbfd9ed1e1c"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4413125,
+                "byte_stop": 4413355,
+                "span_sha256": "a75fff438dbe3c343ef3d30cac2fc752920c3f2be4ce026881c7ef48c2f0a2c3"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4446430,
+                "byte_stop": 4446897,
+                "span_sha256": "0f248a8f9a419d9509235d3fd761c179818b8437fa0e22083367d1c9f461bbda"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4454347,
+                "byte_stop": 4454818,
+                "span_sha256": "01fa3bf0f49d363d58fce54adc045b156c0fa62d72cfe7491465f8703345d229"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "options_unrecognized",
+          "statement": "At 2024 year end, unrecognized pre-tax compensation cost for nonvested stock options is $4 million, with an expected weighted-average recognition period of 1.7 years.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4408419,
+                "byte_stop": 4408761,
+                "span_sha256": "a2413ffe98b94d4f073d21587b7abbf7a44f427091e476c2f478cbfd0475b04a"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4410250,
+                "byte_stop": 4410497,
+                "span_sha256": "e965245922b58702f4408e4872917f987e794d1285a5523626a7f837c04c26e5"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4441675,
+                "byte_stop": 4441979,
+                "span_sha256": "654a1af00c68593e7247c8bc7b6aa5d4042bbb8c0d6edb73c221a95558968805"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4449237,
+                "byte_stop": 4449568,
+                "span_sha256": "22bedb6c49b12e40bf91f3b67552b19a7cad815ea9d6ddef4d9e2742bb3438e3"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4410003,
+                "byte_stop": 4410241,
+                "span_sha256": "acf2c25c0e0ba13230d366eb9cf1a5524972ad3205ab0b73349a6b34345d7d6c"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4413988,
+                "byte_stop": 4414218,
+                "span_sha256": "a75fff438dbe3c343ef3d30cac2fc752920c3f2be4ce026881c7ef48c2f0a2c3"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4447898,
+                "byte_stop": 4448332,
+                "span_sha256": "306c1f75ea0fbfd43a06fff7a86388d0197468976d62aae97fb4e2586164c121"
+              },
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4455917,
+                "byte_stop": 4456388,
+                "span_sha256": "02da0a427e6d86eab6b0e51fa64c6359671c40906454433efc825f231e565890"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "BPA_absence",
+          "statement": "No BPAs were outstanding at December 31, 2024.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "PFE_2024.html",
+                "byte_start": 4364084,
+                "byte_stop": 4364428,
+                "span_sha256": "378f284ce2c9224ae23bcebf48ff09e4ad7d2c80a75c1ddfe3e08951e969ce25"
+              }
+            ]
+          ]
+        }
+      ],
+      "review_scope": "2024 Note 13 award definitions, nonvested-unrecognized-cost row, recognition-period row, award headers and 2024 columns; checked BPA statement.",
+      "search_log": [
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "unrecognized",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 15
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "not yet recognized",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 1
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "weighted.average",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 30
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "share.based",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 14
+        },
+        {
+          "source_file": "PFE_2023.html",
+          "query_regex": "stock.based",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "unrecognized",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 16
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "not yet recognized",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 1
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "weighted.average",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 29
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "share.based",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 14
+        },
+        {
+          "source_file": "PFE_2024.html",
+          "query_regex": "stock.based",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        }
+      ],
+      "limitations": [
+        "Assistant-authored source inspection; not independent human gold, model prediction, held-out evidence, or a retrieval advantage.",
+        "Observed alternative witness sets are recorded where found, but are not an exhaustive semantic enumeration.",
+        "Typed control: amounts and period values occur in Inline XBRL; query/parser failure alone would not establish a new semantic retrieval task."
+      ]
+    },
+    {
+      "item_id": "dfaf2ee8d24c82b77174",
+      "history_id": "LLY",
+      "family": "currency_growth",
+      "question": "For LLY fiscal 2024, what total revenue growth did the company report, and what constant-currency or operational revenue growth did it disclose for the same period? State each definition and scope. Quantify the currency difference only where the disclosed bases permit it; do not equate organic, operational and constant-currency growth without source support.",
+      "status": "partial",
+      "answer_summary": "Reported 2024 growth is 32%. The company provides volume, price and FX components with rounding caveats; no explicitly defined constant-currency or operational-growth metric was located in this report pair. Do not rename the volume-plus-price sum as a disclosed measure.",
+      "claims": [
+        {
+          "claim_id": "reported_growth",
+          "statement": "Lilly reports consolidated revenue growth of 32% for 2024 versus 2023.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1038235,
+                "byte_stop": 1038582,
+                "span_sha256": "40f23ab4383625c7c92a7e5436ecec03c99b42ce8d17f0e99fe727ec711c95c8"
+              },
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1038582,
+                "byte_stop": 1039411,
+                "span_sha256": "89572785a2cba623ed6083006fc1f6e44b39298d2c0effeff75e0849a933f500"
+              },
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1042874,
+                "byte_stop": 1045085,
+                "span_sha256": "11d4cfd020a9d79601bec9b1d35157876a12ffa2ec8737935d4d4e669eee2ceb"
+              }
+            ],
+            [
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1046023,
+                "byte_stop": 1046317,
+                "span_sha256": "72d553fdd91f4d28fcd477abc85f8d4b17399baa375d56726726db56376cc1bb"
+              },
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1046317,
+                "byte_stop": 1047074,
+                "span_sha256": "448c2616526cec2374d57ab25ed6d2a47bfaf09f83b3d431439a2ef95750652f"
+              },
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1052103,
+                "byte_stop": 1054079,
+                "span_sha256": "ca5fc08863299a7a25b991ce9d6068057960e507f75df6c1263ade4525ad4566"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "reported_decomposition_and_precision",
+          "statement": "Its consolidated revenue-change decomposition reports volume at 27%, price at 5%, and foreign exchange as a dash (zero at displayed precision); the source warns that figures may not add because of rounding. This is not an explicitly labeled constant-currency or operational-growth measure, and the dash does not establish an exactly zero currency effect.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1045334,
+                "byte_stop": 1045565,
+                "span_sha256": "0c7c32c56e78504fc5621af5e4405edb13277cdef80e78109055e8fbc78ab89e"
+              },
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1046023,
+                "byte_stop": 1046317,
+                "span_sha256": "72d553fdd91f4d28fcd477abc85f8d4b17399baa375d56726726db56376cc1bb"
+              },
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1046317,
+                "byte_stop": 1047074,
+                "span_sha256": "448c2616526cec2374d57ab25ed6d2a47bfaf09f83b3d431439a2ef95750652f"
+              },
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1047074,
+                "byte_stop": 1048876,
+                "span_sha256": "7c2df40796889aab0895a6b4b4293a9b2b608055b07224c2479bb05703bef65f"
+              },
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1048876,
+                "byte_stop": 1050480,
+                "span_sha256": "1465edc199220f745b4ff5532d846cce640e4989ab6203db523f3a2ecaab641b"
+              },
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1050480,
+                "byte_stop": 1052103,
+                "span_sha256": "f1cac0396a5e27867eb1c9062d1af6689d94d66af472bbc1eef9d8d3d13cfb27"
+              },
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1054093,
+                "byte_stop": 1054276,
+                "span_sha256": "b6c9decc2fae5551b7e908f26187200fff22eadd215cdebf7c6a1630e39d161a"
+              }
+            ]
+          ]
+        }
+      ],
+      "review_scope": "Both reports full XML-character-data keyword search; 2024 results-of-operations revenue table, change-components table, rounding note and FX-risk explanation reviewed.",
+      "search_log": [
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "constant[ -]currency",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "operational",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 8
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "foreign exchange",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 7
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "change in revenue",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 2
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "Total revenues",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 2
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "constant[ -]currency",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "operational",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 4
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "foreign exchange",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 6
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "change in revenue",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 2
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "Total revenues",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 2
+        }
+      ],
+      "limitations": [
+        "Assistant-authored source inspection; not independent human gold, model prediction, held-out evidence, or a retrieval advantage.",
+        "Observed alternative witness sets are recorded where found, but are not an exhaustive semantic enumeration.",
+        "Reported-growth/decomposition claims are supported, but the requested issuer-defined constant-currency measure remains unresolved."
+      ]
+    },
+    {
+      "item_id": "a991b5f93db6f33690e5",
+      "history_id": "LLY",
+      "family": "segment_recast",
+      "question": "Did LLY change its reportable-segment presentation between its fiscal 2023 and fiscal 2024 annual reports? Identify the earlier and later segment basis and what the sources explicitly say about recasting comparative periods. Do not infer a recast merely from different amounts or similar labels.",
+      "status": "supported",
+      "answer_summary": "The single worldwide pharmaceutical segment persists. The 2024 report adopts expanded segment disclosure rules, with retrospective application described prospectively in the 2023 report. No reorganization or comparative remeasurement is inferred.",
+      "claims": [
+        {
+          "claim_id": "earlier_single_segment",
+          "statement": "The 2023 report describes one operating segment covering worldwide discovery, development, manufacturing, marketing, and sales of pharmaceutical products.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "LLY_2023.html",
+                "byte_start": 1515295,
+                "byte_stop": 1515448,
+                "span_sha256": "ec26fbf9d386e6b4cc6c4695c95919ab56524ddbbd98a0944543b72f9473ec4d"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "later_single_segment",
+          "statement": "The 2024 report retains one reportable segment covering the same described worldwide pharmaceutical activities.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 3031580,
+                "byte_stop": 3031734,
+                "span_sha256": "6b995e9b180a35dbd3108d62daa21aa9043f6672913d856ad0aec338b51f3136"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "disclosure_change_and_prior_period_rule",
+          "statement": "Lilly states in 2024 that it adopted ASU 2023-07 effective January 1, 2024 and now provides the required single-segment disclosures. Its 2023 report had described the amendments as requiring retrospective application to all presented prior periods. These statements support a disclosure expansion, not an inferred reorganization into different segments or a claim that comparative amounts were substantively restated.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 1518421,
+                "byte_stop": 1519291,
+                "span_sha256": "e23dc3c03007c142b8b40c2d06091d27901e89846381bb1e1e96f0955555c0a3"
+              },
+              {
+                "source_file": "LLY_2023.html",
+                "byte_start": 1525917,
+                "byte_stop": 1527120,
+                "span_sha256": "df0c87c6275af55b812dfdda5ccf96a958cc7617b44fa7ed4bc96d69ba98bbe7"
+              }
+            ]
+          ]
+        }
+      ],
+      "review_scope": "Both reports organization paragraphs and accounting-standard adoption discussion; 2024 Note 19 segment description and comparative column headers reviewed.",
+      "search_log": [
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "reportable segment",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 2
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "operating segment",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 1
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "\\brecast",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "\\breclassif",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 29
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "retrospect",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 2
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "2023-07",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 4
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "reportable segment",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 3
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "operating segment",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 1
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "\\brecast",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "\\breclassif",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 27
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "retrospect",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 2
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "2023-07",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 4
+        }
+      ],
+      "limitations": [
+        "Assistant-authored source inspection; not independent human gold, model prediction, held-out evidence, or a retrieval advantage.",
+        "Observed alternative witness sets are recorded where found, but are not an exhaustive semantic enumeration."
+      ]
+    },
+    {
+      "item_id": "883b945d78a721dd2f43",
+      "history_id": "LLY",
+      "family": "free_cash_flow",
+      "question": "For LLY fiscal 2024, what free cash flow did the company disclose, and how did it reconcile that measure to net cash from operating activities? State the company's definition, the amounts and units of its adjustments, and whether the reconciliation is exact or affected by rounding. Do not invent a free-cash-flow definition if none is disclosed.",
+      "status": "unresolved",
+      "answer_summary": "No issuer-defined 2024 free-cash-flow measure or reconciliation was located in the bounded report pair. Ordinary liquidity discussion reports operating cash flow and capital expenditures separately; an analyst subtraction is not an issuer-disclosed FCF measure.",
+      "claims": [],
+      "review_scope": "Both reports full XML-character-data keyword search; 2024 MD&A financial-condition/liquidity section (1133059:1142525) and consolidated cash-flow statement reviewed.",
+      "search_log": [
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "free[ -]cash[ -]flow",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "\\bFCF\\b",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "net cash provided",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 5
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "capital expenditures",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 9
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "cash flow",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 65
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "free[ -]cash[ -]flow",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "\\bFCF\\b",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "net cash provided",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 3
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "capital expenditures",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 9
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "cash flow",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 62
+        }
+      ],
+      "limitations": [
+        "Assistant-authored source inspection; not independent human gold, model prediction, held-out evidence, or a retrieval advantage.",
+        "Observed alternative witness sets are recorded where found, but are not an exhaustive semantic enumeration.",
+        "Search failure does not authorize an insufficient-evidence gold label or an external coverage-clearance decision; no FCF answer claim admitted."
+      ]
+    },
+    {
+      "item_id": "0ff2e8900955aeeed0da",
+      "history_id": "LLY",
+      "family": "stock_compensation",
+      "question": "At LLY's fiscal 2024 year end, what unrecognized stock-based compensation cost and weighted-average recognition period did it report? Preserve award-type distinctions and units; do not invent an aggregate when only separate plan amounts or periods are disclosed.",
+      "status": "supported",
+      "answer_summary": "At year end: nonvested RSUs $485.1m over 23 months; SVAs $61.4m over 21 months; RVAs $27.5m over 22 months. PAs have no remaining unrecognized cost after program discontinuation. No aggregate constructed.",
+      "claims": [
+        {
+          "claim_id": "RSU_unrecognized",
+          "statement": "At December 31, 2024, estimated unrecognized compensation for nonvested RSUs is $485.1 million, amortized over a weighted-average remaining requisite service period of 23 months.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 2374903,
+                "byte_stop": 2375559,
+                "span_sha256": "30c8d4f8f67afd0cb7c58b8b61a296e138d246b579533b24d303ef06bae7a582"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "SVA_unrecognized",
+          "statement": "At December 31, 2024, estimated unrecognized compensation for nonvested SVAs is $61.4 million, amortized over a weighted-average remaining requisite service period of 21 months.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 2387951,
+                "byte_stop": 2388606,
+                "span_sha256": "2652f151c3d72ca27b438238b6786f5aec65451284caacd94861b002fbf9fa3c"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "RVA_unrecognized",
+          "statement": "At December 31, 2024, estimated unrecognized compensation for nonvested RVAs is $27.5 million, amortized over a weighted-average remaining requisite service period of 22 months.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 2403786,
+                "byte_stop": 2404441,
+                "span_sha256": "a66726fdae5d49a031c3cbc9cf41564e3faa3577fedd9dc5c2b5fdd75782bdb8"
+              }
+            ]
+          ]
+        },
+        {
+          "claim_id": "PA_zero_remaining",
+          "statement": "At December 31, 2024 there was no remaining unrecognized compensation cost for PAs because Lilly discontinued that program; no nonzero aggregate or aggregate recognition period is inferred.",
+          "role": "required",
+          "witness_sets": [
+            [
+              {
+                "source_file": "LLY_2024.html",
+                "byte_start": 2391673,
+                "byte_stop": 2391799,
+                "span_sha256": "d973af93072536635502e5679ff78590f7fd8d0db702d737de39dfefab52f571"
+              }
+            ]
+          ]
+        }
+      ],
+      "review_scope": "2024 Note 12 stock-based compensation program descriptions and terminal unrecognized-cost/remaining-period sentences for RSUs, SVAs, PAs and RVAs.",
+      "search_log": [
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "unrecognized",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 14
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "not yet recognized",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "weighted.average",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 20
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "share.based",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2023.html",
+          "query_regex": "stock.based",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 15
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "unrecognized",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 15
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "not yet recognized",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "weighted.average",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 19
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "share.based",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 0
+        },
+        {
+          "source_file": "LLY_2024.html",
+          "query_regex": "stock.based",
+          "scope": "normalized complete XML character data; includes tagged and hidden data",
+          "match_count": 15
+        }
+      ],
+      "limitations": [
+        "Assistant-authored source inspection; not independent human gold, model prediction, held-out evidence, or a retrieval advantage.",
+        "Observed alternative witness sets are recorded where found, but are not an exhaustive semantic enumeration.",
+        "Typed control: amounts and period values occur in Inline XBRL; query/parser failure alone would not establish a new semantic retrieval task."
+      ]
+    }
+  ],
+  "model_assisted_review": true,
+  "human_gold": false,
+  "retrieval_outcomes_viewed_before_reference": false,
+  "source_inspection_note": "Frozen source-reviewed locators; no predictions, scores or automatic rankings read. References require a separate source review before admission."
+}

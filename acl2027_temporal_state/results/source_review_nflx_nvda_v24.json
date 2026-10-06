@@ -1,0 +1,463 @@
+{
+  "schema": "independent_assistant_source_review_v24",
+  "reviewed_artifact": "results/source_questions_nflx_nvda_v24.json",
+  "reviewed_artifact_sha256": "ca8025eef0db2db4fd4fbd2d161de9029105fa49e27d0c17348b2ea99bc0b3ec",
+  "protocol_sha256": "214d0be8ba347c59a77a0a5b3c1f983d822ce9998999c7aae0ecfda654f21ae2",
+  "model_assisted_review": true,
+  "human_gold": false,
+  "separate_assistant_role": true,
+  "automatic_retrieval_outputs_viewed": false,
+  "sources_verified": [
+    {
+      "filename": "NFLX_2022.html",
+      "sha256": "5bb5f38b1cd1d20d9ef7b3d54eb2ff8884bc77e2deea98672163c9417b6e122f"
+    },
+    {
+      "filename": "NFLX_2023.html",
+      "sha256": "b558cb9ef8f54bf18afb85b580dfe67d23b8776bb6f5c3f08db6704a39d3cf4e"
+    },
+    {
+      "filename": "NVDA_2022.html",
+      "sha256": "7e3c19c27675079dc36571d692b74732c7afb85497249ccc1518c2238d54d47e"
+    },
+    {
+      "filename": "NVDA_2023.html",
+      "sha256": "5195c592ab1649c7afdb5ea707d99b895a60eade66396e2f8fc47471221ac56e"
+    }
+  ],
+  "integrity": {
+    "anchor_instances_verified": 133,
+    "unique_spans_verified": 59,
+    "all_exact_node_boundaries": true,
+    "all_span_hashes_valid": true
+  },
+  "records": [
+    {
+      "item_id": "1fdea52be906c75fa7f3",
+      "history_id": "NFLX",
+      "family": "currency_growth",
+      "original_status": "partial",
+      "recommended_status": "partial",
+      "status_verdict": "retain",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_reported_growth",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nflx_total_revenues",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nflx_cc_definition_and_uplift",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nflx_cc_uplift_alternative",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        }
+      ],
+      "complete_question_review": "Partial status is conservative: reported growth/amounts are supported; missing separately reported counterpart is not filled with unsupported equivalence. Netflix derived currency arithmetic is valid but must remain visibly derived and approximate."
+    },
+    {
+      "item_id": "17bf16ca0005b65da41b",
+      "history_id": "NFLX",
+      "family": "segment_recast",
+      "original_status": "partial",
+      "recommended_status": "partial",
+      "status_verdict": "retain",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_segment_2022",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nflx_segment_2023",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nflx_segment_asu",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        }
+      ],
+      "complete_question_review": "Partial status is appropriate: named segment bases are supported, while generic reclassification or upcoming accounting standards do not establish a specific segment recast."
+    },
+    {
+      "item_id": "90376910c375cfd915c9",
+      "history_id": "NFLX",
+      "family": "free_cash_flow",
+      "original_status": "supported",
+      "recommended_status": "supported",
+      "status_verdict": "retain",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_fcf_definition",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nflx_cfo",
+          "verdict": "pass_with_alternative_witness_fix",
+          "notes": [
+            "All three observed occurrences report 7,274,301 thousand for 2023. Alternatives 0 and 2 carry a dollar marker. Alternative 1 has period and magnitude headers but no dollar marker within its selected spans; under strict standalone rendered-witness accounting, add the table's first dollar cell or omit this redundant alternative. This does not invalidate the other two complete witness sets."
+          ],
+          "corrections": [
+            {
+              "operation": "append_anchor_to_witness_set",
+              "witness_set_index": 1,
+              "anchor": {
+                "source_file": "NFLX_2023.html",
+                "byte_start": 575783,
+                "byte_stop": 576010,
+                "span_sha256": "5bbbb43f30d5b8c522108b96e94aac948d8ead0ea7ea163eddee64dcbfbd7ae4"
+              }
+            }
+          ]
+        },
+        {
+          "claim_id": "nflx_ppe",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nflx_other_assets",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nflx_fcf_value",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nflx_fcf_arithmetic",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        }
+      ],
+      "complete_question_review": "Complete FCF definition, all displayed adjustments, units, periods, value and arithmetic are supported."
+    },
+    {
+      "item_id": "3d9c9461adbe81a50cd1",
+      "history_id": "NFLX",
+      "family": "stock_compensation",
+      "original_status": "supported",
+      "recommended_status": "supported",
+      "status_verdict": "retain",
+      "claim_reviews": [
+        {
+          "claim_id": "nflx_nonvested_options",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        }
+      ],
+      "complete_question_review": "The disclosed balance and award-specific recognition period(s) are supported. Relevant note and unrecognized/unearned searches found no omitted additional balance needed to contradict the scoped answer; this remains bounded assistant review."
+    },
+    {
+      "item_id": "c459fe830bd9e4e458bd",
+      "history_id": "NVDA",
+      "family": "currency_growth",
+      "original_status": "partial",
+      "recommended_status": "partial",
+      "status_verdict": "retain",
+      "claim_reviews": [
+        {
+          "claim_id": "nvda_reported_growth",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nvda_total_revenues",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nvda_usd_pricing",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        }
+      ],
+      "complete_question_review": "Partial status is conservative: reported growth/amounts are supported; missing separately reported counterpart is not filled with unsupported equivalence. Netflix derived currency arithmetic is valid but must remain visibly derived and approximate."
+    },
+    {
+      "item_id": "f57d4771b31d295f297a",
+      "history_id": "NVDA",
+      "family": "segment_recast",
+      "original_status": "partial",
+      "recommended_status": "partial",
+      "status_verdict": "retain",
+      "claim_reviews": [
+        {
+          "claim_id": "nvda_segments_2022",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nvda_segments_2023",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nvda_components_2022",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nvda_components_2023",
+          "verdict": "fix_wording_and_comparison_scope",
+          "notes": [
+            "The cited FY2022 and FY2023 text both say Quadro/NVIDIA RTX; an RTX wording update is not supported. Omniverse wording changes, and the later Compute & Networking description adds electric-vehicle computing platforms. The current witness set contains only FY2023 spans, so comparative language is also not independently established by that set alone."
+          ],
+          "corrections": [
+            {
+              "operation": "replace_statement",
+              "value": "The FY2023 Graphics description includes GeForce/GeForce NOW, workstation/vGPU, automotive infotainment and Omniverse Enterprise. Its Compute & Networking description includes Data Center, networking, automotive AI, electric-vehicle computing platforms, Jetson, enterprise software and CMP. These are the later report's descriptions; they do not establish a transfer or recast."
+            },
+            {
+              "operation": "optional_comparative_witness_set",
+              "statement": "The FY2022 and FY2023 descriptions retain their Quadro/NVIDIA RTX wording, while the Graphics Omniverse description and portions of the Compute & Networking description differ; no causal reclassification is inferred.",
+              "anchors": [
+                {
+                  "source_file": "NVDA_2022.html",
+                  "byte_start": 2215420,
+                  "byte_stop": 2215950,
+                  "span_sha256": "2009127cd65be10621037948e47f0d0d402dfb566a0dcc6f645044902bbcce21"
+                },
+                {
+                  "source_file": "NVDA_2022.html",
+                  "byte_start": 2216006,
+                  "byte_stop": 2216503,
+                  "span_sha256": "70613605fd1e8f132a3c598350c28ea67608ba79a608be6b34cfb64cbdf0eba1"
+                },
+                {
+                  "source_file": "NVDA_2023.html",
+                  "byte_start": 2349209,
+                  "byte_stop": 2349676,
+                  "span_sha256": "cde43407cca78ef9c7c39361b1b01574958e87dd93d5a37f00d26d0ddce00a28"
+                },
+                {
+                  "source_file": "NVDA_2023.html",
+                  "byte_start": 2349732,
+                  "byte_stop": 2350286,
+                  "span_sha256": "72ff38dc3c26b478a19426f185d1860baa8819035f519efddee785e87bb7bb8d"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "nvda_all_other",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nvda_generic_reclassification",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        }
+      ],
+      "complete_question_review": "Partial status is appropriate: named segment bases are supported, while generic reclassification or upcoming accounting standards do not establish a specific segment recast."
+    },
+    {
+      "item_id": "47c46cf836ce94b02953",
+      "history_id": "NVDA",
+      "family": "free_cash_flow",
+      "original_status": "unresolved",
+      "recommended_status": "unresolved",
+      "status_verdict": "retain",
+      "claim_reviews": [],
+      "complete_question_review": "Unresolved is appropriate after bounded search. Operating cash flow does not establish an issuer-defined FCF measure. No absence certificate is inferred."
+    },
+    {
+      "item_id": "aa26b3e472b571af62b9",
+      "history_id": "NVDA",
+      "family": "stock_compensation",
+      "original_status": "supported",
+      "recommended_status": "supported",
+      "status_verdict": "retain",
+      "claim_reviews": [
+        {
+          "claim_id": "nvda_unearned_sbc",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        },
+        {
+          "claim_id": "nvda_periods_by_award",
+          "verdict": "pass",
+          "notes": [
+            "Statements checked against all cited source spans; byte boundaries and hashes match."
+          ],
+          "corrections": []
+        }
+      ],
+      "complete_question_review": "The disclosed balance and award-specific recognition period(s) are supported. Relevant note and unrecognized/unearned searches found no omitted additional balance needed to contradict the scoped answer; this remains bounded assistant review."
+    }
+  ],
+  "additional_claims": [
+    {
+      "claim_id": "nflx_derived_cc_growth_review",
+      "role": "derived",
+      "statement": "Using the displayed totals in thousands and the approximate 597 million dollar uplift: (33723297 + 597000) / 31615550 - 1 is approximately 8.5551%; the analogous displayed-value GAAP growth is approximately 6.6668%; their difference is approximately 1.8883 percentage points. These are reviewer-derived, approximate quantities, not separately reported issuer percentages.",
+      "witness_sets": [
+        [
+          {
+            "byte_start": 338857,
+            "byte_stop": 339447,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "1f433fdefc624d74140d5cdd6a42d411dcbacf73758f4399b27694e5108a826b"
+          },
+          {
+            "byte_start": 339447,
+            "byte_stop": 340967,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "f778c8be1f4bfb2700bf82369b54c68131cb7dd69359f8ba06511c14cfbe486c"
+          },
+          {
+            "byte_start": 340967,
+            "byte_stop": 341530,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "ea73f741d4926e02d7d99632d8a675915b502515b895d988687369bf5aa737af"
+          },
+          {
+            "byte_start": 347101,
+            "byte_stop": 350177,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "e0ee0933c00cce3654c2dac0b39b71e69900ffdca347ef9335a05cb7f43f807d"
+          },
+          {
+            "byte_start": 462805,
+            "byte_stop": 463833,
+            "source_file": "NFLX_2023.html",
+            "span_sha256": "62d9ac8de7f760bec449a9099198fa75c263da8d3182b9737cf69f323dee6af7"
+          }
+        ]
+      ],
+      "reason": "The arithmetic is already correctly disclosed in the original answer summary and receipt, but lacks its own explicit derived claim. Add this if the complete-answer claim ledger is used for acceptance."
+    }
+  ],
+  "arithmetic_checks": {
+    "nflx_reported_value_growth_pct": "6.666804784354534398421030200",
+    "nflx_approx_currency_adjusted_growth_pct": "8.555116074210317391283719600",
+    "nflx_approx_currency_difference_pp": "1.888311289855782992862689400",
+    "nflx_fcf_residual_thousands": 0
+  },
+  "additional_source_inspection": [
+    {
+      "source_file": "NFLX_2023.html",
+      "reviewed_matching_paragraphs": [
+        {
+          "source_file": "NFLX_2023.html",
+          "byte_start": 1458172,
+          "byte_stop": 1459467,
+          "span_sha256": "bc7f390b94ec48e53fb2545c0b874727e7d4f0101d262a71048c6bfab25ee8e7"
+        }
+      ],
+      "note": "Nested paragraph/span representations can repeat the same disclosure; these are not independent balances."
+    },
+    {
+      "source_file": "NVDA_2023.html",
+      "reviewed_matching_paragraphs": [
+        {
+          "source_file": "NVDA_2023.html",
+          "byte_start": 1458632,
+          "byte_stop": 1460683,
+          "span_sha256": "40ef34bf1be00f1764beb071933dbd27f2ec33deb0356b745c6ccb0230d05105"
+        }
+      ],
+      "note": "Nested paragraph/span representations can repeat the same disclosure; these are not independent balances."
+    }
+  ],
+  "summary": {
+    "questions": 8,
+    "claims": 25,
+    "claim_pass": 23,
+    "claim_wording_fixes": 1,
+    "alternative_witness_repairs": 1,
+    "question_status_changes": 0,
+    "statuses_retained": {
+      "partial": 4,
+      "supported": 3,
+      "unresolved": 1
+    }
+  },
+  "limitations": [
+    "This is a separate model-role source review, not independent human gold, financial audit, or source-coverage certificate.",
+    "No retrieval outputs or rankings were accessed. No prediction, model QA, novel-method or empirical-superiority claim follows.",
+    "All supported monetary quantities use the filing's dollar-denominated presentation; exact unrounded underlying amounts are not recovered.",
+    "Render table rows with cell separators and preserve column order. Concatenating XML text into fused year strings is not an acceptable reader presentation.",
+    "Partial and unresolved labels remain bounded source-review outcomes; they must not be relabeled globally insufficient reader examples."
+  ]
+}

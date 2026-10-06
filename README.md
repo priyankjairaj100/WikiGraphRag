@@ -20,7 +20,15 @@ Research repository for **Reading the Latest, Not the Loudest: Lifecycle-Aware S
 
 The original package is retained unchanged as a historical submission. Its README and result claims describe that submission; later audits and limitations are recorded in the rework. The original paper and supplement were supplied as PDFs; their editable TeX sources were not available in this workspace. The rework's available LaTeX sources are included.
 
-## Current checkpoint: v0.23 — source audits and gated empirical preparation
+## Current checkpoint: v0.24 — bounded retrieval probe
+
+A prospectively frozen **24-question development probe** produced **9 complete, 10 partial and 5 unresolved** source references. Four conventional retrieval policies ran at three budgets, completing **288 cells**. A fixed-seed repeat selected identical evidence in every cell; **20 focused software tests pass**.
+
+Separate assistant review found that structural retrieval and query decomposition each supply question-sufficient evidence for **7 of the 9 complete questions**. These are evidence judgments, not model accuracy. One segment question has a confirmed gap across the four implementations; another is uncertain. The conservative two-history expansion gate is **not passed**. No proposed-method advantage, natural reader competence, automatic coverage or held-out result is established.
+
+Read the [v24 update](acl2027_temporal_state/docs/research_update_v24.txt), [reproduction guide](acl2027_temporal_state/docs/reproduce_v24.txt), [semantic results](acl2027_temporal_state/results/semantic_probe_summary_v24.json), [handoff](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v24.txt), and [paper addendum source](acl2027_temporal_state/paper/task_probe_v24.tex). Large result files are released as lossless archives with an included unpacker. Original annotations, the interrupted attempt and all unfavorable findings are preserved.
+
+## Previous checkpoint: v0.23 — source audits and gated empirical preparation
 
 Codex has resumed project work; large-model execution will be handed off later. The five v22 commits were reverted without rewriting history and remain on [archive/v22-local-development-6618442](https://github.com/priyankjairaj100/WikiGraphRag/tree/archive/v22-local-development-6618442). Their negative results remain part of the record.
 
