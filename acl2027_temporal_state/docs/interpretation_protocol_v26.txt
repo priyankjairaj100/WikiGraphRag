@@ -1,0 +1,334 @@
+V26 interpretation revision: proposed diagnostic protocol
+Date: 2026-10-06
+Status: design pending project-lead review.
+Machine-readable design: configs/interpretation_v26.json.
+This document does not authorize an experimental result or a method claim.
+
+Purpose
+
+Test the canonical v25 hypothesis within its fixed 60-question spending limit.
+Ask whether added evidence can correct wrong temporal interpretations beyond ordinary re-extraction.
+Separate model uncertainty from ambiguity in the available source text.
+Do not require full sources to remain ambiguous.
+Do not require an actual source revision.
+Do not describe this diagnostic as lifecycle performance without recovered source histories.
+
+What this diagnostic can establish
+
+It can measure source-resolvable interpretation errors under frozen evidence packs.
+It can measure the headroom remaining after ordinary re-extraction.
+It can measure whether one candidate-preserving prompt helps beyond that simple control.
+It cannot establish a novel learning rule or answer-level superiority.
+It cannot establish complete candidate coverage outside the admitted evidence.
+It cannot replace the later natural reader gate.
+
+Inputs and admission
+
+Root owns the dataset revision, roster, and evidence construction.
+Retain the existing 60-question maximum.
+Exclude all six previously inspected v25 questions before sampling.
+Do not replace failed, excluded, ordinary, or uninteresting questions.
+Do not select questions using model errors or oracle improvement.
+Use original benchmark questions as the task inputs.
+Report each question's source family and original dataset provenance.
+
+The task boundary is the released source text unless additional provenance is recovered.
+Missing question dates, document dates, and revision identifiers remain unknown.
+No method may infer a query date from its identifier or execution date.
+No method may treat a document's position as evidence of publication time.
+Retain benchmark negative documents under the canonical v25 corpus policy.
+Gold document identifiers may define a labelled diagnostic pool if root freezes that choice.
+They must not define an ordinary retrieval result.
+Such a pool supports an interpretation diagnostic only.
+It cannot support a natural retrieval claim.
+Reference values and witness selectors must never enter model inputs.
+
+Stage A reviews the original question before admitting an interpretation target.
+A target must concern an objectively reviewable temporal assignment, scope, comparison, or replacement relation.
+Do not invent a narrower question merely to fit the schema.
+Broad historical explanations and general recommendations can be ineligible.
+Record each admission decision before model predictions.
+Keep ineligible questions within the sixty-question accounting.
+Do not replace them.
+
+Review the question and both delivered packs before writing references.
+Use eligible_resolved, eligible_ambiguous, or eligible_insufficient for representable targets.
+Use ineligible_no_temporal_target or ineligible_representation_capacity for task exclusions.
+Use unresolved_reference when reviewers cannot establish an objective interpretation reference.
+Use source_access_failure when required source text is unavailable.
+An incomplete C1 pack never establishes complete answerability.
+References remain reference-only throughout execution.
+
+Each admitted question receives two immutable evidence packs, C0 and C1.
+C0 is the initial pack.
+C1 contains C0 plus additional evidence, within the frozen expansion budget.
+The evidence author must freeze both packs before inspecting model predictions.
+The initial prediction must not affect C1 selection in this first diagnostic.
+This restriction isolates interpretation revision from acquisition quality.
+Adaptive acquisition can be a later, separately frozen experiment.
+
+Use complete source units where practical.
+Never cut a numeric fact from its unit or date merely to satisfy a budget.
+Preserve every rendered source identifier and local unit identifier.
+Every unit must map to a hash-identified source and exact source positions.
+Use the same rendering and source order for every C1 arm.
+If C0 cannot fit within C1, reject the pack before predictions.
+Record the exclusion; do not replace its question.
+
+Root must freeze pack budgets before execution.
+Recommended caps are 512 evidence tokens for C0 and 1,280 evidence tokens for C1.
+Use the native model tokenizer.
+The proposed context limit is 4,096 tokens, including an allowance of 768 output tokens.
+These caps are maximum values, not permission to exceed the total context limit.
+Record actual tokens for every complete prompt.
+Never cut a source sentence or silently remove the question to fit the limit.
+Refuse truncation when a complete prompt exceeds the model context limit.
+Oversized items remain in the roster accounting as execution failures.
+
+Arms
+
+I0: initial extraction.
+Run the extraction prompt on the question and C0.
+Allow at most two candidate interpretations.
+An interpretation jointly assigns entity, relation, scope, time, comparison, and replacement.
+Unknown fields must remain explicit.
+
+B1: ordinary re-extraction, the decisive simple baseline.
+Use the question, C1, and the I0 output as an untrusted draft.
+Ask for a fresh extraction that can discard any draft assignment.
+Allow the same two active candidates and the same output cap.
+Use no candidate-preservation instruction.
+Count I0 plus B1 as this arm's total work.
+
+R1: candidate-preserving revision, the candidate mechanism.
+Use exactly the same question, C1, and I0 output.
+Retain identifiers for unchanged candidates.
+Change assignments only when evidence supplies a reason.
+Permit newly proposed candidates, so missing proposals do not become permanent errors.
+Retain retired identifiers in a bounded change ledger.
+Do not retain a refuted candidate as a supported interpretation.
+Count I0 plus R1 as this arm's total work.
+
+F1: fresh expanded-context extraction, the decisive history control.
+Run the I0 extraction prompt directly on the question and C1.
+Supply no I0 output.
+Use the same model, decoding, schema, and output cap.
+This arm tests whether the draft itself creates anchoring or extra work.
+Report its one-call cost and a charged two-call sensitivity with the I0 cost added.
+Do not hide its cheaper native cost.
+
+O1: source-assisted interpretation oracle.
+Create its reference assignments from C1 before any model prediction.
+The oracle may use only the question and C1.
+It cannot open omitted passages, benchmark answers, or source metadata absent from C1.
+Use a second role to review its assignments and evidence links.
+Disclose model-assisted reference authorship when applicable.
+This arm is a reference diagnostic, not a measured model or operational algorithm.
+Its review cost stays separate from model inference cost.
+
+The experiment has four executable model arms and one reference diagnostic.
+I0 runs once per question and feeds both paired two-call arms.
+Each arm's bill still includes I0 when that arm requires it.
+Keep executed calls and attributed calls in separate cost fields.
+
+Output schema
+
+The exact JSON schema appears in the companion configuration.
+Every response contains status, selected, candidates, and changes.
+Status is resolved, ambiguous, insufficient, or ineligible.
+No prose may occur outside the JSON object.
+Each candidate contains six scalar fields plus its identifier and joint evidence_ids.
+Use a string for known fields, null for unknown fields, and the reserved string NA for inapplicable fields.
+This compact encoding fits the proposed small-model output budget.
+Known candidates require joint source links.
+The question itself is available as the evidence identifier Q.
+Every source identifier must occur in the actual delivered pack.
+Use Q or the E## labels from rendered evidence headers in evidence_ids.
+Do not use physical source filenames as citation identifiers.
+Ineligible responses may have no candidates.
+All other responses require at least one candidate.
+
+Interpretation fields
+
+entity: the entity or entities about which the question requests a claim.
+relation: the requested property, event, or relationship.
+scope: the population, jurisdiction, category, or other restriction needed for the requested claim.
+time: the requested interval, event-relative interval, or temporal anchor.
+Time does not contain a date whose value the question asks the reader to find.
+An unknown answer does not make the interpretation unknown.
+comparison: the requested comparison and its direction, if any.
+replacement: whether one observed claim replaces another within the same entity, scope, and time.
+
+Use concise canonical values copied from the question or evidence when possible.
+Use ISO dates only when the source supplies the corresponding precision.
+Preserve month-only and year-only precision.
+Do not silently convert approximate intervals into exact dates.
+Do not equate unknown with not_applicable.
+Not-applicable means the requested interpretation does not require that field.
+Unknown means that field matters but the delivered evidence does not determine it.
+
+The replacement field may be known without naming a replacement.
+Use no when the source establishes incompatible scopes or periods for the compared claims.
+Use yes only when the source supports replacement under matching scope and time.
+Use NA when the question does not require replacement interpretation.
+Attach the source identifiers that establish the relation.
+Use null when no source establishes either conclusion.
+No candidate may delete a claim because it has an older timestamp alone.
+
+Candidate and ledger rules
+
+Each candidate identifier is local to one question.
+Initial identifiers use c1 and c2.
+R1 may reuse those identifiers or create n1 and n2.
+Only two candidates may remain active in any arm.
+The ledger records keep, revise, retire, or add transitions.
+Each ledger entry links old and new identifiers with supporting evidence identifiers.
+An empty evidence list does not establish refutation.
+If I0 is malformed, R1 may propose fresh candidates.
+The malformed draft remains an initial execution failure.
+B1 and F1 use an empty ledger.
+The ledger is excluded from the primary correctness score.
+It supplies mechanism diagnostics only.
+Ledger format errors must not change the primary candidate, status, or grounding score.
+Report full-schema failures separately from primary-score failures.
+
+Reference design and field scoring
+
+Write references before predictions, using only C1.
+Reference authors identify required fields, acceptable joint assignments, and alternative evidence sets.
+They must not use the released benchmark answer as hidden support.
+Reference ambiguity must concern C1, rather than model disagreement.
+Store unavailable provenance and unresolved source questions explicitly.
+
+Each reference field lists accepted normalized values and accepted evidence sets.
+The candidate supplies joint evidence identifiers for all its fields.
+These references never enter generation or revision inputs.
+Each reference item contains item_id, query_sha256, c0_sha256, c1_sha256, eligibility, required_fields, c0, and c1.
+Each c0 or c1 object contains status and classes.
+Each class contains class_id and the six reference fields.
+The same required_fields subset applies to both packs.
+The correct interpretation must be proposed without reference values or reference class identifiers.
+All arms receive the same six field names.
+No source-derived reference field selection reaches the model.
+Normalize Unicode with NFKC, lowercase text, and collapse whitespace.
+Do not remove numbers, signs, units, dates, negation, or directional words.
+Do not use an embedding threshold or an LLM judge in the automatic field scorer.
+Aliases must be frozen before predictions.
+Match an entire candidate to one acceptable joint assignment.
+Do not combine fields from different acceptable assignments.
+
+A known field passes when its normalized value matches and an accepted evidence set is present.
+An evidence set passes only when every required source identifier occurs in the candidate links.
+All source identifiers must belong to the delivered pack.
+A reference unknown field passes only when its output value is null.
+A reference not-applicable field passes only when its output value is the reserved string NA.
+These two states must never share a value.
+
+A resolved interpretation passes only when all required fields jointly pass.
+The selected candidate must satisfy that joint assignment.
+For ambiguous references, the selected candidate must be null.
+The active candidates must cover every reviewed acceptable assignment required by the reference.
+References that require more than two alternatives exceed this diagnostic schema.
+Keep them as representation exclusions within the original roster.
+This measures recall over observed reference classes, not universal candidate coverage.
+For insufficient references, the selected candidate must be null.
+The output must preserve all reference-required unknown fields.
+An ineligible output passes only against a question marked ineligible before predictions.
+Do not grant full credit for an empty object or an unconditional refusal.
+
+Return strict field correctness separately from semantic error adjudication.
+Exact string matching can reject valid paraphrases or unrecorded alternative witnesses.
+Audit apparent gains and losses with method identities hidden.
+The reviewer may classify a strict mismatch as unresolved measurement, but cannot silently change frozen scores.
+Publish any amended references and rescoring as separate versions.
+Never count an unresolved measurement as a mechanism win.
+
+Primary diagnostic quantities
+
+N_roster counts every frozen question, including exclusions and failed calls.
+N_scored counts questions with reviewed C1 references and complete arm records.
+Report both denominators for every success claim.
+
+An initial interpretation error requires an asserted wrong assignment under the reviewed C1 reference.
+An evidence-identifier mismatch alone does not establish a wrong assignment.
+An I0 unknown followed by a resolved answer is evidence gain, not an interpretation correction.
+An unsupported I0 assertion may count as an error even when C0 lacks a complete answer.
+Keep that subgroup separate from wrong assignments positively supported by misleading C0 evidence.
+
+E0 is the set of source-resolvable I0 interpretation errors.
+O1 must have a complete, reviewed correction from the same C1 pack.
+Unresolved references cannot enter E0.
+Any disputed alias or alternative evidence issue prevents E0 admission until separately adjudicated.
+
+For each model arm M, correction(M) counts items in E0 with a correct revised interpretation.
+Harm(M) counts previously correct I0 interpretations that become wrong in M.
+Initial correctness also requires support within C0, assessed through the frozen C0 review.
+Unsupported_resolution(M) counts resolved predictions where the reference remains ambiguous or insufficient.
+Evidence_gain(M) counts unknown-to-correct transitions separately.
+Candidate_recall(M) measures coverage of observed acceptable joint assignments.
+False_retirement(R1) counts previously available correct candidates retired without a correct surviving equivalent.
+
+Report paired correction differences between R1, B1, and F1.
+Report paired harm differences on the same questions.
+Report fields changed, tokens, calls, and latency beside those differences.
+Do not call a higher correction count a win when harm offsets it.
+
+Canonical feasibility thresholds
+
+Require at least twelve items in E0 among the fixed roster of at most sixty questions.
+Require at least six E0 items where O1 succeeds and B1 still fails.
+These thresholds are practical headroom checks, not significance tests.
+Also report the same residual against F1.
+If F1 removes the B1 residual, the draft causes anchoring rather than a difficult revision problem.
+Stop the specialized mechanism claim in that case.
+Passing these gates permits mechanism design; it does not establish a method advantage.
+
+Source-bounded unknown handling
+
+The evidence boundary is the delivered C1 pack.
+Insufficient means that this pack does not establish the required interpretation.
+It never means that the entire source corpus lacks an answer.
+Ambiguous means that reviewed C1 evidence supports multiple incompatible interpretations.
+No retrieved passage and no high retrieval score prove global answerability.
+The oracle must not label a missing publication date from external intuition.
+
+Runtime freeze and failure rules
+
+Freeze the exact model identifier, revision, tokenizer, precision, decoding, and context limit before calls.
+Use one model for all executable arms.
+Use greedy decoding and identical output caps.
+Do not use unlogged tools or external browsing inside a model call.
+Freeze prompt bytes, schema bytes, renderer bytes, roster hash, and every pack hash.
+The configuration remains blocked until those fields are supplied and reviewed.
+
+Store raw responses before parsing.
+Reject duplicate JSON keys, nonfinite numbers, missing fields, and unknown source identifiers.
+Do not repair malformed JSON with another model.
+Malformed output counts as incorrect and uses its full cost.
+Retry only transport failures that produced no model response.
+Preserve every retry receipt and any billed tokens.
+No alternate prompt or model may rescue one failed question within the frozen run.
+
+Cost accounting
+
+Count every system, instruction, schema, question, draft, evidence, and output token.
+Count repeated evidence in each call.
+Record cache discounts separately from undiscounted token counts.
+Use one declared tokenizer for preflight counts and provider usage for observed billing.
+Record extraction, retrieval, rendering, validation, and generation latency separately.
+Report source bytes scanned and embedding or indexing costs separately.
+Include the initial draft in both B1 and R1 attributed costs.
+F1 keeps its cheaper native one-call cost.
+Do not pad prompts with meaningless text to equalize counts.
+The paired comparison has equal evidence and output caps, with actual total cost reported.
+Pack construction reserves 768 previous-output tokens and an additional boundary allowance before any prediction.
+The actual native prompt must still pass preflight after the previous output becomes available.
+
+Required interpretation of outcomes
+
+If B1 matches R1, reject the claimed benefit from candidate preservation.
+If F1 matches R1 at lower cost, reject the practical advantage from revision in this setting.
+If the oracle cannot correct enough errors, stop before training.
+If the initial candidates omit correct interpretations, proposal learning comes before selector claims.
+If a gain survives, design a separate learned mechanism and compare its standard constrained decoder.
+This prompt diagnostic alone cannot establish that later mechanism's novelty.

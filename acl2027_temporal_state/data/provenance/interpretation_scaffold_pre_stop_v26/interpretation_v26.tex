@@ -1,0 +1,281 @@
+% Development scaffold. Unresolved results remain explicit.
+% Build with scripts/build_paper_v26.py and the pinned, unmodified ACL style.
+\documentclass[11pt]{article}
+\usepackage[review]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\hypersetup{pdfauthor={},pdftitle={When Recency Is Not Currentness},pdfsubject={Development analysis scaffold}}
+\newcommand{\pending}[1]{\textbf{[PENDING: #1]}}
+
+\title{When Recency Is Not Currentness:\\Auditing Temporal Interpretation in Retrieval-Augmented QA}
+\author{Anonymous ACL submission}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+\textbf{Development scaffold; natural diagnostic pending.}
+Temporal question answering requires matching evidence to the requested entity, scope, and time.
+Selecting the newest timestamp does not establish that match.
+We audit our earlier experimental package and identify several confounded measurements.
+Among 35 current-holder questions, nine selected reference claims do not explicitly support the requested current role.
+A global date baseline retains the requested subject--relation key for only five questions.
+The reported aggregate improvement cannot reach $p<0.05$ under any compatible exact paired McNemar test.
+These findings concern one package, with assistant-assisted source review.
+We then specify a development diagnostic on 60 unchanged natural questions.
+It separates interpretation correction from additional evidence, ordinary re-extraction, and draft anchoring.
+The natural results remain unmeasured here.
+We establish neither a new retrieval algorithm nor an answer-level advantage.
+\end{abstract}
+
+\section{Introduction}
+
+An older document may describe a continuing state.
+A newer document may describe a different population or a past event.
+Before suppressing evidence, a temporal system must establish what the question and sources mean together.
+This includes distinguishing an event's start from a document's publication and a claim's continuing validity.
+These distinctions motivate our evaluation; they are not proposed as new temporal concepts.
+
+Recent methods already address substantial parts of this problem.
+MRAG separates question content from temporal constraints and ranks evidence using semantic and temporal signals \citep{zhang2025mrag}.
+Re$^3$ combines temporal representations with conflict-aware recency filtering \citep{cao2026re3}.
+Its recency rule assumes that the newest conflicting version supersedes earlier versions within credible corpora.
+Chronos organizes evolving evidence into an event graph \citep{liu2026chronos}.
+Adding temporal fields or a revision prompt therefore does not, alone, establish a new method.
+
+We instead ask what an evaluation actually establishes before claiming better temporal reasoning.
+Our earlier package compared lifecycle filtering with flat retrieval on current-holder questions.
+Its apparent advantage could reflect reference construction, topical evidence loss, scoring, or temporal reasoning.
+We disentangle those explanations through a retrospective self-audit.
+We preserve every original reference and report all questions.
+
+The audit motivates a second, prospective question.
+When additional evidence arrives, does a model correct an asserted temporal interpretation beyond ordinary re-extraction?
+We design a bounded natural-question diagnostic to test that premise before developing a specialized mechanism.
+The completed contribution in this draft is the package audit.
+The natural diagnostic and any broader scientific claim remain incomplete.
+
+\section{Retrospective Package Audit}
+\label{sec:audit}
+
+\paragraph{Materials and procedure.}
+The audited package contains claims, reference rules, retrieval code, aggregate results, and cached model outputs.
+Its natural-prose comparison contains 35 current-holder questions.
+None supplies a query date.
+We inspect the reference construction and all 35 selected reference claims.
+We additionally inspect complete same-key histories for nine flagged questions.
+Source judgments are assistant-assisted annotations, not independent human gold.
+Exact source positions and hashes support later review.
+The audit makes no new model calls and checks no live-world officeholders.
+
+\paragraph{Current support versus latest start.}
+The reference rule selects the maximum timestamp within a curated subject--relation group.
+Those timestamps encode tenure starts, rather than publication dates.
+Table~\ref{tab:support} summarizes the selected claims' released text.
+Nine claims do not explicitly assert the requested current role.
+Six explicitly describe ended tenures.
+The remaining cases involve past wording, another club, or an absent club name.
+These observations establish internal task--evidence mismatches.
+They do not identify the actual current holder.
+Asking for the latest supplied start would define a different, narrower task.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+Selected reference claim's released text & Count \\
+\midrule
+Explicit requested current role & 26 \\
+Explicit ended tenure & 6 \\
+Most recent past role only & 1 \\
+Different club named as current & 1 \\
+Requested club absent & 1 \\
+\midrule
+All questions & 35 \\
+\bottomrule
+\end{tabular}
+\caption{Assistant-assisted review of all selected reference claims. These are source-support categories, not external factuality labels.}
+\label{tab:support}
+\end{table}
+
+\paragraph{A baseline without topical evidence.}
+The date baseline sorts the entire corpus by timestamp before retaining five claims.
+Exactly five claims have the maximum timestamp.
+Every question therefore receives those same claims, although their order can differ.
+Only five questions retain their requested subject--relation key.
+Enumerating all possible orders recovers all 35 cached responses through exact prompt hashes.
+The recovered score matches the original 5/35 count.
+Thus, this baseline's failure cannot establish failure of subject-aware temporal selection.
+
+\paragraph{Scoring and incomplete pairing.}
+The original scorer accepts normalized reference containment or a shared name token with at least four characters.
+Its stricter variant also rejects listed stale names.
+These rules are not strict exact match or independently adjudicated identity correctness.
+Full-name phrase matching and normalized equality are therefore reported separately in the audit artifact.
+Their disagreements cannot automatically be called false positives.
+
+The cache stores 4,995 unique prompt hashes, but neither prompts nor condition labels.
+Bounded reconstruction recovers 139 compatible condition records from 175 possible cells.
+These records use 130 distinct cache keys; shared prompts are not independent generations.
+Another 29 cells remain unrecovered and seven remain condition-ambiguous.
+Missing reconstruction does not establish missing generation.
+Flat and lifecycle conditions also use different prompt wording.
+The original comparison consequently does not isolate retrieval under an identical reader prompt.
+
+\paragraph{What the aggregate improvement permits.}
+The original report gives 30/35 lifecycle successes and 25/35 flat successes.
+These margins permit six paired contingency tables.
+Exact two-sided McNemar $p$-values range from $0.0625$ to $0.3018$ across those tables.
+Even the most favorable pairing does not meet $0.05$ under this test.
+This result does not establish equivalence or prove that temporal filtering cannot help.
+The 19 reconstructed lifecycle--flat pairs contain two wins, zero losses, and 17 ties under the original scorer.
+Their exact paired $p$-value is $0.5$.
+This selected subset cannot estimate the missing pairs.
+
+\paragraph{Simpler controls and timestamp precision.}
+An existing variant removes older matched claims without comparing their values.
+Its mask equals the original mask on five of seven inspected datasets, including the natural-prose set.
+With supplied subject--relation keys, newest-value selection matches all 35 natural-prose references by construction.
+That oracle-conditioned result is not natural retrieval accuracy.
+It shows why key identification and temporal selection need separate measurements.
+
+The original ISO parser also loses day information in 151 of 153 complete-date Wikidata records.
+Its boundary condition fails before the ISO time separator and falls back to the year.
+Eight groups collapse distinct dates and values into one timestamp.
+Using supplied calendar dates changes two selected references.
+Eighteen partial dates remain partial; we do not invent missing calendar fields.
+The prose derivative shares these histories and is not an independent confirmation.
+No original references are overwritten, and no corrected-date reader outputs are generated.
+
+\section{A Natural Interpretation Diagnostic}
+\label{sec:diagnostic}
+
+The audit does not reveal whether interpretation revision offers useful headroom on natural questions.
+We specify the following development study to answer that narrower question.
+Protocol details below are prospective unless explicitly marked completed.
+
+\paragraph{Questions and admission.}
+TEMPO contains 1,730 naturally occurring Stack Exchange questions across 13 domains \citep{abdallah2026tempo}.
+Its documents and assisted annotations support a natural-question diagnostic, rather than a source-revision replay.
+Our frozen roster contains 60 original questions, selected through a recorded hash rule and domain round-robin ordering.
+Six previously inspected questions are excluded before sampling.
+Sampling uses identifiers and domains, without predictions or question contents.
+All 60 remain in the accounting, including unanswerable, ineligible, or failed items.
+This domain-balanced sample does not estimate the benchmark's natural domain mixture.
+
+Question-only admission checks whether the original request has an objectively reviewable temporal target.
+Merely mentioning a duration does not establish such a target.
+Broad causal explanations and code review cannot silently become narrower date questions.
+We record representation limits, missing anchors, and any dependence on inaccessible images.
+These assistant annotations do not enter inference inputs.
+
+\paragraph{Interpretations and evidence.}
+An interpretation assigns entity, relation, scope, time, comparison, and replacement.
+Unknown values differ from inapplicable fields.
+Two apparently conflicting claims may coexist because their scopes or periods differ.
+An older timestamp alone does not establish replacement.
+This schema is a measurement instrument, not a novel temporal representation.
+
+Each admitted item receives immutable packs $C_0\subseteq C_1$ before predictions.
+The expanded pack cannot depend on an initial model error.
+Every unit retains source identifiers, positions, and hashes.
+Question dates, publication dates, and omitted premises remain unknown unless supplied.
+If gold document identifiers define a diagnostic pool, we disclose that conditioning.
+Such a pool cannot establish ordinary retrieval performance.
+Benchmark answers and reference assignments never enter model inputs.
+Missing evidence within $C_1$ cannot establish global unanswerability.
+
+\paragraph{Matched controls.}
+Initial extraction, $I_0$, receives $C_0$.
+Ordinary re-extraction, $B_1$, receives $C_1$ and treats $I_0$ as an untrusted draft.
+Candidate-preserving revision, $R_1$, receives identical evidence and the same draft.
+It records retained, changed, retired, and newly proposed interpretations.
+Fresh extraction, $F_1$, receives $C_1$ without the draft.
+This control tests whether apparent revision difficulty instead reflects anchoring.
+All arms share the model, decoding, output schema, candidate cap, and output budget.
+The revision prompt is an exploratory control, not an algorithmic contribution.
+
+Source-assisted references are written from $C_1$ before predictions and reviewed by a second role.
+They specify acceptable joint assignments and supporting evidence sets.
+Assistant-authored references remain distinct from independent human gold.
+At most two active interpretations fit the proposed schema.
+References requiring more alternatives remain recorded representation exclusions.
+
+\paragraph{Outcomes and stopping rule.}
+An initial error requires an asserted wrong assignment under the reviewed expanded evidence.
+An unknown field becoming known measures evidence gain, not interpretation correction.
+We report complete joint correctness, observed class recall, false elimination, corrections, and new harms.
+Frozen aliases support strict scoring; blinded review audits apparent gains and losses.
+Unresolved measurement disagreements cannot count as mechanism wins.
+Malformed outputs count as failures without model-based repair.
+
+The feasibility gate requires at least 12 source-resolvable initial errors among the 60 questions.
+At least six must remain wrong after $B_1$ despite a complete reviewed correction from $C_1$.
+We report the same residual against $F_1$.
+If fresh extraction removes the residual, specialized revision loses its practical motivation here.
+These thresholds are development decisions, not statistical evidence of superiority.
+All calls, repeated evidence, tokens, and latency are charged.
+The two revision arms include initial-extraction cost; fresh extraction retains its cheaper native cost.
+
+\section{Natural Diagnostic Results: Pending}
+\label{sec:pending}
+
+\pending{N1: admission counts and independently reviewed source sufficiency across all 60 questions.}
+
+\pending{N2: frozen runtime, exact evidence budgets, completed arm records, failures, and total costs.}
+
+\pending{N3: initial errors, correction and harm counts, class recall, and residuals against both controls.}
+
+These placeholders are not zero-valued observations.
+No natural interpretation advantage, answer-level gain, or learned mechanism is established in this draft.
+A later answer-level comparison also requires a separate reader-competence gate.
+Passing the diagnostic would authorize further research, rather than establish publication readiness.
+
+\section{Conclusion}
+
+Our package audit separates current support from the latest supplied start date.
+It exposes topical baseline failure, incomplete pairing, permissive scoring, and timestamp precision loss.
+These findings weaken the earlier empirical claim without establishing a replacement method.
+The natural diagnostic is designed to determine whether interpretation revision deserves further development.
+Its results and external validation remain necessary before a broader analysis claim is justified.
+\label{v26-main-end}
+
+\clearpage
+\section*{Limitations}
+
+This is a development scaffold with explicit unfinished results.
+The completed audit concerns our own experimental package.
+It does not measure the prevalence of these problems across published systems or public benchmarks.
+Source-support judgments use assistant assistance and require independent human adjudication before stronger claims.
+We have not checked the actual current officeholders or reconstructed missing archived publication dates.
+
+Cache reconstruction is bounded, and the original cache omits condition labels and complete runtime provenance.
+The recovered subset is selected by reconstructability.
+Original name scoring also cannot establish strict semantic correctness.
+The aggregate paired test addresses statistical uncertainty under that original scoring rule.
+It cannot repair task-definition or measurement problems.
+
+The proposed natural study is development material, with no held-out confirmation.
+Its compact schema cannot represent every natural question.
+Exact aliases can reject valid paraphrases, and observed interpretation classes need not exhaust all valid alternatives.
+Pack sufficiency does not certify corpus coverage.
+Static evidence expansion does not test historical source replacement or adaptive retrieval quality.
+No natural method win has been demonstrated.
+
+\section*{Research Assistance and Data Handling}
+
+AI assistants supported literature review, source annotations, code preparation, and manuscript drafting.
+Their annotations are explicitly labelled and are not independent human judgments.
+This scaffold contains no personal identity or project repository link.
+An anonymous submission supplement remains to be assembled and reviewed separately.
+Public project files do not themselves constitute an anonymous supplement.
+Third-party source text remains subject to its original rights.
+Hashes and offsets support auditing without assuming permission to redistribute complete captures.
+
+\bibliography{interpretation_v26}
+\end{document}

@@ -1,0 +1,714 @@
+{
+  "schema_version": "v26.source_binding_second_review.1",
+  "created_date": "2026-10-06",
+  "reviewer_role": "Independent assistant reasoning over exact packets; not human gold",
+  "prior_author_judgments_seen": true,
+  "blinded_review": false,
+  "input_packs_sha256": "04b3463e834edbc155cb21c3ebb315daf817980f9c87059515b62e87c735ff65",
+  "candidate_audit_inputs": [
+    {
+      "path": "data/tempo_v26/source_binding_candidates_01.json",
+      "sha256": "8ea8e84253d6cb5200cca1ebe3784bd8d2c5a740572ae9aa9a6c5b984ab03731"
+    },
+    {
+      "path": "data/tempo_v26/source_binding_candidates_02.json",
+      "sha256": "b1b9e10e0f7aa01eaa89e0bfabf2ff7e3cd1ba407743e1c9dd93c9f531571e6f"
+    },
+    {
+      "path": "data/tempo_v26/source_binding_candidates_03.json",
+      "sha256": "420388f59eb95d21792790d52815bbd8825b069708e5deebbe4d1796b54ebfd8"
+    }
+  ],
+  "scope": {
+    "roster_questions": 60,
+    "first_pass_authors_reviewed": 60,
+    "second_review_exact_packet_items": 8,
+    "second_review_ids": [
+      "v26-016",
+      "v26-026",
+      "v26-032",
+      "v26-038",
+      "v26-041",
+      "v26-049",
+      "v26-054",
+      "v26-058"
+    ],
+    "source_text_boundary": "Exact frozen Q, C0, and C1 only",
+    "read_full_sources": false,
+    "read_benchmark_answers": false,
+    "read_model_predictions": false,
+    "source_offsets_used": "Existing packet metadata only",
+    "outside_source_text_opened": false
+  },
+  "judgment_definitions": {
+    "clear": "Same relevant C0 assertion receives a new C1 binding premise, with an objective resolved interpretation.",
+    "partial": "Some source linkage or scope detail exists, but an essential task-level criterion remains unestablished.",
+    "unsupported": "The proposed witness instead involves existing support, another proposition, unresolved conflict, or task irrelevance."
+  },
+  "summary": {
+    "reviewed_count": 8,
+    "judgment_counts": {
+      "clear": 0,
+      "partial": 3,
+      "unsupported": 5
+    },
+    "partial_ids": [
+      "v26-016",
+      "v26-026",
+      "v26-032"
+    ],
+    "clear_task_relevant_new_binding_witnesses": 0,
+    "actual_initial_model_errors_observed": 0,
+    "ordinary_reextraction_residuals_observed": 0,
+    "recommendation": "Do not run the CPU interpretation study on these frozen packets.",
+    "decision_type": "Resource and task-operationalization stop, not falsification of source-fact revision.",
+    "reason": [
+      "The first-pass 60-question audit yields too few plausible new binding witnesses for the planned study.",
+      "Second review confirms useful local details but no clear complete task-level witness among the eight flagged items.",
+      "None establishes an initial model error or a residual against ordinary re-extraction.",
+      "The original 12-error and six-residual gates remain untested, not empirically failed."
+    ],
+    "not_claimed": [
+      "No possible model errors exist.",
+      "No source-binding revision phenomenon exists.",
+      "The entire TEMPO benchmark lacks such cases.",
+      "A learned revision method cannot work.",
+      "The frozen BM25 packets establish full-corpus coverage."
+    ]
+  },
+  "records": [
+    {
+      "item_id": "v26-016",
+      "query_sha256": "90620c0da06369f3e7f1ceef22fa3ac64a259c4633d8625977da59e2e89b1657",
+      "c0_sha256": "c0ce7263e3e867a4f41e08cd328234b20c3bd8f53f70858973cdfac40d7945d9",
+      "c1_sha256": "0dccec5c7b1af58b7acc11600542c4118ffc92b051af8c5072a9dffd2e337737",
+      "judgment": "partial",
+      "classification": "publication_description_without_secure_same_assertion_binding",
+      "clear_task_relevant_new_binding_witness": false,
+      "c0_anchors": [
+        {
+          "packet": "c0",
+          "evidence_id": "E01",
+          "unit_id": "e98a5445d0e57e84bf761116",
+          "source_id": "hsm/36578dac_8268.txt",
+          "source_sha256": "91db0bc144085935131142828fb460d1d09445ff5a625f8662716ba26a887616",
+          "source_byte_start": 526,
+          "source_byte_stop": 986,
+          "packet_char_start": 30,
+          "packet_char_stop": 485,
+          "unit_sha256": "7eeef2dd8f264081f849fd801d3b1f40245ee51d2b3e92b5326ca9f42f58e74f"
+        },
+        {
+          "packet": "c0",
+          "evidence_id": "E03",
+          "unit_id": "4ccc0828d6d05e1c77a1e2b2",
+          "source_id": "hsm/8a4cd0e7_8044.txt",
+          "source_sha256": "1c7867871ce8c0861aae59d8198cd915a10458694e39773157e02899ec203efc",
+          "source_byte_start": 1941,
+          "source_byte_stop": 2003,
+          "packet_char_start": 741,
+          "packet_char_stop": 803,
+          "unit_sha256": "85e21b9310366d93a44139dead38edd6d5315dc1ee8dc8dde8a5278063b4046f"
+        }
+      ],
+      "added_c1_units": [
+        {
+          "packet": "c1",
+          "evidence_id": "E10",
+          "unit_id": "93a58c9168cb38fae1c88c2d",
+          "source_id": "hsm/36578dac_8268.txt",
+          "source_sha256": "91db0bc144085935131142828fb460d1d09445ff5a625f8662716ba26a887616",
+          "source_byte_start": 0,
+          "source_byte_stop": 402,
+          "packet_char_start": 2197,
+          "packet_char_stop": 2597,
+          "unit_sha256": "a18b97e6cab753fc087ce861e8307b816f8d2a4f348bcf21ea4a34017a03d894"
+        }
+      ],
+      "existing_c0_controls": [
+        {
+          "packet": "c0",
+          "evidence_id": "E05",
+          "unit_id": "2b8ed3f033ea643fbd093ea8",
+          "source_id": "hsm/91221036_8275.txt",
+          "source_sha256": "82c1f45d9013e6c7115063e2add979bf41921bc8a3c9c2ed1ea2a0df886a0655",
+          "source_byte_start": 20088,
+          "source_byte_stop": 20268,
+          "packet_char_start": 1117,
+          "packet_char_stop": 1297,
+          "unit_sha256": "1bb01adc391aedd1872f74d08a247c6230b8b09026a17343cbdf62672b89cff4"
+        },
+        {
+          "packet": "c0",
+          "evidence_id": "E06",
+          "unit_id": "6be615e31b37b6ecfe59a3ca",
+          "source_id": "hsm/56af3995_8043.txt",
+          "source_sha256": "091717eeedce9217c4ad3f667ffce359f7b4e4b98cec7e5a20437947dc84504a",
+          "source_byte_start": 0,
+          "source_byte_stop": 284,
+          "packet_char_start": 1329,
+          "packet_char_stop": 1605,
+          "unit_sha256": "5033cd0227db24c0ace9ff2eb62a8ebd5c53863472343db3a8e74266fd71a810"
+        }
+      ],
+      "same_assertion_assessment": "E03 and E10 concern different source documents. E01 shares a source with E10, but its antecedent remains unverified.",
+      "question_relevance_assessment": "The publication issue directly concerns the question. First comprehensive overview must not replace first published final exposition.",
+      "c0_resolution_assessment": "E03 already gives 1916. E06 distinguishes a November 1915 presentation. E01 already separates first publication from added field equations.",
+      "new_information_assessment": "The journal, volume, pages, and comprehensive-overview description are new. Their identity link to the C0 assertion is not explicit.",
+      "temporal_binding_assessment": "No established event-time reassignment. The 1916 versus 1915 distinction remains tied to different publication or presentation descriptions.",
+      "reason": "E10 identifies a 1916 comprehensive overview. It does not securely rebind the publication claim in E03 or pronoun in E01.",
+      "limitations": [
+        "E10 ends at source byte 402. E01 starts at byte 526. The 124 intervening bytes were not inspected.",
+        "Shared source identity does not resolve a pronoun across omitted text.",
+        "An improved answer could use the new publication fact without revising an existing source binding."
+      ],
+      "preserve_as": "A publication-relation near match requiring fuller source context in a separately designed study.",
+      "actual_model_error_observed": false,
+      "residual_against_reextraction_observed": false,
+      "counts_toward_model_error_gate": false
+    },
+    {
+      "item_id": "v26-026",
+      "query_sha256": "f91b9260dee76cb78c83cc8ad41c7bd852d932e0774f8d2cde0598a41f8da6c9",
+      "c0_sha256": "3ce9fb875edd2b243f7ab0000454fa06556f63cb85148f1b8287bcaea897188e",
+      "c1_sha256": "50e31377a95a0007448c3333f7825f570735074ab90f5821dc398896a3cae7ac",
+      "judgment": "partial",
+      "classification": "adjacent_case_scope_detail_with_prior_qualification",
+      "clear_task_relevant_new_binding_witness": false,
+      "c0_anchors": [
+        {
+          "packet": "c0",
+          "evidence_id": "E02",
+          "unit_id": "5d7c2c5b175c2f40e300f61d",
+          "source_id": "law/1790dd9d_2738.txt",
+          "source_sha256": "8680b1f0792163db92e71ae088d29a590680442728f5ef9f145ff7f14aebdb11",
+          "source_byte_start": 0,
+          "source_byte_stop": 254,
+          "packet_char_start": 325,
+          "packet_char_stop": 579,
+          "unit_sha256": "3cdac54b167956bc61621c6df20f7669080a1e179da0efd34c75e4f59e09ca46"
+        }
+      ],
+      "added_c1_units": [
+        {
+          "packet": "c1",
+          "evidence_id": "E12",
+          "unit_id": "9971ca2c58ff0aeee6eafee7",
+          "source_id": "law/1790dd9d_2738.txt",
+          "source_sha256": "8680b1f0792163db92e71ae088d29a590680442728f5ef9f145ff7f14aebdb11",
+          "source_byte_start": 255,
+          "source_byte_stop": 537,
+          "packet_char_start": 4084,
+          "packet_char_stop": 4366,
+          "unit_sha256": "7b67da4a6ec4c9dd5598d8aa49d12ab396f398cd787f0c3e29ae4ec54193d54a"
+        },
+        {
+          "packet": "c1",
+          "evidence_id": "E11",
+          "unit_id": "a4f4330d3dba00e7d67e7183",
+          "source_id": "law/a95c4dae_2748.txt",
+          "source_sha256": "1e733016e34197b1127ccaa73408dc99b6b2b35132ba388f8c324adc5553d8a5",
+          "source_byte_start": 6222,
+          "source_byte_stop": 6899,
+          "packet_char_start": 3379,
+          "packet_char_stop": 4052,
+          "unit_sha256": "433d18f40ee17252cdc0a18df819f71198d2a52941d1505f289b6f797368a6a2"
+        },
+        {
+          "packet": "c1",
+          "evidence_id": "E15",
+          "unit_id": "15cc68474d3f59cd0e2e8240",
+          "source_id": "law/a95c4dae_2748.txt",
+          "source_sha256": "1e733016e34197b1127ccaa73408dc99b6b2b35132ba388f8c324adc5553d8a5",
+          "source_byte_start": 11235,
+          "source_byte_stop": 11401,
+          "packet_char_start": 4860,
+          "packet_char_stop": 5026,
+          "unit_sha256": "040066652a10a29890cfc1bb6f17225448b6eb83ebf5f50482f6ef2f5e20eefc"
+        }
+      ],
+      "existing_c0_controls": [
+        {
+          "packet": "c0",
+          "evidence_id": "E10",
+          "unit_id": "596b387e1a534afc4d033568",
+          "source_id": "law/58d4b55c_2773.txt",
+          "source_sha256": "ff5ea0dc444cedf28becde19be2beed9b955a6c9ba662fabf06ff94400f7e6b1",
+          "source_byte_start": 0,
+          "source_byte_stop": 133,
+          "packet_char_start": 1957,
+          "packet_char_stop": 2090,
+          "unit_sha256": "53629f56cda7049e91a0f01c2fc4376ab39da32d680fd67c0df110f8d833cf69"
+        }
+      ],
+      "same_assertion_assessment": "E12 immediately follows E02 in the same source. It qualifies the same case description, with one intervening byte.",
+      "question_relevance_assessment": "Directly relevant to the question about binding authority and later legal developments.",
+      "c0_resolution_assessment": "E02 says some statutes, not every constitutional statute. E10 already marks the remarks as nonessential judicial opinion.",
+      "new_information_assessment": "The European Communities Act provision is a new case-scope detail. It does not establish a new replacement relation.",
+      "temporal_binding_assessment": "No new event-time binding is established. Later-case excerpts do not recover the missing query date or complete legal history.",
+      "reason": "E12 adds the particular statutory provision and distinguishes broader judicial views. C0 already warns that the remarks were obiter.",
+      "limitations": [
+        "A literal all-statutes interpretation already exceeds the anchored wording.",
+        "C1 adds useful scope detail, but does not establish an initial extraction error.",
+        "Adjacent-sentence re-extraction is an adequate untested explanation for any possible improvement."
+      ],
+      "preserve_as": "The strongest relevant partial example: source-case scope qualification.",
+      "actual_model_error_observed": false,
+      "residual_against_reextraction_observed": false,
+      "counts_toward_model_error_gate": false
+    },
+    {
+      "item_id": "v26-032",
+      "query_sha256": "27ff1b9cb989ab30722986f2f2412464c74bd1ad3f3256fd6b6dd2f6959d6587",
+      "c0_sha256": "316b6347f8f01f1eb8dcae879e1a344b1aa706899c95ca585ebdf8fafebbea31",
+      "c1_sha256": "1a93c019b613f64288f0b283c63cdae377a01f0d5738ef90f58f46a11ec06309",
+      "judgment": "partial",
+      "classification": "register_population_clarification_with_weak_task_relevance",
+      "clear_task_relevant_new_binding_witness": false,
+      "c0_anchors": [
+        {
+          "packet": "c0",
+          "evidence_id": "E05",
+          "unit_id": "a0787ea0a658de8657bfca75",
+          "source_id": "genealogy/5fa2a5dc_5466.txt",
+          "source_sha256": "1561863b6be1d753e46d4ea44d8bfb4743ebe329e76efcf9db02f59b700af330",
+          "source_byte_start": 772,
+          "source_byte_stop": 898,
+          "packet_char_start": 797,
+          "packet_char_stop": 923,
+          "unit_sha256": "0fb1c101536e100cc1806f12104c557ed06ecc6befddae68f5765dcdbd21ea80"
+        }
+      ],
+      "added_c1_units": [
+        {
+          "packet": "c1",
+          "evidence_id": "E11",
+          "unit_id": "098645bdc734d8b0e2d63387",
+          "source_id": "genealogy/5fa2a5dc_5466.txt",
+          "source_sha256": "1561863b6be1d753e46d4ea44d8bfb4743ebe329e76efcf9db02f59b700af330",
+          "source_byte_start": 899,
+          "source_byte_stop": 1024,
+          "packet_char_start": 2072,
+          "packet_char_stop": 2193,
+          "unit_sha256": "6ab9e0d1c4cb0a32870e8d28b833805fdc6aa67689b1448243d19775b828b94c"
+        }
+      ],
+      "existing_c0_controls": [
+        {
+          "packet": "c0",
+          "evidence_id": "E08",
+          "unit_id": "309a75bc49b8a0a4a6580ff4",
+          "source_id": "genealogy/5fa2a5dc_5466.txt",
+          "source_sha256": "1561863b6be1d753e46d4ea44d8bfb4743ebe329e76efcf9db02f59b700af330",
+          "source_byte_start": 184,
+          "source_byte_stop": 479,
+          "packet_char_start": 1293,
+          "packet_char_stop": 1588,
+          "unit_sha256": "f66d23288bf8ace1ccf7829b285770cef7d077ca5d8b92c68cb19a144743f22e"
+        }
+      ],
+      "same_assertion_assessment": "E11 immediately follows E05 in the same source, with one intervening byte.",
+      "question_relevance_assessment": "Only indirect. Maritime death-register membership differs from fields on Isle of Man civil certificates.",
+      "c0_resolution_assessment": "E05 already identifies receiving registry offices. E08 already states the maritime reporting setting.",
+      "new_information_assessment": "E11 adds the deceased subject-status condition for Scottish and Irish registers. This can resolve an otherwise unknown population attribute.",
+      "temporal_binding_assessment": "The 1874 maritime reporting date already appears in C0. C1 supplies a population condition, not a temporal reassignment.",
+      "reason": "E11 genuinely adds the membership condition for the same registers. The requested Isle of Man certificate fields remain unsupported.",
+      "limitations": [
+        "A place-of-death reading conflicts with the existing maritime context.",
+        "No model asserted that reading. Unknown-to-known population completion is not an observed correction.",
+        "The source clarification does not establish the requested certificate comparison or its historical changes."
+      ],
+      "preserve_as": "A genuine local population clarification, unsuitable as a confirmed task-level revision witness.",
+      "actual_model_error_observed": false,
+      "residual_against_reextraction_observed": false,
+      "counts_toward_model_error_gate": false
+    },
+    {
+      "item_id": "v26-038",
+      "query_sha256": "60ec14eca9019a2b96ac1026946684f0873efc9bd8f6b11c7d43135fa997877f",
+      "c0_sha256": "f963232143140f93c73bfdc4729af13cd0527791d9291df85aca2a016f357af0",
+      "c1_sha256": "647acb15c01f30894240c09037f3641589aec4cfade6d2ae2dbcca4daffc4eb8",
+      "judgment": "unsupported",
+      "classification": "corroborating_scope_summary_already_available",
+      "clear_task_relevant_new_binding_witness": false,
+      "c0_anchors": [
+        {
+          "packet": "c0",
+          "evidence_id": "E03",
+          "unit_id": "016a2a2a7b7c06959ab29070",
+          "source_id": "politics/8b20ceb1_4800.txt",
+          "source_sha256": "01f09a0b61eeae5947517b468afab4c67b13740d434d8ede3bc1de3bb122abc8",
+          "source_byte_start": 2477,
+          "source_byte_stop": 2668,
+          "packet_char_start": 503,
+          "packet_char_stop": 692,
+          "unit_sha256": "b990239581f41e429248d7ff2f6d25a667ec98ceab8eeaa932d038bc2d42422e"
+        }
+      ],
+      "added_c1_units": [
+        {
+          "packet": "c1",
+          "evidence_id": "E09",
+          "unit_id": "91abf409a0f8bc93763820a7",
+          "source_id": "politics/47d161df_4801.txt",
+          "source_sha256": "1dcb0589224728d9df50838a555ff4671c52a954095b02e6eee10a22aefb7b68",
+          "source_byte_start": 9561,
+          "source_byte_stop": 9767,
+          "packet_char_start": 1966,
+          "packet_char_stop": 2170,
+          "unit_sha256": "70b9daee19e73b7c32579af75422b65e22b55f6c624f41025895b090bd7312f9"
+        }
+      ],
+      "existing_c0_controls": [
+        {
+          "packet": "c0",
+          "evidence_id": "E02",
+          "unit_id": "6eae79c999ad139e643c97cb",
+          "source_id": "politics/8b20ceb1_4800.txt",
+          "source_sha256": "01f09a0b61eeae5947517b468afab4c67b13740d434d8ede3bc1de3bb122abc8",
+          "source_byte_start": 751,
+          "source_byte_stop": 997,
+          "packet_char_start": 222,
+          "packet_char_stop": 466,
+          "unit_sha256": "d31e84d9d1f4468d1f1a4456af350d6935d2756de2c4d89e808cdc72d2cf12bb"
+        },
+        {
+          "packet": "c0",
+          "evidence_id": "E06",
+          "unit_id": "73cb555de2bad5339e0ffe5e",
+          "source_id": "politics/d00cd75c_4627.txt",
+          "source_sha256": "edb3dde7c4ffee5264dc6c70261af5fa8035b5e15eeb0f78bdd8075d23ab9bc0",
+          "source_byte_start": 0,
+          "source_byte_stop": 219,
+          "packet_char_start": 1277,
+          "packet_char_stop": 1496,
+          "unit_sha256": "40d3eba6d891c5ed9843a325d70a4ea632504e57f2a5682ece8cb2913425bb44"
+        },
+        {
+          "packet": "c0",
+          "evidence_id": "E07",
+          "unit_id": "5a76185ece4f05bd026e8097",
+          "source_id": "politics/47d161df_4801.txt",
+          "source_sha256": "1dcb0589224728d9df50838a555ff4671c52a954095b02e6eee10a22aefb7b68",
+          "source_byte_start": 9294,
+          "source_byte_stop": 9395,
+          "packet_char_start": 1533,
+          "packet_char_stop": 1634,
+          "unit_sha256": "8078400a155d9944c7cf0b10d4a2b59a2db01a79a5af7df218cb55b25ceaba91"
+        }
+      ],
+      "same_assertion_assessment": "E09 summarizes another source. It does not establish a new referent or temporal binding for E03.",
+      "question_relevance_assessment": "Directly relevant to the question about the embargo and Soviet ties.",
+      "c0_resolution_assessment": "E03 denies a significant policy shift. E06 says arms transfers increased. E07 supplies a postwar procurement example.",
+      "new_information_assessment": "The additional summary makes the existing distinction more explicit. It contributes corroboration rather than a missing binding premise.",
+      "temporal_binding_assessment": "No new assignment changes the 1965 embargo or the anchored policy claim.",
+      "reason": "C1 restates the distinction between a major policy shift and additional arms purchases. Both propositions already appear in C0.",
+      "limitations": [
+        "Negation of a significant shift does not mean negation of every procurement increase.",
+        "A model could still misread C0, but that error has not been observed.",
+        "Any correction might reflect redundant phrasing rather than a source-binding revision mechanism."
+      ],
+      "preserve_as": "A stable-scope control or redundancy example.",
+      "actual_model_error_observed": false,
+      "residual_against_reextraction_observed": false,
+      "counts_toward_model_error_gate": false
+    },
+    {
+      "item_id": "v26-041",
+      "query_sha256": "a8b75124d3ea56209fdf326f263e6b3ab53a3bf6c18cb298ab9d403dfe87d22c",
+      "c0_sha256": "2adcbccd9e210450da6af020541e0a453ac1a661bd0770e3ba2874c48c397395",
+      "c1_sha256": "61895a3a87d2dd3efa626967c759d2d6d181015a6e687e6f4060f92cf8e5a83b",
+      "judgment": "unsupported",
+      "classification": "explicit_calculation_premise_not_reassigned_output_interval",
+      "clear_task_relevant_new_binding_witness": false,
+      "c0_anchors": [
+        {
+          "packet": "c0",
+          "evidence_id": "E01",
+          "unit_id": "d4b3524d81af2d63bf76d7ff",
+          "source_id": "quant/8bb27b90_2338.txt",
+          "source_sha256": "28c283f49df23fd4d1251d164f6cd2fc73393f4061def921213721fb3949c434",
+          "source_byte_start": 1273,
+          "source_byte_stop": 1346,
+          "packet_char_start": 32,
+          "packet_char_stop": 105,
+          "unit_sha256": "77f65f63fd4889d99d612962e3a1cb753a00149d29991d881232280eae25b188"
+        }
+      ],
+      "added_c1_units": [
+        {
+          "packet": "c1",
+          "evidence_id": "E07",
+          "unit_id": "f5caa8e94555b7cbe8b25054",
+          "source_id": "quant/8bb27b90_2338.txt",
+          "source_sha256": "28c283f49df23fd4d1251d164f6cd2fc73393f4061def921213721fb3949c434",
+          "source_byte_start": 1008,
+          "source_byte_stop": 1149,
+          "packet_char_start": 1359,
+          "packet_char_stop": 1500,
+          "unit_sha256": "e19492b320845e7212d73b8f01bd64c7787806948a87ab7d87c6ac5b4cdf1739"
+        },
+        {
+          "packet": "c1",
+          "evidence_id": "E09",
+          "unit_id": "c8ea05f7cc3a7a7ef661fbe7",
+          "source_id": "quant/8bb27b90_2338.txt",
+          "source_sha256": "28c283f49df23fd4d1251d164f6cd2fc73393f4061def921213721fb3949c434",
+          "source_byte_start": 395,
+          "source_byte_stop": 1007,
+          "packet_char_start": 1842,
+          "packet_char_stop": 2448,
+          "unit_sha256": "f335aab2f2339f1482f0fd9abbb14195c37fed970fa736d97f4c6f3937385292"
+        }
+      ],
+      "existing_c0_controls": [],
+      "same_assertion_assessment": "E07 concerns the premise of the same source calculation. It does not replace E01's four-year interval.",
+      "question_relevance_assessment": "Directly relevant to interpreting the numerical question.",
+      "c0_resolution_assessment": "E01 already binds Sharpe ratio two to four years. Q does not specify the input ratio's annualization convention.",
+      "new_information_assessment": "E07 explicitly assumes annualization for Q. It does not verify the question author's intended convention.",
+      "temporal_binding_assessment": "This is a calculation-assumption disclosure. The output interval remains four years.",
+      "reason": "The four-year output interval is explicit in C0. C1 adds the source author's annual-input assumption and an answer calculation.",
+      "limitations": [
+        "The source states an assumption, not an independently observed query-time binding.",
+        "C1 does not establish every distributional premise needed for the reported probability.",
+        "An unknown premise becoming explicit should not become a misbinding correction."
+      ],
+      "preserve_as": "A useful assumption-exposure example outside the narrow source-binding claim.",
+      "actual_model_error_observed": false,
+      "residual_against_reextraction_observed": false,
+      "counts_toward_model_error_gate": false
+    },
+    {
+      "item_id": "v26-049",
+      "query_sha256": "443130990700f7c35c4bf5c532083cb052454fce73157a917ae6fe8b21d1615d",
+      "c0_sha256": "61019f6ddd0b2b39df06077fcb9b45ecbd34cad3c78030edf9d1cb8dea8cff16",
+      "c1_sha256": "872e6c029cecca8c18fc3d91023cfbd904dc3473acd56d8d2d69147a80c16919",
+      "judgment": "unsupported",
+      "classification": "new_apparent_conflict_without_resolving_scope",
+      "clear_task_relevant_new_binding_witness": false,
+      "c0_anchors": [
+        {
+          "packet": "c0",
+          "evidence_id": "E09",
+          "unit_id": "310773a095c88ab1ef90fe23",
+          "source_id": "cardano/7d9c0851_8910.txt",
+          "source_sha256": "2f52104ef62e95e0320997b690c5e1de6f135bee52688095e3ddb82c41ebc7fb",
+          "source_byte_start": 288,
+          "source_byte_stop": 481,
+          "packet_char_start": 1266,
+          "packet_char_stop": 1459,
+          "unit_sha256": "4161f7bbbb2ea715b30de5c7851f6bb8fc39847082c09295b498c8947453bf74"
+        }
+      ],
+      "added_c1_units": [
+        {
+          "packet": "c1",
+          "evidence_id": "E23",
+          "unit_id": "379f80c37aa28573a21e351b",
+          "source_id": "cardano/7d9c0851_8910.txt",
+          "source_sha256": "2f52104ef62e95e0320997b690c5e1de6f135bee52688095e3ddb82c41ebc7fb",
+          "source_byte_start": 0,
+          "source_byte_stop": 119,
+          "packet_char_start": 3809,
+          "packet_char_stop": 3928,
+          "unit_sha256": "e3347c1ff25b573f01deae54137e2830b8d189a0a30481832ef008e105189f68"
+        },
+        {
+          "packet": "c1",
+          "evidence_id": "E24",
+          "unit_id": "c91f557435c5d772e13653b7",
+          "source_id": "cardano/7d9c0851_8910.txt",
+          "source_sha256": "2f52104ef62e95e0320997b690c5e1de6f135bee52688095e3ddb82c41ebc7fb",
+          "source_byte_start": 159,
+          "source_byte_stop": 248,
+          "packet_char_start": 3964,
+          "packet_char_stop": 4053,
+          "unit_sha256": "c5ffa5a66f3efb995495f13e2bd9dcfb9038baa9202a264f1afa8c0e2bb2af9f"
+        }
+      ],
+      "existing_c0_controls": [
+        {
+          "packet": "c0",
+          "evidence_id": "E03",
+          "unit_id": "9e79f745d2d7e332aa746852",
+          "source_id": "cardano/3fe0edb1_8808.txt",
+          "source_sha256": "f8425f985bf8035fb05db54c05f0b0f780dd51606dc3159516ca73a8eee00f70",
+          "source_byte_start": 237,
+          "source_byte_stop": 428,
+          "packet_char_start": 389,
+          "packet_char_stop": 580,
+          "unit_sha256": "bb2c6a782fc8e81cca806c2f3895a0c834199bdac0c218e11b323c516df73aba"
+        }
+      ],
+      "same_assertion_assessment": "Both statements share a source, but the delivered units do not establish identical address referents or the needed qualification.",
+      "question_relevance_assessment": "Directly relevant to the question about changing stake addresses.",
+      "c0_resolution_assessment": "C0 asserts stake-part change. It does not explain whether this creates another address or changes an existing address identity.",
+      "new_information_assessment": "C1 introduces an immutability assertion and a resource pointer. The missing reconciliation remains absent.",
+      "temporal_binding_assessment": "No version, effective date, or event interval resolves the apparent conflict.",
+      "reason": "C1 adds an apparently conflicting Shelley-address claim. The packet does not resolve its relationship with the earlier mutable-stake-part claim.",
+      "limitations": [
+        "Do not import external Cardano address semantics to fill the missing distinction.",
+        "Shared document identity does not prove replacement or reconcile incompatible claims.",
+        "This can support source-bounded uncertainty, not a resolved correction oracle."
+      ],
+      "preserve_as": "An unresolved source-conflict example.",
+      "actual_model_error_observed": false,
+      "residual_against_reextraction_observed": false,
+      "counts_toward_model_error_gate": false
+    },
+    {
+      "item_id": "v26-054",
+      "query_sha256": "b858375a66afc3833201ea1697c09527585393a231bad1b1c94dd3b76feefaba",
+      "c0_sha256": "15a8b146a26b5b48cf3fcf147c0609676cb0d73d8a28a8cea5e8c3a4c16885f3",
+      "c1_sha256": "1454482c634839ffae1d88da195468e3018ad07fcfca88cfb14cc85820644819",
+      "judgment": "unsupported",
+      "classification": "question_referent_clarification_without_c0_binding_change",
+      "clear_task_relevant_new_binding_witness": false,
+      "c0_anchors": [
+        {
+          "packet": "c0",
+          "evidence_id": "E02",
+          "unit_id": "68661b4be99196ae1f867739",
+          "source_id": "quant/6a87c76e_2659.txt",
+          "source_sha256": "eae029c42e88fde3398101ac73b0f669daf61f22503ace2b4546d0ba3f92b098",
+          "source_byte_start": 0,
+          "source_byte_stop": 130,
+          "packet_char_start": 189,
+          "packet_char_stop": 319,
+          "unit_sha256": "faf6013aa39a97c73ea055bbfaf4a3fa137ed0499f0f93d6f2d7d2b4b80dac24"
+        }
+      ],
+      "added_c1_units": [
+        {
+          "packet": "c1",
+          "evidence_id": "E10",
+          "unit_id": "511b11e67aa3c1949199851c",
+          "source_id": "quant/4e9b1fba_2647.txt",
+          "source_sha256": "d3efe88d10f27b7aa91e3ef195a0fb0d943605ff5f7ebdecb5b691a35cafbee1",
+          "source_byte_start": 0,
+          "source_byte_stop": 121,
+          "packet_char_start": 2484,
+          "packet_char_stop": 2605,
+          "unit_sha256": "b54b770f0c5d3289a8284f7b02655beed60057eb2159a4261c37df3d23368363"
+        },
+        {
+          "packet": "c1",
+          "evidence_id": "E14",
+          "unit_id": "3e29b71f95573b6497f60835",
+          "source_id": "quant/9661eac8_2669.txt",
+          "source_sha256": "4a06331d0325e1fa8cfb94f1d911849aa1d2d634366a479f166cbc0a68c77c84",
+          "source_byte_start": 573,
+          "source_byte_stop": 741,
+          "packet_char_start": 3293,
+          "packet_char_stop": 3461,
+          "unit_sha256": "f50a3d63b043f308844424910c5c5c49665624111fd321f1b7fb6101f6de3c18"
+        },
+        {
+          "packet": "c1",
+          "evidence_id": "E16",
+          "unit_id": "697b72899a7856123c8d2114",
+          "source_id": "quant/9661eac8_2669.txt",
+          "source_sha256": "4a06331d0325e1fa8cfb94f1d911849aa1d2d634366a479f166cbc0a68c77c84",
+          "source_byte_start": 126,
+          "source_byte_stop": 311,
+          "packet_char_start": 3718,
+          "packet_char_stop": 3903,
+          "unit_sha256": "de4e5460d7a45b7c32d149a5fc0bd9ff4c4adda8a5fc0ea81fd63e1e995cfd4a"
+        },
+        {
+          "packet": "c1",
+          "evidence_id": "E17",
+          "unit_id": "51a64995477a00c76a0dd902",
+          "source_id": "quant/6a87c76e_2659.txt",
+          "source_sha256": "eae029c42e88fde3398101ac73b0f669daf61f22503ace2b4546d0ba3f92b098",
+          "source_byte_start": 131,
+          "source_byte_stop": 585,
+          "packet_char_start": 3937,
+          "packet_char_stop": 4389,
+          "unit_sha256": "686b3c0c5d25d927e696d5f5d8bcac8184c7fd7673288e5038e27e50987d4752"
+        }
+      ],
+      "existing_c0_controls": [],
+      "same_assertion_assessment": "E02 concerns payoff at expiration. E14 concerns the question's blue curve, absent from any anchored C0 assertion.",
+      "question_relevance_assessment": "Directly relevant to the requested option comparison.",
+      "c0_resolution_assessment": "C0 already explicitly binds its payoff definition to expiration.",
+      "new_information_assessment": "C1 adds American exercise information and a characterization of the question's curve.",
+      "temporal_binding_assessment": "The source expiry interval does not change. The disputed current-time curve belongs to the question.",
+      "reason": "The blue-line interpretation comes from Q. C1 supplies a price-versus-exercise distinction without rebinding the C0 expiry-payoff assertion.",
+      "limitations": [
+        "The linked image is absent from the delivered text and was not opened.",
+        "Improving the answer would not demonstrate revision of the same source assertion.",
+        "This source-bounded judgment does not evaluate the financial accuracy of the retrieved claims."
+      ],
+      "preserve_as": "A question-reference clarification example, outside the corrected source-binding task.",
+      "actual_model_error_observed": false,
+      "residual_against_reextraction_observed": false,
+      "counts_toward_model_error_gate": false
+    },
+    {
+      "item_id": "v26-058",
+      "query_sha256": "3d092b92fb75af3ed1a5d9433c82e5f052036dfe872dc10995cdad7879023fc7",
+      "c0_sha256": "c23f6c5fc73316f22a42b7efedb60efe75763e8d20c653cf3bf606831dbc1e1c",
+      "c1_sha256": "7ce0813e339a992d6f03cd18653fc7d63242cc2bca972c04910ae4d0760bfb66",
+      "judgment": "unsupported",
+      "classification": "irrelevant_pension_rule_and_belief_distinction",
+      "clear_task_relevant_new_binding_witness": false,
+      "c0_anchors": [
+        {
+          "packet": "c0",
+          "evidence_id": "E01",
+          "unit_id": "2f205d3a2a6291fca4140c03",
+          "source_id": "genealogy/38ec51e1_2125.txt",
+          "source_sha256": "54e631ff71db65d17472a7851eab6bae5d355cb8a028d3c06a9b3320c5895351",
+          "source_byte_start": 433,
+          "source_byte_stop": 910,
+          "packet_char_start": 36,
+          "packet_char_stop": 505,
+          "unit_sha256": "199f9421ebd7c87aacb55d91a228a78d4f733b3fbaf41b7f16208ded2158ee8d"
+        },
+        {
+          "packet": "c0",
+          "evidence_id": "E06",
+          "unit_id": "0b5b9afbaa74fae35576b9b2",
+          "source_id": "genealogy/38ec51e1_2125.txt",
+          "source_sha256": "54e631ff71db65d17472a7851eab6bae5d355cb8a028d3c06a9b3320c5895351",
+          "source_byte_start": 0,
+          "source_byte_stop": 196,
+          "packet_char_start": 1260,
+          "packet_char_stop": 1454,
+          "unit_sha256": "dc1b56a9c6a1d2edda5376c06532ed0f9753ba6458b24c0e131c12bc7366780e"
+        }
+      ],
+      "added_c1_units": [
+        {
+          "packet": "c1",
+          "evidence_id": "E08",
+          "unit_id": "226aa87d4c66ec9d6fa34b4d",
+          "source_id": "genealogy/38ec51e1_2125.txt",
+          "source_sha256": "54e631ff71db65d17472a7851eab6bae5d355cb8a028d3c06a9b3320c5895351",
+          "source_byte_start": 1944,
+          "source_byte_stop": 2127,
+          "packet_char_start": 2569,
+          "packet_char_stop": 2750,
+          "unit_sha256": "3fa35dc56d7efcc5acfc11cac4f1c2cd7044e88836d33344d69c6f52704d1118"
+        }
+      ],
+      "existing_c0_controls": [],
+      "same_assertion_assessment": "The family context is shared, but belief in entitlement and actual eligibility are different propositions.",
+      "question_relevance_assessment": "The question concerns John Charles Wright's baptism. The cited pension case concerns James Griffiths and his heirs.",
+      "c0_resolution_assessment": "C0 explicitly attributes entitlement to the son's belief. It already states the pension chronology and identity condition.",
+      "new_information_assessment": "C1 states that heirs fall outside the pension rule. This is additional legal-scope information about a distractor.",
+      "temporal_binding_assessment": "No baptism event, person, or date is rebound.",
+      "reason": "C1 supplies a pension eligibility rule. It neither revises the recorded heirs' belief nor connects that family to the requested baptism case.",
+      "limitations": [
+        "False belief does not make the assertion that someone held that belief false.",
+        "The added rule does not establish the answer to the original baptism question.",
+        "An invented pension question would change the fixed task."
+      ],
+      "preserve_as": "A distractor-relevance and modality example.",
+      "actual_model_error_observed": false,
+      "residual_against_reextraction_observed": false,
+      "counts_toward_model_error_gate": false
+    }
+  ]
+}

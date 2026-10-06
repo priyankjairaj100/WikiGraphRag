@@ -1,0 +1,99 @@
+{
+  "schema_version": "runtime_feasibility_v26",
+  "status": "assets_verified_native_load_pending",
+  "environment": {
+    "memory_limit_bytes": 8589934592,
+    "cpu_quota": 8,
+    "gpu_devices": 0,
+    "python": "3.12.14",
+    "initial_memory_current_bytes": 2332868608,
+    "initial_disk_free_bytes": 29964042240,
+    "initial_shm_free_bytes": 5225730048,
+    "cached_models_found": 0,
+    "initial_native_runtime_found": false,
+    "torch_installed": false,
+    "transformers_installed": false
+  },
+  "native_runtime": {
+    "version": "0.5.0-dev",
+    "build": 11146,
+    "commit": "7fe450e19",
+    "version_probe_passed": true,
+    "help_probe_passed": true
+  },
+  "current_memory_bytes": 8588517376,
+  "acquisition_records": [
+    {
+      "filename": "acquisition.json",
+      "record": {
+        "schema_version": "interpreter_asset_acquisition_v26",
+        "started_at_utc": "2026-10-06T06:18:13Z",
+        "assets": [
+          {
+            "kind": "runtime",
+            "bytes": 16998357,
+            "sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+            "seconds": 20.167807373999494,
+            "status": "verified"
+          },
+          {
+            "kind": "model",
+            "bytes": 976224256,
+            "sha256": "1521eccf31c62a10db8bcd7892d6b8676e533f0037b2ebbea2ae61d93cf714c1",
+            "seconds": 43.25799809,
+            "status": "failed",
+            "error_type": "RuntimeError",
+            "error": "memory_reserve"
+          }
+        ],
+        "model_completions": 0
+      }
+    },
+    {
+      "filename": "acquisition_model_1791267837281989000.json",
+      "record": {
+        "kind": "model",
+        "url": "https://huggingface.co/unsloth/Qwen3-4B-Instruct-2507-GGUF/resolve/a06e946bb6b655725eafa393f4a9745d460374c9/Qwen3-4B-Instruct-2507-Q5_K_M.gguf",
+        "started_at_unix": 1791267744.04445,
+        "expected_bytes": 2889514080,
+        "expected_sha256": "5bde5e9d883622acb02bf77fe7dcbc56a8b9a9ad4be78a72ca23a532658b4ecb",
+        "resume_bytes": 976224256,
+        "resume_sha256": "1521eccf31c62a10db8bcd7892d6b8676e533f0037b2ebbea2ae61d93cf714c1",
+        "bytes": 2889514080,
+        "sha256": "5bde5e9d883622acb02bf77fe7dcbc56a8b9a9ad4be78a72ca23a532658b4ecb",
+        "status": "verified",
+        "elapsed_seconds": 93.23752625500038
+      }
+    },
+    {
+      "filename": "acquisition_runtime_1791267744044075559.json",
+      "record": {
+        "kind": "runtime",
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11146/llama-b11146-bin-ubuntu-x64.tar.gz",
+        "started_at_unix": 1791267744.0183682,
+        "expected_bytes": 16998357,
+        "expected_sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+        "status": "already_verified",
+        "bytes": 16998357,
+        "sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+        "elapsed_seconds": 0.025698691999423318
+      }
+    }
+  ],
+  "execution_counts": {
+    "model_loads": 0,
+    "completion_calls": 0,
+    "paid_jobs": 0
+  },
+  "remote": {
+    "jobs_tool_exposed": true,
+    "direct_completion_tool_exposed": false,
+    "authenticated_jobs_scope": true,
+    "authenticated_inference_scope": false,
+    "account_is_pro": false,
+    "credits_verified": false,
+    "paid_launch_authorized": false
+  },
+  "asset_path": "/workspace/scratch/bdef663e3dfc/wikigraph_v26_runtime",
+  "claim_limit": "Technical preparation only. No interpretation or reader competence claim."
+}

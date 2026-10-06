@@ -1,0 +1,184 @@
+Reproduce the v26 checkpoint
+2026-10-06
+
+Status and scope
+
+The query-frame pilot is blocked before natural inference.
+Its fields describe question constraints rather than bindings of fixed source claims.
+The checkpoint establishes no new method or natural QA advantage.
+A new source-binding protocol must precede any natural completion.
+Do not run the request preparer or model study automatically.
+
+This checkpoint contains one authored transport completion and zero natural completions.
+All TEMPO model operations were template rendering or tokenization.
+The authored completion is not a reader competence result.
+The manuscript is a development scaffold, not a submission package.
+
+Environment
+
+Run commands from WikiGraphRag/acl2027_temporal_state.
+The observed environment used Python 3.12.14 and pyarrow 25.0.1.
+The native runtime used CPU execution with an eight-GiB cgroup limit.
+Run source construction and native loading sequentially on that memory limit.
+Keep downloaded data, model weights, native binaries, and build output outside Git.
+
+Use a new external directory for replay records:
+
+export V26_REPLAY=/tmp/wikigraph-v26-replay
+mkdir -p "$V26_REPLAY"
+python3 -m pip install pyarrow==25.0.1
+
+Do not reuse a directory containing an earlier replay.
+The following commands write new receipts and preserve committed records.
+
+Focused software checks
+
+python3 -m unittest discover -s tests -p 'test_interpretation*_v26.py' -v
+git diff --check
+
+These checks test request isolation, interruption recovery, reference validation, and scoring boundaries.
+They do not establish semantic competence or method quality.
+From the repository root, python3 scripts/verify_repository.py checks the repository manifest.
+
+Original package audit
+
+The audit reads the unchanged original submission and its stored generation cache.
+It makes zero new model calls.
+Use the preserved forensic reconstruction for a fast replay:
+
+python3 scripts/reassess_original_v26.py --reuse-recovered results/original_reassessment_v26.json --output "$V26_REPLAY/original_audit.json"
+
+For independent bounded cache reconstruction, omit --reuse-recovered:
+
+python3 scripts/reassess_original_v26.py --pool-size 12 --workers 8 --output "$V26_REPLAY/original_audit_full.json"
+
+Compare scores, paired diagnostics, current-state diagnostics, source-support judgments, and timestamp precision summaries.
+Creation times, runtime measurements, and reuse metadata can differ.
+Missing cache matches remain missing reconstruction, not missing historical generations.
+The audit remains retrospective and development-only.
+The earlier audit implementation and its results remain separately preserved.
+
+Pinned TEMPO data and roster
+
+Dataset: tempo26/Tempo
+Revision: 1dba7027d0afa628993c6dd794e9b68c657a6fac
+The release contains 1,730 questions and 1,654,055 documents across 13 domains.
+The pinned query files contain 8,575,905 bytes.
+The pinned document files contain 2,391,550,160 bytes.
+The download therefore requires about 2.4 GB before extraction.
+The frozen 60-question roster excludes six previously exposed questions.
+Its source union contains 9,959 released documents.
+
+python3 scripts/fetch_tempo_v26.py --external-dir "$V26_REPLAY/tempo" --receipt "$V26_REPLAY/access_receipt.json" --documents all --workers 2 --extract-roster data/tempo_v26/roster.json
+
+The downloader checks pinned file sizes and SHA256 values.
+It keeps source text and benchmark reference answers outside Git.
+The corpus pool used gold and negative document identifiers for a labelled diagnostic.
+This pool does not establish ordinary corpus retrieval performance.
+
+Check roster selection without replacing its historical timestamp:
+
+PYTHONPATH=scripts python3 - <<'PY'
+import json
+import os
+from pathlib import Path
+from freeze_tempo_roster_v26 import select
+base = Path(os.environ['V26_REPLAY'])
+inventory = json.loads((base / 'tempo/query_inventory.json').read_text())
+frozen = json.loads(Path('data/tempo_v26/roster.json').read_text())
+domains, records = select(inventory)
+assert domains == frozen['domain_order']
+assert records == frozen['records']
+print('All 60 frozen roster records match.')
+PY
+
+Do not rerun the roster-freeze command over data/tempo_v26/roster.json.
+Its original timestamp and digest are provenance records.
+
+Native assets
+
+python3 scripts/fetch_interpreter_assets_v26.py --assets "$V26_REPLAY/assets"
+
+The configuration pins Qwen3-4B-Instruct-2507-Q5_K_M.gguf from Unsloth.
+Model revision: a06e946bb6b655725eafa393f4a9745d460374c9
+Model bytes: 2,889,514,080
+Model SHA256: 5bde5e9d883622acb02bf77fe7dcbc56a8b9a9ad4be78a72ca23a532658b4ecb
+Runtime: llama.cpp b11146, commit 7fe450e19305b828c199d602c23a8337aaa1f03b
+Runtime archive SHA256: c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410
+
+configs/interpreter_runtime_v26.json records the remaining exact settings and download URLs.
+The fetcher preserves failures and checks any resumed byte range.
+The original memory-guard interruption remains recorded.
+No paid inference service is required for these checks.
+
+Rebuild source packets without generation
+
+Use the historical configuration that produced the tokenized prompts:
+
+V26_PACKET_CONFIG=data/tempo_v26/interpretation_config_before_reference_contract_v26.json
+python3 scripts/build_interpretation_contexts_v26.py --source-dir "$V26_REPLAY/tempo/roster" --output-dir "$V26_REPLAY/candidates" --public-dir "$V26_REPLAY/packet_metadata" --config "$V26_PACKET_CONFIG"
+python3 scripts/tokenize_interpretation_v26.py --input "$V26_REPLAY/candidates/tokenization_requests.jsonl" --assets "$V26_REPLAY/assets" --output "$V26_REPLAY/candidate_counts"
+python3 scripts/pack_interpretation_contexts_v26.py create --candidates "$V26_REPLAY/candidates/candidate_units.jsonl" --counts "$V26_REPLAY/candidate_counts/counts.jsonl" --output "$V26_REPLAY/provisional" --public-dir "$V26_REPLAY/packet_metadata" --config "$V26_PACKET_CONFIG"
+python3 scripts/tokenize_interpretation_v26.py --input "$V26_REPLAY/provisional/full_prompt_tokenization_requests.jsonl" --assets "$V26_REPLAY/assets" --output "$V26_REPLAY/full_counts"
+python3 scripts/pack_interpretation_contexts_v26.py finalize --packets "$V26_REPLAY/provisional/packets_provisional.jsonl" --counts "$V26_REPLAY/full_counts/counts.jsonl" --output "$V26_REPLAY/packs" --public-dir "$V26_REPLAY/packet_metadata"
+
+The recipe ranks exact source units with BM25.
+It selects at most 30 units and three units per source.
+It preserves exact UTF-8 source spans.
+C0 uses at most 512 evidence tokens.
+C1 uses at most 1,280 evidence tokens and retains every selected C0 unit.
+Packing reserves 768 output tokens and 768 previous-output tokens for revision arms.
+It also reserves 128 tokens for boundary effects.
+Whole units can be omitted before predictions; units are never silently truncated.
+
+The observed batches counted 1,823 candidate/base rows and 360 complete packet/prompt rows.
+The final roster retains all 60 questions.
+Fifty-nine packets pass the complete context checks.
+v26-027 retains a context failure and receives no replacement question.
+Question eligibility and this execution failure remain separate decisions.
+
+Expected final packs.jsonl SHA256:
+04b3463e834edbc155cb21c3ebb315daf817980f9c87059515b62e87c735ff65
+
+Full source text and reversible token identifiers stay outside Git.
+Public packet records contain source selectors, hashes, and counts.
+These commands reproduce packet construction only; they do not authorize the blocked study.
+
+Configuration and amendment chain
+
+context_recipe_amendment_v26.json preserves the interrupted builder attempt and prompt clarifications.
+The preserved pre-clarification configuration has SHA256 452b6782809dc80c67341cbe2047708d2c00feb2c1368a642515a9a9cd6067eb.
+The packet configuration has SHA256 627cbad2e5754b17a03e7fef3fc0cf313500c4a74d6992ce990b8e0cd0156f4a.
+reference_contract_amendment_v26.json records later reference and ledger changes.
+That amendment records SHA256 dc23cd8e5450682043ce4bf2a4647ef3bdc6557bf30226baa11558f2a23906e2.
+It changes neither prompts nor output schema.
+The existing native counts therefore remain applicable.
+Creation times and external paths in new freeze receipts will differ.
+Do not replace historical receipts with replay receipts.
+
+Authored runtime records
+
+data/runtime_authored_v26 contains the raw authored request, response, native prompt, token identifiers, and freeze records.
+results/runtime_authored_smoke_v26.json reports the single authored completion.
+It processed 659 input tokens and generated 109 output tokens.
+It ended with EOS and passed transport checks.
+data/runtime_tokenizer_v26 contains a separate zero-generation tokenizer check.
+results/runtime_packet_tokenization_v26.json records the real-data tokenization batches.
+No natural response file or natural model score exists for this checkpoint.
+
+scripts/prepare_interpretation_requests_v26.py remains unused for natural requests.
+It is tested infrastructure for a future reviewed protocol.
+The blocked query-frame design must not be launched from these files.
+
+ACL scaffold build
+
+Required tools are latexmk, pdflatex, bibtex, pdfinfo, pdffonts, and pdftotext.
+The build script fetches the official style and verifies its pinned hashes.
+The style revision is d5adc823ff0f80f98c80405ca0ab66c68e684409.
+
+python3 scripts/build_paper_v26.py --style-cache "$V26_REPLAY/acl-style" --output-dir "$V26_REPLAY/paper-build"
+
+The script builds paper/interpretation_v26.tex with its bibliography.
+It checks review format, four-page body length, A4 size, fonts, references, and overflow warnings.
+The build receipt explicitly marks submission_ready as false.
+Compilation does not validate novelty, empirical claims, or publication readiness.

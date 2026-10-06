@@ -1,0 +1,222 @@
+V26 short-paper claim ledger
+Date: 2026-10-06
+Status: development scaffold; not submission-ready.
+Paper: paper/interpretation_v26.tex
+Bibliography: paper/interpretation_v26.bib
+Build recipe: scripts/build_paper_v26.py
+
+Scope and ownership
+
+This document tracks the working short paper's claims and unresolved evidence.
+It does not replace historical manuscripts, references, or result artifacts.
+The working title is provisional.
+The completed evidence concerns a self-audit of our earlier package.
+No natural retrieval win, learned method, or ACL readiness follows from this audit.
+The natural interpretation diagnostic remains a separate development study.
+
+Measured claims admitted to the scaffold
+
+A1. Nine of 35 selected natural-prose references lack explicit support for the requested current role.
+Evidence: docs/original_results_v26.txt, section 1.
+Machine record: results/original_reassessment_v26.json / released_text_current_support_audit.
+Categories: explicit current role 26; ended tenure 6; past role 1; different current club 1; club absent 1.
+All 35 selected reference claims were inspected.
+Complete same-key histories were additionally inspected for the nine flagged questions.
+Limit: assistant-assisted source interpretation, not independent human gold or live-world factuality.
+Do not infer the actual current holder or delete the flagged cases.
+
+A2. The global date baseline preserves the requested subject--relation key for only five of 35 questions.
+Evidence: docs/original_results_v26.txt, section 2.
+Machine record: results/original_reassessment_v26.json / records and scores / date_rerank.
+All questions receive the same five globally newest claims, in potentially different order.
+Exact prompt-hash reconstruction recovers all 35 cached responses and the original 5/35 score.
+Limit: this diagnoses topical evidence loss, not failure of a competent temporal retriever.
+
+A3. Cache reconstruction supports 139 compatible condition records, with 29 unrecovered and seven ambiguous cells.
+Evidence: docs/original_results_v26.txt, section 3.
+Machine record: results/original_reassessment_v26.json / prompt_reconstruction and records.
+The cache has 4,995 unique keys; 139 reconstructed records use 130 distinct keys.
+Limit: bounded reconstruction is not full replay and shared prompts are not independent generations.
+Missing reconstruction does not imply missing generation.
+Condition assignments remain constrained by shared retrieval rankings.
+
+A4. The original name scorer is permissive, and prompts differ between compared retrieval conditions.
+Evidence: docs/original_results_v26.txt, section 4.
+Machine record: original runner source and audit score definitions.
+The scorer accepts reference containment or a shared name token of at least four characters.
+Limit: strict-string disagreements cannot automatically become semantic false positives.
+Independent identity adjudication remains unresolved.
+
+A5. The reported 30/35 versus 25/35 margins permit six paired tables.
+Evidence: docs/original_results_v26.txt, section 5.
+Machine record: results/original_reassessment_v26.json / reported_aggregate_pairing_bounds.
+Exact two-sided McNemar p-values span 0.0625 through 0.3017578125.
+The 19 reconstructed lifecycle--flat pairs contain two wins, zero losses, and 17 ties; p=0.5.
+Limit: the subset does not estimate missing pairs.
+The test does not establish equivalence or repair reference validity.
+The manuscript's four-decimal upper bound, 0.3018, is rounded.
+
+A6. A no-value-gate variant has the same mask on five of seven inspected datasets.
+Evidence: docs/original_results_v26.txt, section 6.
+Machine record: results/original_reassessment_v26.json / current_state_diagnostics.
+The variant uses the same matcher and timestamps, without supplied gold keys for mask construction.
+Supplied-key newest-value selection matches all 35 natural-prose references by their construction rule.
+Limit: the latter is oracle-conditioned label agreement, not natural QA or retrieval performance.
+
+A7. The parser loses day precision in 151 of 153 complete-date Wikidata records.
+Evidence: docs/original_results_v26.txt, section 7.
+Machine record: results/original_reassessment_v26.json / released_timestamp_precision_audit.
+Eight groups collapse distinct dates and values.
+Using supplied complete calendar dates changes two selected references.
+Eighteen partial-date records remain excluded from complete-date comparisons.
+Limit: the prose derivative duplicates these histories; it is not independent evidence.
+No corrected-date reader run or external event verification was conducted.
+
+Prior-art claims admitted to the scaffold
+
+L1. MRAG decomposes temporal questions and combines semantic and temporal evidence scores.
+Primary paper: https://aclanthology.org/2025.findings-emnlp.167.pdf
+Metadata: https://aclanthology.org/2025.findings-emnlp.167/
+Inspected: question processing, retrieval and summarization, semantic-temporal ranking, and implementation appendix.
+New retrieval references: turn493view1, turn494view1, turn495view4.
+This overlap rules out claiming ordinary temporal decomposition as novel.
+
+L2. Re3 combines temporal representations with conflict-aware recency filtering.
+Primary paper: https://aclanthology.org/2026.acl-long.1180.pdf
+Metadata: https://aclanthology.org/2026.acl-long.1180/
+Inspected: sections 3.1--3.4 and limitations.
+Its recency module assumes the newest conflicting version supersedes earlier versions within credible corpora.
+New retrieval references: turn493view0, turn494view0, turn495view2, turn495view3.
+The bibliography follows PDF author order because the HTML order differs.
+The PDF places Yupeng Li and Zirui Liu before Chunli Liu.
+This is a metadata reconciliation, not a scientific disagreement.
+
+L3. Chronos progressively organizes evolving evidence into an event graph.
+Primary paper: https://arxiv.org/html/2604.05096v1
+Published metadata: https://aclanthology.org/2026.findings-acl.546/
+Inspected: benchmark construction and method sections 3.1--3.5 during v25.
+Metadata rechecked: turn496view0.
+This overlap rules out generic event evolution graphs as a new mechanism.
+
+L4. TEMPO contains 1,730 naturally occurring Stack Exchange questions across thirteen domains.
+Primary paper: https://arxiv.org/pdf/2601.09523
+Metadata: https://arxiv.org/abs/2601.09523
+Inspected: construction, annotation, metrics, results, and limitations.
+New retrieval references: turn493view2, turn494view2, turn495view0, turn495view5.
+The proposed study uses original questions, rather than generated reformulations.
+Its static corpus does not independently establish a source-revision history.
+
+Related overlap retained outside the short scaffold
+
+IA-RAG already handles interval events, interval algebra, and uncertain-bound refinement.
+Its complete method remains unread because repeated primary full-text fetches failed.
+No distinct acquisition-policy claim is therefore admitted.
+Source: https://arxiv.org/abs/2606.06044
+
+EC2 already selects costly tests to distinguish decision-equivalent hypotheses.
+Primary: https://www.cs.cmu.edu/~dgolovin/papers/nips10.pdf
+Inspected sections 2--4; rechecked as turn494view3, turn495view1, turn495view6.
+Mapping source requests to tests does not create a new objective or transfer its approximation guarantee.
+These unresolved method directions are not presented as contributions in the scaffold.
+
+Prospective design claims, not empirical results
+
+D1. A sixty-question TEMPO development roster was frozen through the recorded selection procedure.
+Source: docs/one_day_program_v26.txt and scripts/freeze_tempo_roster_v26.py.
+Dataset revision: 1dba7027d0afa628993c6dd794e9b68c657a6fac.
+Exclude the six previously exposed v25 items before sampling.
+Keep all selected questions; do not replace failed, ineligible, or ordinary cases.
+Domain balancing prevents estimation of the benchmark's natural domain mixture.
+
+D2. Admission evaluates the original request before inference.
+Source: docs/interpretation_protocol_v26.txt and configs/interpretation_v26.json.
+The six fields are entity, relation, scope, time, comparison, and replacement.
+Assistant annotations are neither human gold nor model inputs.
+Question-only admission cannot establish source answerability.
+Whole-question representation failures cannot be replaced by invented narrower tasks.
+
+D3. Frozen evidence expansion compares I0, B1, R1, and F1.
+I0 uses C0; B1 re-extracts from C1 with the untrusted draft.
+R1 revises candidates using the same evidence and draft.
+F1 extracts from C1 without the draft.
+Source-assisted references use only C1 and are authored before predictions.
+The expanded pack cannot depend on an initial error in this diagnostic.
+All arms share model, decoding, schema, candidate cap, and output budget.
+The configuration still requires the project lead's completed freeze before execution.
+The short paper does not assert that these model calls have run.
+
+D4. Development headroom requires twelve initial errors and six residual errors after ordinary re-extraction.
+Source: docs/interpretation_protocol_v26.txt / Canonical feasibility thresholds.
+Each counted initial error requires a source-resolvable wrong assertion, not an unknown becoming known.
+The same residual must be reported against fresh extraction.
+These thresholds are practical research decisions, not significance tests or effect-size evidence.
+
+Unresolved evidence and claim blocks
+
+N1. Aggregate admission and reviewed source sufficiency across all sixty questions: PENDING.
+All exclusions must remain visible in the roster denominator.
+Independent human review remains outstanding even if assistant role review completes.
+
+N2. Exact runtime, model revision, evidence budgets, frozen calls, failures, and cost: PENDING.
+A source-assisted oracle is a reference diagnostic, not an executable method arm.
+Gold-conditioned evidence pools must be labelled explicitly.
+No model may receive benchmark answers, reference assignments, or witness selectors.
+
+N3. Initial errors, corrections, harms, class recall, false elimination, and control residuals: PENDING.
+No unavailable observation may become zero or a success through placeholder replacement.
+Exact-alias disagreements require blinded semantic audit.
+Unresolved measurement differences cannot be counted as wins.
+
+N4. Independent natural reader-competence gate: NOT RUN in this scaffold.
+The earlier 2/8 result is not a substitute.
+The planned complete-evidence and insufficient-evidence study remains separately required for answer-level comparisons.
+
+N5. Natural method superiority, learned mechanism, and independent transfer: NOT ESTABLISHED.
+The candidate-preserving prompt alone is not an algorithmic contribution.
+Passing a development headroom gate does not establish novelty.
+No confirmatory set or held-out effect is reported here.
+
+N6. Broader analysis contribution: NOT ESTABLISHED.
+An audit of our own package cannot estimate failures across independent systems or benchmarks.
+Further independently adjudicated evidence is required before claiming a general evaluation pathology.
+
+N7. Anonymous submission package: NOT ASSEMBLED.
+The scaffold omits personal identity and the project repository URL.
+The public internal repository is not an anonymous supplementary archive.
+Author eligibility, checklist answers, submission category, and final policy compliance require author verification.
+No prior ARR submission is established; an earlier AAAI rejection does not determine ARR resubmission status.
+Private reviewer text and ratings are outside this ledger and manuscript.
+
+Build recipe and verification boundary
+
+Run from acl2027_temporal_state:
+
+python3 scripts/build_paper_v26.py --style-cache /tmp/acl-style-v26 --output-dir /tmp/interpretation-v26-build
+
+An existing official clone can be supplied with --style-source.
+The fetch helper verifies hashes pinned to ACL style commit d5adc823ff0f80f98c80405ca0ab66c68e684409.
+The dependency cache and build directory remain outside the repository.
+The output directory must be new, preserving prior build artifacts.
+The recipe disables shell escape and records source hashes, PDF hash, tool versions, and formatting checks.
+It checks the four-page content limit, A4, embedded fonts, unresolved references, and overfull boxes.
+Limitations and references start after the main-content page marker.
+The source-date epoch fixes the PDF clock under the same toolchain.
+This is not a claim of reproducibility across arbitrary TeX installations.
+The receipt always sets submission_ready=false.
+Formatting success cannot validate scientific claims or establish publication readiness.
+
+Observed scaffold build
+
+Build directory: /workspace/scratch/bdef663e3dfc/interpretation_v26_build_03
+PDF: interpretation_v26.pdf
+Receipt: build_receipt.json
+Result: successful, five PDF pages total, with main content ending on page four.
+Limitations and references occupy the fifth page.
+The fourth page currently has space for the pending natural results.
+A4, review styling, embedded fonts, and all citations passed verification.
+There were no overfull boxes or undefined references.
+The rendered first and last content pages were visually inspected.
+Rendered text contains no project identity strings or project repository link.
+PDF author metadata is empty.
+The three pending-results markers remain visible.
+This build does not change any unresolved evidence status above.

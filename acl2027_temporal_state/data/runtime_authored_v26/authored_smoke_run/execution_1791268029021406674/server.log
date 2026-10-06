@@ -1,0 +1,25 @@
+0.00.000.552 I srv  llama_server: initializing ...
+0.00.017.282 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.017.442 I srv  init_listene: The UI is disabled
+0.00.017.454 I srv  init_listene: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+0.00.017.547 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.019.355 I srv    load_model: loading model '/workspace/scratch/bdef663e3dfc/wikigraph_v26_runtime/Qwen3-4B-Instruct-2507-Q5_K_M.gguf'
+0.00.557.868 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.01.298.956 I cmn          init: llama threadpool init, n_threads = 4
+0.01.940.068 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 4096, kv_unified = 'false'
+0.01.953.864 I srv  llama_server: model loaded
+0.01.953.887 I srv  llama_server: listening on http://127.0.0.1:59819
+0.02.068.786 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+0.02.069.022 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.09.609.565 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =    128, progress = 0.19, t =   7.54 s / 16.98 tokens per second
+0.17.299.063 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =    256, progress = 0.39, t =  15.23 s / 16.81 tokens per second
+0.25.640.133 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =    384, progress = 0.58, t =  23.57 s / 16.29 tokens per second
+0.34.491.123 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =    512, progress = 0.78, t =  32.42 s / 15.79 tokens per second
+0.43.126.338 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =    640, progress = 0.97, t =  41.06 s / 15.59 tokens per second
+1.07.618.300 I slot print_timing: id  0 | task 0 | n_gen =    100, tg =   4.32 t/s, tg_3s =   4.36 t/s
+1.09.532.602 I slot print_timing: id  0 | task 0 | prompt eval time =   42628.89 ms /   659 tokens (   64.69 ms per token,    15.46 tokens per second)
+1.09.532.623 I slot print_timing: id  0 | task 0 |        eval time =   24834.62 ms /   109 tokens (  229.95 ms per token,     4.35 tokens per second)
+1.09.532.624 I slot print_timing: id  0 | task 0 |       total time =   67463.51 ms /   768 tokens
+1.09.532.630 I slot print_timing: id  0 | task 0 |    graphs reused =        110
+1.09.532.773 I slot      release: id  0 | task 0 | stop processing: n_tokens = 767, truncated = 0
+1.09.535.112 I srv    operator(): operator(): cleaning up before exit...

@@ -1,0 +1,61 @@
+Independent scorer review, v26
+
+Role: v25_original_reassessment.
+Date: 2026-10-06.
+Scope: scripts/score_interpretations_v26.py and tests/test_interpretation_scoring_v26.py.
+Contracts: configs/interpretation_v26.json and docs/interpretation_protocol_v26.txt.
+This receipt describes the initial implementation, before root fixes.
+All executable checks used authored synthetic objects.
+No benchmark answers, source packs, reference answers, or model predictions were accessed.
+These checks are software verification, not empirical model results.
+
+Material findings
+
+1. Ledger validation affected primary interpretation correctness.
+A correct B1 output scored true.
+The same correct R1 output scored false because its ledger omitted prior-candidate accounting.
+The protocol excludes the ledger from primary correctness.
+Recommendation: report ledger validity separately from interpretation correctness.
+
+2. Unscorable references depended on output validity.
+A valid response produced strict_correct=null.
+A malformed response against the same reference produced strict_correct=false.
+Recommendation: determine reference eligibility before parsing predictions.
+Record malformed output separately without changing reference eligibility.
+
+3. The documented reference contract and scorer used different field names.
+The contract listed reference_status; the scorer expected status.
+A synthetic contract-shaped reference raised an uncaught KeyError.
+Recommendation: freeze one explicit reference schema or a validated conversion.
+Root subsequently specified nested c0 and c1 objects, each containing status.
+The configuration contract will record that structure before freezing.
+
+4. Some invalid ledger transitions passed validation.
+The scorer accepted keep from c1 to n1.
+It also accepted retiring c1 while retaining c1 as active.
+Recommendation: validate identifier preservation and active-versus-retired consistency within ledger diagnostics.
+
+5. A malformed previous dictionary invalidated an otherwise correct fresh R1 response.
+The protocol imposes no preservation obligation for malformed previous drafts.
+Recommendation: validate previous drafts independently and remove that obligation when malformed.
+
+6. Reference class identifiers lacked uniqueness validation.
+Duplicate identifiers can distort the covered-class denominator.
+Recommendation: validate references before scoring, including identifier uniqueness and status compatibility.
+
+Passing boundaries
+
+The existing six scoring tests passed.
+Unknown null and the exact reserved string NA remained distinct.
+Known fields required a complete reference witness set.
+Unknown candidate evidence identifiers were rejected.
+Fields from different reference classes were not combined.
+Meaningful signs, dates, and directional terms survived normalization.
+Transport output-limit failures did not receive success credit.
+
+Review disposition
+
+No scorer, protocol, configuration, or test files were edited by this reviewer.
+Findings were sent to root before prediction freezing.
+Root owns fixes and regression tests.
+This receipt does not certify a later implementation without reinspection.

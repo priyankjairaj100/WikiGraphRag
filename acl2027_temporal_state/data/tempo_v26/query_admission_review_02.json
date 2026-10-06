@@ -1,0 +1,1106 @@
+{
+  "schema_version": "tempo_v26_query_admission_review_1",
+  "stage": "A_question_only_independent_review",
+  "batch_id": "02",
+  "created_utc": "2026-10-06T06:42:06.767164+00:00",
+  "annotation_role": "second assistant model role, not independent human gold",
+  "human_gold": false,
+  "final_adjudication": false,
+  "inference_input": false,
+  "review_order": [
+    "Read only original questions v26-021 through v26-040.",
+    "Record independent provisional status judgments.",
+    "Read first-pass query admission annotations.",
+    "Apply project-lead clarification about event-relative targets and interpretation versus answer complexity.",
+    "Preserve all judgments and recommend reviewed statuses."
+  ],
+  "inputs": {
+    "query_file": "/workspace/scratch/bdef663e3dfc/tempo_v26_external/roster/query_inputs.jsonl",
+    "query_file_sha256": "27d29defaed2684a474a6a33c52aad8ac21bab75018c6de2c61595578e425aeb",
+    "first_pass_file": "data/tempo_v26/query_admission_02.json",
+    "first_pass_sha256": "ed192e70e1fcf03531c991770684e287bce86235f0595ffc98cc9d52ce1f62a1"
+  },
+  "access_declaration": {
+    "benchmark_answers_read": false,
+    "source_texts_read": false,
+    "model_predictions_read": false,
+    "external_links_opened": false,
+    "question_inputs_modified": false,
+    "reference_values_added_to_model_inputs": false
+  },
+  "span_convention": {
+    "source_id": "Q",
+    "indexing": "Zero-based Unicode code-point offsets into the exact query. End offsets are exclusive.",
+    "hash": "SHA256 of UTF-8 encoded exact span.",
+    "selection": "First-pass offsets reused only after verification against the independently read original questions.",
+    "original_query_words_quoted_in_this_file": 0
+  },
+  "policy_findings": [
+    "The protocol permits event-relative intervals; historical comparisons are not universally required.",
+    "A temporal word alone does not establish a temporal interpretation target.",
+    "Interpretation representation differs from full-answer representation.",
+    "Time means the requested temporal constraint, not an unknown answer date.",
+    "Entity means the requested subject, not an unknown answer entity.",
+    "A compound question must remain complete. Admission does not authorize dropping other requests.",
+    "Representation failures require a specific capacity problem, not simply a complex answer.",
+    "A parameter change does not alone establish replacement between claims with matching temporal scope."
+  ],
+  "summary": {
+    "records": 20,
+    "recommended_status_counts": {
+      "target_present": 10,
+      "underspecified": 6,
+      "general_or_atemporal": 4
+    },
+    "independent_precomparison_status_counts": {
+      "target_present": 11,
+      "underspecified": 3,
+      "general_or_atemporal": 6
+    },
+    "status_disagreement_items": [
+      "v26-021",
+      "v26-023",
+      "v26-027",
+      "v26-037",
+      "v26-038",
+      "v26-040"
+    ],
+    "admission_disagreement_items": [
+      "v26-021",
+      "v26-023",
+      "v26-037",
+      "v26-038",
+      "v26-040"
+    ],
+    "initial_annotations_preserved": true
+  },
+  "limitations": [
+    "This review does not establish source sufficiency, answer correctness, or a baseline failure.",
+    "Question-only admission cannot confirm a benefit from interpretation revision.",
+    "All twenty frozen items remain in accounting.",
+    "Root must adjudicate disagreements before freezing reference labels."
+  ],
+  "records": [
+    {
+      "item_id": "v26-021",
+      "dataset_id": "97009_90",
+      "domain": "bitcoin",
+      "query_sha256": "ef9d74dcf081f016530531311e8f4feb84382777277ba4c5219d0360894f0d44",
+      "query_char_count": 609,
+      "question_purpose_paraphrase": "Explain node availability, transaction verification, and possible waiting limits.",
+      "initial_annotation_status": "general_or_atemporal",
+      "independent_query_only_status": "target_present",
+      "reviewer_recommended_status": "target_present",
+      "status_agrees_with_initial_annotation": false,
+      "temporal_target_admission_agrees": false,
+      "reason": "Required reaction intervals and completion limits are explicit targets. Event-relative timing does not require historical comparisons.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": true,
+      "initial_question_only_fixed_value": true,
+      "unresolved_from_question": [],
+      "whole_question_constraint": "Retain node operation, verification counts, and waiting limits, including potentially mistaken premises.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 165,
+          "end_char": 188,
+          "span_sha256": "2e1e53a07fafb763c4f47a1f37b2c0a4d3d130fd391ab9c430dadfc0c5513e68",
+          "supports": "time_requirement"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 397,
+          "end_char": 436,
+          "span_sha256": "d4fe30aea22ee13a4d215ab52afd62dce63d6f35945b3b5204f4ec01dc127e66",
+          "supports": "verification_scope"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 544,
+          "end_char": 564,
+          "span_sha256": "0b8e9558988ebc75fea16a42fba278a02073f8e4c5f73d44a0ba842c10fa2337",
+          "supports": "operational_wait"
+        }
+      ],
+      "review_flags": [
+        "First-pass historical-only exclusion is narrower than the protocol.",
+        "The existence of a fixed deadline remains unverified."
+      ]
+    },
+    {
+      "item_id": "v26-022",
+      "dataset_id": "2008_802",
+      "domain": "iota",
+      "query_sha256": "b5f701fb7184a743105f29198bfe2305c7306103daf029cccef44062f212ba69",
+      "query_char_count": 416,
+      "question_purpose_paraphrase": "Find testnet tokens and explain compatibility and network transitions.",
+      "initial_annotation_status": "underspecified",
+      "independent_query_only_status": "underspecified",
+      "reviewer_recommended_status": "underspecified",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "The original request includes version compatibility and historical transitions. Unnamed network generations and relative current time prevent a fixed interpretation.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [
+        "Query date for current availability.",
+        "Identity and version of the new devnet.",
+        "Which old token generation the question concerns."
+      ],
+      "whole_question_constraint": "Retain acquisition, distribution, compatibility, and network history together.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 195,
+          "end_char": 220,
+          "span_sha256": "0089a435fde2d11f01f64a7dba72232117e7bc4fef0fd9c8293b5ff1c4141809",
+          "supports": "current_context"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 239,
+          "end_char": 295,
+          "span_sha256": "ba31647a414c9fa6085856edd3f6190de9dafaaec1310090a0cd22ece3fc396b",
+          "supports": "version_scope"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 367,
+          "end_char": 402,
+          "span_sha256": "a4b2f2e1d151edc8cecccab8f1269462192100d6815e07c65ca1a1306ee42a3e",
+          "supports": "history_request"
+        }
+      ],
+      "review_flags": [
+        "Compatibility across versions does not itself establish same-time claim replacement."
+      ]
+    },
+    {
+      "item_id": "v26-023",
+      "dataset_id": "4321_125",
+      "domain": "cardano",
+      "query_sha256": "587dc75401659f0711752973480be8a78707af18d857c2362a6de9c3f29cbab7",
+      "query_char_count": 775,
+      "question_purpose_paraphrase": "Explain consumption, visibility, and transaction selection when several transactions spend one output.",
+      "initial_annotation_status": "general_or_atemporal",
+      "independent_query_only_status": "target_present",
+      "reviewer_recommended_status": "target_present",
+      "status_agrees_with_initial_annotation": false,
+      "temporal_target_admission_agrees": false,
+      "reason": "The request explicitly concerns state changes within and between blocks. These are objectively reviewable event-relative temporal relations.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": true,
+      "initial_question_only_fixed_value": true,
+      "unresolved_from_question": [],
+      "whole_question_constraint": "Retain consumption, visibility, and selection rather than constructing a blockchain history lookup.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 221,
+          "end_char": 263,
+          "span_sha256": "1236b0195de97ada2bb6f6673ac0f97a403c7a77c68e12eaa4a630bcecea4160",
+          "supports": "scenario_order"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 610,
+          "end_char": 646,
+          "span_sha256": "666c20e7a30f618a82b359a53e34618b067342ea344d5cafcde52dec6e251830",
+          "supports": "visibility_order"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 676,
+          "end_char": 707,
+          "span_sha256": "676718162937e1da8f1014c374292fe91980bcc1e4020f0b68faf1a6c809f045",
+          "supports": "mechanism_request"
+        }
+      ],
+      "review_flags": [
+        "First-pass historical-only exclusion conflicts with event-relative interpretation.",
+        "The mempool scenario may contain false premises requiring source review."
+      ]
+    },
+    {
+      "item_id": "v26-024",
+      "dataset_id": "76820_78",
+      "domain": "history",
+      "query_sha256": "59a25058e9627b4a3481d9474966e20b068477a25b5a07be9bd8fc8292079dd7",
+      "query_char_count": 1859,
+      "question_purpose_paraphrase": "Identify when West Berlin sectors ended and determine their legal basis.",
+      "initial_annotation_status": "target_present",
+      "independent_query_only_status": "target_present",
+      "reviewer_recommended_status": "target_present",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "The requested endpoint is explicitly historical. Administrative cessation, legal cessation, and surviving signs must not be conflated.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [
+        "Whether the requested endpoint means legal termination, administrative termination, or physical remnants."
+      ],
+      "whole_question_constraint": "Retain cessation and legal basis without replacing them with German reunification.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 9,
+          "end_char": 50,
+          "span_sha256": "62a18f9376ef5c4fc814c62ea2541f32cf7f72fc7b46cbc603375c2c58085382",
+          "supports": "target_entity"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 1674,
+          "end_char": 1686,
+          "span_sha256": "a05bdf4b6802029cb5d420a42ec7858fa6e1bc91da4a10ccea0b7b6e4229b5c8",
+          "supports": "scope_ambiguity"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 1688,
+          "end_char": 1719,
+          "span_sha256": "8213058f21f4de0af9fc79889a8c643db37c1c62d9e480e7271685923b76b2be",
+          "supports": "legal_scope"
+        }
+      ],
+      "review_flags": [
+        "The image is supplementary; the text supplies the requested endpoint and legal distinction."
+      ]
+    },
+    {
+      "item_id": "v26-025",
+      "dataset_id": "77154_1036",
+      "domain": "politics",
+      "query_sha256": "c1237a8652c82ad04ebff425358cfa06ac4e1a6e372200170b98d505ab8ddc79",
+      "query_char_count": 354,
+      "question_purpose_paraphrase": "Assess recognition of Nagorno-Karabakh after the 2020 war and identify official statements.",
+      "initial_annotation_status": "underspecified",
+      "independent_query_only_status": "target_present",
+      "reviewer_recommended_status": "underspecified",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "The temporal comparison is explicit. The actors and ending observation date remain unspecified.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [
+        "Which governments or organizations count as the West.",
+        "End date for statements after the 2020 war."
+      ],
+      "whole_question_constraint": "Retain actor scope and official-statement requirements without choosing one government or assuming a current endpoint.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 56,
+          "end_char": 67,
+          "span_sha256": "3541907d864fbd79adc14cce849100586f65c6fa3494b0e1ed1329efdcb18cba",
+          "supports": "actor_scope"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 72,
+          "end_char": 96,
+          "span_sha256": "1501ec9a47593b6a4932fd548055eb53ff93e07feca4cee893c51cd16be3ca7d",
+          "supports": "earlier_period"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 210,
+          "end_char": 249,
+          "span_sha256": "7c25a65df26a51a38162939848c281aab338f944adc89643c6e6de7b707528c9",
+          "supports": "later_period"
+        }
+      ],
+      "review_flags": [
+        "The initial independent judgment admitted a target. The reviewed label records unresolved scope without removing that target."
+      ]
+    },
+    {
+      "item_id": "v26-026",
+      "dataset_id": "106441_823",
+      "domain": "law",
+      "query_sha256": "f91b9260dee76cb78c83cc8ad41c7bd852d932e0774f8d2cde0598a41f8da6c9",
+      "query_char_count": 894,
+      "question_purpose_paraphrase": "Assess whether the rule against implied repeal became binding or remains disputed.",
+      "initial_annotation_status": "underspecified",
+      "independent_query_only_status": "target_present",
+      "reviewer_recommended_status": "underspecified",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "The question explicitly asks about changed legal authority. The current endpoint and earlier government statement are not dated.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [
+        "Date represented by now.",
+        "Identity and date of the old government page.",
+        "Precise jurisdictional extent of the requested rule."
+      ],
+      "whole_question_constraint": "Preserve persuasive authority, binding authority, and continuing controversy as distinct requested concepts.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 4,
+          "end_char": 49,
+          "span_sha256": "727376b2ac2284bc79e1800d4f81fc5ff506efe6969f3e454fa4a60a4717fd90",
+          "supports": "doctrine"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 544,
+          "end_char": 564,
+          "span_sha256": "f5ed0ac47887ae336af85107352662b39066e3134093ed825ee5306e6bdbf4d5",
+          "supports": "authority_target"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 756,
+          "end_char": 802,
+          "span_sha256": "6cb4b6c0b966ca1f52923167c1ac1730ddb80225b1116796475427277435debf",
+          "supports": "change_target"
+        }
+      ],
+      "review_flags": [
+        "The initial independent judgment admitted a target. The reviewed label records unresolved temporal anchors."
+      ]
+    },
+    {
+      "item_id": "v26-027",
+      "dataset_id": "59746_160",
+      "domain": "economics",
+      "query_sha256": "dab398059283afc08d6d4b18c7167b16f5f23baf5feaab462c2236ceff24292b",
+      "query_char_count": 7288,
+      "question_purpose_paraphrase": "Review a program that computes Canadian-dollar investment returns with currency changes and fund fees.",
+      "initial_annotation_status": "representation_capacity",
+      "independent_query_only_status": "general_or_atemporal",
+      "reviewer_recommended_status": "general_or_atemporal",
+      "status_agrees_with_initial_annotation": false,
+      "temporal_target_admission_agrees": true,
+      "reason": "The original purpose is financial computation and code review. Dates are specified inputs, rather than an interpretation target requiring reassignment.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [],
+      "whole_question_constraint": "Do not substitute extraction of the supplied interval for the requested code review.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 1048,
+          "end_char": 1058,
+          "span_sha256": "5ac7de6274ec51444b03f8d2038e595d999924e9b2db5113c02641e70febbf98",
+          "supports": "time_inputs"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 1095,
+          "end_char": 1105,
+          "span_sha256": "be918546c42014f0c6f89c4a33820ea08af9a4c5e954f1bc1b6061b227bfd7b2",
+          "supports": "time_inputs"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 7019,
+          "end_char": 7057,
+          "span_sha256": "f693d3cd6fcdb08de4f98803c8e3cebb8e2a190a9be2fde675fbce57bbe422b5",
+          "supports": "full_request"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 7192,
+          "end_char": 7238,
+          "span_sha256": "e4cffa72c1420295740014e7b09251af5ed31f326c973c2e6fc49abd5cd37a19",
+          "supports": "missing_accounting"
+        }
+      ],
+      "review_flags": [
+        "Both reviewers exclude this item; they disagree about the exclusion category."
+      ]
+    },
+    {
+      "item_id": "v26-028",
+      "dataset_id": "75154_1078",
+      "domain": "quant",
+      "query_sha256": "6b0904ff65ba7f6e45275df7df9bb163914f2fc34414f36c807bf0cdf046bf38",
+      "query_char_count": 967,
+      "question_purpose_paraphrase": "Compare two methods for estimating dividend growth from historical payments.",
+      "initial_annotation_status": "general_or_atemporal",
+      "independent_query_only_status": "general_or_atemporal",
+      "reviewer_recommended_status": "general_or_atemporal",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "The question requests a general estimation recommendation. The illustrated horizon does not identify a source-relative temporal assignment.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [],
+      "whole_question_constraint": "Do not invent a named stock or observed dividend trajectory.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 472,
+          "end_char": 484,
+          "span_sha256": "f9dbad26106c176b0f0b285d2028fe369b0d685a44930c099cc8b15f5b287cdc",
+          "supports": "generic_horizon"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 821,
+          "end_char": 890,
+          "span_sha256": "284f10a19de6d880c60379173ecbaea87124396a84afbef3012e4fb6cd7cc8c3",
+          "supports": "method_choice"
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "item_id": "v26-029",
+      "dataset_id": "5709_750",
+      "domain": "hsm",
+      "query_sha256": "965a0d39be90b6eeaa374f1a48d96c5e7e0a224c419fbd0f8610e80ca63ae741",
+      "query_char_count": 355,
+      "question_purpose_paraphrase": "Identify the first conjecture and proof concerning knots in four-dimensional space.",
+      "initial_annotation_status": "target_present",
+      "independent_query_only_status": "target_present",
+      "reviewer_recommended_status": "target_present",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "The original question requests attribution and temporal precedence. The stated geometric claim supplies a common subject for the events.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": true,
+      "initial_question_only_fixed_value": true,
+      "unresolved_from_question": [],
+      "whole_question_constraint": "Preserve conjecture and proof events, including the earliest-attribution requirement.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 113,
+          "end_char": 158,
+          "span_sha256": "3cb0cff92f526f8b298d7469d46b1707d37c9c7df0ca14f208994a9c59b63482",
+          "supports": "geometric_scope"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 220,
+          "end_char": 255,
+          "span_sha256": "7f6eeeb9ea0706d2d8f893f22e8e58df4057b722137890385b0671bf3d5d6526",
+          "supports": "conjecture_event"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 261,
+          "end_char": 279,
+          "span_sha256": "60c400eb54617965f4a7d816c28730a7b1abadcb753f34e9a692f20640d42481",
+          "supports": "proof_event"
+        }
+      ],
+      "review_flags": [
+        "Unknown conjecture and proof dates are answer values, not missing requested temporal constraints."
+      ]
+    },
+    {
+      "item_id": "v26-030",
+      "dataset_id": "168199_1226",
+      "domain": "workplace",
+      "query_sha256": "652a07c58368b9b70a28d8d301d4e8c310df2a56b61cdfa4cd87b6bcb51959b3",
+      "query_char_count": 331,
+      "question_purpose_paraphrase": "Advise an applicant whose experience falls short of a company requirement.",
+      "initial_annotation_status": "general_or_atemporal",
+      "independent_query_only_status": "general_or_atemporal",
+      "reviewer_recommended_status": "general_or_atemporal",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "The duration supplies a known eligibility problem. The requested response is practical advice, without a temporal interpretation question.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [],
+      "whole_question_constraint": "Do not replace the advice request with calculating the already stated shortfall.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 203,
+          "end_char": 221,
+          "span_sha256": "ec1c6d44b08f68745aa46881c5df8e093c82f3e15cc11e90e76bb55ff97875d2",
+          "supports": "duration_context"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 230,
+          "end_char": 243,
+          "span_sha256": "485aa70543e0afacc54580bea8ebefd0b2dee4f53ddd2aa1ce21b7b3ba2d6a17",
+          "supports": "shortfall"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 309,
+          "end_char": 325,
+          "span_sha256": "06dfd4333e1b6b7ae059da778d137f3dc036e81b99e667060a70790bb9b244b6",
+          "supports": "advice_request"
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "item_id": "v26-031",
+      "dataset_id": "184080_1187",
+      "domain": "travel",
+      "query_sha256": "6c69aa4b2f62879f10e49a38f2f7791cc8ac12f3e82051aa5195c99aeab48512",
+      "query_char_count": 1087,
+      "question_purpose_paraphrase": "Determine travel authorization requirements for a Norfolk Island resident with an Australian passport.",
+      "initial_annotation_status": "underspecified",
+      "independent_query_only_status": "general_or_atemporal",
+      "reviewer_recommended_status": "underspecified",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "The request concerns applicable authorization for an upcoming trip. The travel time is unknown, so retain this borderline current-rule target.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [
+        "Date of travel.",
+        "Traveler conditions affecting authorization eligibility.",
+        "Whether the question asks rules at posting or another date."
+      ],
+      "whole_question_constraint": "Preserve the travel-authorization question. Do not invent a before-and-after comparison around the 2016 governance change.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 202,
+          "end_char": 237,
+          "span_sha256": "f3db37c6118e5f55855eb85e629b909d041452f23f402c087a32305669f7d322",
+          "supports": "historical_background"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 405,
+          "end_char": 425,
+          "span_sha256": "ae718278b973ec02bc679ca23967da552040caaf37ca2fb048cbe216e377b763",
+          "supports": "relative_trip_time"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 626,
+          "end_char": 661,
+          "span_sha256": "6cd5ab4398f62d19d1830e9e2e71bbee3e31c548867c306b1dfd00f6666b3827",
+          "supports": "rule_target"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 803,
+          "end_char": 842,
+          "span_sha256": "9c52f35ec00f92a67bd278423fc825a5f774bffb575d1d59d206989f5dcdeb11",
+          "supports": "passport_scope"
+        }
+      ],
+      "review_flags": [
+        "Independent first judgment excluded this as identity-dominated.",
+        "Reviewed recommendation retains it for source assessment because an upcoming trip requires a time-indexed applicable rule.",
+        "Time-sensitive advice alone is insufficient; the particular trip supplies the operative event."
+      ]
+    },
+    {
+      "item_id": "v26-032",
+      "dataset_id": "12640_286",
+      "domain": "genealogy",
+      "query_sha256": "27ff1b9cb989ab30722986f2f2412464c74bd1ad3f3256fd6b6dd2f6959d6587",
+      "query_char_count": 954,
+      "question_purpose_paraphrase": "Describe Isle of Man certificate fields and compare their content across jurisdictions and registration history.",
+      "initial_annotation_status": "target_present",
+      "independent_query_only_status": "target_present",
+      "reviewer_recommended_status": "target_present",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "Certificate-content evolution is explicitly requested. It remains part of the original question alongside jurisdictional and certificate-type comparisons.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [
+        "Whether present certificate formats or all historical formats are required for each jurisdiction.",
+        "The endpoint for current certificate content."
+      ],
+      "whole_question_constraint": "Preserve every certificate type and jurisdictional comparison, alongside the historical request.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 741,
+          "end_char": 800,
+          "span_sha256": "6a90919deecb427423ea03087fc7d5ffb8037603baad168465f58d87ab9bad13",
+          "supports": "certificate_scope"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 815,
+          "end_char": 864,
+          "span_sha256": "08757356b0cefd4d68cd838e6276401aaa1d87974e22463df78aa0f6a8cb841c",
+          "supports": "comparison_scope"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 866,
+          "end_char": 947,
+          "span_sha256": "4c1e71aab5708596bbc47eac13b94cc7ea3feb474a84bc14b3476f3451da90a4",
+          "supports": "change_request"
+        }
+      ],
+      "review_flags": [
+        "An unknown observation endpoint remains unknown."
+      ]
+    },
+    {
+      "item_id": "v26-033",
+      "dataset_id": "4205_895",
+      "domain": "monero",
+      "query_sha256": "bbe8752a4ec1c84d93e6b05f5a10b551f70337fccbbe046ab5ac7aedaf0f8f8e",
+      "query_char_count": 192,
+      "question_purpose_paraphrase": "Determine Monero supply in May 2017 and whether mining has a final date.",
+      "initial_annotation_status": "target_present",
+      "independent_query_only_status": "target_present",
+      "reviewer_recommended_status": "target_present",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "A month-indexed supply question and possible termination event are explicit. Unknown answer dates do not make the requested interpretation unknown.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time"
+      ],
+      "question_text_alone_fixes_interpretation": true,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [],
+      "whole_question_constraint": "Preserve month-level precision and the possibility that no final mining date exists.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 75,
+          "end_char": 133,
+          "span_sha256": "3bfa5c5b79e7845cf7f4e6de3f27c3f15c68269c2abfa599a52244b8fc2fef4c",
+          "supports": "possible_endpoint"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 151,
+          "end_char": 186,
+          "span_sha256": "1b8e7be64cab3ba8ed4b340202ba717035b7bacdfb7c0ab217329cdabeb33ee0",
+          "supports": "supply_time"
+        }
+      ],
+      "review_flags": [
+        "Do not invent an exact day or require finer precision than supplied.",
+        "The first-pass concern about a point-specific supply remains an answer-precision issue requiring explicit handling."
+      ]
+    },
+    {
+      "item_id": "v26-034",
+      "dataset_id": "124603_8",
+      "domain": "bitcoin",
+      "query_sha256": "ac76b814ada84af86a89c8a27e83c451a89db407c85466574ce7c72fb7a88e04",
+      "query_char_count": 531,
+      "question_purpose_paraphrase": "Check which of two mining target formulas has the correct ratio.",
+      "initial_annotation_status": "general_or_atemporal",
+      "independent_query_only_status": "general_or_atemporal",
+      "reviewer_recommended_status": "general_or_atemporal",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "Elapsed time is an operand in the disputed formula. The book edition identifies provenance, without requesting a temporal source comparison.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "initial_question_only_fixed_value": true,
+      "unresolved_from_question": [],
+      "whole_question_constraint": "Do not invent an edition-change or erratum-history question.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 114,
+          "end_char": 131,
+          "span_sha256": "58e9c316c4e80a9c2af482ff48948c76c6a1499205b6d981090b7ee413b7f413",
+          "supports": "source_scope"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 283,
+          "end_char": 331,
+          "span_sha256": "13b4741bb8ecd3382425855c06f35882cdc9559f6013a6ec740e21fe2786a8a2",
+          "supports": "first_formula"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 422,
+          "end_char": 470,
+          "span_sha256": "a3dcbfad2a8cdf4fa11aa5a6a9e3783fb3e1f95b0ec0ea418a512c8aef7f6f32",
+          "supports": "second_formula"
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "item_id": "v26-035",
+      "dataset_id": "470_804",
+      "domain": "iota",
+      "query_sha256": "60cf138f7ad09b52518df23723fb066b6751845265ca8ab2f24d98f8404bfa2e",
+      "query_char_count": 292,
+      "question_purpose_paraphrase": "Explain observed IOTA throughput and discuss possible future increases and user help.",
+      "initial_annotation_status": "underspecified",
+      "independent_query_only_status": "underspecified",
+      "reviewer_recommended_status": "underspecified",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "The reported network measurement lacks an observation time. The prospective increase also lacks a horizon or specified development event.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [
+        "Time of the explorer observation.",
+        "Measurement definition and network configuration.",
+        "Forecast horizon and certainty standard."
+      ],
+      "whole_question_constraint": "Retain explanation and user participation alongside the measurement and forecast questions.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 74,
+          "end_char": 115,
+          "span_sha256": "f4e4d3b08520ca8c8470b8a4254bf13adc6c0ca11d4422872cdb1359fdf3932a",
+          "supports": "observed_measurement"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 129,
+          "end_char": 171,
+          "span_sha256": "9940ec520d216a577abf3eff07865d7d749b6484f13853eb5640ee789c0fe1ee",
+          "supports": "current_scope"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 194,
+          "end_char": 242,
+          "span_sha256": "cf591fb257a4d386565fb37dfcdd89be7801dd3b7cf3418669377955d4ebb703",
+          "supports": "future_request"
+        }
+      ],
+      "review_flags": [
+        "The reported rate is an unverified premise, not a measured project result."
+      ]
+    },
+    {
+      "item_id": "v26-036",
+      "dataset_id": "6955_118",
+      "domain": "cardano",
+      "query_sha256": "c7dc74e1c912c3b78e22c121e2ce61b9a329832438d37aaa31168e7604a45427",
+      "query_char_count": 185,
+      "question_purpose_paraphrase": "Identify the date when Cardano Testnet adopted a one-second slot duration.",
+      "initial_annotation_status": "target_present",
+      "independent_query_only_status": "target_present",
+      "reviewer_recommended_status": "target_present",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "The question specifies a network, parameter, value, and requested transition date. That supplies an objective temporal event target.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time"
+      ],
+      "question_text_alone_fixes_interpretation": true,
+      "initial_question_only_fixed_value": true,
+      "unresolved_from_question": [],
+      "whole_question_constraint": "Preserve the network and exact-date request while allowing source review to challenge the transition premise.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 43,
+          "end_char": 58,
+          "span_sha256": "6c49a9be57c84cfb33e501c72e6b0b94cd86f5c72b621a82d6bed7c65693b5df",
+          "supports": "network_scope"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 80,
+          "end_char": 134,
+          "span_sha256": "02df9cb561ed45d3b170ccbfde6c4ec042b4bb2a5cd59a29a2c6bf99c0e2268d",
+          "supports": "change_target"
+        }
+      ],
+      "review_flags": [
+        "Remove replacement from likely required fields. A parameter transition does not establish same-time claim replacement."
+      ]
+    },
+    {
+      "item_id": "v26-037",
+      "dataset_id": "70544_278",
+      "domain": "history",
+      "query_sha256": "34d5194768fbe65ab8045c879c8e7c17530435e99c91ae95d0f1db4377777cb5",
+      "query_char_count": 1230,
+      "question_purpose_paraphrase": "Reconcile accounts of early uranium mining with later discovery and assess historical recognition and health effects.",
+      "initial_annotation_status": "representation_capacity",
+      "independent_query_only_status": "target_present",
+      "reviewer_recommended_status": "target_present",
+      "status_agrees_with_initial_annotation": false,
+      "temporal_target_admission_agrees": false,
+      "reason": "The title explicitly contrasts earlier mining with later discovery. Resolving event meanings is a source-relative temporal scope target.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [
+        "Meaning of mining versus identifying an element.",
+        "Mining locations and practices supporting health claims.",
+        "Required strength of causal evidence."
+      ],
+      "whole_question_constraint": "Retain historical beliefs and health concerns. A dates-only answer would be inadequate.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 8,
+          "end_char": 34,
+          "span_sha256": "8d3e1ccf6b61efd7e580460617fa17fa4a35c84a3b3a9da9032f11b59c25f5ed",
+          "supports": "apparent_conflict"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 990,
+          "end_char": 1040,
+          "span_sha256": "06ef30083397cd73e618c4603e3dff235a58f87ace75014580d28fed34b925e5",
+          "supports": "recognition_target"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 1080,
+          "end_char": 1142,
+          "span_sha256": "d2bda3c6cf341122d2d41176777255daaf63efa6a389bb10c770d386981c2244",
+          "supports": "causal_request"
+        }
+      ],
+      "review_flags": [
+        "Full-answer complexity alone does not establish six-field interpretation failure.",
+        "Source review must preserve every material subquestion before admitting a reference."
+      ]
+    },
+    {
+      "item_id": "v26-038",
+      "dataset_id": "91269_925",
+      "domain": "politics",
+      "query_sha256": "60ec14eca9019a2b96ac1026946684f0873efc9bd8f6b11c7d43135fa997877f",
+      "query_char_count": 1629,
+      "question_purpose_paraphrase": "Assess how the 1965 arms embargo affected Indian military and diplomatic relations with the Soviet Union.",
+      "initial_annotation_status": "representation_capacity",
+      "independent_query_only_status": "general_or_atemporal",
+      "reviewer_recommended_status": "target_present",
+      "status_agrees_with_initial_annotation": false,
+      "temporal_target_admission_agrees": false,
+      "reason": "The original question fixes the embargo event and requested causal relation. A complex causal answer does not prevent interpreting its temporal scope.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": true,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [],
+      "whole_question_constraint": "Preserve causal attribution and its extent. A chronology-only substitute would change the question.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 0,
+          "end_char": 40,
+          "span_sha256": "fb6fc3729b8eb1f255af899098a79c59e309aa5b191925b943b48c5746adabe4",
+          "supports": "causal_target"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 52,
+          "end_char": 75,
+          "span_sha256": "89d8a8e4fbae47b6d162b48c55bf11fffc3ec58e85701f66333af0825a22f9e1",
+          "supports": "event_time"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 522,
+          "end_char": 552,
+          "span_sha256": "7721ca02c027005928b8e2f22e0d93597bdfb869b0dfaccb8d82fdb37593bae7",
+          "supports": "prior_trend"
+        }
+      ],
+      "review_flags": [
+        "Independent first judgment treated this as causal explanation without a target.",
+        "The protocol clarification distinguishes interpretation from full-answer complexity.",
+        "The requested event and relation are objective; causal influence remains an answer requirement."
+      ]
+    },
+    {
+      "item_id": "v26-039",
+      "dataset_id": "106995_819",
+      "domain": "law",
+      "query_sha256": "9c3200b010ebf0d3b93af2913aedec2595bcbcea4e6c84e1b0a6487ad9a32f89",
+      "query_char_count": 527,
+      "question_purpose_paraphrase": "Identify legislative dates for the law and asserted constitutional amendment establishing the German constitutional court.",
+      "initial_annotation_status": "target_present",
+      "independent_query_only_status": "target_present",
+      "reviewer_recommended_status": "target_present",
+      "status_agrees_with_initial_annotation": true,
+      "temporal_target_admission_agrees": true,
+      "reason": "The question asks for distinct legislative event dates. The alleged amendment remains a premise requiring verification.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": true,
+      "initial_question_only_fixed_value": true,
+      "unresolved_from_question": [],
+      "whole_question_constraint": "Preserve the law, asserted amendment, passage, and initial-submission requests.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 126,
+          "end_char": 186,
+          "span_sha256": "a1138fd52cd86edbd51d078967805d48a7742b8c2d941cd38d610dd5d290e2d9",
+          "supports": "legislative_target"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 208,
+          "end_char": 232,
+          "span_sha256": "c01c5d640c874a041e366e0209163a3f91227f0479fa69ca7c60d37103072a22",
+          "supports": "institution"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 443,
+          "end_char": 501,
+          "span_sha256": "993b74406e7a58f406a6ff0a37c7b9a11265fdb4e1f1a93582f1ff3edd2461b4",
+          "supports": "additional_event"
+        }
+      ],
+      "review_flags": [
+        "Do not silently replace an unsupported amendment premise with a different legislative measure."
+      ]
+    },
+    {
+      "item_id": "v26-040",
+      "dataset_id": "53713_187",
+      "domain": "economics",
+      "query_sha256": "43ecb05f216821d0751035790959b07ffd815cc82e371304cb369f461dde3dd5",
+      "query_char_count": 294,
+      "question_purpose_paraphrase": "Find a graph or data table showing metal content changes in Roman coins.",
+      "initial_annotation_status": "representation_capacity",
+      "independent_query_only_status": "underspecified",
+      "reviewer_recommended_status": "underspecified",
+      "status_agrees_with_initial_annotation": false,
+      "temporal_target_admission_agrees": false,
+      "reason": "The requested historical trajectory is a genuine temporal target. Coin classes and temporal coverage remain unspecified.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "initial_question_only_fixed_value": false,
+      "unresolved_from_question": [
+        "Coin types and denominations.",
+        "Time range and measurement units.",
+        "Required coverage and comparability of the series."
+      ],
+      "whole_question_constraint": "Preserve the graph or table request. Do not substitute one coin, date, or comparison.",
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 108,
+          "end_char": 145,
+          "span_sha256": "19fc2d71121bac8c15e50043f1c0f47c15b7f4fab70d8783bc581aae2e52788e",
+          "supports": "requested_output"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 199,
+          "end_char": 218,
+          "span_sha256": "5508327ba2dbf3691f6c9f6fdfa19c4248bed4996eb4c7ca5a7faaa8e6acfbd7",
+          "supports": "measured_property"
+        },
+        {
+          "source_id": "Q",
+          "start_char": 262,
+          "end_char": 288,
+          "span_sha256": "1b627c228d77a5703d04e71e2749b80f2d4113666e03b3c5359f2cc4a6285f84",
+          "supports": "historical_change"
+        }
+      ],
+      "review_flags": [
+        "A temporal interpretation does not need to store the complete answer series inside six fields.",
+        "Specific source-stage capacity failure remains possible but is not established from the question alone."
+      ]
+    }
+  ]
+}

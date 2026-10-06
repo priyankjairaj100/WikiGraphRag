@@ -1,0 +1,861 @@
+{
+  "schema_version": "v26.stage_a.query_only.review.1",
+  "reviewer": "v25_original_reassessment",
+  "annotation_role": "separate assistant query-only admission review",
+  "human_gold": false,
+  "input_file_sha256": "27d29defaed2684a474a6a33c52aad8ac21bab75018c6de2c61595578e425aeb",
+  "reviewed_annotation_file": "data/tempo_v26/query_admission_03.json",
+  "reviewed_annotation_sha256": "a137a9bf5aeb5e0a23ca3e8da60f918a892c85bed56d3da8a4db2089993f358f",
+  "protocol_file": "docs/interpretation_protocol_v26.txt",
+  "protocol_sha256": "722d3e10673e1a201c9a99f759318239a4c552dbf3e7bf16a976cd3bbecf6654",
+  "assigned_item_ids": [
+    "v26-041",
+    "v26-042",
+    "v26-043",
+    "v26-044",
+    "v26-045",
+    "v26-046",
+    "v26-047",
+    "v26-048",
+    "v26-049",
+    "v26-050",
+    "v26-051",
+    "v26-052",
+    "v26-053",
+    "v26-054",
+    "v26-055",
+    "v26-056",
+    "v26-057",
+    "v26-058",
+    "v26-059",
+    "v26-060"
+  ],
+  "access_boundary": {
+    "benchmark_answers_read": false,
+    "model_predictions_read": false,
+    "reference_answers_read": false,
+    "evidence_packs_read": false,
+    "external_browsing_used": false,
+    "query_items_reviewed": [
+      "v26-041",
+      "v26-042",
+      "v26-043",
+      "v26-044",
+      "v26-045",
+      "v26-046",
+      "v26-047",
+      "v26-048",
+      "v26-049",
+      "v26-050",
+      "v26-051",
+      "v26-052",
+      "v26-053",
+      "v26-054",
+      "v26-055",
+      "v26-056",
+      "v26-057",
+      "v26-058",
+      "v26-059",
+      "v26-060"
+    ],
+    "prior_context": "Original-paper audit and project method protocols; no TEMPO reference or prediction exposure."
+  },
+  "inference_input_prohibition": true,
+  "offset_convention": "Zero-based Unicode character positions, end-exclusive, over unchanged query text.",
+  "summary": {
+    "reviewed": 20,
+    "status_agreements": 18,
+    "status_changes": [
+      "v26-052",
+      "v26-060"
+    ],
+    "reviewed_status_counts": {
+      "general_or_atemporal": 6,
+      "target_present": 8,
+      "underspecified": 4,
+      "image_dependent": 2
+    },
+    "query_span_hashes_verified": true
+  },
+  "items": [
+    {
+      "item_id": "v26-041",
+      "source_id": "78659_1069",
+      "domain": "quant",
+      "query_sha256": "a8b75124d3ea56209fdf326f263e6b3ab53a3bf6c18cb298ab9d403dfe87d22c",
+      "original_status": "general_or_atemporal",
+      "reviewed_status": "general_or_atemporal",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Find a loss probability over a four-year investment horizon.",
+      "reason": "The four-year period is a mathematical horizon. It does not require temporal source interpretation.",
+      "full_task_preservation_required": true,
+      "cautions": [],
+      "supporting_query_spans": [
+        {
+          "start": 237,
+          "end": 252,
+          "quote": "over four years",
+          "role": "Mathematical horizon",
+          "sha256": "3aa809ae4b00ea154e1d9a86cfbacd16bed5e7766b77cc3e47a0abd88f18bc33"
+        },
+        {
+          "start": 19,
+          "end": 44,
+          "quote": "probability to lose money",
+          "role": "Requested calculation",
+          "sha256": "40fe98e54bf76acff244a65359cb60bddd5ca68c5db7b4bc8ba3d4c65263070e"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-042",
+      "source_id": "13811_708",
+      "domain": "hsm",
+      "query_sha256": "b8ac9da410a946033cd9dd897031192c4825758b86f614e072773fede3f33cbf",
+      "original_status": "target_present",
+      "reviewed_status": "target_present",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": true,
+      "reviewed_purpose_paraphrase": "Explain how nineteenth-century measurements could detect a small change in the orbital period.",
+      "reason": "Nineteenth-century measurement capability is essential to the actual explanation. Modern measurement methods cannot silently replace that scope.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Do not reduce the historical measurement explanation to locating a date."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 68,
+          "end": 87,
+          "quote": "in the 19th Century",
+          "role": "Historical scope",
+          "sha256": "3197392d0c9178e8374a954d95fc3aeb4a13e9ef68b21989365c8319e404e7b7"
+        },
+        {
+          "start": 288,
+          "end": 306,
+          "quote": "2 seconds per year",
+          "role": "Change being evaluated",
+          "sha256": "5ad2619da0f61ef9d5a074a9b496cf78652bb5dcbe1bc79cd2563116834ed5f9"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-043",
+      "source_id": "171559_1221",
+      "domain": "workplace",
+      "query_sha256": "cadb5a97887396ec351756a3b6c55676728e6b45b58df815d6117a46ec3379e2",
+      "original_status": "general_or_atemporal",
+      "reviewed_status": "general_or_atemporal",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Assess whether mathematics graduates have sufficient skills for software development and discuss hiring standards.",
+      "reason": "The question requests hiring judgments and experiences. Its historical aside does not define an objective temporal comparison.",
+      "full_task_preservation_required": true,
+      "cautions": [],
+      "supporting_query_spans": [
+        {
+          "start": 1861,
+          "end": 1895,
+          "quote": "Do others find a similar phenomena",
+          "role": "Request for personal experience",
+          "sha256": "8fb9e01885b90bed5010c5dbeece4e9fbf5199520c3cb4b46ee675e3165395a2"
+        },
+        {
+          "start": 1956,
+          "end": 1987,
+          "quote": "Historically, like in the 1980s",
+          "role": "Historical aside",
+          "sha256": "49ce963263327b819128433dcf9a0e303a7e310ad545657387ede55747aab991"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-044",
+      "source_id": "200312_1099",
+      "domain": "travel",
+      "query_sha256": "4329c96430f29ef348b62908ff598f90514394325f219e9bb1f2e5719932e4e2",
+      "original_status": "target_present",
+      "reviewed_status": "target_present",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Determine whether the old Octopus card can be used or replaced in 2025, and identify the replacement location.",
+      "reason": "The original question asks whether a dated card remains usable or replaceable in 2025. The policy and generation scopes matter.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Do not infer that the undated policy remains valid in 2025.",
+        "Do not identify the card generation solely from its approximate purchase year."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 742,
+          "end": 751,
+          "quote": "It's 2025",
+          "role": "Target year",
+          "sha256": "fa1a3e48930fce27c0185b6dc683481cf18fde73d84ace33ceea8c4046730b95"
+        },
+        {
+          "start": 301,
+          "end": 323,
+          "quote": "first generation cards",
+          "role": "Relevant category",
+          "sha256": "04223bcec573c6c49d3f3b6f32f43faf95a636dbffb546b9a44818bd06e59f9c"
+        },
+        {
+          "start": 633,
+          "end": 656,
+          "quote": "unclear how old this is",
+          "role": "Unresolved policy date",
+          "sha256": "5b791623424f28198d616536f00c339860a47c27023a05045149d73bfa0a2657"
+        },
+        {
+          "start": 799,
+          "end": 823,
+          "quote": "get my old card replaced",
+          "role": "Actual requested action",
+          "sha256": "3fb67ce97cb2baca82edce063c42d5da51b7c63d048179775d914f48ef203bca"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-045",
+      "source_id": "11823_300",
+      "domain": "genealogy",
+      "query_sha256": "daacdadfc2ab5ea3ce3d3b8248000b9c36cd164eb1eddbb07934e777e9942d4c",
+      "original_status": "target_present",
+      "reviewed_status": "target_present",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": true,
+      "reviewed_purpose_paraphrase": "Find records or research steps for the grandfather and his mother during the missing census years.",
+      "reason": "The original request seeks research steps within named census years. Do not replace it with an unsupported absence claim.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Research advice remains part of the request. The question does not establish that either person is missing from the actual censuses."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 66,
+          "end": 85,
+          "quote": "Charles Thomas Gigg",
+          "role": "Named person",
+          "sha256": "f3de5022c043831e6c79127a2676fd7a9ad472bee5c8a50d6faf82b0ec4171f7"
+        },
+        {
+          "start": 311,
+          "end": 322,
+          "quote": "Hannah Gigg",
+          "role": "Second named person",
+          "sha256": "3f3bbf7e5c88884e8de85ada7c540929e11d6f567a390a8219abc54c7133758a"
+        },
+        {
+          "start": 330,
+          "end": 353,
+          "quote": "census for 1891 or 1901",
+          "role": "Target records and dates",
+          "sha256": "e4c8a7a9e49ab9d4480fc1a0e91c47ced2af9c08625c16016f9616829c0fab66"
+        },
+        {
+          "start": 472,
+          "end": 493,
+          "quote": "fill in missing years",
+          "role": "Full search purpose",
+          "sha256": "a2d473878682fb15f6b679b62fea2f61d8938e14b1dc0dc429e5de818fc52816"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-046",
+      "source_id": "13570_848",
+      "domain": "monero",
+      "query_sha256": "af4ad6ca6c239af2af969439fc8f8c9abb93420e56abd31f01a424bd3ede8c72",
+      "original_status": "target_present",
+      "reviewed_status": "target_present",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": true,
+      "reviewed_purpose_paraphrase": "Find a method that reports Monero storage size when the answer is read, preferably with a historical chart.",
+      "reason": "The question explicitly requests a method that works when read. That operational time scope must remain distinct from a stored measurement.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Retain the method or resource request and optional historical chart.",
+        "The reading-time distinction is already explicit in the question. It does not establish revision headroom.",
+        "Do not invent a calendar reading date or substitute a current blockchain size."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 399,
+          "end": 466,
+          "quote": "Please don't tell me how large the current monero blockchain is now",
+          "role": "Explicit rejection of a static measurement",
+          "sha256": "d04c901662dd254490e13a3ee915cd844c5888f1b7cc4b5999da48e3caa977dc"
+        },
+        {
+          "start": 585,
+          "end": 607,
+          "quote": "at the time of reading",
+          "role": "Operational time scope",
+          "sha256": "f746031b2bdde56d56e4df704949ffa943a6f5fb1f71f18119a4cbb7f17d939a"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-047",
+      "source_id": "118997_56",
+      "domain": "bitcoin",
+      "query_sha256": "8b55c2f22ca5e4f8c921fd87a26f66247aa333c8189168e885aeb30e3fcbb552",
+      "original_status": "target_present",
+      "reviewed_status": "target_present",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Determine whether the cited output is the largest Bitcoin transaction output across the relevant history.",
+      "reason": "The historical maximum is objective, but the observation cutoff is missing. The 2011 transaction date is not that cutoff.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "A single large transaction cannot establish an all-history maximum.",
+        "The observation date remains unknown."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 13,
+          "end": 38,
+          "quote": "largest UTXO ever created",
+          "role": "Requested historical maximum",
+          "sha256": "0b7427b12c8f1c95db5acc6d5b343ab0666ce2932cde3d96f3f8aac1d361f4b1"
+        },
+        {
+          "start": 302,
+          "end": 317,
+          "quote": "from early 2011",
+          "role": "Candidate event date",
+          "sha256": "ae3cc0ebc1c671de7c005b38110a37ba838797d65d3d95e1fb24661570a56be8"
+        },
+        {
+          "start": 454,
+          "end": 478,
+          "quote": "entire Bitcoin's history",
+          "role": "Comparison scope",
+          "sha256": "6fb09e18d65810fc53650f95bfb628fd3af94d0a4e31f14aaa03950f843a371c"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-048",
+      "source_id": "367_805",
+      "domain": "iota",
+      "query_sha256": "b6bf4a13df47211b622edbd42c7230a469c3ce367b0a1f55393b7da25324c823",
+      "original_status": "underspecified",
+      "reviewed_status": "underspecified",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Explain the reported IOTA delays and assess whether the core protocol can provide faster transactions without flash channels.",
+      "reason": "The question identifies a reported change but supplies no observation date. Preserve the complete mechanism and protocol comparison.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Do not replace the undated episode with a present-day protocol claim.",
+        "The flash-channel comparison remains part of the task."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 33,
+          "end": 42,
+          "quote": "Right now",
+          "role": "Unanchored current period",
+          "sha256": "a297a390d3706a705dac1c6bd1b99255d10abc0517bd12f11847c205e31c9c81"
+        },
+        {
+          "start": 250,
+          "end": 263,
+          "quote": "two weeks ago",
+          "role": "Unanchored earlier period",
+          "sha256": "ebd159ae9cc6d59b2528084cb3da869da7ac256ca39cba09a9fc101f0034755e"
+        },
+        {
+          "start": 871,
+          "end": 899,
+          "quote": "without using flash channels",
+          "role": "Required protocol scope",
+          "sha256": "c1233f61f2dc1152350583d019be942cb61ae7c245b95edb29bb6a147ccbf0f9"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-049",
+      "source_id": "560_141",
+      "domain": "cardano",
+      "query_sha256": "443130990700f7c35c4bf5c532083cb052454fce73157a917ae6fe8b21d1615d",
+      "original_status": "general_or_atemporal",
+      "reviewed_status": "general_or_atemporal",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": true,
+      "reviewed_purpose_paraphrase": "Explain how Cardano addresses relate to stake addresses and whether that relation can change.",
+      "reason": "The question asks about a protocol capability and triggering conditions. It does not identify a temporal source comparison.",
+      "full_task_preservation_required": true,
+      "cautions": [],
+      "supporting_query_spans": [
+        {
+          "start": 100,
+          "end": 128,
+          "quote": "can change its stake address",
+          "role": "Requested capability",
+          "sha256": "c3e969aad382482ab8f9d56da58bd4b241995e59d984aaa5893f4c8af13c71f2"
+        },
+        {
+          "start": 136,
+          "end": 157,
+          "quote": "when does this happen",
+          "role": "Condition phrased as time",
+          "sha256": "9061ac83274dde167dc6732202e572eff1544643c296f3fbbe076e2317fb4808"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-050",
+      "source_id": "56109_765",
+      "domain": "history",
+      "query_sha256": "a7a592ef4415aed174230e48d6f362a86de37899ca734c7cb857dc6d9dbe517d",
+      "original_status": "image_dependent",
+      "reviewed_status": "image_dependent",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Identify the pictured silver fork from its visible marks.",
+      "reason": "The requested identification depends on uninspected visual marks. The text also supplies no temporal target.",
+      "full_task_preservation_required": true,
+      "cautions": [],
+      "supporting_query_spans": [
+        {
+          "start": 10,
+          "end": 43,
+          "quote": "identify this silver kitchen fork",
+          "role": "Requested identification",
+          "sha256": "29ddd868ec5764f6524a9c08a0a8da74c9df4f6d9d1da9ad12f5d449b3087f5e"
+        },
+        {
+          "start": 164,
+          "end": 201,
+          "quote": "Fork handle showing maker&#39;s marks",
+          "role": "Image-dependent evidence",
+          "sha256": "73cda69be6e08ee3a6e6dcfe0dc40b1905701d6bc4d154f7d171b5f3f6baedf0"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-051",
+      "source_id": "82039_1009",
+      "domain": "politics",
+      "query_sha256": "24ac4d1959e87b669f5b7d0438984834eb47c7c2ba79543d735ad5b90664c511",
+      "original_status": "underspecified",
+      "reviewed_status": "underspecified",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Explain the stated House speaker election threshold and identify any vacant districts that account for it.",
+      "reason": "The numerical threshold refers to an unnamed election episode. Neither the date nor the relevant vacancies are established.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "A general majority rule cannot identify this election or its vacant districts."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 42,
+          "end": 69,
+          "quote": "needed to elect the Speaker",
+          "role": "Election-specific target",
+          "sha256": "f8f561077e7df04f3d40bd1d3576069a4b8833c68b88af8cdf33eabfb83cf17e"
+        },
+        {
+          "start": 231,
+          "end": 263,
+          "quote": "Are there 2 seats that are empty",
+          "role": "Date-dependent state",
+          "sha256": "935ab1e2329c4b71f6ab02693c4f90f8ff6263c91a7c7bf104ae37f47f945170"
+        },
+        {
+          "start": 293,
+          "end": 310,
+          "quote": "Which 2 districts",
+          "role": "Requested identities",
+          "sha256": "a0c073afa372beda374f768ec7286e11980d27b81d5604bff163a891d71a9597"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-052",
+      "source_id": "102419_841",
+      "domain": "law",
+      "query_sha256": "ba3391ab4cf29dabf6a79e86d3a38b374ef9474b0754b8713671ff0d383df838",
+      "original_status": "target_present",
+      "reviewed_status": "underspecified",
+      "status_agreement": false,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Explain how retroactive legal changes interact with original-document requirements across the stated jurisdictions and examples.",
+      "reason": "Temporal distinctions matter, but the full request concerns legal outcomes under fictional, conflicting laws. A document-version label cannot answer it.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Do not treat fictional jurisdictions as actual U.S. states.",
+        "Do not infer legal consequences from ordinary chronology alone.",
+        "C1 must support the whole requested interpretation across both scenarios.",
+        "If references only label past versus updated documents, exclude the item for narrowing the original task."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 784,
+          "end": 822,
+          "quote": "let us imagine the following situation",
+          "role": "Hypothetical legal scenario",
+          "sha256": "04800889da34696d9186d0f01bdd4c4b4b9a326eef9245bfa023fd7172d65fb9"
+        },
+        {
+          "start": 2947,
+          "end": 3005,
+          "quote": "Which sex marker will end up on Brenda's Betaland ID card?",
+          "role": "Requested legal outcome",
+          "sha256": "6217a238895447c29419979bed05e3f6cca45c185ade81cc26c429de1cfac483"
+        },
+        {
+          "start": 4688,
+          "end": 4747,
+          "quote": "Which sex marker will end up on Daniel's Seetanian ID card?",
+          "role": "Second requested legal outcome",
+          "sha256": "06ff37b2e787c4d92439a85967e4694ad3b75ef2208dfea148fa44b200177317"
+        },
+        {
+          "start": 5353,
+          "end": 5384,
+          "quote": "much-more-general applicability",
+          "role": "Scope extends beyond the examples",
+          "sha256": "70831f34bb9706bddf962473412e1471842513620f9b82fd1246c62603fa1992"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-053",
+      "source_id": "60289_158",
+      "domain": "economics",
+      "query_sha256": "2e04d24f4d590e92c8231ec690161563fe006f0bea463bdc67a574434b2a1166",
+      "original_status": "general_or_atemporal",
+      "reviewed_status": "general_or_atemporal",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Explain persistent poverty and assess the effectiveness of international organizations.",
+      "reason": "The dated statistics motivate broad causal and policy questions. A year-to-year calculation would change the original request.",
+      "full_task_preservation_required": true,
+      "cautions": [],
+      "supporting_query_spans": [
+        {
+          "start": 0,
+          "end": 34,
+          "quote": "Why is there still so much poverty",
+          "role": "Broad causal target",
+          "sha256": "cff5c7dbe1e529df3174084d6641a3242661f90dcae7ac668e819e1bf721489f"
+        },
+        {
+          "start": 670,
+          "end": 677,
+          "quote": "in 2024",
+          "role": "Date in supporting premise",
+          "sha256": "71c5382a5986b6de5a0ff654a2a4e3de1357b493e7b01e7b36b37cabbd1fa880"
+        },
+        {
+          "start": 775,
+          "end": 791,
+          "quote": "really effective",
+          "role": "Institutional assessment",
+          "sha256": "d1d7952a51709c71f67f18d1d7670dbd8a7932a4b6d8303a4331995a523ea47a"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-054",
+      "source_id": "77757_1072",
+      "domain": "quant",
+      "query_sha256": "b858375a66afc3833201ea1697c09527585393a231bad1b1c94dd3b76feefaba",
+      "original_status": "image_dependent",
+      "reviewed_status": "image_dependent",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Explain the payoff when both American spread positions are exercised now, relative to expiry and European options.",
+      "reason": "The requested numerical comparison depends on the uninspected plot. It is also a mathematical exercise, not historical source interpretation.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Even a recovered image would not establish a historical source task."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 211,
+          "end": 224,
+          "quote": "above picture",
+          "role": "Required visual context",
+          "sha256": "61ecb3ae3aa935b1f4912ca4b03289b5c1c2d4af50828ec1d219395282822e16"
+        },
+        {
+          "start": 953,
+          "end": 983,
+          "quote": "at the exact same time(at T+0)",
+          "role": "Joint exercise condition",
+          "sha256": "21afaeb392075074c656214f85f3e242de060d6d2cf2ce771c0df03ce09e1ff9"
+        },
+        {
+          "start": 1046,
+          "end": 1069,
+          "quote": "above 12.5(gold payoff)",
+          "role": "Graph-dependent alternative",
+          "sha256": "7f939806adf9784b0ba8c2ec66fa8ae09582dfdd0ae14c136c1e6ad6782649eb"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-055",
+      "source_id": "13846_707",
+      "domain": "hsm",
+      "query_sha256": "54793f44e6ae666b5d73bf61523c7c79ec15ac0222f29af2fdd90c1791b6e4df",
+      "original_status": "target_present",
+      "reviewed_status": "target_present",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": true,
+      "reviewed_purpose_paraphrase": "Establish what Newton or other scientists believed about light speed before Romer's measurement.",
+      "reason": "The question requests beliefs in 1675. It explicitly permits evidence about Newton or other contemporary scientists.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Do not restrict the entity field to Newton when the question expressly permits other contemporary scientists."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 562,
+          "end": 569,
+          "quote": "in 1675",
+          "role": "Requested time",
+          "sha256": "1ebebd0c0b04cd622fd783ee83df29d8ac8628bdafbaf721e93e831d92447038"
+        },
+        {
+          "start": 364,
+          "end": 377,
+          "quote": "Romer in 1676",
+          "role": "Later event",
+          "sha256": "7cd82aca50e5284cf4f2deff71f0bcb822f1eea4b5b78a6bdb90786e284ae0b3"
+        },
+        {
+          "start": 600,
+          "end": 617,
+          "quote": "what did he think",
+          "role": "Belief target",
+          "sha256": "45f06429899f1cd6bcef4eb0cfc77371193703ac3e4013700e54902d9dcc3d16"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-056",
+      "source_id": "193475_1198",
+      "domain": "workplace",
+      "query_sha256": "0a344e23fcfd7d8e46175e82390e295629482e88864f301ff98a5faf96cc23b1",
+      "original_status": "general_or_atemporal",
+      "reviewed_status": "general_or_atemporal",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": true,
+      "reviewed_purpose_paraphrase": "Advise how and when to contact former colleagues after a job termination.",
+      "reason": "The question requests personal networking advice. Its timing does not establish an objective historical assignment.",
+      "full_task_preservation_required": true,
+      "cautions": [],
+      "supporting_query_spans": [
+        {
+          "start": 38,
+          "end": 60,
+          "quote": "after being terminated",
+          "role": "Personal context",
+          "sha256": "184a5ed7775c1c3dbe75da4b4710e07d54b26d3234956c32ae54b161235d079b"
+        },
+        {
+          "start": 705,
+          "end": 727,
+          "quote": "when is the right time",
+          "role": "Advice phrased as time",
+          "sha256": "37ad15b9f2513354e86b1cca27008b316a1ba864c65550876d5f865468a2f67d"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-057",
+      "source_id": "185199_1176",
+      "domain": "travel",
+      "query_sha256": "2c162e813396267d1679bf844971bee400e4a97d67fdd8fcddaa7577361ff466",
+      "original_status": "target_present",
+      "reviewed_status": "target_present",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Determine the required interval outside Russia before entry with a new electronic visa.",
+      "reason": "The required interval between exit and re-entry is objectively reviewable. The applicable policy date remains unknown.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Do not substitute the execution date for the missing policy or travel date."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 16,
+          "end": 38,
+          "quote": "stay outside of Russia",
+          "role": "Interval location",
+          "sha256": "93491fc3d7c7f44995619c8376b4d96ef8eb27d763e856ab44ea4e819812f83d"
+        },
+        {
+          "start": 39,
+          "end": 60,
+          "quote": "before entering again",
+          "role": "Event order",
+          "sha256": "aa666176999a1ac2e596bc3763070e64a71ff72d3fa5049507be1819d05a1cfa"
+        },
+        {
+          "start": 250,
+          "end": 267,
+          "quote": "with a new e-visa",
+          "role": "Visa scope",
+          "sha256": "abb6d1f8d41ad7dbea7def20e65e688bdc0bdd2812fccd1b5456b77f245840cc"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-058",
+      "source_id": "15307_257",
+      "domain": "genealogy",
+      "query_sha256": "3d092b92fb75af3ed1a5d9433c82e5f052036dfe872dc10995cdad7879023fc7",
+      "original_status": "target_present",
+      "reviewed_status": "target_present",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Reconcile the baptism accounts, assess possible duplicate ceremonies or copying errors, and identify further records or birthplace evidence.",
+      "reason": "The original task compares baptism events with later record production. Preserve its identity, location, and research questions.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Do not present the question author's person-identity assumption as an independently verified match.",
+        "The original certificate is unavailable in the question.",
+        "Do not narrow the full request to comparing 1830 with the 1860s."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 154,
+          "end": 185,
+          "quote": "two conflicting baptism records",
+          "role": "Conflict target",
+          "sha256": "7bac8b4f35d4b40b7548c39dee90e3e758c3fa8eeb4dc1597cf3745ea5c0b4f0"
+        },
+        {
+          "start": 719,
+          "end": 730,
+          "quote": "25 Mar 1830",
+          "role": "Recorded event date",
+          "sha256": "c68b650f440463d1abb796a695e22029dc79a07ee1db5b0af9e13c4bd004120a"
+        },
+        {
+          "start": 1636,
+          "end": 1661,
+          "quote": "produced in the mid 1860s",
+          "role": "Later document date",
+          "sha256": "d5d087a93ce2febca17df4f17d0f78c7d0f30c975d241de6e4824b8d93602793"
+        },
+        {
+          "start": 3819,
+          "end": 3854,
+          "quote": "Was he really born in Kidderminster",
+          "role": "Additional requested issue",
+          "sha256": "a469a8286a912a7a51163d72dd1658863fec50b903e25aab26a197a3669bbe48"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-059",
+      "source_id": "7975_876",
+      "domain": "monero",
+      "query_sha256": "f0e794db5b52a49a5d571f6abe6f2abe67f122e47387e63c4df4817d27dfd0f3",
+      "original_status": "underspecified",
+      "reviewed_status": "underspecified",
+      "status_agreement": true,
+      "question_text_alone_fixes_interpretation": false,
+      "reviewed_purpose_paraphrase": "Explain Monero difficulty adjustment and estimate its response time for the reported hashrate decline.",
+      "reason": "The requested adjustment concerns an unidentified recent decline. The mechanism alone cannot establish the event-specific response interval.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Do not infer the active protocol version from the question identifier."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 92,
+          "end": 112,
+          "quote": "recently experienced",
+          "role": "Unanchored event",
+          "sha256": "ade514646807cdca2e13600ff71b6983affec9c2942efef04dcdbc405aafdc27"
+        },
+        {
+          "start": 336,
+          "end": 369,
+          "quote": "how long will the adjustment take",
+          "role": "Requested response interval",
+          "sha256": "8fce6d322f97dad58e971d2ae5df158dfe1c7db7fa0a2d5b0b0a335d35ec0ae8"
+        },
+        {
+          "start": 394,
+          "end": 411,
+          "quote": "like it has today",
+          "role": "Missing observation date",
+          "sha256": "9f0d69aad3e5183da854420f47caa0b37356bf93fd330b3e3f7f8a9564d906ed"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    },
+    {
+      "item_id": "v26-060",
+      "source_id": "121084_33",
+      "domain": "bitcoin",
+      "query_sha256": "c4cb43e0dbc79bcc9d0eff3f047982386d11dbc07049e93a9ea2ae08dc5c81ef",
+      "original_status": "target_present",
+      "reviewed_status": "general_or_atemporal",
+      "status_agreement": false,
+      "question_text_alone_fixes_interpretation": true,
+      "reviewed_purpose_paraphrase": "Assess a forecast of miner departures and network risks after the stated halving, under the specified price assumptions.",
+      "reason": "The question explicitly requests expectations about future miner behavior. The supplied halving date is a premise, not the requested answer.",
+      "full_task_preservation_required": true,
+      "cautions": [
+        "Do not replace the forecast with a retrospective account of actual events.",
+        "Do not score the supplied April 2024 premise as successful interpretation of the complete forecast request.",
+        "Preserve the original question as an excluded item within the fixed roster."
+      ],
+      "supporting_query_spans": [
+        {
+          "start": 1447,
+          "end": 1513,
+          "quote": "I don't expect anyone here to give me an accurate, concrete answer",
+          "role": "Explicit forecast limitation",
+          "sha256": "1144ea19378a7d61d57c20c349c00be2c1064ff1b111a333fdf9e659d58fa3c8"
+        },
+        {
+          "start": 1683,
+          "end": 1735,
+          "quote": "I am interested in what they think, what they expect",
+          "role": "Actual opinion request",
+          "sha256": "5515024d15dc259d44e0f19d682bc82a333ea7b70868d37831ec0cb91c1e6b48"
+        },
+        {
+          "start": 623,
+          "end": 636,
+          "quote": "in April 2024",
+          "role": "Date supplied as a premise",
+          "sha256": "1f8e51737ef4bb5f6b432de8350eeb0f731282be7061f0aa1a9cf8356d49046c"
+        }
+      ],
+      "query_only_review_does_not_establish_C1_admission": true
+    }
+  ]
+}

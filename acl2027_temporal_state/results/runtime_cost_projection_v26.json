@@ -1,0 +1,42 @@
+{
+  "schema_version": "runtime_cost_projection_v26",
+  "basis": "One authored transport completion. No natural-study throughput measured.",
+  "source_result": "results/runtime_authored_smoke_v26.json",
+  "measured_prefill_tokens_per_second": 15.458997940246869,
+  "measured_generation_tokens_per_second": 4.348767969874312,
+  "formula": "input_tokens / prefill_rate + output_tokens / generation_rate",
+  "scenarios": [
+    {
+      "label": "low",
+      "input_tokens_per_call": 1500,
+      "output_tokens_per_call": 300,
+      "seconds_per_call": 166.0159242960715,
+      "I0_43_calls_hours": 1.9829679846475206,
+      "expanded_129_calls_hours": 5.948903953942562,
+      "total_172_calls_hours": 7.931871938590082,
+      "chunk_16_calls_minutes": 44.27091314561906
+    },
+    {
+      "label": "high",
+      "input_tokens_per_call": 3000,
+      "output_tokens_per_call": 500,
+      "seconds_per_call": 309.03683007362446,
+      "I0_43_calls_hours": 3.6912732481016257,
+      "expanded_129_calls_hours": 11.073819744304876,
+      "total_172_calls_hours": 14.765092992406503,
+      "chunk_16_calls_minutes": 82.40982135296652
+    }
+  ],
+  "excluded_costs": [
+    "source and reference review",
+    "asset acquisition",
+    "startup",
+    "failures",
+    "packet preparation",
+    "scoring"
+  ],
+  "limit": "Longer prompts and different output shapes can change actual throughput.",
+  "frozen_process_wall_seconds": 7200,
+  "operational_chunk_recommendation": 16,
+  "model_or_decoding_change": false
+}

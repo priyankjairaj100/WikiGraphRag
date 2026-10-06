@@ -1,0 +1,1054 @@
+{
+  "schema_version": "v26.source_binding_candidate_audit.1",
+  "batch_id": "01",
+  "created_utc": "2026-10-06T06:58:12.429330+00:00",
+  "author_role": "assistant_model_source_binding_auditor_01",
+  "human_gold": false,
+  "reviewed": false,
+  "input": {
+    "packs_path": "/workspace/scratch/bdef663e3dfc/tempo_v26_external/context_packs/packs.jsonl",
+    "packs_sha256": "04b3463e834edbc155cb21c3ebb315daf817980f9c87059515b62e87c735ff65"
+  },
+  "boundary": "Only assigned original questions and exact frozen C0/C1 packets.",
+  "positive_criterion": "An added C1 unit clarifies or corrects the binding of the same relevant literal C0 claim.",
+  "noncriteria": [
+    "An independent new answer fact is not a binding correction.",
+    "A clear C0 statement that a model could misread is generic extraction risk, not observed revision headroom.",
+    "Missing witness is not proof that no model could fail.",
+    "A new task or cropped passage cannot be constructed to manufacture ambiguity."
+  ],
+  "summary": {
+    "records": 20,
+    "status_counts": {
+      "no_observed_witness": 19,
+      "unresolved_candidate": 1
+    },
+    "positive_binding_correction_count": 0,
+    "unresolved_candidate_items": [
+      "v26-016"
+    ],
+    "identical_c0_c1_items": [
+      "v26-007",
+      "v26-010",
+      "v26-013",
+      "v26-020"
+    ],
+    "actual_model_errors_observed": 0
+  },
+  "records": [
+    {
+      "item_id": "v26-001",
+      "query_sha256": "1325753c993b26eeade2693c3200cb0d29e95f814834624e0bb834c4daf12456",
+      "c0_sha256": "64e528b5b68f1412dab326f46bb1ccaa5acdedcd1993b70938553ed87c33598e",
+      "c1_sha256": "cf22a5254f41550b4747615b17b7e971d8c0f5a327435ee628da9af1d18df400",
+      "original_question_source_review_candidate": false,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E05",
+          "source_id": "economics/fdb496f3_10367.txt",
+          "source_sha256": "15c673ad50a99748b6b5e81b9ce1b916d7e1329d9742fa6a6392f758470bc554",
+          "unit_id": "26ad43e109777bd6b332f4ee",
+          "unit_span_sha256": "e0545f72da2376143fe208fa392a0a91cfe81c08c693900adce4d54860e2921c",
+          "quote": "problem of Nickell",
+          "quote_sha256": "e3593ff4656f72857e242d2233c4401ffb9e8c7935c502819256f9cfd9c44cfa",
+          "unit_char_start": 207,
+          "unit_char_end": 225,
+          "packet_char_start": 1049,
+          "packet_char_end": 1067
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E08",
+        "E09",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "C0 already states the panel and fixed-effects conditions. Added units discuss methodological disagreement rather than rebinding this claim.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-002",
+      "query_sha256": "2b82f387b05d162be2ad6e6e4a6d081a79652c06eac6033aea5e0f3cdedba7e1",
+      "c0_sha256": "8e220f67295bb6cfaebebf535ea818222eb425fdefcb2a6e9b817b45c6675ba7",
+      "c1_sha256": "6c6329dfb2dd54f030c03ee969ac21632b571b02cd80db03bc3c636e107436f1",
+      "original_question_source_review_candidate": false,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E02",
+          "source_id": "quant/b456edc4_1958.txt",
+          "source_sha256": "991dd514e96e0e2501f16f80a5fd3fc88645ed2e4f5de5eb58eb03e24edde9ac",
+          "unit_id": "af530a447fcec645645fac6f",
+          "unit_span_sha256": "224520a54ad402a2fba28bcf148fe034b17f8aeec330e11282adbdaa9312afb8",
+          "quote": "Time is working against a long option holder",
+          "quote_sha256": "08a7455af034d254744fa7fd3b6675550e92142816f0412b346f8dd82168a94d",
+          "unit_char_start": 425,
+          "unit_char_end": 469,
+          "packet_char_start": 726,
+          "packet_char_end": 770
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E05",
+        "E06",
+        "E07",
+        "E30"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "Added pricing discussion supplies general explanation. It does not alter the anchored claim's instrument, interval, or scope.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-003",
+      "query_sha256": "5e647551080dcb770b7a1797c0b7e94f6467dfc9427c8697277a14d821822e8b",
+      "c0_sha256": "c247566d628bdc9df317b4104ede6ce7d26df61f6b54ca0c706b80b643f5dd64",
+      "c1_sha256": "6551387cc1a3418b1784f1f8b434d727d481fe16a57b7b3184dc18bcc799ff45",
+      "original_question_source_review_candidate": false,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E03",
+          "source_id": "hsm/429f94d6_8519.txt",
+          "source_sha256": "6d662d85c68b51737633dc441cf2bda7a51e8a52230b121eb15866ae54b0b4e0",
+          "unit_id": "ee1fc0f49eec2be4634a2034",
+          "unit_span_sha256": "0e17b51d02a4222d657e21f53680f4be269f097bded5bf5a947e12fd429d3e19",
+          "quote": "the first Bombe machine was installed there in March 1940",
+          "quote_sha256": "a42bfb7cb764927e04b208800cf04ff086c49406034d3b530fbc38ef2613af19",
+          "unit_char_start": 63,
+          "unit_char_end": 120,
+          "packet_char_start": 482,
+          "packet_char_end": 539
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E08",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E22"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "Added machine-analysis and Enigma-history units are independent facts. They do not reassign this installation claim.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-004",
+      "query_sha256": "4cc19f7516f6e8cabb34cbb92ff4286aa1354f1bfb60bfac4902d16a46fb5b37",
+      "c0_sha256": "7adcdcb679f6fb1ab02a10ce163aef5540674b0d620da555d37f67336ccc159e",
+      "c1_sha256": "ec01bb9551c1b01d50b5dacff80f265dad5d976ff516d3a05c68ce552662ce7e",
+      "original_question_source_review_candidate": false,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E02",
+          "source_id": "workplace/3c35b5da_3234.txt",
+          "source_sha256": "d5f02673078776cccbb82e7ad03ec4e9c4cb60650f837cd19eaad7e86ea985e7",
+          "unit_id": "dbeba1aac5770a4181de9b29",
+          "unit_span_sha256": "b41d39836cce1ad760f4fea853786cb40314d2da2f8d013febfcd6ea7320496c",
+          "quote": "annual review on December",
+          "quote_sha256": "09d7351fa96e828e217598778cdbdbc799bb21e9047ddff1105891768e49ebb1",
+          "unit_char_start": 78,
+          "unit_char_end": 103,
+          "packet_char_start": 306,
+          "packet_char_end": 331
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E09",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E21"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "Added employment material does not identify another temporal scope for this review statement.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-005",
+      "query_sha256": "38b4949bb677be42007db473f03310498a444719294e586fe97671383b2b10bf",
+      "c0_sha256": "c0c32c9dcc545e7587214d84443562191c392cd9c6d9bf034f8997eb5aa4e9b2",
+      "c1_sha256": "171583d50ff6420d1d87f0c66c583d4462c9c4136a6d9df691db13727801491f",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E04",
+          "source_id": "travel/705d2502_4809.txt",
+          "source_sha256": "d1decb0b90ed8a724c1bd1628402d322a126b767dd6c33cc6cc76a5192f72392",
+          "unit_id": "d598a65513661066df88bcc4",
+          "unit_span_sha256": "74d9619fd588e59c1d22c63953f4cda5fea8cf76cda3025cf9223006b98cfaa9",
+          "quote": "24-hour strike on March 10",
+          "quote_sha256": "f3aae86c97f358296547d2457c0b1be1a996c4699aea451810118d6453bb9f39",
+          "unit_char_start": 38,
+          "unit_char_end": 64,
+          "packet_char_start": 762,
+          "packet_char_end": 788
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E09",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E20"
+      ],
+      "additional_c1_witnesses": [
+        {
+          "locator": {
+            "packet": "C1",
+            "evidence_id": "E10",
+            "source_id": "travel/7200c2b2_4961.txt",
+            "source_sha256": "ddd9a7be8b77d2a272548e5db81176091306f5adc63969457e3b8f0c9502b3b3",
+            "unit_id": "310364135d19339ed93525d4",
+            "unit_span_sha256": "bd1cba851ee7d730cd0fdd146f1201d0e6fc7d1de2cab987e5978c8bac0e395f",
+            "quote": "HHLA terminals in Hamburg",
+            "quote_sha256": "7bd7675d224b87bfda44707fecc4abf832f23fffbc235f6c8e6f41f6a143d85b",
+            "unit_char_start": 73,
+            "unit_char_end": 98,
+            "packet_char_start": 1851,
+            "packet_char_end": 1876
+          },
+          "assessment": "rejected_different_event",
+          "reason": "The new passage describes a port-terminal action, without linking the airport strike to a different date."
+        }
+      ],
+      "competing_bindings": [],
+      "reason": "The added September strike concerns port terminals. It does not identify or correct the March airport-strike binding.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-006",
+      "query_sha256": "0750006878c79a1008f0b269f8af4afe2f9ad9395d0b1842c079605074e3b1ff",
+      "c0_sha256": "5f8e352d26da9912cc07eb34b15c8558fcba678306e25fc81890df662c1048a2",
+      "c1_sha256": "a8971cb63fe2d71bcfaa4afe18b2ed20f5ddf0ca8289b0e562d93765977a0edb",
+      "original_question_source_review_candidate": false,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E01",
+          "source_id": "genealogy/b08ab470_2358.txt",
+          "source_sha256": "f75613f6ede3b9d414cdee72c2dd5ca461fa5bf0372893ab23cb4d230799185a",
+          "unit_id": "180108007a5c75267eadfc53",
+          "unit_span_sha256": "84217a72ad4823aca920d6e042906c0746c8ade1514d09404d20cf533392a4e2",
+          "quote": "United States Penitentiary—Leavenworth (Kansas)",
+          "quote_sha256": "567cbd36e4f47ef1d1e556b1616ccfd586da2c44a31fb370d44fff6662c755ab",
+          "unit_char_start": 77,
+          "unit_char_end": 124,
+          "packet_char_start": 113,
+          "packet_char_end": 160
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E20",
+        "E21",
+        "E22"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "The civilian-versus-military facility distinction already appears in C0 E05 and E06. Expansion adds no resolving identity link.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-007",
+      "query_sha256": "ed8abc37f727e1a52c96e80bb3ce0addf0b2fad3abe14e8d82322a92d7ab5435",
+      "c0_sha256": "cf215462801afb5c8101d48b382f92c3967f612822e883e19c32319549388047",
+      "c1_sha256": "cf215462801afb5c8101d48b382f92c3967f612822e883e19c32319549388047",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E04",
+          "source_id": "monero/8d025375_7137.txt",
+          "source_sha256": "41b557ea56705528a477ddff20912702be459eef57c9fee1285b19a0fc36d179",
+          "unit_id": "9ffa1e211f4c36a87ddd0589",
+          "unit_span_sha256": "63d8c4635fd8484aec751c04dee96dbdd69cc16d642e182045095b36ae7e613b",
+          "quote": "Monero v.0.13",
+          "quote_sha256": "2aa9b217ff3611b4f0eeb28e0ec610ee2528cb6ae72f05bb62499b9e28126111",
+          "unit_char_start": 38,
+          "unit_char_end": 51,
+          "packet_char_start": 653,
+          "packet_char_end": 666
+        }
+      ],
+      "additional_c1_evidence_ids": [],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "C0 and C1 are identical. No additional unit can correct the requested-release binding.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-008",
+      "query_sha256": "f6c3445633719b9088851d0601fa782e37fbea54deaf118d1b224d2e0889a5ed",
+      "c0_sha256": "7acf53e200920f6dffb77a917ce119c72c68050de9d5a1e142cd312edf8bb08c",
+      "c1_sha256": "966fcd789f0173aae7259bdb15a4fdc666ba6929f944eca82b92eed069d715fe",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E01",
+          "source_id": "bitcoin/f4a533b6_4297.txt",
+          "source_sha256": "66ea1c66af03c5feb26b1ddfe4c9a9fa99cff8719ae19dd340ce03c0db8fcd59",
+          "unit_id": "0138dbc48d977e2571c6ee6d",
+          "unit_span_sha256": "5908c44b43083c09ed2ef485b09b09a07f070fe562ad88af37f89bd2a65f7e79",
+          "quote": "in or before January 2010",
+          "quote_sha256": "da24c312bed874b7a6d3e6561faf7ec4b3b6049bc5688e02cea787c9efbf7e05",
+          "unit_char_start": 42,
+          "unit_char_end": 67,
+          "packet_char_start": 76,
+          "packet_char_end": 101
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E09",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E20",
+        "E21"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "C0 already contains the relevant cutoff and later mining milestones. Added units do not clarify this binding.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-009",
+      "query_sha256": "354ef4389887e937186ae66e55cfe4712ab1c23194f4c69db28d95cdcba4bf51",
+      "c0_sha256": "0437c8c7323a8144e23fec5bd8408d19fd801437bec481042b563760f6e85c6d",
+      "c1_sha256": "0ab5633d32ce81dc78bd212dd1371804210f84b3471cdc87ac43de3bb7689c67",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E03",
+          "source_id": "iota/fc973a62_0360.txt",
+          "source_sha256": "1c808d71ec18276025b9f20021309f6f88254dbd2645c564a6518885ed3c2bf4",
+          "unit_id": "03cc7bca96947c846bb56ac9",
+          "unit_span_sha256": "7b2554ff4ee997d7e5e2173b7972185dbc14aae3023935404731822ff110e0e1",
+          "quote": "In this structure there is no time restriction",
+          "quote_sha256": "4fc4cc73848ec4f3db7543bf0a1beaf81479b04997c5b0b97352d358f77573d7",
+          "unit_char_start": 0,
+          "unit_char_end": 46,
+          "packet_char_start": 492,
+          "packet_char_end": 538
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E10",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E20",
+        "E21",
+        "E22",
+        "E23",
+        "E26",
+        "E27"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "The same C0 unit specifies waiting for mining. New C1 validity statements do not reinterpret that interval.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ],
+      "generic_extraction_risk": "Treating no mining wait as absence of timestamp validity restrictions would misread the existing C0 sentence."
+    },
+    {
+      "item_id": "v26-010",
+      "query_sha256": "f7247e5e0c82e8698905c1f69adff4f101094fce88596093e35370dff66830ed",
+      "c0_sha256": "2c41eb7fbad765cad31375aca25c579dfb6935955a08f2f14b916541cbdb6472",
+      "c1_sha256": "2c41eb7fbad765cad31375aca25c579dfb6935955a08f2f14b916541cbdb6472",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E02",
+          "source_id": "cardano/383f976f_5338.txt",
+          "source_sha256": "718fb4c6f723ec3fe7fa7b2fcbbc6ec51c8c398fb234049dc0b10243da4a2f1a",
+          "unit_id": "d9091aafdf36a8db53539105",
+          "unit_span_sha256": "c4ff59a3b411f80d6938986eac2ba5aec36fd7b8632f42729da279cce4d027f6",
+          "quote": "helps to avoid duplicated ticker names",
+          "quote_sha256": "8528d28436a858a56901e730ab6530901a45917e30b2dcf5c51f9263bcbcfbc9",
+          "unit_char_start": 81,
+          "unit_char_end": 119,
+          "packet_char_start": 421,
+          "packet_char_end": 459
+        }
+      ],
+      "additional_c1_evidence_ids": [],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "C0 and C1 are identical. The metadata-server claim receives no additional source witness.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-011",
+      "query_sha256": "24b42e68628ba897cc9eb3f1c473c6e2db7e495978969e6550158f26d8f7cac0",
+      "c0_sha256": "0da0635398a27641aea743ce0387c7ec92751125946bb2057003e71d2ffb7b83",
+      "c1_sha256": "c3c3ef9bd1a432413f51d2cb708c543173cc48410ce622f05cb1506a0fcad867",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E04",
+          "source_id": "history/b43c250f_103904.txt",
+          "source_sha256": "51b5d008202601905b0a9b61f090fb302be85c187df6f52c6e9a86c088cfa96b",
+          "unit_id": "dada39f59da763b6adb61c05",
+          "unit_span_sha256": "e6b965cd4ff93e592394a326fa9019c37dc3e5371da5015d17487d2bc879e23c",
+          "quote": "1915: Russian front suffers from a strategic withdrawal",
+          "quote_sha256": "50e15fcbbd0fc5dc0c98efc47c83ccf414d8ea5934c2eb5b602fe8b9a03b22b3",
+          "unit_char_start": 169,
+          "unit_char_end": 224,
+          "packet_char_start": 2082,
+          "packet_char_end": 2137
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09",
+        "E10",
+        "E11"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "The added D-Day statement is a separate historical claim. It does not reassign the explicit 1915 claim.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-012",
+      "query_sha256": "f5ebca173abd02080cdbf966918f2cbe9bc60d6c0bbc0a4e79f4e9994045bc75",
+      "c0_sha256": "112f8bed8cf05cfa75d47f15253875d63cc2eaebf02a7c52c30bd067e57cb374",
+      "c1_sha256": "2ae40640de10d07fe86cd25cd3d6d0bfc4c7a0338827f947785000605ae83bd5",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E01",
+          "source_id": "politics/353517db_17795.txt",
+          "source_sha256": "0fd749a86aef7d0844b068587c67fa1ec13b8088066b3f326159e4126a7441ea",
+          "unit_id": "b52ffc18ef35af70467a14b2",
+          "unit_span_sha256": "b246d8e7e6f58dd85fb2bca5002dd1d19fb49245051b26b8e7f62b824f435bee",
+          "quote": "He previously was Governor of the Bank of Canada",
+          "quote_sha256": "314627e0c110891aa31747e4225a220bed9bad07a04d7d51b51b665bee3dd48c",
+          "unit_char_start": 0,
+          "unit_char_end": 48,
+          "packet_char_start": 36,
+          "packet_char_end": 84
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E09",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E20",
+        "E21"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "C0 E02 and E03 already name Carney and the relevant offices. Added units do not resolve this pronoun further.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-013",
+      "query_sha256": "6db26ee28b05f5a4e549f4531c430966786a2592c2c33b13f92eef3b110ece71",
+      "c0_sha256": "ccc8d86ddad074c7f8a7ad82ab00e1bcc0d71035676b5dc6dd65b664e4a54f5b",
+      "c1_sha256": "ccc8d86ddad074c7f8a7ad82ab00e1bcc0d71035676b5dc6dd65b664e4a54f5b",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E12",
+          "source_id": "law/696c05b5_5415.txt",
+          "source_sha256": "e4badef68928fbf347fe6456e676f4fc39ea38dad9723a277e85220461cdfc24",
+          "unit_id": "5053f327133406eb98d47843",
+          "unit_span_sha256": "aeb4a74ba83d87e381c3f52646203e729c09b5d09f11a2cdda681ecc782402d3",
+          "quote": "podiatry/chiropody in the United Kingdom",
+          "quote_sha256": "0594a528ed7d63da4632cbff4a3ee4a4f0959c1a9adad8c48fc4df549cbebb53",
+          "unit_char_start": 3,
+          "unit_char_end": 43,
+          "packet_char_start": 33,
+          "packet_char_end": 73
+        }
+      ],
+      "additional_c1_evidence_ids": [],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "C0 and C1 are identical. No added evidence connects the original question to a jurisdiction.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-014",
+      "query_sha256": "13c1a3cfaa8e27b5ac61afb9611a57668b605c326f154394589dff737e4ce30b",
+      "c0_sha256": "db5f757bd8ea3b70536dbc79edfdc646311e490350bc38998c2b80a34a2b7d8b",
+      "c1_sha256": "8aa87dee7b7ee4d251070647ed02039ce3fa2d85bf8defc7a2df7bc431c69e0b",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E02",
+          "source_id": "economics/0360b8a2_8593.txt",
+          "source_sha256": "98e8849764e3edeb7601d29595d29151fcca9e087e202e44df9da034acafc902",
+          "unit_id": "b973e033e47698cdad7bcc49",
+          "unit_span_sha256": "52614ce5f62615138a08fc7d4f3a5477f082b1597b3944921e6e39c68c9928f7",
+          "quote": "By 1985 the callables constituted a small part",
+          "quote_sha256": "916710a2c72c854875ed42db7d6344d88a2611b45394ec7e212fd8c7556becc4",
+          "unit_char_start": 112,
+          "unit_char_end": 158,
+          "packet_char_start": 290,
+          "packet_char_end": 336
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E09",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E20"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "Additional units discuss other securities, conditions, or generic call schedules. They do not rebind the Treasury issuance claim.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-015",
+      "query_sha256": "82a05b8832967b0fe6e3a505b848989e2034e423309f96f127683b0162597d0a",
+      "c0_sha256": "c158319a3c15a6e335e85993ac360f14ebae8170ec2b85f877db79d81e03d295",
+      "c1_sha256": "bc242b4d2b47511c8f5b79b8b54b1873288aaae07c0e9917316a5ebec59d9776",
+      "original_question_source_review_candidate": false,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E01",
+          "source_id": "quant/2f452dbd_0757.txt",
+          "source_sha256": "373f312138ef15f7f1943c5f67f8db388da095e5bc4a443da990139178a63094",
+          "unit_id": "ee9e34a2039b735bf378567b",
+          "unit_span_sha256": "7b3ec3e0d18f241317eb00b0d45df76f4eb0ee292f8376565263e1df456eee6b",
+          "quote": "A time series motif",
+          "quote_sha256": "a5699c88953a8e264545b655bf4962b718fc33cfa428611122d784a9a5399190",
+          "unit_char_start": 0,
+          "unit_char_end": 19,
+          "packet_char_start": 32,
+          "packet_char_end": 51
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E10",
+        "E11",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E21"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "Added algorithm descriptions provide implementations and related definitions. They do not revise this source claim's binding.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-016",
+      "query_sha256": "90620c0da06369f3e7f1ceef22fa3ac64a259c4633d8625977da59e2e89b1657",
+      "c0_sha256": "c0ce7263e3e867a4f41e08cd328234b20c3bd8f53f70858973cdfac40d7945d9",
+      "c1_sha256": "0dccec5c7b1af58b7acc11600542c4118ffc92b051af8c5072a9dffd2e337737",
+      "original_question_source_review_candidate": true,
+      "status": "unresolved_candidate",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E03",
+          "source_id": "hsm/8a4cd0e7_8044.txt",
+          "source_sha256": "1c7867871ce8c0861aae59d8198cd915a10458694e39773157e02899ec203efc",
+          "unit_id": "4ccc0828d6d05e1c77a1e2b2",
+          "unit_span_sha256": "85e21b9310366d93a44139dead38edd6d5315dc1ee8dc8dde8a5278063b4046f",
+          "quote": "The final form of general relativity was published in 1916.",
+          "quote_sha256": "b0fb34e014f2143ed47cfc1d3a238555e081bba1b2393ccfcff8baf0a9c17552",
+          "unit_char_start": 0,
+          "unit_char_end": 59,
+          "packet_char_start": 741,
+          "packet_char_end": 800
+        },
+        {
+          "packet": "C0",
+          "evidence_id": "E01",
+          "source_id": "hsm/36578dac_8268.txt",
+          "source_sha256": "91db0bc144085935131142828fb460d1d09445ff5a625f8662716ba26a887616",
+          "unit_id": "e98a5445d0e57e84bf761116",
+          "unit_span_sha256": "7eeef2dd8f264081f849fd801d3b1f40245ee51d2b3e92b5326ca9f42f58e74f",
+          "quote": "added the final piece, the field equations",
+          "quote_sha256": "ce029755260786973a398d7263a4244d5266ffcd84303422e8b8f86702d656eb",
+          "unit_char_start": 63,
+          "unit_char_end": 105,
+          "packet_char_start": 93,
+          "packet_char_end": 135
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E07",
+        "E08",
+        "E09",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16"
+      ],
+      "additional_c1_witnesses": [
+        {
+          "locator": {
+            "packet": "C1",
+            "evidence_id": "E10",
+            "source_id": "hsm/36578dac_8268.txt",
+            "source_sha256": "91db0bc144085935131142828fb460d1d09445ff5a625f8662716ba26a887616",
+            "unit_id": "93a58c9168cb38fae1c88c2d",
+            "unit_span_sha256": "a18b97e6cab753fc087ce861e8307b816f8d2a4f348bcf21ea4a34017a03d894",
+            "quote": "The first comprehensive overview of the final version",
+            "quote_sha256": "f72bca74174f3671771367e83fbe697ac9327469b01472b4d43de4b0756f655d",
+            "unit_char_start": 173,
+            "unit_char_end": 226,
+            "packet_char_start": 2370,
+            "packet_char_end": 2423
+          },
+          "assessment": "plausible_relation_scope_clarifier_not_verified",
+          "reason": "The new unit distinguishes a comprehensive overview from earlier expositions and revisions."
+        }
+      ],
+      "competing_bindings": [
+        {
+          "binding_id": "a",
+          "anchor": "C0 E03",
+          "entity": "final form of general relativity",
+          "relation": "publication of the final theory",
+          "time": "1916",
+          "scope": "not further specified by E03",
+          "support_status": "literal compressed C0 wording; not established as first publication"
+        },
+        {
+          "binding_id": "b",
+          "anchor": "C0 E03 with C1 E10",
+          "entity": "final form of general relativity",
+          "relation": "first comprehensive overview of the final version",
+          "time": "1916",
+          "scope": "Annalen der Physik publication",
+          "support_status": "C1 states this relation, but does not explicitly equate its publication with C0 E03"
+        }
+      ],
+      "reason": "C1 E10 introduces a comprehensive-overview relation. It does not explicitly identify C0 E03's publication or correct its wording.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit.",
+        "Do not convert first published exposition into first comprehensive overview.",
+        "The pronoun in E01 lacks an explicit antecedent in the delivered units.",
+        "E10 does not unambiguously supply that antecedent.",
+        "This is a near-match for review, not an observed mechanism need."
+      ],
+      "failed_positive_criterion": "A new overview fact is present. A correction or disambiguation of the same anchored source claim is not established.",
+      "c0_already_available_controls": [
+        "E01 distinguishes an earlier first publication from a work adding field equations.",
+        "E06 separately describes a final paper presented in November 1915.",
+        "Q excludes oral presentations and does not require a comprehensive overview."
+      ]
+    },
+    {
+      "item_id": "v26-017",
+      "query_sha256": "3a64d23eedd7b42ac6de8d2a91dba7c435783ffcce55d01c3f813b82a3b5c974",
+      "c0_sha256": "8009ff794f1d35fc9445dc75597f555262aab8b8ac67d93f33c98b54b7905e11",
+      "c1_sha256": "7b42e0f11fe6b6b6a62b15464642ef1ec489544f5690e1469d373d99051c7186",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E06",
+          "source_id": "workplace/8e6599ff_5702.txt",
+          "source_sha256": "8f5c369fde00bd12e4635eb64c11bf45df2834cefa21e6db9841b3885f6fa36e",
+          "unit_id": "8d318390394150b857ed1efb",
+          "unit_span_sha256": "2e5dae0992cc52369ca4fa99176a95a14f6424ce776916d25e8810374d96c8a0",
+          "quote": "Revised 06/06/2025",
+          "quote_sha256": "18a322542529c8ebfad2864869cd1f4653603a14bff16e4142825d84cfa2606c",
+          "unit_char_start": 0,
+          "unit_char_end": 18,
+          "packet_char_start": 1082,
+          "packet_char_end": 1100
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E08",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19"
+      ],
+      "additional_c1_witnesses": [
+        {
+          "locator": {
+            "packet": "C1",
+            "evidence_id": "E08",
+            "source_id": "workplace/9f0a9db7_5693.txt",
+            "source_sha256": "0c6e1b80089a232af0e85d428d958b991cc5639fbfaf37661fc63690142d9f92",
+            "unit_id": "48df7aee738ab6c263abeffb",
+            "unit_span_sha256": "c6e335b1ab898d04581bdf13887332805a0764720bb53fccdbb0e892a476dd51",
+            "quote": "Revised 10/06/2025",
+            "quote_sha256": "a53bc829291388ab68aef5132839697c19b91a914fd7ffda1adc69d8dc396409",
+            "unit_char_start": 0,
+            "unit_char_end": 18,
+            "packet_char_start": 1668,
+            "packet_char_end": 1686
+          },
+          "assessment": "rejected_original_question_scope",
+          "reason": "Both excerpts concern sick leave after ten years of public service, rather than the requested childbirth-related leave."
+        }
+      ],
+      "competing_bindings": [],
+      "reason": "A later revised sick-leave excerpt concerns long-serving public employees. It does not address the original new-job family-leave scope.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit.",
+        "Do not infer revision identity or date format from similar wording and later-looking timestamps alone."
+      ],
+      "c0_already_available_controls": [
+        "E06 already specifies the public-agency population, ten-year service requirement, and sick-leave category."
+      ]
+    },
+    {
+      "item_id": "v26-018",
+      "query_sha256": "9d2fd80cc53c3768a1ce4b4319991086ec90bc5ccd8d95996c4847f1b0312ba6",
+      "c0_sha256": "7863ca206d3bcf7a8d9c79e634a36c31fa5bb66332b9e383e8855280f244dbcf",
+      "c1_sha256": "a63e450e3ba1f10b18421d1a1b6c9d9c067b62315ab174959d7f431475c05af3",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E01",
+          "source_id": "travel/6d1df3ab_14057.txt",
+          "source_sha256": "f22d7e3892a43f2b4964c201a3ec4ef643dc9b8d67ace6c7757333071b7f3d36",
+          "unit_id": "3406eede294e418fb3014b6f",
+          "unit_span_sha256": "2754394f707d0f7d4c220063bce7b08159ab561c4b638bc015872387cf0a9f95",
+          "quote": "SJ NORD is a subsidiary for SJ",
+          "quote_sha256": "090a6d82d16d9760a92dcaf12737daa1ec78e5f0399ce3c3f6dc9a842055007f",
+          "unit_char_start": 161,
+          "unit_char_end": 191,
+          "packet_char_start": 195,
+          "packet_char_end": 225
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E20",
+        "E21"
+      ],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "All operator and live-information distinctions already appear in C0. Added C1 units concern unrelated medical material.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-019",
+      "query_sha256": "d75d3b2c632c25abe45731d3937efee5ff76ad5942896b1dd9be460bebe0f62f",
+      "c0_sha256": "aac540fefdc0895f4bbf5322dd0eb41a21c819529d377191fec969cce7c2baaa",
+      "c1_sha256": "0be559581284478dea7f077dad5ffbf7b05e79d404ddcc1e72abe05e55ec5449",
+      "original_question_source_review_candidate": false,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E02",
+          "source_id": "genealogy/db03c3b0_4712.txt",
+          "source_sha256": "5280878f37b63f0ed67628d30733c4af19f69ca7fb6da8e1f4a88e62011c815c",
+          "unit_id": "6b326d128b67b19ff3df9679",
+          "unit_span_sha256": "1d55b2c4c26d59289d4f302aa52d1d38b08847553613aeb33be3a8b65df18aae",
+          "quote": "exact location, even the existence of Wiriyamu",
+          "quote_sha256": "e0b61f3c64c3e95b1dbc478adb0b89263ba15e3f1547bccfffa6feed9c71d13c",
+          "unit_char_start": 91,
+          "unit_char_end": 137,
+          "packet_char_start": 467,
+          "packet_char_end": 513
+        }
+      ],
+      "additional_c1_evidence_ids": [
+        "E06",
+        "E07",
+        "E09",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E25"
+      ],
+      "additional_c1_witnesses": [
+        {
+          "locator": {
+            "packet": "C1",
+            "evidence_id": "E06",
+            "source_id": "genealogy/e610dc42_4686.txt",
+            "source_sha256": "027feadf5bd8ae0d4a90ce246bf826538cf36a04e6f1504da23db8edf6dae6ee",
+            "unit_id": "6b6d05600ac82fb36f04d234",
+            "unit_span_sha256": "5fd75127b9ad606eb474e2f0dd4ce51e4925783524cf45fc31a673fc7fbc309d",
+            "quote": "Rhode Island Advisory Commission on Historical Cemeteries",
+            "quote_sha256": "21be983d9d54ee1ae8f3b6c1ba7d630b9e878ca3e4a7ab10c32d99d4ee5771f8",
+            "unit_char_start": 4,
+            "unit_char_end": 61,
+            "packet_char_start": 1853,
+            "packet_char_end": 1910
+          },
+          "assessment": "rejected_independent_answer_fact",
+          "reason": "The new resource concerns the requested geography but does not clarify an earlier relevant claim."
+        }
+      ],
+      "competing_bindings": [],
+      "reason": "C0's historical source is unrelated to the requested grave. C1 adds an archive-related resource, not a correction of this binding.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    },
+    {
+      "item_id": "v26-020",
+      "query_sha256": "4b4fc43a675db91b648928ec1938f896312165ab098a070c78d30d826d1a3c18",
+      "c0_sha256": "047a220bb0767feadf0cc8762d40dd38fc4e4d3d5a3359cbbf4589eac9ccdfcb",
+      "c1_sha256": "047a220bb0767feadf0cc8762d40dd38fc4e4d3d5a3359cbbf4589eac9ccdfcb",
+      "original_question_source_review_candidate": true,
+      "status": "no_observed_witness",
+      "c0_claim_anchors": [
+        {
+          "packet": "C0",
+          "evidence_id": "E02",
+          "source_id": "monero/b85d53f2_13408.txt",
+          "source_sha256": "daa1a3f2fa23ccb38ff28ff204e35d9c82086298ae2db7e02deadeaef5be9f24",
+          "unit_id": "18ba45c980238a8881dc3b1c",
+          "unit_span_sha256": "774e23554c72faff7c6244c6027cfd2752a083f6e31d2c717a09c1703b1c6435",
+          "quote": "As of now",
+          "quote_sha256": "48cd3ca40718689f0d968ee3fe24be6056b202790444876553a401e69bca21f5",
+          "unit_char_start": 0,
+          "unit_char_end": 9,
+          "packet_char_start": 203,
+          "packet_char_end": 212
+        }
+      ],
+      "additional_c1_evidence_ids": [],
+      "additional_c1_witnesses": [],
+      "competing_bindings": [],
+      "reason": "C0 and C1 are identical. The undated reward claim receives no additional temporal witness.",
+      "positive_binding_correction_established": false,
+      "actual_model_error_observed": false,
+      "original_question_preserved": true,
+      "limitations": [
+        "No observed witness does not establish absence of possible model errors.",
+        "No prediction, complete source, or benchmark answer was read for this audit."
+      ]
+    }
+  ],
+  "assessment": [
+    "No verified source-binding correction was found in these twenty frozen expansions.",
+    "Item 016 is a near-match, but the delivered evidence does not establish the same-claim link.",
+    "These results describe the development packs, not the full benchmark or broader revision hypothesis.",
+    "This batch alone does not justify a source-frame model pilot."
+  ]
+}

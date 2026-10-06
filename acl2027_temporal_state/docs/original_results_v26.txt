@@ -1,0 +1,235 @@
+Original experiment audit, v26
+6 October 2026
+
+Outcome
+
+The original natural-prose result cannot serve as clean evidence of current-answer superiority.
+The released source text and reference construction use different notions of current information.
+The temporal baseline also loses the requested subject in most questions.
+This audit used no external service and made no new model calls.
+It preserved all original files and reference labels.
+
+Main artifacts
+
+scripts/reassess_original_v26.py
+results/original_reassessment_v26.json
+results/original_reassessment_initial_v26.json
+data/provenance/reassess_original_initial_v26.py
+
+The first audit and its script remain preserved.
+The final audit adds timestamp analysis and reuses the first audit's hash-verified reconstruction records.
+The final script can also repeat the complete reconstruction.
+
+1. Nine reference claims do not assert the requested current role
+
+All 35 questions explicitly ask for the current holder.
+None specifies a query date.
+The runner selects its reference through max(timestamp) within a curated subject-relation group.
+These timestamps represent tenure starts, rather than source publication dates.
+
+The audit inspected all 35 latest reference claims.
+It also inspected complete same-key histories for the nine flagged questions.
+
+Released-text status                                      Questions
+Explicitly asserts the requested current role                   26
+Explicitly describes an ended tenure                             6
+Describes only the most recent past role                         1
+Names a different club as the current role                       1
+Does not name the requested club                                 1
+Total                                                          35
+
+The six ended tenures concern Disney, Intel, Starbucks, Twitter, Japan, and the Federal Reserve.
+Liverpool's reference uses past wording about its most recent coach.
+Manchester United's reference names AC Milan as the current club.
+Manchester City's reference describes a football manager without naming the requested club.
+
+Two earlier claims also contain later episodes missing from the curated timestamps.
+Disney's Bob Iger claim describes another tenure starting in 2022.
+Starbucks' Howard Schultz claim describes an interim tenure from 2022 to 2023.
+Their metadata still assigns the earlier starts of 2005 and 1986.
+
+These are inconsistencies between released text and the task's current-support interpretation.
+They are not claims about the actual current officeholders.
+No live source was checked.
+The dataset could instead ask for the holder with the latest supplied start date.
+That would be a different task from source-grounded current answering.
+
+Each audit record includes the actual question, reference, claim identifier, and source status.
+It also includes exact JSONL byte offsets and a line hash.
+Decoded text offsets and a span hash identify the supporting text.
+No flagged question was removed from the reported denominator.
+The source review is assistant-assisted, not independent human annotation.
+
+2. The date baseline mainly measures loss of topical relevance
+
+The released corpus contains exactly five claims with its maximum timestamp, 2025.
+The date baseline ranks the entire corpus by timestamp before selecting five claims.
+Consequently, every question receives those same five claims in a query-dependent order.
+Those claims concern Germany, Canada, the United States, the Catholic Church, and the Olympic committee.
+
+The audit enumerated every possible order of those five claims.
+Exact prompt hashes recovered all 35 corresponding cached outputs.
+Only five contexts contain the requested subject-relation key.
+The recovered score is five correct answers under the original name scorer.
+This exactly matches the published 5/35 date-baseline count.
+
+Therefore, its low score does not establish failure of a competent subject-aware temporal baseline.
+The baseline discards topical evidence before the reader can use it.
+This conclusion follows from its received evidence, independently of reader quality.
+
+3. Cache availability limits exact condition pairing
+
+The released Qwen cache contains 4,995 unique prompt hashes and outputs.
+It stores neither prompts nor condition labels.
+The released package and original ZIP contain no embedding arrays.
+The cache key records the model name, output cap, and prompt.
+It does not record the checkpoint revision, runtime, or quantization.
+
+Bounded reconstruction enumerated orders from 16 lexical candidate claims.
+These lexical candidates guide forensic search only.
+They are not replacement retrieval predictions.
+The script accepts a record only when its complete prompt reproduces an existing cache hash.
+It also rejects condition assignments incompatible with a shared underlying claim ranking.
+Cache order and expected answers never decide a match.
+
+Condition          Unique compatible records   Missing   Ambiguous
+Flat                          29                   6          0
+Date instruction              29                   6          0
+Global date ordering          35                   0          0
+Lifecycle                     21                   7          7
+Gold mask                     25                  10          0
+Total                        139                  29          7
+
+The 139 condition records contain 130 distinct cache keys.
+Shared prompts are not independent generations.
+Missing reconstruction does not prove that a generation is missing.
+The candidate search is bounded.
+Neutral prompts also omit the lifecycle-versus-gold condition label.
+Thus, those labels remain conditional on compatible contexts and shared ranking constraints.
+The audit does not claim full replay of all 175 final experiment cells.
+
+4. The original scorer is not strict exact match
+
+The original scorer first accepts normalized gold containment.
+It also accepts any shared name token with at least four characters.
+Its clean variant rejects matches to listed stale names.
+It does not independently establish that the answer identifies the right person.
+
+The audit computes full normalized equality and whole-token phrase matching separately.
+Those measurements expose the scorer's definition.
+They are not replacement semantic correctness labels.
+Formal names can legitimately differ from the short reference name.
+For example, Timothy Donald Cook can identify the same person as Tim Cook.
+Strict string equality would reject that valid identity match.
+
+Among 29 reconstructed flat records, the original scorer accepts 22.
+Only eight contain the complete normalized gold phrase.
+Among 21 reconstructed lifecycle records, the original scorer accepts 17.
+Only six contain the complete normalized gold phrase.
+Do not interpret these differences as counts of false positives.
+Identity adjudication remains necessary before making that claim.
+
+The natural-prose comparison also changes prompt wording.
+Flat retrieval explicitly asks the reader to prefer the currently true value.
+Lifecycle uses the shorter neutral prompt.
+Both show dates.
+Thus, this particular comparison does not isolate retrieval under identical prompt text.
+
+5. Paired uncertainty does not establish a reliable win
+
+The published aggregate reports 30/35 lifecycle successes and 25/35 flat successes.
+These margins permit six distinct paired contingency tables.
+Exact two-sided McNemar p-values range from 0.0625 to 0.3017578125.
+Even the most favorable compatible pairing does not reach 0.05 under this test.
+This does not establish equivalence or prove that the method cannot help.
+It shows that these counts cannot establish the intended strong empirical claim.
+
+The reconstructed compatible subset contains 19 lifecycle-flat pairs.
+It has two wins, zero losses, and 17 ties under the original scorer.
+Its paired percentile interval spans 0.0000 to 0.2632.
+Its exact McNemar p-value is 0.5.
+This selected subset does not estimate the missing records or the full benchmark.
+The aggregate-margin result does not depend on successful cache reconstruction.
+
+6. Simpler newest-value diagnostics explain much of the submitted mechanism
+
+The audit compares the original mask with its existing no-value-gate variant.
+The variant uses the same text matcher and timestamps.
+It marks an earlier matched claim obsolete without comparing its value.
+No supplied gold key constructs that variant's mask.
+
+Dataset             Changing keys   Original clean keys   Variant clean keys
+FreshRAG                  100               100                  100
+Real-world                 20                20                   20
+Wikidata                   33                33                   33
+TempLAMA                  300               281                  287
+Wikidata-prose             33                33                   33
+RealWiki                   12                 9                    9
+RealProse                  35                25                   25
+
+A clean key retains evidence and contains only values tied for the latest supplied timestamp.
+This diagnostic uses supplied key and value labels for scoring.
+It is not natural QA accuracy.
+Wikidata's two latest-time ties require separate attention below.
+
+The two masks are identical on Real-world, Wikidata, Wikidata-prose, RealWiki, and RealProse.
+On TempLAMA, removing value comparison increases detection F1 from 0.9764 to 0.9855.
+On FreshRAG, it decreases detection F1 from 1.0000 to 0.9403.
+The FreshRAG decline concerns repeated statements of the latest value.
+It does not change the 100 clean current-value groups.
+
+A separate supplied-key baseline directly selects the newest timestamp within the known key.
+It returns the unique latest value for all 35 RealProse keys and all 300 TempLAMA keys.
+This follows from the constructed reference rule.
+It is an oracle-conditioned diagnostic, not a new retrieval result.
+It shows why key identification must be separated from temporal selection in the revised evaluation.
+
+7. The original parser loses valid day information
+
+The ISO date regex requires a word boundary after the day.
+A digit followed by the letter T does not satisfy that boundary.
+The parser therefore falls back to the year for full ISO timestamps.
+
+Wikidata has 171 records with start metadata.
+Of these, 153 contain complete calendar dates.
+Another 18 contain zero month or day fields that represent incomplete precision.
+The audit retains that uncertainty and does not invent calendar dates.
+
+The parser loses day information in 151 complete-date records.
+Eight groups collapse different dates and values into one timestamp.
+Those groups contain 17 claims.
+Wikidata-prose inherits the same metadata and counts.
+These are duplicated underlying histories, not independent confirmations.
+
+Using the supplied calendar dates changes two selected current references.
+Austria changes from Alexander Schallenberg to Christian Stocker.
+Israel changes from Yair Lapid to Benjamin Netanyahu.
+These changes follow from the released dates, not external factual verification.
+The original references remain unchanged.
+No new reader answers were generated for corrected dates.
+
+The first timestamp audit stopped on partial dates before writing its new output.
+The final audit explicitly records those 18 cases and excludes them from complete-date comparisons.
+
+Reproduction
+
+Run from the repository root.
+Use a new output path because the script refuses to overwrite results.
+
+python3 acl2027_temporal_state/scripts/reassess_original_v26.py --pool-size 16 --workers 8 --output /tmp/original_reassessment_replay_v26.json
+
+The recorded full reconstruction took about 38 seconds on this execution host.
+This is forensic audit time, not model inference time or an efficiency claim.
+The final timestamp extension reused the preserved reconstruction and took about two seconds.
+
+Checks verified the script hash, all original input hashes, and every cited source span.
+The exact paired-margin lower p-value was also checked.
+The original artifacts remain unchanged.
+
+Research consequence
+
+The original numbers remain a historical result under their released definitions.
+They cannot justify a claim of reliable current answering from natural documents.
+These findings motivate separate interpretation, chronology, retrieval, and reader measurements.
+They do not establish a new algorithm or a general failure rate across public benchmarks.
+An empirical analysis paper would still need evidence beyond this single submitted package.

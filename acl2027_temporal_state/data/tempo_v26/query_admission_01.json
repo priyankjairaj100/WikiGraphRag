@@ -1,0 +1,888 @@
+{
+  "schema_version": "tempo_v26_query_admission_1",
+  "stage": "A_question_only",
+  "created_utc": "2026-10-06T06:30:03.831690+00:00",
+  "annotation_role": "first assistant model-role annotation",
+  "human_gold": false,
+  "independently_reviewed": false,
+  "status": "provisional_for_project_lead_review",
+  "input": {
+    "path": "/workspace/scratch/bdef663e3dfc/tempo_v26_external/roster/query_inputs.jsonl",
+    "sha256": "27d29defaed2684a474a6a33c52aad8ac21bab75018c6de2c61595578e425aeb",
+    "roster_path": "data/tempo_v26/roster.json",
+    "roster_sha256": "afc12731a9c14be26aef9e6d087a5097eeeb8e17b2bfb7730305f12812c76c7a",
+    "item_range": [
+      "v26-001",
+      "v26-020"
+    ]
+  },
+  "access_declaration": {
+    "only_assigned_original_query_text_inspected": true,
+    "benchmark_answers_read": false,
+    "benchmark_source_text_read_for_this_annotation": false,
+    "model_predictions_read": false,
+    "external_question_links_opened": false,
+    "question_text_rewritten_for_inference": false,
+    "candidate_or_reference_values_added_to_inference_inputs": false
+  },
+  "definitions": {
+    "target_present": "An explicit, reviewable temporal target fits the six fields. Some interpretation details may remain unresolved.",
+    "general_or_atemporal": "The expressed purpose lacks a temporal interpretation target. Dates may supply context without creating such a target.",
+    "underspecified": "A temporal target is plausible, but unspecified anchors or criteria prevent fixing its requested scope.",
+    "image_dependent": "Essential temporal target information must be recovered from an unavailable image.",
+    "representation_capacity": "The original temporal target cannot be preserved within the frozen interpretation representation.",
+    "question_text_alone_fixes_interpretation": "True requires only question-level interpretation, not a supplied answer. Null indicates that no temporal target was admitted."
+  },
+  "span_convention": {
+    "source_id": "Q",
+    "indexing": "Zero-based Python Unicode code-point offsets into exact original query, including HTML. End offsets are exclusive.",
+    "hash": "SHA256 of UTF-8 encoded exact span.",
+    "original_query_words_quoted_in_this_file": 0
+  },
+  "constraints": [
+    "All twenty frozen records remain; none were substituted.",
+    "These labels do not establish source sufficiency or reader competence.",
+    "Target admission does not demonstrate a baseline failure or an interpretation revision opportunity.",
+    "Unknown anchors remain unknown; dataset identifiers and execution dates do not resolve them.",
+    "Benchmark answer uniqueness is not an admission requirement.",
+    "Likely required fields describe interpretation needs, not reference values."
+  ],
+  "summary": {
+    "total_records": 20,
+    "status_counts": {
+      "general_or_atemporal": 9,
+      "underspecified": 4,
+      "target_present": 7
+    },
+    "question_only_fixed_target_count": 2
+  },
+  "records": [
+    {
+      "item_id": "v26-001",
+      "dataset_id": "47763_212",
+      "domain": "economics",
+      "query_sha256": "1325753c993b26eeade2693c3200cb0d29e95f814834624e0bb834c4daf12456",
+      "query_char_count": 958,
+      "question_purpose_paraphrase": "Explain whether difference-in-differences models require autocorrelation checks or lagged outcomes.",
+      "status": "general_or_atemporal",
+      "reason": "The question requests statistical methodology. Lagged observations describe model structure, rather than a requested temporal assignment.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "question_only_fixing_reason": "No temporal interpretation target is admitted.",
+      "unresolved_from_question": [],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 0,
+          "end_char": 66,
+          "span_sha256": "18f6eb2182730ee66f2f72ff017a6e077ec82a8dedc96cb0831ea643d5646d58",
+          "supports": "The original purpose concerns a statistical diagnostic."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 725,
+          "end_char": 799,
+          "span_sha256": "536dd38f2c83cef23135b33059055866940f5de439b906a8aee82e32182f1f84",
+          "supports": "The requested explanation concerns model design."
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "item_id": "v26-002",
+      "dataset_id": "78845_1067",
+      "domain": "quant",
+      "query_sha256": "2b82f387b05d162be2ad6e6e4a6d081a79652c06eac6033aea5e0f3cdedba7e1",
+      "query_char_count": 4162,
+      "question_purpose_paraphrase": "Explain why option extrinsic value differs across moneyness levels.",
+      "status": "general_or_atemporal",
+      "reason": "The question requests financial intuition. Time value names a pricing component, rather than a requested chronology or temporal scope.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "question_only_fixing_reason": "The text states the conceptual comparison without requiring the images.",
+      "unresolved_from_question": [],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 0,
+          "end_char": 107,
+          "span_sha256": "f69e2af217a561de2154354cac8c213537c009cef4acdd5946f3cf0e186c2206",
+          "supports": "The comparison concerns moneyness categories."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 3382,
+          "end_char": 3451,
+          "span_sha256": "a3e1eac2c84a1e078d85dd03603e27d0921ee6f313348b59cd9b0ad73c33a3f1",
+          "supports": "The writer questions a conceptual explanation."
+        }
+      ],
+      "review_flags": [
+        "Images occur, but the expressed task does not depend on recovering them."
+      ]
+    },
+    {
+      "item_id": "v26-003",
+      "dataset_id": "13619_713",
+      "domain": "hsm",
+      "query_sha256": "5e647551080dcb770b7a1797c0b7e94f6467dfc9427c8697277a14d821822e8b",
+      "query_char_count": 524,
+      "question_purpose_paraphrase": "Find wartime codebreaking datasets and explain concealed use of intelligence from the Bombe.",
+      "status": "general_or_atemporal",
+      "reason": "World War II supplies historical context. The request concerns datasets and wartime decision explanations, without a specific temporal assignment.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "question_only_fixing_reason": "No temporal target can be isolated without narrowing the original request.",
+      "unresolved_from_question": [
+        "The proposed minimization concept lacks a clear operational definition."
+      ],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 148,
+          "end_char": 218,
+          "span_sha256": "4951492379aec239770ebac6a51201ed805eb482cc4348c6fd1123ba652f7f53",
+          "supports": "The purpose includes finding historical datasets."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 270,
+          "end_char": 363,
+          "span_sha256": "bfb1c257229ef1abdcf6eec57d89ee2f2e0ea14d8303c71d6a203b20e7584813",
+          "supports": "The request seeks historical information rather than a particular temporal relation."
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "item_id": "v26-004",
+      "dataset_id": "191273_1201",
+      "domain": "workplace",
+      "query_sha256": "4cc19f7516f6e8cabb34cbb92ff4286aa1354f1bfb60bfac4902d16a46fb5b37",
+      "query_char_count": 1512,
+      "question_purpose_paraphrase": "Advise whether asking early about a prospective salary review is appropriate.",
+      "status": "general_or_atemporal",
+      "reason": "The review schedule is explicit context. The requested judgment concerns workplace conduct, rather than an objectively reviewable temporal assignment.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "question_only_fixing_reason": "The timeline is supplied, but the requested answer is advice.",
+      "unresolved_from_question": [],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 492,
+          "end_char": 541,
+          "span_sha256": "b8f4b846bf0ade7d94cb5366ce3df9148e4b7825a97a3932677fc0187609afd1",
+          "supports": "The writer supplies the relative review schedule."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 991,
+          "end_char": 1011,
+          "span_sha256": "8c79e6f316ebc4238afa77f9667c3c9ea7e38fa255dff6c6bb0a7aa75405478f",
+          "supports": "The requested judgment concerns appropriate conduct."
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "item_id": "v26-005",
+      "dataset_id": "193643_1110",
+      "domain": "travel",
+      "query_sha256": "38b4949bb677be42007db473f03310498a444719294e586fe97671383b2b10bf",
+      "query_char_count": 477,
+      "question_purpose_paraphrase": "Assess whether an imminent German airport strike warrants rebooking an arriving transatlantic flight.",
+      "status": "underspecified",
+      "reason": "The requested disruption assessment depends on a particular strike and arrival interval. The question does not identify the strike date.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "question_only_fixing_reason": "An unnamed imminent event cannot be assigned a calendar interval from this text.",
+      "unresolved_from_question": [
+        "Strike date and question date are absent.",
+        "Airport, flight, and route are not specified."
+      ],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 55,
+          "end_char": 98,
+          "span_sha256": "d7a9519abee522262005399c89119130795b1c1167a5b35223b361048b6f5284",
+          "supports": "The temporal anchor is relative and unnamed."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 301,
+          "end_char": 334,
+          "span_sha256": "7f1581f338d82b94f606b7b78f4b91028d1aee68c985e5659f7474e3a9bbb74c",
+          "supports": "The requested assessment depends on the strike-day arrival interval."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 386,
+          "end_char": 435,
+          "span_sha256": "d1a9c7d7a0e7e6cc73e5f05eebed632dcd76496d84362f358d552d756a2b3721",
+          "supports": "The acceptable delay supplies an approximate comparison."
+        }
+      ],
+      "review_flags": [
+        "The original purpose also requests advice under forecast uncertainty."
+      ]
+    },
+    {
+      "item_id": "v26-006",
+      "dataset_id": "15210_259",
+      "domain": "genealogy",
+      "query_sha256": "0750006878c79a1008f0b269f8af4afe2f9ad9395d0b1842c079605074e3b1ff",
+      "query_char_count": 383,
+      "question_purpose_paraphrase": "Find resources for verifying a reported prison death and determine whether Kansas would issue a death certificate.",
+      "status": "general_or_atemporal",
+      "reason": "The date identifies the reported death. The question asks for research resources and certificate expectations, without requesting a temporal relation.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "question_only_fixing_reason": "Treating archive date coverage as the target would introduce a narrower task.",
+      "unresolved_from_question": [],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 141,
+          "end_char": 181,
+          "span_sha256": "a369d4f10dc531891eec83fce37ddb764b555763a60be54a1f879c97ba0e73c3",
+          "supports": "The date is a supplied search constraint."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 192,
+          "end_char": 264,
+          "span_sha256": "70b4e09151666c271b3e40cd39f4010437146c0f1eb6cad6afddd096c9f5ed20",
+          "supports": "The original purpose is locating verification resources."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 317,
+          "end_char": 378,
+          "span_sha256": "34e30f391b333a9c9637fc0d3096a227328b5c939c42a411260c298b1a29998e",
+          "supports": "A separate question concerns certificate availability."
+        }
+      ],
+      "review_flags": [
+        "Borderline historical lookup: retain for review, without replacing it with archive coverage prediction."
+      ]
+    },
+    {
+      "item_id": "v26-007",
+      "dataset_id": "7922_877",
+      "domain": "monero",
+      "query_sha256": "ed8abc37f727e1a52c96e80bb3ce0addf0b2fad3abe14e8d82322a92d7ab5435",
+      "query_char_count": 460,
+      "question_purpose_paraphrase": "Determine whether Monero upgrades address high fees, change fee constants, and include bulletproofs.",
+      "status": "target_present",
+      "reason": "The question assigns proposed changes to named or upcoming releases. Release membership and timing are objectively reviewable temporal targets.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "question_only_fixing_reason": "The named release constrains part of the question. The September upgrade lacks a year and explicit release correspondence.",
+      "unresolved_from_question": [
+        "The September year is absent.",
+        "The relationship between the named release, v7, and September upgrade needs evidence."
+      ],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 54,
+          "end_char": 80,
+          "span_sha256": "bb9628e3da3365c8e3bf5da7d2ef81905e361959c1cdcf28ab90d0a5321f4df2",
+          "supports": "A numbered upgrade constrains the main temporal target."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 99,
+          "end_char": 138,
+          "span_sha256": "bc591767d75936f8eeff276bb86a971fe03e8ff1ea14fc6a9dcc8a0fcbb24d7f",
+          "supports": "A named release supplies another anchor."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 399,
+          "end_char": 455,
+          "span_sha256": "943c4b7aacb777cb4e92ed591fefb39a416062b09f3b253c1e588704fc5dcdf7",
+          "supports": "A separate feature question uses an incomplete calendar anchor."
+        }
+      ],
+      "review_flags": [
+        "Do not infer release equivalence or a calendar year from outside knowledge."
+      ]
+    },
+    {
+      "item_id": "v26-008",
+      "dataset_id": "122302_21",
+      "domain": "bitcoin",
+      "query_sha256": "f6c3445633719b9088851d0601fa782e37fbea54deaf118d1b224d2e0889a5ed",
+      "query_char_count": 685,
+      "question_purpose_paraphrase": "Identify popular Bitcoin mining options available by January 2010, including the requested free options.",
+      "status": "target_present",
+      "reason": "The question explicitly restricts eligible mining options to an historical cutoff. This temporal eligibility target survives an open-ended answer list.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "question_only_fixing_reason": "The historical cutoff is fixed. Popularity in the title and free availability in the body leave selection criteria partly unresolved.",
+      "unresolved_from_question": [
+        "No popularity measure is given.",
+        "The title and final request use different selection criteria."
+      ],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 14,
+          "end_char": 100,
+          "span_sha256": "227fb88819e5dc61c64168545424d650d5dfdf1fab82ab96107eed581219a3dd",
+          "supports": "The title supplies a historical cutoff and popularity criterion."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 569,
+          "end_char": 649,
+          "span_sha256": "c14351bf672c79ea7653ab235a040b9102c364e2e15da0ccef5deb6ce2440ee1",
+          "supports": "The body supplies a free-availability criterion."
+        }
+      ],
+      "review_flags": [
+        "Do not silently replace the popularity request with availability alone."
+      ]
+    },
+    {
+      "item_id": "v26-009",
+      "dataset_id": "1954_803",
+      "domain": "iota",
+      "query_sha256": "354ef4389887e937186ae66e55cfe4712ab1c23194f4c69db28d95cdcba4bf51",
+      "query_char_count": 967,
+      "question_purpose_paraphrase": "Identify IRI transaction acceptance conditions, including timestamp limits and dependencies on other transactions.",
+      "status": "target_present",
+      "reason": "The question explicitly asks about timestamp validity and transactions whose dependencies are not yet present. These are temporal conditions.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "question_only_fixing_reason": "The requested conditions are clear. The implementation version and timestamp reference frame are not supplied.",
+      "unresolved_from_question": [
+        "IRI version is absent.",
+        "Timestamp limits and their reference frame require source evidence."
+      ],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 568,
+          "end_char": 615,
+          "span_sha256": "d13f2dec59db80850c808382a6882958a4ec30c93a66600ce21e66872856661c",
+          "supports": "A temporal validity interval is explicitly requested."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 736,
+          "end_char": 824,
+          "span_sha256": "f1a5eecca1694e3b6254c60d5d60f5cd5100bcf846824242695ebe6a21659fbb",
+          "supports": "The question requests a temporal dependency condition."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 829,
+          "end_char": 884,
+          "span_sha256": "5fd41c8af117a6415b23ec97e4f60f23336d150a59bb512a55b89f9f5f7cfda2",
+          "supports": "The conditions concern a particular implementation."
+        }
+      ],
+      "review_flags": [
+        "The target includes temporal rules, not only historical dates.",
+        "Do not narrow the original request to timestamp checks alone."
+      ]
+    },
+    {
+      "item_id": "v26-010",
+      "dataset_id": "4248_127",
+      "domain": "cardano",
+      "query_sha256": "f7247e5e0c82e8698905c1f69adff4f101094fce88596093e35370dff66830ed",
+      "query_char_count": 735,
+      "question_purpose_paraphrase": "Determine whether registering a stake-pool ticker earlier gives priority, and obtain recommendations about a duplicate ticker.",
+      "status": "target_present",
+      "reason": "The question tests a claimed entitlement based on registration order. Both the relative ordering and contested priority relation are explicit.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": true,
+      "question_only_fixing_reason": "Role-defined pools and a stated thirteen-minute ordering fix the temporal interpretation. The priority rule remains an answer question.",
+      "unresolved_from_question": [],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 44,
+          "end_char": 92,
+          "span_sha256": "f678e8fa64fab8d648fd5de5db8f6e61e634d2bfe0ed35d159206bfa63fc14fd",
+          "supports": "The writer supplies the first registration timestamp."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 216,
+          "end_char": 244,
+          "span_sha256": "b6c262d072fa1f9446d5372da00ec2bdee4a008629e404611629a762b172b2ca",
+          "supports": "The second registration has an explicit relative ordering."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 487,
+          "end_char": 555,
+          "span_sha256": "8e6f3a69443fc29f121698bcd48cf4d89a95ae2af621752d2d11e4c8becbaf95",
+          "supports": "The claimed entitlement depends on that ordering."
+        }
+      ],
+      "review_flags": [
+        "Recommendations extend beyond the temporal interpretation target.",
+        "Do not assume the stated first-registration policy is correct."
+      ]
+    },
+    {
+      "item_id": "v26-011",
+      "dataset_id": "56523_734",
+      "domain": "history",
+      "query_sha256": "24b42e68628ba897cc9eb3f1c473c6e2db7e495978969e6550158f26d8f7cac0",
+      "query_char_count": 2359,
+      "question_purpose_paraphrase": "Compare Allied and Russian coordination across both world wars, including the intent and feasibility of specified campaigns.",
+      "status": "target_present",
+      "reason": "The original request explicitly compares coordination across two wars. Named campaigns further restrict the requested historical scope.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": true,
+      "question_only_fixing_reason": "The wars, participant roles, and comparison direction are stated. The truth and motives of coordination require evidence.",
+      "unresolved_from_question": [],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 670,
+          "end_char": 764,
+          "span_sha256": "7121884451b40e5541bd19ef88af1165a189cba716185d947536a14d6014668d",
+          "supports": "The question requests an explicit cross-war comparison."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 1630,
+          "end_char": 1709,
+          "span_sha256": "b1f9ff7d723dd05877deeaccb764c20e4c32ccd2702fcc547e3f2fc82d1e03bb",
+          "supports": "The original question includes intent, beyond coincident dates."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 2139,
+          "end_char": 2178,
+          "span_sha256": "654bd787f3e8f9bf988214398e24bd283ec03f5b7ba005d5d041c87c56e35d27",
+          "supports": "The question explicitly relates a proposed route to the second war."
+        }
+      ],
+      "review_flags": [
+        "Borderline broad explanation: the six fields capture temporal scope, not the complete requested historical explanation.",
+        "A timeline-only substitute would not preserve the original task."
+      ]
+    },
+    {
+      "item_id": "v26-012",
+      "dataset_id": "83771_988",
+      "domain": "politics",
+      "query_sha256": "f5ebca173abd02080cdbf966918f2cbe9bc60d6c0bbc0a4e79f4e9994045bc75",
+      "query_char_count": 555,
+      "question_purpose_paraphrase": "Find comparable high-level appointments across countries occurring close together, or explain why the example is unusual.",
+      "status": "underspecified",
+      "reason": "The requested examples require temporal proximity across appointments. Neither proximity nor the qualifying appointment category has a defined boundary.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "question_only_fixing_reason": "The example provides dates, but it does not establish a universal proximity threshold or appointment definition.",
+      "unresolved_from_question": [
+        "Quick succession has no stated threshold.",
+        "High-level political appointment has no operational boundary."
+      ],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 247,
+          "end_char": 272,
+          "span_sha256": "7be84aaaf553c8d4ac89c528ff5a466fd0fa6c8d37fd70f363356a6c73e724a0",
+          "supports": "The example provides the first role's ending year."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 356,
+          "end_char": 391,
+          "span_sha256": "e6285d80739bf8c561f7a6bdc127e2cca2f98d4d8929c95be2832c0da545a82b",
+          "supports": "The example provides the second role's years."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 410,
+          "end_char": 513,
+          "span_sha256": "db58037e05775ceb208e1afa2cfe30b2863abcd9208466bbd4b6080f35ade776",
+          "supports": "The requested class depends on undefined category and proximity criteria."
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "item_id": "v26-013",
+      "dataset_id": "103790_832",
+      "domain": "law",
+      "query_sha256": "6db26ee28b05f5a4e549f4531c430966786a2592c2c33b13f92eef3b110ece71",
+      "query_char_count": 364,
+      "question_purpose_paraphrase": "Determine retention obligations and patient access rights for foot moulds made for orthotic insoles.",
+      "status": "underspecified",
+      "reason": "The retention obligation requests a temporal duration. Applicable jurisdiction and legal time are absent from the question.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "question_only_fixing_reason": "The question cannot select an applicable legal regime from its text alone.",
+      "unresolved_from_question": [
+        "Jurisdiction is absent.",
+        "Question date and applicable legal time are absent."
+      ],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 179,
+          "end_char": 268,
+          "span_sha256": "595b7e6ebb6baa9598fb263a71ef3f916f0a9134766b6b45b04b88e20a2d9884",
+          "supports": "A required retention duration is explicitly requested."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 269,
+          "end_char": 359,
+          "span_sha256": "e397c0924a92aea87d6f90b50c9b9e39373df2ea17dcbd57951cac94d14d189d",
+          "supports": "The original question separately requests access rights."
+        }
+      ],
+      "review_flags": [
+        "This annotation does not determine the applicable law."
+      ]
+    },
+    {
+      "item_id": "v26-014",
+      "dataset_id": "50254_203",
+      "domain": "economics",
+      "query_sha256": "13c1a3cfaa8e27b5ac61afb9611a57668b605c326f154394589dff737e4ce30b",
+      "query_char_count": 557,
+      "question_purpose_paraphrase": "Explain the Treasury callability policy change, conditions for reversing it, and prospective likelihood and investor effects.",
+      "status": "general_or_atemporal",
+      "reason": "The historical change supplies context for causal explanation and forecasting. The question does not ask to resolve its date or sequence.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "question_only_fixing_reason": "A temporal-assignment substitute would omit the requested explanations, likelihood, and investor effects.",
+      "unresolved_from_question": [],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 80,
+          "end_char": 142,
+          "span_sha256": "4e8ca585c47cb1e80d1093e31da0a450bb6eb5952c2d40a21fa5b8448ce01f85",
+          "supports": "The writer supplies the historical premise."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 277,
+          "end_char": 312,
+          "span_sha256": "577f8a95e3f216ce6f4d2f67e48c19baf094607ef7ddddaa95b18904bb33f160",
+          "supports": "The first requested answer is a causal explanation."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 461,
+          "end_char": 552,
+          "span_sha256": "44f7b23d8cf1f3d6b9c034e1198fed63c5c57a3326627a11de5bdc5aeef9b0da",
+          "supports": "The final requested answer is a forecast and impact assessment."
+        }
+      ],
+      "review_flags": [
+        "The historical premise remains unverified; this is question admission only."
+      ]
+    },
+    {
+      "item_id": "v26-015",
+      "dataset_id": "80809_1062",
+      "domain": "quant",
+      "query_sha256": "82a05b8832967b0fe6e3a505b848989e2034e423309f96f127683b0162597d0a",
+      "query_char_count": 79,
+      "question_purpose_paraphrase": "Request a method for finding motifs in a time series.",
+      "status": "general_or_atemporal",
+      "reason": "Time series names the data type. The question requests a method, without any particular temporal interpretation assignment.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "question_only_fixing_reason": "No source-grounded temporal target is stated.",
+      "unresolved_from_question": [],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 0,
+          "end_char": 35,
+          "span_sha256": "1a9c7091ca760d64291a1595c64fced5215ddac51394a631357cc049639de8fe",
+          "supports": "The entire request concerns a signal-analysis method."
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "item_id": "v26-016",
+      "dataset_id": "13782_709",
+      "domain": "hsm",
+      "query_sha256": "90620c0da06369f3e7f1ceef22fa3ac64a259c4633d8625977da59e2e89b1657",
+      "query_char_count": 648,
+      "question_purpose_paraphrase": "Identify Einstein's earliest published exposition of final general relativity, excluding manuscripts and oral presentations.",
+      "status": "target_present",
+      "reason": "The question requests chronological precedence among qualifying publications. Explicit exclusions constrain the comparison class.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "question_only_fixing_reason": "Publication precedence and exclusions are explicit. Final form and qualifying exposition still need objective source-based criteria.",
+      "unresolved_from_question": [
+        "Final form is not operationally defined.",
+        "The minimum content qualifying as an exposition is not specified."
+      ],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 106,
+          "end_char": 150,
+          "span_sha256": "97a1cd10e41ce4d03654a09de53cf901e528bd651365a39ec263ba7c1390c8ec",
+          "supports": "The target combines temporal precedence with a qualifying content criterion."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 191,
+          "end_char": 227,
+          "span_sha256": "11d7f16b7037f448a8963abded75559e0032bdfc12141da85a99cca80ab5c670",
+          "supports": "The question admits multiple publication types."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 499,
+          "end_char": 567,
+          "span_sha256": "3ce886e34f225ed58484df01d8054558bced6f8775bd42687ac3b3d485de8899",
+          "supports": "The question explicitly excludes two candidate categories."
+        }
+      ],
+      "review_flags": [
+        "The suggested book is an unverified candidate, not a reference answer."
+      ]
+    },
+    {
+      "item_id": "v26-017",
+      "dataset_id": "185556_1206",
+      "domain": "workplace",
+      "query_sha256": "3a64d23eedd7b42ac6de8d2a91dba7c435783ffcce55d01c3f813b82a3b5c974",
+      "query_char_count": 321,
+      "question_purpose_paraphrase": "Determine New York paid-family-leave eligibility when childbirth precedes employment and leave is sought after several working months.",
+      "status": "target_present",
+      "reason": "Eligibility is explicitly conditioned on event order and elapsed employment. The temporal relation is central to the original question.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "question_only_fixing_reason": "The event ordering is fixed. Employment duration remains approximate, and the applicable calendar time is absent.",
+      "unresolved_from_question": [
+        "The duration is only a few months.",
+        "Question date and applicable legal time are absent."
+      ],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 74,
+          "end_char": 85,
+          "span_sha256": "1b0a55296ca3e44231543fbb832a0fce1a661c2ce68a3ae3b358bb4c7b6a53db",
+          "supports": "The question supplies a jurisdiction."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 102,
+          "end_char": 139,
+          "span_sha256": "9c4ea82d866045fa88b917d1eca0c92d4b8b1a25e45b6a8f20aaa15166a8a73d",
+          "supports": "The question fixes childbirth before employment."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 208,
+          "end_char": 260,
+          "span_sha256": "de00ca745cb44ccb5b21e6ae880982d8e8f20089e44cbb3a878683fe01163cc9",
+          "supports": "The question supplies an approximate employment interval."
+        }
+      ],
+      "review_flags": [
+        "Preserve the approximate duration instead of inventing a numerical threshold."
+      ]
+    },
+    {
+      "item_id": "v26-018",
+      "dataset_id": "188820_1147",
+      "domain": "travel",
+      "query_sha256": "9d2fd80cc53c3768a1ce4b4319991086ec90bc5ccd8d95996c4847f1b0312ba6",
+      "query_char_count": 863,
+      "question_purpose_paraphrase": "Locate live arrival and departure information for SJ trains in Norway, distinguishing SJ from other operators.",
+      "status": "general_or_atemporal",
+      "reason": "The request seeks an information service. Freshness describes the desired service, without identifying a particular departure or temporal assignment.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "question_only_fixing_reason": "The original purpose can be preserved without inventing a train-specific timing question.",
+      "unresolved_from_question": [],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 61,
+          "end_char": 94,
+          "span_sha256": "0ea1a91b8bd451859842fdcc4a7af2a6d3af84cdcc0647b7efbee8435df58dcb",
+          "supports": "The title explicitly distinguishes operators."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 203,
+          "end_char": 244,
+          "span_sha256": "10b327cf83f521c89c95a96351f19c5fe1547acbf49d8a6d7de7490167b27fda",
+          "supports": "The writer contrasts schedule information with the desired service."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 759,
+          "end_char": 831,
+          "span_sha256": "7bf0a7c81a56741c0cabc53d6fd960e62d7f6c16cf320346a57c1a2fcb397c92",
+          "supports": "The final request seeks an information location."
+        }
+      ],
+      "review_flags": [
+        "Operator disambiguation may matter, but it does not establish a temporal revision target."
+      ]
+    },
+    {
+      "item_id": "v26-019",
+      "dataset_id": "12836_281",
+      "domain": "genealogy",
+      "query_sha256": "d75d3b2c632c25abe45731d3937efee5ff76ad5942896b1dd9be460bebe0f62f",
+      "query_char_count": 3068,
+      "question_purpose_paraphrase": "Identify the registry or archive to contact about a possible relative's grave, using the supplied biographical clues.",
+      "status": "general_or_atemporal",
+      "reason": "The writer explicitly prioritizes archive identification. Dates and images support background identity clues, rather than a requested temporal assignment.",
+      "likely_required_fields": [],
+      "question_text_alone_fixes_interpretation": null,
+      "question_only_fixing_reason": "The final task statement is textual. Admitting identity chronology would replace the expressed purpose.",
+      "unresolved_from_question": [],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 1857,
+          "end_char": 1943,
+          "span_sha256": "8df55477d54def2dc54700211ab6c26556512399cc9dc568fb210646170ef791",
+          "supports": "A birth date supports the background identity hypothesis."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 2940,
+          "end_char": 3015,
+          "span_sha256": "78cfcc41155cfd37ccf200c3ff0f5b7768c0ad3d7f0c09e3a12eeb5b2fda24d5",
+          "supports": "The writer explicitly defines the actual requested output."
+        }
+      ],
+      "review_flags": [
+        "Images occur, but the explicitly requested archive recommendation is stated without them.",
+        "No visual inscription or identity claim was verified."
+      ]
+    },
+    {
+      "item_id": "v26-020",
+      "dataset_id": "3586_902",
+      "domain": "monero",
+      "query_sha256": "4b4fc43a675db91b648928ec1938f896312165ab098a070c78d30d826d1a3c18",
+      "query_char_count": 1729,
+      "question_purpose_paraphrase": "Check a Monero mining break-even estimate and assess historical changes in assumptions about block time and rewards.",
+      "status": "underspecified",
+      "reason": "The compound request includes elapsed profitability and historical parameter changes. Its calendar anchor and historical comparison interval are unspecified.",
+      "likely_required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison"
+      ],
+      "question_text_alone_fixes_interpretation": false,
+      "question_only_fixing_reason": "A claimed forty-day estimate is supplied. Current inputs, historical frequency, and prospective stability are not fully temporally anchored.",
+      "unresolved_from_question": [
+        "Question date is absent.",
+        "The historical interval and frequency criterion are unspecified.",
+        "The requested forecast horizon and acceptable assumptions are not fully defined."
+      ],
+      "q_evidence_spans": [
+        {
+          "source_id": "Q",
+          "start_char": 813,
+          "end_char": 868,
+          "span_sha256": "ad9d485adb2019d7ad9edd81792586ea1dac7f4d0a8c89b2684822d2e0d65d6d",
+          "supports": "The first request concerns an elapsed profitability estimate."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 1107,
+          "end_char": 1240,
+          "span_sha256": "053c07afd6e714c2a18520467077bf50714b897c050391baf9546490bdcd052a",
+          "supports": "The writer explicitly questions temporal constancy assumptions."
+        },
+        {
+          "source_id": "Q",
+          "start_char": 1636,
+          "end_char": 1724,
+          "span_sha256": "924485b91c7119c6098a5656e58b84a23127eb912335eb2647826726485786f7",
+          "supports": "The final request concerns historical parameter changes."
+        }
+      ],
+      "review_flags": [
+        "Preserve both the break-even assessment and historical question.",
+        "Do not turn the reported estimate into an established answer."
+      ]
+    }
+  ]
+}

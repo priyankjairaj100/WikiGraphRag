@@ -20,7 +20,15 @@ Research repository for **Reading the Latest, Not the Loudest: Lifecycle-Aware S
 
 The original package is retained unchanged as a historical submission. Its README and result claims describe that submission; later audits and limitations are recorded in the rework. The original paper and supplement were supplied as PDFs; their editable TeX sources were not available in this workspace. The rework's available LaTeX sources are included.
 
-## Current checkpoint: v0.25 — original-paper and novelty reassessment
+## Current checkpoint: v0.26 — one-day feasibility audit
+
+The original experiment audit found source-support mismatches, a topicality confound, and lost timestamp precision. A new **60-question natural sample** and all **9,959 requested source documents** are frozen. Fifty-nine evidence packs fit the native runtime budget.
+
+The planned query-frame experiment was stopped **before natural inference** because it measures the wrong object. A separate source-binding audit found only limited, confounded candidates. **No novel method, natural model advantage, or submission readiness is established.** One authored runtime completion and 33 focused software tests establish technical checks only.
+
+Read the [decision](acl2027_temporal_state/docs/research_decision_v26.txt), [original audit](acl2027_temporal_state/docs/original_results_v26.txt), [source-binding repair specification](acl2027_temporal_state/docs/source_binding_repair_v26.txt), [reproduction guide](acl2027_temporal_state/docs/reproduce_v26.txt), [working paper](acl2027_temporal_state/paper/interpretation_v26.tex), [claim ledger](acl2027_temporal_state/docs/claim_ledger_v26.txt), and [handoff](acl2027_temporal_state/docs/NEXT_CHAT_HANDOFF_v26.txt). The current paper is a working analysis draft. No conference submission occurred.
+
+## Previous checkpoint: v0.25 — original-paper and novelty reassessment
 
 The financial certificate route is parked as the main-paper direction. The original evaluation has substantial limits. Recent primary literature overlaps with generic temporal graphs, stale-fact filtering, certificates, safe caching, and chain repair. **No verified breakthrough or held-out method advantage is established.**
 

@@ -1,0 +1,273 @@
+Runtime feasibility for the one-day interpretation probe
+2026-10-06
+
+Decision
+
+Use one pinned Qwen3-4B-Instruct-2507 quantization for a small interpretation probe.
+This choice does not establish reader competence.
+Do not treat nominal model size or published model scores as evidence for this task.
+Do not run the old 9B reader program as today's primary path.
+
+Measured environment
+
+The current environment has no exposed GPU device.
+The cgroup memory limit is 8,589,934,592 bytes.
+The CPU quota permits eight CPU cores.
+Python reports nine logical CPUs, but the quota controls available compute.
+The initial memory usage was 2,332,868,608 bytes.
+The initial disk reserve was 29,964,042,240 bytes.
+The initial shared-memory reserve was 5,225,730,048 bytes.
+Python is version 3.12.14.
+Torch, Transformers, vLLM, llama-cpp-python, and Hugging Face packages were absent.
+No cached model weights or native inference binaries survived.
+The earlier runtime path was absent.
+
+Selected artifact
+
+Repository: unsloth/Qwen3-4B-Instruct-2507-GGUF
+Revision: a06e946bb6b655725eafa393f4a9745d460374c9
+File: Qwen3-4B-Instruct-2507-Q5_K_M.gguf
+Bytes: 2,889,514,080
+SHA256: 5bde5e9d883622acb02bf77fe7dcbc56a8b9a9ad4be78a72ca23a532658b4ecb
+Advertised upstream: Qwen/Qwen3-4B-Instruct-2507
+License: Apache-2.0
+
+The upstream model card identifies the Qwen3 architecture and 4,022.5 million parameters.
+The quantized artifact is published by Unsloth, not Qwen.
+The attempted official Qwen GGUF endpoint returned HTTP 401.
+That response does not prove that every official quantized release is unavailable.
+The artifact bytes are pinned and verified.
+The exact upstream revision used during quantization remains unverified.
+
+Native runtime
+
+Release: llama.cpp b11146
+Commit: 7fe450e19305b828c199d602c23a8337aaa1f03b
+Archive: llama-b11146-bin-ubuntu-x64.tar.gz
+Bytes: 16,998,357
+SHA256: c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410
+The version probe reports build 11146 and commit 7fe450e19.
+The help probe confirms every proposed command-line option.
+At the acquisition checkpoint, the native model load remained pending.
+The later authored controls below establish native loading and basic transport.
+
+Acquisition record
+
+Both assets are now downloaded outside Git.
+Their exact sizes and SHA256 values match the pinned metadata.
+The first model download stopped after 976,224,256 bytes.
+The memory guard caused this stop during concurrent file activity.
+The first failure remains in the acquisition record.
+The revised fetcher resumed the same artifact with verified HTTP Range behavior.
+It released only file cache inside the exclusive asset directory.
+The resumed download took 93.24 seconds and passed the final checksum.
+No model load, model completion, or paid job occurred during acquisition.
+
+Managed file writes created additional recoverable files inside the asset directory.
+These files increased cgroup usage despite low anonymous memory.
+After acquisition, owned cache release reduced usage from 8.49 GB to 4.96 GB.
+The runtime must check current resources again before loading.
+The implementation never changes the cgroup limit or clears global cache.
+
+Execution contract
+
+The runtime uses one slot, four threads, and a 4,096-token context.
+The output allowance is 768 tokens.
+The tokenizer must count the complete rendered prompt before each completion.
+The complete prompt and output allowance must fit without truncation.
+The KV cache uses Q8_0.
+The batch and microbatch sizes are both 128 tokens.
+The model uses disk-backed mmap.
+The process has a six-GiB address-space limit.
+The watchdog stops at 7.25 GiB of shared cgroup usage.
+The startup limit is 120 seconds.
+The request limit is 600 seconds.
+The process limit is 7,200 seconds.
+Generation uses greedy decoding and seed 260026.
+Native reasoning is disabled.
+
+The request schema permits id, messages, and optional output_schema only.
+Each message contains role and content.
+The runner rejects unexpected fields, including reference fields.
+This structural check cannot detect an answer manually inserted inside message text.
+Reference separation therefore also requires independent review before the freeze.
+
+Preparation pins request bytes, script bytes, configuration bytes, model bytes, and runtime files.
+Preparation performs no model call.
+Preflight starts the native process and checks token counts without generation.
+Execution requires the exact freeze digest.
+Each request receives a separate directory with the raw request and response.
+The runner stores the raw response before parsing its content.
+The runner does not grade outputs or alter malformed JSON.
+Optional native schema constraints must be identical across compared arms.
+Downstream schema validation remains separate from generation.
+
+Completed requests are checked and skipped during resume.
+A persisted raw response is recovered without generation.
+An interrupted request with a start marker is never repeated automatically.
+Output-limit failures and input-overflow failures remain in the records.
+Five focused tests cover isolation and interruption recovery.
+
+Commands
+
+From acl2027_temporal_state:
+
+python3 scripts/fetch_interpreter_assets_v26.py --assets EXTERNAL_ASSET_DIRECTORY
+python3 scripts/run_interpretation_v26.py prepare --requests REQUESTS.jsonl --assets EXTERNAL_ASSET_DIRECTORY --output EXTERNAL_RUN_DIRECTORY
+python3 scripts/run_interpretation_v26.py preflight --output EXTERNAL_RUN_DIRECTORY --freeze-sha256 FROZEN_DIGEST
+python3 scripts/run_interpretation_v26.py run --output EXTERNAL_RUN_DIRECTORY --freeze-sha256 FROZEN_DIGEST --max-new-calls 1
+
+REQUESTS.jsonl must already exclude hidden references and benchmark answers.
+The root protocol must authorize study predictions before the final command.
+The command defaults to one new completion.
+Increase its cap only within the frozen study plan.
+
+Packet builders can count candidate texts without generation:
+
+python3 scripts/tokenize_interpretation_v26.py --input TOKENIZATION_REQUESTS.jsonl --assets EXTERNAL_ASSET_DIRECTORY --output NEW_EXTERNAL_COUNT_DIRECTORY
+
+Each row contains id and text, or id and messages.
+Raw text counts exclude special tokens.
+Full message counts use the same native template and special-token settings as the runner.
+The helper writes token counts, token identifiers, rendered prompts, runtime hashes, and resource records.
+It has no generation call.
+
+Time limits
+
+The authored transport control below measures current 4B inference speed.
+The old 9B receipt measured 30.35 prompt tokens per second.
+It measured 3.85 generated tokens per second.
+Those values describe an earlier runtime attempt, not the selected 4B model.
+At those speeds, 200 requests with 3,000 input tokens and 256 outputs need roughly 9.2 hours.
+That estimate excludes acquisition, failures, scoring, and method comparisons.
+Therefore, a full reader gate and confirmatory comparison cannot be promised today.
+The authored control is too small to establish throughput for the natural study.
+
+The root requested a projection for 43 questions and four arms.
+This program contains 172 executed calls before any early stop.
+At the measured 4B rates, 1,500 inputs and 300 outputs take about 166 seconds per call.
+At 3,000 inputs and 500 outputs, each call takes about 309 seconds.
+The full program therefore projects 7.9 to 14.8 CPU hours.
+The 43 initial calls project 2.0 to 3.7 hours.
+The 129 expanded calls project 6.0 to 11.1 hours.
+These projections exclude preparation, review, startup, scoring, and failures.
+Use resumable chunks of 16 calls within the existing two-hour process limit.
+That operational choice leaves the model and decoding unchanged.
+The detailed projection is results/runtime_cost_projection_v26.json.
+
+Authored transport and capacity controls
+
+The root authorized one authored completion after acquisition.
+The request used a fictional club, one source, and the actual interpretation schema.
+The model loaded in about 1.95 seconds.
+The native identity, build, context, and slot checks passed.
+The completion processed 659 input tokens and generated 109 tokens.
+It ended with EOS and produced parseable JSON.
+No input truncation or output-limit event occurred.
+The native cache count was zero.
+Prefill measured 15.46 tokens per second.
+Generation measured 4.35 tokens per second.
+The complete process took 69.66 seconds.
+The peak shared cgroup usage was 5,711,826,944 bytes.
+The raw response SHA256 is e5ec3234ddf369cef36245d2bc4b5a7a347893db862f54656219f53c6ce5e7a7.
+These checks do not assess semantic competence.
+
+A second authored request tested initial-arm capacity without generation.
+It used the complete schema and system instructions.
+Its question included 800 repeated placeholder terms.
+Its source included 1,280 repeated placeholder terms.
+The native tokenizer counted 2,701 total input tokens.
+The 768-token output reserve brought the total to 3,469 tokens.
+This initial-arm request fits the 4,096-token context.
+The remaining 627 tokens do not accommodate every possible previous draft.
+Revision arms must also reserve space for the previous draft and their longer instructions.
+Therefore, this test does not guarantee that every revision request fits.
+Set evidence budgets prospectively, using the maximum previous-draft allowance.
+Apply the same expanded evidence to every compared expanded arm.
+Keep the full prompt preflight for every request.
+
+The authored records are in data/runtime_authored_v26.
+The measurement summary is results/runtime_authored_smoke_v26.json.
+These two controls performed two model loads and exactly one completion.
+It made zero natural predictions and did not run the reader gate.
+
+A separate tokenizer check loaded the model once and counted two authored inputs.
+The repeated source term produced exactly 1,280 native tokens.
+The helper also rendered and counted one complete message.
+It made zero generation calls.
+Its records are in data/runtime_tokenizer_v26.
+Its summary is results/runtime_tokenizer_smoke_v26.json.
+
+Natural packet construction used two additional native tokenizer batches.
+The first batch counted 1,583 candidate units and 240 base prompts.
+The second batch counted 120 complete evidence packs and 240 complete prompts.
+Both batches made zero generation calls.
+Full source text and reversible token identifiers remain outside Git.
+The public receipt is results/runtime_packet_tokenization_v26.json.
+
+Request preparation
+
+scripts/prepare_interpretation_requests_v26.py prepares both model stages.
+Its initial command reads literal packets and final admission labels.
+It hashes reference files without parsing their classes or values.
+It also freezes the scorer, builders, tokenizer helper, runtime, and rendering code.
+It writes I0_requests.jsonl outside Git.
+Its public receipt contains identifiers, admission labels, and hashes only.
+Use --extra-freeze for additional review receipts and source inventories.
+
+The expanded command verifies the initial freeze and every original input.
+It reads each exact raw I0 response from the native run directory.
+Malformed JSON inside response content remains unchanged.
+A missing response blocks dependent B1 and R1 requests.
+F1 remains independent of that missing response.
+All I0 items must have terminal records before expanded preparation.
+The six arm permutations rotate across questions in frozen packet order.
+This rule balances arm positions within each complete six-question block.
+The --constrained-decoding flag applies identically to every arm.
+Choose it during the initial freeze.
+The expanded command cannot change that choice.
+Six focused tests check source isolation, input changes, draft preservation, failures, order balance, and response integrity.
+
+Example initial preparation:
+
+python3 scripts/prepare_interpretation_requests_v26.py initial --packets PACKETS.jsonl --admissions FINAL_ADMISSIONS.jsonl --references REFERENCES.jsonl --extra-freeze REVIEW_RECEIPT.json SOURCE_INVENTORY.json --constrained-decoding --output EXTERNAL_REQUEST_DIRECTORY --public-receipt results/interpretation_request_freeze_v26.json
+
+Each final admission row supplies item_id and eligibility.
+The admission file covers the complete packet roster.
+The script selects eligible_resolved, eligible_ambiguous, and eligible_insufficient.
+It never replaces excluded questions.
+
+Example expanded preparation:
+
+python3 scripts/prepare_interpretation_requests_v26.py expanded --first-stage EXTERNAL_REQUEST_DIRECTORY --freeze-sha256 REQUEST_FREEZE_DIGEST --i0-run EXTERNAL_I0_RUN_DIRECTORY --output EXTERNAL_EXPANDED_DIRECTORY --public-receipt results/interpretation_expanded_requests_v26.json
+
+Pass each resulting JSONL file through the native runner's separate preparation step.
+The native runner checks each actual rendered prompt before generation.
+
+Remote and local alternatives
+
+The exposed Hugging Face tools support Jobs and metadata retrieval.
+No direct completion tool is exposed.
+The current authentication has Jobs and read scopes, without an inference scope.
+The account is not Pro.
+Credits, launch access, and inference costs remain unverified.
+Official documentation describes Jobs as paid compute.
+No paid job was launched.
+
+The user's RTX 4000 Ada has a stated 20-GB memory capacity.
+The selected weight file is smaller than that capacity.
+This fact does not verify driver compatibility, KV memory, or achieved inference speed.
+A local CUDA build would require a separate executable digest and performance preflight.
+The current runner uses Linux process controls and is not a native Windows runner.
+Use a separately verified WSL environment for this runner if local execution becomes necessary.
+
+Primary sources
+
+https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507
+https://huggingface.co/api/models/unsloth/Qwen3-4B-Instruct-2507-GGUF?blobs=true
+https://huggingface.co/unsloth/Qwen3-4B-Instruct-2507-GGUF/tree/a06e946bb6b655725eafa393f4a9745d460374c9
+https://github.com/ggml-org/llama.cpp/releases/tag/b11146
+https://huggingface.co/docs/hub/jobs-overview
+
+The paired JSON receipt contains measured resources and acquisition records.
+No benchmark score follows from these engineering checks.

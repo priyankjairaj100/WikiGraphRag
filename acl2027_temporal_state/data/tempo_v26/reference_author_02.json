@@ -1,0 +1,3302 @@
+{
+  "schema_version": "v26.reference_author.1",
+  "created_date": "2026-10-06",
+  "assigned_range": "v26-021 through v26-040",
+  "assistant_annotations_not_human_gold": true,
+  "frozen_before_natural_predictions": true,
+  "reference_only_not_inference_input": true,
+  "input_packs_sha256": "04b3463e834edbc155cb21c3ebb315daf817980f9c87059515b62e87c735ff65",
+  "question_review_merge_sha256": "b645d02df9daa65e8e335afe158aa5c0acb4482e938b956db8d30bac955195a8",
+  "access_declaration": {
+    "read_only_assigned_query_c0_c1": true,
+    "benchmark_answers_read": false,
+    "full_sources_read": false,
+    "model_predictions_read": false,
+    "packet_metadata_read_for_hashes_and_status": true
+  },
+  "interpretation_rule": "Describe the requested subject, relation, scope, and temporal constraint. Do not put unknown answer values into interpretation fields.",
+  "relative_time_rule": "Preserve a stated relative anchor. Report any unavailable absolute date in limitations. Never use the execution date.",
+  "all_six_fields_required": true,
+  "independent_review_pending": true,
+  "summary": {
+    "items": 20,
+    "eligibility_counts": {
+      "eligible_resolved": 16,
+      "ineligible_no_temporal_target": 4
+    },
+    "c0_to_c1_reference_changes": 0,
+    "query_only_resolved_count": 16,
+    "execution_blocked": [
+      "v26-027"
+    ]
+  },
+  "limits": [
+    "This query-frame interpretation task is not a test of source-claim interpretation revision.",
+    "No-change references do not falsify a method for source-claim interpretation revision.",
+    "Source answer text in the frozen packets was treated only as delivered evidence. The separate benchmark answer field was not read."
+  ],
+  "items": [
+    {
+      "item_id": "v26-021",
+      "query_sha256": "ef9d74dcf081f016530531311e8f4feb84382777277ba4c5219d0360894f0d44",
+      "c0_sha256": "0c95d8fa73468de088f2dba26f366cd155a4bb455cffafd496bc709777ad4955",
+      "c1_sha256": "a9065b228c866f92e47e642b6528d91a6dee5ec60551e81f93b6efcc940b82b5",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "Bitcoin full nodes and transactions",
+                  "Bitcoin nodes and transaction verification"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "node availability, verification requirements, and transaction waiting time",
+                  "availability of full-node operators and confirmations needed for ledger inclusion"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "Bitcoin transaction verification and ledger inclusion",
+                  "human operators of Bitcoin full nodes and transactions awaiting ledger inclusion"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "from transaction arrival through verification and ledger inclusion",
+                  "while transactions await verification and inclusion in the ledger"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "Bitcoin full nodes and transactions",
+                  "Bitcoin nodes and transaction verification"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "node availability, verification requirements, and transaction waiting time",
+                  "availability of full-node operators and confirmations needed for ledger inclusion"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "Bitcoin transaction verification and ledger inclusion",
+                  "human operators of Bitcoin full nodes and transactions awaiting ledger inclusion"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "from transaction arrival through verification and ledger inclusion",
+                  "while transactions await verification and inclusion in the ledger"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The requested time roles are event-relative. No calendar date is required.",
+        "The question reports beliefs about human verification. This reference does not validate those beliefs.",
+        "C1 repeats a source sentence under many identifiers. Repetition does not add independent support.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-022",
+      "query_sha256": "b5f701fb7184a743105f29198bfe2305c7306103daf029cccef44062f212ba69",
+      "c0_sha256": "e13483a424131bd039890436691c80d12c88a252aabadcf445883081790777e9",
+      "c1_sha256": "9a9a0ffe1ebeffbea8446b6d70f5a235b515f87cd39c22d241dbd303c7c39a5b",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "IOTA testnet tokens",
+                  "IOTA test tokens and testnet"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "token acquisition and distribution, old-token compatibility, and network or seed transitions",
+                  "how to obtain test tokens, who distributes them, and whether the testnet or tokens changed"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "old IOTA testnet and the new devnet",
+                  "IOTA testnet tokens compared with tokens on the new devnet"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "at question time and across the transition from the old testnet to the new devnet, since IOTA began",
+                  "currently, from the beginning of IOTA through the new devnet transition"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "old testnet versus new devnet token compatibility and continuity",
+                  "old tokens and network compared with the new devnet"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "IOTA testnet tokens",
+                  "IOTA test tokens and testnet"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "token acquisition and distribution, old-token compatibility, and network or seed transitions",
+                  "how to obtain test tokens, who distributes them, and whether the testnet or tokens changed"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "old IOTA testnet and the new devnet",
+                  "IOTA testnet tokens compared with tokens on the new devnet"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "at question time and across the transition from the old testnet to the new devnet, since IOTA began",
+                  "currently, from the beginning of IOTA through the new devnet transition"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "old testnet versus new devnet token compatibility and continuity",
+                  "old tokens and network compared with the new devnet"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The absolute question date and exact devnet version remain unavailable.",
+        "The relative old/new relation is explicit. The reference does not identify the transition with an externally assumed upgrade.",
+        "The faucet text does not establish that its version matches the question period.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-023",
+      "query_sha256": "587dc75401659f0711752973480be8a78707af18d857c2362a6de9c3f29cbab7",
+      "c0_sha256": "a67864e0c55f62c804621227755d4e110d3ffd67f1f29ae2c00b27b306c7b85a",
+      "c1_sha256": "a67864e0c55f62c804621227755d4e110d3ffd67f1f29ae2c00b27b306c7b85a",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "oRef and transactions tx1, tx2, and tx3",
+                  "the shared eUTXO oRef"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "consumption time, later observability, and deterministic selection of an accepted transaction",
+                  "when oRef is consumed or observable and which competing transaction is accepted"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "valid tx1 and tx2 spend the same oRef in one block, followed by tx3",
+                  "two identical valid transactions and a later third transaction attempting the same eUTXO"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "within the same block and until the next block, with tx3 submitted after tx1 and tx2",
+                  "same-block ordering of tx1 and tx2 before tx3, and persistence into the next block"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "earlier competing transactions versus the later third transaction",
+                  "tx1 and tx2 compared with later tx3"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "oRef and transactions tx1, tx2, and tx3",
+                  "the shared eUTXO oRef"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "consumption time, later observability, and deterministic selection of an accepted transaction",
+                  "when oRef is consumed or observable and which competing transaction is accepted"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "valid tx1 and tx2 spend the same oRef in one block, followed by tx3",
+                  "two identical valid transactions and a later third transaction attempting the same eUTXO"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "within the same block and until the next block, with tx3 submitted after tx1 and tx2",
+                  "same-block ordering of tx1 and tx2 before tx3, and persistence into the next block"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "earlier competing transactions versus the later third transaction",
+                  "tx1 and tx2 compared with later tx3"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The supplied scenario fixes the interpretation even though the packets do not answer every mechanism question.",
+        "C0 and C1 contain exactly the same delivered text.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-024",
+      "query_sha256": "59a25058e9627b4a3481d9474966e20b068477a25b5a07be9bd8fc8292079dd7",
+      "c0_sha256": "744e41536e6474e4f6567c3ce82e549888287f4cc149e09086174e57d38c7f13",
+      "c1_sha256": "0d73b50cc6dcb2bce0c98d2cfcebdd01f518006b2829b91229e5a3fc94beefc5",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "the sectors within West Berlin",
+                  "West Berlin sectors"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "when the sectors ended and their legal basis",
+                  "date and legal basis of the end of the sector arrangement"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "French, British, and American sectors within West Berlin, distinct from East-West reunification",
+                  "the internal western occupation sectors, not the unification of East and West Berlin"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "the sectors within West Berlin",
+                  "West Berlin sectors"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "when the sectors ended and their legal basis",
+                  "date and legal basis of the end of the sector arrangement"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "French, British, and American sectors within West Berlin, distinct from East-West reunification",
+                  "the internal western occupation sectors, not the unification of East and West Berlin"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The requested ending date is an answer value. It is not an unknown temporal interpretation field.",
+        "The question asks about the proper end and legal basis. The reference preserves that wording without inventing an administrative criterion.",
+        "The map is contextual. The text specifies the sectors and the actual request.",
+        "C1 includes reunification information. It does not change the narrower subject stated in Q.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-025",
+      "query_sha256": "c1237a8652c82ad04ebff425358cfa06ac4e1a6e372200170b98d505ab8ddc79",
+      "c0_sha256": "09006b4e62801e6190f7a7f7182b0cb64b0d168edab74168a81ab2482f75c068",
+      "c1_sha256": "b7f87d323630b99058c8fb3ebc190cee9618dda303ecd63f2255830f71541ac1",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "Nagorno-Karabakh",
+                  "Nagorno-Karabakh territorial recognition"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "recognition as Azerbaijani territory and official statements about legal rights",
+                  "whether recognition as Azerbaijani territory continued and what official statements were made"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "the West and international organizations",
+                  "Western recognition and recognition by international organizations"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "after the 2020 war compared with before that war",
+                  "before and after the war of 2020"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "postwar recognition versus prewar recognition",
+                  "whether the earlier recognition remains after the 2020 war"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "Nagorno-Karabakh",
+                  "Nagorno-Karabakh territorial recognition"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "recognition as Azerbaijani territory and official statements about legal rights",
+                  "whether recognition as Azerbaijani territory continued and what official statements were made"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "the West and international organizations",
+                  "Western recognition and recognition by international organizations"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "after the 2020 war compared with before that war",
+                  "before and after the war of 2020"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "postwar recognition versus prewar recognition",
+                  "whether the earlier recognition remains after the 2020 war"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The precise membership of the West is not enumerated. The reference preserves the question scope without adding countries.",
+        "The postwar interval has no stated endpoint. The reference does not replace it with the execution date.",
+        "Territorial control and legal recognition are different requested concepts. Source descriptions of control do not replace this relation.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-026",
+      "query_sha256": "f91b9260dee76cb78c83cc8ad41c7bd852d932e0774f8d2cde0598a41f8da6c9",
+      "c0_sha256": "3ce9fb875edd2b243f7ab0000454fa06556f63cb85148f1b8287bcaea897188e",
+      "c1_sha256": "50e31377a95a0007448c3333f7825f570735074ab90f5821dc398896a3cae7ac",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "constitutional statutes and the Thoburn implied-repeal principle",
+                  "the legal status of the principle from Thoburn v Sunderland City Council"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "whether the principle is binding law or persuasive authority and whether its status changed",
+                  "the authority and later legal status of the rule against implied repeal of constitutional statutes"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "UK constitutional statutes and the Thoburn v Sunderland City Council principle",
+                  "the constitutional-statute principle discussed by Lord Justice Laws and the old gov.uk page"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "since Thoburn and the earlier gov.uk remarks until question time",
+                  "the earlier Thoburn position compared with the law at question time"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "earlier controversial or persuasive status versus current binding status",
+                  "whether the earlier unsettled position changed or remains unsettled"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "constitutional statutes and the Thoburn implied-repeal principle",
+                  "the legal status of the principle from Thoburn v Sunderland City Council"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "whether the principle is binding law or persuasive authority and whether its status changed",
+                  "the authority and later legal status of the rule against implied repeal of constitutional statutes"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "UK constitutional statutes and the Thoburn v Sunderland City Council principle",
+                  "the constitutional-statute principle discussed by Lord Justice Laws and the old gov.uk page"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "since Thoburn and the earlier gov.uk remarks until question time",
+                  "the earlier Thoburn position compared with the law at question time"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "earlier controversial or persuasive status versus current binding status",
+                  "whether the earlier unsettled position changed or remains unsettled"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The absolute query date and the old page date are unavailable. The temporal anchor remains relative.",
+        "C0 identifies Thoburn as a 2002 case. C1 also contains a parenthetical 2001 reference. No absolute year is needed for this query frame.",
+        "The reference does not decide whether later authority changed the law. That is answer content.",
+        "Added passages discuss later judicial statements but do not change what the original question asks.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-027",
+      "query_sha256": "dab398059283afc08d6d4b18c7167b16f5f23baf5feaab462c2236ceff24292b",
+      "c0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "c1_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "eligibility": "ineligible_no_temporal_target",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "ineligible",
+        "classes": []
+      },
+      "c1": {
+        "status": "ineligible",
+        "classes": []
+      },
+      "limitations": [
+        "The original request asks for a review of an investment calculation and code. Its dates supply calculation inputs, not a temporal source interpretation target.",
+        "Exclusion concerns the original task, not evidence quality.",
+        "This assistant annotation is not human gold.",
+        "The full prompt exceeds the frozen context budget. This execution failure is separate from the eligibility decision.",
+        "Empty packets reflect the blocked construction. They do not establish source unavailability or global unanswerability."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": false,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "Both packets leave the same question-level exclusion."
+      },
+      "execution_status": "preflight_failure",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-028",
+      "query_sha256": "6b0904ff65ba7f6e45275df7df9bb163914f2fc34414f36c807bf0cdf046bf38",
+      "c0_sha256": "2888acd392144a2141290c8077cc382b040653914b3d3a757dacbb475be86106",
+      "c1_sha256": "81a8daba6e745a281dd6d6f8adc31f7a6789e4a20036a7f1610d7a4723eab05c",
+      "eligibility": "ineligible_no_temporal_target",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "ineligible",
+        "classes": []
+      },
+      "c1": {
+        "status": "ineligible",
+        "classes": []
+      },
+      "limitations": [
+        "The original request compares methods for estimating dividend growth. Historical data define method inputs, not a source-grounded temporal interpretation target.",
+        "Exclusion concerns the original task, not evidence quality.",
+        "This assistant annotation is not human gold."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": false,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "Both packets leave the same question-level exclusion."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-029",
+      "query_sha256": "965a0d39be90b6eeaa374f1a48d96c5e7e0a224c419fbd0f8610e80ca63ae741",
+      "c0_sha256": "460261f05f5ce6c13b01a2f8f6e57221aafa6a71c6d918dd4cf03f1ca222ffd6",
+      "c1_sha256": "ee39ceb75a8e8a463fe656431c43eb6f05103abd4c142e8f7b71941fc9c6d4b9",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "the nonexistence of one-dimensional knots in four-dimensional space",
+                  "the claim that a one-dimensional object cannot be knotted in four dimensions"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "who first conjectured the claim, when it was conjectured, and when it was proved",
+                  "origin and proof history of the stated four-dimensional knot claim"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "one-dimensional objects in four-dimensional space",
+                  "the stated one-dimensional knot result in four dimensions"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "the first conjecture and the proof of the claim",
+                  "earliest conjecture and subsequent proof"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "conjecture versus proof",
+                  "first conjecture distinguished from proof"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "the nonexistence of one-dimensional knots in four-dimensional space",
+                  "the claim that a one-dimensional object cannot be knotted in four dimensions"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "who first conjectured the claim, when it was conjectured, and when it was proved",
+                  "origin and proof history of the stated four-dimensional knot claim"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "one-dimensional objects in four-dimensional space",
+                  "the stated one-dimensional knot result in four dimensions"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "the first conjecture and the proof of the claim",
+                  "earliest conjecture and subsequent proof"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "conjecture versus proof",
+                  "first conjecture distinguished from proof"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The dates and person requested as answers are not interpretation unknowns.",
+        "The reference does not validate the mathematical premise or identify a theorem beyond the claim stated in Q.",
+        "The postscript requests a possible tag synonym. It adds no temporal constraint.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-030",
+      "query_sha256": "652a07c58368b9b70a28d8d301d4e8c310df2a56b61cdfa4cd87b6bcb51959b3",
+      "c0_sha256": "5b98fd001b6b7fac044cc19f47c8e1890b1ef946ab6b49a0aee9da8443c5bfad",
+      "c1_sha256": "dc186bb85c3712bd9bb83a0fd5c52b1a587d31b8afa9d3245d6bb8ebe52335f9",
+      "eligibility": "ineligible_no_temporal_target",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "ineligible",
+        "classes": []
+      },
+      "c1": {
+        "status": "ineligible",
+        "classes": []
+      },
+      "limitations": [
+        "The original request asks what the applicant should do. The experience deficit is background to advice, not an objectively requested temporal assignment.",
+        "Exclusion concerns the original task, not evidence quality.",
+        "This assistant annotation is not human gold."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": false,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "Both packets leave the same question-level exclusion."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-031",
+      "query_sha256": "6c69aa4b2f62879f10e49a38f2f7791cc8ac12f3e82051aa5195c99aeab48512",
+      "c0_sha256": "3e7788165a5cd6627961a0eaee38ca25fe9c814aaf32a73adc134ae0fa5f0ffd",
+      "c1_sha256": "e62eb78ce1fb5abe603665014823ba9ffbb319d45be958b512913c515ea621fe",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "a Norfolk Island traveler with an Australian passport",
+                  "the Norfolk Island friend traveling on an Australian passport"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "whether ESTA is sufficient or other US entry requirements apply",
+                  "US entry authorization requirements and possible passport limitations"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "entry into or transit through the USA by a Norfolk Island resident with an Australian passport",
+                  "US treatment of Norfolk Islanders compared with Australian passport holders"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "the planned visit after the stated 2016 status change",
+                  "the upcoming journey in the post-2016 setting described in the question"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "Norfolk Island status versus other Australian status for US entry",
+                  "whether Norfolk Island travelers face different requirements from Australians"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "a Norfolk Island traveler with an Australian passport",
+                  "the Norfolk Island friend traveling on an Australian passport"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "whether ESTA is sufficient or other US entry requirements apply",
+                  "US entry authorization requirements and possible passport limitations"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "entry into or transit through the USA by a Norfolk Island resident with an Australian passport",
+                  "US treatment of Norfolk Islanders compared with Australian passport holders"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "the planned visit after the stated 2016 status change",
+                  "the upcoming journey in the post-2016 setting described in the question"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "Norfolk Island status versus other Australian status for US entry",
+                  "whether Norfolk Island travelers face different requirements from Australians"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The actual question date and travel date are absent. The reference preserves the stated event-relative setting.",
+        "Passages about travel to New Zealand or the United Kingdom do not change the requested US jurisdiction.",
+        "The eligibility decision admits the explicit post-change policy scope. It does not determine the traveler eligibility or actual entry policy.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-032",
+      "query_sha256": "27ff1b9cb989ab30722986f2f2412464c74bd1ad3f3256fd6b6dd2f6959d6587",
+      "c0_sha256": "316b6347f8f01f1eb8dcae879e1a344b1aa706899c95ca585ebdf8fafebbea31",
+      "c1_sha256": "1a93c019b613f64288f0b283c63cdae377a01f0d5738ef90f58f46a11ec06309",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "Isle of Man birth, marriage, and death certificates",
+                  "Isle of Man BMD certificates"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "certificate fields, differences across jurisdictions, and changes since civil registration began",
+                  "contents of BMD certificates and their geographic and historical differences"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "Isle of Man certificates compared with England and Wales, Scotland, and Ireland",
+                  "birth, marriage, and death certificates from the Isle of Man and the other jurisdictions named in the question"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "since the start of civil registration until question time",
+                  "the history from the beginning of civil registration"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "Isle of Man versus the other named jurisdictions and earlier versus later certificate contents",
+                  "geographic differences and changes in certificate contents over time"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "Isle of Man birth, marriage, and death certificates",
+                  "Isle of Man BMD certificates"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "certificate fields, differences across jurisdictions, and changes since civil registration began",
+                  "contents of BMD certificates and their geographic and historical differences"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "Isle of Man certificates compared with England and Wales, Scotland, and Ireland",
+                  "birth, marriage, and death certificates from the Isle of Man and the other jurisdictions named in the question"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "since the start of civil registration until question time",
+                  "the history from the beginning of civil registration"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "Isle of Man versus the other named jurisdictions and earlier versus later certificate contents",
+                  "geographic differences and changes in certificate contents over time"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "No birth date for the relative is supplied. The full request concerns certificates generally.",
+        "The starting date for civil registration is not supplied. Its named event remains a known relative anchor.",
+        "Dates for England and Wales in the packets must not become Isle of Man dates.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-033",
+      "query_sha256": "bbe8752a4ec1c84d93e6b05f5a10b551f70337fccbbe046ab5ac7aedaf0f8f8e",
+      "c0_sha256": "7d883582de170989f767ff0dcad1af5f35fcfc5205ffe6d41fea7f19fc1fb7a1",
+      "c1_sha256": "731e96b611d4a65a70ec12819c780d7a410cd7117212ad2a840d62d6031df154",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "Monero",
+                  "Monero supply and mining"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "total supply, whether mining has an end date, and circulating supply in May 2017",
+                  "Monero total supply and mining endpoint, plus supply as of May 2017"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "Monero supply and issuance",
+                  "Monero XMR"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "May 2017 for current supply, with the mining endpoint requested separately",
+                  "as of 2017 May for supply; eventual mining completion"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "Monero",
+                  "Monero supply and mining"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "total supply, whether mining has an end date, and circulating supply in May 2017",
+                  "Monero total supply and mining endpoint, plus supply as of May 2017"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "Monero supply and issuance",
+                  "Monero XMR"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "May 2017 for current supply, with the mining endpoint requested separately",
+                  "as of 2017 May for supply; eventual mining completion"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The month precision is explicit and must remain month precision.",
+        "The packets contain later supply figures and inconsistent descriptions. They do not change the May 2017 target.",
+        "Whether mining ever ends is answer content. It must not turn the requested interpretation into an unknown field.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-034",
+      "query_sha256": "ac76b814ada84af86a89c8a27e83c451a89db407c85466574ce7c72fb7a88e04",
+      "c0_sha256": "0dbc91f6d0e1546cc17ec2245e24fa59d75698fb7747901fe8d1ab30e7c07e2f",
+      "c1_sha256": "8f059e9d56d6c7e29d5cb8b9a7efededd0f1090f77959bbb0af0ae4058e5a2f2",
+      "eligibility": "ineligible_no_temporal_target",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "ineligible",
+        "classes": []
+      },
+      "c1": {
+        "status": "ineligible",
+        "classes": []
+      },
+      "limitations": [
+        "The original request checks the direction of a ratio in a mining formula. Time measures are formula variables, not requested historical assignments.",
+        "Exclusion concerns the original task, not evidence quality.",
+        "This assistant annotation is not human gold."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": false,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "Both packets leave the same question-level exclusion."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-035",
+      "query_sha256": "60cf138f7ad09b52518df23723fb066b6751845265ca8ab2f24d98f8404bfa2e",
+      "c0_sha256": "8000d679b436b7d22d26b31d20b4580ff178f5b8169175417fb355909e2e3962",
+      "c1_sha256": "1d53c73ca23d32e5dd460510e0fcc02cfcbe2e9109b919c75f0700baeec8a611",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "IOTA transactions and the Tangle Explorer rate",
+                  "IOTA transaction throughput"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "why the displayed rate is low, whether it reflects current throughput, when it may rise, and how to help",
+                  "meaning of the displayed throughput, expected growth, and ways a beginner can contribute"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "the Tangle Explorer showing approximately 1-2 transactions per second",
+                  "IOTA network throughput as represented by the cited explorer"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "the observation time described as current and the subsequent expected increase",
+                  "at question time and afterward"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "displayed explorer rate versus actual IOTA throughput, and current versus later rate",
+                  "the observed 1-2 transactions per second compared with achieved and expected throughput"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "IOTA transactions and the Tangle Explorer rate",
+                  "IOTA transaction throughput"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "why the displayed rate is low, whether it reflects current throughput, when it may rise, and how to help",
+                  "meaning of the displayed throughput, expected growth, and ways a beginner can contribute"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "the Tangle Explorer showing approximately 1-2 transactions per second",
+                  "IOTA network throughput as represented by the cited explorer"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "the observation time described as current and the subsequent expected increase",
+                  "at question time and afterward"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "displayed explorer rate versus actual IOTA throughput, and current versus later rate",
+                  "the observed 1-2 transactions per second compared with achieved and expected throughput"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The absolute observation date and explorer version are absent. They remain unavailable.",
+        "A source dated December 2017 does not identify the question date.",
+        "The newer explorer passage does not establish that the question concerns that implementation.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-036",
+      "query_sha256": "c7dc74e1c912c3b78e22c121e2ce61b9a329832438d37aaa31168e7604a45427",
+      "c0_sha256": "77ebbbc04a2ac62bf500716c846e9ed211f2fba1e4a5e80ccf4036a3df554551",
+      "c1_sha256": "ed9aa5005a84edd97513119300a4dea43d243230bbfd35d5e79d9973f2929aa0",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "Cardano Testnet slot duration",
+                  "the slot duration on Cardano Testnet"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "the exact date when slot duration was set to one second",
+                  "when the slot duration changed to 1 second"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "Cardano Testnet, with a slot duration of 1 second",
+                  "the one-second slot setting on Cardano Testnet"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "Cardano Testnet slot duration",
+                  "the slot duration on Cardano Testnet"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "the exact date when slot duration was set to one second",
+                  "when the slot duration changed to 1 second"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "Cardano Testnet, with a slot duration of 1 second",
+                  "the one-second slot setting on Cardano Testnet"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The exact change date is the requested answer, not a missing interpretation anchor.",
+        "The packets mention other durations and dates. Those statements do not change the stated one-second testnet event.",
+        "No supplied source establishes the exact answer date. The resolved interpretation does not claim that it does.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-037",
+      "query_sha256": "34d5194768fbe65ab8045c879c8e7c17530435e99c91ae95d0f1db4377777cb5",
+      "c0_sha256": "2129a58f2c40385661cd117fa72867be4c8f7c2a17c7fd2fa0c8b6a98a627253",
+      "c1_sha256": "e56e1eaf7fffd61061e790f3c824b66e84922510b572ae2269ae6f437a680c35",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "uranium and the materials described as uranium before its discovery",
+                  "uranium mining before uranium was identified as an element"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "why it was mined, what miners thought it was, and whether illness was recognized before scientific discovery",
+                  "pre-discovery mining motives, contemporary understanding, and possible awareness of illness"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "early uranium mining and use, including the cited Roman and sixteenth-century accounts",
+                  "mining and understanding of uranium-bearing material before elemental and radioactive identification"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "mining in the early 1500s and earlier, before identification in 1789 and radioactivity around 1896",
+                  "the period before the discoveries in 1789 and around 1896, including early-sixteenth-century mining"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "earlier mining and use versus later elemental and radioactive discovery",
+                  "pre-discovery practice compared with later scientific identification"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "uranium and the materials described as uranium before its discovery",
+                  "uranium mining before uranium was identified as an element"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "why it was mined, what miners thought it was, and whether illness was recognized before scientific discovery",
+                  "pre-discovery mining motives, contemporary understanding, and possible awareness of illness"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "early uranium mining and use, including the cited Roman and sixteenth-century accounts",
+                  "mining and understanding of uranium-bearing material before elemental and radioactive identification"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "mining in the early 1500s and earlier, before identification in 1789 and radioactivity around 1896",
+                  "the period before the discoveries in 1789 and around 1896, including early-sixteenth-century mining"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "earlier mining and use versus later elemental and radioactive discovery",
+                  "pre-discovery practice compared with later scientific identification"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The full causal and health questions remain in the relation field. The reference does not substitute a date lookup.",
+        "The question itself states the competing time roles. C1 adds mineral detail without changing those roles.",
+        "The reference does not verify the reported Roman mining or the early uses.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-038",
+      "query_sha256": "60ec14eca9019a2b96ac1026946684f0873efc9bd8f6b11c7d43135fa997877f",
+      "c0_sha256": "f963232143140f93c73bfdc4729af13cd0527791d9291df85aca2a016f357af0",
+      "c1_sha256": "647acb15c01f30894240c09037f3641589aec4cfade6d2ae2dbcca4daffc4eb8",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "the 1965 US arms embargo and India-Soviet relations",
+                  "India military and diplomatic relations with the Soviet Union"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "the extent to which the US arms embargo affected India military and diplomatic relations with the Soviet Union",
+                  "the causal effect of the 1965 embargo on India-Soviet military and diplomatic relations"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "the US embargo during the 1965 Indo-Pakistani War and India military and diplomatic ties",
+                  "India arms reliance and foreign relations in the stated 1965 embargo context"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "before and after the 1965 Indo-Pakistani War embargo",
+                  "the 1965 embargo compared with ties already developing before 1965"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "post-embargo change versus the pre-existing relationship",
+                  "claimed new foreign-policy shift versus earlier developing ties"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "the 1965 US arms embargo and India-Soviet relations",
+                  "India military and diplomatic relations with the Soviet Union"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "the extent to which the US arms embargo affected India military and diplomatic relations with the Soviet Union",
+                  "the causal effect of the 1965 embargo on India-Soviet military and diplomatic relations"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "the US embargo during the 1965 Indo-Pakistani War and India military and diplomatic ties",
+                  "India arms reliance and foreign relations in the stated 1965 embargo context"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "before and after the 1965 Indo-Pakistani War embargo",
+                  "the 1965 embargo compared with ties already developing before 1965"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "post-embargo change versus the pre-existing relationship",
+                  "claimed new foreign-policy shift versus earlier developing ties"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The reference preserves the causal extent question. It does not answer whether a shift occurred.",
+        "The question already separates prior ties from a later alleged effect. Added evidence changes possible answers, not that interpretation.",
+        "The quoted political claim is a premise to evaluate, not an established answer.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-039",
+      "query_sha256": "9c3200b010ebf0d3b93af2913aedec2595bcbcea4e6c84e1b0a6487ad9a32f89",
+      "c0_sha256": "2aa9b48c0ae4286196ef87968e7bf3c70cbfea57dee60347c70bcdee2b74dad1",
+      "c1_sha256": "2aa9b48c0ae4286196ef87968e7bf3c70cbfea57dee60347c70bcdee2b74dad1",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "the Federal Law and constitutional amendment establishing the Bundesverfassungsgericht",
+                  "the founding legislation of the Federal Constitutional Court of Germany"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "dates of passage of the Federal Law and GG amendment, and the amendment first submission",
+                  "legislative passage and first submission of the measures said to establish the court"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "the German national legislature and the Federal Constitutional Court",
+                  "Federal Diet proceedings concerning the founding law and alleged GG amendment"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "passage of the Federal Law versus passage and first submission of the constitutional amendment",
+                  "the distinct passage and submission events for the stated measures"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "the Federal Law and constitutional amendment establishing the Bundesverfassungsgericht",
+                  "the founding legislation of the Federal Constitutional Court of Germany"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "dates of passage of the Federal Law and GG amendment, and the amendment first submission",
+                  "legislative passage and first submission of the measures said to establish the court"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "the German national legislature and the Federal Constitutional Court",
+                  "Federal Diet proceedings concerning the founding law and alleged GG amendment"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "passage of the Federal Law versus passage and first submission of the constitutional amendment",
+                  "the distinct passage and submission events for the stated measures"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The question may contain a false amendment premise. Its requested events remain clear.",
+        "The supplied constitution commencement date is not the requested legislative passage date.",
+        "Neither that date nor the court anniversary can silently become the answer to a different event.",
+        "The reference describes the request without endorsing the existence of the alleged amendment.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    },
+    {
+      "item_id": "v26-040",
+      "query_sha256": "43ecb05f216821d0751035790959b07ffd815cc82e371304cb369f461dde3dd5",
+      "c0_sha256": "7380c8b99b67149b31ec2951bfc67d233e03b3036e78894364574629f9d55b4b",
+      "c1_sha256": "1cb47e37b6f4c2dc34e84c1c2d8da6dd244a394764a765b027668d188fd6effa",
+      "eligibility": "eligible_resolved",
+      "required_fields": [
+        "entity",
+        "relation",
+        "scope",
+        "time",
+        "comparison",
+        "replacement"
+      ],
+      "c0": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "gold and silver content in Roman coins",
+                  "Roman coin precious-metal content"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "a graph or data table showing changes in gold and silver content through debasement",
+                  "time-series data or a graph of Roman coin metal content"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "Roman coins containing gold or silver",
+                  "Roman gold and silver coinage"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "across the history of the Roman coinage being compared, without a specified narrower interval",
+                  "over time in Roman coinage"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "later versus earlier gold or silver content",
+                  "precious-metal content across successive periods"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "c1": {
+        "status": "resolved",
+        "classes": [
+          {
+            "class_id": "r1",
+            "fields": {
+              "entity": {
+                "state": "known",
+                "accepted_values": [
+                  "gold and silver content in Roman coins",
+                  "Roman coin precious-metal content"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "relation": {
+                "state": "known",
+                "accepted_values": [
+                  "a graph or data table showing changes in gold and silver content through debasement",
+                  "time-series data or a graph of Roman coin metal content"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "scope": {
+                "state": "known",
+                "accepted_values": [
+                  "Roman coins containing gold or silver",
+                  "Roman gold and silver coinage"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "time": {
+                "state": "known",
+                "accepted_values": [
+                  "across the history of the Roman coinage being compared, without a specified narrower interval",
+                  "over time in Roman coinage"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "comparison": {
+                "state": "known",
+                "accepted_values": [
+                  "later versus earlier gold or silver content",
+                  "precious-metal content across successive periods"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              },
+              "replacement": {
+                "state": "not_applicable",
+                "accepted_values": [
+                  "NA"
+                ],
+                "evidence_sets": [
+                  [
+                    "Q"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "limitations": [
+        "The request has no precise date range or coin denomination. The reference preserves that broad scope.",
+        "The delivered sources do not supply the requested numerical table. Interpretation resolution is not answer resolution.",
+        "The reference does not accept the premise of a continuous monotonic decrease as proven.",
+        "These classes describe the full question interpretation. They do not establish answer truth or complete evidence.",
+        "The replacement field is inapplicable because the requested interpretation does not require an observed claim supersession decision.",
+        "Aliases were authored before natural predictions. Unlisted valid paraphrases can cause strict matching errors."
+      ],
+      "author_role": "assistant reference author v26_query_admission; not human gold",
+      "reviewer_role": null,
+      "review_receipt_sha256": null,
+      "question_only_fixed_interpretation": true,
+      "c0_to_c1": {
+        "change": "unchanged",
+        "reason": "The original question fixes the interpretation. Added source text does not change its requested subject or temporal roles."
+      },
+      "execution_status": "ready",
+      "interpretation_is_answer_truth": false
+    }
+  ]
+}

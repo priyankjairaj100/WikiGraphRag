@@ -1,0 +1,65 @@
+{
+  "schema_version": "v26.source_audit_summary.1",
+  "inputs": [
+    {
+      "path": "data/tempo_v26/source_binding_candidates_01.json",
+      "sha256": "8ea8e84253d6cb5200cca1ebe3784bd8d2c5a740572ae9aa9a6c5b984ab03731"
+    },
+    {
+      "path": "data/tempo_v26/source_binding_candidates_02.json",
+      "sha256": "b1b9e10e0f7aa01eaa89e0bfabf2ff7e3cd1ba407743e1c9dd93c9f531571e6f"
+    },
+    {
+      "path": "data/tempo_v26/source_binding_candidates_03.json",
+      "sha256": "420388f59eb95d21792790d52815bbd8825b069708e5deebbe4d1796b54ebfd8"
+    },
+    {
+      "path": "data/tempo_v26/source_binding_review_v26.json",
+      "sha256": "35ddce8cd7a0610805fc87ffbf5244f3ca4d6d1f807f2afda4eec83994049a3e"
+    }
+  ],
+  "roster_size": 60,
+  "first_pass_items_reviewed": 60,
+  "first_pass_possible_candidates": [
+    "v26-026",
+    "v26-032"
+  ],
+  "second_review_flagged_count": 8,
+  "second_review_clear": 0,
+  "second_review_partial": [
+    "v26-016",
+    "v26-026",
+    "v26-032"
+  ],
+  "second_review_unsupported": [
+    "v26-038",
+    "v26-041",
+    "v26-049",
+    "v26-054",
+    "v26-058"
+  ],
+  "query_draft_eligibility_counts": {
+    "ineligible_no_temporal_target": 18,
+    "eligible_resolved": 40,
+    "eligible_insufficient": 2
+  },
+  "query_references_unchanged": true,
+  "natural_model_predictions": 0,
+  "model_headroom_gate": "untested_closed",
+  "decision": "Stop the CPU comparison; preserve source-frame hypothesis as untested.",
+  "human_gold": false,
+  "second_review_blind_to_author_judgments": false,
+  "root_direct_source_checks": [
+    "v26-016",
+    "v26-026",
+    "v26-032",
+    "v26-038"
+  ],
+  "root_conclusion": "The first pack already distinguishes scope in 026 and 038. Case 032 clarifies an off-target maritime register. Case 016 does not secure an unchanged claim. No demonstrated baseline residual follows.",
+  "limits": [
+    "Source annotations do not measure model errors.",
+    "The known-document pools and BM25 packet policy limit the sampled evidence.",
+    "No population rate or absence theorem follows.",
+    "No query-frame output is relabeled as source-binding evaluation."
+  ]
+}
